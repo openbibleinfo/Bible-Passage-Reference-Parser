@@ -192,8 +192,8 @@ class bcv_parser
 				part = part.replace /[\s*]+\d+$/, "" if s.length > next_char and /^\w/.test s.substr(next_char, 1)
 				# If the match ends with a translation indicator, remove any numbers afterward. This situation generally occurs in cases like, "Ps 1:1 ESV 1 Blessed is...", where the final `1` is a verse number that's part of the text.
 				part = part.replace /(\x1e[)\]]?)[\s*]*\d+$/, "$1"
-			# The grammar for words like "also" is case-sensitive; we can safely lowercase ascii letters without changing indices. This is a limitation in the current version of PEG.js. We don't just call .toLowerCase() because it could affect the length of the string if it contains certain characters; maintaining the indices is the most important thing.
-			part = part.replace(/[A-Z]+/, (capitals) -> capitals.toLowerCase())
+			# Though PEG.js doesn't have to be case-sensitive, using the case-insensitive feature involves some repeated processing. By lower-casing here, we only pay the cost once. The grammar for words like "also" is case-sensitive; we can safely lowercase ascii letters without changing indices. We don't just call .toLowerCase() because it could affect the length of the string if it contains certain characters; maintaining the indices is the most important thing.
+			part = part.replace(/[A-Z]+/g, (capitals) -> capitals.toLowerCase())
 			# If we're in a cb situation, the first character won't be a book control character, which would throw off the `start_index`.
 			start_index_adjust = if part.substr 0, 1 is "\x1f" then 0 else part.split("\x1f")[0].length
 			# * `match` is important for the length and whether it contains control characters, neither of which we've changed inconsistently with the original string. The `part` may be shorter than originally matched, but that's only to remove unneeded characters at the end.

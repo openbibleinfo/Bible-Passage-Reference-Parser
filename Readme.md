@@ -8,20 +8,20 @@ Its primary use is to interpret query strings for use in a Bible application. It
 
 It should be fairly speedy: using Node.js 0.6.1, it parses 2,000 tweets per second on a single core of an EC2 High-CPU Medium instance.
 
-The code occupies about 80KB minified and 19KB gzipped.
+The code occupies about 76KB minified and 19KB gzipped.
 
 This project also provides extensively (perhaps even excessively) commented code (see the `docs` folder or [browse the source interactively](http://www.openbible.info/labs/reference-parser/bcv_parser.html)) and 200,000 real-world strings that you can use as a starting point to build your own BCV parser.
 
 ## Usage
 
-Include `js/bcv_parser_en.min.js` in your project.
+For English, include `js/en_bcv_parser.min.js` in your project. For Spanish, include `js/es_bcv_parser.min.js`.
 
 These usage examples are in Javascript. You can also use Coffeescript, of course.
 
 ### Setup: In a Browser
 
 ```html
-<script src="/path/js/bcv_parser_en.min.js"></script>
+<script src="/path/js/en_bcv_parser.min.js"></script>
 <script>
 	var bcv = new bcv_parser;
 </script>
@@ -30,7 +30,7 @@ These usage examples are in Javascript. You can also use Coffeescript, of course
 ### Setup: Node.js
 
 ```javascript
-var bcv_parser = require("/path/js/bcv_parser_en.min.js");
+var bcv_parser = require("/path/js/en_bcv_parser.min.js");
 var bcv = new bcv_parser.bcv_parser;
 ```
 
@@ -209,7 +209,7 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 
 #### Start Objects
 
-* `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in `regexps_en.coffee` for this message to appear.
+* `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `*_regexps.coffee` file for this message to appear.
 * `start_chapter_is_zero`:  `1` if the requested start chapter is 0.
 * `start_chapter_not_exist_in_single_chapter_book`: `1` if wanting, say, `Philemon 2`. It is reparsed as a verse (`Philemon 1:2`).
 * `start_chapter_not_exist`: The value is the last valid chapter in the book.
@@ -220,8 +220,8 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 
 #### End Objects
 
-* `end_book_before_start`: `true` if the end book is before the start book (the order is controlled in `translations_en.js`). E.g., `Exodus-Genesis`.
-* `end_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in `regexps_en.coffee` for this message to appear.
+* `end_book_before_start`: `true` if the end book is before the start book (the order is controlled in the language's `*_translations.js`). E.g., `Exodus-Genesis`.
+* `end_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `*_regexps.coffee` for this message to appear.
 * `end_chapter_before_start`: `true` if the end chapter is before the start chapter in the same book.
 * `end_chapter_is_zero`: `1` if the requested end chapter is `0`. The `1` indicates the first valid chapter.
 * `end_chapter_not_exist`: The value is the last valid chapter in the book.
@@ -243,11 +243,11 @@ The parser is quite aggressive in identifying text as Bible references; if you j
 
 The parser spends most of its time doing regular expressions and manipulating strings. If you give it a very long string full of Bible references, it could block your main event loop. Depending on your performance requirements, parsing large numbers of even short strings could saturate your CPU and lead to problems.
 
-In addition, a number of the tests in the "real-world" section of `test/spec.coffee` have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases--one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
+In addition, a number of the tests in the "real-world" section of `test/en_spec.coffee` have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases--one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
 
 ## Tests
 
-One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file `test/spec.coffee` has a few hundred tests that tripped up this parser at various points in development.
+One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file `test/en_spec.coffee` has a few hundred tests that tripped up this parser at various points in development.
 
 In addition, the file `test/tests.zip` has 200,000 tests drawn from 35 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages--each entry in the `Text` column occurs in ten or more tweets or posts.
 
@@ -355,34 +355,42 @@ In the worst case, given a string consisting of almost nothing but Bible passage
 
 ## Alternate Versification Systems
 
-The BCV parser only supports KJV-style versification. You can extend `translations_en.coffee` to add additional ones.
+The BCV parser only supports KJV-style versification. You can extend `en_translations.coffee` to add additional ones.
 
 ## Non-English Support
 
-In the `src` folder are three localized files: `grammar_en.pegjs`, `regexps_en.coffee`, and `translations_en.coffee`. Using these files as a base, you can add support for non-English languages; just use the appropriate language suffix. I'm happy to accept pull requests for new languages.
+The `es_` prefix files provide basic and largely untested Spanish support. The `eu_es_` files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
+
+Using the files in `src` as a base, you can add support for other languages; just use the appropriate language prefix. I'm happy to accept pull requests for new languages.
 
 ## Compatibility
 
 I've specifically tested the following browsers, but it should work in any modern browser. If not, please feel free to open an issue.
 
-* Internet Explorer 6-9.
-* Firefox 8.
-* Chrome 15 and Node 0.6.1.
+* Internet Explorer 6-9. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
+* Firefox 12.
+* Chrome 19 and Node 0.6.18.
 * Safari 5 (Windows).
 
 ## Building
 
 The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files):
 
-* [Coffescript 1.1.2](http://jashkenas.github.com/coffee-script/) for compiling into Javascript.
-* [PEG.js 1.6.2](http://pegjs.majda.cz/) for the parsing grammar.
+* [Coffeescript 1.3.3](http://coffeescript.org/) for compiling into Javascript.
+* [PEG.js 1.7.0](http://pegjs.majda.cz/) for the parsing grammar.
 * [Jasmine 1.1.0](http://pivotal.github.com/jasmine/) for the testing framework.
 * [Closure](http://code.google.com/closure/) for minifying.
 
-The grammar file is wrapped into the `bcv_parser_en.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
+The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
 ## Purpose
 
 This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which saw production usage on a Bible search website from 2002-2011; the second in Perl (2007), which saw production usage on a Bible-related site starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This Coffeescript parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
 
 I chose Coffeescript out of curiosity--does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript--the tests, in particular, are much easier to follow without all the Javascript punctuation.
+
+## Changelog
+
+May 16, 2012. Added basic Spanish support. Fixed multiple capital-letter sequences. Upgraded PEG.js and Coffeescript to the latest versions.
+
+November 18, 2011. First commit.

@@ -101,7 +101,7 @@ c
     { return {"type": "c", "value": [val], "indices": [indices["c"], pos - 1]} }
 
 integer_title
-  = &{indices["integer_title"] = pos; return true} val_1:integer (cv_sep / sequence_sep)? "title"
+  = &{indices["integer_title"] = pos; return true} val_1:integer (cv_sep / sequence_sep)? "tít"i "ulo"?
     { return {"type": "integer_title", "value": [val_1], "indices": [indices["integer_title"], pos - 1]} }
 
 v_letter
@@ -119,11 +119,11 @@ ff
 
 /* BCV helpers */
 c_explicit
-  = sp ( "chapter" "s"? / "ch" "a"? "pt" "s"? abbrev? / "ch" "a"? "p"? "s"? abbrev? ) sp
+  = sp ( "cap" [íi]i "tulo" "s"? / "c" "a"? "p" "s"? abbrev? ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ("verse" "s"? / "vv" abbrev? / "ver" abbrev? / "v" "s"? "s"? abbrev?) sp
+  = sp ("vers" [íi]i "culo" "s"? / "vv" abbrev? / "ver" "s"? abbrev? / "v" "s"? "s"? abbrev?) sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -133,18 +133,18 @@ cv_sep_weak
   = sp ["'] sp / space
 
 sequence_sep
-  = ([,;/:\-\u2013\u2014~] / "." !(sp "." sp ".") / "see" / "compare" / "cf" abbrev? / "and" / "also" / "&" / space)+
+  = ([,;/:\-\u2013\u2014~] / "." !(sp "." sp ".") / "y" / "&" / space)+
     { return "" }
 
 range_sep
-  = sp ([\-\u2013\u2014] sp / "through" sp / "thru" sp / "to" sp)+
+  = sp ([\-\u2013\u2014] sp / "to" sp / "á"i sp)+
 
 title
-  = &{indices["title"] = pos; return true} (cv_sep / sequence_sep)? val:"title"
+  = &{indices["title"] = pos; return true} (cv_sep / sequence_sep)? val:( "tít"i "ulo"? )
     { return {type:"title", value: [val], "indices": [indices["title"], pos - 1]} }
 
 in_book_of
-  = sp ("from" / "of" / "in") sp ("the" sp "book" sp "of" sp)?
+  = sp ("en" / "de") sp ("el" sp "libro" sp "de" sp)?
 
 abbrev
   = sp "." !(sp "." sp ".")

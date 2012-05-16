@@ -357,7 +357,7 @@ describe "Basic passage parsing", ->
 		psg.books[0] = parsed: ["Phil", "Phlm"]
 		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", value: [{type: "integer",absolute_indices:[5,6], value: 2}]}]},[],{}).toEqual [[{absolute_indices:[0,6],value:[{type:'b',absolute_indices:[0,3],value:0},{type:'c',value:[{type:'integer',absolute_indices:[5,6],value:2}]}],start_context:{},passages:[{start:{b:'Phil',c:2},end:{b:'Phil',c:2},valid:{valid:true,messages:{}},alternates:[{start:{b:'Phlm',c:1,v:2},end:{b:'Phlm',c:1,v:2},valid:{valid:true,messages:{}}}]}]}],{b:'Phil',c:2}]
 
-		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}},alternates:[{start:{b:'Phil',c:7},end:{b:'Phil',c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}}]]}], {b: "Phlm", c: 1, v: 7}]
+		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}},alternates:[{start:{b:'Phil',c:7},end:{b:'Phil',c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}]}]}], {b: "Phlm", c: 1, v: 7}]
 
 	it "should handle `bc_title`s", ->
 		# Psalm7 title (where "Psalm" could be interpreted different ways)
@@ -912,7 +912,7 @@ describe "Parsing", ->
 		expect(p.parse("Ps 76 titles, 4").osis_and_indices()).toEqual [osis:"Ps.76", translations:[""], indices:[0,5]]
 		expect(p.parse("Ps 76 titles, 4, 3 John 2").osis_and_indices()).toEqual [{osis:"Ps.76", translations:[""], indices:[0,5]}, {osis:'3John.1.2', translations:[""], indices:[17,25]}]
 		expect(p.parse("Ps 76 titles-3").osis_and_indices()).toEqual [osis:"Ps.76", translations:[""], indices:[0,5]]
-		expect(p.parse("Ps 3:title, 4 title, 5: title NIV").osis()).toEqual "Ps.3.1,Ps.4.1,Ps.5.1"
+		expect(p.parse("Ps 3:TITLE, 4 TITLE, 5: TITLE NIV").osis()).toEqual "Ps.3.1,Ps.4.1,Ps.5.1"
 		expect(p.parse("Jo 3, title, 4 NIV").osis()).toEqual "John.3-John.4"
 		expect(p.parse("Jo 3, title, 4, Ps 2, 3title.").osis_and_indices()).toEqual [osis: "John.3-John.4,Ps.2.1-Ps.3.1", translations:[""], indices: [0,28]]
 		expect(p.parse("Jo 3, title - 4, Ps 2 title - 3title").osis_and_indices()).toEqual [osis: "John.3-John.4,Ps.2.1-Ps.3.1", translations:[""], indices: [0,36]]
@@ -1270,7 +1270,7 @@ describe "Real-world parsing", ->
 		expect(p.parse("Isaiah 41:10 is my").osis_and_indices()).toEqual [{osis:"Isa.41.10", indices:[0,12], translations:[""]}]
 		expect(p.parse("Isaiah 41:10 ha ha ha").osis_and_indices()).toEqual [{osis:"Isa.41.10", indices:[0,12], translations:[""]}]
 		expect(p.parse("see Isaiah 47:148:22 - Ps 117:7-10 - Gal 3:2").osis_and_indices()).toEqual [{osis:"Gal.3.2", indices:[37,44], translations:[""]}]
-		expect(p.parse("matt chapter 1, verse 9 NIV").osis()).toEqual "Matt.1.9"
+		expect(p.parse("matt CHAPTER 1, verse 9 NIV").osis()).toEqual "Matt.1.9"
 		expect(p.parse("Jude chapter 1, verse 9 NIV").osis()).toEqual "Jude.1.9"
 		expect(p.parse("Jdg 12:11 break Judges 99,KJV").osis_and_indices()).toEqual [{osis:"Judg.12.11", indices:[0,9], translations:[""]}]
 		expect(p.parse("Jdg 12:11 break Judges,chapter,12,KJV").osis_and_indices()).toEqual [{osis:"Judg.12.11", indices:[0,9], translations:[""]}]

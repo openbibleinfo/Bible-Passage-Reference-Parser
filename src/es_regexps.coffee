@@ -2,38 +2,35 @@ bcv_parser::regexps.escaped_passage = ///
 	(?:^ | [^\w\x1f\x1e] )	#beginning of string or not in the middle of a word or immediately following another book. Only count a book if it's part of a sequence: `Matt5John3` is OK, but not `1Matt5John3`
 		(
 			(?:	# inverted book/chapter (cb)
-				  (?: ch (?: apters? | a?pts?\.? | a?p?s?\.? )? \s*
-					\d+ \s* (?: [\u2013\u2014\-] | through | thru | to) \s* \d+ \s*
-					(?: from | of | in ) (?: \s+ the \s+ book \s+ of )?\s* )
-				| (?: ch (?: apters? | a?pts?\.? | a?p?s?\.? )? \s*
+				  (?: (?: cap[íi]tulo | cap ) s? \s*
+					\d+ \s* (?: [\u2013\u2014\-] | to | á ) \s* \d+ \s*
+					(?: en | de ) (?: \s+ el \s+ libro \s+ de )? \s* )
+				| (?: (?: cap[íi]tulo | cap ) s? \s*
 					\d+ \s*
-					(?: from | of | in ) (?: \s+ the \s+ book \s+ of )?\s* )
+					(?: en | de ) (?: \s+ el \s+ libro \s+ de )? \s* )
 				| (?: \d+ (?: th | nd | st ) \s*
-					ch (?: apter | a?pt\.? | a?p?\.? )? \s* #no plurals here since it's a single chapter
-					(?: from | of | in ) (?: \s+ the \s+ book \s+ of )? \s* )
+					(?: cap[íi]tulo | cap ) \s* #no plurals here since it's a single chapter
+					(?: en | de ) (?: \s+ el \s+ libro \s+ de )? \s* )
 			)?
 			\x1f(\d+)(?:/[a-z])?\x1f					#book
 				(?:
-				    c (?:f|ompare
-				  	  | h (?:apters?|a?pts?|a?p?s?)		#chapter words
-				  	  )
-				  | a (?:nd|lso)						#combiners
+				    cap (?: [íi] tulo )? s?		#chapter words
 				  | /p\x1f								#special Psalm chapter
 				  | [\d.:,;\x1e\x1f&\(\)\[\]/"'\*=~\-\u2013\u2014\s\u00a0]	#punctuation; grammar parser doesn't allow \s character class, but we do post-processing on the grammar file to allow it; the \u00a0 is for IE
 				  | [a-e] (?! \w )						#a-e allows 1:1a
 				  | ff?\b
-				  | see
-				  | title (?! [a-z] )						#could be followed by a number
-				  | thr (?:ough|u)
+				  | y (?! [a-z] )
+				  | tít (?:ulo)? (?! [a-z] )						#could be followed by a number
 				  | to
-				  | v (?:erses?|er|ss?|v)?				#verse words
+				  | á
+				  | v (?:ers[íi]culos?|ers?|ss?|v)?				#verse words
 				  | $									#or the end of the string
 				 )+
 		)
 	///gi
 # These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
+	  \d+ \W* tít (?:ulo | \.)?
 	| \d+ \W* ff? (?: [\s\u00a0*]* \.)?
 	| \d+ [\s\u00a0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\u00a0*]* [)\]] )?
@@ -42,9 +39,9 @@ bcv_parser::regexps.match_end_split = ///
 bcv_parser::regexps.space = "[\\s\\u00a0]"
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 
-bcv_parser::regexps.first = "(?:1st|1|I|First)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.second = "(?:2nd|2|II|Second)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.third = "(?:3rd|3|III|Third)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.first = "(?:1\\.?[ºo]|1|I|Primero?)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.second = "(?:2\\.?[ºo]|2|II|Segundo)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.third = "(?:3\\.?[ºo]|3|III|Tercero?)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.gospel = "(?:(?:The[.\\s\\u00a0-]*)?Gospel[.\\s\\u00a0-]?(?:of[.\\s\\u00a0-]*|according[\\s\\u00a0-]*?to[.\\s\\u00a0-]*)(?:[.\\s\\u00a0-]*?(?:Saint|St)[.\\s\\u00a0-]*)?|(?:(?:Saint|St)[.\\s\\u00a0-]*))?"
 bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|and|through|to)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|through|to)"
@@ -52,54 +49,30 @@ bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|through|to)"
 bcv_parser::regexps.books = [
 	osis: ["Gen"]
 	regexp: ///(\d|\b)(
-		  Ge
-		  (?:
-		  	  nn?[ei][ei]?s[eiu]s
-			| nn?[es]is
-			| nes[ei]
-			| n
-		  )
-		| G[en]
+		G[ée]nesis | G[ée]n | G[en]
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Exod"]
 	regexp: ///(\d|\b)(
-		Ex
-		(?:
-			  od[ui]s
-			| od[se]
-			| od
-			| [do]?
-		)
+		[ÉE]xodo | [ÉE]xo?d?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Lev"]
 	regexp: ///(\d|\b)(
-		L
-		(?:
-			  [ei]v[ei]t[ei]?cus
-			| evi
-			| ev
-			| [ev]
-		)
+		Lev[íi]tico | Le?v
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Num"]
 	regexp: ///(\d|\b)(
-		N
-		(?:
-			  umbers?
-			| umb?
-			| [um]
-		)
+		N[úu]meros | N[úu]m? | Nm
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Deut"]
 	regexp: ///(\d|\b)(
 		D
 		(?:
-			  eut[eo]?rono?my
-			| ueteronomy
+			  eut[eo]?rono?mio
+			| ueteronomio
 			| eut?
 			| uet
 			| t
@@ -108,46 +81,22 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["Josh"]
 	regexp: ///(\d|\b)(
-		J
-		(?:
-			  ou?sh?ua
-			| o?sh
-			| os
-		)
+		Josu[ée] | Josh?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Judg"]
 	regexp: ///(\d|\b)(
-		J
-		(?:
-			  udges
-			| udg
-			| d?gs?
-		)
+		Jueces | Juec? | Judg
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Ruth"]
 	regexp: ///(\d|\b)(
-		R
-		(?:
-			  uth?
-			| th
-			| u
-		)
+		Ruth | Rut | R[ut]
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Isa"]
 	regexp: ///(\d|\b)(
-		I
-		(?:
-			  saiah
-			| sais?ha?
-			| s[ai]{2,}ha?
-			| s[is]ah
-			| sa[hi]?
-			| sa?
-			| a
-		)
+		Isa[íi]as | Isa?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["2Sam"]
@@ -174,67 +123,42 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["2Kgs"]
 	regexp: ///(\b)(
-		#{bcv_parser::regexps.second} Ki?n?g?s?
+		#{bcv_parser::regexps.second} Re?y?e?s? | 2Kgs
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["1Kgs"]
 	regexp: ///(\b)(
-		  (?: #{bcv_parser::regexps.first} )? K (?: i?ngs | in | gs )
-		| #{bcv_parser::regexps.first} Ki?n?g?s?
+		  (?: #{bcv_parser::regexps.first} )? Reyes
+		| #{bcv_parser::regexps.first} Re?y?e?s?
+		| 1Kgs
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["2Chr"]
 	regexp: ///(\b)(
-		#{bcv_parser::regexps.second} C
-		  (?:
-			  h?o?ron[io]cles?
-			| hronicals
-			| hro?n?
-			| ron
-		  )
-		|
-		  # 2-Ch can also overlap with something like "Gen 1:2-Ch 7", which should be Gen.1.2-Gen.7. The non-digits ("II", etc.) are unlikely to be combined with such a short abbreviation
-		  2 #{bcv_parser::regexps.space}* Ch
+		#{bcv_parser::regexps.second} (?: Cr[óo]nicas | Cr[óo]n? | Chr | Cr )
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["1Chr"]
 	regexp: ///(\b)(
-		  (?:#{bcv_parser::regexps.first} )? C
-			(?:
-				  h?o?ron[io]cles?
-				| hronicals
-			)
-		| #{bcv_parser::regexps.first} C
-		  (?:
-			  hro?n?
-			| ron
-		  )
-		| 1 #{bcv_parser::regexps.space}* Ch
+		  (?:#{bcv_parser::regexps.first} )? Cr[óo]nicas
+		| #{bcv_parser::regexps.first} (?: Cr[óo]n? | Chr | Cr )
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Ezra"]
 	regexp: ///(\d|\b)(
-		E
-		(?:
-			  zra?
-			| sra
-		)
+		Esdras | Ezra | Esd
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Neh"]
 	regexp: ///(\d|\b)(
-		N
-		(?:
-			  eh[ei]m[ai]{1,3}h
-			| eh?
-		)
+		Nehem[íi]as | Neh?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Esth"]
 	regexp: ///(\d|\b)(
 		E
 		(?:
-			  sth?er
+			  ster
 			| sth?
 			| s
 		)
@@ -252,29 +176,23 @@ bcv_parser::regexps.books = [
 		| 1? 1 [123] #{bcv_parser::regexps.space}* th
 		| (?: 150 | 1 [0-4] [04-9] | [1-9] [04-9] | [4-9] )  #{bcv_parser::regexps.space}* th
 		)
-		#{bcv_parser::regexps.space}* Psalm
+		#{bcv_parser::regexps.space}* Salmo
 		)\b///gi
 ,
 	osis: ["Ps"]
 	regexp: ///(\d|\b)(
-		P
-		(?:
-			  s[alm]{2,4}s?
-			| a[slm]{3,4}s?
-			| l[sam]{2,4}s?
-			| s[as]?m?
-		)
+		Salmos? | Salm? | Ps
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Prov"]
 	regexp: ///(\d|\b)(
 		  P
 		  (?:
-			  r[eo]?verbs?
-			| robv?erbs
-			| or?verbs
-			| rovebs
-			| rvbs?
+			  r[eo]?verbios?
+			| robv?erbios
+			| or?verbios
+			| rovebios
+			| rvbo?s?
 			| ro?v?
 			| v
 		  )
@@ -285,9 +203,9 @@ bcv_parser::regexps.books = [
 	regexp: ///(\d|\b)(
 		E
 		(?:
-			  cc?less?[ia]{1,4}s?tes?
-			| cclesiastic?es
-			| ccles
+			  cc?less?[ia]{1,4}s?t[ée]s?
+			| cc?lesiastic?[ée]s
+			| cc?les
 			| ccl?
 			| cl?
 		)
@@ -295,32 +213,14 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["Song"]
 	regexp: ///(\d|\b)(
-		  (?:The #{bcv_parser::regexps.space}*)? Songs? #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* (?: S[ao]lom[ao]ns? | Songs? )
-		| (?:
-				S
-				(?:
-					  n?gs?
-					| ongs?
-					| #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* S
-					| o?S
-					| o[ln]?
-				)
-		  )
+		  (?: El #{bcv_parser::regexps.space}* )? Cantare #{bcv_parser::regexps.space}* de #{bcv_parser::regexps.space}* los #{bcv_parser::regexps.space}* Cantares | Cantares | Cant? | Cnt | Song
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Jer"]
 	regexp: ///(\d|\b)(
 		  Jer
 		  (?:
-			  emaiah
-			| [ae]maih
-			| [ae]miha
-			| [aei]mi[ai]h
-			| [ei]mi?ah
-			| [ai]mih
-			| [ae]mia
-			| [am][im]ah
-			| emi[he]?
+			  em[íi]as?
 			| e?
 		  )
 		| J[er]
@@ -330,7 +230,7 @@ bcv_parser::regexps.books = [
 	regexp: ///(\d|\b)(
 		L
 		(?:
-			  am[ei]ntations?
+			  am[ei]ntaciones?
 			| am?
 			| m
 		)
@@ -340,10 +240,11 @@ bcv_parser::regexps.books = [
 	regexp: ///(\d|\b)(
 		E
 		(?:
-			  [zx][ei]{1,2}ki?el
-			| zekial
+			  [zx][ei]{1,2}qui?el
+			| zequial
+			| zequ?
 			| zek
-			| z[ek]
+			| z[eq]?
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -359,12 +260,7 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["Hos"]
 	regexp: ///(\d|\b)(
-		H
-		(?:
-			  osea
-			| o?s
-			| os?
-		)
+		Oseas | Hos | Os
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Joel"]
@@ -378,43 +274,34 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["Amos"]
 	regexp: ///(\d|\b)(
-		Amo?s?
+		Am[óo]?s?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Obad"]
 	regexp: ///(\d|\b)(
-		O
-		(?:
-			  badiah?
-			| bidah
-			| ba?d?
-		)
+		Abd[íi]as | Obad | Abd?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Jonah"]
 	regexp: ///(\d|\b)(
 		J
 		(?:
-			  onah
+			  on[áa][hs]
 			| on
-			| nh
+			| ns
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Mic"]
 	regexp: ///(\d|\b)(
-		M
-		(?:
-			  ich?ah?
-			| ic?
-		)
+		Miqueas | Mi[cq]?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Nah"]
 	regexp: ///(\d|\b)(
 		N
 		(?:
-			  ahum?
+			  ah[úu]m?
 			| ah?
 		)
 		)(?:\b|(?=\d))///gi
@@ -423,59 +310,38 @@ bcv_parser::regexps.books = [
 	regexp: ///(\d|\b)(
 		H
 		(?:
-			  abb?akk?[au]kk?
-			| abk?
+			  abb?ac[au]c
+			| abc?
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Zeph"]
 	regexp: ///(\d|\b)(
-		Z
-		(?:
-			  ephana?iah?
-			| e?ph?
-		)
+		Sofon[íi]as | So?f | Zeph
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Hag"]
 	regexp: ///(\d|\b)(
-		H
-		(?:
-			  agg?ai
-			| aggia[ih]
-			| a?gg?
-		)
+		Hageo | Hag
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Zech"]
 	regexp: ///(\d|\b)(
-		Z
-		(?:
-			  [ae]ch[ae]r[ai]{1,2}h
-			| ach?
-			| e?ch?
-		)
+		Zacar[íi]as | Zacar | Zac | Zech
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Mal"]
 	regexp: ///(\d|\b)(
-		M
-		(?:
-			  alachi?
-			| alichi
-			| alaci
-			| al
-		)
+		Malaqu[íi]as | Malaqu | Mala?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Matt"]
 	regexp: ///(\d|\b)(
 		#{bcv_parser::regexps.gospel}
-		M
 		(?:
-		  	  at[th]{1,3}i?ew
-			| atthwe
-			| a?tt?
+			  Mateo
+			| Matt?
+			| Mt
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -484,8 +350,10 @@ bcv_parser::regexps.books = [
 		#{bcv_parser::regexps.gospel}
 		M
 		(?:
-		  	  a?rk?
-			| k
+		  	  a?rcos
+			| ark
+		  	| rc?
+		  	| c
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -494,8 +362,10 @@ bcv_parser::regexps.books = [
 		#{bcv_parser::regexps.gospel}
 		L
 		(?:
-		  	  uke?
-			| [uk]
+		  	  ucas
+		  	| uke
+		  	| uc?
+			| c
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -504,13 +374,9 @@ bcv_parser::regexps.books = [
 		#{bcv_parser::regexps.first}
 		J
 		(?:
-		  	  o?phn
-			| [ho][ho]n
-			| onh
-			| ohm
-			| hn
-			| o[hn]? #Jon is OK here because it's prepended by a number
-			| [hn]
+		  	  [ua][ua]n
+			| ohn
+			| n
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -519,13 +385,9 @@ bcv_parser::regexps.books = [
 		#{bcv_parser::regexps.second}
 		J
 		(?:
-		  	  o?phn
-			| [ho][ho]n
-			| onh
-			| ohm
-			| hn
-			| o[hn]? #Jon is OK here because it's prepended by a number
-			| [hn]
+		  	  [ua][ua]n
+			| ohn
+			| n
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -534,13 +396,9 @@ bcv_parser::regexps.books = [
 		#{bcv_parser::regexps.third}
 		J
 		(?:
-		  	  o?phn
-			| [ho][ho]n
-			| onh
-			| ohm
-			| hn
-			| o[hn]? #Jon is OK here because it's prepended by a number
-			| [hn]
+		  	  [ua][ua]n
+			| ohn
+			| n
 		)
 		)(?:\b|(?=\d))///gi
 ,
@@ -549,35 +407,24 @@ bcv_parser::regexps.books = [
 		#{bcv_parser::regexps.gospel}
 		J
 		(?:
-		  	  o?phn
-			| [ho][ho]n
-			| onh
-			| ohm
-			| hn
-			| oh
-			| [hn]
+		  	  [ua][ua]n
+			| ohn
+			| n
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Acts"]
 	regexp: ///(\d|\b)(
-		A
-		(?:
-			cts #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* the #{bcv_parser::regexps.space}* Apostles
-			| cts*
-			| ct?
-		)
+		Hechos | Acts | He?ch?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Rom"]
 	regexp: ///(\d|\b)(
 		R
 		(?:
-			  omans?
-			| pmans
-			| oamns
-			| omands
-			| omasn
+			  omanos?
+			| pmanos
+			| oamnos
 			| om?s?
 			| mn?s?
 		)
@@ -585,106 +432,63 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["2Cor"]
 	regexp: ///(\b)(
-		#{bcv_parser::regexps.second} C
+		#{bcv_parser::regexps.second}
+		C
 		(?:
-			  h?orr?[in]{1,3}th[aio]{1,3}ns
-			| orin[ai]?th[ai]{1,3}n[aio]{0,3}s
-			| orinti[ao]ns
-			| orinthian
-			| orthians?
-			| orint?h?
-			| orth
+			  orintios
+			| orint?i?
 			| or?
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["1Cor"]
 	regexp: ///(\b)(
-		  (?: #{bcv_parser::regexps.first} )? C
-			(?:
-				  h?orr?[in]{1,3}th[aio]{1,3}ns
-				| orin[ai]?th[ai]{1,3}n[aio]{0,3}s
-				| orinti[ao]ns
-			)
+		  (?: #{bcv_parser::regexps.first} )? Corintios
 		| #{bcv_parser::regexps.first} C
 		  (?:
-			  orinthian
-			| orthians?
-			| orint?h?
-			| orth
+			  orintios
+			| orint?i?
 			| or?
 		  )
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Gal"]
 	regexp: ///(\d|\b)(
-		G
-		(?:
-			  alatians?
-			| all?at[aino]{1,4}s
-			| alat?
-			| al?
-			| l
-		)
+		G[áa]latas | G[áa]lat | G[áa]l
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Eph"]
 	regexp: ///(\d|\b)(
-		E
-		(?:
-			  phesians?
-			| phi?sians?
-			| phesains?
-			| sphesians
-			| pehesians
-			| h?pesians
-			| phesiand
-			| phesions
-			| alat?
-			| phe?s?
-			| ph?
-			| hp
-		)
+		Efesios | Efes | Eph | Ef
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Phil"]
 	regexp: ///(\d|\b)(
-		P
-		(?:
-			  hil{1,}i?p{1,}[aei]{1,3}ns?
-			| hi?li?p{0,2}
-			| hil?
-			| hp
-		)
+		Filipenses | Filip? | Phil | Fil
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Col"]
 	regexp: ///(\d|\b)(
-		C
-		(?:
-			  [ao]ll?[ao]ss?i[ao]ns
-			| olossi?ans?
-			| ol?
-		)
+		Colosenses | Colos | Col
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["2Thess"]
 	regexp: ///(\b)(
 		#{bcv_parser::regexps.second} T
 		(?:
-			  hess?[aeo]lon[ieaoc]{1,4}ns?
-			| he?s{1,3}
-			| h
+			  esalonicenses
+			| hess
+			| e?s
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["1Thess"]
 	regexp: ///(\b)(
-		(?: #{bcv_parser::regexps.first} )? Thess?[aeo]lon[ieaoc]{1,4}ns?
+		(?: #{bcv_parser::regexps.first} )? Tesalonicenses
 		| #{bcv_parser::regexps.first} T
 			(?:
-				  he?s{1,3}
-				| h
+				  hess
+				| e?s
 			)
 		)(?:\b|(?=\d))///gi
 ,
@@ -692,10 +496,8 @@ bcv_parser::regexps.books = [
 	regexp: ///(\b)(
 		#{bcv_parser::regexps.second} T
 		(?:
-			  imothy?
-			| himoth?y
-			| omothy
-			| imoty
+			  imoteo
+			| omoteo
 			| im?
 			| m
 		)
@@ -703,14 +505,13 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["1Tim"]
 	regexp: ///(\b)(
-		  (?: #{bcv_parser::regexps.first} )? Timothy?
+		  (?: #{bcv_parser::regexps.first} )? Timoteo
 		| #{bcv_parser::regexps.first} T
 			(?:
-			  himoth?y
-			| omothy
-			| imoty
-			| im?
-			| m
+				  imoteo
+				| omoteo
+				| im?
+				| m
 			)
 		)(?:\b|(?=\d))///gi
 ,
@@ -718,80 +519,61 @@ bcv_parser::regexps.books = [
 	regexp: ///(\d|\b)(
 		T
 		(?:
-			  itus
+			  ito
+			| itus
 			| it?
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Phlm"]
 	regexp: ///(\d|\b)(
-		Ph
-		(?:
-			  ilemon
-			| l?mn?
-			| ilem?
-		)
+		Filem[óo]n | Phlm | Flmn?
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Heb"]
 	regexp: ///(\d|\b)(
 		H
 		(?:
-			  eb[rew]{1,3}s
-			| [ew]{0,2}brew{1,2}s
-			| ebrew
-			| eb
+			  eb[reo]{1,3}s
+			| ebreo
+			| ebr
+			| eb?
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Jas"]
 	regexp: ///(\d|\b)(
-		J
-		(?:
-			  ames?
-			| a[ms]?
-			| ms?
-		)
+		Santiago | Sant | Stg | Jas
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["2Pet"]
 	regexp: ///(\b)(
 		#{bcv_parser::regexps.second} P
 		(?:
-			  eter?
-			| e?t?r?
+			  edro
+			| e[dt]
+			| e?
 		)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["1Pet"]
 	regexp: ///(\b)(
-		  (?: #{bcv_parser::regexps.first} )? Peter
+		  (?: #{bcv_parser::regexps.first} )? Pedro
 		| #{bcv_parser::regexps.first} P
 			(?:
-			  eter?
-			| e?t?r?
+				  e[dt]
+				| e?
 			)
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Jude"]
 	regexp: ///(\d|\b)(
-		Ju?de
+		Ju?das | Jude? | Jd
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Rev"]
 	regexp: ///(\d|\b)(
-		R
-		(?:
-			  ev[aeo]?lations?
-			| evel
-			| e?v
-			| e
-		)
-		)(?:\b|(?=\d))///gi
-,
-	osis: ["Ezek", "Ezra"]
-	regexp: ///(\d|\b)(
-		Ez
+		Apocalipsis | Apoc | Rev | Ap
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Hab", "Hag"]
@@ -804,19 +586,9 @@ bcv_parser::regexps.books = [
 		Hb
 		)(?:\b|(?=\d))///gi
 ,
-	osis: ["John", "Jonah", "Job", "Joel"]
+	osis: ["Jonah", "Job", "Joel"]
 	regexp: ///(\d|\b)(
 		Jo
-		)(?:\b|(?=\d))///gi
-,
-	osis: ["Jude", "Judg"]
-	regexp: ///(\d|\b)(
-		Jd
-		)(?:\b|(?=\d))///gi
-,
-	osis: ["Jude", "Judg"]
-	regexp: ///(\d|\b)(
-		Jud
 		)(?:\b|(?=\d))///gi
 ,
 	osis: ["Jude", "Judg"]
@@ -831,12 +603,7 @@ bcv_parser::regexps.books = [
 ,
 	osis: ["Phil", "Phlm"]
 	regexp: ///(\d|\b)(
-		Ph
-		)(?:\b|(?=\d))///gi
-,
-	osis: ["Zeph", "Zech"]
-	regexp: ///(\d|\b)(
-		Ze
+		Fil
 		)(?:\b|(?=\d))///gi
 ]
 bcv_parser::regexps.apocrypha = [
@@ -849,107 +616,102 @@ bcv_parser::regexps.apocrypha = [
 	osis: ["Jdt"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		Ju?di?th?
+		Ju?di?t
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["GkEsth"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  Greek #{bcv_parser::regexps.space}* Esther
-		| Esther #{bcv_parser::regexps.space}* \(Greek\)
-		| G (?: ree )? k #{bcv_parser::regexps.space}* Esth?
+		  Ester #{bcv_parser::regexps.space}* \(?Griego\)?
+		| GkEsth
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["Wis"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  (?: The #{bcv_parser::regexps.space}*) Wisd? (?: om )? #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Solomon
-		| Wisdom
-		| Wisd?
+		Sabidur[íi]a | Wis | Sab
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["Sir"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  Sirach
+		  Sir[áa]cida
+		| Sir[áa]c
 		| Sir
-		| Eccl[eu]siasticus
+		| Eclesi[áa]stico
 		| Ecclus
-		| Eccs
-		| (?: The #{bcv_parser::regexps.space}* ) Wisdom #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Jesus #{bcv_parser::regexps.space}* (?: Son #{bcv_parser::regexps.space}* of | ben ) #{bcv_parser::regexps.space}* Sirach
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["Bar"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  Baruch
+		  Baruc
 		| Bar
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["PrAzar"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  (?: The #{bcv_parser::regexps.space}* )? Pr (?: ayers? )? #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Azariah?
-		| Azariah?
-		| PrAza?r
+		  (?: Oraci[óo]n | Cántico ) de Azar[íi]as
+		| Azar[íi]as
+		| PrAzar
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["Sus"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  Susannah?
-		| Shoshana
+		  Susana
 		| Sus
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["Bel"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  Bel #{bcv_parser::regexps.space}* (?: and | & ) #{bcv_parser::regexps.space}* (?: the #{bcv_parser::regexps.space}* )? (?: Dragon | Serpent | Snake )
+		  Bel #{bcv_parser::regexps.space}* (?: y | & ) #{bcv_parser::regexps.space}* (?: (?: el | la ) #{bcv_parser::regexps.space}* )? (?: Drag[óo]n | Serpiente )
 		| Bel
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["SgThree"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  (?: The #{bcv_parser::regexps.space}* )? Song #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* (?:the #{bcv_parser::regexps.space}* )? (?: 3 | Three ) #{bcv_parser::regexps.space}* (?: Holy #{bcv_parser::regexps.space}* Children | Young #{bcv_parser::regexps.space}* Men | Youths | Jews )
-		| S \.?#{bcv_parser::regexps.space}* (?: of )? #{bcv_parser::regexps.space}* (?: Three | Th | 3 ) \.?#{bcv_parser::regexps.space}* (?: Ch | Y )
-		| So?n?gThree
+		  Canto #{bcv_parser::regexps.space}* de #{bcv_parser::regexps.space}* los #{bcv_parser::regexps.space}* (?: Tres | 3 ) #{bcv_parser::regexps.space}* J[óo]venes (?: #{bcv_parser::regexps.space}* Jud[íi]os | #{bcv_parser::regexps.space}* Hebreos )?
+		| (?: Tres | 3 ) J[óo]venes
+		| SgThree
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["EpJer"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		  (?: The #{bcv_parser::regexps.space}* )? (?: Ep(?:istle)? | Let(?:ter) ) \.?#{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Jeremiah
+		  (?: La #{bcv_parser::regexps.space}* )? Carta #{bcv_parser::regexps.space}* (?: de #{bcv_parser::regexps.space}* )? Jerem[íi]as
 		| EpJer
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["2Macc"]
 	apocrypha: true
 	regexp: ///(\b)(
-		  #{bcv_parser::regexps.second} Mac{1,3} (?: ab{1,3} e{1,3} s? )?
+		  #{bcv_parser::regexps.second} Mac{1,3} (?: ab{1,3} e{1,3} os? )?
 		| 2 #{bcv_parser::regexps.space}* Mc
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["3Macc"]
 	apocrypha: true
 	regexp: ///(\b)(
-		  #{bcv_parser::regexps.third} Mac{1,3} (?: ab{1,3} e{1,3} s? )?
+		  #{bcv_parser::regexps.third} Mac{1,3} (?: ab{1,3} e{1,3} os? )?
 		| 3 #{bcv_parser::regexps.space}* Mc
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["4Macc"]
 	apocrypha: true
 	regexp: ///(\b)(
-		  (?: 4th | 4 | IV | Fourth ) \.?#{bcv_parser::regexps.space}* Mac{1,3} (?: ab{1,3} e{1,3} s? )?
+		  (?: 4 \.? [ºo] | 4 | IV | Cuarto ) \.?#{bcv_parser::regexps.space}* Mac{1,3} (?: ab{1,3} e{1,3} os? )?
 		| 4 #{bcv_parser::regexps.space}* Mc
 		)(?:\b|(?=d))///gi
 ,
 	osis: ["1Macc"]
 	apocrypha: true
 	regexp: ///(\b)(
-		  (?: #{bcv_parser::regexps.first} )? Mac{1,3}ab{1,3} e{1,3} s?
-		| #{bcv_parser::regexps.first} Mac{1,3}
+		  (?: #{bcv_parser::regexps.first} )? Macabeos
+		| #{bcv_parser::regexps.first} Mac{1,3} (?: ab{1,3} e{1,3} os? )?
 		| 1 #{bcv_parser::regexps.space}* Mc
 		)(?:\b|(?=d))///gi
 ,
@@ -970,8 +732,7 @@ bcv_parser::regexps.apocrypha = [
 	osis: ["PrMan"]
 	apocrypha: true
 	regexp: ///(\d|\b)(
-		(?: (?: The #{bcv_parser::regexps.space}*) Pr (?: ayers? )? #{bcv_parser::regexps.space}* (?: of #{bcv_parser::regexps.space}* )? M[ae]n{1,2}[ae]s{1,2}[ae]h
-		)
+		  (?: La #{bcv_parser::regexps.space}* )? Oraci[óo]n #{bcv_parser::regexps.space}* (?: de #{bcv_parser::regexps.space}*)? Manas[ée]s
 		| PrMan
 		)(?:\b|(?=d))///gi
 ]

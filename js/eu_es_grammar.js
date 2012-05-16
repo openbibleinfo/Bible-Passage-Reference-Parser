@@ -2252,7 +2252,7 @@ var grammar = (function(){
       }
       
       function parse_integer_title() {
-        var result0, result1, result2, result3;
+        var result0, result1, result2, result3, result4;
         var pos0, pos1;
         
         pos0 = pos;
@@ -2267,17 +2267,32 @@ var grammar = (function(){
             }
             result2 = result2 !== null ? result2 : "";
             if (result2 !== null) {
-              if (input.substr(pos, 5) === "title") {
-                result3 = "title";
-                pos += 5;
+              if (input.substr(pos, 3).toLowerCase() === "t\xEDt") {
+                result3 = input.substr(pos, 3);
+                pos += 3;
               } else {
                 result3 = null;
                 if (reportFailures === 0) {
-                  matchFailed("\"title\"");
+                  matchFailed("\"t\\xEDt\"");
                 }
               }
               if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
+                if (input.substr(pos, 3) === "ulo") {
+                  result4 = "ulo";
+                  pos += 3;
+                } else {
+                  result4 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("\"ulo\"");
+                  }
+                }
+                result4 = result4 !== null ? result4 : "";
+                if (result4 !== null) {
+                  result0 = [result0, result1, result2, result3, result4];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
               } else {
                 result0 = null;
                 pos = pos1;
@@ -2539,28 +2554,56 @@ var grammar = (function(){
         result0 = parse_sp();
         if (result0 !== null) {
           pos2 = pos;
-          if (input.substr(pos, 7) === "chapter") {
-            result1 = "chapter";
-            pos += 7;
+          if (input.substr(pos, 3) === "cap") {
+            result1 = "cap";
+            pos += 3;
           } else {
             result1 = null;
             if (reportFailures === 0) {
-              matchFailed("\"chapter\"");
+              matchFailed("\"cap\"");
             }
           }
           if (result1 !== null) {
-            if (input.charCodeAt(pos) === 115) {
-              result2 = "s";
+            if (/^[\xEDi]/i.test(input.charAt(pos))) {
+              result2 = input.charAt(pos);
               pos++;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("\"s\"");
+                matchFailed("[\\xEDi]i");
               }
             }
-            result2 = result2 !== null ? result2 : "";
             if (result2 !== null) {
-              result1 = [result1, result2];
+              if (input.substr(pos, 4) === "tulo") {
+                result3 = "tulo";
+                pos += 4;
+              } else {
+                result3 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\"tulo\"");
+                }
+              }
+              if (result3 !== null) {
+                if (input.charCodeAt(pos) === 115) {
+                  result4 = "s";
+                  pos++;
+                } else {
+                  result4 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("\"s\"");
+                  }
+                }
+                result4 = result4 !== null ? result4 : "";
+                if (result4 !== null) {
+                  result1 = [result1, result2, result3, result4];
+                } else {
+                  result1 = null;
+                  pos = pos2;
+                }
+              } else {
+                result1 = null;
+                pos = pos2;
+              }
             } else {
               result1 = null;
               pos = pos2;
@@ -2571,13 +2614,13 @@ var grammar = (function(){
           }
           if (result1 === null) {
             pos2 = pos;
-            if (input.substr(pos, 2) === "ch") {
-              result1 = "ch";
-              pos += 2;
+            if (input.charCodeAt(pos) === 99) {
+              result1 = "c";
+              pos++;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("\"ch\"");
+                matchFailed("\"c\"");
               }
             }
             if (result1 !== null) {
@@ -2592,13 +2635,13 @@ var grammar = (function(){
               }
               result2 = result2 !== null ? result2 : "";
               if (result2 !== null) {
-                if (input.substr(pos, 2) === "pt") {
-                  result3 = "pt";
-                  pos += 2;
+                if (input.charCodeAt(pos) === 112) {
+                  result3 = "p";
+                  pos++;
                 } else {
                   result3 = null;
                   if (reportFailures === 0) {
-                    matchFailed("\"pt\"");
+                    matchFailed("\"p\"");
                   }
                 }
                 if (result3 !== null) {
@@ -2637,76 +2680,6 @@ var grammar = (function(){
               result1 = null;
               pos = pos2;
             }
-            if (result1 === null) {
-              pos2 = pos;
-              if (input.substr(pos, 2) === "ch") {
-                result1 = "ch";
-                pos += 2;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"ch\"");
-                }
-              }
-              if (result1 !== null) {
-                if (input.charCodeAt(pos) === 97) {
-                  result2 = "a";
-                  pos++;
-                } else {
-                  result2 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"a\"");
-                  }
-                }
-                result2 = result2 !== null ? result2 : "";
-                if (result2 !== null) {
-                  if (input.charCodeAt(pos) === 112) {
-                    result3 = "p";
-                    pos++;
-                  } else {
-                    result3 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"p\"");
-                    }
-                  }
-                  result3 = result3 !== null ? result3 : "";
-                  if (result3 !== null) {
-                    if (input.charCodeAt(pos) === 115) {
-                      result4 = "s";
-                      pos++;
-                    } else {
-                      result4 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"s\"");
-                      }
-                    }
-                    result4 = result4 !== null ? result4 : "";
-                    if (result4 !== null) {
-                      result5 = parse_abbrev();
-                      result5 = result5 !== null ? result5 : "";
-                      if (result5 !== null) {
-                        result1 = [result1, result2, result3, result4, result5];
-                      } else {
-                        result1 = null;
-                        pos = pos2;
-                      }
-                    } else {
-                      result1 = null;
-                      pos = pos2;
-                    }
-                  } else {
-                    result1 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            }
           }
           if (result1 !== null) {
             result2 = parse_sp();
@@ -2742,28 +2715,56 @@ var grammar = (function(){
         result0 = parse_sp();
         if (result0 !== null) {
           pos2 = pos;
-          if (input.substr(pos, 5) === "verse") {
-            result1 = "verse";
-            pos += 5;
+          if (input.substr(pos, 4) === "vers") {
+            result1 = "vers";
+            pos += 4;
           } else {
             result1 = null;
             if (reportFailures === 0) {
-              matchFailed("\"verse\"");
+              matchFailed("\"vers\"");
             }
           }
           if (result1 !== null) {
-            if (input.charCodeAt(pos) === 115) {
-              result2 = "s";
+            if (/^[\xEDi]/i.test(input.charAt(pos))) {
+              result2 = input.charAt(pos);
               pos++;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("\"s\"");
+                matchFailed("[\\xEDi]i");
               }
             }
-            result2 = result2 !== null ? result2 : "";
             if (result2 !== null) {
-              result1 = [result1, result2];
+              if (input.substr(pos, 4) === "culo") {
+                result3 = "culo";
+                pos += 4;
+              } else {
+                result3 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\"culo\"");
+                }
+              }
+              if (result3 !== null) {
+                if (input.charCodeAt(pos) === 115) {
+                  result4 = "s";
+                  pos++;
+                } else {
+                  result4 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("\"s\"");
+                  }
+                }
+                result4 = result4 !== null ? result4 : "";
+                if (result4 !== null) {
+                  result1 = [result1, result2, result3, result4];
+                } else {
+                  result1 = null;
+                  pos = pos2;
+                }
+              } else {
+                result1 = null;
+                pos = pos2;
+              }
             } else {
               result1 = null;
               pos = pos2;
@@ -2808,10 +2809,25 @@ var grammar = (function(){
                 }
               }
               if (result1 !== null) {
-                result2 = parse_abbrev();
+                if (input.charCodeAt(pos) === 115) {
+                  result2 = "s";
+                  pos++;
+                } else {
+                  result2 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("\"s\"");
+                  }
+                }
                 result2 = result2 !== null ? result2 : "";
                 if (result2 !== null) {
-                  result1 = [result1, result2];
+                  result3 = parse_abbrev();
+                  result3 = result3 !== null ? result3 : "";
+                  if (result3 !== null) {
+                    result1 = [result1, result2, result3];
+                  } else {
+                    result1 = null;
+                    pos = pos2;
+                  }
                 } else {
                   result1 = null;
                   pos = pos2;
@@ -2903,110 +2919,19 @@ var grammar = (function(){
       }
       
       function parse_cv_sep() {
-        var result0, result1, result2, result3, result4, result5;
-        var pos0, pos1, pos2, pos3;
+        var result0, result1, result2;
+        var pos0;
         
         pos0 = pos;
         result0 = parse_sp();
         if (result0 !== null) {
-          if (input.charCodeAt(pos) === 58) {
-            result2 = ":";
+          if (input.charCodeAt(pos) === 44) {
+            result1 = ",";
             pos++;
           } else {
-            result2 = null;
-            if (reportFailures === 0) {
-              matchFailed("\":\"");
-            }
-          }
-          if (result2 !== null) {
-            result1 = [];
-            while (result2 !== null) {
-              result1.push(result2);
-              if (input.charCodeAt(pos) === 58) {
-                result2 = ":";
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\":\"");
-                }
-              }
-            }
-          } else {
             result1 = null;
-          }
-          if (result1 === null) {
-            pos1 = pos;
-            if (input.charCodeAt(pos) === 46) {
-              result1 = ".";
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\".\"");
-              }
-            }
-            if (result1 !== null) {
-              pos2 = pos;
-              reportFailures++;
-              pos3 = pos;
-              result2 = parse_sp();
-              if (result2 !== null) {
-                if (input.charCodeAt(pos) === 46) {
-                  result3 = ".";
-                  pos++;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\".\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result4 = parse_sp();
-                  if (result4 !== null) {
-                    if (input.charCodeAt(pos) === 46) {
-                      result5 = ".";
-                      pos++;
-                    } else {
-                      result5 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\".\"");
-                      }
-                    }
-                    if (result5 !== null) {
-                      result2 = [result2, result3, result4, result5];
-                    } else {
-                      result2 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result2 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos3;
-                }
-              } else {
-                result2 = null;
-                pos = pos3;
-              }
-              reportFailures--;
-              if (result2 === null) {
-                result2 = "";
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-              if (result2 !== null) {
-                result1 = [result1, result2];
-              } else {
-                result1 = null;
-                pos = pos1;
-              }
-            } else {
-              result1 = null;
-              pos = pos1;
+            if (reportFailures === 0) {
+              matchFailed("\",\"");
             }
           }
           if (result1 !== null) {
@@ -3071,13 +2996,13 @@ var grammar = (function(){
         var pos0, pos1, pos2, pos3;
         
         pos0 = pos;
-        if (/^[,;\/:\-\u2013\u2014~]/.test(input.charAt(pos))) {
+        if (/^[;\/:\-\u2013\u2014~]/.test(input.charAt(pos))) {
           result1 = input.charAt(pos);
           pos++;
         } else {
           result1 = null;
           if (reportFailures === 0) {
-            matchFailed("[,;\\/:\\-\\u2013\\u2014~]");
+            matchFailed("[;\\/:\\-\\u2013\\u2014~]");
           }
         }
         if (result1 === null) {
@@ -3154,85 +3079,27 @@ var grammar = (function(){
             pos = pos1;
           }
           if (result1 === null) {
-            if (input.substr(pos, 3) === "see") {
-              result1 = "see";
-              pos += 3;
+            if (input.charCodeAt(pos) === 121) {
+              result1 = "y";
+              pos++;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("\"see\"");
+                matchFailed("\"y\"");
               }
             }
             if (result1 === null) {
-              if (input.substr(pos, 7) === "compare") {
-                result1 = "compare";
-                pos += 7;
+              if (input.charCodeAt(pos) === 38) {
+                result1 = "&";
+                pos++;
               } else {
                 result1 = null;
                 if (reportFailures === 0) {
-                  matchFailed("\"compare\"");
+                  matchFailed("\"&\"");
                 }
               }
               if (result1 === null) {
-                pos1 = pos;
-                if (input.substr(pos, 2) === "cf") {
-                  result1 = "cf";
-                  pos += 2;
-                } else {
-                  result1 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"cf\"");
-                  }
-                }
-                if (result1 !== null) {
-                  result2 = parse_abbrev();
-                  result2 = result2 !== null ? result2 : "";
-                  if (result2 !== null) {
-                    result1 = [result1, result2];
-                  } else {
-                    result1 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result1 = null;
-                  pos = pos1;
-                }
-                if (result1 === null) {
-                  if (input.substr(pos, 3) === "and") {
-                    result1 = "and";
-                    pos += 3;
-                  } else {
-                    result1 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"and\"");
-                    }
-                  }
-                  if (result1 === null) {
-                    if (input.substr(pos, 4) === "also") {
-                      result1 = "also";
-                      pos += 4;
-                    } else {
-                      result1 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"also\"");
-                      }
-                    }
-                    if (result1 === null) {
-                      if (input.charCodeAt(pos) === 38) {
-                        result1 = "&";
-                        pos++;
-                      } else {
-                        result1 = null;
-                        if (reportFailures === 0) {
-                          matchFailed("\"&\"");
-                        }
-                      }
-                      if (result1 === null) {
-                        result1 = parse_space();
-                      }
-                    }
-                  }
-                }
+                result1 = parse_space();
               }
             }
           }
@@ -3241,13 +3108,13 @@ var grammar = (function(){
           result0 = [];
           while (result1 !== null) {
             result0.push(result1);
-            if (/^[,;\/:\-\u2013\u2014~]/.test(input.charAt(pos))) {
+            if (/^[;\/:\-\u2013\u2014~]/.test(input.charAt(pos))) {
               result1 = input.charAt(pos);
               pos++;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("[,;\\/:\\-\\u2013\\u2014~]");
+                matchFailed("[;\\/:\\-\\u2013\\u2014~]");
               }
             }
             if (result1 === null) {
@@ -3324,85 +3191,27 @@ var grammar = (function(){
                 pos = pos1;
               }
               if (result1 === null) {
-                if (input.substr(pos, 3) === "see") {
-                  result1 = "see";
-                  pos += 3;
+                if (input.charCodeAt(pos) === 121) {
+                  result1 = "y";
+                  pos++;
                 } else {
                   result1 = null;
                   if (reportFailures === 0) {
-                    matchFailed("\"see\"");
+                    matchFailed("\"y\"");
                   }
                 }
                 if (result1 === null) {
-                  if (input.substr(pos, 7) === "compare") {
-                    result1 = "compare";
-                    pos += 7;
+                  if (input.charCodeAt(pos) === 38) {
+                    result1 = "&";
+                    pos++;
                   } else {
                     result1 = null;
                     if (reportFailures === 0) {
-                      matchFailed("\"compare\"");
+                      matchFailed("\"&\"");
                     }
                   }
                   if (result1 === null) {
-                    pos1 = pos;
-                    if (input.substr(pos, 2) === "cf") {
-                      result1 = "cf";
-                      pos += 2;
-                    } else {
-                      result1 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"cf\"");
-                      }
-                    }
-                    if (result1 !== null) {
-                      result2 = parse_abbrev();
-                      result2 = result2 !== null ? result2 : "";
-                      if (result2 !== null) {
-                        result1 = [result1, result2];
-                      } else {
-                        result1 = null;
-                        pos = pos1;
-                      }
-                    } else {
-                      result1 = null;
-                      pos = pos1;
-                    }
-                    if (result1 === null) {
-                      if (input.substr(pos, 3) === "and") {
-                        result1 = "and";
-                        pos += 3;
-                      } else {
-                        result1 = null;
-                        if (reportFailures === 0) {
-                          matchFailed("\"and\"");
-                        }
-                      }
-                      if (result1 === null) {
-                        if (input.substr(pos, 4) === "also") {
-                          result1 = "also";
-                          pos += 4;
-                        } else {
-                          result1 = null;
-                          if (reportFailures === 0) {
-                            matchFailed("\"also\"");
-                          }
-                        }
-                        if (result1 === null) {
-                          if (input.charCodeAt(pos) === 38) {
-                            result1 = "&";
-                            pos++;
-                          } else {
-                            result1 = null;
-                            if (reportFailures === 0) {
-                              matchFailed("\"&\"");
-                            }
-                          }
-                          if (result1 === null) {
-                            result1 = parse_space();
-                          }
-                        }
-                      }
-                    }
+                    result1 = parse_space();
                   }
                 }
               }
@@ -3451,13 +3260,13 @@ var grammar = (function(){
           }
           if (result2 === null) {
             pos1 = pos;
-            if (input.substr(pos, 7) === "through") {
-              result2 = "through";
-              pos += 7;
+            if (input.substr(pos, 2) === "to") {
+              result2 = "to";
+              pos += 2;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("\"through\"");
+                matchFailed("\"to\"");
               }
             }
             if (result2 !== null) {
@@ -3474,13 +3283,41 @@ var grammar = (function(){
             }
             if (result2 === null) {
               pos1 = pos;
-              if (input.substr(pos, 4) === "thru") {
-                result2 = "thru";
-                pos += 4;
+              if (input.substr(pos, 1).toLowerCase() === "\xE1") {
+                result2 = input.substr(pos, 1);
+                pos++;
               } else {
                 result2 = null;
                 if (reportFailures === 0) {
-                  matchFailed("\"thru\"");
+                  matchFailed("\"\\xE1\"");
+                }
+              }
+              if (result2 !== null) {
+                result3 = parse_sp();
+                if (result3 !== null) {
+                  result2 = [result2, result3];
+                } else {
+                  result2 = null;
+                  pos = pos1;
+                }
+              } else {
+                result2 = null;
+                pos = pos1;
+              }
+            }
+          }
+          if (result2 !== null) {
+            result1 = [];
+            while (result2 !== null) {
+              result1.push(result2);
+              pos1 = pos;
+              if (/^[\-\u2013\u2014]/.test(input.charAt(pos))) {
+                result2 = input.charAt(pos);
+                pos++;
+              } else {
+                result2 = null;
+                if (reportFailures === 0) {
+                  matchFailed("[\\-\\u2013\\u2014]");
                 }
               }
               if (result2 !== null) {
@@ -3518,67 +3355,15 @@ var grammar = (function(){
                   result2 = null;
                   pos = pos1;
                 }
-              }
-            }
-          }
-          if (result2 !== null) {
-            result1 = [];
-            while (result2 !== null) {
-              result1.push(result2);
-              pos1 = pos;
-              if (/^[\-\u2013\u2014]/.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\-\\u2013\\u2014]");
-                }
-              }
-              if (result2 !== null) {
-                result3 = parse_sp();
-                if (result3 !== null) {
-                  result2 = [result2, result3];
-                } else {
-                  result2 = null;
-                  pos = pos1;
-                }
-              } else {
-                result2 = null;
-                pos = pos1;
-              }
-              if (result2 === null) {
-                pos1 = pos;
-                if (input.substr(pos, 7) === "through") {
-                  result2 = "through";
-                  pos += 7;
-                } else {
-                  result2 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"through\"");
-                  }
-                }
-                if (result2 !== null) {
-                  result3 = parse_sp();
-                  if (result3 !== null) {
-                    result2 = [result2, result3];
-                  } else {
-                    result2 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos1;
-                }
                 if (result2 === null) {
                   pos1 = pos;
-                  if (input.substr(pos, 4) === "thru") {
-                    result2 = "thru";
-                    pos += 4;
+                  if (input.substr(pos, 1).toLowerCase() === "\xE1") {
+                    result2 = input.substr(pos, 1);
+                    pos++;
                   } else {
                     result2 = null;
                     if (reportFailures === 0) {
-                      matchFailed("\"thru\"");
+                      matchFailed("\"\\xE1\"");
                     }
                   }
                   if (result2 !== null) {
@@ -3592,30 +3377,6 @@ var grammar = (function(){
                   } else {
                     result2 = null;
                     pos = pos1;
-                  }
-                  if (result2 === null) {
-                    pos1 = pos;
-                    if (input.substr(pos, 2) === "to") {
-                      result2 = "to";
-                      pos += 2;
-                    } else {
-                      result2 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"to\"");
-                      }
-                    }
-                    if (result2 !== null) {
-                      result3 = parse_sp();
-                      if (result3 !== null) {
-                        result2 = [result2, result3];
-                      } else {
-                        result2 = null;
-                        pos = pos1;
-                      }
-                    } else {
-                      result2 = null;
-                      pos = pos1;
-                    }
                   }
                 }
               }
@@ -3637,8 +3398,8 @@ var grammar = (function(){
       }
       
       function parse_title() {
-        var result0, result1, result2;
-        var pos0, pos1;
+        var result0, result1, result2, result3;
+        var pos0, pos1, pos2;
         
         pos0 = pos;
         pos1 = pos;
@@ -3650,14 +3411,36 @@ var grammar = (function(){
           }
           result1 = result1 !== null ? result1 : "";
           if (result1 !== null) {
-            if (input.substr(pos, 5) === "title") {
-              result2 = "title";
-              pos += 5;
+            pos2 = pos;
+            if (input.substr(pos, 3).toLowerCase() === "t\xEDt") {
+              result2 = input.substr(pos, 3);
+              pos += 3;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("\"title\"");
+                matchFailed("\"t\\xEDt\"");
               }
+            }
+            if (result2 !== null) {
+              if (input.substr(pos, 3) === "ulo") {
+                result3 = "ulo";
+                pos += 3;
+              } else {
+                result3 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\"ulo\"");
+                }
+              }
+              result3 = result3 !== null ? result3 : "";
+              if (result3 !== null) {
+                result2 = [result2, result3];
+              } else {
+                result2 = null;
+                pos = pos2;
+              }
+            } else {
+              result2 = null;
+              pos = pos2;
             }
             if (result2 !== null) {
               result0 = [result0, result1, result2];
@@ -3689,34 +3472,23 @@ var grammar = (function(){
         pos0 = pos;
         result0 = parse_sp();
         if (result0 !== null) {
-          if (input.substr(pos, 4) === "from") {
-            result1 = "from";
-            pos += 4;
+          if (input.substr(pos, 2) === "en") {
+            result1 = "en";
+            pos += 2;
           } else {
             result1 = null;
             if (reportFailures === 0) {
-              matchFailed("\"from\"");
+              matchFailed("\"en\"");
             }
           }
           if (result1 === null) {
-            if (input.substr(pos, 2) === "of") {
-              result1 = "of";
+            if (input.substr(pos, 2) === "de") {
+              result1 = "de";
               pos += 2;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("\"of\"");
-              }
-            }
-            if (result1 === null) {
-              if (input.substr(pos, 2) === "in") {
-                result1 = "in";
-                pos += 2;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"in\"");
-                }
+                matchFailed("\"de\"");
               }
             }
           }
@@ -3724,37 +3496,37 @@ var grammar = (function(){
             result2 = parse_sp();
             if (result2 !== null) {
               pos1 = pos;
-              if (input.substr(pos, 3) === "the") {
-                result3 = "the";
-                pos += 3;
+              if (input.substr(pos, 2) === "el") {
+                result3 = "el";
+                pos += 2;
               } else {
                 result3 = null;
                 if (reportFailures === 0) {
-                  matchFailed("\"the\"");
+                  matchFailed("\"el\"");
                 }
               }
               if (result3 !== null) {
                 result4 = parse_sp();
                 if (result4 !== null) {
-                  if (input.substr(pos, 4) === "book") {
-                    result5 = "book";
-                    pos += 4;
+                  if (input.substr(pos, 5) === "libro") {
+                    result5 = "libro";
+                    pos += 5;
                   } else {
                     result5 = null;
                     if (reportFailures === 0) {
-                      matchFailed("\"book\"");
+                      matchFailed("\"libro\"");
                     }
                   }
                   if (result5 !== null) {
                     result6 = parse_sp();
                     if (result6 !== null) {
-                      if (input.substr(pos, 2) === "of") {
-                        result7 = "of";
+                      if (input.substr(pos, 2) === "de") {
+                        result7 = "de";
                         pos += 2;
                       } else {
                         result7 = null;
                         if (reportFailures === 0) {
-                          matchFailed("\"of\"");
+                          matchFailed("\"de\"");
                         }
                       }
                       if (result7 !== null) {
