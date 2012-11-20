@@ -1831,40 +1831,24 @@
     }
   };
 
-  bcv_parser.prototype.regexps.translations = /(?:DHH|LBLA|NBLH|NTV|NVI|RVR1960|RVR|TLA)\b/gi;
+  bcv_parser.prototype.regexps.translations = /(?:LSG|NEG1979|BDS|LSG21)\b/gi;
 
   bcv_parser.prototype.translations = {
     aliases: {
-      dhh: {
-        osis: "DHH",
+      lsg: {
+        osis: "LSG",
         alias: "default"
       },
-      lbla: {
-        osis: "LBLA",
+      neg1979: {
+        osis: "NEG1979",
         alias: "default"
       },
-      nblh: {
-        osis: "NBLH",
+      bds: {
+        osis: "BDS",
         alias: "default"
       },
-      ntv: {
-        osis: "NTV",
-        alias: "default"
-      },
-      nvi: {
-        osis: "NVI",
-        alias: "default"
-      },
-      rvr1960: {
-        osis: "RVR1960",
-        alias: "default"
-      },
-      rvr: {
-        osis: "RVR",
-        alias: "default"
-      },
-      tla: {
-        osis: "TLA",
+      lsg21: {
+        osis: "LSG21",
         alias: "default"
       },
       "default": {
@@ -2058,21 +2042,21 @@
 
   bcv_parser.prototype.regexps.space = "[\\s\\xa0]";
 
-  bcv_parser.prototype.regexps.escaped_passage = RegExp("(?:^|[^\\x1f\\x1e\\dA-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(\\x1f(\\d+)(?:/[a-z])?\\x1f(?:|/p\\x1f|[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014]|y" + bcv_parser.prototype.regexps.space + "+siguientes|y(?!" + bcv_parser.prototype.regexps.space + "+sig)|y" + bcv_parser.prototype.regexps.space + "+sig|vers[íi]culos|cap[íi]tulos|vers[íi]culo|cap[íi]tulo|caps|vers|cap|ver|vss|vs|vv|á|v|(?:t[íi]tulo|tít)(?![a-z])|[a-e](?!\\w)|$)+)", "gi");
+  bcv_parser.prototype.regexps.escaped_passage = RegExp("(?:^|[^\\x1f\\x1e\\dA-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(\\x1f(\\d+)(?:/[a-z])?\\x1f(?:|/p\\x1f|[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014]|et(?!" + bcv_parser.prototype.regexps.space + "+suivant)|et" + bcv_parser.prototype.regexps.space + "+suivant|chapitres|chapitre|comparer|versets|verset|chap|vers|chs|ver|ch|vv|á|v|titre(?![a-z])|[a-e](?!\\w)|$)+)", "gi");
 
-  bcv_parser.prototype.regexps.match_end_split = RegExp("\\d+\\W*(?:t[íi]tulo|tít)|\\d+\\W*(?:y" + bcv_parser.prototype.regexps.space + "+siguientes|y" + bcv_parser.prototype.regexps.space + "+sig)(?:[\\s\\xa0*]*\\.)?|\\d+[\\s\\xa0*]*[a-e](?!\\w)|\\x1e(?:[\\s\\xa0*]*[)\\]\\uff09])?|[\\d\\x1f]+", "gi");
+  bcv_parser.prototype.regexps.match_end_split = RegExp("\\d+\\W*titre|\\d+\\W*et" + bcv_parser.prototype.regexps.space + "+suivant(?:[\\s\\xa0*]*\\.)?|\\d+[\\s\\xa0*]*[a-e](?!\\w)|\\x1e(?:[\\s\\xa0*]*[)\\]\\uff09])?|[\\d\\x1f]+", "gi");
 
   bcv_parser.prototype.regexps.control = /[\x1e\x1f]/g;
 
   bcv_parser.prototype.regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]";
 
-  bcv_parser.prototype.regexps.first = "(?:1\.?[ºo]|1|I|Primero?)\\.?" + bcv_parser.prototype.regexps.space + "*";
+  bcv_parser.prototype.regexps.first = "(?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\\.?" + bcv_parser.prototype.regexps.space + "*";
 
-  bcv_parser.prototype.regexps.second = "(?:2\.?[ºo]|2|II|Segundo)\\.?" + bcv_parser.prototype.regexps.space + "*";
+  bcv_parser.prototype.regexps.second = "(?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\\.?" + bcv_parser.prototype.regexps.space + "*";
 
-  bcv_parser.prototype.regexps.third = "(?:3\.?[ºo]|3|III|Tercero?)\\.?" + bcv_parser.prototype.regexps.space + "*";
+  bcv_parser.prototype.regexps.third = "(?:Troisi[èe]mes?|3[èe]me|3e?|III)\\.?" + bcv_parser.prototype.regexps.space + "*";
 
-  bcv_parser.prototype.regexps.range_and = "(?:[&\u2013\u2014-]|y(?!" + bcv_parser.prototype.regexps.space + "+sig)|á)";
+  bcv_parser.prototype.regexps.range_and = "(?:[&\u2013\u2014-]|(?:et(?!" + bcv_parser.prototype.regexps.space + "+suivant)|comparer)|á)";
 
   bcv_parser.prototype.regexps.range_only = "(?:[\u2013\u2014-]|á)";
 
@@ -2081,292 +2065,283 @@
     books = [
       {
         osis: ["Gen"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(G[ée]nesis|G[ée]n|Gen|G[ée]|Gn)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Gen[èe]se|Gen?|Gen|Gn)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Exod"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")([ÉE]xodo|Exod|[ÉE]xo?d?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Exode?|Exod|Exo?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Bel"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Bel[\\s]*y[\\s]*el[\\s]*Serpiente|Bel[\\s]*y[\\s]*el[\\s]*Drag[óo]n|Bel)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Bel[\\s]*et[\\s]*le[\\s]*[Ss]erpent|Bel[\\s]*et[\\s]*le[\\s]*[Dd]ragon|Bel)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Lev"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Lev[íi]tico|Le?v|Lev)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(L[ée]vitique|Lev|L[ée]v?|Lv)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Num"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(N[úu]meros|N[úu]m?|Num|Nm)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Nombres|Nomb?|N[mb]|Nom?|Num)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Sir"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Eclesi[áa]stico|Sir[áa]cides|Sir[áa]cida|Ecclus|Sir[áa]c|Sir)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(La[\\s]*Sagesse[\\s]*de[\\s]*Ben[\\s]*Sira|Sagesse[\\s]*de[\\s]*Ben[\\s]*Sira|Eccl[ée]siastique|Siracide|Sir|Si)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Wis"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Sabidur[íi]a|Wis|Sab)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Sagesse[\\s]*de[\\s]*Salomon|Sagesse|Wis|Sg)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Lam"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Lam[ei]ntaciones?|Lam?|Lam|Lm)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Lamentations[\\s]*de[\\s]*J[ée]r[ée]mie|Lamentations|Lam?|Lam)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["EpJer"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(La[\\s]*Carta[\\s]*de[\\s]*Jerem[íi]as|Carta[\\s]*de[\\s]*Jerem[íi]as|Carta[\\s]*Jerem[íi]as|Carta[\\s]*Jer|EpJer)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")([ÉE]p[îi]tre[\\s]*de[\\s]*J[ée]r[ée]mie|[ÉE]p\\.?[\\s]*J[ée]r[ée]mie|[ÉE]p\\.?[\\s]*J[ée]r|EpJer)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Rev"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Apocalipsis|Apoc|Rev|Ap)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Apocalypse[\\s]*de[\\s]*Jean|Apocalypse|Apo?c?|Rev)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["PrMan"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(La[\\s]*Oraci[óo]n[\\s]*de[\\s]*Manas[ée]s|Oraci[óo]n[\\s]*de[\\s]*Manas[ée]s|Or\\.?[\\s]*Man|PrMan)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(La[\\s]*Pri[èe]re[\\s]*de[\\s]*Manass[ée]|Pri[èe]re[\\s]*de[\\s]*Manass[ée]|Pr\\.?[\\s]*Manass[ée]|Pr\\.?[\\s]*Man|PrMan)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Deut"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Deut[eo]?rono?mio|Dueteronomio|Deut?|Deut|Dt)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Deut[ée]ronome|Deut|Deu|Dt)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Josh"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Josu[ée]|Josh|Jos)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Judg"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jueces|Judg|Juec?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Juges|Judg|Ju?g)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Ruth"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ruth|Rut|R[tu])(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ruth?|Ruth|R[tu])(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["1Esd"],
         apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Esdras|1[\s]*Esdr?|1Esd)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Esdras|1[\s]*Esdr?|1Esd|1[\s]*Es)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["2Esd"],
         apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Esdras|2[\s]*Esdr?|2Esd)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Esdras|2[\s]*Esdr?|2[\s]*Es|2Esd)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Isa"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Isa[íi]as|Isa?|Isa)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Isa[ïi]e|[ÉE]sa[ïi]e|[ÉE]sa?|Isa|Is)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Sam"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Samuel|2[\s]*S[am]?|2[\s]*Sam|2Sam)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Samuel|2[\s]*Sam?|2Sam|[2][\s]*S)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Sam"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Samuel|1[\s]*Sam|1[\s]*S[am]?|1Sam)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Samuel|1[\s]*Sam?|1Sam|[1][\s]*S)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["2Kgs"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Reyes|2[\s]*Re?y?e?s?|2Kgs)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Rois|2Kgs|[2][\s]*R)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Kgs"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Reyes|1[\s]*Re?y?e?s?|1Kgs)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Rois|1Kgs|[1][\s]*R)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["2Chr"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Cr[óo]nicas|2[\s]*Cr[óo]n?|2Chr|2[\s]*Cr)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Chroniques|2[\s]*Chron?|2[\s]*Chr?|2Chr)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Chr"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Cr[óo]nicas|1[\s]*Cr[óo]n?|1Chr|1[\s]*Cr)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Chroniques|1[\s]*Chron?|1[\s]*Chr?|1Chr)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Ezra"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Esdras|Esdr?|Ezra)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Neh"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Nehem[íi]as|Neh|Neh?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(N[ée]h[ée]mie|N[ée]h?|Neh)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["GkEsth"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ester[\\s]*\\([Gg]riego\\)|Ester[\\s]*[Gg]riego|Est[\\s]*Gr|GkEsth)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Esther[\\s]*\\([Gg]rec\\)|Esther[\\s]*[Gg]rec|Esther[\\s]*[Gg]r|Esth[\\s]*[Gg]r|GkEsth)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Esth"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ester|Esth|Est|Es)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Esther|Esth?|Esth)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Job"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jo?b|Job)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Ps"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Salmos?|Salm?|Slm?|Ps)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Psaumes?|Psau?|Ps)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["PrAzar"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Oraci[óo]n[\\s]*de[\\s]*Azar[íi]as|C[áa]ntico[\\s]*de[\\s]*Azar[íi]as|Azar[íi]as|Or[\\s]*Azar|PrAzar|Or[\\s]*Az)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(La[\\s]*Pri[èe]re[\\s]*d[’']Azaria[hs]|Pri[èe]re[\\s]*d[’']Azaria[hs]|Pr\\.?[\\s]*Azar|PrAzar)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Prov"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Probv?erbios|Pr[eo]?verbios?|Por?verbios|Provebios|Prvbo?s?|Prov|Pro?v?|Pv)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Proverbes|Prov|Pr[ov]?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Eccl"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ecc?less?[ai][ai]s?t[ée]s?|Ecc?lesiastic?[ée]s|Ecc?les|Eccl?|Eccl|Ecl?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Eccl[ée]siaste|Qoheleth?|Eccl[ée]s|Eccl|Ec)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["SgThree"],
         apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(El[\s]*Canto[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Hebreos|El[\s]*Himno[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Hebreos|El[\s]*Himno[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Jud[íi]os|El[\s]*Canto[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Jud[íi]os|El[\s]*Canto[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Hebreos|El[\s]*Himno[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Hebreos|Canto[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Hebreos|El[\s]*Canto[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Jud[íi]os|El[\s]*Himno[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Jud[íi]os|Himno[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Jud[íi]os|Canto[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes[\s]*Jud[íi]os|Canto[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Hebreos|Himno[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Hebreos|Himno[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Jud[íi]os|Canto[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes[\s]*Jud[íi]os|Himno[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes|Canto[\s]*de[\s]*los[\s]*Tres[\s]*J[óo]venes|Canto[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes|Himno[\s]*de[\s]*los[\s]*3[\s]*J[óo]venes|Tres[\s]*J[óo]venes|3[\s]*J[óo]venes|Ct[\s]*3[\s]*J[óo]|SgThree)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(Cantique[\s]*des[\s]*Trois[\s]*Enfants|Cantique[\s]*des[\s]*3[\s]*Enfants|SgThree|Ct[\s]*3[\s]*E)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Song"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(El[\\s]*Cantar[\\s]*de[\\s]*los[\\s]*Cantares|Cantar[\\s]*de[\\s]*los[\\s]*Cantares|Cantares|Cant?|Song|Cn?t)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Cantique[\\s]*des[\\s]*[Cc]antiques|Cantiques?|Song|Cn?t|Ca)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jer"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jerem[íi]as?|Jere?|Jer)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(J[ée]r[ée]mie|J[ée]r[ée]m|Jer|J[ée]r?|Jr)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Ezek"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ez[ei][ei]?qui?el|Ezequial|Ezequ?|Ezek|Ez[eq]?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")([ÉE]z[ée]chiel|[ÉE]z[ée]ch|Ezek|Ez[ée]?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Dan"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Daniel|Da?n|Dan|D[al])(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Daniel|Dan?|Dan)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Hos"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Oseas|Hos|Os)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Os[ée]e|Hos|Os)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Joel"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Joel?|Joel|Jl)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Joel|Jo[ëe]l|Jo[ëe]|Jl)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Amos"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Amos|Am[óo]?s?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Amos|Amo?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Obad"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Abd[íi]as|Obad|Abd?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Abdias|Obad|Abd?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jonah"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jon[áa]s|Jonah|Jon|Jns)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jonah|Jonas|Jon)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Mic"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Miqueas|Mic|Miq?|Mq)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Mich[ée]e|Mich?|Mic|Mi)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Nah"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Nah[úu]m?|Nah?|Nah|Nh)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Nahum|Nah?|Nah)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Hab"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Habb?ac[au]c|Habc?|Hab)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Habacuc|Habakuk|Haba[ck]|Hab?|Hab)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Zeph"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Sofon[íi]as|Zeph|So?f)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Sophonie|Zeph|Soph|So)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Hag"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Hagg?eo|Ageo|Hag|[AH]g)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Agg[ée]e|Hag|Agg?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Zech"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Zacar[íi]as|Zacar|Zech|Zac)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Zacc?harie|Zac?c?h?|Zech|Zc)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Mal"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Malaqu[íi]as|Malaqu|Mala?|Mal)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Malachie|Mala?ch?|Ma?l|Mal)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Matt"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(El[\\s]*Evangelio[\\s]*de[\\s]*Mateo|Evangelio[\\s]*de[\\s]*Mateo|Mateo|Matt|Matt?|Mt)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
-      }, {
-        osis: ["2Macc"],
-        apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Macc?abb?ee?os?|2[\s]*Macc?|2Macc|2[\s]*Mc?)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
-      }, {
-        osis: ["3Macc"],
-        apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:3\.?[ºo]|3|III|Tercero?)\.?[\s]*Macc?abb?ee?os?|3[\s]*Macc?|3Macc|3[\s]*Mc?)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
-      }, {
-        osis: ["4Macc"],
-        apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:4\.?[ºo]|4|IV|Cuarto)\.?[\s]*Macc?abb?ee?os?|4[\s]*Macc?|4Macc|4[\s]*Mc?)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
-      }, {
-        osis: ["1Macc"],
-        apocrypha: true,
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Macc?abb?ee?os?|1[\s]*Macc?|1Macc|1[\s]*Mc?)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Matthieu|Matth|Matt|Matt?|Mt)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Mark"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(El[\\s]*Evangelio[\\s]*de[\\s]*Marcos|Evangelio[\\s]*de[\\s]*Marcos|Ma?rcos|Mark|Mrc?|Mc)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Marc|Mark|Mar|M[cr])(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Luke"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(El[\\s]*Evangelio[\\s]*de[\\s]*Lucas|Evangelio[\\s]*de[\\s]*Lucas|Lucas|Luke|Luc?|Lc)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Luke|L[cu]|Luc)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["1John"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*J[au][au]n|1John|1[\s]*Jn)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Jean|1John|1[\s]*Jn)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["2John"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*J[au][au]n|2John|2[\s]*Jn)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Jean|2John|2[\s]*Jn)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["3John"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:3\.?[ºo]|3|III|Tercero?)\.?[\s]*J[au][au]n|3John|3[\s]*Jn)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Troisi[èe]mes?|3[èe]me|3e?|III)\.?[\s]*Jean|3John|3[\s]*Jn)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["John"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(El[\\s]*Evangelio[\\s]*de[\\s]*J[au][au]n|J[au][au]n|John|Jn)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jean|John|Jn)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Acts"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Los[\\s]*Hechos[\\s]*de[\\s]*los[\\s]*Ap[óo]stoles|Hechos[\\s]*de[\\s]*los[\\s]*Ap[óo]stoles|Hechos|Acts|He?ch?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Actes[\\s]*des[\\s]*Ap[ôo]tres|Actes|Acts|Act?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Rom"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Romanos?|Rom?s?|Rmn?s?|Rom)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Romains|Rom?|Rom|Rm)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Cor"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Corintios|2[\s]*Corint?i?|2[\s]*Cor?|2Cor)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Corinthiens|2[\s]*Cor?|2Cor)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Cor"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Corintios|1[\s]*Corint?i?|1[\s]*Cor?|1Cor)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Corinthiens|1[\s]*Cor?|1Cor)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Gal"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(G[áa]latas|G[áa]lat|Gal|G[áa]l)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Galates|Gal|Gal?|Gl)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Eph"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Efesios|Efes|Eph|Ef)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")([ÉE]ph[ée]siens|[ÉE]ph[ée]s|[ÉE]ph[ée]?|Eph|[ÉE]p)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Phil"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Filipenses|Filip?|Phil|Fil)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Philippiens|Phil)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Col"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Colosenses|Colos|Col)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Colossiens|Col)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Thess"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Tesalonicenses|2[\s]*Thess|2Thess|2[\s]*Te?s)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Thessaloniciens|2[\s]*Thess?|2Thess|2[\s]*Th)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Thess"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Tesalonicenses|1[\s]*Thess|1Thess|1[\s]*Te?s)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Thessaloniciens|1[\s]*Thess?|1Thess|1[\s]*Th)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["2Tim"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Timoteo|2[\s]*Tim?|2[\s]*Tm|2Tim)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Timoth[ée]e|2[\s]*Tim?|2Tim)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Tim"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Timoteo|1[\s]*Tim?|1[\s]*Tm|1Tim)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Timoth[ée]e|1[\s]*Tim?|1Tim)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Titus"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Titus|Tito|Tit?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Titus|Tite|Tit)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Phlm"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Filem[óo]n|Flmn?|Phlm|Fmn)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Phil[ée]mon|Phlm|Phl?m)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Heb"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Heb[eor][eor]?[eor]?s|Hebreo|Hebr|Heb|Heb?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(H[ée]breux|H[ée]br?|H[ée]b?|Heb)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jas"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Santiago|Sant|Stg|Jas)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jacques|Jacq|Jac?|Jas)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Pet"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:2\.?[ºo]|2|II|Segundo)\.?[\s]*Pedro|2[\s]*Pe?d?|2Pet)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Pierre|2Pet|2[\s]*Pi?)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Pet"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:1\.?[ºo]|1|I|Primero?)\.?[\s]*Pedro|1[\s]*Pe?d?|1Pet)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Pierre|1Pet|1[\s]*Pi?)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Jude"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ju?das|Jude|Jud|Jd)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jude|Jud)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Tob"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Tobi?t?|Tob)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Tobie|Tob|Tb)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jdt"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ju?di?t|Jdt)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Judith|Jdt)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Bar"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Baruc|Bar)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Baruch|Bar|Ba)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Sus"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Susana|Sus)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Su[sz]anne[\\s]*et[\\s]*les[\\s]*deux[\\s]*vieillards|Su[sz]anne[\\s]*et[\\s]*les[\\s]*vieillards|Su[sz]anne[\\s]*au[\\s]*bain|Su[sz]anne|Suz|Sus)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
-        osis: ["Hab", "Hag"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ha)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        osis: ["2Macc"],
+        apocrypha: true,
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Deuxi[èe]mes?|2[èe]me|2d?e?|II)\.?[\s]*Maccab[ée]es|2[\s]*Macc|2Macc|2[\s]*M)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
-        osis: ["Heb", "Hab"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Hb)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        osis: ["3Macc"],
+        apocrypha: true,
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Troisi[èe]mes?|3[èe]me|3e?|III)\.?[\s]*Maccab[ée]es|3[\s]*Macc|3Macc|3[\s]*M)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+      }, {
+        osis: ["4Macc"],
+        apocrypha: true,
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Quatri[èe]mes?|4[èe]me|4e?|IV)\.?[\s]*Maccab[ée]es|4[\s]*Macc|4Macc|4[\s]*M)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+      }, {
+        osis: ["1Macc"],
+        apocrypha: true,
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Premi[èe]res?|Premiers?|1[èe]?re|1er|1|I)\.?[\s]*Maccab[ée]es|1[\s]*Macc|1Macc|1[\s]*M)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Jonah", "Job", "Josh", "Joel"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Jo)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
-        osis: ["Jude", "Judg"],
+        osis: ["Judg", "Jude"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ju)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
-        osis: ["Matt", "Mark", "Mal"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ma)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
-      }, {
         osis: ["Phil", "Phlm"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Fil)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Phl|Ph)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }
     ];
     if (include_apocrypha === true) {
@@ -4548,8 +4523,8 @@ var grammar = (function(){
       }
       
       function parse_integer_title() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2;
+        var result0, result1, result2;
+        var pos0, pos1;
         
         pos0 = pos;
         pos1 = pos;
@@ -4561,59 +4536,13 @@ var grammar = (function(){
           }
           result1 = result1 !== null ? result1 : "";
           if (result1 !== null) {
-            pos2 = pos;
-            if (input.charCodeAt(pos) === 116) {
-              result2 = "t";
-              pos++;
+            if (input.substr(pos, 5) === "titre") {
+              result2 = "titre";
+              pos += 5;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("\"t\"");
-              }
-            }
-            if (result2 !== null) {
-              if (/^[\xEDi]/i.test(input.charAt(pos))) {
-                result3 = input.charAt(pos);
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\xEDi]i");
-                }
-              }
-              if (result3 !== null) {
-                if (input.substr(pos, 4) === "tulo") {
-                  result4 = "tulo";
-                  pos += 4;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"tulo\"");
-                  }
-                }
-                if (result4 !== null) {
-                  result2 = [result2, result3, result4];
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 === null) {
-              if (input.substr(pos, 3).toLowerCase() === "t\xEDt") {
-                result2 = input.substr(pos, 3);
-                pos += 3;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"t\\xEDt\"");
-                }
+                matchFailed("\"titre\"");
               }
             }
             if (result2 !== null) {
@@ -4655,25 +4584,25 @@ var grammar = (function(){
               pos2 = pos;
               reportFailures++;
               pos3 = pos;
-              if (input.charCodeAt(pos) === 121) {
-                result3 = "y";
-                pos++;
+              if (input.substr(pos, 2) === "et") {
+                result3 = "et";
+                pos += 2;
               } else {
                 result3 = null;
                 if (reportFailures === 0) {
-                  matchFailed("\"y\"");
+                  matchFailed("\"et\"");
                 }
               }
               if (result3 !== null) {
                 result4 = parse_space();
                 if (result4 !== null) {
-                  if (input.substr(pos, 10) === "siguientes") {
-                    result5 = "siguientes";
-                    pos += 10;
+                  if (input.substr(pos, 7) === "suivant") {
+                    result5 = "suivant";
+                    pos += 7;
                   } else {
                     result5 = null;
                     if (reportFailures === 0) {
-                      matchFailed("\"siguientes\"");
+                      matchFailed("\"suivant\"");
                     }
                   }
                   if (result5 !== null) {
@@ -4689,44 +4618,6 @@ var grammar = (function(){
               } else {
                 result3 = null;
                 pos = pos3;
-              }
-              if (result3 === null) {
-                pos3 = pos;
-                if (input.charCodeAt(pos) === 121) {
-                  result3 = "y";
-                  pos++;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"y\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result4 = parse_space();
-                  if (result4 !== null) {
-                    if (input.substr(pos, 3) === "sig") {
-                      result5 = "sig";
-                      pos += 3;
-                    } else {
-                      result5 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"sig\"");
-                      }
-                    }
-                    if (result5 !== null) {
-                      result3 = [result3, result4, result5];
-                    } else {
-                      result3 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result3 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result3 = null;
-                  pos = pos3;
-                }
               }
               reportFailures--;
               if (result3 === null) {
@@ -4829,7 +4720,7 @@ var grammar = (function(){
       }
       
       function parse_ff() {
-        var result0, result1, result2, result3, result4;
+        var result0, result1, result2, result3, result4, result5, result6;
         var pos0, pos1, pos2;
         
         pos0 = pos;
@@ -4859,104 +4750,59 @@ var grammar = (function(){
         if (result0 !== null) {
           result1 = parse_sp();
           if (result1 !== null) {
-            pos2 = pos;
-            if (input.charCodeAt(pos) === 121) {
-              result2 = "y";
-              pos++;
+            if (input.substr(pos, 2) === "et") {
+              result2 = "et";
+              pos += 2;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("\"y\"");
+                matchFailed("\"et\"");
               }
             }
             if (result2 !== null) {
               result3 = parse_space();
               if (result3 !== null) {
-                if (input.substr(pos, 10) === "siguientes") {
-                  result4 = "siguientes";
-                  pos += 10;
+                if (input.substr(pos, 7) === "suivant") {
+                  result4 = "suivant";
+                  pos += 7;
                 } else {
                   result4 = null;
                   if (reportFailures === 0) {
-                    matchFailed("\"siguientes\"");
+                    matchFailed("\"suivant\"");
                   }
                 }
                 if (result4 !== null) {
-                  result2 = [result2, result3, result4];
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 === null) {
-              pos2 = pos;
-              if (input.charCodeAt(pos) === 121) {
-                result2 = "y";
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"y\"");
-                }
-              }
-              if (result2 !== null) {
-                result3 = parse_space();
-                if (result3 !== null) {
-                  if (input.substr(pos, 3) === "sig") {
-                    result4 = "sig";
-                    pos += 3;
-                  } else {
-                    result4 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"sig\"");
+                  result5 = parse_abbrev();
+                  result5 = result5 !== null ? result5 : "";
+                  if (result5 !== null) {
+                    pos2 = pos;
+                    reportFailures++;
+                    if (/^[a-z]/.test(input.charAt(pos))) {
+                      result6 = input.charAt(pos);
+                      pos++;
+                    } else {
+                      result6 = null;
+                      if (reportFailures === 0) {
+                        matchFailed("[a-z]");
+                      }
                     }
-                  }
-                  if (result4 !== null) {
-                    result2 = [result2, result3, result4];
+                    reportFailures--;
+                    if (result6 === null) {
+                      result6 = "";
+                    } else {
+                      result6 = null;
+                      pos = pos2;
+                    }
+                    if (result6 !== null) {
+                      result0 = [result0, result1, result2, result3, result4, result5, result6];
+                    } else {
+                      result0 = null;
+                      pos = pos1;
+                    }
                   } else {
-                    result2 = null;
-                    pos = pos2;
+                    result0 = null;
+                    pos = pos1;
                   }
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            }
-            if (result2 !== null) {
-              result3 = parse_abbrev();
-              result3 = result3 !== null ? result3 : "";
-              if (result3 !== null) {
-                pos2 = pos;
-                reportFailures++;
-                if (/^[a-z]/.test(input.charAt(pos))) {
-                  result4 = input.charAt(pos);
-                  pos++;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("[a-z]");
-                  }
-                }
-                reportFailures--;
-                if (result4 === null) {
-                  result4 = "";
-                } else {
-                  result4 = null;
-                  pos = pos2;
-                }
-                if (result4 !== null) {
-                  result0 = [result0, result1, result2, result3, result4];
                 } else {
                   result0 = null;
                   pos = pos1;
@@ -4987,111 +4833,41 @@ var grammar = (function(){
       }
       
       function parse_c_explicit() {
-        var result0, result1, result2, result3;
+        var result0, result1, result2;
         var pos0, pos1, pos2;
         
         pos0 = pos;
         pos1 = pos;
         result0 = parse_sp();
         if (result0 !== null) {
-          pos2 = pos;
-          if (input.substr(pos, 3) === "cap") {
-            result1 = "cap";
-            pos += 3;
+          if (input.substr(pos, 9) === "chapitres") {
+            result1 = "chapitres";
+            pos += 9;
           } else {
             result1 = null;
             if (reportFailures === 0) {
-              matchFailed("\"cap\"");
+              matchFailed("\"chapitres\"");
             }
-          }
-          if (result1 !== null) {
-            if (/^[\xEDi]/i.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\xEDi]i");
-              }
-            }
-            if (result2 !== null) {
-              if (input.substr(pos, 5) === "tulos") {
-                result3 = "tulos";
-                pos += 5;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"tulos\"");
-                }
-              }
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
           }
           if (result1 === null) {
-            pos2 = pos;
-            if (input.substr(pos, 3) === "cap") {
-              result1 = "cap";
-              pos += 3;
+            if (input.substr(pos, 8) === "chapitre") {
+              result1 = "chapitre";
+              pos += 8;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("\"cap\"");
+                matchFailed("\"chapitre\"");
               }
-            }
-            if (result1 !== null) {
-              if (/^[\xEDi]/i.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\xEDi]i");
-                }
-              }
-              if (result2 !== null) {
-                if (input.substr(pos, 4) === "tulo") {
-                  result3 = "tulo";
-                  pos += 4;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"tulo\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result1 = [result1, result2, result3];
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
             }
             if (result1 === null) {
               pos2 = pos;
-              if (input.substr(pos, 4) === "caps") {
-                result1 = "caps";
+              if (input.substr(pos, 4) === "chap") {
+                result1 = "chap";
                 pos += 4;
               } else {
                 result1 = null;
                 if (reportFailures === 0) {
-                  matchFailed("\"caps\"");
+                  matchFailed("\"chap\"");
                 }
               }
               if (result1 !== null) {
@@ -5109,13 +4885,13 @@ var grammar = (function(){
               }
               if (result1 === null) {
                 pos2 = pos;
-                if (input.substr(pos, 3) === "cap") {
-                  result1 = "cap";
+                if (input.substr(pos, 3) === "chs") {
+                  result1 = "chs";
                   pos += 3;
                 } else {
                   result1 = null;
                   if (reportFailures === 0) {
-                    matchFailed("\"cap\"");
+                    matchFailed("\"chs\"");
                   }
                 }
                 if (result1 !== null) {
@@ -5130,6 +4906,31 @@ var grammar = (function(){
                 } else {
                   result1 = null;
                   pos = pos2;
+                }
+                if (result1 === null) {
+                  pos2 = pos;
+                  if (input.substr(pos, 2) === "ch") {
+                    result1 = "ch";
+                    pos += 2;
+                  } else {
+                    result1 = null;
+                    if (reportFailures === 0) {
+                      matchFailed("\"ch\"");
+                    }
+                  }
+                  if (result1 !== null) {
+                    result2 = parse_abbrev();
+                    result2 = result2 !== null ? result2 : "";
+                    if (result2 !== null) {
+                      result1 = [result1, result2];
+                    } else {
+                      result1 = null;
+                      pos = pos2;
+                    }
+                  } else {
+                    result1 = null;
+                    pos = pos2;
+                  }
                 }
               }
             }
@@ -5160,101 +4961,31 @@ var grammar = (function(){
       }
       
       function parse_v_explicit() {
-        var result0, result1, result2, result3;
+        var result0, result1, result2;
         var pos0, pos1, pos2;
         
         pos0 = pos;
         pos1 = pos;
         result0 = parse_sp();
         if (result0 !== null) {
-          pos2 = pos;
-          if (input.substr(pos, 4) === "vers") {
-            result1 = "vers";
-            pos += 4;
+          if (input.substr(pos, 7) === "versets") {
+            result1 = "versets";
+            pos += 7;
           } else {
             result1 = null;
             if (reportFailures === 0) {
-              matchFailed("\"vers\"");
+              matchFailed("\"versets\"");
             }
-          }
-          if (result1 !== null) {
-            if (/^[\xEDi]/i.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\xEDi]i");
-              }
-            }
-            if (result2 !== null) {
-              if (input.substr(pos, 5) === "culos") {
-                result3 = "culos";
-                pos += 5;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"culos\"");
-                }
-              }
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
           }
           if (result1 === null) {
-            pos2 = pos;
-            if (input.substr(pos, 4) === "vers") {
-              result1 = "vers";
-              pos += 4;
+            if (input.substr(pos, 6) === "verset") {
+              result1 = "verset";
+              pos += 6;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("\"vers\"");
+                matchFailed("\"verset\"");
               }
-            }
-            if (result1 !== null) {
-              if (/^[\xEDi]/i.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\xEDi]i");
-                }
-              }
-              if (result2 !== null) {
-                if (input.substr(pos, 4) === "culo") {
-                  result3 = "culo";
-                  pos += 4;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"culo\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result1 = [result1, result2, result3];
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
             }
             if (result1 === null) {
               pos2 = pos;
@@ -5306,13 +5037,13 @@ var grammar = (function(){
                 }
                 if (result1 === null) {
                   pos2 = pos;
-                  if (input.substr(pos, 3) === "vss") {
-                    result1 = "vss";
-                    pos += 3;
+                  if (input.substr(pos, 2) === "vv") {
+                    result1 = "vv";
+                    pos += 2;
                   } else {
                     result1 = null;
                     if (reportFailures === 0) {
-                      matchFailed("\"vss\"");
+                      matchFailed("\"vv\"");
                     }
                   }
                   if (result1 !== null) {
@@ -5330,13 +5061,13 @@ var grammar = (function(){
                   }
                   if (result1 === null) {
                     pos2 = pos;
-                    if (input.substr(pos, 2) === "vs") {
-                      result1 = "vs";
-                      pos += 2;
+                    if (input.charCodeAt(pos) === 118) {
+                      result1 = "v";
+                      pos++;
                     } else {
                       result1 = null;
                       if (reportFailures === 0) {
-                        matchFailed("\"vs\"");
+                        matchFailed("\"v\"");
                       }
                     }
                     if (result1 !== null) {
@@ -5351,56 +5082,6 @@ var grammar = (function(){
                     } else {
                       result1 = null;
                       pos = pos2;
-                    }
-                    if (result1 === null) {
-                      pos2 = pos;
-                      if (input.substr(pos, 2) === "vv") {
-                        result1 = "vv";
-                        pos += 2;
-                      } else {
-                        result1 = null;
-                        if (reportFailures === 0) {
-                          matchFailed("\"vv\"");
-                        }
-                      }
-                      if (result1 !== null) {
-                        result2 = parse_abbrev();
-                        result2 = result2 !== null ? result2 : "";
-                        if (result2 !== null) {
-                          result1 = [result1, result2];
-                        } else {
-                          result1 = null;
-                          pos = pos2;
-                        }
-                      } else {
-                        result1 = null;
-                        pos = pos2;
-                      }
-                      if (result1 === null) {
-                        pos2 = pos;
-                        if (input.charCodeAt(pos) === 118) {
-                          result1 = "v";
-                          pos++;
-                        } else {
-                          result1 = null;
-                          if (reportFailures === 0) {
-                            matchFailed("\"v\"");
-                          }
-                        }
-                        if (result1 !== null) {
-                          result2 = parse_abbrev();
-                          result2 = result2 !== null ? result2 : "";
-                          if (result2 !== null) {
-                            result1 = [result1, result2];
-                          } else {
-                            result1 = null;
-                            pos = pos2;
-                          }
-                        } else {
-                          result1 = null;
-                          pos = pos2;
-                        }
-                      }
                     }
                   }
                 }
@@ -5685,13 +5366,13 @@ var grammar = (function(){
           }
           if (result1 === null) {
             pos1 = pos;
-            if (input.charCodeAt(pos) === 121) {
-              result1 = "y";
-              pos++;
+            if (input.substr(pos, 2) === "et") {
+              result1 = "et";
+              pos += 2;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("\"y\"");
+                matchFailed("\"et\"");
               }
             }
             if (result1 !== null) {
@@ -5700,13 +5381,13 @@ var grammar = (function(){
               pos3 = pos;
               result2 = parse_space();
               if (result2 !== null) {
-                if (input.substr(pos, 3) === "sig") {
-                  result3 = "sig";
-                  pos += 3;
+                if (input.substr(pos, 7) === "suivant") {
+                  result3 = "suivant";
+                  pos += 7;
                 } else {
                   result3 = null;
                   if (reportFailures === 0) {
-                    matchFailed("\"sig\"");
+                    matchFailed("\"suivant\"");
                   }
                 }
                 if (result3 !== null) {
@@ -5737,7 +5418,18 @@ var grammar = (function(){
               pos = pos1;
             }
             if (result1 === null) {
-              result1 = parse_space();
+              if (input.substr(pos, 8) === "comparer") {
+                result1 = "comparer";
+                pos += 8;
+              } else {
+                result1 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\"comparer\"");
+                }
+              }
+              if (result1 === null) {
+                result1 = parse_space();
+              }
             }
           }
         }
@@ -5829,13 +5521,13 @@ var grammar = (function(){
               }
               if (result1 === null) {
                 pos1 = pos;
-                if (input.charCodeAt(pos) === 121) {
-                  result1 = "y";
-                  pos++;
+                if (input.substr(pos, 2) === "et") {
+                  result1 = "et";
+                  pos += 2;
                 } else {
                   result1 = null;
                   if (reportFailures === 0) {
-                    matchFailed("\"y\"");
+                    matchFailed("\"et\"");
                   }
                 }
                 if (result1 !== null) {
@@ -5844,13 +5536,13 @@ var grammar = (function(){
                   pos3 = pos;
                   result2 = parse_space();
                   if (result2 !== null) {
-                    if (input.substr(pos, 3) === "sig") {
-                      result3 = "sig";
-                      pos += 3;
+                    if (input.substr(pos, 7) === "suivant") {
+                      result3 = "suivant";
+                      pos += 7;
                     } else {
                       result3 = null;
                       if (reportFailures === 0) {
-                        matchFailed("\"sig\"");
+                        matchFailed("\"suivant\"");
                       }
                     }
                     if (result3 !== null) {
@@ -5881,7 +5573,18 @@ var grammar = (function(){
                   pos = pos1;
                 }
                 if (result1 === null) {
-                  result1 = parse_space();
+                  if (input.substr(pos, 8) === "comparer") {
+                    result1 = "comparer";
+                    pos += 8;
+                  } else {
+                    result1 = null;
+                    if (reportFailures === 0) {
+                      matchFailed("\"comparer\"");
+                    }
+                  }
+                  if (result1 === null) {
+                    result1 = parse_space();
+                  }
                 }
               }
             }
@@ -6019,8 +5722,8 @@ var grammar = (function(){
       }
       
       function parse_title() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
+        var result0, result1;
+        var pos0, pos1;
         
         pos0 = pos;
         pos1 = pos;
@@ -6030,59 +5733,13 @@ var grammar = (function(){
         }
         result0 = result0 !== null ? result0 : "";
         if (result0 !== null) {
-          pos2 = pos;
-          if (input.charCodeAt(pos) === 116) {
-            result1 = "t";
-            pos++;
+          if (input.substr(pos, 5) === "titre") {
+            result1 = "titre";
+            pos += 5;
           } else {
             result1 = null;
             if (reportFailures === 0) {
-              matchFailed("\"t\"");
-            }
-          }
-          if (result1 !== null) {
-            if (/^[\xEDi]/i.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\xEDi]i");
-              }
-            }
-            if (result2 !== null) {
-              if (input.substr(pos, 4) === "tulo") {
-                result3 = "tulo";
-                pos += 4;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"tulo\"");
-                }
-              }
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 === null) {
-            if (input.substr(pos, 3).toLowerCase() === "t\xEDt") {
-              result1 = input.substr(pos, 3);
-              pos += 3;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"t\\xEDt\"");
-              }
+              matchFailed("\"titre\"");
             }
           }
           if (result1 !== null) {
@@ -6951,4483 +6608,6 @@ var grammar = (function(){
   
   return result;
 })();
-var grammar = (function(){
-  /*
-   * Generated by PEG.js 0.7.0.
-   *
-   * http://pegjs.majda.cz/
-   */
-  
-  function quote(s) {
-    /*
-     * ECMA-262, 5th ed., 7.8.4: All characters may appear literally in a
-     * string literal except for the closing quote character, backslash,
-     * carriage return, line separator, paragraph separator, and line feed.
-     * Any character may appear in the form of an escape sequence.
-     *
-     * For portability, we also escape escape all control and non-ASCII
-     * characters. Note that "\0" and "\v" escape sequences are not used
-     * because JSHint does not like the first and IE the second.
-     */
-     return '"' + s
-      .replace(/\\/g, '\\\\')  // backslash
-      .replace(/"/g, '\\"')    // closing quote character
-      .replace(/\x08/g, '\\b') // backspace
-      .replace(/\t/g, '\\t')   // horizontal tab
-      .replace(/\n/g, '\\n')   // line feed
-      .replace(/\f/g, '\\f')   // form feed
-      .replace(/\r/g, '\\r')   // carriage return
-      .replace(/[\x00-\x07\x0B\x0E-\x1F\x80-\uFFFF]/g, escape)
-      + '"';
-  }
-  
-  var result = {
-    /*
-     * Parses the input with a generated parser. If the parsing is successfull,
-     * returns a value explicitly or implicitly specified by the grammar from
-     * which the parser was generated (see |PEG.buildParser|). If the parsing is
-     * unsuccessful, throws |PEG.parser.SyntaxError| describing the error.
-     */
-    parse: function(input, startRule) {
-      var parseFunctions = {
-        "start": parse_start,
-        "sequence": parse_sequence,
-        "sequence_post_enclosed": parse_sequence_post_enclosed,
-        "sequence_post": parse_sequence_post,
-        "range": parse_range,
-        "b_range": parse_b_range,
-        "bcv_hyphen_range": parse_bcv_hyphen_range,
-        "b": parse_b,
-        "bc": parse_bc,
-        "bc_comma": parse_bc_comma,
-        "bc_title": parse_bc_title,
-        "bcv": parse_bcv,
-        "bcv_weak": parse_bcv_weak,
-        "bcv_comma": parse_bcv_comma,
-        "bv": parse_bv,
-        "cb": parse_cb,
-        "cb_range": parse_cb_range,
-        "cbv": parse_cbv,
-        "cb_ordinal": parse_cb_ordinal,
-        "cbv_ordinal": parse_cbv_ordinal,
-        "c_psalm": parse_c_psalm,
-        "cv_psalm": parse_cv_psalm,
-        "c_title": parse_c_title,
-        "cv": parse_cv,
-        "cv_weak": parse_cv_weak,
-        "c": parse_c,
-        "integer_title": parse_integer_title,
-        "v_letter": parse_v_letter,
-        "v": parse_v,
-        "ff": parse_ff,
-        "c_explicit": parse_c_explicit,
-        "v_explicit": parse_v_explicit,
-        "cv_sep": parse_cv_sep,
-        "cv_sep_weak": parse_cv_sep_weak,
-        "sequence_sep": parse_sequence_sep,
-        "range_sep": parse_range_sep,
-        "title": parse_title,
-        "in_book_of": parse_in_book_of,
-        "abbrev": parse_abbrev,
-        "translation_sequence_enclosed": parse_translation_sequence_enclosed,
-        "translation_sequence": parse_translation_sequence,
-        "translation": parse_translation,
-        "integer": parse_integer,
-        "any_integer": parse_any_integer,
-        "word": parse_word,
-        "word_parenthesis": parse_word_parenthesis,
-        "sp": parse_sp,
-        "space": parse_space
-      };
-      
-      if (startRule !== undefined) {
-        if (parseFunctions[startRule] === undefined) {
-          throw new Error("Invalid rule name: " + quote(startRule) + ".");
-        }
-      } else {
-        startRule = "start";
-      }
-      
-      var pos = 0;
-      var reportFailures = 0;
-      var rightmostFailuresPos = 0;
-      var rightmostFailuresExpected = [];
-      
-      function padLeft(input, padding, length) {
-        var result = input;
-        
-        var padLength = length - input.length;
-        for (var i = 0; i < padLength; i++) {
-          result = padding + result;
-        }
-        
-        return result;
-      }
-      
-      function escape(ch) {
-        var charCode = ch.charCodeAt(0);
-        var escapeChar;
-        var length;
-        
-        if (charCode <= 0xFF) {
-          escapeChar = 'x';
-          length = 2;
-        } else {
-          escapeChar = 'u';
-          length = 4;
-        }
-        
-        return '\\' + escapeChar + padLeft(charCode.toString(16).toUpperCase(), '0', length);
-      }
-      
-      function matchFailed(failure) {
-        if (pos < rightmostFailuresPos) {
-          return;
-        }
-        
-        if (pos > rightmostFailuresPos) {
-          rightmostFailuresPos = pos;
-          rightmostFailuresExpected = [];
-        }
-        
-        rightmostFailuresExpected.push(failure);
-      }
-      
-      function parse_start() {
-        var result0, result1;
-        
-        result1 = parse_bcv_hyphen_range();
-        if (result1 === null) {
-          result1 = parse_sequence();
-          if (result1 === null) {
-            result1 = parse_cb_range();
-            if (result1 === null) {
-              result1 = parse_range();
-              if (result1 === null) {
-                result1 = parse_ff();
-                if (result1 === null) {
-                  result1 = parse_bcv_comma();
-                  if (result1 === null) {
-                    result1 = parse_bc_title();
-                    if (result1 === null) {
-                      result1 = parse_bcv();
-                      if (result1 === null) {
-                        result1 = parse_bcv_weak();
-                        if (result1 === null) {
-                          result1 = parse_bc();
-                          if (result1 === null) {
-                            result1 = parse_cv_psalm();
-                            if (result1 === null) {
-                              result1 = parse_bv();
-                              if (result1 === null) {
-                                result1 = parse_b_range();
-                                if (result1 === null) {
-                                  result1 = parse_c_psalm();
-                                  if (result1 === null) {
-                                    result1 = parse_b();
-                                    if (result1 === null) {
-                                      result1 = parse_cbv();
-                                      if (result1 === null) {
-                                        result1 = parse_cbv_ordinal();
-                                        if (result1 === null) {
-                                          result1 = parse_cb();
-                                          if (result1 === null) {
-                                            result1 = parse_cb_ordinal();
-                                            if (result1 === null) {
-                                              result1 = parse_translation_sequence_enclosed();
-                                              if (result1 === null) {
-                                                result1 = parse_translation_sequence();
-                                                if (result1 === null) {
-                                                  result1 = parse_sequence_sep();
-                                                  if (result1 === null) {
-                                                    result1 = parse_c_title();
-                                                    if (result1 === null) {
-                                                      result1 = parse_integer_title();
-                                                      if (result1 === null) {
-                                                        result1 = parse_cv();
-                                                        if (result1 === null) {
-                                                          result1 = parse_cv_weak();
-                                                          if (result1 === null) {
-                                                            result1 = parse_v_letter();
-                                                            if (result1 === null) {
-                                                              result1 = parse_integer();
-                                                              if (result1 === null) {
-                                                                result1 = parse_c();
-                                                                if (result1 === null) {
-                                                                  result1 = parse_v();
-                                                                  if (result1 === null) {
-                                                                    result1 = parse_word();
-                                                                    if (result1 === null) {
-                                                                      result1 = parse_word_parenthesis();
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            result1 = parse_bcv_hyphen_range();
-            if (result1 === null) {
-              result1 = parse_sequence();
-              if (result1 === null) {
-                result1 = parse_cb_range();
-                if (result1 === null) {
-                  result1 = parse_range();
-                  if (result1 === null) {
-                    result1 = parse_ff();
-                    if (result1 === null) {
-                      result1 = parse_bcv_comma();
-                      if (result1 === null) {
-                        result1 = parse_bc_title();
-                        if (result1 === null) {
-                          result1 = parse_bcv();
-                          if (result1 === null) {
-                            result1 = parse_bcv_weak();
-                            if (result1 === null) {
-                              result1 = parse_bc();
-                              if (result1 === null) {
-                                result1 = parse_cv_psalm();
-                                if (result1 === null) {
-                                  result1 = parse_bv();
-                                  if (result1 === null) {
-                                    result1 = parse_b_range();
-                                    if (result1 === null) {
-                                      result1 = parse_c_psalm();
-                                      if (result1 === null) {
-                                        result1 = parse_b();
-                                        if (result1 === null) {
-                                          result1 = parse_cbv();
-                                          if (result1 === null) {
-                                            result1 = parse_cbv_ordinal();
-                                            if (result1 === null) {
-                                              result1 = parse_cb();
-                                              if (result1 === null) {
-                                                result1 = parse_cb_ordinal();
-                                                if (result1 === null) {
-                                                  result1 = parse_translation_sequence_enclosed();
-                                                  if (result1 === null) {
-                                                    result1 = parse_translation_sequence();
-                                                    if (result1 === null) {
-                                                      result1 = parse_sequence_sep();
-                                                      if (result1 === null) {
-                                                        result1 = parse_c_title();
-                                                        if (result1 === null) {
-                                                          result1 = parse_integer_title();
-                                                          if (result1 === null) {
-                                                            result1 = parse_cv();
-                                                            if (result1 === null) {
-                                                              result1 = parse_cv_weak();
-                                                              if (result1 === null) {
-                                                                result1 = parse_v_letter();
-                                                                if (result1 === null) {
-                                                                  result1 = parse_integer();
-                                                                  if (result1 === null) {
-                                                                    result1 = parse_c();
-                                                                    if (result1 === null) {
-                                                                      result1 = parse_v();
-                                                                      if (result1 === null) {
-                                                                        result1 = parse_word();
-                                                                        if (result1 === null) {
-                                                                          result1 = parse_word_parenthesis();
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        return result0;
-      }
-      
-      function parse_sequence() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_cb_range();
-        if (result0 === null) {
-          result0 = parse_bcv_hyphen_range();
-          if (result0 === null) {
-            result0 = parse_range();
-            if (result0 === null) {
-              result0 = parse_ff();
-              if (result0 === null) {
-                result0 = parse_bcv_comma();
-                if (result0 === null) {
-                  result0 = parse_bc_title();
-                  if (result0 === null) {
-                    result0 = parse_bcv();
-                    if (result0 === null) {
-                      result0 = parse_bcv_weak();
-                      if (result0 === null) {
-                        result0 = parse_bc();
-                        if (result0 === null) {
-                          result0 = parse_cv_psalm();
-                          if (result0 === null) {
-                            result0 = parse_bv();
-                            if (result0 === null) {
-                              result0 = parse_b_range();
-                              if (result0 === null) {
-                                result0 = parse_c_psalm();
-                                if (result0 === null) {
-                                  result0 = parse_b();
-                                  if (result0 === null) {
-                                    result0 = parse_cbv();
-                                    if (result0 === null) {
-                                      result0 = parse_cbv_ordinal();
-                                      if (result0 === null) {
-                                        result0 = parse_cb();
-                                        if (result0 === null) {
-                                          result0 = parse_cb_ordinal();
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (result0 !== null) {
-          pos2 = pos;
-          result2 = parse_sequence_sep();
-          result2 = result2 !== null ? result2 : "";
-          if (result2 !== null) {
-            result3 = parse_sequence_post();
-            if (result3 !== null) {
-              result2 = [result2, result3];
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-          } else {
-            result2 = null;
-            pos = pos2;
-          }
-          if (result2 !== null) {
-            result1 = [];
-            while (result2 !== null) {
-              result1.push(result2);
-              pos2 = pos;
-              result2 = parse_sequence_sep();
-              result2 = result2 !== null ? result2 : "";
-              if (result2 !== null) {
-                result3 = parse_sequence_post();
-                if (result3 !== null) {
-                  result2 = [result2, result3];
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            }
-          } else {
-            result1 = null;
-          }
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { val_2.unshift([val_1]); return {"type": "sequence", "value": val_2, "indices": [offset, pos - 1]} })(pos0, result0[0], result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_sequence_post_enclosed() {
-        var result0, result1, result2, result3, result4, result5, result6;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        if (input.charCodeAt(pos) === 40) {
-          result0 = "(";
-          pos++;
-        } else {
-          result0 = null;
-          if (reportFailures === 0) {
-            matchFailed("\"(\"");
-          }
-        }
-        if (result0 !== null) {
-          result1 = parse_sp();
-          if (result1 !== null) {
-            result2 = parse_sequence_sep();
-            result2 = result2 !== null ? result2 : "";
-            if (result2 !== null) {
-              result3 = parse_sequence_post();
-              if (result3 !== null) {
-                result4 = [];
-                pos2 = pos;
-                result5 = parse_sequence_sep();
-                result5 = result5 !== null ? result5 : "";
-                if (result5 !== null) {
-                  result6 = parse_sequence_post();
-                  if (result6 !== null) {
-                    result5 = [result5, result6];
-                  } else {
-                    result5 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result5 = null;
-                  pos = pos2;
-                }
-                while (result5 !== null) {
-                  result4.push(result5);
-                  pos2 = pos;
-                  result5 = parse_sequence_sep();
-                  result5 = result5 !== null ? result5 : "";
-                  if (result5 !== null) {
-                    result6 = parse_sequence_post();
-                    if (result6 !== null) {
-                      result5 = [result5, result6];
-                    } else {
-                      result5 = null;
-                      pos = pos2;
-                    }
-                  } else {
-                    result5 = null;
-                    pos = pos2;
-                  }
-                }
-                if (result4 !== null) {
-                  result5 = parse_sp();
-                  if (result5 !== null) {
-                    if (input.charCodeAt(pos) === 41) {
-                      result6 = ")";
-                      pos++;
-                    } else {
-                      result6 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\")\"");
-                      }
-                    }
-                    if (result6 !== null) {
-                      result0 = [result0, result1, result2, result3, result4, result5, result6];
-                    } else {
-                      result0 = null;
-                      pos = pos1;
-                    }
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { if (typeof(val_2) === "undefined") val_2 = []; val_2.unshift([val_1]); return {"type": "sequence_post_enclosed", "value": val_2, "indices": [offset, pos - 1]} })(pos0, result0[3], result0[4]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_sequence_post() {
-        var result0;
-        
-        result0 = parse_sequence_post_enclosed();
-        if (result0 === null) {
-          result0 = parse_cb_range();
-          if (result0 === null) {
-            result0 = parse_bcv_hyphen_range();
-            if (result0 === null) {
-              result0 = parse_range();
-              if (result0 === null) {
-                result0 = parse_ff();
-                if (result0 === null) {
-                  result0 = parse_bcv_comma();
-                  if (result0 === null) {
-                    result0 = parse_bc_title();
-                    if (result0 === null) {
-                      result0 = parse_bcv();
-                      if (result0 === null) {
-                        result0 = parse_bcv_weak();
-                        if (result0 === null) {
-                          result0 = parse_bc();
-                          if (result0 === null) {
-                            result0 = parse_cv_psalm();
-                            if (result0 === null) {
-                              result0 = parse_bv();
-                              if (result0 === null) {
-                                result0 = parse_b_range();
-                                if (result0 === null) {
-                                  result0 = parse_c_psalm();
-                                  if (result0 === null) {
-                                    result0 = parse_b();
-                                    if (result0 === null) {
-                                      result0 = parse_cbv();
-                                      if (result0 === null) {
-                                        result0 = parse_cbv_ordinal();
-                                        if (result0 === null) {
-                                          result0 = parse_cb();
-                                          if (result0 === null) {
-                                            result0 = parse_cb_ordinal();
-                                            if (result0 === null) {
-                                              result0 = parse_c_title();
-                                              if (result0 === null) {
-                                                result0 = parse_integer_title();
-                                                if (result0 === null) {
-                                                  result0 = parse_cv();
-                                                  if (result0 === null) {
-                                                    result0 = parse_cv_weak();
-                                                    if (result0 === null) {
-                                                      result0 = parse_v_letter();
-                                                      if (result0 === null) {
-                                                        result0 = parse_integer();
-                                                        if (result0 === null) {
-                                                          result0 = parse_c();
-                                                          if (result0 === null) {
-                                                            result0 = parse_v();
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        return result0;
-      }
-      
-      function parse_range() {
-        var result0, result1, result2;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_ff();
-        if (result0 === null) {
-          result0 = parse_bcv_comma();
-          if (result0 === null) {
-            result0 = parse_bc_title();
-            if (result0 === null) {
-              result0 = parse_bcv();
-              if (result0 === null) {
-                result0 = parse_bcv_weak();
-                if (result0 === null) {
-                  result0 = parse_bc();
-                  if (result0 === null) {
-                    result0 = parse_cv_psalm();
-                    if (result0 === null) {
-                      result0 = parse_bv();
-                      if (result0 === null) {
-                        result0 = parse_cbv();
-                        if (result0 === null) {
-                          result0 = parse_cbv_ordinal();
-                          if (result0 === null) {
-                            result0 = parse_c_psalm();
-                            if (result0 === null) {
-                              result0 = parse_cb();
-                              if (result0 === null) {
-                                result0 = parse_cb_ordinal();
-                                if (result0 === null) {
-                                  result0 = parse_c_title();
-                                  if (result0 === null) {
-                                    result0 = parse_integer_title();
-                                    if (result0 === null) {
-                                      result0 = parse_cv();
-                                      if (result0 === null) {
-                                        result0 = parse_cv_weak();
-                                        if (result0 === null) {
-                                          result0 = parse_v_letter();
-                                          if (result0 === null) {
-                                            result0 = parse_integer();
-                                            if (result0 === null) {
-                                              result0 = parse_c();
-                                              if (result0 === null) {
-                                                result0 = parse_v();
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (result0 !== null) {
-          result1 = parse_range_sep();
-          if (result1 !== null) {
-            result2 = parse_ff();
-            if (result2 === null) {
-              result2 = parse_bcv_comma();
-              if (result2 === null) {
-                result2 = parse_bc_title();
-                if (result2 === null) {
-                  result2 = parse_bcv();
-                  if (result2 === null) {
-                    result2 = parse_bcv_weak();
-                    if (result2 === null) {
-                      result2 = parse_bc();
-                      if (result2 === null) {
-                        result2 = parse_cv_psalm();
-                        if (result2 === null) {
-                          result2 = parse_bv();
-                          if (result2 === null) {
-                            result2 = parse_cbv();
-                            if (result2 === null) {
-                              result2 = parse_cbv_ordinal();
-                              if (result2 === null) {
-                                result2 = parse_c_psalm();
-                                if (result2 === null) {
-                                  result2 = parse_cb();
-                                  if (result2 === null) {
-                                    result2 = parse_cb_ordinal();
-                                    if (result2 === null) {
-                                      result2 = parse_c_title();
-                                      if (result2 === null) {
-                                        result2 = parse_integer_title();
-                                        if (result2 === null) {
-                                          result2 = parse_cv();
-                                          if (result2 === null) {
-                                            result2 = parse_v_letter();
-                                            if (result2 === null) {
-                                              result2 = parse_integer();
-                                              if (result2 === null) {
-                                                result2 = parse_cv_weak();
-                                                if (result2 === null) {
-                                                  result2 = parse_c();
-                                                  if (result2 === null) {
-                                                    result2 = parse_v();
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "range", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_b_range() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          result1 = parse_range_sep();
-          if (result1 !== null) {
-            pos2 = pos;
-            reportFailures++;
-            result2 = parse_range();
-            if (result2 === null) {
-              result2 = parse_ff();
-              if (result2 === null) {
-                result2 = parse_bcv();
-                if (result2 === null) {
-                  result2 = parse_bcv_weak();
-                  if (result2 === null) {
-                    result2 = parse_bc();
-                    if (result2 === null) {
-                      result2 = parse_bv();
-                    }
-                  }
-                }
-              }
-            }
-            reportFailures--;
-            if (result2 === null) {
-              result2 = "";
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 !== null) {
-              result3 = parse_b();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "b_range", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bcv_hyphen_range() {
-        var result0, result1, result2, result3, result4, result5, result6;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          if (input.charCodeAt(pos) === 45) {
-            result1 = "-";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"-\"");
-            }
-          }
-          if (result1 === null) {
-            result1 = parse_space();
-          }
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            result2 = parse_c();
-            if (result2 !== null) {
-              if (input.charCodeAt(pos) === 45) {
-                result3 = "-";
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"-\"");
-                }
-              }
-              if (result3 !== null) {
-                result4 = parse_v();
-                if (result4 !== null) {
-                  if (input.charCodeAt(pos) === 45) {
-                    result5 = "-";
-                    pos++;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"-\"");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result6 = parse_v();
-                    if (result6 !== null) {
-                      result0 = [result0, result1, result2, result3, result4, result5, result6];
-                    } else {
-                      result0 = null;
-                      pos = pos1;
-                    }
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2, val_3, val_4) { return {"type": "range", "value": [{"type": "bcv", "value": [{"type": "bc", "value": [val_1, val_2], "indices": [val_1.indices[0], val_2.indices[1]]}, val_3], "indices": [val_1.indices[0], val_3.indices[1]]}, val_4], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2], result0[4], result0[6]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_b() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        if (input.charCodeAt(pos) === 31) {
-          result0 = "\x1F";
-          pos++;
-        } else {
-          result0 = null;
-          if (reportFailures === 0) {
-            matchFailed("\"\\x1F\"");
-          }
-        }
-        if (result0 !== null) {
-          result1 = parse_any_integer();
-          if (result1 !== null) {
-            pos2 = pos;
-            if (input.charCodeAt(pos) === 47) {
-              result2 = "/";
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"/\"");
-              }
-            }
-            if (result2 !== null) {
-              if (/^[a-z]/.test(input.charAt(pos))) {
-                result3 = input.charAt(pos);
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[a-z]");
-                }
-              }
-              if (result3 !== null) {
-                result2 = [result2, result3];
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            result2 = result2 !== null ? result2 : "";
-            if (result2 !== null) {
-              if (input.charCodeAt(pos) === 31) {
-                result3 = "\x1F";
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"\\x1F\"");
-                }
-              }
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bc() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2, pos3, pos4;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          pos2 = pos;
-          result1 = parse_v_explicit();
-          if (result1 !== null) {
-            pos3 = pos;
-            reportFailures++;
-            pos4 = pos;
-            result2 = parse_c();
-            if (result2 !== null) {
-              result3 = parse_cv_sep();
-              if (result3 !== null) {
-                result4 = parse_v();
-                if (result4 !== null) {
-                  result2 = [result2, result3, result4];
-                } else {
-                  result2 = null;
-                  pos = pos4;
-                }
-              } else {
-                result2 = null;
-                pos = pos4;
-              }
-            } else {
-              result2 = null;
-              pos = pos4;
-            }
-            reportFailures--;
-            if (result2 !== null) {
-              result2 = "";
-              pos = pos3;
-            } else {
-              result2 = null;
-            }
-            if (result2 !== null) {
-              result1 = [result1, result2];
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 === null) {
-            result2 = parse_cv_sep();
-            if (result2 !== null) {
-              result1 = [];
-              while (result2 !== null) {
-                result1.push(result2);
-                result2 = parse_cv_sep();
-              }
-            } else {
-              result1 = null;
-            }
-            if (result1 === null) {
-              result2 = parse_cv_sep_weak();
-              if (result2 !== null) {
-                result1 = [];
-                while (result2 !== null) {
-                  result1.push(result2);
-                  result2 = parse_cv_sep_weak();
-                }
-              } else {
-                result1 = null;
-              }
-              if (result1 === null) {
-                result2 = parse_range_sep();
-                if (result2 !== null) {
-                  result1 = [];
-                  while (result2 !== null) {
-                    result1.push(result2);
-                    result2 = parse_range_sep();
-                  }
-                } else {
-                  result1 = null;
-                }
-                if (result1 === null) {
-                  result1 = parse_sp();
-                }
-              }
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_c();
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bc", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bc_comma() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          result1 = parse_sp();
-          if (result1 !== null) {
-            if (input.charCodeAt(pos) === 44) {
-              result2 = ",";
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\",\"");
-              }
-            }
-            if (result2 !== null) {
-              result3 = parse_sp();
-              if (result3 !== null) {
-                result4 = parse_c();
-                if (result4 !== null) {
-                  result0 = [result0, result1, result2, result3, result4];
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bc", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[4]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bc_title() {
-        var result0, result1;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_bc();
-        if (result0 !== null) {
-          result1 = parse_title();
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bc_title", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bcv() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_bc();
-        if (result0 !== null) {
-          pos2 = pos;
-          reportFailures++;
-          pos3 = pos;
-          if (input.charCodeAt(pos) === 46) {
-            result1 = ".";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\".\"");
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_v_explicit();
-            if (result2 !== null) {
-              result3 = parse_v();
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos3;
-              }
-            } else {
-              result1 = null;
-              pos = pos3;
-            }
-          } else {
-            result1 = null;
-            pos = pos3;
-          }
-          reportFailures--;
-          if (result1 === null) {
-            result1 = "";
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 !== null) {
-            pos2 = pos;
-            result2 = parse_cv_sep();
-            if (result2 === null) {
-              result2 = parse_sequence_sep();
-            }
-            result2 = result2 !== null ? result2 : "";
-            if (result2 !== null) {
-              result3 = parse_v_explicit();
-              if (result3 !== null) {
-                result2 = [result2, result3];
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 === null) {
-              result2 = parse_cv_sep();
-            }
-            if (result2 !== null) {
-              result3 = parse_v_letter();
-              if (result3 === null) {
-                result3 = parse_v();
-              }
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bcv_weak() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_bc();
-        if (result0 !== null) {
-          result1 = parse_cv_sep_weak();
-          if (result1 !== null) {
-            result2 = parse_v_letter();
-            if (result2 === null) {
-              result2 = parse_v();
-            }
-            if (result2 !== null) {
-              pos2 = pos;
-              reportFailures++;
-              pos3 = pos;
-              result3 = parse_cv_sep();
-              if (result3 !== null) {
-                result4 = parse_v();
-                if (result4 !== null) {
-                  result3 = [result3, result4];
-                } else {
-                  result3 = null;
-                  pos = pos3;
-                }
-              } else {
-                result3 = null;
-                pos = pos3;
-              }
-              reportFailures--;
-              if (result3 === null) {
-                result3 = "";
-              } else {
-                result3 = null;
-                pos = pos2;
-              }
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bcv_comma() {
-        var result0, result1, result2, result3, result4, result5, result6;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_bc_comma();
-        if (result0 !== null) {
-          result1 = parse_sp();
-          if (result1 !== null) {
-            if (input.charCodeAt(pos) === 44) {
-              result2 = ",";
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\",\"");
-              }
-            }
-            if (result2 !== null) {
-              result3 = parse_sp();
-              if (result3 !== null) {
-                result4 = parse_v_letter();
-                if (result4 === null) {
-                  result4 = parse_v();
-                }
-                if (result4 !== null) {
-                  pos2 = pos;
-                  reportFailures++;
-                  pos3 = pos;
-                  result5 = parse_cv_sep();
-                  if (result5 !== null) {
-                    result6 = parse_v();
-                    if (result6 !== null) {
-                      result5 = [result5, result6];
-                    } else {
-                      result5 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result5 = null;
-                    pos = pos3;
-                  }
-                  reportFailures--;
-                  if (result5 === null) {
-                    result5 = "";
-                  } else {
-                    result5 = null;
-                    pos = pos2;
-                  }
-                  if (result5 !== null) {
-                    result0 = [result0, result1, result2, result3, result4, result5];
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[4]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bv() {
-        var result0, result1, result2;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          result2 = parse_cv_sep();
-          if (result2 !== null) {
-            result1 = [];
-            while (result2 !== null) {
-              result1.push(result2);
-              result2 = parse_cv_sep();
-            }
-          } else {
-            result1 = null;
-          }
-          if (result1 === null) {
-            result2 = parse_cv_sep_weak();
-            if (result2 !== null) {
-              result1 = [];
-              while (result2 !== null) {
-                result1.push(result2);
-                result2 = parse_cv_sep_weak();
-              }
-            } else {
-              result1 = null;
-            }
-            if (result1 === null) {
-              result2 = parse_range_sep();
-              if (result2 !== null) {
-                result1 = [];
-                while (result2 !== null) {
-                  result1.push(result2);
-                  result2 = parse_range_sep();
-                }
-              } else {
-                result1 = null;
-              }
-              if (result1 === null) {
-                pos2 = pos;
-                result2 = parse_sequence_sep();
-                if (result2 !== null) {
-                  result1 = [];
-                  while (result2 !== null) {
-                    result1.push(result2);
-                    result2 = parse_sequence_sep();
-                  }
-                } else {
-                  result1 = null;
-                }
-                if (result1 !== null) {
-                  pos3 = pos;
-                  reportFailures++;
-                  result2 = parse_v_explicit();
-                  reportFailures--;
-                  if (result2 !== null) {
-                    result2 = "";
-                    pos = pos3;
-                  } else {
-                    result2 = null;
-                  }
-                  if (result2 !== null) {
-                    result1 = [result1, result2];
-                  } else {
-                    result1 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-                if (result1 === null) {
-                  result1 = parse_sp();
-                }
-              }
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_v_letter();
-            if (result2 === null) {
-              result2 = parse_v();
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cb() {
-        var result0, result1, result2, result3;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c_explicit();
-        if (result0 !== null) {
-          result1 = parse_c();
-          if (result1 !== null) {
-            result2 = parse_in_book_of();
-            result2 = result2 !== null ? result2 : "";
-            if (result2 !== null) {
-              result3 = parse_b();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bc", "value": [val_2, val_1], "indices": [offset, pos - 1]} })(pos0, result0[1], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cb_range() {
-        var result0, result1, result2, result3, result4, result5;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c_explicit();
-        if (result0 !== null) {
-          result1 = parse_c();
-          if (result1 !== null) {
-            result2 = parse_range_sep();
-            if (result2 !== null) {
-              result3 = parse_c();
-              if (result3 !== null) {
-                result4 = parse_in_book_of();
-                result4 = result4 !== null ? result4 : "";
-                if (result4 !== null) {
-                  result5 = parse_b();
-                  if (result5 !== null) {
-                    result0 = [result0, result1, result2, result3, result4, result5];
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2, val_3) { return {"type": "cb_range", "value": [val_3, val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[1], result0[3], result0[5]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cbv() {
-        var result0, result1, result2, result3;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_cb();
-        if (result0 !== null) {
-          result1 = parse_sequence_sep();
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            result2 = parse_v_explicit();
-            if (result2 !== null) {
-              result3 = parse_v();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cb_ordinal() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c();
-        if (result0 !== null) {
-          if (input.substr(pos, 2) === "th") {
-            result1 = "th";
-            pos += 2;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"th\"");
-            }
-          }
-          if (result1 === null) {
-            if (input.substr(pos, 2) === "nd") {
-              result1 = "nd";
-              pos += 2;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"nd\"");
-              }
-            }
-            if (result1 === null) {
-              if (input.substr(pos, 2) === "st") {
-                result1 = "st";
-                pos += 2;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"st\"");
-                }
-              }
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_c_explicit();
-            if (result2 !== null) {
-              result3 = parse_in_book_of();
-              result3 = result3 !== null ? result3 : "";
-              if (result3 !== null) {
-                result4 = parse_b();
-                if (result4 !== null) {
-                  result0 = [result0, result1, result2, result3, result4];
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bc", "value": [val_2, val_1], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[4]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cbv_ordinal() {
-        var result0, result1, result2, result3;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_cb_ordinal();
-        if (result0 !== null) {
-          result1 = parse_sequence_sep();
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            result2 = parse_v_explicit();
-            if (result2 !== null) {
-              result3 = parse_v();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_c_psalm() {
-        var result0, result1, result2;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        if (input.charCodeAt(pos) === 31) {
-          result0 = "\x1F";
-          pos++;
-        } else {
-          result0 = null;
-          if (reportFailures === 0) {
-            matchFailed("\"\\x1F\"");
-          }
-        }
-        if (result0 !== null) {
-          result1 = parse_integer();
-          if (result1 !== null) {
-            if (input.substr(pos, 3) === "/p\x1F") {
-              result2 = "/p\x1F";
-              pos += 3;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"/p\\x1F\"");
-              }
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "c_psalm", "value": val.value, "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cv_psalm() {
-        var result0, result1, result2, result3;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c_psalm();
-        if (result0 !== null) {
-          result1 = parse_sequence_sep();
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            result2 = parse_v_explicit();
-            if (result2 !== null) {
-              result3 = parse_v();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "cv_psalm", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_c_title() {
-        var result0, result1, result2;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c_explicit();
-        if (result0 !== null) {
-          result1 = parse_c();
-          if (result1 !== null) {
-            result2 = parse_title();
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "c_title", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[1], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cv() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c();
-        if (result0 !== null) {
-          pos2 = pos;
-          reportFailures++;
-          pos3 = pos;
-          if (input.charCodeAt(pos) === 46) {
-            result1 = ".";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\".\"");
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_v_explicit();
-            if (result2 !== null) {
-              result3 = parse_v();
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos3;
-              }
-            } else {
-              result1 = null;
-              pos = pos3;
-            }
-          } else {
-            result1 = null;
-            pos = pos3;
-          }
-          reportFailures--;
-          if (result1 === null) {
-            result1 = "";
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 !== null) {
-            pos2 = pos;
-            result2 = parse_cv_sep();
-            result2 = result2 !== null ? result2 : "";
-            if (result2 !== null) {
-              result3 = parse_v_explicit();
-              if (result3 !== null) {
-                result2 = [result2, result3];
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 === null) {
-              result2 = parse_cv_sep();
-            }
-            if (result2 !== null) {
-              result3 = parse_v_letter();
-              if (result3 === null) {
-                result3 = parse_v();
-              }
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "cv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cv_weak() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c();
-        if (result0 !== null) {
-          result1 = parse_cv_sep_weak();
-          if (result1 !== null) {
-            result2 = parse_v_letter();
-            if (result2 === null) {
-              result2 = parse_v();
-            }
-            if (result2 !== null) {
-              pos2 = pos;
-              reportFailures++;
-              pos3 = pos;
-              result3 = parse_cv_sep();
-              if (result3 !== null) {
-                result4 = parse_v();
-                if (result4 !== null) {
-                  result3 = [result3, result4];
-                } else {
-                  result3 = null;
-                  pos = pos3;
-                }
-              } else {
-                result3 = null;
-                pos = pos3;
-              }
-              reportFailures--;
-              if (result3 === null) {
-                result3 = "";
-              } else {
-                result3 = null;
-                pos = pos2;
-              }
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "cv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_c() {
-        var result0, result1;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_c_explicit();
-        result0 = result0 !== null ? result0 : "";
-        if (result0 !== null) {
-          result1 = parse_integer();
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "c", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_integer_title() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_integer();
-        if (result0 !== null) {
-          result1 = parse_cv_sep();
-          if (result1 === null) {
-            result1 = parse_sequence_sep();
-          }
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            pos2 = pos;
-            if (input.charCodeAt(pos) === 116) {
-              result2 = "t";
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"t\"");
-              }
-            }
-            if (result2 !== null) {
-              if (/^[\xEDi]/i.test(input.charAt(pos))) {
-                result3 = input.charAt(pos);
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\xEDi]i");
-                }
-              }
-              if (result3 !== null) {
-                if (input.substr(pos, 4) === "tulo") {
-                  result4 = "tulo";
-                  pos += 4;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"tulo\"");
-                  }
-                }
-                if (result4 !== null) {
-                  result2 = [result2, result3, result4];
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 === null) {
-              if (input.substr(pos, 3).toLowerCase() === "t\xEDt") {
-                result2 = input.substr(pos, 3);
-                pos += 3;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"t\\xEDt\"");
-                }
-              }
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1) { return {"type": "integer_title", "value": [val_1], "indices": [offset, pos - 1]} })(pos0, result0[0]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_v_letter() {
-        var result0, result1, result2, result3, result4, result5;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_v_explicit();
-        result0 = result0 !== null ? result0 : "";
-        if (result0 !== null) {
-          result1 = parse_integer();
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              pos2 = pos;
-              reportFailures++;
-              pos3 = pos;
-              if (input.charCodeAt(pos) === 121) {
-                result3 = "y";
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"y\"");
-                }
-              }
-              if (result3 !== null) {
-                result4 = parse_space();
-                if (result4 !== null) {
-                  if (input.substr(pos, 10) === "siguientes") {
-                    result5 = "siguientes";
-                    pos += 10;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"siguientes\"");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result3 = [result3, result4, result5];
-                  } else {
-                    result3 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result3 = null;
-                  pos = pos3;
-                }
-              } else {
-                result3 = null;
-                pos = pos3;
-              }
-              if (result3 === null) {
-                pos3 = pos;
-                if (input.charCodeAt(pos) === 121) {
-                  result3 = "y";
-                  pos++;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"y\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result4 = parse_space();
-                  if (result4 !== null) {
-                    if (input.substr(pos, 3) === "sig") {
-                      result5 = "sig";
-                      pos += 3;
-                    } else {
-                      result5 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"sig\"");
-                      }
-                    }
-                    if (result5 !== null) {
-                      result3 = [result3, result4, result5];
-                    } else {
-                      result3 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result3 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result3 = null;
-                  pos = pos3;
-                }
-              }
-              reportFailures--;
-              if (result3 === null) {
-                result3 = "";
-              } else {
-                result3 = null;
-                pos = pos2;
-              }
-              if (result3 !== null) {
-                if (/^[a-e]/.test(input.charAt(pos))) {
-                  result4 = input.charAt(pos);
-                  pos++;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("[a-e]");
-                  }
-                }
-                if (result4 !== null) {
-                  pos2 = pos;
-                  reportFailures++;
-                  if (/^[a-z]/.test(input.charAt(pos))) {
-                    result5 = input.charAt(pos);
-                    pos++;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("[a-z]");
-                    }
-                  }
-                  reportFailures--;
-                  if (result5 === null) {
-                    result5 = "";
-                  } else {
-                    result5 = null;
-                    pos = pos2;
-                  }
-                  if (result5 !== null) {
-                    result0 = [result0, result1, result2, result3, result4, result5];
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_v() {
-        var result0, result1;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_v_explicit();
-        result0 = result0 !== null ? result0 : "";
-        if (result0 !== null) {
-          result1 = parse_integer();
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_ff() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_bcv();
-        if (result0 === null) {
-          result0 = parse_bcv_weak();
-          if (result0 === null) {
-            result0 = parse_bc();
-            if (result0 === null) {
-              result0 = parse_cv();
-              if (result0 === null) {
-                result0 = parse_cv_weak();
-                if (result0 === null) {
-                  result0 = parse_integer();
-                  if (result0 === null) {
-                    result0 = parse_c();
-                    if (result0 === null) {
-                      result0 = parse_v();
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (result0 !== null) {
-          result1 = parse_sp();
-          if (result1 !== null) {
-            pos2 = pos;
-            if (input.charCodeAt(pos) === 121) {
-              result2 = "y";
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"y\"");
-              }
-            }
-            if (result2 !== null) {
-              result3 = parse_space();
-              if (result3 !== null) {
-                if (input.substr(pos, 10) === "siguientes") {
-                  result4 = "siguientes";
-                  pos += 10;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"siguientes\"");
-                  }
-                }
-                if (result4 !== null) {
-                  result2 = [result2, result3, result4];
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 === null) {
-              pos2 = pos;
-              if (input.charCodeAt(pos) === 121) {
-                result2 = "y";
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"y\"");
-                }
-              }
-              if (result2 !== null) {
-                result3 = parse_space();
-                if (result3 !== null) {
-                  if (input.substr(pos, 3) === "sig") {
-                    result4 = "sig";
-                    pos += 3;
-                  } else {
-                    result4 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"sig\"");
-                    }
-                  }
-                  if (result4 !== null) {
-                    result2 = [result2, result3, result4];
-                  } else {
-                    result2 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            }
-            if (result2 !== null) {
-              result3 = parse_abbrev();
-              result3 = result3 !== null ? result3 : "";
-              if (result3 !== null) {
-                pos2 = pos;
-                reportFailures++;
-                if (/^[a-z]/.test(input.charAt(pos))) {
-                  result4 = input.charAt(pos);
-                  pos++;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("[a-z]");
-                  }
-                }
-                reportFailures--;
-                if (result4 === null) {
-                  result4 = "";
-                } else {
-                  result4 = null;
-                  pos = pos2;
-                }
-                if (result4 !== null) {
-                  result0 = [result0, result1, result2, result3, result4];
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1) { return {"type": "ff", "value": [val_1], "indices": [offset, pos - 1]} })(pos0, result0[0]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_c_explicit() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          pos2 = pos;
-          if (input.substr(pos, 3) === "cap") {
-            result1 = "cap";
-            pos += 3;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"cap\"");
-            }
-          }
-          if (result1 !== null) {
-            if (/^[\xEDi]/i.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\xEDi]i");
-              }
-            }
-            if (result2 !== null) {
-              if (input.substr(pos, 5) === "tulos") {
-                result3 = "tulos";
-                pos += 5;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"tulos\"");
-                }
-              }
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 === null) {
-            pos2 = pos;
-            if (input.substr(pos, 3) === "cap") {
-              result1 = "cap";
-              pos += 3;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"cap\"");
-              }
-            }
-            if (result1 !== null) {
-              if (/^[\xEDi]/i.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\xEDi]i");
-                }
-              }
-              if (result2 !== null) {
-                if (input.substr(pos, 4) === "tulo") {
-                  result3 = "tulo";
-                  pos += 4;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"tulo\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result1 = [result1, result2, result3];
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-            if (result1 === null) {
-              pos2 = pos;
-              if (input.substr(pos, 4) === "caps") {
-                result1 = "caps";
-                pos += 4;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"caps\"");
-                }
-              }
-              if (result1 !== null) {
-                result2 = parse_abbrev();
-                result2 = result2 !== null ? result2 : "";
-                if (result2 !== null) {
-                  result1 = [result1, result2];
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-              if (result1 === null) {
-                pos2 = pos;
-                if (input.substr(pos, 3) === "cap") {
-                  result1 = "cap";
-                  pos += 3;
-                } else {
-                  result1 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"cap\"");
-                  }
-                }
-                if (result1 !== null) {
-                  result2 = parse_abbrev();
-                  result2 = result2 !== null ? result2 : "";
-                  if (result2 !== null) {
-                    result1 = [result1, result2];
-                  } else {
-                    result1 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              }
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset) { return {"type": "c_explicit"} })(pos0);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_v_explicit() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          pos2 = pos;
-          if (input.substr(pos, 4) === "vers") {
-            result1 = "vers";
-            pos += 4;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"vers\"");
-            }
-          }
-          if (result1 !== null) {
-            if (/^[\xEDi]/i.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\xEDi]i");
-              }
-            }
-            if (result2 !== null) {
-              if (input.substr(pos, 5) === "culos") {
-                result3 = "culos";
-                pos += 5;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"culos\"");
-                }
-              }
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 === null) {
-            pos2 = pos;
-            if (input.substr(pos, 4) === "vers") {
-              result1 = "vers";
-              pos += 4;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"vers\"");
-              }
-            }
-            if (result1 !== null) {
-              if (/^[\xEDi]/i.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\xEDi]i");
-                }
-              }
-              if (result2 !== null) {
-                if (input.substr(pos, 4) === "culo") {
-                  result3 = "culo";
-                  pos += 4;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"culo\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result1 = [result1, result2, result3];
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-            if (result1 === null) {
-              pos2 = pos;
-              if (input.substr(pos, 4) === "vers") {
-                result1 = "vers";
-                pos += 4;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"vers\"");
-                }
-              }
-              if (result1 !== null) {
-                result2 = parse_abbrev();
-                result2 = result2 !== null ? result2 : "";
-                if (result2 !== null) {
-                  result1 = [result1, result2];
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-              if (result1 === null) {
-                pos2 = pos;
-                if (input.substr(pos, 3) === "ver") {
-                  result1 = "ver";
-                  pos += 3;
-                } else {
-                  result1 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"ver\"");
-                  }
-                }
-                if (result1 !== null) {
-                  result2 = parse_abbrev();
-                  result2 = result2 !== null ? result2 : "";
-                  if (result2 !== null) {
-                    result1 = [result1, result2];
-                  } else {
-                    result1 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result1 = null;
-                  pos = pos2;
-                }
-                if (result1 === null) {
-                  pos2 = pos;
-                  if (input.substr(pos, 3) === "vss") {
-                    result1 = "vss";
-                    pos += 3;
-                  } else {
-                    result1 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"vss\"");
-                    }
-                  }
-                  if (result1 !== null) {
-                    result2 = parse_abbrev();
-                    result2 = result2 !== null ? result2 : "";
-                    if (result2 !== null) {
-                      result1 = [result1, result2];
-                    } else {
-                      result1 = null;
-                      pos = pos2;
-                    }
-                  } else {
-                    result1 = null;
-                    pos = pos2;
-                  }
-                  if (result1 === null) {
-                    pos2 = pos;
-                    if (input.substr(pos, 2) === "vs") {
-                      result1 = "vs";
-                      pos += 2;
-                    } else {
-                      result1 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"vs\"");
-                      }
-                    }
-                    if (result1 !== null) {
-                      result2 = parse_abbrev();
-                      result2 = result2 !== null ? result2 : "";
-                      if (result2 !== null) {
-                        result1 = [result1, result2];
-                      } else {
-                        result1 = null;
-                        pos = pos2;
-                      }
-                    } else {
-                      result1 = null;
-                      pos = pos2;
-                    }
-                    if (result1 === null) {
-                      pos2 = pos;
-                      if (input.substr(pos, 2) === "vv") {
-                        result1 = "vv";
-                        pos += 2;
-                      } else {
-                        result1 = null;
-                        if (reportFailures === 0) {
-                          matchFailed("\"vv\"");
-                        }
-                      }
-                      if (result1 !== null) {
-                        result2 = parse_abbrev();
-                        result2 = result2 !== null ? result2 : "";
-                        if (result2 !== null) {
-                          result1 = [result1, result2];
-                        } else {
-                          result1 = null;
-                          pos = pos2;
-                        }
-                      } else {
-                        result1 = null;
-                        pos = pos2;
-                      }
-                      if (result1 === null) {
-                        pos2 = pos;
-                        if (input.charCodeAt(pos) === 118) {
-                          result1 = "v";
-                          pos++;
-                        } else {
-                          result1 = null;
-                          if (reportFailures === 0) {
-                            matchFailed("\"v\"");
-                          }
-                        }
-                        if (result1 !== null) {
-                          result2 = parse_abbrev();
-                          result2 = result2 !== null ? result2 : "";
-                          if (result2 !== null) {
-                            result1 = [result1, result2];
-                          } else {
-                            result1 = null;
-                            pos = pos2;
-                          }
-                        } else {
-                          result1 = null;
-                          pos = pos2;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset) { return {"type": "v_explicit"} })(pos0);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cv_sep() {
-        var result0, result1, result2;
-        var pos0;
-        
-        pos0 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          if (input.charCodeAt(pos) === 44) {
-            result1 = ",";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\",\"");
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos0;
-            }
-          } else {
-            result0 = null;
-            pos = pos0;
-          }
-        } else {
-          result0 = null;
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_cv_sep_weak() {
-        var result0, result1, result2;
-        var pos0;
-        
-        pos0 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          if (/^["']/.test(input.charAt(pos))) {
-            result1 = input.charAt(pos);
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("[\"']");
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos0;
-            }
-          } else {
-            result0 = null;
-            pos = pos0;
-          }
-        } else {
-          result0 = null;
-          pos = pos0;
-        }
-        if (result0 === null) {
-          result0 = parse_space();
-        }
-        return result0;
-      }
-      
-      function parse_sequence_sep() {
-        var result0, result1, result2, result3, result4, result5;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        if (/^[;\/:&\-\u2013\u2014~]/.test(input.charAt(pos))) {
-          result1 = input.charAt(pos);
-          pos++;
-        } else {
-          result1 = null;
-          if (reportFailures === 0) {
-            matchFailed("[;\\/:&\\-\\u2013\\u2014~]");
-          }
-        }
-        if (result1 === null) {
-          pos1 = pos;
-          if (input.charCodeAt(pos) === 46) {
-            result1 = ".";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\".\"");
-            }
-          }
-          if (result1 !== null) {
-            pos2 = pos;
-            reportFailures++;
-            pos3 = pos;
-            result2 = parse_sp();
-            if (result2 !== null) {
-              if (input.charCodeAt(pos) === 46) {
-                result3 = ".";
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\".\"");
-                }
-              }
-              if (result3 !== null) {
-                result4 = parse_sp();
-                if (result4 !== null) {
-                  if (input.charCodeAt(pos) === 46) {
-                    result5 = ".";
-                    pos++;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\".\"");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result2 = [result2, result3, result4, result5];
-                  } else {
-                    result2 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos3;
-                }
-              } else {
-                result2 = null;
-                pos = pos3;
-              }
-            } else {
-              result2 = null;
-              pos = pos3;
-            }
-            reportFailures--;
-            if (result2 === null) {
-              result2 = "";
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 !== null) {
-              result1 = [result1, result2];
-            } else {
-              result1 = null;
-              pos = pos1;
-            }
-          } else {
-            result1 = null;
-            pos = pos1;
-          }
-          if (result1 === null) {
-            pos1 = pos;
-            if (input.charCodeAt(pos) === 121) {
-              result1 = "y";
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"y\"");
-              }
-            }
-            if (result1 !== null) {
-              pos2 = pos;
-              reportFailures++;
-              pos3 = pos;
-              result2 = parse_space();
-              if (result2 !== null) {
-                if (input.substr(pos, 3) === "sig") {
-                  result3 = "sig";
-                  pos += 3;
-                } else {
-                  result3 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"sig\"");
-                  }
-                }
-                if (result3 !== null) {
-                  result2 = [result2, result3];
-                } else {
-                  result2 = null;
-                  pos = pos3;
-                }
-              } else {
-                result2 = null;
-                pos = pos3;
-              }
-              reportFailures--;
-              if (result2 === null) {
-                result2 = "";
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-              if (result2 !== null) {
-                result1 = [result1, result2];
-              } else {
-                result1 = null;
-                pos = pos1;
-              }
-            } else {
-              result1 = null;
-              pos = pos1;
-            }
-            if (result1 === null) {
-              result1 = parse_space();
-            }
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            if (/^[;\/:&\-\u2013\u2014~]/.test(input.charAt(pos))) {
-              result1 = input.charAt(pos);
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("[;\\/:&\\-\\u2013\\u2014~]");
-              }
-            }
-            if (result1 === null) {
-              pos1 = pos;
-              if (input.charCodeAt(pos) === 46) {
-                result1 = ".";
-                pos++;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\".\"");
-                }
-              }
-              if (result1 !== null) {
-                pos2 = pos;
-                reportFailures++;
-                pos3 = pos;
-                result2 = parse_sp();
-                if (result2 !== null) {
-                  if (input.charCodeAt(pos) === 46) {
-                    result3 = ".";
-                    pos++;
-                  } else {
-                    result3 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\".\"");
-                    }
-                  }
-                  if (result3 !== null) {
-                    result4 = parse_sp();
-                    if (result4 !== null) {
-                      if (input.charCodeAt(pos) === 46) {
-                        result5 = ".";
-                        pos++;
-                      } else {
-                        result5 = null;
-                        if (reportFailures === 0) {
-                          matchFailed("\".\"");
-                        }
-                      }
-                      if (result5 !== null) {
-                        result2 = [result2, result3, result4, result5];
-                      } else {
-                        result2 = null;
-                        pos = pos3;
-                      }
-                    } else {
-                      result2 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result2 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos3;
-                }
-                reportFailures--;
-                if (result2 === null) {
-                  result2 = "";
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-                if (result2 !== null) {
-                  result1 = [result1, result2];
-                } else {
-                  result1 = null;
-                  pos = pos1;
-                }
-              } else {
-                result1 = null;
-                pos = pos1;
-              }
-              if (result1 === null) {
-                pos1 = pos;
-                if (input.charCodeAt(pos) === 121) {
-                  result1 = "y";
-                  pos++;
-                } else {
-                  result1 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"y\"");
-                  }
-                }
-                if (result1 !== null) {
-                  pos2 = pos;
-                  reportFailures++;
-                  pos3 = pos;
-                  result2 = parse_space();
-                  if (result2 !== null) {
-                    if (input.substr(pos, 3) === "sig") {
-                      result3 = "sig";
-                      pos += 3;
-                    } else {
-                      result3 = null;
-                      if (reportFailures === 0) {
-                        matchFailed("\"sig\"");
-                      }
-                    }
-                    if (result3 !== null) {
-                      result2 = [result2, result3];
-                    } else {
-                      result2 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result2 = null;
-                    pos = pos3;
-                  }
-                  reportFailures--;
-                  if (result2 === null) {
-                    result2 = "";
-                  } else {
-                    result2 = null;
-                    pos = pos2;
-                  }
-                  if (result2 !== null) {
-                    result1 = [result1, result2];
-                  } else {
-                    result1 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result1 = null;
-                  pos = pos1;
-                }
-                if (result1 === null) {
-                  result1 = parse_space();
-                }
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset) { return "" })(pos0);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_range_sep() {
-        var result0, result1, result2, result3;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          pos1 = pos;
-          if (/^[\-\u2013\u2014]/.test(input.charAt(pos))) {
-            result2 = input.charAt(pos);
-            pos++;
-          } else {
-            result2 = null;
-            if (reportFailures === 0) {
-              matchFailed("[\\-\\u2013\\u2014]");
-            }
-          }
-          if (result2 !== null) {
-            result3 = parse_sp();
-            if (result3 !== null) {
-              result2 = [result2, result3];
-            } else {
-              result2 = null;
-              pos = pos1;
-            }
-          } else {
-            result2 = null;
-            pos = pos1;
-          }
-          if (result2 === null) {
-            pos1 = pos;
-            if (input.substr(pos, 1).toLowerCase() === "\xE1") {
-              result2 = input.substr(pos, 1);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"\\xE1\"");
-              }
-            }
-            if (result2 !== null) {
-              result3 = parse_sp();
-              if (result3 !== null) {
-                result2 = [result2, result3];
-              } else {
-                result2 = null;
-                pos = pos1;
-              }
-            } else {
-              result2 = null;
-              pos = pos1;
-            }
-          }
-          if (result2 !== null) {
-            result1 = [];
-            while (result2 !== null) {
-              result1.push(result2);
-              pos1 = pos;
-              if (/^[\-\u2013\u2014]/.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
-                pos++;
-              } else {
-                result2 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[\\-\\u2013\\u2014]");
-                }
-              }
-              if (result2 !== null) {
-                result3 = parse_sp();
-                if (result3 !== null) {
-                  result2 = [result2, result3];
-                } else {
-                  result2 = null;
-                  pos = pos1;
-                }
-              } else {
-                result2 = null;
-                pos = pos1;
-              }
-              if (result2 === null) {
-                pos1 = pos;
-                if (input.substr(pos, 1).toLowerCase() === "\xE1") {
-                  result2 = input.substr(pos, 1);
-                  pos++;
-                } else {
-                  result2 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("\"\\xE1\"");
-                  }
-                }
-                if (result2 !== null) {
-                  result3 = parse_sp();
-                  if (result3 !== null) {
-                    result2 = [result2, result3];
-                  } else {
-                    result2 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos1;
-                }
-              }
-            }
-          } else {
-            result1 = null;
-          }
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos0;
-          }
-        } else {
-          result0 = null;
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_title() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_cv_sep();
-        if (result0 === null) {
-          result0 = parse_sequence_sep();
-        }
-        result0 = result0 !== null ? result0 : "";
-        if (result0 !== null) {
-          pos2 = pos;
-          if (input.charCodeAt(pos) === 116) {
-            result1 = "t";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"t\"");
-            }
-          }
-          if (result1 !== null) {
-            if (/^[\xEDi]/i.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\xEDi]i");
-              }
-            }
-            if (result2 !== null) {
-              if (input.substr(pos, 4) === "tulo") {
-                result3 = "tulo";
-                pos += 4;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"tulo\"");
-                }
-              }
-              if (result3 !== null) {
-                result1 = [result1, result2, result3];
-              } else {
-                result1 = null;
-                pos = pos2;
-              }
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 === null) {
-            if (input.substr(pos, 3).toLowerCase() === "t\xEDt") {
-              result1 = input.substr(pos, 3);
-              pos += 3;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"t\\xEDt\"");
-              }
-            }
-          }
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {type:"title", value: [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_in_book_of() {
-        var result0, result1, result2, result3, result4, result5, result6, result7, result8;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          if (input.substr(pos, 4) === "from") {
-            result1 = "from";
-            pos += 4;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"from\"");
-            }
-          }
-          if (result1 === null) {
-            if (input.substr(pos, 2) === "of") {
-              result1 = "of";
-              pos += 2;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"of\"");
-              }
-            }
-            if (result1 === null) {
-              if (input.substr(pos, 2) === "in") {
-                result1 = "in";
-                pos += 2;
-              } else {
-                result1 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"in\"");
-                }
-              }
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              pos1 = pos;
-              if (input.substr(pos, 3) === "the") {
-                result3 = "the";
-                pos += 3;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"the\"");
-                }
-              }
-              if (result3 !== null) {
-                result4 = parse_sp();
-                if (result4 !== null) {
-                  if (input.substr(pos, 4) === "book") {
-                    result5 = "book";
-                    pos += 4;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"book\"");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result6 = parse_sp();
-                    if (result6 !== null) {
-                      if (input.substr(pos, 2) === "of") {
-                        result7 = "of";
-                        pos += 2;
-                      } else {
-                        result7 = null;
-                        if (reportFailures === 0) {
-                          matchFailed("\"of\"");
-                        }
-                      }
-                      if (result7 !== null) {
-                        result8 = parse_sp();
-                        if (result8 !== null) {
-                          result3 = [result3, result4, result5, result6, result7, result8];
-                        } else {
-                          result3 = null;
-                          pos = pos1;
-                        }
-                      } else {
-                        result3 = null;
-                        pos = pos1;
-                      }
-                    } else {
-                      result3 = null;
-                      pos = pos1;
-                    }
-                  } else {
-                    result3 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result3 = null;
-                  pos = pos1;
-                }
-              } else {
-                result3 = null;
-                pos = pos1;
-              }
-              result3 = result3 !== null ? result3 : "";
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos0;
-              }
-            } else {
-              result0 = null;
-              pos = pos0;
-            }
-          } else {
-            result0 = null;
-            pos = pos0;
-          }
-        } else {
-          result0 = null;
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_abbrev() {
-        var result0, result1, result2, result3, result4, result5;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          if (input.charCodeAt(pos) === 46) {
-            result1 = ".";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\".\"");
-            }
-          }
-          if (result1 !== null) {
-            pos1 = pos;
-            reportFailures++;
-            pos2 = pos;
-            result2 = parse_sp();
-            if (result2 !== null) {
-              if (input.charCodeAt(pos) === 46) {
-                result3 = ".";
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\".\"");
-                }
-              }
-              if (result3 !== null) {
-                result4 = parse_sp();
-                if (result4 !== null) {
-                  if (input.charCodeAt(pos) === 46) {
-                    result5 = ".";
-                    pos++;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\".\"");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result2 = [result2, result3, result4, result5];
-                  } else {
-                    result2 = null;
-                    pos = pos2;
-                  }
-                } else {
-                  result2 = null;
-                  pos = pos2;
-                }
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            reportFailures--;
-            if (result2 === null) {
-              result2 = "";
-            } else {
-              result2 = null;
-              pos = pos1;
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos0;
-            }
-          } else {
-            result0 = null;
-            pos = pos0;
-          }
-        } else {
-          result0 = null;
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_translation_sequence_enclosed() {
-        var result0, result1, result2, result3, result4, result5, result6;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          if (/^[([]/.test(input.charAt(pos))) {
-            result1 = input.charAt(pos);
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("[([]");
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              pos2 = pos;
-              result3 = parse_translation();
-              if (result3 !== null) {
-                result4 = [];
-                pos3 = pos;
-                result5 = parse_sequence_sep();
-                if (result5 !== null) {
-                  result6 = parse_translation();
-                  if (result6 !== null) {
-                    result5 = [result5, result6];
-                  } else {
-                    result5 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result5 = null;
-                  pos = pos3;
-                }
-                while (result5 !== null) {
-                  result4.push(result5);
-                  pos3 = pos;
-                  result5 = parse_sequence_sep();
-                  if (result5 !== null) {
-                    result6 = parse_translation();
-                    if (result6 !== null) {
-                      result5 = [result5, result6];
-                    } else {
-                      result5 = null;
-                      pos = pos3;
-                    }
-                  } else {
-                    result5 = null;
-                    pos = pos3;
-                  }
-                }
-                if (result4 !== null) {
-                  result3 = [result3, result4];
-                } else {
-                  result3 = null;
-                  pos = pos2;
-                }
-              } else {
-                result3 = null;
-                pos = pos2;
-              }
-              if (result3 !== null) {
-                result4 = parse_sp();
-                if (result4 !== null) {
-                  if (/^[)\]]/.test(input.charAt(pos))) {
-                    result5 = input.charAt(pos);
-                    pos++;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("[)\\]]");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result0 = [result0, result1, result2, result3, result4, result5];
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "translation_sequence", "value": val, "indices": [offset, pos - 1]} })(pos0, result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_translation_sequence() {
-        var result0, result1, result2, result3, result4, result5;
-        var pos0, pos1, pos2, pos3;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_sp();
-        if (result0 !== null) {
-          pos2 = pos;
-          if (input.charCodeAt(pos) === 44) {
-            result1 = ",";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\",\"");
-            }
-          }
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              result1 = [result1, result2];
-            } else {
-              result1 = null;
-              pos = pos2;
-            }
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            pos2 = pos;
-            result2 = parse_translation();
-            if (result2 !== null) {
-              result3 = [];
-              pos3 = pos;
-              result4 = parse_sequence_sep();
-              if (result4 !== null) {
-                result5 = parse_translation();
-                if (result5 !== null) {
-                  result4 = [result4, result5];
-                } else {
-                  result4 = null;
-                  pos = pos3;
-                }
-              } else {
-                result4 = null;
-                pos = pos3;
-              }
-              while (result4 !== null) {
-                result3.push(result4);
-                pos3 = pos;
-                result4 = parse_sequence_sep();
-                if (result4 !== null) {
-                  result5 = parse_translation();
-                  if (result5 !== null) {
-                    result4 = [result4, result5];
-                  } else {
-                    result4 = null;
-                    pos = pos3;
-                  }
-                } else {
-                  result4 = null;
-                  pos = pos3;
-                }
-              }
-              if (result3 !== null) {
-                result2 = [result2, result3];
-              } else {
-                result2 = null;
-                pos = pos2;
-              }
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "translation_sequence", "value": val, "indices": [offset, pos - 1]} })(pos0, result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_translation() {
-        var result0, result1, result2;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        if (input.charCodeAt(pos) === 30) {
-          result0 = "\x1E";
-          pos++;
-        } else {
-          result0 = null;
-          if (reportFailures === 0) {
-            matchFailed("\"\\x1E\"");
-          }
-        }
-        if (result0 !== null) {
-          result1 = parse_any_integer();
-          if (result1 !== null) {
-            if (input.charCodeAt(pos) === 30) {
-              result2 = "\x1E";
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"\\x1E\"");
-              }
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "translation", "value": val.value, "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_integer() {
-        var result0, result1, result2;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        pos2 = pos;
-        if (/^[0-9]/.test(input.charAt(pos))) {
-          result0 = input.charAt(pos);
-          pos++;
-        } else {
-          result0 = null;
-          if (reportFailures === 0) {
-            matchFailed("[0-9]");
-          }
-        }
-        if (result0 !== null) {
-          if (/^[0-9]/.test(input.charAt(pos))) {
-            result1 = input.charAt(pos);
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("[0-9]");
-            }
-          }
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            if (/^[0-9]/.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
-              pos++;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("[0-9]");
-              }
-            }
-            result2 = result2 !== null ? result2 : "";
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos2;
-            }
-          } else {
-            result0 = null;
-            pos = pos2;
-          }
-        } else {
-          result0 = null;
-          pos = pos2;
-        }
-        if (result0 !== null) {
-          pos2 = pos;
-          reportFailures++;
-          if (/^[0-9]/.test(input.charAt(pos))) {
-            result1 = input.charAt(pos);
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("[0-9]");
-            }
-          }
-          if (result1 === null) {
-            if (input.substr(pos, 4) === ",000") {
-              result1 = ",000";
-              pos += 4;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("\",000\"");
-              }
-            }
-          }
-          reportFailures--;
-          if (result1 === null) {
-            result1 = "";
-          } else {
-            result1 = null;
-            pos = pos2;
-          }
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "integer", "value": parseInt(val.join(""), 10), "indices": [offset, pos - 1]} })(pos0, result0[0]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_any_integer() {
-        var result0, result1;
-        var pos0;
-        
-        pos0 = pos;
-        if (/^[0-9]/.test(input.charAt(pos))) {
-          result1 = input.charAt(pos);
-          pos++;
-        } else {
-          result1 = null;
-          if (reportFailures === 0) {
-            matchFailed("[0-9]");
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            if (/^[0-9]/.test(input.charAt(pos))) {
-              result1 = input.charAt(pos);
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("[0-9]");
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "integer", "value": parseInt(val.join(""), 10), "indices": [offset, pos - 1]} })(pos0, result0);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_word() {
-        var result0, result1;
-        var pos0;
-        
-        pos0 = pos;
-        if (/^[^\x1F\x1E([]/.test(input.charAt(pos))) {
-          result1 = input.charAt(pos);
-          pos++;
-        } else {
-          result1 = null;
-          if (reportFailures === 0) {
-            matchFailed("[^\\x1F\\x1E([]");
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            if (/^[^\x1F\x1E([]/.test(input.charAt(pos))) {
-              result1 = input.charAt(pos);
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("[^\\x1F\\x1E([]");
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "word", "value": val.join(""), "indices": [offset, pos - 1]} })(pos0, result0);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_word_parenthesis() {
-        var result0;
-        var pos0;
-        
-        pos0 = pos;
-        if (/^[([]/.test(input.charAt(pos))) {
-          result0 = input.charAt(pos);
-          pos++;
-        } else {
-          result0 = null;
-          if (reportFailures === 0) {
-            matchFailed("[([]");
-          }
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "stop", "value": val, "indices": [offset, pos - 1]} })(pos0, result0);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_sp() {
-        var result0;
-        
-        result0 = parse_space();
-        result0 = result0 !== null ? result0 : "";
-        return result0;
-      }
-      
-      function parse_space() {
-        var result0, result1;
-        
-        if (/^[\s\xa0*]/.test(input.charAt(pos))) {
-          result1 = input.charAt(pos);
-          pos++;
-        } else {
-          result1 = null;
-          if (reportFailures === 0) {
-            matchFailed("[\\s\\xa0*]");
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            if (/^[\s\xa0*]/.test(input.charAt(pos))) {
-              result1 = input.charAt(pos);
-              pos++;
-            } else {
-              result1 = null;
-              if (reportFailures === 0) {
-                matchFailed("[\\s\\xa0*]");
-              }
-            }
-          }
-        } else {
-          result0 = null;
-        }
-        return result0;
-      }
-      
-      
-      function cleanupExpected(expected) {
-        expected.sort();
-        
-        var lastExpected = null;
-        var cleanExpected = [];
-        for (var i = 0; i < expected.length; i++) {
-          if (expected[i] !== lastExpected) {
-            cleanExpected.push(expected[i]);
-            lastExpected = expected[i];
-          }
-        }
-        return cleanExpected;
-      }
-      
-      function computeErrorPosition() {
-        /*
-         * The first idea was to use |String.split| to break the input up to the
-         * error position along newlines and derive the line and column from
-         * there. However IE's |split| implementation is so broken that it was
-         * enough to prevent it.
-         */
-        
-        var line = 1;
-        var column = 1;
-        var seenCR = false;
-        
-        for (var i = 0; i < Math.max(pos, rightmostFailuresPos); i++) {
-          var ch = input.charAt(i);
-          if (ch === "\n") {
-            if (!seenCR) { line++; }
-            column = 1;
-            seenCR = false;
-          } else if (ch === "\r" || ch === "\u2028" || ch === "\u2029") {
-            line++;
-            column = 1;
-            seenCR = true;
-          } else {
-            column++;
-            seenCR = false;
-          }
-        }
-        
-        return { line: line, column: column };
-      }
-      
-      
-      var result = parseFunctions[startRule]();
-      
-      /*
-       * The parser is now in one of the following three states:
-       *
-       * 1. The parser successfully parsed the whole input.
-       *
-       *    - |result !== null|
-       *    - |pos === input.length|
-       *    - |rightmostFailuresExpected| may or may not contain something
-       *
-       * 2. The parser successfully parsed only a part of the input.
-       *
-       *    - |result !== null|
-       *    - |pos < input.length|
-       *    - |rightmostFailuresExpected| may or may not contain something
-       *
-       * 3. The parser did not successfully parse any part of the input.
-       *
-       *   - |result === null|
-       *   - |pos === 0|
-       *   - |rightmostFailuresExpected| contains at least one failure
-       *
-       * All code following this comment (including called functions) must
-       * handle these states.
-       */
-      if (result === null || pos !== input.length) {
-        var offset = Math.max(pos, rightmostFailuresPos);
-        var found = offset < input.length ? input.charAt(offset) : null;
-        var errorPosition = computeErrorPosition();
-        
-        throw new this.SyntaxError(
-          cleanupExpected(rightmostFailuresExpected),
-          found,
-          offset,
-          errorPosition.line,
-          errorPosition.column
-        );
-      }
-      
-      return result;
-    },
-    
-    /* Returns the parser source code. */
-    toSource: function() { return this._source; }
-  };
-  
-  /* Thrown when a parser encounters a syntax error. */
-  
-  result.SyntaxError = function(expected, found, offset, line, column) {
-    function buildMessage(expected, found) {
-      var expectedHumanized, foundHumanized;
-      
-      switch (expected.length) {
-        case 0:
-          expectedHumanized = "end of input";
-          break;
-        case 1:
-          expectedHumanized = expected[0];
-          break;
-        default:
-          expectedHumanized = expected.slice(0, expected.length - 1).join(", ")
-            + " or "
-            + expected[expected.length - 1];
-      }
-      
-      foundHumanized = found ? quote(found) : "end of input";
-      
-      return "Expected " + expectedHumanized + " but " + foundHumanized + " found.";
-    }
-    
-    this.name = "SyntaxError";
-    this.expected = expected;
-    this.found = found;
-    this.message = buildMessage(expected, found);
-    this.offset = offset;
-    this.line = line;
-    this.column = column;
-  };
-  
-  result.SyntaxError.prototype = Error.prototype;
-  
-  return result;
-})();
-
 
 
 }).call(this);

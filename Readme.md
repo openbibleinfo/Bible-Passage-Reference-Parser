@@ -6,15 +6,15 @@ This project is a Coffeescript implementation of a Bible-passage reference parse
 
 Its primary use is to interpret query strings for use in a Bible application. It can extract BCVs from text but may be too aggressive for some uses. (See "Caveats" below.)
 
-It should be fairly speedy: using Node.js 0.6.1, it parses 2,000 tweets per second on a single core of an EC2 High-CPU Medium instance.
+It should be fairly speedy: using Node.js 0.8.14, it parses 2,000 tweets per second on a single core of an EC2 High-CPU Medium instance.
 
-The code occupies about 76KB minified and 19KB gzipped.
+The code occupies about 84KB minified and 19KB gzipped.
 
-This project also provides extensively (perhaps even excessively) commented code (see the `docs` folder or [browse the source interactively](http://www.openbible.info/labs/reference-parser/bcv_parser.html)) and 200,000 real-world strings that you can use as a starting point to build your own BCV parser.
+This project also provides extensively commented code and 370,000 real-world strings that you can use as a starting point to build your own BCV parser.
 
 ## Usage
 
-For English, include `js/en_bcv_parser.min.js` in your project. For Spanish, include `js/es_bcv_parser.min.js`.
+For English, include `js/en_bcv_parser.min.js` in your project. For Spanish, include `js/es_bcv_parser.js`.  For French, include `js/fr_bcv_parser.js`.
 
 These usage examples are in Javascript. You can also use Coffeescript, of course.
 
@@ -100,13 +100,15 @@ bcv.parse("John 3, 99").parsed_entities();
 		  "translations": [""],
 		  "start": { "b": "John", "c": 3, "v": 1 },
 		  "end": { "b": "John", "c": 3, "v": 36 },
+		  "enclosed_indices": [-1, -1],
 		  "entity_id": 0,
 		  "entities": [{
 			"start": { "b": "John", "c": 3, "v": 1 },
 			"end": { "b": "John", "c": 3, "v": 36 },
 			"valid": { "valid": true, "messages": {} },
 			"type": "bc",
-			"absolute_indices": [0, 6]
+			"absolute_indices": [0, 6],
+			"enclosed_absolute_indices": [-1, -1]
 			}]
 		},
 		{ "osis": "",
@@ -115,13 +117,15 @@ bcv.parse("John 3, 99").parsed_entities();
 		  "translations": [""],
 		  "start": { "b": "John", "c": 99 },
 		  "end": { "b": "John", "c": 99 },
+		  "enclosed_indices": [-1, -1],
 		  "entity_id": 0,
 		  "entities": [{
 			"start": { "b": "John", "c": 99 },
 			"end": { "b": "John", "c": 99 },
 			"valid": { "valid": false, "messages": { "start_chapter_not_exist": 21 } },
 			"type": "integer",
-			"absolute_indices": [8, 10]
+			"absolute_indices": [8, 10],
+			"enclosed_absolute_indices": [-1, -1]
 			}]
 		}
    	]
@@ -189,6 +193,9 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `error`: zero verses ("Matt 5:0") are invalid.
 	* `upgrade`: zero verses are upgraded to 1: "Matt 5:0" -> "Matt 5:1".
 	* `allow`: zero verses are kept as-is: "Matt 5:0" -> "Matt 5:0". Some traditions use 0 for Psalm titles.
+* `non_latin_digits_strategy: "ignore"`
+	* `ignore`: treat non-Latin digits the same as any other character.
+	* `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
 
 #### Context
 
@@ -202,6 +209,16 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 * `end_range_digits_strategy: "verse"`
 	* `verse`: treat "Jer 33-11" as "Jer 33:11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
 	* `sequence`: treat them as sequences.
+
+#### Versification
+* `versification_system: "default"`
+	* `default`: the default ESV-style versification. Also used in AMP and NASB.
+	* `ceb`: use CEB versification, which varies mostly in the Apocrypha.
+	* `kjv`: use KJV versification, with one fewer verse in 3John. Also used in NIV and NKJV.
+	* `nab`: use NAB versification, which generally follows the Septuagint.
+	* `nlt`: use NLT versification, with one extra verse in Rev. Also used in NCV.
+	* `nrsv`: use NRSV versification.
+	* `vulgate`: use Vulgate numbering for the Psalms.
 
 ### Messages
 
@@ -243,13 +260,13 @@ The parser is quite aggressive in identifying text as Bible references; if you j
 
 The parser spends most of its time doing regular expressions and manipulating strings. If you give it a very long string full of Bible references, it could block your main event loop. Depending on your performance requirements, parsing large numbers of even short strings could saturate your CPU and lead to problems.
 
-In addition, a number of the tests in the "real-world" section of `test/en_spec.coffee` have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases--one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
+In addition, a number of the tests in the "real-world" section of `src/core/spec.coffee` have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases--one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
 
 ## Tests
 
-One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file `test/en_spec.coffee` has a few hundred tests that tripped up this parser at various points in development.
+One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file `src/core/spec.coffee` has a few hundred tests that tripped up this parser at various points in development.
 
-In addition, the file `test/tests.zip` has 200,000 tests drawn from 35 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages--each entry in the `Text` column occurs in ten or more tweets or posts.
+In addition, the file `test/tests.zip` has 370,000 tests drawn from 85 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages--each entry in the `Text` column occurs in ten or more tweets or posts.
 
 The tests are arranged in three columns:
 
@@ -293,6 +310,7 @@ bcv = new bcv_parser;
 bcv.parse("John 3:16");
 // Print the output
 console.log(bcv.osis());
+// "John.3.16"
 ```
 
 ### Matching Potential Passages
@@ -349,36 +367,53 @@ You're probably not calling this function directly but instead are using one of 
 
 ## Performance
 
-Performance degrades linearly with the number of passages found in a string. Using Node.js 0.6.1, it processes 2,000 tweets per second on a single 2.3 GHz core of an EC2 High-CPU Medium instance.
+Performance degrades linearly with the number of passages found in a string. Using Node.js 0.8.14, it processes 2,000 tweets per second on a single 2.3 GHz core of an EC2 High-CPU Medium instance.
 
 In the worst case, given a string consisting of almost nothing but Bible passage references, it processes about 50-60 KB of text per second.
 
 ## Alternate Versification Systems
 
-The BCV parser only supports KJV-style versification. You can extend `en_translations.coffee` to add additional ones.
+The BCV parser supports several versification systems. The appropriate versification system kicks in if the parsed text explicitly mentions a translation with an alternate versification system, or you can use `@set_options({"versification_system":"..."})`. You can extend the relevant `translations.coffee` to add additional ones.
+
+* `default`: the default ESV-style versification. Also used in AMP and NASB.
+* `ceb`: use CEB versification, which varies mostly in the Apocrypha.
+* `kjv`: use KJV versification, with one fewer verse in 3John. Also used in NIV and NKJV.
+* `nab`: use NAB versification, which generally follows the Septuagint.
+* `nlt`: use NLT versification, with one extra verse in Rev. Also used in NCV.
+* `nrsv`: use NRSV versification.
+* `vulgate`: use Vulgate numbering for the Psalms.
 
 ## Non-English Support
 
-The `es_` prefix files provide basic and largely untested Spanish support. The `eu_es_` files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
+The `es` and `fr` files provide Spanish and French support, respectively. The `js/eu/` files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
 
 Using the files in `src` as a base, you can add support for other languages; just use the appropriate language prefix. I'm happy to accept pull requests for new languages.
+
+### Supported Languages
+
+<table>
+	<tr><th>Prefix</th><th>Language</th>
+	<tr><td>en</td><td>English</td></tr>
+	<tr><td>es</td><td>Spanish</td></tr>
+	<tr><td>fr</td><td>French</td></tr>
+</table>
 
 ## Compatibility
 
 I've specifically tested the following browsers, but it should work in any modern browser. If not, please feel free to open an issue.
 
-* Internet Explorer 6-9. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
-* Firefox 12.
-* Chrome 19 and Node 0.6.18.
+* Internet Explorer 6-10. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
+* Firefox 12+.
+* Chrome 19 and Node 0.8.14.
 * Safari 5 (Windows).
 
 ## Building
 
-The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files):
+The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files or run tests):
 
-* [Coffeescript 1.3.3](http://coffeescript.org/) for compiling into Javascript.
-* [PEG.js 1.7.0](http://pegjs.majda.cz/) for the parsing grammar.
-* [Jasmine 1.1.0](http://pivotal.github.com/jasmine/) for the testing framework.
+* [Coffeescript 1.4.0](http://coffeescript.org/) for compiling into Javascript.
+* [PEG.js 0.7.0](http://pegjs.majda.cz/) for the parsing grammar.
+* [Jasmine 1.2.0](http://pivotal.github.com/jasmine/) for the testing framework. To run tests, install it in the project's `/lib` folder.
 * [Closure](http://code.google.com/closure/) for minifying.
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
@@ -391,6 +426,8 @@ I chose Coffeescript out of curiosity--does it make Javascript that much more pl
 
 ## Changelog
 
-May 16, 2012. Added basic Spanish support. Fixed multiple capital-letter sequences. Upgraded PEG.js and Coffeescript to the latest versions.
+November 20, 2012. Improved support for parentheses. Added some alternate versification systems. Added French support. Removed `docs` folder because it was getting unwieldy; the source itself remains commented. Increased the number of real-world strings from 200,000 to 370,000.
+
+May 16, 2012. Added basic Spanish support. Fixed multiple capital-letter sequences. Upgraded PEG.js and Coffeescript to the latest versions. Deprecated support for IE6 and 7.
 
 November 18, 2011. First commit.

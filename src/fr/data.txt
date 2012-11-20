@@ -1,0 +1,289 @@
+# http://forum.wordreference.com/showthread.php?t=485993
+$FIRST	Premières?	Premiers?	1è?re	1er	1	I
+$SECOND	Deuxièmes?	2ème	2d?e?	II
+$THIRD	Troisièmes?	3ème	3e?	III
+$FOURTH	Quatrièmes?	4ème	4e?	IV
+$AB	[a-e]
+$AND	et! suivant	comparer
+$CHAPTER	chapitres	chapitre	chap.	chs.	ch.
+$FF	et suivant
+$TITLE	titre
+$TRANS	LSG	NEG1979	BDS	LSG21
+$TO	á`
+$VERSE	versets	verset	vers.	ver.	vv.	v.
+$UNICODE_BLOCK	Latin
+
+# http://fr.wikipedia.org/wiki/Ancien_Testament
+# http://www.biblegateway.com/versions/Nouvelle=Edition-de-Geneve-NEG1979-Bible/
+# http://www.biblegateway.com/versions/index.php?action=getVersionInfo&vid=2 :: Cantiques, Habacuc
+# http://www.youversion.com/bible/john.1.fmar :: Psaume
+# http://crosswire.org/ftpmirror/pub/sword/source/v1.6/sword-1.6.2/locales.d/fr-utf8.conf :: Zaccharie, Lamentations de Jérémie
+Gen	Genèse	Gen?	Gn
+Exod	Exode?	Exo?
+Lev	Lévitique	Lév?	Lv
+Num	Nombres	Nom?	Nomb?	N[mb]
+Deut	Deutéronome	Deut	Deu	Dt
+Josh	Josué	Jos
+Judg	Juges	Ju?g
+Ruth	Ruth?	R[tu]
+1Sam	$FIRST Samuel	1 Sam?	[1] S
+2Sam	$SECOND Samuel	2 Sam?	[2] S
+1Kgs	$FIRST Rois	[1] R
+2Kgs	$SECOND Rois	[2] R
+1Chr	$FIRST Chroniques	1 Chr?	1 Chron?
+2Chr	$SECOND Chroniques	2 Chr?	2 Chron?
+Ezra	Esdras	Esdr?
+Neh	Néhémie	Néh?
+Esth	Esther	Esth?
+Job	Jo?b
+Ps	Psaumes?	Ps	Psau?
+Prov	Proverbes	Prov	Pr[ov]?
+Eccl	Ecclésiaste	Qoheleth?	Eccl	Ec	Ecclés
+Song	Cantique des [Cc]antiques	Ca	Cantiques?	Cn?t
+Isa	Ésaïe	Isaïe	Isa	Ésa?	Is
+Jer	Jérémie	Jer	Jérém	Jér?	Jr
+Lam	Lamentations de Jérémie	Lamentations	Lam?
+Ezek	Ézéchiel	Ézéch	Ezé?
+Dan	Daniel	Dan?
+Hos	Osée	Os
+Joel	Joël	Joë	Jl
+Amos	Amos	Amo?
+Obad	Abdias	Abd?
+Jonah	Jonas	Jon
+Mic	Michée	Mich?	Mi
+Nah	Nahum	Nah?
+Hab	Habacuc	Habakuk	Hab	Haba[ck]	Hab?
+Zeph	Sophonie	Soph	So
+Hag	Aggée	Hag	Agg?
+Zech	Zacc?harie	Zac?c?h?	Zc
+Mal	Malachie	Mala?ch?	Ma?l
+Matt	Matthieu	Matth	Matt?	Mt
+Mark	Marc	Mar	M[cr]
+Luke	Luc	L[cu]
+John	Jean	Jn
+Acts	Actes des Apôtres	Actes	Act?
+Rom	Romains	Rom	Rom?	Rm
+1Cor	$FIRST Corinthiens	1 Cor?
+2Cor	$SECOND Corinthiens	2 Cor?
+Gal	Galates	Gal?	Gl
+Eph	Éphésiens	Éphés	Éphé?	Ép
+Phil	Philippiens	Phil
+Col	Colossiens	Col
+1Thess	$FIRST Thessaloniciens	1 Thess?	1 Th
+2Thess	$SECOND Thessaloniciens	2 Thess?	2 Th
+1Tim	$FIRST Timothée	1 Tim?
+2Tim	$SECOND Timothée	2 Tim?
+Titus	Tite	Tit
+Phlm	Philémon	Phl?m
+Heb	Hébreux	Hébr?	Héb?
+Jas	Jacques	Jacq	Jac?
+1Pet	$FIRST Pierre	1 Pi?
+2Pet	$SECOND Pierre	2 Pi?
+1John	$FIRST Jean	1 Jn
+2John	$SECOND Jean	2 Jn
+3John	$THIRD Jean	3 Jn
+Jude	Jude	Jud
+Rev	Apocalypse de Jean	Apocalypse	Apo?c?
+Tob	Tobie	Tob	Tb
+Jdt	Judith	Jdt	Jdt
+GkEsth	Esther \([Gg]rec\)	Esther [Gg]rec	Esther [Gg]r	Esth [Gg]r
+Wis	Sagesse de Salomon	Sagesse	Sg
+Sir	Ecclésiastique	Siracide	La Sagesse de Ben Sira	Sagesse de Ben Sira	Sir	Si
+Bar	Baruch	Bar	Ba
+# http://fr.wikipedia.org/wiki/Livre_de_Daniel
+PrAzar	La Prière d'Azaria[hs]	Prière d'Azaria[hs]	Pr. Azar
+# http://fr.wikipedia.org/wiki/Suzanne_et_les_vieillards
+# http://bible.catholique.org/livre-de-daniel/4869-chapitre-13
+Sus	Su[sz]anne et les vieillards	Su[sz]anne et les deux vieillards	Su[sz]anne au bain	Su[sz]anne	Sus	Suz
+# http://fr.wikipedia.org/wiki/Bel_et_le_serpent
+Bel	Bel et le [Ss]erpent	Bel et le [Dd]ragon	Bel
+# http://fr.wikipedia.org/wiki/Ananias,_Azarias_et_Misa%C3%ABl
+SgThree	Cantique des Trois Enfants	Cantique des 3 Enfants	Ct 3 E
+EpJer	Épître de Jérémie	Ép. Jérémie	Ép. Jér
+1Macc	$FIRST Maccabées	1 Macc	1 M
+2Macc	$SECOND Maccabées	2 Macc	2 M
+3Macc	$THIRD Maccabées	3 Macc	3 M
+4Macc	$FOURTH Maccabées	4 Macc	4 M
+1Esd	$FIRST Esdras	1 Esdr?	1 Es
+2Esd	$SECOND Esdras	2 Esdr?	2 Es
+PrMan	La Prière de Manassé	Prière de Manassé	Pr. Manassé	Pr. Man
+
+#Esth,Isa	Es
+Jonah,Job,Josh,Joel	Jo
+Judg,Jude	Ju
+Phil,Phlm	Phl	Ph
+
+# Order
+=Gen
+=Exod
+# le = the, not Lev
+=Bel
+=Lev
+=Num
+# de = of, not Deut
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+#Preferred names
+#OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Genèse	Gn
+*Exod	Exode	Ex
+*Lev	Lévitique	Lv
+*Num	Nombres	Nb
+*Deut	Deutéronome	Dt
+*Josh	Josué	Jos
+*Judg	Juges	Jg
+*Ruth	Ruth	Rt
+*1Sam	1 Samuel	1 S
+*2Sam	2 Samuel	2 S
+*1Kgs	1 Rois	1 R
+*2Kgs	2 Rois	2 R
+*1Chr	1 Chroniques	1 Ch
+*2Chr	2 Chroniques	2 Ch
+*Ezra	Esdras	Esd
+*Neh	Néhémie	Ne
+*Esth	Esther	Est
+*Job	Job	Jb
+*Ps	Psaumes	Ps	Psaume
+*Prov	Proverbes	Pr
+*Eccl	Ecclésiaste	Ec
+*Song	Cantique des Cantiques	Ct
+*Isa	Ésaïe	Is
+*Jer	Jérémie	Jr
+*Lam	Lamentations	La
+*Ezek	Ézéchiel	Ez
+*Dan	Daniel	Da
+*Hos	Osée	Os
+*Joel	Joël	Jl
+*Amos	Amos	Am
+*Obad	Abdias	Ab
+*Jonah	Jonas	Jon
+*Mic	Michée	Mi
+*Nah	Nahum	Na
+*Hab	Habacuc	Ha
+*Zeph	Sophonie	So
+*Hag	Aggée	Ag
+*Zech	Zacharie	Za
+*Mal	Malachie	Ml
+*Matt	Matthieu	Mt
+*Mark	Marc	Mc
+*Luke	Luc	Luc	Lc
+*John	Jean	Jn
+*Acts	Actes	Ac
+*Rom	Romains	Ro
+*1Cor	1 Corinthiens	1 Co
+*2Cor	2 Corinthiens	2 Co
+*Gal	Galates	Ga
+*Eph	Éphésiens	Ep
+*Phil	Philippiens	Ph
+*Col	Colossiens	Col
+*1Thess	1 Thessaloniciens	1 Th
+*2Thess	2 Thessaloniciens	2 Th
+*1Tim	1 Timothée	1 Ti
+*2Tim	2 Timothée	2 Ti
+*Titus	Tite	Tit
+*Phlm	Philémon	Phm
+*Heb	Hébreux	Hé
+*Jas	Jacques	Ja
+*1Pet	1 Pierre	1 Pi
+*2Pet	2 Pierre	2 Pi
+*1John	1 Jean	1 Jn
+*2John	2 Jean	2 Jn
+*3John	3 Jean	3 Jn
+*Jude	Jude	Jud
+*Rev	Apocalypse	Ap
+*Tob	Tobie	Tb
+*Jdt	Judith	Jdt
+*GkEsth	Esther Grec	Esth Gr
+*Wis	Sagesse	Sg
+*Sir	Siracide	Sir
+*Bar	Baruch	Bar
+*PrAzar	Prière d’Azarias	Pr Azar
+*Sus	Suzanne	Suz
+*Bel	Bel et le Dragon	Bel
+*SgThree	Cantique des Trois Enfants	Ct 3 E
+*EpJer	Épître de Jérémie	Ep Jér
+*1Macc	1 Maccabées	1 M
+*2Macc	2 Maccabées	2 M
+*3Macc	3 Maccabées	3 M
+*4Macc	4 Maccabées	4 M
+*1Esd	1 Esdras	1 Es
+*2Esd	2 Esdras	2 Es
+*PrMan	Prière de Manassé	Pr Man
