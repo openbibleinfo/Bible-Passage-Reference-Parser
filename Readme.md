@@ -14,7 +14,7 @@ This project also provides extensively commented code and 370,000 real-world str
 
 ## Usage
 
-For English, include `js/en_bcv_parser.min.js` in your project. For Spanish, include `js/es_bcv_parser.js`.  For French, include `js/fr_bcv_parser.js`.
+For English, include `js/en_bcv_parser.min.js` in your project. For other languages, include the relevant `js/*_bcv_parser.js`.
 
 These usage examples are in Javascript. You can also use Coffeescript, of course.
 
@@ -226,7 +226,7 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 
 #### Start Objects
 
-* `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `*_regexps.coffee` file for this message to appear.
+* `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `regexps.coffee` file for this message to appear.
 * `start_chapter_is_zero`:  `1` if the requested start chapter is 0.
 * `start_chapter_not_exist_in_single_chapter_book`: `1` if wanting, say, `Philemon 2`. It is reparsed as a verse (`Philemon 1:2`).
 * `start_chapter_not_exist`: The value is the last valid chapter in the book.
@@ -237,8 +237,8 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 
 #### End Objects
 
-* `end_book_before_start`: `true` if the end book is before the start book (the order is controlled in the language's `*_translations.js`). E.g., `Exodus-Genesis`.
-* `end_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `*_regexps.coffee` for this message to appear.
+* `end_book_before_start`: `true` if the end book is before the start book (the order is controlled in the language's `translations.coffee`). E.g., `Exodus-Genesis`.
+* `end_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `regexps.coffee` for this message to appear.
 * `end_chapter_before_start`: `true` if the end chapter is before the start chapter in the same book.
 * `end_chapter_is_zero`: `1` if the requested end chapter is `0`. The `1` indicates the first valid chapter.
 * `end_chapter_not_exist`: The value is the last valid chapter in the book.
@@ -271,7 +271,7 @@ In addition, the file `test/tests.zip` has 370,000 tests drawn from 85 million r
 The tests are arranged in three columns:
 
 1. `Popularity` is the number of times the text appears in the corpus. It reflects the order of magnitude, so a value of `100` in this column indicates that the text appears between 100 and 999 times. You can use this column as a way to prioritize how to handle corner cases.
-2. `Text` is the raw text of the reference. Tabs and newline characters (`[\t\r\n]`)are converted to spaces; otherwise they appear unaltered from their source.
+2. `Text` is the raw text of the reference. Tabs and newline characters (`[\t\r\n]`) are converted to spaces; otherwise they appear unaltered from their source.
 3. `OSIS` is the OSIS value of the text as parsed by this BCV Parser. If one or more translations appears, it precedes a colon at the start of the string. For example: `Matt 5, 7, NIV, ESV` has an OSIS value of `NIV,ESV:Matt.5,Matt.7`. Otherwise, the OSIS consists only of OSIS references separated by commas. You may choose to interpret certain cases differently to suit your needs, but this column gives you a reasonable starting point from which to validate your parser.
 
 This dataset has a few limitations:
@@ -304,13 +304,9 @@ The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It includes 
 This section describes the parsing of a typical string:
 
 ```javascript
-// Declare the object
-bcv = new bcv_parser;
-// Do the parsing
-bcv.parse("John 3:16");
-// Print the output
-console.log(bcv.osis());
-// "John.3.16"
+bcv = new bcv_parser; // Declare the object
+bcv.parse("John 3:16"); // Do the parsing
+console.log(bcv.osis()); // "John.3.16"
 ```
 
 ### Matching Potential Passages
@@ -385,9 +381,9 @@ The BCV parser supports several versification systems. The appropriate versifica
 
 ## Non-English Support
 
-The `es` and `fr` files provide Spanish and French support, respectively. The `js/eu/` files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
+The Javascript files that don't start with `en` provide support for other languages. The `js/eu/` files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
 
-Using the files in `src` as a base, you can add support for other languages; just use the appropriate language prefix. I'm happy to accept pull requests for new languages.
+Using the files in `src/template` as a base, you can add support for additional languages; just use the appropriate language prefix. I'm happy to accept pull requests for new languages.
 
 ### Supported Languages
 
@@ -396,6 +392,7 @@ Using the files in `src` as a base, you can add support for other languages; jus
 	<tr><td>en</td><td>English</td></tr>
 	<tr><td>es</td><td>Spanish</td></tr>
 	<tr><td>fr</td><td>French</td></tr>
+	<tr><td>he</td><td>Hebrew</td></tr>
 </table>
 
 ## Compatibility
@@ -418,6 +415,13 @@ The BCV Parser uses the following projects (none of them is necessary unless you
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
+### Build Instructions
+
+1. In `src`, create a folder named after the [ISO 639 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`
+2. Create a data.txt file inside that folder. Lines that start with `#` are comments. Lines that start with `$` are variables. Lines that start with an OSIS book name are a tab-separated series of regular expressions. Lines that start with `=` are the order in which to check the regular expressions (check for "3 John" before "John," for example). Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application).
+3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. For example, `01.add_lang.pl fr`
+4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` to be available in your `$PATH` and `coffee` to be in `/usr/local/bin`. For example: `02.compile.pl fr`
+
 ## Purpose
 
 This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which saw production usage on a Bible search website from 2002-2011; the second in Perl (2007), which saw production usage on a Bible-related site starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This Coffeescript parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
@@ -425,6 +429,8 @@ This is the fourth complete Bible reference parser that I've written. It's how I
 I chose Coffeescript out of curiosity--does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript--the tests, in particular, are much easier to follow without all the Javascript punctuation.
 
 ## Changelog
+
+December 30, 2012. Per request, added compile tools and Hebrew support.
 
 November 20, 2012. Improved support for parentheses. Added some alternate versification systems. Added French support. Removed `docs` folder because it was getting unwieldy; the source itself remains commented. Increased the number of real-world strings from 200,000 to 370,000.
 
