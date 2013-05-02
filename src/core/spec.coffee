@@ -171,6 +171,17 @@ describe "Pre-parsing", ->
 		expect(p.translations.default.chapters.Ps[150]).not.toBeDefined()
 		expect(p.options.include_apocrypha).toBeFalsy()
 
+	it "should handle case-sensitivity", ->
+		p.reset()
+		test_string = "heb 12, ex 3, i macc2"
+		expect(p.parse(test_string).osis()).toEqual "Heb.12,Exod.3"
+		p.set_options case_sensitive: "books"
+		expect(p.parse(test_string).osis()).toEqual ""
+		p.set_options include_apocrypha: true
+		expect(p.parse(test_string).osis()).toEqual ""
+		p.set_options case_sensitive: "none"
+		expect(p.parse(test_string).osis()).toEqual "Heb.12,Exod.3,1Macc.2"
+
 	it "should replace ends correctly", ->
 		expect(p.replace_match_end "\x1f0\x1f 3b").toEqual "\x1f0\x1f 3b"
 		expect(p.replace_match_end "\x1f0\x1f 3b.").toEqual "\x1f0\x1f 3b"
@@ -714,13 +725,13 @@ describe "Parsing", ->
 		expect(p.parse("Phm 1:2-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
 		expect(p.parse("Phm 2-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
 		expect(p.parse("ge 50-50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,9], translations: ['']
-		expect(p.parse("Ps 121ff-2ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150"
-		expect(p.parse("Ps 121ff-122:3ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.122"
-		expect(p.parse("Phm 1ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm"
-		expect(p.parse("Phm 1:1ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm"
-		expect(p.parse("Phm 1:2ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
-		expect(p.parse("Phm 2ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
-		expect(p.parse("ge 50f-50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,10], translations: ['']
+		expect(p.parse("Ps 121ff-2ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150,Ps.2-Ps.150"
+		expect(p.parse("Ps 121ff-122:3ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150,Ps.122.3-Ps.122.9"
+		expect(p.parse("Phm 1ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm,Phlm.1.4-Phlm.1.25"
+		expect(p.parse("Phm 1:1ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm,Phlm.1.4-Phlm.1.25"
+		expect(p.parse("Phm 1:2ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25,Phlm.1.4-Phlm.1.25"
+		expect(p.parse("Phm 2ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25,Phlm.1.4-Phlm.1.25"
+		expect(p.parse("ge 50f-50f").osis_and_indices()[0]).toEqual osis:"Gen.50,Gen.50",indices:[0,10], translations: ['']
 		expect(p.parse("ge 50:1 forever").osis_and_indices()[0]).toEqual osis:"Gen.50.1",indices:[0,7], translations: ['']
 		expect(p.parse("ge 50:1 fa").osis_and_indices()[0]).toEqual osis:"Gen.50.1",indices:[0,7], translations: ['']
 		expect(p.parse("so f").osis_and_indices()).toEqual []
@@ -898,6 +909,11 @@ describe "Parsing", ->
 		expect(p.parse("Mark3.4.5.6.7.8.9.10.11").osis()).toEqual "Mark.3.4,Mark.5.6,Mark.7.8,Mark.9.10,Mark.9.11"
 		expect(p.parse("Deut 28 - v66-67 is a real").osis()).toEqual "Deut.28.66-Deut.28.67,Isa"
 
+	it "should handle a `combine` `consecutive_combination_strategy` and a `separate` `sequence_combination_strategy`", ->
+		p.set_options {consecutive_combination_strategy: "combine", sequence_combination_strategy: "separate"}
+		expect(p.parse("2 Chronicles 32:32,33").osis()).toEqual "2Chr.32.32-2Chr.32.33"
+		expect(p.parse("2 Chronicles 31, 32").osis()).toEqual "2Chr.31-2Chr.32"
+
 	it "should handle B,C,V as a special case", ->
 		expect(p.parse("Matt, 5, 6").osis_and_indices()).toEqual [{osis: "Matt.5.6", indices: [0,10], translations: [""]}]
 		expect(p.parse("Matt,5,6, 7, 8").osis_and_indices()).toEqual [{osis: "Matt.5.6-Matt.5.8", indices: [0,14], translations: [""]}]
@@ -1011,6 +1027,7 @@ describe "Parsing", ->
 		expect(p.parse("Hab 1:3 (cf. v. 2 )").osis_and_indices()).toEqual [{osis: "Hab.1.3,Hab.1.2", translations: [""], indices: [0,19]}]
 		expect(p.parse("(Hab 1:3 cf. v. 2)").osis_and_indices()).toEqual [{osis: "Hab.1.3,Hab.1.2", translations: [""], indices: [1,17]}]
 		expect(p.parse("(Hab 1:3 cf. v. 2)(NIV)").osis_and_indices()).toEqual [{osis: "Hab.1.3,Hab.1.2", translations: ["NIV"], indices: [1,23]}]
+		expect(p.parse("Exodus 12:1-4 (5-10) 11-14").osis_and_indices()).toEqual [{osis: "Exod.12.1-Exod.12.14", translations: [""], indices: [0, 26]}]
 
 	it "should handle parentheses with a `separate` `sequence_combination_strategy`", ->
 		p.set_options sequence_combination_strategy: "separate"
@@ -1026,6 +1043,7 @@ describe "Parsing", ->
 		expect(p.parse("Ps 119:1, ( 2, cf. 6-10 ), Matt 5:6 (and 7)").osis_and_indices()).toEqual [{osis: "Ps.119.1-Ps.119.2", translations: [""], indices: [0,13]}, {osis: "Ps.119.6-Ps.119.10", translations: [""], indices: [19,23]}, {osis: "Matt.5.6-Matt.5.7", translations: [""], indices: [27,43]}]
 		expect(p.parse("Hab 1:3 (cf. v. 2 )").osis_and_indices()).toEqual [{osis: "Hab.1.3", translations: [""], indices: [0,7]}, {osis: "Hab.1.2", translations: [""], indices: [13,17]}]
 		expect(p.parse("Hab 1:3 (cf. v. 2 )(NIV)").osis_and_indices()).toEqual [{osis: "Hab.1.3", translations: ["NIV"], indices: [0,7]}, {osis: "Hab.1.2", translations: ["NIV"], indices: [13,24]}]
+		expect(p.parse("Exodus 12:1-4 (5-10) 11-14").osis_and_indices()).toEqual [{osis: "Exod.12.1-Exod.12.14", translations: [""], indices: [0, 26]}]
 
 	it "should handle nested parentheses with a `combine` `sequence_combination_strategy`", ->
 		expect(p.parse("Ps 117 (118,(119), and 120)").osis_and_indices()).toEqual [{osis: "Ps.117-Ps.120", translations: [""], indices: [0,27]}]
@@ -1066,9 +1084,9 @@ describe "Parsing", ->
 			expect(p.parse(bcv_range).osis()).toEqual bcv_range
 
 	it "should round-trip OSIS Apocrypha references", ->
-		p.set_options osis_compaction_strategy: "bc"
+		p.set_options osis_compaction_strategy: "bc", ps151_strategy: "b"
 		p.include_apocrypha true
-		books = ["Tob","Jdt","GkEsth","Wis","Sir","Bar","PrAzar","Sus","Bel","SgThree","EpJer","1Macc","2Macc","3Macc","4Macc","1Esd","2Esd","PrMan"]
+		books = ["Tob","Jdt","GkEsth","Wis","Sir","Bar","PrAzar","Sus","Bel","SgThree","EpJer","1Macc","2Macc","3Macc","4Macc","1Esd","2Esd","PrMan","Ps151"]
 		for book in books
 			bc = book + ".1"
 			bcv = bc + ".1"
@@ -1076,6 +1094,10 @@ describe "Parsing", ->
 			expect(p.parse(bc).osis()).toEqual bc
 			expect(p.parse(bcv).osis()).toEqual bcv
 			expect(p.parse(bcv_range).osis()).toEqual bcv_range
+		p.set_options ps151_strategy: "bc"
+		expect(p.parse("Ps151.1").osis()).toEqual "Ps.151"
+		expect(p.parse("Ps151.1.1").osis()).toEqual "Ps.151.1"
+		expect(p.parse("Ps151.1-Ps151.2").osis()).toEqual "Ps.151.1-Ps.151.2"
 		p.include_apocrypha false
 		for book in books
 			bc = book + ".1"
@@ -1102,6 +1124,178 @@ describe "Parsing", ->
 		p.include_apocrypha true
 		expect(p.parse("Rev 21-Tobit 3").osis()).toEqual "Rev.21-Tob.3"
 		p.include_apocrypha false
+
+	it "should handle Psalm 151 with the Apocrypha enabled and `ps151_strategy` = `b`", ->
+		p.set_options osis_compaction_strategy: "bc", include_apocrypha: true, ps151_strategy: "b"
+
+		expect(p.parse("Ps 149, 151, 2").osis()).toEqual "Ps.149,Ps151.1,Ps.2"
+		expect(p.parse("Ps 150, 151, 2").osis()).toEqual "Ps.150,Ps151.1,Ps.2"
+		expect(p.parse("Ps 151").osis()).toEqual "Ps151.1"
+		expect(p.parse("Ps 151:2").osis()).toEqual "Ps151.1.2"
+		expect(p.parse("Ps 151 title").osis()).toEqual "Ps151.1.1"
+		expect(p.parse("151st Psalm").osis()).toEqual "Ps151.1"
+		expect(p.parse("151st Psalm, verse 2").osis()).toEqual "Ps151.1.2"
+		expect(p.parse("Ps 150 (151)").osis_and_indices()).toEqual [osis: "Ps.150,Ps151.1", translations: [""], indices: [0, 12]]
+		expect(p.parse("Ps 119-150, 151, 2").osis()).toEqual "Ps.119-Ps.150,Ps151.1,Ps.2"
+		expect(p.parse("Ps 151:2,3").osis()).toEqual "Ps151.1.2-Ps151.1.3"
+		expect(p.parse("Ps 151:2,4").osis()).toEqual "Ps151.1.2,Ps151.1.4"
+		expect(p.parse("Ps 151:2-4").osis()).toEqual "Ps151.1.2-Ps151.1.4"
+		expect(p.parse("Ps 151, 2").osis()).toEqual "Ps151.1,Ps.2"
+		expect(p.parse("Ps 119, 151:2, 3").osis()).toEqual "Ps.119,Ps151.1.2-Ps151.1.3"
+		expect(p.parse("Ps 119, 151:2, 4").osis()).toEqual "Ps.119,Ps151.1.2,Ps151.1.4"
+		expect(p.parse("Ps 119, 151 title, 3").osis()).toEqual "Ps.119,Ps151.1.1,Ps151.1.3"
+		expect(p.parse("Job 3-Pr 3").osis()).toEqual "Job.3-Prov.3"
+		expect(p.parse("Ps 119-151 title").osis()).toEqual "Ps.119-Ps.150,Ps151.1.1"
+		expect(p.parse("Ps 149ff").osis()).toEqual "Ps.149-Ps.150,Ps151.1"
+		expect(p.parse("chapters 140 to 151 from Psalms").osis()).toEqual "Ps.140-Ps.150,Ps151.1"
+		expect(p.parse("Ps 149:2-151:3").osis()).toEqual "Ps.149.2-Ps.150.6,Ps151.1.1-Ps151.1.3"
+		expect(p.parse("Ps 149-151").osis()).toEqual "Ps.149-Ps.150,Ps151.1"
+		expect(p.parse("Ps 151-Proverbs 3").osis()).toEqual "Ps151.1,Prov.1-Prov.3"
+		expect(p.parse("Ps 151:2-Proverbs 3:3").osis()).toEqual "Ps151.1.2-Ps151.1.7,Prov.1.1-Prov.3.3"
+		expect(p.parse("Ps 150:5-151:2").osis()).toEqual "Ps.150.5-Ps.150.6,Ps151.1.1-Ps151.1.2"
+		expect(p.parse("Ps 150:6-151:2").osis()).toEqual "Ps.150.6,Ps151.1.1-Ps151.1.2"
+		expect(p.parse("Ps 150-151").osis()).toEqual "Ps.150,Ps151.1"
+		expect(p.parse("Ps 150, 151").osis()).toEqual "Ps.150,Ps151.1"
+		expect(p.parse("Ps 149-Psalm 151").osis()).toEqual "Ps.149-Ps.150,Ps151.1"
+		expect(p.parse("1 Maccabees 3 through Ps 151, 151:3").osis()).toEqual "1Macc.3,Ps151.1,Ps151.1.3"
+		expect(p.parse("Job 3-Ps 151").osis()).toEqual "Job.3-Ps.150,Ps151.1"
+		expect(p.parse("Prov 3-Ps 151").osis()).toEqual "Prov.3,Ps151.1"
+		expect(p.parse("Ps151.1").osis()).toEqual "Ps151.1"
+		expect(p.parse("Ps151.1.3").osis()).toEqual "Ps151.1.3"
+		expect(p.parse("Ps151.1.3-Ps151.1.4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
+		expect(p.parse("Ps151.1.3-4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
+		expect(p.parse("Ps151").osis()).toEqual "Ps151.1"
+		expect(p.parse("Ps151.1, 3-4").osis()).toEqual "Ps151.1,Ps.3-Ps.4"
+		expect(p.parse("Ps151, 2:3-4").osis()).toEqual "Ps151.1,Ps.2.3-Ps.2.4"
+		expect(p.parse("Ps150. 6:3-4").osis()).toEqual "Ps.150.6,Ps.150.3-Ps.150.4"
+		expect(p.parse("Ps151. 6:3-4").osis()).toEqual "Ps151.1.6,Ps151.1.3-Ps151.1.4"
+		expect(p.parse("Ps151.1 verse 3-4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
+		expect(p.parse("Ps151.1:3-4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
+		expect(p.parse("Ps151.1 title").osis()).toEqual "Ps151.1.1"
+		expect(p.parse("Ps151.1 title-3").osis()).toEqual "Ps151.1.1-Ps151.1.3"
+		expect(p.parse("Ps151.1 2").osis()).toEqual "Ps151.1.2"
+		expect(p.parse("Ps151.1 2-3").osis()).toEqual "Ps151.1.2-Ps151.1.3"
+		expect(p.parse("Ps150.2-Ps151.1.3").osis()).toEqual "Ps.150.2-Ps.150.6,Ps151.1.1-Ps151.1.3"
+		expect(p.parse("Ps150.2-Ps151.1").osis()).toEqual "Ps.150.2-Ps.150.6,Ps151.1"
+		expect(p.parse("Ps150.2-Ps151").osis()).toEqual "Ps.150.2-Ps.150.6,Ps151.1"
+		# It's case-sensitive.
+		expect(p.parse("ps151.1.3-ps151.1.4").osis()).toEqual "Ps151.1.1,Ps151.1.3,Ps151.1.1,Ps151.1.4"
+		expect(p.parse("ps151.1").osis()).toEqual "Ps151.1.1"
+
+	it "should handle Psalm 151 with the Apocrypha enabled and `ps151_strategy` = `bc` (the default)", ->
+		p.set_options osis_compaction_strategy: "bc", include_apocrypha: true
+
+		expect(p.parse("Ps 149, 151, 2").osis()).toEqual "Ps.149,Ps.151,Ps.2"
+		expect(p.parse("Ps 150, 151, 2").osis()).toEqual "Ps.150-Ps.151,Ps.2"
+		expect(p.parse("Ps 151").osis()).toEqual "Ps.151"
+		expect(p.parse("Ps 151:2").osis()).toEqual "Ps.151.2"
+		expect(p.parse("Ps 151 title").osis()).toEqual "Ps.151.1"
+		expect(p.parse("151st Psalm").osis()).toEqual "Ps.151"
+		expect(p.parse("151st Psalm, verse 2").osis()).toEqual "Ps.151.2"
+		expect(p.parse("Ps 150 (151)").osis_and_indices()).toEqual [osis: "Ps.150-Ps.151", translations: [""], indices: [0, 12]]
+		expect(p.parse("Ps 119-150, 151, 2").osis()).toEqual "Ps.119-Ps.151,Ps.2"
+		expect(p.parse("Ps 151:2,3").osis()).toEqual "Ps.151.2-Ps.151.3"
+		expect(p.parse("Ps 151:2,4").osis()).toEqual "Ps.151.2,Ps.151.4"
+		expect(p.parse("Ps 151:2-4").osis()).toEqual "Ps.151.2-Ps.151.4"
+		expect(p.parse("Ps 151, 2").osis()).toEqual "Ps.151,Ps.2"
+		expect(p.parse("Ps 119, 151:2, 3").osis()).toEqual "Ps.119,Ps.151.2-Ps.151.3"
+		expect(p.parse("Ps 119, 151:2, 4").osis()).toEqual "Ps.119,Ps.151.2,Ps.151.4"
+		expect(p.parse("Ps 119, 151 title, 3").osis()).toEqual "Ps.119,Ps.151.1,Ps.151.3"
+		expect(p.parse("Job 3-Pr 3").osis()).toEqual "Job.3-Prov.3"
+		expect(p.parse("Ps 119-151 title").osis()).toEqual "Ps.119.1-Ps.151.1"
+		expect(p.parse("Ps 149ff").osis()).toEqual "Ps.149-Ps.151"
+		expect(p.parse("chapters 140 to 151 from Psalms").osis()).toEqual "Ps.140-Ps.151"
+		expect(p.parse("Ps 149:2-151:3").osis()).toEqual "Ps.149.2-Ps.151.3"
+		expect(p.parse("Ps 149-151").osis()).toEqual "Ps.149-Ps.151"
+		expect(p.parse("Ps 151-Proverbs 3").osis()).toEqual "Ps.151-Prov.3"
+		expect(p.parse("Ps 151:2-Proverbs 3:3").osis()).toEqual "Ps.151.2-Prov.3.3"
+		expect(p.parse("Ps 150:5-151:2").osis()).toEqual "Ps.150.5-Ps.151.2"
+		expect(p.parse("Ps 150:6-151:2").osis()).toEqual "Ps.150.6-Ps.151.2"
+		expect(p.parse("Ps 150-151").osis()).toEqual "Ps.150-Ps.151"
+		expect(p.parse("Ps 150, 151").osis()).toEqual "Ps.150-Ps.151"
+		expect(p.parse("Ps 149-Psalm 151").osis()).toEqual "Ps.149-Ps.151"
+		expect(p.parse("1 Maccabees 3 through Ps 151, 151:3").osis()).toEqual "1Macc.3,Ps.151,Ps.151.3"
+		expect(p.parse("Job 3-Ps 151").osis()).toEqual "Job.3-Ps.151"
+		expect(p.parse("Prov 3-Ps 151").osis()).toEqual "Prov.3,Ps.151"
+		expect(p.parse("Ps151.1").osis()).toEqual "Ps.151"
+		expect(p.parse("Ps151.1.3").osis()).toEqual "Ps.151.3"
+		expect(p.parse("Ps151.1.3-Ps151.1.4").osis()).toEqual "Ps.151.3-Ps.151.4"
+		expect(p.parse("Ps151.1.3-4").osis()).toEqual "Ps.151.3-Ps.151.4"
+		expect(p.parse("Ps151").osis()).toEqual "Ps.151"
+		expect(p.parse("Ps151.1, 3-4").osis()).toEqual "Ps.151,Ps.3-Ps.4"
+		expect(p.parse("Ps151, 2:3-4").osis()).toEqual "Ps.151,Ps.2.3-Ps.2.4"
+		expect(p.parse("Ps150. 6:3-4").osis()).toEqual "Ps.150.6,Ps.150.3-Ps.150.4"
+		expect(p.parse("Ps151. 6:3-4").osis()).toEqual "Ps.151.6,Ps.151.3-Ps.151.4"
+		expect(p.parse("Ps151.1 verse 3-4").osis()).toEqual "Ps.151.3-Ps.151.4"
+		expect(p.parse("Ps151.1:3-4").osis()).toEqual "Ps.151.3-Ps.151.4"
+		expect(p.parse("Ps151.1 title").osis()).toEqual "Ps.151.1"
+		expect(p.parse("Ps151.1 title-3").osis()).toEqual "Ps.151.1-Ps.151.3"
+		expect(p.parse("Ps151.1 2").osis()).toEqual "Ps.151.2"
+		expect(p.parse("Ps151.1 2-3").osis()).toEqual "Ps.151.2-Ps.151.3"
+		expect(p.parse("Ps150.2-Ps151.1.3").osis()).toEqual "Ps.150.2-Ps.151.3"
+		expect(p.parse("Ps150.2-Ps151.1").osis()).toEqual "Ps.150.2-Ps.151.7"
+		expect(p.parse("Ps150.2-Ps151").osis()).toEqual "Ps.150.2-Ps.151.7"
+		# It's case-sensitive.
+		expect(p.parse("ps151.1.3-ps151.1.4").osis()).toEqual "Ps.151.1,Ps.151.3,Ps.151.1,Ps.151.4"
+		expect(p.parse("ps151.1").osis()).toEqual "Ps.151.1"
+
+	it "should handle Psalm 151 with the Apocrypha disabled (the default)", ->
+		p.set_options osis_compaction_strategy: "bc", include_apocrypha: false
+
+		expect(p.parse("Ps 149, 151, 2").osis()).toEqual "Ps.149,Ps.2"
+		expect(p.parse("Ps 150, 151, 2").osis()).toEqual "Ps.150,Ps.2"
+		expect(p.parse("Ps 151").osis()).toEqual ""
+		expect(p.parse("Ps 151:2").osis()).toEqual ""
+		expect(p.parse("Ps 151 title").osis()).toEqual ""
+		expect(p.parse("151st Psalm").osis()).toEqual ""
+		expect(p.parse("151st Psalm, verse 2").osis()).toEqual ""
+		expect(p.parse("Ps 150 (151)").osis_and_indices()).toEqual [osis: "Ps.150", translations: [""], indices: [0, 6]]
+		expect(p.parse("Ps 119-150, 151, 2").osis()).toEqual "Ps.119-Ps.150,Ps.2"
+		expect(p.parse("Ps 151:2,3").osis()).toEqual ""
+		expect(p.parse("Ps 151:2,4").osis()).toEqual ""
+		expect(p.parse("Ps 151:2-4").osis()).toEqual ""
+		expect(p.parse("Ps 151, 2").osis_and_indices()).toEqual [osis: "Ps.2", translations: [""], indices: [0, 9]]
+		expect(p.parse("Ps 119, 151:2, 3").osis()).toEqual "Ps.119"
+		expect(p.parse("Ps 119, 151:2, 4").osis()).toEqual "Ps.119"
+		expect(p.parse("Ps 119, 151 title, 3").osis()).toEqual "Ps.119"
+		expect(p.parse("Job 3-Pr 3").osis()).toEqual "Job.3-Prov.3"
+		expect(p.parse("Ps 119-151 title").osis()).toEqual "Ps.119-Ps.150"
+		expect(p.parse("Ps 149ff").osis()).toEqual "Ps.149-Ps.150"
+		expect(p.parse("chapters 140 to 151 from Psalms").osis()).toEqual "Ps.140-Ps.150"
+		expect(p.parse("Ps 149:2-151:3").osis()).toEqual "Ps.149.2-Ps.150.6"
+		expect(p.parse("Ps 149-151").osis()).toEqual "Ps.149-Ps.150"
+		expect(p.parse("Ps 151-Proverbs 3").osis()).toEqual "Prov.3"
+		expect(p.parse("Ps 151:2-Proverbs 3:3").osis()).toEqual "Prov.3.3"
+		expect(p.parse("Ps 150:5-151:2").osis()).toEqual "Ps.150.5-Ps.150.6"
+		expect(p.parse("Ps 150:6-151:2").osis()).toEqual "Ps.150.6"
+		expect(p.parse("Ps 150-151").osis()).toEqual "Ps.150"
+		expect(p.parse("Ps 150, 151").osis()).toEqual "Ps.150"
+		expect(p.parse("Ps 149-Psalm 151").osis()).toEqual "Ps.149-Ps.150"
+		expect(p.parse("1 Maccabees 3 through Ps 151, 151:3").osis()).toEqual ""
+		expect(p.parse("Job 3-Ps 151").osis()).toEqual "Job.3-Ps.150"
+		expect(p.parse("Prov 3-Ps 151").osis()).toEqual "Prov.3"
+		expect(p.parse("Ps151.1").osis()).toEqual ""
+		expect(p.parse("Ps151.1.3").osis()).toEqual ""
+		expect(p.parse("Ps151.1.3-Ps151.1.4").osis()).toEqual ""
+		expect(p.parse("Ps151.1.3-4").osis()).toEqual ""
+		expect(p.parse("Ps151").osis()).toEqual ""
+		expect(p.parse("Ps151.1, 3-4").osis()).toEqual ""
+		expect(p.parse("Ps151, 2:3-4").osis()).toEqual "Ps.2.3-Ps.2.4"
+		expect(p.parse("Ps150. 6:3-4").osis()).toEqual "Ps.150.6,Ps.150.3-Ps.150.4"
+		# This is a little odd. The `6` binds to Ps151 rather than to the `3`.
+		expect(p.parse("Ps151. 6:3-4").osis()).toEqual ""
+		expect(p.parse("Ps151.1 verse 3-4").osis()).toEqual ""
+		expect(p.parse("Ps151.1:3-4").osis()).toEqual ""
+		expect(p.parse("Ps151.1 title").osis()).toEqual ""
+		expect(p.parse("Ps151.1 title-3").osis()).toEqual ""
+		expect(p.parse("Ps151.1 2").osis()).toEqual ""
+		expect(p.parse("Ps151.1 2-3").osis()).toEqual ""
+		expect(p.parse("Ps150.2-Ps151.1.3").osis()).toEqual "Ps.150.2-Ps.150.6"
+		expect(p.parse("Ps150.2-Ps151.1").osis()).toEqual "Ps.150.2-Ps.150.6"
+		expect(p.parse("Ps150.2-Ps151").osis()).toEqual "Ps.150.2-Ps.150.6"
+		# It's case-sensitive.
+		expect(p.parse("ps151.1.3-ps151.1.4").osis()).toEqual ""
+		expect(p.parse("ps151.1").osis()).toEqual ""
 
 	it "should handle books preceded by `\\w`", ->
 		expect(p.parse("1Matt2").osis_and_indices()).toEqual []
@@ -1363,7 +1557,7 @@ describe "Real-world parsing", ->
 		expect(p.parse("Romans 1:16. 1 luv").osis()).toEqual "Rom.1.16,Rom.1.1"
 		expect(p.parse("2nd Chapter of Acts - 8.25 USD").osis()).toEqual "Acts.2.1-Acts.8.25"
 		expect(p.parse("John<3").osis()).toEqual ""
-		expect(p.parse("Compare Is 59:16ff to Eph 6.").osis()).toEqual "Isa.59.16-Eph.6.24"
+		expect(p.parse("Compare Is 59:16ff to Eph 6.").osis()).toEqual "Isa.59.16-Isa.59.21,Eph.6.1-Eph.6.24"
 		expect(p.parse("Isaiah 54:10, 32:17. 55.12, 57:12").osis()).toEqual "Isa.54.10,Isa.32.17,Isa.55.12,Isa.57.12"
 		# Better: John.12.20-John.13.20,John.12.45
 		expect(p.parse("John 12:20-13:20 compare verses 12:45 And whoever").osis()).toEqual "John.12.20-John.13.20,John.13.12"
@@ -1421,8 +1615,14 @@ describe "Real-world parsing", ->
 		expect(p.parse("is 15-14-12-25-7-15-4").osis_and_indices()).toEqual [{osis:"Isa.15.7,Isa.15.4", indices:[12,21], translations:[""]}]
 		expect(p.parse("job is 2 f").osis_and_indices()).toEqual [{osis:"Isa.2.1-Isa.66.24", indices:[4,10], translations:[""]}]
 		expect(p.parse("Ps. 78:24").osis()).toEqual "Ps.78.24"
-		expect(p.parse("Father and the Son. (John 1 2:22)").osis_and_indices()).toEqual([{osis:"John.1.1-John.1.51,John.2.22", indices:[21,32], translations:[""]}])
+		expect(p.parse("Father and the Son. (John 1 2:22)").osis_and_indices()).toEqual [{osis:"John.1.1-John.1.51,John.2.22", indices:[21,32], translations:[""]}]
 		expect(p.parse("Readings from Ezekiel 25 and 26, Proverbs 23 and II Timothy 1 (KJV)").osis()).toEqual "Ezek.25.1-Ezek.26.21,Prov.23.1-Prov.23.35,2Tim.1.1-2Tim.1.18"
+		expect(p.parse("firsts 3.1").osis()).toEqual ""
+		expect(p.parse("seconds 3.1").osis()).toEqual ""
+		expect(p.parse("1s. 3.1").osis()).toEqual "1Sam.3.1"
+		expect(p.parse("2s. 3.1").osis()).toEqual "2Sam.3.1"
+		expect(p.parse("help (1 Corinthians 12:1ff). The ").osis_and_indices()).toEqual [{osis:"1Cor.12.1-1Cor.12.31", indices:[6,26], translations:[""]}]
+		expect(p.parse("PSALM 41 F-1-3 O LORD").osis_and_indices()).toEqual [{osis:"Ps.41.1-Ps.150.6,Ps.1.1-Ps.3.8", indices:[0,14], translations:[""]}]
 
 describe "Adding new translations", ->
 	p = {}

@@ -17,9 +17,9 @@ describe "Parsing", ->
 			expect(p.parse(bcv_range).osis()).toEqual bcv_range
 
 	it "should round-trip OSIS Apocrypha references", ->
-		p.set_options osis_compaction_strategy: "bc"
+		p.set_options osis_compaction_strategy: "bc", ps151_strategy: "b"
 		p.include_apocrypha true
-		books = ["Tob","Jdt","GkEsth","Wis","Sir","Bar","PrAzar","Sus","Bel","SgThree","EpJer","1Macc","2Macc","3Macc","4Macc","1Esd","2Esd","PrMan"]
+		books = ["Tob","Jdt","GkEsth","Wis","Sir","Bar","PrAzar","Sus","Bel","SgThree","EpJer","1Macc","2Macc","3Macc","4Macc","1Esd","2Esd","PrMan","Ps151"]
 		for book in books
 			bc = book + ".1"
 			bcv = bc + ".1"
@@ -27,6 +27,10 @@ describe "Parsing", ->
 			expect(p.parse(bc).osis()).toEqual bc
 			expect(p.parse(bcv).osis()).toEqual bcv
 			expect(p.parse(bcv_range).osis()).toEqual bcv_range
+		p.set_options ps151_strategy: "bc"
+		expect(p.parse("Ps151.1").osis()).toEqual "Ps.151"
+		expect(p.parse("Ps151.1.1").osis()).toEqual "Ps.151.1"
+		expect(p.parse("Ps151.1-Ps151.2").osis()).toEqual "Ps.151.1-Ps.151.2"
 		p.include_apocrypha false
 		for book in books
 			bc = book + ".1"

@@ -1,8 +1,9 @@
 start
-  = (bcv_hyphen_range / sequence / cb_range / range / ff / bcv_comma / bc_title / bcv / bcv_weak / bc / cv_psalm / bv / b_range / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / translation_sequence_enclosed / translation_sequence / sequence_sep / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v / word / word_parenthesis)+
+  = (bcv_hyphen_range / sequence / cb_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b_range / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / translation_sequence_enclosed / translation_sequence / sequence_sep / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v / word / word_parenthesis)+
 
+/* Multiples */
 sequence
-  = val_1:(cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / bcv / bcv_weak / bc / cv_psalm / bv / b_range / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal) val_2:(sequence_sep? sequence_post)+
+  = val_1:(cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b_range / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal) val_2:(sequence_sep? sequence_post)+
     { val_2.unshift([val_1]); return {"type": "sequence", "value": val_2, "indices": [offset, pos - 1]} }
 
 sequence_post_enclosed
@@ -10,54 +11,55 @@ sequence_post_enclosed
     { if (typeof(val_2) === "undefined") val_2 = []; val_2.unshift([val_1]); return {"type": "sequence_post_enclosed", "value": val_2, "indices": [offset, pos - 1]} }
 
 sequence_post
-  = sequence_post_enclosed / cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / bcv / bcv_weak / bc / cv_psalm / bv / b_range / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v
+  = sequence_post_enclosed / cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b_range / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v
 
-//cv_weak is after integer in val_2 to avoid cases like "Mark 16:1-6 10"
+// `cv_weak` is after `integer` in `val_2` to avoid cases like "Mark 16:1-6 10".
 range
-  = val_1:(ff / bcv_comma / bc_title / bcv / bcv_weak / bc / cv_psalm / bv / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v) range_sep val_2:(ff / bcv_comma / bc_title / bcv / bcv_weak / bc / cv_psalm / bv / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / v_letter / integer / cv_weak / c / v)
+  = val_1:(bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v) range_sep val_2:(ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / v_letter / integer / cv_weak / c / v)
     { return {"type": "range", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
-b_range
-  = val_1:(b) range_sep !(range / ff / bcv / bcv_weak / bc / bv) val_2:(b)
-    { return {"type": "b_range", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
-
-//a special case ("Matt 5-6-7") of a range that might otherwise get interpreted in a different way
-bcv_hyphen_range
-  = val_1:b ("-" / space)? val_2:c "-" val_3:v "-" val_4:v
-    { return {"type": "range", "value": [{"type": "bcv", "value": [{"type": "bc", "value": [val_1, val_2], "indices": [val_1.indices[0], val_2.indices[1]]}, val_3], "indices": [val_1.indices[0], val_3.indices[1]]}, val_4], "indices": [offset, pos - 1]} }
-
+/* Singles */
 b
   = "\x1f" val:any_integer ("/" [a-z])? "\x1f"
     { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} }
 
-//v_explicit is OK only if we're sure it's a cv--otherwise, treat it as a bv
+b_range
+  = val_1:(b) range_sep !(range / ff / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / bv) val_2:(b)
+    { return {"type": "b_range", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
+
+// `v_explicit` is OK only if we're sure it's a cv--otherwise, treat it as a bv.
 bc
   = val_1:b (v_explicit &(c cv_sep v) / cv_sep+ / cv_sep_weak+ / range_sep+ / sp) val_2:c
     { return {"type": "bc", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
-//used only in bcv_comma
+// Used only in bcv_comma.
 bc_comma
   = val_1:b sp "," sp val_2:c
     { return {"type": "bc", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 bc_title
-  = val_1:bc val_2:title
+  = val_1:(ps151_bc / bc) val_2:title
     { return {"type": "bc_title", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 bcv
-  = val_1:bc !("." v_explicit v) ((cv_sep / sequence_sep)? v_explicit / cv_sep) val_2:(v_letter / v)
+  = val_1:(ps151_bc / bc) !("." v_explicit v) ((cv_sep / sequence_sep)? v_explicit / cv_sep) val_2:(v_letter / v)
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 bcv_weak
-  = val_1:bc cv_sep_weak val_2:(v_letter / v) !(cv_sep v)
+  = val_1:(ps151_bc / bc) cv_sep_weak val_2:(v_letter / v) !(cv_sep v)
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
-//a special case that happens with surprising frequency ("Matt, 5, 6" = "Matt 5:6")
+// A special case that happens with surprising frequency ("Matt, 5, 6" = "Matt 5:6").
 bcv_comma
   = val_1:bc_comma sp "," sp val_2:(v_letter / v) !(cv_sep v)
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
-//a sequence_sep is only OK if followed by an explicit verse indicator
+// A special case ("Matt 5-6-7") of a range that might otherwise get interpreted in a different way.
+bcv_hyphen_range
+  = val_1:b ("-" / space)? val_2:c "-" val_3:v "-" val_4:v
+    { return {"type": "range", "value": [{"type": "bcv", "value": [{"type": "bc", "value": [val_1, val_2], "indices": [val_1.indices[0], val_2.indices[1]]}, val_3], "indices": [val_1.indices[0], val_3.indices[1]]}, val_4], "indices": [offset, pos - 1]} }
+
+// A sequence_sep is only OK if followed by an explicit verse indicator.
 bv
   = val_1:b (cv_sep+ / cv_sep_weak+ / range_sep+ / sequence_sep+ &v_explicit / sp) val_2:(v_letter / v)
     { return {"type": "bv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
@@ -83,7 +85,7 @@ cbv_ordinal
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 c_psalm
-  = "\x1f" val:integer "/p\x1f"
+  = "\x1f" val:any_integer "/p\x1f"
     { return {"type": "c_psalm", "value": val.value, "indices": [offset, pos - 1]} }
 
 cv_psalm
@@ -106,9 +108,27 @@ c
   = c_explicit? val:integer
     { return {"type": "c", "value": [val], "indices": [offset, pos - 1]} }
 
+// No `b` or `ps151`.
+ff
+  = val_1:(bcv / bcv_weak / bc / cv / cv_weak / integer / c / v) sp "ff" abbrev? ![a-z]
+    { return {"type": "ff", "value": [val_1], "indices": [offset, pos - 1]} }
+
 integer_title
   = val_1:integer (cv_sep / sequence_sep)? "title"
     { return {"type": "integer_title", "value": [val_1], "indices": [offset, pos - 1]} }
+
+// The `ps151` rules should round-trip `Ps151.1` and `Ps151.1.\d+` OSIS references. Without these rules, `Ps151` gets interpreted as a `bc`, throwing off future verses.
+ps151_b
+  = "\x1f" val:any_integer "/q\x1f"
+    { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} }
+
+ps151_bc
+  = val:ps151_b ".1" ![0-9]
+    { return {"type": "bc", "value": [val, {"type": "c", "value": [{"type": "integer", "value": 151, "indices": [pos - 2, pos - 1]}], "indices": [pos - 2, pos - 1]}], "indices": [offset, pos - 1]} }
+
+ps151_bcv
+  = val_1:ps151_bc "." val_2:integer
+    { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [offset, pos - 1]} }
 
 v_letter
   = v_explicit? val:integer sp !( "ff" ) [a-e] ![a-z]
@@ -118,18 +138,13 @@ v
   = v_explicit? val:integer
     { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} }
 
-// No "b"
-ff
-  = val_1:(bcv / bcv_weak / bc / cv / cv_weak / integer / c / v) sp "ff" abbrev? ![a-z]
-    { return {"type": "ff", "value": [val_1], "indices": [offset, pos - 1]} }
-
 /* BCV helpers */
 c_explicit
   = sp ( "פרקים"i / "פרק"i ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "verse" ) sp
+  = sp ( "verse" ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep

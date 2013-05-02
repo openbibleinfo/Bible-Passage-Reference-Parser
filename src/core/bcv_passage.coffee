@@ -76,8 +76,7 @@ class bcv_passage
 	bc: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
-		for type in ["b", "c", "v"]
-			delete context[type]
+		@reset_context context, ["b", "c", "v"]
 		c = @pluck("c", passage.value).value
 		alternates = []
 		for b in @books[@pluck("b", passage.value).value].parsed
@@ -91,7 +90,7 @@ class bcv_passage
 				obj.end.c = 1
 				context_key = "v"
 			obj.start[context_key] = c
-				# If it's zero, fix it before assigning the end.
+			# If it's zero, fix it before assigning the end.
 			[obj.start.c, obj.start.v] = @fix_start_zeroes obj.valid, obj.start.c, obj.start.v
 			obj.end[context_key] = obj.start[context_key]
 			if passage.passages.length is 0 and obj.valid.valid
@@ -102,8 +101,7 @@ class bcv_passage
 		passage.passages[0].alternates = alternates if alternates.length > 0
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
-		for type in ["b", "c", "v"]
-			context[type] = passage.passages[0].start[type] if passage.passages[0].start[type]?
+		@set_context_from_object context, ["b", "c", "v"], passage.passages[0].start
 		accum.push passage
 		[accum, context]
 
@@ -112,16 +110,17 @@ class bcv_passage
 		passage.start_context = bcv_utils.shallow_clone context
 		# First, check to see whether we're dealing with Psalms. If not, treat it as a straight `bc`.
 		[[bc], context] = @bc @pluck("bc", passage.value), [], context
-		if bc.passages[0].start.b isnt "Ps" and bc.passages[0].alternates?
-			for i in [0...bc.passages[0].alternates.length]
-				continue unless bc.passages[0].alternates[i].start.b is "Ps"
+		# We check the first two characters to handle both `Ps` and `Ps151`.
+		if bc.passages[0].start.b.substr(0, 2) isnt "Ps" and bc.passages[0].alternates?
+			for i in [0 ... bc.passages[0].alternates.length]
+				continue unless bc.passages[0].alternates[i].start.b.substr(0, 2) is "Ps"
 				# If Psalms is one of the alternates, promote it to the primary passage and discard the others--we know it's right.
 				bc.passages[0] = bc.passages[0].alternates[i]
 				break
-		if bc.passages[0].start.b isnt "Ps"
+		if bc.passages[0].start.b.substr(0, 2) isnt "Ps"
 			accum.push bc
 			return [accum, context]
-		# Overwrite all the other book possibilities; the presence of "title" indicates a Psalm.
+		# Overwrite all the other book possibilities; the presence of "title" indicates a Psalm. If the previous possibilities were `["Song", "Ps"]`, they're now just `["Ps"]`. Even if it's really `Ps151`, we want `Ps` here because other functions expect it.
 		@books[@pluck("b", bc.value).value].parsed = ["Ps"]
 		# Set the `indices` of the new `v` object to the indices of the `title`. We won't actually use these indices anywhere.
 		title = @pluck "title", passage.value
@@ -136,8 +135,7 @@ class bcv_passage
 	bcv: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
-		for type in ["b", "c", "v"]
-			delete context[type]
+		@reset_context context, ["b", "c", "v"]
 		bc = @pluck "bc", passage.value
 		c = @pluck("c", bc.value).value
 		v = @pluck("v", passage.value).value
@@ -156,9 +154,7 @@ class bcv_passage
 		passage.passages[0].alternates = alternates if alternates.length > 0
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
-		# Set all the available context keys.
-		for type in ["b", "c", "v"]
-			context[type] = passage.passages[0].start[type] if passage.passages[0].start[type]?
+		@set_context_from_object context, ["b", "c", "v"], passage.passages[0].start
 		accum.push passage
 		[accum, context]
 
@@ -194,7 +190,7 @@ class bcv_passage
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		accum.push passage
 		context.c = c
-		delete context.v
+		@reset_context context, ["v"]
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
 		[accum, context]
 
@@ -204,7 +200,7 @@ class bcv_passage
 		passage.original_value = passage.value
 		passage.type = "bc"
 		# This string always starts with the chapter number, followed by other letters.
-		c = @books[passage.value].value.match(/^\d+/)[0]
+		c = parseInt @books[passage.value].value.match(/^\d+/)[0], 10
 		passage.value = [
 			{type: "b", value: passage.original_value, indices: passage.indices}
 			{type: "c", value: [{type: "integer", value: c, indices: passage.indices}], indices: passage.indices}
@@ -342,7 +338,7 @@ class bcv_passage
 		[accum, context]
 
 	# ## Ranges
-	# Handle any type of start and end range.
+	# Handle any type of start and end range. It doesn't directly return multiple passages, but if there's an error parsing the range, we may convert it into a sequence.
 	range: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		[start, end] = passage.value
@@ -364,39 +360,13 @@ class bcv_passage
 		end_obj.c = 0 if end.passages[0].valid.messages.start_chapter_is_zero
 		end_obj.v = 0 if end.passages[0].valid.messages.start_verse_is_zero
 		valid = @validate_ref passage.start_context.translations, start_obj, end_obj
+		# If it's valid, sometimes we want to return the value from `@range_handle_valid_end`, and sometimes not; it depends on what kinds of corrections we need to make.
 		if valid.valid
-			# If Heb 13-15, treat it as Heb 13:15. This may be too clever for its own good.
-			if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v")
-				temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
-				temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
-				return @range_change_integer_end passage, accum if temp_valid.valid
-			# If "John 10:22-42 vs 27", we're possibly misreading the "42 vs 27" as a `cv`.
-			if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and start_obj.v? and end.type is "cv"
-				# Make sure that what we're changing it to actually exists (that the chapter number can become the verse number, and the verse number is also valid in the current chapter).
-				temp_valid = @validate_ref passage.start_context.translations, {b:end_obj.b, c: start_obj.c, v: end_obj.c}
-				temp_valid = @validate_ref passage.start_context.translations, {b:end_obj.b, c: start_obj.c, v: end_obj.v} if temp_valid.valid
-				return @range_change_cv_end passage, accum if temp_valid.valid
-			# Otherwise, snap start/end chapters/verses if they're too high or low.
-			@range_validate valid, start_obj, end_obj, passage
+			[return_now, return_value] = @range_handle_valid valid, passage, start, start_obj, end, end_obj, accum
+			return return_value if return_now
+		# If it's invalid, always return the value.
 		else
-			# Is it not valid because the end is before the start and the `end` is an `integer` (Matt 15-6) or a `cv` (Matt 15-6:2) (since anything else resets our expectations)?
-			#
-			# Only go with a `cv` if it's the chapter that's too low (to avoid doing weird things with 31:30-31:1).
-			if ((valid.messages.end_chapter_before_start or valid.messages.end_verse_before_start) and (end.type is "integer" or end.type is "v") or (valid.messages.end_chapter_before_start and end.type is "cv"))
-				new_end = @range_check_new_end passage.start_context.translations, start_obj, end_obj, valid
-				# If that's the case, then reparse the current passage object after correcting the end value, which is an integer.
-				return @range_change_end passage, accum, new_end if new_end > 0
-			# If someone enters "Jer 33-11", they probably mean "Jer.33.11"; as above, this may be too clever for its own good.
-			if @options.end_range_digits_strategy is "verse" and start_obj.v is undefined and (end.type is "integer" or end.type is "v")
-				temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
-				temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
-				return @range_change_integer_end passage, accum if temp_valid.valid
-			# Otherwise, if we couldn't fix the range, then treat the range as a sequence.
-			[passage.original_type, passage.type] = [passage.type, "sequence"]
-			# Construct the sequence value in the format expected.
-			[passage.original_value, passage.value] = [[start, end], [[start], [end]]]
-			# Don't use the `context` object because we've changed it in this function.
-			return @handle_obj passage, accum, passage.start_context
+			return @range_handle_invalid valid, passage, start, start_obj, end, end_obj, accum
 		# We've already reset the indices to match the indices of the contained objects.
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
 		passage.passages = [start: start_obj, end: end_obj, valid: valid]
@@ -471,13 +441,6 @@ class bcv_passage
 		[start_obj.c, start_obj.v] = @fix_start_zeroes valid, start_obj.c, start_obj.v
 		true
 
-	# If the start chapter or verse is 0, convert it to a 1. `valid.valid` is `false` if the `zero_*_strategy` is `error`.
-	fix_start_zeroes: (valid, c, v) ->
-		if valid.valid
-			c = valid.messages.start_chapter_is_zero if valid.messages.start_chapter_is_zero
-			v = valid.messages.start_verse_is_zero if valid.messages.start_verse_is_zero and @options.zero_verse_strategy isnt "allow"
-		[c, v]
-
 	# If a new end chapter/verse in a range may be necessary, calculate it.
 	range_check_new_end: (translations, start_obj, end_obj, valid) ->
 		new_end = 0
@@ -507,6 +470,44 @@ class bcv_passage
 			# Add 100 to the original end value: 100-12 = 100 through 100 + 12.
 			new_end = end_obj[key] + 100
 		new_end
+
+	# The range looks valid, but we should check for some special cases.
+	range_handle_valid: (valid, passage, start, start_obj, end, end_obj, accum) ->
+		# If Heb 13-15, treat it as Heb 13:15. This may be too clever for its own good.
+		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v")
+			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
+			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
+			return [true, @range_change_integer_end(passage, accum)] if temp_valid.valid
+		# If "John 10:22-42 vs 27", we're possibly misreading the "42 vs 27" as a `cv`.
+		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and start_obj.v? and end.type is "cv"
+			# Make sure that what we're changing it to actually exists (that the chapter number can become the verse number, and the verse number is also valid in the current chapter).
+			temp_valid = @validate_ref passage.start_context.translations, {b: end_obj.b, c: start_obj.c, v: end_obj.c}
+			temp_valid = @validate_ref passage.start_context.translations, {b: end_obj.b, c: start_obj.c, v: end_obj.v} if temp_valid.valid
+			return [true, @range_change_cv_end(passage, accum)] if temp_valid.valid
+		# Otherwise, snap start/end chapters/verses if they're too high or low.
+		@range_validate valid, start_obj, end_obj, passage
+		[false, null]
+
+	# The range doesn't look valid, but maybe we can fix it. If not, convert it to a sequence.
+	range_handle_invalid: (valid, passage, start, start_obj, end, end_obj, accum) ->
+		# Is it not valid because the end is before the start and the `end` is an `integer` (Matt 15-6) or a `cv` (Matt 15-6:2) (since anything else resets our expectations)?
+		#
+		# Only go with a `cv` if it's the chapter that's too low (to avoid doing weird things with 31:30-31:1).
+		if ((valid.messages.end_chapter_before_start or valid.messages.end_verse_before_start) and (end.type is "integer" or end.type is "v") or (valid.messages.end_chapter_before_start and end.type is "cv"))
+			new_end = @range_check_new_end passage.start_context.translations, start_obj, end_obj, valid
+			# If that's the case, then reparse the current passage object after correcting the end value, which is an integer.
+			return @range_change_end passage, accum, new_end if new_end > 0
+		# If someone enters "Jer 33-11", they probably mean "Jer.33.11"; as above, this may be too clever for its own good.
+		if @options.end_range_digits_strategy is "verse" and start_obj.v is undefined and (end.type is "integer" or end.type is "v")
+			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
+			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
+			return @range_change_integer_end passage, accum if temp_valid.valid
+		# Otherwise, if we couldn't fix the range, then treat the range as a sequence.
+		[passage.original_type, passage.type] = [passage.type, "sequence"]
+		# Construct the sequence value in the format expected.
+		[passage.original_value, passage.value] = [[start, end], [[start], [end]]]
+		# Don't use the `context` object because we changed it in `@range`.
+		return @handle_obj passage, accum, passage.start_context
 
 	# ## Translations
 	# Even a single translation ("NIV") appears as part of a translation sequence. Here we handle the sequence and apply the translations to any previous passages lacking an explicit translation: in "Matt 1, 5 ESV," both `Matt 1` and `5` get applied, but in "Matt 1 NIV, 5 ESV," NIV only applies to Matt 1, and ESV only applies to Matt 5.
@@ -555,7 +556,7 @@ class bcv_passage
 		# Include the `translation_sequence` object so that we can handle any later `translation_sequence` objects without overlapping this one.
 		accum.push passage
 		# Don't carry over the translations into any later references; translations only apply backwards.
-		delete context.translations
+		@reset_context context, ["translations"]
 		[accum, context]
 
 	# ## Utilities
@@ -566,6 +567,23 @@ class bcv_passage
 			return @pluck("integer", passage.value) if type is "c" or type is "v"
 			return passage
 		null
+
+	set_context_from_object: (context, keys, obj) ->
+		# Set all the available context keys.
+		for type in keys
+			continue unless obj[type]?
+			context[type] = obj[type]
+
+	reset_context: (context, keys) ->
+		for type in keys
+			delete context[type]
+
+	# If the start chapter or verse is 0, convert it to a 1. `valid.valid` is `false` if the `zero_*_strategy` is `error`.
+	fix_start_zeroes: (valid, c, v) ->
+		if valid.valid
+			c = valid.messages.start_chapter_is_zero if valid.messages.start_chapter_is_zero
+			v = valid.messages.start_verse_is_zero if valid.messages.start_verse_is_zero and @options.zero_verse_strategy isnt "allow"
+		[c, v]
 
 	# Given a string and initial index, calculate indices for parts of the string. For example, a string that starts at index 10 might have a book that pushes it to index 12 starting at its third character.
 	calculate_indices: (match, adjust) ->

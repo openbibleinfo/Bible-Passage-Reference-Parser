@@ -42,15 +42,15 @@ var grammar = (function(){
         "sequence_post_enclosed": parse_sequence_post_enclosed,
         "sequence_post": parse_sequence_post,
         "range": parse_range,
-        "b_range": parse_b_range,
-        "bcv_hyphen_range": parse_bcv_hyphen_range,
         "b": parse_b,
+        "b_range": parse_b_range,
         "bc": parse_bc,
         "bc_comma": parse_bc_comma,
         "bc_title": parse_bc_title,
         "bcv": parse_bcv,
         "bcv_weak": parse_bcv_weak,
         "bcv_comma": parse_bcv_comma,
+        "bcv_hyphen_range": parse_bcv_hyphen_range,
         "bv": parse_bv,
         "cb": parse_cb,
         "cb_range": parse_cb_range,
@@ -63,10 +63,13 @@ var grammar = (function(){
         "cv": parse_cv,
         "cv_weak": parse_cv_weak,
         "c": parse_c,
+        "ff": parse_ff,
         "integer_title": parse_integer_title,
+        "ps151_b": parse_ps151_b,
+        "ps151_bc": parse_ps151_bc,
+        "ps151_bcv": parse_ps151_bcv,
         "v_letter": parse_v_letter,
         "v": parse_v,
-        "ff": parse_ff,
         "c_explicit": parse_c_explicit,
         "v_explicit": parse_v_explicit,
         "cv_sep": parse_cv_sep,
@@ -157,107 +160,13 @@ var grammar = (function(){
                   if (result1 === null) {
                     result1 = parse_bc_title();
                     if (result1 === null) {
-                      result1 = parse_bcv();
+                      result1 = parse_ps151_bcv();
                       if (result1 === null) {
-                        result1 = parse_bcv_weak();
+                        result1 = parse_bcv();
                         if (result1 === null) {
-                          result1 = parse_bc();
+                          result1 = parse_bcv_weak();
                           if (result1 === null) {
-                            result1 = parse_cv_psalm();
-                            if (result1 === null) {
-                              result1 = parse_bv();
-                              if (result1 === null) {
-                                result1 = parse_b_range();
-                                if (result1 === null) {
-                                  result1 = parse_c_psalm();
-                                  if (result1 === null) {
-                                    result1 = parse_b();
-                                    if (result1 === null) {
-                                      result1 = parse_cbv();
-                                      if (result1 === null) {
-                                        result1 = parse_cbv_ordinal();
-                                        if (result1 === null) {
-                                          result1 = parse_cb();
-                                          if (result1 === null) {
-                                            result1 = parse_cb_ordinal();
-                                            if (result1 === null) {
-                                              result1 = parse_translation_sequence_enclosed();
-                                              if (result1 === null) {
-                                                result1 = parse_translation_sequence();
-                                                if (result1 === null) {
-                                                  result1 = parse_sequence_sep();
-                                                  if (result1 === null) {
-                                                    result1 = parse_c_title();
-                                                    if (result1 === null) {
-                                                      result1 = parse_integer_title();
-                                                      if (result1 === null) {
-                                                        result1 = parse_cv();
-                                                        if (result1 === null) {
-                                                          result1 = parse_cv_weak();
-                                                          if (result1 === null) {
-                                                            result1 = parse_v_letter();
-                                                            if (result1 === null) {
-                                                              result1 = parse_integer();
-                                                              if (result1 === null) {
-                                                                result1 = parse_c();
-                                                                if (result1 === null) {
-                                                                  result1 = parse_v();
-                                                                  if (result1 === null) {
-                                                                    result1 = parse_word();
-                                                                    if (result1 === null) {
-                                                                      result1 = parse_word_parenthesis();
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (result1 !== null) {
-          result0 = [];
-          while (result1 !== null) {
-            result0.push(result1);
-            result1 = parse_bcv_hyphen_range();
-            if (result1 === null) {
-              result1 = parse_sequence();
-              if (result1 === null) {
-                result1 = parse_cb_range();
-                if (result1 === null) {
-                  result1 = parse_range();
-                  if (result1 === null) {
-                    result1 = parse_ff();
-                    if (result1 === null) {
-                      result1 = parse_bcv_comma();
-                      if (result1 === null) {
-                        result1 = parse_bc_title();
-                        if (result1 === null) {
-                          result1 = parse_bcv();
-                          if (result1 === null) {
-                            result1 = parse_bcv_weak();
+                            result1 = parse_ps151_bc();
                             if (result1 === null) {
                               result1 = parse_bc();
                               if (result1 === null) {
@@ -336,6 +245,112 @@ var grammar = (function(){
               }
             }
           }
+        }
+        if (result1 !== null) {
+          result0 = [];
+          while (result1 !== null) {
+            result0.push(result1);
+            result1 = parse_bcv_hyphen_range();
+            if (result1 === null) {
+              result1 = parse_sequence();
+              if (result1 === null) {
+                result1 = parse_cb_range();
+                if (result1 === null) {
+                  result1 = parse_range();
+                  if (result1 === null) {
+                    result1 = parse_ff();
+                    if (result1 === null) {
+                      result1 = parse_bcv_comma();
+                      if (result1 === null) {
+                        result1 = parse_bc_title();
+                        if (result1 === null) {
+                          result1 = parse_ps151_bcv();
+                          if (result1 === null) {
+                            result1 = parse_bcv();
+                            if (result1 === null) {
+                              result1 = parse_bcv_weak();
+                              if (result1 === null) {
+                                result1 = parse_ps151_bc();
+                                if (result1 === null) {
+                                  result1 = parse_bc();
+                                  if (result1 === null) {
+                                    result1 = parse_cv_psalm();
+                                    if (result1 === null) {
+                                      result1 = parse_bv();
+                                      if (result1 === null) {
+                                        result1 = parse_b_range();
+                                        if (result1 === null) {
+                                          result1 = parse_c_psalm();
+                                          if (result1 === null) {
+                                            result1 = parse_b();
+                                            if (result1 === null) {
+                                              result1 = parse_cbv();
+                                              if (result1 === null) {
+                                                result1 = parse_cbv_ordinal();
+                                                if (result1 === null) {
+                                                  result1 = parse_cb();
+                                                  if (result1 === null) {
+                                                    result1 = parse_cb_ordinal();
+                                                    if (result1 === null) {
+                                                      result1 = parse_translation_sequence_enclosed();
+                                                      if (result1 === null) {
+                                                        result1 = parse_translation_sequence();
+                                                        if (result1 === null) {
+                                                          result1 = parse_sequence_sep();
+                                                          if (result1 === null) {
+                                                            result1 = parse_c_title();
+                                                            if (result1 === null) {
+                                                              result1 = parse_integer_title();
+                                                              if (result1 === null) {
+                                                                result1 = parse_cv();
+                                                                if (result1 === null) {
+                                                                  result1 = parse_cv_weak();
+                                                                  if (result1 === null) {
+                                                                    result1 = parse_v_letter();
+                                                                    if (result1 === null) {
+                                                                      result1 = parse_integer();
+                                                                      if (result1 === null) {
+                                                                        result1 = parse_c();
+                                                                        if (result1 === null) {
+                                                                          result1 = parse_v();
+                                                                          if (result1 === null) {
+                                                                            result1 = parse_word();
+                                                                            if (result1 === null) {
+                                                                              result1 = parse_word_parenthesis();
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         } else {
           result0 = null;
         }
@@ -360,29 +375,35 @@ var grammar = (function(){
                 if (result0 === null) {
                   result0 = parse_bc_title();
                   if (result0 === null) {
-                    result0 = parse_bcv();
+                    result0 = parse_ps151_bcv();
                     if (result0 === null) {
-                      result0 = parse_bcv_weak();
+                      result0 = parse_bcv();
                       if (result0 === null) {
-                        result0 = parse_bc();
+                        result0 = parse_bcv_weak();
                         if (result0 === null) {
-                          result0 = parse_cv_psalm();
+                          result0 = parse_ps151_bc();
                           if (result0 === null) {
-                            result0 = parse_bv();
+                            result0 = parse_bc();
                             if (result0 === null) {
-                              result0 = parse_b_range();
+                              result0 = parse_cv_psalm();
                               if (result0 === null) {
-                                result0 = parse_c_psalm();
+                                result0 = parse_bv();
                                 if (result0 === null) {
-                                  result0 = parse_b();
+                                  result0 = parse_b_range();
                                   if (result0 === null) {
-                                    result0 = parse_cbv();
+                                    result0 = parse_c_psalm();
                                     if (result0 === null) {
-                                      result0 = parse_cbv_ordinal();
+                                      result0 = parse_b();
                                       if (result0 === null) {
-                                        result0 = parse_cb();
+                                        result0 = parse_cbv();
                                         if (result0 === null) {
-                                          result0 = parse_cb_ordinal();
+                                          result0 = parse_cbv_ordinal();
+                                          if (result0 === null) {
+                                            result0 = parse_cb();
+                                            if (result0 === null) {
+                                              result0 = parse_cb_ordinal();
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -583,45 +604,51 @@ var grammar = (function(){
                   if (result0 === null) {
                     result0 = parse_bc_title();
                     if (result0 === null) {
-                      result0 = parse_bcv();
+                      result0 = parse_ps151_bcv();
                       if (result0 === null) {
-                        result0 = parse_bcv_weak();
+                        result0 = parse_bcv();
                         if (result0 === null) {
-                          result0 = parse_bc();
+                          result0 = parse_bcv_weak();
                           if (result0 === null) {
-                            result0 = parse_cv_psalm();
+                            result0 = parse_ps151_bc();
                             if (result0 === null) {
-                              result0 = parse_bv();
+                              result0 = parse_bc();
                               if (result0 === null) {
-                                result0 = parse_b_range();
+                                result0 = parse_cv_psalm();
                                 if (result0 === null) {
-                                  result0 = parse_c_psalm();
+                                  result0 = parse_bv();
                                   if (result0 === null) {
-                                    result0 = parse_b();
+                                    result0 = parse_b_range();
                                     if (result0 === null) {
-                                      result0 = parse_cbv();
+                                      result0 = parse_c_psalm();
                                       if (result0 === null) {
-                                        result0 = parse_cbv_ordinal();
+                                        result0 = parse_b();
                                         if (result0 === null) {
-                                          result0 = parse_cb();
+                                          result0 = parse_cbv();
                                           if (result0 === null) {
-                                            result0 = parse_cb_ordinal();
+                                            result0 = parse_cbv_ordinal();
                                             if (result0 === null) {
-                                              result0 = parse_c_title();
+                                              result0 = parse_cb();
                                               if (result0 === null) {
-                                                result0 = parse_integer_title();
+                                                result0 = parse_cb_ordinal();
                                                 if (result0 === null) {
-                                                  result0 = parse_cv();
+                                                  result0 = parse_c_title();
                                                   if (result0 === null) {
-                                                    result0 = parse_cv_weak();
+                                                    result0 = parse_integer_title();
                                                     if (result0 === null) {
-                                                      result0 = parse_v_letter();
+                                                      result0 = parse_cv();
                                                       if (result0 === null) {
-                                                        result0 = parse_integer();
+                                                        result0 = parse_cv_weak();
                                                         if (result0 === null) {
-                                                          result0 = parse_c();
+                                                          result0 = parse_v_letter();
                                                           if (result0 === null) {
-                                                            result0 = parse_v();
+                                                            result0 = parse_integer();
+                                                            if (result0 === null) {
+                                                              result0 = parse_c();
+                                                              if (result0 === null) {
+                                                                result0 = parse_v();
+                                                              }
+                                                            }
                                                           }
                                                         }
                                                       }
@@ -657,47 +684,50 @@ var grammar = (function(){
         
         pos0 = pos;
         pos1 = pos;
-        result0 = parse_ff();
+        result0 = parse_bcv_comma();
         if (result0 === null) {
-          result0 = parse_bcv_comma();
+          result0 = parse_bc_title();
           if (result0 === null) {
-            result0 = parse_bc_title();
+            result0 = parse_ps151_bcv();
             if (result0 === null) {
               result0 = parse_bcv();
               if (result0 === null) {
                 result0 = parse_bcv_weak();
                 if (result0 === null) {
-                  result0 = parse_bc();
+                  result0 = parse_ps151_bc();
                   if (result0 === null) {
-                    result0 = parse_cv_psalm();
+                    result0 = parse_bc();
                     if (result0 === null) {
-                      result0 = parse_bv();
+                      result0 = parse_cv_psalm();
                       if (result0 === null) {
-                        result0 = parse_cbv();
+                        result0 = parse_bv();
                         if (result0 === null) {
-                          result0 = parse_cbv_ordinal();
+                          result0 = parse_cbv();
                           if (result0 === null) {
-                            result0 = parse_c_psalm();
+                            result0 = parse_cbv_ordinal();
                             if (result0 === null) {
-                              result0 = parse_cb();
+                              result0 = parse_c_psalm();
                               if (result0 === null) {
-                                result0 = parse_cb_ordinal();
+                                result0 = parse_cb();
                                 if (result0 === null) {
-                                  result0 = parse_c_title();
+                                  result0 = parse_cb_ordinal();
                                   if (result0 === null) {
-                                    result0 = parse_integer_title();
+                                    result0 = parse_c_title();
                                     if (result0 === null) {
-                                      result0 = parse_cv();
+                                      result0 = parse_integer_title();
                                       if (result0 === null) {
-                                        result0 = parse_cv_weak();
+                                        result0 = parse_cv();
                                         if (result0 === null) {
-                                          result0 = parse_v_letter();
+                                          result0 = parse_cv_weak();
                                           if (result0 === null) {
-                                            result0 = parse_integer();
+                                            result0 = parse_v_letter();
                                             if (result0 === null) {
-                                              result0 = parse_c();
+                                              result0 = parse_integer();
                                               if (result0 === null) {
-                                                result0 = parse_v();
+                                                result0 = parse_c();
+                                                if (result0 === null) {
+                                                  result0 = parse_v();
+                                                }
                                               }
                                             }
                                           }
@@ -727,41 +757,47 @@ var grammar = (function(){
               if (result2 === null) {
                 result2 = parse_bc_title();
                 if (result2 === null) {
-                  result2 = parse_bcv();
+                  result2 = parse_ps151_bcv();
                   if (result2 === null) {
-                    result2 = parse_bcv_weak();
+                    result2 = parse_bcv();
                     if (result2 === null) {
-                      result2 = parse_bc();
+                      result2 = parse_bcv_weak();
                       if (result2 === null) {
-                        result2 = parse_cv_psalm();
+                        result2 = parse_ps151_bc();
                         if (result2 === null) {
-                          result2 = parse_bv();
+                          result2 = parse_bc();
                           if (result2 === null) {
-                            result2 = parse_cbv();
+                            result2 = parse_cv_psalm();
                             if (result2 === null) {
-                              result2 = parse_cbv_ordinal();
+                              result2 = parse_bv();
                               if (result2 === null) {
-                                result2 = parse_c_psalm();
+                                result2 = parse_cbv();
                                 if (result2 === null) {
-                                  result2 = parse_cb();
+                                  result2 = parse_cbv_ordinal();
                                   if (result2 === null) {
-                                    result2 = parse_cb_ordinal();
+                                    result2 = parse_c_psalm();
                                     if (result2 === null) {
-                                      result2 = parse_c_title();
+                                      result2 = parse_cb();
                                       if (result2 === null) {
-                                        result2 = parse_integer_title();
+                                        result2 = parse_cb_ordinal();
                                         if (result2 === null) {
-                                          result2 = parse_cv();
+                                          result2 = parse_c_title();
                                           if (result2 === null) {
-                                            result2 = parse_v_letter();
+                                            result2 = parse_integer_title();
                                             if (result2 === null) {
-                                              result2 = parse_integer();
+                                              result2 = parse_cv();
                                               if (result2 === null) {
-                                                result2 = parse_cv_weak();
+                                                result2 = parse_v_letter();
                                                 if (result2 === null) {
-                                                  result2 = parse_c();
+                                                  result2 = parse_integer();
                                                   if (result2 === null) {
-                                                    result2 = parse_v();
+                                                    result2 = parse_cv_weak();
+                                                    if (result2 === null) {
+                                                      result2 = parse_c();
+                                                      if (result2 === null) {
+                                                        result2 = parse_v();
+                                                      }
+                                                    }
                                                   }
                                                 }
                                               }
@@ -798,156 +834,6 @@ var grammar = (function(){
         }
         if (result0 !== null) {
           result0 = (function(offset, val_1, val_2) { return {"type": "range", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_b_range() {
-        var result0, result1, result2, result3;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          result1 = parse_range_sep();
-          if (result1 !== null) {
-            pos2 = pos;
-            reportFailures++;
-            result2 = parse_range();
-            if (result2 === null) {
-              result2 = parse_ff();
-              if (result2 === null) {
-                result2 = parse_bcv();
-                if (result2 === null) {
-                  result2 = parse_bcv_weak();
-                  if (result2 === null) {
-                    result2 = parse_bc();
-                    if (result2 === null) {
-                      result2 = parse_bv();
-                    }
-                  }
-                }
-              }
-            }
-            reportFailures--;
-            if (result2 === null) {
-              result2 = "";
-            } else {
-              result2 = null;
-              pos = pos2;
-            }
-            if (result2 !== null) {
-              result3 = parse_b();
-              if (result3 !== null) {
-                result0 = [result0, result1, result2, result3];
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2) { return {"type": "b_range", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_bcv_hyphen_range() {
-        var result0, result1, result2, result3, result4, result5, result6;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_b();
-        if (result0 !== null) {
-          if (input.charCodeAt(pos) === 45) {
-            result1 = "-";
-            pos++;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"-\"");
-            }
-          }
-          if (result1 === null) {
-            result1 = parse_space();
-          }
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            result2 = parse_c();
-            if (result2 !== null) {
-              if (input.charCodeAt(pos) === 45) {
-                result3 = "-";
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("\"-\"");
-                }
-              }
-              if (result3 !== null) {
-                result4 = parse_v();
-                if (result4 !== null) {
-                  if (input.charCodeAt(pos) === 45) {
-                    result5 = "-";
-                    pos++;
-                  } else {
-                    result5 = null;
-                    if (reportFailures === 0) {
-                      matchFailed("\"-\"");
-                    }
-                  }
-                  if (result5 !== null) {
-                    result6 = parse_v();
-                    if (result6 !== null) {
-                      result0 = [result0, result1, result2, result3, result4, result5, result6];
-                    } else {
-                      result0 = null;
-                      pos = pos1;
-                    }
-                  } else {
-                    result0 = null;
-                    pos = pos1;
-                  }
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1, val_2, val_3, val_4) { return {"type": "range", "value": [{"type": "bcv", "value": [{"type": "bc", "value": [val_1, val_2], "indices": [val_1.indices[0], val_2.indices[1]]}, val_3], "indices": [val_1.indices[0], val_3.indices[1]]}, val_4], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2], result0[4], result0[6]);
         }
         if (result0 === null) {
           pos = pos0;
@@ -1034,6 +920,76 @@ var grammar = (function(){
         }
         if (result0 !== null) {
           result0 = (function(offset, val) { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} })(pos0, result0[1]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_b_range() {
+        var result0, result1, result2, result3;
+        var pos0, pos1, pos2;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_b();
+        if (result0 !== null) {
+          result1 = parse_range_sep();
+          if (result1 !== null) {
+            pos2 = pos;
+            reportFailures++;
+            result2 = parse_range();
+            if (result2 === null) {
+              result2 = parse_ff();
+              if (result2 === null) {
+                result2 = parse_ps151_bcv();
+                if (result2 === null) {
+                  result2 = parse_bcv();
+                  if (result2 === null) {
+                    result2 = parse_bcv_weak();
+                    if (result2 === null) {
+                      result2 = parse_ps151_bc();
+                      if (result2 === null) {
+                        result2 = parse_bc();
+                        if (result2 === null) {
+                          result2 = parse_bv();
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            reportFailures--;
+            if (result2 === null) {
+              result2 = "";
+            } else {
+              result2 = null;
+              pos = pos2;
+            }
+            if (result2 !== null) {
+              result3 = parse_b();
+              if (result3 !== null) {
+                result0 = [result0, result1, result2, result3];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val_1, val_2) { return {"type": "b_range", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[3]);
         }
         if (result0 === null) {
           pos = pos0;
@@ -1215,7 +1171,10 @@ var grammar = (function(){
         
         pos0 = pos;
         pos1 = pos;
-        result0 = parse_bc();
+        result0 = parse_ps151_bc();
+        if (result0 === null) {
+          result0 = parse_bc();
+        }
         if (result0 !== null) {
           result1 = parse_title();
           if (result1 !== null) {
@@ -1243,7 +1202,10 @@ var grammar = (function(){
         
         pos0 = pos;
         pos1 = pos;
-        result0 = parse_bc();
+        result0 = parse_ps151_bc();
+        if (result0 === null) {
+          result0 = parse_bc();
+        }
         if (result0 !== null) {
           pos2 = pos;
           reportFailures++;
@@ -1342,7 +1304,10 @@ var grammar = (function(){
         
         pos0 = pos;
         pos1 = pos;
-        result0 = parse_bc();
+        result0 = parse_ps151_bc();
+        if (result0 === null) {
+          result0 = parse_bc();
+        }
         if (result0 !== null) {
           result1 = parse_cv_sep_weak();
           if (result1 !== null) {
@@ -1479,6 +1444,92 @@ var grammar = (function(){
         }
         if (result0 !== null) {
           result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[4]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_bcv_hyphen_range() {
+        var result0, result1, result2, result3, result4, result5, result6;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_b();
+        if (result0 !== null) {
+          if (input.charCodeAt(pos) === 45) {
+            result1 = "-";
+            pos++;
+          } else {
+            result1 = null;
+            if (reportFailures === 0) {
+              matchFailed("\"-\"");
+            }
+          }
+          if (result1 === null) {
+            result1 = parse_space();
+          }
+          result1 = result1 !== null ? result1 : "";
+          if (result1 !== null) {
+            result2 = parse_c();
+            if (result2 !== null) {
+              if (input.charCodeAt(pos) === 45) {
+                result3 = "-";
+                pos++;
+              } else {
+                result3 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\"-\"");
+                }
+              }
+              if (result3 !== null) {
+                result4 = parse_v();
+                if (result4 !== null) {
+                  if (input.charCodeAt(pos) === 45) {
+                    result5 = "-";
+                    pos++;
+                  } else {
+                    result5 = null;
+                    if (reportFailures === 0) {
+                      matchFailed("\"-\"");
+                    }
+                  }
+                  if (result5 !== null) {
+                    result6 = parse_v();
+                    if (result6 !== null) {
+                      result0 = [result0, result1, result2, result3, result4, result5, result6];
+                    } else {
+                      result0 = null;
+                      pos = pos1;
+                    }
+                  } else {
+                    result0 = null;
+                    pos = pos1;
+                  }
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val_1, val_2, val_3, val_4) { return {"type": "range", "value": [{"type": "bcv", "value": [{"type": "bc", "value": [val_1, val_2], "indices": [val_1.indices[0], val_2.indices[1]]}, val_3], "indices": [val_1.indices[0], val_3.indices[1]]}, val_4], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2], result0[4], result0[6]);
         }
         if (result0 === null) {
           pos = pos0;
@@ -1862,7 +1913,7 @@ var grammar = (function(){
           }
         }
         if (result0 !== null) {
-          result1 = parse_integer();
+          result1 = parse_any_integer();
           if (result1 !== null) {
             if (input.substr(pos, 3) === "/p\x1F") {
               result2 = "/p\x1F";
@@ -2161,153 +2212,6 @@ var grammar = (function(){
         return result0;
       }
       
-      function parse_integer_title() {
-        var result0, result1, result2;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_integer();
-        if (result0 !== null) {
-          result1 = parse_cv_sep();
-          if (result1 === null) {
-            result1 = parse_sequence_sep();
-          }
-          result1 = result1 !== null ? result1 : "";
-          if (result1 !== null) {
-            if (input.substr(pos, 5) === "title") {
-              result2 = "title";
-              pos += 5;
-            } else {
-              result2 = null;
-              if (reportFailures === 0) {
-                matchFailed("\"title\"");
-              }
-            }
-            if (result2 !== null) {
-              result0 = [result0, result1, result2];
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val_1) { return {"type": "integer_title", "value": [val_1], "indices": [offset, pos - 1]} })(pos0, result0[0]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_v_letter() {
-        var result0, result1, result2, result3, result4;
-        var pos0, pos1, pos2;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_v_explicit();
-        result0 = result0 !== null ? result0 : "";
-        if (result0 !== null) {
-          result1 = parse_integer();
-          if (result1 !== null) {
-            result2 = parse_sp();
-            if (result2 !== null) {
-              if (/^[a-e]/.test(input.charAt(pos))) {
-                result3 = input.charAt(pos);
-                pos++;
-              } else {
-                result3 = null;
-                if (reportFailures === 0) {
-                  matchFailed("[a-e]");
-                }
-              }
-              if (result3 !== null) {
-                pos2 = pos;
-                reportFailures++;
-                if (/^[a-z]/.test(input.charAt(pos))) {
-                  result4 = input.charAt(pos);
-                  pos++;
-                } else {
-                  result4 = null;
-                  if (reportFailures === 0) {
-                    matchFailed("[a-z]");
-                  }
-                }
-                reportFailures--;
-                if (result4 === null) {
-                  result4 = "";
-                } else {
-                  result4 = null;
-                  pos = pos2;
-                }
-                if (result4 !== null) {
-                  result0 = [result0, result1, result2, result3, result4];
-                } else {
-                  result0 = null;
-                  pos = pos1;
-                }
-              } else {
-                result0 = null;
-                pos = pos1;
-              }
-            } else {
-              result0 = null;
-              pos = pos1;
-            }
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
-      function parse_v() {
-        var result0, result1;
-        var pos0, pos1;
-        
-        pos0 = pos;
-        pos1 = pos;
-        result0 = parse_v_explicit();
-        result0 = result0 !== null ? result0 : "";
-        if (result0 !== null) {
-          result1 = parse_integer();
-          if (result1 !== null) {
-            result0 = [result0, result1];
-          } else {
-            result0 = null;
-            pos = pos1;
-          }
-        } else {
-          result0 = null;
-          pos = pos1;
-        }
-        if (result0 !== null) {
-          result0 = (function(offset, val) { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
-        }
-        if (result0 === null) {
-          pos = pos0;
-        }
-        return result0;
-      }
-      
       function parse_ff() {
         var result0, result1, result2, result3, result4, result5;
         var pos0, pos1, pos2;
@@ -2409,6 +2313,304 @@ var grammar = (function(){
         }
         if (result0 !== null) {
           result0 = (function(offset, val_1) { return {"type": "ff", "value": [val_1], "indices": [offset, pos - 1]} })(pos0, result0[0]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_integer_title() {
+        var result0, result1, result2;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_integer();
+        if (result0 !== null) {
+          result1 = parse_cv_sep();
+          if (result1 === null) {
+            result1 = parse_sequence_sep();
+          }
+          result1 = result1 !== null ? result1 : "";
+          if (result1 !== null) {
+            if (input.substr(pos, 5) === "title") {
+              result2 = "title";
+              pos += 5;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\"title\"");
+              }
+            }
+            if (result2 !== null) {
+              result0 = [result0, result1, result2];
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val_1) { return {"type": "integer_title", "value": [val_1], "indices": [offset, pos - 1]} })(pos0, result0[0]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_ps151_b() {
+        var result0, result1, result2;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        if (input.charCodeAt(pos) === 31) {
+          result0 = "\x1F";
+          pos++;
+        } else {
+          result0 = null;
+          if (reportFailures === 0) {
+            matchFailed("\"\\x1F\"");
+          }
+        }
+        if (result0 !== null) {
+          result1 = parse_any_integer();
+          if (result1 !== null) {
+            if (input.substr(pos, 3) === "/q\x1F") {
+              result2 = "/q\x1F";
+              pos += 3;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\"/q\\x1F\"");
+              }
+            }
+            if (result2 !== null) {
+              result0 = [result0, result1, result2];
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val) { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} })(pos0, result0[1]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_ps151_bc() {
+        var result0, result1, result2;
+        var pos0, pos1, pos2;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_ps151_b();
+        if (result0 !== null) {
+          if (input.substr(pos, 2) === ".1") {
+            result1 = ".1";
+            pos += 2;
+          } else {
+            result1 = null;
+            if (reportFailures === 0) {
+              matchFailed("\".1\"");
+            }
+          }
+          if (result1 !== null) {
+            pos2 = pos;
+            reportFailures++;
+            if (/^[0-9]/.test(input.charAt(pos))) {
+              result2 = input.charAt(pos);
+              pos++;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("[0-9]");
+              }
+            }
+            reportFailures--;
+            if (result2 === null) {
+              result2 = "";
+            } else {
+              result2 = null;
+              pos = pos2;
+            }
+            if (result2 !== null) {
+              result0 = [result0, result1, result2];
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val) { return {"type": "bc", "value": [val, {"type": "c", "value": [{"type": "integer", "value": 151, "indices": [pos - 2, pos - 1]}], "indices": [pos - 2, pos - 1]}], "indices": [offset, pos - 1]} })(pos0, result0[0]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_ps151_bcv() {
+        var result0, result1, result2;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_ps151_bc();
+        if (result0 !== null) {
+          if (input.charCodeAt(pos) === 46) {
+            result1 = ".";
+            pos++;
+          } else {
+            result1 = null;
+            if (reportFailures === 0) {
+              matchFailed("\".\"");
+            }
+          }
+          if (result1 !== null) {
+            result2 = parse_integer();
+            if (result2 !== null) {
+              result0 = [result0, result1, result2];
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val_1, val_2) { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [offset, pos - 1]} })(pos0, result0[0], result0[2]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_v_letter() {
+        var result0, result1, result2, result3, result4;
+        var pos0, pos1, pos2;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_v_explicit();
+        result0 = result0 !== null ? result0 : "";
+        if (result0 !== null) {
+          result1 = parse_integer();
+          if (result1 !== null) {
+            result2 = parse_sp();
+            if (result2 !== null) {
+              if (/^[a-e]/.test(input.charAt(pos))) {
+                result3 = input.charAt(pos);
+                pos++;
+              } else {
+                result3 = null;
+                if (reportFailures === 0) {
+                  matchFailed("[a-e]");
+                }
+              }
+              if (result3 !== null) {
+                pos2 = pos;
+                reportFailures++;
+                if (/^[a-z]/.test(input.charAt(pos))) {
+                  result4 = input.charAt(pos);
+                  pos++;
+                } else {
+                  result4 = null;
+                  if (reportFailures === 0) {
+                    matchFailed("[a-z]");
+                  }
+                }
+                reportFailures--;
+                if (result4 === null) {
+                  result4 = "";
+                } else {
+                  result4 = null;
+                  pos = pos2;
+                }
+                if (result4 !== null) {
+                  result0 = [result0, result1, result2, result3, result4];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val) { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_v() {
+        var result0, result1;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_v_explicit();
+        result0 = result0 !== null ? result0 : "";
+        if (result0 !== null) {
+          result1 = parse_integer();
+          if (result1 !== null) {
+            result0 = [result0, result1];
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, val) { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} })(pos0, result0[1]);
         }
         if (result0 === null) {
           pos = pos0;

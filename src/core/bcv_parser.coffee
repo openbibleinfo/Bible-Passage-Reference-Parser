@@ -10,7 +10,6 @@ class bcv_parser
 	entities: []
 	passage: null
 	regexps: {}
-	default_options: {}
 	# ## Main Options
 	options:
 		# ### OSIS Output
@@ -60,6 +59,9 @@ class bcv_parser
 		# ### Apocrypha
 		# Don't set this value directly; use the `include_apocrypha` or `set_options` functions.
 		include_apocrypha: false
+		# `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" -> "Ps.151.1"
+		# `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" -> "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" -> "Ps.149-Ps.150,Ps151.1" Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
+		ps151_strategy: "c"
 		# ### Versification System
 		# Don't set this value directly; use the `versification_system` or `set_options` functions.
 		# * `default`: the default ESV-style versification. Also used in AMP and NASB.
@@ -70,6 +72,11 @@ class bcv_parser
 		# * `nrsv`: use NRSV versification.
 		# * `vulgate`: use Vulgate (Greek) numbering for the Psalms.
 		versification_system: "default"
+		# ### Case Sensitivity
+		# Don't use this value directly; use the `set_options` function. Changing this option repeatedly will slow down execution.
+		# * `none`: All matches are case-insensitive.
+		# * `books`: Book names are case-sensitive. Everything else is still case-insensitive.
+		case_sensitive: "none"
 
 	# Remember default options for later use.
 	constructor: ->
@@ -79,7 +86,7 @@ class bcv_parser
 		# If we've changed the versification system, make sure previous object invocations don't leak.
 		@versification_system @options.versification_system
 
-	# ## Parse-related Functions
+	# ## Parse-Related Functions
 	# Parse a string and prepare the object for further interrogation, depending on what's needed.
 	parse: (s) ->
 		@reset()
@@ -110,19 +117,22 @@ class bcv_parser
 			@passage.options = @options
 			@passage.translations = @translations
 
+	# ## Options-Related Functions
 	# Override default options.
 	set_options: (options) ->
 		for own key, val of options
-			if key is "include_apocrypha" or key is "versification_system"
+			# The drawback with this approach is that calling `include_apocrypha`, `versification_system`, and `case_sensitive` could regenerate `@regexps.books` three times.
+			if key is "include_apocrypha" or key is "versification_system" or key is "case_sensitive"
 				@[key] val
 			else
 				@options[key] = val
+		this
 
 	# Whether to use books and abbreviations from the Apocrypha. Takes a boolean argument: `true` to include the Apocrypha and `false` to not. Defaults to `false`. Returns the `bcv_parser` object.
 	include_apocrypha: (arg) ->
 		return this unless arg? and (arg is true or arg is false)
 		@options.include_apocrypha = arg
-		@regexps.books = @regexps.get_books arg
+		@regexps.books = @regexps.get_books arg, @options.case_sensitive
 		if arg is true
 			# Add Ps 151 to the end of Psalms.
 			@translations.default.chapters.Ps[150] = @translations.default.chapters.Ps151[0]
@@ -153,6 +163,16 @@ class bcv_parser
 		@include_apocrypha @options.include_apocrypha
 		this
 
+	# Whether to treat books as case-sensitive. Valid values are `none` and `books`.
+	case_sensitive: (arg) ->
+		return this unless arg? and (arg is "none" or arg is "books")
+		# If nothing is changing, don't bother continuing
+		return this if (arg is @options.case_sensitive)
+		@options.case_sensitive = arg
+		@regexps.books = @regexps.get_books @options.include_apocrypha, arg
+		this
+
+	# ## Parsing-Related Functions
 	# Replace control characters and spaces since we replace books with a specific character pattern. The string changes, but the length stays the same so that indices remain valid. If we want to use Latin numbers rather than non-Latin ones, replace them here.
 	replace_control_characters: (s) ->
 		s = s.replace @regexps.control, " "
@@ -241,7 +261,7 @@ class bcv_parser
 				part = part.replace /(\x1e[)\]]?)[\s*]*\d+$/, "$1"
 			# Though PEG.js doesn't have to be case-sensitive, using the case-insensitive feature involves some repeated processing. By lower-casing here, we only pay the cost once. The grammar for words like "also" is case-sensitive; we can safely lowercase ascii letters without changing indices. We don't just call .toLowerCase() because it could affect the length of the string if it contains certain characters; maintaining the indices is the most important thing.
 			part = part.replace(/[A-Z]+/g, (capitals) -> capitals.toLowerCase())
-			# If we're in a cb situation, the first character won't be a book control character, which would throw off the `start_index`.
+			# If we're in a chapter-book situation, the first character won't be a book control character, which would throw off the `start_index`.
 			start_index_adjust = if part.substr 0, 1 is "\x1f" then 0 else part.split("\x1f")[0].length
 			# * `match` is important for the length and whether it contains control characters, neither of which we've changed inconsistently with the original string. The `part` may be shorter than originally matched, but that's only to remove unneeded characters at the end.
 			# * `grammar` is the external PEG parser.
@@ -266,7 +286,7 @@ class bcv_parser
 	create_book_range: (s, passage, book_id) ->
 		cases = [bcv_parser::regexps.first, bcv_parser::regexps.second, bcv_parser::regexps.third]
 		limit = parseInt @passage.books[book_id].parsed[0].substr(0, 1), 10
-		for i in [1...limit]
+		for i in [1 ... limit]
 			range_regexp = if i == limit - 1 then bcv_parser::regexps.range_and else bcv_parser::regexps.range_only
 			prev = s.match ///(?:^|\W)( #{cases[i-1]} \s* #{range_regexp} \s* ) \x1f #{book_id} \x1f///i
 			return @add_book_range_object(passage, prev, i) if prev?
@@ -311,7 +331,7 @@ class bcv_parser
 	# Return all objects, probably for additional processing.
 	parsed_entities: ->
 		out = []
-		for entity_id in [0...@entities.length]
+		for entity_id in [0 ... @entities.length]
 			entity = @entities[entity_id]
 			# Be sure to include any translation identifiers in the indices we report back, but only if the translation immediately follows the previous entity.
 			if entity.type and entity.type is "translation_sequence" and out.length > 0 and entity_id == out[out.length-1].entity_id + 1
@@ -331,7 +351,7 @@ class bcv_parser
 				translation_alias = "default"
 			osises = []
 			length = entity.passages.length
-			for i in [0...length]
+			for i in [0 ... length]
 				passage = entity.passages[i]
 				# The `type` is usually only set in a sequence.
 				passage.type ?= entity.type
@@ -340,7 +360,7 @@ class bcv_parser
 						@snap_sequence "ignore", entity, osises, i, length
 					# Stop here if we're ignoring invalid passages.
 					continue if @options.invalid_passage_strategy is "ignore"
-				# If indicated in options, exclude stray start/end books, resetting the parent indices as needed.
+				# If indicated in `@options`, exclude stray start/end books, resetting the parent indices as needed.
 				if (passage.type is "b" or passage.type is "b_range") and @options.book_sequence_strategy is "ignore" and entity.type is "sequence"
 					@snap_sequence "book", entity, osises, i, length
 					continue
@@ -382,6 +402,8 @@ class bcv_parser
 		# If no end chapter or verse, assume the last possible.
 		end.c ?= @passage.translations[translation].chapters[end.b].length
 		end.v ?= @passage.translations[translation].chapters[end.b][end.c - 1]
+		if @options.include_apocrypha and @options.ps151_strategy is "b" and ((start.c == 151 and start.b is "Ps") or (end.c == 151 and end.b is "Ps"))
+			@fix_ps151 start, end, translation
 		# If it's a complete book or range of complete books and we want the shortest possible OSIS, return just the book names.
 		if @options.osis_compaction_strategy == "b" and start.c == 1 and start.v == 1 and end.c == @passage.translations[translation].chapters[end.b].length and end.v == @passage.translations[translation].chapters[end.b][end.c - 1]
 			osis.start = start.b
@@ -395,9 +417,38 @@ class bcv_parser
 			osis.start = start.b + "." + start.c.toString() + "." + start.v.toString()
 			osis.end = end.b + "." + end.c.toString() + "." + end.v.toString()
 		# If it's the same verse ("Gen.1.1-Gen.1.1"), chapter ("Gen.1-Gen.1") or book ("Gen-Gen"), return just the start so we don't end up with an empty range.
-		return osis.start if osis.start == osis.end
+		if osis.start == osis.end
+			out = osis.start
 		# Otherwise return the range.
-		osis.start + "-" + osis.end
+		else
+			out = osis.start + "-" + osis.end
+		out = start.extra + "," + out if start.extra?
+		out += "," + end.extra if end.extra?
+		out
+
+	# If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it gets returned properly.
+	fix_ps151: (start, end, translation) ->
+		if start.c == 151 and start.b is "Ps"
+			# If the whole range is in Ps151, we can just reset both sets of books and chapters; we don't have to worry about odd ranges.
+			if end.c == 151 and end.b is "Ps"
+				start.b = "Ps151"
+				start.c = 1
+				end.b = "Ps151"
+				end.c = 1
+			# Otherwise, we generate the OSIS for Ps151 and then set the beginning of the range to the next book. We assume that the next book is Prov, which isn't necessarily the case. I'm not aware of a canon that doesn't place Prov after Ps, however.
+			else
+				# This is the string we're going to prepend to our final output.
+				start.extra = @to_osis {b: "Ps151", c: 1, v: start.v}, {b: "Ps151", c: 1, v: @passage.translations[translation].chapters["Ps151"][0]}, translation
+				start.b = "Prov"
+				start.c = 1
+				start.v = 1
+		# We know that end is in Ps151 and start is beforehand.
+		else
+			# This is the string we're going to append to the final output.
+			end.extra = @to_osis {b: "Ps151", c: 1, v: 1}, {b: "Ps151", c: 1, v: end.v}, translation
+			# Set the end of the range to be the end of Ps.150, which immediately precedes Ps151.
+			end.c = 150
+			end.v = @passage.translations[translation].chapters["Ps"][149]
 
 	# If we have the correct `option` set (checked before calling this function), merge passages that refer to sequential verses: Gen 1, 2 -> Gen 1-2. It works for any combination of books, chapters, and verses.
 	combine_consecutive_passages: (osises, translation) ->
@@ -405,22 +456,25 @@ class bcv_parser
 		prev = {}
 		last_i = osises.length - 1
 		enclosed_sequence_start = -1
+		has_enclosed = false
 		for i in [0 .. last_i]
 			osis = osises[i]
 			if osis.osis.length > 0
 				prev_i = out.length - 1
-				osis.is_enclosed_first = false
-				osis.is_enclosed_last = false
+				is_enclosed_last = false
+				# Record the start index of the enclosed sequence for use in future iterations.
 				if osis.enclosed_indices[0] != enclosed_sequence_start
 					enclosed_sequence_start = osis.enclosed_indices[0]
-					osis.is_enclosed_first = true if enclosed_sequence_start >= 0
+				# If we're in an enclosed sequence and it's either the last item in the sequence or the next item in the sequence isn't part of the same enclosed sequence, then we've reached the end of the enclosed sequence.
 				if enclosed_sequence_start >= 0 and (i == last_i or osises[i+1].enclosed_indices[0] != osis.enclosed_indices[0])
-					osis.is_enclosed_last = true
+					is_enclosed_last = true
+					# We may need to adjust the indices later.
+					has_enclosed = true
 				# Pretend like the previous `end` and existing `start` don't exist.
 				if @is_verse_consecutive prev, osis.start, translation
 					out[prev_i].end = osis.end
 					# Set the enclosed indices if it's last or at the end of a sequence of enclosed indices. Otherwise only extend the indices to the actual indices--e.g., `Ps 117 (118, 120)`, should only extend to after `118`.
-					out[prev_i].is_enclosed_last = osis.is_enclosed_last
+					out[prev_i].is_enclosed_last = is_enclosed_last
 					out[prev_i].indices[1] = osis.indices[1]
 					out[prev_i].enclosed_indices[1] = osis.enclosed_indices[1]
 					out[prev_i].osis = @to_osis out[prev_i].start, osis.end, translation
@@ -430,15 +484,16 @@ class bcv_parser
 			else
 				out.push osis
 				prev = {}
-		@snap_enclosed_indices(out)
+		@snap_enclosed_indices(out) if has_enclosed
+		out
 
 	# If there's an enclosed reference--e.g., Ps 1 (2)--and we've combined consecutive passages in such a way that the enclosed reference is fully inside the sequence (i.e., if it starts before the enclosed sequence), then make sure the end index for the passage includes the necessary closing punctuation.
 	snap_enclosed_indices: (osises) ->
 		for osis in osises
-			if osis.enclosed_indices[0] < 0 and osis.is_enclosed_last
-				osis.indices[1] = osis.enclosed_indices[1]
-			delete osis.is_enclosed_first
-			delete osis.is_enclosed_last
+			if osis.is_enclosed_last?
+				if osis.enclosed_indices[0] < 0 and osis.is_enclosed_last
+					osis.indices[1] = osis.enclosed_indices[1]
+				delete osis.is_enclosed_last
 		osises
 
 	# Given two fully specified objects (complete bcvs), find whether they're sequential.
@@ -475,7 +530,7 @@ class bcv_parser
 
 	# Identify whether there are any valid items between the current item and the next book.
 	get_snap_sequence_i: (passages, i, length) ->
-		for j in [(i + 1)...length]
+		for j in [(i + 1) ... length]
 			return j if @starts_with_book passages[j]
 			return i if passages[j].valid.valid
 		i
@@ -486,10 +541,11 @@ class bcv_parser
 		return true if (passage.type is "range" or passage.type is "ff") and passage.start.type.substr(0, 1) is "b"
 		false
 
+	# Remove absolute indices from the given passage to the end of the sequence. We do this when we don't want to include the end of a sequence in the sequence (most likely because it's invalid or a book on its own).
 	remove_absolute_indices: (passages, i) ->
 		return false if passages[i].enclosed_absolute_indices[0] < 0
 		[start, end] = passages[i].enclosed_absolute_indices
-		for passage in passages[i..]
+		for passage in passages[i ..]
 			if passage.enclosed_absolute_indices[0] == start and passage.enclosed_absolute_indices[1] == end
 				passage.enclosed_absolute_indices = [-1, -1]
 			else

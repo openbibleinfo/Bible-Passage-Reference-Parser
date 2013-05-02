@@ -18,7 +18,7 @@ bcv_parser::regexps.escaped_passage = ///
 				  	  | h (?:apters?|a?pts?|a?p?s?)		#chapter words
 				  	  )
 				  | a (?:nd|lso)						#combiners
-				  | /p\x1f								#special Psalm chapter
+				  | /[pq]\x1f								#special Psalm chapters
 				  | [\d.:,;\x1e\x1f&\(\)\[\]/"'\*=~\-\u2013\u2014\s\xa0]	#punctuation; grammar parser doesn't allow \s character class, but we do post-processing on the grammar file to allow it; the \xa0 is for IE
 				  | [a-e] (?! \w )						#a-e allows 1:1a
 				  | ff?\b
@@ -50,7 +50,7 @@ bcv_parser::regexps.gospel = "(?:(?:The[.\\s\\xa0-]*)?Gospel[.\\s\\xa0-]?(?:of[.
 bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|and|through|to)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|through|to)"
 # Each book regexp should return two parenthesized objects: an optional preliminary character and the book itself.
-bcv_parser::regexps.get_books = (include_apocrypha) ->
+bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	books = [
 		osis: ["Gen"]
 		regexp: ///(\d|\b)(
@@ -154,14 +154,15 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 	,
 		osis: ["2Sam"]
 		regexp: ///(\b)(
-			#{bcv_parser::regexps.second}
-			(?:
+			  #{bcv_parser::regexps.second}
+			  (?:
 				  Samu[ae]l[ls]?
 				| Sam
 				| Sma
-				| S[am]?
+				| S[am]
 				| Kingdoms
-			)
+			  )
+			| 2 #{bcv_parser::regexps.space}* S
 			)(?:\b|(?=\d))///gi
 	,
 		osis: ["1Sam"]
@@ -171,9 +172,10 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  (?:
 				  Sam
 				| Sma
-				| S[am]?
+				| S[am]
 				| Kingdoms
 			  )
+			| 1 #{bcv_parser::regexps.space}* S
 			)(?:\b|(?=\d))///gi
 	,
 		osis: ["2Kgs"]
@@ -245,7 +247,7 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  Greek #{bcv_parser::regexps.space}* Esther
 			| Esther #{bcv_parser::regexps.space}* \(Greek\)
 			| G (?: ree )? k #{bcv_parser::regexps.space}* Esth?
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Esth"]
 		regexp: ///(\d|\b)(
@@ -261,15 +263,6 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 		regexp: ///(\d|\b)(
 			Jo?b
 			)(?:\b|(?=\d))///gi
-		###
-	,
-		osis: ["Ps151"]
-		apocrypha: true
-		extra: "p"
-		regexp: ///(\b)(
-			  151 #{bcv_parser::regexps.space}* st #{bcv_parser::regexps.space}* Psalm
-			)\b///gi
-		###
 	,
 		osis: ["Ps"]
 		extra: "p"
@@ -280,20 +273,14 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			)
 			#{bcv_parser::regexps.space}* Psalm
 			)\b///gi
-		###
 	,
-		osis: ["Ps151"]
+		osis: ["Ps"]
 		apocrypha: true
-		regexp: ///(\d|\b)(
-			P
-			(?:
-				  s[alm]{2,4}s?
-				| a[slm]{3,4}s?
-				| l[sam]{2,4}s?
-				| s[as]?m?
-			) #{bcv_parser::regexps.space}* 151
-			)\b///gi
-		###
+		extra: "q"
+		regexp: ///(\b)( # Don't match a preceding \d like usual because we only want to match a valid OSIS, which will never have a preceding digit.
+			Ps151
+			# Always follwed by ".1"; the regular Psalms parser can handle `Ps151` on its own.
+			)(?=\.1)///g # Case-sensitive because we only want to match a valid OSIS.
 	,
 		osis: ["Ps"]
 		regexp: ///(\d|\b)(
@@ -339,7 +326,7 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  (?: The #{bcv_parser::regexps.space}* )? Song #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* (?:the #{bcv_parser::regexps.space}* )? (?: 3 | Three ) #{bcv_parser::regexps.space}* (?: Holy #{bcv_parser::regexps.space}* Children | Young #{bcv_parser::regexps.space}* Men | Youths | Jews )
 			| S \.?#{bcv_parser::regexps.space}* (?: of )? #{bcv_parser::regexps.space}* (?: Three | Th | 3 ) \.?#{bcv_parser::regexps.space}* (?: Ch | Y )
 			| So?n?gThree
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Song"]
 		regexp: ///(\d|\b)(
@@ -361,7 +348,7 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 		regexp: ///(\d|\b)(
 			  (?: The #{bcv_parser::regexps.space}* )? (?: Ep(?:istle)? | Let(?:ter) ) \.?#{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Jeremiah
 			| EpJer
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Jer"]
 		regexp: ///(\d|\b)(
@@ -849,13 +836,13 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 		regexp: ///(\d|\b)(
 			  Tobi?t?
 			| Tb
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Jdt"]
 		apocrypha: true
 		regexp: ///(\d|\b)(
 			Ju?di?th?
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Wis"]
 		apocrypha: true
@@ -863,25 +850,26 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  (?: The #{bcv_parser::regexps.space}*) Wisd? (?: om )? #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Solomon
 			| Wisdom
 			| Wisd?
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Sir"]
 		apocrypha: true
 		regexp: ///(\d|\b)(
 			  Sirach
+			| Ben #{bcv_parser::regexps.space}* Sira
 			| Sir
 			| Eccl[eu]siasticus
 			| Ecclus
 			| Eccs
 			| (?: The #{bcv_parser::regexps.space}* ) Wisdom #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Jesus #{bcv_parser::regexps.space}* (?: Son #{bcv_parser::regexps.space}* of | ben ) #{bcv_parser::regexps.space}* Sirach
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Bar"]
 		apocrypha: true
 		regexp: ///(\d|\b)(
 			  Baruch
 			| Bar
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["PrAzar"]
 		apocrypha: true
@@ -889,7 +877,7 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  (?: The #{bcv_parser::regexps.space}* )? Pr (?: ayers? )? #{bcv_parser::regexps.space}* of #{bcv_parser::regexps.space}* Azariah?
 			| Azariah?
 			| PrAza?r
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Sus"]
 		apocrypha: true
@@ -897,35 +885,35 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  Susannah?
 			| Shoshana
 			| Sus
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Bel"]
 		apocrypha: true
 		regexp: ///(\d|\b)(
 			  Bel #{bcv_parser::regexps.space}* (?: and | & ) #{bcv_parser::regexps.space}* (?: the #{bcv_parser::regexps.space}* )? (?: Dragon | Serpent | Snake )
 			| Bel
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["2Macc"]
 		apocrypha: true
 		regexp: ///(\b)(
 			  #{bcv_parser::regexps.second} Mac{1,3} (?: ab{1,3} e{1,3} s? )?
 			| 2 #{bcv_parser::regexps.space}* Mc
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["3Macc"]
 		apocrypha: true
 		regexp: ///(\b)(
 			  #{bcv_parser::regexps.third} Mac{1,3} (?: ab{1,3} e{1,3} s? )?
 			| 3 #{bcv_parser::regexps.space}* Mc
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["4Macc"]
 		apocrypha: true
 		regexp: ///(\b)(
 			  #{bcv_parser::regexps.fourth} #{bcv_parser::regexps.space}* Mac{1,3} (?: ab{1,3} e{1,3} s? )?
 			| 4 #{bcv_parser::regexps.space}* Mc
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["1Macc"]
 		apocrypha: true
@@ -933,21 +921,21 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			  (?: #{bcv_parser::regexps.first} )? Mac{1,3}ab{1,3} e{1,3} s?
 			| #{bcv_parser::regexps.first} Mac{1,3}
 			| 1 #{bcv_parser::regexps.space}* Mc
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["1Esd"]
 		apocrypha: true
 		regexp: ///(\b)(
 			  #{bcv_parser::regexps.first} Esdras
 			| 1 #{bcv_parser::regexps.space}* Esdr?
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["2Esd"]
 		apocrypha: true
 		regexp: ///(\b)(
 			  #{bcv_parser::regexps.second} Esdras
 			| 2 #{bcv_parser::regexps.space}* Esdr?
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["PrMan"]
 		apocrypha: true
@@ -955,7 +943,7 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			(?: (?: The #{bcv_parser::regexps.space}*) Pr (?: ayers? )? #{bcv_parser::regexps.space}* (?: of #{bcv_parser::regexps.space}* )? M[ae]n{1,2}[ae]s{1,2}[ae]h
 			)
 			| PrMan
-			)(?:\b|(?=d))///gi
+			)(?:\b|(?=\d))///gi
 	,
 		osis: ["Ezek", "Ezra"]
 		regexp: ///(\d|\b)(
@@ -1008,13 +996,15 @@ bcv_parser::regexps.get_books = (include_apocrypha) ->
 			)(?:\b|(?=\d))///gi
 	]
 	# Short-circuit the look if we know we want all the books.
-	return books if include_apocrypha is true
+	return books if include_apocrypha is true and case_sensitive is "none"
 	# Filter out books in the Apocrypha if we don't want them. `Array.map` isn't supported below IE9.
 	out = []
 	for book in books
 		continue if book.apocrypha? and book.apocrypha is true
+		if case_sensitive is "books"
+			book.regexp = new RegExp book.regexp.source, "g"
 		out.push book
 	out
 
 # Default to not using the Apocrypha
-bcv_parser::regexps.books = bcv_parser::regexps.get_books false
+bcv_parser::regexps.books = bcv_parser::regexps.get_books false, "none"

@@ -4,10 +4,10 @@ bcv_parser::regexps.escaped_passage = ///
 		(
 			\x1f(\d+)(?:/[a-z])?\x1f		#book
 				(?:
-				  | /p\x1f					#special Psalm chapter
+				  | /[pq]\x1f					#special Psalm chapters
 				  | $VALID_CHARACTERS
-				  | $PASSAGE_COMPONENTS
 				  | $TITLE (?! [a-z] )		#could be followed by a number
+				  | $PASSAGE_COMPONENTS
 				  | $AB (?! \w )			#a-e allows 1:1a
 				  | $						#or the end of the string
 				 )+
@@ -30,18 +30,28 @@ bcv_parser::regexps.third = "$THIRD\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|$AND|$TO)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|$TO)"
 # Each book regexp should return two parenthesized objects: an optional preliminary character and the book itself.
-bcv_parser::regexps.get_books = (include_apocrypha) ->
+bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	books = [
+		osis: ["Ps"]
+		apocrypha: true
+		extra: "q"
+		regexp: ///(\b)( # Don't match a preceding \d like usual because we only want to match a valid OSIS, which will never have a preceding digit.
+			Ps151
+			# Always follwed by ".1"; the regular Psalms parser can handle `Ps151` on its own.
+			)(?=\.1)///g # Case-sensitive because we only want to match a valid OSIS.
+	,
 $BOOK_REGEXPS
 	]
-	# Short-circuit the loop if we know we want all the books.
-	return books if include_apocrypha is true
+	# Short-circuit the look if we know we want all the books.
+	return books if include_apocrypha is true and case_sensitive is "none"
 	# Filter out books in the Apocrypha if we don't want them. `Array.map` isn't supported below IE9.
 	out = []
 	for book in books
 		continue if book.apocrypha? and book.apocrypha is true
+		if case_sensitive is "books"
+			book.regexp = new RegExp book.regexp.source, "g"
 		out.push book
 	out
 
 # Default to not using the Apocrypha
-bcv_parser::regexps.books = bcv_parser::regexps.get_books false
+bcv_parser::regexps.books = bcv_parser::regexps.get_books false, "none"
