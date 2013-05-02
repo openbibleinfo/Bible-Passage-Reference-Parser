@@ -402,6 +402,8 @@ Using the files in `src/template` as a base, you can add support for additional 
 
 When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `ignore`.
 
+When using non-English `<script>`s on the web, be sure the script is served with the `utf-8` character set.
+
 ## Compatibility
 
 I've specifically tested the following browsers, but it should work in any modern browser. If not, please feel free to open an issue.
@@ -435,7 +437,7 @@ This is the fourth complete Bible reference parser that I've written. It's how I
 
 I chose Coffeescript out of curiosity--does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript--the tests, in particular, are much easier to follow without all the Javascript punctuation.
 
-This code is in production use on a site that indexes (Bible verses on Twitter and Facebook)[http://www.openbible.info/realtime/].
+This code is in production use on a site that indexes [Bible verses on Twitter and Facebook](http://www.openbible.info/realtime/).
 
 ## Changelog
 
