@@ -6,11 +6,11 @@ This project is a Coffeescript implementation of a Bible-passage reference parse
 
 Its primary use is to interpret query strings for use in a Bible application. It can extract BCVs from text but may be too aggressive for some uses. (See "Caveats" below.)
 
-It should be fairly speedy: using Node.js 0.8.14, it parses 2,000 tweets per second on a single core of an EC2 High-CPU Medium instance.
+It should be fairly speedy: using Node.js 0.10.5, it parses 2,000 tweets per second on a single core of an EC2 High-CPU Medium instance.
 
 The code occupies about 84KB minified and 19KB gzipped.
 
-This project also provides extensively commented code and 370,000 real-world strings that you can use as a starting point to build your own BCV parser.
+This project also provides extensively commented code and 460,000 real-world strings that you can use as a starting point to build your own BCV parser.
 
 ## Usage
 
@@ -210,6 +210,11 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `verse`: treat "Jer 33-11" as "Jer 33:11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
 	* `sequence`: treat them as sequences.
 
+#### Apocrypha
+* `ps151_strategy: "c"`
+	* `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" -> "Ps.151.1"
+	* `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" -> "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" -> "Ps.149-Ps.150,Ps151.1". Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
+
 #### Versification
 * `versification_system: "default"`
 	* `default`: the default ESV-style versification. Also used in AMP and NASB.
@@ -219,6 +224,11 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `nlt`: use NLT versification, with one extra verse in Rev. Also used in NCV.
 	* `nrsv`: use NRSV versification.
 	* `vulgate`: use Vulgate numbering for the Psalms.
+
+#### Case Sensitivity
+`case_sensitive: "none"`
+	* `none`: All matches are case-insensitive.
+	* `books`: Book names are case-sensitive. Everything else is still case-insensitive.
 
 ### Messages
 
@@ -266,11 +276,11 @@ In addition, a number of the tests in the "real-world" section of `src/core/spec
 
 One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file `src/core/spec.coffee` has a few hundred tests that tripped up this parser at various points in development.
 
-In addition, the file `test/tests.zip` has 370,000 tests drawn from 85 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages--each entry in the `Text` column occurs in ten or more tweets or posts.
+In addition, the file `test/tests.zip` has 460,000 tests drawn from 115 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages--each entry in the `Text` column occurs in ten or more tweets or posts. (The total number of unique passage strings in the corpus is six million, with the vast majority occurring fewer than ten times.)
 
 The tests are arranged in three columns:
 
-1. `Popularity` is the number of times the text appears in the corpus. It reflects the order of magnitude, so a value of `100` in this column indicates that the text appears between 100 and 999 times. You can use this column as a way to prioritize how to handle corner cases.
+1. `Popularity` is the number of times the text appears in the corpus. You can use this column as a way to prioritize how to handle corner cases.
 2. `Text` is the raw text of the reference. Tabs and newline characters (`[\t\r\n]`) are converted to spaces; otherwise they appear unaltered from their source.
 3. `OSIS` is the OSIS value of the text as parsed by this BCV Parser. If one or more translations appears, it precedes a colon at the start of the string. For example: `Matt 5, 7, NIV, ESV` has an OSIS value of `NIV,ESV:Matt.5,Matt.7`. Otherwise, the OSIS consists only of OSIS references separated by commas. You may choose to interpret certain cases differently to suit your needs, but this column gives you a reasonable starting point from which to validate your parser.
 
@@ -287,7 +297,7 @@ This dataset has a few limitations:
 
 [OSIS](http://www.bibletechnologies.net/) is a system for marking up Bibles in XML. The BCV parser only borrows the OSIS system for [book abbreviations](http://www.crosswire.org/wiki/OSIS_Book_Abbreviations) and references. You can control the OSIS specificity using the `osis_compaction_strategy` option.
 
-The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It includes `Ps151` as part of the Psalms (i.e., `Ps.151.1`, not `Ps151.1.1`).
+The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can include `Ps151` as part of the Psalms (`Ps.151.1`)--the default--or as its own book (`Ps151.1.1`), depending on the `ps151_strategy` option.
 
 <table>
 	<tr><th>Input</th><th>OSIS</th></tr>
@@ -363,27 +373,19 @@ You're probably not calling this function directly but instead are using one of 
 
 ## Performance
 
-Performance degrades linearly with the number of passages found in a string. Using Node.js 0.8.14, it processes 2,000 tweets per second on a single 2.3 GHz core of an EC2 High-CPU Medium instance.
+Performance degrades linearly with the number of passages found in a string. Using Node.js 0.10.5, it processes 2,000 tweets per second on a single 2.3 GHz core of an EC2 High-CPU Medium instance.
 
 In the worst case, given a string consisting of almost nothing but Bible passage references, it processes about 50-60 KB of text per second.
 
 ## Alternate Versification Systems
 
-The BCV parser supports several versification systems. The appropriate versification system kicks in if the parsed text explicitly mentions a translation with an alternate versification system, or you can use `@set_options({"versification_system":"..."})`. You can extend the relevant `translations.coffee` to add additional ones.
-
-* `default`: the default ESV-style versification. Also used in AMP and NASB.
-* `ceb`: use CEB versification, which varies mostly in the Apocrypha.
-* `kjv`: use KJV versification, with one fewer verse in 3John. Also used in NIV and NKJV.
-* `nab`: use NAB versification, which generally follows the Septuagint.
-* `nlt`: use NLT versification, with one extra verse in Rev. Also used in NCV.
-* `nrsv`: use NRSV versification.
-* `vulgate`: use Vulgate numbering for the Psalms.
+The BCV parser supports several versification systems (described above). The appropriate versification system kicks in if the parsed text explicitly mentions a translation with an alternate versification system, or you can use `@set_options({"versification_system":"..."})`. You can extend the relevant `translations.coffee` to add additional ones.
 
 ## Non-English Support
 
 The Javascript files that don't start with `en` provide support for other languages. The `js/eu/` files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
 
-Using the files in `src/template` as a base, you can add support for additional languages; just use the appropriate language prefix. I'm happy to accept pull requests for new languages.
+Using the files in `src/template` as a base, you can add support for additional languages; just use the appropriate ISO 639 language prefix. I'm happy to accept pull requests for new languages.
 
 ### Supported Languages
 
@@ -393,7 +395,12 @@ Using the files in `src/template` as a base, you can add support for additional 
 	<tr><td>es</td><td>Spanish</td></tr>
 	<tr><td>fr</td><td>French</td></tr>
 	<tr><td>he</td><td>Hebrew</td></tr>
+	<tr><td>ja</td><td>Japanese</td></tr>
+	<tr><td>ko</td><td>Korean</td></tr>
+	<tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
 </table>
+
+When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `ignore`.
 
 ## Compatibility
 
@@ -401,26 +408,26 @@ I've specifically tested the following browsers, but it should work in any moder
 
 * Internet Explorer 6-10. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
 * Firefox 12+.
-* Chrome 19 and Node 0.8.14.
+* Chrome 19 and Node 0.10.5.
 * Safari 5 (Windows).
 
 ## Building
 
 The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files or run tests):
 
-* [Coffeescript 1.4.0](http://coffeescript.org/) for compiling into Javascript.
+* [Coffeescript 1.6.2](http://coffeescript.org/) for compiling into Javascript.
 * [PEG.js 0.7.0](http://pegjs.majda.cz/) for the parsing grammar.
-* [Jasmine 1.2.0](http://pivotal.github.com/jasmine/) for the testing framework. To run tests, install it in the project's `/lib` folder.
+* [Jasmine 1.3.1](http://pivotal.github.com/jasmine/) for the testing framework. To run tests, install it in the project's `/lib` folder.
 * [Closure](http://code.google.com/closure/) for minifying.
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
 ### Build Instructions
 
-1. In `src`, create a folder named after the [ISO 639 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`
-2. Create a data.txt file inside that folder. Lines that start with `#` are comments. Lines that start with `$` are variables. Lines that start with an OSIS book name are a tab-separated series of regular expressions. Lines that start with `=` are the order in which to check the regular expressions (check for "3 John" before "John," for example). Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application).
-3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. For example, `01.add_lang.pl fr`
-4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` to be available in your `$PATH` and `coffee` to be in `/usr/local/bin`. For example: `02.compile.pl fr`
+1. In `src`, create a folder named after the [ISO 639 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`.
+2. Create a data.txt file inside that folder. Lines that start with `#` are comments. Lines that start with `$` are variables. Lines that start with an OSIS book name are a tab-separated series of regular expressions (a backtick following an accented character means not to allow the unaccented version of that character). Lines that start with `=` are the order in which to check the regular expressions (check for "3 John" before "John," for example). Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application).
+3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. For example, `01.add_lang.pl fr`.
+4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` to be available in your `$PATH` and `coffee` to be in `/usr/bin`. For example: `02.compile.pl fr`.
 
 ## Purpose
 
@@ -428,7 +435,11 @@ This is the fourth complete Bible reference parser that I've written. It's how I
 
 I chose Coffeescript out of curiosity--does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript--the tests, in particular, are much easier to follow without all the Javascript punctuation.
 
+This code is in production use on a site that indexes (Bible verses on Twitter and Facebook)[http://www.openbible.info/realtime/].
+
 ## Changelog
+
+May 1, 2013. Added option to allow case-sensitive book-name matching. Supported parsing `Ps151` as a book rather than a chapter for more-complete OSIS coverage. Added Japanese, Korean, and Chinese book names. Added an additional 90,000 real-world strings, sharing actual counts rather than orders of magnitude.
 
 December 30, 2012. Per request, added compile tools and Hebrew support.
 
