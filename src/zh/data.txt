@@ -1,0 +1,374 @@
+# http://mandarin.about.com/od/lessons/a/ordinals.htm
+$FIRST	第一
+$SECOND	第二
+$THIRD	第三
+$FOURTH	第四
+$AB	[a-e]
+# The first two are the full-width versions. Third = see (from CNV). Fourth = ideographic comma (from CNV)
+$AND	；	，	參	、
+$CHAPTER	chapter
+$FF	ff
+$TITLE	篇
+$TRANS	CUV	CNV	CUVMP
+$TO	～	~
+$VERSE	verse
+$PRE_BOOK	《?
+$POST_BOOK	》?
+$PRE_BOOK_ALLOWED_CHARACTERS	[^\x1f]
+$POST_BOOK_ALLOWED_CHARACTERS	[\s.\d]
+$UNICODE_BLOCK	CJK
+
+# http://zh.wikipedia.org/wiki/%E6%96%B0%E7%B4%84%E8%81%96%E7%B6%93
+# http://zh.wikipedia.org/wiki/%E6%97%A7%E7%BA%A6%E5%9C%A3%E7%BB%8F
+# http://www.biblegateway.com/versions/?action=getVersionInfo&vid=CUVS
+# http://www.biblegateway.com/versions/Chinese-Union-Version-Modern-Punctuation-Simplified-CUVMPS/
+# http://www.biblegateway.com/versions/Chinese-Union-Version-Modern-Punctuation-Traditional-CUVMPT/
+# http://www.youversion.com/bible/matt.5.csb
+# http://crosswire.org/ftpmirror/pub/sword/source/v1.6/sword-1.6.2/locales.d/zh_Hans-utf8.conf
+# http://crosswire.org/ftpmirror/pub/sword/source/v1.6/sword-1.6.2/locales.d/zh_Hant-utf8.conf
+# 利末记 (Lev), 约饵书 (Joel), 玛拉基 (Mal) from ERV.
+Gen	創世記	創世紀	创世记	創	创
+Exod	出埃及記	出谷紀	出埃及	出埃及记	出
+Lev	利未記	肋未紀	利未记	利	利末记
+Num	民數記	戶籍紀	民数记	民
+Deut	申命記	申命紀	申命记	申
+Josh	約書亞記	若蘇厄書	约书亚记	書	书
+Judg	士師記	民長紀	士师记	士
+Ruth	路得記	盧德傳	路得记	得
+1Sam	撒母耳記上	撒慕爾紀上	撒母耳记上	撒上
+2Sam	撒母耳記下	撒慕爾紀下	撒母耳记下	撒下
+1Kgs	列王紀上	列王纪上	列王记上	王上
+2Kgs	列王紀下	列王纪下	列王记下	王下
+1Chr	歷代志上	編年紀上	历代志上	代上
+2Chr	歷代志下	編年紀下	历代志下	代下
+Ezra	以斯拉記	厄斯德拉上	以斯拉记	拉
+Neh	尼希米記	厄斯德拉下	尼希米记	尼
+Esth	以斯帖記	艾斯德爾傳	以斯帖记	斯
+Job	約伯記	約伯傳	约伯记	伯
+Ps	詩篇	聖詠集	诗篇	詩	诗	诗篇
+Prov	箴言	箴
+Eccl	傳道書	訓道篇	传道书	傳	传
+Song	雅歌	歌
+Isa	以賽亞書	依撒意亞	以赛亚书	以賽亚书	賽	赛
+Jer	耶利米書	耶肋米亞	耶利米书	耶
+Lam	連同哀歌	耶利米哀歌	耶利米哀歌	哀
+Ezek	以西結書	厄則克耳	以西结书	以西結书	結	结
+Dan	但以理書	達尼爾	但以理书	但
+Hos	何西阿書	歐瑟亞	何西阿书	何
+Joel	約珥書	岳厄爾	约珥书	珥	约饵书
+Amos	阿摩司書	亞毛斯	阿摩司书	摩
+Obad	俄巴底亞書	亞北底亞	俄巴底亚书	俄
+Jonah	約拿書	約納	约拿书	拿
+Mic	彌迦書	米該亞	弥迦书	彌	弥
+Nah	那鴻書	納鴻	那鸿书	那鴻书	鴻	鸿
+Hab	哈巴谷書	哈巴谷	哈巴谷书	哈
+Zeph	西番雅書	索福尼亞	西番雅书	番
+Hag	哈該書	哈蓋	哈该书	哈該书	該	该
+Zech	撒加利亞書	匝加利亞	撒迦利亚书	撒迦利亞書	撒迦利亞	亞	亚
+Mal	瑪拉基書	瑪拉基亞	玛拉基书	玛拉基	瑪	玛
+Matt	馬太福音	瑪竇福音	瑪特斐	马太福音	太
+Mark	馬可福音	馬爾谷福音	瑪爾克	马可福音	可
+Luke	路加福音	魯喀	路
+John	約翰福音	若望福音	伊望	约翰福音	約	约
+Acts	使徒行傳	宗徒大事錄	宗徒行實	使徒行传	徒
+Rom	羅馬書	羅爾瑪書	罗马书	羅	罗
+1Cor	哥林多前書	格林多前書	适凌爾福前	哥林多前书	歌林多前書	林前
+2Cor	哥林多後書	格林多後書	适凌爾福後	哥林多后书	歌林多後書	林後	林后
+Gal	加拉太書	迦拉達書	戛拉提亞	加拉太书	加
+Eph	以弗所書	厄弗所書	耶斐斯	以弗所书	弗
+Phil	腓立比書	斐理伯書	肥利批	腓立比书	腓
+Col	歌羅西書	哥羅森書	适羅斯	歌罗西书	西
+1Thess	帖撒羅尼迦前書	得撒洛尼前書	莎倫前	帖撒罗尼迦前书	帖前
+2Thess	帖撒羅尼迦後書	得撒洛尼後書	莎倫後	帖撒罗尼迦后书	帖後	帖后
+1Tim	提摩太前書	弟茂德前書	提摩斐前	提摩太前书	提前
+2Tim	提摩太後書	弟茂德後書	提摩斐後	提摩太后书	提後	提后
+Titus	提多書	弟鐸書	提特書	提多书	多
+Phlm	腓利門書	費肋孟書	肥利孟	腓利门书	門	门
+Heb	希伯來書	耶烏雷爾	希伯来书	希伯來书	來	来
+Jas	雅各書	雅各伯書	亞适烏	雅各书	雅
+1Pet	彼得前書	伯多祿前書	撇特爾前	彼得前书	彼前
+2Pet	彼得後書	伯多祿後書	撇特爾後	彼得后书	彼後	彼后
+1John	約翰一書	若望一書	伊望第一	约翰一书	约翰壹书	約翰壹書	約壹	约壹
+2John	約翰二書	若望二書	伊望第二	约翰二书	约翰贰书	約翰貳書	約貳	约贰
+3John	約翰三書	若望三書	伊望第三	约翰三书	约翰叁书	約翰參書	約三	约三
+Jude	猶大書	猶達書	伊屋達	犹大书	猶	犹
+Rev	啟示錄	若望默示錄	默示錄	启示录	啓示錄	啟	启
+Tob	多俾亞傳
+Jdt	友弟德傳
+GkEsth	Greek Esther
+Wis	智慧篇
+Sir	德訓篇
+Bar	巴路克
+PrAzar	Prayer of Azariah
+Sus	Susanna
+Bel	Bel and the Dragon
+SgThree	Song of the Three Young Men
+EpJer	Epistle of Jeremiah
+1Macc	瑪加伯上
+2Macc	瑪加伯下
+3Macc	3 Maccabees
+4Macc	4 Maccabees
+1Esd	1 Esdras
+2Esd	2 Esdras
+PrMan	Prayer of Manasseh
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Rev
+=PrMan
+=Deut
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=Amos
+=Job
+=Ps
+=PrAzar
+=Prov
+=SgThree
+=Lam
+=Song
+=EpJer
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Mal
+=Gal
+=Zech
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Rom
+=2Cor
+=1Cor
+=Eph
+=Phil
+=Col
+=GkEsth
+=Esth
+=Acts
+=Tob
+=Jdt
+=Eccl
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+=Josh
+
+# Preferred names (from the CNV). I think these are traditional.
+# Short names from http://www.faisoft.com/webbible/tcm/tcall.htm after validating a few in the CNV
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	創世記	創
+*Exod	出埃及記	出
+*Lev	利未記	利
+*Num	民數記	民
+*Deut	申命記	申
+*Josh	約書亞記	書
+*Judg	士師記	士
+*Ruth	路得記	得
+*1Sam	撒母耳記上	撒上
+*2Sam	撒母耳記下	撒下
+*1Kgs	列王紀上	王上
+*2Kgs	列王紀下	王下
+*1Chr	歷代志上	代上
+*2Chr	歷代志下	代下
+*Ezra	以斯拉記	拉
+*Neh	尼希米記	尼
+*Esth	以斯帖記	斯
+*Job	約伯記	伯
+*Ps	詩篇	詩
+*Prov	箴言	箴
+*Eccl	傳道書	傳
+*Song	雅歌	歌
+*Isa	以賽亞書	賽
+*Jer	耶利米書	耶
+*Lam	耶利米哀歌	哀
+*Ezek	以西結書	結
+*Dan	但以理書	但
+*Hos	何西阿書	何
+*Joel	約珥書	珥
+*Amos	阿摩司書	摩
+*Obad	俄巴底亞書	俄
+*Jonah	約拿書	拿
+*Mic	彌迦書	彌
+*Nah	那鴻書	鴻
+*Hab	哈巴谷書	哈
+*Zeph	西番雅書	番
+*Hag	哈該書	該
+*Zech	撒迦利亞書	亞
+*Mal	瑪拉基書	瑪
+*Matt	馬太福音	太
+*Mark	馬可福音	可
+*Luke	路加福音	路
+*John	約翰福音	約
+*Acts	使徒行傳	徒
+*Rom	羅馬書	羅
+*1Cor	哥林多前書	林前
+*2Cor	哥林多後書	林後
+*Gal	加拉太書	加
+*Eph	以弗所書	弗
+*Phil	腓立比書	腓
+*Col	歌羅西書	西
+*1Thess	帖撒羅尼迦前書	帖前
+*2Thess	帖撒羅尼迦後書	帖後
+*1Tim	提摩太前書	提前
+*2Tim	提摩太後書	提後
+*Titus	提多書	多
+*Phlm	腓利門書	門
+*Heb	希伯來書	來
+*Jas	雅各書	雅
+*1Pet	彼得前書	彼前
+*2Pet	彼得後書	彼後
+*1John	約翰壹書	約壹
+*2John	約翰貳書	約貳
+*3John	約翰參書	約三
+*Jude	猶大書	猶
+*Rev	啟示錄	啟
+*Tob	多俾亞傳
+*Jdt	友弟德傳
+*GkEsth	Greek Esther	GkEsth
+*Wis	智慧篇	Wis
+*Sir	德訓篇	Sir
+*Bar	巴路克	Bar
+*PrAzar	Prayer of Azariah	PrAzar
+*Sus	Susanna	Susanna
+*Bel	Bel and the Dragon	Bel
+*SgThree	Song of the Three Young Men	SgThree
+*EpJer	Epistle of Jeremiah	EpJer
+*1Macc	瑪加伯上	1Macc
+*2Macc	瑪加伯下	2Macc
+*3Macc	3 Maccabees	3Macc
+*4Macc	4 Maccabees	4Macc
+*1Esd	1 Esdras	1Esd
+*2Esd	2 Esdras	2Esd
+*PrMan	Prayer of Manasseh	PrMan
+
+# I think these are simplified. Short names from http://www.faisoft.com/webbible/sc/tcall.htm
+# 诗篇 from ERV
+*Gen	创世记	创
+*Exod	出埃及	出
+*Lev	利未记	利
+*Num	民数记	民
+*Deut	申命记	申
+*Josh	约书亚记	书
+*Judg	士师记	士
+*Ruth	路得记	得
+*1Sam	撒母耳记上	撒上
+*2Sam	撒母耳记下	撒下
+*1Kgs	列王记上	王上
+*2Kgs	列王记下	王下
+*1Chr	历代志上	代上
+*2Chr	历代志下	代下
+*Ezra	以斯拉记	拉
+*Neh	尼希米记	尼
+*Esth	以斯帖记	斯
+*Job	约伯记	伯
+*Ps	诗篇	诗			诗篇
+*Prov	箴言	箴
+*Eccl	传道书	传
+*Song	雅歌	歌
+*Isa	以赛亚书	赛
+*Jer	耶利米书	耶
+*Lam	耶利米哀歌	哀
+*Ezek	以西结书	结
+*Dan	但以理书	但
+*Hos	何西阿书	何
+*Joel	约珥书	珥
+*Amos	阿摩司书	摩
+*Obad	俄巴底亚书	俄
+*Jonah	约拿书	拿
+*Mic	弥迦书	弥
+*Nah	那鸿书	鸿
+*Hab	哈巴谷书	哈
+*Zeph	西番雅书	番
+*Hag	哈该书	该
+*Zech	撒迦利亚书	亚
+*Mal	玛拉基书	玛
+*Matt	瑪特斐	太
+*Mark	瑪爾克	可
+*Luke	路加福音	路
+*John	伊望	约
+*Acts	宗徒行實	徒
+*Rom	罗马书	罗
+*1Cor	适凌爾福前	林前
+*2Cor	适凌爾福後	林后
+*Gal	戛拉提亞	加
+*Eph	耶斐斯	弗
+*Phil	肥利批	腓
+*Col	适羅斯	西
+*1Thess	莎倫前	帖前
+*2Thess	莎倫後	帖后
+*1Tim	提摩斐前	提前
+*2Tim	提摩斐後	提后
+*Titus	提特書	多
+*Phlm	肥利孟	门
+*Heb	希伯来书	来
+*Jas	亞适烏	雅
+*1Pet	撇特爾前	彼前
+*2Pet	撇特爾後	彼后
+*1John	伊望第一	约壹
+*2John	伊望第二	约贰
+*3John	伊望第三	约三
+*Jude	伊屋達	犹
+*Rev	默示錄	启
+*Tob	多俾亞傳
+*Jdt	友弟德傳
+*GkEsth	Greek Esther	GkEsth
+*Wis	智慧篇	Wis
+*Sir	德訓篇	Sir
+*Bar	巴路克	Bar
+*PrAzar	Prayer of Azariah	PrAzar
+*Sus	Susanna	Susanna
+*Bel	Bel and the Dragon	Bel
+*SgThree	Song of the Three Young Men	SgThree
+*EpJer	Epistle of Jeremiah	EpJer
+*1Macc	瑪加伯上	1Macc
+*2Macc	瑪加伯下	2Macc
+*3Macc	3 Maccabees	3Macc
+*4Macc	4 Maccabees	4Macc
+*1Esd	1 Esdras	1Esd
+*2Esd	2 Esdras	2Esd
+*PrMan	Prayer of Manasseh	PrMan

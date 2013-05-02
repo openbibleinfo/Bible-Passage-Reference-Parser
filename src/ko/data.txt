@@ -1,0 +1,274 @@
+$FIRST	1
+$SECOND	2
+$THIRD	3
+$FOURTH	4
+$AB	[a-e]
+$AND	and
+# Comes after chapter number
+$CHAPTER	장
+$FF	ff
+$TITLE	title
+$TRANS	KLB
+$TO	～	~
+# Comes after verse number; http://ko.wikipedia.org/wiki/%EB%A7%88%ED%83%9C%EC%98%A4_%EB%B3%B5%EC%9D%8C%EC%84%9C
+$VERSE	절
+$UNICODE_BLOCK	CJK	Latin
+
+Gen	창세기	창세	창
+Exod	출애굽기	탈출기	탈출	출
+Lev	레위기	레위	레
+Num	민수기	민수	민
+Deut	신명기	신명	신
+Josh	여호수아	수	여호수아기	여호
+Judg	사사기	판관기	삿	판관
+Ruth	룻기	룻
+1Sam	사무엘 상	삼상	사무엘기 상권	1사무	사무엘상	사무엘기상
+2Sam	사무엘 하	삼하	사무엘기 하권	2사무	사무엘하	사무엘기하
+1Kgs	열왕기 상	왕상	열왕기 상권	1열왕	열왕기상
+2Kgs	열왕기 하	왕하	열왕기 하권	2열왕	열왕기하
+1Chr	역대상	역대기 상	대상	역대기 상권	1역대	역대지상
+2Chr	역대하	역대기 하	대하	역대기 하권	2역대	역대지하
+Ezra	에스라	에즈라	스	에즈라기	에즈	에스라기
+Neh	느헤미야	느	느헤미야기	느헤	느헤미아
+Esth	에스더	에스텔	에	에스테르기	에스	에스더기
+Job	욥기	욥
+Ps	시편	시
+Prov	잠언	잠
+Eccl	전도서	코헬렛	전	코헬
+Song	아가	아
+Isa	이사야	사	이사야서	이사
+Jer	예레미야	렘	예레미야서	예레	예레미아
+Lam	예레미야애가	애	애가	예레미아애가	예레미야 애가
+Ezek	에스겔	에제키엘	겔	에제키엘서	에제	에스겔서
+Dan	다니엘	단	다니엘서	다니
+Hos	호세아	호	호세아서	호세
+Joel	요엘	욜	요엘서
+Amos	아모스	암	아모스서	아모
+Obad	오바댜	오바디야	옵	오바드야서	오바	오바댜서
+Jonah	요나	욘	요나서
+Mic	미가	미	미카서	미카	미가서
+Nah	나훔	나	나훔서
+Hab	하박국	하바꾹	합	하바쿡서	하바	하박국서
+Zeph	스바냐	스바니야	습	스바니야서	스바	스바냐서
+Hag	학개	하깨	학	하까이서	하까	학개서
+Zech	스가랴	즈가리야	슥	즈카르야서	즈카	스가랴서
+Mal	말라기	말	말라키서	말라	말라기서
+Matt	마태	마태오 복음	마태복음	마태오 복음서	마태복음서
+Mark	마가	마르코 복음	마가복음	마르코 복음서	마르	마가복음서
+Luke	누가	루카 복음	누가복음	루카 복음서	루카	누가복음서
+John	요한 복음	요한복음	요한 복음서	요한	요한복음서
+Acts	사도행전	사도
+Rom	로마서	로마 신자들에게 보낸 서간	로마
+1Cor	고린도1서	코린토1서	고린도전서	코린토 신자들에게 보낸 첫째 서간	1코린
+2Cor	고린도2서	코린토2서	고린도후서	코린토 신자들에게 보낸 둘째 서간	2코린
+Gal	갈라디아서	갈라티아 신자들에게 보낸 서간	갈라
+Eph	에베소서	에페소서	에페소 신자들에게 보낸 서간	에페
+Phil	빌립보서	필리피서	필리피 신자들에게 보낸 서간	필리
+Col	골로새서	콜로새서	콜로새 신자들에게 보낸 서간	콜로
+1Thess	데살로니가1서	테살로니카1서	데살로니가전서	테살로니카 신자들에게 보낸 첫째 서간	1테살
+2Thess	데살로니가2서	테살로니카2서	데살로니가후서	테살로니카 신자들에게 보낸 둘째 서간	2테살
+1Tim	디모데1서	티모테오1서	티모테오에게 보낸 첫째 서간	1티모
+2Tim	디모데2서	티모테오2서	티모테오에게 보낸 둘째 서간	2티모	디모데후서
+Titus	디도서	티토서	티토에게 보낸 서간	티토
+Phlm	빌레몬서	필레몬서	필레몬에게 보낸 서간	필레
+Heb	히브리서	히브리인들에게 보낸 서간	히브
+Jas	야고보서	야고보 서간	야고
+1Pet	베드로1서	베드로전서	베드로의 첫째 서간	1베드
+2Pet	베드로2서	베드로후서	베드로의 둘째 서간	2베드
+1John	요한1서	요한의 첫째 서간	1요한	요한일서
+2John	요한2서	요한의 둘째 서간	2요한	요한이서
+3John	요한3서	요한의 셋째 서간	3요한	요한삼서
+Jude	유다서	유다 서간	유다
+Rev	요한계시록	요한묵시록	요한 계시록	요한 묵시록	묵시
+Tob	토비트	토빗기	토빗
+Jdt	유딧	유딧기
+GkEsth	에스겔 추가본	에스텔 추가본
+Wis	지혜서	지혜
+Sir	집회서	벤시라크 지혜	벤시리크의 지혜	벤시라 지혜	벤시라크의 지혜	벤시라의 지혜	집회
+Bar	바룩	바룩서
+PrAzar	PrAzar
+Sus	수산나
+Bel	벨과 용	벨과 뱀
+SgThree	SgThree
+EpJer	예레미야의 편지
+1Macc	마카베오상	마카베오기 상권	1마카
+2Macc	마카베오하	마카베오기 하권	2마카
+3Macc	마카베오 3서	3마카
+4Macc	마카베오 4서	4마카
+1Esd	에스드라 1서
+2Esd	에스드라 2서
+PrMan	므나쎄의 기도
+AddDan	다니엘 추가본
+
+# Order
+=Gen
+=Exod
+=Bel
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=GkEsth
+=Esth
+=Neh
+=Job
+=Ps
+=PrAzar
+=Prov
+=Acts
+=Eccl
+=SgThree
+=Jer
+=Phlm
+=Lev
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Ezra
+=Obad
+=Jonah
+=Mic
+=Sus
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Gal
+=Song
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Rom
+=2Cor
+=1Cor
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	창세기	창
+*Exod	출애굽기	탈출
+*Lev	레위기	레
+*Num	민수기	민
+*Deut	신명기	신
+*Josh	여호수아	수
+*Judg	사사기	삿
+*Ruth	룻기	룻
+*1Sam	사무엘 상	삼상
+*2Sam	사무엘 하	삼하
+*1Kgs	열왕기 상	왕상
+*2Kgs	열왕기 하	왕하
+*1Chr	역대상	대상
+*2Chr	역대하	대하
+*Ezra	에스라	스
+*Neh	느헤미야	느
+*Esth	에스더	에
+*Job	욥기	욥
+*Ps	시편	시
+*Prov	잠언	잠
+*Eccl	전도서	전
+*Song	아가	아
+*Isa	이사야	사
+*Jer	예레미야	렘
+*Lam	예레미야애가	애
+*Ezek	에스겔	겔
+*Dan	다니엘	단
+*Hos	호세아	호
+*Joel	요엘	욜
+*Amos	아모스	암
+*Obad	오바댜	옵
+*Jonah	요나	욘
+*Mic	미가	미
+*Nah	나훔	나
+*Hab	하박국	합
+*Zeph	스바냐	습
+*Hag	학개	학
+*Zech	스가랴	슥
+*Mal	말라기	말
+*Matt	마태
+*Mark	마가
+*Luke	누가
+*John	요한 복음
+*Acts	사도행전
+*Rom	로마서
+*1Cor	고린도1서
+*2Cor	고린도2서
+*Gal	갈라디아서
+*Eph	에베소서
+*Phil	빌립보서
+*Col	골로새서
+*1Thess	데살로니가1서
+*2Thess	데살로니가2서
+*1Tim	디모데1서
+*2Tim	디모데2서
+*Titus	디도서
+*Phlm	빌레몬서
+*Heb	히브리서
+*Jas	야고보서
+*1Pet	베드로1서
+*2Pet	베드로2서
+*1John	요한1서
+*2John	요한2서
+*3John	요한3서
+*Jude	유다서
+*Rev	요한계시록
+*Tob	토비트
+*Jdt	유딧
+*GkEsth	에스겔 추가본
+*Wis	지혜서
+*Sir	집회서
+*Bar	바룩
+*PrAzar	PrAzar
+*Sus	수산나
+*Bel	벨과 용
+*SgThree	SgThree
+*EpJer	예레미야의 편지
+*1Macc	마카베오상
+*2Macc	마카베오하
+*3Macc	마카베오 3서
+*4Macc	마카베오 4서
+*1Esd	에스드라 1서
+*2Esd	에스드라 2서
+*PrMan	므나쎄의 기도
