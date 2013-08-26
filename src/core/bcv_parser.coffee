@@ -388,7 +388,7 @@ class bcv_parser
 			# Return an OSIS-y reference
 			res = @bkPtr+"."+@chPtr+"."+@vPtr
 			if end != @vPtr
-				res += "-"+end				
+				res += "-"+@bkPtr+"."+@chPtr+"."+@end				
 			# More chapters in this reference?
 			if ref.end.c > @chPtr
 				@chPtr++
