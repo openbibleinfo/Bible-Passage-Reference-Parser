@@ -79,6 +79,32 @@ bcv.parse("John 3:16,18").osis_and_indices(); // [{"osis": "John.3.16,John.3.18"
 bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_indices(); // [{"osis": "John.3.16,John.3.18", "translations": [""], "indices":[0, 12]}, {"osis": "Matt.1", "translations": ["NIV","ESV"], "indices": [18, 38]}]
 ```
 
+#### `.verse_iterator()`
+
+This function returns an iterator, an object with one useful method (`.next`); every time `.next` is called on the iterator it returns the next verse within the parsed range in OSIS format:
+
+```javascript
+var it = bcv.parse("John 3:16-18, 22").verse_iterator();
+it.next(); // "John.3.16"
+it.next(); // "John.3.17"
+it.next(); // "John.3.18"
+it.next(); // "John.3.22"
+```
+
+#### `.contiguous_verse_range_iterator()`
+
+This function returns an iterator, an object with one useful method (`.next`); every time `.next` is called on the iterator it returns the next contiguous range of verses within the same chapter in OSIS format:
+
+```javascript
+var it = bcv.parse("John 3:16-6:10,6:12; Acts 3:1-11").contiguous_verse_range_iterator()
+it.next(); // "John.3.16-36"
+it.next(); // "John.4.1-54"
+it.next(); // "John.5.1-47"
+it.next(); // "John.6.1-10"
+it.next(); // "John.6.12"
+it.next(); // "Acts.3.1-11"
+```
+
 #### `.parsed_entities()`
 
 If you want to know a lot about how the BCV parser handled the input string, use this function. It can include messages if it adjusted the input or had trouble parsing it (e.g., if given an invalid reference).

@@ -328,6 +328,92 @@ class bcv_parser
 			out.push {osis: osis.osis, translations: osis.translations, indices: osis.indices} if osis.osis.length > 0
 		out
 
+	# Return an iterator which returns every verse in the collection
+	verse_iterator: ->
+		next = ->
+			# If we don't have a reference loaded, load one
+			ref = @entities[@refPtr]
+			return if !ref
+			if @vPtr == 0
+				@bkPtr = ref.start.b
+				@chPtr = ref.start.c
+				@vPtr = ref.start.v
+			tr = ref.translations[0] || "default"
+			# Return an OSIS-y reference
+			res = @bkPtr+"."+@chPtr+"."+@vPtr
+			@vPtr++
+			# Have we fallen off the end of a chapter?
+			if @vPtr > @parent.translations[tr].chapters[@bkPtr][@chPtr-1]
+				# More chapters in this reference?
+				if ref.end.c > @chPtr
+					@chPtr++
+					@vPtr = 1
+				else
+					@refPtr++
+					@vPtr = 0
+			# Have we fallen off the end of a range?
+			else if @bkPtr == ref.end.b && @chPtr == ref.end.c && @vPtr > ref.end.v
+				@refPtr++
+				@vPtr = 0
+			return res
+		out = 
+			refPtr: 0
+			bkPtr: ""
+			chPtr: 0
+			vPtr: 0
+			next: next
+			entities: []
+			parent: this
+		for ent_set in @parsed_entities()
+			for ent in ent_set.entities
+				out.entities.push(ent)
+		out
+
+	# Return an iterator which returns ranges within each chapter in the collection
+	contiguous_verse_range_iterator: ->
+		next = ->
+			# If we don't have a reference loaded, load one
+			ref = @entities[@refPtr]
+			return if !ref
+			if @vPtr == 0
+				@bkPtr = ref.start.b
+				@chPtr = ref.start.c
+				@vPtr = ref.start.v
+			tr = ref.translations[0] || "default"
+			# Find the end of this reference
+			if @bkPtr == ref.end.b && @chPtr == ref.end.c
+				end = ref.end.v
+			else
+				end = @parent.translations[tr].chapters[@bkPtr][@chPtr-1]
+			# Return an OSIS-y reference
+			res = @bkPtr+"."+@chPtr+"."+@vPtr
+			if end != @vPtr
+				res += "-"+@bkPtr+"."+@chPtr+"."+@end				
+			# More chapters in this reference?
+			if ref.end.c > @chPtr
+				@chPtr++
+				@vPtr = 1
+			else
+				@refPtr++
+				@vPtr = 0
+			return res
+		out = 
+			refPtr: 0
+			bkPtr: ""
+			chPtr: 0
+			vPtr: 0
+			next: next
+			entities: []
+			parent: this
+		for ent_set in @parsed_entities()
+			for ent in ent_set.entities
+				out.entities.push(ent)
+		out
+
+	chapter_iter_next: ->
+		throw "Oops"
+
+
 	# Return all objects, probably for additional processing.
 	parsed_entities: ->
 		out = []
