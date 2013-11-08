@@ -2,6 +2,8 @@ use strict;
 use warnings;
 use Data::Dumper;
 use Unicode::Normalize;
+use JSON;
+use MIME::Base64;
 
 my ($lang) = @ARGV;
 die "The first argument should be a language iso code (e.g., \"fr\")" unless ($lang && $lang =~ /^\w+$/);
@@ -16,7 +18,7 @@ my %raw_abbrevs;
 my %vars = get_vars();
 my %abbrevs = get_abbrevs();
 my @order = get_order();
-make_tests();
+my %all_abbrevs = make_tests();
 make_regexps();
 make_grammar();
 make_translations();
@@ -25,17 +27,29 @@ sub make_translations
 {
 	my $out = get_file_contents("$dir/template/translations.coffee");
 	my (@regexps, @aliases);
-	foreach my $trans (@{$vars{'$TRANS'}})
+	foreach my $translation (@{$vars{'$TRANS'}})
 	{
-		push @regexps, quotemeta($trans);
+		my ($trans, $osis, $alias) = split /,/, $translation;
+		push @regexps, $trans;
+		next unless ($osis || $alias);
+		$osis = $trans unless ($osis);
+		$alias = 'default' unless ($alias);
 		my $lc = lc $trans;
 		$lc = '"' . $lc . '"' if ($lc =~ /\W/);
-		push @aliases, "$lc:\x0a\t\t\tosis: \"$trans\"\x0a\t\t\talias: \"default\""
+		push @aliases, "$lc:\x0a\t\t\tosis: \"$osis\"\x0a\t\t\talias: \"$alias\""
 	}
-	my $regexp = join "\x0a\t| ", @regexps;
+	my $regexp = make_book_regexp('translations', \@regexps, 1);
 	my $alias = join "\x0a\t\t", @aliases;
+	if (-f "$dir/$lang/translation_aliases.coffee")
+	{
+		$alias = get_file_contents("$dir/$lang/translation_aliases.coffee");
+		$out =~ s/\t+(\$TRANS_ALIAS)/$1/g;
+	}
+	my $alternate = '';
+	$alternate = get_file_contents("$dir/$lang/translation_alternates.coffee") if (-f "$dir/$lang/translation_alternates.coffee");
 	$out =~ s/\$TRANS_REGEXP/$regexp/g;
 	$out =~ s/\$TRANS_ALIAS/$alias/g;
+	$out =~ s/\s*\$TRANS_ALTERNATE/\n$alternate/g;
 	open OUT, ">:utf8", "$dir/$lang/translations.coffee";
 	print OUT $out;
 	close OUT;
@@ -80,7 +94,10 @@ sub make_regexps
 	foreach my $osis (sort keys %raw_abbrevs)
 	{
 		next unless ($osis =~ /,/);
-		push @osises, {osis => $osis, apocrypha => 0};
+		my $temp = $osis;
+		$temp =~ s/,+$//;
+		my $apocrypha = (exists $valid_osises{$temp} && $valid_osises{$temp} eq 'apocrypha') ? 1 : 0;
+		push @osises, {osis => $osis, apocrypha => $apocrypha};
 	}
 	my $book_regexps = make_regexp_set(@osises);
 	$out =~ s/\$BOOK_REGEXPS/$book_regexps/;
@@ -114,10 +131,16 @@ sub make_regexps
 sub make_regexp_set
 {
 	my @out;
+	my $has_psalm_cb = 0;
 	foreach my $ref (@_)
 	{
 		my $osis = $ref->{osis};
 		my $apocrypha = $ref->{apocrypha};
+		if ($osis eq 'Ps' && !$has_psalm_cb && -f "$dir/$lang/psalm_cb.coffee")
+		{
+			push @out, get_file_contents("$dir/$lang/psalm_cb.coffee");
+			$has_psalm_cb = 1;
+		}
 		my %safes;
 		foreach my $abbrev (keys %{$raw_abbrevs{$osis}})
 		{
@@ -141,9 +164,11 @@ sub make_regexp
 		$abbrev =~ s/ /$regexp_space*/g;
 		$abbrev =~ s/[\x{200b}]/my $temp = $regexp_space; $temp =~ s!\]$!\x{200b}]!; "$temp*"/ge;
 		$abbrev = handle_accents($abbrev);
-		$abbrev =~ s/(\$[A-Z]+)(?!\w)/format_var('regexp', $1) . "\\.?"/e;
+		$abbrev =~ s/(\$[A-Z]+)(?!\w)/format_var('regexp', $1) . "\\.?"/ge;
 		push @abbrevs, $abbrev;
 	}
+	my $book_regexp = make_book_regexp($osis, $all_abbrevs{$osis}, 1);
+	$osis =~ s/,+$//;
 	$osis =~ s/,/", "/g;
 	push @out, "\t\tosis: [\"$osis\"]\x0a\t\t";
 	push @out, "apocrypha: true\x0a\t\t" if ($apocrypha);
@@ -151,16 +176,229 @@ sub make_regexp
 	if ($osis =~ /^[0-9]/ || join('|', @abbrevs) =~ /[0-9]/)
 	{
 		$pre = join '|', map { format_value('quote', $_)} @{$vars{'$PRE_BOOK_ALLOWED_CHARACTERS'}};
-		$pre =~ s/\\d//;
-		$pre =~ s/^\||\|\||\|$//g; #remove leftover |
+		$pre = '\b' if ($pre eq "\\\\d|\\\\b");
+		$pre =~ s/\\+d\|?//;
+		$pre =~ s/^\|+//;
+		$pre =~ s/^\||\|\||\|$//; #remove leftover |
 		$pre =~ s/^\[\^/[^0-9/; #if it's a negated class, add \d
 	}
 	my $post = join '|', @{$vars{'$POST_BOOK_ALLOWED_CHARACTERS'}};
 	push @out, "regexp: ///(^|$pre)(\x0a\t\t";
-	push @out, join(' | ', @abbrevs);
+	push @out, $book_regexp;
 	$out[-1] =~ s/-(?!\?)/-?/g;
 	push @out, "\x0a\t\t\t)(?:(?=$post)|\$)///gi";
 	return join("", @out);
+}
+
+sub make_book_regexp
+{
+	my ($osis, $abbrevs, $recurse_level) = @_;
+	#print "  Regexping $osis..\n";
+	#return 'aaaa' unless ($osis eq 'Acts');
+	map { s/\\//g; } @{$abbrevs};
+	my @subsets = get_book_subsets($abbrevs);
+	my @out;
+	foreach my $subset (@subsets)
+	{
+		#print Dumper($subset);
+		my $json = JSON->new->ascii(1)->encode($subset);
+		#print "$json\n" if ($osis eq 'GkEsth');
+		my $base64 = encode_base64($json, "");
+		print "$osis " . length($base64) . "\n";
+		my $use_file = 0;
+		if (length $base64 > 128_000) #Ubuntu limitation
+		{
+			$use_file = 1;
+			open TEMP, '>./temp.txt';
+			print TEMP $json;
+			close TEMP;
+			$base64 = '<';
+		}
+		my $regexp = `node ./make_regexps.js "$base64"`;
+		#print Dumper($regexp) if ($osis eq 'Acts');
+		unlink './temp.txt' if ($use_file);
+		$regexp = decode_json($regexp);
+		die "No regexp json object" unless (defined $regexp->{patterns});
+		my @patterns;
+		foreach my $pattern (@{$regexp->{patterns}})
+		{
+			$pattern = format_node_regexp_pattern($pattern);
+			push @patterns, $pattern;
+		}
+		my $pattern = join('|', @patterns);
+		$pattern = validate_node_regexp($osis, $pattern, $subset, $recurse_level);
+		push @out, $pattern;
+	}
+	return join('|', @out);
+}
+
+sub get_book_subsets
+{
+	my @abbrevs = @{$_[0]};
+	return ([@abbrevs]) unless (scalar @abbrevs > 20);
+	my @groups = ([]);
+	my %subs;
+	while (@abbrevs)
+	{
+		my $long = shift @abbrevs;
+		next if (exists $subs{$long});
+		for my $i (0 .. $#abbrevs)
+		{
+			my $short = quotemeta $abbrevs[$i];
+			next unless ($long =~ /\b$short\b/);
+			$subs{$abbrevs[$i]}++;
+		}
+		push @{$groups[0]}, $long;
+	}
+	$groups[1] = [keys %subs] if (%subs);
+	return @groups;
+}
+
+sub consolidate_abbrevs
+{
+	my @out;
+	my $merge_i = -1;
+	while (@_)
+	{
+		my $ref = shift;
+		if (scalar(keys(%{$ref})) == 2)
+		{
+			if ($merge_i == -1)
+			{
+				$merge_i = scalar @out;
+				push @out, [keys %{$ref}];
+			}
+			else
+			{
+				foreach my $abbrev (keys %{$ref})
+				{
+					push @{$out[$merge_i]}, $abbrev;
+				}
+				$merge_i = -1 if (scalar @{$out[$merge_i]} > 6);
+			}
+		}
+		else
+		{
+			push @out, [keys %{$ref}];
+		}
+	}
+	return @out;
+}
+
+sub validate_node_regexp
+{
+	my ($osis, $pattern, $abbrevs, $recurse_level, $note) = @_;
+	my ($oks, $not_oks) = check_regexp_pattern($osis, $pattern, $abbrevs);
+	my @oks = @{$oks};
+	my @not_oks = @{$not_oks};
+	return $pattern unless (@not_oks);
+	print "  Recurse ($osis): $recurse_level\n";# if ($recurse_level > 3);
+	#if ($note && $note eq 'final')
+	#{
+	#	print Dumper(\@oks);
+	#	print Dumper(\@not_oks);
+	#	exit;
+	#}
+	#print Dumper($abbrevs);
+	#print Dumper(\@oks);
+	#print Dumper(\@not_oks);
+	my $ok_pattern = make_book_regexp($osis, \@oks, $recurse_level + 1);
+	my $not_ok_pattern = make_book_regexp($osis, \@not_oks, $recurse_level + 1);
+	my ($shortest_ok) = sort { length $a <=> length $b } @oks;
+	my ($shortest_not_ok) = sort { length $a <=> length $b } @not_oks;
+	my $new_pattern = (length $shortest_ok > length $shortest_not_ok && $recurse_level < 10) ? "$ok_pattern|$not_ok_pattern" : "$not_ok_pattern|$ok_pattern";
+	$new_pattern = validate_node_regexp($osis, $new_pattern, $abbrevs, $recurse_level + 1, 'final');
+	#print Dumper($new_pattern);
+	return $new_pattern;
+}
+
+sub check_regexp_pattern
+{
+	my ($osis, $pattern, $abbrevs) = @_;
+	my (@oks, @not_oks);
+	foreach my $abbrev (@{$abbrevs})
+	{
+		my $compare = $abbrev;
+		$compare =~ s/^$pattern(?:$|\b|(?=\W))//i;
+		if (length $compare)
+		{
+			push @not_oks, $abbrev;
+		}
+		else
+		{
+			push @oks, $abbrev;
+		}
+	}
+	#print Dumper(\@oks);
+	#print Dumper($pattern);
+	#print Dumper(\@not_oks);
+	return (\@oks, \@not_oks);
+}
+
+sub format_node_regexp_pattern
+{
+	my ($pattern) = @_;
+	die "Unexpected regexp pattern: $pattern" unless ($pattern =~ /^\/\^/ && $pattern =~ /\$\/$/);
+	$pattern =~ s/^\/\^//;
+	$pattern =~ s/\$\/$//;
+	if ($pattern =~ /\[/)
+	{
+		my @parts = split /\[/, $pattern;
+		my @out = (shift(@parts));
+		while (@parts)
+		{
+			my $part = shift @parts;
+			if ($out[-1] =~ /\\$/)
+			{
+				push @out, $part;
+				next;
+			}
+			if ($part !~ /[\- ]/)
+			{
+				push @out, $part;
+				next;
+			}
+			my $has_space = 0;
+			my @chars = split //, $part;
+			my @out_chars;
+			while (@chars)
+			{
+				my $char = shift @chars;
+				if ($char eq "\\")
+				{
+					push @out_chars, $char;
+					push @out_chars, shift(@chars);
+					next;
+				}
+				elsif ($char eq '-')
+				{
+					push @out_chars, "\\-";
+				}
+				elsif ($char eq ']')
+				{
+					push @out_chars, $char;
+					push @out_chars, '*' if ($has_space && (!@chars || $chars[0] !~ /^[\*\+]/));
+					push @out_chars, @chars;
+					last;
+				}
+				elsif ($char eq ' ')
+				{
+					push @out_chars, "::OPTIONAL_SPACE::";
+					$has_space = 1;
+				}
+				else
+				{
+					push @out_chars, $char;
+				}
+			}
+			$part = join '', @out_chars;
+			push @out, $part;
+		}
+		$pattern = join '[', @out;
+	}
+	$pattern =~ s/ /[\\s\\xa0]*/g;
+	$pattern =~ s/::OPTIONAL_SPACE::/\\s\\xa0/g;
+	return $pattern;
 }
 
 sub format_value
@@ -249,6 +487,7 @@ sub make_tests
 {
 	my @out;
 	my @osises = @order;
+	my %all_abbrevs;
 	foreach my $osis (sort keys %abbrevs)
 	{
 		next unless ($osis =~ /,/);
@@ -264,7 +503,8 @@ sub make_tests
 		{
 			foreach my $expanded (expand_abbrev_vars($abbrev))
 			{
-				push @tests, "		expect(p.parse(\"$expanded 1:1\").osis()).toEqual \"$match\"";
+				add_abbrev_to_all_abbrevs($osis, $expanded, \%all_abbrevs);
+				push @tests, "\t\texpect(p.parse(\"$expanded 1:1\").osis()).toEqual(\"$match\")";
 			}
 			foreach my $alt_osis (@osises)
 			{
@@ -285,40 +525,66 @@ sub make_tests
 				}
 			}
 		}
-		push @out, "	it \"should handle book: $osis ($lang)\", ->";
+		push @out, "describe \"Localized book $osis ($lang)\", ->";
+		push @out, "\tp = {}";
+		push @out, "\tbeforeEach ->";
+		push @out, "\t\tp = new bcv_parser";
+		push @out, "\t\tp.set_options book_alone_strategy: \"ignore\",book_sequence_strategy: \"ignore\",osis_compaction_strategy: \"bc\",captive_end_digits_strategy: \"delete\"";
+		push @out, "\t\tp.include_apocrypha true";
+		push @out, "\tit \"should handle book: $osis ($lang)\", ->";
+		# Drop into js rather than coffeescript to minimize compile times on the coffee side.
+		push @out, "\t\t`";
 		push @out, @tests;
 		push @out, add_non_latin_digit_tests($osis, @tests);
 
-		# Don't check for an empty string because books like EpJer will lead to Jer in language-specific ways
+		# Don't check for an empty string because books like EpJer will lead to Jer in language-specific ways.
 		if ($valid_osises{$first} ne 'apocrypha')
 		{
-			push @out, "		p.include_apocrypha false";
+			push @out, "		p.include_apocrypha(false)";
 			foreach my $abbrev (sort { length $b <=> length $a } keys %{$abbrevs{$osis}})
 			{
 				foreach my $expanded (expand_abbrev_vars($abbrev))
 				{
 					$expanded = uc_normalize($expanded);
-					push @out, "		expect(p.parse(\"$expanded 1:1\").osis()).toEqual \"$match\"";
+					push @out, "\t\texpect(p.parse(\"$expanded 1:1\").osis()).toEqual(\"$match\")";
 				}
 			}
 		}
+		push @out, "\t\t`";
+		# In keeping with coffeescript, always return something (which, since we just exited a js block, won't otherwise happen).
+		push @out, "\t\ttrue";
 	}
-	push @out, add_range_tests();
-	push @out, add_chapter_tests();
-	push @out, add_verse_tests();
-	push @out, add_sequence_tests();
-	push @out, add_title_tests();
-	push @out, add_ff_tests();
-	push @out, add_trans_tests();
-	push @out, add_book_range_tests();
-	push @out, add_boundary_tests();
-	my $tests = join "\x0a", @out;
+	open OUT, '>:utf8', "$dir/$lang/book_names.txt";
+	foreach my $osis (sort keys %all_abbrevs)
+	{
+		my @osis_abbrevs = sort { length $b <=> length $a } keys %{$all_abbrevs{$osis}};
+		my $use_osis = $osis;
+		$use_osis =~ s/,+$//;
+		foreach my $abbrev (@osis_abbrevs)
+		{
+			print OUT "$use_osis\t$abbrev\n";
+		}
+		$all_abbrevs{$osis} = \@osis_abbrevs;
+	}
+	close OUT;
+	my @misc_tests;
+	push @misc_tests, add_range_tests();
+	push @misc_tests, add_chapter_tests();
+	push @misc_tests, add_verse_tests();
+	push @misc_tests, add_sequence_tests();
+	push @misc_tests, add_title_tests();
+	push @misc_tests, add_ff_tests();
+	push @misc_tests, add_trans_tests();
+	push @misc_tests, add_book_range_tests();
+	push @misc_tests, add_boundary_tests();
 	my $out = get_file_contents("$dir/template/spec.coffee");
-	$out =~ s/\$BOOK_TESTS/$tests/;
+	$out =~ s/\$LANG/$lang/g;
+	$out =~ s/\$BOOK_TESTS/join("\x0a", @out)/e;
+	$out =~ s/\$MISC_TESTS/join("\x0a", @misc_tests)/e;
 	open OUT, ">:utf8", "$dir/$lang/spec.coffee";
 	print OUT $out;
 	close OUT;
-	if ($out =~ /(\$[A-Z])/)
+	if ($out =~ /(\$[A-Z]+)/)
 	{
 		die "$1\nTests: Capital variable";
 	}
@@ -332,6 +598,35 @@ sub make_tests
 	{
 		die "$1\nTests: Capital variable";
 	}
+	return %all_abbrevs;
+}
+
+sub add_abbrev_to_all_abbrevs
+{
+	my ($osis, $abbrev, $all_abbrevs) = @_;
+	if ($abbrev =~ /\./)
+	{
+		my @news = split /\./, $abbrev;
+		my @olds = (shift(@news));
+		foreach my $new (@news)
+		{
+			my @temp;
+			foreach my $old (@olds)
+			{
+				push @temp, "$old.$new";
+				push @temp, "$old$new";
+			}
+			@olds = @temp;
+		}
+		foreach my $abbrev (@olds)
+		{
+			$all_abbrevs->{$osis}->{$abbrev} = 1;
+		}
+	}
+	else
+	{
+		$all_abbrevs->{$osis}->{$abbrev} = 1;
+	}
 }
 
 sub add_non_latin_digit_tests
@@ -340,8 +635,11 @@ sub add_non_latin_digit_tests
 	my @out;
 	my $temp = join "\n", @_;
 	return @out unless ($temp =~ /[\x{0660}-\x{0669}\x{06f0}-\x{06f9}\x{07c0}-\x{07c9}\x{0966}-\x{096f}\x{09e6}-\x{09ef}\x{0a66}-\x{0a6f}\x{0ae6}-\x{0aef}\x{0b66}-\x{0b6f}\x{0be6}-\x{0bef}\x{0c66}-\x{0c6f}\x{0ce6}-\x{0cef}\x{0d66}-\x{0d6f}\x{0e50}-\x{0e59}\x{0ed0}-\x{0ed9}\x{0f20}-\x{0f29}\x{1040}-\x{1049}\x{1090}-\x{1099}\x{17e0}-\x{17e9}\x{1810}-\x{1819}\x{1946}-\x{194f}\x{19d0}-\x{19d9}\x{1a80}-\x{1a89}\x{1a90}-\x{1a99}\x{1b50}-\x{1b59}\x{1bb0}-\x{1bb9}\x{1c40}-\x{1c49}\x{1c50}-\x{1c59}\x{a620}-\x{a629}\x{a8d0}-\x{a8d9}\x{a900}-\x{a909}\x{a9d0}-\x{a9d9}\x{aa50}-\x{aa59}\x{abf0}-\x{abf9}\x{ff10}-\x{ff19}]/);
+	push @out, "\t\t`";
+	push @out, "\t\ttrue";
 	push @out, "	it \"should handle non-Latin digits in book: $osis ($lang)\", ->";
 	push @out, "		p.set_options non_latin_digits_strategy: \"replace\"";
+	push @out, "\t\t`";
 	return (@out, @_);
 }
 
@@ -425,14 +723,16 @@ sub add_ff_tests
 {
 	my @out;
 	push @out, "	it \"should handle 'ff' ($lang)\", ->";
+	push @out, "\t\tp.set_options {case_sensitive: \"books\"}" if ($lang eq 'it');
 	foreach my $abbrev (@{$vars{'$FF'}})
 	{
 		foreach my $ff (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
 			push @out, "		expect(p.parse(\"Rev 3$ff, 4:2$ff\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"";
-			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $ff, 4:2 $ff") . "\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"";
+			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $ff, 4:2 $ff") . "\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"" unless ($lang eq 'it');
 		}
 	}
+	push @out, "\t\tp.set_options {case_sensitive: \"none\"}" if ($lang eq 'it');
 	return @out;
 }
 
@@ -442,10 +742,12 @@ sub add_trans_tests
 	push @out, "	it \"should handle translations ($lang)\", ->";
 	foreach my $abbrev (@{$vars{'$TRANS'}})
 	{
-		foreach my $trans (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
+		foreach my $translation (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Lev 1 ($trans)\").osis_and_translations()).toEqual [[\"Lev.1\", \"$trans\"]]";
-			push @out, "		expect(p.parse(\"" . lc("Lev 1 $trans") . "\").osis_and_translations()).toEqual [[\"Lev.1\", \"$trans\"]]";
+			my ($trans, $osis) = split /,/, $translation;
+			$osis = $trans unless ($osis);
+			push @out, "		expect(p.parse(\"Lev 1 ($trans)\").osis_and_translations()).toEqual [[\"Lev.1\", \"$osis\"]]";
+			push @out, "		expect(p.parse(\"" . lc("Lev 1 $trans") . "\").osis_and_translations()).toEqual [[\"Lev.1\", \"$osis\"]]";
 		}
 	}
 	return @out;
@@ -493,9 +795,9 @@ sub add_book_range_tests
 sub add_boundary_tests
 {
 	my @out;
-	push @out, "it \"should handle boundaries ($lang)\", ->";
+	push @out, "\tit \"should handle boundaries ($lang)\", ->";
 	push @out, "		p.set_options {book_alone_strategy: \"full\"}";
-	push @out, "		expect(p.parse(\"\\u2014Matt\\u2014\").osis()).toEqual \"Matt\"";
+	push @out, "		expect(p.parse(\"\\u2014Matt\\u2014\").osis()).toEqual \"Matt.1-Matt.28\"";
 	push @out, "		expect(p.parse(\"\\u201cMatt 1:1\\u201d\").osis()).toEqual \"Matt.1.1\"";
 	return @out;
 }
@@ -527,7 +829,7 @@ sub get_abbrevs
 		my ($osis, @abbrevs) = split /\t/;
 		$osis =~ s/^\*//;
 		is_valid_osis($osis);
-		$out{$osis}->{$osis} = 1 unless ($osis =~ /,/);
+		$out{$osis}->{$osis} = 1 unless ($osis =~ /,/ || (exists $vars{'$FORCE_OSIS_ABBREV'} && $vars{'$FORCE_OSIS_ABBREV'}->[0] eq 'false'));
 		foreach my $abbrev (@abbrevs)
 		{
 			next unless (length $abbrev);
@@ -541,7 +843,7 @@ sub get_abbrevs
 			my @alts = expand_abbrev_vars($abbrev);
 			if (Dumper(\@alts) =~ /.\$/)
 			{
-				die Dumper(\@alts);
+				die "Alts:" . Dumper(\@alts);
 			}
 			foreach my $alt (@alts)
 			{
@@ -555,7 +857,7 @@ sub get_abbrevs
 				}
 				else
 				{
-					print " $osis abbrev already exists: " . Dumper($abbrev) if (exists $out{$osis}->{$abbrev} && !$is_literal && $abbrev ne $osis && $abbrev !~ /\$/);
+					#print " $osis abbrev already exists: " . Dumper($abbrev) if (exists $out{$osis}->{$abbrev} && !$is_literal && $abbrev ne $osis && $abbrev !~ /\$/);
 					$out{$osis}->{$abbrev} = 1;
 				}
 			}
@@ -574,14 +876,33 @@ sub expand_abbrev_vars
 	return ($abbrev) unless ($abbrev =~ /\$[A-Z]+/);
 	my ($var) = $abbrev =~ /(\$[A-Z]+)(?!\w)/;
 	my @out;
+	my $recurse = 0;
 	foreach my $value (@{$vars{$var}})
 	{
-		my $temp = $abbrev;
 		foreach my $val (expand_abbrev($value))
 		{
+			my $temp = $abbrev;
 			$temp =~ s/\$[A-Z]+(?!\w)/$val/;
+			$recurse = 1 if ($temp =~ /\$/);
+			push @out, $temp;
+			if ($var =~ /^\$(?:FIRST|SECOND|THIRD|FOURTH|FIFTH)$/ && $val =~ /^\d|^[IV]+$/)
+			{
+				my $temp2 = $abbrev;
+				my $safe = quotemeta $var;
+				$temp2 =~ s/$safe([^.]|$)/$val.$1/;
+				push @out, $temp2;
+			}
 		}
-		push @out, $temp;
+	}
+	if ($recurse)
+	{
+		my @temps;
+		foreach my $abbrev (@out)
+		{
+			my @adds = expand_abbrev_vars($abbrev);
+			push @temps, @adds;
+		}
+		@out = @temps;
 	}
 	return @out;
 }
@@ -681,9 +1002,10 @@ sub get_letters
 		chomp;
 		s/\\u//g;
 		s/\s*#.+$//;
+		s/\s+//g;
 		my ($start, $end) = split /-/;
 		$end = $start unless ($end);
-		($start, $end) = (hex $start, hex $end);
+		($start, $end) = (hex($start), hex($end));
 		foreach my $ref (@_)
 		{
 			my ($start_range, $end_range) = @{$ref};
@@ -837,7 +1159,7 @@ sub expand_abbrev
 			@outs = @temps;
 		}
 	}
-	print Dumper(\@outs) if (Dumper(\@outs) =~ /John/);
+	#print Dumper(\@outs) if (Dumper(\@outs) =~ /John/);
 	return @outs;
 }
 
@@ -858,9 +1180,9 @@ sub handle_accents
 {
 	my ($text) = @_;
 	$text =~ s/([\x80-\x{ffff}])(?!`)/handle_accent($1)/ge;
-	$text =~ s/([\x80-\x{ffff}])`/$1/g;
 	$text =~ s/'/[\x{2019}']/g;
-	$text =~ s/\x{2c8}/[\x{2c8}']/g;
+	$text =~ s/\x{2c8}(?!`)/[\x{2c8}']/g unless (exists $vars{'$COLLAPSE_COMBINING_CHARACTERS'} && $vars{'$COLLAPSE_COMBINING_CHARACTERS'}->[0] eq 'false');
+	$text =~ s/([\x80-\x{ffff}])`/$1/g;
 	$text =~ s/[\x{2b9}\x{374}]/['\x{2019}\x{384}\x{374}\x{2b9}]/g;
 	$text =~ s/([\x{300}\x{370}]-)\['\x{2019}\x{384}\x{374}\x{2b9}\](\x{376})/$1\x{374}$2/;
 	$text =~ s/\.$//;

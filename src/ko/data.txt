@@ -12,7 +12,7 @@ $TRANS	KLB
 $TO	～	~
 # Comes after verse number; http://ko.wikipedia.org/wiki/%EB%A7%88%ED%83%9C%EC%98%A4_%EB%B3%B5%EC%9D%8C%EC%84%9C
 $VERSE	절
-$UNICODE_BLOCK	CJK	Latin
+$UNICODE_BLOCK	CJK	Hangul_Syllables	Latin
 
 Gen	창세기	창세	창
 Exod	출애굽기	탈출기	탈출	출

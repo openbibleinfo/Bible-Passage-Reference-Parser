@@ -647,6 +647,7 @@
 \uABE5
 \uABE8
 \uABED
+\uAC00-\uD7AF #Hangul syllables
 \uFB1E
 \uFE00-\uFE0F
 \uFE20-\uFE26

@@ -1,0 +1,402 @@
+1Chr	역대기 상권
+1Chr	역대기 상
+1Chr	1Chr
+1Chr	역대지상
+1Chr	1역대
+1Chr	역대상
+1Chr	대상
+1Cor	코린토 신자들에게 보낸 첫째 서간
+1Cor	고린도전서
+1Cor	코린토1서
+1Cor	고린도1서
+1Cor	1Cor
+1Cor	1코린
+1Esd	에스드라 1서
+1Esd	1Esd
+1John	요한의 첫째 서간
+1John	1John
+1John	요한1서
+1John	요한일서
+1John	1요한
+1Kgs	열왕기 상권
+1Kgs	열왕기 상
+1Kgs	1Kgs
+1Kgs	열왕기상
+1Kgs	1열왕
+1Kgs	왕상
+1Macc	마카베오기 상권
+1Macc	마카베오상
+1Macc	1Macc
+1Macc	1마카
+1Pet	베드로의 첫째 서간
+1Pet	베드로1서
+1Pet	베드로전서
+1Pet	1Pet
+1Pet	1베드
+1Sam	사무엘기 상권
+1Sam	사무엘 상
+1Sam	사무엘기상
+1Sam	사무엘상
+1Sam	1Sam
+1Sam	1사무
+1Sam	삼상
+1Thess	테살로니카 신자들에게 보낸 첫째 서간
+1Thess	테살로니카1서
+1Thess	데살로니가전서
+1Thess	데살로니가1서
+1Thess	1Thess
+1Thess	1테살
+1Tim	티모테오에게 보낸 첫째 서간
+1Tim	티모테오1서
+1Tim	디모데1서
+1Tim	1Tim
+1Tim	1티모
+2Chr	역대기 하권
+2Chr	역대기 하
+2Chr	2Chr
+2Chr	역대지하
+2Chr	2역대
+2Chr	역대하
+2Chr	대하
+2Cor	코린토 신자들에게 보낸 둘째 서간
+2Cor	코린토2서
+2Cor	고린도2서
+2Cor	고린도후서
+2Cor	2Cor
+2Cor	2코린
+2Esd	에스드라 2서
+2Esd	2Esd
+2John	요한의 둘째 서간
+2John	2John
+2John	요한2서
+2John	요한이서
+2John	2요한
+2Kgs	열왕기 하권
+2Kgs	열왕기 하
+2Kgs	열왕기하
+2Kgs	2Kgs
+2Kgs	2열왕
+2Kgs	왕하
+2Macc	마카베오기 하권
+2Macc	마카베오하
+2Macc	2Macc
+2Macc	2마카
+2Pet	베드로의 둘째 서간
+2Pet	베드로후서
+2Pet	베드로2서
+2Pet	2Pet
+2Pet	2베드
+2Sam	사무엘기 하권
+2Sam	사무엘 하
+2Sam	사무엘기하
+2Sam	사무엘하
+2Sam	2Sam
+2Sam	2사무
+2Sam	삼하
+2Thess	테살로니카 신자들에게 보낸 둘째 서간
+2Thess	데살로니가2서
+2Thess	테살로니카2서
+2Thess	데살로니가후서
+2Thess	2Thess
+2Thess	2테살
+2Tim	티모테오에게 보낸 둘째 서간
+2Tim	티모테오2서
+2Tim	디모데후서
+2Tim	디모데2서
+2Tim	2Tim
+2Tim	2티모
+3John	요한의 셋째 서간
+3John	3John
+3John	요한삼서
+3John	요한3서
+3John	3요한
+3Macc	마카베오 3서
+3Macc	3Macc
+3Macc	3마카
+4Macc	마카베오 4서
+4Macc	4Macc
+4Macc	4마카
+Acts	Acts
+Acts	사도행전
+Acts	사도
+Amos	Amos
+Amos	아모스서
+Amos	아모스
+Amos	아모
+Amos	암
+Bar	Bar
+Bar	바룩서
+Bar	바룩
+Bel	벨과 용
+Bel	벨과 뱀
+Bel	Bel
+Col	콜로새 신자들에게 보낸 서간
+Col	콜로새서
+Col	골로새서
+Col	Col
+Col	콜로
+Dan	다니엘서
+Dan	다니엘
+Dan	Dan
+Dan	다니
+Dan	단
+Deut	Deut
+Deut	신명기
+Deut	신명
+Deut	신
+Eccl	Eccl
+Eccl	코헬렛
+Eccl	전도서
+Eccl	코헬
+Eccl	전
+EpJer	예레미야의 편지
+EpJer	EpJer
+Eph	에페소 신자들에게 보낸 서간
+Eph	에베소서
+Eph	에페소서
+Eph	Eph
+Eph	에페
+Esth	에스테르기
+Esth	Esth
+Esth	에스더기
+Esth	에스텔
+Esth	에스더
+Esth	에스
+Esth	에
+Exod	Exod
+Exod	출애굽기
+Exod	탈출기
+Exod	탈출
+Exod	출
+Ezek	에제키엘서
+Ezek	에제키엘
+Ezek	Ezek
+Ezek	에스겔서
+Ezek	에스겔
+Ezek	에제
+Ezek	겔
+Ezra	에즈라기
+Ezra	에스라기
+Ezra	Ezra
+Ezra	에스라
+Ezra	에즈라
+Ezra	에즈
+Ezra	스
+Gal	갈라티아 신자들에게 보낸 서간
+Gal	갈라디아서
+Gal	Gal
+Gal	갈라
+Gen	창세기
+Gen	Gen
+Gen	창세
+Gen	창
+GkEsth	에스겔 추가본
+GkEsth	에스텔 추가본
+GkEsth	GkEsth
+Hab	하박국서
+Hab	하바쿡서
+Hab	하바꾹
+Hab	Hab
+Hab	하박국
+Hab	하바
+Hab	합
+Hag	하까이서
+Hag	Hag
+Hag	학개서
+Hag	학개
+Hag	하깨
+Hag	하까
+Hag	학
+Heb	히브리인들에게 보낸 서간
+Heb	히브리서
+Heb	Heb
+Heb	히브
+Hos	호세아서
+Hos	Hos
+Hos	호세아
+Hos	호세
+Hos	호
+Isa	이사야서
+Isa	Isa
+Isa	이사야
+Isa	이사
+Isa	사
+Jas	야고보 서간
+Jas	야고보서
+Jas	Jas
+Jas	야고
+Jdt	Jdt
+Jdt	유딧기
+Jdt	유딧
+Jer	예레미야서
+Jer	예레미야
+Jer	예레미아
+Jer	Jer
+Jer	예레
+Jer	렘
+Job	Job
+Job	욥기
+Job	욥
+Joel	Joel
+Joel	요엘서
+Joel	요엘
+Joel	욜
+John	요한 복음서
+John	요한복음서
+John	요한 복음
+John	John
+John	요한복음
+John	요한
+Jonah	Jonah
+Jonah	요나서
+Jonah	요나
+Jonah	욘
+Josh	여호수아기
+Josh	Josh
+Josh	여호수아
+Josh	여호
+Josh	수
+Jude	유다 서간
+Jude	Jude
+Jude	유다서
+Jude	유다
+Judg	Judg
+Judg	판관기
+Judg	사사기
+Judg	판관
+Judg	삿
+Lam	예레미야 애가
+Lam	예레미야애가
+Lam	예레미아애가
+Lam	Lam
+Lam	애가
+Lam	애
+Lev	레위기
+Lev	Lev
+Lev	레위
+Lev	레
+Luke	루카 복음서
+Luke	누가복음서
+Luke	루카 복음
+Luke	누가복음
+Luke	Luke
+Luke	누가
+Luke	루카
+Mal	말라키서
+Mal	말라기서
+Mal	말라기
+Mal	Mal
+Mal	말라
+Mal	말
+Mark	마르코 복음서
+Mark	마르코 복음
+Mark	마가복음서
+Mark	마가복음
+Mark	Mark
+Mark	마가
+Mark	마르
+Matt	마태오 복음서
+Matt	마태오 복음
+Matt	마태복음서
+Matt	Matt
+Matt	마태복음
+Matt	마태
+Mic	미가서
+Mic	Mic
+Mic	미카서
+Mic	미카
+Mic	미가
+Mic	미
+Nah	나훔서
+Nah	Nah
+Nah	나훔
+Nah	나
+Neh	느헤미야기
+Neh	느헤미아
+Neh	느헤미야
+Neh	Neh
+Neh	느헤
+Neh	느
+Num	민수기
+Num	Num
+Num	민수
+Num	민
+Obad	오바드야서
+Obad	오바댜서
+Obad	오바디야
+Obad	Obad
+Obad	오바댜
+Obad	오바
+Obad	옵
+Phil	필리피 신자들에게 보낸 서간
+Phil	빌립보서
+Phil	Phil
+Phil	필리피서
+Phil	필리
+Phlm	필레몬에게 보낸 서간
+Phlm	빌레몬서
+Phlm	Phlm
+Phlm	필레몬서
+Phlm	필레
+PrAzar	PrAzar
+PrMan	므나쎄의 기도
+PrMan	PrMan
+Prov	Prov
+Prov	잠언
+Prov	잠
+Ps	Ps
+Ps	시편
+Ps	시
+Rev	요한 묵시록
+Rev	요한 계시록
+Rev	요한계시록
+Rev	요한묵시록
+Rev	Rev
+Rev	묵시
+Rom	로마 신자들에게 보낸 서간
+Rom	로마서
+Rom	Rom
+Rom	로마
+Ruth	Ruth
+Ruth	룻기
+Ruth	룻
+SgThree	SgThree
+Sir	벤시라크의 지혜
+Sir	벤시리크의 지혜
+Sir	벤시라크 지혜
+Sir	벤시라의 지혜
+Sir	벤시라 지혜
+Sir	집회서
+Sir	Sir
+Sir	집회
+Song	Song
+Song	아가
+Song	아
+Sus	Sus
+Sus	수산나
+Titus	티토에게 보낸 서간
+Titus	Titus
+Titus	티토서
+Titus	디도서
+Titus	티토
+Tob	토비트
+Tob	토빗기
+Tob	Tob
+Tob	토빗
+Wis	Wis
+Wis	지혜서
+Wis	지혜
+Zech	즈카르야서
+Zech	즈가리야
+Zech	Zech
+Zech	스가랴서
+Zech	스가랴
+Zech	즈카
+Zech	슥
+Zeph	스바니야서
+Zeph	Zeph
+Zeph	스바니야
+Zeph	스바냐서
+Zeph	스바냐
+Zeph	스바
+Zeph	습

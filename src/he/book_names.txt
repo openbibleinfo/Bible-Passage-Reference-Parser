@@ -1,0 +1,267 @@
+1Chr	דברי הימים א’
+1Chr	דברי הימים א'
+1Chr	דברי הימים א
+1Chr	1Chr
+1Cor	האיגרת הראשונה אל הקורינתים
+1Cor	אגרת פולוס הראשונה אל-הקורי
+1Cor	הראשונה אל הקורינתים
+1Cor	1Cor
+1Esd	חזון עזרא
+1Esd	1Esd
+1John	אגרתו הראשונה של יוחנן השלי
+1John	איגרת יוחנן הראשונה
+1John	1John
+1Kgs	מלכים א'
+1Kgs	מלכים א’
+1Kgs	מלכים א
+1Kgs	1Kgs
+1Macc	ספר מקבים א’
+1Macc	ספר מקבים א'
+1Macc	חשמונאים א'
+1Macc	חשמונאים א’
+1Macc	מקבים א
+1Macc	1Macc
+1Pet	אגרתו הראשונה של פטרוס השלי
+1Pet	איגרת פטרוס הראשונה
+1Pet	1Pet
+1Sam	שמואל א'
+1Sam	שמואל א’
+1Sam	שמואל א
+1Sam	1Sam
+1Thess	האיגרת הראשונה אל התסלוניקים
+1Thess	אגרת פולוס הראשונה אל-התסלו
+1Thess	הראשונה אל התסלוניקים
+1Thess	1Thess
+1Tim	אגרת פולוס הראשונה אל-טימות
+1Tim	האיגרת הראשונה אל טימותיוס
+1Tim	הראשונה אל טימותיאוס
+1Tim	הראשונה אל טימותיוס
+1Tim	1Tim
+2Chr	דברי הימים ב’
+2Chr	דברי הימים ב'
+2Chr	דברי הימים ב
+2Chr	2Chr
+2Cor	אגרת פולוס השנייה אל-הקורינ
+2Cor	האיגרת השנייה אל הקורינתים
+2Cor	השנייה אל הקורינתים
+2Cor	2Cor
+2Esd	עזרא החיצוני
+2Esd	2Esd
+2John	אגרתו השנייה של יוחנן השליח
+2John	איגרת יוחנן השנייה
+2John	2John
+2Kgs	מלכים ב'
+2Kgs	מלכים ב’
+2Kgs	מלכים ב
+2Kgs	2Kgs
+2Macc	ספר מקבים ב’
+2Macc	ספר מקבים ב'
+2Macc	חשמונאים ב'
+2Macc	חשמונאים ב’
+2Macc	מקבים ב
+2Macc	2Macc
+2Pet	אגרתו השנייה של פטרוס השליח
+2Pet	איגרת פטרוס השנייה
+2Pet	2Pet
+2Sam	שמואל ב’
+2Sam	שמואל ב'
+2Sam	שמואל ב
+2Sam	2Sam
+2Thess	האיגרת השנייה אל התסלוניקים
+2Thess	אגרת פולוס השנייה אל-התסלונ
+2Thess	השנייה אל התסלוניקים
+2Thess	2Thess
+2Tim	אגרת פולוס השנייה אל-טימותי
+2Tim	האיגרת השנייה אל טימותיוס
+2Tim	השנייה אל טימותיאוס
+2Tim	השנייה אל טימותיוס
+2Tim	2Tim
+3John	אגרתו השלישית של יוחנן השלי
+3John	איגרת יוחנן השלישית
+3John	3John
+3Macc	ספר מקבים ג'
+3Macc	ספר מקבים ג’
+3Macc	חשמונאים ג’
+3Macc	חשמונאים ג'
+3Macc	מקבים ג
+3Macc	3Macc
+4Macc	ספר מקבים ד'
+4Macc	ספר מקבים ד’
+4Macc	חשמונאים ד’
+4Macc	חשמונאים ד'
+4Macc	מקבים ד
+4Macc	4Macc
+Acts	מעשי השליחים
+Acts	Acts
+Amos	Amos
+Amos	עמוס
+Bar	ספר ברוך
+Bar	ברוך
+Bar	Bar
+Bel	בל והדרקון
+Bel	התנין בבבל
+Bel	Bel
+Col	אגרת פולוס השליח אל-הקולוסי
+Col	האיגרת אל הקולוסים
+Col	אל הקולוסים
+Col	Col
+Dan	דניאל
+Dan	Dan
+Deut	משנה תורה
+Deut	דברים
+Deut	Deut
+Eccl	המקהיל
+Eccl	המרצה
+Eccl	Eccl
+Eccl	קהלת
+EpJer	איגרת ירמיהו
+EpJer	EpJer
+Eph	אגרת פולוס השליח אל-האפסים
+Eph	האיגרת אל האפסים
+Eph	אל האפסים
+Eph	Eph
+Esth	אסתר, כולל פרקים גנוזים
+Esth	אסתר
+Esth	Esth
+Exod	יציאת מצרים
+Exod	יציאה
+Exod	Exod
+Exod	שמות
+Ezek	יחזקאל
+Ezek	Ezek
+Ezra	עזרא
+Ezra	Ezra
+Gal	אגרת פולוס השליח אל-הגלטים
+Gal	האיגרת אל הגלטים
+Gal	אל הגלטים
+Gal	Gal
+Gen	בראשית
+Gen	בריאה
+Gen	Gen
+GkEsth	תוספות למגילת אסתר
+GkEsth	GkEsth
+Hab	חבקוק
+Hab	Hab
+Hag	צפניה
+Hag	Hag
+Heb	האיגרת אל העברים
+Heb	האגרת אל-העברים
+Heb	אל העברים
+Heb	Heb
+Hos	הושע
+Hos	Hos
+Isa	ישעיהו
+Isa	ישעיה
+Isa	ישעה
+Isa	Isa
+Jas	איגרת יעקב
+Jas	אגרת יעקב
+Jas	Jas
+Jdt	יהודית
+Jdt	Jdt
+Jer	ירמיהו
+Jer	ירמיה
+Jer	Jer
+Job	איוב
+Job	Job
+Joel	Joel
+Joel	יואל
+John	הבשורה על פי יוחנן
+John	הבשורה על-פי יוחנן
+John	John
+Jonah	Jonah
+Jonah	יונה
+Josh	יהושע
+Josh	Josh
+Jude	איגרת יהודה
+Jude	אגרת יהודה
+Jude	Jude
+Judg	שופטים
+Judg	Judg
+Lam	קינות
+Lam	איכה
+Lam	Lam
+Lev	ספר הלוויים
+Lev	ויקרא
+Lev	Lev
+Luke	הבשורה על-פי לוקאס
+Luke	הבשורה על-פי לוקס
+Luke	הבשורה על פי לוקס
+Luke	Luke
+Mal	מלאכי
+Mal	Mal
+Mark	הבשורה על-פי מרקוס
+Mark	הבשורה על פי מרקוס
+Mark	Mark
+Matt	הבשורה הקדושה על-פי מתי
+Matt	הבשורה על-פי מתי
+Matt	הבשורה על פי מתי
+Matt	הבשורה לפי מתי
+Matt	Matt
+Mic	מיכה
+Mic	Mic
+Nah	נחום
+Nah	Nah
+Neh	נחמיה
+Neh	Neh
+Num	ספירה
+Num	במדבר
+Num	מניין
+Num	Num
+Obad	עובדיה
+Obad	עבדיה
+Obad	Obad
+Phil	אגרת פולוס השליח אל-הפיליפי
+Phil	האיגרת אל הפיליפים
+Phil	אל הפיליפים
+Phil	Phil
+Phlm	אגרת פולוס אל-פילימון
+Phlm	האיגרת אל פילימון
+Phlm	אל פילימון
+Phlm	Phlm
+PrAzar	תפילת עזריה בתוך הכבשן
+PrAzar	תפילת עזריה
+PrAzar	PrAzar
+PrMan	תפילת מנשה
+PrMan	PrMan
+Prov	פתגמים
+Prov	משלים
+Prov	Prov
+Prov	משלי
+Ps	מזמורים
+Ps	תהילים
+Ps	Ps
+Rev	חזון יוחנן
+Rev	ההתגלות
+Rev	התגלות
+Rev	Rev
+Rom	אגרת פולוס השליח אל-הרומיים
+Rom	האיגרת אל הרומאים
+Rom	אל הרומאים
+Rom	אל הרומים
+Rom	Rom
+Ruth	Ruth
+Ruth	רות
+SgThree	שירת שלושת הנערים בכבשן
+SgThree	SgThree
+Sir	משלי בן-סירא
+Sir	משלי בן סירא
+Sir	ספר בן סירא
+Sir	Sir
+Song	שיר השירים
+Song	שירי שלמה
+Song	Song
+Sus	שושנה
+Sus	Sus
+Titus	אגרת פולוס אל-טיטוס
+Titus	האיגרת אל טיטוס
+Titus	אל טיטוס
+Titus	Titus
+Tob	טוביה
+Tob	Tob
+Wis	חכמת שלמה
+Wis	Wis
+Zech	זכריה
+Zech	Zech
+Zeph	Zeph
+Zeph	חגי

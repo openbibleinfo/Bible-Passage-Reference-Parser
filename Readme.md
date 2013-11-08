@@ -2,13 +2,13 @@
 
 Try a [demo of the Bible passage reference parser](http://www.openbible.info/labs/reference-parser/).
 
-This project is a Coffeescript implementation of a Bible-passage reference parser (e.g., seeing `John 3:16` and both understanding that it's a Bible reference and converting it into a form that computers can process). It parses Bible **B**ooks, **C**hapters, and **V**erses--thus the file names involving "BCV Parser."
+This project is a Coffeescript implementation of a Bible-passage reference parser (e.g., seeing `John 3:16` and both understanding that it's a Bible reference and converting it into a form that computers can process). It parses Bible **B**ooks, **C**hapters, and **V**erses—thus the file names involving "BCV Parser."
 
 Its primary use is to interpret query strings for use in a Bible application. It can extract BCVs from text but may be too aggressive for some uses. (See "Caveats" below.)
 
-It should be fairly speedy: using Node.js 0.10.5, it parses 2,000 tweets per second on a single core of an EC2 High-CPU Medium instance.
+It should be fairly speedy, taking under a millisecond to parse short strings of around 100 bytes each.
 
-The code occupies about 84KB minified and 19KB gzipped.
+The code occupies about 133KB minified and 23KB gzipped.
 
 This project also provides extensively commented code and 460,000 real-world strings that you can use as a starting point to build your own BCV parser.
 
@@ -30,8 +30,8 @@ These usage examples are in Javascript. You can also use Coffeescript, of course
 ### Setup: Node.js
 
 ```javascript
-var bcv_parser = require("/path/js/en_bcv_parser.min.js");
-var bcv = new bcv_parser.bcv_parser;
+var bcv_parser = require("/path/js/en_bcv_parser.min.js").bcv_parser;
+var bcv = new bcv_parser;
 ```
 
 ### Parsing
@@ -70,7 +70,7 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_translations(); // 
 
 #### `.osis_and_indices()`
 
-This function returns an array. Each element in the array is an object with `osis` (a string), `translations` (an array of translation identifiers--an empty string unless a translation is specified), and `indices` (the start and end position in the string). The `indices` key is designed to be consistent with Twitter's implementation (the first character in a string has indices `[0, 1]`).
+This function returns an array. Each element in the array is an object with `osis` (a string), `translations` (an array of translation identifiers—an empty string unless a translation is specified), and `indices` (the start and end position in the string). The `indices` key is designed to be consistent with Twitter's implementation (the first character in a string has indices `[0, 1]`).
 
 ```javascript
 bcv.parse("John 3:16 NIV").osis_and_indices(); // [{"osis": "John.3.16", "translations": ["NIV"], "indices": [0, 13]}]
@@ -145,7 +145,7 @@ bcv.include_apocrypha(true);
 bcv.parse("Tobit 1").osis(); // "Tob.1"
 ```
 
-You shouldn't call `include_apocrypha()` between calling `parse()` and one of the output functions--the output reflects the value of `include_apocrypha()` that was active during the call to `parse()`. You probably also don't want to call it every time you call `parse()`--it will slow down execution.
+You shouldn't call `include_apocrypha()` between calling `parse()` and one of the output functions—the output reflects the value of `include_apocrypha()` that was active during the call to `parse()`. You probably also don't want to call it every time you call `parse()`—it will slow down execution.
 
 #### `.set_options({})`
 
@@ -161,24 +161,24 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 #### OSIS Output
 
 * `consecutive_combination_strategy: "combine"`
-	* `combine`:  "Matt 5, 6, 7" -> "Matt.5-Matt.7".
-	* `separate`: "Matt 5, 6, 7" -> "Matt.5,Matt.6,Matt.7".
+	* `combine`:  "Matt 5, 6, 7" → "Matt.5-Matt.7".
+	* `separate`: "Matt 5, 6, 7" → "Matt.5,Matt.6,Matt.7".
 * `osis_compaction_strategy: "b"`
-	* `b`: OSIS refs get reduced to the shortest possible. "Gen.1.1-Gen.50.26" and "Gen.1-Gen.50" -> "Gen", while "Gen.1.1-Gen.2.25" -> "Gen.1-Gen.2".
-	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" -> "Gen.1-Gen.50".
-	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" -> "Gen.1.1-Gen.1.31".
+	* `b`: OSIS refs get reduced to the shortest possible. "Gen.1.1-Gen.50.26" and "Gen.1-Gen.50" → "Gen", while "Gen.1.1-Gen.2.25" → "Gen.1-Gen.2".
+	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" → "Gen.1-Gen.50".
+	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" → "Gen.1.1-Gen.1.31".
 
 #### Sequence
 
 * `book_sequence_strategy: "ignore"`
-	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" -> "Isa.1").
+	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" → "Isa.1").
 	* `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" means "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
 * `invalid_sequence_strategy: "ignore"`
-	* `ignore`: "Matt 99, Gen 1" sequence index starts at `Gen 1`.
-	* `include`: "Matt 99, Gen 1" sequence index starts at `Matt 99`.
+	* `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
+	* `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
 * `sequence_combination_strategy: "combine"`
-	* `combine`: consecutive references are combined into a single OSIS list: Gen 1, 2 -> "Gen.1,Gen.2".
-	* `separate`: consecutive references are separated into their component parts: Gen 1, 2 -> "Gen.1" and "Gen.2".
+	* `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" → "Gen.1,Gen.3".
+	* `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" → "Gen.1" and "Gen.3".
 
 #### Potentially Invalid Input
 
@@ -186,13 +186,13 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `ignore`: Don't include invalid passages in `@parsed_entities()`.
 	* `include`: Include invalid passages in `@parsed_entities()` (they still don't have OSIS values).
 * `zero_chapter_strategy: "error"`
-	* `error`: zero chapters ("Matt 0") are invalid.
-	* `upgrade`: zero chapters are upgraded to 1: "Matt 0" -> "Matt 1".
+	* `error`: zero chapters ("Matthew 0") are invalid.
+	* `upgrade`: zero chapters are upgraded to 1: "Matthew 0" → "Matt.1".
 	* Unlike `zero_verse_strategy`, chapter 0 isn't allowed.
 * `zero_verse_strategy: "error"`
-	* `error`: zero verses ("Matt 5:0") are invalid.
-	* `upgrade`: zero verses are upgraded to 1: "Matt 5:0" -> "Matt 5:1".
-	* `allow`: zero verses are kept as-is: "Matt 5:0" -> "Matt 5:0". Some traditions use 0 for Psalm titles.
+	* `error`: zero verses ("Matthew 5:0") are invalid.
+	* `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" → "Matt.5.1".
+	* `allow`: zero verses are kept as-is: "Matthew 5:0" → "Matt.5.0". Some traditions use 0 for Psalm titles.
 * `non_latin_digits_strategy: "ignore"`
 	* `ignore`: treat non-Latin digits the same as any other character.
 	* `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
@@ -204,16 +204,16 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `full`: any books that appear on their own get parsed as the complete book ("Gen" means "Gen.1-Gen.50").
 	* `first_chapter`: any books that appear on their own get parsed as the first chapter ("Gen" means "Gen.1").
 * `captive_end_digits_strategy: "delete"`
-	* `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" -> "Matt.5". This is better for text extraction.
-	* `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" -> "Matt.5.1". This is better for query parsing.
+	* `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5". This is better for text extraction.
+	* `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5.1". This is better for query parsing.
 * `end_range_digits_strategy: "verse"`
-	* `verse`: treat "Jer 33-11" as "Jer 33:11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
+	* `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
 	* `sequence`: treat them as sequences.
 
 #### Apocrypha
 * `ps151_strategy: "c"`
-	* `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" -> "Ps.151.1"
-	* `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" -> "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" -> "Ps.149-Ps.150,Ps151.1". Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
+	* `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" → "Ps.151.1"
+	* `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" → "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" → "Ps.149-Ps.150,Ps151.1". Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
 
 #### Versification
 * `versification_system: "default"`
@@ -226,7 +226,7 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `vulgate`: use Vulgate numbering for the Psalms.
 
 #### Case Sensitivity
-`case_sensitive: "none"`
+* `case_sensitive: "none"`
 	* `none`: All matches are case-insensitive.
 	* `books`: Book names are case-sensitive. Everything else is still case-insensitive.
 
@@ -238,8 +238,8 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 
 * `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `regexps.coffee` file for this message to appear.
 * `start_chapter_is_zero`:  `1` if the requested start chapter is 0.
-* `start_chapter_not_exist_in_single_chapter_book`: `1` if wanting, say, `Philemon 2`. It is reparsed as a verse (`Philemon 1:2`).
 * `start_chapter_not_exist`: The value is the last valid chapter in the book.
+* `start_chapter_not_exist_in_single_chapter_book`: `1` if wanting, say, `Philemon 2`. It is reparsed as a verse (`Philemon 1:2`).
 * `start_chapter_not_numeric`: `true` if the start chapter isn't a number. You should never see this message.
 * `start_verse_is_zero`: `1` if the requested start verse is 0.
 * `start_verse_not_exist`: The value is the last valid verse in the chapter.
@@ -254,10 +254,10 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 * `end_chapter_not_exist`: The value is the last valid chapter in the book.
 * `end_chapter_not_exist_in_single_chapter_book`: `1` if wanting, say, `Philemon 2-3`. It is reparsed as a verse (`Philemon 1:2-3`).
 * `end_chapter_not_numeric`: `true` if the end chapter isn't a number. You should never see this message.
-* `end_verse_not_numeric`: `true` if the end verse isn't a number. You should never see this message.
 * `end_verse_before_start`: `true` if the end verse is before the start verse in the same book and chapter.
 * `end_verse_is_zero`: `1` if the requested end verse is `0`. The `1` indicates the first valid verse.
 * `end_verse_not_exist`: The value is the last valid verse in the chapter.
+* `end_verse_not_numeric`: `true` if the end verse isn't a number. You should never see this message.
 
 #### Translation Objects
 
@@ -270,13 +270,13 @@ The parser is quite aggressive in identifying text as Bible references; if you j
 
 The parser spends most of its time doing regular expressions and manipulating strings. If you give it a very long string full of Bible references, it could block your main event loop. Depending on your performance requirements, parsing large numbers of even short strings could saturate your CPU and lead to problems.
 
-In addition, a number of the tests in the "real-world" section of `src/core/spec.coffee` have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases--one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
+In addition, a number of the tests in the "real-world" section of `src/core/spec.coffee` have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases—one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
 
 ## Tests
 
 One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file `src/core/spec.coffee` has a few hundred tests that tripped up this parser at various points in development.
 
-In addition, the file `test/tests.zip` has 460,000 tests drawn from 115 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages--each entry in the `Text` column occurs in ten or more tweets or posts. (The total number of unique passage strings in the corpus is six million, with the vast majority occurring fewer than ten times.)
+In addition, the file `test/tests.zip` has 460,000 tests drawn from 115 million real-world tweets and Facebook posts. These tests reflect the most-popular ways of identifying passages—each entry in the `Text` column occurs in ten or more tweets or posts. (The total number of unique passage strings in the corpus is six million, with the vast majority occurring fewer than ten times.)
 
 The tests are arranged in three columns:
 
@@ -287,7 +287,7 @@ The tests are arranged in three columns:
 This dataset has a few limitations:
 
 1. It's self-selecting in that it only includes content that this BCV parser understands.
-2. It doesn't include as many misspellings as you'd expect because the queries used to retrieve the data only use correct spellings. Misspellings that do occur are incidental--they're part of content that otherwise includes a non-misspelled book name.
+2. It doesn't include as many misspellings as you'd expect because the queries used to retrieve the data only use correct spellings. Misspellings that do occur are incidental—they're part of content that otherwise includes a non-misspelled book name.
 3. Its coverage of Deuterocanonical books is very limited; as with misspellings, the queries used to retrieve the data don't include books from the Apocrypha.
 4. It doesn't include context that could change the interpretation of the string.
 5. Sequences interrupted by translation identifiers are separated: the parsing of `Matt 1 NIV Matt 2 KJV` appears in two separate lines.
@@ -297,7 +297,7 @@ This dataset has a few limitations:
 
 [OSIS](http://www.bibletechnologies.net/) is a system for marking up Bibles in XML. The BCV parser only borrows the OSIS system for [book abbreviations](http://www.crosswire.org/wiki/OSIS_Book_Abbreviations) and references. You can control the OSIS specificity using the `osis_compaction_strategy` option.
 
-The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can include `Ps151` as part of the Psalms (`Ps.151.1`)--the default--or as its own book (`Ps151.1.1`), depending on the `ps151_strategy` option.
+The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can include `Ps151` as part of the Psalms (`Ps.151.1`)—the default—or as its own book (`Ps151.1.1`), depending on the `ps151_strategy` option.
 
 <table>
 	<tr><th>Input</th><th>OSIS</th></tr>
@@ -323,9 +323,9 @@ console.log(bcv.osis()); // "John.3.16"
 
 The `bcv.parse()` function accepts a string. It first replaces any reserved characters that we're going to need later in the program without affecting any of the character indices.
 
-Then it runs through all the regexps for Bible books (`@match_books()`). In this case, it matches the `John` part of the string and replaces it with the characters `\x1f0\x1f`. The two `\x1f` characters provide boundaries for the match, and the `0` matches an index in the `@books` array we're using to keep track of the original string and some metadata. (If there were more books, they would be `\x1f1\x1f`, `\x1f2\x1f`, etc.) These books aren't necessarily replaced in the order they appear in the string, but rather in the precedence order specified in `@regexps.books`--we want to parse `1 John` before `John` so that program doesn't interpret the `John` in `1 John` as being a separate book. In other words, match longer books first.
+Then it runs through all the regexps for Bible books (`@match_books()`). In this case, it matches the `John` part of the string and replaces it with the characters `\x1f0\x1f`. The two `\x1f` characters provide boundaries for the match, and the `0` matches an index in the `@books` array we're using to keep track of the original string and some metadata. (If there were more books, they would be `\x1f1\x1f`, `\x1f2\x1f`, etc.) These books aren't necessarily replaced in the order they appear in the string, but rather in the precedence order specified in `@regexps.books`—we want to parse `1 John` before `John` so that program doesn't interpret the `John` in `1 John` as being a separate book. In other words, match longer books first.
 
-Once it has matched all the possible books in the string, we call `@match_passages()` to identify complete passages--we want to be sure to treat strings like `John 3:16, 17` as a single sequence. The `@regexps.escaped_passage` used for these matches is fairly complicated. It looks for some unusual cases (`chapter 23 of Matthew`) first, but it pivots around the escaped book sequence from `@match_books()`: it tries to find numbers and other characters that can comprise a valid sequence after a book (including other books). We know that we'll probably have to trim some of what it finds later; at this point, we want to be as comprehensive as possible.
+Once it has matched all the possible books in the string, we call `@match_passages()` to identify complete passages—we want to be sure to treat strings like `John 3:16, 17` as a single sequence. The `@regexps.escaped_passage` used for these matches is fairly complicated. It looks for some unusual cases (`chapter 23 of Matthew`) first, but it pivots around the escaped book sequence from `@match_books()`: it tries to find numbers and other characters that can comprise a valid sequence after a book (including other books). We know that we'll probably have to trim some of what it finds later; at this point, we want to be as comprehensive as possible.
 
 For each match, we trim some unnecessary parts from the end of it and then run it through the grammar file that identifies the components of the string (in this case, `John 3:16` fits the pattern of a `bcv`, or book-chapter-verse). The grammar uses [PEG.js](http://pegjs.majda.cz/), a [parsing expression grammar](http://en.wikipedia.org/wiki/Parsing_expression_grammar) with a DSL that compiles to Javascript. A PEG provides predictable performance, especially for shorter strings like Bible references. The grammar identifies components in the match and, importantly, records the indices of where each component starts and ends in the string. PEG.js's built-in extension mechanism provides an easy way to output the necessary data. The tradeoff of using a PEG arrives in the form of increased code size: more than half the code in the minified file comes from the auto-generated grammar.
 
@@ -335,23 +335,23 @@ After the regexp has found all the matches in the string (and the grammar has ta
 
 ### Interpreting Grammar Results
 
-The `bcv_passage` object is responsible for the bulk of the heavy lifting in interpreting the output of the grammar. Most of its functions correspond to types (such as `bcv`) returned from the grammar. These functions accept three arguments: a `passage` that reflects the output from the grammar, an `accum` that reflects the processing results thus far, and a `context` that reflects the current processing state--if a function sees a `16` and knows that the context is `John.3`, it can interpret the `16` as a verse number rather than, say, `John.16`. These functions don't alter global state and are safe to run any number of times over the content, a situation that can happen if the initial parsing strategy doesn't work out.
+The `bcv_passage` object is responsible for the bulk of the heavy lifting in interpreting the output of the grammar. Most of its functions correspond to types (such as `bcv`) returned from the grammar. These functions accept three arguments: a `passage` that reflects the output from the grammar, an `accum` that reflects the processing results thus far, and a `context` that reflects the current processing state—if a function sees a `16` and knows that the context is `John.3`, it can interpret the `16` as a verse number rather than, say, `John.16`. These functions don't alter global state and are safe to run any number of times over the content, a situation that can happen if the initial parsing strategy doesn't work out.
 
-In the case of a `bcv`, the `passage` object consists of two values: a `bc` (the book-chapter combination) and a `v` (the verse number). Since a new book renders any existing context unnecessary, we first get rid of the existing context. We then loop through the possible book values--usually there's only one, but an ambiguous book abbreviation like `Ph` (`Phil` or `Phlm`) can have more than one--to find valid references. For example, given `Ph 20`, we know that only Philemon fits the bill (`Phlm.1.20`) since there's no chapter 20 in Philippians. Much of the logic in functions dealing with books revolves around this process of identifying valid passages.
+In the case of a `bcv`, the `passage` object consists of two values: a `bc` (the book-chapter combination) and a `v` (the verse number). Since a new book renders any existing context unnecessary, we first get rid of the existing context. We then loop through the possible book values—usually there's only one, but an ambiguous book abbreviation like `Ph` (`Phil` or `Phlm`) can have more than one—to find valid references. For example, given `Ph 20`, we know that only Philemon fits the bill (`Phlm.1.20`) since there's no chapter 20 in Philippians. Much of the logic in functions dealing with books revolves around this process of identifying valid passages.
 
 Once we've identified a viable book, we record the position of the match in the original string, set the `context` for any future processing, and move on. In the case of `John 3:16`, we're done and head back up to `@parse`.
 
 ### Ranges
 
-The `bcv` function is fairly straightforward--the logic doesn't get too convoluted. Much of the processing complexity in the parser arises from dealing with ranges that have errors in them or are ambiguous. The basic principle is that end ranges that go beyond the valid end of a book or a chapter are OK--people are often imprecise when it comes to remembering how many chapters are in a book or verses are in a chapter. Four tricky cases arise fairly often, however.
+The `bcv` function is fairly straightforward—the logic doesn't get too convoluted. Much of the processing complexity in the parser arises from dealing with ranges that have errors in them or are ambiguous. The basic principle is that end ranges that go beyond the valid end of a book or a chapter are OK—people are often imprecise when it comes to remembering how many chapters are in a book or verses are in a chapter. Four tricky cases arise fairly often, however.
 
-The first tricky case comes from people who like to use hyphens in ways that don't just indicate ranges. For example, the string `Hebrews 13-15` (Hebrews has thirteen chapters) most likely means `Hebrews 13:15`. In some cases, we can guess that that's the case and correct our interpretation. The algorithm the program uses asks whether the end chapter is too high--and if it is, whether the end chapter could be a valid start verse. If so, it proceeds as though that's the case.
+The first tricky case comes from people who like to use hyphens in ways that don't just indicate ranges. For example, the string `Hebrews 13-15` (Hebrews has thirteen chapters) most likely means `Hebrews 13:15`. In some cases, we can guess that that's the case and correct our interpretation. The algorithm the program uses asks whether the end chapter is too high—and if it is, whether the end chapter could be a valid start verse. If so, it proceeds as though that's the case.
 
 The second tricky case arises from strings like `John 10:22-42 vs 27`. In this case, the grammar has indicated that `42 vs 27` is a `cv`, or chapter-verse (in other words, `John.10.22-John.42.27`). However, when the purported end chapter doesn't exist, it makes more sense to treat it as a sequence: `John.10.22-John.10.42,John.10.27`.
 
 The third tricky case stems from strings like `Psalm 123-24`. The grammar output suggests that we should interpret this range as invalid: `Ps.123-Ps.24`. Instead, we choose to interpret it as `Ps.123-Ps.124`. This approach can be aggressive at times: does `Psalm 15-6` really mean `Ps.15-Ps.16`?
 
-The fourth tricky case is similar to the first one: `Jeremiah 33-11` isn't the invalid range `Jer.33-Jer.11` but rather the `bcv` `Jer.33.11`.
+The fourth tricky case resembles the first one: `Jeremiah 33-11` isn't the invalid range `Jer.33-Jer.11` but rather the `bcv` `Jer.33.11`.
 
 If we still couldn't make sense of the range, then we treat is as a sequence of verses instead of a range: `Psalm 120-119` becomes `Ps.120,Ps.119`.
 
@@ -373,7 +373,7 @@ You're probably not calling this function directly but instead are using one of 
 
 ## Performance
 
-Performance degrades linearly with the number of passages found in a string. Using Node.js 0.10.5, it processes 2,000 tweets per second on a single 2.3 GHz core of an EC2 High-CPU Medium instance.
+Performance degrades linearly with the number of passages found in a string. Using Node.js 0.10.21, it processes 2,000 tweets per second on a single 2.3 GHz core of an EC2 High-CPU Medium instance.
 
 In the worst case, given a string consisting of almost nothing but Bible passage references, it processes about 50-60 KB of text per second.
 
@@ -391,18 +391,22 @@ Using the files in `src/template` as a base, you can add support for additional 
 
 <table>
 	<tr><th>Prefix</th><th>Language</th>
+	<tr><td>de</td><td>German</td></tr>
+	<tr><td>el</td><td>Greek (mostly ancient)</td></tr>
 	<tr><td>en</td><td>English</td></tr>
 	<tr><td>es</td><td>Spanish</td></tr>
 	<tr><td>fr</td><td>French</td></tr>
 	<tr><td>he</td><td>Hebrew</td></tr>
+	<tr><td>it</td><td>Italian</td></tr>
 	<tr><td>ja</td><td>Japanese</td></tr>
 	<tr><td>ko</td><td>Korean</td></tr>
+	<tr><td>la</td><td>Latin</td></tr>
 	<tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
 </table>
 
-When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `ignore`.
+When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `replace`.
 
-When using non-English `<script>`s on the web, be sure the script is served with the `utf-8` character set.
+When using non-English `<script>`s on the web, be sure to serve the script with the `utf-8` character set.
 
 ## Compatibility
 
@@ -410,17 +414,17 @@ I've specifically tested the following browsers, but it should work in any moder
 
 * Internet Explorer 6-10. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
 * Firefox 12+.
-* Chrome 19 and Node 0.10.5.
-* Safari 5 (Windows).
+* Chrome 19+ and Node 0.10.x.
 
 ## Building
 
 The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files or run tests):
 
-* [Coffeescript 1.6.2](http://coffeescript.org/) for compiling into Javascript.
-* [PEG.js 0.7.0](http://pegjs.majda.cz/) for the parsing grammar.
-* [Jasmine 1.3.1](http://pivotal.github.com/jasmine/) for the testing framework. To run tests, install it in the project's `/lib` folder.
 * [Closure](http://code.google.com/closure/) for minifying.
+* [Coffeescript 1.6.2](http://coffeescript.org/) for compiling into Javascript.
+* [Frak](https://github.com/noprompt/frak) for optimizing generated regular expressions.
+* [Jasmine 1.3.1](http://pivotal.github.com/jasmine/) for the testing framework. To run tests, install it in the project's `/lib` folder.
+* [PEG.js 0.7.0](http://pegjs.majda.cz/) for the parsing grammar.
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
@@ -428,18 +432,27 @@ The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file.
 
 1. In `src`, create a folder named after the [ISO 639 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`.
 2. Create a data.txt file inside that folder. Lines that start with `#` are comments. Lines that start with `$` are variables. Lines that start with an OSIS book name are a tab-separated series of regular expressions (a backtick following an accented character means not to allow the unaccented version of that character). Lines that start with `=` are the order in which to check the regular expressions (check for "3 John" before "John," for example). Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application).
-3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. For example, `01.add_lang.pl fr`.
-4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` to be available in your `$PATH` and `coffee` to be in `/usr/bin`. For example: `02.compile.pl fr`.
+3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. This file expects `node` to be available in your `$PATH`.For example, `01.add_lang.pl fr`.
+4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` and `coffee` to be available in your `$PATH`. For example: `02.compile.pl fr`.
+5. In `bin`, run `03.run_tests.sh` to run tests on all the available languages in `test/js`. It requires [jasmine-node](https://github.com/mhevery/jasmine-node). Alternately, visit the relevant `test/[ISO code].html` file in a browser (which expects [Jasmine](https://github.com/pivotal/jasmine) to be in `lib/jasmine-1.3.1`).
+
+You can enable cross-language support using the experimental `bin/add_cross_lang.pl full`.
 
 ## Purpose
 
-This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which saw production usage on a Bible search website from 2002-2011; the second in Perl (2007), which saw production usage on a Bible-related site starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This Coffeescript parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
+This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which [saw production usage](http://about.esvbible.org/uncategorized/technical-introduction-to-the-esv-online-edition/) on a Bible search website from 2002-2011; the second in Perl (2007), which saw production usage on a Bible-related site starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This Coffeescript parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
 
-I chose Coffeescript out of curiosity--does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript--the tests, in particular, are much easier to follow without all the Javascript punctuation.
+I chose Coffeescript out of curiosity—does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript—the tests, in particular, are much easier to follow without all the Javascript punctuation.
 
 This code is in production use on a site that indexes [Bible verses on Twitter and Facebook](http://www.openbible.info/realtime/).
 
+## License
+
+The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language--it's not necessary to run the parser in your project. If you're only parsing content, that usage falls entirely under the MIT License.
+
 ## Changelog
+
+November 8, 2013. Recast English as just another language that uses the same build process as all the other languages. Fixed bug with parentheses in sequences. Made specs runnable using [jasmine-node](https://github.com/mhevery/jasmine-node). Optimized generated regular expressions for speed using [Frak](https://github.com/noprompt/frak). Added support for German, Greek, Italian, and Latin.
 
 May 1, 2013. Added option to allow case-sensitive book-name matching. Supported parsing `Ps151` as a book rather than a chapter for more-complete OSIS coverage. Added Japanese, Korean, and Chinese book names. Added an additional 90,000 real-world strings, sharing actual counts rather than orders of magnitude.
 

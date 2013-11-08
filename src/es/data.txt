@@ -7,7 +7,7 @@ $AND	y! sig
 $CHAPTER	capítulos	capítulo	caps.	cap.
 $COMPARE	compara el	compara los
 $FF	y siguientes	y sig
-$TITLE	título	tí`t
+$TITLE	subtítulo	título	tí`t
 $TRANS	DHH	LBLA	NBLH	NTV	NVI	RVR1960	RVR	TLA
 $TO	á`
 $VERSE	versículos	versículo	vers.	ver.	vss.	vs.	vv.	v.
@@ -52,11 +52,11 @@ Zeph	Sofonías	So?f
 Hag	Hagg?eo	Ageo	Hag	[AH]g
 Zech	Zacarías	Zacar	Zac
 Mal	Malaquías	Malaqu	Mala?
-Matt	El Evangelio de Mateo	Evangelio de Mateo	Mateo	Matt?	Mt
-Mark	El Evangelio de Marcos	Evangelio de Marcos	Ma?rcos	Mrc?	Mc
-Luke	El Evangelio de Lucas	Evangelio de Lucas	Lucas	Luc?	Lc
-John	El Evangelio de J[au][au]n	El Evangelio de J[au][au]n	J[au][au]n	Jn
-Acts	Los Hechos de los Apóstoles	Hechos de los Apóstoles	Hechos	He?ch?
+Matt	El Evangelio de Mateo	Evangelio de Mateo	San Mateo	Mateo	Matt?	Mt
+Mark	El Evangelio de Marcos	Evangelio de Marcos	San Marcos	Ma?rcos	Marc?	Mrc?	Mc
+Luke	El Evangelio de Lucas	Evangelio de Lucas	San Lucas	Lucas	Luc?	Lc
+John	El Evangelio de J[au][au]n	El Evangelio de J[au][au]n	San Juan	J[au][au]n	Jn
+Acts	Los Hechos de los Apóstoles	Hechos de los Apóstoles	Los Hechos	Hechos	He?ch?
 Rom	Romanos?	Rom?s?	Rmn?s?
 1Cor	$FIRST Corintios	1 Corint?i?	1 Cor?
 2Cor	$SECOND Corintios	2 Corint?i?	2 Cor?
@@ -64,21 +64,21 @@ Gal	Gálatas	Gálat	Gál
 Eph	Efesios	Efes	Ef
 Phil	Filipenses	Filip?	Fil
 Col	Colosenses	Colos	Col
-1Thess	$FIRST Tesalonicenses	1 Thess	1 Te?s
-2Thess	$SECOND Tesalonicenses	2 Thess	2 Te?s
+1Thess	$FIRST Tesaloni[cs]enses?	1 Thess	1 Te?s
+2Thess	$SECOND Tesaloni[cs]enses?	2 Thess	2 Te?s
 1Tim	$FIRST Timoteo	1 Tim?	1 Tm
 2Tim	$SECOND Timoteo	2 Tim?	2 Tm
 Titus	Tito	Tit?
-Phlm	Filemón	Flmn?	Fmn
+Phlm	Filemón	Filem	Flmn?	Fmn
 Heb	Heb[eor][eor]?[eor]?s	Hebreo	Hebr	Heb?
 Jas	Santiago	Sant	Stg
-1Pet	$FIRST Pedro	1 Pe?d?
-2Pet	$SECOND Pedro	2 Pe?d?
-1John	$FIRST J[au][au]n	1 Jn
-2John	$SECOND J[au][au]n	2 Jn
-3John	$THIRD J[au][au]n	3 Jn
-Jude	Ju?das	Jud	Jd
-Rev	Apocalipsis	Apoc	Ap
+1Pet	$FIRST Pedro	$FIRST San Pedro	1 Pe?d?
+2Pet	$SECOND Pedro	$SECOND San Pedro	2 Pe?d?
+1John	$FIRST J[au][au]n	$FIRST San J[au][au]n	1 Jn
+2John	$SECOND J[au][au]n	$SECOND San J[au][au]n	2 Jn
+3John	$THIRD J[au][au]n	$THIRD San J[au][au]n	3 Jn
+Jude	Ju?das	San Judas	Jud	Jd
+Rev	Apocalipsis	El Apocalipsis	Apoc	Ap
 Hab,Hag	Ha
 Heb,Hab	Hb
 Jonah,Job,Josh,Joel	Jo

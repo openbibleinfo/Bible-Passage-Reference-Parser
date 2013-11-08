@@ -1,0 +1,280 @@
+$FIRST	Primo	Prima	1°	1	I
+$SECOND	Secondo	Seconda	2°	2	II
+$THIRD	Terzo	Terza	3°	3	III
+$FOURTH	Quarto	Quarta	4°	4	IV
+$GOSPEL	Vangelo
+$OFSAINT	di San	di
+$AB	[a-d]
+# http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022335_Lettere_Paoline.html (vedi anche = see also) and http://it.wikipedia.org/wiki/Libro_di_Gioele (ed = and with vowel) vedi = see; cfr. = cf.; e = and
+$AND	vedi anche	vedi	cfr	e
+# http://it.wikipedia.org/wiki/Libro_dell%27Esodo (capitoli) and http://www.bibbiaedu.it/pls/labibbia_new2/GestBibbia09.Ricerca?Libro=Genesi&capitolo=1 (capitolo) and http://it.wikipedia.org/wiki/Genesi (cap) and http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022332_Profetici.html (cc) and http://it.wikipedia.org/wiki/Levitico + http://it.wikipedia.org/wiki/Libro_di_Zaccaria (capp)
+$CHAPTER	capitoli	capitolo	capp	cap	cc
+# http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022326_Introduzione_all_AT.html (ss). "ecc" seems to mean the same thing
+$FF	ss	, ecc	ecc
+# http://it.wikipedia.org/wiki/Salmi
+$TITLE	titolo
+$TRANS	CEI	NR	ND
+# http://it.wikipedia.org/wiki/Libro_di_Ester
+$TO	al
+# http://it.wikipedia.org/wiki/Libro_di_Ester (versetto and versetti) and http://it.wikipedia.org/wiki/Qoelet (versi) and http://it.wikipedia.org/wiki/Libro_di_Abdia (vv) and http://it.wikipedia.org/wiki/Genesi (v)
+$VERSE	versetto	versetti	versi	vv	v
+$UNICODE_BLOCK	Latin
+
+Gen	Genesi	Ge	Gen
+Exod	Esodo	Es
+Lev	Levitico	Le	Lv
+Num	Numeri	Nu	Nm
+Deut	Deuteronomio	De	Dt
+Josh	Giosuè	Giosué	Gs
+Judg	Giudici	Gdc
+Ruth	Rut	Ru	Rt	Ruth
+1Sam	$FIRST Samuele	1 S	1 Sam
+2Sam	$SECOND Samuele	2 S	2 Sam
+1Kgs	$FIRST Re	1 R
+2Kgs	$SECOND Re	2 R
+1Chr	$FIRST Cronache	1 Cr
+2Chr	$SECOND Cronache	2 Cr
+Ezra	Esdra	Ed	Esd
+Neh	Neemia	Ne
+Esth	Ester	Et	Est
+Job	Giobbe	Gb
+Ps	Salmi	Sl	Sal	Salmo
+Prov	Proverbi	Pr
+Eccl	Ecclesiaste	Ec	Qoelet	Qoèlet	Qo	Ecc	Qohèlet
+Song	Cantico	Cantico dei Cantici	Ca	Ct	Cantico di Salomone
+Isa	Isaia	Is
+Jer	Geremia	Gr	Ger	Jeremiah
+Lam	Lamentazioni	La	Lam
+Ezek	Ezechiele	Ez
+Dan	Daniele	Da	Dn	Dan
+Hos	Osea	Os
+Joel	Gioele	Gl	Gioe
+Amos	Amos	Am
+Obad	Abdia	Ad	Abd	Ovadia
+Jonah	Giona	Gn	Gio
+Mic	Michea	Mi	Mic
+Nah	Naum	Nahum	Na
+Hab	Abacuc	Ac	Ab
+Zeph	Sofonia	So	Sof
+Hag	Aggeo	Ag
+Zech	Zaccaria	Za	Zc	Zac
+Mal	Malachia	Ml	Mal
+Matt	Matteo	Mt	$GOSPEL $OFSAINT Matteo
+Mark	Marco	Mr	Mc	$GOSPEL $OFSAINT Marco
+Luke	Luca	Lu	Lc	$GOSPEL $OFSAINT Luca
+John	Giovanni	Gv	$GOSPEL $OFSAINT Giovanni
+Acts	Atti	At	Atti degli Apostoli
+Rom	Romani	Ro	Rm	Lettera ai Romani
+1Cor	$FIRST Corinzi	1 Co	1 Cor	Prima lettera ai Corinzi
+2Cor	$SECOND Corinzi	2 Co	2 Cor	Seconda lettera ai Corinzi
+Gal	Galati	Ga	Gàlati	Gal	Lettera ai Galati
+Eph	Efesini	Ef	Lettera agli Efesini
+Phil	Filippesi	Fl	Fil	Lettera ai Filippesi
+Col	Colossesi	Cl	Col	Lettera ai Colossesi
+1Thess	$FIRST Tessalonicesi	1 Te	1 Ts	Prima lettera ai Tessalonicesi
+2Thess	$SECOND Tessalonicesi	2 Te	2 Ts	Seconda lettera ai Tessalonicesi
+1Tim	$FIRST Timoteo	1 Ti	1 Tm	Prima lettera a Timoteo	1 Tim
+2Tim	$SECOND Timoteo	2 Ti	2 Tm	Seconda lettera a Timoteo	2 Tim
+Titus	Tito	Tt	Lettera a Tito
+Phlm	Filemone	Fi	Filèmone	Fm	Lettera a Filemone
+Heb	Ebrei	Eb	Lettera agli Ebrei
+Jas	Giacomo	Gc	Lettera di Giacomo	Gm
+1Pet	$FIRST Pietro	1 P	1 Pt	Prima lettera di Pietro
+2Pet	$SECOND Pietro	2 P	2 Pt	Seconda lettera di Pietro
+1John	$FIRST Giovanni	1 Gv	Prima lettera di Giovanni
+2John	$SECOND Giovanni	2 Gv	Seconda lettera di Giovanni
+3John	$THIRD Giovanni	3 Gv	Terza lettera di Giovanni
+Jude	Giuda	Gd	Lettera di Giuda
+Rev	Apocalisse	Ap	Rivelazione	Riv	Apocalisse di Giovanni
+Tob	Tobia	Tobi	Tb	Tobiolo
+Jdt	Giuditta	Gdt
+GkEsth	Ester \(versione greca\)	Ester greco	Ester \(greco\)
+Wis	Sapienza	Sapienza di Salomone	Sap
+Sir	Siracide	Sapienza di Sirach	Ecclesiastico	Siràcide	Sir	Sapienza di Siracide
+Bar	Baruc	Bar	Baruch
+PrAzar	Preghiera di Azaria
+Sus	Storia di Susanna	Susanna
+Bel	Bel e il Drago
+SgThree	Cantico dei tre giovani nella fornace	Cantico dei tre fanciulli
+EpJer	Lettera di Geremia	Let-ger
+1Macc	$FIRST Maccabei	Primo libro dei Maccabei	1 Mac
+2Macc	$SECOND Maccabei	Secondo libro dei Maccabei	2 Mac
+3Macc	$THIRD Maccabei	Terzo libro dei Maccabei	3 Mac
+4Macc	$FOURTH Maccabei	Quarto libro dei Maccabei	4 Mac
+1Esd	$FIRST Esdra	$THIRD Esdra	$FIRST Ésdras	Esdra greco	1 Esd
+2Esd	$SECOND Esdra	$FOURTH Esdra	$SECOND Ésdras	2 Esd
+PrMan	Preghiera di Manasse	Orazione di Manasse Re di Giuda	Orazione di Manasse
+AddEsth	Aggiunte a Ester
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Genesi	Gen	Ge
+*Exod	Esodo	Es	Es
+*Lev	Levitico	Lv	Le
+*Num	Numeri	Nm	Nu
+*Deut	Deuteronomio	Dt	De
+*Josh	Giosuè	Gs	Gs
+*Judg	Giudici	Gdc	Gdc
+*Ruth	Rut	Rt	Ru
+*1Sam	1 Samuele	1 Sam	1 S
+*2Sam	2 Samuele	2 Sam	2 S
+*1Kgs	1 Re	1 Re	1 R
+*2Kgs	2 Re	2 Re	2 R
+*1Chr	1 Cronache	1 Cr	1 Cr
+*2Chr	2 Cronache	2 Cr	2 Cr
+*Ezra	Esdra	Esd	Ed
+*Neh	Neemia	Ne	Ne
+*Esth	Ester	Est	Et
+*Job	Giobbe	Gb	Gb
+*Ps	Salmi	Sal	Sl	Salmo
+*Prov	Proverbi	Pr	Pr
+*Eccl	Qoelet	Qo	Ec
+*Song	Cantico dei cantici	Ct	Ca
+*Isa	Isaia	Is	Is
+*Jer	Geremia	Ger	Gr
+*Lam	Lamentazioni	Lam	La
+*Ezek	Ezechiele	Ez	Ez
+*Dan	Daniele	Dn	Da
+*Hos	Osea	Os	Os
+*Joel	Gioele	Gl	Gl
+*Amos	Amos	Am	Am
+*Obad	Abdia	Abd	Ad
+*Jonah	Giona	Gn	Gn
+*Mic	Michea	Mi	Mi
+*Nah	Naum	Na	Na
+*Hab	Abacuc	Ab	Ac
+*Zeph	Sofonia	Sof	So
+*Hag	Aggeo	Ag	Ag
+*Zech	Zaccaria	Zc	Za
+*Mal	Malachia	Ml	Ml
+*Matt	Matteo	Mt	Mt
+*Mark	Marco	Mc	Mr
+*Luke	Luca	Lc	Lu
+*John	Giovanni	Gv	Gv
+*Acts	Atti	At	At
+*Rom	Romani	Rm	Ro
+*1Cor	1 Corinzi	1 Cor	1 Co
+*2Cor	2 Corinzi	2 Cor	2 Co
+*Gal	Gàlati	Gal	Ga
+*Eph	Efesini	Ef	Ef
+*Phil	Filippesi	Fil	Fl
+*Col	Colossesi	Col	Cl
+*1Thess	1 Tessalonicesi	1 Ts	1 Ts
+*2Thess	2 Tessalonicesi	2 Ts	2 Ts
+*1Tim	1 Timoteo	1 Tm	1 Ti
+*2Tim	2 Timoteo	2 Tm	2 Ti
+*Titus	Tito	Tt	Tt
+*Phlm	Filèmone	Fm	Fi
+*Heb	Ebrei	Eb	Eb
+*Jas	Giacomo	Gc	Gc
+*1Pet	1 Pietro	1 Pt	1 P
+*2Pet	2 Pietro	2 Pt	2 P
+*1John	1 Giovanni	1 Gv	1 Gv
+*2John	2 Giovanni	2 Gv	2 Gv
+*3John	3 Giovanni	3 Gv	3 Gv
+*Jude	Giuda	Gd	Gd
+*Rev	Apocalisse	Ap	Ap
+*Tob	Tobia	Tb
+*Jdt	Giuditta	Gdt
+*GkEsth	Ester greco
+*Wis	Sapienza	Sap
+*Sir	Siràcide	Sir
+*Bar	Baruc	Bar
+*PrAzar	Preghiera di Azaria
+*Sus	Storia di Susanna
+*Bel	Bel e il Drago	Bel
+*SgThree	Cantico dei tre giovani nella fornace
+*EpJer	Lettera di Geremia
+*1Macc	1 Maccabei	1 Mac
+*2Macc	2 Maccabei	2 Mac
+*3Macc	3 Maccabei	3 Mac
+*4Macc	4 Maccabei	4 Mac
+*1Esd	1 Esdra	1 Esd
+*2Esd	2 Esdra	2 Esd
+*PrMan	Preghiera di Manasse

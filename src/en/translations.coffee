@@ -1,19 +1,7 @@
 # When adding a new translation, add it both here and bcv_parser::translations.aliases
 bcv_parser::regexps.translations = ///(?:
-		  AMP
-		| ASV
-		| CE[BV]
-		| E[RS]V
-		| HCSB
-		| N?KJV
-		| MSG
-		| NAB(?:RE)?
-		| NASB?
-		| NIR?V
-		| NLT
-		| N?RSV
-		| TNIV
-		)\b///gi
+	  (?:A(?:MP|SV)|RSV|N(?:RSV|LT|I(?:RV|V)|KJV|A(?:B(?:RE)?|SB?))|MSG|TNIV|CE[BV]|E[RS]V|HCSB|KJV)
+	)\b///gi
 bcv_parser::translations = 
 	aliases:
 		ceb:
@@ -25,11 +13,14 @@ bcv_parser::translations =
 		nab:
 			osis: "NAB"
 			alias: "nab"
+		nabre:
+			osis: "NABRE"
+			alias: "nab"
 		nas:
 			osis: "NASB"
 			alias: "default"
 		nirv:
-			osis: "NIrV"
+			osis: "NIRV"
 			alias: "kjv"
 		niv:
 			osis: "NIV"
@@ -43,12 +34,15 @@ bcv_parser::translations =
 		nrsv:
 			osis: "NRSV"
 			alias: "nrsv"
+		tniv:
+			osis: "TNIV"
+			alias: "kjv"
 		default:
 			osis: ""
 			alias: "default"
 	default:
 		order:
-			"Gen": 1, "Exod": 2, "Lev": 3, "Num": 4, "Deut": 5, "Josh": 6, "Judg": 7, "Ruth": 8, "1Sam": 9, "2Sam": 10, "1Kgs": 11, "2Kgs": 12, "1Chr": 13, "2Chr": 14, "Ezra": 15, "Neh": 16, "Esth": 17, "Job": 18, "Ps": 19, "Prov": 20, "Eccl": 21, "Song": 22, "Isa": 23, "Jer": 24, "Lam": 25, "Ezek": 26, "Dan": 27, "Hos": 28, "Joel": 29, "Amos": 30, "Obad": 31, "Jonah": 32, "Mic": 33, "Nah": 34, "Hab": 35, "Zeph": 36, "Hag": 37, "Zech": 38, "Mal": 39, "Matt": 40, "Mark": 41, "Luke": 42, "John": 43, "Acts": 44, "Rom": 45, "1Cor": 46, "2Cor": 47, "Gal": 48, "Eph": 49, "Phil": 50, "Col": 51, "1Thess": 52, "2Thess": 53, "1Tim": 54, "2Tim": 55, "Titus": 56, "Phlm": 57, "Heb": 58, "Jas": 59, "1Pet": 60, "2Pet": 61, "1John": 62, "2John": 63, "3John": 64, "Jude": 65, "Rev": 66, "Tob": 67, "Jdt": 68, "GkEsth": 69, "Wis": 70, "Sir": 71, "Bar": 72, "PrAzar": 73, "Sus": 74, "Bel": 75, "SgThree": 76, "EpJer": 77, "1Macc": 78, "2Macc": 79, "3Macc": 80, "4Macc": 81, "1Esd": 82, "2Esd": 83, "PrMan": 84, "Ps151": 85
+			"Gen": 1, "Exod": 2, "Lev": 3, "Num": 4, "Deut": 5, "Josh": 6, "Judg": 7, "Ruth": 8, "1Sam": 9, "2Sam": 10, "1Kgs": 11, "2Kgs": 12, "1Chr": 13, "2Chr": 14, "Ezra": 15, "Neh": 16, "Esth": 17, "Job": 18, "Ps": 19, "Prov": 20, "Eccl": 21, "Song": 22, "Isa": 23, "Jer": 24, "Lam": 25, "Ezek": 26, "Dan": 27, "Hos": 28, "Joel": 29, "Amos": 30, "Obad": 31, "Jonah": 32, "Mic": 33, "Nah": 34, "Hab": 35, "Zeph": 36, "Hag": 37, "Zech": 38, "Mal": 39, "Matt": 40, "Mark": 41, "Luke": 42, "John": 43, "Acts": 44, "Rom": 45, "1Cor": 46, "2Cor": 47, "Gal": 48, "Eph": 49, "Phil": 50, "Col": 51, "1Thess": 52, "2Thess": 53, "1Tim": 54, "2Tim": 55, "Titus": 56, "Phlm": 57, "Heb": 58, "Jas": 59, "1Pet": 60, "2Pet": 61, "1John": 62, "2John": 63, "3John": 64, "Jude": 65, "Rev": 66, "Tob": 67, "Jdt": 68, "GkEsth": 69, "Wis": 70, "Sir": 71, "Bar": 72, "PrAzar": 73, "Sus": 74, "Bel": 75, "SgThree": 76, "EpJer": 77, "1Macc": 78, "2Macc": 79, "3Macc": 80, "4Macc": 81, "1Esd": 82, "2Esd": 83, "PrMan": 84
 		chapters:
 			"Gen": [31,25,24,26,32,22,24,22,29,32,32,20,18,24,21,16,27,33,38,18,34,24,20,67,34,35,46,22,35,43,55,32,20,31,29,43,36,30,23,23,57,38,34,34,28,34,31,22,33,26]
 			"Exod": [22,25,22,31,23,30,25,32,35,29,10,51,22,31,27,36,16,27,25,26,36,31,33,18,40,37,21,43,46,38,18,35,23,35,35,38,29,31,43,38]
@@ -134,8 +128,11 @@ bcv_parser::translations =
 			"1Esd": [58,30,24,63,73,34,15,96,55]
 			"2Esd": [40,48,36,52,56,59,70,63,47,59,46,51,58,48,63,78]
 			"PrMan": [15]
-			"Ps151": [7]
+			"Ps151": [7] #Never actually a book--we add this to Psalms if needed.
 	alternates:
+		vulgate:
+			chapters:
+				"Ps": [6,13,9,10,13,11,18,10,39,8,9,6,7,5,10,15,51,15,10,14,32,6,10,22,12,14,9,11,13,25,11,22,23,28,13,40,23,14,18,14,12,5,26,18,12,10,15,21,23,21,11,7,9,24,13,12,12,18,14,9,13,12,11,14,20,8,36,37,6,24,20,28,23,11,13,21,72,13,20,17,8,19,13,14,17,7,19,53,17,16,16,5,23,11,13,12,9,9,5,8,29,22,35,45,48,43,14,31,7,10,10,9,26,9,19,2,29,176,7,8,9,4,8,5,6,5,6,8,8,3,18,3,3,21,26,9,8,24,14,10,8,12,15,21,10,11,20,14,9,7]
 		ceb:
 			chapters:
 				"2Cor": [24,17,18,18,21,18,16,24,15,18,33,21,13]
@@ -190,6 +187,3 @@ bcv_parser::translations =
 			chapters:
 				"2Cor": [24,17,18,18,21,18,16,24,15,18,33,21,13]
 				"Rev": [20,29,22,11,14,17,17,13,21,11,19,18,18,20,8,21,18,24,21,15,27,21]
-		vulgate:
-			chapters:
-				"Ps": [6,13,9,10,13,11,18,10,39,8,9,6,7,5,10,15,51,15,10,14,32,6,10,22,12,14,9,11,13,25,11,22,23,28,13,40,23,14,18,14,12,5,26,18,12,10,15,21,23,21,11,7,9,24,13,12,12,18,14,9,13,12,11,14,20,8,36,37,6,24,20,28,23,11,13,21,72,13,20,17,8,19,13,14,17,7,19,53,17,16,16,5,23,11,13,12,9,9,5,8,29,22,35,45,48,43,14,31,7,10,10,9,26,9,19,2,29,176,7,8,9,4,8,5,6,5,6,8,8,3,18,3,3,21,26,9,8,24,14,10,8,12,15,21,10,11,20,14,9,7]

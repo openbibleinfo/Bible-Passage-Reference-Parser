@@ -26,7 +26,7 @@ class bcv_passage
 	# ## Types Returned from the Grammar
 	# These functions correspond to `type` attributes returned from the grammar. They're designed to be called multiple times if necessary.
 	#
-	# Handle a book on its own.
+	# Handle a book on its own ("Gen").
 	b: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
@@ -49,11 +49,11 @@ class bcv_passage
 		context.translations = passage.start_context.translations if passage.start_context.translations?
 		[accum, context]
 
-	# Handle book-only ranges.
+	# Handle book-only ranges ("Gen-Exod").
 	b_range: (passage, accum, context) ->
 		@range passage, accum, context
 
-	# Handle book-only ranges like 1-2 Samuel. It doesn't support multiple ambiguous ranges (like `1-2C`), which it probably shouldn't, anyway.
+	# Handle book-only ranges like "1-2 Samuel". It doesn't support multiple ambiguous ranges (like "1-2C"), which it probably shouldn't, anyway.
 	b_range_pre: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
@@ -67,12 +67,12 @@ class bcv_passage
 		accum.push passage
 		[accum, context]
 
-	# The base (root) object in the grammar and controls the base indices.
+	# The base (root) object in the grammar controls the base indices.
 	base: (passage, accum, context) ->
 		@indices = @calculate_indices passage.match, passage.start_index
 		@handle_array passage.value, accum, context
 
-	# Handle book-chapter.
+	# Handle book-chapter ("Gen 1").
 	bc: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
@@ -131,7 +131,7 @@ class bcv_passage
 		# Treat it as a standard `bcv`.
 		@bcv passage, accum, passage.start_context
 
-	# Handle book chapter:verse.
+	# Handle book chapter:verse ("Gen 1:1").
 	bcv: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
@@ -403,7 +403,7 @@ class bcv_passage
 		passage.value[1] = {type: "v", value: [end], indices: end.indices} if end.type is "integer"
 		@handle_obj passage, accum, passage.start_context
 
-	# In cases like "John 10:22-42 vs 27", treat it as "10:22-42,47" instead of "10:22-42:27".
+	# Treat cases like "John 10:22-42 vs 27" as "10:22-42,47" instead of "10:22-42:27".
 	range_change_cv_end: (passage, accum) ->
 		[start, end] = passage.value
 		passage.original_type = passage.type
@@ -609,7 +609,7 @@ class bcv_passage
 			# If it's a book, then get the start index of the actual book, add the length of the actual string, then subtract the length of the integer id and the two surrounding characters.
 			if switch_type is "book"
 				# Remove any stray extra indicators.
-				part = part.replace /\/[a-z]$/, ""
+				part = part.replace /\/\d+$/, ""
 				# Get the length of the id + the surrounding characters. We want the `end` to be the position, not the length. If the part starts at position 0 and is one character (i.e., three characters total, or `\x1f0\x1f`), `end` should be 1, since it occupies positions 0, 1, and 2, and we want the last character to be part of the next index so that we keep track of the end. For example, with "Genesis" at start index 0, the index starting at position 6 ("s") should be 4. Keep the adjust as-is, but set it next.
 				end_index = match_index + part_length
 				if indices.length > 0 and indices[indices.length - 1].index == adjust
@@ -647,7 +647,7 @@ class bcv_passage
 		[start_out, end_out]
 
 	# ## Validators
-	# Given a start and optional end bcv object, validate that the verse exists and is valid. It returns an array with validity for each translations.
+	# Given a start and optional end bcv object, validate that the verse exists and is valid. It returns an array with validity for each translation.
 	validate_ref: (translations, start, end) ->
 		# The `translation` key is optional; if it doesn't exist, assume the default translation.
 		translations or= [{translation: "default", osis: "", alias: "default"}]
@@ -718,7 +718,7 @@ class bcv_passage
 			messages.start_book_not_exist = true
 		[valid, messages]
 
-	# The end ref pretty much just has to be after the start ref; beyond the book, we don't	require that the chapter or verse exists. This is useful when people get end verses wrong.
+	# The end ref pretty much just has to be after the start ref; beyond the book, we don't	require the chapter or verse to exist. This approach is useful when people get end verses wrong.
 	validate_end_ref: (translation, start, end, valid, messages) ->
 		if translation isnt "default" and !@translations[translation]?.chapters[end.b]?
 			@promote_book_to_translation end.b, translation

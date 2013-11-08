@@ -24,23 +24,23 @@ class bcv_parser
 		# * `ignore`: ignore any books on their own in sequences ("Gen Is 1" -> "Isa.1").
 		# * `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" means "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
 		book_sequence_strategy: "ignore"
-		# * `ignore`: "Matt 99, Gen 1" sequence index starts at `Gen 1`.
-		# * `include`: "Matt 99, Gen 1" sequence index starts at `Matt 99`.
+		# * `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
+		# * `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
 		invalid_sequence_strategy: "ignore"
-		# * `combine`: consecutive references are combined into a single OSIS list: Gen 1, 2 -> "Gen.1,Gen.2".
-		# * `separate`: consecutive references are separated into their component parts: Gen 1, 2 -> "Gen.1" and "Gen.2".
+		# * `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" -> "Gen.1,Gen.3".
+		# * `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" -> "Gen.1" and "Gen.3".
 		sequence_combination_strategy: "combine"
 		# ### Potentially Invalid Input
 		# * `ignore`: Don't include invalid passages in `@parsed_entities()`.
 		# * `include`: Include invalid passages in `@parsed_entities()` (they still don't have OSIS values).
 		invalid_passage_strategy: "ignore"
-		# * `error`: zero chapters ("Matt 0") are invalid.
-		# * `upgrade`: zero chapters are upgraded to 1: "Matt 0" -> "Matt 1".
+		# * `error`: zero chapters ("Matthew 0") are invalid.
+		# * `upgrade`: zero chapters are upgraded to 1: "Matthew 0" -> "Matt.1".
 		# Unlike `zero_verse_strategy`, chapter 0 isn't allowed.
 		zero_chapter_strategy: "error"
-		# * `error`: zero verses ("Matt 5:0") are invalid.
-		# * `upgrade`: zero verses are upgraded to 1: "Matt 5:0" -> "Matt 5:1".
-		# * `allow`: zero verses are kept as-is: "Matt 5:0" -> "Matt 5:0". Some traditions use 0 for Psalm titles.
+		# * `error`: zero verses ("Matthew 5:0") are invalid.
+		# * `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" -> "Matt.5.1".
+		# * `allow`: zero verses are kept as-is: "Matthew 5:0" -> "Matt.5.0". Some traditions use 0 for Psalm titles.
 		zero_verse_strategy: "error"
 		# * `ignore`: treat non-Latin digits the same as any other character.
 		# * `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
@@ -53,7 +53,7 @@ class bcv_parser
 		# * `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" -> "Matt.5". This is better for text extraction.
 		# * `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" -> "Matt.5.1". This is better for query parsing.
 		captive_end_digits_strategy: "delete"
-		# * `verse`: treat "Jer 33-11" as "Jer 33:11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
+		# * `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
 		# * `sequence`: treat them as sequences.
 		end_range_digits_strategy: "verse"
 		# ### Apocrypha
@@ -96,12 +96,7 @@ class bcv_parser
 		# Get a string representation suitable for passing to the parser.
 		[s, @passage.books] = @match_books s
 		# Replace potential BCVs one at a time to reduce processing time on long strings.
-		entities = @match_passages s
-		@entities = []
-		# Loop through them rather than handle them all at once to prevent context leakage (e.g., translations back-propagating through unrelated entities).
-		for entity in entities
-			[accum] = @passage.handle_array [entity]
-			@entities = @entities.concat accum
+		@entities = @match_passages s
 		# Allow chaining.
 		this
 
@@ -194,20 +189,7 @@ class bcv_parser
 		books = []
 		# Replace all book strings.
 		for book in @regexps.books
-			# I explored using the following code, using array concatenation instead of replacing text directly, but found that it didn't offer performance improvements.
-			#
-			#	`parts = []`
-			#	`prev_index = 0`
-			#	`while match = book.regexp.exec s`
-			#	`	books.push value: match[0], parsed: book.osis`
-			#	`	if match.index != prev_index`
-			#	`		parts.push s.substr(prev_index, match.index - prev_index)`
-			#	`	extra = if book.extra? then "/" + book.extra else ""`
-			#	`	parts.push "\x1f#{books.length - 1}#{extra}\x1f"`
-			#	`	prev_index = match.index + match[0].length`
-			#	`if parts.length > 0`
-			#	`	parts.push s.substr(prev_index)`
-			#	`	s = parts.join ""`
+			# Using array concatenation instead of replacing text directly didn't offer performance improvements in tests of the approach.
 			s = s.replace book.regexp, (full, prev, bk) ->
 				# `value` contains the raw string; `book.osis` is the osis value for the book.
 				books.push value: bk, parsed: book.osis
@@ -225,7 +207,7 @@ class bcv_parser
 		re = ///
 			([\x1f\x1e])	# opening book or translation
 			(\d+)			# the number
-			(?:/[a-z])?		# optional extra identifier
+			(?:/\d+)?		# optional extra identifier
 			\1				# closing delimeter
 			///g
 		while match = re.exec s
@@ -237,14 +219,15 @@ class bcv_parser
 
 	# Create an array of all the potential bcv matches in the string.
 	match_passages: (s) ->
-		passages = []
+		entities = []
 		while match = @regexps.escaped_passage.exec s
 			# * `match[0]` includes the preceding character (if any) for bounding.
 			# * `match[1]` is the full match minus the character preceding the match used for bounding.
-			# * match[2]` is the book id.
+			# * `match[2]` is the book id.
 			[full, part, book_id] = match
 			# Adjust the `index` to use the `part` offset rather than the `full` offset. We use it below for `captive_end_digits`.
-			match.index += full.length - part.length
+			original_part_length = part.length
+			match.index += full.length - original_part_length
 			# Remove most three+-character digits at the end; they won't match.
 			if (/\s[2-9]\d\d\s*$|\s\d{4,}\s*$/).test part
 				re = /\s+\d+\s*$/
@@ -269,8 +252,23 @@ class bcv_parser
 			# Are we looking at a single book on its own that could be part of a range like "1-2 Sam"?
 			if @options.book_alone_strategy is "full" and passage.value.length == 1 and passage.value[0].type is "b" and start_index_adjust == 0 and @passage.books[book_id].parsed.length == 1 and /^[234]/.test @passage.books[book_id].parsed[0]
 				@create_book_range s, passage, book_id
-			passages.push passage
-		passages
+			# Handle each passage individually to prevent context leakage (e.g., translations back-propagating through unrelated entities).
+			[accum] = @passage.handle_obj passage
+			entities = entities.concat accum
+			# Move the next RegExp iteration to start earlier if we didn't use everything we thought we were going to.
+			regexp_index_adjust = @adjust_regexp_end accum,original_part_length, part.length
+			@regexps.escaped_passage.lastIndex -= regexp_index_adjust if (regexp_index_adjust > 0)
+		entities
+
+	# Handle the objects returned from the grammar to produce entities for further processing. We may need to adjust the `RegExp.lastIndex` if we discarded characters from the end of the match or if, after parsing, we're ignoring some of them--especially with ending parenthetical statements like "Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)".
+	adjust_regexp_end: (accum, old_length, new_length) ->
+		regexp_index_adjust = 0
+		if accum.length > 0
+			# `accum` uses an off-by-one end index compared to the RegExp object. "and Psa3" means `lastIndex` = 8, `old_length` and `new_length` are both 4 (omitting "and " and leaving "Psa3"), and the `accum` end index is 3. We end up with 4 - 3 - 1 = 0, or no adjustment. Compare "and Psa3 and", where the last " and" is originally considered part of the regexp. In this case, `regexp_index_adjust` is 4: 8 ("Psa3 and") - 3 ("Psa3") - 1.
+			regexp_index_adjust = old_length - accum[accum.length-1].indices[1] - 1
+		else if old_length != new_length
+			regexp_index_adjust = old_length - new_length
+		regexp_index_adjust
 
 	# Remove unnecessary characters from the end of the match.
 	replace_match_end: (part) ->

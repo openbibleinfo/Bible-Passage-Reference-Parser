@@ -85,7 +85,7 @@ cbv_ordinal
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 c_psalm
-  = "\x1f" val:any_integer "/p\x1f"
+  = "\x1f" val:any_integer "/1\x1f"
     { return {"type": "c_psalm", "value": val.value, "indices": [offset, pos - 1]} }
 
 cv_psalm
@@ -119,7 +119,7 @@ integer_title
 
 // The `ps151` rules should round-trip `Ps151.1` and `Ps151.1.\d+` OSIS references. Without these rules, `Ps151` gets interpreted as a `bc`, throwing off future verses.
 ps151_b
-  = "\x1f" val:any_integer "/q\x1f"
+  = "\x1f" val:any_integer "/2\x1f"
     { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} }
 
 ps151_bc

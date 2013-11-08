@@ -15,7 +15,7 @@ $VERSE	verse
 $PRE_BOOK	《?
 $POST_BOOK	》?
 $PRE_BOOK_ALLOWED_CHARACTERS	[^\x1f]
-$POST_BOOK_ALLOWED_CHARACTERS	[\s.\d]
+#$POST_BOOK_ALLOWED_CHARACTERS	[\s.\d]
 $UNICODE_BLOCK	CJK
 
 # http://zh.wikipedia.org/wiki/%E6%96%B0%E7%B4%84%E8%81%96%E7%B6%93
@@ -95,22 +95,22 @@ Jude	猶大書	猶達書	伊屋達	犹大书	猶	犹
 Rev	啟示錄	若望默示錄	默示錄	启示录	啓示錄	啟	启
 Tob	多俾亞傳
 Jdt	友弟德傳
-GkEsth	Greek Esther
+GkEsth	GkEsth
 Wis	智慧篇
 Sir	德訓篇
 Bar	巴路克
-PrAzar	Prayer of Azariah
-Sus	Susanna
-Bel	Bel and the Dragon
-SgThree	Song of the Three Young Men
-EpJer	Epistle of Jeremiah
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
 1Macc	瑪加伯上
 2Macc	瑪加伯下
-3Macc	3 Maccabees
-4Macc	4 Maccabees
-1Esd	1 Esdras
-2Esd	2 Esdras
-PrMan	Prayer of Manasseh
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
 
 # Order
 =Gen
@@ -269,22 +269,22 @@ PrMan	Prayer of Manasseh
 *Rev	啟示錄	啟
 *Tob	多俾亞傳
 *Jdt	友弟德傳
-*GkEsth	Greek Esther	GkEsth
+*GkEsth	GkEsth
 *Wis	智慧篇	Wis
 *Sir	德訓篇	Sir
 *Bar	巴路克	Bar
-*PrAzar	Prayer of Azariah	PrAzar
-*Sus	Susanna	Susanna
-*Bel	Bel and the Dragon	Bel
-*SgThree	Song of the Three Young Men	SgThree
-*EpJer	Epistle of Jeremiah	EpJer
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
 *1Macc	瑪加伯上	1Macc
 *2Macc	瑪加伯下	2Macc
-*3Macc	3 Maccabees	3Macc
-*4Macc	4 Maccabees	4Macc
-*1Esd	1 Esdras	1Esd
-*2Esd	2 Esdras	2Esd
-*PrMan	Prayer of Manasseh	PrMan
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan
 
 # I think these are simplified. Short names from http://www.faisoft.com/webbible/sc/tcall.htm
 # 诗篇 from ERV
@@ -356,19 +356,19 @@ PrMan	Prayer of Manasseh
 *Rev	默示錄	启
 *Tob	多俾亞傳
 *Jdt	友弟德傳
-*GkEsth	Greek Esther	GkEsth
+*GkEsth	GkEsth
 *Wis	智慧篇	Wis
 *Sir	德訓篇	Sir
 *Bar	巴路克	Bar
-*PrAzar	Prayer of Azariah	PrAzar
-*Sus	Susanna	Susanna
-*Bel	Bel and the Dragon	Bel
-*SgThree	Song of the Three Young Men	SgThree
-*EpJer	Epistle of Jeremiah	EpJer
-*1Macc	瑪加伯上	1Macc
-*2Macc	瑪加伯下	2Macc
-*3Macc	3 Maccabees	3Macc
-*4Macc	4 Maccabees	4Macc
-*1Esd	1 Esdras	1Esd
-*2Esd	2 Esdras	2Esd
-*PrMan	Prayer of Manasseh	PrMan
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	瑪加伯上
+*2Macc	瑪加伯下
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

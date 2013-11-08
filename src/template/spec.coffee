@@ -1,3 +1,5 @@
+bcv_parser = require("../../js/$LANG_bcv_parser.js").bcv_parser
+
 describe "Parsing", ->
 	p = {}
 	beforeEach ->
@@ -42,14 +44,13 @@ describe "Parsing", ->
 		expect(p.parse("1Ps 1").osis()).toEqual ""
 		expect(p.parse("11Sam 1").osis()).toEqual ""
 
-describe "Localized book names", ->
+$BOOK_TESTS
+
+describe "Miscellaneous tests", ->
 	p = {}
 	beforeEach ->
 		p = new bcv_parser
-		p.options.book_alone_strategy = "ignore"
-		p.options.book_sequence_strategy = "ignore"
-		p.options.osis_compaction_strategy = "bc"
-		p.options.captive_end_digits_strategy = "delete"
+		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
-$BOOK_TESTS
+$MISC_TESTS

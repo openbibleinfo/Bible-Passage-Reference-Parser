@@ -1,10 +1,22 @@
 bcv_parser::regexps.space = "[\\s\\xa0]"
 bcv_parser::regexps.escaped_passage = ///
-	(?:^ | $PRE_PASSAGE_ALLOWED_CHARACTERS )	#beginning of string or not in the middle of a word or immediately following another book. Only count a book if it's part of a sequence: `Matt5John3` is OK, but not `1Matt5John3`
+	(?:^ | $PRE_PASSAGE_ALLOWED_CHARACTERS )	# Beginning of string or not in the middle of a word or immediately following another book. Only count a book if it's part of a sequence: `Matt5John3` is OK, but not `1Matt5John3`
 		(
-			\x1f(\d+)(?:/[a-z])?\x1f		#book
+			# Start inverted book/chapter (cb)
+			(?:
+				  (?: ch (?: apters? | a?pts?\.? | a?p?s?\.? )? \s*
+					\d+ \s* (?: [\u2013\u2014\-] | through | thru | to) \s* \d+ \s*
+					(?: from | of | in ) (?: \s+ the \s+ book \s+ of )?\s* )
+				| (?: ch (?: apters? | a?pts?\.? | a?p?s?\.? )? \s*
+					\d+ \s*
+					(?: from | of | in ) (?: \s+ the \s+ book \s+ of )?\s* )
+				| (?: \d+ (?: th | nd | st ) \s*
+					ch (?: apter | a?pt\.? | a?p?\.? )? \s* #no plurals here since it's a single chapter
+					(?: from | of | in ) (?: \s+ the \s+ book \s+ of )? \s* )
+			)? # End inverted book/chapter (cb)
+			\x1f(\d+)(?:/\d+)?\x1f		#book
 				(?:
-				  | /[pq]\x1f					#special Psalm chapters
+				    /\d+\x1f				#special Psalm chapters
 				  | $VALID_CHARACTERS
 				  | $TITLE (?! [a-z] )		#could be followed by a number
 				  | $PASSAGE_COMPONENTS
@@ -34,7 +46,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	books = [
 		osis: ["Ps"]
 		apocrypha: true
-		extra: "q"
+		extra: "2"
 		regexp: ///(\b)( # Don't match a preceding \d like usual because we only want to match a valid OSIS, which will never have a preceding digit.
 			Ps151
 			# Always follwed by ".1"; the regular Psalms parser can handle `Ps151` on its own.

@@ -85,7 +85,7 @@ cbv_ordinal
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 c_psalm
-  = "\x1f" val:any_integer "/p\x1f"
+  = "\x1f" val:any_integer "/1\x1f"
     { return {"type": "c_psalm", "value": val.value, "indices": [offset, pos - 1]} }
 
 cv_psalm
@@ -114,12 +114,12 @@ ff
     { return {"type": "ff", "value": [val_1], "indices": [offset, pos - 1]} }
 
 integer_title
-  = val_1:integer (cv_sep / sequence_sep)? ( "t" [íi]i "tulo" / "tít"i )
+  = val_1:integer (cv_sep / sequence_sep)? ( "subt" [íi]i "tulo" / "t" [íi]i "tulo" / "tít"i )
     { return {"type": "integer_title", "value": [val_1], "indices": [offset, pos - 1]} }
 
 // The `ps151` rules should round-trip `Ps151.1` and `Ps151.1.\d+` OSIS references. Without these rules, `Ps151` gets interpreted as a `bc`, throwing off future verses.
 ps151_b
-  = "\x1f" val:any_integer "/q\x1f"
+  = "\x1f" val:any_integer "/2\x1f"
     { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} }
 
 ps151_bc
@@ -160,7 +160,7 @@ range_sep
   = sp ([\-\u2013\u2014] sp / "á"i sp )+
 
 title
-  = (cv_sep / sequence_sep)? val:( "t" [íi]i "tulo" / "tít"i )
+  = (cv_sep / sequence_sep)? val:( "subt" [íi]i "tulo" / "t" [íi]i "tulo" / "tít"i )
     { return {type:"title", value: [val], "indices": [offset, pos - 1]} }
 
 in_book_of

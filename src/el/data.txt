@@ -1,0 +1,278 @@
+# These primes ʹ (U+02B9) should really be ʹ (U+0374) but get normalized out in the Unicode normalization process
+$FIRST	Αʹ
+$SECOND	Βʹ
+$THIRD	Γʹ
+$FOURTH	Δʹ
+$AB	[α-ε]
+$AND	και
+# http://users.otenet.gr/~louka/triodion.htm and http://en.wiktionary.org/wiki/%CE%BA%CE%B5%CF%86%CE%AC%CE%BB%CE%B1%CE%B9%CE%BF and http://el.wikisource.org/wiki/%CE%86%CF%83%CE%BC%CE%B1_%CE%91%CF%83%CE%BC%CE%AC%CF%84%CF%89%CE%BD
+$CHAPTER	κεφάλαια	κεφάλαιον	κεφάλαιο	κεφ
+# https://www.google.com/search?q=Γένεσις "και μετά" "στίχοι"&ie=utf-8&oe=utf-8
+$FF	και μετά
+# The terminal sigma throws off the case-insensitive matching
+$TITLE	ο τίτλος	ο τίτλοσ	τίτλος	τίτλοσ
+$TRANS	SEPTUAGINT	SEPT
+$TO	-
+# http://dionios.blogspot.com/ . The terminal sigma isn't uppercasing properly for some reason
+$VERSE	στίχος	στίχοι	στίχοσ
+$UNICODE_BLOCK	Greek	Latin	Diacritical
+
+Gen	Γένεσις	Γένεση	Γε	Γέν
+Exod	Έξοδος	Εξ	Ἔξ
+Lev	Λευϊτικόν	Λευϊτικό	Λε	Λευ	Λευϊτ
+Num	Αριθμοί	Ἀρ	Αριθ
+Deut	Δευτερονόμιον	Δευτερονόμιο	Δε	Δευτ	Δευτερ
+Josh	Ιησούς του Ναυή	Ἰη	Ιησ Ναυή	Ιησ Ναυ
+Judg	Κριταί	Κριτές	Κρ	Κριτ
+Ruth	Ρουθ	῾Ρθ
+1Sam	Βασιλειών Αʹ	δυτικός Σαμουήλ Αʹ	$FIRST Σαμουήλ	$FIRST Σαμ
+2Sam	Βασιλειών Βʹ	δυτικός Σαμουήλ Βʹ	$SECOND Σαμουήλ	$SECOND Σαμ
+1Kgs	Βασιλειών Γʹ	δυτικός Βασιλέων Αʹ	$FIRST Βασιλέων	$FIRST Βασ	$FIRST Βα
+2Kgs	Βασιλειών Δʹ	δυτικός Βασιλέων Βʹ	$SECOND Βασιλέων	$SECOND Βασ	$SECOND Βα
+1Chr	Παραλειπομένων Αʹ	δυτικός Χρονικών Αʹ	$FIRST Χρονικών	$FIRST Παρ	$FIRST Πα	Χρονικών Αʹ	$FIRST Χρον	$FIRST Χρ
+2Chr	Παραλειπομένων Βʹ	δυτικός Χρονικών Βʹ	$SECOND Χρονικών	$SECOND Παρ	$SECOND Πα	Χρονικών Βʹ	$SECOND Χρον	$SECOND Χρ
+Ezra	Έσδρας	Ἔσ
+Neh	Νεεμίας	Νε
+Esth	Εσθήρ	Εσθ
+Job	Ιώβ	Ἰβ
+Ps	Ψαλμοί του Δαυίδ	Ψαλμοί	Ψαλμός	Ψα
+Prov	Παροιμίαι	Παροιμίες	Πρμ
+Eccl	Εκκλησιαστής	Ἐκ
+Song	Άσμα Ασμάτων	Ἆσ
+# All-caps doesn't normalize the same way
+Isa	Ησαΐας	Ησ	Ἠσ	ΗΣΑΪ́ΑΣ	ΗΣΑΊΑΣ
+Jer	Ιερεμίας	Ἰε
+Lam	Θρήνοι Ιερεμίου	Θρήνοι	Θρ
+Ezek	Ιεζεκιήλ	Ιεζ	᾿Ιζ	Ιεζε?κ
+Dan	Δανιηλ	Δανιήλ	Δαν	Δν	Δα
+Hos	Ωσηέ	Ὠσ
+Joel	Ιωήλ	Ἰλ
+Amos	Αμώς	Ἀμ
+Obad	Οβδίας	Αβδιού	Ἀβδ
+Jonah	Ιωνάς	Ἰν
+# All-caps doesn't normalize the same way
+Mic	Μιχαίας	Μιχαΐας	Μχ	ΜΙΧΑΪ́ΑΣ	ΜΙΧΑΊΑΣ
+Nah	Ναούμ	Να
+Hab	Αμβακούμ	Αββακούμ	Ἀβ
+Zeph	Σοφονίας	Σφν
+Hag	Αγγαίος	Ἀγ
+Zech	Ζαχαρίας	Ζαχ	Ζ[αχ]
+Mal	Μαλαχίας	Μαλ	Μα
+Matt	Κατά Ματθαίον	Ματθαίος	Ματθ	Μθ
+Mark	Κατά Μάρκον	Μάρκος	Μάρκ	Μρ
+Luke	Κατά Λουκάν	Λουκάς	Λουκ	Λκ
+John	Κατά Ιωάννην	Ιωάννης	Ιωάν	Ἰω
+Acts	Πράξεις	Πράξεις των Αποστόλων	Πράξ	Πρξ
+Rom	Προς Ρωμαίους	Ρωμαίους	Ρωμ	῾Ρω
+1Cor	Προς Κορινθίους Αʹ	$FIRST Κορινθίους	$FIRST Κορ	$FIRST Κο
+2Cor	Προς Κορινθίους Βʹ	$SECOND Κορινθίους	$SECOND Κορ	$SECOND Κο
+Gal	Προς Γαλάτας	Γαλάτες	Γαλ	Γα
+Eph	Προς Εφεσίους	Εφεσίους	Εφ	᾿Εφ
+Phil	Προς Φιλιππησίους	Φιλιππησίους	Φι
+Col	Προς Κολοσσαείς	Κολοσσαείς	Κολ	Κλ
+1Thess	Προς Θεσσαλονικείς Αʹ	$FIRST Θεσσαλονικείς	$FIRST Θεσ	$FIRST Θε
+2Thess	Προς Θεσσαλονικείς Βʹ	$SECOND Θεσσαλονικείς	$SECOND Θεσ	$SECOND Θε
+1Tim	Προς Τιμόθεον Αʹ	$FIRST Τιμόθεο	$FIRST Τιμ	$FIRST Τι
+2Tim	Προς Τιμόθεον Βʹ	$SECOND Τιμόθεο	$SECOND Τιμ	$SECOND Τι
+Titus	Προς Τίτον	Τίτο	Τίτ	Ττ
+Phlm	Προς Φιλήμονα	Φιλήμονα	Φλμ
+Heb	Προς Εβραίους	Εβραίους	Εβρ	Ἑβ
+Jas	Ιακώβου	᾿Ια
+1Pet	Πέτρου Αʹ	$FIRST Πέτρου	$FIRST Πέ	$FIRST Πε	$FIRST Πέτρ?
+2Pet	Πέτρου Βʹ	$SECOND Πέτρου	$SECOND Πέ	$SECOND Πε	$SECOND Πέτρ?
+1John	Ιωάννου Αʹ	$FIRST Ιωάννη	$FIRST Ιω	$FIRST ᾿Ιω
+2John	Ιωάννου Βʹ	$SECOND Ιωάννη	$SECOND Ιω	$SECOND ᾿Ιω
+3John	Ιωάννου Γʹ	$THIRD Ιωάννη	$THIRD Ιω	$THIRD ᾿Ιω
+Jude	Ιούδα	᾿Ιδ
+Rev	Αποκαλύψεις	Αποκάλυψις Ιωάννου	Αποκάλυψη	Απ	Αποκ	᾿Απ
+Tob	Τωβίτ	Τωβ
+Jdt	Ιουδίθ	Ιδθ
+GkEsth	Εσθήρ στα ελληνικά
+Wis	Σοφία Σαλωμώντος	Σοφία Σολομώντος	Σοφία Σολ	Σοφία	Σοφ
+Sir	Σοφία Σειράχ	Σοφία Σιραχ	Σειράχ
+Bar	Βαρούχ	Βρ	Βαρ
+PrAzar	Προσευχή Αζαρίου	Πρ Αζαρ
+Sus	Σουσάννα	Σωσάννα	Σουσ
+Bel	Βηλ και Δράκων	Βηλ	Βὴλ
+SgThree	Ύμνος των Τριών Παίδων
+EpJer	Επιστολή Ιερεμίου	Επιστολὴ ᾿Ιερ
+1Macc	Μακκαβαίων Αʹ	$FIRST Μακκαβαίων	$FIRST Μακκ
+2Macc	Μακκαβαίων Βʹ	$SECOND Μακκαβαίων	$SECOND Μακκ
+3Macc	Μακκαβαίων Γʹ	$THIRD Μακκαβαίων	$THIRD Μακκ
+4Macc	Μακκαβαίων Δʹ	$FOURTH Μακκαβαίων	$FOURTH Μακκ
+1Esd	Έσδρας Αʹ	$FIRST Έσδρας	$FIRST Έσδρ?
+2Esd	Έσδρας Βʹ	$SECOND Έσδρας	$SECOND Έσδρ?
+PrMan	Προσευχή Μανασσή	Πρ Μαν
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Γένεσις	Γε
+*Exod	Έξοδος	Ἔξ
+*Lev	Λευϊτικόν	Λε
+*Num	Αριθμοί	Ἀρ
+*Deut	Δευτερονόμιον	Δε
+*Josh	Ιησούς του Ναυή	Ἰη
+*Judg	Κριταί	Κρ
+*Ruth	Ρουθ	῾Ρθ
+*1Sam	Βασιλειών Αʹ
+*2Sam	Βασιλειών Βʹ
+*1Kgs	Βασιλειών Γʹ	Αʹ Βα
+*2Kgs	Βασιλειών Δʹ	Βʹ Βα
+*1Chr	Παραλειπομένων Αʹ	Αʹ Πα
+*2Chr	Παραλειπομένων Βʹ	Βʹ Πα
+*Ezra	Έσδρας	Ἔσ
+*Neh	Νεεμίας	Νε
+*Esth	Εσθήρ	Εσθ
+*Job	Ιώβ	Ἰβ
+*Ps	Ψαλμοί του Δαυίδ	Ψα		Ψαλμός
+*Prov	Παροιμίαι	Πρμ
+*Eccl	Εκκλησιαστής	Ἐκ
+*Song	Άσμα Ασμάτων	Ἆσ
+*Isa	Ησαΐας	Ἠσ
+*Jer	Ιερεμίας	Ἰε
+*Lam	Θρήνοι Ιερεμίου	Θρ
+*Ezek	Ιεζεκιήλ	᾿Ιζ
+*Dan	Δανιηλ	Δα
+*Hos	Ωσηέ	Ὠσ
+*Joel	Ιωήλ	Ἰλ
+*Amos	Αμώς	Ἀμ
+*Obad	Οβδίας	Ἀβδ
+*Jonah	Ιωνάς	Ἰν
+*Mic	Μιχαίας	Μχ
+*Nah	Ναούμ	Να
+*Hab	Αμβακούμ	Ἀβ
+*Zeph	Σοφονίας	Σφν
+*Hag	Αγγαίος	Ἀγ
+*Zech	Ζαχαρίας	Ζα
+*Mal	Μαλαχίας	Μα
+*Matt	Ματθαίος	Μθ
+*Mark	Μάρκος	Μρ
+*Luke	Λουκάς	Λκ
+*John	Ιωάννης	Ἰω
+*Acts	Πράξεις	Πρξ
+*Rom	Ρωμαίους	῾Ρω
+*1Cor	Αʹ Κορινθίους	Αʹ Κο
+*2Cor	Βʹ Κορινθίους	Βʹ Κο
+*Gal	Γαλάτες	Γα
+*Eph	Εφεσίους	᾿Εφ
+*Phil	Φιλιππησίους	Φι
+*Col	Κολοσσαείς	Κλ
+*1Thess	Αʹ Θεσσαλονικείς	Αʹ Θε
+*2Thess	Βʹ Θεσσαλονικείς	Βʹ Θε
+*1Tim	Αʹ Τιμόθεο	Αʹ Τι
+*2Tim	Βʹ Τιμόθεο	Βʹ Τι
+*Titus	Τίτο	Ττ
+*Phlm	Φιλήμονα	Φλμ
+*Heb	Εβραίους	Ἑβ
+*Jas	Ιακώβου	᾿Ια
+*1Pet	Αʹ Πέτρου	Αʹ Πε
+*2Pet	Βʹ Πέτρου	Βʹ Πε
+*1John	Αʹ Ιωάννη	Αʹ ᾿Ιω
+*2John	Βʹ Ιωάννη	Βʹ ᾿Ιω
+*3John	Γʹ Ιωάννη	Γʹ ᾿Ιω
+*Jude	Ιούδα	᾿Ιδ
+*Rev	Αποκαλύψεις	᾿Απ
+*Tob	Τωβίτ	Τωβ
+*Jdt	Ιουδίθ	Ιδθ
+*GkEsth	Εσθήρ στα ελληνικά
+*Wis	Σοφία Σαλωμώντος	Σοφία Σολ
+*Sir	Σοφία Σειράχ	Σοφία Σιραχ
+*Bar	Βαρούχ	Βρ
+*PrAzar	Προσευχή Αζαρίου	Πρ Αζαρ
+*Sus	Σουσάννα	Σουσ
+*Bel	Βηλ και Δράκων	Βηλ
+*SgThree	Ύμνος των Τριών Παίδων
+*EpJer	Επιστολή Ιερεμίου	Επιστολὴ ᾿Ιερ
+*1Macc	Μακκαβαίων Αʹ	Αʹ Μακκ
+*2Macc	Μακκαβαίων Βʹ	Βʹ Μακκ
+*3Macc	Μακκαβαίων Γʹ	Γʹ Μακκ
+*4Macc	Μακκαβαίων Δʹ	Δʹ Μακκ
+*1Esd	Έσδρας Αʹ	Αʹ Έσδ
+*2Esd	Έσδρας Βʹ	Βʹ Έσδ
+*PrMan	Προσευχή Μανασσή	Πρ Μαν

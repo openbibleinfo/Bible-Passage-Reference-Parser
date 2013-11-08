@@ -85,7 +85,7 @@ cbv_ordinal
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset, pos - 1]} }
 
 c_psalm
-  = "\x1f" val:any_integer "/p\x1f"
+  = "\x1f" val:any_integer "/1\x1f"
     { return {"type": "c_psalm", "value": val.value, "indices": [offset, pos - 1]} }
 
 cv_psalm
@@ -110,7 +110,7 @@ c
 
 // No `b` or `ps151`.
 ff
-  = val_1:(bcv / bcv_weak / bc / cv / cv_weak / integer / c / v) sp "f" "f"? abbrev? ![a-z]
+  = val_1:(bcv / bcv_weak / bc / cv / cv_weak / integer / c / v) sp ( "ff" ! [a-z0-9] / "f" ! [a-z0-9] ) abbrev? ![a-z]
     { return {"type": "ff", "value": [val_1], "indices": [offset, pos - 1]} }
 
 integer_title
@@ -119,7 +119,7 @@ integer_title
 
 // The `ps151` rules should round-trip `Ps151.1` and `Ps151.1.\d+` OSIS references. Without these rules, `Ps151` gets interpreted as a `bc`, throwing off future verses.
 ps151_b
-  = "\x1f" val:any_integer "/q\x1f"
+  = "\x1f" val:any_integer "/2\x1f"
     { return {"type": "b", "value": val.value, "indices": [offset, pos - 1]} }
 
 ps151_bc
@@ -131,7 +131,7 @@ ps151_bcv
     { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [offset, pos - 1]} }
 
 v_letter
-  = v_explicit? val:integer sp [a-e] ![a-z]
+  = v_explicit? val:integer sp !( ( "ff" ! [a-z0-9] / "f" ! [a-z0-9] ) ) [a-e] ![a-z]
     { return {"type": "v", "value": [val], "indices": [offset, pos - 1]} }
 
 v
@@ -140,11 +140,11 @@ v
 
 /* BCV helpers */
 c_explicit
-  = sp ( "chapter" "s"? / "ch" "a"? "pt" "s"? abbrev? / "ch" "a"? "p"? "s"? abbrev? ) sp
+  = sp ( "chapters" / "chapter" / "chapts" abbrev? / "chpts" abbrev? / "chapt" abbrev? / "chap" abbrev? / "chp" abbrev? / "chs" abbrev? / "cha" abbrev? / "ch" abbrev? ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ("verse" "s"? / "vv" abbrev? / "ver" abbrev? / "v" "s"? "s"? abbrev?) sp
+  = sp ( "verses" / "verse" / "ver" abbrev? / "vss" abbrev? / "vs" abbrev? / "vv" abbrev? / "v" abbrev? ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -154,10 +154,11 @@ cv_sep_weak
   = sp ["'] sp / space
 
 sequence_sep
-  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "see" / "compare" / "cf" abbrev? / "and" / "also" / space)+ { return "" }
+  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "and" / "compare" / "cf" abbrev? / "see" space "also" / "also" / "see" / space)+
+    { return "" }
 
 range_sep
-  = sp ([\-\u2013\u2014] sp / "through" sp / "thru" sp / "to" sp)+
+  = sp ([\-\u2013\u2014] sp / "through" sp / "thru" sp / "to" sp )+
 
 title
   = (cv_sep / sequence_sep)? val:"title"

@@ -69,14 +69,14 @@ Gal	Galates	Gal?	Gl
 Eph	Éphésiens	Éphés	Éphé?	Ép
 Phil	Philippiens	Phil
 Col	Colossiens	Col
-1Thess	$FIRST Thessaloniciens	1 Thess?	1 Th
-2Thess	$SECOND Thessaloniciens	2 Thess?	2 Th
+1Thess	$FIRST Thess?aloniciens	1 Thess?	1 Th
+2Thess	$SECOND Thess?aloniciens	2 Thess?	2 Th
 1Tim	$FIRST Timothée	1 Tim?
 2Tim	$SECOND Timothée	2 Tim?
 Titus	Tite	Tit
 Phlm	Philémon	Phl?m
 Heb	Hébreux	Hébr?	Héb?
-Jas	Jacques	Jacq	Jac?
+Jas	Jac?ques	Jacq	Jac?
 1Pet	$FIRST Pierre	1 Pi?
 2Pet	$SECOND Pierre	2 Pi?
 1John	$FIRST Jean	1 Jn

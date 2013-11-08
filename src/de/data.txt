@@ -1,0 +1,276 @@
+$FIRST	Erste	1
+$SECOND	Zweite	2
+$THIRD	Dritte	3
+$FOURTH	Vierte	4
+$FIFTH	Fünfte	5
+$AB	[a-e]
+$AND	und	vgl.
+$CHAPTER	Kapitel	Kap.
+$FF	ff
+$TITLE	Titel
+$TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
+$TO	bis
+$VERSE	Verse	Vers	Ver	Vs
+$UNICODE_BLOCK	Latin
+
+# http://de.wikipedia.org/wiki/Bibel
+# http://de.wikipedia.org/wiki/Liste_biblischer_B%C3%BCcher
+Gen	$FIRST Mose	Genesis	$FIRST Buch Mose	1. Mos?	Gen
+Exod	$SECOND Mose	Exodus	$SECOND Buch Mose	2. Mos?	Ex
+Lev	$THIRD Mose	Levitikus	$THIRD Buch Mose	3. Mos?	Lev
+Num	$FOURTH Mose	Numeri	$FOURTH Buch Mose	4. Mos?	Num
+Deut	$FIFTH Mose	Deuteronomium	$FIFTH Buch Mose	5. Mos?	Dtn
+Josh	Josua	Jos
+Judg	Richter	Ri
+Ruth	Rut
+1Sam	$FIRST Samuel	1. Sam
+2Sam	$SECOND Samuel	2. Sam
+1Kgs	$FIRST Könige	$FIRST Koenige	1. Kön
+2Kgs	$SECOND Könige	$SECOND Koenige	2. Kön
+1Chr	$FIRST Chronik	1. Chr
+2Chr	$SECOND Chronik	2. Chr
+Ezra	Esra	Esr
+Neh	Nehemia	Neh
+Esth	Ester	Est
+Job	Ijob	Hiob	Job	Hi
+Ps	Psalmen	Psalm	Ps
+Prov	Sprichwörter	Sprüche	Sprueche	Spr
+Eccl	Prediger	Kohelet	Ekklesiastes	Ecclesiastes	Pred	Koh
+Song	Hoheslied	Hoheslied Salomos	Hohes Lied	Hohelied Salomonis	Hohelied	Hld
+Isa	Jesaja	Isaias	Jes
+Jer	Jeremia	Jeremias	Jer
+Lam	Klagelieder Jeremias	Klagelieder	Klgl	Klag
+Ezek	Ezechiel	Hesekiel	Hes	Ez
+Dan	Daniel	Dan
+Hos	Hosea	Osee	Hos
+Joel	Joel	Joel
+Amos	Amos	Am
+Obad	Obadja	Abdias	Obd
+Jonah	Jona	Jonas
+Mic	Micha	Michäas	Mi
+Nah	Nahum	Nah
+Hab	Habakuk	Hab
+Zeph	Zefanja	Sophonias	Zephanja	Zef	Soph
+Hag	Haggai	Aggäus	Hag	Agg?
+Zech	Sacharja	Zacharias	Sach
+Mal	Maleachi	Malachias	Mal
+Matt	Matthäus	Mt
+Mark	Markus	Mk
+Luke	Lukas	Lk
+John	Johannes	Joh
+Acts	Apostelgeschichte	Apg
+Rom	Römer	Roemer	Röm
+1Cor	$FIRST Korinther	1. Kor
+2Cor	$SECOND Korinther	2. Kor
+Gal	Galater	Gal
+Eph	Epheser	Eph
+Phil	Philipper	Phil
+Col	Kolosser	Kol
+1Thess	$FIRST Thessalonicher	1. Thess
+2Thess	$SECOND Thessalonicher	2. Thess
+1Tim	$FIRST Timotheus	1. Tim
+2Tim	$SECOND Timotheus	2. Tim
+Titus	Titus	Tit
+Phlm	Philemon	Phlm	Phm
+Heb	Hebräer	Hebraeer	Hebr
+Jas	Jakobusbrief	Jak
+1Pet	$FIRST Petrus	1. Petr
+2Pet	$SECOND Petrus	2. Petr
+1John	$FIRST Johannes	1. Joh
+2John	$SECOND Johannes	2. Joh
+3John	$THIRD Johannes	3. Joh
+Jude	Judas	Jud
+Rev	Offenbarung	Offb
+Tob	Tobit	Tobias	Tob
+Jdt	Judit	Jdt
+GkEsth	Ester \(Griechisch\)	Gr Est
+Wis	Weisheit Salomos	Weisheit	Weish
+Sir	Jesus Sirach	Ecclesiasticus	Sir
+Bar	Baruch	Bar
+PrAzar	Gebet des Asarja	Geb As
+Sus	Susanna im Bade	Susanna und die Alten	Susanna	Sus
+Bel	Bel und Vom Drachen	Bel
+SgThree	Lobgesang der drei jungen Männer im Feuerofen	Lobgesang der drei jungen Männer	Lobgesang der 3 jungen Männer	Der Gesang der Drei Männer im feurigen Ofen	Gesang der Drei	Der Gesang der Drei	L3J
+EpJer	Brief des Jeremia	Br Jer
+1Macc	$FIRST Makkabäer	1. Makk
+2Macc	$SECOND Makkabäer	2. Makk
+3Macc	$THIRD Makkabäer	3. Makk
+4Macc	$FOURTH Makkabäer	4. Makk
+1Esd	$FIRST Esra	1. Esr?
+2Esd	$SECOND Esra	2. Esr?
+PrMan	Gebet des Manasse	Gebet Manasses?	Geb Man	Or Man
+Phil,Phlm	Ph
+Ezra,Esth	Es
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	1. Mose	1 Mos	Gen
+*Exod	2. Mose	2 Mos	Ex
+*Lev	3. Mose	3 Mos	Lev
+*Num	4. Mose	4 Mos	Num
+*Deut	5. Mose	5 Mos	Dtn
+*Josh	Josua	Jos
+*Judg	Richter	Ri
+*Ruth	Rut	Rut
+*1Sam	1. Samuel	1 Sam
+*2Sam	2. Samuel	2 Sam
+*1Kgs	1. Könige	1 Kön
+*2Kgs	2. Könige	2 Kön
+*1Chr	1. Chronik	1 Chr
+*2Chr	2. Chronik	2 Chr
+*Ezra	Esra	Esra
+*Neh	Nehemia	Neh
+*Esth	Ester	Est
+*Job	Ijob	Ijob	Hi
+*Ps	Psalmen	Ps		Psalm
+*Prov	Sprüche	Spr
+*Eccl	Prediger	Pred	Koh
+*Song	Hoheslied	Hld
+*Isa	Jesaja	Jes
+*Jer	Jeremia	Jer
+*Lam	Klagelieder	Klgl
+*Ezek	Ezechiel	Ez
+*Dan	Daniel	Dan
+*Hos	Hosea	Hos
+*Joel	Joel	Joel
+*Amos	Amos	Am
+*Obad	Obadja	Obd
+*Jonah	Jona	Jona
+*Mic	Micha	Mi
+*Nah	Nahum	Nah
+*Hab	Habakuk	Hab
+*Zeph	Zefanja	Zef
+*Hag	Haggai	Hag
+*Zech	Sacharja	Sach
+*Mal	Maleachi	Mal
+*Matt	Matthäus	Mt
+*Mark	Markus	Mk
+*Luke	Lukas	Lk
+*John	Johannes	Joh
+*Acts	Apostelgeschichte	Apg
+*Rom	Römer	Röm
+*1Cor	1. Korinther	1 Kor
+*2Cor	2. Korinther	2 Kor
+*Gal	Galater	Gal
+*Eph	Epheser	Eph
+*Phil	Philipper	Phil
+*Col	Kolosser	Kol
+*1Thess	1. Thessalonicher	1 Thess
+*2Thess	2. Thessalonicher	2 Thess
+*1Tim	1. Timotheus	1 Tim
+*2Tim	2. Timotheus	2 Tim
+*Titus	Titus	Tit
+*Phlm	Philemon	Phlm	Phm
+*Heb	Hebräer	Hebr
+*Jas	Jakobusbrief	Jak
+*1Pet	1. Petrus	1 Petr
+*2Pet	2. Petrus	2 Petr
+*1John	1. Johannes	1 Joh
+*2John	2. Johannes	2 Joh
+*3John	3. Johannes	3 Joh
+*Jude	Judas	Jud
+*Rev	Offenbarung	Offb
+*Tob	Tobit	Tob
+*Jdt	Judit	Jdt
+*GkEsth	Ester (Griechisch)	Gr Est
+*Wis	Weisheit	Weish
+*Sir	Jesus Sirach	Sir
+*Bar	Baruch	Bar
+*PrAzar	Gebet des Asarja	Geb As
+*Sus	Susanna	Sus
+*Bel	Bel und Vom Drachen	Bel
+*SgThree	Gesang der Drei	L3J
+*EpJer	Brief des Jeremia	Br Jer
+*1Macc	1. Makkabäer	1 Makk
+*2Macc	2. Makkabäer	2 Makk
+*3Macc	3. Makkabäer	3 Makk
+*4Macc	4. Makkabäer	4 Makk
+*1Esd	1. Esra	1 Es
+*2Esd	2. Esra	2 Es
+*PrMan	Gebet des Manasse	Geb Man	Or Man

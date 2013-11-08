@@ -1,0 +1,435 @@
+1Chr	Erste Chronik
+1Chr	1. Chronik
+1Chr	1 Chronik
+1Chr	1. Chr
+1Chr	1 Chr
+1Chr	1Chr
+1Cor	Erste Korinther
+1Cor	1. Korinther
+1Cor	1 Korinther
+1Cor	1. Kor
+1Cor	1 Kor
+1Cor	1Cor
+1Esd	Erste Esra
+1Esd	1. Esra
+1Esd	1 Esra
+1Esd	1. Esr
+1Esd	1. Es
+1Esd	1 Esr
+1Esd	1 Es
+1Esd	1Esd
+1John	Erste Johannes
+1John	1. Johannes
+1John	1 Johannes
+1John	1. Joh
+1John	1 Joh
+1John	1John
+1Kgs	Erste Koenige
+1Kgs	Erste Könige
+1Kgs	Erste Konige
+1Kgs	1. Koenige
+1Kgs	1 Koenige
+1Kgs	1. Konige
+1Kgs	1. Könige
+1Kgs	1 Konige
+1Kgs	1 Könige
+1Kgs	1. Kön
+1Kgs	1. Kon
+1Kgs	1 Kon
+1Kgs	1 Kön
+1Kgs	1Kgs
+1Macc	Erste Makkabaer
+1Macc	Erste Makkabäer
+1Macc	1. Makkabaer
+1Macc	1. Makkabäer
+1Macc	1 Makkabaer
+1Macc	1 Makkabäer
+1Macc	1. Makk
+1Macc	1 Makk
+1Macc	1Macc
+1Pet	Erste Petrus
+1Pet	1. Petrus
+1Pet	1 Petrus
+1Pet	1. Petr
+1Pet	1 Petr
+1Pet	1Pet
+1Sam	Erste Samuel
+1Sam	1. Samuel
+1Sam	1 Samuel
+1Sam	1. Sam
+1Sam	1 Sam
+1Sam	1Sam
+1Thess	Erste Thessalonicher
+1Thess	1. Thessalonicher
+1Thess	1 Thessalonicher
+1Thess	1. Thess
+1Thess	1 Thess
+1Thess	1Thess
+1Tim	Erste Timotheus
+1Tim	1. Timotheus
+1Tim	1 Timotheus
+1Tim	1. Tim
+1Tim	1 Tim
+1Tim	1Tim
+2Chr	Zweite Chronik
+2Chr	2. Chronik
+2Chr	2 Chronik
+2Chr	2. Chr
+2Chr	2 Chr
+2Chr	2Chr
+2Cor	Zweite Korinther
+2Cor	2. Korinther
+2Cor	2 Korinther
+2Cor	2. Kor
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	Zweite Esra
+2Esd	2. Esra
+2Esd	2. Esr
+2Esd	2 Esra
+2Esd	2. Es
+2Esd	2 Esr
+2Esd	2Esd
+2Esd	2 Es
+2John	Zweite Johannes
+2John	2. Johannes
+2John	2 Johannes
+2John	2. Joh
+2John	2John
+2John	2 Joh
+2Kgs	Zweite Koenige
+2Kgs	Zweite Könige
+2Kgs	Zweite Konige
+2Kgs	2. Koenige
+2Kgs	2. Konige
+2Kgs	2. Könige
+2Kgs	2 Koenige
+2Kgs	2 Könige
+2Kgs	2 Konige
+2Kgs	2. Kon
+2Kgs	2. Kön
+2Kgs	2 Kon
+2Kgs	2 Kön
+2Kgs	2Kgs
+2Macc	Zweite Makkabaer
+2Macc	Zweite Makkabäer
+2Macc	2. Makkabäer
+2Macc	2. Makkabaer
+2Macc	2 Makkabaer
+2Macc	2 Makkabäer
+2Macc	2. Makk
+2Macc	2 Makk
+2Macc	2Macc
+2Pet	Zweite Petrus
+2Pet	2. Petrus
+2Pet	2 Petrus
+2Pet	2. Petr
+2Pet	2 Petr
+2Pet	2Pet
+2Sam	Zweite Samuel
+2Sam	2. Samuel
+2Sam	2 Samuel
+2Sam	2. Sam
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	Zweite Thessalonicher
+2Thess	2. Thessalonicher
+2Thess	2 Thessalonicher
+2Thess	2. Thess
+2Thess	2 Thess
+2Thess	2Thess
+2Tim	Zweite Timotheus
+2Tim	2. Timotheus
+2Tim	2 Timotheus
+2Tim	2. Tim
+2Tim	2 Tim
+2Tim	2Tim
+3John	Dritte Johannes
+3John	3. Johannes
+3John	3 Johannes
+3John	3. Joh
+3John	3John
+3John	3 Joh
+3Macc	Dritte Makkabäer
+3Macc	Dritte Makkabaer
+3Macc	3. Makkabaer
+3Macc	3. Makkabäer
+3Macc	3 Makkabäer
+3Macc	3 Makkabaer
+3Macc	3. Makk
+3Macc	3 Makk
+3Macc	3Macc
+4Macc	Vierte Makkabäer
+4Macc	Vierte Makkabaer
+4Macc	4. Makkabäer
+4Macc	4. Makkabaer
+4Macc	4 Makkabaer
+4Macc	4 Makkabäer
+4Macc	4. Makk
+4Macc	4 Makk
+4Macc	4Macc
+Acts	Apostelgeschichte
+Acts	Acts
+Acts	Apg
+Amos	Amos
+Amos	Am
+Bar	Baruch
+Bar	Bar
+Bel	Bel und Vom Drachen
+Bel	Bel
+Col	Kolosser
+Col	Col
+Col	Kol
+Dan	Daniel
+Dan	Dan
+Deut	Fünfte Buch Mose
+Deut	Deuteronomium
+Deut	5. Buch Mose
+Deut	5 Buch Mose
+Deut	Fünfte Mose
+Deut	5. Mose
+Deut	5 Mose
+Deut	5. Mos
+Deut	5. Mo
+Deut	5 Mos
+Deut	5 Mo
+Deut	Deut
+Deut	Dtn
+Eccl	Ekklesiastes
+Eccl	Ecclesiastes
+Eccl	Prediger
+Eccl	Kohelet
+Eccl	Eccl
+Eccl	Pred
+Eccl	Koh
+EpJer	Brief des Jeremia
+EpJer	Br Jer
+EpJer	EpJer
+Eph	Epheser
+Eph	Eph
+Esth	Ester
+Esth	Esth
+Esth	Est
+Exod	Zweite Buch Mose
+Exod	2. Buch Mose
+Exod	Zweite Mose
+Exod	2 Buch Mose
+Exod	2. Mose
+Exod	2. Mos
+Exod	2 Mose
+Exod	Exodus
+Exod	2 Mos
+Exod	2. Mo
+Exod	Exod
+Exod	2 Mo
+Exod	Ex
+Ezek	Hesekiel
+Ezek	Ezechiel
+Ezek	Ezek
+Ezek	Hes
+Ezek	Ez
+Ezra	Esra
+Ezra	Ezra
+Ezra	Esr
+Ezra,Esth	Es
+Gal	Galater
+Gal	Gal
+Gen	Erste Buch Mose
+Gen	1. Buch Mose
+Gen	1 Buch Mose
+Gen	Erste Mose
+Gen	1. Mose
+Gen	Genesis
+Gen	1. Mos
+Gen	1 Mose
+Gen	1 Mos
+Gen	1. Mo
+Gen	1 Mo
+Gen	Gen
+GkEsth	Ester \(Griechisch\)
+GkEsth	Ester (Griechisch)
+GkEsth	Gr Est
+GkEsth	GkEsth
+Hab	Habakuk
+Hab	Hab
+Hag	Aggäus
+Hag	Haggai
+Hag	Aggaus
+Hag	Hag
+Hag	Agg
+Hag	Ag
+Heb	Hebraeer
+Heb	Hebräer
+Heb	Hebraer
+Heb	Hebr
+Heb	Heb
+Hos	Hosea
+Hos	Osee
+Hos	Hos
+Isa	Isaias
+Isa	Jesaja
+Isa	Jes
+Isa	Isa
+Jas	Jakobusbrief
+Jas	Jas
+Jas	Jak
+Jdt	Judit
+Jdt	Jdt
+Jer	Jeremias
+Jer	Jeremia
+Jer	Jer
+Job	Hiob
+Job	Ijob
+Job	Job
+Job	Hi
+Joel	Joel
+John	Johannes
+John	John
+John	Joh
+Jonah	Jonah
+Jonah	Jonas
+Jonah	Jona
+Josh	Josua
+Josh	Josh
+Josh	Jos
+Jude	Judas
+Jude	Jude
+Jude	Jud
+Judg	Richter
+Judg	Judg
+Judg	Ri
+Lam	Klagelieder Jeremias
+Lam	Klagelieder
+Lam	Klag
+Lam	Klgl
+Lam	Lam
+Lev	Dritte Buch Mose
+Lev	3. Buch Mose
+Lev	Dritte Mose
+Lev	3 Buch Mose
+Lev	Levitikus
+Lev	3. Mose
+Lev	3 Mose
+Lev	3. Mos
+Lev	3. Mo
+Lev	3 Mos
+Lev	3 Mo
+Lev	Lev
+Luke	Lukas
+Luke	Luke
+Luke	Lk
+Mal	Malachias
+Mal	Maleachi
+Mal	Mal
+Mark	Markus
+Mark	Mark
+Mark	Mk
+Matt	Matthaus
+Matt	Matthäus
+Matt	Matt
+Matt	Mt
+Mic	Michaas
+Mic	Michäas
+Mic	Micha
+Mic	Mic
+Mic	Mi
+Nah	Nahum
+Nah	Nah
+Neh	Nehemia
+Neh	Neh
+Num	Vierte Buch Mose
+Num	4. Buch Mose
+Num	Vierte Mose
+Num	4 Buch Mose
+Num	4. Mose
+Num	4. Mos
+Num	Numeri
+Num	4 Mose
+Num	4. Mo
+Num	4 Mos
+Num	4 Mo
+Num	Num
+Obad	Obadja
+Obad	Abdias
+Obad	Obad
+Obad	Obd
+Phil	Philipper
+Phil	Phil
+Phil,Phlm	Ph
+Phlm	Philemon
+Phlm	Phlm
+Phlm	Phm
+PrAzar	Gebet des Asarja
+PrAzar	Geb As
+PrAzar	PrAzar
+PrMan	Gebet des Manasse
+PrMan	Gebet Manasses
+PrMan	Gebet Manasse
+PrMan	Geb Man
+PrMan	Or Man
+PrMan	PrMan
+Prov	Sprichwörter
+Prov	Sprichworter
+Prov	Sprueche
+Prov	Spruche
+Prov	Sprüche
+Prov	Prov
+Prov	Spr
+Ps	Psalmen
+Ps	Psalm
+Ps	Ps
+Rev	Offenbarung
+Rev	Offb
+Rev	Rev
+Rom	Roemer
+Rom	Römer
+Rom	Romer
+Rom	Rom
+Rom	Röm
+Ruth	Ruth
+Ruth	Rut
+SgThree	Lobgesang der drei jungen Männer im Feuerofen
+SgThree	Lobgesang der drei jungen Manner im Feuerofen
+SgThree	Der Gesang der Drei Männer im feurigen Ofen
+SgThree	Der Gesang der Drei Manner im feurigen Ofen
+SgThree	Lobgesang der drei jungen Manner
+SgThree	Lobgesang der drei jungen Männer
+SgThree	Lobgesang der 3 jungen Männer
+SgThree	Lobgesang der 3 jungen Manner
+SgThree	Der Gesang der Drei
+SgThree	Gesang der Drei
+SgThree	SgThree
+SgThree	L3J
+Sir	Ecclesiasticus
+Sir	Jesus Sirach
+Sir	Sir
+Song	Hohelied Salomonis
+Song	Hoheslied Salomos
+Song	Hohes Lied
+Song	Hoheslied
+Song	Hohelied
+Song	Song
+Song	Hld
+Sus	Susanna und die Alten
+Sus	Susanna im Bade
+Sus	Susanna
+Sus	Sus
+Titus	Titus
+Titus	Tit
+Tob	Tobias
+Tob	Tobit
+Tob	Tob
+Wis	Weisheit Salomos
+Wis	Weisheit
+Wis	Weish
+Wis	Wis
+Zech	Zacharias
+Zech	Sacharja
+Zech	Zech
+Zech	Sach
+Zeph	Sophonias
+Zeph	Zephanja
+Zeph	Zefanja
+Zeph	Zeph
+Zeph	Soph
+Zeph	Zef
