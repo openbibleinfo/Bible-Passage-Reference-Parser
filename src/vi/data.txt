@@ -1,0 +1,273 @@
+$FIRST	I	1
+$SECOND	II	2
+$THIRD	III	3
+$FOURTH	IV	4
+$AB	[a-e]
+$AND	và
+# http://vi.wikisource.org/wiki/Lu-ca
+$CHAPTER	chương
+$FF	ff
+$TITLE	title
+$TRANS	ERV	1934
+$TO	to
+$VERSE	verse
+$UNICODE_BLOCK	Latin
+$COLLAPSE_COMBINING_CHARACTERS	false
+
+Gen	Sáng Thế	Sáng thế ký	Sáng
+Exod	Xuất Hành	Xuất Ai Cập Ký	Xuất Ê-díp-tô ký	Xuất Ai-cập	Xuất
+Lev	Lê-vi	Lê-vi ký	Lê
+Num	Dân Số	Dân số ký	Dân
+Deut	Phục Truyền Luật Lệ	Đệ nhị luật	Phục truyền luật lệ ký	Phục Truyền	Phục
+Josh	Giô-sua	Joshua	Giô-suê	Giôs?	Gsua
+Judg	Các Thủ lãnh	Thủ lãnh	Thẩm phán	Các quan xét	Quan án	Quan	Thủ
+Ruth	Ruth	Ru-tơ	Ru
+1Sam	$FIRST Samuel	$FIRST Sa-mu-ên	$FIRST Sam?
+2Sam	$SECOND Samuel	$SECOND Sa-mu-ên	$SECOND Sam?
+1Kgs	$FIRST Các Vua	$FIRST Vua
+2Kgs	$SECOND Các Vua	$SECOND Vua
+1Chr	$FIRST Sử biên niên	$FIRST Sử ký	$FIRST Sử Ký	$FIRST Lịch sử	$FIRST Sử
+2Chr	$SECOND Sử biên niên	$SECOND Sử ký	$SECOND  Sử Ký	$SECOND Lịch sử	$SECOND Sử
+Ezra	Étra	E-xơ-ra	Ê-xơ-ra	Êxra
+Neh	Nê-hê-mi-a	Nơkhemia	Nê-hê-mi	Nê
+Esth	Esther	Ê-xơ-tê
+Job	Gióp
+Ps	Thánh Thi	Thánh vịnh	Thi Thiên	Thi
+Prov	Châm ngôn	Châm
+Eccl	Giảng Sư	Truyền đạo	Giáo huấn	Giáo
+Song	Diễm ca	Nhã ca	Tình ca	Tình
+Isa	I-sa-gia	Isaiah	Ê-sai	I-sa	I-sai-a
+Jer	Giê-rê-mi-a	Jeremiah	Giê-rê-mi	Giê
+Lam	Ai Ca	Ca thương	Ai
+Ezek	Ê-xê-ki-ên	Ezekiel	Ê-xê-chi-ên	Ê-xê-chiên	Ê-xê
+Dan	Ða-ni-ên	Đanien	Đa-ni-ên	Đa-niên	Đa
+Hos	Hô-sê-a	Hosea	Ô-sê
+Joel	Joel	Giô-ên
+Amos	Amos	A-mốt	Am
+Obad	Ô-ba-đi-a	Obadiah	Áp-đia	Áp
+Jonah	Jonah	Giô-na
+Mic	Mi-ca	Micah	Mi-chê	Mi
+Nah	Nahum	Na-hum	Na-hâm	Na
+Hab	Habakkuk	Ha-ba-cúc	Ha
+Zeph	Xê-pha-ni-a	Zephaniah	Sô-phô-ni	Xô-phô-ni	Xô
+Hag	Ha-gai	Haggai	A-ghê	A-gai
+Zech	Xê-ca-ri-a	Zechariah	Xa-cha-ri	Xa
+Mal	Ma-la-ki	Malachi	Ma-la-chi	Mal
+Matt	Mátthêu	Ma-thi-ơ	Mat?
+Mark	Máccô	Mác
+Luke	Luca	Lu-ca	Lu
+John	Gioan	Giăng	Gi	Gg
+Acts	Công vụ Tông đồ	Công vụ các Sứ đồ	Công Vụ	Sứ đồ	Công
+Rom	Rôma	Rô-ma	La-mã
+1Cor	$FIRST Côrintô	$FIRST Cô-rinh-tô	$FIRST Cô-rinh	$FIRST Cô
+2Cor	$SECOND Côrintô	$SECOND Cô-rinh-tô	$SECOND Cô-rinh	$SECOND Cô
+Gal	Galát	Ga-la-ti	Gal
+Eph	Êphêsô	Ê-phê-sô	Êph
+Phil	Philípphê	Phi-líp	Phil
+Col	Côlôxê	Cô-lô-se	Côl
+1Thess	$FIRST Thê-sa-lô-ni-ca	$FIRST Thêxalônica	$FIRST Tê-sa-lô-ni-ca	$FIRST Tê
+2Thess	$SECOND Thê-sa-lô-ni-ca	$SECOND Thêxalônica	$SECOND Tê-sa-lô-ni-ca	$SECOND Tê
+1Tim	$FIRST Timôthê	$FIRST Ti-mô-thê	$FIRST Tim
+2Tim	$SECOND Timôthê	$SECOND Ti-mô-thê	$SECOND Tim
+Titus	Titô	Tích	Tít
+Phlm	Philêmon	Phi-lê-môn	Phi-lê
+Heb	Do Thái	Hê-bơ-rơ	Hê
+Jas	Giacôbê	Gia-cơ
+1Pet	$FIRST Phi-rơ	$FIRST Phêrô	$FIRST Phi-e-rơ	$FIRST Phia-rơ	$FIRST Phê-rơ	$FIRST Phia
+2Pet	$SECOND Phi-rơ	$SECOND Phêrô	$SECOND Phi-e-rơ	$SECOND Phia-rơ	$SECOND Phê-rơ	$SECOND Phia
+1John	$FIRST Gioan	$FIRST Giăng	$FIRST Gi
+2John	$SECOND Gioan	$SECOND Giăng	$SECOND Gi
+3John	$THIRD Gioan	$THIRD Giăng	$THIRD Gi
+Jude	Giuđa	Giu-đe
+Rev	Khải Huyền của John	Khải Huyền	Khải thị	Khải
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Khôn Ngoan
+Sir	Huấn Ca
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Phlm
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Joel
+=Jonah
+=Nah
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Rom
+=Mal
+=Matt
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Amos
+=Obad
+=Mic
+=Hag
+=Hab
+=Zeph
+=Zech
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Sáng thế ký	Sáng
+*Exod	Xuất Ê-díp-tô ký	Xuất
+*Lev	Lê-vi ký	Lê-vi
+*Num	Dân số ký	Dân
+*Deut	Phục truyền luật lệ ký	Phục
+*Josh	Giô-suê	Giôs
+*Judg	Các quan xét	Quan
+*Ruth	Ru-tơ	Ru
+*1Sam	I Sa-mu-ên	I Sam
+*2Sam	II Sa-mu-ên	II Sam
+*1Kgs	I Các Vua	I Vua
+*2Kgs	II Các Vua	II Vua
+*1Chr	I Sử ký	I Sử
+*2Chr	II Sử ký	II Sử
+*Ezra	Ê-xơ-ra	E-xơ-ra
+*Neh	Nê-hê-mi	Nê
+*Esth	Ê-xơ-tê	Ê-xơ-tê
+*Job	Gióp	Gióp
+*Ps	Thi Thiên	Thi
+*Prov	Châm ngôn	Châm
+*Eccl	Truyền đạo	Giáo
+*Song	Nhã ca	Tình
+*Isa	Ê-sai	Ê-sai
+*Jer	Giê-rê-mi	Giê
+*Lam	Ca thương	Ai
+*Ezek	Ê-xê-chi-ên	Ê-xê
+*Dan	Đa-ni-ên	Đa
+*Hos	Ô-sê	Ô-sê
+*Joel	Giô-ên	Giô-ên
+*Amos	A-mốt	Am
+*Obad	Áp-đia	Áp
+*Jonah	Giô-na	Giô-na
+*Mic	Mi-chê	Mi
+*Nah	Na-hum	Na
+*Hab	Ha-ba-cúc	Ha
+*Zeph	Sô-phô-ni	Xô
+*Hag	A-ghê	A-gai
+*Zech	Xa-cha-ri	Xa
+*Mal	Ma-la-chi	Mal
+*Matt	Ma-thi-ơ	Ma
+*Mark	Mác	Mác
+*Luke	Lu-ca	Lu
+*John	Giăng	Gi
+*Acts	Công vụ các Sứ đồ	Sứ đồ
+*Rom	Rô-ma	La-mã
+*1Cor	I Cô-rinh-tô	I Cô
+*2Cor	II Cô-rinh-tô	II Cô
+*Gal	Ga-la-ti	Gal
+*Eph	Ê-phê-sô	Êph
+*Phil	Phi-líp	Phil
+*Col	Cô-lô-se	Côl
+*1Thess	I Tê-sa-lô-ni-ca	I Tê
+*2Thess	II Tê-sa-lô-ni-ca	II Tê
+*1Tim	I Ti-mô-thê	I Tim
+*2Tim	II Ti-mô-thê	II Tim
+*Titus	Tít	Tít
+*Phlm	Phi-lê-môn	Phi-lê
+*Heb	Hê-bơ-rơ	Hê
+*Jas	Gia-cơ	Gia-cơ
+*1Pet	I Phi-e-rơ	I Phia
+*2Pet	II Phi-e-rơ	II Phia
+*1John	I Giăng	I Gi
+*2John	II Giăng	II Gi
+*3John	III Giăng	III Gi
+*Jude	Giu-đe	Giu-đe
+*Rev	Khải Huyền	Khải
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Khôn Ngoan
+*Sir	Huấn Ca
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

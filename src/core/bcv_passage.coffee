@@ -12,6 +12,8 @@ class bcv_passage
 	handle_array: (passages, accum=[], context={}) ->
 		# `passages` is an array of passage objects.
 		for passage in passages
+			# The grammar can sometimes emit `null`.
+			continue unless passage?
 			# Each `passage` consists of passage objects and, possibly, strings.
 			break if passage.type is "stop"
 			[accum, context] = @handle_obj passage, accum, context
@@ -67,6 +69,10 @@ class bcv_passage
 		accum.push passage
 		[accum, context]
 
+	# Handle ranges with a book as the start of the range ("Gen-Exod 2").
+	b_range_start: (passage, accum, context) ->
+		@range passage, accum, context
+
 	# The base (root) object in the grammar controls the base indices.
 	base: (passage, accum, context) ->
 		@indices = @calculate_indices passage.match, passage.start_index
@@ -92,6 +98,8 @@ class bcv_passage
 			obj.start[context_key] = c
 			# If it's zero, fix it before assigning the end.
 			[obj.start.c, obj.start.v] = @fix_start_zeroes obj.valid, obj.start.c, obj.start.v
+			# Don't want an undefined key hanging around the object.
+			delete obj.start.v unless obj.start.v?
 			obj.end[context_key] = obj.start[context_key]
 			if passage.passages.length is 0 and obj.valid.valid
 				passage.passages.push obj
@@ -357,6 +365,7 @@ class bcv_passage
 		# Create the prospective start and end objects that will end up in `passage.passages`.
 		start_obj = b: start.passages[0].start.b, c: start.passages[0].start.c, v: start.passages[0].start.v, type: start.type
 		end_obj = b: end.passages[0].end.b, c: end.passages[0].end.c, v: end.passages[0].end.v, type: end.type
+		# Make sure references like `Ps 20:1-0:4` don't change to `Ps 20:1-1:4`. In other words, don't upgrade zero end ranges.
 		end_obj.c = 0 if end.passages[0].valid.messages.start_chapter_is_zero
 		end_obj.v = 0 if end.passages[0].valid.messages.start_verse_is_zero
 		valid = @validate_ref passage.start_context.translations, start_obj, end_obj
@@ -371,6 +380,11 @@ class bcv_passage
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
 		passage.passages = [start: start_obj, end: end_obj, valid: valid]
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
+		# We may need to filter out books on their own depending on the `book_alone_strategy` or the `book_range_strategy`.
+		if start_obj.type is "b"
+			if end_obj.type is "b" then passage.type = "b_range" else passage.type = "b_range_start"
+		else if end_obj.type is "b"
+			passage.type = "range_end_b"
 		accum.push passage
 		[accum, context]
 
@@ -403,44 +417,6 @@ class bcv_passage
 		passage.value[1] = {type: "v", value: [end], indices: end.indices} if end.type is "integer"
 		@handle_obj passage, accum, passage.start_context
 
-	# Treat cases like "John 10:22-42 vs 27" as "10:22-42,47" instead of "10:22-42:27".
-	range_change_cv_end: (passage, accum) ->
-		[start, end] = passage.value
-		passage.original_type = passage.type
-		passage.original_value = [start, end]
-		passage.type = "sequence"
-		[new_range_end, new_sequence_end] = end.value
-		# If a translation sequence needs to come back here and reuse it, make sure it can get the old object (`end`)--it only looks in accum, not in deep objects.
-		new_range_end = bcv_utils.shallow_clone new_range_end
-		# Was "c" but change it to "v" to serve as the end of a range.
-		new_range_end.original_type = new_range_end.type
-		new_range_end.type = "v"
-		# Change it into a sequence consisting of a range and a free verse.
-		passage.value = [
-			[{type: "range", value: [start, new_range_end], indices: [start.indices[0], new_range_end.indices[1]]}]
-			[new_sequence_end]
-		]
-		@sequence passage, accum, passage.start_context
-
-	range_validate: (valid, start_obj, end_obj, passage) ->
-		# If it's valid but the end range goes too high, snap it back to the appropriate chapter or verse.
-		if valid.messages.end_chapter_not_exist
-			# `end_chapter_not_exist` gives the highest chapter for the book.
-			end_obj.original_c = end_obj.c
-			end_obj.c = valid.messages.end_chapter_not_exist
-			# If we've snapped it back to the last chapter and there's a verse, also snap to the end of that chapter. If we've already overshot the chapter, there's no reason to think we've gotten the verse right; Gen 50:1-51:1 = Gen 50:1-26 = Gen 50. If there's no verse, we don't need to worry about it.
-			if end_obj.v?
-				# `end_verse_not_exist` gives the maximum verse for the chapter.
-				end_obj.v = @validate_ref(passage.start_context.translations, {b: end_obj.b, c: end_obj.c, v: 999}).messages.end_verse_not_exist
-		# If the end verse is too high, snap back to the maximum verse.
-		else if valid.messages.end_verse_not_exist
-			end_obj.original_v = end_obj.v
-			end_obj.v = valid.messages.end_verse_not_exist
-		end_obj.v = valid.messages.end_verse_is_zero if valid.messages.end_verse_is_zero and @options.zero_verse_strategy isnt "allow"
-		end_obj.c = valid.messages.end_chapter_is_zero if valid.messages.end_chapter_is_zero
-		[start_obj.c, start_obj.v] = @fix_start_zeroes valid, start_obj.c, start_obj.v
-		true
-
 	# If a new end chapter/verse in a range may be necessary, calculate it.
 	range_check_new_end: (translations, start_obj, end_obj, valid) ->
 		new_end = 0
@@ -455,6 +431,10 @@ class bcv_passage
 			new_valid = @validate_ref translations, obj_to_validate
 			new_end = 0 unless new_valid.valid
 		new_end
+
+	# Handle ranges with a book as the end of the range ("Gen 2-Exod"). It's not `b_range_end` because only objects that start with an explicit book name should start with `b`.
+	range_end_b: (passage, accum, context) ->
+		@range passage, accum, context
 
 	# If a sequence has an end chapter/verse that's before the the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
 	range_get_new_end_value: (start_obj, end_obj, valid, key) ->
@@ -471,34 +451,17 @@ class bcv_passage
 			new_end = end_obj[key] + 100
 		new_end
 
-	# The range looks valid, but we should check for some special cases.
-	range_handle_valid: (valid, passage, start, start_obj, end, end_obj, accum) ->
-		# If Heb 13-15, treat it as Heb 13:15. This may be too clever for its own good.
-		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v")
-			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
-			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
-			return [true, @range_change_integer_end(passage, accum)] if temp_valid.valid
-		# If "John 10:22-42 vs 27", we're possibly misreading the "42 vs 27" as a `cv`.
-		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and start_obj.v? and end.type is "cv"
-			# Make sure that what we're changing it to actually exists (that the chapter number can become the verse number, and the verse number is also valid in the current chapter).
-			temp_valid = @validate_ref passage.start_context.translations, {b: end_obj.b, c: start_obj.c, v: end_obj.c}
-			temp_valid = @validate_ref passage.start_context.translations, {b: end_obj.b, c: start_obj.c, v: end_obj.v} if temp_valid.valid
-			return [true, @range_change_cv_end(passage, accum)] if temp_valid.valid
-		# Otherwise, snap start/end chapters/verses if they're too high or low.
-		@range_validate valid, start_obj, end_obj, passage
-		[false, null]
-
 	# The range doesn't look valid, but maybe we can fix it. If not, convert it to a sequence.
 	range_handle_invalid: (valid, passage, start, start_obj, end, end_obj, accum) ->
 		# Is it not valid because the end is before the start and the `end` is an `integer` (Matt 15-6) or a `cv` (Matt 15-6:2) (since anything else resets our expectations)?
 		#
 		# Only go with a `cv` if it's the chapter that's too low (to avoid doing weird things with 31:30-31:1).
-		if ((valid.messages.end_chapter_before_start or valid.messages.end_verse_before_start) and (end.type is "integer" or end.type is "v") or (valid.messages.end_chapter_before_start and end.type is "cv"))
+		if (valid.valid is false and (valid.messages.end_chapter_before_start or valid.messages.end_verse_before_start) and (end.type is "integer" or end.type is "v") or (valid.valid is false and valid.messages.end_chapter_before_start and end.type is "cv"))
 			new_end = @range_check_new_end passage.start_context.translations, start_obj, end_obj, valid
 			# If that's the case, then reparse the current passage object after correcting the end value, which is an integer.
 			return @range_change_end passage, accum, new_end if new_end > 0
-		# If someone enters "Jer 33-11", they probably mean "Jer.33.11"; as above, this may be too clever for its own good.
-		if @options.end_range_digits_strategy is "verse" and start_obj.v is undefined and (end.type is "integer" or end.type is "v")
+		# If someone enters "Jer 33-11", they probably mean "Jer.33.11"; as in `@range_handle_valid`, this may be too clever for its own good.
+		if @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v")
 			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
 			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
 			return @range_change_integer_end passage, accum if temp_valid.valid
@@ -508,6 +471,39 @@ class bcv_passage
 		[passage.original_value, passage.value] = [[start, end], [[start], [end]]]
 		# Don't use the `context` object because we changed it in `@range`.
 		return @handle_obj passage, accum, passage.start_context
+
+	# The range looks valid, but we should check for some special cases.
+	range_handle_valid: (valid, passage, start, start_obj, end, end_obj, accum) ->
+		# If Heb 13-15, treat it as Heb 13:15. This may be too clever for its own good. We check the `passage_existence_strategy` because otherwise `Gen 49-76` becomes `Gen.49.76`.
+		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v") and @options.passage_existence_strategy.indexOf "v" >= 0
+			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
+			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
+			return [true, @range_change_integer_end(passage, accum)] if temp_valid.valid
+		# Otherwise, snap start/end chapters/verses if they're too high or low.
+		@range_validate valid, start_obj, end_obj, passage
+		[false, null]
+
+	# If the end object goes past the end of the book or chapter, snap it back to a verse that exists.
+	range_validate: (valid, start_obj, end_obj, passage) ->
+		# If it's valid but the end range goes too high, snap it back to the appropriate chapter or verse.
+		if valid.messages.end_chapter_not_exist or valid.messages.end_chapter_not_exist_in_single_chapter_book
+			# `end_chapter_not_exist` gives the highest chapter for the book.
+			end_obj.original_c = end_obj.c
+			end_obj.c = if valid.messages.end_chapter_not_exist then valid.messages.end_chapter_not_exist else valid.messages.end_chapter_not_exist_in_single_chapter_book
+			# If we've snapped it back to the last chapter and there's a verse, also snap to the end of that chapter. If we've already overshot the chapter, there's no reason to think we've gotten the verse right; Gen 50:1-51:1 = Gen 50:1-26 = Gen 50. If there's no verse, we don't need to worry about it.
+			if end_obj.v?
+				# `end_verse_not_exist` gives the maximum verse for the chapter.
+				end_obj.v = @validate_ref(passage.start_context.translations, {b: end_obj.b, c: end_obj.c, v: 999}).messages.end_verse_not_exist
+				# If the range ended at Exodus 41:0, make sure we're not going to change it to Exodus 40:1.
+				delete valid.messages.end_verse_is_zero
+		# If the end verse is too high, snap back to the maximum verse.
+		else if valid.messages.end_verse_not_exist
+			end_obj.original_v = end_obj.v
+			end_obj.v = valid.messages.end_verse_not_exist
+		end_obj.v = valid.messages.end_verse_is_zero if valid.messages.end_verse_is_zero and @options.zero_verse_strategy isnt "allow"
+		end_obj.c = valid.messages.end_chapter_is_zero if valid.messages.end_chapter_is_zero
+		[start_obj.c, start_obj.v] = @fix_start_zeroes valid, start_obj.c, start_obj.v
+		true
 
 	# ## Translations
 	# Even a single translation ("NIV") appears as part of a translation sequence. Here we handle the sequence and apply the translations to any previous passages lacking an explicit translation: in "Matt 1, 5 ESV," both `Matt 1` and `5` get applied, but in "Matt 1 NIV, 5 ESV," NIV only applies to Matt 1, and ESV only applies to Matt 5.
@@ -568,21 +564,21 @@ class bcv_passage
 			return passage
 		null
 
+	# Set all the available context keys.
 	set_context_from_object: (context, keys, obj) ->
-		# Set all the available context keys.
 		for type in keys
 			continue unless obj[type]?
 			context[type] = obj[type]
 
+	# Delete all the existing context keys if, for example, starting with a new book.
 	reset_context: (context, keys) ->
 		for type in keys
 			delete context[type]
 
-	# If the start chapter or verse is 0, convert it to a 1. `valid.valid` is `false` if the `zero_*_strategy` is `error`.
+	# If the start chapter or verse is 0 and the appropriate option is set to `upgrade`, convert it to a 1.
 	fix_start_zeroes: (valid, c, v) ->
-		if valid.valid
-			c = valid.messages.start_chapter_is_zero if valid.messages.start_chapter_is_zero
-			v = valid.messages.start_verse_is_zero if valid.messages.start_verse_is_zero and @options.zero_verse_strategy isnt "allow"
+		c = valid.messages.start_chapter_is_zero if valid.messages.start_chapter_is_zero and @options.zero_chapter_strategy is "upgrade"
+		v = valid.messages.start_verse_is_zero if valid.messages.start_verse_is_zero and @options.zero_verse_strategy is "upgrade"
 		[c, v]
 
 	# Given a string and initial index, calculate indices for parts of the string. For example, a string that starts at index 10 might have a book that pushes it to index 12 starting at its third character.
@@ -673,6 +669,7 @@ class bcv_passage
 		if translation isnt "default" and !@translations[translation]?.chapters[start.b]?
 			@promote_book_to_translation start.b, translation
 		translation_order = if @translations[translation]?.order? then translation else "default"
+		start.v = parseInt start.v, 10 if start.v?
 		# Matt
 		if @translations[translation_order].order[start.b]?
 			start.c ?= 1
@@ -687,34 +684,38 @@ class bcv_passage
 				messages.start_chapter_is_zero = 1
 				if @options.zero_chapter_strategy is "error" then valid = false
 				else start.c = 1
+			# Matt 5:0
+			if start.v? and start.v == 0
+				messages.start_verse_is_zero = 1
+				if @options.zero_verse_strategy is "error" then valid = false
+				# Can't just have `else` because `allow` is a valid `zero_verse_strategy`.
+				else if @options.zero_verse_strategy is "upgrade" then start.v = 1
 			# Matt 5
 			if start.c > 0 and @translations[translation].chapters[start.b][start.c - 1]?
 				# Matt 5:10
 				if start.v?
-					start.v = parseInt start.v, 10
 					# Matt 5:ten
 					if isNaN start.v
 						valid = false
 						messages.start_verse_not_numeric = true
-					# Matt 5:0
-					else if start.v == 0
-						messages.start_verse_is_zero = 1
-						if @options.zero_verse_strategy is "error" then valid = false
-						else if @options.zero_verse_strategy is "upgrade" then start.v = 1
 					# Matt 5:100
 					else if start.v > @translations[translation].chapters[start.b][start.c - 1]
-						valid = false
-						messages.start_verse_not_exist = @translations[translation].chapters[start.b][start.c - 1]
+						# Not part of the same `if` statement in case we ever add a new `else` condition.
+						if @options.passage_existence_strategy.indexOf("v") >= 0
+							valid = false
+							messages.start_verse_not_exist = @translations[translation].chapters[start.b][start.c - 1]
 			# Matt 50
 			else
-				valid = false
 				if start.c != 1 and @translations[translation].chapters[start.b].length == 1
+					valid = false
 					messages.start_chapter_not_exist_in_single_chapter_book = 1
-				else if start.c > 0
+				else if start.c > 0 and @options.passage_existence_strategy.indexOf("c") >= 0
+					valid = false
 					messages.start_chapter_not_exist = @translations[translation].chapters[start.b].length
+
 		# None 2:1
 		else
-			valid = false
+			valid = false if @options.passage_existence_strategy.indexOf("b") >= 0
 			messages.start_book_not_exist = true
 		[valid, messages]
 
@@ -723,18 +724,36 @@ class bcv_passage
 		if translation isnt "default" and !@translations[translation]?.chapters[end.b]?
 			@promote_book_to_translation end.b, translation
 		translation_order = if @translations[translation]?.order? then translation else "default"
-		end.c = parseInt end.c, 10 if end.c?
-		end.v = parseInt end.v, 10 if end.v?
 		# Matt 0
-		if end.c? and not(isNaN end.c) and end.c == 0
-			messages.end_chapter_is_zero = 1
-			if @options.zero_chapter_strategy is "error" then valid = false
-			else end.c = 1
+		if end.c?
+			end.c = parseInt end.c, 10
+			# Matt 2-four
+			if isNaN end.c
+				valid = false
+				messages.end_chapter_not_numeric = true
+			else if end.c == 0
+				messages.end_chapter_is_zero = 1
+				if @options.zero_chapter_strategy is "error" then valid = false
+				else end.c = 1
+		# Matt 5:0
+		if end.v?
+			end.v = parseInt end.v, 10
+			# Matt 5:7-eight
+			if isNaN end.v
+				valid = false
+				messages.end_verse_not_numeric = true
+			else if end.v == 0
+				messages.end_verse_is_zero = 1
+				if @options.zero_verse_strategy is "error" then valid = false
+				else if @options.zero_verse_strategy is "upgrade" then end.v = 1
+
 		# Matt-Mark
 		if @translations[translation_order].order[end.b]?
+			# Even if the `passage_existence_strategy` doesn't include `c`, make sure to treat single-chapter books as single-chapter books.
+			end.c = 1 if (!end.c? and @translations[translation].chapters[end.b].length == 1)
 			# Mark 4-Matt 5, None 4-Matt 5
 			if @translations[translation_order].order[start.b]? and @translations[translation_order].order[start.b] > @translations[translation_order].order[end.b]
-				valid = false
+				valid = false if @options.passage_existence_strategy.indexOf("b") >= 0
 				messages.end_book_before_start = true
 			# Matt 5-6
 			if start.b == end.b and end.c? and not isNaN end.c
@@ -756,37 +775,22 @@ class bcv_passage
 				if not @translations[translation].chapters[end.b][end.c - 1]?
 					if @translations[translation].chapters[end.b].length is 1
 						messages.end_chapter_not_exist_in_single_chapter_book = 1
-					else if end.c > 0
+					else if end.c > 0 and @options.passage_existence_strategy.indexOf("c") >= 0
 						messages.end_chapter_not_exist = @translations[translation].chapters[end.b].length
 			if end.v? and not isNaN end.v
 				end.c ?= @translations[translation].chapters[end.b].length
-				if end.v > @translations[translation].chapters[end.b][end.c - 1]
+				if end.v > @translations[translation].chapters[end.b][end.c - 1] and @options.passage_existence_strategy.indexOf("v") >= 0
 					messages.end_verse_not_exist = @translations[translation].chapters[end.b][end.c - 1]
-				else if end.v == 0
-					messages.end_verse_is_zero = 1
-					if @options.zero_verse_strategy is "error" then valid = false
-					else if @options.zero_verse_strategy is "upgrade" then end.v = 1
-		# Matt 5:1-None 6
+			# Matt 5:1-None 6
 		else
 			valid = false
 			messages.end_book_not_exist = true
-		# Matt 2-four
-		if end.c? and isNaN end.c
-			valid = false
-			messages.end_chapter_not_numeric = true
-		# Matt 5:7-eight
-		if end.v? and isNaN end.v
-			valid = false
-			messages.end_verse_not_numeric = true
 		[valid, messages]
 
 	# Gradually add books to translations as they're needed.
 	promote_book_to_translation: (book, translation) ->
 		@translations[translation] ?= {}
 		@translations[translation].chapters ?= {}
-		# If the translation specifically overrides the default, use that.
-		if @translations.alternates[translation]?.chapters?[book]?
-			@translations[translation].chapters[book] = @translations.alternates[translation].chapters[book]
-		# Otherwise stick with the default.
-		else
+		# If the translation specifically overrides the default, use that. Otherwise stick with the default.
+		unless @translations[translation].chapters[book]?
 			@translations[translation].chapters[book] = bcv_utils.shallow_clone_array @translations.default.chapters[book]

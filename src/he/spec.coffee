@@ -782,11 +782,11 @@ describe "Localized book Zeph (he)", ->
 		p.include_apocrypha true
 	it "should handle book: Zeph (he)", ->
 		`
+		expect(p.parse("צפניה 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("Zeph 1:1").osis()).toEqual("Zeph.1.1")
-		expect(p.parse("חגי 1:1").osis()).toEqual("Zeph.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("צפניה 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("ZEPH 1:1").osis()).toEqual("Zeph.1.1")
-		expect(p.parse("חגי 1:1").osis()).toEqual("Zeph.1.1")
 		`
 		true
 describe "Localized book Hag (he)", ->
@@ -797,11 +797,11 @@ describe "Localized book Hag (he)", ->
 		p.include_apocrypha true
 	it "should handle book: Hag (he)", ->
 		`
-		expect(p.parse("צפניה 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("Hag 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("חגי 1:1").osis()).toEqual("Hag.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("צפניה 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("HAG 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("חגי 1:1").osis()).toEqual("Hag.1.1")
 		`
 		true
 describe "Localized book Zech (he)", ->

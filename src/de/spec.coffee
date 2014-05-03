@@ -1877,7 +1877,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Lev 1 (SCH2000)").osis_and_translations()).toEqual [["Lev.1", "SCH2000"]]
 		expect(p.parse("lev 1 sch2000").osis_and_translations()).toEqual [["Lev.1", "SCH2000"]]
 	it "should handle book ranges (de)", ->
-		p.set_options {book_alone_strategy: "full"}
+		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Erste bis Dritte  Johannes").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (de)", ->
 		p.set_options {book_alone_strategy: "full"}

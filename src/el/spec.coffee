@@ -2933,7 +2933,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Lev 1 (SEPT)").osis_and_translations()).toEqual [["Lev.1", "SEPT"]]
 		expect(p.parse("lev 1 sept").osis_and_translations()).toEqual [["Lev.1", "SEPT"]]
 	it "should handle book ranges (el)", ->
-		p.set_options {book_alone_strategy: "full"}
+		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Α' - Γ'  ᾿Ιω").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (el)", ->
 		p.set_options {book_alone_strategy: "full"}

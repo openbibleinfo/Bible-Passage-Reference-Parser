@@ -59,7 +59,7 @@ $BOOK_REGEXPS
 	# Filter out books in the Apocrypha if we don't want them. `Array.map` isn't supported below IE9.
 	out = []
 	for book in books
-		continue if book.apocrypha? and book.apocrypha is true
+		continue if include_apocrypha is false and book.apocrypha? and book.apocrypha is true
 		if case_sensitive is "books"
 			book.regexp = new RegExp book.regexp.source, "g"
 		out.push book

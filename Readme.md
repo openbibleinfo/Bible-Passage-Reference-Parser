@@ -156,6 +156,32 @@ bcv.set_options({"osis_compaction_strategy": "bcv"});
 bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 ```
 
+### Administrative Functions
+
+This function is separate from the parsing sequence and provides data that may be useful for other applications.
+
+#### `translation_info("")`
+
+This function returns an object of data about the requested translation. You can use this data to determine, for example, the previous and next chapters for a given chapter, even when the given chapter is at the beginning or end of a book.
+
+It takes an optional string argument that identifies the translation--if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, and `nrsv`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
+
+The returned object has three keys:
+
+```javascript
+{
+	"order": {"Gen": 1, "Exod": 2, ...},
+	"books": ["Gen", "Exod", "Lev", ...],
+	"chapters": {"Gen": [31, 25, ...], "Exod": [22, 25, ...], ...}
+}
+```
+
+The `order` key returns the order in which the books appear in the translation, starting at 1.
+
+The `books` key lists the books in order, which you can use to find surrounding books. For example, if you know from `order` that `"Exod": 2`, you know that you can find it at `books[1]` (because the array is zero-based). Similarly, the book before `Exod` is at `books[0]`, and the book after it is at `books[2]`.
+
+The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][0]` tells you how many verses are in Genesis 1. Further, the `length` of each book's array tells you how many chapters are in each book: `chapters["Gen"].length` tells you how many chapters are in Genesis.
+
 ### Options
 
 #### OSIS Output
@@ -172,7 +198,7 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 
 * `book_sequence_strategy: "ignore"`
 	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" → "Isa.1").
-	* `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" means "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
+	* `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" → "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
 * `invalid_sequence_strategy: "ignore"`
 	* `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
 	* `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
@@ -185,6 +211,15 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 * `invalid_passage_strategy: "ignore"`
 	* `ignore`: Don't include invalid passages in `@parsed_entities()`.
 	* `include`: Include invalid passages in `@parsed_entities()` (they still don't have OSIS values).
+* `non_latin_digits_strategy: "ignore"`
+	* `ignore`: treat non-Latin digits the same as any other character.
+	* `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
+* `passage_existence_strategy: "bcv"`
+	* Include `b` in the string to validate book order ("Revelation to Genesis" is invalid).
+	* Include `c` in the string to validate chapter existence. If omitted, strings like "Genesis 51" (which doesn't exist) return as valid. Omitting `c` means that looking up full books will return `999` as the end chapter: "Genesis to Exodus" → "Gen.1-Exod.999".
+	* Include `v` in the string to validate verse existence. If omitted, strings like `Genesis 1:100` (which doesn't exist) return as valid. Omitting `v` means that looking up full chapters will return `999` as the end verse: "Genesis 1:2 to chapter 3" → "Gen.1.2-Gen.3.999".
+	* Tested values are `b`, `bc`, `bcv`, `bv`, `c`, `cv`, `v`, and `none`. In all cases, single-chapter books still respond as single-chapter books to allow treating strings like `Obadiah 2` as `Obad.1.2`.
+
 * `zero_chapter_strategy: "error"`
 	* `error`: zero chapters ("Matthew 0") are invalid.
 	* `upgrade`: zero chapters are upgraded to 1: "Matthew 0" → "Matt.1".
@@ -193,22 +228,22 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 	* `error`: zero verses ("Matthew 5:0") are invalid.
 	* `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" → "Matt.5.1".
 	* `allow`: zero verses are kept as-is: "Matthew 5:0" → "Matt.5.0". Some traditions use 0 for Psalm titles.
-* `non_latin_digits_strategy: "ignore"`
-	* `ignore`: treat non-Latin digits the same as any other character.
-	* `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
 
 #### Context
 
 * `book_alone_strategy: "ignore"`
 	* `ignore`: any books that appear on their own don't get parsed as books ("Gen saw" doesn't trigger a match, but "Gen 1" does).
-	* `full`: any books that appear on their own get parsed as the complete book ("Gen" means "Gen.1-Gen.50").
-	* `first_chapter`: any books that appear on their own get parsed as the first chapter ("Gen" means "Gen.1").
+	* `full`: any books that appear on their own get parsed as the complete book ("Gen" → "Gen.1-Gen.50").
+	* `first_chapter`: any books that appear on their own get parsed as the first chapter ("Gen" → "Gen.1").
+* `book_range_strategy: "ignore"`
+	* `ignore`: any books that appear on their own in a range are ignored ("Matt-Mark 2" → "Mark.2").
+	* `include`: any books that appear on their own in a range are included as part of the range ("Matt-Mark 2" → "Matt.1-Mark.2", while "Matt 2-Mark" → "Matt.2-Mark.16").
 * `captive_end_digits_strategy: "delete"`
 	* `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5". This is better for text extraction.
 	* `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5.1". This is better for query parsing.
 * `end_range_digits_strategy: "verse"`
 	* `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
-	* `sequence`: treat them as sequences.
+	* `sequence`: treat them as sequences ("Jer 33-11" → "Jer.33,Jer.11", "Heb 13-15" → "Heb.13").
 
 #### Apocrypha
 * `ps151_strategy: "c"`
@@ -391,6 +426,8 @@ Using the files in `src/template` as a base, you can add support for additional 
 
 <table>
 	<tr><th>Prefix</th><th>Language</th>
+	<tr><td>ar</td><td>Arabic</td></tr>
+	<tr><td>bg</td><td>Bulgarian</td></tr>
 	<tr><td>de</td><td>German</td></tr>
 	<tr><td>el</td><td>Greek (mostly ancient)</td></tr>
 	<tr><td>en</td><td>English</td></tr>
@@ -401,6 +438,9 @@ Using the files in `src/template` as a base, you can add support for additional 
 	<tr><td>ja</td><td>Japanese</td></tr>
 	<tr><td>ko</td><td>Korean</td></tr>
 	<tr><td>la</td><td>Latin</td></tr>
+	<tr><td>ru</td><td>Russian</td></tr>
+	<tr><td>th</td><td>Thai</td></tr>
+	<tr><td>vi</td><td>Vietnamese</td></tr>
 	<tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
 </table>
 
@@ -412,7 +452,7 @@ When using non-English `<script>`s on the web, be sure to serve the script with 
 
 I've specifically tested the following browsers, but it should work in any modern browser. If not, please feel free to open an issue.
 
-* Internet Explorer 6-10. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
+* Internet Explorer 6+. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
 * Firefox 12+.
 * Chrome 19+ and Node 0.10.x.
 
@@ -421,10 +461,10 @@ I've specifically tested the following browsers, but it should work in any moder
 The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files or run tests):
 
 * [Closure](http://code.google.com/closure/) for minifying.
-* [Coffeescript 1.6.2](http://coffeescript.org/) for compiling into Javascript.
+* [Coffeescript 1.7.1](http://coffeescript.org/) for compiling into Javascript.
 * [Frak](https://github.com/noprompt/frak) for optimizing generated regular expressions.
 * [Jasmine 1.3.1](http://pivotal.github.com/jasmine/) for the testing framework. To run tests, install it in the project's `/lib` folder.
-* [PEG.js 0.7.0](http://pegjs.majda.cz/) for the parsing grammar.
+* [PEG.js 0.8.0](http://pegjs.majda.cz/) for the parsing grammar.
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
@@ -451,6 +491,8 @@ This code is in production use on a site that indexes [Bible verses on Twitter a
 The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language--it's not necessary to run the parser in your project. If you're only parsing content, that usage falls entirely under the MIT License.
 
 ## Changelog
+
+May 2, 2014. Added the `passage_existence_strategy` option to relax how much validation the parser should do when given a possibly invalid reference. The extensive tests written for this feature uncovered a few other bugs. Added the `book_range_strategy` option to specify how to handle books when they appear in a range. Added `translation_info()`. Fixed bug when changing versification systems several times and improved support for changing versification systems that rely on a different book order from the default. Updated PEG.js to 0.8.0. Added support for Arabic, Bulgarian, Russian, Thai, and Vietnamese.
 
 November 8, 2013. Recast English as just another language that uses the same build process as all the other languages. Fixed bug with parentheses in sequences. Made specs runnable using [jasmine-node](https://github.com/mhevery/jasmine-node). Optimized generated regular expressions for speed using [Frak](https://github.com/noprompt/frak). Added support for German, Greek, Italian, and Latin.
 

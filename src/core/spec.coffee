@@ -87,8 +87,22 @@ describe "Pre-parsing", ->
 		expect(p.parse("Matt 15 ESV, Matt 15 NIV, Matt 15").osis_and_translations()).toEqual [["Matt.15", "ESV"], ["Matt.15", "NIV"], ["Matt.15", ""]]
 		expect(p.parse("Third John 15 ESV, Third John 15 NIV, Third John 15").osis_and_translations()).toEqual [["3John.1.15", "ESV"], ["3John.1.15", ""]]
 
+	it "should reset versification systems properly when switching among several systems", ->
+		expect(p.parse("Ps 118:176").osis()).toEqual ""
+		expect(p.parse("Ps 119:176").osis()).toEqual "Ps.119.176"
+		expect(p.parse("3 John 15").osis()).toEqual "3John.1.15"
+		p.set_options versification_system: "vulgate"
+		expect(p.parse("Ps 118:176").osis()).toEqual "Ps.118.176"
+		expect(p.parse("Ps 119:176").osis()).toEqual ""
+		expect(p.parse("3 John 15").osis()).toEqual "3John.1.15"
+		p.set_options versification_system: "kjv"
+		expect(p.parse("Ps 118:176").osis()).toEqual ""
+		expect(p.parse("Ps 119:176").osis()).toEqual "Ps.119.176"
+		expect(p.parse("3 John 15").osis()).toEqual ""
+
 	it "should allow adding a new versification system", ->
-		p.translations.alternates.new_system =
+		# In real life, `order` should always contain all books; things will break if it doesn't.
+		p.translations.new_system =
 			order:
 				Ps: 1
 				Matt: 2
@@ -105,6 +119,10 @@ describe "Pre-parsing", ->
 		expect(p.parse("Ps 3\u2014Matt 2:7").osis()).toEqual "Ps.3-Matt.2"
 		expect(p.parse("Ps 3-Matt 2:8").osis()).toEqual "Ps.3-Matt.2"
 		expect(p.parse("Ps 3-Matt 4").osis()).toEqual "Ps.3-Matt.3"
+
+	# This is actually testing the opposite of what the description says. Ideally, a new object would be totally new, but I don't think it's worth the overhead.
+	it "should delete the previously added new versification system when creating a new object", ->
+		expect(p.translations.new_system).toBeDefined()
 
 	it "should handle control characters", ->
 		expect(p.replace_control_characters(" hi ").length).toEqual 4
@@ -442,14 +460,14 @@ describe "Basic passage parsing", ->
 		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}}}]}], {b: "Phlm", c: 1, v: 7}]
 
 		psg.books[0] = parsed: ["Phlm", "Phil"]
-		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 2}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:'b',value:0},{type:'c',value:[{type:'integer',value:2}]}],start_context:{translations:[{translation:'niv',osis:'NIV',alias:'default'},{translation:'kjv',osis:'KJV',alias:'default'}]},passages:[{start:{b:'Phlm',c:1,v:2},end:{b:'Phlm',c:1,v:2},valid:{valid:true,messages:{}},alternates:[{start:{b:'Phil',c:2},end:{b:'Phil',c:2},valid:{valid:true,messages:{}}}], translations:[{translation:'niv',osis:'NIV',alias:'default'},{ translation:'kjv',osis:'KJV',alias:'default'}]}]}], {b:'Phlm',c:1,v:2,translations : [ { translation : 'niv', osis : 'NIV', alias : 'default' }, { translation : 'kjv', osis : 'KJV', alias : 'default' }]}]
+		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 2}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",value:0},{type:"c",value:[{type:"integer",value:2}]}],start_context:{translations:[{translation:"niv",osis:"NIV",alias:"default"},{translation:"kjv",osis:"KJV",alias:"default"}]},passages:[{start:{b:"Phlm",c:1,v:2},end:{b:"Phlm",c:1,v:2},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phil",c:2},end:{b:"Phil",c:2},valid:{valid:true,messages:{}}}], translations:[{translation:"niv",osis:"NIV",alias:"default"},{ translation:"kjv",osis:"KJV",alias:"default"}]}]}], {b:"Phlm",c:1,v:2,translations : [ { translation : "niv", osis : "NIV", alias : "default" }, { translation : "kjv", osis : "KJV", alias : "default" }]}]
 
-		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 7}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:'b',value:0},{type:'c',value:[{type:'integer',value:7}]}],start_context:{translations:[{translation:'niv',osis:'NIV',alias:'default'},{translation:'kjv',osis:'KJV',alias:'default'}]},passages:[{start:{b:'Phlm',c:1,v:7},end:{b:'Phlm',c:1,v:7},valid:{valid:true,messages:{}},alternates:[{start:{b:'Phil',c:7},end:{b:'Phil',c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}], translations:[{translation:'niv',osis:'NIV',alias:'default'},{ translation:'kjv',osis:'KJV',alias:'default'}]}]}], {b:'Phlm',c:1,v:7,translations : [ { translation : 'niv', osis : 'NIV', alias : 'default' }, { translation : 'kjv', osis : 'KJV', alias : 'default' }]}]
+		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 7}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",value:0},{type:"c",value:[{type:"integer",value:7}]}],start_context:{translations:[{translation:"niv",osis:"NIV",alias:"default"},{translation:"kjv",osis:"KJV",alias:"default"}]},passages:[{start:{b:"Phlm",c:1,v:7},end:{b:"Phlm",c:1,v:7},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phil",c:7},end:{b:"Phil",c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}], translations:[{translation:"niv",osis:"NIV",alias:"default"},{ translation:"kjv",osis:"KJV",alias:"default"}]}]}], {b:"Phlm",c:1,v:7,translations : [ { translation : "niv", osis : "NIV", alias : "default" }, { translation : "kjv", osis : "KJV", alias : "default" }]}]
 
 		psg.books[0] = parsed: ["Phil", "Phlm"]
-		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", value: [{type: "integer",absolute_indices:[5,6], value: 2}]}]},[],{}).toEqual [[{absolute_indices:[0,6],value:[{type:'b',absolute_indices:[0,3],value:0},{type:'c',value:[{type:'integer',absolute_indices:[5,6],value:2}]}],start_context:{},passages:[{start:{b:'Phil',c:2},end:{b:'Phil',c:2},valid:{valid:true,messages:{}},alternates:[{start:{b:'Phlm',c:1,v:2},end:{b:'Phlm',c:1,v:2},valid:{valid:true,messages:{}}}]}]}],{b:'Phil',c:2}]
+		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", value: [{type: "integer",absolute_indices:[5,6], value: 2}]}]},[],{}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",absolute_indices:[0,3],value:0},{type:"c",value:[{type:"integer",absolute_indices:[5,6],value:2}]}],start_context:{},passages:[{start:{b:"Phil",c:2},end:{b:"Phil",c:2},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phlm",c:1,v:2},end:{b:"Phlm",c:1,v:2},valid:{valid:true,messages:{}}}]}]}],{b:"Phil",c:2}]
 
-		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}},alternates:[{start:{b:'Phil',c:7},end:{b:'Phil',c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}]}]}], {b: "Phlm", c: 1, v: 7}]
+		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}},alternates:[{start:{b:"Phil",c:7},end:{b:"Phil",c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}]}]}], {b: "Phlm", c: 1, v: 7}]
 
 	it "should handle `bc_title`s", ->
 		# Psalm7 title (where "Psalm" could be interpreted different ways)
@@ -478,9 +496,9 @@ describe "Parsing", ->
 		expect(p.parse("Genesis ch 3 (NIV, ESV)").osis_and_indices()).toEqual [{osis: "Gen.3", translations: ["NIV", "ESV"], indices: [0, 23]}]
 		expect(p.parse("Genesis 1:2-ch 7").osis_and_indices()).toEqual [{osis: "Gen.1.2-Gen.7.24", translations: [""], indices: [0, 16]}]
 		expect(p.parse("and Gen 1 5, Jere 2-3 see my Genesis ch 6 (NIV, ESV)").osis_and_indices()).toEqual [{osis: "Gen.1.5,Jer.2-Jer.3", translations: [""], indices: [4, 21]}, {osis: "Gen.6", translations: ["NIV","ESV"], indices: [29, 52]}]
-		expect(p.parse("Jer.5.ESV").osis_and_indices()).toEqual [{osis:'Jer.5',indices:[0,9],translations:['ESV']}]
-		expect(p.parse("Matt 1 ESV, Matt 2 NIV").osis_and_indices()).toEqual [{osis:'Matt.1',indices:[0,10],translations:['ESV']},{osis:'Matt.2',indices:[12,22],translations:['NIV']}]
-		expect(p.parse("Matt 1 1st to see").osis_and_indices()).toEqual [{osis:'Matt.1',indices:[0,6],translations:['']}]
+		expect(p.parse("Jer.5.ESV").osis_and_indices()).toEqual [{osis:"Jer.5",indices:[0,9],translations:["ESV"]}]
+		expect(p.parse("Matt 1 ESV, Matt 2 NIV").osis_and_indices()).toEqual [{osis:"Matt.1",indices:[0,10],translations:["ESV"]},{osis:"Matt.2",indices:[12,22],translations:["NIV"]}]
+		expect(p.parse("Matt 1 1st to see").osis_and_indices()).toEqual [{osis:"Matt.1",indices:[0,6],translations:[""]}]
 
 	it "should handle bvs", ->
 		expect(p.parse("Genesis verse 2").osis()).toEqual "Gen.1.2"
@@ -517,7 +535,7 @@ describe "Parsing", ->
 		expect(p.parse("jo 1-2").osis_and_indices()).toEqual [{osis: "John.1-John.2", translations: [""], indices: [0, 6]}]
 		expect(p.parse("Jeremiah 2-Genesis 1").osis_and_indices()).toEqual [{osis: "Jer.2,Gen.1", translations: [""], indices: [0, 20]}]
 		expect(p.parse("Genesis 51-Jeremiah 6").osis_and_indices()).toEqual [{osis: "Jer.6", translations: [""], indices: [11, 21]}]
-		expect(p.parse("Devotions: John 10:22-42  vs 27 \"My sheep hear my voice").osis_and_indices()).toEqual [{osis:'John.10.22-John.10.42,John.10.27',indices:[11,31],translations:['']}]
+		expect(p.parse("Devotions: John 10:22-42  vs 27 \"My sheep hear my voice").osis_and_indices()).toEqual [{osis:"John.10.22-John.21.25", translations:[""], indices:[11,31]}]
 
 	it "should match integers correctly", ->
 		expect(p.parse("Zechariah 2").osis()).toEqual "Zech.2"
@@ -529,8 +547,10 @@ describe "Parsing", ->
 		expect(p.parse("Zechariah 12,000").osis()).toEqual ""
 		expect(p.parse("Zechariah 120,000").osis()).toEqual ""
 
-	it "should handle book ranges with an `ignore` `book_sequence_strategy`", ->
+	it "should handle book ranges with an `ignore` `book_sequence_strategy` and an `ignore` `book_range_strategy`", ->
+		p.options.book_alone_strategy = "ignore"
 		p.options.book_sequence_strategy = "ignore"
+		p.options.book_range_strategy = "ignore"
 		expect(p.parse("Gen-Jeremiah").osis()).toEqual ""
 		expect(p.parse("Genesis 1-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.1", translations: [""], indices: [0, 9]}]
 		expect(p.parse("Genesis 2-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.2", translations: [""], indices: [0, 9]}]
@@ -543,19 +563,52 @@ describe "Parsing", ->
 		expect(p.parse("Genesis-Philemon 2").osis_and_indices()).toEqual [{osis: "Phlm.1.2", translations: [""], indices: [8, 18]}]
 		expect(p.parse("Luke-Acts").osis()).toEqual ""
 
-	it "should handle book ranges with an `include` `book_sequence_strategy`", ->
+	it "should handle book ranges with an `ignore` `book_sequence_strategy` and an `include` `book_range_strategy`", ->
+		p.options.book_alone_strategy = "ignore"
+		p.options.book_sequence_strategy = "ignore"
+		p.options.book_range_strategy = "include"
+		expect(p.parse("Gen-Jeremiah").osis()).toEqual "Gen-Jer"
+		expect(p.parse("Genesis 1-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen-Jer", translations: [""], indices: [0, 18]}]
+		expect(p.parse("Genesis 2-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.2-Jer.52", translations: [""], indices: [0, 18]}]
+		expect(p.parse("Jeremiah-Isaiah").osis()).toEqual ""
+		expect(p.parse("Genesis-Philemon").osis_and_indices()).toEqual [{osis: "Gen-Phlm", translations: [""], indices: [0, 16]}]
+		expect(p.parse("Genesis-Philemon 1").osis()).toEqual "Gen-Phlm"
+		expect(p.parse("Genesis 1-Genesis").osis()).toEqual "Gen"
+		expect(p.parse("Genesis 2-Genesis").osis_and_indices()).toEqual [{osis: "Gen.2-Gen.50", translations: [""], indices: [0, 17]}]
+		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2-Phlm.1"
+		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Gen.1.1-Phlm.1.2"
+		expect(p.parse("Luke-Acts").osis()).toEqual "Luke-Acts"
+
+	it "should handle book ranges with an `include` `book_sequence_strategy` and an `ignore` `book_range_strategy`", ->
 		p.options.book_alone_strategy = "full"
 		p.options.book_sequence_strategy = "include"
+		p.options.book_range_strategy = "ignore"
+		expect(p.parse("Gen-Jeremiah").osis()).toEqual ""
+		expect(p.parse("Genesis 1-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.1", translations: [""], indices: [0, 9]}]
+		expect(p.parse("Genesis 2-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.2", translations: [""], indices: [0, 9]}]
+		expect(p.parse("Jeremiah-Isaiah").osis()).toEqual "Jer,Isa"
+		expect(p.parse("Genesis-Philemon").osis_and_indices()).toEqual []
+		expect(p.parse("Genesis-Philemon 1").osis()).toEqual "Phlm"
+		expect(p.parse("Genesis 1-Genesis").osis()).toEqual "Gen.1"
+		expect(p.parse("Genesis 2-Genesis").osis_and_indices()).toEqual [{osis: "Gen.2", translations: [""], indices: [0, 9]}]
+		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2"
+		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Phlm.1.2"
+		expect(p.parse("Luke-Acts").osis()).toEqual ""
+
+	it "should handle book ranges with an `include` `book_sequence_strategy` and an `include` `book_range_strategy`", ->
+		p.options.book_alone_strategy = "full"
+		p.options.book_sequence_strategy = "include"
+		p.options.book_range_strategy = "include"
 		expect(p.parse("Gen-Jeremiah").osis()).toEqual "Gen-Jer"
-		expect(p.parse("Genesis 1-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.1,Jer", translations: [""], indices: [0, 18]}]
-		expect(p.parse("Genesis 2-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.2,Jer", translations: [""], indices: [0, 18]}]
+		expect(p.parse("Genesis 1-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen-Jer", translations: [""], indices: [0, 18]}]
+		expect(p.parse("Genesis 2-Jeremiah").osis_and_indices()).toEqual [{osis: "Gen.2-Jer.52", translations: [""], indices: [0, 18]}]
 		expect(p.parse("Jeremiah-Isaiah").osis()).toEqual "Jer,Isa"
 		expect(p.parse("Genesis-Philemon").osis_and_indices()).toEqual [{osis: "Gen-Phlm", translations: [""], indices: [0, 16]}]
-		expect(p.parse("Genesis-Philemon 1").osis()).toEqual "Gen,Phlm"
-		expect(p.parse("Genesis 1-Genesis").osis()).toEqual "Gen.1,Gen"
-		expect(p.parse("Genesis 2-Genesis").osis_and_indices()).toEqual [{osis: "Gen.2,Gen", translations: [""], indices: [0, 17]}]
-		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2,Phlm"
-		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Gen,Phlm.1.2"
+		expect(p.parse("Genesis-Philemon 1").osis()).toEqual "Gen-Phlm"
+		expect(p.parse("Genesis 1-Genesis").osis()).toEqual "Gen"
+		expect(p.parse("Genesis 2-Genesis").osis_and_indices()).toEqual [{osis: "Gen.2-Gen.50", translations: [""], indices: [0, 17]}]
+		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2-Phlm.1"
+		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Gen.1.1-Phlm.1.2"
 		expect(p.parse("Luke-Acts").osis()).toEqual "Luke-Acts"
 
 	it "should handle sequences", ->
@@ -604,6 +657,17 @@ describe "Parsing", ->
 		expect(p.parse("Genesis, Exodus").osis_and_indices()).toEqual [{osis: "Gen-Exod", translations: [""], indices: [0, 15]}]
 		expect(p.parse("Isaiah 41:10 is my").osis_and_indices()).toEqual [{osis:"Isa.41.10,Isa", indices:[0,15], translations:[""]}]
 		expect(p.parse("Isaiah 41:10 ha ha ha").osis_and_indices()).toEqual [{osis:"Isa.41.10,Hab,Hab,Hab", indices:[0,21], translations:[""]}]
+
+	it "should handle `case_sensitive` correctly with `include_apocrypha: true`", ->
+		expect(p.parse("Tobit 1").osis()).toEqual ""
+		expect(p.parse("sus 1").osis()).toEqual ""
+		p.set_options case_sensitive: "books"
+		p.include_apocrypha true
+		expect(p.parse("Tobit 1").osis()).toEqual "Tob.1"
+		expect(p.parse("sus 1").osis()).toEqual ""
+		p.set_options case_sensitive: "none"
+		expect(p.parse("Tobit 1").osis()).toEqual "Tob.1"
+		expect(p.parse("sus 1").osis()).toEqual "Sus"
 
 	it "should handle cbs", ->
 		expect(p.parse("Chapter 1 of Genesis").osis_and_indices()).toEqual [{osis:"Gen.1", indices:[0, 20], translations : [""]}]
@@ -734,7 +798,7 @@ describe "Parsing", ->
 		expect(p.parse("Phm 1:1ff").osis_and_indices()[0].osis).toEqual "Phlm"
 		expect(p.parse("Phm 1:2ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
 		expect(p.parse("Phm 2ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
-		expect(p.parse("ge 50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,6], translations: ['']
+		expect(p.parse("ge 50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,6], translations: [""]
 		expect(p.parse("ge 50:60ff").osis_and_indices()[0]).toEqual undefined
 		expect(p.parse("Ps 121-2ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150"
 		expect(p.parse("Ps 121-122:3ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.122"
@@ -742,16 +806,16 @@ describe "Parsing", ->
 		expect(p.parse("Phm 1:1-4 ff").osis_and_indices()[0].osis).toEqual "Phlm"
 		expect(p.parse("Phm 1:2-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
 		expect(p.parse("Phm 2-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
-		expect(p.parse("ge 50-50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,9], translations: ['']
+		expect(p.parse("ge 50-50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,9], translations: [""]
 		expect(p.parse("Ps 121ff-2ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150,Ps.2-Ps.150"
 		expect(p.parse("Ps 121ff-122:3ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150,Ps.122.3-Ps.122.9"
 		expect(p.parse("Phm 1ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm,Phlm.1.4-Phlm.1.25"
 		expect(p.parse("Phm 1:1ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm,Phlm.1.4-Phlm.1.25"
 		expect(p.parse("Phm 1:2ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25,Phlm.1.4-Phlm.1.25"
 		expect(p.parse("Phm 2ff-4ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25,Phlm.1.4-Phlm.1.25"
-		expect(p.parse("ge 50f-50f").osis_and_indices()[0]).toEqual osis:"Gen.50,Gen.50",indices:[0,10], translations: ['']
-		expect(p.parse("ge 50:1 forever").osis_and_indices()[0]).toEqual osis:"Gen.50.1",indices:[0,7], translations: ['']
-		expect(p.parse("ge 50:1 fa").osis_and_indices()[0]).toEqual osis:"Gen.50.1",indices:[0,7], translations: ['']
+		expect(p.parse("ge 50f-50f").osis_and_indices()[0]).toEqual osis:"Gen.50,Gen.50",indices:[0,10], translations: [""]
+		expect(p.parse("ge 50:1 forever").osis_and_indices()[0]).toEqual osis:"Gen.50.1",indices:[0,7], translations: [""]
+		expect(p.parse("ge 50:1 fa").osis_and_indices()[0]).toEqual osis:"Gen.50.1",indices:[0,7], translations: [""]
 		expect(p.parse("so f").osis_and_indices()).toEqual []
 		expect(p.parse("and 1 COR 11: 5 FF.").osis_and_indices()).toEqual [osis:"1Cor.11.5-1Cor.11.34", indices:[4,19], translations:[""]]
 		expect(p.parse("and 1 COR 11: 5 FF").osis_and_indices()).toEqual [osis:"1Cor.11.5-1Cor.11.34", indices:[4,18], translations:[""]]
@@ -794,7 +858,7 @@ describe "Parsing", ->
 		expect(p.parse("Hosea 2:2, 0").osis()).toEqual "Hos.2.2,Hos.2.1"
 		expect(p.parse("Phlm 0:2").osis()).toEqual ""
 		expect(p.parse("Phlm 0").osis()).toEqual "Phlm.1.1"
-		expect(p.parse("Phlm 0-0").osis()).toEqual "Phlm.1.1,Phlm.1.1"
+		expect(p.parse("Phlm 0-0").osis()).toEqual "Phlm.1.1"
 		expect(p.parse("Ps 20:1-0:4").osis()).toEqual "Ps.20.1"
 
 	it "should handle zeroes as allowed verses", ->
@@ -825,6 +889,7 @@ describe "Parsing", ->
 		expect(p.parse("Phlm 0").osis()).toEqual "Phlm"
 		expect(p.parse("Phlm 0-0").osis()).toEqual "Phlm"
 		expect(p.parse("Ps 20:1-0:4").osis()).toEqual "Ps.20.1,Ps.1.4"
+		expect(p.parse("John 1:10-0").osis()).toEqual "John.1.10,John.1.1"
 
 	it "should handle zeroes as chapter upgrade and allowed verse", ->
 		p.options.zero_chapter_strategy = "upgrade"
@@ -896,7 +961,7 @@ describe "Parsing", ->
 		expect(p.parse("Nothing").osis()).toEqual ""
 
 	it "should handle `bcv_range` hyphens", ->
-		expect(p.parse("1 John-2-3-4").osis_and_indices()).toEqual [{osis:"1John.2.3-1John.2.4",indices:[0,12],translations:['']}]
+		expect(p.parse("1 John-2-3-4").osis_and_indices()).toEqual [{osis:"1John.2.3-1John.2.4",indices:[0,12],translations:[""]}]
 		expect(p.parse("Matt-5-6-7").osis()).toEqual "Matt.5.6-Matt.5.7"
 
 	it "should handle a `combine` `consecutive_combination_strategy`", ->
@@ -973,26 +1038,31 @@ describe "Parsing", ->
 		expect(p.parse("matt 29-34").osis_and_translations()).toEqual []
 		expect(p.parse("heb 0:6").osis()).toEqual ""
 		expect(p.parse("1 Kings 45, 12:3").osis_and_translations()).toEqual [["1Kgs.12.3", ""]]
-		expect(p.parse("ha 67").parsed_entities()[0].entities).toEqual [{osis:'',type:"bc",indices:[0,5],translations:[''],start:{b:'Hab',c:67,v:undefined},end:{b:'Hab',c:67},entity_id:0,entities:[{start:{b:'Hab',c:67,v:undefined},end:{b:'Hab',c:67},valid:{valid:false,messages:{start_chapter_not_exist:3}},alternates:[{start:{b:'Hag',c:67,v:undefined},end:{b:'Hag',c:67},valid:{valid:false,messages:{start_chapter_not_exist:2}}}],type:"bc",absolute_indices:[0,5]}]}]
+		expect(p.parse("ha 67").parsed_entities()[0].entities).toEqual [{osis:"",type:"bc",indices:[0,5],translations:[""],start:{b:"Hab",c:67,v:undefined},end:{b:"Hab",c:67},entity_id:0,entities:[{start:{b:"Hab",c:67,v:undefined},end:{b:"Hab",c:67},valid:{valid:false,messages:{start_chapter_not_exist:3}},alternates:[{start:{b:"Hag",c:67,v:undefined},end:{b:"Hag",c:67},valid:{valid:false,messages:{start_chapter_not_exist:2}}}],type:"bc",absolute_indices:[0,5]}]}]
 
 	it "should handle `pre_book` ranges", ->
 		p.set_options book_alone_strategy: "full"
+		p.set_options book_sequence_strategy: "ignore"
+		p.set_options book_range_strategy: "include"
 		expect(p.parse("1-2 Sam").osis_and_indices()).toEqual [{osis:"1Sam-2Sam", translations: [""], indices:[0,7]}]
 		expect(p.parse("2-3 John").osis_and_indices()).toEqual [{osis:"2John-3John", translations: [""], indices:[0,8]}]
 		expect(p.parse("First through Third John").osis_and_indices()).toEqual [{osis:"1John-3John", translations: [""], indices:[0,24]}]
 		expect(p.parse("1-2 Sam 3").osis_and_indices()).toEqual [{osis:"2Sam.3", translations: [""], indices:[2,9]}]
-		expect(p.parse("Ruth 1-2 Sam").osis_and_indices()).toEqual [{osis:"Ruth.1", translations: [""], indices:[0,6]}]
-		expect(p.parse("1-2 Sam, 1-2 Kings, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam.1,Ruth.3,Ruth.1", translations: [""], indices:[2,29]}]
+		expect(p.parse("Ruth 1-2 Sam").osis_and_indices()).toEqual [{osis:"Ruth-2Sam", translations: [""], indices:[0,12]}]
+		expect(p.parse("Ruth 1-2 Chr").osis_and_indices()).toEqual [{osis:"Ruth-2Chr", translations: [""], indices:[0,12]}]
+		expect(p.parse("1-2 Sam, 1-2 Kings, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam-2Kgs,Ruth.3,Ruth-3John", translations: [""], indices:[2,36]}]
+		expect(p.parse("1-2 Sam, 1-2 Chronicles, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam-2Chr,Ruth.3,Ruth-3John", translations: [""], indices:[2,41]}]
 		expect(p.parse("Ez 2. Then 1-3 John (NIV)").osis_and_indices()).toEqual [{osis:"Ezek.2", translations: [""], indices:[0,4]}, {osis:"3John", translations: ["NIV"], indices:[13,25]}]
 		expect(p.parse("1-3 John").osis_and_indices()).toEqual [{osis:"1John-3John", translations: [""], indices:[0,8]}]
 		expect(p.parse("3-3 John").osis_and_indices()).toEqual [{osis:"3John", translations: [""], indices:[2,8]}]
 		expect(p.parse("1 and 3 John").osis_and_indices()).toEqual [{osis:"3John", translations: [""], indices:[6,12]}]
 		# These two are debatable
 		expect(p.parse("Phil 2:4; 1 and 2 Timothy").osis_and_indices()).toEqual [{osis:"Phil.2.4,Phil.2.1", translations: [""], indices:[0,11]}]
-		expect(p.parse("Phil 2:4; 1-2 Timothy").osis_and_indices()).toEqual [{osis:"Phil.2.4,Phil.2.1", translations: [""], indices:[0,11]}]
+		expect(p.parse("Phil 2:4; 1-2 Timothy").osis_and_indices()).toEqual [{osis:"Phil.2.4,Phil.2-2Tim.4", translations: [""], indices:[0,21]}]
 
 	it "should handle `pre_book` ranges in the Apocrypha", ->
 		p.set_options book_alone_strategy: "full"
+		p.set_options book_range_strategy: "include"
 		p.include_apocrypha(true)
 		expect(p.parse("1-3 Macc").osis_and_indices()).toEqual [{osis:"1Macc-3Macc", translations: [""], indices:[0,8]}]
 		expect(p.parse("1 and 4 Macc").osis_and_indices()).toEqual [{osis:"4Macc", translations: [""], indices:[6,12]}]
@@ -1006,14 +1076,19 @@ describe "Parsing", ->
 
 	it "should handle `pre_book` ranges with an `include` `book_sequence_strategy`", ->
 		p.set_options book_alone_strategy: "full"
+		p.set_options book_range_strategy: "include"
 		p.set_options book_sequence_strategy: "include"
 		expect(p.parse("1-2 Sam").osis_and_indices()).toEqual [{osis:"1Sam-2Sam", translations: [""], indices:[0,7]}]
 		expect(p.parse("2-3 John").osis_and_indices()).toEqual [{osis:"2John-3John", translations: [""], indices:[0,8]}]
 		expect(p.parse("First through Third John").osis_and_indices()).toEqual [{osis:"1John-3John", translations: [""], indices:[0,24]}]
 		expect(p.parse("1-2 Sam 3").osis_and_indices()).toEqual [{osis:"2Sam.3", translations: [""], indices:[2,9]}]
-		expect(p.parse("Ruth 1-2 Sam").osis_and_indices()).toEqual [{osis:"Ruth.1,2Sam", translations: [""], indices:[0,12]}]
-		expect(p.parse("1-2 Sam, 1-2 Kings, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam,2Sam.1,2Kgs,Ruth.3,Ruth.1,3John", translations: [""], indices:[2,36]}]
+		expect(p.parse("Numbers 1-2 Sam").osis_and_indices()).toEqual [{osis:"Num-2Sam", translations: [""], indices:[0,15]}]
+		expect(p.parse("Ruth 1-2 Sam").osis_and_indices()).toEqual [{osis:"Ruth-2Sam", translations: [""], indices:[0,12]}]
+		expect(p.parse("Ruth 1-2 Chr").osis_and_indices()).toEqual [{osis:"Ruth-2Chr", translations: [""], indices:[0,12]}]
 		expect(p.parse("Ez 2. Then 1-3 John (NIV)").osis_and_indices()).toEqual [{osis:"Ezek.2", translations: [""], indices:[0,4]}, {osis:"3John", translations: ["NIV"], indices:[13,25]}]
+		# These don't seem great.
+		expect(p.parse("1-2 Sam, 1-2 Kings, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam,2Sam-2Kgs,Ruth.3,Ruth-3John", translations: [""], indices:[2,36]}]
+		expect(p.parse("1-2 Sam, 1-2 Chronicles, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam,2Sam-2Chr,Ruth.3,Ruth-3John", translations: [""], indices:[2,41]}]
 
 	it "should handle Psalm titles", ->
 		expect(p.parse("Ps 3:2, ch 119 title, ch23").osis()).toEqual "Ps.3.2,Ps.119.1,Ps.23"
@@ -1023,7 +1098,7 @@ describe "Parsing", ->
 		expect(p.parse("Ps 3title-ch 4").osis()).toEqual "Ps.3-Ps.4"
 		expect(p.parse("Ps 76 titles").osis_and_indices()).toEqual [osis:"Ps.76", translations:[""], indices:[0,5]]
 		expect(p.parse("Ps 76 titles, 4").osis_and_indices()).toEqual [osis:"Ps.76", translations:[""], indices:[0,5]]
-		expect(p.parse("Ps 76 titles, 4, 3 John 2").osis_and_indices()).toEqual [{osis:"Ps.76", translations:[""], indices:[0,5]}, {osis:'3John.1.2', translations:[""], indices:[17,25]}]
+		expect(p.parse("Ps 76 titles, 4, 3 John 2").osis_and_indices()).toEqual [{osis:"Ps.76", translations:[""], indices:[0,5]}, {osis:"3John.1.2", translations:[""], indices:[17,25]}]
 		expect(p.parse("Ps 76 titles-3").osis_and_indices()).toEqual [osis:"Ps.76", translations:[""], indices:[0,5]]
 		expect(p.parse("Ps 3:TITLE, 4 TITLE, 5: TITLE NIV").osis()).toEqual "Ps.3.1,Ps.4.1,Ps.5.1"
 		expect(p.parse("Jo 3, title, 4 NIV").osis()).toEqual "John.3-John.4"
@@ -1343,6 +1418,32 @@ describe "Parsing", ->
 		expect(p.parse("paralipomenon 1:1").osis()).toEqual "1Chr.1.1"
 		expect(p.parse("2 Paralipomenon 1:1").osis()).toEqual "2Chr.1.1"
 
+	it "should handle translations with different book orders when setting the `versification_system` manually", ->
+		p.include_apocrypha true
+		strings = [
+			["Genesis 1 to Exodus 2",	"Gen.1-Exod.2", "Gen.1-Exod.2"]
+			["1 Esdras 1 to Tobit 2",	"1Esd.1,Tob.2",	"1Esd.1-Tob.2"]
+			["2 Esdras 3\u2014Tobit 5",	"2Esd.3,Tob.5",	"2Esd.3-Tob.5"]
+		]
+		for string in strings
+			[query, kjv, nab] = string
+			p.set_options versification_system: "default"
+			expect(p.parse("#{query}").osis()).toEqual kjv
+			p.set_options versification_system: "nab"
+			expect(p.parse("#{query}").osis()).toEqual nab
+
+	it "should handle translations with different book orders in parsed strings", ->
+		p.include_apocrypha true
+		strings = [
+			["Genesis 1 to Exodus 2",	"Gen.1-Exod.2", "Gen.1-Exod.2"]
+			["1 Esdras 1 to Tobit 2",	"1Esd.1,Tob.2",	"1Esd.1-Tob.2"]
+			["2 Esdras 3\u2014Tobit 5",	"2Esd.3,Tob.5",	"2Esd.3-Tob.5"]
+		]
+		for string in strings
+			[query, kjv, nab] = string
+			expect(p.parse("#{query} KJV").osis()).toEqual kjv
+			expect(p.parse("#{query} NAB").osis()).toEqual nab
+		
 	it "should handle long strings", ->
 		strings = []
 		for i in [1..1001]
@@ -1350,6 +1451,474 @@ describe "Parsing", ->
 		string = strings.join ","
 		expect(p.parse(string).osis()).toEqual string
 		expect(p.parse("Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Psalm 1").osis()).toEqual "Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1"
+
+
+describe "Passage existence", ->
+	bcv = {}
+	beforeEach ->
+		bcv = new bcv_parser
+		bcv.set_options osis_compaction_strategy: "bc"
+
+	# Use a tab-stop of four spaces to line up these columns.
+	it "should handle reversed ranges", ->
+		strategies =
+			strings:	["Exodus 4 to Genesis 2",	"Exodus 8 to Genesis 2:7",	"Exodus 7:7 to Genesis 2",	"Exodus 5:5 to Genesis 2:6",	]
+			b:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
+			bc:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
+			bcv:		["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
+			bv:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
+			c:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				]
+			cv:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.25",		"Exod.5.5-Gen.2.6",				]
+			v:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.25",		"Exod.5.5-Gen.2.6",				]
+			none:		["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle start verses not existing", ->
+		strategies =
+			strings:	["Genesis 52",	"Genesis 52:3",	"Genesis 51-Exodus 5",	"Genesis 51-Exodus 5:9",	"Genesis 51:2-Exodus 3", 	"Genesis 51:2-Exodus 3:3", 	]
+			b:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.999",		"Gen.51.2-Exod.3.3",		]
+			bc:			["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
+			bcv:		["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
+			bv:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.22",		"Gen.51.2-Exod.3.3",					]
+			c:			["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
+			cv:			["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
+			v:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.22",		"Gen.51.2-Exod.3.3",					]
+			none:		["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.999",		"Gen.51.2-Exod.3.3",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle end verses not existing", ->
+		strategies =
+			strings:	["Genesis 49-52",	"Genesis 49-76",	"Genesis 49-52:7",		"Genesis 49:2-chapter 52",	"Genesis 49:2-51:3",	]
+			b:			["Gen.49-Gen.52",	"Gen.49-Gen.76",	"Gen.49.1-Gen.52.7",	"Gen.49.2-Gen.52.999",		"Gen.49.2-Gen.51.3",	]
+			bc:			["Gen.49-Gen.50",	"Gen.49-Gen.50",	"Gen.49-Gen.50",		"Gen.49.2-Gen.50.999",		"Gen.49.2-Gen.50.999",	]
+			bcv:		["Gen.49-Gen.50",	"Gen.49-Gen.50",	"Gen.49-Gen.50",		"Gen.49.2-Gen.50.26",		"Gen.49.2-Gen.50.26",	]
+			bv:			["Gen.49-Gen.52",	"Gen.49-Gen.76",	"Gen.49.1-Gen.52.7",	"Gen.49.2-Gen.52.999",		"Gen.49.2-Gen.51.3",	]
+			c:			["Gen.49-Gen.50",	"Gen.49-Gen.50",	"Gen.49-Gen.50",		"Gen.49.2-Gen.50.999",		"Gen.49.2-Gen.50.999",	]
+			cv:			["Gen.49-Gen.50",	"Gen.49-Gen.50",	"Gen.49-Gen.50",		"Gen.49.2-Gen.50.26",		"Gen.49.2-Gen.50.26",	]
+			v:			["Gen.49-Gen.52",	"Gen.49-Gen.76",	"Gen.49.1-Gen.52.7",	"Gen.49.2-Gen.52.999",		"Gen.49.2-Gen.51.3",	]
+			none:		["Gen.49-Gen.52",	"Gen.49-Gen.76",	"Gen.49.1-Gen.52.7",	"Gen.49.2-Gen.52.999",		"Gen.49.2-Gen.51.3",	]
+
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, end_range_digits_strategy: "sequence"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle both start and end verses not existing", ->
+		strategies =
+			strings:	["Genesis 51-52",	"Genesis 51-52:4",		"Genesis 51:2-chapter 52",	"Genesis 51:2-52:3",	"Genesis 51:2-Exodus 41",	"Genesis 51:2-Exodus 41:4",	"Genesis 51-Exodus 41",	"Genesis 51-Exodus 41:5",	]
+			b:			["Gen.51-Gen.52",	"Gen.51.1-Gen.52.4",	"Gen.51.2-Gen.52.999",		"Gen.51.2-Gen.52.3",	"Gen.51.2-Exod.41.999",		"Gen.51.2-Exod.41.4",		"Gen.51-Exod.41",		"Gen.51.1-Exod.41.5",		]
+			bc:			["",				"",						"",							"",						"",							"",							"",						"",							]
+			bcv:		["",				"",						"",							"",						"",							"",							"",						"",							]
+			bv:			["Gen.51-Gen.52",	"Gen.51.1-Gen.52.4",	"Gen.51.2-Gen.52.999",		"Gen.51.2-Gen.52.3",	"Gen.51.2-Exod.41.999",		"Gen.51.2-Exod.41.4",		"Gen.51-Exod.41",		"Gen.51.1-Exod.41.5",		]
+			c:			["",				"",						"",							"",						"",							"",							"",						"",							]
+			cv:			["",				"",						"",							"",						"",							"",							"",						"",							]
+			v:			["Gen.51-Gen.52",	"Gen.51.1-Gen.52.4",	"Gen.51.2-Gen.52.999",		"Gen.51.2-Gen.52.3",	"Gen.51.2-Exod.41.999",		"Gen.51.2-Exod.41.4",		"Gen.51-Exod.41",		"Gen.51.1-Exod.41.5",		]
+			none:		["Gen.51-Gen.52",	"Gen.51.1-Gen.52.4",	"Gen.51.2-Gen.52.999",		"Gen.51.2-Gen.52.3",	"Gen.51.2-Exod.41.999",		"Gen.51.2-Exod.41.4",		"Gen.51-Exod.41",		"Gen.51.1-Exod.41.5",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero verses with a `zero_verse_strategy: error`", ->
+		strategies =
+			strings:	["Exodus 6 to Genesis 2:0",	"Exodus 6:5 to Genesis 2:0",	"Exodus 6:0 to Genesis 2:0",	"Genesis 52:0",	"Genesis 49-Exodus 5:0",	"Genesis 49-Exodus 41:0",	"Genesis 49:3-Exodus 5:0",	"Genesis 51-Exodus 5:0",	"Genesis 51:0-Exodus 10",	"Genesis 51:0-Exodus 3:6",	"Genesis 51:2-Exodus 3:0",	"Genesis 51:0-Exodus 41:0",	]
+			b:			["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"Gen.51",					"Exod.10",					"Exod.3.6",					"Gen.51.2",					"",							]
+			bc:			["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"",							"Exod.10",					"Exod.3.6",					"",							"",							]
+			bcv:		["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"",							"Exod.10",					"Exod.3.6",					"",							"",							]
+			bv:			["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"Gen.51",					"Exod.10",					"Exod.3.6",					"Gen.51.2",					"",							]
+			c:			["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"",							"Exod.10",					"Exod.3.6",					"",							"",							]
+			cv:			["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"",							"Exod.10",					"Exod.3.6",					"",							"",							]
+			v:			["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"Gen.51",					"Exod.10",					"Exod.3.6",					"Gen.51.2",					"",							]
+			none:		["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"Gen.51",					"Exod.10",					"Exod.3.6",					"Gen.51.2",					"",							]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "error"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero verses with a `zero_verse_strategy: upgrade`", ->
+		strategies =
+			strings:	["Exodus 7 to Genesis 2:0",	"Exodus 6:5 to Genesis 2:0",	"Exodus 6:0 to Genesis 2:0",	"Genesis 52:0",	"Genesis 49-Exodus 5:0",	"Genesis 49-Exodus 41:0",	"Genesis 49:3-Exodus 5:0",	"Genesis 51-Exodus 5:0",	"Genesis 51:0-Exodus 10",	"Genesis 51:0-Exodus 3:6",	"Genesis 51:2-Exodus 3:0",	"Genesis 51:0-Exodus 41:0",	]
+			b:			["Exod.7,Gen.2.1",			"Exod.6.5,Gen.2.1",				"Exod.6.1,Gen.2.1",				"Gen.52.1",		"Gen.49.1-Exod.5.1",		"Gen.49.1-Exod.41.1",		"Gen.49.3-Exod.5.1",		"Gen.51.1-Exod.5.1",		"Gen.51-Exod.10",			"Gen.51.1-Exod.3.6",		"Gen.51.2-Exod.3.1",		"Gen.51.1-Exod.41.1",		]
+			bc:			["Exod.7,Gen.2.1",			"Exod.6.5,Gen.2.1",				"Exod.6.1,Gen.2.1",				"",				"Gen.49.1-Exod.5.1",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.1",		"Exod.5.1",					"Exod.10",					"Exod.3.6",					"Exod.3.1",					"",							]
+			bcv:		["Exod.7,Gen.2.1",			"Exod.6.5,Gen.2.1",				"Exod.6.1,Gen.2.1",				"",				"Gen.49.1-Exod.5.1",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.1",		"Exod.5.1",					"Exod.10",					"Exod.3.6",					"Exod.3.1",					"",							]
+			bv:			["Exod.7,Gen.2.1",			"Exod.6.5,Gen.2.1",				"Exod.6.1,Gen.2.1",				"Gen.52.1",		"Gen.49.1-Exod.5.1",		"Gen.49.1-Exod.41.1",		"Gen.49.3-Exod.5.1",		"Gen.51.1-Exod.5.1",		"Gen.51-Exod.10",			"Gen.51.1-Exod.3.6",		"Gen.51.2-Exod.3.1",		"Gen.51.1-Exod.41.1",		]
+			c:			["Exod.7.1-Gen.2.1",		"Exod.6.5-Gen.2.1",				"Exod.6.1-Gen.2.1",				"",				"Gen.49.1-Exod.5.1",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.1",		"Exod.5.1",					"Exod.10",					"Exod.3.6",					"Exod.3.1",					"",							]
+			cv:			["Exod.7.1-Gen.2.1",		"Exod.6.5-Gen.2.1",				"Exod.6.1-Gen.2.1",				"",				"Gen.49.1-Exod.5.1",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.1",		"Exod.5.1",					"Exod.10",					"Exod.3.6",					"Exod.3.1",					"",							]
+			v:			["Exod.7.1-Gen.2.1",		"Exod.6.5-Gen.2.1",				"Exod.6.1-Gen.2.1",				"Gen.52.1",		"Gen.49.1-Exod.5.1",		"Gen.49.1-Exod.41.1",		"Gen.49.3-Exod.5.1",		"Gen.51.1-Exod.5.1",		"Gen.51-Exod.10",			"Gen.51.1-Exod.3.6",		"Gen.51.2-Exod.3.1",		"Gen.51.1-Exod.41.1",		]
+			none:		["Exod.7.1-Gen.2.1",		"Exod.6.5-Gen.2.1",				"Exod.6.1-Gen.2.1",				"Gen.52.1",		"Gen.49.1-Exod.5.1",		"Gen.49.1-Exod.41.1",		"Gen.49.3-Exod.5.1",		"Gen.51.1-Exod.5.1",		"Gen.51-Exod.10",			"Gen.51.1-Exod.3.6",		"Gen.51.2-Exod.3.1",		"Gen.51.1-Exod.41.1",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "upgrade"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero verses with a `zero_verse_strategy: allow`", ->
+		strategies =
+			strings:	["Exodus 7 to Genesis 2:0",	"Exodus 6:5 to Genesis 2:0",	"Exodus 6:0 to Genesis 2:0",	"Genesis 52:0",	"Genesis 49-Exodus 5:0",	"Genesis 49-Exodus 41:0",	"Genesis 49:3-Exodus 5:0",	"Genesis 51-Exodus 5:0",	"Genesis 51:0-Exodus 10",	"Genesis 51:0-Exodus 3:6",	"Genesis 51:2-Exodus 3:0",	"Genesis 51:0-Exodus 41:0",	]
+			b:			["Exod.7,Gen.2.0",			"Exod.6.5,Gen.2.0",				"Exod.6.0,Gen.2.0",				"Gen.52.0",		"Gen.49.1-Exod.5.0",		"Gen.49.1-Exod.41.0",		"Gen.49.3-Exod.5.0",		"Gen.51.1-Exod.5.0",		"Gen.51.0-Exod.10.999",		"Gen.51.0-Exod.3.6",		"Gen.51.2-Exod.3.0",		"Gen.51.0-Exod.41.0",		]
+			bc:			["Exod.7,Gen.2.0",			"Exod.6.5,Gen.2.0",				"Exod.6.0,Gen.2.0",				"",				"Gen.49.1-Exod.5.0",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.0",		"Exod.5.0",					"Exod.10",					"Exod.3.6",					"Exod.3.0",					"",							]
+			bcv:		["Exod.7,Gen.2.0",			"Exod.6.5,Gen.2.0",				"Exod.6.0,Gen.2.0",				"",				"Gen.49.1-Exod.5.0",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.0",		"Exod.5.0",					"Exod.10",					"Exod.3.6",					"Exod.3.0",					"",							]
+			bv:			["Exod.7,Gen.2.0",			"Exod.6.5,Gen.2.0",				"Exod.6.0,Gen.2.0",				"Gen.52.0",		"Gen.49.1-Exod.5.0",		"Gen.49.1-Exod.41.0",		"Gen.49.3-Exod.5.0",		"Gen.51.1-Exod.5.0",		"Gen.51.0-Exod.10.29",		"Gen.51.0-Exod.3.6",		"Gen.51.2-Exod.3.0",		"Gen.51.0-Exod.41.0",		]
+			c:			["Exod.7.1-Gen.2.0",		"Exod.6.5-Gen.2.0",				"Exod.6.0-Gen.2.0",				"",				"Gen.49.1-Exod.5.0",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.0",		"Exod.5.0",					"Exod.10",					"Exod.3.6",					"Exod.3.0",					"",							]
+			cv:			["Exod.7.1-Gen.2.0",		"Exod.6.5-Gen.2.0",				"Exod.6.0-Gen.2.0",				"",				"Gen.49.1-Exod.5.0",		"Gen.49-Exod.40",			"Gen.49.3-Exod.5.0",		"Exod.5.0",					"Exod.10",					"Exod.3.6",					"Exod.3.0",					"",							]
+			v:			["Exod.7.1-Gen.2.0",		"Exod.6.5-Gen.2.0",				"Exod.6.0-Gen.2.0",				"Gen.52.0",		"Gen.49.1-Exod.5.0",		"Gen.49.1-Exod.41.0",		"Gen.49.3-Exod.5.0",		"Gen.51.1-Exod.5.0",		"Gen.51.0-Exod.10.29",		"Gen.51.0-Exod.3.6",		"Gen.51.2-Exod.3.0",		"Gen.51.0-Exod.41.0",		]
+			none:		["Exod.7.1-Gen.2.0",		"Exod.6.5-Gen.2.0",				"Exod.6.0-Gen.2.0",				"Gen.52.0",		"Gen.49.1-Exod.5.0",		"Gen.49.1-Exod.41.0",		"Gen.49.3-Exod.5.0",		"Gen.51.1-Exod.5.0",		"Gen.51.0-Exod.10.999",		"Gen.51.0-Exod.3.6",		"Gen.51.2-Exod.3.0",		"Gen.51.0-Exod.41.0",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "allow"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters with a `zero_chapter_strategy: error`", ->
+		strategies =
+			strings:	["Genesis 0-12",	"Genesis 0-12:2",	"Genesis 0-Exodus 2",	"Genesis 0-Exodus 2:3",	"Genesis 0-Exodus 0",	"Genesis 0-Exodus 0:5",	"Genesis 49-Exodus 0",	"Genesis 49-Exodus 0:4",	"Genesis 49:6-Exodus 0",	"Genesis 49:5-Exodus 0:6",	"Genesis 51-Exodus 0",	"Genesis 51-Exodus 0:7",	"Genesis 51:3-Exodus 0",	"Genesis 51:4-Exodus 0:4",	]
+			b:			["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"Gen.51",				"Gen.51",					"Gen.51.3",					"Gen.51.4",					]
+			bc:			["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"",						"",							"",							"",							]
+			bcv:		["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"",						"",							"",							"",							]
+			bv:			["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"Gen.51",				"Gen.51",					"Gen.51.3",					"Gen.51.4",					]
+			c:			["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"",						"",							"",							"",							]
+			cv:			["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"",						"",							"",							"",							]
+			v:			["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"Gen.51",				"Gen.51",					"Gen.51.3",					"Gen.51.4",					]
+			none:		["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"Gen.51",				"Gen.51",					"Gen.51.3",					"Gen.51.4",					]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters with a `zero_chapter_strategy: upgrade`", ->
+		strategies =
+			strings:	["Genesis 0-12",	"Genesis 0-12:2",	"Genesis 0-Exodus 2",	"Genesis 0-Exodus 2:3",	"Genesis 0-Exodus 0",	"Genesis 0-Exodus 0:5",	"Genesis 49-Exodus 0",	"Genesis 49-Exodus 0:4",	"Genesis 49:6-Exodus 0",	"Genesis 49:5-Exodus 0:6",	"Genesis 51-Exodus 0",	"Genesis 51-Exodus 0:7",	"Genesis 51:3-Exodus 0",	"Genesis 51:4-Exodus 0:4",	]
+			b:			["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.999",		"Gen.49.5-Exod.1.6",		"Gen.51-Exod.1",		"Gen.51.1-Exod.1.7",		"Gen.51.3-Exod.1.999",		"Gen.51.4-Exod.1.4",		]
+			bc:			["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.999",		"Gen.49.5-Exod.1.6",		"Exod.1",				"Exod.1.7",					"Exod.1",					"Exod.1.4",					]
+			bcv:		["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.22",		"Gen.49.5-Exod.1.6",		"Exod.1",				"Exod.1.7",					"Exod.1",					"Exod.1.4",					]
+			bv:			["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.22",		"Gen.49.5-Exod.1.6",		"Gen.51-Exod.1",		"Gen.51.1-Exod.1.7",		"Gen.51.3-Exod.1.22",		"Gen.51.4-Exod.1.4",		]
+			c:			["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.999",		"Gen.49.5-Exod.1.6",		"Exod.1",				"Exod.1.7",					"Exod.1",					"Exod.1.4",					]
+			cv:			["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.22",		"Gen.49.5-Exod.1.6",		"Exod.1",				"Exod.1.7",					"Exod.1",					"Exod.1.4",					]
+			v:			["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.22",		"Gen.49.5-Exod.1.6",		"Gen.51-Exod.1",		"Gen.51.1-Exod.1.7",		"Gen.51.3-Exod.1.22",		"Gen.51.4-Exod.1.4",		]
+			none:		["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.999",		"Gen.49.5-Exod.1.6",		"Gen.51-Exod.1",		"Gen.51.1-Exod.1.7",		"Gen.51.3-Exod.1.999",		"Gen.51.4-Exod.1.4",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters and verses with a `zero_chapter_strategy: error` and `zero_verse_strategy: error`", ->
+		strategies =
+			strings:	["Genesis 0-Exodus 0:0",	"Genesis 0:0-Exodus 0",	"Genesis 0:0-14",	"Genesis 0:0-chapter 14",	"Genesis 0:0-Exodus 3",	"Genesis 0:0-Exodus 3:0",	"Genesis 0:0-Exodus 3:2",	"Genesis 0:0-Exodus 0:0",	"Genesis 47-Exodus 0:0",	"Genesis 48:0-Exodus 0:0",	"Genesis 49:6-Exodus 0:0",	"Genesis 51-Exodus 0:0",	"Genesis 51:0-Exodus 0:0",	"Genesis 52:5-Exodus 0:0",	]
+			b:			["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+			bc:			["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			bcv:		["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			bv:			["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+			c:			["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			cv:			["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			v:			["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+			none:		["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "error"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters and verses with a `zero_chapter_strategy: error` and `zero_verse_strategy: allow`", ->
+		strategies =
+			strings:	["Genesis 0-Exodus 0:0",	"Genesis 0:0-Exodus 0",	"Genesis 0:0-14",	"Genesis 0:0-chapter 14",	"Genesis 0:0-Exodus 3",	"Genesis 0:0-Exodus 3:0",	"Genesis 0:0-Exodus 3:2",	"Genesis 0:0-Exodus 0:0",	"Genesis 47-Exodus 0:0",	"Genesis 48:0-Exodus 0:0",	"Genesis 49:6-Exodus 0:0",	"Genesis 51-Exodus 0:0",	"Genesis 51:0-Exodus 0:0",	"Genesis 52:5-Exodus 0:0",	]
+			b:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"Gen.51",					"Gen.51.0",					"Gen.52.5",					]
+			bc:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"",							"",							"",							]
+			bcv:		["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"",							"",							"",							]
+			bv:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"Gen.51",					"Gen.51.0",					"Gen.52.5",					]
+			c:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"",							"",							"",							]
+			cv:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"",							"",							"",							]
+			v:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"Gen.51",					"Gen.51.0",					"Gen.52.5",					]
+			none:		["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"Gen.51",					"Gen.51.0",					"Gen.52.5",					]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "allow"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters and verses with a `zero_chapter_strategy: error` and `zero_verse_strategy: upgrade`", ->
+		strategies =
+			strings:	["Genesis 0-Exodus 0:0",	"Genesis 0:0-Exodus 0",	"Genesis 0:0-14",	"Genesis 0:0-chapter 14",	"Genesis 0:0-Exodus 3",	"Genesis 0:0-Exodus 3:0",	"Genesis 0:0-Exodus 3:2",	"Genesis 0:0-Exodus 0:0",	"Genesis 47-Exodus 0:0",	"Genesis 48:0-Exodus 0:0",	"Genesis 49:6-Exodus 0:0",	"Genesis 51-Exodus 0:0",	"Genesis 51:0-Exodus 0:0",	"Genesis 52:5-Exodus 0:0",	]
+			b:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"Gen.51",					"Gen.51.1",					"Gen.52.5",					]
+			bc:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"",							"",							"",							]
+			bcv:		["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"",							"",							"",							]
+			bv:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"Gen.51",					"Gen.51.1",					"Gen.52.5",					]
+			c:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"",							"",							"",							]
+			cv:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"",							"",							"",							]
+			v:			["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"Gen.51",					"Gen.51.1",					"Gen.52.5",					]
+			none:		["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"Gen.51",					"Gen.51.1",					"Gen.52.5",					]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "upgrade"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters and verses with a `zero_chapter_strategy: upgrade` and `zero_verse_strategy: error`", ->
+		strategies =
+			strings:	["Genesis 0-Exodus 0:0",	"Genesis 0:0-Exodus 0",	"Genesis 0:0-14",	"Genesis 0:0-chapter 14",	"Genesis 0:0-Exodus 3",	"Genesis 0:0-Exodus 3:0",	"Genesis 0:0-Exodus 3:2",	"Genesis 0:0-Exodus 0:0",	"Genesis 47-Exodus 0:0",	"Genesis 48:0-Exodus 0:0",	"Genesis 49:6-Exodus 0:0",	"Genesis 51-Exodus 0:0",	"Genesis 51:0-Exodus 0:0",	"Genesis 52:5-Exodus 0:0",	]
+			b:			["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+			bc:			["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			bcv:		["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			bv:			["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+			c:			["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			cv:			["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"",							"",							"",							]
+			v:			["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+			none:		["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "error"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters and verses with a `zero_chapter_strategy: upgrade` and `zero_verse_strategy: allow`", ->
+		strategies =
+			strings:	["Genesis 0-Exodus 0:0",	"Genesis 0:0-Exodus 0",	"Genesis 0:0-14",	"Genesis 0:0-chapter 14",	"Genesis 0:0-Exodus 3",	"Genesis 0:0-Exodus 3:0",	"Genesis 0:0-Exodus 3:2",	"Genesis 0:0-Exodus 0:0",	"Genesis 47-Exodus 0:0",	"Genesis 48:0-Exodus 0:0",	"Genesis 49:6-Exodus 0:0",	"Genesis 51-Exodus 0:0",	"Genesis 51:0-Exodus 0:0",	"Genesis 52:5-Exodus 0:0",	]
+			b:			["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.999",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.999",		"Gen.1.0-Exod.3.999",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Gen.51.1-Exod.1.0",		"Gen.51.0-Exod.1.0",		"Gen.52.5-Exod.1.0",		]
+			bc:			["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.999",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.999",		"Gen.1.0-Exod.3.999",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Exod.1.0",					"Exod.1.0",					"Exod.1.0",					]
+			bcv:		["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.22",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.24",		"Gen.1.0-Exod.3.22",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Exod.1.0",					"Exod.1.0",					"Exod.1.0",					]
+			bv:			["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.22",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.24",		"Gen.1.0-Exod.3.22",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Gen.51.1-Exod.1.0",		"Gen.51.0-Exod.1.0",		"Gen.52.5-Exod.1.0",		]
+			c:			["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.999",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.999",		"Gen.1.0-Exod.3.999",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Exod.1.0",					"Exod.1.0",					"Exod.1.0",					]
+			cv:			["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.22",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.24",		"Gen.1.0-Exod.3.22",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Exod.1.0",					"Exod.1.0",					"Exod.1.0",					]
+			v:			["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.22",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.24",		"Gen.1.0-Exod.3.22",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Gen.51.1-Exod.1.0",		"Gen.51.0-Exod.1.0",		"Gen.52.5-Exod.1.0",		]
+			none:		["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.999",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.999",		"Gen.1.0-Exod.3.999",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Gen.51.1-Exod.1.0",		"Gen.51.0-Exod.1.0",		"Gen.52.5-Exod.1.0",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "allow"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle zero chapters and verses with a `zero_chapter_strategy: upgrade` and `zero_verse_strategy: upgrade`", ->
+		strategies =
+			strings:	["Genesis 0-Exodus 0:0",	"Genesis 0:0-Exodus 0",	"Genesis 0:0-14",	"Genesis 0:0-chapter 14",	"Genesis 0:0-Exodus 3",	"Genesis 0:0-Exodus 3:0",	"Genesis 0:0-Exodus 3:2",	"Genesis 0:0-Exodus 0:0",	"Genesis 47-Exodus 0:0",	"Genesis 48:0-Exodus 0:0",	"Genesis 49:6-Exodus 0:0",	"Genesis 51-Exodus 0:0",	"Genesis 51:0-Exodus 0:0",	"Genesis 52:5-Exodus 0:0",	]
+			b:			["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.52.5-Exod.1.1",		]
+			bc:			["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Exod.1.1",					"Exod.1.1",					"Exod.1.1",					]
+			bcv:		["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Exod.1.1",					"Exod.1.1",					"Exod.1.1",					]
+			bv:			["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.52.5-Exod.1.1",		]
+			c:			["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Exod.1.1",					"Exod.1.1",					"Exod.1.1",					]
+			cv:			["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Exod.1.1",					"Exod.1.1",					"Exod.1.1",					]
+			v:			["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.52.5-Exod.1.1",		]
+			none:		["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.52.5-Exod.1.1",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "upgrade"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: ignore`", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Genesis to Obadiah",	"Obadiah to Genesis",	]
+			b:			["",					"",						"",						"",						]
+			bc:			["",					"",						"",						"",						]
+			bcv:		["",					"",						"",						"",						]
+			bv:			["",					"",						"",						"",						]
+			c:			["",					"",						"",						"",						]
+			cv:			["",					"",						"",						"",						]
+			v:			["",					"",						"",						"",						]
+			none:		["",					"",						"",						"",						]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "ignore"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: first_chapter` and `book_sequence_strategy: ignore` and `book_range_strategy: ignore`", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["",					"",						"",						"",						]
+			bc:			["",					"",						"",						"",						]
+			bcv:		["",					"",						"",						"",						]
+			bv:			["",					"",						"",						"",						]
+			c:			["",					"",						"",						"",						]
+			cv:			["",					"",						"",						"",						]
+			v:			["",					"",						"",						"",						]
+			none:		["",					"",						"",						"",						]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: first_chapter`, `book_sequence_strategy: ignore` and `book_range_strategy: include`", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
+			bc:			["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
+			bcv:		["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
+			bv:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
+			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
+			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
+			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "include"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: first_chapter`, `book_sequence_strategy: include` and `book_range_strategy: ignore", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
+			bc:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
+			bcv:		["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
+			bv:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
+			c:			["",					"",						"",						"",						]
+			cv:			["",					"",						"",						"",						]
+			v:			["",					"",						"",						"",						]
+			none:		["",					"",						"",						"",						]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "ignore"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: first_chapter` and `book_sequence_strategy: include` and `book_range_strategy: include", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["Exod.1,Gen.1",		"Gen.1-Exod.999",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
+			bc:			["Exod.1,Gen.1",		"Gen.1-Exod.40",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
+			bcv:		["Exod.1,Gen.1",		"Gen.1-Exod.40",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
+			bv:			["Exod.1,Gen.1",		"Gen.1-Exod.999",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
+			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
+			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
+			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "include"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: ignore`, and `book_range_strategy: ignore`", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["",					"",						"",						"",						]
+			bc:			["",					"",						"",						"",						]
+			bcv:		["",					"",						"",						"",						]
+			bv:			["",					"",						"",						"",						]
+			c:			["",					"",						"",						"",						]
+			cv:			["",					"",						"",						"",						]
+			v:			["",					"",						"",						"",						]
+			none:		["",					"",						"",						"",						]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: ignore`, and `book_range_strategy: include`", ->
+		strategies =
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
+			bc:			["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
+			bcv:		["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
+			bv:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
+			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
+			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
+			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "include"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: include`, and `book_range_strategy: ignore`", ->
+		strategies =
+			strings:	["Exodus to Genesis",				"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
+			b:			["Exod.1-Exod.999,Gen.1-Gen.999",	"",						"Obad.1,Gen.1-Gen.999",	"",						]
+			bc:			["Exod.1-Exod.40,Gen.1-Gen.50",		"",						"Obad.1,Gen.1-Gen.50",	"",						]
+			bcv:		["Exod.1-Exod.40,Gen.1-Gen.50",		"",						"Obad.1,Gen.1-Gen.50",	"",						]
+			bv:			["Exod.1-Exod.999,Gen.1-Gen.999",	"",						"Obad.1,Gen.1-Gen.999",	"",						]
+			c:			["",								"",						"",						"",						]
+			cv:			["",								"",						"",						"",						]
+			v:			["",								"",						"",						"",						]
+			none:		["",								"",						"",						"",						]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "ignore"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: include`, and `book_range_strategy: include`", ->
+		strategies =
+			strings:	["Exodus to Genesis",				"Genesis to Exodus",	"Obadiah to Genesis",				"Genesis to Obadiah",	]
+			b:			["Exod.1-Exod.999,Gen.1-Gen.999",	"Gen.1-Exod.999",		"Obad.1,Gen.1-Gen.999",				"Gen.1-Obad.1",			]
+			bc:			["Exod.1-Exod.40,Gen.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1,Gen.1-Gen.50",				"Gen.1-Obad.1",			]
+			bcv:		["Exod.1-Exod.40,Gen.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1,Gen.1-Gen.50",				"Gen.1-Obad.1",			]
+			bv:			["Exod.1-Exod.999,Gen.1-Gen.999",	"Gen.1-Exod.999",		"Obad.1,Gen.1-Gen.999",				"Gen.1-Obad.1",			]
+			c:			["Exod.1-Gen.50",					"Gen.1-Exod.40",		"Obad.1-Gen.50",					"Gen.1-Obad.1",			]
+			cv:			["Exod.1-Gen.50",					"Gen.1-Exod.40",		"Obad.1-Gen.50",					"Gen.1-Obad.1",			]
+			v:			["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			]
+			none:		["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "include"
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle single-chapter start books", ->
+		strategies =
+			strings:	["Obadiah 1-Malachi 5",	"Obadiah 1-Malachi 5:8",	"Obadiah 1:4-Malachi 5",	"Obadiah 1:5-Malachi 5:8",	"Obadiah 8-Malachi 5",	"Obadiah 9-Malachi 5:8",	"Obadiah 24-Malachi 5",	"Obadiah 25-Malachi 5:8",	"Obadiah 1:28-Malachi 5",	"Obadiah 1:29-Malachi 5:8",	]
+			b:			["Obad.1-Mal.5",		"Obad.1.1-Mal.5.8",			"Obad.1.4-Mal.5.999",		"Obad.1.5-Mal.5.8",			"Obad.1.8-Mal.5.999",	"Obad.1.9-Mal.5.8",			"Obad.1.24-Mal.5.999",	"Obad.1.25-Mal.5.8",		"Obad.1.28-Mal.5.999",		"Obad.1.29-Mal.5.8",		]
+			bc:			["Obad.1-Mal.4",		"Obad.1-Mal.4",				"Obad.1.4-Mal.4.999",		"Obad.1.5-Mal.4.999",		"Obad.1.8-Mal.4.999",	"Obad.1.9-Mal.4.999",		"Obad.1.24-Mal.4.999",	"Obad.1.25-Mal.4.999",		"Obad.1.28-Mal.4.999",		"Obad.1.29-Mal.4.999",		]
+			bcv:		["Obad.1-Mal.4",		"Obad.1-Mal.4",				"Obad.1.4-Mal.4.6",			"Obad.1.5-Mal.4.6",			"Obad.1.8-Mal.4.6",		"Obad.1.9-Mal.4.6",			"",						"",							"",							"",							]
+			bv:			["Obad.1-Mal.5",		"Obad.1.1-Mal.5.8",			"Obad.1.4-Mal.5.999",		"Obad.1.5-Mal.5.8",			"Obad.1.8-Mal.5.999",	"Obad.1.9-Mal.5.8",			"Mal.5",				"Mal.5.8",					"Mal.5",					"Mal.5.8",					]
+			c:			["Obad.1-Mal.4",		"Obad.1-Mal.4",				"Obad.1.4-Mal.4.999",		"Obad.1.5-Mal.4.999",		"Obad.1.8-Mal.4.999",	"Obad.1.9-Mal.4.999",		"Obad.1.24-Mal.4.999",	"Obad.1.25-Mal.4.999",		"Obad.1.28-Mal.4.999",		"Obad.1.29-Mal.4.999",		]
+			cv:			["Obad.1-Mal.4",		"Obad.1-Mal.4",				"Obad.1.4-Mal.4.6",			"Obad.1.5-Mal.4.6",			"Obad.1.8-Mal.4.6",		"Obad.1.9-Mal.4.6",			"",						"",							"",							"",							]
+			v:			["Obad.1-Mal.5",		"Obad.1.1-Mal.5.8",			"Obad.1.4-Mal.5.999",		"Obad.1.5-Mal.5.8",			"Obad.1.8-Mal.5.999",	"Obad.1.9-Mal.5.8",			"Mal.5",				"Mal.5.8",					"Mal.5",					"Mal.5.8",					]
+			none:		["Obad.1-Mal.5",		"Obad.1.1-Mal.5.8",			"Obad.1.4-Mal.5.999",		"Obad.1.5-Mal.5.8",			"Obad.1.8-Mal.5.999",	"Obad.1.9-Mal.5.8",			"Obad.1.24-Mal.5.999",	"Obad.1.25-Mal.5.8",		"Obad.1.28-Mal.5.999",		"Obad.1.29-Mal.5.8",		]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	it "should handle single-chapter end books", ->
+		strategies =
+			strings:	["Genesis 49-Obadiah 1",	"Genesis 49-Obadiah 32",	"Genesis 49-Obadiah 1:1",	"Genesis 49-Obadiah 1:33",	"Genesis 49-Obadiah 34:1",	"Genesis 49:2-Obadiah 1",	"Genesis 49:3-Obadiah 35",	"Genesis 49:4-Obadiah 1:1",	"Genesis 49:5-Obadiah 1:36",	"Genesis 49:6-Obadiah 37:1",	"Genesis 51-Obadiah 1",	"Genesis 51-Obadiah 38",	"Genesis 51-Obadiah 1:1",	"Genesis 51-Obadiah 1:39",	"Genesis 51-Obadiah 40:1",	"Genesis 51:2-Obadiah 1",	"Genesis 51:3-Obadiah 41",	"Genesis 51:4-Obadiah 1:1",	"Genesis 51:5-Obadiah 1:42",	"Genesis 51:6-Obadiah 43:1",	]
+			b:			["Gen.49-Obad.1",			"Gen.49.1-Obad.1.32",		"Gen.49.1-Obad.1.1",		"Gen.49.1-Obad.1.33",		"Gen.49-Obad.1",			"Gen.49.2-Obad.1.999",		"Gen.49.3-Obad.1.35",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.36",			"Gen.49.6-Obad.1.999",			"Gen.51-Obad.1",		"Gen.51.1-Obad.1.38",		"Gen.51.1-Obad.1.1",		"Gen.51.1-Obad.1.39",		"Gen.51-Obad.1",			"Gen.51.2-Obad.1.999",		"Gen.51.3-Obad.1.41",		"Gen.51.4-Obad.1.1",		"Gen.51.5-Obad.1.42",			"Gen.51.6-Obad.1.999",			]
+			bc:			["Gen.49-Obad.1",			"Gen.49.1-Obad.1.32",		"Gen.49.1-Obad.1.1",		"Gen.49.1-Obad.1.33",		"Gen.49-Obad.1",			"Gen.49.2-Obad.1.999",		"Gen.49.3-Obad.1.35",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.36",			"Gen.49.6-Obad.1.999",			"Obad.1",				"Obad.1.38",				"Obad.1.1",					"Obad.1.39",				"",							"Obad.1",					"Obad.1.41",				"Obad.1.1",					"Obad.1.42",					"",								]
+			bcv:		["Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.1-Obad.1.1",		"Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.2-Obad.1.21",		"Gen.49.3-Obad.1.21",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.21",			"Gen.49.6-Obad.1.21",			"Obad.1",				"",							"Obad.1.1",					"",							"",							"Obad.1",					"",							"Obad.1.1",					"",								"",								]
+			bv:			["Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.1-Obad.1.1",		"Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.2-Obad.1.21",		"Gen.49.3-Obad.1.21",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.21",			"Gen.49.6-Obad.1.21",			"Gen.51-Obad.1",		"Gen.51-Obad.1",			"Gen.51.1-Obad.1.1",		"Gen.51-Obad.1",			"Gen.51-Obad.1",			"Gen.51.2-Obad.1.21",		"Gen.51.3-Obad.1.21",		"Gen.51.4-Obad.1.1",		"Gen.51.5-Obad.1.21",			"Gen.51.6-Obad.1.21",			]
+			c:			["Gen.49-Obad.1",			"Gen.49.1-Obad.1.32",		"Gen.49.1-Obad.1.1",		"Gen.49.1-Obad.1.33",		"Gen.49-Obad.1",			"Gen.49.2-Obad.1.999",		"Gen.49.3-Obad.1.35",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.36",			"Gen.49.6-Obad.1.999",			"Obad.1",				"Obad.1.38",				"Obad.1.1",					"Obad.1.39",				"",							"Obad.1",					"Obad.1.41",				"Obad.1.1",					"Obad.1.42",					"",								]
+			cv:			["Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.1-Obad.1.1",		"Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.2-Obad.1.21",		"Gen.49.3-Obad.1.21",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.21",			"Gen.49.6-Obad.1.21",			"Obad.1",				"",							"Obad.1.1",					"",							"",							"Obad.1",					"",							"Obad.1.1",					"",								"",								]
+			v:			["Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.1-Obad.1.1",		"Gen.49-Obad.1",			"Gen.49-Obad.1",			"Gen.49.2-Obad.1.21",		"Gen.49.3-Obad.1.21",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.21",			"Gen.49.6-Obad.1.21",			"Gen.51-Obad.1",		"Gen.51-Obad.1",			"Gen.51.1-Obad.1.1",		"Gen.51-Obad.1",			"Gen.51-Obad.1",			"Gen.51.2-Obad.1.21",		"Gen.51.3-Obad.1.21",		"Gen.51.4-Obad.1.1",		"Gen.51.5-Obad.1.21",			"Gen.51.6-Obad.1.21",			]
+			none:		["Gen.49-Obad.1",			"Gen.49.1-Obad.1.32",		"Gen.49.1-Obad.1.1",		"Gen.49.1-Obad.1.33",		"Gen.49-Obad.1",			"Gen.49.2-Obad.1.999",		"Gen.49.3-Obad.1.35",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.36",			"Gen.49.6-Obad.1.999",			"Gen.51-Obad.1",		"Gen.51.1-Obad.1.38",		"Gen.51.1-Obad.1.1",		"Gen.51.1-Obad.1.39",		"Gen.51-Obad.1",			"Gen.51.2-Obad.1.999",		"Gen.51.3-Obad.1.41",		"Gen.51.4-Obad.1.1",		"Gen.51.5-Obad.1.42",			"Gen.51.6-Obad.1.999",			]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+
+	xit "should handle template", ->
+		strategies =
+			strings:	["",	"",	"",	"",	]
+			b:			["",			"",			"",			]
+			bc:			["",			"",			"",			]
+			bcv:		["",			"",			"",			]
+			bv:			["",			"",			"",			]
+			c:			["",			"",			"",			]
+			cv:			["",			"",			"",			]
+			v:			["",			"",			"",			]
+			none:		["",			"",			"",			]
+		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
+			continue unless strategies[strategy]?
+			bcv.set_options "passage_existence_strategy": strategy
+			for i in [0 ... strategies.strings.length]
+				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 describe "Documentation compatibility", ->
 	bcv = {}
@@ -1387,6 +1956,42 @@ describe "Documentation compatibility", ->
 	it "should match `set_options()`", ->
 		bcv.set_options({"osis_compaction_strategy": "bcv"});
 		expect(bcv.parse("Genesis 1").osis()).toEqual "Gen.1.1-Gen.1.31"
+
+describe "Administrative behavior", ->
+	p = {}
+	beforeEach ->
+		p = new bcv_parser
+
+	it "should handle `translation_info` given known inputs", ->
+		niv = p.translation_info("niv")
+		expect(niv.order["1Esd"]).toEqual 82
+		expect(niv.books[65]).toEqual "Rev"
+		expect(niv.books.length).toEqual 84
+		expect(niv.chapters["3John"][0]).toEqual 14
+		expect(p.options.versification_system).toEqual "default"
+		esv = p.translation_info("esv")
+		expect(esv.order["1Esd"]).toEqual 82
+		expect(esv.books[65]).toEqual "Rev"
+		expect(esv.books.length).toEqual 84
+		expect(esv.chapters["3John"][0]).toEqual 15
+		expect(p.options.versification_system).toEqual "default"
+		nab = p.translation_info("nabre")
+		expect(nab.order["1Esd"]).toEqual 18
+		expect(nab.books[65]).toEqual "Gal"
+		expect(nab.books.length).toEqual 84
+		expect(nab.chapters["3John"][0]).toEqual 15
+		expect(p.options.versification_system).toEqual "default"
+		# Verify that we've made a copy, not a reference.
+		nab.order["Gen"] = 15
+		expect(p.translations.default.order["Gen"]).toEqual 1
+
+	it "should handle `translation_info` given unknown inputs", ->
+		p.set_options versification_system: "nab"
+		array_response = p.translation_info([])
+		null_response = p.translation_info(null)
+		expect(array_response.chapters["3John"][0]).toEqual 15
+		expect(null_response.chapters["3John"][0]).toEqual 15
+
 
 describe "Real-world parsing", ->
 	p = {}
@@ -1429,7 +2034,7 @@ describe "Real-world parsing", ->
 		expect(p.parse("  Cant sleep? Check out Isaiah 26:3. Hope this helps. Then read Proverbs Chap 10. The whole chapter. Good night.").osis()).toEqual "Isa.26.3,Prov.10.1-Prov.10.32"
 		expect(p.parse("  john 3:16 i memorized it when i was 5.  now i like john 3:16-18..  vs 17 and 18 go with it too. they kinda help/clarify vs 16.").osis()).toEqual "John.3.16,John.3.16-John.3.18,John.3.17-John.3.18"
 		expect(p.parse("Matt 4:8/9.").osis()).toEqual "Matt.4.8-Matt.4.9"
-		expect(p.parse("Isa41.10ESV fear not for I am with you").osis_and_indices()).toEqual [{osis:'Isa.41.10',indices:[0,11],translations:['ESV']}]
+		expect(p.parse("Isa41.10ESV fear not for I am with you").osis_and_indices()).toEqual [{osis:"Isa.41.10",indices:[0,11],translations:["ESV"]}]
 		#Alternate: Acts.1.1-Acts.1.14,Luke.1.1-Acts.28.31
 		expect(p.parse("studying Acts 1:1-14 for a sermon next Sunday... learning more and more about Luke-Acts").osis()).toEqual "Acts.1.1-Acts.1.14"
 		expect(p.parse("Matthew 28  1: Now after").osis()).toEqual "Matt.28.1"
@@ -1447,28 +2052,29 @@ describe "Real-world parsing", ->
 		# Could go either way
 		expect(p.parse("Matthew 26:28.5").osis()).toEqual "Matt.26.28,Matt.26.5"
 		expect(p.parse("1\u00a0Cor\u00a02\u00a01").osis()).toEqual "1Cor.2.1"
-		expect(p.parse("Mark \t\u00a0\r\n 9").osis_and_indices()).toEqual [{osis:"Mark.9.1-Mark.9.50",indices:[0,11],translations:['']}]
+		expect(p.parse("Mark \t\u00a0\r\n 9").osis_and_indices()).toEqual [{osis:"Mark.9.1-Mark.9.50",indices:[0,11],translations:[""]}]
 		expect(p.parse("He has given proof of ths 2 all men by raising Him from the dead. Acts 17:31").osis()).toEqual "Acts.17.31"
 		expect(p.parse("John 3:16~17").osis()).toEqual "John.3.16-John.3.17"
 		expect(p.parse("*Romans*8:38-39").osis()).toEqual "Rom.8.38-Rom.8.39"
 		expect(p.parse("rev.1:4. \"7 spirits before the throne.\"").osis()).toEqual "Rev.1.4"
 		expect(p.parse("April 14:  Deut. 34:1-Joshua 2:24; Psalm 79; Proverbs 12:26; Joshua 2:8-14 The sheer variety of pe..  ").osis()).toEqual "Deut.34.1-Josh.2.24,Ps.79.1-Ps.79.13,Prov.12.26,Josh.2.8-Josh.2.14"
 		expect(p.parse("Wednesday's Bible Reading: Proverbs 15, Mark 7,8 and 9  ").osis()).toEqual "Prov.15.1-Prov.15.33,Mark.7.1-Mark.9.50"
-		expect(p.parse("Prov.1:20-33 vs.33But whoever").osis()).toEqual "Prov.1.20-Prov.1.33,Prov.1.33"
+		# Better: Prov.1.20-Prov.1.33,Prov.1.33
+		expect(p.parse("Prov.1:20-33 vs.33But whoever").osis()).toEqual "Prov.1.20-Prov.31.31"
 		# Better: Gal.5.22-Gal.5.25,1Cor.13.4-1Cor.13.13
 		expect(p.parse("read Gal 5:22-25 and1 Cor 13:4-13").osis()).toEqual "Gal.5.22-Gal.5.25,Gal.5.1"
 		# Better: Ps.91.1-Ps.91.2
 		expect(p.parse("Psalm91-1:2 (1 of my faves)").osis()).toEqual "Ps.91.1-Ps.91.16,Ps.1.2"
-		expect(p.parse("Ezekiel 25-17").osis()).toEqual "Ezek.25.17"
+		expect(p.parse("Ezekiel 25-16").osis()).toEqual "Ezek.25.16"
 		expect(p.parse("Proverbs 22:9;28:27A - 700 Club").osis()).toEqual "Prov.22.9,Prov.28.27"
 		expect(p.parse("Psalm 125-1 Love it!").osis()).toEqual "Ps.125.1"
 		expect(p.parse("challenged by Eph 4:11-16. Verse 16 is really speaking to me").osis()).toEqual "Eph.4.11-Eph.4.16,Eph.4.16"
-		# Better: ''
+		# Better: ""
 		expect(p.parse("John - 4/18/2009 9:20:10 PM").osis()).toEqual "John.4.1-John.4.54,John.18.1-John.18.40"
 		# Breaks down at Leviticus
 		expect(p.parse("-Job 32:21-22-Col 3:25-Deut 10:17-Ja 2:1-4-Lev 19:15-Rom 2:9-11-Acts 10:34-35-Dt 1:17").osis()).toEqual "Job.32.21-Job.32.22,Col.3.25,Deut.10.17,Jas.2.1-Jas.2.4,Lev.19.15-Rom.2.9,Rom.2.11,Acts.10.34-Acts.10.35,Deut.1.17"
 		expect(p.parse("Revelation 13:11:18").osis()).toEqual "Rev.13.11,Rev.13.18"
-		expect(p.parse("===Read Mark chapter 5========Mark 6:30-32 NKJV 30 Then the apostles gathered").osis_and_translations()).toEqual [['Mark.5.1-Mark.5.43', 'NKJV'], ['Mark.6.30-Mark.6.32', 'NKJV']]
+		expect(p.parse("===Read Mark chapter 5========Mark 6:30-32 NKJV 30 Then the apostles gathered").osis_and_translations()).toEqual [["Mark.5.1-Mark.5.43", "NKJV"], ["Mark.6.30-Mark.6.32", "NKJV"]]
 		expect(p.parse("look at psalms 42:1, hebrews 13-15, jeremiah 33-11").osis()).toEqual "Ps.42.1,Heb.13.15,Jer.33.11"
 		expect(p.parse("Though he fall, he shall not be utterly cast down: for the LORD upholdeth him with his hand. (Psalm 37:,24)").osis()).toEqual "Ps.37.1-Ps.37.40,Ps.24.1-Ps.24.10"
 		expect(p.parse("gal?: 4 People").osis()).toEqual ""
@@ -1491,13 +2097,13 @@ describe "Real-world parsing", ->
 		# Better: Deut.6.1-Deut.7.26,Eccl.2,John.19
 		expect(p.parse("Deuteronomy 6,7Ecclesiastes 2John 19").osis()).toEqual "Deut.6.1-Deut.7.26"
 		expect(p.parse("Bible study tonight on Colossians 1:13-14 and 1:20+.").osis()).toEqual "Col.1.13-Col.1.14,Col.1.20"
-		expect(p.parse("(Heb 11.1nrsv)").osis_and_indices()).toEqual [{osis: 'Heb.11.1',indices:[1,13],translations: ['NRSV']}]
+		expect(p.parse("(Heb 11.1nrsv)").osis_and_indices()).toEqual [{osis: "Heb.11.1",indices:[1,13],translations: ["NRSV"]}]
 		# Better if translations had HCSB
-		expect(p.parse("my mouth (HCSB) Psalm 119-103").osis_and_indices()).toEqual [{osis: 'Ps.119.103',indices:[16,29],translations: ['']}]
+		expect(p.parse("my mouth (HCSB) Psalm 119-103").osis_and_indices()).toEqual [{osis: "Ps.119.103",indices:[16,29],translations: [""]}]
 		expect(p.parse("2 Timothy 3;1-5").osis()).toEqual "2Tim.3.1-2Tim.3.17,2Tim.1.5"
-		expect(p.parse("2 Timothy 3; NIV, 1-5 ESV").osis_and_translations()).toEqual [['2Tim.3.1-2Tim.3.17', 'NIV'],['2Tim.1.5', 'ESV']]
-		expect(p.parse("2 Timothy 3; NIV, ch. 1 ESV").osis_and_translations()).toEqual [['2Tim.3.1-2Tim.3.17', 'NIV'],['2Tim.1.1-2Tim.1.18', 'ESV']]
-		expect(p.parse("2 Timothy 3; NIV, vv 1-5 ESV").osis_and_indices()).toEqual [{osis:'2Tim.3.1-2Tim.3.17',indices:[0,16],translations:['NIV']},{osis:'2Tim.3.1-2Tim.3.5',indices:[18,28],translations:['ESV']}]
+		expect(p.parse("2 Timothy 3; NIV, 1-5 ESV").osis_and_translations()).toEqual [["2Tim.3.1-2Tim.3.17", "NIV"],["2Tim.1.5", "ESV"]]
+		expect(p.parse("2 Timothy 3; NIV, ch. 1 ESV").osis_and_translations()).toEqual [["2Tim.3.1-2Tim.3.17", "NIV"],["2Tim.1.1-2Tim.1.18", "ESV"]]
+		expect(p.parse("2 Timothy 3; NIV, vv 1-5 ESV").osis_and_indices()).toEqual [{osis:"2Tim.3.1-2Tim.3.17",indices:[0,16],translations:["NIV"]},{osis:"2Tim.3.1-2Tim.3.5",indices:[18,28],translations:["ESV"]}]
 		expect(p.parse("2nd Reading: Ecc 6 \u2013 v12 James 4:14.").osis()).toEqual "Eccl.6.12,Jas.4.14"
 		expect(p.parse("Jas 1:26,27. Vs 26- bridle.").osis()).toEqual "Jas.1.26-Jas.1.27,Jas.1.26"
 		expect(p.parse("Ezekiel - 25-17.mp3").osis()).toEqual "Ezek.25.17"
@@ -1519,7 +2125,9 @@ describe "Real-world parsing", ->
 		# Better: Matt.24.1-Matt.24.51,Luke.21.1-Luke.21.38
 		expect(p.parse("read matthew 24 and luke 21 and see 4 yourself!!!!").osis()).toEqual "Matt.24.1-Matt.24.51,Luke.21.1-Luke.21.38,Luke.4.1-Luke.4.44"
 		expect(p.parse("Proverbs 1'20-24").osis()).toEqual "Prov.1.20-Prov.1.24"
-		expect(p.parse("Devotions: John 10:22-42  vs 27 \"My sheep hear my voice").osis_and_indices()).toEqual [{osis:'John.10.22-John.10.42,John.10.27',indices:[11,31],translations:['']}]
+		# Earlier versions of the parser treated this string as `John.10.22-John.10.42,John.10.27`. However, that led to treating `Mark 16:2-17:3` as `Mark.16.2-Mark.16.17,Mark.16.3`
+		expect(p.parse("Devotions: John 10:22-42  vs 27 \"My sheep hear my voice").osis_and_indices()).toEqual [{osis:"John.10.22-John.21.25",indices:[11,31],translations:[""]}]
+		expect(p.parse("Mark 16:2-17:3").osis()).toEqual "Mark.16.2-Mark.16.20"
 		expect(p.parse("Leviticus 26.8. '5 shall chase a 100'.").osis()).toEqual "Lev.26.8"
 		expect(p.parse("Leviticus 26.8. \"5 shall chase a 100'.").osis()).toEqual "Lev.26.8"
 		expect(p.parse("Deuteronomy 6:4-9 and Matthew 22-34-40").osis()).toEqual "Deut.6.4-Deut.6.9,Matt.22.34-Matt.22.40"
@@ -1547,7 +2155,7 @@ describe "Real-world parsing", ->
 		expect(p.parse("encourages Thes.5:11. 5Be a mom who laughs Prov.17:22. 6Be a mom who hugsLuke18:15").osis()).toEqual "Prov.17.22"
 		expect(p.parse("...Whoever does these things will never be shaken.\" Psalm 15:2, 5b").osis()).toEqual "Ps.15.2,Ps.15.5"
 		expect(p.parse("Colossians 2:6-7 ... 6 Therefore)  ").osis()).toEqual "Col.2.6-Col.2.7"
-		expect(p.parse("Colossians 2:6-7:6").osis()).toEqual "Col.2.6-Col.2.7,Col.2.6"
+		expect(p.parse("Colossians 2:6-7:6").osis()).toEqual "Col.2.6-Col.4.18"
 		expect(p.parse("1Samuel 28:20- 2Samuel 12:10").osis()).toEqual "1Sam.28.20-2Sam.12.10"
 		expect(p.parse("Isaiah 53. 700 years before Jesus").osis()).toEqual "Isa.53.1-Isa.53.12"
 		expect(p.parse("John.2.1-John.2.25").osis()).toEqual "John.2.1-John.2.25"
@@ -1618,8 +2226,8 @@ describe "Real-world parsing", ->
 		expect(p.parse("matt 22:37,2nd part").osis()).toEqual "Matt.22.37,Matt.22.2"
 		expect(p.parse("John 13:15, 34b").osis()).toEqual "John.13.15,John.13.34"
 		expect(p.parse("John 13:15, 34began").osis()).toEqual "John.13.15"
-		expect(p.parse("John 13:15, 34 began").osis_and_indices()).toEqual [{osis:'John.13.15,John.13.34',indices:[0,14],translations:['']}]
-		expect(p.parse("Eph. 4:26-27.30. NIV.").osis()).toEqual "Eph.4.26-Eph.4.27,Eph.4.30"
+		expect(p.parse("John 13:15, 34 began").osis_and_indices()).toEqual [{osis:"John.13.15,John.13.34",indices:[0,14],translations:[""]}]
+		expect(p.parse("Eph. 4:26-27.30. NIV.").osis()).toEqual "Eph.4.26-Eph.6.24"
 		expect(p.parse("so. See 3 John 5-8.").osis_and_indices()).toEqual [{osis:"3John.1.5-3John.1.8", indices:[8,18], translations:[""]}]
 		expect(p.parse("Dan, verse 14").osis_and_indices()).toEqual [{osis:"Dan.1.14", indices:[0,13], translations:[""]}]
 		expect(p.parse("Isaiah 41:10 is my").osis_and_indices()).toEqual [{osis:"Isa.41.10", indices:[0,12], translations:[""]}]

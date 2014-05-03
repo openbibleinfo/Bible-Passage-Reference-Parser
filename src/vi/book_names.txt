@@ -1,0 +1,513 @@
+1Chr	I. Sử biên niên
+1Chr	1. Sử biên niên
+1Chr	I Sử biên niên
+1Chr	1 Sử biên niên
+1Chr	1. Lịch sử
+1Chr	I. Lịch sử
+1Chr	1 Lịch sử
+1Chr	I Lịch sử
+1Chr	I. Sử Ký
+1Chr	1. Sử Ký
+1Chr	1. Sử ký
+1Chr	I. Sử ký
+1Chr	1 Sử ký
+1Chr	1 Sử Ký
+1Chr	I Sử Ký
+1Chr	I Sử ký
+1Chr	1. Sử
+1Chr	I. Sử
+1Chr	1Chr
+1Chr	I Sử
+1Chr	1 Sử
+1Cor	I. Cô-rinh-tô
+1Cor	1. Cô-rinh-tô
+1Cor	I Cô-rinh-tô
+1Cor	1 Cô-rinh-tô
+1Cor	1. Côrintô
+1Cor	1. Cô-rinh
+1Cor	I. Côrintô
+1Cor	I. Cô-rinh
+1Cor	I Côrintô
+1Cor	1 Cô-rinh
+1Cor	I Cô-rinh
+1Cor	1 Côrintô
+1Cor	1. Cô
+1Cor	I. Cô
+1Cor	I Cô
+1Cor	1Cor
+1Cor	1 Cô
+1Esd	1Esd
+1John	1. Gioan
+1John	I. Giăng
+1John	1. Giăng
+1John	I. Gioan
+1John	1 Gioan
+1John	I Gioan
+1John	I Giăng
+1John	1 Giăng
+1John	1. Gi
+1John	I. Gi
+1John	1John
+1John	1 Gi
+1John	I Gi
+1Kgs	I. Các Vua
+1Kgs	1. Các Vua
+1Kgs	I Các Vua
+1Kgs	1 Các Vua
+1Kgs	1. Vua
+1Kgs	I. Vua
+1Kgs	I Vua
+1Kgs	1 Vua
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	1. Phi-e-rơ
+1Pet	I. Phi-e-rơ
+1Pet	I. Phia-rơ
+1Pet	I Phi-e-rơ
+1Pet	1. Phia-rơ
+1Pet	1 Phi-e-rơ
+1Pet	1. Phê-rơ
+1Pet	I Phia-rơ
+1Pet	1 Phia-rơ
+1Pet	I. Phi-rơ
+1Pet	1. Phi-rơ
+1Pet	I. Phê-rơ
+1Pet	1 Phi-rơ
+1Pet	1 Phê-rơ
+1Pet	I Phi-rơ
+1Pet	I Phê-rơ
+1Pet	1. Phêrô
+1Pet	I. Phêrô
+1Pet	I Phêrô
+1Pet	1 Phêrô
+1Pet	1. Phia
+1Pet	I. Phia
+1Pet	1 Phia
+1Pet	I Phia
+1Pet	1Pet
+1Sam	I. Sa-mu-ên
+1Sam	1. Sa-mu-ên
+1Sam	I Sa-mu-ên
+1Sam	1 Sa-mu-ên
+1Sam	I. Samuel
+1Sam	1. Samuel
+1Sam	1 Samuel
+1Sam	I Samuel
+1Sam	I. Sam
+1Sam	1. Sam
+1Sam	1. Sa
+1Sam	1 Sam
+1Sam	I. Sa
+1Sam	I Sam
+1Sam	1Sam
+1Sam	1 Sa
+1Sam	I Sa
+1Thess	I. Thê-sa-lô-ni-ca
+1Thess	1. Thê-sa-lô-ni-ca
+1Thess	1 Thê-sa-lô-ni-ca
+1Thess	I. Tê-sa-lô-ni-ca
+1Thess	I Thê-sa-lô-ni-ca
+1Thess	1. Tê-sa-lô-ni-ca
+1Thess	I Tê-sa-lô-ni-ca
+1Thess	1 Tê-sa-lô-ni-ca
+1Thess	1. Thêxalônica
+1Thess	I. Thêxalônica
+1Thess	1 Thêxalônica
+1Thess	I Thêxalônica
+1Thess	1Thess
+1Thess	1. Tê
+1Thess	I. Tê
+1Thess	1 Tê
+1Thess	I Tê
+1Tim	I. Ti-mô-thê
+1Tim	1. Ti-mô-thê
+1Tim	1 Ti-mô-thê
+1Tim	I Ti-mô-thê
+1Tim	1. Timôthê
+1Tim	I. Timôthê
+1Tim	I Timôthê
+1Tim	1 Timôthê
+1Tim	1. Tim
+1Tim	I. Tim
+1Tim	1 Tim
+1Tim	I Tim
+1Tim	1Tim
+2Chr	II. Sử biên niên
+2Chr	2. Sử biên niên
+2Chr	II Sử biên niên
+2Chr	2 Sử biên niên
+2Chr	II. Lịch sử
+2Chr	II.  Sử Ký
+2Chr	2. Lịch sử
+2Chr	II Lịch sử
+2Chr	2.  Sử Ký
+2Chr	2 Lịch sử
+2Chr	II  Sử Ký
+2Chr	II. Sử ký
+2Chr	II Sử ký
+2Chr	2  Sử Ký
+2Chr	2. Sử ký
+2Chr	2 Sử ký
+2Chr	II. Sử
+2Chr	II Sử
+2Chr	2. Sử
+2Chr	2 Sử
+2Chr	2Chr
+2Cor	II. Cô-rinh-tô
+2Cor	II Cô-rinh-tô
+2Cor	2. Cô-rinh-tô
+2Cor	2 Cô-rinh-tô
+2Cor	II. Côrintô
+2Cor	II. Cô-rinh
+2Cor	2. Côrintô
+2Cor	II Cô-rinh
+2Cor	2. Cô-rinh
+2Cor	II Côrintô
+2Cor	2 Côrintô
+2Cor	2 Cô-rinh
+2Cor	II. Cô
+2Cor	2. Cô
+2Cor	II Cô
+2Cor	2Cor
+2Cor	2 Cô
+2Esd	2Esd
+2John	II. Gioan
+2John	II. Giăng
+2John	II Giăng
+2John	2. Giăng
+2John	2. Gioan
+2John	II Gioan
+2John	2 Gioan
+2John	2 Giăng
+2John	II. Gi
+2John	II Gi
+2John	2. Gi
+2John	2John
+2John	2 Gi
+2Kgs	II. Các Vua
+2Kgs	2. Các Vua
+2Kgs	II Các Vua
+2Kgs	2 Các Vua
+2Kgs	II. Vua
+2Kgs	II Vua
+2Kgs	2. Vua
+2Kgs	2 Vua
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	II. Phi-e-rơ
+2Pet	II Phi-e-rơ
+2Pet	II. Phia-rơ
+2Pet	2. Phi-e-rơ
+2Pet	II. Phi-rơ
+2Pet	II. Phê-rơ
+2Pet	2. Phia-rơ
+2Pet	II Phia-rơ
+2Pet	2 Phi-e-rơ
+2Pet	II Phi-rơ
+2Pet	2. Phi-rơ
+2Pet	2 Phia-rơ
+2Pet	II. Phêrô
+2Pet	2. Phê-rơ
+2Pet	II Phê-rơ
+2Pet	2. Phêrô
+2Pet	2 Phi-rơ
+2Pet	2 Phê-rơ
+2Pet	II. Phia
+2Pet	II Phêrô
+2Pet	2. Phia
+2Pet	II Phia
+2Pet	2 Phêrô
+2Pet	2 Phia
+2Pet	2Pet
+2Sam	II. Sa-mu-ên
+2Sam	II Sa-mu-ên
+2Sam	2. Sa-mu-ên
+2Sam	2 Sa-mu-ên
+2Sam	II. Samuel
+2Sam	2. Samuel
+2Sam	II Samuel
+2Sam	2 Samuel
+2Sam	II. Sam
+2Sam	2. Sam
+2Sam	II Sam
+2Sam	II. Sa
+2Sam	II Sa
+2Sam	2 Sam
+2Sam	2. Sa
+2Sam	2Sam
+2Sam	2 Sa
+2Thess	II. Thê-sa-lô-ni-ca
+2Thess	2. Thê-sa-lô-ni-ca
+2Thess	II. Tê-sa-lô-ni-ca
+2Thess	II Thê-sa-lô-ni-ca
+2Thess	2 Thê-sa-lô-ni-ca
+2Thess	2. Tê-sa-lô-ni-ca
+2Thess	II Tê-sa-lô-ni-ca
+2Thess	2 Tê-sa-lô-ni-ca
+2Thess	II. Thêxalônica
+2Thess	II Thêxalônica
+2Thess	2. Thêxalônica
+2Thess	2 Thêxalônica
+2Thess	II. Tê
+2Thess	2Thess
+2Thess	2. Tê
+2Thess	II Tê
+2Thess	2 Tê
+2Tim	II. Ti-mô-thê
+2Tim	II Ti-mô-thê
+2Tim	2. Ti-mô-thê
+2Tim	2 Ti-mô-thê
+2Tim	II. Timôthê
+2Tim	II Timôthê
+2Tim	2. Timôthê
+2Tim	2 Timôthê
+2Tim	II. Tim
+2Tim	II Tim
+2Tim	2. Tim
+2Tim	2 Tim
+2Tim	2Tim
+3John	III. Giăng
+3John	III. Gioan
+3John	III Giăng
+3John	III Gioan
+3John	3. Gioan
+3John	3. Giăng
+3John	III. Gi
+3John	3 Gioan
+3John	3 Giăng
+3John	III Gi
+3John	3John
+3John	3. Gi
+3John	3 Gi
+3Macc	3Macc
+4Macc	4Macc
+Acts	Công vụ các Sứ đồ
+Acts	Công vụ Tông đồ
+Acts	Công Vụ
+Acts	Sứ đồ
+Acts	Công
+Acts	Acts
+Amos	A-mốt
+Amos	Amos
+Amos	Am
+Bar	Bar
+Bel	Bel
+Col	Cô-lô-se
+Col	Côlôxê
+Col	Côl
+Col	Col
+Dan	Ða-ni-ên
+Dan	Đa-ni-ên
+Dan	Đa-niên
+Dan	Đanien
+Dan	Dan
+Dan	Đa
+Deut	Phục truyền luật lệ ký
+Deut	Phục Truyền Luật Lệ
+Deut	Đệ nhị luật
+Deut	Phục Truyền
+Deut	Phục
+Deut	Deut
+Eccl	Truyền đạo
+Eccl	Giáo huấn
+Eccl	Giảng Sư
+Eccl	Eccl
+Eccl	Giáo
+EpJer	EpJer
+Eph	Ê-phê-sô
+Eph	Êphêsô
+Eph	Êph
+Eph	Eph
+Esth	Ê-xơ-tê
+Esth	Esther
+Esth	Esth
+Exod	Xuất Ê-díp-tô ký
+Exod	Xuất Ai Cập Ký
+Exod	Xuất Ai-cập
+Exod	Xuất Hành
+Exod	Exod
+Exod	Xuất
+Ezek	Ê-xê-chi-ên
+Ezek	Ê-xê-chiên
+Ezek	Ê-xê-ki-ên
+Ezek	Ezekiel
+Ezek	Ezek
+Ezek	Ê-xê
+Ezra	E-xơ-ra
+Ezra	Ê-xơ-ra
+Ezra	Êxra
+Ezra	Étra
+Ezra	Ezra
+Gal	Ga-la-ti
+Gal	Galát
+Gal	Gal
+Gen	Sáng thế ký
+Gen	Sáng Thế
+Gen	Sáng
+Gen	Gen
+GkEsth	GkEsth
+Hab	Ha-ba-cúc
+Hab	Habakkuk
+Hab	Hab
+Hab	Ha
+Hag	Ha-gai
+Hag	Haggai
+Hag	A-ghê
+Hag	A-gai
+Hag	Hag
+Heb	Hê-bơ-rơ
+Heb	Do Thái
+Heb	Heb
+Heb	Hê
+Hos	Hô-sê-a
+Hos	Hosea
+Hos	Ô-sê
+Hos	Hos
+Isa	I-sa-gia
+Isa	I-sai-a
+Isa	Isaiah
+Isa	Ê-sai
+Isa	I-sa
+Isa	Isa
+Jas	Giacôbê
+Jas	Gia-cơ
+Jas	Jas
+Jdt	Jdt
+Jer	Giê-rê-mi-a
+Jer	Giê-rê-mi
+Jer	Jeremiah
+Jer	Jer
+Jer	Giê
+Job	Gióp
+Job	Job
+Joel	Giô-ên
+Joel	Joel
+John	Gioan
+John	Giăng
+John	John
+John	Gi
+John	Gg
+Jonah	Giô-na
+Jonah	Jonah
+Josh	Giô-suê
+Josh	Giô-sua
+Josh	Joshua
+Josh	Josh
+Josh	Giôs
+Josh	Gsua
+Josh	Giô
+Jude	Giu-đe
+Jude	Giuđa
+Jude	Jude
+Judg	Các Thủ lãnh
+Judg	Các quan xét
+Judg	Thẩm phán
+Judg	Thủ lãnh
+Judg	Quan án
+Judg	Judg
+Judg	Quan
+Judg	Thủ
+Lam	Ca thương
+Lam	Ai Ca
+Lam	Lam
+Lam	Ai
+Lev	Lê-vi ký
+Lev	Lê-vi
+Lev	Lev
+Lev	Lê
+Luke	Lu-ca
+Luke	Luca
+Luke	Luke
+Luke	Lu
+Mal	Ma-la-chi
+Mal	Ma-la-ki
+Mal	Malachi
+Mal	Mal
+Mark	Máccô
+Mark	Mark
+Mark	Mác
+Matt	Ma-thi-ơ
+Matt	Mátthêu
+Matt	Matt
+Matt	Mat
+Matt	Ma
+Mic	Mi-chê
+Mic	Micah
+Mic	Mi-ca
+Mic	Mic
+Mic	Mi
+Nah	Na-hâm
+Nah	Na-hum
+Nah	Nahum
+Nah	Nah
+Nah	Na
+Neh	Nê-hê-mi-a
+Neh	Nơkhemia
+Neh	Nê-hê-mi
+Neh	Neh
+Neh	Nê
+Num	Dân số ký
+Num	Dân Số
+Num	Num
+Num	Dân
+Obad	Ô-ba-đi-a
+Obad	Obadiah
+Obad	Áp-đia
+Obad	Obad
+Obad	Áp
+Phil	Philípphê
+Phil	Phi-líp
+Phil	Phil
+Phlm	Phi-lê-môn
+Phlm	Philêmon
+Phlm	Phi-lê
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	Châm ngôn
+Prov	Prov
+Prov	Châm
+Ps	Thánh vịnh
+Ps	Thánh Thi
+Ps	Thi Thiên
+Ps	Thi
+Ps	Ps
+Rev	Khải Huyền của John
+Rev	Khải Huyền
+Rev	Khải thị
+Rev	Khải
+Rev	Rev
+Rom	La-mã
+Rom	Rô-ma
+Rom	Rôma
+Rom	Rom
+Ruth	Ru-tơ
+Ruth	Ruth
+Ruth	Ru
+SgThree	SgThree
+Sir	Huấn Ca
+Sir	Sir
+Song	Diễm ca
+Song	Tình ca
+Song	Nhã ca
+Song	Tình
+Song	Song
+Sus	Sus
+Titus	Titus
+Titus	Tích
+Titus	Titô
+Titus	Tít
+Tob	Tob
+Wis	Khôn Ngoan
+Wis	Wis
+Zech	Xê-ca-ri-a
+Zech	Xa-cha-ri
+Zech	Zechariah
+Zech	Zech
+Zech	Xa
+Zeph	Xê-pha-ni-a
+Zeph	Xô-phô-ni
+Zeph	Zephaniah
+Zeph	Sô-phô-ni
+Zeph	Zeph
+Zeph	Xô

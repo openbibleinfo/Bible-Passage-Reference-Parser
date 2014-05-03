@@ -4005,7 +4005,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Lev 1 (TLA)").osis_and_translations()).toEqual [["Lev.1", "TLA"]]
 		expect(p.parse("lev 1 tla").osis_and_translations()).toEqual [["Lev.1", "TLA"]]
 	it "should handle book ranges (es)", ->
-		p.set_options {book_alone_strategy: "full"}
+		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("1\.º á 3\.º  San Jaan").osis()).toEqual "1John.1-3John.1"
 		expect(p.parse("1\.º á 3\.º  San Jaun").osis()).toEqual "1John.1-3John.1"
 		expect(p.parse("1\.º á 3\.º  San Juan").osis()).toEqual "1John.1-3John.1"

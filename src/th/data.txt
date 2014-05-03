@@ -1,0 +1,273 @@
+$FIRST	1
+$SECOND	2
+$THIRD	3
+$FOURTH	4
+$AB	[a-e]
+# http://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%A3%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%9A%E0%B8%B8%E0%B8%8D%E0%B8%A5%E0%B8%B9%E0%B8%81%E0%B8%B2
+$AND	และ
+# http://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%E0%B9%80%E0%B8%99%E0%B8%B5%E0%B8%A2%E0%B8%A5
+$CHAPTER	บทที่
+$FF	ff
+$TITLE	title
+$TRANS	NCV	ERV
+$TO	-
+$VERSE	verse
+$UNICODE_BLOCK	Thai	Latin
+
+Gen	ปฐมกาล	ปฐก
+Exod	อพยพ	อพย
+Lev	เลวีนิติ	ลนต
+Num	กันดารวิถี	กดว
+Deut	เฉลย​ธรรม​บัญญัติ	ฉธบ
+Josh	โยชูวา	ยชว
+Judg	ผู้วินิจฉัย	วนฉ
+Ruth	นางรูธ	นรธ
+1Sam	$FIRST ซามูเอล	$FIRST ซมอ
+2Sam	$SECOND ซามูเอล	$SECOND ซมอ
+1Kgs	$FIRST พงศ์กษัตริย์	$FIRST พกษ
+2Kgs	$SECOND พงศ์กษัตริย์	$SECOND พกษ
+1Chr	$FIRST พงศาวดาร	$FIRST พศด
+2Chr	$SECOND พงศาวดาร	$SECOND พศด
+Ezra	เอสรา	อสร
+Neh	เนหะมีย์	นหม
+Esth	เอสเธอร์	อสธ
+Job	โยบ
+Ps	เพลงสดุดี	สดุดี	สดด
+Prov	สุภาษิต	สภษ
+Eccl	ปัญญาจารย์	ปญจ
+Song	เพลงซาโลมอน	เพลงโซโลมอน	พซม
+Isa	อิสยาห์	อสย
+Jer	เยเรมีย์	เยเรมียาห์	ยรม
+Lam	เพลงคร่ำครวญ	บทเพลงคร่ำครวญ	พคค
+Ezek	เอเสเคียล	อสค
+Dan	ดาเนียล	ดนล
+Hos	โฮเชยา	โฮเชยาห์	ฮชย
+Joel	โยเอล	ยอล
+Amos	อาโมส	อมส
+Obad	โอบาดีย์	โอบาดีห์	อบด
+Jonah	โยนาห์	ยนา
+Mic	มีคาห์	มคา
+Nah	นาฮูม	นฮม
+Hab	ฮาบากุก	ฮบก
+Zeph	เศฟันยาห์	ศฟย
+Hag	ฮักกัย	ฮกก
+Zech	เศคาริยาห์	ศคย
+Mal	มาลาคี	มลค
+Matt	มัทธิว	มธ	พระวรสารนักบุญแม็ทธิว
+Mark	มาระโก	มก	พระวรสารนักบุญมาร์ค
+Luke	ลูกา	ลก	พระวรสารนักบุญลูค
+John	ยอห์น	ยน	พระวรสารนักบุญจอห์น	ยฮ
+Acts	กิจการ	กจ	กิจการ​ของ​อัครทูต
+Rom	โรม	รม
+1Cor	$FIRST โครินธ์	1 คร	1 คธ
+2Cor	$SECOND โครินธ์	2 คร	2 คธ
+Gal	กาลาเทีย	กท
+Eph	เอเฟซัส	อฟ
+Phil	ฟีลิปปี	ฟป
+Col	โคโลสี	คส
+1Thess	$FIRST เธสะโลนิกา	1 ธส	$FIRST เธซะโลนิกา
+2Thess	$SECOND เธสะโลนิกา	2 ธส	$SECOND เธซะโลนิกา
+1Tim	$FIRST ทิโมธี	1 ทธ
+2Tim	$SECOND ทิโมธี	2 ทธ
+Titus	ทิตัส	ทต
+Phlm	ฟีเลโมน	ฟม
+Heb	ฮีบรู	ฮบ
+Jas	ยากอบ	ยบ	ยก
+1Pet	$FIRST เปโตร	1 ปต
+2Pet	$SECOND เปโตร	2 ปต
+1John	$FIRST ยอห์น	1 ยน
+2John	$SECOND ยอห์น	2 ยน
+3John	$THIRD ยอห์น	3 ยน
+Jude	ยูดา	ยด
+Rev	วิวรณ์	วว
+Tob	โทบิต
+Jdt	ยูดิธ
+GkEsth	GkEsth
+Wis	ปรีชาญาณ
+Sir	บุตรสิรา
+Bar	บารุค	พระธรรมบารุค
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	$FIRST มัคคาบี
+2Macc	$SECOND มัคคาบี
+3Macc	$THIRD มัคคาบี
+4Macc	$FOURTH มัคคาบี
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	ปฐมกาล	ปฐก
+*Exod	อพยพ	อพย
+*Lev	เลวีนิติ	ลนต
+*Num	กันดารวิถี	กดว
+*Deut	เฉลยธรรมบัญญัติ	ฉธบ
+*Josh	โยชูวา	ยชว
+*Judg	ผู้วินิจฉัย	วนฉ
+*Ruth	นางรูธ	นรธ
+*1Sam	1 ซามูเอล	1 ซมอ
+*2Sam	2 ซามูเอล	2 ซมอ
+*1Kgs	1 พงศ์กษัตริย์	1 พกษ
+*2Kgs	2 พงศ์กษัตริย์	2 พกษ
+*1Chr	1 พงศาวดาร	1 พศด
+*2Chr	2 พงศาวดาร	2 พศด
+*Ezra	เอสรา	อสร
+*Neh	เนหะมีย์	นหม
+*Esth	เอสเธอร์	อสธ
+*Job	โยบ	โยบ
+*Ps	เพลงสดุดี	สดด
+*Prov	สุภาษิต	สภษ
+*Eccl	ปัญญาจารย์	ปญจ
+*Song	เพลงซาโลมอน	พซม
+*Isa	อิสยาห์	อสย
+*Jer	เยเรมีย์	ยรม
+*Lam	เพลงคร่ำครวญ	พคค
+*Ezek	เอเสเคียล	อสค
+*Dan	ดาเนียล	ดนล
+*Hos	โฮเชยา	ฮชย
+*Joel	โยเอล	ยอล
+*Amos	อาโมส	อมส
+*Obad	โอบาดีย์	อบด
+*Jonah	โยนาห์	ยนา
+*Mic	มีคาห์	มคา
+*Nah	นาฮูม	นฮม
+*Hab	ฮาบากุก	ฮบก
+*Zeph	เศฟันยาห์	ศฟย
+*Hag	ฮักกัย	ฮกก
+*Zech	เศคาริยาห์	ศคย
+*Mal	มาลาคี	มลค
+*Matt	มัทธิว	มธ
+*Mark	มาระโก	มก
+*Luke	ลูกา	ลก
+*John	ยอห์น	ยน
+*Acts	กิจการ	กจ
+*Rom	โรม	รม
+*1Cor	1 โครินธ์	1 คร
+*2Cor	2 โครินธ์	2 คร
+*Gal	กาลาเทีย	กท
+*Eph	เอเฟซัส	อฟ
+*Phil	ฟีลิปปี	ฟป
+*Col	โคโลสี	คส
+*1Thess	1 เธสะโลนิกา	1 ธส
+*2Thess	2 เธสะโลนิกา	2 ธส
+*1Tim	1 ทิโมธี	1 ทธ
+*2Tim	2 ทิโมธี	2 ทธ
+*Titus	ทิตัส	ทต
+*Phlm	ฟีเลโมน	ฟม
+*Heb	ฮีบรู	ฮบ
+*Jas	ยากอบ	ยบ
+*1Pet	1 เปโตร	1 ปต
+*2Pet	2 เปโตร	2 ปต
+*1John	1 ยอห์น	1 ยน
+*2John	2 ยอห์น	2 ยน
+*3John	3 ยอห์น	3 ยน
+*Jude	ยูดา	ยด
+*Rev	วิวรณ์	วว
+*Tob	โทบิต
+*Jdt	ยูดิธ
+*GkEsth	GkEsth
+*Wis	ปรีชาญาณ
+*Sir	บุตรสิรา
+*Bar	บารุค
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1 มัคคาบี
+*2Macc	2 มัคคาบี
+*3Macc	3 มัคคาบี
+*4Macc	4 มัคคาบี
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

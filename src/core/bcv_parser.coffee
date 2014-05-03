@@ -20,6 +20,7 @@ class bcv_parser
 		# * `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" -> "Gen.1-Gen.50".
 		# * `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" -> "Gen.1.1-Gen.1.31".
 		osis_compaction_strategy: "b"
+
 		# ### Sequence
 		# * `ignore`: ignore any books on their own in sequences ("Gen Is 1" -> "Isa.1").
 		# * `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" means "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
@@ -30,10 +31,19 @@ class bcv_parser
 		# * `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" -> "Gen.1,Gen.3".
 		# * `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" -> "Gen.1" and "Gen.3".
 		sequence_combination_strategy: "combine"
+
 		# ### Potentially Invalid Input
 		# * `ignore`: Don't include invalid passages in `@parsed_entities()`.
 		# * `include`: Include invalid passages in `@parsed_entities()` (they still don't have OSIS values).
 		invalid_passage_strategy: "ignore"
+		# * `ignore`: treat non-Latin digits the same as any other character.
+		# * `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
+		non_latin_digits_strategy: "ignore"
+		# * Include `b` in the string to validate book order ("Revelation to Genesis" is invalid).
+		# * Include `c` in the string to validate chapter existence. If omitted, strings like "Genesis 51" (which doesn't exist) return as valid. Omitting `c` means that looking up full books will return `999` as the end chapter: "Genesis to Exodus" → "Gen.1-Exod.999".
+		# * Include `v` in the string to validate verse existence. If omitted, strings like `Genesis 1:100` (which doesn't exist) return as valid. Omitting `v` means that looking up full chapters will return `999` as the end verse: "Genesis 1:2 to chapter 3" → "Gen.1.2-Gen.3.999".
+		# * Tested values are `b`, `bc`, `bcv`, `bv`, `c`, `cv`, `v`, and `none`. In all cases, single-chapter books still respond as single-chapter books to allow treating strings like `Obadiah 2` as `Obad.1.2`.
+		passage_existence_strategy: "bcv"
 		# * `error`: zero chapters ("Matthew 0") are invalid.
 		# * `upgrade`: zero chapters are upgraded to 1: "Matthew 0" -> "Matt.1".
 		# Unlike `zero_verse_strategy`, chapter 0 isn't allowed.
@@ -42,26 +52,29 @@ class bcv_parser
 		# * `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" -> "Matt.5.1".
 		# * `allow`: zero verses are kept as-is: "Matthew 5:0" -> "Matt.5.0". Some traditions use 0 for Psalm titles.
 		zero_verse_strategy: "error"
-		# * `ignore`: treat non-Latin digits the same as any other character.
-		# * `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
-		non_latin_digits_strategy: "ignore"
+
 		# ### Context
 		# * `ignore`: any books that appear on their own don't get parsed as books ("Gen saw" doesn't trigger a match, but "Gen 1" does).
 		# * `full`: any books that appear on their own get parsed as the complete book ("Gen" means "Gen.1-Gen.50").
 		# * `first_chapter`: any books that appear on their own get parsed as the first chapter ("Gen" means "Gen.1").
 		book_alone_strategy: "ignore"
+		# * `ignore`: any books that appear on their own in a range are ignored ("Matt-Mark 2" means "Mark.2").
+		# * `include`: any books that appear on their own in a range are included as part of the range ("Matt-Mark 2" means "Matt.1-Mark.2", while "Matt 2-Mark" means "Matt.2-Mark.16").
+		book_range_strategy: "ignore"
 		# * `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" -> "Matt.5". This is better for text extraction.
 		# * `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" -> "Matt.5.1". This is better for query parsing.
 		captive_end_digits_strategy: "delete"
 		# * `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
 		# * `sequence`: treat them as sequences.
 		end_range_digits_strategy: "verse"
+
 		# ### Apocrypha
 		# Don't set this value directly; use the `include_apocrypha` or `set_options` functions.
 		include_apocrypha: false
 		# `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" -> "Ps.151.1"
 		# `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" -> "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" -> "Ps.149-Ps.150,Ps151.1" Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
 		ps151_strategy: "c"
+
 		# ### Versification System
 		# Don't set this value directly; use the `versification_system` or `set_options` functions.
 		# * `default`: the default ESV-style versification. Also used in AMP and NASB.
@@ -72,6 +85,7 @@ class bcv_parser
 		# * `nrsv`: use NRSV versification.
 		# * `vulgate`: use Vulgate (Greek) numbering for the Psalms.
 		versification_system: "default"
+
 		# ### Case Sensitivity
 		# Don't use this value directly; use the `set_options` function. Changing this option repeatedly will slow down execution.
 		# * `none`: All matches are case-insensitive.
@@ -138,23 +152,34 @@ class bcv_parser
 
 	# Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use KJV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering.
 	versification_system: (system) ->
-		return this unless system? and @translations.alternates[system]?
-		@options.versification_system = system
+		return this unless system? and @translations[system]?
+		# If we've already changed the `versification_system` once, we need to do some cleanup before we change it to something else.
+		if @translations.alternates.default?
+			# If we're changing to the default from something else, make sure we reset it to the correct values.
+			if system is "default"
+				if @translations.alternates.default.order?
+					@translations.default.order = bcv_utils.shallow_clone @translations.alternates.default.order
+				for own book, chapter_list of @translations.alternates.default.chapters
+					@translations.default.chapters[book] = bcv_utils.shallow_clone_array chapter_list
+			# Make sure the `versification_system` is reset to the default before applying any changes--alternate systems only include differences from the default.
+			else
+				@versification_system "default"
 		@translations.alternates.default ?= order: null, chapters: {}
 		# If we're updating the book order (e.g., to mix the Apocrypha into the Old Testament)...
-		if @translations.alternates[system].order?
+		if system isnt "default" and @translations[system].order?
 			# Save the existing default order so we can get it back later if necessary. We want to do everything nondestructively.
-			@translations.alternates.default.order = bcv_utils.shallow_clone @translations.default.order unless @translations.alternates.default.order?
+			@translations.alternates.default.order ?= bcv_utils.shallow_clone @translations.default.order
 			# The `order` key should always contain the full order; too many things can go wrong if we try to merge the old order and the new one.
-			@translations.default.order = bcv_utils.shallow_clone @translations.alternates[system].order
+			@translations.default.order = bcv_utils.shallow_clone @translations[system].order
 		# If we're updating the number of chapters in a book or the number of verses in a chapter...
-		if @translations.alternates[system].chapters?
+		if system isnt "default" and @translations[system].chapters?
 			# Loop through only the books that are changing.
-			for own book, chapter_list of @translations.alternates[system].chapters
+			for own book, chapter_list of @translations[system].chapters
 				# Save the existing default order so we can get it back later. Only set it the first time.
-				@translations.alternates.default.chapters[book] = bcv_utils.shallow_clone_array @translations.default.chapters[book] unless @translations.alternates.default.chapters[book]?
+				@translations.alternates.default.chapters[book] ?= bcv_utils.shallow_clone_array @translations.default.chapters[book]
 				@translations.default.chapters[book] = bcv_utils.shallow_clone_array chapter_list
 		# Depending on the order of operations, the cloned list could be inconsistent with the current state. For example, if we called `versification_system`, we've cached 150 Psalms. If we then call `include_apocrypha(true)`, we now have 151 Psalms. If we then call `versification_system` again, we're back, incorrectly, to 150 Psalms because that's what was cached.
+		@options.versification_system = system
 		@include_apocrypha @options.include_apocrypha
 		this
 
@@ -166,6 +191,25 @@ class bcv_parser
 		@options.case_sensitive = arg
 		@regexps.books = @regexps.get_books @options.include_apocrypha, arg
 		this
+
+	# ## Administrative Functions
+	# Return translation information so that we don't have to reach into semi-private objects to grab the data we need.
+	translation_info: (new_translation="default") ->
+		if new_translation? and @translations.aliases[new_translation]?.alias?
+			new_translation = @translations.aliases[new_translation].alias
+		new_translation = "default" unless new_translation? and @translations[new_translation]?
+		old_translation = @options.versification_system
+		@versification_system(new_translation) if new_translation isnt old_translation
+		out =
+			order: bcv_utils.shallow_clone @translations.default.order
+			books: []
+			chapters: {}
+		for own book, chapter_list of @translations.default.chapters
+			out.chapters[book] = bcv_utils.shallow_clone_array chapter_list
+		for own book, id of out.order
+			out.books[id-1] = book
+		@versification_system(old_translation) if new_translation isnt old_translation
+		out
 
 	# ## Parsing-Related Functions
 	# Replace control characters and spaces since we replace books with a specific character pattern. The string changes, but the length stays the same so that indices remain valid. If we want to use Latin numbers rather than non-Latin ones, replace them here.
@@ -250,7 +294,7 @@ class bcv_parser
 			# * `grammar` is the external PEG parser.
 			passage = value: grammar.parse(part), type: "base", start_index: @passage.books[book_id].start_index - start_index_adjust, match: part
 			# Are we looking at a single book on its own that could be part of a range like "1-2 Sam"?
-			if @options.book_alone_strategy is "full" and passage.value.length == 1 and passage.value[0].type is "b" and start_index_adjust == 0 and @passage.books[book_id].parsed.length == 1 and /^[234]/.test @passage.books[book_id].parsed[0]
+			if @options.book_alone_strategy is "full" and @options.book_range_strategy is "include" and passage.value.length == 1 and passage.value[0].type is "b" and start_index_adjust == 0 and @passage.books[book_id].parsed.length == 1 and /^[234]/.test @passage.books[book_id].parsed[0]
 				@create_book_range s, passage, book_id
 			# Handle each passage individually to prevent context leakage (e.g., translations back-propagating through unrelated entities).
 			[accum] = @passage.handle_obj passage
@@ -335,7 +379,7 @@ class bcv_parser
 			if entity.type and entity.type is "translation_sequence" and out.length > 0 and entity_id == out[out.length-1].entity_id + 1
 				out[out.length-1].indices[1] = entity.absolute_indices[1]
 			continue unless entity.passages?
-			continue if (entity.type is "b" or entity.type is "b_range") and @options.book_alone_strategy is "ignore"
+			continue if (entity.type is "b" and @options.book_alone_strategy is "ignore") or (entity.type is "b_range" and @options.book_range_strategy is "ignore")
 			# A given entity, even if part of a sequence, always only has one set of translations associated with it.
 			translations = []
 			translation_alias = null
@@ -362,6 +406,8 @@ class bcv_parser
 				if (passage.type is "b" or passage.type is "b_range") and @options.book_sequence_strategy is "ignore" and entity.type is "sequence"
 					@snap_sequence "book", entity, osises, i, length
 					continue
+				if (passage.type is "b_range_start" or passage.type is "range_end_b") and @options.book_range_strategy is "ignore"
+						@snap_range entity, i
 				passage.absolute_indices ?= entity.absolute_indices
 				osises.push
 					osis: if passage.valid.valid then @to_osis(passage.start, passage.end, translation_alias) else ""
@@ -397,9 +443,17 @@ class bcv_parser
 		# If no start chapter or verse, assume the first possible.
 		start.c ?= 1
 		start.v ?= 1
-		# If no end chapter or verse, assume the last possible.
-		end.c ?= @passage.translations[translation].chapters[end.b].length
-		end.v ?= @passage.translations[translation].chapters[end.b][end.c - 1]
+		# If no end chapter or verse, assume the last possible. If it's a single-chapter book, always use the first chapter for consistency with other `passage_existence_strategy` results (which do respect the single-chapter length).
+		unless end.c?
+			if @options.passage_existence_strategy.indexOf("c") >= 0 or (@passage.translations[translation].chapters[end.b]? and @passage.translations[translation].chapters[end.b].length == 1)
+				end.c = @passage.translations[translation].chapters[end.b].length
+			else
+				end.c = 999
+		unless end.v?
+			if @passage.translations[translation].chapters[end.b][end.c - 1]? and @options.passage_existence_strategy.indexOf("v") >= 0
+				end.v = @passage.translations[translation].chapters[end.b][end.c - 1]
+			else
+				end.v = 999
 		if @options.include_apocrypha and @options.ps151_strategy is "b" and ((start.c == 151 and start.b is "Ps") or (end.c == 151 and end.b is "Ps"))
 			@fix_ps151 start, end, translation
 		# If it's a complete book or range of complete books and we want the shortest possible OSIS, return just the book names.
@@ -407,7 +461,7 @@ class bcv_parser
 			osis.start = start.b
 			osis.end = end.b
 		# If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters.
-		else if @options.osis_compaction_strategy.length <= 2 and start.v == 1 and end.v == @passage.translations[translation].chapters[end.b][end.c - 1]
+		else if @options.osis_compaction_strategy.length <= 2 and start.v == 1 and (end.v == 999 or end.v == @passage.translations[translation].chapters[end.b][end.c - 1])
 			osis.start = start.b + "." + start.c.toString()
 			osis.end = end.b + "." + end.c.toString()
 		# Otherwise, return the full BCV reference for both.
@@ -507,6 +561,31 @@ class bcv_parser
 		else if check.c == 1 and check.v == 1 and translation_order[prev.b] == translation_order[check.b] - 1
 			return true if prev.c == @passage.translations[translation].chapters[prev.b].length and prev.v == @passage.translations[translation].chapters[prev.b][prev.c - 1]
 		false
+
+	# Snap the start/end index of the range when it includes a book on its own and `@options.book_range_strategy` is `ignore`.
+	snap_range: (entity, passage_i) ->
+		if entity.type is "b_range_start" or (entity.type is "sequence" and entity.passages[passage_i].type is "b_range_start")
+			entity_i = 1
+			source_entity = "end"
+			type = "b_range_start"
+		else
+			entity_i = 0
+			source_entity = "start"
+			type = "range_end_b"
+		target_entity = if source_entity is "end" then "start" else "end"
+		for own key of entity.passages[passage_i][target_entity]
+			entity.passages[passage_i][target_entity][key] = entity.passages[passage_i][source_entity][key]
+		if entity.type is "sequence"
+			temp = @snap_range @passage.pluck(type, entity.value[passage_i]), 0
+			if passage_i == 0
+				entity.absolute_indices[0] = temp.absolute_indices[0]
+			else if passage_i == entity.passages.length - 1
+				entity.absolute_indices[1] = temp.absolute_indices[1]
+		else
+			entity.original_type = entity.type
+			entity.type = entity.value[entity_i].type
+			entity.absolute_indices = [entity.value[entity_i].absolute_indices[0], entity.value[entity_i].absolute_indices[1]]
+		entity
 
 	# Snap the start/end index of the entity or surrounding passages when there's a lone book or invalid item in a sequence.
 	snap_sequence: (type, entity, osises, i, length) ->

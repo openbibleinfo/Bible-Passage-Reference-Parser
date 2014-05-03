@@ -2007,7 +2007,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Lev 1 (ND)").osis_and_translations()).toEqual [["Lev.1", "ND"]]
 		expect(p.parse("lev 1 nd").osis_and_translations()).toEqual [["Lev.1", "ND"]]
 	it "should handle book ranges (it)", ->
-		p.set_options {book_alone_strategy: "full"}
+		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Primo al Terzo  Giovanni").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (it)", ->
 		p.set_options {book_alone_strategy: "full"}

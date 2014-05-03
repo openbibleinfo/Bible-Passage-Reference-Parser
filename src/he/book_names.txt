@@ -142,8 +142,8 @@ GkEsth	תוספות למגילת אסתר
 GkEsth	GkEsth
 Hab	חבקוק
 Hab	Hab
-Hag	צפניה
 Hag	Hag
+Hag	חגי
 Heb	האיגרת אל העברים
 Heb	האגרת אל-העברים
 Heb	אל העברים
@@ -263,5 +263,5 @@ Wis	חכמת שלמה
 Wis	Wis
 Zech	זכריה
 Zech	Zech
+Zeph	צפניה
 Zeph	Zeph
-Zeph	חגי

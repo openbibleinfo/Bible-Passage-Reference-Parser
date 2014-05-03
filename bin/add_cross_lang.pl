@@ -8,7 +8,7 @@ my %ranges = (
 	full => {
 		chars => '.',
 		data => 'en',
-		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Deut Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
+		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
 		exclude_langs => [],
 		exclude_abbrevs => [
 			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
@@ -39,7 +39,7 @@ my %ranges = (
 	ascii => {
 		chars => "[\x00-\x7f\x{2000}-\x{206F}]",
 		data => 'en',
-		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Deut Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
+		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
 		exclude_langs => [],
 		exclude_abbrevs => [
 			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
@@ -362,6 +362,7 @@ sub get_abbrevs_from_file
 	open FILE, '<:utf8', $file or die "$file: $!";
 	while (<FILE>)
 	{
+		next if (/^#/);
 		chomp;
 		my ($osis, $abbrev, @langs) = split /\t/;
 		next unless ($osis);

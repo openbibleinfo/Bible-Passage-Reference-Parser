@@ -694,6 +694,7 @@
 1John	1st. Jhon
 1John	1st. Jonh
 1John	1st. Joh
+1John	First Jo
 1John	1st Joon
 1John	1. Jophn
 1John	1st John
@@ -724,10 +725,12 @@
 1John	1. John
 1John	I. Jphn
 1John	1. Jphn
+1John	1st. Jo
 1John	I. Jonh
 1John	1. Jonh
 1John	1. Jhn
 1John	1 Jonh
+1John	1st Jo
 1John	1 Jhon
 1John	1st Jn
 1John	I Jonh
@@ -748,16 +751,20 @@
 1John	1 Jphn
 1John	1 Joh
 1John	I. Jn
+1John	I. Jo
 1John	I Jhn
 1John	1John
 1John	I. Jh
 1John	1 Jhn
+1John	1. Jo
 1John	I Joh
 1John	1. Jn
 1John	1. Jh
 1John	I Jn
+1John	1 Jo
 1John	1 Jh
 1John	1 Jn
+1John	I Jo
 1John	I Jh
 1Kgs	Third Kingdoms
 1Kgs	3rd. Kingdoms
@@ -2382,6 +2389,7 @@
 2John	Second Joh
 2John	2nd. Jophn
 2John	Second Jhn
+2John	Second Jo
 2John	Second Jn
 2John	2nd. Jphn
 2John	2nd Jophn
@@ -2406,8 +2414,8 @@
 2John	II. John
 2John	II Jophn
 2John	2nd John
-2John	II. Jphn
 2John	2nd Jhon
+2John	II. Jphn
 2John	II. Joon
 2John	2nd Jhhn
 2John	2nd. Joh
@@ -2418,8 +2426,8 @@
 2John	2 Jophn
 2John	2. John
 2John	2nd. Jn
-2John	II Johm
 2John	2. Joon
+2John	II Johm
 2John	2. Jonh
 2John	II Joon
 2John	II. Joh
@@ -2431,6 +2439,7 @@
 2John	II Jhon
 2John	II. Jhn
 2John	2. Johm
+2John	2nd. Jo
 2John	2nd Jhn
 2John	2 Jhhn
 2John	II Jhn
@@ -2439,10 +2448,12 @@
 2John	2nd Jn
 2John	2 Jonh
 2John	2 Jphn
+2John	2nd Jo
 2John	2. Jhn
 2John	2. Joh
 2John	2nd Jh
 2John	II. Jh
+2John	II. Jo
 2John	2 Johm
 2John	2 John
 2John	II. Jn
@@ -2450,10 +2461,13 @@
 2John	2. Jh
 2John	2John
 2John	2 Jhn
+2John	2. Jo
 2John	2 Joh
 2John	II Jn
 2John	2. Jn
+2John	II Jo
 2John	II Jh
+2John	2 Jo
 2John	2 Jh
 2John	2 Jn
 2Kgs	Fourth Kingdoms
@@ -3435,13 +3449,14 @@
 3John	III. Jonh
 3John	3rd. Johm
 3John	III. John
-3John	Third Jhn
 3John	III. Jphn
+3John	Third Jhn
 3John	III. Johm
 3John	3rd Joon
 3John	3rd Jhhn
 3John	III Jonh
 3John	3rd. Jhn
+3John	Third Jo
 3John	III John
 3John	III Johm
 3John	III Jhhn
@@ -3460,8 +3475,10 @@
 3John	3rd. Joh
 3John	Third Jh
 3John	3rd Joh
+3John	3rd. Jo
 3John	3. Jphn
 3John	3 Jophn
+3John	III. Jo
 3John	3. Johm
 3John	3rd. Jh
 3John	III. Jn
@@ -3478,7 +3495,9 @@
 3John	III Jh
 3John	3 Jhon
 3John	3 Johm
+3John	III Jo
 3John	3rd Jn
+3John	3rd Jo
 3John	3 Jhhn
 3John	3rd Jh
 3John	3. Joh
@@ -3491,10 +3510,12 @@
 3John	3. Jn
 3John	3 Jhn
 3John	3. Jh
+3John	3. Jo
 3John	3 Joh
 3John	3John
 3John	3 Jh
 3John	3 Jn
+3John	3 Jo
 3Macc	Third Maccabbees
 3Macc	Third Macccabbes
 3Macc	Third Macccabbbe
@@ -4114,6 +4135,7 @@ Amos	Amo
 Amos	Am
 Bar	Baruch
 Bar	Bar
+Bar	Br
 Bel	Bel and the Serpent
 Bel	Bel and the Dragon
 Bel	Bel and the Snake
@@ -4404,8 +4426,8 @@ Hab	Habbakukk
 Hab	Habakkakk
 Hab	Habbakkuk
 Hab	Habakkukk
-Hab	Habbakakk
 Hab	Habbakkak
+Hab	Habbakakk
 Hab	Habbakuk
 Hab	Habbakak
 Hab	Habakkak
@@ -4665,8 +4687,8 @@ John	Gospel according to Jhhn
 John	Gospel according to Jhon
 John	The Gospel of Saint Jphn
 John	The Gospel of Saint Jhon
-John	Gospel according to Jphn
 John	The Gospel of Saint Jonh
+John	Gospel according to Jphn
 John	Gospel according to Johm
 John	The Gospel of Saint Johm
 John	The Gospel of Saint Joon
@@ -5971,8 +5993,8 @@ Rev	Rev
 Rev	Rv
 Rev	Re
 Rom	Romands
-Rom	Roamns
 Rom	Rpmans
+Rom	Roamns
 Rom	Romasn
 Rom	Romans
 Rom	Roman
@@ -6070,6 +6092,7 @@ SgThree	S. Th Y
 SgThree	S Th. Y
 SgThree	S 3. Y
 SgThree	S. 3 Y
+SgThree	Sg Thr
 SgThree	S 3 Ch
 SgThree	S Th Y
 SgThree	S 3 Y
@@ -6182,21 +6205,25 @@ Zech	Zecharia
 Zech	Zecharah
 Zech	Zakariah
 Zech	Zecherih
+Zech	Zacheria
+Zech	Zacharia
 Zech	Zecharih
 Zech	Zacharah
 Zech	Zacherih
+Zech	Zecheria
 Zech	Zacharih
-Zech	Zecherah
 Zech	Zekariah
+Zech	Zecherah
 Zech	Zacherah
 Zech	Zekaria
 Zech	Zach
 Zech	Zech
-Zech	Zec
 Zech	Zac
+Zech	Zec
 Zech	Zch
 Zech	Zc
 Zeph	Zephanaiah
+Zeph	Zaphaniah
 Zeph	Zephanaia
 Zeph	Zephaniah
 Zeph	Zaphania

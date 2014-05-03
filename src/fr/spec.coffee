@@ -2572,7 +2572,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Lev 1 (LSG21)").osis_and_translations()).toEqual [["Lev.1", "LSG21"]]
 		expect(p.parse("lev 1 lsg21").osis_and_translations()).toEqual [["Lev.1", "LSG21"]]
 	it "should handle book ranges (fr)", ->
-		p.set_options {book_alone_strategy: "full"}
+		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Premières á Troisièmes  Jean").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (fr)", ->
 		p.set_options {book_alone_strategy: "full"}

@@ -775,7 +775,7 @@ sub add_book_range_tests
 	my @out;
 	my @johns = expand_abbrev(handle_accents($john));
 	push @out, "	it \"should handle book ranges ($lang)\", ->";
-	push @out, "		p.set_options {book_alone_strategy: \"full\"}";
+	push @out, "		p.set_options {book_alone_strategy: \"full\", book_range_strategy: \"include\"}";
 	my %alreadys;
 	foreach my $abbrev (@johns)
 	{

@@ -1,0 +1,272 @@
+1Chr	1. พงศาวดาร
+1Chr	1 พงศาวดาร
+1Chr	1. พศด
+1Chr	1 พศด
+1Chr	1Chr
+1Cor	1. โครินธ์
+1Cor	1 โครินธ์
+1Cor	1 คธ
+1Cor	1Cor
+1Cor	1 คร
+1Esd	1Esd
+1John	1. ยอห์น
+1John	1 ยอห์น
+1John	1John
+1John	1 ยน
+1Kgs	1. พงศ์กษัตริย์
+1Kgs	1 พงศ์กษัตริย์
+1Kgs	1. พกษ
+1Kgs	1 พกษ
+1Kgs	1Kgs
+1Macc	1. มัคคาบี
+1Macc	1 มัคคาบี
+1Macc	1Macc
+1Pet	1. เปโตร
+1Pet	1 เปโตร
+1Pet	1Pet
+1Pet	1 ปต
+1Sam	1. ซามูเอล
+1Sam	1 ซามูเอล
+1Sam	1. ซมอ
+1Sam	1 ซมอ
+1Sam	1Sam
+1Thess	1. เธสะโลนิกา
+1Thess	1. เธซะโลนิกา
+1Thess	1 เธสะโลนิกา
+1Thess	1 เธซะโลนิกา
+1Thess	1Thess
+1Thess	1 ธส
+1Tim	1. ทิโมธี
+1Tim	1 ทิโมธี
+1Tim	1 ทธ
+1Tim	1Tim
+2Chr	2. พงศาวดาร
+2Chr	2 พงศาวดาร
+2Chr	2. พศด
+2Chr	2 พศด
+2Chr	2Chr
+2Cor	2. โครินธ์
+2Cor	2 โครินธ์
+2Cor	2Cor
+2Cor	2 คร
+2Cor	2 คธ
+2Esd	2Esd
+2John	2. ยอห์น
+2John	2 ยอห์น
+2John	2John
+2John	2 ยน
+2Kgs	2. พงศ์กษัตริย์
+2Kgs	2 พงศ์กษัตริย์
+2Kgs	2. พกษ
+2Kgs	2 พกษ
+2Kgs	2Kgs
+2Macc	2. มัคคาบี
+2Macc	2 มัคคาบี
+2Macc	2Macc
+2Pet	2. เปโตร
+2Pet	2 เปโตร
+2Pet	2Pet
+2Pet	2 ปต
+2Sam	2. ซามูเอล
+2Sam	2 ซามูเอล
+2Sam	2. ซมอ
+2Sam	2 ซมอ
+2Sam	2Sam
+2Thess	2. เธสะโลนิกา
+2Thess	2. เธซะโลนิกา
+2Thess	2 เธสะโลนิกา
+2Thess	2 เธซะโลนิกา
+2Thess	2Thess
+2Thess	2 ธส
+2Tim	2. ทิโมธี
+2Tim	2 ทิโมธี
+2Tim	2Tim
+2Tim	2 ทธ
+3John	3. ยอห์น
+3John	3 ยอห์น
+3John	3John
+3John	3 ยน
+3Macc	3. มัคคาบี
+3Macc	3 มัคคาบี
+3Macc	3Macc
+4Macc	4. มัคคาบี
+4Macc	4 มัคคาบี
+4Macc	4Macc
+Acts	กิจการ​ของ​อัครทูต
+Acts	กิจการ
+Acts	Acts
+Acts	กจ
+Amos	อาโมส
+Amos	Amos
+Amos	อมส
+Bar	พระธรรมบารุค
+Bar	บารุค
+Bar	Bar
+Bel	Bel
+Col	โคโลสี
+Col	Col
+Col	คส
+Dan	ดาเนียล
+Dan	ดนล
+Dan	Dan
+Deut	เฉลย​ธรรม​บัญญัติ
+Deut	เฉลยธรรมบัญญัติ
+Deut	Deut
+Deut	ฉธบ
+Eccl	ปัญญาจารย์
+Eccl	Eccl
+Eccl	ปญจ
+EpJer	EpJer
+Eph	เอเฟซัส
+Eph	Eph
+Eph	อฟ
+Esth	เอสเธอร์
+Esth	Esth
+Esth	อสธ
+Exod	Exod
+Exod	อพยพ
+Exod	อพย
+Ezek	เอเสเคียล
+Ezek	Ezek
+Ezek	อสค
+Ezra	เอสรา
+Ezra	Ezra
+Ezra	อสร
+Gal	กาลาเทีย
+Gal	Gal
+Gal	กท
+Gen	ปฐมกาล
+Gen	ปฐก
+Gen	Gen
+GkEsth	GkEsth
+Hab	ฮาบากุก
+Hab	Hab
+Hab	ฮบก
+Hag	ฮักกัย
+Hag	ฮกก
+Hag	Hag
+Heb	ฮีบรู
+Heb	Heb
+Heb	ฮบ
+Hos	โฮเชยาห์
+Hos	โฮเชยา
+Hos	Hos
+Hos	ฮชย
+Isa	อิสยาห์
+Isa	อสย
+Isa	Isa
+Jas	ยากอบ
+Jas	Jas
+Jas	ยบ
+Jas	ยก
+Jdt	ยูดิธ
+Jdt	Jdt
+Jer	เยเรมียาห์
+Jer	เยเรมีย์
+Jer	Jer
+Jer	ยรม
+Job	โยบ
+Job	Job
+Joel	โยเอล
+Joel	Joel
+Joel	ยอล
+John	พระวรสารนักบุญจอห์น
+John	ยอห์น
+John	John
+John	ยฮ
+John	ยน
+Jonah	โยนาห์
+Jonah	Jonah
+Jonah	ยนา
+Josh	โยชูวา
+Josh	Josh
+Josh	ยชว
+Jude	Jude
+Jude	ยูดา
+Jude	ยด
+Judg	ผู้วินิจฉัย
+Judg	Judg
+Judg	วนฉ
+Lam	บทเพลงคร่ำครวญ
+Lam	เพลงคร่ำครวญ
+Lam	Lam
+Lam	พคค
+Lev	เลวีนิติ
+Lev	Lev
+Lev	ลนต
+Luke	พระวรสารนักบุญลูค
+Luke	ลูกา
+Luke	Luke
+Luke	ลก
+Mal	มาลาคี
+Mal	มลค
+Mal	Mal
+Mark	พระวรสารนักบุญมาร์ค
+Mark	มาระโก
+Mark	Mark
+Mark	มก
+Matt	พระวรสารนักบุญแม็ทธิว
+Matt	มัทธิว
+Matt	Matt
+Matt	มธ
+Mic	มีคาห์
+Mic	มคา
+Mic	Mic
+Nah	นาฮูม
+Nah	นฮม
+Nah	Nah
+Neh	เนหะมีย์
+Neh	นหม
+Neh	Neh
+Num	กันดารวิถี
+Num	กดว
+Num	Num
+Obad	โอบาดีย์
+Obad	โอบาดีห์
+Obad	Obad
+Obad	อบด
+Phil	ฟีลิปปี
+Phil	Phil
+Phil	ฟป
+Phlm	ฟีเลโมน
+Phlm	Phlm
+Phlm	ฟม
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	สุภาษิต
+Prov	Prov
+Prov	สภษ
+Ps	เพลงสดุดี
+Ps	สดุดี
+Ps	สดด
+Ps	Ps
+Rev	วิวรณ์
+Rev	Rev
+Rev	วว
+Rom	โรม
+Rom	Rom
+Rom	รม
+Ruth	นางรูธ
+Ruth	Ruth
+Ruth	นรธ
+SgThree	SgThree
+Sir	บุตรสิรา
+Sir	Sir
+Song	เพลงซาโลมอน
+Song	เพลงโซโลมอน
+Song	Song
+Song	พซม
+Sus	Sus
+Titus	Titus
+Titus	ทิตัส
+Titus	ทต
+Tob	โทบิต
+Tob	Tob
+Wis	ปรีชาญาณ
+Wis	Wis
+Zech	เศคาริยาห์
+Zech	Zech
+Zech	ศคย
+Zeph	เศฟันยาห์
+Zeph	Zeph
+Zeph	ศฟย
