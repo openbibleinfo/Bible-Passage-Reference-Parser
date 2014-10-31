@@ -1,0 +1,271 @@
+$FIRST	1
+$SECOND	2
+$THIRD	3
+$FOURTH	4
+$AB	[a-e]
+$AND	and
+$CHAPTER	chapter
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+$TO	-
+$VERSE	verse
+$UNICODE_BLOCK	Devanagari	Latin
+
+Gen	उत्पत्तिको पुस्तक	उत्पत्ति	उत्पत्तिको	utpattiko pustak	utpattiko
+Exod	प्रस्थानको पुस्तक	प्रस्थान	प्रस्थानको	prastʰānko pustak	prastʰānko
+Lev	लेवीहरूको पुस्तक	लेवी	लेवीहरूको	levīharūko pustak	levīharūko	लेवि
+Num	गन्तीको पुस्तक	गन्ती	गन्तीको	gantīko pustak	gantīko
+Deut	व्यवस्थाको पुस्तक	व्यवस्था	व्यवस्थाको	vyavastʰāko pustak	vyavastʰāko	व्यावस्था
+Josh	यहोशूको पुस्तक	यहोशू	यहोशूको	yahošūko pustak	yahošūko
+Judg	न्यायकर्त्ताहरूको पुस्तक	न्यायकर्ता	न्यायकर्ताहरूको पुस्तक	न्यायकर्त्ताहरूको	nyāyakarttāharūko pustak	nyāyakarttāharūko
+Ruth	रूथको पुस्तक	रूथ	रूथको	rūtʰko pustak	rūtʰko
+1Sam	$FIRST शमूएल	शमूएलको पहिलो पुस्तक	$FIRST शमूएलको	šamūelko pustak	$FIRST šamūelko	$FIRST शामुएल
+2Sam	$SECOND शमूएल	शमूएलको दोस्रो पुस्तक	$SECOND शमूएलको	$SECOND šamūelko	$SECOND शामुएल
+1Kgs	$FIRST राजा	राजाहरूक पहिल पुस्तक	$FIRST राजाहरूको	rāǳāharūko pustak	$FIRST rāǳāharūko
+2Kgs	$SECOND राजा	राजाहरूको दोस्रो पुस्तक	$SECOND राजाहरूको	$SECOND rāǳāharūko
+1Chr	$FIRST इतिहास	इतिहासको पहिलो पुस्तक	$FIRST इतिहासको	itihāsko pustak	$FIRST itihāsko
+2Chr	$SECOND इतिहास	इतिहासको दोस्रो पुस्तक	$SECOND इतिहासको	$SECOND itihāsko
+Ezra	एज्राको	एज्रा	एज्राको पुस्तक	eǳrāko
+Neh	नहेम्याहको पुस्तक	नहेम्याह	नहेम्याहको	nahemyāhko pustak	nahemyāhko
+Esth	एस्तरको पुस्तक	एस्तर	एस्तरको	estarko pustak	estarko
+Job	अय्यूबको पुस्तक	अय्यूब	अय्यूबको	ayyūbko pustak	ayyūbko
+Ps	भजनसंग्रह	भजन	bʰaǳansaṃgrah	भजनसग्रह
+Prov	हितोपदेशको पुस्तक	हितोपदेश	हितोपदेशको	hitopadeško pustak	hitopadeško
+Eccl	उपदेशकको पुस्तक	उपदेशक	उपदेशकको	upadešakko pustak	upadešakko
+Song	सुलेमानको श्रेष्ठगीत	श्रेष्ठगीत	sulemānko šreṣṭʰagīt
+Isa	यशैयाको पुस्तक	यशैया	यशैयाको	yašəiyāko pustak	yašəiyāko	येशैया
+Jer	यर्मियाको पुस्तक	यर्मिया	यर्मियाको	yarmiyāko pustak	yarmiyāko
+Lam	यर्मियाको विलाप	विलाप	yarmiyāko vilāp
+Ezek	इजकिएलको पुस्तक	इजकिएल	इजकिएलको	iǳakielko pustak	iǳakielko
+Dan	दानियलको पुस्तक	दानियल	दानियलको	dāniyalko pustak	dāniyalko
+Hos	होशे	होशेको पुस्तक	hoše
+Joel	योएल	योएलको पुस्तक	yoel
+Amos	आमोस	आमोसको पुस्तक	āmos	अमोस
+Obad	ओबदिया	ओबदियाको पुस्तक	obadiyā
+Jonah	योना	योनाको पुस्तक	yonā
+Mic	मीका	मीकाको पुस्तक	mīkā	मिका
+Nah	नहूम	नहूमको पुस्तक	nahūm
+Hab	हबकूक	हबकूकको पुस्तक	habakūk
+Zeph	सपन्याह	सपन्याहको पुस्तक	sapanyāh
+Hag	हाग्गै	हाग्गैको पुस्तक	hāggəi
+Zech	जकरिया	जकरियाको पुस्तक	jakariyā
+Mal	मलाकी	मलाकीको पुस्तक	malākī	मलकी
+Matt	मत्तीले लेखेको सुसमाचार	मत्ती	मत्तीको सुसमाचार	मत्तीले	mattīle lekʰeko susmācār	mattīle	मत्ति
+Mark	मर्कूसले लेखेको सुसमाचार	मर्कूस	मर्कूसको सुसमाचार	मर्कूसले	markūsle lekʰeko susmācār	markūsle	र्मकूस	मर्कुस	र्मकस	मर्कूश
+Luke	लूकाले लेखेको सुसमाचार	लूका	लूकाको सुसमाचार	लूकाले	lūkāle lekʰeko susmācār	lūkāle	लुका
+John	यूहन्नाले लेखेको सुसमाचार	यूहन्ना	यूहन्नाको सुसमाचार	यूहन्नाले	yūhannāle lekʰeko susmācār	yūhannāle	यहून्ना	यूहना	यूहान्ना	युहन्ना
+Acts	प्रेरितहरूका काम	प्रेरित	preritharūkā kām
+Rom	रोमीहरूलाई पत्र	रोमी	रोमीहरूलाई पावलको पत्र	रोमीहरूलाई	romīharūlāī patra	romīharūlāī
+1Cor	कोरिन्थीहरूलाई पहिलो पत्र	$FIRST कोरिन्थी	कोरिन्थीहरूलाई पावलको पहिलो पत्र	$FIRST कोरिन्थीहरूलाई	korintʰīharūlāī pahilo patra	$FIRST korintʰīharūlāī
+2Cor	कोरिन्थीहरूलाई दोस्त्रो पत्र	$SECOND कोरिन्थी	कोरिन्थीहरूलाई पावलको दोस्रो पत्र	$SECOND कोरिन्थीहरूलाई	korintʰīharūlāī dostro patra	$SECOND korintʰīharūlāī
+Gal	गलातीहरूलाई पत्र	गलाती	गलातीहरूलाई पावलको पत्र	गलातीहरूलाई	galātīharūlāī patra	galātīharūlāī
+Eph	एफिसीहरूलाई पत्र	एफिसी	एफिसीहरूलाई पावलको पत्र	एफिसीहरूलाई	epʰisīharūlāī patra	epʰisīharūlāī
+Phil	फिलिप्पीहरूलाई पत्र	फिलिप्पी	फिलिप्पीहरूलाई पावलको पत्र	फिलिप्पीहरूलाई	pʰilippīharūlāī patra	pʰilippīharūlāī
+Col	कलस्सीहरूलाई पत्र	कलस्सी	कलस्सीहरूलाई पावलको पत्र	कलस्सीहरूलाई	kalassīharūlāī patra	kalassīharūlāī
+1Thess	थिस्सलोनिकीहरूलाई पहिलो पत्र	$FIRST थिस्सलोनिकी	थिस्सलोनिकीहरूलाई पावलको पहिलो पत्र	$FIRST थिस्सलोनिकीहरूलाई	tʰissalonikīharūlāī pahilo patra	$FIRST tʰissalonikīharūlāī
+2Thess	थिस्सलोनिकीहरूलाई दोस्त्रो पत्र	$SECOND थिस्सलोनिकी	थिस्सलोनिकीहरूलाई पावलको दोस्रो पत्र	$SECOND थिस्सलोनिकीहरूलाई	tʰissalonikīharūlāī dostro patra	$SECOND tʰissalonikīharūlāī
+1Tim	तिमोथीलाई पहिलो पत्र	$FIRST तिमोथी	तिमोथीलाईर् पावलको पहिलो पत्र	$FIRST तिमोथीलाई	timotʰīlāī pahilo patra	$FIRST timotʰīlāī
+2Tim	तिमोथीलाई दोस्त्रो पत्र	$SECOND तिमोथी	तिमोथीलाई पावलको दोस्रो पत्र	$SECOND तिमोथीलाई	timotʰīlāī dostro patra	$SECOND timotʰīlāī
+Titus	तीतसलाई पत्र	तीतस	तीतसलाई पावलको पत्र	तीतसलाई	tītaslāī patra	tītaslāī
+Phlm	फिलेमोनलाई पत्र	फिलेमोन	फिलेमोनलाई पावलको पत्र	फिलेमोनलाई	pʰilemonlāī patra	pʰilemonlāī
+Heb	हिब्रूहरूको निम्ति पत्र	हिब्रू	हिब्रूहरूको निम्ति	hibrūharūko nimti patra	hibrūharūko nimti
+Jas	याकूबको पत्र	याकूब	याकूबको	yākūbko patra	yākūbko
+1Pet	पत्रुसको पहिलो पत्र	$FIRST पत्रुस	$FIRST पत्रुसको	patrusko pahilo patra	$FIRST patrusko
+2Pet	पत्रुसको दोस्त्रो पत्र	$SECOND पत्रुस	पत्रुसको दोस्रो पत्र	$SECOND पत्रुसको	patrusko dostro patra	$SECOND patrusko
+1John	यूहन्नाको पहिलो पत्र	$FIRST यूहन्ना	$FIRST यूहन्नाको	yūhannāko pahilo patra	$FIRST yūhannāko
+2John	यूहन्नाको दोस्त्रो पत्र	$SECOND यूहन्ना	यूहन्नाको दोस्रो पत्र	$SECOND यूहन्नाको	yūhannāko dostro patra	$SECOND yūhannāko
+3John	यूहन्नाको तेस्त्रो पत्र	$THIRD यूहन्ना	यूहन्नाको तेस्रो पत्र	$THIRD यूहन्नाको	yūhannāko testro patra	$THIRD yūhannāko
+Jude	यहूदाको पत्र	यहूदा	यहूदाको	yahūdāko patra	yahūdāko
+Rev	यूहन्नालाई भएको प्रकाश	प्रकाश	yūhannālāī bʰaeko prakāš
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	उत्पत्ति	उत्पत्ति
+*Exod	प्रस्थान	प्रस्थान
+*Lev	लेवी	लेवी
+*Num	गन्ती	गन्ती
+*Deut	व्यवस्था	व्यवस्था
+*Josh	यहोशू	यहोशू
+*Judg	न्यायकर्ता	न्यायकर्ता
+*Ruth	रूथ	रूथ
+*1Sam	1 शमूएल	1 शमूएल
+*2Sam	2 शमूएल	2 शमूएल
+*1Kgs	1 राजा	1 राजा
+*2Kgs	2 राजा	2 राजा
+*1Chr	1 इतिहास	1 इतिहास
+*2Chr	2 इतिहास	2 इतिहास
+*Ezra	एज्रा	एज्रा
+*Neh	नहेम्याह	नहेम्याह
+*Esth	एस्तर	एस्तर
+*Job	अय्यूब	अय्यूब
+*Ps	भजनसंग्रह	भजन
+*Prov	हितोपदेश	हितोपदेश
+*Eccl	उपदेशक	उपदेशक
+*Song	श्रेष्ठगीत	श्रेष्ठगीत
+*Isa	यशैया	यशैया
+*Jer	यर्मिया	यर्मिया
+*Lam	विलाप	विलाप
+*Ezek	इजकिएल	इजकिएल
+*Dan	दानियल	दानियल
+*Hos	होशे	होशे
+*Joel	योएल	योएल
+*Amos	आमोस	आमोस
+*Obad	ओबदिया	ओबदिया
+*Jonah	योना	योना
+*Mic	मीका	मीका
+*Nah	नहूम	नहूम
+*Hab	हबकूक	हबकूक
+*Zeph	सपन्याह	सपन्याह
+*Hag	हाग्गै	हाग्गै
+*Zech	जकरिया	जकरिया
+*Mal	मलाकी	मलाकी
+*Matt	मत्ती	मत्ती
+*Mark	मर्कूस	मर्कूस
+*Luke	लूका	लूका
+*John	यूहन्ना	यूहन्ना
+*Acts	प्रेरित	प्रेरित
+*Rom	रोमी	रोमी
+*1Cor	1 कोरिन्थी	1 कोरिन्थी
+*2Cor	2 कोरिन्थी	2 कोरिन्थी
+*Gal	गलाती	गलाती
+*Eph	एफिसी	एफिसी
+*Phil	फिलिप्पी	फिलिप्पी
+*Col	कलस्सी	कलस्सी
+*1Thess	1 थिस्सलोनिकी	1 थिस्सलोनिकी
+*2Thess	2 थिस्सलोनिकी	2 थिस्सलोनिकी
+*1Tim	1 तिमोथी	1 तिमोथी
+*2Tim	2 तिमोथी	2 तिमोथी
+*Titus	तीतस	तीतस
+*Phlm	फिलेमोन	फिलेमोन
+*Heb	हिब्रू	हिब्रू
+*Jas	याकूब	याकूब
+*1Pet	1 पत्रुस	1 पत्रुस
+*2Pet	2 पत्रुस	2 पत्रुस
+*1John	1 यूहन्ना	1 यूहन्ना
+*2John	2 यूहन्ना	2 यूहन्ना
+*3John	3 यूहन्ना	3 यूहन्ना
+*Jude	यहूदा	यहूदा
+*Rev	प्रकाश	प्रकाश
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

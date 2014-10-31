@@ -1452,6 +1452,21 @@ describe "Parsing", ->
 		expect(p.parse(string).osis()).toEqual string
 		expect(p.parse("Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Psalm 1").osis()).toEqual "Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1"
 
+	it "should handle weird invalid ranges", ->
+		p.set_options {
+			book_alone_strategy: "first_chapter",
+			book_sequence_strategy: "include",
+			book_range_strategy: "include",
+		}
+		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9,Matt.10-Rev.22"
+		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Phil-Col"
+		p.set_options {
+			book_alone_strategy: "ignore",
+			book_sequence_strategy: "ignore",
+			book_range_strategy: "ignore",
+		}
+		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9,Matt.10"
+		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Col.4"
 
 describe "Passage existence", ->
 	bcv = {}
@@ -2260,6 +2275,8 @@ describe "Real-world parsing", ->
 		expect(p.parse("help (1 Corinthians 12:1ff). The ").osis_and_indices()).toEqual [{osis:"1Cor.12.1-1Cor.12.31", indices:[6,26], translations:[""]}]
 		expect(p.parse("PSALM 41 F-1-3 O LORD").osis_and_indices()).toEqual [{osis:"Ps.41.1-Ps.150.6,Ps.1.1-Ps.3.8", indices:[0,14], translations:[""]}]
 		expect(p.parse("Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)").osis_and_indices()).toEqual([{osis:"Luke.8.1-Luke.8.3,Luke.24.10", translations:[""], indices:[0, 17]}, {osis:"Matt.14.1-Matt.14.12,Luke.23.7-Luke.23.12", translations:[""], indices:[23, 55]}])
+		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9.1-Num.9.23,Matt.10.1-Matt.10.42"
+		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Col.4.1-Col.4.18"
 
 describe "Adding new translations", ->
 	p = {}

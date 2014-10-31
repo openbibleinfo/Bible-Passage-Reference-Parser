@@ -1,0 +1,494 @@
+1Chr	Forsta Kronikeboken
+1Chr	Forsta Krönikeboken
+1Chr	Första Kronikeboken
+1Chr	Första Krönikeboken
+1Chr	1. Kronikeboken
+1Chr	1. Krönikeboken
+1Chr	1 Kronikeboken
+1Chr	1 Krönikeboken
+1Chr	1 Kron
+1Chr	1 Krön
+1Chr	1Chr
+1Cor	Forsta Korinthierbrevet
+1Cor	Första Korinthierbrevet
+1Cor	Forsta Korintherbrevet
+1Cor	Forsta Korintierbrevet
+1Cor	Första Korintherbrevet
+1Cor	Första Korintierbrevet
+1Cor	Forsta Korinterbrevet
+1Cor	Första Korinterbrevet
+1Cor	1. Korinthierbrevet
+1Cor	1 Korinthierbrevet
+1Cor	1. Korintherbrevet
+1Cor	1. Korintierbrevet
+1Cor	1 Korintherbrevet
+1Cor	1 Korintierbrevet
+1Cor	1. Korinterbrevet
+1Cor	1 Korinterbrevet
+1Cor	1 Kor
+1Cor	1Cor
+1Esd	Forsta Esra
+1Esd	Första Esra
+1Esd	Tredje Esra
+1Esd	3e. Esra
+1Esd	1. Esra
+1Esd	3. Esra
+1Esd	3e Esra
+1Esd	1 Esra
+1Esd	3 Esra
+1Esd	1Esd
+1John	Forsta Johannesbrevet
+1John	Första Johannesbrevet
+1John	Johannes forsta brev
+1John	Johannes första brev
+1John	1. Johannesbrevet
+1John	1 Johannesbrevet
+1John	1 Joh
+1John	1John
+1Kgs	Forsta Konungaboken
+1Kgs	Första Konungaboken
+1Kgs	Forsta Kungaboken
+1Kgs	Första Kungaboken
+1Kgs	1. Konungaboken
+1Kgs	1 Konungaboken
+1Kgs	1. Kungaboken
+1Kgs	1 Kungaboken
+1Kgs	1 Kung
+1Kgs	1 Kon
+1Kgs	1Kgs
+1Macc	Forsta Mackabeerboken
+1Macc	Forsta Mackabéerboken
+1Macc	Första Mackabeerboken
+1Macc	Första Mackabéerboken
+1Macc	1. Mackabeerboken
+1Macc	1. Mackabéerboken
+1Macc	1 Mackabeerboken
+1Macc	1 Mackabéerboken
+1Macc	1 Mack
+1Macc	1Macc
+1Pet	Forsta Petrusbrevet
+1Pet	Första Petrusbrevet
+1Pet	Petrus forsta brev
+1Pet	Petrus första brev
+1Pet	1. Petrusbrevet
+1Pet	1 Petrusbrevet
+1Pet	1 Petr
+1Pet	1 Pet
+1Pet	1Pet
+1Sam	Forsta Samuelsboken
+1Sam	Första Samuelsboken
+1Sam	1. Samuelsboken
+1Sam	1 Samuelsboken
+1Sam	1 Sam
+1Sam	1Sam
+1Thess	Forsta Thessalonikerbrevet
+1Thess	Första Thessalonikerbrevet
+1Thess	Forsta Tessalonikerbrevet
+1Thess	Första Tessalonikerbrevet
+1Thess	1. Thessalonikerbrevet
+1Thess	1 Thessalonikerbrevet
+1Thess	1. Tessalonikerbrevet
+1Thess	1 Tessalonikerbrevet
+1Thess	1 Thess
+1Thess	1 Tess
+1Thess	1Thess
+1Tim	Forsta Timotheosbrevet
+1Tim	Första Timotheosbrevet
+1Tim	Forsta Timoteusbrevet
+1Tim	Första Timoteusbrevet
+1Tim	1. Timotheosbrevet
+1Tim	1 Timotheosbrevet
+1Tim	1. Timoteusbrevet
+1Tim	1 Timoteusbrevet
+1Tim	1 Tim
+1Tim	1Tim
+2Chr	Andra Kronikeboken
+2Chr	Andra Krönikeboken
+2Chr	2. Kronikeboken
+2Chr	2. Krönikeboken
+2Chr	2 Kronikeboken
+2Chr	2 Krönikeboken
+2Chr	2 Kron
+2Chr	2 Krön
+2Chr	2Chr
+2Cor	Andra Korinthierbrevet
+2Cor	Andra Korintherbrevet
+2Cor	Andra Korintierbrevet
+2Cor	Andra Korinterbrevet
+2Cor	2. Korinthierbrevet
+2Cor	2 Korinthierbrevet
+2Cor	2. Korintherbrevet
+2Cor	2. Korintierbrevet
+2Cor	2 Korintherbrevet
+2Cor	2 Korintierbrevet
+2Cor	2. Korinterbrevet
+2Cor	2 Korinterbrevet
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	Fjarde Esra
+2Esd	Fjärde Esra
+2Esd	Andra Esra
+2Esd	2. Esra
+2Esd	4. Esra
+2Esd	2 Esra
+2Esd	4 Esra
+2Esd	2Esd
+2John	Andra Johannesbrevet
+2John	Johannes andra brev
+2John	2. Johannesbrevet
+2John	2 Johannesbrevet
+2John	2 Joh
+2John	2John
+2Kgs	Andra Konungaboken
+2Kgs	Andra Kungaboken
+2Kgs	2. Konungaboken
+2Kgs	2 Konungaboken
+2Kgs	2. Kungaboken
+2Kgs	2 Kungaboken
+2Kgs	2 Kung
+2Kgs	2 Kon
+2Kgs	2Kgs
+2Macc	Andra Mackabeerboken
+2Macc	Andra Mackabéerboken
+2Macc	2. Mackabeerboken
+2Macc	2. Mackabéerboken
+2Macc	2 Mackabeerboken
+2Macc	2 Mackabéerboken
+2Macc	2 Mack
+2Macc	2Macc
+2Pet	Andra Petrusbrevet
+2Pet	Petrus andra brev
+2Pet	2. Petrusbrevet
+2Pet	2 Petrusbrevet
+2Pet	2 Petr
+2Pet	2 Pet
+2Pet	2Pet
+2Sam	Andra Samuelsboken
+2Sam	2. Samuelsboken
+2Sam	2 Samuelsboken
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	Andra Thessalonikerbrevet
+2Thess	Andra Tessalonikerbrevet
+2Thess	2. Thessalonikerbrevet
+2Thess	2 Thessalonikerbrevet
+2Thess	2. Tessalonikerbrevet
+2Thess	2 Tessalonikerbrevet
+2Thess	2 Thess
+2Thess	2 Tess
+2Thess	2Thess
+2Tim	Andra Timotheosbrevet
+2Tim	Andra Timoteusbrevet
+2Tim	2. Timotheosbrevet
+2Tim	2 Timotheosbrevet
+2Tim	2. Timoteusbrevet
+2Tim	2 Timoteusbrevet
+2Tim	2 Tim
+2Tim	2Tim
+3John	Tredje Johannesbrevet
+3John	Johannes tredje brev
+3John	3e. Johannesbrevet
+3John	3. Johannesbrevet
+3John	3e Johannesbrevet
+3John	3 Johannesbrevet
+3John	3 Joh
+3John	3John
+3Macc	Tredje Mackabeerboken
+3Macc	Tredje Mackabéerboken
+3Macc	3e. Mackabeerboken
+3Macc	3e. Mackabéerboken
+3Macc	3. Mackabeerboken
+3Macc	3. Mackabéerboken
+3Macc	3e Mackabeerboken
+3Macc	3e Mackabéerboken
+3Macc	3 Mackabeerboken
+3Macc	3 Mackabéerboken
+3Macc	3 Mack
+3Macc	3Macc
+4Macc	Fjarde Mackabeerboken
+4Macc	Fjarde Mackabéerboken
+4Macc	Fjärde Mackabeerboken
+4Macc	Fjärde Mackabéerboken
+4Macc	4. Mackabeerboken
+4Macc	4. Mackabéerboken
+4Macc	4 Mackabeerboken
+4Macc	4 Mackabéerboken
+4Macc	4 Mack
+4Macc	4Macc
+Acts	Apostlagarningarna
+Acts	Apostlagärningarna
+Acts	Acts
+Acts	Apg
+Amos	Amos
+Amos	Am
+Bar	Baruks bok
+Bar	Baruk
+Bar	Bar
+Bel	Bel och Ormguden
+Bel	Bel
+Col	Kolosserbrevet
+Col	Col
+Col	Kol
+Dan	Daniels bok
+Dan	Daniel
+Dan	Dan
+Deut	Femte Moseboken
+Deut	Deuteronomium
+Deut	Femte Mosebok
+Deut	5. Moseboken
+Deut	5 Moseboken
+Deut	5. Mosebok
+Deut	5 Mosebok
+Deut	5 Mos
+Deut	Deut
+Eccl	Predikarens bok
+Eccl	Predikarboken
+Eccl	Predikaren
+Eccl	Eccl
+Eccl	Pred
+EpJer	Jeremias brev
+EpJer	Jer br
+EpJer	EpJer
+Eph	Efesierbrevet
+Eph	Efeserbrevet
+Eph	Eph
+Eph	Ef
+Esth	Esters bok
+Esth	Ester
+Esth	Esth
+Esth	Est
+Exod	Andra Moseboken
+Exod	Andra Mosebok
+Exod	2. Moseboken
+Exod	2 Moseboken
+Exod	2. Mosebok
+Exod	2 Mosebok
+Exod	Exodus
+Exod	2 Mos
+Exod	Exod
+Ezek	Hesekiels bok
+Ezek	Hesekiel
+Ezek	Ezek
+Ezek	Hes
+Ezra	Esra
+Ezra	Ezra
+Ezra	Esr
+Gal	Galaterbrefvet
+Gal	Galaterbrevet
+Gal	Gal
+Gen	Forsta Moseboken
+Gen	Första Moseboken
+Gen	Forsta Mosebok
+Gen	Första Mosebok
+Gen	1. Moseboken
+Gen	1 Moseboken
+Gen	1. Mosebok
+Gen	1 Mosebok
+Gen	Genesis
+Gen	1 Mos
+Gen	Gen
+GkEsth	Ester enligt den grekiska texten
+GkEsth	Est gr
+GkEsth	GkEsth
+Hab	Habackuk
+Hab	Habakuk
+Hab	Hab
+Hag	Haggai
+Hag	Haggaj
+Hag	Hagg
+Hag	Hag
+Heb	Hebreerbrevet
+Heb	Hebréerbrevet
+Heb	Hebr
+Heb	Ebr
+Heb	Heb
+Hos	Hoseas bok
+Hos	Hosea
+Hos	Hos
+Isa	Jesajas bok
+Isa	Jesaja
+Isa	Isa
+Isa	Jes
+Jas	Jakobs epistel
+Jas	Jakobsbrevet
+Jas	Jakobs brev
+Jas	Jak
+Jas	Jas
+Jdt	Judit
+Jdt	Jdt
+Jer	Jeremias
+Jer	Jeremia
+Jer	Jer
+Job	Jobs bok
+Job	Job
+Joel	Joels bok
+Joel	Joel
+John	Johannis evangelium
+John	Johannesevangeliet
+John	Johannes
+John	John
+John	Joh
+John	Jh
+Jonah	Jonas bok
+Jonah	Jona bok
+Jonah	Jonah
+Jonah	Jona
+Jonah	Jon
+Josh	Josua
+Josh	Josh
+Josh	Jos
+Jude	Judas epistel
+Jude	Judasbrevet
+Jude	Judas brev
+Jude	Jude
+Jude	Jud
+Judg	Domarboken
+Judg	Judg
+Judg	Dom
+Lam	Klagovisorna
+Lam	Klag
+Lam	Lam
+Lev	Tredje Moseboken
+Lev	Tredje Mosebok
+Lev	3e. Moseboken
+Lev	3. Moseboken
+Lev	3e Moseboken
+Lev	3 Moseboken
+Lev	3e. Mosebok
+Lev	3. Mosebok
+Lev	3e Mosebok
+Lev	3 Mosebok
+Lev	Leviticus
+Lev	3 Mos
+Lev	Lev
+Luke	Lukas evangelium
+Luke	Lukasevangeliet
+Luke	Lukas
+Luke	Luke
+Luke	Luk
+Luke	Lk
+Mal	Malakias
+Mal	Malaki
+Mal	Mal
+Mark	Markus evangelium
+Mark	Markusevangeliet
+Mark	Markus
+Mark	Mark
+Mark	Mk
+Matt	Mattei evangelium
+Matt	Matteusevangeliet
+Matt	Matteus
+Matt	Matt
+Matt	Mt
+Mic	Mikas bok
+Mic	Mika
+Mic	Mic
+Mic	Mik
+Nah	Nahum
+Nah	Nah
+Neh	Nehemia
+Neh	Nehemja
+Neh	Neh
+Num	Fjarde Moseboken
+Num	Fjärde Moseboken
+Num	Fjarde Mosebok
+Num	Fjärde Mosebok
+Num	4. Moseboken
+Num	4 Moseboken
+Num	4. Mosebok
+Num	4 Mosebok
+Num	Numeri
+Num	4 Mos
+Num	Num
+Obad	Obadjas bok
+Obad	Obadja
+Obad	Obad
+Obad	Ob
+Phil	Filipperbrevet
+Phil	Phil
+Phil	Fil
+Phlm	Brevet till Filemon
+Phlm	Filemonbrevet
+Phlm	Filem
+Phlm	Phlm
+PrAzar	Asarias’ bon
+PrAzar	Asarias’ bön
+PrAzar	Asarjas’ bon
+PrAzar	Asarjas’ bön
+PrAzar	Asarias bon
+PrAzar	Asarias bön
+PrAzar	Asarjas bon
+PrAzar	Asarjas bön
+PrAzar	PrAzar
+PrMan	Manasses’ bon
+PrMan	Manasses’ bön
+PrMan	Manasses bon
+PrMan	Manasses bön
+PrMan	Manasse bon
+PrMan	Manasse bön
+PrMan	PrMan
+PrMan	Man
+Prov	Ordspraksboken
+Prov	Ordspråksboken
+Prov	Ords
+Prov	Prov
+Ps	Psaltaren
+Ps	Psalmen
+Ps	Psalm
+Ps	Ps
+Rev	Johannes Uppenbarelse
+Rev	Johannes apokalyps
+Rev	Uppenbarelseboken
+Rev	Rev
+Rev	Upp
+Rom	Romarbrevet
+Rom	Rom
+Ruth	Ruts bok
+Ruth	Ruth
+Ruth	Rut
+SgThree	De tre mannens lovsang
+SgThree	De tre mannens lovsång
+SgThree	De tre männens lovsang
+SgThree	De tre männens lovsång
+SgThree	SgThree
+Sir	Jesus Syraks vishet
+Sir	Ecclesiasticus
+Sir	Ben Sira
+Sir	Syrak
+Sir	Sir
+Sir	Syr
+Song	Hoga visan
+Song	Höga Visan
+Song	Höga visan
+Song	Hoga V
+Song	Hoga v
+Song	Höga V
+Song	Hogav
+Song	Högav
+Song	Hoga
+Song	Höga
+Song	Song
+Sus	Susanna i badet
+Sus	Susanna
+Sus	Sus
+Titus	Brevet till Titus
+Titus	Titusbrevet
+Titus	Titus
+Titus	Tit
+Tob	Tobits bok
+Tob	Tobit
+Tob	Tob
+Wis	Salomos vishet
+Wis	Vishetens bok
+Wis	Visheten
+Wis	Vish
+Wis	Wis
+Zech	Sakaria
+Zech	Sakarja
+Zech	Zech
+Zech	Sak
+Zeph	Sefanjas bok
+Zeph	Zefanias
+Zeph	Sefanja
+Zeph	Zeph
+Zeph	Sef

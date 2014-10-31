@@ -1,0 +1,271 @@
+$FIRST	Прва	Прво	1	I
+$SECOND	Втора	Второ	2	II
+$THIRD	Трета	Трето	3	III
+$FOURTH	4	IV
+$AB	[аб]
+$AND	и
+$CHAPTER	глави	глава
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+$TO	-
+$VERSE	verse
+$UNICODE_BLOCK	Cyrillic	Latin
+
+Gen	$FIRST книга Мојсеева	Битие	Настанување
+Exod	$SECOND книга Мојсеева	Излез
+Lev	Трета книга Мојсеева	Левитска книга	Левитска	Левит
+Num	Четврта книга Мојсеева	Броеви
+Deut	Петта книга Мојсеева	Второзаконие	Повторени закони
+Josh	Книга на Исус Невин	Јешуа	Јошуа	Исус Навин
+Judg	Книга на израелеви судии	Судии
+Ruth	Рут
+1Sam	$FIRST книга Самоилова	$FIRST Самуил
+2Sam	$SECOND книга Самоилова	$SECOND Самуил
+1Kgs	$FIRST книга за царевите	$FIRST Цареви
+2Kgs	$SECOND книга за царевите	$SECOND Цареви
+1Chr	$FIRST книга летописи	$FIRST Летописи
+2Chr	$SECOND книга летописи	$SECOND Летописи
+Ezra	Езра
+Neh	Неемија	Нехемија
+Esth	Естира	Естер
+Job	Јов
+Ps	Псалми
+Prov	Пословици	Изреки
+Eccl	Проповедник
+Song	Песна над песните	Песната над песните	Песната на Соломон	Црковни химни
+Isa	Исаија	Исаја
+Jer	Еремија
+Lam	Плач на Еремиин	Плачот на Еремија	Плач Еремиин
+Ezek	Езекиел
+Dan	Даниел	Данил
+Hos	Осија	Хошеа
+Joel	Јоил	Јоел
+Amos	Амос
+Obad	Авдиј	Овадија
+Jonah	Јона
+Mic	Михеј	Миха
+Nah	Наум
+Hab	Хабакук	Хавакук
+Zeph	Софонија	Сефанија
+Hag	Агеј	Хагај
+Zech	Захарија
+Mal	Малахија
+Matt	Евангелието според Матеј	Матеј	Евангелие според Матеј
+Mark	Евангелието според Марко	Марко	Евангелие според Марко
+Luke	Евангелието според Лука	Лука	Евангелие според Лука
+John	Евангелието според Јован	Јован	Евангелие според Јован
+Acts	Дела на апостолите	Дела	Дела Ап	Дела на светите апостоли
+Rom	Писмо од апостол Павле до христијаните во Рим	Римјани	Римјаните
+1Cor	$FIRST писмо од апостол Павле до христијаните во Коринт	$FIRST Коринтјани	$FIRST Коринќаните
+2Cor	$SECOND писмо од апостол Павле до христијаните во Коринт	$SECOND Коринтјани	$SECOND Коринќаните
+Gal	Писмо од апостол Павле до христијаните во Галатија	Галатјани	Галатите
+Eph	Писмо од апостол Павле до христијаните во Ефес	Ефесјани	Ефешаните
+Phil	Писмо од апостол Павле до христијаните во Филипи	Филипјани	Филипјаните
+Col	Писмо од апостол Павле до христијаните во Колос	Колосјани	Колошаните
+1Thess	$FIRST писмо од апостол Павле до христијаните во Солун	$FIRST Солунјани	$FIRST Солунците
+2Thess	$SECOND писмо од апостол Павле до христијаните во Солун	$SECOND Солунјани	$SECOND Солунците
+1Tim	$FIRST писмо од апостол Павле до Тимотеј	$FIRST Тимотеј
+2Tim	$SECOND писмо од апостол Павле до Тимотеј	$SECOND Тимотеј
+Titus	Писмо од апостол Павле до Тит	Тит
+Phlm	Писмо од апостол Павле до Филемон	Фил[ие]мон
+Heb	Писмо до Евреите	Евреи	Евреите
+Jas	Писмо од апостол Јаков	Јаков	Послание на апостол Јаков
+1Pet	$FIRST писмо од апостол Петар	$FIRST Петар	$FIRST Петрово	$FIRST послание на апостол Петар
+2Pet	$SECOND писмо од апостол Петар	$SECOND Петар	$SECOND Петрово	$SECOND послание на апостол Петар
+1John	$FIRST писмо од апостол Јован	$FIRST Јован	$FIRST Јованово	$FIRST послание на апостол Јован
+2John	$SECOND писмо од апостол Јован	$SECOND Јован	$SECOND Јованово	$SECOND послание на апостол Јован
+3John	$THIRD писмо од апостол Јован	$THIRD Јован	$THIRD Јованово	$THIRD послание на апостол Јован
+Jude	Писмо од апостол Јуда	Јуда	Послание на апостол Јуда
+Rev	Откровение
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Книга Мудрост Соломонова
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Битие
+*Exod	Излез
+*Lev	Левит
+*Num	Броеви
+*Deut	Второзаконие
+*Josh	Исус Навин
+*Judg	Судии
+*Ruth	Рут
+*1Sam	1 Самуил
+*2Sam	2 Самуил
+*1Kgs	1 Цареви
+*2Kgs	2 Цареви
+*1Chr	1 Летописи
+*2Chr	2 Летописи
+*Ezra	Езра
+*Neh	Неемија
+*Esth	Естира
+*Job	Јов
+*Ps	Псалми
+*Prov	Пословици
+*Eccl	Проповедник
+*Song	Песна над песните
+*Isa	Исаија
+*Jer	Еремија
+*Lam	Плач Еремиин
+*Ezek	Езекиел
+*Dan	Даниел
+*Hos	Осија
+*Joel	Јоил
+*Amos	Амос
+*Obad	Авдиј
+*Jonah	Јона
+*Mic	Михеј
+*Nah	Наум
+*Hab	Хабакук
+*Zeph	Софонија
+*Hag	Агеј
+*Zech	Захарија
+*Mal	Малахија
+*Matt	Матеј
+*Mark	Марко
+*Luke	Лука
+*John	Јован
+*Acts	Дела
+*Rom	Римјани
+*1Cor	1 Коринтјани
+*2Cor	2 Коринтјани
+*Gal	Галатјани
+*Eph	Ефесјани
+*Phil	Филипјани
+*Col	Колосјани
+*1Thess	1 Солунјани
+*2Thess	2 Солунјани
+*1Tim	1 Тимотеј
+*2Tim	2 Тимотеј
+*Titus	Тит
+*Phlm	Филимон
+*Heb	Евреи
+*Jas	Јаков
+*1Pet	1 Петар
+*2Pet	2 Петар
+*1John	1 Јован
+*2John	2 Јован
+*3John	3 Јован
+*Jude	Јуда
+*Rev	Откровение
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Книга Мудрост Соломонова
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

@@ -1,0 +1,279 @@
+$FIRST	Pierwsza	Pierwsze	Pierwszy	1	I
+$SECOND	Druga	Drugi	2	II
+$THIRD	Trzecia	Trzeci	3	III
+$FOURTH	Czwarta	4	IV
+$FIFTH	Piąta	5	V
+$BOOK	Księga	Księgi	Ks.
+$AB	[a-e]
+# http://www.biblegateway.com/passage/?search=Jan%201&version=NP (oraz) and http://pl.wikipedia.org/wiki/1_Ksi%C4%99ga_Samuela (por. = cf.) and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Kap%C5%82a%C5%84ska (i = and)
+$AND	oraz	por	i
+# http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Rodzaju and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Wyj%C5%9Bcia (rozdział) and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Jeremiasza (rozdz.) and http://pl.wikipedia.org/wiki/Ewangelia_Jana (rr and r)
+$CHAPTER	rozdziały	rozdziałów	rozdział	rozdz	rr	r
+# http://www.biblegateway.com/passage/?search=Rom%203:25&version=NP and http://www.biblegateway.com/passage/?search=1%20Cor%2016:22&version=NP
+$FF	nn	n
+# http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Psalm%C3%B3w
+$TITLE	tytuł
+$TRANS	NP
+# http://pl.wikipedia.org/wiki/1_Ksi%C4%99ga_Kronik and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Micheasza
+$TO	do
+# http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Rut (wersetów) and http://pl.wikipedia.org/wiki/1_Ksi%C4%99ga_Kronik and http://pl.wikipedia.org/wiki/2._List_Jana (wers) and http://pl.wikipedia.org/wiki/List_do_Filemona (w)
+$VERSE	wersetów	wersety	werset	wers	w
+$UNICODE_BLOCK	Latin
+
+Gen	$FIRST Mojżeszowa	$BOOK Rodzaju	Rdz	Rodz	I Moj	1 Moj	1 M	$FIRST $BOOK Moyżeszowe	$FIRST $BOOK Mojżeszowa	$FIRST Mojż	Genezis
+Exod	Wj	$SECOND Mojżeszowa	$BOOK Wyjścia	Wyj	II Moj	2 Moj	2 M	$SECOND $BOOK Mojżeszowa	$SECOND Mojż	Exodus	Ex
+Lev	Kpł	$THIRD Mojżeszowa	$BOOK Kapłańska	Kpl	Kapł	Kapl	III Moj	3 Moj	3 M	$THIRD $BOOK Mojżeszowa	$THIRD Mojż
+Num	$FOURTH Mojżeszowa	$BOOK Liczb	Lb	Liczb	IV Moj	4 Moj	4 M	$FOURTH $BOOK Mojżeszowa	$FOURTH Mojż
+Deut	$FIFTH Mojżeszowa	$BOOK Powt Prawa	Pwt	V Moj	5 Moj	5 M	$BOOK Powtórzonego Prawa	$FIFTH $BOOK Mojżeszowa	$FIFTH Mojż
+Josh	Jozuego	$BOOK Jozuego	Joz
+Judg	Sdz	Sędziów	$BOOK Sędziów	Sędz
+Ruth	Rut	$BOOK Rut	Rt	Ru	$BOOK Ruthy
+1Sam	$FIRST Samuelowa	$FIRST $BOOK Samuela	1 Sm	1 Sam	1 Sa	$FIRST $BOOK Samuelowa
+2Sam	$SECOND Samuelowa	$SECOND $BOOK Samuela	2 Sm	2 Sam	2 Sa	$SECOND $BOOK Samuelowa
+1Kgs	1 Krl	$FIRST Królewska	$FIRST $BOOK Królewska	1 Król	$FIRST $BOOK Królów	$THIRD $BOOK Królewska
+2Kgs	2 Krl	$SECOND Królewska	$SECOND $BOOK Królewska	2 Król	$SECOND $BOOK Królów	$FOURTH $BOOK Królewska
+1Chr	$FIRST Kronik	$FIRST $BOOK Kronik	1 Krn	1 Kron
+2Chr	$SECOND Kronik	$SECOND $BOOK Kronik	2 Krn	2 Kron
+Ezra	Ezdrasza	$BOOK Ezdrasza	Ezd	Ezdr	Ezr
+Neh	Nehemiasza	$BOOK Nehemiasza	Ne	Neh
+Esth	Estery	$BOOK Estery	Est
+Job	Joba	$BOOK Hioba	Hioba	Hiob	Hi	$BOOK Joba	Job	$BOOK Ijoba
+Ps	Ps	Psalmy	$BOOK Psalmów	Psalm
+Prov	Przypowieści Salomonowych	$BOOK Przysłów	Prz	Przy	Pr	$BOOK Przypowieści Salomona	Przyp
+Eccl	Kaznodziei Salomonowego	$BOOK Koheleta	Koh	Kohelet	Ekl	$BOOK Kaznodziei Salomona	$BOOK Eklezjastesa	Kazn
+Song	Pieśń nad Pieśniami	PNP	Pieśń Salomona
+Isa	Iz	Izajasza	$BOOK Izajasza
+Jer	Jeremiasza	$BOOK Jeremiasza	Jr	Jer
+Lam	Treny	Lamentacje Jeremiasza	Lm	Lam	Tr	La	Lamentacje	Treny Jeremiasza	$BOOK Lamentacji
+Ezek	Ezechiela	$BOOK Ezechiela	Ez	Eze
+Dan	Daniela	$BOOK Daniela	Dn	Dan	Da
+Hos	Ozeasza	$BOOK Ozeasza	Oz
+Joel	Joela	$BOOK Joela	Jl	Joel	Proroctwo Ioelowe
+Amos	Amosa	$BOOK Amosa	Am	Amos
+Obad	Abdiasza	$BOOK Abdiasza	Ab	Proroctwo Abdyaszowe
+Jonah	Jonasza	$BOOK Jonasza	Jon	Proroctwo Ionaszowe
+Mic	Micheasza	$BOOK Micheasza	Mi	Mich	Mic
+Nah	Nahuma	$BOOK Nahuma	Na	Nach	Proroctwo Nahumowe	Nah
+Hab	Abakuka	$BOOK Habakuka	Ha	Hab	Proroctwo Abakukowe	Habakuka
+Zeph	Sofoniasza	$BOOK Sofoniasza	So	Sof	Proroctwo Sofoniaszowe
+Hag	Aggeusza	$BOOK Aggeusza	Ag	Proroctwo Aggieuszowe
+Zech	Zachariasza	$BOOK Zachariasza	Za	Zach
+Mal	Malachiasza	$BOOK Malachiasza	Ml	Mal	Proroctwo Malachyaszowe
+Matt	Mateusz	Mt	Ewangelia według św. Mateusza	Ewangelia Mateusza	Ew. Mateusza	Mat	Ewangelia wg św. Mateusza	Ew Mat
+Mark	Marek	Mk	Ewangelia według św. Marka	Ewangelia Marka	Ew. Marka	Mar	Ewangelia wg św. Marka	Ew Mar
+Luke	Łukasz	Łk	Ewangelia według św. Łukasza	Ewangelia Łukasza	Ew. Łukasza	Łuk	Lk	Luk	Ewangelia wg św. Łukasza	Ew Łuk
+John	Jan	J	Ewangelia według św. Jana	Ewangelia Jana	Ew. Jana	Jn	Ewangelia wg św. Jana	Ew Jan
+Acts	Dzieje	Dz	Dzieje Apostolskie	Dzieje Apost.	Dziejach Apostolskich	Dz Ap
+Rom	Rzymian	List św. Pawła do Rzymian	List do Rzymian	Rz	Rzym
+1Cor	$FIRST Koryntian	1 Kor	$FIRST List św. Pawła do Koryntian	$FIRST Koryntów	$FIRST list do Koryntian
+2Cor	$SECOND Koryntian	2 Kor	$SECOND List św. Pawła do Koryntian	$SECOND Koryntów	$SECOND list do Koryntian
+Gal	Galacjan	Ga	List św. Pawła do Galacjan	Galatów	List do Galatów	Gal	List do Galacjan
+Eph	Efezjan	List św. Pawła do Efezjan	Efezów	List do Efezjan	Ef	Efez	List Świętego Pawła Apostoła do Efezów
+Phil	Filipian	Flp	List św. Pawła do Filipian	Filipensów	List do Filipian	Fil	Fl	Filip
+Col	Kolosan	List św. Pawła do Kolosan	Kolosensów	List do Kolosan	Kol
+1Thess	$FIRST Tesaloniczan	$FIRST List św. Pawła do Tesaloniczan	$FIRST Tesalonicensów	$FIRST List do Tesaloniczan	1 Tes
+2Thess	$SECOND Tesaloniczan	$SECOND List św. Pawła do Tesaloniczan	$SECOND Tesalonicensów	$SECOND List do Tesaloniczan	2 Tes
+1Tim	$FIRST Tymoteusza	1 Tm	$FIRST List św. Pawła do Tymoteusza	$FIRST List do Tymoteusza	$FIRST Tym
+2Tim	$SECOND Tymoteusza	2 Tm	$SECOND List św. Pawła do Tymoteusza	$SECOND List do Tymoteusza	2 Tym
+Titus	Tytusa	List św. Pawła do Tytusa	List do Tytusa	Tt	Tyt
+Phlm	Filemona	List św. Pawła do Filemona	List do Filemona	Flm	Filem
+Heb	Hebrajczyków	Hbr	List do Hebrajczyków	Żydów	Heb	Hebr	List do Żydów	Żyd
+Jas	Jakuba	Jk	List św. Jakuba	List Jakuba	Jak	List powszechny Świętego Iakuba Apostoła
+1Pet	$FIRST Piotra	1 P	$FIRST List św. Piotra	$FIRST List Piotra	$FIRST Piotr
+2Pet	$SECOND Piotra	2 P	$SECOND List św. Piotra	$SECOND List Piotra	$SECOND Piotr
+1John	$FIRST Jana	1 J	$FIRST List św. Jana	$FIRST List Jana	1 Jan
+2John	$SECOND Jana	2 J	$SECOND List św. Jana	$SECOND List Jana	2 Jan
+3John	$THIRD Jana	3 J	$THIRD List św. Jana	$THIRD List Jana	3 Jn	3 Jan
+Jude	Judy	List św. Judy	List Judy	Jud	List powszechny Świętego Iudasa Apostoła	Jd
+Rev	Objawienie	Obj	Objawienie św. Jana	Apokalipsa	Ap	Apokalipsa św. Jana	Apokalipsa św. Jana	Apokalipsa Świętego Jana	$BOOK Apokalipsy	Objawienie Jana	$BOOK Objawienia
+Tob	$BOOK Tobiasza	Tb	Tob	$BOOK Tobita
+Jdt	$BOOK Judyty	Jdt	Judyty
+GkEsth	GkEsth
+Wis	$BOOK Mądrości	Mdr	Mądr	Mądrość Salomona
+Sir	Mądrość Syracha	Syr	Syracha	Eklezjastyka	Ekli	Eklezjastyk
+Bar	$BOOK Barucha	Ba	Barucha	Bar
+PrAzar	Pieśń Azariasza	Modlitwą Azariasza
+Sus	Opowiadaniem o Zuzannie	Zuzanna
+Bel	Opowiadaniem o Belu i wężu	Bela i węża
+SgThree	Pieśń trzech młodzieńców	Pieśnią trzech młodzieńców
+EpJer	List Jeremiasza
+1Macc	$FIRST $BOOK Machabejska	1 Mch	1 Mach
+2Macc	$SECOND $BOOK Machabejska	2 Mch	2 Mach
+3Macc	$THIRD $BOOK Machabejska	3 Mch	3 Mach
+4Macc	$FOURTH $BOOK Machabejska	4 Mch	4 Mach
+1Esd	$FIRST $BOOK Ezdrasza	$FIRST Ezdrasza
+2Esd	$SECOND $BOOK Ezdrasza	$SECOND Ezdrasza
+PrMan	Modlitwa Manassesa
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=Acts
+=Rev
+=1John
+=2John
+=3John
+=John
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Księga Rodzaju	Rdz
+*Exod	Księga Wyjścia	Wj
+*Lev	Księga Kapłańska	Kpł
+*Num	Księga Liczb	Lb
+*Deut	Księga Powtórzonego Prawa	Pwt
+*Josh	Jozuego	Joz
+*Judg	Sędziów	Sdz
+*Ruth	Rut	Rt
+*1Sam	1 Samuelowa	1 Sm
+*2Sam	2 Samuelowa	2 Sm
+*1Kgs	1 Królewska	1 Krl
+*2Kgs	2 Królewska	2 Krl
+*1Chr	1 Kronik	1 Krn
+*2Chr	2 Kronik	2 Krn
+*Ezra	Ezdrasza	Ezd
+*Neh	Nehemiasza	Ne
+*Esth	Estery	Est
+*Job	Joba	Hi
+*Ps	Psalmy	Ps		Psalm
+*Prov	Księga Przysłów	Prz
+*Eccl	Księga Koheleta	Koh
+*Song	Pieśń nad Pieśniami	Pnp
+*Isa	Izajasza	Iz
+*Jer	Jeremiasza	Jr
+*Lam	Treny	Lm
+*Ezek	Ezechiela	Ez
+*Dan	Daniela	Dn
+*Hos	Ozeasza	Oz
+*Joel	Joela	Jl
+*Amos	Amosa	Am
+*Obad	Abdiasza	Ab
+*Jonah	Jonasza	Jon
+*Mic	Micheasza	Mi
+*Nah	Nahuma	Na
+*Hab	Abakuka	Ha
+*Zeph	Sofoniasza	So
+*Hag	Aggeusza	Ag
+*Zech	Zachariasza	Za
+*Mal	Malachiasza	Ml
+*Matt	Ewangelia Mateusza	Mt
+*Mark	Ewangelia Marka	Mk
+*Luke	Ewangelia Łukasza	Łk
+*John	Ewangelia Jana	J
+*Acts	Dzieje Apostolskie	Dz
+*Rom	Rzymian	Rz
+*1Cor	1 Koryntów	1 Kor
+*2Cor	2 Koryntów	2 Kor
+*Gal	Galatów	Ga
+*Eph	Efezów	Ef
+*Phil	Filipensów	Flp
+*Col	Kolosensów	Kol
+*1Thess	1 Tesalonicensów	1 Tes
+*2Thess	2 Tesalonicensów	2 Tes
+*1Tim	1 Tymoteusza	1 Tm
+*2Tim	2 Tymoteusza	2 Tm
+*Titus	Tytusa	Tt
+*Phlm	Filemona	Flm
+*Heb	Żydów	Hbr
+*Jas	Jakuba	Jk
+*1Pet	1 Piotra	1 P
+*2Pet	2 Piotra	2 P
+*1John	1 Jana	1 J
+*2John	2 Jana	2 J
+*3John	3 Jana	3 J
+*Jude	Judy	Jud
+*Rev	Apokalipsa św. Jana	Ap
+*Tob	Księga Tobiasza	Tb
+*Jdt	Księga Judyty	Jdt
+*GkEsth	GkEsth
+*Wis	Księga Mądrości	Mdr
+*Sir	Mądrość Syracha	Syr
+*Bar	Księga Barucha	Ba
+*PrAzar	Modlitwą Azariasza
+*Sus	Opowiadaniem o Zuzannie
+*Bel	Opowiadaniem o Belu i wężu
+*SgThree	Pieśnią trzech młodzieńców
+*EpJer	List Jeremiasza
+*1Macc	1 Księga Machabejska	1 Mch
+*2Macc	2 Księga Machabejska	2 Mch
+*3Macc	3 Księga Machabejska	3 Mch
+*4Macc	4 Księga Machabejska	4 Mch
+*1Esd	1 Księga Ezdrasza
+*2Esd	2 Księga Ezdrasza
+*PrMan	Modlitwa Manassesa

@@ -1,0 +1,271 @@
+$FIRST	पहिल	1
+$SECOND	दुसरे	2
+$THIRD	तिसरे	3
+$FOURTH	4
+$AB	[a-e]
+$AND	and
+$CHAPTER	chapter
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+$TO	to
+$VERSE	verse
+$UNICODE_BLOCK	Devanagari	Latin
+
+Gen	उत्पत्ति	utpatti	उत्पति
+Exod	निर्गम	nirgam
+Lev	लेवीय	lewīy
+Num	गणना	gaṇanā
+Deut	अनुवाद	anuwād
+Josh	यहोशवा	yahoŝawā
+Judg	शास्ते	ŝāste
+Ruth	रूथ	rūtʰ
+1Sam	पहिले शमुवेल	1 ŝamuwel	1 शमुवेल
+2Sam	दुसरे शमुवेल	2 ŝamuwel	2 शमुवेल
+1Kgs	पहिले राजे	1 rāǳe	1 राजे
+2Kgs	दुसरे राजे	2 rāǳe	2 राजे
+1Chr	पहिले इतिहास	1 itihās	1 इतिहास
+2Chr	दुसरे इतिहास	2 itihās	2 इतिहास
+Ezra	एज्रा	eǳrā	edzrā
+Neh	नहेम्या	nahemyā
+Esth	एस्तेर	ester
+Job	ईयोब	īyob	इयोब
+Ps	स्तोत्रसंहिता	stotrasaṃhitā	स्त्रोत्रसंहिता	स्तोत्र
+Prov	नीतिसूत्रे	nītisūtre	नीतिसूत्रें
+Eccl	उपदेशक	upadeŝak
+Song	गीतरत्न	gītratna
+Isa	यशया	yaŝayā	यशाय
+Jer	यिर्मया	yirmayā
+Lam	विलापगीत	wilāpgīt
+Ezek	यहेज्केल	yaheǳkel	yahedzkel
+Dan	दानीएल्र	dānīel	दानीएल
+Hos	होशेय	hoŝey
+Joel	योएल	yoel
+Amos	आमोस	āmos	अमोस
+Obad	ओबधा	obadʰā	ओबद्या
+Jonah	योना	yonā
+Mic	मीखा	mīkʰā
+Nah	नहूम	nahūm
+Hab	हबक्कूक	habakkūk	हबक्कू
+Zeph	सफन्या	sapʰanyā
+Hag	हाग्गय	hāggay
+Zech	जखर्या	jakʰaryā	जखऱ्या
+Mal	मलाखी	malākʰī
+Matt	मत्तयाने लिहिलेले शुभवर्तमान	मत्तयाने	mattayāne lihilele ŝubʰavartamān	mattayāne	मत्तय
+Mark	मार्काने लिहिलेले शुभवर्तमान	मार्काने	mārkāne lihilele ŝubʰavartamān	mārkāne	मार्क
+Luke	लूकाने लिहिलेले शुभवर्तमान	लूकाने	lūkāne lihilele ŝubʰavartamān	lūkāne	लूक	लूका
+John	योहानाने लिहिलेले शुभवर्तमान	योहानाने	yohānāne lihilele ŝubʰavartamān	yohānāne	योहान
+Acts	प्रेषितांचीं कृत्यें	prešitāṃcīṃ kr̥tyeṃ	प्रेषितांची कृत्यें	प्रेषितांचीं कृत्ये
+Rom	रोमकरांस पत्र	रोमकरांस	romkarāṃs patra	romkarāṃs	पौलाचे रोमकरांस पत्र	रोमकंरास
+1Cor	करिंथकरांस पहिले पत्र	1 करिंथकरांस	kariṃtʰkarāṃs pahile patra	1 kariṃtʰkarāṃs	पौलाचे करिंथकरांस पहिले पत्र
+2Cor	करिंथकरांस दुसरे पत्र	2 करिंथकरांस	kariṃtʰkarāṃs dusre patra	2 kariṃtʰkarāṃs	पौलाचे करिंथकरांस दूसरे पत्र
+Gal	गलतीकरांस पत्र	गलतीकरांस	galatīkarāṃs patra	galatīkarāṃs	पौलाचे गलतीकरांस पत्र
+Eph	इफिसकरांस पत्र	इफिसकरांस	ipʰiskarāṃs patra	ipʰiskarāṃs	पौलाचे इफिसकरांस पत्र
+Phil	फिलिप्पैकरांस पत्र	फिलिप्पैकरांस	pʰilippaikarāṃs patra	pʰilippaikarāṃs	पौलाचे फिलिप्पैकरांस पत्र
+Col	कलस्सैकरांस पत्र	कलस्सैकरांस	kalassaikarāṃs patra	kalassaikarāṃs	पौलाचे कलस्सैकरांस पत्र	कलसैकरांस
+1Thess	थेस्सलनीकाकरांस पहिले पत्र	1 थेस्सलनीकाकरांस	tʰessalanīkākarāṃs pahile patra	1 tʰessalanīkākarāṃs	पौलाचे थेस्सलनीकाकरांस पहिले पत्र
+2Thess	थेस्सलनीकाकरांस दुसरे पत्र	2 थेस्सलनीकाकरांस	tʰessalanīkākarāṃs dusre patra	2 tʰessalanīkākarāṃs	पौलाचे थेस्सलनीकाकरांस दुसरे पत्र
+1Tim	तीमथ्थाला पहिले पत्र	1 तीमथ्थाला	tīmatʰtʰālā pahile patra	1 tīmatʰtʰālā	1 तीमथ्याला	पौलाचे तीमथ्याला पहिले पत्र
+2Tim	तीमथ्थाला दुसरे पत्र	2 तीमथ्थाला	tīmatʰtʰālā dusre patra	2 tīmatʰtʰālā	पौलाचे तीमथ्थाला दुसरे पत्र
+Titus	तीताला पत्र	तीताला	tītālā patra	tītālā	पौलाचे तीताला पत्र
+Phlm	फिलेमोनाला पत्र	फिलेमोनाला	pʰilemonālā patra	pʰilemonālā	फिलेमोना	पौलाचे फिलेमोनाला पत्र
+Heb	इब्री लोकांस पत्र	इब्री लोकांस	ibrī lokāṃs patra	ibrī lokāṃs	इब्री
+Jas	याकोबाचें पत्र	याकोबाचें	yākobāceṃ patra	yākobāceṃ	याकोब
+1Pet	पेत्राचें पहिले पत्र	1 पेत्राचें	petrāceṃ pahile patra	1 petrāceṃ	1 पेत्र	पेत्राचे पहिले पत्र
+2Pet	पेत्राचें दुसरे पत्र	2 पेत्राचें	petrāceṃ dusre patra	2 petrāceṃ	2 पेत्र	पौलाचें दुसरे पत्र
+1John	योहानाचें पहिले पत्र	1 योहानाच	yohānāceṃ pahile patra	1 yohānāceṃ	1 योहान
+2John	योहानाचें दुसरे पत्र	2 योहानाच	yohānāceṃ dusre patra	2 yohānāceṃ	2 योहान
+3John	योहानाचें तिसरे पत्र	3 योहानाच	yohānāceṃ tisre patra	3 yohānāceṃ	3 योहान
+Jude	यहूदाचें पत्र	यहूदाचें	yahūdāceṃ patra	yahūdāceṃ	यहूदा
+Rev	योहानाला झालेले प्रकटीकरण	प्रकटीकरण	yohānālā ǳʰālele prakaṭīkaraṇ	prakaṭīkaraṇ
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	उत्पत्ति	उत्पत्ति
+*Exod	निर्गम	निर्गम
+*Lev	लेवीय	लेवीय
+*Num	गणना	गणना
+*Deut	अनुवाद	अनुवाद
+*Josh	यहोशवा	यहोशवा
+*Judg	शास्ते	शास्ते
+*Ruth	रूथ	रूथ
+*1Sam	1 शमुवेल	1 शमुवेल
+*2Sam	2 शमुवेल	2 शमुवेल
+*1Kgs	1 राजे	1 राजे
+*2Kgs	2 राजे	2 राजे
+*1Chr	1 इतिहास	1 इतिहास
+*2Chr	2 इतिहास	2 इतिहास
+*Ezra	एज्रा	एज्रा
+*Neh	नहेम्या	नहेम्या
+*Esth	एस्तेर	एस्तेर
+*Job	ईयोब	इयोब
+*Ps	स्तोत्रसंहिता	स्तोत्र
+*Prov	नीतिसूत्रे	नीतिसूत्रे
+*Eccl	उपदेशक	उपदेशक
+*Song	गीतरत्न	गीतरत्न
+*Isa	यशया	यशया
+*Jer	यिर्मया	यिर्मया
+*Lam	विलापगीत	विलापगीत
+*Ezek	यहेज्केल	यहेज्केल
+*Dan	दानीएल	दानीएल
+*Hos	होशेय	होशेय
+*Joel	योएल	योएल
+*Amos	आमोस	आमोस
+*Obad	ओबद्या	ओबद्या
+*Jonah	योना	योना
+*Mic	मीखा	मीखा
+*Nah	नहूम	नहूम
+*Hab	हबक्कूक	हबक्कूक
+*Zeph	सफन्या	सफन्या
+*Hag	हाग्गय	हाग्गय
+*Zech	जखऱ्या	जखऱ्या
+*Mal	मलाखी	मलाखी
+*Matt	मत्तय	मत्तय
+*Mark	मार्क	मार्क
+*Luke	लूक	लूक
+*John	योहान	योहान
+*Acts	प्रेषितांचीं कृत्यें	प्रेषितांची कृत्यें
+*Rom	रोमकरांस	रोमकंरास
+*1Cor	1 करिंथकरांस	1 करिंथकरांस
+*2Cor	2 करिंथकरांस	2 करिंथकरांस
+*Gal	गलतीकरांस	गलतीकरांस
+*Eph	इफिसकरांस	इफिसकरांस
+*Phil	फिलिप्पैकरांस	फिलिप्पैकरांस
+*Col	कलस्सैकरांस	कलसैकरांस
+*1Thess	1 थेस्सलनीकाकरांस	1 थेस्सलनीकाकरांस
+*2Thess	2 थेस्सलनीकाकरांस	2 थेस्सलनीकाकरांस
+*1Tim	1 तीमथ्याला	1 तीमथ्थाला
+*2Tim	2 तीमथ्थाला	2 तीमथ्थाला
+*Titus	तीताला	तीताला
+*Phlm	फिलेमोना	फिलेमोना
+*Heb	इब्री लोकांस	इब्री
+*Jas	याकोब	याकोब
+*1Pet	1 पेत्र	1 पेत्र
+*2Pet	2 पेत्र	2 पेत्र
+*1John	1 योहान	1 योहान
+*2John	2 योहान	2 योहान
+*3John	3 योहान	3 योहान
+*Jude	यहूदा	यहूदा
+*Rev	प्रकटीकरण	प्रकटीकरण
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

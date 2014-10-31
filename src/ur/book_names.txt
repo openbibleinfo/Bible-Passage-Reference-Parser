@@ -1,0 +1,600 @@
+1Chr	اوّل-توارِیخ
+1Chr	اوّل تواریخ
+1Chr	اوّل۔تواریخ
+1Chr	1.-توارِیخ
+1Chr	1 tavārīḫ
+1Chr	1-توارِیخ
+1Chr	1. تواریخ
+1Chr	1.۔تواریخ
+1Chr	۱-توارِیخ
+1Chr	1 تواریخ
+1Chr	1۔تواریخ
+1Chr	۱ تواریخ
+1Chr	۱۔تواریخ
+1Chr	1Chr
+1Cor	کرنتھِیُوں کے نام پولس رسول کا پہلا خط
+1Cor	kurintʰiyōṅ ke nām kā pahlā ḫaṭ
+1Cor	کُرِنتھِیوں کے نام کا پہلا خط
+1Cor	کرنتھیوں کے نام کا پہلا خط
+1Cor	اوّل-کُرِنتھِیوں
+1Cor	اوّل کرنتھِیُوں
+1Cor	اوّل کُرنتھِیوں
+1Cor	1.-کُرِنتھِیوں
+1Cor	1-کُرِنتھِیوں
+1Cor	1. کرنتھِیُوں
+1Cor	1. کُرنتھِیوں
+1Cor	اوّل۔کرنتھیوں
+1Cor	۱-کُرِنتھِیوں
+1Cor	1 کرنتھِیُوں
+1Cor	1 کُرنتھِیوں
+1Cor	۱ کرنتھِیُوں
+1Cor	۱ کُرنتھِیوں
+1Cor	1.۔کرنتھیوں
+1Cor	1۔کرنتھیوں
+1Cor	۱۔کرنتھیوں
+1Cor	1Cor
+1Esd	1Esd
+1John	yūḥannā kā pahlā ʿām ḫaṭ
+1John	یُوحنّا کا پہلا عام خط
+1John	یوحنّا کا پہلا عام خط
+1John	یوحنا کا پہلا عام خط
+1John	اوّل یُوحنّا
+1John	اوّل-یُوحنّا
+1John	اوّل یوحنّا
+1John	1. یُوحنّا
+1John	1.-یُوحنّا
+1John	اوّل۔یوحنا
+1John	1 یُوحنّا
+1John	1-یُوحنّا
+1John	1. یوحنّا
+1John	۱ یُوحنّا
+1John	۱-یُوحنّا
+1John	1 یوحنّا
+1John	1.۔یوحنا
+1John	۱ یوحنّا
+1John	1۔یوحنا
+1John	۱۔یوحنا
+1John	1John
+1Kgs	اوّل-سلاطِین
+1Kgs	اوّل سلاطین
+1Kgs	اوّل۔سلاطین
+1Kgs	1.-سلاطِین
+1Kgs	1 salāṭīn
+1Kgs	1-سلاطِین
+1Kgs	1. سلاطین
+1Kgs	1.۔سلاطین
+1Kgs	۱-سلاطِین
+1Kgs	1 سلاطین
+1Kgs	1۔سلاطین
+1Kgs	۱ سلاطین
+1Kgs	۱۔سلاطین
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	paṭras kā pahlā ʿām ḫaṭ
+1Pet	پطر س کاپہلا عا م خط
+1Pet	پطرس کا پہلا عام خط
+1Pet	اوّل پطر س
+1Pet	اوّل پطرس
+1Pet	اوّل-پطرس
+1Pet	اوّل۔پطرس
+1Pet	1. پطر س
+1Pet	1 پطر س
+1Pet	1. پطرس
+1Pet	1.-پطرس
+1Pet	1.۔پطرس
+1Pet	۱ پطر س
+1Pet	1 پطرس
+1Pet	1-پطرس
+1Pet	1۔پطرس
+1Pet	۱ پطرس
+1Pet	۱-پطرس
+1Pet	۱۔پطرس
+1Pet	1Pet
+1Sam	اوّل سموئيل
+1Sam	اوّل سموئیل
+1Sam	اوّل-سموئیل
+1Sam	اوّل۔سموایل
+1Sam	1 samūʾīl
+1Sam	1. سموئيل
+1Sam	1. سموئیل
+1Sam	1.-سموئیل
+1Sam	1.۔سموایل
+1Sam	1 سموئيل
+1Sam	1 سموئیل
+1Sam	1-سموئیل
+1Sam	1۔سموایل
+1Sam	۱ سموئيل
+1Sam	۱ سموئیل
+1Sam	۱-سموئیل
+1Sam	۱۔سموایل
+1Sam	1Sam
+1Thess	تھسّلنیکیوں کے نام پولس رسول کا پہلا خط
+1Thess	tʰissalunīkiyōṅ ke nām kā pahlā ḫaṭ
+1Thess	تھِسّلُنیکیوں کے نام کا پہلا خط
+1Thess	تھسلنیکیوں کے نام کا پہلا خط
+1Thess	اوّل-تھِسّلُنیکیوں
+1Thess	اوّل تھِسلُنیکیوں
+1Thess	1.-تھِسّلُنیکیوں
+1Thess	اوّل تھسّلنیکیوں
+1Thess	1-تھِسّلُنیکیوں
+1Thess	1. تھِسلُنیکیوں
+1Thess	اوّل۔تھسلنیکیوں
+1Thess	۱-تھِسّلُنیکیوں
+1Thess	1 تھِسلُنیکیوں
+1Thess	1. تھسّلنیکیوں
+1Thess	۱ تھِسلُنیکیوں
+1Thess	1 تھسّلنیکیوں
+1Thess	1.۔تھسلنیکیوں
+1Thess	۱ تھسّلنیکیوں
+1Thess	1۔تھسلنیکیوں
+1Thess	۱۔تھسلنیکیوں
+1Thess	1Thess
+1Tim	تِیمُتھِیُس کے نام پولُس رسول کا پہلا خط
+1Tim	tīmutʰiyus ke nām kā pahlā ḫaṭ
+1Tim	تِیمُتھِیُس کے نام کا پہلا خط
+1Tim	تیمتھیس کے نام کا پہلا خط
+1Tim	اوّل تِیمُتھِیُس
+1Tim	اوّل-تِیمُتھِیُس
+1Tim	1. تِیمُتھِیُس
+1Tim	1.-تِیمُتھِیُس
+1Tim	اوّل تیمِتھُیس
+1Tim	1 تِیمُتھِیُس
+1Tim	1-تِیمُتھِیُس
+1Tim	۱ تِیمُتھِیُس
+1Tim	۱-تِیمُتھِیُس
+1Tim	1. تیمِتھُیس
+1Tim	اوّل۔تیمتھیس
+1Tim	1 تیمِتھُیس
+1Tim	۱ تیمِتھُیس
+1Tim	1.۔تیمتھیس
+1Tim	1۔تیمتھیس
+1Tim	۱۔تیمتھیس
+1Tim	1Tim
+2Chr	دوم- توارِیخ
+2Chr	2.- توارِیخ
+2Chr	دوم تو اریخ
+2Chr	2- توارِیخ
+2Chr	2. تو اریخ
+2Chr	دوم۔تواریخ
+2Chr	۲- توارِیخ
+2Chr	2 tavārīḫ
+2Chr	2 تو اریخ
+2Chr	2.۔تواریخ
+2Chr	۲ تو اریخ
+2Chr	2۔تواریخ
+2Chr	۲۔تواریخ
+2Chr	2Chr
+2Cor	کرنتھِیُوں کے نام پولس رسول کا دوسرا خط
+2Cor	kurintʰiyōṅ ke nām kā dūsrā ḫaṭ
+2Cor	کُرِنتھِیوں کے نام کا دوسرا خط
+2Cor	کرنتھیوں کے نام کا دوسرا خط
+2Cor	دوم-کُرِنتھِیوں
+2Cor	2.-کُرِنتھِیوں
+2Cor	دوم کرنتھِیُوں
+2Cor	دوم کُرنتھِیوں
+2Cor	2-کُرِنتھِیوں
+2Cor	2. کرنتھِیُوں
+2Cor	2. کُرنتھِیوں
+2Cor	۲-کُرِنتھِیوں
+2Cor	2 کرنتھِیُوں
+2Cor	2 کُرنتھِیوں
+2Cor	دوم کرنتھیوں
+2Cor	دوم۔کرنتھیوں
+2Cor	۲ کرنتھِیُوں
+2Cor	۲ کُرنتھِیوں
+2Cor	2. کرنتھیوں
+2Cor	2.۔کرنتھیوں
+2Cor	2 کرنتھیوں
+2Cor	2۔کرنتھیوں
+2Cor	۲ کرنتھیوں
+2Cor	۲۔کرنتھیوں
+2Cor	2Cor
+2Esd	2Esd
+2John	yūḥannā kā dūsrā ʿām ḫaṭ
+2John	یُوحنّا کا دوسرا عام خط
+2John	یوحنا کا دوسرا عام خط
+2John	یوحنّا کا دوسرا خط
+2John	دوم یُوحنّا
+2John	دوم-یُوحنّا
+2John	2. یُوحنّا
+2John	2.-یُوحنّا
+2John	دوم یوحنّا
+2John	2 یُوحنّا
+2John	2-یُوحنّا
+2John	2. یوحنّا
+2John	دوم۔یوحنا
+2John	۲ یُوحنّا
+2John	۲-یُوحنّا
+2John	2 یوحنّا
+2John	2.۔یوحنا
+2John	۲ یوحنّا
+2John	2۔یوحنا
+2John	۲۔یوحنا
+2John	2John
+2Kgs	دوم-سلاطِین
+2Kgs	2.-سلاطِین
+2Kgs	دوم سلاطین
+2Kgs	دوم۔سلاطین
+2Kgs	2 salāṭīn
+2Kgs	2-سلاطِین
+2Kgs	2. سلاطین
+2Kgs	2.۔سلاطین
+2Kgs	۲-سلاطِین
+2Kgs	2 سلاطین
+2Kgs	2۔سلاطین
+2Kgs	۲ سلاطین
+2Kgs	۲۔سلاطین
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	paṭras kā dūsrā ʿām ḫaṭ
+2Pet	پطرس کا دوسرا عام خط
+2Pet	دوم پطر س
+2Pet	2. پطر س
+2Pet	دوم پطرس
+2Pet	دوم-پطرس
+2Pet	دوم۔پطرس
+2Pet	2 پطر س
+2Pet	2. پطرس
+2Pet	2.-پطرس
+2Pet	2.۔پطرس
+2Pet	۲ پطر س
+2Pet	2 پطرس
+2Pet	2-پطرس
+2Pet	2۔پطرس
+2Pet	۲ پطرس
+2Pet	۲-پطرس
+2Pet	۲۔پطرس
+2Pet	2Pet
+2Sam	دوم سموئیل
+2Sam	دوم-سموئیل
+2Sam	دوم۔سموایل
+2Sam	2 samūʾīl
+2Sam	2. سموئیل
+2Sam	2.-سموئیل
+2Sam	2.۔سموایل
+2Sam	2 سموئیل
+2Sam	2-سموئیل
+2Sam	2۔سموایل
+2Sam	۲ سموئیل
+2Sam	۲-سموئیل
+2Sam	۲۔سموایل
+2Sam	2Sam
+2Thess	تھسلنیکوں کے نام پو لس رسول کادوسرا خط
+2Thess	tʰissalunīkiyōṅ ke nām kā dūsrā ḫaṭ
+2Thess	تھِسّلُنیکیوں کے نام کا دوسرا خط
+2Thess	تھسلنیکیوں کے نام کا دوسرا خط
+2Thess	دوم-تھِسّلُنیکیوں
+2Thess	2.-تھِسّلُنیکیوں
+2Thess	دوم تھِسلُنیکیوں
+2Thess	2-تھِسّلُنیکیوں
+2Thess	2. تھِسلُنیکیوں
+2Thess	دوم تھسّلنیکیوں
+2Thess	۲-تھِسّلُنیکیوں
+2Thess	2 تھِسلُنیکیوں
+2Thess	2. تھسّلنیکیوں
+2Thess	دوم۔تھسلنیکیوں
+2Thess	۲ تھِسلُنیکیوں
+2Thess	2 تھسّلنیکیوں
+2Thess	2.۔تھسلنیکیوں
+2Thess	دوم تھسلنیکوں
+2Thess	۲ تھسّلنیکیوں
+2Thess	2. تھسلنیکوں
+2Thess	2۔تھسلنیکیوں
+2Thess	۲۔تھسلنیکیوں
+2Thess	2 تھسلنیکوں
+2Thess	۲ تھسلنیکوں
+2Thess	2Thess
+2Tim	تیِمُتھِیُس کے نام پولس رسول کا دوسرا خط
+2Tim	tīmutʰiyus ke nām kā dūsrā ḫaṭ
+2Tim	تِیمُتھِیُس کے نام کا دوسرا خط
+2Tim	تیمتھیس کے نام کا دوسرا خط
+2Tim	دوم تِیمُتھِیُس
+2Tim	دوم تیِمُتھِیُس
+2Tim	دوم-تِیمُتھِیُس
+2Tim	2. تِیمُتھِیُس
+2Tim	2. تیِمُتھِیُس
+2Tim	2.-تِیمُتھِیُس
+2Tim	2 تِیمُتھِیُس
+2Tim	2 تیِمُتھِیُس
+2Tim	2-تِیمُتھِیُس
+2Tim	دوم تیمِتھُیس
+2Tim	۲ تِیمُتھِیُس
+2Tim	۲ تیِمُتھِیُس
+2Tim	۲-تِیمُتھِیُس
+2Tim	2. تیمِتھُیس
+2Tim	2 تیمِتھُیس
+2Tim	دوم۔تیمتھیس
+2Tim	۲ تیمِتھُیس
+2Tim	2.۔تیمتھیس
+2Tim	2۔تیمتھیس
+2Tim	۲۔تیمتھیس
+2Tim	2Tim
+3John	yūḥannā kā tīsrā ʿām ḫaṭ
+3John	یُوحنّا کا تیسرا عام خط
+3John	یوحنا کا تیسرا عام خط
+3John	یوحنّا کا تیسرا خط
+3John	یوحنّا کا 3. خط
+3John	یوحنّا کا 3 خط
+3John	یوحنّا کا ۳ خط
+3John	تیسرا یُوحنّا
+3John	تیسرا-یُوحنّا
+3John	تیسرا یوحنّا
+3John	تیسرا۔یوحنا
+3John	3. یُوحنّا
+3John	3.-یُوحنّا
+3John	3 یُوحنّا
+3John	3-یُوحنّا
+3John	3. یوحنّا
+3John	۳ یُوحنّا
+3John	۳-یُوحنّا
+3John	3 یوحنّا
+3John	3.۔یوحنا
+3John	۳ یوحنّا
+3John	3۔یوحنا
+3John	۳۔یوحنا
+3John	3John
+3Macc	3Macc
+4Macc	4Macc
+Acts	rasūlōṅ ke aʿmāl
+Acts	رسُولوں کے اعمال
+Acts	رسولوں کے اعمال
+Acts	یوحنا کے اعمال
+Acts	اَعمال
+Acts	رسولوں
+Acts	اعمال
+Acts	Acts
+Amos	عامُوس
+Amos	ʿāmōs
+Amos	عاموس
+Amos	Amos
+Bar	Bar
+Bel	Bel
+Col	کُلِسّیوں کے نام پولُس رسُول کا خط
+Col	kulussiyōṅ ke nām kā ḫaṭ
+Col	کُلُسِّیوں کے نام کا خط
+Col	کلسیوں کے نام کا خط
+Col	کُلِسّیوں
+Col	کُلسِیوں
+Col	کُلسّیوں
+Col	کلسیوں
+Col	Col
+Dan	دانی ایل
+Dan	دانی‌ایل
+Dan	dānīʾīl
+Dan	دانیال
+Dan	Dan
+Deut	istis̱nā
+Deut	اِستِثنا
+Deut	استثناء
+Deut	استثنا
+Deut	Deut
+Eccl	واعِظ
+Eccl	Eccl
+Eccl	vāʿẓ
+Eccl	واعظ
+EpJer	EpJer
+Eph	افسیوں کے نام پو لس رسول کا خط
+Eph	ifisiyōṅ ke nām kā ḫaṭ
+Eph	اِفِسِیوں کے نام کا خط
+Eph	افسیوں کے نام کا خط
+Eph	اِفسِیوں
+Eph	اِفسیوں
+Eph	افسیوں
+Eph	Eph
+Esth	āstar
+Esth	ایستر
+Esth	Esth
+Esth	آستر
+Exod	خُرُوج
+Exod	ḫurūj
+Exod	Exod
+Exod	خروج
+Ezek	حِزقی ایل
+Ezek	ḥiziqīʾīl
+Ezek	حزقی ایل
+Ezek	حزقی‌ایل
+Ezek	Ezek
+Ezra	ʿizrā
+Ezra	عز را
+Ezra	Ezra
+Ezra	عزرا
+Gal	گلتیوں کے نام پولُس رسول کا خط
+Gal	galatiyōṅ ke nām kā ḫaṭ
+Gal	گلتِیوں کے نام کا خط
+Gal	گلتیوں کے نام کا خط
+Gal	گلتِیوں
+Gal	گلتیوں
+Gal	Gal
+Gen	pīdāyiš
+Gen	پَیدایش
+Gen	پيدائش
+Gen	پیدائش
+Gen	پیدایش
+Gen	Gen
+GkEsth	GkEsth
+Hab	ḥabaqqūq
+Hab	حبقُّوق
+Hab	حبقّوق
+Hab	حبقوق
+Hab	Hab
+Hag	ḥajjai
+Hag	حجَّی
+Hag	حجيّ
+Hag	Hag
+Hag	حجی
+Heb	عبرانیوں کے نام پولس رسول کا خط
+Heb	ʿibrāniyōṅ ke nām kā ḫaṭ
+Heb	عِبرانیوں کے نام کا خط
+Heb	عبرانیوں کے نام کا خط
+Heb	عِبرانیوں
+Heb	عبرانیوں
+Heb	Heb
+Hos	ہو سیعاہ
+Hos	ہوسیعَِ
+Hos	hūsīʿ
+Hos	ہوسیع
+Hos	Hos
+Isa	yasaʿyāh
+Isa	یسعیاہ
+Isa	یعسیاہ
+Isa	Isa
+Jas	yaʿqūb kā ʿām ḫaṭ
+Jas	یعقوب کا عا م خط
+Jas	یعقُوب کا عام خط
+Jas	یعقوب کا عام خط
+Jas	یعقُوب
+Jas	يعقوب
+Jas	یعقوب
+Jas	Jas
+Jdt	Jdt
+Jer	yirmayāh
+Jer	یرمِیاہ
+Jer	یرمیاہ
+Jer	Jer
+Job	ایُّوب
+Job	ayyūb
+Job	ایّوب
+Job	ایوب
+Job	Job
+Joel	یُوایل
+Joel	yōʾīl
+Joel	یوایل
+Joel	Joel
+John	yūḥannā kī injīl
+John	یُوحنّا کی انجیل
+John	یوحنا کی انجیل
+John	یُوحنّا
+John	یوحنا
+John	John
+Jonah	یُوناہ
+Jonah	Jonah
+Jonah	yūnas
+Jonah	یونس
+Josh	yašūʿ
+Josh	یشُوع
+Josh	Josh
+Josh	یشوع
+Jude	yahūdāh kā ʿām ḫaṭ
+Jude	یہُوداہ کا عام خط
+Jude	یہوداہ کا عام خط
+Jude	یہُوداہ
+Jude	یہوداہ
+Jude	Jude
+Judg	qużāh
+Judg	قُضاۃ
+Judg	Judg
+Judg	قضاة
+Judg	قضاہ
+Judg	قضاۃ
+Lam	نَوحہ
+Lam	nūḥâ
+Lam	نوحہ
+Lam	Lam
+Lev	iḥbār
+Lev	احبار
+Lev	Lev
+Luke	لُوقا کی انجیل
+Luke	lūqā kī injīl
+Luke	لوقا کی انجیل
+Luke	لُوقا
+Luke	Luke
+Luke	لوقا
+Mal	malākī
+Mal	ملاکی
+Mal	Mal
+Mark	marqus kī injīl
+Mark	مرقُس کی انجیل
+Mark	مرقس کی انجیل
+Mark	Mark
+Mark	مرقس
+Matt	mattī kī injīl
+Matt	متّی کی انجیل
+Matt	متی کی انجیل
+Matt	Matt
+Matt	متّی
+Matt	متی
+Mic	مِیکاہ
+Mic	mīkāh
+Mic	میکاہ
+Mic	Mic
+Nah	نا حُوم
+Nah	ناحُوم
+Nah	nāḥūm
+Nah	ناحوم
+Nah	Nah
+Neh	niḥimyāh
+Neh	نحمیاہ
+Neh	Neh
+Num	gintī
+Num	گِنتی
+Num	گنتی
+Num	Num
+Obad	ʿabadiyāh
+Obad	عبدیاہ
+Obad	Obad
+Phil	فِلِپّیُوں کے نام پو لس رسُول کا خط
+Phil	filippiyōṅ ke nām kā ḫaṭ
+Phil	فِلِپِّیوں کے نام کا خط
+Phil	فلپیوں کے نام کا خط
+Phil	فِلِپّیُوں
+Phil	فِلپّیوں
+Phil	فلپیوں
+Phil	Phil
+Phlm	فلیمون کے نام پولس رسُول کا خط
+Phlm	filēmōn ke nām kā ḫaṭ
+Phlm	فِلیمون کے نام کا خط
+Phlm	فلیمون کے نام کا خط
+Phlm	فِلیمون
+Phlm	فلیمون
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	ams̱āl
+Prov	اَمثال
+Prov	امثال
+Prov	Prov
+Ps	zabūr
+Ps	زبُور
+Ps	زبور
+Ps	زبُو
+Ps	Ps
+Rev	yūḥannā ʿārif kā mukāšafâ
+Rev	یُو حنّا عارِف کا مُکاشفہ
+Rev	یو حنا عارف کا مکاشفہ
+Rev	یُوحنا عارف کا مکاشفہ
+Rev	مُکاشفہ
+Rev	مکاشفہ
+Rev	Rev
+Rom	رومیوں کے نام پولس رسول کا خط
+Rom	rōmiyōṅ ke nām kā ḫaṭ
+Rom	رومیوں کے نام کا خط
+Rom	رُومِیوں
+Rom	رومیوں
+Rom	Rom
+Ruth	Ruth
+Ruth	رُوت
+Ruth	rūt
+Ruth	روت
+SgThree	SgThree
+Sir	Sir
+Song	ġazalu l-ġazalāt
+Song	غزلُ الغزلات
+Song	غزل الغزلات
+Song	Song
+Sus	Sus
+Titus	طِطُس کے نام پولس رسُول کا خط
+Titus	ṭiṭus ke nām kā ḫaṭ
+Titus	طِطُس کے نام کا خط
+Titus	ططس کے نام کا خط
+Titus	Titus
+Titus	طِطُس
+Titus	ططس
+Tob	Tob
+Wis	Wis
+Zech	zakariyāh
+Zech	زکریاہ
+Zech	زکریا
+Zech	Zech
+Zeph	ṣafaniyāh
+Zeph	صفنیاہ
+Zeph	Zeph

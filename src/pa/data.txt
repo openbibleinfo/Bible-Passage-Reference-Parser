@@ -1,0 +1,274 @@
+$FIRST	ਪਹਿਲੀ	pahilī	1
+$SECOND	ਦੂਜੀ	dūjī	2
+$THIRD	ਤੀਜੀ	3
+$FOURTH	4
+$AB	[a-e]
+# From ERV; not positive about it
+$AND	ਜਾਂ
+$CHAPTER	chapter
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+$TO	-
+# ERV Numbers 7:12
+$VERSE	ਪਦ
+$UNICODE_BLOCK	Gurmukhi	Latin
+$COLLAPSE_COMBINING_CHARACTERS	false
+
+Gen	ਉਤਪਤ	utpat
+Exod	ਕੂਚ	kūč
+Lev	ਲੇਵੀਆਂ ਦੀ ਪੋਥੀ	levīāṃ dī potʰī	levīāṃ	ਲੇਵੀਆਂ
+Num	ਗਿਣਤੀ	giṇtī
+Deut	ਬਿਵਸਥਾ ਸਾਰ	bivastʰā sār	ਬਿਵਸਥਾ
+Josh	ਯਹੋਸ਼ੁਆ	yahošuā
+Judg	ਨਿਆਂਈਆਂ ਦੀ ਪੋਥੀ	ਨਿਆਈਆਂ ਦੀ ਪੋਥੀ	niāīāṃ dī potʰī	niāīāṃ
+Ruth	ਰੂਥ	rūtʰ
+1Sam	ਸਮੂਏਲ ਦੀ ਪਹਿਲੀ ਪੋਥੀ	1 ਸਮੂਏਲ	samūel dī pahilī potʰī	1 samūel
+2Sam	ਸਮੂਏਲ ਦੀ ਦੂਜੀ ਪੋਥੀ	2 ਸਮੂਏਲ	samūel dī dūjī potʰī	2 samūel
+1Kgs	ਰਾਜਿਆਂ ਦੀ ਪਹਿਲੀ ਪੋਥੀ	1 ਰਾਜਿਆਂ	rājiāṃ dī pahilī potʰī	1 rājiāṃ
+2Kgs	ਰਾਜਿਆਂ ਦੀ ਦੂਜੀ ਪੋਥੀ	2 ਰਾਜਿਆਂ	rājiāṃ dī dūjī potʰī	2 rājiāṃ
+1Chr	ਇਤਹਾਸ ਦੀ ਪਹਿਲੀ ਪੋਥੀ	1 ਇਤਹਾਸ	itahās dī pahilī potʰī	1 itahās
+2Chr	ਇਤਹਾਸ ਦੀ ਦੂਜੀ ਪੋਥੀ	2 ਇਤਹਾਸ	itahās dī dūjī potʰī	2 itahās
+Ezra	ਅਜ਼ਰਾ	azrā
+Neh	ਨਹਮਯਾਹ	nahamyāh
+Esth	ਅਸਤਰ	astar
+Job	ਅੱਯੂਬ	ayyūb	ਅਯੂਬ
+Ps	ਜ਼ਬੂਰ	zabūr	ਜਬੂਰ
+Prov	ਕਹਾਉਤਾਂ	kahāutāṃ	ਕਹਾਉਂਤਾ
+Eccl	ਉਪਦੇਸ਼ਕ	upadešak
+Song	ਸਲੇਮਾਨ ਦਾ ਗੀਤ	salemān dā gīt
+Isa	ਯਸਾਯਾਹ	yasāyāh	ਯਾਸਾਯਾਹ	ਯਸਾ
+Jer	ਯਿਰਮਿਯਾਹ	yirmiyāh
+Lam	ਵਿਰਲਾਪ	virlāp
+Ezek	ਹਿਜ਼ਕੀਏਲ	hizkīel
+Dan	ਦਾਨੀਏਲ	dānīel
+Hos	ਹੋਸ਼ੇਆ	hošeā
+Joel	ਯੋਏਲ	yoel	ਜੋਏਲ
+Amos	ਆਮੋਸ	āmos
+Obad	ਓਬਦਯਾਹ	obadyāh
+Jonah	ਯੂਨਾਹ	yūnāh
+Mic	ਮੀਕਾਹ	mīkāh
+Nah	ਨਹੂਮ	nahūm
+Hab	ਹਬਕੱੂਕ	ਹਬੱਕੂਕ	habakkūk	ਹਬਕੂਕ
+Zeph	ਸਫ਼ਨਯਾਹ	safanyāh
+Hag	ਹੱਜਈ	hajjaī
+Zech	ਜ਼ਕਰਯਾਹ	zakaryāh	ਜਕਰਯਾਹ	ਜ਼ਕਰਜਾਹ
+Mal	ਮਲਾਕੀ	malākī
+Matt	ਮੱਤੀ	ਮੱਤੀ ਦੀ ਇੰਜੀਲ	mattī dī ĩjīl	mattī
+Mark	ਮਰਕੁਸ	ਮਰਕੁਸ ਦੀ ਇੰਜੀਲ	markus dī ĩjīl	markus
+Luke	ਲੂਕਾ	ਲੂਕਾ ਦੀ ਇੰਜੀਲ	lūkā dī ĩjīl	lūkā
+John	ਯੂਹੰਨਾ	ਯੂਹੰਨਾ ਦੀ ਇੰਜੀਲ	yūhãnā dī ĩjīl	yūhãnā	ਯੂਹਾਂਨਾ
+Acts	ਰਸੂਲਾਂ ਦੇ ਕਰਤੱਬ	rasūlāṃ de kartabb
+Rom	ਰੋਮੀਆਂ ਨੂੰ	ਰੋਮੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ	ਰੋਮੀਆਂ	romīāṃ nū̃ pattrī	romīāṃ
+1Cor	ਕੁਰਿੰਥੀਆਂ ਨੂੰ	ਕੁਰਿੰਥੀਆਂ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ	1 ਕੁਰਿੰਥੀਆਂ ਨੂੰ	1 ਕੁਰਿੰਥੀਆਂ	kurĩtʰīāṃ nū̃ pahilī pattrī	1 kurĩtʰīāṃ
+2Cor	2 ਕੁਰਿੰਥੀਆਂ ਨੂੰ	ਕੁਰਿੰਥੀਆਂ ਨੂੰ ਦੂਜੀ ਪੱਤ੍ਰੀ	2 ਕੁਰਿੰਥੀਆਂ	kurĩtʰīāṃ nū̃ dūjī pattrī	2 kurĩtʰīāṃ
+Gal	ਗਲਾਤੀਆਂ ਨੂੰ	ਗਲਾਤੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ	galātīāṃ nū̃ pattrī	galātīāṃ
+Eph	ਅਫ਼ਸੀਆਂ ਨੂੰ	ਅਫ਼ਸੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ	afasīāṃ nū̃ pattrī	afasīāṃ
+Phil	ਫ਼ਿਲਿੱਪੀਆਂ ਨੂੰ	ਫ਼ਿਲਿੱਪੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ	filippīāṃ nū̃ pattrī	filippīāṃ
+Col	ਕੁਲੁੱਸੀਆਂ ਨੂੰ	ਕੁਲੁੱਸੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ	kulussīāṃ nū̃ pattrī	kulussīāṃ
+1Thess	1 ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ	ਥਸੱਲੁਨੀਕੀਆਂ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ	ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ	tʰassalunīkīāṃ nū̃ pahilī pattrī	1 tʰassalunīkīāṃ
+2Thess	2 ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ	ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ ਦੂਜੀ ਪੱਤ੍ਰੀ	tʰassalunīkīāṃ nū̃ dūjī pattrī	2 tʰassalunīkīāṃ
+1Tim	1 ਤਿਮੋਥਿਉਸ ਨੂੰ	ਤਿਮੋਥਿਉਸ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ	timotʰius nū̃ pahilī pattrī	1 timotʰius
+2Tim	2 ਤਿਮੋਥਿਉਸ ਨੂੰ	ਤਿਮੋਥਿਉਸ ਨੂੰ ਦੂਜੀ ਪੱਤ੍ਰੀ	timotʰius nū̃ dūjī pattrī	2 timotʰius
+Titus	ਤੀਤੁਸ ਨੂੰ	ਤੀਤੁਸ ਨੂੰ ਪੱਤ੍ਰੀ	ਤੀਤੁਸ	tītus nū̃ pattrī	tītus
+Phlm	ਫ਼ਿਲੇਮੋਨ ਨੂੰ	ਫ਼ਿਲੇਮੋਨ ਨੂੰ ਪੱਤ੍ਰੀ	ਫਿਲੇਮੋਨ ਨੂੰ ਪੱਤ੍ਰੀ	pʰilemon nū̃ pattrī	pʰilemon
+Heb	ਇਬਰਾਨੀਆਂ ਨੂੰ	ਇਬਰਾਨੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ	ibrānīāṃ nū̃ pattrī	ibrānīāṃ
+Jas	ਯਾਕੂਬ	ਯਾਕੂਬ ਦੀ ਪੱਤ੍ਰੀ	yākūb dī pattrī	yākūb
+1Pet	1 ਪਤਰਸ	ਪਤਰਸ ਦੀ ਪਹਿਲੀ ਪੱਤ੍ਰੀ	patras dī pahilī pattrī	1 patras
+2Pet	2 ਪਤਰਸ	ਪਤਰਸ ਦੀ ਦੂਜੀ ਪੱਤ੍ਰੀ	patras dī dūjī pattrī	2 patras
+1John	1 ਯੂਹੰਨਾ	ਯੂਹੰਨਾ ਦੀ ਪਹਿਲੀ ਪੱਤ੍ਰੀ	yūhãnā dī pahilī pattrī	1 yūhãnā
+2John	2 ਯੂਹੰਨਾ	ਯੂਹੰਨਾ ਦੀ ਦੂਜੀ ਪੱਤ੍ਰੀ	yūhãnā dī dūjī pattrī	2 yūhãnā
+3John	3 ਯੂਹੰਨਾ	ਯੂਹੰਨਾ ਦੀ ਤੀਜੀ ਪੱਤ੍ਰੀ	yūhãnā dī tījī pattrī	3 yūhãnā
+Jude	ਯਹੂਦਾਹ	ਯਹੂਦਾਹ ਦੀ ਪੱਤ੍ਰੀ	yahūdāh dī pattrī	yahūdāh
+Rev	ਪਰਕਾਸ਼ ਦੀ ਪੋਥੀ	ਯੂਹੰਨਾ ਦੇ ਪਰਕਾਸ਼ ਦੀ ਪੋਥੀ	yūhãnā de prakāš dī potʰī	yūhãnā de prakāš
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	ਉਤਪਤ
+*Exod	ਕੂਚ
+*Lev	ਲੇਵੀਆਂ ਦੀ ਪੋਥੀ	ਲੇਵੀਆਂ
+*Num	ਗਿਣਤੀ
+*Deut	ਬਿਵਸਥਾ ਸਾਰ	ਬਿਵਸਥਾ
+*Josh	ਯਹੋਸ਼ੁਆ
+*Judg	ਨਿਆਂਈਆਂ ਦੀ ਪੋਥੀ
+*Ruth	ਰੂਥ
+*1Sam	1 ਸਮੂਏਲ
+*2Sam	2 ਸਮੂਏਲ
+*1Kgs	1 ਰਾਜਿਆਂ
+*2Kgs	2 ਰਾਜਿਆਂ
+*1Chr	1 ਇਤਹਾਸ
+*2Chr	2 ਇਤਹਾਸ
+*Ezra	ਅਜ਼ਰਾ
+*Neh	ਨਹਮਯਾਹ
+*Esth	ਅਸਤਰ
+*Job	ਅੱਯੂਬ
+*Ps	ਜ਼ਬੂਰ
+*Prov	ਕਹਾਉਤਾਂ
+*Eccl	ਉਪਦੇਸ਼ਕ
+*Song	ਸਲੇਮਾਨ ਦਾ ਗੀਤ
+*Isa	ਯਸਾਯਾਹ
+*Jer	ਯਿਰਮਿਯਾਹ
+*Lam	ਵਿਰਲਾਪ
+*Ezek	ਹਿਜ਼ਕੀਏਲ
+*Dan	ਦਾਨੀਏਲ
+*Hos	ਹੋਸ਼ੇਆ
+*Joel	ਯੋਏਲ
+*Amos	ਆਮੋਸ
+*Obad	ਓਬਦਯਾਹ
+*Jonah	ਯੂਨਾਹ
+*Mic	ਮੀਕਾਹ
+*Nah	ਨਹੂਮ
+*Hab	ਹਬਕੱੂਕ
+*Zeph	ਸਫ਼ਨਯਾਹ
+*Hag	ਹੱਜਈ
+*Zech	ਜ਼ਕਰਯਾਹ
+*Mal	ਮਲਾਕੀ
+*Matt	ਮੱਤੀ
+*Mark	ਮਰਕੁਸ
+*Luke	ਲੂਕਾ
+*John	ਯੂਹੰਨਾ
+*Acts	ਰਸੂਲਾਂ ਦੇ ਕਰਤੱਬ
+*Rom	ਰੋਮੀਆਂ ਨੂੰ
+*1Cor	1 ਕੁਰਿੰਥੀਆਂ ਨੂੰ
+*2Cor	2 ਕੁਰਿੰਥੀਆਂ ਨੂੰ
+*Gal	ਗਲਾਤੀਆਂ ਨੂੰ
+*Eph	ਅਫ਼ਸੀਆਂ ਨੂੰ
+*Phil	ਫ਼ਿਲਿੱਪੀਆਂ ਨੂੰ
+*Col	ਕੁਲੁੱਸੀਆਂ ਨੂੰ
+*1Thess	1 ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ
+*2Thess	2 ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ
+*1Tim	1 ਤਿਮੋਥਿਉਸ ਨੂੰ
+*2Tim	2 ਤਿਮੋਥਿਉਸ ਨੂੰ
+*Titus	ਤੀਤੁਸ ਨੂੰ
+*Phlm	ਫ਼ਿਲੇਮੋਨ ਨੂੰ
+*Heb	ਇਬਰਾਨੀਆਂ ਨੂੰ
+*Jas	ਯਾਕੂਬ
+*1Pet	1 ਪਤਰਸ
+*2Pet	2 ਪਤਰਸ
+*1John	1 ਯੂਹੰਨਾ
+*2John	2 ਯੂਹੰਨਾ
+*3John	3 ਯੂਹੰਨਾ
+*Jude	ਯਹੂਦਾਹ
+*Rev	ਪਰਕਾਸ਼ ਦੀ ਪੋਥੀ
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

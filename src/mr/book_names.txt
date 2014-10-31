@@ -1,0 +1,905 @@
+1Chr	पहिले इतिहास
+1Chr	1 itihas
+1Chr	1 itihās
+1Chr	1 इतिहास
+1Chr	1Chr
+1Cor	पौलाचे करिंथकरांस पहिले पत्र
+1Cor	karimtʰkarams pahile patra
+1Cor	karimtʰkaraṃs pahile patra
+1Cor	karimtʰkarāms pahile patra
+1Cor	karimtʰkarāṃs pahile patra
+1Cor	kariṃtʰkarams pahile patra
+1Cor	kariṃtʰkaraṃs pahile patra
+1Cor	kariṃtʰkarāms pahile patra
+1Cor	kariṃtʰkarāṃs pahile patra
+1Cor	करिंथकरांस पहिले पत्र
+1Cor	1 karimtʰkarams
+1Cor	1 karimtʰkaraṃs
+1Cor	1 karimtʰkarāms
+1Cor	1 karimtʰkarāṃs
+1Cor	1 kariṃtʰkarams
+1Cor	1 kariṃtʰkaraṃs
+1Cor	1 kariṃtʰkarāms
+1Cor	1 kariṃtʰkarāṃs
+1Cor	1 करिंथकरांस
+1Cor	1Cor
+1Esd	1Esd
+1John	yohanacem pahile patra
+1John	yohanaceṃ pahile patra
+1John	yohanācem pahile patra
+1John	yohanāceṃ pahile patra
+1John	yohānacem pahile patra
+1John	yohānaceṃ pahile patra
+1John	yohānācem pahile patra
+1John	yohānāceṃ pahile patra
+1John	योहानाचें पहिले पत्र
+1John	1 yohanacem
+1John	1 yohanaceṃ
+1John	1 yohanācem
+1John	1 yohanāceṃ
+1John	1 yohānacem
+1John	1 yohānaceṃ
+1John	1 yohānācem
+1John	1 yohānāceṃ
+1John	1 योहानाच
+1John	1 योहान
+1John	1John
+1Kgs	पहिले राजे
+1Kgs	1 raǳe
+1Kgs	1 rāǳe
+1Kgs	1 राजे
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	petracem pahile patra
+1Pet	petraceṃ pahile patra
+1Pet	petrācem pahile patra
+1Pet	petrāceṃ pahile patra
+1Pet	पेत्राचें पहिले पत्र
+1Pet	पेत्राचे पहिले पत्र
+1Pet	1 पेत्राचें
+1Pet	1 petracem
+1Pet	1 petraceṃ
+1Pet	1 petrācem
+1Pet	1 petrāceṃ
+1Pet	1 पेत्र
+1Pet	1Pet
+1Sam	पहिले शमुवेल
+1Sam	1 samuwel
+1Sam	1 ŝamuwel
+1Sam	1 शमुवेल
+1Sam	1Sam
+1Thess	पौलाचे थेस्सलनीकाकरांस पहिले पत्र
+1Thess	tʰessalanikakarams pahile patra
+1Thess	tʰessalanikakaraṃs pahile patra
+1Thess	tʰessalanikakarāms pahile patra
+1Thess	tʰessalanikakarāṃs pahile patra
+1Thess	tʰessalanikākarams pahile patra
+1Thess	tʰessalanikākaraṃs pahile patra
+1Thess	tʰessalanikākarāms pahile patra
+1Thess	tʰessalanikākarāṃs pahile patra
+1Thess	tʰessalanīkakarams pahile patra
+1Thess	tʰessalanīkakaraṃs pahile patra
+1Thess	tʰessalanīkakarāms pahile patra
+1Thess	tʰessalanīkakarāṃs pahile patra
+1Thess	tʰessalanīkākarams pahile patra
+1Thess	tʰessalanīkākaraṃs pahile patra
+1Thess	tʰessalanīkākarāms pahile patra
+1Thess	tʰessalanīkākarāṃs pahile patra
+1Thess	थेस्सलनीकाकरांस पहिले पत्र
+1Thess	1 tʰessalanikakarams
+1Thess	1 tʰessalanikakaraṃs
+1Thess	1 tʰessalanikakarāms
+1Thess	1 tʰessalanikakarāṃs
+1Thess	1 tʰessalanikākarams
+1Thess	1 tʰessalanikākaraṃs
+1Thess	1 tʰessalanikākarāms
+1Thess	1 tʰessalanikākarāṃs
+1Thess	1 tʰessalanīkakarams
+1Thess	1 tʰessalanīkakaraṃs
+1Thess	1 tʰessalanīkakarāms
+1Thess	1 tʰessalanīkakarāṃs
+1Thess	1 tʰessalanīkākarams
+1Thess	1 tʰessalanīkākaraṃs
+1Thess	1 tʰessalanīkākarāms
+1Thess	1 tʰessalanīkākarāṃs
+1Thess	1 थेस्सलनीकाकरांस
+1Thess	1Thess
+1Tim	पौलाचे तीमथ्याला पहिले पत्र
+1Tim	timatʰtʰala pahile patra
+1Tim	timatʰtʰalā pahile patra
+1Tim	timatʰtʰāla pahile patra
+1Tim	timatʰtʰālā pahile patra
+1Tim	tīmatʰtʰala pahile patra
+1Tim	tīmatʰtʰalā pahile patra
+1Tim	tīmatʰtʰāla pahile patra
+1Tim	tīmatʰtʰālā pahile patra
+1Tim	तीमथ्थाला पहिले पत्र
+1Tim	1 timatʰtʰala
+1Tim	1 timatʰtʰalā
+1Tim	1 timatʰtʰāla
+1Tim	1 timatʰtʰālā
+1Tim	1 tīmatʰtʰala
+1Tim	1 tīmatʰtʰalā
+1Tim	1 tīmatʰtʰāla
+1Tim	1 tīmatʰtʰālā
+1Tim	1 तीमथ्थाला
+1Tim	1 तीमथ्याला
+1Tim	1Tim
+2Chr	दुसरे इतिहास
+2Chr	2 itihas
+2Chr	2 itihās
+2Chr	2 इतिहास
+2Chr	2Chr
+2Cor	पौलाचे करिंथकरांस दूसरे पत्र
+2Cor	karimtʰkarams dusre patra
+2Cor	karimtʰkaraṃs dusre patra
+2Cor	karimtʰkarāms dusre patra
+2Cor	karimtʰkarāṃs dusre patra
+2Cor	kariṃtʰkarams dusre patra
+2Cor	kariṃtʰkaraṃs dusre patra
+2Cor	kariṃtʰkarāms dusre patra
+2Cor	kariṃtʰkarāṃs dusre patra
+2Cor	करिंथकरांस दुसरे पत्र
+2Cor	2 karimtʰkarams
+2Cor	2 karimtʰkaraṃs
+2Cor	2 karimtʰkarāms
+2Cor	2 karimtʰkarāṃs
+2Cor	2 kariṃtʰkarams
+2Cor	2 kariṃtʰkaraṃs
+2Cor	2 kariṃtʰkarāms
+2Cor	2 kariṃtʰkarāṃs
+2Cor	2 करिंथकरांस
+2Cor	2Cor
+2Esd	2Esd
+2John	yohanacem dusre patra
+2John	yohanaceṃ dusre patra
+2John	yohanācem dusre patra
+2John	yohanāceṃ dusre patra
+2John	yohānacem dusre patra
+2John	yohānaceṃ dusre patra
+2John	yohānācem dusre patra
+2John	yohānāceṃ dusre patra
+2John	योहानाचें दुसरे पत्र
+2John	2 yohanacem
+2John	2 yohanaceṃ
+2John	2 yohanācem
+2John	2 yohanāceṃ
+2John	2 yohānacem
+2John	2 yohānaceṃ
+2John	2 yohānācem
+2John	2 yohānāceṃ
+2John	2 योहानाच
+2John	2 योहान
+2John	2John
+2Kgs	दुसरे राजे
+2Kgs	2 raǳe
+2Kgs	2 rāǳe
+2Kgs	2 राजे
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	petracem dusre patra
+2Pet	petraceṃ dusre patra
+2Pet	petrācem dusre patra
+2Pet	petrāceṃ dusre patra
+2Pet	पेत्राचें दुसरे पत्र
+2Pet	पौलाचें दुसरे पत्र
+2Pet	2 पेत्राचें
+2Pet	2 petracem
+2Pet	2 petraceṃ
+2Pet	2 petrācem
+2Pet	2 petrāceṃ
+2Pet	2 पेत्र
+2Pet	2Pet
+2Sam	दुसरे शमुवेल
+2Sam	2 samuwel
+2Sam	2 ŝamuwel
+2Sam	2 शमुवेल
+2Sam	2Sam
+2Thess	पौलाचे थेस्सलनीकाकरांस दुसरे पत्र
+2Thess	tʰessalanikakarams dusre patra
+2Thess	tʰessalanikakaraṃs dusre patra
+2Thess	tʰessalanikakarāms dusre patra
+2Thess	tʰessalanikakarāṃs dusre patra
+2Thess	tʰessalanikākarams dusre patra
+2Thess	tʰessalanikākaraṃs dusre patra
+2Thess	tʰessalanikākarāms dusre patra
+2Thess	tʰessalanikākarāṃs dusre patra
+2Thess	tʰessalanīkakarams dusre patra
+2Thess	tʰessalanīkakaraṃs dusre patra
+2Thess	tʰessalanīkakarāms dusre patra
+2Thess	tʰessalanīkakarāṃs dusre patra
+2Thess	tʰessalanīkākarams dusre patra
+2Thess	tʰessalanīkākaraṃs dusre patra
+2Thess	tʰessalanīkākarāms dusre patra
+2Thess	tʰessalanīkākarāṃs dusre patra
+2Thess	थेस्सलनीकाकरांस दुसरे पत्र
+2Thess	2 tʰessalanikakarams
+2Thess	2 tʰessalanikakaraṃs
+2Thess	2 tʰessalanikakarāms
+2Thess	2 tʰessalanikakarāṃs
+2Thess	2 tʰessalanikākarams
+2Thess	2 tʰessalanikākaraṃs
+2Thess	2 tʰessalanikākarāms
+2Thess	2 tʰessalanikākarāṃs
+2Thess	2 tʰessalanīkakarams
+2Thess	2 tʰessalanīkakaraṃs
+2Thess	2 tʰessalanīkakarāms
+2Thess	2 tʰessalanīkakarāṃs
+2Thess	2 tʰessalanīkākarams
+2Thess	2 tʰessalanīkākaraṃs
+2Thess	2 tʰessalanīkākarāms
+2Thess	2 tʰessalanīkākarāṃs
+2Thess	2 थेस्सलनीकाकरांस
+2Thess	2Thess
+2Tim	पौलाचे तीमथ्थाला दुसरे पत्र
+2Tim	timatʰtʰala dusre patra
+2Tim	timatʰtʰalā dusre patra
+2Tim	timatʰtʰāla dusre patra
+2Tim	timatʰtʰālā dusre patra
+2Tim	tīmatʰtʰala dusre patra
+2Tim	tīmatʰtʰalā dusre patra
+2Tim	tīmatʰtʰāla dusre patra
+2Tim	tīmatʰtʰālā dusre patra
+2Tim	तीमथ्थाला दुसरे पत्र
+2Tim	2 timatʰtʰala
+2Tim	2 timatʰtʰalā
+2Tim	2 timatʰtʰāla
+2Tim	2 timatʰtʰālā
+2Tim	2 tīmatʰtʰala
+2Tim	2 tīmatʰtʰalā
+2Tim	2 tīmatʰtʰāla
+2Tim	2 tīmatʰtʰālā
+2Tim	2 तीमथ्थाला
+2Tim	2Tim
+3John	yohanacem tisre patra
+3John	yohanaceṃ tisre patra
+3John	yohanācem tisre patra
+3John	yohanāceṃ tisre patra
+3John	yohānacem tisre patra
+3John	yohānaceṃ tisre patra
+3John	yohānācem tisre patra
+3John	yohānāceṃ tisre patra
+3John	योहानाचें तिसरे पत्र
+3John	3 yohanacem
+3John	3 yohanaceṃ
+3John	3 yohanācem
+3John	3 yohanāceṃ
+3John	3 yohānacem
+3John	3 yohānaceṃ
+3John	3 yohānācem
+3John	3 yohānāceṃ
+3John	3 योहानाच
+3John	3 योहान
+3John	3John
+3Macc	3Macc
+4Macc	4Macc
+Acts	प्रेषितांचीं कृत्यें
+Acts	presitamcim kr̥tyem
+Acts	presitamcim kr̥tyeṃ
+Acts	presitamciṃ kr̥tyem
+Acts	presitamciṃ kr̥tyeṃ
+Acts	presitamcīm kr̥tyem
+Acts	presitamcīm kr̥tyeṃ
+Acts	presitamcīṃ kr̥tyem
+Acts	presitamcīṃ kr̥tyeṃ
+Acts	presitaṃcim kr̥tyem
+Acts	presitaṃcim kr̥tyeṃ
+Acts	presitaṃciṃ kr̥tyem
+Acts	presitaṃciṃ kr̥tyeṃ
+Acts	presitaṃcīm kr̥tyem
+Acts	presitaṃcīm kr̥tyeṃ
+Acts	presitaṃcīṃ kr̥tyem
+Acts	presitaṃcīṃ kr̥tyeṃ
+Acts	presitāmcim kr̥tyem
+Acts	presitāmcim kr̥tyeṃ
+Acts	presitāmciṃ kr̥tyem
+Acts	presitāmciṃ kr̥tyeṃ
+Acts	presitāmcīm kr̥tyem
+Acts	presitāmcīm kr̥tyeṃ
+Acts	presitāmcīṃ kr̥tyem
+Acts	presitāmcīṃ kr̥tyeṃ
+Acts	presitāṃcim kr̥tyem
+Acts	presitāṃcim kr̥tyeṃ
+Acts	presitāṃciṃ kr̥tyem
+Acts	presitāṃciṃ kr̥tyeṃ
+Acts	presitāṃcīm kr̥tyem
+Acts	presitāṃcīm kr̥tyeṃ
+Acts	presitāṃcīṃ kr̥tyem
+Acts	presitāṃcīṃ kr̥tyeṃ
+Acts	prešitamcim kr̥tyem
+Acts	prešitamcim kr̥tyeṃ
+Acts	prešitamciṃ kr̥tyem
+Acts	prešitamciṃ kr̥tyeṃ
+Acts	prešitamcīm kr̥tyem
+Acts	prešitamcīm kr̥tyeṃ
+Acts	prešitamcīṃ kr̥tyem
+Acts	prešitamcīṃ kr̥tyeṃ
+Acts	prešitaṃcim kr̥tyem
+Acts	prešitaṃcim kr̥tyeṃ
+Acts	prešitaṃciṃ kr̥tyem
+Acts	prešitaṃciṃ kr̥tyeṃ
+Acts	prešitaṃcīm kr̥tyem
+Acts	prešitaṃcīm kr̥tyeṃ
+Acts	prešitaṃcīṃ kr̥tyem
+Acts	prešitaṃcīṃ kr̥tyeṃ
+Acts	prešitāmcim kr̥tyem
+Acts	prešitāmcim kr̥tyeṃ
+Acts	prešitāmciṃ kr̥tyem
+Acts	prešitāmciṃ kr̥tyeṃ
+Acts	prešitāmcīm kr̥tyem
+Acts	prešitāmcīm kr̥tyeṃ
+Acts	prešitāmcīṃ kr̥tyem
+Acts	prešitāmcīṃ kr̥tyeṃ
+Acts	prešitāṃcim kr̥tyem
+Acts	prešitāṃcim kr̥tyeṃ
+Acts	prešitāṃciṃ kr̥tyem
+Acts	prešitāṃciṃ kr̥tyeṃ
+Acts	prešitāṃcīm kr̥tyem
+Acts	prešitāṃcīm kr̥tyeṃ
+Acts	prešitāṃcīṃ kr̥tyem
+Acts	prešitāṃcīṃ kr̥tyeṃ
+Acts	प्रेषितांची कृत्यें
+Acts	प्रेषितांचीं कृत्ये
+Acts	Acts
+Amos	Amos
+Amos	amos
+Amos	āmos
+Amos	अमोस
+Amos	आमोस
+Bar	Bar
+Bel	Bel
+Col	पौलाचे कलस्सैकरांस पत्र
+Col	kalassaikarams patra
+Col	kalassaikaraṃs patra
+Col	kalassaikarāms patra
+Col	kalassaikarāṃs patra
+Col	कलस्सैकरांस पत्र
+Col	kalassaikarams
+Col	kalassaikaraṃs
+Col	kalassaikarāms
+Col	kalassaikarāṃs
+Col	कलस्सैकरांस
+Col	कलसैकरांस
+Col	Col
+Dan	दानीएल्र
+Dan	daniel
+Dan	danīel
+Dan	dāniel
+Dan	dānīel
+Dan	दानीएल
+Dan	Dan
+Deut	anuwad
+Deut	anuwād
+Deut	अनुवाद
+Deut	Deut
+Eccl	upadesak
+Eccl	upadeŝak
+Eccl	उपदेशक
+Eccl	Eccl
+EpJer	EpJer
+Eph	पौलाचे इफिसकरांस पत्र
+Eph	ipʰiskarams patra
+Eph	ipʰiskaraṃs patra
+Eph	ipʰiskarāms patra
+Eph	ipʰiskarāṃs patra
+Eph	इफिसकरांस पत्र
+Eph	ipʰiskarams
+Eph	ipʰiskaraṃs
+Eph	ipʰiskarāms
+Eph	ipʰiskarāṃs
+Eph	इफिसकरांस
+Eph	Eph
+Esth	एस्तेर
+Esth	ester
+Esth	Esth
+Exod	nirgam
+Exod	निर्गम
+Exod	Exod
+Ezek	yahedzkel
+Ezek	yaheǳkel
+Ezek	यहेज्केल
+Ezek	Ezek
+Ezra	edzra
+Ezra	edzrā
+Ezra	एज्रा
+Ezra	Ezra
+Ezra	eǳra
+Ezra	eǳrā
+Gal	पौलाचे गलतीकरांस पत्र
+Gal	galatikarams patra
+Gal	galatikaraṃs patra
+Gal	galatikarāms patra
+Gal	galatikarāṃs patra
+Gal	galatīkarams patra
+Gal	galatīkaraṃs patra
+Gal	galatīkarāms patra
+Gal	galatīkarāṃs patra
+Gal	गलतीकरांस पत्र
+Gal	galatikarams
+Gal	galatikaraṃs
+Gal	galatikarāms
+Gal	galatikarāṃs
+Gal	galatīkarams
+Gal	galatīkaraṃs
+Gal	galatīkarāms
+Gal	galatīkarāṃs
+Gal	गलतीकरांस
+Gal	Gal
+Gen	उत्पत्ति
+Gen	utpatti
+Gen	उत्पति
+Gen	Gen
+GkEsth	GkEsth
+Hab	habakkuk
+Hab	habakkūk
+Hab	हबक्कूक
+Hab	हबक्कू
+Hab	Hab
+Hag	haggay
+Hag	hāggay
+Hag	हाग्गय
+Hag	Hag
+Heb	ibri lokams patra
+Heb	ibri lokaṃs patra
+Heb	ibri lokāms patra
+Heb	ibri lokāṃs patra
+Heb	ibrī lokams patra
+Heb	ibrī lokaṃs patra
+Heb	ibrī lokāms patra
+Heb	ibrī lokāṃs patra
+Heb	इब्री लोकांस पत्र
+Heb	इब्री लोकांस
+Heb	ibri lokams
+Heb	ibri lokaṃs
+Heb	ibri lokāms
+Heb	ibri lokāṃs
+Heb	ibrī lokams
+Heb	ibrī lokaṃs
+Heb	ibrī lokāms
+Heb	ibrī lokāṃs
+Heb	इब्री
+Heb	Heb
+Hos	hosey
+Hos	hoŝey
+Hos	होशेय
+Hos	Hos
+Isa	yasaya
+Isa	yasayā
+Isa	yaŝaya
+Isa	yaŝayā
+Isa	यशया
+Isa	यशाय
+Isa	Isa
+Jas	yakobacem patra
+Jas	yakobaceṃ patra
+Jas	yakobācem patra
+Jas	yakobāceṃ patra
+Jas	yākobacem patra
+Jas	yākobaceṃ patra
+Jas	yākobācem patra
+Jas	yākobāceṃ patra
+Jas	याकोबाचें पत्र
+Jas	yakobacem
+Jas	yakobaceṃ
+Jas	yakobācem
+Jas	yakobāceṃ
+Jas	yākobacem
+Jas	yākobaceṃ
+Jas	yākobācem
+Jas	yākobāceṃ
+Jas	याकोबाचें
+Jas	याकोब
+Jas	Jas
+Jdt	Jdt
+Jer	yirmaya
+Jer	yirmayā
+Jer	यिर्मया
+Jer	Jer
+Job	iyob
+Job	īyob
+Job	इयोब
+Job	ईयोब
+Job	Job
+Joel	Joel
+Joel	yoel
+Joel	योएल
+John	yohanane lihilele subʰavartaman
+John	yohanane lihilele subʰavartamān
+John	yohanane lihilele ŝubʰavartaman
+John	yohanane lihilele ŝubʰavartamān
+John	yohanāne lihilele subʰavartaman
+John	yohanāne lihilele subʰavartamān
+John	yohanāne lihilele ŝubʰavartaman
+John	yohanāne lihilele ŝubʰavartamān
+John	yohānane lihilele subʰavartaman
+John	yohānane lihilele subʰavartamān
+John	yohānane lihilele ŝubʰavartaman
+John	yohānane lihilele ŝubʰavartamān
+John	yohānāne lihilele subʰavartaman
+John	yohānāne lihilele subʰavartamān
+John	yohānāne lihilele ŝubʰavartaman
+John	yohānāne lihilele ŝubʰavartamān
+John	योहानाने लिहिलेले शुभवर्तमान
+John	yohanane
+John	yohanāne
+John	yohānane
+John	yohānāne
+John	योहानाने
+John	योहान
+John	John
+Jonah	Jonah
+Jonah	yona
+Jonah	yonā
+Jonah	योना
+Josh	yahosawa
+Josh	yahosawā
+Josh	yahoŝawa
+Josh	yahoŝawā
+Josh	यहोशवा
+Josh	Josh
+Jude	yahudacem patra
+Jude	yahudaceṃ patra
+Jude	yahudācem patra
+Jude	yahudāceṃ patra
+Jude	yahūdacem patra
+Jude	yahūdaceṃ patra
+Jude	yahūdācem patra
+Jude	yahūdāceṃ patra
+Jude	यहूदाचें पत्र
+Jude	yahudacem
+Jude	yahudaceṃ
+Jude	yahudācem
+Jude	yahudāceṃ
+Jude	yahūdacem
+Jude	yahūdaceṃ
+Jude	yahūdācem
+Jude	yahūdāceṃ
+Jude	यहूदाचें
+Jude	यहूदा
+Jude	Jude
+Judg	शास्ते
+Judg	saste
+Judg	sāste
+Judg	ŝaste
+Judg	ŝāste
+Judg	Judg
+Lam	wilapgit
+Lam	wilapgīt
+Lam	wilāpgit
+Lam	wilāpgīt
+Lam	विलापगीत
+Lam	Lam
+Lev	lewiy
+Lev	lewīy
+Lev	लेवीय
+Lev	Lev
+Luke	lukane lihilele subʰavartaman
+Luke	lukane lihilele subʰavartamān
+Luke	lukane lihilele ŝubʰavartaman
+Luke	lukane lihilele ŝubʰavartamān
+Luke	lukāne lihilele subʰavartaman
+Luke	lukāne lihilele subʰavartamān
+Luke	lukāne lihilele ŝubʰavartaman
+Luke	lukāne lihilele ŝubʰavartamān
+Luke	lūkane lihilele subʰavartaman
+Luke	lūkane lihilele subʰavartamān
+Luke	lūkane lihilele ŝubʰavartaman
+Luke	lūkane lihilele ŝubʰavartamān
+Luke	lūkāne lihilele subʰavartaman
+Luke	lūkāne lihilele subʰavartamān
+Luke	lūkāne lihilele ŝubʰavartaman
+Luke	lūkāne lihilele ŝubʰavartamān
+Luke	लूकाने लिहिलेले शुभवर्तमान
+Luke	lukane
+Luke	lukāne
+Luke	lūkane
+Luke	lūkāne
+Luke	लूकाने
+Luke	Luke
+Luke	लूका
+Luke	लूक
+Mal	malakʰi
+Mal	malakʰī
+Mal	malākʰi
+Mal	malākʰī
+Mal	मलाखी
+Mal	Mal
+Mark	markane lihilele subʰavartaman
+Mark	markane lihilele subʰavartamān
+Mark	markane lihilele ŝubʰavartaman
+Mark	markane lihilele ŝubʰavartamān
+Mark	markāne lihilele subʰavartaman
+Mark	markāne lihilele subʰavartamān
+Mark	markāne lihilele ŝubʰavartaman
+Mark	markāne lihilele ŝubʰavartamān
+Mark	mārkane lihilele subʰavartaman
+Mark	mārkane lihilele subʰavartamān
+Mark	mārkane lihilele ŝubʰavartaman
+Mark	mārkane lihilele ŝubʰavartamān
+Mark	mārkāne lihilele subʰavartaman
+Mark	mārkāne lihilele subʰavartamān
+Mark	mārkāne lihilele ŝubʰavartaman
+Mark	mārkāne lihilele ŝubʰavartamān
+Mark	मार्काने लिहिलेले शुभवर्तमान
+Mark	मार्काने
+Mark	markane
+Mark	markāne
+Mark	mārkane
+Mark	mārkāne
+Mark	मार्क
+Mark	Mark
+Matt	mattayane lihilele subʰavartaman
+Matt	mattayane lihilele subʰavartamān
+Matt	mattayane lihilele ŝubʰavartaman
+Matt	mattayane lihilele ŝubʰavartamān
+Matt	mattayāne lihilele subʰavartaman
+Matt	mattayāne lihilele subʰavartamān
+Matt	mattayāne lihilele ŝubʰavartaman
+Matt	mattayāne lihilele ŝubʰavartamān
+Matt	मत्तयाने लिहिलेले शुभवर्तमान
+Matt	mattayane
+Matt	mattayāne
+Matt	मत्तयाने
+Matt	मत्तय
+Matt	Matt
+Mic	mikʰa
+Mic	mikʰā
+Mic	mīkʰa
+Mic	mīkʰā
+Mic	मीखा
+Mic	Mic
+Nah	nahum
+Nah	nahūm
+Nah	नहूम
+Nah	Nah
+Neh	nahemya
+Neh	nahemyā
+Neh	नहेम्या
+Neh	Neh
+Num	ganana
+Num	gananā
+Num	gaṇana
+Num	gaṇanā
+Num	गणना
+Num	Num
+Obad	obadʰa
+Obad	obadʰā
+Obad	ओबद्या
+Obad	Obad
+Obad	ओबधा
+Phil	पौलाचे फिलिप्पैकरांस पत्र
+Phil	pʰilippaikarams patra
+Phil	pʰilippaikaraṃs patra
+Phil	pʰilippaikarāms patra
+Phil	pʰilippaikarāṃs patra
+Phil	फिलिप्पैकरांस पत्र
+Phil	pʰilippaikarams
+Phil	pʰilippaikaraṃs
+Phil	pʰilippaikarāms
+Phil	pʰilippaikarāṃs
+Phil	फिलिप्पैकरांस
+Phil	Phil
+Phlm	पौलाचे फिलेमोनाला पत्र
+Phlm	pʰilemonala patra
+Phlm	pʰilemonalā patra
+Phlm	pʰilemonāla patra
+Phlm	pʰilemonālā patra
+Phlm	फिलेमोनाला पत्र
+Phlm	pʰilemonala
+Phlm	pʰilemonalā
+Phlm	pʰilemonāla
+Phlm	pʰilemonālā
+Phlm	फिलेमोनाला
+Phlm	फिलेमोना
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	नीतिसूत्रें
+Prov	नीतिसूत्रे
+Prov	nitisutre
+Prov	nitisūtre
+Prov	nītisutre
+Prov	nītisūtre
+Prov	Prov
+Ps	स्त्रोत्रसंहिता
+Ps	stotrasamhita
+Ps	stotrasamhitā
+Ps	stotrasaṃhita
+Ps	stotrasaṃhitā
+Ps	स्तोत्रसंहिता
+Ps	स्तोत्र
+Ps	Ps
+Rev	yohanala ǳʰalele prakatikaran
+Rev	yohanala ǳʰalele prakatikaraṇ
+Rev	yohanala ǳʰalele prakatīkaran
+Rev	yohanala ǳʰalele prakatīkaraṇ
+Rev	yohanala ǳʰalele prakaṭikaran
+Rev	yohanala ǳʰalele prakaṭikaraṇ
+Rev	yohanala ǳʰalele prakaṭīkaran
+Rev	yohanala ǳʰalele prakaṭīkaraṇ
+Rev	yohanala ǳʰālele prakatikaran
+Rev	yohanala ǳʰālele prakatikaraṇ
+Rev	yohanala ǳʰālele prakatīkaran
+Rev	yohanala ǳʰālele prakatīkaraṇ
+Rev	yohanala ǳʰālele prakaṭikaran
+Rev	yohanala ǳʰālele prakaṭikaraṇ
+Rev	yohanala ǳʰālele prakaṭīkaran
+Rev	yohanala ǳʰālele prakaṭīkaraṇ
+Rev	yohanalā ǳʰalele prakatikaran
+Rev	yohanalā ǳʰalele prakatikaraṇ
+Rev	yohanalā ǳʰalele prakatīkaran
+Rev	yohanalā ǳʰalele prakatīkaraṇ
+Rev	yohanalā ǳʰalele prakaṭikaran
+Rev	yohanalā ǳʰalele prakaṭikaraṇ
+Rev	yohanalā ǳʰalele prakaṭīkaran
+Rev	yohanalā ǳʰalele prakaṭīkaraṇ
+Rev	yohanalā ǳʰālele prakatikaran
+Rev	yohanalā ǳʰālele prakatikaraṇ
+Rev	yohanalā ǳʰālele prakatīkaran
+Rev	yohanalā ǳʰālele prakatīkaraṇ
+Rev	yohanalā ǳʰālele prakaṭikaran
+Rev	yohanalā ǳʰālele prakaṭikaraṇ
+Rev	yohanalā ǳʰālele prakaṭīkaran
+Rev	yohanalā ǳʰālele prakaṭīkaraṇ
+Rev	yohanāla ǳʰalele prakatikaran
+Rev	yohanāla ǳʰalele prakatikaraṇ
+Rev	yohanāla ǳʰalele prakatīkaran
+Rev	yohanāla ǳʰalele prakatīkaraṇ
+Rev	yohanāla ǳʰalele prakaṭikaran
+Rev	yohanāla ǳʰalele prakaṭikaraṇ
+Rev	yohanāla ǳʰalele prakaṭīkaran
+Rev	yohanāla ǳʰalele prakaṭīkaraṇ
+Rev	yohanāla ǳʰālele prakatikaran
+Rev	yohanāla ǳʰālele prakatikaraṇ
+Rev	yohanāla ǳʰālele prakatīkaran
+Rev	yohanāla ǳʰālele prakatīkaraṇ
+Rev	yohanāla ǳʰālele prakaṭikaran
+Rev	yohanāla ǳʰālele prakaṭikaraṇ
+Rev	yohanāla ǳʰālele prakaṭīkaran
+Rev	yohanāla ǳʰālele prakaṭīkaraṇ
+Rev	yohanālā ǳʰalele prakatikaran
+Rev	yohanālā ǳʰalele prakatikaraṇ
+Rev	yohanālā ǳʰalele prakatīkaran
+Rev	yohanālā ǳʰalele prakatīkaraṇ
+Rev	yohanālā ǳʰalele prakaṭikaran
+Rev	yohanālā ǳʰalele prakaṭikaraṇ
+Rev	yohanālā ǳʰalele prakaṭīkaran
+Rev	yohanālā ǳʰalele prakaṭīkaraṇ
+Rev	yohanālā ǳʰālele prakatikaran
+Rev	yohanālā ǳʰālele prakatikaraṇ
+Rev	yohanālā ǳʰālele prakatīkaran
+Rev	yohanālā ǳʰālele prakatīkaraṇ
+Rev	yohanālā ǳʰālele prakaṭikaran
+Rev	yohanālā ǳʰālele prakaṭikaraṇ
+Rev	yohanālā ǳʰālele prakaṭīkaran
+Rev	yohanālā ǳʰālele prakaṭīkaraṇ
+Rev	yohānala ǳʰalele prakatikaran
+Rev	yohānala ǳʰalele prakatikaraṇ
+Rev	yohānala ǳʰalele prakatīkaran
+Rev	yohānala ǳʰalele prakatīkaraṇ
+Rev	yohānala ǳʰalele prakaṭikaran
+Rev	yohānala ǳʰalele prakaṭikaraṇ
+Rev	yohānala ǳʰalele prakaṭīkaran
+Rev	yohānala ǳʰalele prakaṭīkaraṇ
+Rev	yohānala ǳʰālele prakatikaran
+Rev	yohānala ǳʰālele prakatikaraṇ
+Rev	yohānala ǳʰālele prakatīkaran
+Rev	yohānala ǳʰālele prakatīkaraṇ
+Rev	yohānala ǳʰālele prakaṭikaran
+Rev	yohānala ǳʰālele prakaṭikaraṇ
+Rev	yohānala ǳʰālele prakaṭīkaran
+Rev	yohānala ǳʰālele prakaṭīkaraṇ
+Rev	yohānalā ǳʰalele prakatikaran
+Rev	yohānalā ǳʰalele prakatikaraṇ
+Rev	yohānalā ǳʰalele prakatīkaran
+Rev	yohānalā ǳʰalele prakatīkaraṇ
+Rev	yohānalā ǳʰalele prakaṭikaran
+Rev	yohānalā ǳʰalele prakaṭikaraṇ
+Rev	yohānalā ǳʰalele prakaṭīkaran
+Rev	yohānalā ǳʰalele prakaṭīkaraṇ
+Rev	yohānalā ǳʰālele prakatikaran
+Rev	yohānalā ǳʰālele prakatikaraṇ
+Rev	yohānalā ǳʰālele prakatīkaran
+Rev	yohānalā ǳʰālele prakatīkaraṇ
+Rev	yohānalā ǳʰālele prakaṭikaran
+Rev	yohānalā ǳʰālele prakaṭikaraṇ
+Rev	yohānalā ǳʰālele prakaṭīkaran
+Rev	yohānalā ǳʰālele prakaṭīkaraṇ
+Rev	yohānāla ǳʰalele prakatikaran
+Rev	yohānāla ǳʰalele prakatikaraṇ
+Rev	yohānāla ǳʰalele prakatīkaran
+Rev	yohānāla ǳʰalele prakatīkaraṇ
+Rev	yohānāla ǳʰalele prakaṭikaran
+Rev	yohānāla ǳʰalele prakaṭikaraṇ
+Rev	yohānāla ǳʰalele prakaṭīkaran
+Rev	yohānāla ǳʰalele prakaṭīkaraṇ
+Rev	yohānāla ǳʰālele prakatikaran
+Rev	yohānāla ǳʰālele prakatikaraṇ
+Rev	yohānāla ǳʰālele prakatīkaran
+Rev	yohānāla ǳʰālele prakatīkaraṇ
+Rev	yohānāla ǳʰālele prakaṭikaran
+Rev	yohānāla ǳʰālele prakaṭikaraṇ
+Rev	yohānāla ǳʰālele prakaṭīkaran
+Rev	yohānāla ǳʰālele prakaṭīkaraṇ
+Rev	yohānālā ǳʰalele prakatikaran
+Rev	yohānālā ǳʰalele prakatikaraṇ
+Rev	yohānālā ǳʰalele prakatīkaran
+Rev	yohānālā ǳʰalele prakatīkaraṇ
+Rev	yohānālā ǳʰalele prakaṭikaran
+Rev	yohānālā ǳʰalele prakaṭikaraṇ
+Rev	yohānālā ǳʰalele prakaṭīkaran
+Rev	yohānālā ǳʰalele prakaṭīkaraṇ
+Rev	yohānālā ǳʰālele prakatikaran
+Rev	yohānālā ǳʰālele prakatikaraṇ
+Rev	yohānālā ǳʰālele prakatīkaran
+Rev	yohānālā ǳʰālele prakatīkaraṇ
+Rev	yohānālā ǳʰālele prakaṭikaran
+Rev	yohānālā ǳʰālele prakaṭikaraṇ
+Rev	yohānālā ǳʰālele prakaṭīkaran
+Rev	yohānālā ǳʰālele prakaṭīkaraṇ
+Rev	योहानाला झालेले प्रकटीकरण
+Rev	prakatikaran
+Rev	prakatikaraṇ
+Rev	prakatīkaran
+Rev	prakatīkaraṇ
+Rev	prakaṭikaran
+Rev	prakaṭikaraṇ
+Rev	prakaṭīkaran
+Rev	prakaṭīkaraṇ
+Rev	प्रकटीकरण
+Rev	Rev
+Rom	पौलाचे रोमकरांस पत्र
+Rom	romkarams patra
+Rom	romkaraṃs patra
+Rom	romkarāms patra
+Rom	romkarāṃs patra
+Rom	रोमकरांस पत्र
+Rom	romkarams
+Rom	romkaraṃs
+Rom	romkarāms
+Rom	romkarāṃs
+Rom	रोमकंरास
+Rom	रोमकरांस
+Rom	Rom
+Ruth	Ruth
+Ruth	rutʰ
+Ruth	rūtʰ
+Ruth	रूथ
+SgThree	SgThree
+Sir	Sir
+Song	gitratna
+Song	gītratna
+Song	गीतरत्न
+Song	Song
+Sus	Sus
+Titus	पौलाचे तीताला पत्र
+Titus	titala patra
+Titus	titalā patra
+Titus	titāla patra
+Titus	titālā patra
+Titus	tītala patra
+Titus	tītalā patra
+Titus	tītāla patra
+Titus	tītālā patra
+Titus	तीताला पत्र
+Titus	titala
+Titus	titalā
+Titus	titāla
+Titus	titālā
+Titus	tītala
+Titus	tītalā
+Titus	tītāla
+Titus	tītālā
+Titus	तीताला
+Titus	Titus
+Tob	Tob
+Wis	Wis
+Zech	jakʰarya
+Zech	jakʰaryā
+Zech	जखर्या
+Zech	जखऱ्या
+Zech	Zech
+Zeph	sapʰanya
+Zeph	sapʰanyā
+Zeph	सफन्या
+Zeph	Zeph

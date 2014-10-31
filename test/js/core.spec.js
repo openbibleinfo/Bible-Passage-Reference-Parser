@@ -4981,7 +4981,7 @@
       }
       return _results;
     });
-    return it("should handle long strings", function() {
+    it("should handle long strings", function() {
       var i, string, strings, _i;
       strings = [];
       for (i = _i = 1; _i <= 1001; i = ++_i) {
@@ -4990,6 +4990,22 @@
       string = strings.join(",");
       expect(p.parse(string).osis()).toEqual(string);
       return expect(p.parse("Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Psalm 1").osis()).toEqual("Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1");
+    });
+    return it("should handle weird invalid ranges", function() {
+      p.set_options({
+        book_alone_strategy: "first_chapter",
+        book_sequence_strategy: "include",
+        book_range_strategy: "include"
+      });
+      expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual("Num.9,Matt.10-Rev.22");
+      expect(p.parse("EX34 9PH to CO7").osis()).toEqual("Exod.34.9,Phil-Col");
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        book_range_strategy: "ignore"
+      });
+      expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual("Num.9,Matt.10");
+      return expect(p.parse("EX34 9PH to CO7").osis()).toEqual("Exod.34.9,Col.4");
     });
   });
 
@@ -6549,7 +6565,7 @@
           translations: [""]
         }
       ]);
-      return expect(p.parse("Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)").osis_and_indices()).toEqual([
+      expect(p.parse("Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)").osis_and_indices()).toEqual([
         {
           osis: "Luke.8.1-Luke.8.3,Luke.24.10",
           translations: [""],
@@ -6560,6 +6576,8 @@
           indices: [23, 55]
         }
       ]);
+      expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual("Num.9.1-Num.9.23,Matt.10.1-Matt.10.42");
+      return expect(p.parse("EX34 9PH to CO7").osis()).toEqual("Exod.34.9,Col.4.1-Col.4.18");
     });
   });
 

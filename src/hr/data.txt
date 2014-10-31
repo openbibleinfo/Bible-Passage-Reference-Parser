@@ -1,0 +1,273 @@
+$FIRST	Prva	1	I
+$SECOND	Druga	2	II
+$THIRD	Treæa	Treća	3	III
+$FOURTH	4	IV
+$AB	[a-e]
+# http://hr.wikipedia.org/wiki/Psalmi
+$AND	i
+# http://hr.wikipedia.org/wiki/Druga_knjiga_o_Kraljevima (pog...)
+$CHAPTER	poglavlja	poglavlje	glava
+$FF	ff
+$TITLE	title
+$TRANS	CKK
+$TO	-
+$VERSE	verse
+$UNICODE_BLOCK	Latin
+
+Gen	Knjiga Postanka	Postanak	Post
+Exod	Izlazak	Knjiga Izlaska	Izl	Egzodus
+Lev	Levitski zakonik	Lev
+Num	Knjiga Brojeva	Brojevi	Br
+Deut	Ponovljeni zakon	Pnz
+Josh	Jošua	Jš
+Judg	Knjiga o Sucima	Suci
+Ruth	Knjiga o Ruti	Ruta	Rut
+1Sam	$FIRST Samuelova	Prva Samuelova knjiga	Prva knjiga o Samuelu	1 Sam
+2Sam	$SECOND Samuelova	Druga Samuelova knjiga	Druga knjiga o Samuelu	2 Sam
+1Kgs	$FIRST Kraljevima	Prva knjiga o Kraljevima	1 Kr
+2Kgs	$SECOND Kraljevima	Druga knjiga o Kraljevima	2 Kr
+1Chr	$FIRST Ljetopisa	Prva knjiga Ljetopisa	1 Ljet
+2Chr	$SECOND Ljetopisa	Druga knjiga Ljetopisa	2 Ljet
+Ezra	Knjiga Ezrina	Ezra	Ezr
+Neh	Knjiga Nehemijina	Nehemija	Neh
+Esth	Estera	Est
+Job	Knjiga o Jobu	Job
+Ps	Psalmi	Psalme	Psalam	Ps
+Prov	Mudre izreke	Poslovice	Izr
+Eccl	Propovjednik	Kohelet	Prop
+Song	Pj	Pjesma nad pjesmama
+Isa	Izaija	Iz
+Jer	Jeremija	Jr
+Lam	Jeremijine tužaljke	Tužaljke	Lamentacije	Tuž
+Ezek	Ezekiel	Ez
+Dan	Daniel	Dn
+Hos	Hošea	Hoš
+Joel	Joel	Jl
+Amos	Amos	Am
+Obad	Obadija	Ob
+Jonah	Jona	Jon
+Mic	Mihej	Mih
+Nah	Nahum	Nah
+Hab	Habakuk	Hab
+Zeph	Sefanija	Sef	Sofonije
+Hag	Hagej	Hagaj	Hag	Agej
+Zech	Zaharija	Zah
+Mal	Malahija	Mal
+Matt	Jevanđelje po Mateju	Evanðelje po Mateju	Evanđelje po Mateju	Matej	Mt
+Mark	Jevanđelje po Marku	Evanðelje po Marku	Evanđelje po Marku	Marko	Mk
+Luke	Jevanđelje po Luki	Evanðelje po Luki	Evanđelje po Luki	Luka	Lk
+John	Jevanđelje po Ivanu	Evanðelje po Ivanu	Evanđelje po Ivanu	Ivan	Iv
+Acts	Djela apostolska	Dj
+Rom	Pavlova poslanica Rimljanima	Poslanica Rimljanima	Rimljanima	Rim
+1Cor	$FIRST Korinćanima Poslanica	Prva poslanica Korinæanima	Pavlova prva poslanica Korinćanima	Prva poslanica Korinćanima	$FIRST Korinćanima	1 Kor
+2Cor	$SECOND Korinćanima Poslanica	Druga poslanica Korinæanima	Pavlova druga poslanica Korinćanima	Druga poslanica Korinćanima	$SECOND Korinćanima	2 Kor
+Gal	Poslanica Galaæanima	Pavlova poslanica Galaćanima	Poslanica Galaćanima	Galaćanima	Gal
+Eph	Pavlova poslanica Efežanima	Poslanica Efežanima	Efežanima	Ef
+Phil	Pavlova poslanica Filipljanima	Poslanica Filipljanima	Filipljanima	Fil
+Col	Pavlova poslanica Kološanima	Poslanica Kološanima	Kološanima	Kol
+1Thess	$FIRST Solunjanima Poslanica	Pavlova prva poslanica Solunjanima	Prva poslanica Solunjanima	$FIRST Solunjanima	1 Sol
+2Thess	$SECOND Solunjanima Poslanica	Pavlova druga poslanica Solunjanima	Druga poslanica Solunjanima	$SECOND Solunjanima	2 Sol
+1Tim	$FIRST Timoteju Poslanica	Pavlova prva poslanica Timoteju	Prva poslanica Timoteju	$FIRST Timoteju	1 Tim
+2Tim	$SECOND Timoteju Poslanica	Pavlova druga poslanica Timoteju	Druga poslanica Timoteju	$SECOND Timoteju	2 Tim
+Titus	Pavlova poslanica Titu	Poslanica Titu	Titu	Tit
+Phlm	Pavlova poslanica Filemonu	Poslanica Filemonu	Filemonu	Flm
+Heb	Pavlova poslanica Hebrejima	Poslanica Hebrejima	Hebrejima	Heb
+Jas	Jakovljeva poslanica	Jakovljeva	Jak
+1Pet	$FIRST Petrova Poslanica	Prva Petrova poslanica	$FIRST Petrova	1 Pt
+2Pet	$SECOND Petrova Poslanica	Druga Petrova poslanica	$SECOND Petrova	2 Pt
+1John	$FIRST Ivanova Poslanica	Prva Ivanova poslanica	$FIRST Ivanova	1 Iv
+2John	$SECOND Ivanova Poslanica	Druga Ivanova poslanica	$SECOND Ivanova	2 Iv
+3John	$THIRD Ivanova Poslanica	Treæa Ivanova poslanica	Treća Ivanova poslanica	$THIRD Ivanova	3 Iv
+Jude	Poslanica Jude apostola	Judina poslanica	Judina	Jd
+Rev	Otkrivenje Ivanovo	Apokalipsa	Otkrivenje	Otk
+Tob	Tobija	Tob
+Jdt	Judita	Jdt
+GkEsth	GkEsth
+Wis	Knjiga Mudrosti	Mudr
+Sir	Knjiga Sirahova	Sir
+Bar	Baruh	Bar
+PrAzar	PrAzar
+Sus	Suzana	Suz
+Bel	Bel
+SgThree	SgThree
+EpJer	Pismo Jeremije proroka	Jeremijino pismo
+1Macc	Prva knjiga o Makabejcima	1 Mak
+2Macc	Druga knjiga o Makabejcima	2 Mak
+3Macc	Treća knjiga o Makabejcima	3 Mak
+4Macc	4 Mak
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Postanak	Postanak
+*Exod	Izlazak	Izl
+*Lev	Levitski zakonik	Lev
+*Num	Brojevi	Brojevi
+*Deut	Ponovljeni zakon	Pnz
+*Josh	Jošua	Jš
+*Judg	Knjiga o Sucima	Suci
+*Ruth	Ruta	Rut
+*1Sam	Prva knjiga o Samuelu	1 Sam
+*2Sam	Druga knjiga o Samuelu	2 Sam
+*1Kgs	Prva knjiga o Kraljevima	1 Kr
+*2Kgs	Druga knjiga o Kraljevima	2 Kr
+*1Chr	Prva knjiga Ljetopisa	1 Ljet
+*2Chr	Druga knjiga Ljetopisa	2 Ljet
+*Ezra	Ezra	Ezr
+*Neh	Nehemija	Neh
+*Esth	Estera	Est
+*Job	Job	Job
+*Ps	Psalmi	Ps		Psalam
+*Prov	Mudre izreke	Izr
+*Eccl	Propovjednik	Prop
+*Song	Pjesma nad pjesmama	Pj
+*Isa	Izaija	Iz
+*Jer	Jeremija	Jr
+*Lam	Tužaljke	Tuž
+*Ezek	Ezekiel	Ez
+*Dan	Daniel	Dn
+*Hos	Hošea	Hoš
+*Joel	Joel	Jl
+*Amos	Amos	Am
+*Obad	Obadija	Ob
+*Jonah	Jona	Jon
+*Mic	Mihej	Mih
+*Nah	Nahum	Nah
+*Hab	Habakuk	Hab
+*Zeph	Sefanija	Sef
+*Hag	Hagaj	Hag
+*Zech	Zaharija	Zah
+*Mal	Malahija	Mal
+*Matt	Matej	Mt
+*Mark	Marko	Mk
+*Luke	Luka	Lk
+*John	Ivan	Iv
+*Acts	Djela apostolska	Dj
+*Rom	Rimljanima	Rim
+*1Cor	1 Korinćanima	1 Kor
+*2Cor	2 Korinćanima	2 Kor
+*Gal	Galaćanima	Gal
+*Eph	Efežanima	Ef
+*Phil	Filipljanima	Fil
+*Col	Kološanima	Kol
+*1Thess	1 Solunjanima	1 Sol
+*2Thess	2 Solunjanima	2 Sol
+*1Tim	1 Timoteju	1 Tim
+*2Tim	2 Timoteju	2 Tim
+*Titus	Titu	Tit
+*Phlm	Filemonu	Flm
+*Heb	Hebrejima	Heb
+*Jas	Jakovljeva	Jak
+*1Pet	1 Petrova	1 Pt
+*2Pet	2 Petrova	2 Pt
+*1John	1 Ivanova	1 Iv
+*2John	2 Ivanova	2 Iv
+*3John	3 Ivanova	3 Iv
+*Jude	Judina	Jd
+*Rev	Otkrivenje	Otk
+*Tob	Tobija	Tob
+*Jdt	Judita	Jdt
+*GkEsth	GkEsth
+*Wis	Knjiga Mudrosti	Mudr
+*Sir	Knjiga Sirahova	Sir
+*Bar	Baruh	Bar
+*PrAzar	PrAzar
+*Sus	Suzana	Suz
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	Pismo Jeremije proroka
+*1Macc	Prva knjiga o Makabejcima	1 Mak
+*2Macc	Druga knjiga o Makabejcima	2 Mak
+*3Macc	Treća knjiga o Makabejcima	3 Mak
+*4Macc	4 Mak
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

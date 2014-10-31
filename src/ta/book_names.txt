@@ -1,0 +1,1504 @@
+1Chr	நாளாகமத்தின் முதலாம் புத்தகம்
+1Chr	1 குறிப்பேடு
+1Chr	1 Nalakamam
+1Chr	1 Nalākamam
+1Chr	1 Naḷakamam
+1Chr	1 Naḷākamam
+1Chr	1 Nālakamam
+1Chr	1 Nālākamam
+1Chr	1 Nāḷakamam
+1Chr	1 Nāḷākamam
+1Chr	1 நாளாகமம்
+1Chr	1 குறி
+1Chr	1 நாளா
+1Chr	1Chr
+1Cor	Korintiyarukku Elutiya Mutalavatu Nirupam
+1Cor	Korintiyarukku Elutiya Mutalāvatu Nirupam
+1Cor	Korintiyarukku Eḻutiya Mutalavatu Nirupam
+1Cor	Korintiyarukku Eḻutiya Mutalāvatu Nirupam
+1Cor	கொரிந்தியருக்கு எழுதிய முதலாவது திருமுகம்
+1Cor	கொரிந்தியருக்கு எழுதிய முதலாவது நிருபம்
+1Cor	கொரிந்தியருக்கு எழுதிய முதல் திருமுகம்
+1Cor	கொரிந்தியருக்கு எழுதிய முதலாம்
+1Cor	1 Korintiyarukku
+1Cor	1 கொரிந்தியர்
+1Cor	1 கொரி
+1Cor	1 கொ
+1Cor	1Cor
+1Esd	1 எஸ்திராஸ்
+1Esd	1Esd
+1John	Yovan Elutiya Mutalavatu Nirupam
+1John	Yovan Elutiya Mutalāvatu Nirupam
+1John	Yovan Eḻutiya Mutalavatu Nirupam
+1John	Yovan Eḻutiya Mutalāvatu Nirupam
+1John	Yovaṉ Elutiya Mutalavatu Nirupam
+1John	Yovaṉ Elutiya Mutalāvatu Nirupam
+1John	Yovaṉ Eḻutiya Mutalavatu Nirupam
+1John	Yovaṉ Eḻutiya Mutalāvatu Nirupam
+1John	Yōvan Elutiya Mutalavatu Nirupam
+1John	Yōvan Elutiya Mutalāvatu Nirupam
+1John	Yōvan Eḻutiya Mutalavatu Nirupam
+1John	Yōvan Eḻutiya Mutalāvatu Nirupam
+1John	Yōvaṉ Elutiya Mutalavatu Nirupam
+1John	Yōvaṉ Elutiya Mutalāvatu Nirupam
+1John	Yōvaṉ Eḻutiya Mutalavatu Nirupam
+1John	Yōvaṉ Eḻutiya Mutalāvatu Nirupam
+1John	யோவன் எழுதிய முதலாவது நிருபம்
+1John	யோவான் எழுதிய முதல் திருமுகம்
+1John	யோவான் எழுதிய முதலாம் கடிதம்
+1John	யோவான் முதல் திருமுகம்
+1John	Mutalavatu யோவான்
+1John	Mutalāvatu யோவான்
+1John	முதலாவது யோவான்
+1John	1 அருளப்பர்
+1John	1. யோவான்
+1John	1 யோவான்
+1John	1 Yovan
+1John	1 Yovaṉ
+1John	1 Yōvan
+1John	1 Yōvaṉ
+1John	1 யோவா
+1John	1John
+1John	1 யோ
+1Kgs	இராஜாக்களின் முதலாம் புத்தகம்
+1Kgs	1 இராஜாக்கள்
+1Kgs	1 Irajakkal
+1Kgs	1 Irajakkaḷ
+1Kgs	1 Irajākkal
+1Kgs	1 Irajākkaḷ
+1Kgs	1 Irājakkal
+1Kgs	1 Irājakkaḷ
+1Kgs	1 Irājākkal
+1Kgs	1 Irājākkaḷ
+1Kgs	1 அரசர்கள்
+1Kgs	3 அரசுகள்
+1Kgs	1 இராஜா
+1Kgs	1 இரா
+1Kgs	1 அர
+1Kgs	1Kgs
+1Macc	1 மக்கபேயர்
+1Macc	1 மக்
+1Macc	1Macc
+1Pet	Peturu Elutiya Mutalavatu Nirupam
+1Pet	Peturu Elutiya Mutalāvatu Nirupam
+1Pet	Peturu Eḻutiya Mutalavatu Nirupam
+1Pet	Peturu Eḻutiya Mutalāvatu Nirupam
+1Pet	Pēturu Elutiya Mutalavatu Nirupam
+1Pet	Pēturu Elutiya Mutalāvatu Nirupam
+1Pet	Pēturu Eḻutiya Mutalavatu Nirupam
+1Pet	Pēturu Eḻutiya Mutalāvatu Nirupam
+1Pet	பேதுரு எழுதிய முதலாவது நிருபம்
+1Pet	பேதுரு எழுதிய முதல் திருமுகம்
+1Pet	பேதுரு எழுதிய முதலாம் கடிதம்
+1Pet	பேதுரு முதல் திருமுகம்
+1Pet	1 இராயப்பர்
+1Pet	1 Peturu
+1Pet	1 Pēturu
+1Pet	1 பேதுரு
+1Pet	1 பேது
+1Pet	1Pet
+1Sam	சாமுவேலின் முதலாம் புத்தகம்
+1Sam	1 சாமுவேல்
+1Sam	1 Camuvel
+1Sam	1 Camuvēl
+1Sam	1 Cāmuvel
+1Sam	1 Cāmuvēl
+1Sam	1 அரசுகள்
+1Sam	1 சாமு
+1Sam	1Sam
+1Thess	Tecalonikkiyarukku Elutiya Mutalavatu Nirupam
+1Thess	Tecalonikkiyarukku Elutiya Mutalāvatu Nirupam
+1Thess	Tecalonikkiyarukku Eḻutiya Mutalavatu Nirupam
+1Thess	Tecalonikkiyarukku Eḻutiya Mutalāvatu Nirupam
+1Thess	Tecaloṉikkiyarukku Elutiya Mutalavatu Nirupam
+1Thess	Tecaloṉikkiyarukku Elutiya Mutalāvatu Nirupam
+1Thess	Tecaloṉikkiyarukku Eḻutiya Mutalavatu Nirupam
+1Thess	Tecaloṉikkiyarukku Eḻutiya Mutalāvatu Nirupam
+1Thess	Tecalōnikkiyarukku Elutiya Mutalavatu Nirupam
+1Thess	Tecalōnikkiyarukku Elutiya Mutalāvatu Nirupam
+1Thess	Tecalōnikkiyarukku Eḻutiya Mutalavatu Nirupam
+1Thess	Tecalōnikkiyarukku Eḻutiya Mutalāvatu Nirupam
+1Thess	Tecalōṉikkiyarukku Elutiya Mutalavatu Nirupam
+1Thess	Tecalōṉikkiyarukku Elutiya Mutalāvatu Nirupam
+1Thess	Tecalōṉikkiyarukku Eḻutiya Mutalavatu Nirupam
+1Thess	Tecalōṉikkiyarukku Eḻutiya Mutalāvatu Nirupam
+1Thess	தெசலோனிக்கியருக்கு எழுதிய முதலாவது நிருபம்
+1Thess	தெசலோனிக்கேயருக்கு எழுதிய முதலாம் கடிதம்
+1Thess	தெசலோனிக்கருக்கு எழுதிய முதல் திருமுகம்
+1Thess	1 Tecalonikkiyarukku
+1Thess	1 Tecaloṉikkiyarukku
+1Thess	1 Tecalōnikkiyarukku
+1Thess	1 Tecalōṉikkiyarukku
+1Thess	1 தெசலோனிக்கேயர்
+1Thess	1 தெசலோனிக்கர்
+1Thess	1 தெசலோ
+1Thess	1Thess
+1Thess	1 தெச
+1Tim	Timotteyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Timotteyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Timotteyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Timotteyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Timottēyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Timottēyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Timottēyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Timottēyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Timōtteyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Timōtteyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Timōtteyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Timōtteyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Timōttēyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Timōttēyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Timōttēyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Timōttēyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Tīmotteyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Tīmotteyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Tīmotteyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Tīmotteyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Tīmottēyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Tīmottēyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Tīmottēyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Tīmottēyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Tīmōtteyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Tīmōtteyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Tīmōtteyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Tīmōtteyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	Tīmōttēyuvukku Elutiya Mutalavatu Nirupam
+1Tim	Tīmōttēyuvukku Elutiya Mutalāvatu Nirupam
+1Tim	Tīmōttēyuvukku Eḻutiya Mutalavatu Nirupam
+1Tim	Tīmōttēyuvukku Eḻutiya Mutalāvatu Nirupam
+1Tim	தீமோத்தேயுவுக்கு எழுதிய முதலாவது நிருபம்
+1Tim	திமொத்தேயுவுக்கு எழுதிய முதல் திருமுகம்
+1Tim	திமோத்தேயுவுக்கு எழுதிய முதல் திருமுகம்
+1Tim	தீமோத்தேயுவுக்கு எழுதிய முதலாம் கடிதம்
+1Tim	1 Timotteyuvukku
+1Tim	1 Timottēyuvukku
+1Tim	1 Timōtteyuvukku
+1Tim	1 Timōttēyuvukku
+1Tim	1 Tīmotteyuvukku
+1Tim	1 Tīmottēyuvukku
+1Tim	1 Tīmōtteyuvukku
+1Tim	1 Tīmōttēyuvukku
+1Tim	1 திமொத்தேயு
+1Tim	1 தீமோத்தேயு
+1Tim	1 தீமோத்
+1Tim	1 திமொ
+1Tim	1Tim
+2Chr	நாளாகமத்தின் இரண்டாம் புத்தகம்
+2Chr	2 குறிப்பேடு
+2Chr	2 Nalakamam
+2Chr	2 Nalākamam
+2Chr	2 Naḷakamam
+2Chr	2 Naḷākamam
+2Chr	2 Nālakamam
+2Chr	2 Nālākamam
+2Chr	2 Nāḷakamam
+2Chr	2 Nāḷākamam
+2Chr	2 நாளாகமம்
+2Chr	2 குறி
+2Chr	2 நாளா
+2Chr	2Chr
+2Cor	கொரிந்தியருக்கு எழுதிய இரண்டாவது திருமுகம்
+2Cor	Korintiyarukku Elutiya Irantavatu Nirupam
+2Cor	Korintiyarukku Elutiya Irantāvatu Nirupam
+2Cor	Korintiyarukku Elutiya Iranṭavatu Nirupam
+2Cor	Korintiyarukku Elutiya Iranṭāvatu Nirupam
+2Cor	Korintiyarukku Elutiya Iraṇtavatu Nirupam
+2Cor	Korintiyarukku Elutiya Iraṇtāvatu Nirupam
+2Cor	Korintiyarukku Elutiya Iraṇṭavatu Nirupam
+2Cor	Korintiyarukku Elutiya Iraṇṭāvatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Irantavatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Irantāvatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Iranṭavatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Iranṭāvatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Iraṇtavatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Iraṇtāvatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Iraṇṭavatu Nirupam
+2Cor	Korintiyarukku Eḻutiya Iraṇṭāvatu Nirupam
+2Cor	கொரிந்தியருக்கு எழுதிய இரண்டாம் திருமுகம்
+2Cor	கொரிந்தியருக்கு எழுதிய இரண்டாவது நிருபம்
+2Cor	கொரிந்தியருக்கு எழுதிய இரண்டாம் கடிதம்
+2Cor	2 Korintiyarukku
+2Cor	2 கொரிந்தியர்
+2Cor	2 கொரி
+2Cor	2 கொ
+2Cor	2Cor
+2Esd	2 எஸ்திராஸ்
+2Esd	2Esd
+2John	Yovan Elutiya Irantavatu Nirupam
+2John	Yovan Elutiya Irantāvatu Nirupam
+2John	Yovan Elutiya Iranṭavatu Nirupam
+2John	Yovan Elutiya Iranṭāvatu Nirupam
+2John	Yovan Elutiya Iraṇtavatu Nirupam
+2John	Yovan Elutiya Iraṇtāvatu Nirupam
+2John	Yovan Elutiya Iraṇṭavatu Nirupam
+2John	Yovan Elutiya Iraṇṭāvatu Nirupam
+2John	Yovan Eḻutiya Irantavatu Nirupam
+2John	Yovan Eḻutiya Irantāvatu Nirupam
+2John	Yovan Eḻutiya Iranṭavatu Nirupam
+2John	Yovan Eḻutiya Iranṭāvatu Nirupam
+2John	Yovan Eḻutiya Iraṇtavatu Nirupam
+2John	Yovan Eḻutiya Iraṇtāvatu Nirupam
+2John	Yovan Eḻutiya Iraṇṭavatu Nirupam
+2John	Yovan Eḻutiya Iraṇṭāvatu Nirupam
+2John	Yovaṉ Elutiya Irantavatu Nirupam
+2John	Yovaṉ Elutiya Irantāvatu Nirupam
+2John	Yovaṉ Elutiya Iranṭavatu Nirupam
+2John	Yovaṉ Elutiya Iranṭāvatu Nirupam
+2John	Yovaṉ Elutiya Iraṇtavatu Nirupam
+2John	Yovaṉ Elutiya Iraṇtāvatu Nirupam
+2John	Yovaṉ Elutiya Iraṇṭavatu Nirupam
+2John	Yovaṉ Elutiya Iraṇṭāvatu Nirupam
+2John	Yovaṉ Eḻutiya Irantavatu Nirupam
+2John	Yovaṉ Eḻutiya Irantāvatu Nirupam
+2John	Yovaṉ Eḻutiya Iranṭavatu Nirupam
+2John	Yovaṉ Eḻutiya Iranṭāvatu Nirupam
+2John	Yovaṉ Eḻutiya Iraṇtavatu Nirupam
+2John	Yovaṉ Eḻutiya Iraṇtāvatu Nirupam
+2John	Yovaṉ Eḻutiya Iraṇṭavatu Nirupam
+2John	Yovaṉ Eḻutiya Iraṇṭāvatu Nirupam
+2John	Yōvan Elutiya Irantavatu Nirupam
+2John	Yōvan Elutiya Irantāvatu Nirupam
+2John	Yōvan Elutiya Iranṭavatu Nirupam
+2John	Yōvan Elutiya Iranṭāvatu Nirupam
+2John	Yōvan Elutiya Iraṇtavatu Nirupam
+2John	Yōvan Elutiya Iraṇtāvatu Nirupam
+2John	Yōvan Elutiya Iraṇṭavatu Nirupam
+2John	Yōvan Elutiya Iraṇṭāvatu Nirupam
+2John	Yōvan Eḻutiya Irantavatu Nirupam
+2John	Yōvan Eḻutiya Irantāvatu Nirupam
+2John	Yōvan Eḻutiya Iranṭavatu Nirupam
+2John	Yōvan Eḻutiya Iranṭāvatu Nirupam
+2John	Yōvan Eḻutiya Iraṇtavatu Nirupam
+2John	Yōvan Eḻutiya Iraṇtāvatu Nirupam
+2John	Yōvan Eḻutiya Iraṇṭavatu Nirupam
+2John	Yōvan Eḻutiya Iraṇṭāvatu Nirupam
+2John	Yōvaṉ Elutiya Irantavatu Nirupam
+2John	Yōvaṉ Elutiya Irantāvatu Nirupam
+2John	Yōvaṉ Elutiya Iranṭavatu Nirupam
+2John	Yōvaṉ Elutiya Iranṭāvatu Nirupam
+2John	Yōvaṉ Elutiya Iraṇtavatu Nirupam
+2John	Yōvaṉ Elutiya Iraṇtāvatu Nirupam
+2John	Yōvaṉ Elutiya Iraṇṭavatu Nirupam
+2John	Yōvaṉ Elutiya Iraṇṭāvatu Nirupam
+2John	Yōvaṉ Eḻutiya Irantavatu Nirupam
+2John	Yōvaṉ Eḻutiya Irantāvatu Nirupam
+2John	Yōvaṉ Eḻutiya Iranṭavatu Nirupam
+2John	Yōvaṉ Eḻutiya Iranṭāvatu Nirupam
+2John	Yōvaṉ Eḻutiya Iraṇtavatu Nirupam
+2John	Yōvaṉ Eḻutiya Iraṇtāvatu Nirupam
+2John	Yōvaṉ Eḻutiya Iraṇṭavatu Nirupam
+2John	Yōvaṉ Eḻutiya Iraṇṭāvatu Nirupam
+2John	யோவான் எழுதிய இரண்டாம் திருமுகம்
+2John	யோவன் எழுதிய இரண்டாவது நிருபம்
+2John	யோவான் எழுதிய இரண்டாம் கடிதம்
+2John	யோவான் இரண்டாம் திருமுகம்
+2John	2 அருளப்பர்
+2John	2 யோவான்
+2John	2 Yovan
+2John	2 Yovaṉ
+2John	2 Yōvan
+2John	2 Yōvaṉ
+2John	2 யோவா
+2John	2John
+2John	2 யோ
+2Kgs	இராஜாக்களின் இரண்டாம் புத்தகம்
+2Kgs	2 இராஜாக்கள்
+2Kgs	2 Irajakkal
+2Kgs	2 Irajakkaḷ
+2Kgs	2 Irajākkal
+2Kgs	2 Irajākkaḷ
+2Kgs	2 Irājakkal
+2Kgs	2 Irājakkaḷ
+2Kgs	2 Irājākkal
+2Kgs	2 Irājākkaḷ
+2Kgs	2 அரசர்கள்
+2Kgs	4 அரசுகள்
+2Kgs	2 இராஜா
+2Kgs	2 இரா
+2Kgs	2 அர
+2Kgs	2Kgs
+2Macc	2 மக்கபேயர்
+2Macc	2 மக்
+2Macc	2Macc
+2Pet	Peturu Elutiya Irantavatu Nirupam
+2Pet	Peturu Elutiya Irantāvatu Nirupam
+2Pet	Peturu Elutiya Iranṭavatu Nirupam
+2Pet	Peturu Elutiya Iranṭāvatu Nirupam
+2Pet	Peturu Elutiya Iraṇtavatu Nirupam
+2Pet	Peturu Elutiya Iraṇtāvatu Nirupam
+2Pet	Peturu Elutiya Iraṇṭavatu Nirupam
+2Pet	Peturu Elutiya Iraṇṭāvatu Nirupam
+2Pet	Peturu Eḻutiya Irantavatu Nirupam
+2Pet	Peturu Eḻutiya Irantāvatu Nirupam
+2Pet	Peturu Eḻutiya Iranṭavatu Nirupam
+2Pet	Peturu Eḻutiya Iranṭāvatu Nirupam
+2Pet	Peturu Eḻutiya Iraṇtavatu Nirupam
+2Pet	Peturu Eḻutiya Iraṇtāvatu Nirupam
+2Pet	Peturu Eḻutiya Iraṇṭavatu Nirupam
+2Pet	Peturu Eḻutiya Iraṇṭāvatu Nirupam
+2Pet	Pēturu Elutiya Irantavatu Nirupam
+2Pet	Pēturu Elutiya Irantāvatu Nirupam
+2Pet	Pēturu Elutiya Iranṭavatu Nirupam
+2Pet	Pēturu Elutiya Iranṭāvatu Nirupam
+2Pet	Pēturu Elutiya Iraṇtavatu Nirupam
+2Pet	Pēturu Elutiya Iraṇtāvatu Nirupam
+2Pet	Pēturu Elutiya Iraṇṭavatu Nirupam
+2Pet	Pēturu Elutiya Iraṇṭāvatu Nirupam
+2Pet	Pēturu Eḻutiya Irantavatu Nirupam
+2Pet	Pēturu Eḻutiya Irantāvatu Nirupam
+2Pet	Pēturu Eḻutiya Iranṭavatu Nirupam
+2Pet	Pēturu Eḻutiya Iranṭāvatu Nirupam
+2Pet	Pēturu Eḻutiya Iraṇtavatu Nirupam
+2Pet	Pēturu Eḻutiya Iraṇtāvatu Nirupam
+2Pet	Pēturu Eḻutiya Iraṇṭavatu Nirupam
+2Pet	Pēturu Eḻutiya Iraṇṭāvatu Nirupam
+2Pet	பேதுரு எழுதிய இரண்டாம் திருமுகம்
+2Pet	பேதுரு எழுதிய இரண்டாவது நிருபம்
+2Pet	பேதுரு எழுதிய இரண்டாம் கடிதம்
+2Pet	பேதுரு இரண்டாம் திருமுகம்
+2Pet	2 இராயப்பர்
+2Pet	2 Peturu
+2Pet	2 Pēturu
+2Pet	2 பேதுரு
+2Pet	2 பேது
+2Pet	2Pet
+2Sam	சாமுவேலின் இரண்டாம் புத்தகம்
+2Sam	2 சாமுவேல்
+2Sam	2 Camuvel
+2Sam	2 Camuvēl
+2Sam	2 Cāmuvel
+2Sam	2 Cāmuvēl
+2Sam	2 அரசுகள்
+2Sam	2 சாமு
+2Sam	2Sam
+2Thess	Tecalonikkiyarukku Elutiya Irantavatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Irantāvatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Iranṭavatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Iranṭāvatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Iraṇtavatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Iraṇtāvatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Iraṇṭavatu Nirupam
+2Thess	Tecalonikkiyarukku Elutiya Iraṇṭāvatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Irantavatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Irantāvatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Iranṭavatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Iranṭāvatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Iraṇtavatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Iraṇtāvatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Iraṇṭavatu Nirupam
+2Thess	Tecalonikkiyarukku Eḻutiya Iraṇṭāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Irantavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Irantāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Iranṭavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Iranṭāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Iraṇtavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Iraṇtāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Iraṇṭavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Elutiya Iraṇṭāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Irantavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Irantāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Iranṭavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Iranṭāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Iraṇtavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Iraṇtāvatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Iraṇṭavatu Nirupam
+2Thess	Tecaloṉikkiyarukku Eḻutiya Iraṇṭāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Irantavatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Irantāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Iranṭavatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Iranṭāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Iraṇtavatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Iraṇtāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Iraṇṭavatu Nirupam
+2Thess	Tecalōnikkiyarukku Elutiya Iraṇṭāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Irantavatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Irantāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Iranṭavatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Iranṭāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Iraṇtavatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Iraṇtāvatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Iraṇṭavatu Nirupam
+2Thess	Tecalōnikkiyarukku Eḻutiya Iraṇṭāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Irantavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Irantāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Iranṭavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Iranṭāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Iraṇtavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Iraṇtāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Iraṇṭavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Elutiya Iraṇṭāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Irantavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Irantāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Iranṭavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Iranṭāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Iraṇtavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Iraṇtāvatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Iraṇṭavatu Nirupam
+2Thess	Tecalōṉikkiyarukku Eḻutiya Iraṇṭāvatu Nirupam
+2Thess	தெசலோனிக்கருக்கு எழுதிய இரண்டாவது திருமுகம்
+2Thess	தெசலோனிக்கியருக்கு எழுதிய இரண்டாவது நிருபம்
+2Thess	தெசலோனிக்கருக்கு எழுதிய இரண்டாம் திருமுகம்
+2Thess	தெசலோனிக்கேயருக்கு எழுதிய இரண்டாம் கடிதம்
+2Thess	2 Tecalonikkiyarukku
+2Thess	2 Tecaloṉikkiyarukku
+2Thess	2 Tecalōnikkiyarukku
+2Thess	2 Tecalōṉikkiyarukku
+2Thess	2 தெசலோனிக்கேயர்
+2Thess	2 தெசலோனிக்கர்
+2Thess	2 தெசலோ
+2Thess	2Thess
+2Thess	2 தெச
+2Tim	திமொத்தேயுவுக்கு எழுதிய இரண்டாம் திருமுகம்
+2Tim	திமோத்தேயுவுக்கு எழுதிய இரண்டாம் திருமுகம்
+2Tim	Timotteyuvukku Elutiya Irantavatu Nirupam
+2Tim	Timotteyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Timotteyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Timotteyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Timotteyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Timotteyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Timotteyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Timotteyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Timotteyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Timottēyuvukku Elutiya Irantavatu Nirupam
+2Tim	Timottēyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Timottēyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Timottēyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Timottēyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Timottēyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Timottēyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Timottēyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Timottēyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Irantavatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Timōtteyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Timōtteyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Irantavatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Timōttēyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Timōttēyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Irantavatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Tīmotteyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Tīmotteyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Irantavatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Tīmottēyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Tīmottēyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Irantavatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Tīmōtteyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Tīmōtteyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Irantavatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Irantāvatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Iranṭavatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Iranṭāvatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Iraṇtavatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Iraṇtāvatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Iraṇṭavatu Nirupam
+2Tim	Tīmōttēyuvukku Elutiya Iraṇṭāvatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Irantavatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Irantāvatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Iranṭavatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Iranṭāvatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Iraṇtavatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Iraṇtāvatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Iraṇṭavatu Nirupam
+2Tim	Tīmōttēyuvukku Eḻutiya Iraṇṭāvatu Nirupam
+2Tim	தீமோத்தேயுவுக்கு எழுதிய இரண்டாவது நிருபம்
+2Tim	தீமோத்தேயுவுக்கு எழுதிய இரண்டாம் கடிதம்
+2Tim	2 Timotteyuvukku
+2Tim	2 Timottēyuvukku
+2Tim	2 Timōtteyuvukku
+2Tim	2 Timōttēyuvukku
+2Tim	2 Tīmotteyuvukku
+2Tim	2 Tīmottēyuvukku
+2Tim	2 Tīmōtteyuvukku
+2Tim	2 Tīmōttēyuvukku
+2Tim	2 திமொத்தேயு
+2Tim	2 தீமோத்தேயு
+2Tim	2 தீமோத்
+2Tim	2 திமொ
+2Tim	2Tim
+3John	யோவான் எழுதிய முன்றாம் திருமுகம்
+3John	Yovan Elutiya Munravatu Nirupam
+3John	Yovan Elutiya Munrāvatu Nirupam
+3John	Yovan Elutiya Munṛavatu Nirupam
+3John	Yovan Elutiya Munṛāvatu Nirupam
+3John	Yovan Elutiya Muṉravatu Nirupam
+3John	Yovan Elutiya Muṉrāvatu Nirupam
+3John	Yovan Elutiya Muṉṛavatu Nirupam
+3John	Yovan Elutiya Muṉṛāvatu Nirupam
+3John	Yovan Elutiya Mūnravatu Nirupam
+3John	Yovan Elutiya Mūnrāvatu Nirupam
+3John	Yovan Elutiya Mūnṛavatu Nirupam
+3John	Yovan Elutiya Mūnṛāvatu Nirupam
+3John	Yovan Elutiya Mūṉravatu Nirupam
+3John	Yovan Elutiya Mūṉrāvatu Nirupam
+3John	Yovan Elutiya Mūṉṛavatu Nirupam
+3John	Yovan Elutiya Mūṉṛāvatu Nirupam
+3John	Yovan Eḻutiya Munravatu Nirupam
+3John	Yovan Eḻutiya Munrāvatu Nirupam
+3John	Yovan Eḻutiya Munṛavatu Nirupam
+3John	Yovan Eḻutiya Munṛāvatu Nirupam
+3John	Yovan Eḻutiya Muṉravatu Nirupam
+3John	Yovan Eḻutiya Muṉrāvatu Nirupam
+3John	Yovan Eḻutiya Muṉṛavatu Nirupam
+3John	Yovan Eḻutiya Muṉṛāvatu Nirupam
+3John	Yovan Eḻutiya Mūnravatu Nirupam
+3John	Yovan Eḻutiya Mūnrāvatu Nirupam
+3John	Yovan Eḻutiya Mūnṛavatu Nirupam
+3John	Yovan Eḻutiya Mūnṛāvatu Nirupam
+3John	Yovan Eḻutiya Mūṉravatu Nirupam
+3John	Yovan Eḻutiya Mūṉrāvatu Nirupam
+3John	Yovan Eḻutiya Mūṉṛavatu Nirupam
+3John	Yovan Eḻutiya Mūṉṛāvatu Nirupam
+3John	Yovaṉ Elutiya Munravatu Nirupam
+3John	Yovaṉ Elutiya Munrāvatu Nirupam
+3John	Yovaṉ Elutiya Munṛavatu Nirupam
+3John	Yovaṉ Elutiya Munṛāvatu Nirupam
+3John	Yovaṉ Elutiya Muṉravatu Nirupam
+3John	Yovaṉ Elutiya Muṉrāvatu Nirupam
+3John	Yovaṉ Elutiya Muṉṛavatu Nirupam
+3John	Yovaṉ Elutiya Muṉṛāvatu Nirupam
+3John	Yovaṉ Elutiya Mūnravatu Nirupam
+3John	Yovaṉ Elutiya Mūnrāvatu Nirupam
+3John	Yovaṉ Elutiya Mūnṛavatu Nirupam
+3John	Yovaṉ Elutiya Mūnṛāvatu Nirupam
+3John	Yovaṉ Elutiya Mūṉravatu Nirupam
+3John	Yovaṉ Elutiya Mūṉrāvatu Nirupam
+3John	Yovaṉ Elutiya Mūṉṛavatu Nirupam
+3John	Yovaṉ Elutiya Mūṉṛāvatu Nirupam
+3John	Yovaṉ Eḻutiya Munravatu Nirupam
+3John	Yovaṉ Eḻutiya Munrāvatu Nirupam
+3John	Yovaṉ Eḻutiya Munṛavatu Nirupam
+3John	Yovaṉ Eḻutiya Munṛāvatu Nirupam
+3John	Yovaṉ Eḻutiya Muṉravatu Nirupam
+3John	Yovaṉ Eḻutiya Muṉrāvatu Nirupam
+3John	Yovaṉ Eḻutiya Muṉṛavatu Nirupam
+3John	Yovaṉ Eḻutiya Muṉṛāvatu Nirupam
+3John	Yovaṉ Eḻutiya Mūnravatu Nirupam
+3John	Yovaṉ Eḻutiya Mūnrāvatu Nirupam
+3John	Yovaṉ Eḻutiya Mūnṛavatu Nirupam
+3John	Yovaṉ Eḻutiya Mūnṛāvatu Nirupam
+3John	Yovaṉ Eḻutiya Mūṉravatu Nirupam
+3John	Yovaṉ Eḻutiya Mūṉrāvatu Nirupam
+3John	Yovaṉ Eḻutiya Mūṉṛavatu Nirupam
+3John	Yovaṉ Eḻutiya Mūṉṛāvatu Nirupam
+3John	Yōvan Elutiya Munravatu Nirupam
+3John	Yōvan Elutiya Munrāvatu Nirupam
+3John	Yōvan Elutiya Munṛavatu Nirupam
+3John	Yōvan Elutiya Munṛāvatu Nirupam
+3John	Yōvan Elutiya Muṉravatu Nirupam
+3John	Yōvan Elutiya Muṉrāvatu Nirupam
+3John	Yōvan Elutiya Muṉṛavatu Nirupam
+3John	Yōvan Elutiya Muṉṛāvatu Nirupam
+3John	Yōvan Elutiya Mūnravatu Nirupam
+3John	Yōvan Elutiya Mūnrāvatu Nirupam
+3John	Yōvan Elutiya Mūnṛavatu Nirupam
+3John	Yōvan Elutiya Mūnṛāvatu Nirupam
+3John	Yōvan Elutiya Mūṉravatu Nirupam
+3John	Yōvan Elutiya Mūṉrāvatu Nirupam
+3John	Yōvan Elutiya Mūṉṛavatu Nirupam
+3John	Yōvan Elutiya Mūṉṛāvatu Nirupam
+3John	Yōvan Eḻutiya Munravatu Nirupam
+3John	Yōvan Eḻutiya Munrāvatu Nirupam
+3John	Yōvan Eḻutiya Munṛavatu Nirupam
+3John	Yōvan Eḻutiya Munṛāvatu Nirupam
+3John	Yōvan Eḻutiya Muṉravatu Nirupam
+3John	Yōvan Eḻutiya Muṉrāvatu Nirupam
+3John	Yōvan Eḻutiya Muṉṛavatu Nirupam
+3John	Yōvan Eḻutiya Muṉṛāvatu Nirupam
+3John	Yōvan Eḻutiya Mūnravatu Nirupam
+3John	Yōvan Eḻutiya Mūnrāvatu Nirupam
+3John	Yōvan Eḻutiya Mūnṛavatu Nirupam
+3John	Yōvan Eḻutiya Mūnṛāvatu Nirupam
+3John	Yōvan Eḻutiya Mūṉravatu Nirupam
+3John	Yōvan Eḻutiya Mūṉrāvatu Nirupam
+3John	Yōvan Eḻutiya Mūṉṛavatu Nirupam
+3John	Yōvan Eḻutiya Mūṉṛāvatu Nirupam
+3John	Yōvaṉ Elutiya Munravatu Nirupam
+3John	Yōvaṉ Elutiya Munrāvatu Nirupam
+3John	Yōvaṉ Elutiya Munṛavatu Nirupam
+3John	Yōvaṉ Elutiya Munṛāvatu Nirupam
+3John	Yōvaṉ Elutiya Muṉravatu Nirupam
+3John	Yōvaṉ Elutiya Muṉrāvatu Nirupam
+3John	Yōvaṉ Elutiya Muṉṛavatu Nirupam
+3John	Yōvaṉ Elutiya Muṉṛāvatu Nirupam
+3John	Yōvaṉ Elutiya Mūnravatu Nirupam
+3John	Yōvaṉ Elutiya Mūnrāvatu Nirupam
+3John	Yōvaṉ Elutiya Mūnṛavatu Nirupam
+3John	Yōvaṉ Elutiya Mūnṛāvatu Nirupam
+3John	Yōvaṉ Elutiya Mūṉravatu Nirupam
+3John	Yōvaṉ Elutiya Mūṉrāvatu Nirupam
+3John	Yōvaṉ Elutiya Mūṉṛavatu Nirupam
+3John	Yōvaṉ Elutiya Mūṉṛāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Munravatu Nirupam
+3John	Yōvaṉ Eḻutiya Munrāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Munṛavatu Nirupam
+3John	Yōvaṉ Eḻutiya Munṛāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Muṉravatu Nirupam
+3John	Yōvaṉ Eḻutiya Muṉrāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Muṉṛavatu Nirupam
+3John	Yōvaṉ Eḻutiya Muṉṛāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūnravatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūnrāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūnṛavatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūnṛāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūṉravatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūṉrāvatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūṉṛavatu Nirupam
+3John	Yōvaṉ Eḻutiya Mūṉṛāvatu Nirupam
+3John	யோவன் எழுதிய மூன்றாவது நிருபம்
+3John	யோவான் எழுதிய மூன்றாம் கடிதம்
+3John	யோவான் மூன்றாம் திருமுகம்
+3John	Munravatu யோவான்
+3John	Munrāvatu யோவான்
+3John	Munṛavatu யோவான்
+3John	Munṛāvatu யோவான்
+3John	Muṉravatu யோவான்
+3John	Muṉrāvatu யோவான்
+3John	Muṉṛavatu யோவான்
+3John	Muṉṛāvatu யோவான்
+3John	Mūnravatu யோவான்
+3John	Mūnrāvatu யோவான்
+3John	Mūnṛavatu யோவான்
+3John	Mūnṛāvatu யோவான்
+3John	Mūṉravatu யோவான்
+3John	Mūṉrāvatu யோவான்
+3John	Mūṉṛavatu யோவான்
+3John	Mūṉṛāvatu யோவான்
+3John	மூன்றாவது யோவான்
+3John	முன்றாம் யோவான்
+3John	3 அருளப்பர்
+3John	3. யோவான்
+3John	3 யோவான்
+3John	3 Yovan
+3John	3 Yovaṉ
+3John	3 Yōvan
+3John	3 Yōvaṉ
+3John	3 யோவா
+3John	3John
+3John	3 யோ
+3Macc	3 மக்கபேயர்
+3Macc	3 மக்
+3Macc	3Macc
+4Macc	4 மக்கபேயர்
+4Macc	4 மக்
+4Macc	4Macc
+Acts	அப்போஸ்தலருடைய நடபடிகள்
+Acts	திருத்தூதர் பணிகள்
+Acts	Appostalar Pani
+Acts	Appostalar Paṇi
+Acts	Appōstalar Pani
+Acts	Appōstalar Paṇi
+Acts	அப்போஸ்தலர் பணி
+Acts	அப்போஸ்தலர்
+Acts	அப்போ
+Acts	Acts
+Acts	அப்
+Acts	திப
+Amos	ஆமோஸ்
+Amos	Amos
+Amos	Amōs
+Amos	Āmos
+Amos	Āmōs
+Amos	ஆமோ
+Bar	பாரூக்கு
+Bar	பாரூ
+Bar	Bar
+Bel	பேல் தெய்வமும் அரக்கப்பாம்பும் என்பவையாகும்
+Bel	பேல் தெய்வமும் அரக்கப்பாம்பும்
+Bel	பேல்
+Bel	Bel
+Col	கொலோசையருக்கு எழுதிய திருமுகம்
+Col	Koloceyarukku Elutiya Nirupam
+Col	Koloceyarukku Eḻutiya Nirupam
+Col	Kolōceyarukku Elutiya Nirupam
+Col	Kolōceyarukku Eḻutiya Nirupam
+Col	கொலோசெயருக்கு எழுதிய நிருபம்
+Col	கொலோசெயருக்கு எழுதிய கடிதம்
+Col	Koloceyarukku
+Col	Kolōceyarukku
+Col	கொலோசெயர்
+Col	கொலோசையர்
+Col	கொலோ
+Col	Col
+Dan	தானியேலின் புத்தகம்
+Dan	தானியேல்
+Dan	Taniyel
+Dan	Taniyēl
+Dan	Taṉiyel
+Dan	Taṉiyēl
+Dan	Tāniyel
+Dan	Tāniyēl
+Dan	Tāṉiyel
+Dan	Tāṉiyēl
+Dan	தானி
+Dan	Dan
+Deut	இணைச் சட்டம்
+Deut	Upakamam
+Deut	Upākamam
+Deut	உபாகமம்
+Deut	Deut
+Deut	உபா
+Deut	இச
+Eccl	சங்கத் திருவுரை ஆகமம்
+Eccl	சபை உரையாளர்
+Eccl	Piracanki
+Eccl	Piracaṅki
+Eccl	பிரசங்கி
+Eccl	Eccl
+Eccl	பிரச
+Eccl	சஉ
+EpJer	அவை இளைஞர் மூவரின் பாடல்
+EpJer	எரேமியாவின் கடிதம்
+EpJer	எரேமியாவின் மடல்
+EpJer	EpJer
+Eph	எபேசியருக்கு எழுதிய திருமுகம்
+Eph	Epeciyarukku Elutiya Nirupam
+Eph	Epeciyarukku Eḻutiya Nirupam
+Eph	Epēciyarukku Elutiya Nirupam
+Eph	Epēciyarukku Eḻutiya Nirupam
+Eph	எபேசியருக்கு எழுதிய நிருபம்
+Eph	எபேசியருக்கு எழுதிய கடிதம்
+Eph	Epeciyarukku
+Eph	Epēciyarukku
+Eph	எபேசியர்
+Eph	எபேசி
+Eph	Eph
+Eph	எபே
+Esth	எஸ்தரின் சரித்திரம்
+Esth	எஸ்தர்
+Esth	Estar
+Esth	Esth
+Esth	எஸ்
+Exod	விடுதலைப் பயணம்
+Exod	Yattirakamam
+Exod	Yattirākamam
+Exod	Yāttirakamam
+Exod	Yāttirākamam
+Exod	யாத்திராகமம்
+Exod	Exod
+Exod	யாத்
+Exod	விப
+Ezek	எசேக்கியேல் தீர்க்கதரிசியின் புத்தகம்
+Ezek	எசேக்கியேல்
+Ezek	Ecekkiyel
+Ezek	Ecekkiyēl
+Ezek	Ecēkkiyel
+Ezek	Ecēkkiyēl
+Ezek	Ezek
+Ezek	எசே
+Ezra	எஸ்றாவின் புத்தகம்
+Ezra	எஸ்ரா
+Ezra	எஸ்றா
+Ezra	Esra
+Ezra	Esrā
+Ezra	Esṛa
+Ezra	Esṛā
+Ezra	Ezra
+Gal	கலாத்தியருக்கு எழுதிய திருமுகம்
+Gal	Kalattiyarukku Elutiya Nirupam
+Gal	Kalattiyarukku Eḻutiya Nirupam
+Gal	Kalāttiyarukku Elutiya Nirupam
+Gal	Kalāttiyarukku Eḻutiya Nirupam
+Gal	கலாத்தியருக்கு எழுதிய நிருபம்
+Gal	கலாத்தியருக்கு எழுதிய கடிதம்
+Gal	Kalattiyarukku
+Gal	Kalāttiyarukku
+Gal	கலாத்தியர்
+Gal	கலாத்
+Gal	Gal
+Gal	கலா
+Gen	தொடக்க நூல்
+Gen	Atiyakamam
+Gen	Atiyākamam
+Gen	Ātiyakamam
+Gen	Ātiyākamam
+Gen	ஆதியாகமம்
+Gen	தொநூ
+Gen	Gen
+Gen	ஆதி
+GkEsth	எஸ்தர் \(கிரேக்கம்\)
+GkEsth	எஸ்தர் \(கி\)
+GkEsth	எஸ்தர் (கி)
+GkEsth	எஸ் \(கி\)
+GkEsth	எஸ் (கி)
+GkEsth	GkEsth
+Hab	அபக்கூக்கு
+Hab	Apakuk
+Hab	Apakūk
+Hab	Āpakuk
+Hab	Āpakūk
+Hab	ஆபகூக்
+Hab	Hab
+Hab	அப
+Hab	ஆப
+Hag	ஆகாய்
+Hag	Akay
+Hag	Akāy
+Hag	Ākay
+Hag	Ākāy
+Hag	Hag
+Hag	ஆகா
+Heb	எபிரேயருக்கு எழுதிய திருமுகம்
+Heb	Epireyarukku Elutiya Nirupam
+Heb	Epireyarukku Eḻutiya Nirupam
+Heb	எபிரெயருக்கு எழுதிய நிருபம்
+Heb	எபிரேயருக்கு எழுதிய கடிதம்
+Heb	Epireyarukku
+Heb	எபிரேயர்
+Heb	எபிரே
+Heb	Heb
+Heb	எபி
+Hos	Ociya
+Hos	Ociyā
+Hos	Ōciya
+Hos	Ōciyā
+Hos	ஒசேயா
+Hos	ஓசியா
+Hos	ஓசேயா
+Hos	Hos
+Hos	ஓசி
+Hos	ஓசே
+Isa	ஏசாயா தீர்க்கதரிசியின் புத்தகம்
+Isa	Ecaya
+Isa	Ecayā
+Isa	Ecāya
+Isa	Ecāyā
+Isa	எசாயா
+Isa	ஏசாயா
+Isa	Isa
+Isa	எசா
+Isa	ஏசா
+Jas	யாக்கோபு எழுதிய திருமுகம்
+Jas	Yakkopu Elutiya Nirupam
+Jas	Yakkopu Eḻutiya Nirupam
+Jas	Yakkōpu Elutiya Nirupam
+Jas	Yakkōpu Eḻutiya Nirupam
+Jas	Yākkopu Elutiya Nirupam
+Jas	Yākkopu Eḻutiya Nirupam
+Jas	Yākkōpu Elutiya Nirupam
+Jas	Yākkōpu Eḻutiya Nirupam
+Jas	யாக்கோபு எழுதிய நிருபம்
+Jas	யாக்கோபு எழுதிய கடிதம்
+Jas	யாகப்பர் திருமுகம்
+Jas	யாக்கோபு திருமுகம்
+Jas	யாக்கோபு
+Jas	Yakkopu
+Jas	Yakkōpu
+Jas	Yākkopu
+Jas	Yākkōpu
+Jas	யாக்
+Jas	Jas
+Jdt	யூதித்து
+Jdt	யூதி
+Jdt	Jdt
+Jer	எரேமியா தீர்க்கதரிசியின் புத்தகம்
+Jer	Eremiya
+Jer	Eremiyā
+Jer	Erēmiya
+Jer	Erēmiyā
+Jer	எரேமியா
+Jer	ஏரேமியா
+Jer	Jer
+Jer	எரே
+Jer	ஏரே
+Job	யோபுடைய சரித்திரம்
+Job	Yopu
+Job	Yōpu
+Job	யோபு
+Job	Job
+Joel	யோவேல்
+Joel	Yovel
+Joel	Yovēl
+Joel	Yōvel
+Joel	Yōvēl
+Joel	Joel
+Joel	யோவே
+John	யோவான் எழுதிய சுவிசேஷம்
+John	யோவான் எழுதிய நற்செய்தி
+John	அருளப்பர் நற்செய்தி
+John	யோவான் நற்செய்தி
+John	Yovan Narceyti
+John	Yovan Naṛceyti
+John	Yovaṉ Narceyti
+John	Yovaṉ Naṛceyti
+John	Yovān Narceyti
+John	Yovān Naṛceyti
+John	Yovāṉ Narceyti
+John	Yovāṉ Naṛceyti
+John	Yōvan Narceyti
+John	Yōvan Naṛceyti
+John	Yōvaṉ Narceyti
+John	Yōvaṉ Naṛceyti
+John	Yōvān Narceyti
+John	Yōvān Naṛceyti
+John	Yōvāṉ Narceyti
+John	Yōvāṉ Naṛceyti
+John	யோவான்
+John	Yovan
+John	Yovaṉ
+John	Yovān
+John	Yovāṉ
+John	Yōvan
+John	Yōvaṉ
+John	Yōvān
+John	Yōvāṉ
+John	John
+John	யோவா
+John,Josh,Joel,Jonah	யோ
+Jonah	Jonah
+Jonah	Yona
+Jonah	Yonā
+Jonah	Yoṉa
+Jonah	Yoṉā
+Jonah	Yōna
+Jonah	Yōnā
+Jonah	Yōṉa
+Jonah	Yōṉā
+Jonah	யோனா
+Josh	யோசுவாவின் புத்தகம்
+Josh	Yocuva
+Josh	Yocuvā
+Josh	Yōcuva
+Josh	Yōcuvā
+Josh	யோசுவா
+Josh	Josh
+Josh	யோசு
+Jude	Yuta Elutiya Nirupam
+Jude	Yuta Eḻutiya Nirupam
+Jude	Yutā Elutiya Nirupam
+Jude	Yutā Eḻutiya Nirupam
+Jude	Yūta Elutiya Nirupam
+Jude	Yūta Eḻutiya Nirupam
+Jude	Yūtā Elutiya Nirupam
+Jude	Yūtā Eḻutiya Nirupam
+Jude	யூதா எழுதிய நிருபம்
+Jude	யூதா எழுதிய கடிதம்
+Jude	யூதா திருமுகம்
+Jude	Jude
+Jude	Yuta
+Jude	Yutā
+Jude	Yūta
+Jude	Yūtā
+Jude	யூதா
+Judg	நியாயாதிபதிகளின் புத்தகம்
+Judg	நியாயாதிபதிகள் ஆகமம்
+Judg	நீதித் தலைவர்கள்
+Judg	Niyayatipatikal
+Judg	Niyayatipatikaḷ
+Judg	Niyayātipatikal
+Judg	Niyayātipatikaḷ
+Judg	Niyāyatipatikal
+Judg	Niyāyatipatikaḷ
+Judg	Niyāyātipatikal
+Judg	Niyāyātipatikaḷ
+Judg	நியாயாதிபதிகள்
+Judg	நீதிபதிகள்
+Judg	Judg
+Judg	நியா
+Judg	நீத
+Lam	எரேமியாவின் புலம்பல்
+Lam	Pulampal
+Lam	புலம்பல்
+Lam	புலம்
+Lam	Lam
+Lam	புல
+Lev	Leviyarakamam
+Lev	Leviyarākamam
+Lev	Lēviyarakamam
+Lev	Lēviyarākamam
+Lev	லேவியராகமம்
+Lev	லேவியர்
+Lev	லேவி
+Lev	Lev
+Luke	லூக்கா எழுதிய சுவிசேஷம்
+Luke	லூக்கா எழுதிய நற்செய்தி
+Luke	லூக்கா நற்செய்தி
+Luke	Lukka Narceyti
+Luke	Lukka Naṛceyti
+Luke	Lukkā Narceyti
+Luke	Lukkā Naṛceyti
+Luke	Lūkka Narceyti
+Luke	Lūkka Naṛceyti
+Luke	Lūkkā Narceyti
+Luke	Lūkkā Naṛceyti
+Luke	லூக்கா
+Luke	Lukka
+Luke	Lukkā
+Luke	Lūkka
+Luke	Lūkkā
+Luke	Luke
+Luke	லூக்
+Luke	லூ
+Mal	எபிரேயம்
+Mal	Malkiya
+Mal	Malkiyā
+Mal	மலாக்கி
+Mal	மல்கியா
+Mal	மல்கி
+Mal	Mal
+Mal	மலா
+Mark	மாற்கு எழுதிய சுவிசேஷம்
+Mark	மாற்கு எழுதிய நற்செய்தி
+Mark	மாற்கு நற்செய்தி
+Mark	Marku Narceyti
+Mark	Marku Naṛceyti
+Mark	Maṛku Narceyti
+Mark	Maṛku Naṛceyti
+Mark	Mārku Narceyti
+Mark	Mārku Naṛceyti
+Mark	Māṛku Narceyti
+Mark	Māṛku Naṛceyti
+Mark	மாற்கு
+Mark	Marku
+Mark	Maṛku
+Mark	Mārku
+Mark	Māṛku
+Mark	Mark
+Mark	மாற்
+Matt	மத்தேயு எழுதிய சுவிசேஷம்
+Matt	மத்தேயு எழுதிய நற்செய்தி
+Matt	மத்தேயு நற்செய்தி
+Matt	Matteyu Narceyti
+Matt	Matteyu Naṛceyti
+Matt	Mattēyu Narceyti
+Matt	Mattēyu Naṛceyti
+Matt	Matteyu
+Matt	Mattēyu
+Matt	மத்தேயு
+Matt	Matt
+Matt	மத்
+Mic	மீக்கா
+Mic	Mika
+Mic	Mikā
+Mic	Mīka
+Mic	Mīkā
+Mic	மீகா
+Mic	மீக்
+Mic	Mic
+Nah	நாகூம்
+Nah	Nakum
+Nah	Nakūm
+Nah	Nākum
+Nah	Nākūm
+Nah	நாகூ
+Nah	Nah
+Neh	நெகேமியாவின் புத்தகம்
+Neh	Nekemiya
+Neh	Nekemiyā
+Neh	Nekēmiya
+Neh	Nekēmiyā
+Neh	நெகேமியா
+Neh	நெகே
+Neh	Neh
+Num	Ennakamam
+Num	Ennākamam
+Num	Enṇakamam
+Num	Enṇākamam
+Num	Eṇnakamam
+Num	Eṇnākamam
+Num	Eṇṇakamam
+Num	Eṇṇākamam
+Num	எண்ணாகமம்
+Num	எண்ணிக்கை
+Num	Num
+Num	எண்
+Obad	Opatiya
+Obad	Opatiyā
+Obad	ஒபதியா
+Obad	Obad
+Obad	ஒபதி
+Obad	ஒப
+Phil	பிலிப்பியருக்கு எழுதிய திருமுகம்
+Phil	Pilippiyarukku Elutiya Nirupam
+Phil	Pilippiyarukku Eḻutiya Nirupam
+Phil	பிலிப்பியருக்கு எழுதிய நிருபம்
+Phil	பிலிப்பியருக்கு எழுதிய கடிதம்
+Phil	Pilippiyarukku
+Phil	பிலிப்பியர்
+Phil	பிலிப்
+Phil	Phil
+Phil	பிலி
+Phlm	பிலமோனுக்கு எழுதிய திருமுகம்
+Phlm	Pilemonukku Elutiya Nirupam
+Phlm	Pilemonukku Eḻutiya Nirupam
+Phlm	Pilemoṉukku Elutiya Nirupam
+Phlm	Pilemoṉukku Eḻutiya Nirupam
+Phlm	Pilemōnukku Elutiya Nirupam
+Phlm	Pilemōnukku Eḻutiya Nirupam
+Phlm	Pilemōṉukku Elutiya Nirupam
+Phlm	Pilemōṉukku Eḻutiya Nirupam
+Phlm	Pilēmonukku Elutiya Nirupam
+Phlm	Pilēmonukku Eḻutiya Nirupam
+Phlm	Pilēmoṉukku Elutiya Nirupam
+Phlm	Pilēmoṉukku Eḻutiya Nirupam
+Phlm	Pilēmōnukku Elutiya Nirupam
+Phlm	Pilēmōnukku Eḻutiya Nirupam
+Phlm	Pilēmōṉukku Elutiya Nirupam
+Phlm	Pilēmōṉukku Eḻutiya Nirupam
+Phlm	பிலேமோனுக்கு எழுதிய நிருபம்
+Phlm	பிலேமோனுக்கு எழுதிய கடிதம்
+Phlm	Pilemonukku
+Phlm	Pilemoṉukku
+Phlm	Pilemōnukku
+Phlm	Pilemōṉukku
+Phlm	Pilēmonukku
+Phlm	Pilēmoṉukku
+Phlm	Pilēmōnukku
+Phlm	Pilēmōṉukku
+Phlm	பிலேமோன்
+Phlm	பிலமோன்
+Phlm	Phlm
+Phlm	பிலே
+Phlm	பில
+PrAzar	PrAzar
+PrAzar	அசரியா
+PrMan	PrMan
+Prov	பழமொழி ஆகமம்
+Prov	Nitimolikal
+Prov	Nitimolikaḷ
+Prov	Nitimoḻikal
+Prov	Nitimoḻikaḷ
+Prov	Nītimolikal
+Prov	Nītimolikaḷ
+Prov	Nītimoḻikal
+Prov	Nītimoḻikaḷ
+Prov	நீதிமொழிகள்
+Prov	Prov
+Prov	நீதி
+Prov	நீமொ
+Ps	சங்கீத புத்தகம்
+Ps	திருப்பாடல்கள்
+Ps	சங்கீதங்கள்
+Ps	திருப்பாடல்
+Ps	Cankitam
+Ps	Cankītam
+Ps	Caṅkitam
+Ps	Caṅkītam
+Ps	சங்கீதம்
+Ps	சஙகீதம்
+Ps	சங்கீ
+Ps	திபா
+Ps	சங்
+Ps	Ps
+Rev	யோவானுக்கு வெளிப்படுத்தின விசேஷம்
+Rev	Velippatuttina Vicetankal
+Rev	Velippatuttina Vicetankaḷ
+Rev	Velippatuttina Vicetaṅkal
+Rev	Velippatuttina Vicetaṅkaḷ
+Rev	Velippatuttina Viceṭankal
+Rev	Velippatuttina Viceṭankaḷ
+Rev	Velippatuttina Viceṭaṅkal
+Rev	Velippatuttina Viceṭaṅkaḷ
+Rev	Velippatuttina Vicētankal
+Rev	Velippatuttina Vicētankaḷ
+Rev	Velippatuttina Vicētaṅkal
+Rev	Velippatuttina Vicētaṅkaḷ
+Rev	Velippatuttina Vicēṭankal
+Rev	Velippatuttina Vicēṭankaḷ
+Rev	Velippatuttina Vicēṭaṅkal
+Rev	Velippatuttina Vicēṭaṅkaḷ
+Rev	Velippatuttiṉa Vicetankal
+Rev	Velippatuttiṉa Vicetankaḷ
+Rev	Velippatuttiṉa Vicetaṅkal
+Rev	Velippatuttiṉa Vicetaṅkaḷ
+Rev	Velippatuttiṉa Viceṭankal
+Rev	Velippatuttiṉa Viceṭankaḷ
+Rev	Velippatuttiṉa Viceṭaṅkal
+Rev	Velippatuttiṉa Viceṭaṅkaḷ
+Rev	Velippatuttiṉa Vicētankal
+Rev	Velippatuttiṉa Vicētankaḷ
+Rev	Velippatuttiṉa Vicētaṅkal
+Rev	Velippatuttiṉa Vicētaṅkaḷ
+Rev	Velippatuttiṉa Vicēṭankal
+Rev	Velippatuttiṉa Vicēṭankaḷ
+Rev	Velippatuttiṉa Vicēṭaṅkal
+Rev	Velippatuttiṉa Vicēṭaṅkaḷ
+Rev	Velippaṭuttina Vicetankal
+Rev	Velippaṭuttina Vicetankaḷ
+Rev	Velippaṭuttina Vicetaṅkal
+Rev	Velippaṭuttina Vicetaṅkaḷ
+Rev	Velippaṭuttina Viceṭankal
+Rev	Velippaṭuttina Viceṭankaḷ
+Rev	Velippaṭuttina Viceṭaṅkal
+Rev	Velippaṭuttina Viceṭaṅkaḷ
+Rev	Velippaṭuttina Vicētankal
+Rev	Velippaṭuttina Vicētankaḷ
+Rev	Velippaṭuttina Vicētaṅkal
+Rev	Velippaṭuttina Vicētaṅkaḷ
+Rev	Velippaṭuttina Vicēṭankal
+Rev	Velippaṭuttina Vicēṭankaḷ
+Rev	Velippaṭuttina Vicēṭaṅkal
+Rev	Velippaṭuttina Vicēṭaṅkaḷ
+Rev	Velippaṭuttiṉa Vicetankal
+Rev	Velippaṭuttiṉa Vicetankaḷ
+Rev	Velippaṭuttiṉa Vicetaṅkal
+Rev	Velippaṭuttiṉa Vicetaṅkaḷ
+Rev	Velippaṭuttiṉa Viceṭankal
+Rev	Velippaṭuttiṉa Viceṭankaḷ
+Rev	Velippaṭuttiṉa Viceṭaṅkal
+Rev	Velippaṭuttiṉa Viceṭaṅkaḷ
+Rev	Velippaṭuttiṉa Vicētankal
+Rev	Velippaṭuttiṉa Vicētankaḷ
+Rev	Velippaṭuttiṉa Vicētaṅkal
+Rev	Velippaṭuttiṉa Vicētaṅkaḷ
+Rev	Velippaṭuttiṉa Vicēṭankal
+Rev	Velippaṭuttiṉa Vicēṭankaḷ
+Rev	Velippaṭuttiṉa Vicēṭaṅkal
+Rev	Velippaṭuttiṉa Vicēṭaṅkaḷ
+Rev	Veḷippatuttina Vicetankal
+Rev	Veḷippatuttina Vicetankaḷ
+Rev	Veḷippatuttina Vicetaṅkal
+Rev	Veḷippatuttina Vicetaṅkaḷ
+Rev	Veḷippatuttina Viceṭankal
+Rev	Veḷippatuttina Viceṭankaḷ
+Rev	Veḷippatuttina Viceṭaṅkal
+Rev	Veḷippatuttina Viceṭaṅkaḷ
+Rev	Veḷippatuttina Vicētankal
+Rev	Veḷippatuttina Vicētankaḷ
+Rev	Veḷippatuttina Vicētaṅkal
+Rev	Veḷippatuttina Vicētaṅkaḷ
+Rev	Veḷippatuttina Vicēṭankal
+Rev	Veḷippatuttina Vicēṭankaḷ
+Rev	Veḷippatuttina Vicēṭaṅkal
+Rev	Veḷippatuttina Vicēṭaṅkaḷ
+Rev	Veḷippatuttiṉa Vicetankal
+Rev	Veḷippatuttiṉa Vicetankaḷ
+Rev	Veḷippatuttiṉa Vicetaṅkal
+Rev	Veḷippatuttiṉa Vicetaṅkaḷ
+Rev	Veḷippatuttiṉa Viceṭankal
+Rev	Veḷippatuttiṉa Viceṭankaḷ
+Rev	Veḷippatuttiṉa Viceṭaṅkal
+Rev	Veḷippatuttiṉa Viceṭaṅkaḷ
+Rev	Veḷippatuttiṉa Vicētankal
+Rev	Veḷippatuttiṉa Vicētankaḷ
+Rev	Veḷippatuttiṉa Vicētaṅkal
+Rev	Veḷippatuttiṉa Vicētaṅkaḷ
+Rev	Veḷippatuttiṉa Vicēṭankal
+Rev	Veḷippatuttiṉa Vicēṭankaḷ
+Rev	Veḷippatuttiṉa Vicēṭaṅkal
+Rev	Veḷippatuttiṉa Vicēṭaṅkaḷ
+Rev	Veḷippaṭuttina Vicetankal
+Rev	Veḷippaṭuttina Vicetankaḷ
+Rev	Veḷippaṭuttina Vicetaṅkal
+Rev	Veḷippaṭuttina Vicetaṅkaḷ
+Rev	Veḷippaṭuttina Viceṭankal
+Rev	Veḷippaṭuttina Viceṭankaḷ
+Rev	Veḷippaṭuttina Viceṭaṅkal
+Rev	Veḷippaṭuttina Viceṭaṅkaḷ
+Rev	Veḷippaṭuttina Vicētankal
+Rev	Veḷippaṭuttina Vicētankaḷ
+Rev	Veḷippaṭuttina Vicētaṅkal
+Rev	Veḷippaṭuttina Vicētaṅkaḷ
+Rev	Veḷippaṭuttina Vicēṭankal
+Rev	Veḷippaṭuttina Vicēṭankaḷ
+Rev	Veḷippaṭuttina Vicēṭaṅkal
+Rev	Veḷippaṭuttina Vicēṭaṅkaḷ
+Rev	Veḷippaṭuttiṉa Vicetankal
+Rev	Veḷippaṭuttiṉa Vicetankaḷ
+Rev	Veḷippaṭuttiṉa Vicetaṅkal
+Rev	Veḷippaṭuttiṉa Vicetaṅkaḷ
+Rev	Veḷippaṭuttiṉa Viceṭankal
+Rev	Veḷippaṭuttiṉa Viceṭankaḷ
+Rev	Veḷippaṭuttiṉa Viceṭaṅkal
+Rev	Veḷippaṭuttiṉa Viceṭaṅkaḷ
+Rev	Veḷippaṭuttiṉa Vicētankal
+Rev	Veḷippaṭuttiṉa Vicētankaḷ
+Rev	Veḷippaṭuttiṉa Vicētaṅkal
+Rev	Veḷippaṭuttiṉa Vicētaṅkaḷ
+Rev	Veḷippaṭuttiṉa Vicēṭankal
+Rev	Veḷippaṭuttiṉa Vicēṭankaḷ
+Rev	Veḷippaṭuttiṉa Vicēṭaṅkal
+Rev	Veḷippaṭuttiṉa Vicēṭaṅkaḷ
+Rev	வெளிப்படுத்தின விசேடங்கள்
+Rev	Velippatuttina
+Rev	Velippatuttiṉa
+Rev	Velippaṭuttina
+Rev	Velippaṭuttiṉa
+Rev	Veḷippatuttina
+Rev	Veḷippatuttiṉa
+Rev	Veḷippaṭuttina
+Rev	Veḷippaṭuttiṉa
+Rev	திருவெளிப்பாடு
+Rev	திவெ
+Rev	வெளி
+Rev	Rev
+Rom	ரோமாபுரியாருக்கு எழுதிய கடிதம்
+Rom	உரோமையருக்கு எழுதிய திருமுகம்
+Rom	Uromarukku Elutiya Nirupam
+Rom	Uromarukku Eḻutiya Nirupam
+Rom	Urōmarukku Elutiya Nirupam
+Rom	Urōmarukku Eḻutiya Nirupam
+Rom	உரோமருக்கு எழுதிய நிருபம்
+Rom	Uromarukku
+Rom	Urōmarukku
+Rom	உரோமையர்
+Rom	ரோமர்
+Rom	Rom
+Rom	உரோ
+Ruth	ரூத்தின் சரித்திரம்
+Ruth	ரூத்து
+Ruth	Ruth
+Ruth	ரூத்
+Ruth	Rut
+Ruth	Rūt
+SgThree	இளைஞர் மூவரின் பாடல்
+SgThree	SgThree
+Sir	சீராக்கின் ஞானம்
+Sir	சீராக் ஆகமம்
+Sir	சீஞா
+Sir	Sir
+Song	சாலொமோனின் உன்னதப்பாட்டு
+Song	இனிமைமிகு பாடல்
+Song	உன்னத சங்கீதம்
+Song	உன்னதப்பாட்டு
+Song	Unnatappattu
+Song	Unnatappatṭu
+Song	Unnatappaṭtu
+Song	Unnatappaṭṭu
+Song	Unnatappāttu
+Song	Unnatappātṭu
+Song	Unnatappāṭtu
+Song	Unnatappāṭṭu
+Song	Unṉatappattu
+Song	Unṉatappatṭu
+Song	Unṉatappaṭtu
+Song	Unṉatappaṭṭu
+Song	Unṉatappāttu
+Song	Unṉatappātṭu
+Song	Unṉatappāṭtu
+Song	Unṉatappāṭṭu
+Song	Uṉnatappattu
+Song	Uṉnatappatṭu
+Song	Uṉnatappaṭtu
+Song	Uṉnatappaṭṭu
+Song	Uṉnatappāttu
+Song	Uṉnatappātṭu
+Song	Uṉnatappāṭtu
+Song	Uṉnatappāṭṭu
+Song	Uṉṉatappattu
+Song	Uṉṉatappatṭu
+Song	Uṉṉatappaṭtu
+Song	Uṉṉatappaṭṭu
+Song	Uṉṉatappāttu
+Song	Uṉṉatappātṭu
+Song	Uṉṉatappāṭtu
+Song	Uṉṉatappāṭṭu
+Song	உன்னத பாட்டு
+Song	பாடல்
+Song	Song
+Song	உன்ன
+Song	இபா
+Sus	சூசன்னா
+Sus	Sus
+Titus	தீத்துவுக்கு எழுதிய திருமுகம்
+Titus	தீத்துக்கு எழுதிய திருமுகம்
+Titus	தீத்துவுக்கு எழுதிய நிருபம்
+Titus	Tittuvukku Elutiya Nirupam
+Titus	Tittuvukku Eḻutiya Nirupam
+Titus	Tīttuvukku Elutiya Nirupam
+Titus	Tīttuvukku Eḻutiya Nirupam
+Titus	தீத்துவுக்கு எழுதிய கடிதம்
+Titus	Tittuvukku
+Titus	Tīttuvukku
+Titus	தீத்து
+Titus	Titus
+Titus	தீத்
+Tob	தொபியாசு ஆகமம்
+Tob	தோபித்து
+Tob	தோபி
+Tob	Tob
+Wis	சாலமோனின் ஞானம்
+Wis	ஞானாகமம்
+Wis	சாஞா
+Wis	Wis
+Zech	செக்கரியா
+Zech	Cakariya
+Zech	Cakariyā
+Zech	சகரியா
+Zech	Zech
+Zech	சகரி
+Zech	செக்
+Zeph	Ceppaniya
+Zeph	Ceppaniyā
+Zeph	Ceppaṉiya
+Zeph	Ceppaṉiyā
+Zeph	செப்பனியா
+Zeph	Zeph
+Zeph	செப்

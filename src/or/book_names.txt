@@ -1,0 +1,275 @@
+1Chr	ବଂଶାବଳୀର ପ୍ରଥମ ପୁସ୍ତକ
+1Chr	ପ୍ରଥମ ବଂଶାବଳୀର
+1Chr	ପ୍ରଥମ ବଂଶାବଳୀ
+1Chr	1. ବଂଶାବଳୀର
+1Chr	1 ବଂଶାବଳୀର
+1Chr	1. ବଂଶାବଳୀ
+1Chr	1 ବଂଶାବଳୀ
+1Chr	1Chr
+1Cor	କରିନ୍ଥୀୟଙ୍କ ପ୍ରତି ପ୍ରଥମ ପତ୍ର
+1Cor	ପ୍ରଥମ କରିନ୍ଥୀୟଙ୍କ
+1Cor	1. କରିନ୍ଥୀୟଙ୍କ
+1Cor	ପ୍ରଥମ କରିନ୍ଥୀୟ
+1Cor	1 କରିନ୍ଥୀୟଙ୍କ
+1Cor	1. କରିନ୍ଥୀୟ
+1Cor	1 କରିନ୍ଥୀୟ
+1Cor	1Cor
+1Esd	1Esd
+1John	ଯୋହନଙ୍କ ପ୍ରଥମ ପତ୍ର
+1John	ପ୍ରଥମ ଯୋହନଙ
+1John	1. ଯୋହନଙ
+1John	1 ଯୋହନଙ
+1John	1John
+1Kgs	ରାଜାବଳୀର ପ୍ରଥମ ପୁସ୍ତକ
+1Kgs	ପ୍ରଥମ ରାଜାବଳୀର
+1Kgs	ପ୍ରଥମ ରାଜାବଳୀ
+1Kgs	1. ରାଜାବଳୀର
+1Kgs	1 ରାଜାବଳୀର
+1Kgs	1. ରାଜାବଳୀ
+1Kgs	1 ରାଜାବଳୀ
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	ପିତରଙ୍କ ପ୍ରଥମ ପତ୍ର
+1Pet	ପ୍ରଥମ ପିତରଙ
+1Pet	1. ପିତରଙ
+1Pet	1 ପିତରଙ
+1Pet	1Pet
+1Sam	ଶାମୁୟେଲଙ୍କ ପ୍ରଥମ ପୁସ୍ତକ
+1Sam	ପ୍ରଥମ ଶାମୁୟେଲଙ
+1Sam	ପ୍ରଥମ ଶାମୁୟେଲ
+1Sam	1. ଶାମୁୟେଲଙ
+1Sam	1 ଶାମୁୟେଲଙ
+1Sam	1. ଶାମୁୟେଲ
+1Sam	1 ଶାମୁୟେଲ
+1Sam	1Sam
+1Thess	ଥେସଲନୀକୀୟଙ୍କ ପ୍ରତି ପ୍ରଥମ ପତ୍ର
+1Thess	ପ୍ରଥମ ଥେସଲନୀକୀୟଙ
+1Thess	1. ଥେସଲନୀକୀୟଙ
+1Thess	1 ଥେସଲନୀକୀୟଙ
+1Thess	1Thess
+1Tim	ତୀମଥିଙ୍କ ପ୍ରତି ପ୍ରଥମ ପତ୍ର
+1Tim	ପ୍ରଥମ ତୀମଥିଙ୍କ
+1Tim	1. ତୀମଥିଙ୍କ
+1Tim	1 ତୀମଥିଙ୍କ
+1Tim	1Tim
+2Chr	ବଂଶାବଳୀର ଦ୍ୱିତୀୟ ପୁସ୍ତକ
+2Chr	ଦ୍ୱିତୀୟ ବଂଶାବଳୀର
+2Chr	ଦ୍ୱିତୀୟ ବଂଶାବଳୀ
+2Chr	2. ବଂଶାବଳୀର
+2Chr	2 ବଂଶାବଳୀର
+2Chr	2. ବଂଶାବଳୀ
+2Chr	2 ବଂଶାବଳୀ
+2Chr	2Chr
+2Cor	କରିନ୍ଥୀୟଙ୍କ ପ୍ରତି ଦ୍ୱିତୀୟ ପତ୍ର
+2Cor	ଦ୍ୱିତୀୟ କରିନ୍ଥୀୟଙ୍କ
+2Cor	ଦ୍ୱିତୀୟ କରିନ୍ଥୀୟ
+2Cor	2. କରିନ୍ଥୀୟଙ୍କ
+2Cor	2 କରିନ୍ଥୀୟଙ୍କ
+2Cor	2. କରିନ୍ଥୀୟ
+2Cor	2 କରିନ୍ଥୀୟ
+2Cor	2Cor
+2Esd	2Esd
+2John	ଯୋହନଙ୍କ ଦ୍ୱିତୀୟ ପତ୍ର
+2John	ଦ୍ୱିତୀୟ ଯୋହନଙ
+2John	2. ଯୋହନଙ
+2John	2 ଯୋହନଙ
+2John	2John
+2Kgs	ରାଜାବଳୀର ଦ୍ୱିତୀୟ ପୁସ୍ତକ
+2Kgs	ଦ୍ୱିତୀୟ ରାଜାବଳୀର
+2Kgs	ଦ୍ୱିତୀୟ ରାଜାବଳୀ
+2Kgs	2. ରାଜାବଳୀର
+2Kgs	2 ରାଜାବଳୀର
+2Kgs	2. ରାଜାବଳୀ
+2Kgs	2 ରାଜାବଳୀ
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	ପିତରଙ୍କ ଦ୍ୱିତୀୟ ପତ୍ର
+2Pet	ଦ୍ୱିତୀୟ ପିତରଙ
+2Pet	2. ପିତରଙ
+2Pet	2 ପିତରଙ
+2Pet	2Pet
+2Sam	ଶାମୁୟେଲଙ୍କ ଦ୍ୱିତୀୟ ପୁସ୍ତକ
+2Sam	ଦ୍ୱିତୀୟ ଶାମୁୟେଲଙ
+2Sam	ଦ୍ୱିତୀୟ ଶାମୁୟେଲ
+2Sam	2. ଶାମୁୟେଲଙ
+2Sam	2 ଶାମୁୟେଲଙ
+2Sam	2. ଶାମୁୟେଲ
+2Sam	2 ଶାମୁୟେଲ
+2Sam	2Sam
+2Thess	ଥେସଲନୀକୀୟଙ୍କ ପ୍ରତି ଦ୍ୱିତୀୟ ପତ୍ର
+2Thess	ଦ୍ୱିତୀୟ ଥେସଲନୀକୀୟଙ
+2Thess	2. ଥେସଲନୀକୀୟଙ
+2Thess	2 ଥେସଲନୀକୀୟଙ
+2Thess	2Thess
+2Tim	ତୀମଥିଙ୍କ ପ୍ରତି ଦ୍ୱିତୀୟ ପତ୍ର
+2Tim	ଦ୍ୱିତୀୟ ତୀମଥିଙ୍କ
+2Tim	2. ତୀମଥିଙ୍କ
+2Tim	2 ତୀମଥିଙ୍କ
+2Tim	2Tim
+3John	ଯୋହନଙ୍କ ତୃତୀୟ ପତ୍ର
+3John	ତୃତୀୟ ଯୋହନଙ
+3John	3. ଯୋହନଙ
+3John	3 ଯୋହନଙ
+3John	3John
+3Macc	3Macc
+4Macc	4Macc
+Acts	ପ୍ରେରିତମାନଙ୍କ କାର୍ଯ୍ୟର ବିବରଣ
+Acts	ପ୍ରେରିତ
+Acts	Acts
+Amos	ଆମୋଷ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Amos	Amos
+Amos	ଆମୋଷ
+Bar	Bar
+Bel	Bel
+Col	କଲସୀୟଙ୍କ ପ୍ରତି ପତ୍ର
+Col	କଲସୀୟଙ୍କ
+Col	Col
+Dan	ଦାନିୟେଲଙ୍କ ପୁସ୍ତକ
+Dan	ଦାନିୟେଲଙ
+Dan	Dan
+Deut	ଦ୍ୱିତୀୟ ବିବରଣୀ
+Deut	ଦ୍ୱିତୀୟ ବିବରଣ
+Deut	ବିବରଣି
+Deut	Deut
+Eccl	ଉପଦେଶକ
+Eccl	Eccl
+EpJer	EpJer
+Eph	ଏଫିସୀୟଙ୍କ ପ୍ରତି ପତ୍ର
+Eph	ଏଫିସୀୟଙ୍କ
+Eph	Eph
+Esth	ଏଷ୍ଟର ବିବରଣ
+Esth	Esth
+Exod	ଯାତ୍ରା ପୁସ୍ତକ
+Exod	ଯାତ୍ରାପୁସ୍ତକ
+Exod	ଯାତ୍ରା
+Exod	Exod
+Ezek	ଯିହିଜିକଲ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Ezek	ଯିହିଜିକଲ
+Ezek	Ezek
+Ezra	ଏଜ୍ରା
+Ezra	Ezra
+Gal	ଗାଲାତୀୟଙ୍କ ପ୍ରତି ପତ୍ର
+Gal	ଗାଲାତୀୟଙ୍କ
+Gal	Gal
+Gen	ଆଦିପୁସ୍ତକ
+Gen	Gen
+Gen	ଆଦି
+GkEsth	GkEsth
+Hab	ହବ‌କ୍‌କୂକ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Hab	ହବ‌କ୍‌କୂକ
+Hab	ହବକୁକ୍
+Hab	ହବକୂକ୍
+Hab	Hab
+Hag	ହାଗୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Hag	ହାଗୟ
+Hag	Hag
+Heb	ଏବ୍ରୀ
+Heb	Heb
+Hos	ହୋଶେୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Hos	ହୋଶହେ
+Hos	ହୋଶେୟ
+Hos	Hos
+Isa	ଯିଶାଇୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କର ପୁସ୍ତକ
+Isa	ଯାଶାଇୟ
+Isa	ଯିଶାଇୟ
+Isa	ଯୀଶାଇୟ
+Isa	ୟଶାଇୟ
+Isa	ୟିଶାୟ
+Isa	Isa
+Jas	ଯାକୁବଙ୍କ ପତ୍ର
+Jas	ଯାକୁବଙ୍କ
+Jas	Jas
+Jdt	Jdt
+Jer	ଯିରିମିୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Jer	ଯିରିମିୟ
+Jer	Jer
+Job	ଆୟୁବ ପୁସ୍ତକ
+Job	ଆୟୁବ
+Job	Job
+Joel	ଯୋୟେଲ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Joel	ଯୋୟେଲ
+Joel	Joel
+John	ଯୋହନ ଲିଖିତ ସୁସମାଗ୍ଭର
+John	John
+John	ଯୋହନ
+Jonah	ଯୂନସ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Jonah	Jonah
+Jonah	ଯୂନସ
+Josh	ଯିହୋଶୂୟଙ୍କର ପୁସ୍ତକ
+Josh	ଯିହୋଶୂୟଙ୍କର
+Josh	Josh
+Jude	ଯିହୂଦାଙ୍କ ପତ୍ର
+Jude	ଯିହୂଦାଙ୍କ
+Jude	Jude
+Judg	ବିଗ୍ଭରକର୍ତ୍ତାମାନଙ୍କ ବିବରଣ
+Judg	Judg
+Lam	ଯିରିମିୟଙ୍କ ବିଳାପ
+Lam	Lam
+Lev	ଲେବୀୟ ପୁସ୍ତକ
+Lev	ଲେବୀୟ
+Lev	Lev
+Luke	ଲୂକ ଲିଖିତ ସୁସମାଗ୍ଭର
+Luke	Luke
+Luke	ଲୂକ
+Mal	ମଲାଖି ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Mal	ମଲାଖି
+Mal	Mal
+Mark	ମାର୍କ ଲିଖିତ ସୁସମାଗ୍ଭର
+Mark	ମାର୍କ
+Mark	Mark
+Matt	ମାଥିଉ ଲିଖିତ ସୁସମାଗ୍ଭର
+Matt	ମାଥିଉ
+Matt	Matt
+Mic	ମୀଖା ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Mic	ମିଖା
+Mic	ମୀଖା
+Mic	Mic
+Nah	ନାହୂମ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Nah	ନାହୂମ
+Nah	Nah
+Neh	ନିହିମିୟାଙ୍କର ପୁସ୍ତକ
+Neh	ନିହିମିୟାଙ୍କର
+Neh	Neh
+Num	ଗଣନା ପୁସ୍ତକ
+Num	ଗଣନା
+Num	Num
+Obad	ଓବଦିଅ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Obad	ଓବଦିଅ
+Obad	Obad
+Phil	ଫିଲି‌ପ୍‌ପୀୟଙ୍କ ପ୍ରତି ପତ୍ର
+Phil	ଫିଲି‌ପ୍‌ପୀୟଙ୍କ
+Phil	Phil
+Phlm	ଫିଲୀମୋନଙ୍କ ପ୍ରତି ପତ୍ର
+Phlm	ଫିଲୀମୋନଙ୍କ
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	ହିତୋପଦେଶ
+Prov	Prov
+Ps	ଗୀତିସଂହିତା
+Ps	ଗାତସଂହିତା
+Ps	ଗୀତସଂହିତା
+Ps	Ps
+Rev	ଯୋହନଙ୍କ ପ୍ରତି ପ୍ରକାଶିତ ବାକ୍ୟ
+Rev	Rev
+Rom	ରୋମୀୟଙ୍କ ପ୍ରତି ପତ୍ର
+Rom	ରୋମୀୟଙ୍କ
+Rom	Rom
+Ruth	ଋତର ବିବରଣ ପୁସ୍ତକ
+Ruth	Ruth
+SgThree	SgThree
+Sir	Sir
+Song	ପରମଗୀତ
+Song	Song
+Sus	Sus
+Titus	ତୀତସଙ୍କ ପ୍ରତି ପତ୍ର
+Titus	ତୀତସଙ୍କ
+Titus	Titus
+Tob	Tob
+Wis	Wis
+Zech	ଯିଖରିୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Zech	ଯିଖରିୟ
+Zech	Zech
+Zeph	ସିଫନିୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Zeph	ସିଫନିୟ
+Zeph	Zeph

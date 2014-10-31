@@ -53,12 +53,12 @@ describe "Localized book Gen (th)", ->
 	it "should handle book: Gen (th)", ->
 		`
 		expect(p.parse("ปฐมกาล 1:1").osis()).toEqual("Gen.1.1")
-		expect(p.parse("ปฐก 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Gen 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("ปฐก 1:1").osis()).toEqual("Gen.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ปฐมกาล 1:1").osis()).toEqual("Gen.1.1")
-		expect(p.parse("ปฐก 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("GEN 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("ปฐก 1:1").osis()).toEqual("Gen.1.1")
 		`
 		true
 describe "Localized book Exod (th)", ->
@@ -69,12 +69,12 @@ describe "Localized book Exod (th)", ->
 		p.include_apocrypha true
 	it "should handle book: Exod (th)", ->
 		`
-		expect(p.parse("อพยพ 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("Exod 1:1").osis()).toEqual("Exod.1.1")
+		expect(p.parse("อพยพ 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("อพย 1:1").osis()).toEqual("Exod.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("อพยพ 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("EXOD 1:1").osis()).toEqual("Exod.1.1")
+		expect(p.parse("อพยพ 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("อพย 1:1").osis()).toEqual("Exod.1.1")
 		`
 		true
@@ -115,12 +115,12 @@ describe "Localized book Num (th)", ->
 	it "should handle book: Num (th)", ->
 		`
 		expect(p.parse("กันดารวิถี 1:1").osis()).toEqual("Num.1.1")
-		expect(p.parse("กดว 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Num 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("กดว 1:1").osis()).toEqual("Num.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("กันดารวิถี 1:1").osis()).toEqual("Num.1.1")
-		expect(p.parse("กดว 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUM 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("กดว 1:1").osis()).toEqual("Num.1.1")
 		`
 		true
 describe "Localized book Sir (th)", ->
@@ -157,13 +157,13 @@ describe "Localized book Lam (th)", ->
 		`
 		expect(p.parse("บทเพลงคร่ำครวญ 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("เพลงคร่ำครวญ 1:1").osis()).toEqual("Lam.1.1")
-		expect(p.parse("พคค 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("Lam 1:1").osis()).toEqual("Lam.1.1")
+		expect(p.parse("พคค 1:1").osis()).toEqual("Lam.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("บทเพลงคร่ำครวญ 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("เพลงคร่ำครวญ 1:1").osis()).toEqual("Lam.1.1")
-		expect(p.parse("พคค 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("LAM 1:1").osis()).toEqual("Lam.1.1")
+		expect(p.parse("พคค 1:1").osis()).toEqual("Lam.1.1")
 		`
 		true
 describe "Localized book EpJer (th)", ->
@@ -306,12 +306,12 @@ describe "Localized book Isa (th)", ->
 	it "should handle book: Isa (th)", ->
 		`
 		expect(p.parse("อิสยาห์ 1:1").osis()).toEqual("Isa.1.1")
-		expect(p.parse("อสย 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Isa 1:1").osis()).toEqual("Isa.1.1")
+		expect(p.parse("อสย 1:1").osis()).toEqual("Isa.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("อิสยาห์ 1:1").osis()).toEqual("Isa.1.1")
-		expect(p.parse("อสย 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("ISA 1:1").osis()).toEqual("Isa.1.1")
+		expect(p.parse("อสย 1:1").osis()).toEqual("Isa.1.1")
 		`
 		true
 describe "Localized book 2Sam (th)", ->
@@ -322,19 +322,15 @@ describe "Localized book 2Sam (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Sam (th)", ->
 		`
-		expect(p.parse("2 ซามูเอล 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2. ซามูเอล 1:1").osis()).toEqual("2Sam.1.1")
-		expect(p.parse("2 ซมอ 1:1").osis()).toEqual("2Sam.1.1")
-		expect(p.parse("2. ซมอ 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2 ซามูเอล 1:1").osis()).toEqual("2Sam.1.1")
+		expect(p.parse("2. ซมอ 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2 ซมอ 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2Sam 1:1").osis()).toEqual("2Sam.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 ซามูเอล 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2. ซามูเอล 1:1").osis()).toEqual("2Sam.1.1")
-		expect(p.parse("2 ซมอ 1:1").osis()).toEqual("2Sam.1.1")
-		expect(p.parse("2. ซมอ 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2 ซามูเอล 1:1").osis()).toEqual("2Sam.1.1")
+		expect(p.parse("2. ซมอ 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2 ซมอ 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2SAM 1:1").osis()).toEqual("2Sam.1.1")
 		`
@@ -347,19 +343,15 @@ describe "Localized book 1Sam (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Sam (th)", ->
 		`
-		expect(p.parse("1 ซามูเอล 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1. ซามูเอล 1:1").osis()).toEqual("1Sam.1.1")
-		expect(p.parse("1 ซมอ 1:1").osis()).toEqual("1Sam.1.1")
-		expect(p.parse("1. ซมอ 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1 ซามูเอล 1:1").osis()).toEqual("1Sam.1.1")
+		expect(p.parse("1. ซมอ 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1 ซมอ 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1Sam 1:1").osis()).toEqual("1Sam.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 ซามูเอล 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1. ซามูเอล 1:1").osis()).toEqual("1Sam.1.1")
-		expect(p.parse("1 ซมอ 1:1").osis()).toEqual("1Sam.1.1")
-		expect(p.parse("1. ซมอ 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1 ซามูเอล 1:1").osis()).toEqual("1Sam.1.1")
+		expect(p.parse("1. ซมอ 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1 ซมอ 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1SAM 1:1").osis()).toEqual("1Sam.1.1")
 		`
@@ -372,18 +364,14 @@ describe "Localized book 2Kgs (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Kgs (th)", ->
 		`
-		expect(p.parse("2 พงศ์กษัตริย์ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2. พงศ์กษัตริย์ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 พงศ์กษัตริย์ 1:1").osis()).toEqual("2Kgs.1.1")
-		expect(p.parse("2 พกษ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2. พกษ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 พกษ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2Kgs 1:1").osis()).toEqual("2Kgs.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 พงศ์กษัตริย์ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2. พงศ์กษัตริย์ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 พงศ์กษัตริย์ 1:1").osis()).toEqual("2Kgs.1.1")
-		expect(p.parse("2 พกษ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2. พกษ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 พกษ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2KGS 1:1").osis()).toEqual("2Kgs.1.1")
@@ -397,18 +385,14 @@ describe "Localized book 1Kgs (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Kgs (th)", ->
 		`
-		expect(p.parse("1 พงศ์กษัตริย์ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1. พงศ์กษัตริย์ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 พงศ์กษัตริย์ 1:1").osis()).toEqual("1Kgs.1.1")
-		expect(p.parse("1 พกษ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1. พกษ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 พกษ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1Kgs 1:1").osis()).toEqual("1Kgs.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 พงศ์กษัตริย์ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1. พงศ์กษัตริย์ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 พงศ์กษัตริย์ 1:1").osis()).toEqual("1Kgs.1.1")
-		expect(p.parse("1 พกษ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1. พกษ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 พกษ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1KGS 1:1").osis()).toEqual("1Kgs.1.1")
@@ -422,19 +406,15 @@ describe "Localized book 2Chr (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Chr (th)", ->
 		`
-		expect(p.parse("2 พงศาวดาร 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2. พงศาวดาร 1:1").osis()).toEqual("2Chr.1.1")
-		expect(p.parse("2 พศด 1:1").osis()).toEqual("2Chr.1.1")
-		expect(p.parse("2. พศด 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 พงศาวดาร 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2. พศด 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 พศด 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2Chr 1:1").osis()).toEqual("2Chr.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 พงศาวดาร 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2. พงศาวดาร 1:1").osis()).toEqual("2Chr.1.1")
-		expect(p.parse("2 พศด 1:1").osis()).toEqual("2Chr.1.1")
-		expect(p.parse("2. พศด 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 พงศาวดาร 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2. พศด 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 พศด 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2CHR 1:1").osis()).toEqual("2Chr.1.1")
 		`
@@ -447,19 +427,15 @@ describe "Localized book 1Chr (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Chr (th)", ->
 		`
-		expect(p.parse("1 พงศาวดาร 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1. พงศาวดาร 1:1").osis()).toEqual("1Chr.1.1")
-		expect(p.parse("1 พศด 1:1").osis()).toEqual("1Chr.1.1")
-		expect(p.parse("1. พศด 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 พงศาวดาร 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1. พศด 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 พศด 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 พงศาวดาร 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1. พงศาวดาร 1:1").osis()).toEqual("1Chr.1.1")
-		expect(p.parse("1 พศด 1:1").osis()).toEqual("1Chr.1.1")
-		expect(p.parse("1. พศด 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 พงศาวดาร 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1. พศด 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 พศด 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1CHR 1:1").osis()).toEqual("1Chr.1.1")
 		`
@@ -490,12 +466,12 @@ describe "Localized book Neh (th)", ->
 	it "should handle book: Neh (th)", ->
 		`
 		expect(p.parse("เนหะมีย์ 1:1").osis()).toEqual("Neh.1.1")
-		expect(p.parse("นหม 1:1").osis()).toEqual("Neh.1.1")
 		expect(p.parse("Neh 1:1").osis()).toEqual("Neh.1.1")
+		expect(p.parse("นหม 1:1").osis()).toEqual("Neh.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("เนหะมีย์ 1:1").osis()).toEqual("Neh.1.1")
-		expect(p.parse("นหม 1:1").osis()).toEqual("Neh.1.1")
 		expect(p.parse("NEH 1:1").osis()).toEqual("Neh.1.1")
+		expect(p.parse("นหม 1:1").osis()).toEqual("Neh.1.1")
 		`
 		true
 describe "Localized book GkEsth (th)", ->
@@ -534,11 +510,11 @@ describe "Localized book Job (th)", ->
 		p.include_apocrypha true
 	it "should handle book: Job (th)", ->
 		`
-		expect(p.parse("โยบ 1:1").osis()).toEqual("Job.1.1")
 		expect(p.parse("Job 1:1").osis()).toEqual("Job.1.1")
-		p.include_apocrypha(false)
 		expect(p.parse("โยบ 1:1").osis()).toEqual("Job.1.1")
+		p.include_apocrypha(false)
 		expect(p.parse("JOB 1:1").osis()).toEqual("Job.1.1")
+		expect(p.parse("โยบ 1:1").osis()).toEqual("Job.1.1")
 		`
 		true
 describe "Localized book Ps (th)", ->
@@ -680,12 +656,12 @@ describe "Localized book Dan (th)", ->
 	it "should handle book: Dan (th)", ->
 		`
 		expect(p.parse("ดาเนียล 1:1").osis()).toEqual("Dan.1.1")
-		expect(p.parse("ดนล 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("Dan 1:1").osis()).toEqual("Dan.1.1")
+		expect(p.parse("ดนล 1:1").osis()).toEqual("Dan.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ดาเนียล 1:1").osis()).toEqual("Dan.1.1")
-		expect(p.parse("ดนล 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("DAN 1:1").osis()).toEqual("Dan.1.1")
+		expect(p.parse("ดนล 1:1").osis()).toEqual("Dan.1.1")
 		`
 		true
 describe "Localized book Hos (th)", ->
@@ -786,12 +762,12 @@ describe "Localized book Mic (th)", ->
 	it "should handle book: Mic (th)", ->
 		`
 		expect(p.parse("มีคาห์ 1:1").osis()).toEqual("Mic.1.1")
-		expect(p.parse("มคา 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("Mic 1:1").osis()).toEqual("Mic.1.1")
+		expect(p.parse("มคา 1:1").osis()).toEqual("Mic.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("มีคาห์ 1:1").osis()).toEqual("Mic.1.1")
-		expect(p.parse("มคา 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("MIC 1:1").osis()).toEqual("Mic.1.1")
+		expect(p.parse("มคา 1:1").osis()).toEqual("Mic.1.1")
 		`
 		true
 describe "Localized book Nah (th)", ->
@@ -803,12 +779,12 @@ describe "Localized book Nah (th)", ->
 	it "should handle book: Nah (th)", ->
 		`
 		expect(p.parse("นาฮูม 1:1").osis()).toEqual("Nah.1.1")
-		expect(p.parse("นฮม 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("Nah 1:1").osis()).toEqual("Nah.1.1")
+		expect(p.parse("นฮม 1:1").osis()).toEqual("Nah.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("นาฮูม 1:1").osis()).toEqual("Nah.1.1")
-		expect(p.parse("นฮม 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("NAH 1:1").osis()).toEqual("Nah.1.1")
+		expect(p.parse("นฮม 1:1").osis()).toEqual("Nah.1.1")
 		`
 		true
 describe "Localized book Hab (th)", ->
@@ -854,12 +830,12 @@ describe "Localized book Hag (th)", ->
 	it "should handle book: Hag (th)", ->
 		`
 		expect(p.parse("ฮักกัย 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("ฮกก 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("Hag 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("ฮกก 1:1").osis()).toEqual("Hag.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ฮักกัย 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("ฮกก 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("HAG 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("ฮกก 1:1").osis()).toEqual("Hag.1.1")
 		`
 		true
 describe "Localized book Zech (th)", ->
@@ -888,12 +864,12 @@ describe "Localized book Mal (th)", ->
 	it "should handle book: Mal (th)", ->
 		`
 		expect(p.parse("มาลาคี 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("มลค 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("Mal 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("มลค 1:1").osis()).toEqual("Mal.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("มาลาคี 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("มลค 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("MAL 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("มลค 1:1").osis()).toEqual("Mal.1.1")
 		`
 		true
 describe "Localized book Matt (th)", ->
@@ -943,13 +919,13 @@ describe "Localized book Luke (th)", ->
 	it "should handle book: Luke (th)", ->
 		`
 		expect(p.parse("พระวรสารนักบุญลูค 1:1").osis()).toEqual("Luke.1.1")
-		expect(p.parse("ลูกา 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Luke 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("ลูกา 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("ลก 1:1").osis()).toEqual("Luke.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("พระวรสารนักบุญลูค 1:1").osis()).toEqual("Luke.1.1")
-		expect(p.parse("ลูกา 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LUKE 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("ลูกา 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("ลก 1:1").osis()).toEqual("Luke.1.1")
 		`
 		true
@@ -961,13 +937,11 @@ describe "Localized book 1John (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1John (th)", ->
 		`
-		expect(p.parse("1 ยอห์น 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1. ยอห์น 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1 ยอห์น 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1John 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1 ยน 1:1").osis()).toEqual("1John.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 ยอห์น 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1. ยอห์น 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1 ยอห์น 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1JOHN 1:1").osis()).toEqual("1John.1.1")
@@ -982,13 +956,11 @@ describe "Localized book 2John (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2John (th)", ->
 		`
-		expect(p.parse("2 ยอห์น 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2. ยอห์น 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2 ยอห์น 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2John 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2 ยน 1:1").osis()).toEqual("2John.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 ยอห์น 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2. ยอห์น 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2 ยอห์น 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2JOHN 1:1").osis()).toEqual("2John.1.1")
@@ -1003,13 +975,11 @@ describe "Localized book 3John (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 3John (th)", ->
 		`
-		expect(p.parse("3 ยอห์น 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3. ยอห์น 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3 ยอห์น 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3John 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3 ยน 1:1").osis()).toEqual("3John.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("3 ยอห์น 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3. ยอห์น 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3 ยอห์น 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3JOHN 1:1").osis()).toEqual("3John.1.1")
@@ -1027,14 +997,14 @@ describe "Localized book John (th)", ->
 		expect(p.parse("พระวรสารนักบุญจอห์น 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("ยอห์น 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("John 1:1").osis()).toEqual("John.1.1")
-		expect(p.parse("ยฮ 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("ยน 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("ยฮ 1:1").osis()).toEqual("John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("พระวรสารนักบุญจอห์น 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("ยอห์น 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("JOHN 1:1").osis()).toEqual("John.1.1")
-		expect(p.parse("ยฮ 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("ยน 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("ยฮ 1:1").osis()).toEqual("John.1.1")
 		`
 		true
 describe "Localized book Acts (th)", ->
@@ -1064,12 +1034,12 @@ describe "Localized book Rom (th)", ->
 		p.include_apocrypha true
 	it "should handle book: Rom (th)", ->
 		`
-		expect(p.parse("โรม 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("Rom 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("โรม 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("รม 1:1").osis()).toEqual("Rom.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("โรม 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ROM 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("โรม 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("รม 1:1").osis()).toEqual("Rom.1.1")
 		`
 		true
@@ -1081,14 +1051,12 @@ describe "Localized book 2Cor (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Cor (th)", ->
 		`
-		expect(p.parse("2 โครินธ์ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2. โครินธ์ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2 โครินธ์ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2 คธ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2 คร 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2Cor 1:1").osis()).toEqual("2Cor.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 โครินธ์ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2. โครินธ์ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2 โครินธ์ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2 คธ 1:1").osis()).toEqual("2Cor.1.1")
@@ -1104,19 +1072,17 @@ describe "Localized book 1Cor (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Cor (th)", ->
 		`
-		expect(p.parse("1 โครินธ์ 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1. โครินธ์ 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1 โครินธ์ 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1 คธ 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("1 คร 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1Cor 1:1").osis()).toEqual("1Cor.1.1")
-		expect(p.parse("1 คร 1:1").osis()).toEqual("1Cor.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 โครินธ์ 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1. โครินธ์ 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1 โครินธ์ 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1 คธ 1:1").osis()).toEqual("1Cor.1.1")
-		expect(p.parse("1COR 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1 คร 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("1COR 1:1").osis()).toEqual("1Cor.1.1")
 		`
 		true
 describe "Localized book Gal (th)", ->
@@ -1195,18 +1161,16 @@ describe "Localized book 2Thess (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Thess (th)", ->
 		`
-		expect(p.parse("2 เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("2. เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2. เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
-		expect(p.parse("2. เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2Thess 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 ธส 1:1").osis()).toEqual("2Thess.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("2. เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2. เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
-		expect(p.parse("2. เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2THESS 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 ธส 1:1").osis()).toEqual("2Thess.1.1")
@@ -1220,18 +1184,16 @@ describe "Localized book 1Thess (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Thess (th)", ->
 		`
-		expect(p.parse("1 เธซะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1. เธซะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
-		expect(p.parse("1 เธสะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1. เธสะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("1 เธซะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1 เธสะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1Thess 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1 ธส 1:1").osis()).toEqual("1Thess.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 เธซะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1. เธซะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
-		expect(p.parse("1 เธสะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1. เธสะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("1 เธซะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1 เธสะโลนิกา 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1THESS 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1 ธส 1:1").osis()).toEqual("1Thess.1.1")
@@ -1245,17 +1207,15 @@ describe "Localized book 2Tim (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Tim (th)", ->
 		`
-		expect(p.parse("2 ทิโมธี 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2. ทิโมธี 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 ทิโมธี 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("2 ทธ 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2Tim 1:1").osis()).toEqual("2Tim.1.1")
-		expect(p.parse("2 ทธ 1:1").osis()).toEqual("2Tim.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 ทิโมธี 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2. ทิโมธี 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 ทิโมธี 1:1").osis()).toEqual("2Tim.1.1")
-		expect(p.parse("2TIM 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 ทธ 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("2TIM 1:1").osis()).toEqual("2Tim.1.1")
 		`
 		true
 describe "Localized book 1Tim (th)", ->
@@ -1266,13 +1226,11 @@ describe "Localized book 1Tim (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Tim (th)", ->
 		`
-		expect(p.parse("1 ทิโมธี 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1. ทิโมธี 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 ทิโมธี 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 ทธ 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1Tim 1:1").osis()).toEqual("1Tim.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 ทิโมธี 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1. ทิโมธี 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 ทิโมธี 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 ทธ 1:1").osis()).toEqual("1Tim.1.1")
@@ -1287,12 +1245,12 @@ describe "Localized book Titus (th)", ->
 		p.include_apocrypha true
 	it "should handle book: Titus (th)", ->
 		`
-		expect(p.parse("ทิตัส 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Titus 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("ทิตัส 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("ทต 1:1").osis()).toEqual("Titus.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("ทิตัส 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITUS 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("ทิตัส 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("ทต 1:1").osis()).toEqual("Titus.1.1")
 		`
 		true
@@ -1357,17 +1315,15 @@ describe "Localized book 2Pet (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Pet (th)", ->
 		`
-		expect(p.parse("2 เปโตร 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2. เปโตร 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2 เปโตร 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("2 ปต 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("2 ปต 1:1").osis()).toEqual("2Pet.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("2 เปโตร 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2. เปโตร 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2 เปโตร 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2 ปต 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
 		`
 		true
 describe "Localized book 1Pet (th)", ->
@@ -1378,17 +1334,15 @@ describe "Localized book 1Pet (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Pet (th)", ->
 		`
-		expect(p.parse("1 เปโตร 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1. เปโตร 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1 เปโตร 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("1 ปต 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1Pet 1:1").osis()).toEqual("1Pet.1.1")
-		expect(p.parse("1 ปต 1:1").osis()).toEqual("1Pet.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("1 เปโตร 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1. เปโตร 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1 เปโตร 1:1").osis()).toEqual("1Pet.1.1")
-		expect(p.parse("1PET 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1 ปต 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("1PET 1:1").osis()).toEqual("1Pet.1.1")
 		`
 		true
 describe "Localized book Jude (th)", ->
@@ -1464,7 +1418,6 @@ describe "Localized book 2Macc (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Macc (th)", ->
 		`
-		expect(p.parse("2 มัคคาบี 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2. มัคคาบี 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2 มัคคาบี 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2Macc 1:1").osis()).toEqual("2Macc.1.1")
@@ -1478,7 +1431,6 @@ describe "Localized book 3Macc (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 3Macc (th)", ->
 		`
-		expect(p.parse("3 มัคคาบี 1:1").osis()).toEqual("3Macc.1.1")
 		expect(p.parse("3. มัคคาบี 1:1").osis()).toEqual("3Macc.1.1")
 		expect(p.parse("3 มัคคาบี 1:1").osis()).toEqual("3Macc.1.1")
 		expect(p.parse("3Macc 1:1").osis()).toEqual("3Macc.1.1")
@@ -1492,7 +1444,6 @@ describe "Localized book 4Macc (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 4Macc (th)", ->
 		`
-		expect(p.parse("4 มัคคาบี 1:1").osis()).toEqual("4Macc.1.1")
 		expect(p.parse("4. มัคคาบี 1:1").osis()).toEqual("4Macc.1.1")
 		expect(p.parse("4 มัคคาบี 1:1").osis()).toEqual("4Macc.1.1")
 		expect(p.parse("4Macc 1:1").osis()).toEqual("4Macc.1.1")
@@ -1506,7 +1457,6 @@ describe "Localized book 1Macc (th)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Macc (th)", ->
 		`
-		expect(p.parse("1 มัคคาบี 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1. มัคคาบี 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1 มัคคาบี 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1Macc 1:1").osis()).toEqual("1Macc.1.1")

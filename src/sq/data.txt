@@ -1,0 +1,271 @@
+$FIRST	1 i	1 e	1
+$SECOND	2 i	2 e	2
+$THIRD	3 i	3 e	3
+$FOURTH	4 i	4 e	4
+$AB	[a-e]
+$AND	and
+$CHAPTER	chapter
+$FF	ff
+$TITLE	title
+$TRANS	ALB
+$TO	-
+$VERSE	verse
+$UNICODE_BLOCK	Latin
+
+Gen	Zanafilla	Zan
+Exod	Eksodi	Dalja	Dal	Eks
+Lev	Levitiku	Levitikët	Lev
+Num	Numrat	Num
+Deut	Ligji i Përtërirë	LiP
+Josh	Jozueu	Joz
+Judg	Gjyqtarët	Gjy
+Ruth	Ruthi	Ruth
+1Sam	$FIRST Samuelit	1 Sam
+2Sam	$SECOND Samuelit	2 Sam
+1Kgs	$FIRST Mbretërve	$THIRD Mbretërve	1 Mb
+2Kgs	$SECOND Mbretërve	$FOURTH Mbretërve	2 Mb
+1Chr	$FIRST Kronikave	$FIRST Kronika	1 Kr
+2Chr	$SECOND Kronikave	$SECOND Kronika	2 Kr
+Ezra	Esdra	Esd
+Neh	Nehemia	Neh
+Esth	Ester	Est
+Job	Jobi	Hiobi	Job
+Ps	Psalmet	Psalmi	Libri i Psalmeve	Ps
+Prov	Fjalët e urta
+Eccl	Predikuesi	Pred
+Song	Kantiku i Kantikëve	Kant
+Isa	Isaia	Jesaja	Isa
+Jer	Jeremia	Jer
+Lam	Vajtimet	Vaj
+Ezek	Ezekieli	Eze
+Dan	Danieli	Dan
+Hos	Osea	Os
+Joel	Joeli	Jl
+Amos	Amosi	Am
+Obad	Abdia	Abd
+Jonah	Jona	Jon
+Mic	Mikea	Mik
+Nah	Nahumi	Nah
+Hab	Habakuku	Hab
+Zeph	Sofonia	Sof
+Hag	Hagai	Hag
+Zech	Zakaria	Zak
+Mal	Malakia	Mal
+Matt	Mateu	Ungjilli i Mateut	Mt
+Mark	Marku	Ungjilli i Markut
+Luke	Luka	Ungjilli i Lukës	Llu	Lluka
+John	Gjoni	Ungjilli i Gjonit	Gjo
+Acts	Veprat e Apostujve	Veprat	Vep
+Rom	Romakëve	Rom
+1Cor	$FIRST Korin?tasve	1 Kor
+2Cor	$SECOND Korin?tasve	2 Kor
+Gal	Galatasve	Gal
+Eph	Efesianëve	Ef
+Phil	Filipianëve	Fil
+Col	Kolosianëve	Kol
+1Thess	$FIRST Thesalonikasve	$FIRST Selanikasve	1 Th
+2Thess	$SECOND Thesalonikasve	$SECOND Selanikasve	2 Th
+1Tim	$FIRST Timoteut	1 Tim
+2Tim	$SECOND Timoteut	2 Tim
+Titus	Titi	Titit	Tit
+Phlm	Filemonit	Filem
+Heb	Hebrenjve	Heb
+Jas	Jakobit	Jakobi	Jak
+1Pet	$FIRST Pjetrit	1 Pje?
+2Pet	$SECOND Pjetrit	2 Pje?
+1John	$FIRST Gjonit	1 Gj
+2John	$SECOND Gjonit	2 Gj
+3John	$THIRD Gjonit	3 Gj
+Jude	Juda	Jud
+Rev	Zbulesa	Zbu	Zb
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Zanafilla
+*Exod	Eksodi
+*Lev	Levitiku	Lev
+*Num	Numrat	Num
+*Deut	Ligji i përtërirë	LiP
+*Josh	Jozueu
+*Judg	Gjyqtarët
+*Ruth	Ruthi
+*1Sam	1 i Samuelit
+*2Sam	2 i Samuelit
+*1Kgs	1 i Mbretërve
+*2Kgs	2 i Mbretërve
+*1Chr	1 i Kronikave
+*2Chr	2 i Kronikave
+*Ezra	Esdra
+*Neh	Nehemia
+*Esth	Ester
+*Job	Jobi
+*Ps	Psalmet
+*Prov	Fjalët e urta
+*Eccl	Predikuesi
+*Song	Kantiku i Kantikëve
+*Isa	Isaia
+*Jer	Jeremia
+*Lam	Vajtimet
+*Ezek	Ezekieli
+*Dan	Danieli
+*Hos	Osea
+*Joel	Joeli
+*Amos	Amosi
+*Obad	Abdia
+*Jonah	Jona
+*Mic	Mikea
+*Nah	Nahumi
+*Hab	Habakuku
+*Zeph	Sofonia
+*Hag	Hagai
+*Zech	Zakaria
+*Mal	Malakia
+*Matt	Mateu	Mt
+*Mark	Marku
+*Luke	Lluka	Llu
+*John	Gjoni	Gjo
+*Acts	Veprat e apostujve	Vep
+*Rom	Romakëve
+*1Cor	1 e Korintasve
+*2Cor	2 e Korintasve
+*Gal	Galatasve
+*Eph	Efesianëve
+*Phil	Filipianëve
+*Col	Kolosianëve
+*1Thess	1 e Thesalonikasve
+*2Thess	2 e Thesalonikasve
+*1Tim	1 e Timoteut
+*2Tim	2 e Timoteut
+*Titus	Titit
+*Phlm	Filemonit
+*Heb	Hebrenjve
+*Jas	Jakobi
+*1Pet	1 e Pjetrit
+*2Pet	2 e Pjetrit
+*1John	1 e Gjonit
+*2John	2 e Gjonit
+*3John	3 e Gjonit
+*Jude	Juda
+*Rev	Zbulesa	Zbu
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

@@ -1,0 +1,392 @@
+1Chr	इतिहास 1ला भाग
+1Chr	इतिहास १ला भाग
+1Chr	1. Itihas
+1Chr	1. इतिहास
+1Chr	1 Itihas
+1Chr	1 इतिहास
+1Chr	1. इति
+1Chr	1 इति
+1Chr	1Chr
+1Cor	1. Kurinthiayon
+1Cor	1. कुरिन्यि़यों
+1Cor	1 Kurinthiayon
+1Cor	1 कुरिन्यि़यों
+1Cor	1. कुरिन्थियों
+1Cor	1 कुरिन्थियों
+1Cor	1. कुरन्थियों
+1Cor	1. कुरिन्थियो
+1Cor	1 कुरन्थियों
+1Cor	1 कुरिन्थियो
+1Cor	1. कोरिन्‍थी
+1Cor	1 कोरिन्‍थी
+1Cor	1. कुरिन्थ
+1Cor	1 कुरिन्थ
+1Cor	1Cor
+1Esd	1Esd
+1John	1. Yoohanna
+1John	1 Yoohanna
+1John	1. युहत्रा
+1John	1. यूहन्ना
+1John	1 युहत्रा
+1John	1 यूहन्ना
+1John	1John
+1Kgs	राजाओ का विर्तान्त 1ला भाग्
+1Kgs	राजाओ का विर्तान्त १ला भाग्
+1Kgs	1. राजाओं
+1Kgs	1 राजाओं
+1Kgs	1. Raja
+1Kgs	1. राजा
+1Kgs	1 Raja
+1Kgs	1 राजा
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	1. Pataras
+1Pet	1 Pataras
+1Pet	1. पत्रुस
+1Pet	1 पत्रुस
+1Pet	1. पतरस
+1Pet	1 पतरस
+1Pet	1. पतर
+1Pet	1 पतर
+1Pet	1Pet
+1Sam	शमुऐल की 1ली पुस्तक
+1Sam	शमुऐल की १ली पुस्तक
+1Sam	1. Shamooael
+1Sam	1 Shamooael
+1Sam	1. शमूएल
+1Sam	1 शमूएल
+1Sam	1. शमू
+1Sam	1 शमू
+1Sam	1Sam
+1Thess	1. Thaissaluneekiyon
+1Thess	1 Thaissaluneekiyon
+1Thess	1. थिस्सलुनीकियों
+1Thess	1 थिस्सलुनीकियों
+1Thess	1. थिसलुनिकी
+1Thess	1 थिसलुनिकी
+1Thess	1. थिस्स
+1Thess	1 थिस्स
+1Thess	1Thess
+1Tim	1. Teemuathaiyus
+1Tim	1 Teemuathaiyus
+1Tim	1. तीमुाथैयुस
+1Tim	1 तीमुाथैयुस
+1Tim	1. तिमुथियुस
+1Tim	1. तीमुथियुस
+1Tim	1 तिमुथियुस
+1Tim	1 तीमुथियुस
+1Tim	1. तीम
+1Tim	1 तीम
+1Tim	1Tim
+2Chr	इतिहास 2रा भाग
+2Chr	इतिहास २रा भाग
+2Chr	2. Itihas
+2Chr	2. इतिहास
+2Chr	2 Itihas
+2Chr	2 इतिहास
+2Chr	2. इति
+2Chr	2 इति
+2Chr	2Chr
+2Cor	2. Kurinthiayon
+2Cor	2. कुरिन्यि़यों
+2Cor	2 Kurinthiayon
+2Cor	2 कुरिन्यि़यों
+2Cor	2. कुरिन्थियों
+2Cor	2 कुरिन्थियों
+2Cor	2. कुरन्थियों
+2Cor	2. कुरिन्थियो
+2Cor	2 कुरन्थियों
+2Cor	2 कुरिन्थियो
+2Cor	2. कोरिन्‍थी
+2Cor	2 कोरिन्‍थी
+2Cor	2. कुरिन्थ
+2Cor	2 कुरिन्थ
+2Cor	2Cor
+2Esd	2Esd
+2John	2. Yoohanna
+2John	2 Yoohanna
+2John	2. युहत्रा
+2John	2. यूहन्ना
+2John	2 युहत्रा
+2John	2 यूहन्ना
+2John	2John
+2Kgs	राजाओ का विर्तान्त 2रा भाग
+2Kgs	राजाओ का विर्तान्त २रा भाग
+2Kgs	2. राजाओं
+2Kgs	2 राजाओं
+2Kgs	2. Raja
+2Kgs	2. राजा
+2Kgs	2 Raja
+2Kgs	2 राजा
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	2. Pataras
+2Pet	2 Pataras
+2Pet	2. पत्रुस
+2Pet	2 पत्रुस
+2Pet	2. पतरस
+2Pet	2 पतरस
+2Pet	2. पतर
+2Pet	2 पतर
+2Pet	2Pet
+2Sam	शमुऐयल की 2री पुस्तक
+2Sam	शमुऐयल की २री पुस्तक
+2Sam	2. Shamooael
+2Sam	2 Shamooael
+2Sam	2. शमूएल
+2Sam	2 शमूएल
+2Sam	2. शमू
+2Sam	2 शमू
+2Sam	2Sam
+2Thess	2. Thaissaluneekiyon
+2Thess	2 Thaissaluneekiyon
+2Thess	2. थिस्सलुनीकियों
+2Thess	2 थिस्सलुनीकियों
+2Thess	2. थिसलुनिकी
+2Thess	2 थिसलुनिकी
+2Thess	2. थिस्स
+2Thess	2 थिस्स
+2Thess	2Thess
+2Tim	2. Teemuathaiyus
+2Tim	2 Teemuathaiyus
+2Tim	2. तीमुाथैयुस
+2Tim	2 तीमुाथैयुस
+2Tim	2. तिमुथियुस
+2Tim	2. तीमुथियुस
+2Tim	2 तिमुथियुस
+2Tim	2 तीमुथियुस
+2Tim	2. तीम
+2Tim	2 तीम
+2Tim	2Tim
+3John	3. Yoohanna
+3John	3 Yoohanna
+3John	3. युहत्रा
+3John	3. यूहन्ना
+3John	3 युहत्रा
+3John	3 यूहन्ना
+3John	3John
+3Macc	3Macc
+4Macc	4Macc
+Acts	प्रेरितों के कामों
+Acts	Praeriton Ke Kam
+Acts	प्रेरितों के काम
+Acts	मसीह-दूत
+Acts	प्र. क
+Acts	प्र क
+Acts	प्र.क
+Acts	Acts
+Acts	प्रक
+Amos	Amos
+Amos	आमोस
+Bar	Bar
+Bel	Bel
+Col	Kulussaiyon
+Col	कुलुस्सियों
+Col	कुलुस्‍सी
+Col	कुलुस्सि
+Col	Col
+Dan	Daaniyyel
+Dan	दानिय्येल
+Dan	दानिय्यल
+Dan	दानि
+Dan	Dan
+Deut	Vyavasthaavivaran
+Deut	व्यवस्था विवरण
+Deut	व्य्वस्थाविवरन
+Deut	व्यवस्थाविवरण
+Deut	व्यवस्था
+Deut	Deut
+Eccl	Sabhopadeshak
+Eccl	सभोपदेशक
+Eccl	Eccl
+Eccl	सभो
+EpJer	EpJer
+Eph	Iafisiyon
+Eph	इफिसियों
+Eph	इफिसि
+Eph	इफिसी
+Eph	Eph
+Esth	Aester
+Esth	एस्तेर
+Esth	ऐस्तेर
+Esth	Esth
+Exod	Nirgaman
+Exod	निर्गमन
+Exod	Exod
+Ezek	Yahejakel
+Ezek	यहेजकेल
+Ezek	Ezek
+Ezek	यहेज
+Ezra	Aejra
+Ezra	एज्रा
+Ezra	Ezra
+Gal	Galatiyon
+Gal	गलातियों
+Gal	गलतियों
+Gal	गलाति
+Gal	गलाती
+Gal	Gal
+Gen	उत्पत्ति
+Gen	Utpaati
+Gen	उत्पाति
+Gen	Gen
+GkEsth	GkEsth
+Hab	Habakkook
+Hab	हबक्कूक
+Hab	Hab
+Hab	हबक
+Hag	Haggaai
+Hag	हाग्गे
+Hag	हाग्गै
+Hag	Hag
+Heb	Ibraaaniyon
+Heb	इब्रानियों
+Heb	इब्रानि
+Heb	इब्रानी
+Heb	Heb
+Hos	Hosho
+Hos	होशे
+Hos	Hos
+Isa	yashaayaah
+Isa	यशायाह
+Isa	यशाया
+Isa	Isa
+Isa	यशा
+Jas	Yakoob
+Jas	याकूब
+Jas	Jas
+Jdt	Jdt
+Jer	Yirmayah
+Jer	यिर्मयाह
+Jer	यिर्म
+Jer	Jer
+Job	Ayyoob
+Job	अय्यूब
+Job	अययुब
+Job	Job
+Joel	Yoael
+Joel	Joel
+Joel	योएल
+John	Yuhanna
+John	युहत्रा
+John	यूहन्ना
+John	John
+Jonah	Jonah
+Jonah	Yona
+Jonah	योना
+Josh	Yahoshoo
+Josh	यहोशु
+Josh	यहोशू
+Josh	Josh
+Jude	Yahooda
+Jude	यहूदा
+Jude	Jude
+Judg	न्यायिय का विर्तान्त
+Judg	न्यायियों
+Judg	Nyayiyon
+Judg	Judg
+Lam	Vilapageet
+Lam	विलापगीत
+Lam	विलापगेत
+Lam	विलाप
+Lam	Lam
+Lev	Laaivyavyavastha
+Lev	लैव्य्व्य्वस्था
+Lev	लैव्यव्यवस्था
+Lev	लैव्यव्यवस्थ
+Lev	लैव्यवस्था
+Lev	लैव्य
+Lev	Lev
+Luke	Looka
+Luke	Luke
+Luke	लूका
+Mal	Malakee
+Mal	मलाकी
+Mal	Mal
+Mark	Marakus
+Mark	मरकुस
+Mark	Mark
+Matt	Mattee
+Matt	मत्ती
+Matt	Matt
+Mic	Meeka
+Mic	मीका
+Mic	Mic
+Nah	Nahoom
+Nah	नहूम
+Nah	Nah
+Neh	न्हेम्याह
+Neh	Nahemyah
+Neh	नहेमायाह
+Neh	नहेम्याह
+Neh	नहेमा
+Neh	Neh
+Num	Ginatee
+Num	गिनती
+Num	Num
+Obad	Obadhah
+Obad	ओबद्दाह
+Obad	ओबद्याह
+Obad	ओबेधाह
+Obad	ओबधाह
+Obad	Obad
+Obad	ओब
+Phil	Filippaiyon
+Phil	फिलिप्पियों
+Phil	फिलिप्‍पी
+Phil	फिलिप्पि
+Phil	Phil
+Phlm	Filemon
+Phlm	फिलेमोन
+Phlm	Phlm
+Phlm	फले
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	Neetivachan
+Prov	नीति वचन
+Prov	नीतिबचन
+Prov	नीतिवचन
+Prov	Prov
+Prov	नीति
+Ps	भजन-सहिन्ता
+Ps	भजन संहिता
+Ps	Bhjan
+Ps	भजन
+Ps	Ps
+Rev	Prakashaitavakya
+Rev	प्रकाशित-वाक्‍य
+Rev	प्रकाशित वाक्य
+Rev	प्रकाशितवाक्य
+Rev	प्र. व
+Rev	प्र व
+Rev	Rev
+Rom	Romiyon
+Rom	रोमियों
+Rom	रोमियो
+Rom	रोमी
+Rom	Rom
+Ruth	Root
+Ruth	Ruth
+Ruth	रुत
+Ruth	रूत
+SgThree	SgThree
+Sir	Sir
+Song	Reshthageet
+Song	स्रेस्ट गीत
+Song	श्रेष्ठगीत
+Song	श्रेष्ठ
+Song	Song
+Sus	Sus
+Titus	Teetus
+Titus	Titus
+Titus	तीतुस
+Tob	Tob
+Wis	Wis
+Zech	Jakaryah
+Zech	जकयार्ह
+Zech	जकर्याह
+Zech	Zech
+Zeph	Sapanyah
+Zeph	सपन्याह
+Zeph	Zeph
+Zeph	सपन

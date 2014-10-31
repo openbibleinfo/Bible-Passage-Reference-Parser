@@ -85,13 +85,13 @@
     });
     return it("should handle book: Gen (ko)", function() {
       
-		expect(p.parse("창세기 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Gen 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("창세기 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("창세 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("창 1:1").osis()).toEqual("Gen.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("창세기 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("GEN 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("창세기 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("창세 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("창 1:1").osis()).toEqual("Gen.1.1")
 		;
@@ -145,8 +145,8 @@
     });
     return it("should handle book: Bel (ko)", function() {
       
-		expect(p.parse("벨과 용 1:1").osis()).toEqual("Bel.1.1")
 		expect(p.parse("벨과 뱀 1:1").osis()).toEqual("Bel.1.1")
+		expect(p.parse("벨과 용 1:1").osis()).toEqual("Bel.1.1")
 		expect(p.parse("Bel 1:1").osis()).toEqual("Bel.1.1")
 		;
       return true;
@@ -168,13 +168,13 @@
     });
     return it("should handle book: Num (ko)", function() {
       
-		expect(p.parse("민수기 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Num 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("민수기 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("민수 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("민 1:1").osis()).toEqual("Num.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("민수기 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUM 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("민수기 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("민수 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("민 1:1").osis()).toEqual("Num.1.1")
 		;
@@ -199,11 +199,11 @@
       
 		expect(p.parse("벤시라크의 지혜 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("벤시리크의 지혜 1:1").osis()).toEqual("Sir.1.1")
-		expect(p.parse("벤시라크 지혜 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("벤시라의 지혜 1:1").osis()).toEqual("Sir.1.1")
+		expect(p.parse("벤시라크 지혜 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("벤시라 지혜 1:1").osis()).toEqual("Sir.1.1")
-		expect(p.parse("집회서 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("Sir 1:1").osis()).toEqual("Sir.1.1")
+		expect(p.parse("집회서 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("집회 1:1").osis()).toEqual("Sir.1.1")
 		;
       return true;
@@ -303,15 +303,15 @@
     });
     return it("should handle book: Rev (ko)", function() {
       
-		expect(p.parse("요한 묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한 계시록 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("요한 묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한계시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Rev 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("묵시 1:1").osis()).toEqual("Rev.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("요한 묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한 계시록 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("요한 묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한계시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("REV 1:1").osis()).toEqual("Rev.1.1")
@@ -419,14 +419,14 @@
     return it("should handle book: Judg (ko)", function() {
       
 		expect(p.parse("Judg 1:1").osis()).toEqual("Judg.1.1")
-		expect(p.parse("판관기 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("사사기 1:1").osis()).toEqual("Judg.1.1")
+		expect(p.parse("판관기 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("판관 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("삿 1:1").osis()).toEqual("Judg.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("JUDG 1:1").osis()).toEqual("Judg.1.1")
-		expect(p.parse("판관기 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("사사기 1:1").osis()).toEqual("Judg.1.1")
+		expect(p.parse("판관기 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("판관 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("삿 1:1").osis()).toEqual("Judg.1.1")
 		;
@@ -554,16 +554,16 @@
 		expect(p.parse("사무엘기 하권 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("사무엘 하 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("사무엘기하 1:1").osis()).toEqual("2Sam.1.1")
-		expect(p.parse("사무엘하 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2Sam 1:1").osis()).toEqual("2Sam.1.1")
+		expect(p.parse("사무엘하 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2사무 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("삼하 1:1").osis()).toEqual("2Sam.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("사무엘기 하권 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("사무엘 하 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("사무엘기하 1:1").osis()).toEqual("2Sam.1.1")
-		expect(p.parse("사무엘하 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2SAM 1:1").osis()).toEqual("2Sam.1.1")
+		expect(p.parse("사무엘하 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("2사무 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("삼하 1:1").osis()).toEqual("2Sam.1.1")
 		;
@@ -589,16 +589,16 @@
 		expect(p.parse("사무엘기 상권 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("사무엘 상 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("사무엘기상 1:1").osis()).toEqual("1Sam.1.1")
-		expect(p.parse("사무엘상 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1Sam 1:1").osis()).toEqual("1Sam.1.1")
+		expect(p.parse("사무엘상 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1사무 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("삼상 1:1").osis()).toEqual("1Sam.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("사무엘기 상권 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("사무엘 상 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("사무엘기상 1:1").osis()).toEqual("1Sam.1.1")
-		expect(p.parse("사무엘상 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1SAM 1:1").osis()).toEqual("1Sam.1.1")
+		expect(p.parse("사무엘상 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("1사무 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("삼상 1:1").osis()).toEqual("1Sam.1.1")
 		;
@@ -623,15 +623,15 @@
       
 		expect(p.parse("열왕기 하권 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("열왕기 하 1:1").osis()).toEqual("2Kgs.1.1")
-		expect(p.parse("열왕기하 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2Kgs 1:1").osis()).toEqual("2Kgs.1.1")
+		expect(p.parse("열왕기하 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2열왕 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("왕하 1:1").osis()).toEqual("2Kgs.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("열왕기 하권 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("열왕기 하 1:1").osis()).toEqual("2Kgs.1.1")
-		expect(p.parse("열왕기하 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2KGS 1:1").osis()).toEqual("2Kgs.1.1")
+		expect(p.parse("열왕기하 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2열왕 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("왕하 1:1").osis()).toEqual("2Kgs.1.1")
 		;
@@ -781,18 +781,18 @@
     return it("should handle book: Esth (ko)", function() {
       
 		expect(p.parse("에스테르기 1:1").osis()).toEqual("Esth.1.1")
-		expect(p.parse("에스더기 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Esth 1:1").osis()).toEqual("Esth.1.1")
-		expect(p.parse("에스텔 1:1").osis()).toEqual("Esth.1.1")
+		expect(p.parse("에스더기 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("에스더 1:1").osis()).toEqual("Esth.1.1")
+		expect(p.parse("에스텔 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("에스 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("에 1:1").osis()).toEqual("Esth.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("에스테르기 1:1").osis()).toEqual("Esth.1.1")
-		expect(p.parse("에스더기 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("ESTH 1:1").osis()).toEqual("Esth.1.1")
-		expect(p.parse("에스텔 1:1").osis()).toEqual("Esth.1.1")
+		expect(p.parse("에스더기 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("에스더 1:1").osis()).toEqual("Esth.1.1")
+		expect(p.parse("에스텔 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("에스 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("에 1:1").osis()).toEqual("Esth.1.1")
 		;
@@ -950,12 +950,12 @@
     });
     return it("should handle book: Acts (ko)", function() {
       
-		expect(p.parse("사도행전 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("Acts 1:1").osis()).toEqual("Acts.1.1")
+		expect(p.parse("사도행전 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("사도 1:1").osis()).toEqual("Acts.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("사도행전 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("ACTS 1:1").osis()).toEqual("Acts.1.1")
+		expect(p.parse("사도행전 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("사도 1:1").osis()).toEqual("Acts.1.1")
 		;
       return true;
@@ -978,14 +978,14 @@
     return it("should handle book: Eccl (ko)", function() {
       
 		expect(p.parse("Eccl 1:1").osis()).toEqual("Eccl.1.1")
-		expect(p.parse("코헬렛 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("전도서 1:1").osis()).toEqual("Eccl.1.1")
+		expect(p.parse("코헬렛 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("코헬 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("전 1:1").osis()).toEqual("Eccl.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ECCL 1:1").osis()).toEqual("Eccl.1.1")
-		expect(p.parse("코헬렛 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("전도서 1:1").osis()).toEqual("Eccl.1.1")
+		expect(p.parse("코헬렛 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("코헬 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("전 1:1").osis()).toEqual("Eccl.1.1")
 		;
@@ -1030,15 +1030,15 @@
     return it("should handle book: Jer (ko)", function() {
       
 		expect(p.parse("예레미야서 1:1").osis()).toEqual("Jer.1.1")
-		expect(p.parse("예레미야 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("예레미아 1:1").osis()).toEqual("Jer.1.1")
+		expect(p.parse("예레미야 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("Jer 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("예레 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("렘 1:1").osis()).toEqual("Jer.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("예레미야서 1:1").osis()).toEqual("Jer.1.1")
-		expect(p.parse("예레미야 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("예레미아 1:1").osis()).toEqual("Jer.1.1")
+		expect(p.parse("예레미야 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("JER 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("예레 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("렘 1:1").osis()).toEqual("Jer.1.1")
@@ -1063,14 +1063,14 @@
     return it("should handle book: Phlm (ko)", function() {
       
 		expect(p.parse("필레몬에게 보낸 서간 1:1").osis()).toEqual("Phlm.1.1")
-		expect(p.parse("빌레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Phlm 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("빌레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레 1:1").osis()).toEqual("Phlm.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("필레몬에게 보낸 서간 1:1").osis()).toEqual("Phlm.1.1")
-		expect(p.parse("빌레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("PHLM 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("빌레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레 1:1").osis()).toEqual("Phlm.1.1")
 		;
@@ -1093,13 +1093,13 @@
     });
     return it("should handle book: Lev (ko)", function() {
       
-		expect(p.parse("레위기 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lev 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("레위기 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("레위 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("레 1:1").osis()).toEqual("Lev.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("레위기 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LEV 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("레위기 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("레위 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("레 1:1").osis()).toEqual("Lev.1.1")
 		;
@@ -1123,17 +1123,17 @@
     return it("should handle book: Ezek (ko)", function() {
       
 		expect(p.parse("에제키엘서 1:1").osis()).toEqual("Ezek.1.1")
-		expect(p.parse("에제키엘 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("Ezek 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("에스겔서 1:1").osis()).toEqual("Ezek.1.1")
+		expect(p.parse("에제키엘 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("에스겔 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("에제 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("겔 1:1").osis()).toEqual("Ezek.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("에제키엘서 1:1").osis()).toEqual("Ezek.1.1")
-		expect(p.parse("에제키엘 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("EZEK 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("에스겔서 1:1").osis()).toEqual("Ezek.1.1")
+		expect(p.parse("에제키엘 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("에스겔 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("에제 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("겔 1:1").osis()).toEqual("Ezek.1.1")
@@ -1158,14 +1158,14 @@
     return it("should handle book: Dan (ko)", function() {
       
 		expect(p.parse("다니엘서 1:1").osis()).toEqual("Dan.1.1")
-		expect(p.parse("다니엘 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("Dan 1:1").osis()).toEqual("Dan.1.1")
+		expect(p.parse("다니엘 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("다니 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("단 1:1").osis()).toEqual("Dan.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("다니엘서 1:1").osis()).toEqual("Dan.1.1")
-		expect(p.parse("다니엘 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("DAN 1:1").osis()).toEqual("Dan.1.1")
+		expect(p.parse("다니엘 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("다니 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("단 1:1").osis()).toEqual("Dan.1.1")
 		;
@@ -1279,17 +1279,17 @@
     });
     return it("should handle book: Ezra (ko)", function() {
       
-		expect(p.parse("에즈라기 1:1").osis()).toEqual("Ezra.1.1")
-		expect(p.parse("에스라기 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ezra 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("에스라기 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("에즈라기 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("에스라 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("에즈라 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("에즈 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("스 1:1").osis()).toEqual("Ezra.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("에즈라기 1:1").osis()).toEqual("Ezra.1.1")
-		expect(p.parse("에스라기 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("EZRA 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("에스라기 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("에즈라기 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("에스라 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("에즈라 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("에즈 1:1").osis()).toEqual("Ezra.1.1")
@@ -1315,17 +1315,17 @@
     return it("should handle book: Obad (ko)", function() {
       
 		expect(p.parse("오바드야서 1:1").osis()).toEqual("Obad.1.1")
+		expect(p.parse("Obad 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바댜서 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바디야 1:1").osis()).toEqual("Obad.1.1")
-		expect(p.parse("Obad 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바댜 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("옵 1:1").osis()).toEqual("Obad.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("오바드야서 1:1").osis()).toEqual("Obad.1.1")
+		expect(p.parse("OBAD 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바댜서 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바디야 1:1").osis()).toEqual("Obad.1.1")
-		expect(p.parse("OBAD 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바댜 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("오바 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("옵 1:1").osis()).toEqual("Obad.1.1")
@@ -1378,18 +1378,18 @@
     });
     return it("should handle book: Mic (ko)", function() {
       
-		expect(p.parse("미가서 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("Mic 1:1").osis()).toEqual("Mic.1.1")
+		expect(p.parse("미가서 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("미카서 1:1").osis()).toEqual("Mic.1.1")
-		expect(p.parse("미카 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("미가 1:1").osis()).toEqual("Mic.1.1")
+		expect(p.parse("미카 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("미 1:1").osis()).toEqual("Mic.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("미가서 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("MIC 1:1").osis()).toEqual("Mic.1.1")
+		expect(p.parse("미가서 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("미카서 1:1").osis()).toEqual("Mic.1.1")
-		expect(p.parse("미카 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("미가 1:1").osis()).toEqual("Mic.1.1")
+		expect(p.parse("미카 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("미 1:1").osis()).toEqual("Mic.1.1")
 		;
       return true;
@@ -1411,8 +1411,8 @@
     });
     return it("should handle book: Sus (ko)", function() {
       
-		expect(p.parse("수산나 1:1").osis()).toEqual("Sus.1.1")
 		expect(p.parse("Sus 1:1").osis()).toEqual("Sus.1.1")
+		expect(p.parse("수산나 1:1").osis()).toEqual("Sus.1.1")
 		;
       return true;
     });
@@ -1433,13 +1433,13 @@
     });
     return it("should handle book: Nah (ko)", function() {
       
-		expect(p.parse("나훔서 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("Nah 1:1").osis()).toEqual("Nah.1.1")
+		expect(p.parse("나훔서 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("나훔 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("나 1:1").osis()).toEqual("Nah.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("나훔서 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("NAH 1:1").osis()).toEqual("Nah.1.1")
+		expect(p.parse("나훔서 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("나훔 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("나 1:1").osis()).toEqual("Nah.1.1")
 		;
@@ -1462,18 +1462,18 @@
     });
     return it("should handle book: Hab (ko)", function() {
       
-		expect(p.parse("하박국서 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("하바쿡서 1:1").osis()).toEqual("Hab.1.1")
-		expect(p.parse("하바꾹 1:1").osis()).toEqual("Hab.1.1")
+		expect(p.parse("하박국서 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("Hab 1:1").osis()).toEqual("Hab.1.1")
+		expect(p.parse("하바꾹 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("하박국 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("하바 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("합 1:1").osis()).toEqual("Hab.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("하박국서 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("하바쿡서 1:1").osis()).toEqual("Hab.1.1")
-		expect(p.parse("하바꾹 1:1").osis()).toEqual("Hab.1.1")
+		expect(p.parse("하박국서 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("HAB 1:1").osis()).toEqual("Hab.1.1")
+		expect(p.parse("하바꾹 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("하박국 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("하바 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("합 1:1").osis()).toEqual("Hab.1.1")
@@ -1499,16 +1499,16 @@
       
 		expect(p.parse("스바니야서 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("Zeph 1:1").osis()).toEqual("Zeph.1.1")
-		expect(p.parse("스바니야 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("스바냐서 1:1").osis()).toEqual("Zeph.1.1")
+		expect(p.parse("스바니야 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("스바냐 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("스바 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("습 1:1").osis()).toEqual("Zeph.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("스바니야서 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("ZEPH 1:1").osis()).toEqual("Zeph.1.1")
-		expect(p.parse("스바니야 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("스바냐서 1:1").osis()).toEqual("Zeph.1.1")
+		expect(p.parse("스바니야 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("스바냐 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("스바 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("습 1:1").osis()).toEqual("Zeph.1.1")
@@ -1533,19 +1533,19 @@
     return it("should handle book: Hag (ko)", function() {
       
 		expect(p.parse("하까이서 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("학개서 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("Hag 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("학개 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("학개서 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("하까 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("하깨 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("학개 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("학 1:1").osis()).toEqual("Hag.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("하까이서 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("학개서 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("HAG 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("학개 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("학개서 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("하까 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("하깨 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("학개 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("학 1:1").osis()).toEqual("Hag.1.1")
 		;
       return true;
@@ -1568,17 +1568,17 @@
     return it("should handle book: Zech (ko)", function() {
       
 		expect(p.parse("즈카르야서 1:1").osis()).toEqual("Zech.1.1")
-		expect(p.parse("즈가리야 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("Zech 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("스가랴서 1:1").osis()).toEqual("Zech.1.1")
+		expect(p.parse("즈가리야 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("스가랴 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("즈카 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("슥 1:1").osis()).toEqual("Zech.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("즈카르야서 1:1").osis()).toEqual("Zech.1.1")
-		expect(p.parse("즈가리야 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("ZECH 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("스가랴서 1:1").osis()).toEqual("Zech.1.1")
+		expect(p.parse("즈가리야 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("스가랴 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("즈카 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("슥 1:1").osis()).toEqual("Zech.1.1")
@@ -1602,17 +1602,17 @@
     });
     return it("should handle book: Mal (ko)", function() {
       
-		expect(p.parse("말라키서 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("말라기서 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("말라기 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("말라키서 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("Mal 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("말라기 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("말라 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("말 1:1").osis()).toEqual("Mal.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("말라키서 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("말라기서 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("말라기 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("말라키서 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("MAL 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("말라기 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("말라 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("말 1:1").osis()).toEqual("Mal.1.1")
 		;
@@ -1727,16 +1727,16 @@
 		expect(p.parse("마르코 복음서 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르코 복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마가복음서 1:1").osis()).toEqual("Mark.1.1")
-		expect(p.parse("마가복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Mark 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("마가복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마가 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르 1:1").osis()).toEqual("Mark.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("마르코 복음서 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르코 복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마가복음서 1:1").osis()).toEqual("Mark.1.1")
-		expect(p.parse("마가복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("MARK 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("마가복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마가 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르 1:1").osis()).toEqual("Mark.1.1")
 		;
@@ -1762,16 +1762,16 @@
 		expect(p.parse("루카 복음서 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가복음서 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("루카 복음 1:1").osis()).toEqual("Luke.1.1")
-		expect(p.parse("누가복음 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Luke 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("누가복음 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("루카 1:1").osis()).toEqual("Luke.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("루카 복음서 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가복음서 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("루카 복음 1:1").osis()).toEqual("Luke.1.1")
-		expect(p.parse("누가복음 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LUKE 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("누가복음 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("루카 1:1").osis()).toEqual("Luke.1.1")
 		;
@@ -1827,14 +1827,14 @@
       
 		expect(p.parse("요한의 둘째 서간 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2John 1:1").osis()).toEqual("2John.1.1")
-		expect(p.parse("요한이서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("요한2서 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("요한이서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2요한 1:1").osis()).toEqual("2John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한의 둘째 서간 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2JOHN 1:1").osis()).toEqual("2John.1.1")
-		expect(p.parse("요한이서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("요한2서 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("요한이서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2요한 1:1").osis()).toEqual("2John.1.1")
 		;
       return true;
@@ -1858,14 +1858,14 @@
       
 		expect(p.parse("요한의 셋째 서간 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3John 1:1").osis()).toEqual("3John.1.1")
-		expect(p.parse("요한삼서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("요한3서 1:1").osis()).toEqual("3John.1.1")
+		expect(p.parse("요한삼서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3요한 1:1").osis()).toEqual("3John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한의 셋째 서간 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3JOHN 1:1").osis()).toEqual("3John.1.1")
-		expect(p.parse("요한삼서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("요한3서 1:1").osis()).toEqual("3John.1.1")
+		expect(p.parse("요한삼서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3요한 1:1").osis()).toEqual("3John.1.1")
 		;
       return true;
@@ -1888,15 +1888,15 @@
     return it("should handle book: John (ko)", function() {
       
 		expect(p.parse("요한 복음서 1:1").osis()).toEqual("John.1.1")
-		expect(p.parse("요한복음서 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 복음 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("요한복음서 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("John 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한복음 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 1:1").osis()).toEqual("John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한 복음서 1:1").osis()).toEqual("John.1.1")
-		expect(p.parse("요한복음서 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 복음 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("요한복음서 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("JOHN 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한복음 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 1:1").osis()).toEqual("John.1.1")
@@ -1921,13 +1921,13 @@
     return it("should handle book: Rom (ko)", function() {
       
 		expect(p.parse("로마 신자들에게 보낸 서간 1:1").osis()).toEqual("Rom.1.1")
-		expect(p.parse("로마서 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("Rom 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("로마서 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("로마 1:1").osis()).toEqual("Rom.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("로마 신자들에게 보낸 서간 1:1").osis()).toEqual("Rom.1.1")
-		expect(p.parse("로마서 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ROM 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("로마서 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("로마 1:1").osis()).toEqual("Rom.1.1")
 		;
       return true;
@@ -1950,16 +1950,16 @@
     return it("should handle book: 2Cor (ko)", function() {
       
 		expect(p.parse("코린토 신자들에게 보낸 둘째 서간 1:1").osis()).toEqual("2Cor.1.1")
-		expect(p.parse("코린토2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("고린도2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("고린도후서 1:1").osis()).toEqual("2Cor.1.1")
+		expect(p.parse("코린토2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2Cor 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2코린 1:1").osis()).toEqual("2Cor.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("코린토 신자들에게 보낸 둘째 서간 1:1").osis()).toEqual("2Cor.1.1")
-		expect(p.parse("코린토2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("고린도2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("고린도후서 1:1").osis()).toEqual("2Cor.1.1")
+		expect(p.parse("코린토2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2COR 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2코린 1:1").osis()).toEqual("2Cor.1.1")
 		;
@@ -1983,16 +1983,16 @@
     return it("should handle book: 1Cor (ko)", function() {
       
 		expect(p.parse("코린토 신자들에게 보낸 첫째 서간 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("고린도1서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("고린도전서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("코린토1서 1:1").osis()).toEqual("1Cor.1.1")
-		expect(p.parse("고린도1서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1Cor 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1코린 1:1").osis()).toEqual("1Cor.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("코린토 신자들에게 보낸 첫째 서간 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("고린도1서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("고린도전서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("코린토1서 1:1").osis()).toEqual("1Cor.1.1")
-		expect(p.parse("고린도1서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1COR 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1코린 1:1").osis()).toEqual("1Cor.1.1")
 		;
@@ -2047,14 +2047,14 @@
     return it("should handle book: Phil (ko)", function() {
       
 		expect(p.parse("필리피 신자들에게 보낸 서간 1:1").osis()).toEqual("Phil.1.1")
-		expect(p.parse("빌립보서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("빌립보서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리피서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리 1:1").osis()).toEqual("Phil.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("필리피 신자들에게 보낸 서간 1:1").osis()).toEqual("Phil.1.1")
-		expect(p.parse("빌립보서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("빌립보서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리피서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리 1:1").osis()).toEqual("Phil.1.1")
 		;
@@ -2078,14 +2078,14 @@
     return it("should handle book: Col (ko)", function() {
       
 		expect(p.parse("콜로새 신자들에게 보낸 서간 1:1").osis()).toEqual("Col.1.1")
-		expect(p.parse("콜로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("골로새서 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("콜로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Col 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("콜로 1:1").osis()).toEqual("Col.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("콜로새 신자들에게 보낸 서간 1:1").osis()).toEqual("Col.1.1")
-		expect(p.parse("콜로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("골로새서 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("콜로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("COL 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("콜로 1:1").osis()).toEqual("Col.1.1")
 		;
@@ -2110,15 +2110,15 @@
       
 		expect(p.parse("테살로니카 신자들에게 보낸 둘째 서간 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("데살로니가2서 1:1").osis()).toEqual("2Thess.1.1")
-		expect(p.parse("테살로니카2서 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("데살로니가후서 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("테살로니카2서 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2Thess 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2테살 1:1").osis()).toEqual("2Thess.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("테살로니카 신자들에게 보낸 둘째 서간 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("데살로니가2서 1:1").osis()).toEqual("2Thess.1.1")
-		expect(p.parse("테살로니카2서 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("데살로니가후서 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("테살로니카2서 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2THESS 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2테살 1:1").osis()).toEqual("2Thess.1.1")
 		;
@@ -2142,16 +2142,16 @@
     return it("should handle book: 1Thess (ko)", function() {
       
 		expect(p.parse("테살로니카 신자들에게 보낸 첫째 서간 1:1").osis()).toEqual("1Thess.1.1")
-		expect(p.parse("테살로니카1서 1:1").osis()).toEqual("1Thess.1.1")
-		expect(p.parse("데살로니가전서 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("데살로니가1서 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("데살로니가전서 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("테살로니카1서 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1Thess 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1테살 1:1").osis()).toEqual("1Thess.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("테살로니카 신자들에게 보낸 첫째 서간 1:1").osis()).toEqual("1Thess.1.1")
-		expect(p.parse("테살로니카1서 1:1").osis()).toEqual("1Thess.1.1")
-		expect(p.parse("데살로니가전서 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("데살로니가1서 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("데살로니가전서 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("테살로니카1서 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1THESS 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1테살 1:1").osis()).toEqual("1Thess.1.1")
 		;
@@ -2176,15 +2176,15 @@
       
 		expect(p.parse("티모테오에게 보낸 둘째 서간 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("티모테오2서 1:1").osis()).toEqual("2Tim.1.1")
-		expect(p.parse("디모데후서 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("디모데2서 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("디모데후서 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2Tim 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2티모 1:1").osis()).toEqual("2Tim.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("티모테오에게 보낸 둘째 서간 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("티모테오2서 1:1").osis()).toEqual("2Tim.1.1")
-		expect(p.parse("디모데후서 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("디모데2서 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("디모데후서 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2TIM 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2티모 1:1").osis()).toEqual("2Tim.1.1")
 		;
@@ -2240,14 +2240,14 @@
       
 		expect(p.parse("티토에게 보낸 서간 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Titus 1:1").osis()).toEqual("Titus.1.1")
-		expect(p.parse("티토서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("디도서 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("티토서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("티토 1:1").osis()).toEqual("Titus.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("티토에게 보낸 서간 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITUS 1:1").osis()).toEqual("Titus.1.1")
-		expect(p.parse("티토서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("디도서 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("티토서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("티토 1:1").osis()).toEqual("Titus.1.1")
 		;
       return true;
@@ -2328,14 +2328,14 @@
     return it("should handle book: 2Pet (ko)", function() {
       
 		expect(p.parse("베드로의 둘째 서간 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("베드로후서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("베드로2서 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("베드로후서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2베드 1:1").osis()).toEqual("2Pet.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("베드로의 둘째 서간 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("베드로후서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("베드로2서 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("베드로후서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2베드 1:1").osis()).toEqual("2Pet.1.1")
 		;
@@ -2359,14 +2359,14 @@
     return it("should handle book: 1Pet (ko)", function() {
       
 		expect(p.parse("베드로의 첫째 서간 1:1").osis()).toEqual("1Pet.1.1")
-		expect(p.parse("베드로전서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("베드로1서 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("베드로전서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1Pet 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1베드 1:1").osis()).toEqual("1Pet.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("베드로의 첫째 서간 1:1").osis()).toEqual("1Pet.1.1")
-		expect(p.parse("베드로전서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("베드로1서 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("베드로전서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1PET 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1베드 1:1").osis()).toEqual("1Pet.1.1")
 		;
@@ -2418,9 +2418,9 @@
     });
     return it("should handle book: Tob (ko)", function() {
       
-		expect(p.parse("토빗기 1:1").osis()).toEqual("Tob.1.1")
-		expect(p.parse("토비트 1:1").osis()).toEqual("Tob.1.1")
 		expect(p.parse("Tob 1:1").osis()).toEqual("Tob.1.1")
+		expect(p.parse("토비트 1:1").osis()).toEqual("Tob.1.1")
+		expect(p.parse("토빗기 1:1").osis()).toEqual("Tob.1.1")
 		expect(p.parse("토빗 1:1").osis()).toEqual("Tob.1.1")
 		;
       return true;
@@ -2489,8 +2489,8 @@
     return it("should handle book: 2Macc (ko)", function() {
       
 		expect(p.parse("마카베오기 하권 1:1").osis()).toEqual("2Macc.1.1")
-		expect(p.parse("마카베오하 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2Macc 1:1").osis()).toEqual("2Macc.1.1")
+		expect(p.parse("마카베오하 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2마카 1:1").osis()).toEqual("2Macc.1.1")
 		;
       return true;
@@ -2559,8 +2559,8 @@
     return it("should handle book: 1Macc (ko)", function() {
       
 		expect(p.parse("마카베오기 상권 1:1").osis()).toEqual("1Macc.1.1")
-		expect(p.parse("마카베오상 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1Macc 1:1").osis()).toEqual("1Macc.1.1")
+		expect(p.parse("마카베오상 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1마카 1:1").osis()).toEqual("1Macc.1.1")
 		;
       return true;

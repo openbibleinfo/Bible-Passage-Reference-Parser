@@ -1,0 +1,276 @@
+$FIRST	Første	1
+$SECOND	Anden	2
+$THIRD	Tredje	3
+$FOURTH	Fjerde	4
+$FIFTH	Femte	5
+$AB	[a-e]
+# http://da.wikipedia.org/wiki/Hoseas%E2%80%99_Bog (jf)
+$AND	og	jf
+# http://da.wikipedia.org/wiki/Hoseas%E2%80%99_Bog and http://da.wikipedia.org/wiki/Daniels_Bog and http://da.wikipedia.org/wiki/Anden_Mosebog
+$CHAPTER	kapitlerne	kapitel	kap
+# http://da.wikipedia.org/wiki/Femte_Mosebog
+$FF	ff
+$TITLE	title
+$TRANS	BPH	DO33	DO92
+$TO	-
+# http://da.wikipedia.org/wiki/Paulus%27_f%C3%B8rste_Brev_til_Timotheus and http://www.bibelselskabet.dk/BrugBibelen/BibelenOnline.aspx?book=tob&id=2&chapter=12b and http://da.wikipedia.org/wiki/Judas%27_Brev
+$VERSE	vers	v
+$UNICODE_BLOCK	Latin
+
+Gen	$FIRST Mosebog	Genesis	$FIRST Mos
+Exod	$SECOND Mosebog	Exodus	$SECOND Mos
+Lev	$THIRD Mosebog	Leviticus	$THIRD Mos
+Num	$FOURTH Mosebog	Numeri	$FOURTH Mos
+Deut	$FIFTH Mosebog	Deuteronomium	$FIFTH Mos
+Josh	Josua	Josvabogen	Josvabog	Josvas Bog	Jos
+Judg	Dommer	Dommerbogen	Dom
+Ruth	Rut	Ruths Bog	Ruth
+1Sam	$FIRST Samuel	$FIRST Kongerigernes Bog	$FIRST Samuelsbog	$FIRST Sam
+2Sam	$SECOND Samuel	$SECOND Kongerigernes Bog	$SECOND Samuelsbog	$SECOND Sam
+1Kgs	$FIRST Kongebog	$THIRD Kongerigernes Bog	$FIRST Kong
+2Kgs	$SECOND Kongebog	$FOURTH Kongerigernes Bog	$SECOND Kong
+1Chr	$FIRST Krønikebog	$FIRST Krøn	$FIRST Kron
+2Chr	$SECOND Krønikebog	$SECOND Krøn	$SECOND Kron
+Ezra	Ezra	Ezras Bog
+Neh	Nehemias	Nehemias’ Bog	Neh
+Esth	Ester	Esters Bog	Est
+Job	Job	Jobs Bog	Hiob
+Ps	Salme	Salmernes Bog	Salmerne	Sl
+Prov	Ordsprogene	Ordsprogenes Bog	Ordsp
+Eccl	Prædikeren	Prædikerens Bog	Præd	Prad
+Song	Højsangen	Salomons Højsang	Højs	Hojs
+Isa	Esajas	Esajas' Bog	Jesaia	Es
+Jer	Jeremias	Jeremias' Bog	Jer
+Lam	Klagesangene	Klages
+Ezek	Ezekiel	Ezekiels’ Bog	Ezekiels Bog	Hezechiel	Ez
+Dan	Daniel	Daniels Bog	Dan
+Hos	Hoseas	Hoseas’ Bog	Hos
+Joel	Joel	Joels Bog
+Amos	Amos	Amos' Bog	Am
+Obad	Obadias	Obad	Obadias' Bog
+Jonah	Jonas	Jon	Jonas' Bog
+Mic	Mikas	Mikas Bog	Mika
+Nah	Nahum	Nahums Bog	Nah
+Hab	Habakkuk	Habakkuks Bog	Hab
+Zeph	Zefanias	Sefanias' Bog	Sef
+Hag	Haggaj	Haggajs Bog	Hagg
+Zech	Zakarias	Zakarias' Bog	Zak
+Mal	Malakias	Malakias’ Bog	Mal
+Matt	Matthæus	Matth?æusevangeliet	Matt
+Mark	Markus	Markusevangeliet	Mark
+Luke	Lukas	Lukasevangeliet	Lu?k
+John	Johannes	Johannesevangeliet	Joh
+Acts	Gerninger	Apostlenes Gerninger	Ap.G
+Rom	Romerne	Romerbrevet	Paulus' Brev til Romerne	Rom
+1Cor	$FIRST Korinterne	$FIRST Korintherbrev	Paulus' $FIRST Brev til Korintherne	$FIRST Kor
+2Cor	$SECOND Korinterne	$SECOND Korintherbrev	Andet Korintherbrev	Paulus' Andet Brev til Korintherne	$SECOND Kor
+Gal	Galaterne	Galaterbrevet	Brevet til Galaterne	Paulus' Brev til Galaterne	Gal
+Eph	Efeserne	Efeserbrevet	Paulus' Brev til Efeserne	Ef
+Phil	Filipperne	Filipperbrevet	Paulus' Brev til Filipperne	Fil
+Col	Kolossensern	Kolossenserbrevet	Paulus' Brev til Kolossenserne	Kol
+1Thess	$FIRST Tessalonikerne	$FIRST Thessalonikerbrev	Paulus' $FIRST Brev til Thessalonikerne	$FIRST Thess
+2Thess	$SECOND Tessalonikerne	$SECOND Thessalonikerbrev	Paulus' Andet Brev til Thessalonikerne	$SECOND Thess	Andet Thessalonikerbrev
+1Tim	$FIRST Timoteus	$FIRST Timotheusbrev	Paulus' $FIRST Brev til Timotheus	$FIRST Tim
+2Tim	$SECOND Timoteus	$SECOND Timotheusbrev	Paulus' Andet Brev til Timotheus	$SECOND Tim	Andet Timotheusbrev
+Titus	Titus	Titusbrevet	Paulus' Brev til Titus	Tit
+Phlm	Filemon	Filemonbrevet	Paulus' Brev til Filemon	Filem
+Heb	Hebræerne	Hebræerbrevet	Brevet til Hebræerne	Hebr
+Jas	Jakob	Jakobsbrevet	Jakobs Brev	Jak
+1Pet	$FIRST Peter	$FIRST Petersbrev	Peters $FIRST Brev	$FIRST Pet
+2Pet	$SECOND Peter	$SECOND Petersbrev	Peters Andet Brev	$SECOND Pet	Andet Petersbrev
+1John	$FIRST Johannes	$FIRST Johannesbrev	Johannes' $FIRST Brev	$FIRST Joh
+2John	$SECOND Johannes	$SECOND Johannesbrev	Johannes' Andet Brev	$SECOND Joh	Andet Johannesbrev
+3John	$THIRD Johannes	$THIRD Johannesbrev	Johannes' $THIRD Brev	$THIRD Joh
+Jude	Judas	Judasbrevet	Judas' Brev	Jud
+Rev	Aabenbaringen	Johs. Åbenbaring	Åbenbaringen	Åbenbaringsbogen	Johannesapokalypsen	Apokalypsen	Åb	Johannes' Åbenbaring
+Tob	Tobits Bog	Tob	Tobit
+Jdt	Judits Bog	Judit
+GkEsth	GkEsth
+Wis	Visdommens Bog	Visdommen
+Sir	Siraks Bog	Sirak
+Bar	Baruks Bog	Baruk
+PrAzar	Azarjas bøn
+Sus	Susanna
+Bel	Bel og Dragen
+SgThree	De tre mænds lovsang
+EpJer	Jeremias' Brev
+1Macc	$FIRST Makkabæerbog	$FIRST Makk
+2Macc	$SECOND Makkabæerbog	$SECOND Makk
+3Macc	$THIRD Makkabæerbog	$THIRD Makk
+4Macc	$FOURTH Makkabæerbog	$FOURTH Makk
+1Esd	$THIRD Esdrasbog	$FIRST Esdrasbog
+2Esd	$FOURTH Esdrasbog	$SECOND Esdrasbog
+PrMan	Manasses Bøn
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	1 Mosebog	1 Mos
+*Exod	2 Mosebog	2 Mos
+*Lev	3 Mosebog	3 Mos
+*Num	4 Mosebog	4 Mos
+*Deut	5 Mosebog	5 Mos
+*Josh	Josua	Jos
+*Judg	Dommer	Dom
+*Ruth	Ruth	Ruth
+*1Sam	1 Samuel	1 Sam
+*2Sam	2 Samuel	2 Sam
+*1Kgs	1 Kongebog	1 Kong
+*2Kgs	2 Kongebog	2 Kong
+*1Chr	1 Krønikebog	1 Krøn
+*2Chr	2 Krønikebog	2 Krøn
+*Ezra	Ezra	Ezra
+*Neh	Nehemias	Neh
+*Esth	Ester	Est
+*Job	Job	Job
+*Ps	Salmerne	Sl		Salme
+*Prov	Ordsprogene	Ordsp
+*Eccl	Prædikeren	Prad
+*Song	Højsangen	Højs
+*Isa	Esajas	Es
+*Jer	Jeremias	Jer
+*Lam	Klagesangene	Klages
+*Ezek	Ezekiel	Ez
+*Dan	Daniel	Dan
+*Hos	Hoseas	Hos
+*Joel	Joel	Joel
+*Amos	Amos	Am
+*Obad	Obadias	Obad
+*Jonah	Jonas	Jon
+*Mic	Mikas	Mika
+*Nah	Nahum	Nah
+*Hab	Habakkuk	Hab
+*Zeph	Zefanias	Sef
+*Hag	Haggaj	Hagg
+*Zech	Zakarias	Zak
+*Mal	Malakias	Mal
+*Matt	Matthæus	Matt
+*Mark	Markus	Mark
+*Luke	Lukas	Luk
+*John	Johannes	Joh
+*Acts	Gerninger	Apg
+*Rom	Romerne	Rom
+*1Cor	1 Korinterne	1 Kor
+*2Cor	2 Korinterne	2 Kor
+*Gal	Galaterne	Gal
+*Eph	Efeserne	Ef
+*Phil	Filipperne	Fil
+*Col	Kolossensern	Kol
+*1Thess	1 Thessalonikerbrev	1 Thess
+*2Thess	2 Thessalonikerbrev	2 Thess
+*1Tim	1 Timoteus	1 Tim
+*2Tim	2 Timoteus	2 Tim
+*Titus	Titus	Tit
+*Phlm	Filemon	Filem
+*Heb	Hebræerne	Hebr
+*Jas	Jakob	Jak
+*1Pet	1 Peter	1 Pet
+*2Pet	2 Peter	2 Pet
+*1John	1 Johannes	1 Joh
+*2John	2 Johannes	2 Joh
+*3John	3 Johannes	3 Joh
+*Jude	Judas	Jud
+*Rev	Åbenbaringen	Åb
+*Tob	Tobits Bog	Tob
+*Jdt	Judits Bog
+*GkEsth	GkEsth
+*Wis	Visdommens Bog
+*Sir	Siraks Bog
+*Bar	Baruks Bog
+*PrAzar	Azarjas Bøn
+*Sus	Susanna
+*Bel	Bel og Dragen
+*SgThree	De Tre Mænds Lovsang
+*EpJer	Jeremias’ Brev
+*1Macc	1 Makkabæerbog	1 Makk
+*2Macc	2 Makkabæerbog	2 Makk
+*3Macc	3 Makkabæerbog	3 Makk
+*4Macc	4 Makkabæerbog	4 Makk
+*1Esd	1 Esdrasbog
+*2Esd	2 Esdrasbog
+*PrMan	Manasses Bøn

@@ -1,0 +1,1039 @@
+1Chr	Eerste Kronieken
+1Chr	1e. Kronieken
+1Chr	1. Kronieken
+1Chr	1e Kronieken
+1Chr	I. Kronieken
+1Chr	1 Kronieken
+1Chr	Eerste Kron
+1Chr	I Kronieken
+1Chr	1e. Kron
+1Chr	1. Kron
+1Chr	1e Kron
+1Chr	I. Kron
+1Chr	1 Kron
+1Chr	I Kron
+1Chr	1 Kr
+1Chr	1Chr
+1Cor	Eerste Corinthiers
+1Cor	Eerste Corinthiërs
+1Cor	Eerste Korinthiers
+1Cor	Eerste Korinthiërs
+1Cor	Eerste Corinthier
+1Cor	Eerste Corinthiër
+1Cor	Eerste Corintiers
+1Cor	Eerste Corintiërs
+1Cor	Eerste Korinthier
+1Cor	Eerste Korinthiër
+1Cor	Eerste Korintiers
+1Cor	Eerste Korintiërs
+1Cor	Eerste Corintier
+1Cor	Eerste Corintiër
+1Cor	Eerste Korintier
+1Cor	Eerste Korintiër
+1Cor	1e. Corinthiers
+1Cor	1e. Corinthiërs
+1Cor	1e. Korinthiers
+1Cor	1e. Korinthiërs
+1Cor	Eerste Corinthe
+1Cor	Eerste Korinthe
+1Cor	1. Corinthiers
+1Cor	1. Corinthiërs
+1Cor	1. Korinthiers
+1Cor	1. Korinthiërs
+1Cor	1e Corinthiers
+1Cor	1e Corinthiërs
+1Cor	1e Korinthiers
+1Cor	1e Korinthiërs
+1Cor	1e. Corinthier
+1Cor	1e. Corinthiër
+1Cor	1e. Corintiers
+1Cor	1e. Corintiërs
+1Cor	1e. Korinthier
+1Cor	1e. Korinthiër
+1Cor	1e. Korintiers
+1Cor	1e. Korintiërs
+1Cor	I. Corinthiers
+1Cor	I. Corinthiërs
+1Cor	I. Korinthiers
+1Cor	I. Korinthiërs
+1Cor	1 Corinthiers
+1Cor	1 Corinthiërs
+1Cor	1 Korinthiers
+1Cor	1 Korinthiërs
+1Cor	1. Corinthier
+1Cor	1. Corinthiër
+1Cor	1. Corintiers
+1Cor	1. Corintiërs
+1Cor	1. Korinthier
+1Cor	1. Korinthiër
+1Cor	1. Korintiers
+1Cor	1. Korintiërs
+1Cor	1e Corinthier
+1Cor	1e Corinthiër
+1Cor	1e Corintiers
+1Cor	1e Corintiërs
+1Cor	1e Korinthier
+1Cor	1e Korinthiër
+1Cor	1e Korintiers
+1Cor	1e Korintiërs
+1Cor	1e. Corintier
+1Cor	1e. Corintiër
+1Cor	1e. Korintier
+1Cor	1e. Korintiër
+1Cor	I Corinthiers
+1Cor	I Corinthiërs
+1Cor	I Korinthiers
+1Cor	I Korinthiërs
+1Cor	I. Corinthier
+1Cor	I. Corinthiër
+1Cor	I. Corintiers
+1Cor	I. Corintiërs
+1Cor	I. Korinthier
+1Cor	I. Korinthiër
+1Cor	I. Korintiers
+1Cor	I. Korintiërs
+1Cor	1 Corinthier
+1Cor	1 Corinthiër
+1Cor	1 Corintiers
+1Cor	1 Corintiërs
+1Cor	1 Korinthier
+1Cor	1 Korinthiër
+1Cor	1 Korintiers
+1Cor	1 Korintiërs
+1Cor	1. Corintier
+1Cor	1. Corintiër
+1Cor	1. Korintier
+1Cor	1. Korintiër
+1Cor	1e Corintier
+1Cor	1e Corintiër
+1Cor	1e Korintier
+1Cor	1e Korintiër
+1Cor	1e. Corinthe
+1Cor	1e. Korinthe
+1Cor	I Corinthier
+1Cor	I Corinthiër
+1Cor	I Corintiers
+1Cor	I Corintiërs
+1Cor	I Korinthier
+1Cor	I Korinthiër
+1Cor	I Korintiers
+1Cor	I Korintiërs
+1Cor	I. Corintier
+1Cor	I. Corintiër
+1Cor	I. Korintier
+1Cor	I. Korintiër
+1Cor	1 Corintier
+1Cor	1 Corintiër
+1Cor	1 Korintier
+1Cor	1 Korintiër
+1Cor	1. Corinthe
+1Cor	1. Korinthe
+1Cor	1e Corinthe
+1Cor	1e Korinthe
+1Cor	I Corintier
+1Cor	I Corintiër
+1Cor	I Korintier
+1Cor	I Korintiër
+1Cor	I. Corinthe
+1Cor	I. Korinthe
+1Cor	1 Corinthe
+1Cor	1 Korinthe
+1Cor	Eerste Kor
+1Cor	I Corinthe
+1Cor	I Korinthe
+1Cor	1e. Kor
+1Cor	1. Kor
+1Cor	1e Kor
+1Cor	I. Kor
+1Cor	1 Kor
+1Cor	I Kor
+1Cor	1Cor
+1Esd	Eerste Esdras
+1Esd	Derde Esdras
+1Esd	Eerste Ezra
+1Esd	III. Esdras
+1Esd	1e. Esdras
+1Esd	3e. Esdras
+1Esd	Derde Ezra
+1Esd	III Esdras
+1Esd	1. Esdras
+1Esd	1e Esdras
+1Esd	3. Esdras
+1Esd	3e Esdras
+1Esd	I. Esdras
+1Esd	III. Ezra
+1Esd	1 Esdras
+1Esd	1e. Ezra
+1Esd	3 Esdras
+1Esd	3e. Ezra
+1Esd	I Esdras
+1Esd	III Ezra
+1Esd	1. Ezra
+1Esd	1e Ezra
+1Esd	3. Ezra
+1Esd	3e Ezra
+1Esd	I. Ezra
+1Esd	1 Ezra
+1Esd	3 Ezra
+1Esd	I Ezra
+1Esd	1Esd
+1John	Eerste Johannes
+1John	1e. Johannes
+1John	1. Johannes
+1John	1e Johannes
+1John	I. Johannes
+1John	1 Johannes
+1John	Eerste Joh
+1John	I Johannes
+1John	1e. Joh
+1John	1. Joh
+1John	1e Joh
+1John	I. Joh
+1John	1 Joh
+1John	1John
+1John	I Joh
+1Kgs	Eerste Koningen
+1Kgs	1e. Koningen
+1Kgs	1. Koningen
+1Kgs	1e Koningen
+1Kgs	I. Koningen
+1Kgs	1 Koningen
+1Kgs	Eerste Kon
+1Kgs	I Koningen
+1Kgs	Eerste Ko
+1Kgs	1e. Kon
+1Kgs	1. Kon
+1Kgs	1e Kon
+1Kgs	1e. Ko
+1Kgs	I. Kon
+1Kgs	1 Kon
+1Kgs	1. Ko
+1Kgs	1e Ko
+1Kgs	I Kon
+1Kgs	I. Ko
+1Kgs	1 Ko
+1Kgs	1Kgs
+1Kgs	I Ko
+1Macc	Eerste Makkabeeen
+1Macc	Eerste Makkabeeën
+1Macc	1e. Makkabeeen
+1Macc	1e. Makkabeeën
+1Macc	1. Makkabeeen
+1Macc	1. Makkabeeën
+1Macc	1e Makkabeeen
+1Macc	1e Makkabeeën
+1Macc	I. Makkabeeen
+1Macc	I. Makkabeeën
+1Macc	1 Makkabeeen
+1Macc	1 Makkabeeën
+1Macc	I Makkabeeen
+1Macc	I Makkabeeën
+1Macc	Eerste Mak
+1Macc	1e. Mak
+1Macc	1. Mak
+1Macc	1e Mak
+1Macc	I. Mak
+1Macc	1 Mak
+1Macc	1Macc
+1Macc	I Mak
+1Pet	Eerste Petrus
+1Pet	Eerste Petr
+1Pet	1e. Petrus
+1Pet	Eerste Pet
+1Pet	1. Petrus
+1Pet	1e Petrus
+1Pet	I. Petrus
+1Pet	1 Petrus
+1Pet	1e. Petr
+1Pet	I Petrus
+1Pet	1. Petr
+1Pet	1e Petr
+1Pet	1e. Pet
+1Pet	I. Petr
+1Pet	1 Petr
+1Pet	1. Pet
+1Pet	1e Pet
+1Pet	I Petr
+1Pet	I. Pet
+1Pet	1 Pet
+1Pet	I Pet
+1Pet	1 Pe
+1Pet	1Pet
+1Sam	Eerste Samuel
+1Sam	Eerste Samuël
+1Sam	1e. Samuel
+1Sam	1e. Samuël
+1Sam	Eerste Sam
+1Sam	1. Samuel
+1Sam	1. Samuël
+1Sam	1e Samuel
+1Sam	1e Samuël
+1Sam	I. Samuel
+1Sam	I. Samuël
+1Sam	1 Samuel
+1Sam	1 Samuël
+1Sam	I Samuel
+1Sam	I Samuël
+1Sam	Samuel I
+1Sam	1e. Sam
+1Sam	1. Sam
+1Sam	1e Sam
+1Sam	I. Sam
+1Sam	1 Sam
+1Sam	I Sam
+1Sam	1Sam
+1Sam	1 S
+1Thess	Eerste Thessalonicenzen
+1Thess	Eerste Tessalonicenzen
+1Thess	1e. Thessalonicenzen
+1Thess	1. Thessalonicenzen
+1Thess	1e Thessalonicenzen
+1Thess	1e. Tessalonicenzen
+1Thess	I. Thessalonicenzen
+1Thess	1 Thessalonicenzen
+1Thess	1. Tessalonicenzen
+1Thess	1e Tessalonicenzen
+1Thess	I Thessalonicenzen
+1Thess	I. Tessalonicenzen
+1Thess	1 Tessalonicenzen
+1Thess	I Tessalonicenzen
+1Thess	Eerste Thess
+1Thess	Eerste Tess
+1Thess	Eerste Tes
+1Thess	1e. Thess
+1Thess	1. Thess
+1Thess	1e Thess
+1Thess	1e. Tess
+1Thess	I. Thess
+1Thess	1 Thess
+1Thess	1. Tess
+1Thess	1e Tess
+1Thess	1e. Tes
+1Thess	I Thess
+1Thess	I. Tess
+1Thess	1 Tess
+1Thess	1. Tes
+1Thess	1Thess
+1Thess	1e Tes
+1Thess	I Tess
+1Thess	I. Tes
+1Thess	1 Tes
+1Thess	I Tes
+1Tim	Eerste Timotheus
+1Tim	Eerste Timotheüs
+1Tim	Eerste Timoteus
+1Tim	Eerste Timoteüs
+1Tim	1e. Timotheus
+1Tim	1e. Timotheüs
+1Tim	1. Timotheus
+1Tim	1. Timotheüs
+1Tim	1e Timotheus
+1Tim	1e Timotheüs
+1Tim	1e. Timoteus
+1Tim	1e. Timoteüs
+1Tim	I. Timotheus
+1Tim	I. Timotheüs
+1Tim	1 Timotheus
+1Tim	1 Timotheüs
+1Tim	1. Timoteus
+1Tim	1. Timoteüs
+1Tim	1e Timoteus
+1Tim	1e Timoteüs
+1Tim	I Timotheus
+1Tim	I Timotheüs
+1Tim	I. Timoteus
+1Tim	I. Timoteüs
+1Tim	1 Timoteus
+1Tim	1 Timoteüs
+1Tim	Eerste Tim
+1Tim	I Timoteus
+1Tim	I Timoteüs
+1Tim	1e. Tim
+1Tim	1. Tim
+1Tim	1e Tim
+1Tim	I. Tim
+1Tim	1 Tim
+1Tim	I Tim
+1Tim	1Tim
+2Chr	Tweede Kronieken
+2Chr	2e. Kronieken
+2Chr	II. Kronieken
+2Chr	2. Kronieken
+2Chr	2e Kronieken
+2Chr	II Kronieken
+2Chr	2 Kronieken
+2Chr	Tweede Kron
+2Chr	2e. Kron
+2Chr	II. Kron
+2Chr	2. Kron
+2Chr	2e Kron
+2Chr	II Kron
+2Chr	2 Kron
+2Chr	2 Kr
+2Chr	2Chr
+2Cor	Tweede Corinthiers
+2Cor	Tweede Corinthiërs
+2Cor	Tweede Korinthiers
+2Cor	Tweede Korinthiërs
+2Cor	Tweede Corinthier
+2Cor	Tweede Corinthiër
+2Cor	Tweede Corintiers
+2Cor	Tweede Corintiërs
+2Cor	Tweede Korinthier
+2Cor	Tweede Korinthiër
+2Cor	Tweede Korintiers
+2Cor	Tweede Korintiërs
+2Cor	Tweede Corintier
+2Cor	Tweede Corintiër
+2Cor	Tweede Korintier
+2Cor	Tweede Korintiër
+2Cor	2e. Corinthiers
+2Cor	2e. Corinthiërs
+2Cor	2e. Korinthiers
+2Cor	2e. Korinthiërs
+2Cor	II. Corinthiers
+2Cor	II. Corinthiërs
+2Cor	II. Korinthiers
+2Cor	II. Korinthiërs
+2Cor	Tweede Corinthe
+2Cor	Tweede Korinthe
+2Cor	2. Corinthiers
+2Cor	2. Corinthiërs
+2Cor	2. Korinthiers
+2Cor	2. Korinthiërs
+2Cor	2e Corinthiers
+2Cor	2e Corinthiërs
+2Cor	2e Korinthiers
+2Cor	2e Korinthiërs
+2Cor	2e. Corinthier
+2Cor	2e. Corinthiër
+2Cor	2e. Corintiers
+2Cor	2e. Corintiërs
+2Cor	2e. Korinthier
+2Cor	2e. Korinthiër
+2Cor	2e. Korintiers
+2Cor	2e. Korintiërs
+2Cor	II Corinthiers
+2Cor	II Corinthiërs
+2Cor	II Korinthiers
+2Cor	II Korinthiërs
+2Cor	II. Corinthier
+2Cor	II. Corinthiër
+2Cor	II. Corintiers
+2Cor	II. Corintiërs
+2Cor	II. Korinthier
+2Cor	II. Korinthiër
+2Cor	II. Korintiers
+2Cor	II. Korintiërs
+2Cor	2 Corinthiers
+2Cor	2 Corinthiërs
+2Cor	2 Korinthiers
+2Cor	2 Korinthiërs
+2Cor	2. Corinthier
+2Cor	2. Corinthiër
+2Cor	2. Corintiers
+2Cor	2. Corintiërs
+2Cor	2. Korinthier
+2Cor	2. Korinthiër
+2Cor	2. Korintiers
+2Cor	2. Korintiërs
+2Cor	2e Corinthier
+2Cor	2e Corinthiër
+2Cor	2e Corintiers
+2Cor	2e Corintiërs
+2Cor	2e Korinthier
+2Cor	2e Korinthiër
+2Cor	2e Korintiers
+2Cor	2e Korintiërs
+2Cor	2e. Corintier
+2Cor	2e. Corintiër
+2Cor	2e. Korintier
+2Cor	2e. Korintiër
+2Cor	II Corinthier
+2Cor	II Corinthiër
+2Cor	II Corintiers
+2Cor	II Corintiërs
+2Cor	II Korinthier
+2Cor	II Korinthiër
+2Cor	II Korintiers
+2Cor	II Korintiërs
+2Cor	II. Corintier
+2Cor	II. Corintiër
+2Cor	II. Korintier
+2Cor	II. Korintiër
+2Cor	2 Corinthier
+2Cor	2 Corinthiër
+2Cor	2 Corintiers
+2Cor	2 Corintiërs
+2Cor	2 Korinthier
+2Cor	2 Korinthiër
+2Cor	2 Korintiers
+2Cor	2 Korintiërs
+2Cor	2. Corintier
+2Cor	2. Corintiër
+2Cor	2. Korintier
+2Cor	2. Korintiër
+2Cor	2e Corintier
+2Cor	2e Corintiër
+2Cor	2e Korintier
+2Cor	2e Korintiër
+2Cor	2e. Corinthe
+2Cor	2e. Korinthe
+2Cor	II Corintier
+2Cor	II Corintiër
+2Cor	II Korintier
+2Cor	II Korintiër
+2Cor	II. Corinthe
+2Cor	II. Korinthe
+2Cor	2 Corintier
+2Cor	2 Corintiër
+2Cor	2 Korintier
+2Cor	2 Korintiër
+2Cor	2. Corinthe
+2Cor	2. Korinthe
+2Cor	2e Corinthe
+2Cor	2e Korinthe
+2Cor	II Corinthe
+2Cor	II Korinthe
+2Cor	2 Corinthe
+2Cor	2 Korinthe
+2Cor	Tweede Kor
+2Cor	2e. Kor
+2Cor	II. Kor
+2Cor	2. Kor
+2Cor	2e Kor
+2Cor	II Kor
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	Tweede Esdras
+2Esd	Vierde Esdras
+2Esd	Tweede Ezra
+2Esd	Vierde Ezra
+2Esd	2e. Esdras
+2Esd	II. Esdras
+2Esd	IV. Esdras
+2Esd	2. Esdras
+2Esd	2e Esdras
+2Esd	4. Esdras
+2Esd	II Esdras
+2Esd	IV Esdras
+2Esd	2 Esdras
+2Esd	2e. Ezra
+2Esd	4 Esdras
+2Esd	II. Ezra
+2Esd	IV. Ezra
+2Esd	2. Ezra
+2Esd	2e Ezra
+2Esd	4. Ezra
+2Esd	II Ezra
+2Esd	IV Ezra
+2Esd	2 Ezra
+2Esd	4 Ezra
+2Esd	2Esd
+2John	Tweede Johannes
+2John	2e. Johannes
+2John	II. Johannes
+2John	2. Johannes
+2John	2e Johannes
+2John	II Johannes
+2John	2 Johannes
+2John	Tweede Joh
+2John	2e. Joh
+2John	II. Joh
+2John	2. Joh
+2John	2e Joh
+2John	II Joh
+2John	2 Joh
+2John	2John
+2Kgs	Tweede Koningen
+2Kgs	2e. Koningen
+2Kgs	II. Koningen
+2Kgs	2. Koningen
+2Kgs	2e Koningen
+2Kgs	II Koningen
+2Kgs	2 Koningen
+2Kgs	Tweede Kon
+2Kgs	Tweede Ko
+2Kgs	2e. Kon
+2Kgs	II. Kon
+2Kgs	2. Kon
+2Kgs	2e Kon
+2Kgs	2e. Ko
+2Kgs	II Kon
+2Kgs	II. Ko
+2Kgs	2 Kon
+2Kgs	2. Ko
+2Kgs	2e Ko
+2Kgs	II Ko
+2Kgs	2 Ko
+2Kgs	2Kgs
+2Macc	Tweede Makkabeeen
+2Macc	Tweede Makkabeeën
+2Macc	2e. Makkabeeen
+2Macc	2e. Makkabeeën
+2Macc	II. Makkabeeen
+2Macc	II. Makkabeeën
+2Macc	2. Makkabeeen
+2Macc	2. Makkabeeën
+2Macc	2e Makkabeeen
+2Macc	2e Makkabeeën
+2Macc	II Makkabeeen
+2Macc	II Makkabeeën
+2Macc	2 Makkabeeen
+2Macc	2 Makkabeeën
+2Macc	Tweede Mak
+2Macc	2e. Mak
+2Macc	II. Mak
+2Macc	2. Mak
+2Macc	2e Mak
+2Macc	II Mak
+2Macc	2 Mak
+2Macc	2Macc
+2Pet	Tweede Petrus
+2Pet	Tweede Petr
+2Pet	2e. Petrus
+2Pet	II. Petrus
+2Pet	Tweede Pet
+2Pet	2. Petrus
+2Pet	2e Petrus
+2Pet	II Petrus
+2Pet	2 Petrus
+2Pet	2e. Petr
+2Pet	II. Petr
+2Pet	2. Petr
+2Pet	2e Petr
+2Pet	2e. Pet
+2Pet	II Petr
+2Pet	II. Pet
+2Pet	2 Petr
+2Pet	2. Pet
+2Pet	2e Pet
+2Pet	II Pet
+2Pet	2 Pet
+2Pet	2 Pe
+2Pet	2Pet
+2Sam	Tweede Samuel
+2Sam	Tweede Samuël
+2Sam	2e. Samuel
+2Sam	2e. Samuël
+2Sam	II. Samuel
+2Sam	II. Samuël
+2Sam	Tweede Sam
+2Sam	2. Samuel
+2Sam	2. Samuël
+2Sam	2e Samuel
+2Sam	2e Samuël
+2Sam	II Samuel
+2Sam	II Samuël
+2Sam	Samuel II
+2Sam	2 Samuel
+2Sam	2 Samuël
+2Sam	2e. Sam
+2Sam	II. Sam
+2Sam	2. Sam
+2Sam	2e Sam
+2Sam	II Sam
+2Sam	2 Sam
+2Sam	2Sam
+2Sam	2 S
+2Thess	Tweede Thessalonicenzen
+2Thess	Tweede Tessalonicenzen
+2Thess	2e. Thessalonicenzen
+2Thess	II. Thessalonicenzen
+2Thess	2. Thessalonicenzen
+2Thess	2e Thessalonicenzen
+2Thess	2e. Tessalonicenzen
+2Thess	II Thessalonicenzen
+2Thess	II. Tessalonicenzen
+2Thess	2 Thessalonicenzen
+2Thess	2. Tessalonicenzen
+2Thess	2e Tessalonicenzen
+2Thess	II Tessalonicenzen
+2Thess	2 Tessalonicenzen
+2Thess	Tweede Thess
+2Thess	Tweede Tess
+2Thess	Tweede Tes
+2Thess	2e. Thess
+2Thess	II. Thess
+2Thess	2. Thess
+2Thess	2e Thess
+2Thess	2e. Tess
+2Thess	II Thess
+2Thess	II. Tess
+2Thess	2 Thess
+2Thess	2. Tess
+2Thess	2e Tess
+2Thess	2e. Tes
+2Thess	II Tess
+2Thess	II. Tes
+2Thess	2 Tess
+2Thess	2. Tes
+2Thess	2Thess
+2Thess	2e Tes
+2Thess	II Tes
+2Thess	2 Tes
+2Tim	Tweede Timotheus
+2Tim	Tweede Timotheüs
+2Tim	Tweede Timoteus
+2Tim	Tweede Timoteüs
+2Tim	2e. Timotheus
+2Tim	2e. Timotheüs
+2Tim	II. Timotheus
+2Tim	II. Timotheüs
+2Tim	2. Timotheus
+2Tim	2. Timotheüs
+2Tim	2e Timotheus
+2Tim	2e Timotheüs
+2Tim	2e. Timoteus
+2Tim	2e. Timoteüs
+2Tim	II Timotheus
+2Tim	II Timotheüs
+2Tim	II. Timoteus
+2Tim	II. Timoteüs
+2Tim	2 Timotheus
+2Tim	2 Timotheüs
+2Tim	2. Timoteus
+2Tim	2. Timoteüs
+2Tim	2e Timoteus
+2Tim	2e Timoteüs
+2Tim	II Timoteus
+2Tim	II Timoteüs
+2Tim	2 Timoteus
+2Tim	2 Timoteüs
+2Tim	Tweede Tim
+2Tim	2e. Tim
+2Tim	II. Tim
+2Tim	2. Tim
+2Tim	2e Tim
+2Tim	II Tim
+2Tim	2 Tim
+2Tim	2Tim
+3John	Derde Johannes
+3John	III. Johannes
+3John	3e. Johannes
+3John	III Johannes
+3John	3. Johannes
+3John	3e Johannes
+3John	3 Johannes
+3John	Derde Joh
+3John	III. Joh
+3John	3e. Joh
+3John	III Joh
+3John	3. Joh
+3John	3e Joh
+3John	3 Joh
+3John	3John
+3Macc	Derde Makkabeeen
+3Macc	Derde Makkabeeën
+3Macc	III. Makkabeeen
+3Macc	III. Makkabeeën
+3Macc	3e. Makkabeeen
+3Macc	3e. Makkabeeën
+3Macc	III Makkabeeen
+3Macc	III Makkabeeën
+3Macc	3. Makkabeeen
+3Macc	3. Makkabeeën
+3Macc	3e Makkabeeen
+3Macc	3e Makkabeeën
+3Macc	3 Makkabeeen
+3Macc	3 Makkabeeën
+3Macc	Derde Mak
+3Macc	III. Mak
+3Macc	3e. Mak
+3Macc	III Mak
+3Macc	3. Mak
+3Macc	3e Mak
+3Macc	3 Mak
+3Macc	3Macc
+4Macc	Vierde Makkabeeen
+4Macc	Vierde Makkabeeën
+4Macc	IV. Makkabeeen
+4Macc	IV. Makkabeeën
+4Macc	4. Makkabeeen
+4Macc	4. Makkabeeën
+4Macc	IV Makkabeeen
+4Macc	IV Makkabeeën
+4Macc	4 Makkabeeen
+4Macc	4 Makkabeeën
+4Macc	Vierde Mak
+4Macc	IV. Mak
+4Macc	4. Mak
+4Macc	IV Mak
+4Macc	4 Mak
+4Macc	4Macc
+Acts	Handelingen van de apostelen
+Acts	Handelingen der apostelen
+Acts	Handelingen
+Acts	Acts
+Acts	Hand
+Acts	Hnd
+Amos	Amos
+Amos	Am
+Bar	Baruch
+Bar	Bar
+Bel	Bel en de draak
+Bel	Bel
+Col	Colossenzen
+Col	Kolossenzen
+Col	Col
+Col	Kol
+Dan	Daniel
+Dan	Daniël
+Dan	Dan
+Dan	Da
+Deut	Deuteronomium
+Deut	Vijfde Mozes
+Deut	5. Mozes
+Deut	Dewariem
+Deut	V. Mozes
+Deut	5 Mozes
+Deut	V Mozes
+Deut	Deut
+Deut	Dt
+Eccl	Koheleth
+Eccl	Prediker
+Eccl	Qoheleth
+Eccl	Kohelet
+Eccl	Qohelet
+Eccl	Eccl
+Eccl	Pred
+Eccl	Pr
+EpJer	Brief van Jeremia
+EpJer	EpJer
+Eph	Efeziers
+Eph	Efeziërs
+Eph	Efez
+Eph	Eph
+Eph	Ef
+Esth	Esther
+Esth	Ester
+Esth	Esth
+Esth	Est
+Exod	Tweede Mozes
+Exod	2e. Mozes
+Exod	II. Mozes
+Exod	2. Mozes
+Exod	2e Mozes
+Exod	II Mozes
+Exod	2 Mozes
+Exod	Exodus
+Exod	Sjemot
+Exod	Exod
+Exod	Ex
+Ezek	Ezechiel
+Ezek	Ezechiël
+Ezek	Ezech
+Ezek	Ezek
+Ezek,Ezra	Ez
+Ezra	Ezra
+Ezra	Ezr
+Gal	Galatenbrief
+Gal	Galaten
+Gal	Gal
+Gen	Eerste Mozes
+Gen	1e. Mozes
+Gen	Beresjiet
+Gen	1. Mozes
+Gen	1e Mozes
+Gen	I. Mozes
+Gen	1 Mozes
+Gen	Genesis
+Gen	I Mozes
+Gen	Gen
+Gen	Gn
+GkEsth	Ester \(Grieks\)
+GkEsth	Ester (Grieks)
+GkEsth	Ester (Gr.)
+GkEsth	Ester (Gr)
+GkEsth	Est gr
+GkEsth	GkEsth
+Hab	Habakuk
+Hab	Hab
+Hag	Haggai
+Hag	Haggaï
+Hag	Hagg
+Hag	Hag
+Heb	Hebreeen
+Heb	Hebreeën
+Heb	Hebr
+Heb	Heb
+Hos	Hosea
+Hos	Hos
+Isa	Jesaja
+Isa	Isa
+Isa	Jes
+Isa	Js
+Jas	Jakobus
+Jas	Jak
+Jas	Jas
+Jdt	Judith
+Jdt	Judit
+Jdt	Jdt
+Jer	Jeremia
+Jer	Jer
+Jer	Jr
+Job	Job
+Joel	Joel
+Joel	Joël
+Joel	Jl
+John	Evangelie volgens Johannes
+John	Johannes
+John	John
+John	Joh
+Jonah	Jonah
+Jonah	Jona
+Jonah	Jon
+Josh	Jozua
+Josh	Josh
+Josh	Joz
+Jude	Judas
+Jude	Jude
+Jude	Jud
+Judg	Richteren
+Judg	Rechters
+Judg	Richtere
+Judg	Recht
+Judg	Richt
+Judg	Judg
+Judg	Re
+Lam	Klaagliederen
+Lam	Klaagl
+Lam	Lam
+Lam	Kl
+Lev	Derde Mozes
+Lev	III. Mozes
+Lev	3e. Mozes
+Lev	III Mozes
+Lev	Leviticus
+Lev	3. Mozes
+Lev	3e Mozes
+Lev	3 Mozes
+Lev	Vajikra
+Lev	Wajikra
+Lev	Lev
+Lev	Lv
+Luke	Evangelie volgens Lucas
+Luke	Evangelie volgens Lukas
+Luke	Lucas
+Luke	Lukas
+Luke	Luke
+Luke	Luc
+Luke	Luk
+Luke	Lc
+Luke	Lk
+Mal	Maleachi
+Mal	Mal
+Mark	Evangelie volgens Marcus
+Mark	Evangelie volgens Markus
+Mark	Marcus
+Mark	Markus
+Mark	Marc
+Mark	Mark
+Mark	Mc
+Mark	Mk
+Matt	Evangelie volgens Matteus
+Matt	Evangelie volgens Matteüs
+Matt	Mattheus
+Matt	Mattheüs
+Matt	Matthéus
+Matt	Matthéüs
+Matt	Matteus
+Matt	Matteüs
+Matt	Matth
+Matt	Matt
+Matt	Mat
+Matt	Mt
+Mic	Micha
+Mic	Mica
+Mic	Mic
+Mic	Mi
+Nah	Nahum
+Nah	Nah
+Neh	Nehemia
+Neh	Neh
+Num	Vierde Mozes
+Num	IV. Mozes
+Num	4. Mozes
+Num	Bamidbar
+Num	Bemidbar
+Num	IV Mozes
+Num	4 Mozes
+Num	Numberi
+Num	Numeri
+Num	Num
+Num	Nu
+Obad	Obadja
+Obad	Obad
+Obad	Ob
+Phil	Filippenzen
+Phil	Filip
+Phil	Phil
+Phil	Fil
+Phlm	Filemon
+Phlm	Filémon
+Phlm	Filem
+Phlm	Film
+Phlm	Phlm
+PrAzar	Gebed van Azarja
+PrAzar	PrAzar
+PrMan	Manasse
+PrMan	PrMan
+PrMan	Man
+Prov	Spreuken
+Prov	Prov
+Prov	Spr
+Ps	Psalmen
+Ps	Psalm
+Ps	Ps
+Rev	Openbaring van Johannes
+Rev	Openbaringen
+Rev	Openbaring
+Rev	Apocalyps
+Rev	Openb
+Rev	Apc
+Rev	Apk
+Rev	Rev
+Rev	Op
+Rom	Romeinenbrief
+Rom	Romeinen
+Rom	Rom
+Ruth	Ruth
+Ruth	Rt
+SgThree	Gezang der drie mannen in het vuur
+SgThree	Lied van de drie jongemannen
+SgThree	SgThree
+Sir	Wijsheid van Jozua Ben Sirach
+Sir	Wijsheid van Jezus Sirach
+Sir	Wijsheid van Ben Sirach
+Sir	Ecclesiasticus
+Sir	Jezus Sirach
+Sir	Sirach
+Sir	Sir
+Song	Canticum canticorum
+Song	Hooglied
+Song	Hoogl
+Song	Song
+Song	Hl
+Sus	Susanna
+Sus	Sus
+Titus	Titus
+Titus	Tit
+Tob	Tobias
+Tob	Tobías
+Tob	Tobia
+Tob	Tobit
+Tob	Tobía
+Tob	Tob
+Wis	De wijsheid van Salomo
+Wis	Het boek der wijsheid
+Wis	Wijsheid van Salomo
+Wis	Wijsheid
+Wis	Wis
+Zech	Zacharia
+Zech	Zach
+Zech	Zech
+Zeph	Sefanja
+Zeph	Zefanja
+Zeph	Zeph
+Zeph	Sef
+Zeph	Zef

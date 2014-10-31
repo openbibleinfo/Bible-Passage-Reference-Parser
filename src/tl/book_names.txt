@@ -1,0 +1,978 @@
+1Chr	Unang Paralipomeno
+1Chr	Unang Mga Cronica
+1Chr	Unang Mga Kronika
+1Chr	Una Paralipomeno
+1Chr	1. Paralipomeno
+1Chr	I. Paralipomeno
+1Chr	Una Mga Cronica
+1Chr	Una Mga Kronika
+1Chr	Unang Chronicle
+1Chr	1 Paralipomeno
+1Chr	1. Mga Cronica
+1Chr	1. Mga Kronika
+1Chr	I Paralipomeno
+1Chr	I. Mga Cronica
+1Chr	I. Mga Kronika
+1Chr	Unang Kronikel
+1Chr	1 Mga Cronica
+1Chr	1 Mga Kronika
+1Chr	I Mga Cronica
+1Chr	I Mga Kronika
+1Chr	Una Chronicle
+1Chr	Unang Cronica
+1Chr	Unang Kronika
+1Chr	1. Chronicle
+1Chr	I. Chronicle
+1Chr	Una Kronikel
+1Chr	1 Chronicle
+1Chr	1. Kronikel
+1Chr	I Chronicle
+1Chr	I. Kronikel
+1Chr	Una Cronica
+1Chr	Una Kronika
+1Chr	1 Kronikel
+1Chr	1. Cronica
+1Chr	1. Kronika
+1Chr	I Kronikel
+1Chr	I. Cronica
+1Chr	I. Kronika
+1Chr	1 Cronica
+1Chr	1 Kronika
+1Chr	I Cronica
+1Chr	I Kronika
+1Chr	1 Cro
+1Chr	1Chr
+1Cor	Ika- 1 Sulat sa mga Corintio
+1Cor	Ika 1 Sulat sa mga Corintio
+1Cor	Ika- 1 Sulat sa mga Corinto
+1Cor	Unang Sulat sa mga Corintio
+1Cor	Ika 1 Sulat sa mga Corinto
+1Cor	Unang Sulat sa mga Corinto
+1Cor	Una Sulat sa mga Corintio
+1Cor	1. Sulat sa mga Corintio
+1Cor	I. Sulat sa mga Corintio
+1Cor	Una Sulat sa mga Corinto
+1Cor	1 Sulat sa mga Corintio
+1Cor	1. Sulat sa mga Corinto
+1Cor	I Sulat sa mga Corintio
+1Cor	I. Sulat sa mga Corinto
+1Cor	Unang Mga Taga- Corinto
+1Cor	1 Sulat sa mga Corinto
+1Cor	I Sulat sa mga Corinto
+1Cor	Unang Mga Taga Corinto
+1Cor	Una Mga Taga- Corinto
+1Cor	1. Mga Taga- Corinto
+1Cor	I. Mga Taga- Corinto
+1Cor	Una Mga Taga Corinto
+1Cor	1 Mga Taga- Corinto
+1Cor	1. Mga Taga Corinto
+1Cor	I Mga Taga- Corinto
+1Cor	I. Mga Taga Corinto
+1Cor	1 Mga Taga Corinto
+1Cor	I Mga Taga Corinto
+1Cor	Unang Corintio
+1Cor	Unang Korintio
+1Cor	Unang Corinto
+1Cor	Unang Korinto
+1Cor	Una Corintio
+1Cor	Una Korintio
+1Cor	1. Corintio
+1Cor	1. Korintio
+1Cor	I. Corintio
+1Cor	I. Korintio
+1Cor	Una Corinto
+1Cor	Una Korinto
+1Cor	1 Corintio
+1Cor	1 Korintio
+1Cor	1. Corinto
+1Cor	1. Korinto
+1Cor	I Corintio
+1Cor	I Korintio
+1Cor	I. Corinto
+1Cor	I. Korinto
+1Cor	1 Corinto
+1Cor	1 Korinto
+1Cor	I Corinto
+1Cor	I Korinto
+1Cor	1 Cor
+1Cor	1Cor
+1Esd	Unang Esdras
+1Esd	Una Esdras
+1Esd	Unang Ezra
+1Esd	1. Esdras
+1Esd	I. Esdras
+1Esd	1 Esdras
+1Esd	I Esdras
+1Esd	Una Ezra
+1Esd	1. Ezra
+1Esd	I. Ezra
+1Esd	1 Ezra
+1Esd	I Ezra
+1Esd	1 Esd
+1Esd	1Esd
+1John	Unang Juan
+1John	Una Juan
+1John	1. Juan
+1John	I. Juan
+1John	1 Juan
+1John	I Juan
+1John	1John
+1John	1 Jn
+1Kgs	Ikatlong Mga Hari
+1Kgs	Unang Mga Hari
+1Kgs	III. Mga Hari
+1Kgs	III Mga Hari
+1Kgs	Una Mga Hari
+1Kgs	1. Mga Hari
+1Kgs	3. Mga Hari
+1Kgs	I. Mga Hari
+1Kgs	1 Mga Hari
+1Kgs	3 Mga Hari
+1Kgs	I Mga Hari
+1Kgs	Unang Hari
+1Kgs	Una Hari
+1Kgs	1. Hari
+1Kgs	I. Hari
+1Kgs	1 Hari
+1Kgs	I Hari
+1Kgs	1 Ha
+1Kgs	1Kgs
+1Macc	Unang Mga Macabeo
+1Macc	Una Mga Macabeo
+1Macc	1. Mga Macabeo
+1Macc	I. Mga Macabeo
+1Macc	Unang Macabeos
+1Macc	1 Mga Macabeo
+1Macc	I Mga Macabeo
+1Macc	Unang Macabeo
+1Macc	Una Macabeos
+1Macc	1. Macabeos
+1Macc	I. Macabeos
+1Macc	Una Macabeo
+1Macc	1 Macabeos
+1Macc	1. Macabeo
+1Macc	I Macabeos
+1Macc	I. Macabeo
+1Macc	1 Macabeo
+1Macc	I Macabeo
+1Macc	1 Mcb
+1Macc	1Macc
+1Pet	Unang Pedro
+1Pet	Una Pedro
+1Pet	1. Pedro
+1Pet	I. Pedro
+1Pet	1 Pedro
+1Pet	I Pedro
+1Pet	1 Ped
+1Pet	1Pet
+1Sam	Unang Samuel
+1Sam	Una Samuel
+1Sam	1. Samuel
+1Sam	I. Samuel
+1Sam	1 Samuel
+1Sam	I Samuel
+1Sam	1 Sam
+1Sam	1Sam
+1Thess	Unang Mga Taga- Tesalonica
+1Thess	Unang Mga Taga- Tesalonika
+1Thess	Unang Mga Taga Tesalonica
+1Thess	Unang Mga Taga Tesalonika
+1Thess	Una Mga Taga- Tesalonica
+1Thess	Una Mga Taga- Tesalonika
+1Thess	1. Mga Taga- Tesalonica
+1Thess	1. Mga Taga- Tesalonika
+1Thess	I. Mga Taga- Tesalonica
+1Thess	I. Mga Taga- Tesalonika
+1Thess	Una Mga Taga Tesalonica
+1Thess	Una Mga Taga Tesalonika
+1Thess	Unang Mga Tesalonicense
+1Thess	Unang Mga Tesalonisense
+1Thess	1 Mga Taga- Tesalonica
+1Thess	1 Mga Taga- Tesalonika
+1Thess	1. Mga Taga Tesalonica
+1Thess	1. Mga Taga Tesalonika
+1Thess	I Mga Taga- Tesalonica
+1Thess	I Mga Taga- Tesalonika
+1Thess	I. Mga Taga Tesalonica
+1Thess	I. Mga Taga Tesalonika
+1Thess	1 Mga Taga Tesalonica
+1Thess	1 Mga Taga Tesalonika
+1Thess	I Mga Taga Tesalonica
+1Thess	I Mga Taga Tesalonika
+1Thess	Una Mga Tesalonicense
+1Thess	Una Mga Tesalonisense
+1Thess	1. Mga Tesalonicense
+1Thess	1. Mga Tesalonisense
+1Thess	I. Mga Tesalonicense
+1Thess	I. Mga Tesalonisense
+1Thess	1 Mga Tesalonicense
+1Thess	1 Mga Tesalonisense
+1Thess	I Mga Tesalonicense
+1Thess	I Mga Tesalonisense
+1Thess	Unang Tesalonicense
+1Thess	Unang Tesalonisense
+1Thess	Una Tesalonicense
+1Thess	Una Tesalonisense
+1Thess	1. Tesalonicense
+1Thess	1. Tesalonisense
+1Thess	I. Tesalonicense
+1Thess	I. Tesalonisense
+1Thess	Unang Tesalonica
+1Thess	Unang Tesalonika
+1Thess	1 Tesalonicense
+1Thess	1 Tesalonisense
+1Thess	I Tesalonicense
+1Thess	I Tesalonisense
+1Thess	Una Tesalonica
+1Thess	Una Tesalonika
+1Thess	1. Tesalonica
+1Thess	1. Tesalonika
+1Thess	I. Tesalonica
+1Thess	I. Tesalonika
+1Thess	1 Tesalonica
+1Thess	1 Tesalonika
+1Thess	I Tesalonica
+1Thess	I Tesalonika
+1Thess	1 Thes
+1Thess	1Thess
+1Thess	1 Tes
+1Tim	Unang Kay Timoteo
+1Tim	Una Kay Timoteo
+1Tim	1. Kay Timoteo
+1Tim	I. Kay Timoteo
+1Tim	1 Kay Timoteo
+1Tim	I Kay Timoteo
+1Tim	Unang Timoteo
+1Tim	Una Timoteo
+1Tim	1. Timoteo
+1Tim	I. Timoteo
+1Tim	1 Timoteo
+1Tim	I Timoteo
+1Tim	1 Tim
+1Tim	1Tim
+2Chr	Ikalawang Paralipomeno
+2Chr	Ikalawang Mga Cronica
+2Chr	Ikalawang Mga Kronika
+2Chr	Ikalawang Chronicle
+2Chr	Ikalawang Kronikel
+2Chr	Ikalawang Cronica
+2Chr	Ikalawang Kronika
+2Chr	II. Paralipomeno
+2Chr	2. Paralipomeno
+2Chr	II Paralipomeno
+2Chr	II. Mga Cronica
+2Chr	II. Mga Kronika
+2Chr	2 Paralipomeno
+2Chr	2. Mga Cronica
+2Chr	2. Mga Kronika
+2Chr	II Mga Cronica
+2Chr	II Mga Kronika
+2Chr	2 Mga Cronica
+2Chr	2 Mga Kronika
+2Chr	II. Chronicle
+2Chr	2. Chronicle
+2Chr	II Chronicle
+2Chr	II. Kronikel
+2Chr	2 Chronicle
+2Chr	2. Kronikel
+2Chr	II Kronikel
+2Chr	II. Cronica
+2Chr	II. Kronika
+2Chr	2 Kronikel
+2Chr	2. Cronica
+2Chr	2. Kronika
+2Chr	II Cronica
+2Chr	II Kronika
+2Chr	2 Cronica
+2Chr	2 Kronika
+2Chr	2 Cro
+2Chr	2Chr
+2Cor	Ika- 2 Sulat sa mga Corintio
+2Cor	SECOND Sulat sa mga Corintio
+2Cor	Ika 2 Sulat sa mga Corintio
+2Cor	Ika- 2 Sulat sa mga Corinto
+2Cor	Ikalawang Mga Taga- Corinto
+2Cor	SECOND Sulat sa mga Corinto
+2Cor	Ika 2 Sulat sa mga Corinto
+2Cor	Ikalawang Mga Taga Corinto
+2Cor	II. Mga Taga- Corinto
+2Cor	2. Mga Taga- Corinto
+2Cor	II Mga Taga- Corinto
+2Cor	II. Mga Taga Corinto
+2Cor	2 Mga Taga- Corinto
+2Cor	2. Mga Taga Corinto
+2Cor	II Mga Taga Corinto
+2Cor	2 Mga Taga Corinto
+2Cor	Ikalawang Corintio
+2Cor	Ikalawang Korintio
+2Cor	Ikalawang Corinto
+2Cor	Ikalawang Korinto
+2Cor	II. Corintio
+2Cor	II. Korintio
+2Cor	2. Corintio
+2Cor	2. Korintio
+2Cor	II Corintio
+2Cor	II Korintio
+2Cor	II. Corinto
+2Cor	II. Korinto
+2Cor	2 Corintio
+2Cor	2 Korintio
+2Cor	2. Corinto
+2Cor	2. Korinto
+2Cor	II Corinto
+2Cor	II Korinto
+2Cor	2 Corinto
+2Cor	2 Korinto
+2Cor	2 Cor
+2Cor	2Cor
+2Esd	Ikalawang Esdras
+2Esd	Ikalawang Ezra
+2Esd	II. Esdras
+2Esd	2. Esdras
+2Esd	II Esdras
+2Esd	2 Esdras
+2Esd	II. Ezra
+2Esd	2. Ezra
+2Esd	II Ezra
+2Esd	2 Ezra
+2Esd	2 Esd
+2Esd	2Esd
+2John	Ikalawang Juan
+2John	II. Juan
+2John	2. Juan
+2John	II Juan
+2John	2 Juan
+2John	2John
+2John	2 Jn
+2Kgs	Ikalawang Mga Hari
+2Kgs	Ikaapat Mga Hari
+2Kgs	Ikalawang Hari
+2Kgs	II. Mga Hari
+2Kgs	IV. Mga Hari
+2Kgs	2. Mga Hari
+2Kgs	4. Mga Hari
+2Kgs	II Mga Hari
+2Kgs	IV Mga Hari
+2Kgs	2 Mga Hari
+2Kgs	4 Mga Hari
+2Kgs	II. Hari
+2Kgs	2. Hari
+2Kgs	II Hari
+2Kgs	2 Hari
+2Kgs	2 Ha
+2Kgs	2Kgs
+2Macc	Ikalawang Mga Macabeo
+2Macc	Ikalawang Macabeos
+2Macc	Ikalawang Macabeo
+2Macc	II. Mga Macabeo
+2Macc	2. Mga Macabeo
+2Macc	II Mga Macabeo
+2Macc	2 Mga Macabeo
+2Macc	II. Macabeos
+2Macc	2. Macabeos
+2Macc	II Macabeos
+2Macc	II. Macabeo
+2Macc	2 Macabeos
+2Macc	2. Macabeo
+2Macc	II Macabeo
+2Macc	2 Macabeo
+2Macc	2 Mcb
+2Macc	2Macc
+2Pet	Ikalawang Pedro
+2Pet	II. Pedro
+2Pet	2. Pedro
+2Pet	II Pedro
+2Pet	2 Pedro
+2Pet	2 Ped
+2Pet	2Pet
+2Sam	Ikalawang Samuel
+2Sam	II. Samuel
+2Sam	2. Samuel
+2Sam	II Samuel
+2Sam	2 Samuel
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	Ikalawang Mga Taga- Tesalonica
+2Thess	Ikalawang Mga Taga- Tesalonika
+2Thess	Ikalawang Mga Taga Tesalonica
+2Thess	Ikalawang Mga Taga Tesalonika
+2Thess	Ikalawang Mga Tesalonicense
+2Thess	Ikalawang Mga Tesalonisense
+2Thess	II. Mga Taga- Tesalonica
+2Thess	II. Mga Taga- Tesalonika
+2Thess	2. Mga Taga- Tesalonica
+2Thess	2. Mga Taga- Tesalonika
+2Thess	II Mga Taga- Tesalonica
+2Thess	II Mga Taga- Tesalonika
+2Thess	II. Mga Taga Tesalonica
+2Thess	II. Mga Taga Tesalonika
+2Thess	Ikalawang Tesalonicense
+2Thess	Ikalawang Tesalonisense
+2Thess	2 Mga Taga- Tesalonica
+2Thess	2 Mga Taga- Tesalonika
+2Thess	2. Mga Taga Tesalonica
+2Thess	2. Mga Taga Tesalonika
+2Thess	II Mga Taga Tesalonica
+2Thess	II Mga Taga Tesalonika
+2Thess	2 Mga Taga Tesalonica
+2Thess	2 Mga Taga Tesalonika
+2Thess	II. Mga Tesalonicense
+2Thess	II. Mga Tesalonisense
+2Thess	2. Mga Tesalonicense
+2Thess	2. Mga Tesalonisense
+2Thess	II Mga Tesalonicense
+2Thess	II Mga Tesalonisense
+2Thess	Ikalawang Tesalonica
+2Thess	Ikalawang Tesalonika
+2Thess	2 Mga Tesalonicense
+2Thess	2 Mga Tesalonisense
+2Thess	II. Tesalonicense
+2Thess	II. Tesalonisense
+2Thess	2. Tesalonicense
+2Thess	2. Tesalonisense
+2Thess	II Tesalonicense
+2Thess	II Tesalonisense
+2Thess	2 Tesalonicense
+2Thess	2 Tesalonisense
+2Thess	II. Tesalonica
+2Thess	II. Tesalonika
+2Thess	2. Tesalonica
+2Thess	2. Tesalonika
+2Thess	II Tesalonica
+2Thess	II Tesalonika
+2Thess	2 Tesalonica
+2Thess	2 Tesalonika
+2Thess	2 Thes
+2Thess	2Thess
+2Thess	2 Tes
+2Tim	Ikalawang Kay Timoteo
+2Tim	Ikalawang Timoteo
+2Tim	II. Kay Timoteo
+2Tim	2. Kay Timoteo
+2Tim	II Kay Timoteo
+2Tim	2 Kay Timoteo
+2Tim	II. Timoteo
+2Tim	2. Timoteo
+2Tim	II Timoteo
+2Tim	2 Timoteo
+2Tim	2 Tim
+2Tim	2Tim
+3John	Ikatlong Juan
+3John	III. Juan
+3John	III Juan
+3John	3. Juan
+3John	3 Juan
+3John	3John
+3John	3 Jn
+3Macc	Ikatlong Mga Macabeo
+3Macc	Ikatlong Macabeos
+3Macc	III. Mga Macabeo
+3Macc	Ikatlong Macabeo
+3Macc	III Mga Macabeo
+3Macc	3. Mga Macabeo
+3Macc	3 Mga Macabeo
+3Macc	III. Macabeos
+3Macc	III Macabeos
+3Macc	III. Macabeo
+3Macc	3. Macabeos
+3Macc	III Macabeo
+3Macc	3 Macabeos
+3Macc	3. Macabeo
+3Macc	3 Macabeo
+3Macc	3 Mcb
+3Macc	3Macc
+4Macc	Ikaapat Mga Macabeo
+4Macc	Ikaapat Macabeos
+4Macc	IV. Mga Macabeo
+4Macc	Ikaapat Macabeo
+4Macc	4. Mga Macabeo
+4Macc	IV Mga Macabeo
+4Macc	4 Mga Macabeo
+4Macc	IV. Macabeos
+4Macc	4. Macabeos
+4Macc	IV Macabeos
+4Macc	IV. Macabeo
+4Macc	4 Macabeos
+4Macc	4. Macabeo
+4Macc	IV Macabeo
+4Macc	4 Macabeo
+4Macc	4 Mcb
+4Macc	4Macc
+Acts	Mabuting Balita ayon sa Espiritu Santo
+Acts	Mabuting Balita ng Espiritu Santo
+Acts	Ebanghelyo ng Espiritu Santo
+Acts	Mga Gawa ng mga Apostoles
+Acts	Mga Gawa ng mga Apostol
+Acts	Mga Gawa ng mga Alagad
+Acts	Gawa ng mga Apostol
+Acts	Gawa ng Apostoles
+Acts	Mga Gawain
+Acts	Mga Gawa
+Acts	Acts
+Acts	Gawa
+Acts	Gw
+Amos	Amos
+Amos	Amós
+Bar	Baruch
+Bar	Barukh
+Bar	Baruc
+Bar	Baruk
+Bar	Bar
+Bel	Si Bel at ang Dragon
+Bel	Bel at ang Dragon
+Bel	Bel
+Col	Sulat sa mga Colonsense
+Col	Sulat sa mga Kolonsense
+Col	Sulat sa mga Colosense
+Col	Sulat sa mga Kolosense
+Col	Mga Taga- Colosas
+Col	Mga Taga- Kolosas
+Col	Mga Taga Colosas
+Col	Mga Taga Kolosas
+Col	Mga Taga-Colosas
+Col	Mga Colonsense
+Col	Mga Kolonsense
+Col	Mga Colosense
+Col	Mga Kolosense
+Col	Taga- Colosas
+Col	Taga Colosas
+Col	Col
+Col	Co
+Dan	Daniel
+Dan	Dan
+Deut	Deuteronomiya
+Deut	Deuteronomiyo
+Deut	Deyuteronomyo
+Deut	Diyuteronomyo
+Deut	Deuteronomia
+Deut	Deuteronomio
+Deut	Deuteronomya
+Deut	Dyuteronomyo
+Deut	Deuteronoma
+Deut	Deuteronomi
+Deut	Deut
+Deut	Dt
+Eccl	Ang Mangangaral
+Eccl	Ecclesiastes
+Eccl	Eclesiastes
+Eccl	Eclesiastés
+Eccl	Eclesyastes
+Eccl	Eclesyastés
+Eccl	Eclisiastes
+Eccl	Eclisyastes
+Eccl	Eklesiastes
+Eccl	Eklesiastés
+Eccl	Eklesyastes
+Eccl	Eklesyastés
+Eccl	Eklisiastes
+Eccl	Eklisyastes
+Eccl	Mangangaral
+Eccl	Kohelet
+Eccl	Manga
+Eccl	Eccl
+EpJer	Ang Liham ni Jeremias
+EpJer	Liham ni Jeremias
+EpJer	Lih Jer
+EpJer	EpJer
+Eph	Sulat sa mga Efesio
+Eph	Sulat sa mga Epesio
+Eph	Sulat sa mga Efeso
+Eph	Sulat sa mga Epeso
+Eph	Mga Taga- Efesio
+Eph	Mga Taga- Epesio
+Eph	Mga Taga Efesio
+Eph	Mga Taga Epesio
+Eph	Mga Taga- Efeso
+Eph	Mga Taga- Epeso
+Eph	Mga Taga Efeso
+Eph	Mga Taga Epeso
+Eph	Mga Taga-Efeso
+Eph	Taga- Efesio
+Eph	Taga- Epesio
+Eph	Taga Efesio
+Eph	Taga Epesio
+Eph	Taga- Efeso
+Eph	Taga- Epeso
+Eph	Mga Efesio
+Eph	Mga Epesio
+Eph	Taga Efeso
+Eph	Taga Epeso
+Eph	Mga Efeso
+Eph	Mga Epeso
+Eph	Eph
+Eph	Ef
+Esth	Esther
+Esth	Ester
+Esth	Esth
+Esth	Est
+Exod	Exodus
+Exod	Exodo
+Exod	Exod
+Exod	Exo
+Ezek	Ezequiel
+Ezek	Esekiel
+Ezek	Esekyel
+Ezek	Ezekiel
+Ezek	Ezekyel
+Ezek	Ezek
+Ezek	Eze
+Ezra	Esdras
+Ezra	Ezra
+Ezra	Ez
+Gal	Sulat sa mga taga Galacia
+Gal	Sulat sa mga Galacia
+Gal	Mga Taga- Galacia
+Gal	Mga Taga- Galasya
+Gal	Mga Taga Galacia
+Gal	Mga Taga Galasya
+Gal	Mga Taga-Galacia
+Gal	Taga- Galacia
+Gal	Taga Galacia
+Gal	Galasyano
+Gal	Gal
+Gal	Ga
+Gen	Genesis
+Gen	Henesis
+Gen	Gen
+GkEsth	Ester (Griyego)
+GkEsth	Ester (Griego)
+GkEsth	Ester (Gryego)
+GkEsth	Ester (Grego)
+GkEsth	Ester Griyego
+GkEsth	Ester Griego
+GkEsth	Ester Gryego
+GkEsth	Ester Grego
+GkEsth	GkEsth
+GkEsth	Estg
+Hab	Habakkuk
+Hab	Habacuc
+Hab	Habakuk
+Hab	Hab
+Hag	Haggai
+Hag	Haggeo
+Hag	Aggeo
+Hag	Hagai
+Hag	Hageo
+Hag	Agai
+Hag	Ageo
+Hag	Hag
+Heb	Mga Hebreo
+Heb	Mga Ebreo
+Heb	Hebreo
+Heb	Heb
+Hos	Hoseias
+Hos	Hoseas
+Hos	Hoseia
+Hos	Oseiah
+Hos	Oseias
+Hos	Hosea
+Hos	Oseah
+Hos	Oseas
+Hos	Oseia
+Hos	Osea
+Hos	Hos
+Isa	Isaiah
+Isa	Isaias
+Isa	Isaíah
+Isa	Isaías
+Isa	Isaia
+Isa	Isaía
+Isa	Isa
+Jas	Santiago
+Jas	Jacobo
+Jas	Jas
+Jas	San
+Jdt	Judith
+Jdt	Judit
+Jdt	Jdt
+Jer	Aklat ni Jeremiah
+Jer	Aklat ni Jeremias
+Jer	Sulat ni Jeremias
+Jer	Heremias
+Jer	Heremyas
+Jer	Herimias
+Jer	Herimyas
+Jer	Hiremias
+Jer	Hiremyas
+Jer	Hirimias
+Jer	Hirimyas
+Jer	Jeremiah
+Jer	Jeremias
+Jer	Jer
+Job	Job
+Joel	Joel
+Joel	Yole
+John	Mabuting Balita ayon kay San Juan
+John	Mabuting Balita ayon kay Juan
+John	Ebanghelyo ayon kay San Juan
+John	Ebanghelyo ayon kay Juan
+John	Ebanghelyo ni San Juan
+John	John
+John	Juan
+John	Jn
+Jonah	Jonah
+Jonah	Jonas
+Jonah	Jonáh
+Jonah	Jonás
+Jonah	Jona
+Jonah	Joná
+Jonah	Jon
+Josh	Joshua
+Josh	Josue
+Josh	Josué
+Josh	Josh
+Josh	Jos
+Jude	Hudas
+Jude	Judas
+Jude	Jude
+Jude	Ju
+Judg	Mga Hukom
+Judg	Hukom
+Judg	Judg
+Judg	Huk
+Lam	Aklat ng Pananaghoy
+Lam	Aklat ng Pagtaghoy
+Lam	Mga Lamentasyon
+Lam	Mga Panaghoy
+Lam	Panaghoy
+Lam	Panag
+Lam	Lam
+Lev	Lebitikus
+Lev	Lebitico
+Lev	Levitico
+Lev	Leb
+Lev	Lev
+Luke	Mabuting Balita ayon kay San Lucas
+Luke	Mabuting Balita ayon kay San Lukas
+Luke	Mabuting Balita ayon kay Lucas
+Luke	Mabuting Balita ayon kay Lukas
+Luke	Ebanghelyo ayon kay San Lucas
+Luke	Ebanghelyo ayon kay San Lukas
+Luke	Ebanghelyo ayon kay Lucas
+Luke	Ebanghelyo ayon kay Lukas
+Luke	Ebanghelyo ni San Lucas
+Luke	Ebanghelyo ni San Lukas
+Luke	Lucas
+Luke	Lukas
+Luke	Luke
+Luke	Lu
+Mal	Malaquias
+Mal	Malaquías
+Mal	Malakias
+Mal	Malachi
+Mal	Mal
+Mark	Mabuting Balita ayon kay San Marcos
+Mark	Mabuting Balita ayon kay San Markos
+Mark	Mabuting Balita ayon kay Marcos
+Mark	Mabuting Balita ayon kay Markos
+Mark	Ebanghelyo ayon kay Marcos
+Mark	Ebanghelyo ni San Marcos
+Mark	Ebanghelyo ni San Markos
+Mark	Ebanghelyo ni Marcos
+Mark	Ebanghelyo ni Markos
+Mark	Marcos
+Mark	Markos
+Mark	Mark
+Mark	Mc
+Matt	Mabuting Balita ayon kay San Mateo
+Matt	Mabuting Balita ayon kay Mateo
+Matt	Ebanghelyo ayon kay Mateo
+Matt	Ebanghelyo ni San Mateo
+Matt	Ebanghelyo ni Mateo
+Matt	Mateo
+Matt	Matt
+Matt	Mt
+Mic	Mikeyas
+Mic	Mikieas
+Mic	Miqueas
+Mic	Mikeas
+Mic	Micah
+Mic	Mikah
+Mic	Mikas
+Mic	Mica
+Mic	Mika
+Mic	Mic
+Mic	Mik
+Nah	Nahum
+Nah	Nahúm
+Nah	Nah
+Neh	Nehemiah
+Neh	Nehemias
+Neh	Nehemíah
+Neh	Nehemías
+Neh	Neh
+Num	Mga Bilang
+Num	Bamidbar
+Num	Bemidbar
+Num	Bil
+Num	Num
+Obad	Obadiah
+Obad	Obadias
+Obad	Abdias
+Obad	Abdías
+Obad	Obad
+Obad	Oba
+Phil	Sulat sa mga Filipense
+Phil	Sulat sa mga Pilipense
+Phil	Sulat sa mga Pilipyano
+Phil	Mga Taga- Filipos
+Phil	Mga Taga- Pilipos
+Phil	Mga Taga Filipos
+Phil	Mga Taga Pilipos
+Phil	Mga Taga-Filipos
+Phil	Mga Filipense
+Phil	Mga Pilipense
+Phil	Mga Pilipyano
+Phil	Taga- Filipos
+Phil	Taga- Pilipos
+Phil	Taga Filipos
+Phil	Taga Pilipos
+Phil	Phil
+Phil	Fil
+Phlm	Kay Filemon
+Phlm	Filemon
+Phlm	Filem
+Phlm	Phlm
+PrAzar	Ang Panalangin ni Azarias
+PrAzar	Panalangin ni Azarias
+PrAzar	PrAzar
+PrMan	Ang Panalangin ni Manases
+PrMan	Panalangin ni Manases
+PrMan	Dalangin ni Manases
+PrMan	Dasal ni Manases
+PrMan	PrMan
+Prov	Mga Kawikaan
+Prov	Kawikaan
+Prov	Prov
+Prov	Kaw
+Ps	Mga Salmo
+Ps	Mga Awit
+Ps	Awit
+Ps	Ps
+Rev	Apocalipsis ni Juan
+Rev	Apokalipsis ni Juan
+Rev	Pahayag kay Juan
+Rev	Apocalipsis
+Rev	Apokalipsis
+Rev	Rebelasyon
+Rev	Pahayag
+Rev	Pah
+Rev	Rev
+Rom	Sulat sa mga Romano
+Rom	Mga Taga- Roma
+Rom	Mga Taga Roma
+Rom	Mga Taga-Roma
+Rom	Taga- Roma
+Rom	Taga Roma
+Rom	Roma
+Rom	Rom
+Rom	Ro
+Ruth	Ruth
+Ruth	Rut
+SgThree	Awit ng Tatlong Banal na Kabataan
+SgThree	Awit ng Tatlong Kabataang Banal
+SgThree	Awit ng Tatlong Kabataan
+SgThree	Awit ng Tatlong Binata
+SgThree	Awit ng 3 Kabataan
+SgThree	Tatlong Kabataan
+SgThree	Aw ng 3 Kab
+SgThree	SgThree
+Sir	Ang Karunungan ni Jesus, Anak ni Sirac
+Sir	Ang Karunungan ni Jesus Anak ni Sirac
+Sir	Karunungan ng Anak ni Sirac
+Sir	Ecclesiasticus
+Sir	Ekklesiastikus
+Sir	Ekklesyastikus
+Sir	Ecclesiastico
+Sir	Ekklesiastiko
+Sir	Ekklesyastiko
+Sir	Eklesiastikus
+Sir	Eklesyastikus
+Sir	Eclesiastico
+Sir	Eklesiastiko
+Sir	Eklesyastiko
+Sir	Siracidas
+Sir	Siracides
+Sir	Sirakidas
+Sir	Sirakides
+Sir	Sirácidas
+Sir	Sirácides
+Sir	Sirákidas
+Sir	Sirákides
+Sir	Siracida
+Sir	Siracide
+Sir	Sirakida
+Sir	Sirakide
+Sir	Sirácida
+Sir	Sirácide
+Sir	Sirákida
+Sir	Sirákide
+Sir	Sirach
+Sir	Sirakh
+Sir	Sirách
+Sir	Sirákh
+Sir	Sirac
+Sir	Sirak
+Sir	Sirác
+Sir	Sirák
+Sir	Sir
+Song	Ang Awit ng mga Awit
+Song	Ang Awit ni Salomon
+Song	Ang Awit ni Salomón
+Song	Ang Awit ni Solomon
+Song	Ang Awit ni Solomón
+Song	Awit ng mga Awit
+Song	Awit ni Salomon
+Song	Awit ni Salomón
+Song	Awit ni Solomon
+Song	Awit ni Solomón
+Song	Kantikulo
+Song	Aw ni S
+Song	Kantiko
+Song	Song
+Sus	Si Susana
+Sus	Susana
+Sus	Sus
+Sus	Su
+Titus	Kay Tito
+Titus	Titus
+Titus	Tito
+Tob	Tobias
+Tob	Tobías
+Tob	Tobit
+Tob	Tob
+Tob	Tb
+Wis	Ang Karunungan ni Salomon
+Wis	Ang Karunungan ni Salomón
+Wis	Ang Karunungan ni Solomon
+Wis	Ang Karunungan ni Solomón
+Wis	Karunungan ni Salomon
+Wis	Karunungan ni Salomón
+Wis	Karunungan ni Solomon
+Wis	Karunungan ni Solomón
+Wis	Karunungan
+Wis	Salomon
+Wis	Salomón
+Wis	Solomon
+Wis	Solomón
+Wis	Kar
+Wis	Wis
+Zech	Zechariah
+Zech	Sacarias
+Zech	Sacarías
+Zech	Zacarias
+Zech	Zacarías
+Zech	Zech
+Zech	Zac
+Zeph	Zephaniah
+Zeph	Zephanias
+Zeph	Sefanias
+Zeph	Sepanias
+Zeph	Sofonias
+Zeph	Sofonías
+Zeph	Zefanias
+Zeph	Zepanias
+Zeph	Sefania
+Zeph	Sepania
+Zeph	Zeph
+Zeph	Zef

@@ -1,0 +1,335 @@
+1Chr	1. Mga Cronica
+1Chr	1. Mga Cronika
+1Chr	1. Mga Kronica
+1Chr	1. Mga Kronika
+1Chr	1 Mga Cronica
+1Chr	1 Mga Cronika
+1Chr	1 Mga Kronica
+1Chr	1 Mga Kronika
+1Chr	1. Cronica
+1Chr	1. Cronika
+1Chr	1. Kronica
+1Chr	1. Kronika
+1Chr	1 Cronica
+1Chr	1 Cronika
+1Chr	1 Kronica
+1Chr	1 Kronika
+1Chr	1 Cron
+1Chr	1 Cro
+1Chr	1Chr
+1Cor	1. Mga Taga-Corinto
+1Cor	1 Mga Taga-Corinto
+1Cor	1. Taga-Corinto
+1Cor	1 Taga-Corinto
+1Cor	1. Corinto
+1Cor	1 Corinto
+1Cor	1 Cor
+1Cor	1 Co
+1Cor	1Cor
+1Esd	1Esd
+1John	1. Juan
+1John	1 Juan
+1John	1John
+1John	1 Jn
+1Kgs	1. Mga Hari
+1Kgs	1 Mga Hari
+1Kgs	1. Hari
+1Kgs	1 Hari
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	1. Pedro
+1Pet	1 Pedro
+1Pet	1Pet
+1Sam	1. Samuel
+1Sam	1 Samuel
+1Sam	1 Sam
+1Sam	1Sam
+1Thess	1. Mga Taga-Tesalonica
+1Thess	1. Mga Taga-Tesalonika
+1Thess	1. Mga Taga-Tesalónica
+1Thess	1. Mga Taga-Tesalónika
+1Thess	1 Mga Taga-Tesalonica
+1Thess	1 Mga Taga-Tesalonika
+1Thess	1 Mga Taga-Tesalónica
+1Thess	1 Mga Taga-Tesalónika
+1Thess	1. Taga-Tesalonica
+1Thess	1. Taga-Tesalonika
+1Thess	1. Taga-Tesalónica
+1Thess	1. Taga-Tesalónika
+1Thess	1 Taga-Tesalonica
+1Thess	1 Taga-Tesalonika
+1Thess	1 Taga-Tesalónica
+1Thess	1 Taga-Tesalónika
+1Thess	1. Tesalonica
+1Thess	1. Tesalonika
+1Thess	1. Tesalónica
+1Thess	1. Tesalónika
+1Thess	1 Tesalonica
+1Thess	1 Tesalonika
+1Thess	1 Tesalónica
+1Thess	1 Tesalónika
+1Thess	1Thess
+1Tim	1. Kang Timoteo
+1Tim	1 Kang Timoteo
+1Tim	1. Timoteo
+1Tim	1 Timoteo
+1Tim	1Tim
+2Chr	2. Mga Cronica
+2Chr	2. Mga Cronika
+2Chr	2. Mga Kronica
+2Chr	2. Mga Kronika
+2Chr	2 Mga Cronica
+2Chr	2 Mga Cronika
+2Chr	2 Mga Kronica
+2Chr	2 Mga Kronika
+2Chr	2. Cronica
+2Chr	2. Cronika
+2Chr	2. Kronica
+2Chr	2. Kronika
+2Chr	2 Cronica
+2Chr	2 Cronika
+2Chr	2 Kronica
+2Chr	2 Kronika
+2Chr	2 Cron
+2Chr	2 Cro
+2Chr	2Chr
+2Cor	2. Mga Taga-Corinto
+2Cor	2 Mga Taga-Corinto
+2Cor	2. Taga-Corinto
+2Cor	2 Taga-Corinto
+2Cor	2. Corinto
+2Cor	2 Corinto
+2Cor	2 Cor
+2Cor	2 Co
+2Cor	2Cor
+2Esd	2Esd
+2John	2. Juan
+2John	2 Juan
+2John	2John
+2John	2 Jn
+2Kgs	2. Mga Hari
+2Kgs	2 Mga Hari
+2Kgs	2. Hari
+2Kgs	2 Hari
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	2. Pedro
+2Pet	2 Pedro
+2Pet	2Pet
+2Sam	2. Samuel
+2Sam	2 Samuel
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	2. Mga Taga-Tesalonica
+2Thess	2. Mga Taga-Tesalonika
+2Thess	2. Mga Taga-Tesalónica
+2Thess	2. Mga Taga-Tesalónika
+2Thess	2 Mga Taga-Tesalonica
+2Thess	2 Mga Taga-Tesalonika
+2Thess	2 Mga Taga-Tesalónica
+2Thess	2 Mga Taga-Tesalónika
+2Thess	2. Taga-Tesalonica
+2Thess	2. Taga-Tesalonika
+2Thess	2. Taga-Tesalónica
+2Thess	2. Taga-Tesalónika
+2Thess	2 Taga-Tesalonica
+2Thess	2 Taga-Tesalonika
+2Thess	2 Taga-Tesalónica
+2Thess	2 Taga-Tesalónika
+2Thess	2. Tesalonica
+2Thess	2. Tesalonika
+2Thess	2. Tesalónica
+2Thess	2. Tesalónika
+2Thess	2 Tesalonica
+2Thess	2 Tesalonika
+2Thess	2 Tesalónica
+2Thess	2 Tesalónika
+2Thess	2Thess
+2Tim	2. Kang Timoteo
+2Tim	2 Kang Timoteo
+2Tim	2. Timoteo
+2Tim	2 Timoteo
+2Tim	2Tim
+3John	3. Juan
+3John	3 Juan
+3John	3John
+3John	3 Jn
+3Macc	3Macc
+4Macc	4Macc
+Acts	Buhat sa mga Apostoles
+Acts	Ang Mga Binuhatan
+Acts	Binuhatan
+Acts	Acts
+Acts	Bin
+Amos	Amos
+Amos	Amós
+Bar	Bar
+Bel	Bel
+Col	Mga Taga-Colosas
+Col	Taga-Colosas
+Col	Colosas
+Col	Col
+Dan	Daniel
+Dan	Dan
+Deut	Deuteronomio
+Deut	Dyuteronomyo
+Deut	Deut
+Deut	Deu
+Eccl	Eklesyastes
+Eccl	Magwawali
+Eccl	Kaalam
+Eccl	Eccl
+EpJer	EpJer
+Eph	Mga Taga-Efeso
+Eph	Mga Taga-Éfeso
+Eph	Taga-Efeso
+Eph	Taga-Éfeso
+Eph	Efeso
+Eph	Éfeso
+Eph	Eph
+Esth	Ester
+Esth	Esth
+Exod	Eksodo
+Exod	Exodus
+Exod	Exod
+Exod	Exo
+Ezek	Ezequiel
+Ezek	Ezekiel
+Ezek	Ezek
+Ezra	Esdras
+Ezra	Ezra
+Ezra	Ezr
+Gal	Mga Taga-Galacia
+Gal	Taga-Galacia
+Gal	Galacia
+Gal	Gal
+Gen	Genesis
+Gen	Henesis
+Gen	Gen
+GkEsth	GkEsth
+Hab	Habacuc
+Hab	Habakuk
+Hab	Hab
+Hag	Hageo
+Hag	Ageo
+Hag	Hag
+Heb	Mga Hebrohanon
+Heb	Hebreohanon
+Heb	Mga Ebreo
+Heb	Heb
+Hos	Hosea
+Hos	Oseas
+Hos	Hos
+Isa	Isaias
+Isa	Isaías
+Isa	Isa
+Jas	Santiago
+Jas	Jacobo
+Jas	Jas
+Jdt	Jdt
+Jer	Jeremias
+Jer	Jeremías
+Jer	Jer
+Job	Job
+Joel	Joel
+John	Sulat ni San Juan
+John	John
+John	Juan
+John	Jn
+Jonah	Jonah
+Jonah	Jonas
+Jonah	Jonás
+Josh	Josue
+Josh	Josué
+Josh	Josh
+Josh	Jos
+Jude	Judas
+Jude	Jude
+Judg	Mga Maghuhukom
+Judg	Maghuhukom
+Judg	Judg
+Lam	Mga Pagbangotan
+Lam	Pagbangotan
+Lam	Lam
+Lev	Leviticus
+Lev	Lebitiko
+Lev	Lev
+Luke	Sulat ni San Lucas
+Luke	Lucas
+Luke	Luke
+Luke	Lu
+Mal	Malaquias
+Mal	Malaquías
+Mal	Malakias
+Mal	Mal
+Mark	Sulat ni San Marcos
+Mark	Marcos
+Mark	Mark
+Mark	Mc
+Mark	Mk
+Matt	Sulat ni San Mateo
+Matt	Mateo
+Matt	Matt
+Matt	Mt
+Mic	Miqueas
+Mic	Mika
+Mic	Mic
+Mic	Mik
+Nah	Nahum
+Nah	Nah
+Neh	Nehemias
+Neh	Nehemías
+Neh	Neh
+Num	Mga Numeros
+Num	Mga Numero
+Num	Numeros
+Num	Numero
+Num	Num
+Obad	Abdias
+Obad	Abdías
+Obad	Obadia
+Obad	Obad
+Phil	Mga Taga-Filipos
+Phil	Taga-Filipos
+Phil	Filipos
+Phil	Phil
+Phlm	Kang Filemon
+Phlm	Kang Filemón
+Phlm	Filemon
+Phlm	Filemón
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	Mga Panultihon
+Prov	Panultihon
+Prov	Prov
+Ps	Mga Salmo
+Ps	Salmo
+Ps	Sal
+Ps	Ps
+Rev	Gipadayag
+Rev	Rev
+Rom	Mga Taga-Roma
+Rom	Roma
+Rom	Rom
+Ruth	Ruth
+Ruth	Rut
+SgThree	SgThree
+Sir	Sir
+Song	Awit sa mga Awit
+Song	Awit ni Solomon
+Song	Awit
+Song	Song
+Sus	Sus
+Titus	Kang Tito
+Titus	Titus
+Titus	Tito
+Tob	Tob
+Wis	Wis
+Zech	Zacarias
+Zech	Zacarías
+Zech	Zech
+Zeph	Sofonias
+Zeph	Sofonías
+Zeph	Zefania
+Zeph	Zeph

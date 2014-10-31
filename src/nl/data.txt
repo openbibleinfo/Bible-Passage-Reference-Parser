@@ -1,0 +1,281 @@
+# http://www.bijbel.net/wb/index.php?b=37 for "Eerste," etc., and http://nl.wikipedia.org/w/index.php?title=Speciaal:VerwijzingenNaarHier/Eerste_brief_van_Paulus_aan_de_Korinti%C3%ABrs&hidelinks=1 for "1e"
+$FIRST	Eerste	1e	I	1
+$SECOND	Tweede	2e	II	2
+$THIRD	Derde	3e	III	3
+$FOURTH	Vierde	IV	4
+$FIFTH	Vijfde	V	5
+$AB	[a-e]
+# http://nl.wikipedia.org/wiki/Toevoegingen_op_Ester (en) and http://nl.wikipedia.org/wiki/1_en_2_Koningen (vgl = cf) and http://nl.wikipedia.org/wiki/Openbaring_van_Johannes (zie ook = see also)
+$AND	en	vgl	zie ook
+# http://nl.wikisource.org/wiki/Apocriefe_boeken/Judith and http://nl.wikipedia.org/wiki/Leviticus
+$CHAPTER	hoofdstukken	hoofdstuk
+# http://www.frissewateren.nl/archief/83%20september%202010/Mijn%20gemeente%20-%20welke%20gemeente%3F%20%281%29.html
+$FF	en volgende verzen
+# http://nl.wikipedia.org/wiki/Psalmen
+$TITLE	opschrift
+# http://nl.wikipedia.org/wiki/Bijbelboek
+$TRANS	GNB96	NBG51	NBV	SV	SV77	WV95	NB
+$TO	-
+# http://nl.wikipedia.org/wiki/Bijbelboek (verzen) and http://nl.wikisource.org/wiki/Apocriefe_boeken/Het_gebed_van_Azarja (vs) and http://nl.wikipedia.org/wiki/Rechters (vers) and http://nl.wikipedia.org/wiki/Brief_van_Judas (v)
+$VERSE	verzen	vers	vs	v
+$UNICODE_BLOCK	Latin
+
+Gen	Genesis	Ge?n	$FIRST Mozes	Beresjiet
+Exod	Exodus	Ex	$SECOND Mozes	Sjemot
+Lev	Leviticus	Lev	$THIRD Mozes	Wajikra	Vajikra	Lv
+Num	Numb?eri	$FOURTH Mozes	B[ae]midbar	Num?
+Deut	Deuteronomium	Deut	$FIFTH Mozes	Dewariem	Dt
+Josh	Jozua	Joz
+Judg	Richteren?	Rechters	R[ei]cht	Re
+Ruth	Ruth	Rt
+1Sam	$FIRST Samuël	$FIRST Sam	Samuel I	1 S
+2Sam	$SECOND Samuël	$SECOND Sam	Samuel II	2 S
+1Kgs	$FIRST Koningen	$FIRST Kon?
+2Kgs	$SECOND Koningen	$SECOND Kon?
+1Chr	$FIRST Kronieken	$FIRST Kron	1 Kr
+2Chr	$SECOND Kronieken	$SECOND Kron	2 Kr
+Ezra	Ezra	Ezr
+Neh	Nehemia	Neh
+Esth	Esther	Ester	Esth	Est
+Job	Job
+Ps	Psalmen	Ps	Psalm
+Prov	Spreuken	Spr
+Eccl	Prediker	[KQ]oheleth?	Pr	Pred
+Song	Hooglied	Canticum canticorum	Hoogl	Hl
+Isa	Jesaja	Je?s
+Jer	Jeremia	Je?r
+Lam	Klaagliederen	Klaagl	Kl
+Ezek	Ezechiël	Ezech
+Dan	Daniël	Dan?
+Hos	Hosea	Hos
+Joel	Joël	Joel	Jl
+Amos	Amos	Am
+Obad	Obadja	Obad	Ob
+Jonah	Jona?
+Mic	Micha	Mica	Mi
+Nah	Nahum	Nah
+Hab	Habakuk	Hab
+Zeph	[SZ]efanja	[SZ]ef
+Hag	Haggaï	Hagg?
+Zech	Zacharia	Zach
+Mal	Maleachi	Mal
+Matt	Matth?eüs	Matth?	Matthéüs	Evangelie volgens Matteüs	Ma?t
+Mark	Mar[ck]us	Mar[ck]	Evangelie volgens Mar[ck]us	M[ck]
+Luke	Lu[ck]as	Evangelie volgens Lu[ck]as	Lu?[ck]
+John	Johannes	Evangelie volgens Johannes	John?
+Acts	Handelingen	Handelingen der apostelen	Handelingen van de apostelen	Ha?nd
+Rom	Romeinen	Rom	Romeinenbrief
+1Cor	$FIRST [KC]orinth?iërs?	$FIRST [KC]orinthe	$FIRST Kor
+2Cor	$SECOND [KC]orinth?iërs?	$SECOND [KC]orinthe	$SECOND Kor
+Gal	Galaten	Gal	Galatenbrief
+Eph	Efeziërs	Efez	Ef
+Phil	Filippenzen	Filip	Fil
+Col	[CK]olossenzen	[CK]ol
+1Thess	$FIRST Th?essalonicenzen	$FIRST Th?ess	$FIRST Tes
+2Thess	$SECOND Th?essalonicenzen	$SECOND Th?ess	$SECOND Tes
+1Tim	$FIRST Timoth?eüs	$FIRST Tim
+2Tim	$SECOND Timoth?eüs	$SECOND Tim
+Titus	Titus	Tit
+Phlm	Filémon	File?m
+Heb	Hebreeën	Hebr?
+Jas	Jakobus	Jak
+1Pet	$FIRST Petrus	$FIRST Petr?	1 Pe
+2Pet	$SECOND Petrus	$SECOND Petr?	2 Pe
+1John	$FIRST Johannes	$FIRST Joh
+2John	$SECOND Johannes	$SECOND Joh
+3John	$THIRD Johannes	$THIRD Joh
+Jude	Judas	Jud
+Rev	Openbaring	Openb	Openbaringen	Apocalyps	Openbaring van Johannes	Ap[ck]	Op
+Tob	Tobit	Tobías?	Tob
+Jdt	Judith?	Jdt
+GkEsth	Ester \(Grieks\)	Ester \(Gr.\)	Est gr
+Wis	Wijsheid	De wijsheid van Salomo	Het boek der wijsheid	Wijsheid van Salomo	Wis
+Sir	Sirach	Wijsheid van Jezus Sirach	Jezus Sirach	Wijsheid van Jozua Ben Sirach	Wijsheid van Ben Sirach	Ecclesiasticus	Sir
+Bar	Baruch	Bar
+PrAzar	Gebed van Azarja
+Sus	Susanna
+Bel	Bel en de draak
+SgThree	Lied van de drie jongemannen	Gezang der drie mannen in het vuur
+EpJer	Brief van Jeremia
+1Macc	$FIRST Makkabeeën	$FIRST Mak
+2Macc	$SECOND Makkabeeën	$SECOND Mak
+3Macc	$THIRD Makkabeeën	$THIRD Mak
+4Macc	$FOURTH Makkabeeën	$FOURTH Mak
+1Esd	$FIRST Esdras	$THIRD Esdras	$THIRD Ezra	$FIRST Ezra
+2Esd	$SECOND Esdras	$FOURTH Esdras	$FOURTH Ezra	$SECOND Ezra
+PrMan	Manasse	Man
+
+Ezek,Ezra	Ez
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Genesis	Gen	Gn
+*Exod	Exodus	Ex	Ex
+*Lev	Leviticus	Lev	Lv
+*Num	Numeri	Num	Nu
+*Deut	Deuteronomium	Deut	Dt
+*Josh	Jozua	Joz
+*Judg	Rechters	Recht	Re
+*Ruth	Ruth	Ruth	Rt
+*1Sam	1 Samuel	1 Sam	1 S
+*2Sam	2 Samuel	2 Sam	2 S
+*1Kgs	1 Koningen	1 Kon	1 Ko
+*2Kgs	2 Koningen	2 Kon	2 Ko
+*1Chr	1 Kronieken	1 Kron	1 Kr
+*2Chr	2 Kronieken	2 Kron	2 Kr
+*Ezra	Ezra	Ezra	Ezr
+*Neh	Nehemia	Neh
+*Esth	Ester	Est
+*Job	Job	Job	Job
+*Ps	Psalmen	Ps	Ps	Psalm
+*Prov	Spreuken	Spr	Spr
+*Eccl	Prediker	Pred	Pr
+*Song	Hooglied	Hoogl	Hl
+*Isa	Jesaja	Jes	Js
+*Jer	Jeremia	Jer	Jr
+*Lam	Klaagliederen	Klaagl	Kl
+*Ezek	Ezechiël	Ezech
+*Dan	Daniël	Dan	Da
+*Hos	Hosea	Hos	Hos
+*Joel	Joël	Joël	Jl
+*Amos	Amos	Amos	Am
+*Obad	Obadja	Obad	Ob
+*Jonah	Jona	Jona	Jon
+*Mic	Micha	Micha	Mi
+*Nah	Nahum	Nah	Nah
+*Hab	Habakuk	Hab	Hab
+*Zeph	Sefanja	Sef
+*Hag	Haggai	Hag
+*Zech	Zacharia	Zach
+*Mal	Maleachi	Mal
+*Matt	Matteüs	Matt	Mt
+*Mark	Marcus	Marc	Mc
+*Luke	Lucas	Luc	Lc
+*John	Johannes	Joh	John
+*Acts	Handelingen	Hand	Hnd
+*Rom	Romeinen	Rom
+*1Cor	1 Korinthiërs	1 Kor
+*2Cor	2 Korinthiërs	2 Kor
+*Gal	Galaten	Gal
+*Eph	Efeziërs	Efez	Ef
+*Phil	Filippenzen	Fil
+*Col	Kolossenzen	Kol
+*1Thess	1 Tessalonicenzen	1 Tes
+*2Thess	2 Tessalonicenzen	2 Tes
+*1Tim	1 Timoteüs	1 Tim
+*2Tim	2 Timoteüs	2 Tim
+*Titus	Titus	Tit
+*Phlm	Filemon	Filem	Film
+*Heb	Hebreeën	Hebr	Heb
+*Jas	Jakobus	Jak
+*1Pet	1 Petrus	1 Petr	1 Pe
+*2Pet	2 Petrus	2 Petr	2 Pe
+*1John	1 Johannes	1 Joh
+*2John	2 Johannes	2 Joh
+*3John	3 Johannes	3 Joh
+*Jude	Judas	Jud
+*Rev	Openbaring	Openb	Op
+*Tob	Tobit		Tob
+*Jdt	Judit		Jdt
+*GkEsth	Ester (Grieks)		Est gr
+*Wis	Wijsheid		Wis
+*Sir	Sirach		Sir
+*Bar	Baruch		Bar
+*PrAzar	Gebed van Azarja
+*Sus	Susanna
+*Bel	Bel en de draak
+*SgThree	Lied van de drie jongemannen
+*EpJer	Brief van Jeremia
+*1Macc	1 Makkabeeën		1 Mak
+*2Macc	2 Makkabeeën		2 Mak
+*3Macc	3 Makkabeeën		3 Mak
+*4Macc	4 Makkabeeën		4 Mak
+*1Esd	1 Esdras
+*2Esd	2 Esdras
+*PrMan	Manasse		Man

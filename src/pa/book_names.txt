@@ -1,0 +1,303 @@
+1Chr	itahās dī pahilī potʰī
+1Chr	ਇਤਹਾਸ ਦੀ ਪਹਿਲੀ ਪੋਥੀ
+1Chr	1 itahās
+1Chr	1 ਇਤਹਾਸ
+1Chr	1Chr
+1Cor	kurĩtʰīāṃ nū̃ pahilī pattrī
+1Cor	ਕੁਰਿੰਥੀਆਂ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ
+1Cor	1 ਕੁਰਿੰਥੀਆਂ ਨੂੰ
+1Cor	ਕੁਰਿੰਥੀਆਂ ਨੂੰ
+1Cor	1 kurĩtʰīāṃ
+1Cor	1 ਕੁਰਿੰਥੀਆਂ
+1Cor	1Cor
+1Esd	1Esd
+1John	yūhãnā dī pahilī pattrī
+1John	ਯੂਹੰਨਾ ਦੀ ਪਹਿਲੀ ਪੱਤ੍ਰੀ
+1John	1 yūhãnā
+1John	1 ਯੂਹੰਨਾ
+1John	1John
+1Kgs	rājiāṃ dī pahilī potʰī
+1Kgs	ਰਾਜਿਆਂ ਦੀ ਪਹਿਲੀ ਪੋਥੀ
+1Kgs	1 rājiāṃ
+1Kgs	1 ਰਾਜਿਆਂ
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	patras dī pahilī pattrī
+1Pet	ਪਤਰਸ ਦੀ ਪਹਿਲੀ ਪੱਤ੍ਰੀ
+1Pet	1 patras
+1Pet	1 ਪਤਰਸ
+1Pet	1Pet
+1Sam	samūel dī pahilī potʰī
+1Sam	ਸਮੂਏਲ ਦੀ ਪਹਿਲੀ ਪੋਥੀ
+1Sam	1 samūel
+1Sam	1 ਸਮੂਏਲ
+1Sam	1Sam
+1Thess	tʰassalunīkīāṃ nū̃ pahilī pattrī
+1Thess	ਥਸੱਲੁਨੀਕੀਆਂ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ
+1Thess	ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ
+1Thess	1 ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ
+1Thess	1 tʰassalunīkīāṃ
+1Thess	1Thess
+1Tim	timotʰius nū̃ pahilī pattrī
+1Tim	ਤਿਮੋਥਿਉਸ ਨੂੰ ਪਹਿਲੀ ਪੱਤ੍ਰੀ
+1Tim	1 ਤਿਮੋਥਿਉਸ ਨੂੰ
+1Tim	1 timotʰius
+1Tim	1Tim
+2Chr	itahās dī dūjī potʰī
+2Chr	ਇਤਹਾਸ ਦੀ ਦੂਜੀ ਪੋਥੀ
+2Chr	2 itahās
+2Chr	2 ਇਤਹਾਸ
+2Chr	2Chr
+2Cor	kurĩtʰīāṃ nū̃ dūjī pattrī
+2Cor	ਕੁਰਿੰਥੀਆਂ ਨੂੰ ਦੂਜੀ ਪੱਤ੍ਰੀ
+2Cor	2 ਕੁਰਿੰਥੀਆਂ ਨੂੰ
+2Cor	2 kurĩtʰīāṃ
+2Cor	2 ਕੁਰਿੰਥੀਆਂ
+2Cor	2Cor
+2Esd	2Esd
+2John	yūhãnā dī dūjī pattrī
+2John	ਯੂਹੰਨਾ ਦੀ ਦੂਜੀ ਪੱਤ੍ਰੀ
+2John	2 yūhãnā
+2John	2 ਯੂਹੰਨਾ
+2John	2John
+2Kgs	rājiāṃ dī dūjī potʰī
+2Kgs	ਰਾਜਿਆਂ ਦੀ ਦੂਜੀ ਪੋਥੀ
+2Kgs	2 rājiāṃ
+2Kgs	2 ਰਾਜਿਆਂ
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	patras dī dūjī pattrī
+2Pet	ਪਤਰਸ ਦੀ ਦੂਜੀ ਪੱਤ੍ਰੀ
+2Pet	2 patras
+2Pet	2 ਪਤਰਸ
+2Pet	2Pet
+2Sam	samūel dī dūjī potʰī
+2Sam	ਸਮੂਏਲ ਦੀ ਦੂਜੀ ਪੋਥੀ
+2Sam	2 samūel
+2Sam	2 ਸਮੂਏਲ
+2Sam	2Sam
+2Thess	tʰassalunīkīāṃ nū̃ dūjī pattrī
+2Thess	ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ ਦੂਜੀ ਪੱਤ੍ਰੀ
+2Thess	2 ਥੱਸਲੁਨੀਕੀਆਂ ਨੂੰ
+2Thess	2 tʰassalunīkīāṃ
+2Thess	2Thess
+2Tim	timotʰius nū̃ dūjī pattrī
+2Tim	ਤਿਮੋਥਿਉਸ ਨੂੰ ਦੂਜੀ ਪੱਤ੍ਰੀ
+2Tim	2 ਤਿਮੋਥਿਉਸ ਨੂੰ
+2Tim	2 timotʰius
+2Tim	2Tim
+3John	yūhãnā dī tījī pattrī
+3John	ਯੂਹੰਨਾ ਦੀ ਤੀਜੀ ਪੱਤ੍ਰੀ
+3John	3 yūhãnā
+3John	3 ਯੂਹੰਨਾ
+3John	3John
+3Macc	3Macc
+4Macc	4Macc
+Acts	rasūlāṃ de kartabb
+Acts	ਰਸੂਲਾਂ ਦੇ ਕਰਤੱਬ
+Acts	Acts
+Amos	Amos
+Amos	āmos
+Amos	ਆਮੋਸ
+Bar	Bar
+Bel	Bel
+Col	kulussīāṃ nū̃ pattrī
+Col	ਕੁਲੁੱਸੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
+Col	ਕੁਲੁੱਸੀਆਂ ਨੂੰ
+Col	kulussīāṃ
+Col	Col
+Dan	dānīel
+Dan	ਦਾਨੀਏਲ
+Dan	Dan
+Deut	bivastʰā sār
+Deut	ਬਿਵਸਥਾ ਸਾਰ
+Deut	ਬਿਵਸਥਾ
+Deut	Deut
+Eccl	upadešak
+Eccl	ਉਪਦੇਸ਼ਕ
+Eccl	Eccl
+EpJer	EpJer
+Eph	afasīāṃ nū̃ pattrī
+Eph	ਅਫ਼ਸੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
+Eph	ਅਫ਼ਸੀਆਂ ਨੂੰ
+Eph	afasīāṃ
+Eph	Eph
+Esth	astar
+Esth	Esth
+Esth	ਅਸਤਰ
+Exod	Exod
+Exod	kūč
+Exod	ਕੂਚ
+Ezek	ਹਿਜ਼ਕੀਏਲ
+Ezek	hizkīel
+Ezek	Ezek
+Ezra	ਅਜ਼ਰਾ
+Ezra	Ezra
+Ezra	azrā
+Gal	galātīāṃ nū̃ pattrī
+Gal	ਗਲਾਤੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
+Gal	ਗਲਾਤੀਆਂ ਨੂੰ
+Gal	galātīāṃ
+Gal	Gal
+Gen	utpat
+Gen	ਉਤਪਤ
+Gen	Gen
+GkEsth	GkEsth
+Hab	habakkūk
+Hab	ਹਬਕੱੂਕ
+Hab	ਹਬੱਕੂਕ
+Hab	ਹਬਕੂਕ
+Hab	Hab
+Hag	hajjaī
+Hag	ਹੱਜਈ
+Hag	Hag
+Heb	ibrānīāṃ nū̃ pattrī
+Heb	ਇਬਰਾਨੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
+Heb	ਇਬਰਾਨੀਆਂ ਨੂੰ
+Heb	ibrānīāṃ
+Heb	Heb
+Hos	ਹੋਸ਼ੇਆ
+Hos	hošeā
+Hos	Hos
+Isa	yasāyāh
+Isa	ਯਾਸਾਯਾਹ
+Isa	ਯਸਾਯਾਹ
+Isa	Isa
+Isa	ਯਸਾ
+Jas	yākūb dī pattrī
+Jas	ਯਾਕੂਬ ਦੀ ਪੱਤ੍ਰੀ
+Jas	yākūb
+Jas	ਯਾਕੂਬ
+Jas	Jas
+Jdt	Jdt
+Jer	yirmiyāh
+Jer	ਯਿਰਮਿਯਾਹ
+Jer	Jer
+Job	ayyūb
+Job	ਅੱਯੂਬ
+Job	ਅਯੂਬ
+Job	Job
+Joel	Joel
+Joel	yoel
+Joel	ਜੋਏਲ
+Joel	ਯੋਏਲ
+John	ਯੂਹੰਨਾ ਦੀ ਇੰਜੀਲ
+John	yūhãnā dī ĩjīl
+John	ਯੂਹਾਂਨਾ
+John	yūhãnā
+John	ਯੂਹੰਨਾ
+John	John
+Jonah	Jonah
+Jonah	yūnāh
+Jonah	ਯੂਨਾਹ
+Josh	yahošuā
+Josh	ਯਹੋਸ਼ੁਆ
+Josh	Josh
+Jude	yahūdāh dī pattrī
+Jude	ਯਹੂਦਾਹ ਦੀ ਪੱਤ੍ਰੀ
+Jude	yahūdāh
+Jude	ਯਹੂਦਾਹ
+Jude	Jude
+Judg	niāīāṃ dī potʰī
+Judg	ਨਿਆਂਈਆਂ ਦੀ ਪੋਥੀ
+Judg	ਨਿਆਈਆਂ ਦੀ ਪੋਥੀ
+Judg	niāīāṃ
+Judg	Judg
+Lam	virlāp
+Lam	ਵਿਰਲਾਪ
+Lam	Lam
+Lev	levīāṃ dī potʰī
+Lev	ਲੇਵੀਆਂ ਦੀ ਪੋਥੀ
+Lev	levīāṃ
+Lev	ਲੇਵੀਆਂ
+Lev	Lev
+Luke	ਲੂਕਾ ਦੀ ਇੰਜੀਲ
+Luke	lūkā dī ĩjīl
+Luke	Luke
+Luke	lūkā
+Luke	ਲੂਕਾ
+Mal	malākī
+Mal	ਮਲਾਕੀ
+Mal	Mal
+Mark	markus dī ĩjīl
+Mark	ਮਰਕੁਸ ਦੀ ਇੰਜੀਲ
+Mark	markus
+Mark	ਮਰਕੁਸ
+Mark	Mark
+Matt	mattī dī ĩjīl
+Matt	ਮੱਤੀ ਦੀ ਇੰਜੀਲ
+Matt	mattī
+Matt	Matt
+Matt	ਮੱਤੀ
+Mic	mīkāh
+Mic	ਮੀਕਾਹ
+Mic	Mic
+Nah	nahūm
+Nah	ਨਹੂਮ
+Nah	Nah
+Neh	nahamyāh
+Neh	ਨਹਮਯਾਹ
+Neh	Neh
+Num	giṇtī
+Num	ਗਿਣਤੀ
+Num	Num
+Obad	obadyāh
+Obad	ਓਬਦਯਾਹ
+Obad	Obad
+Phil	ਫ਼ਿਲਿੱਪੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
+Phil	filippīāṃ nū̃ pattrī
+Phil	ਫ਼ਿਲਿੱਪੀਆਂ ਨੂੰ
+Phil	filippīāṃ
+Phil	Phil
+Phlm	pʰilemon nū̃ pattrī
+Phlm	ਫ਼ਿਲੇਮੋਨ ਨੂੰ ਪੱਤ੍ਰੀ
+Phlm	ਫਿਲੇਮੋਨ ਨੂੰ ਪੱਤ੍ਰੀ
+Phlm	ਫ਼ਿਲੇਮੋਨ ਨੂੰ
+Phlm	pʰilemon
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	kahāutāṃ
+Prov	ਕਹਾਉਂਤਾ
+Prov	ਕਹਾਉਤਾਂ
+Prov	Prov
+Ps	zabūr
+Ps	ਜ਼ਬੂਰ
+Ps	ਜਬੂਰ
+Ps	Ps
+Rev	yūhãnā de prakāš dī potʰī
+Rev	ਯੂਹੰਨਾ ਦੇ ਪਰਕਾਸ਼ ਦੀ ਪੋਥੀ
+Rev	yūhãnā de prakāš
+Rev	ਪਰਕਾਸ਼ ਦੀ ਪੋਥੀ
+Rev	Rev
+Rom	romīāṃ nū̃ pattrī
+Rom	ਰੋਮੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
+Rom	ਰੋਮੀਆਂ ਨੂੰ
+Rom	romīāṃ
+Rom	ਰੋਮੀਆਂ
+Rom	Rom
+Ruth	Ruth
+Ruth	rūtʰ
+Ruth	ਰੂਥ
+SgThree	SgThree
+Sir	Sir
+Song	salemān dā gīt
+Song	ਸਲੇਮਾਨ ਦਾ ਗੀਤ
+Song	Song
+Sus	Sus
+Titus	tītus nū̃ pattrī
+Titus	ਤੀਤੁਸ ਨੂੰ ਪੱਤ੍ਰੀ
+Titus	ਤੀਤੁਸ ਨੂੰ
+Titus	Titus
+Titus	tītus
+Titus	ਤੀਤੁਸ
+Tob	Tob
+Wis	Wis
+Zech	zakaryāh
+Zech	ਜ਼ਕਰਜਾਹ
+Zech	ਜ਼ਕਰਯਾਹ
+Zech	ਜਕਰਯਾਹ
+Zech	Zech
+Zeph	safanyāh
+Zeph	ਸਫ਼ਨਯਾਹ
+Zeph	Zeph

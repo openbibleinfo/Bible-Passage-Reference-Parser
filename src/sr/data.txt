@@ -1,0 +1,278 @@
+$FIRST	Прва	1	I
+$SECOND	Друга	2	II
+$THIRD	Трећом	Трећа	3	III
+$FOURTH	Четврта	4	IV
+$FIFTH	Пета	5	V
+$AB	[aаб]
+$AND	и
+# поглавља from http://sr.wikipedia.org/wiki/%D0%9E%D1%82%D0%BA%D1%80%D0%BE%D0%B2%D0%B5%D1%9A%D0%B5_%D0%88%D0%BE%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE . глава from http://sr.wikipedia.org/wiki/%D0%88%D0%B5%D0%B2%D0%B0%D0%BD%D1%92%D0%B5%D1%99%D0%B5_%D0%BF%D0%BE_%D0%9B%D1%83%D0%BA%D0%B8
+$CHAPTER	поглавља	глава
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+$TO	-
+# Google Translate, confirmed by Google search
+$VERSE	стихови	стих
+$UNICODE_BLOCK	Cyrillic	Latin
+
+Gen	Постање	$FIRST Мојс	$FIRST Мојсијева	Пост
+Exod	Излазак	$SECOND Мојс	Егзодус	$SECOND Мојсијева	Изл
+Lev	Левитска	$THIRD Мојс	$THIRD Мојсијева	Лев
+Num	Бројеви	$FOURTH Мојс	$FOURTH Мојсијева	Бр
+Deut	Поновљени закони	$FIFTH Мојс	$FIFTH Мојсијева	Понз
+Josh	Исус Навин	ИНав
+Judg	Судије	Суд	Судија
+Ruth	Рута	Рут
+1Sam	$FIRST Самуилова	$FIRST краљевима	1 Сам
+2Sam	$SECOND Самуилова	$SECOND краљевима	2 Сам
+1Kgs	$FIRST краљева	$THIRD краљевима	$THIRD краљевства	$FIRST о царевима	1 Цар	$FIRST Царева
+2Kgs	$SECOND краљева	$FOURTH краљевима	$FOURTH краљевства	$SECOND о царевима	2 Цар	$SECOND Царева
+1Chr	$FIRST хроника	$FIRST Паралипоменону	$FIRST дневника	1 Дн	1 хрон
+2Chr	$SECOND хроника	$SECOND Паралипоменону	$SECOND дневника	2 Дн	2 хрон
+Ezra	Езрина	Јездра	Езр
+Neh	Немија	Нем
+Esth	Естер	Јестира	Јест
+Job	Јов
+Ps	Псалми	Псалми Давидови	Пс	Псалам
+Prov	Изреке	Приче Соломунове	Пр	Приче Соломонове
+Eccl	Проповедник	Проп
+Song	Песма Соломонова	Песма над песмама	Пнп
+Isa	Исаија	Ис
+Jer	Јеремија	Јер
+Lam	Плач	Плач Јеремијин
+Ezek	Језекиљ	Јез
+Dan	Данило	Дан
+Hos	Осија	Хошеа	Ос
+Joel	Јоиљ	Јоил
+Amos	Амос	Ам
+Obad	Авдија	Авдије	Авд
+Jonah	Јона
+Mic	Михеј	Мих
+Nah	Наум
+Hab	Авакум	Ав
+Zeph	Софоније	Соф	Софонија
+Hag	Агеј	Аг
+Zech	Захарија	Зах
+Mal	Малахија	Мал
+Matt	Матеј	Мт	Јеванђеље по Матеју	Матеја	Еванђеље по Матеју
+Mark	Марко	Мк	Јеванђеље по Марку	Еванђеље по Марку	Маркo
+Luke	Лука	Лк	Јеванђеље по Луки	Еванђеље по Луки	Лукa
+John	Јован	Јн	Јеванђеље по Јовану	Еванђеље по Јовану
+Acts	Дела	Дап	Дела Апостолска
+Rom	Римљанима	Рим	Посланица Римљанима
+1Cor	$FIRST Коринћанима	1 Кор	$FIRST посланица Коринћанима
+2Cor	$SECOND Коринћанима	2 Кор	$SECOND посланица Коринћанима
+Gal	Галатима	Гал	Посланица Галатима	Посланица Галаћанима	Галаћанима
+Eph	Ефесцима	Еф	Посланица Ефесцима
+Phil	Филипљанима	Флп	Посланица Филипљанима
+Col	Колошанима	Кол	Посланица Колошанима
+1Thess	$FIRST Солуњанима	1 Сол	$FIRST посланица Солуњанима
+2Thess	$SECOND Солуњанима	2 Сол	$SECOND посланица Солуњанима
+1Tim	$FIRST Тимотеју	1 Тим	$FIRST посланица Тимотеју
+2Tim	$SECOND Тимотеју	2 Тим	$SECOND посланица Тимотеју
+Titus	Титу	Тит	Посланица Титу
+Phlm	Филимону	Фил	Посланица Филимону
+Heb	Јеврејима	Јев	Посланица Јеврејима
+Jas	Јаков	Јак	Јаковљева	Посланица Јаковљева	Јаковова
+1Pet	$FIRST Петрова	1 Петр?	$FIRST посланица Петрова
+2Pet	$SECOND Петрова	2 Петр?	$SECOND посланица Петрова
+1John	$FIRST Јованова	1 Јн	$FIRST посланица Јованова
+2John	$SECOND Јованова	2 Јн	$SECOND посланица Јованова
+3John	$THIRD Јованова	3 Јн	$THIRD посланица Јованова
+Jude	Јуде	Јаковљевог	Јд	Јудина	Посланица Јудина
+Rev	Откровење Јованово	Отк	Откривење	Откривење Јованово
+Tob	Тобија	Тов	Товит	Књига Товијина
+Jdt	Јудита	Јуд	Књига о Јудити
+GkEsth	GkEsth
+Wis	Мудрости	Мудрости Соломонове	Прем Сол	Премудорсти Соломонове
+Sir	Сирина	Еклезијастикус	Сир	ИсС	Премудрости Исуса сина Сирахова
+Bar	Барух	Вар	Варух
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	Писма Јеремије	Посланица Јеремијина
+1Macc	$FIRST Макабејаца	1 Мк	$FIRST Макавеја	$FIRST Макавејска
+2Macc	$SECOND Макабејаца	2 Мк	$SECOND Макавеја	$SECOND Макавејска
+3Macc	$THIRD Макабејаца	3 Мк	$THIRD Макавеја	$THIRD Макавејска
+4Macc	$FOURTH Макабејаца	4 Мк	$FOURTH Макавеја	$FOURTH Макавејска
+1Esd	$FIRST Ездрина	1 Јез	$FIRST Јездрина
+2Esd	$SECOND Ездрина	2 Јез	$SECOND Јездрина
+PrMan	Молитва Манасијина
+AddDan	Додаци Данилу
+AddEsth	Додаци Јестири
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Постање	Пост		
+*Exod	Излазак	Изл		
+*Lev	Левитска	Лев		
+*Num	Бројеви	Бр		
+*Deut	Поновљени закони	Понз		
+*Josh	Исус Навин	ИНав		
+*Judg	Судија	Суд		
+*Ruth	Рута	Рут		
+*1Sam	1 Самуилова	1 Сам		
+*2Sam	2 Самуилова	2 Сам		
+*1Kgs	1 Царева	1 Цар		
+*2Kgs	2 Царева	2 Цар		
+*1Chr	1 Дневника	1 Дн		
+*2Chr	2 Дневника	2 Дн		
+*Ezra	Езрина	Езр		
+*Neh	Немија	Нем		
+*Esth	Јестира	Јест		
+*Job	Јов	Јов		
+*Ps	Псалми	Пс		Псалам
+*Prov	Приче Соломонове	Пр		
+*Eccl	Проповедник	Проп		
+*Song	Песма над песмама	Пнп		
+*Isa	Исаија	Ис		
+*Jer	Јеремија	Јер		
+*Lam	Плач Јеремијин	Плач		
+*Ezek	Језекиљ	Јез		
+*Dan	Данило	Дан		
+*Hos	Осија	Ос		
+*Joel	Јоиљ	Јоиљ		
+*Amos	Амос	Ам		
+*Obad	Авдија	Авд		
+*Jonah	Јона	Јона		
+*Mic	Михеј	Мих		
+*Nah	Наум	Наум		
+*Hab	Авакум	Ав		
+*Zeph	Софонија	Соф		
+*Hag	Агеј	Аг		
+*Zech	Захарија	Зах		
+*Mal	Малахија	Мал		
+*Matt	Матеј	Мт		
+*Mark	Марко	Мк		
+*Luke	Лука	Лк		
+*John	Јован	Јн		
+*Acts	Дела Апостолска	Дап		
+*Rom	Римљанима	Рим		
+*1Cor	1 Коринћанима	1 Кор		
+*2Cor	2 Коринћанима	2 Кор		
+*Gal	Галатима	Гал		
+*Eph	Ефесцима	Еф		
+*Phil	Филипљанима	Флп		
+*Col	Колошанима	Кол		
+*1Thess	1 Солуњанима	1 Сол		
+*2Thess	2 Солуњанима	2 Сол		
+*1Tim	1 Тимотеју	1 Тим		
+*2Tim	2 Тимотеју	2 Тим		
+*Titus	Титу	Тит		
+*Phlm	Филимону	Фил		
+*Heb	Јеврејима	Јев		
+*Jas	Јаковљева	Јак		
+*1Pet	1 Петрова	1 Пет		
+*2Pet	2 Петрова	2 Пет		
+*1John	1 Јованова	1 Јн		
+*2John	2 Јованова	2 Јн		
+*3John	3 Јованова	3 Јн		
+*Jude	Јудина	Јд		
+*Rev	Откривење	Отк		
+*Tob	Товит	Тов		
+*Jdt	Јудита	Јуд		
+*GkEsth	GkEsth			
+*Wis	Премудорсти Соломонове	Прем Сол		
+*Sir	ИсС	Сир		
+*Bar	Варух	Вар		
+*PrAzar	PrAzar			
+*Sus	Sus			
+*Bel	Bel			
+*SgThree	SgThree			
+*EpJer	Писма Јеремије			
+*1Macc	1 Макавеја	1 Мк		
+*2Macc	2 Макавеја	2 Мк		
+*3Macc	3 Макавеја	3 Мк		
+*4Macc	4 Макавеја	4 Мк		
+*1Esd	1 Јездрина	1 Јез		
+*2Esd	2 Јездрина	2 Јез		
+*PrMan	Молитва Манасијина			
+*AddDan	Додаци Данилу			
+*AddEsth	Додаци Јестири			

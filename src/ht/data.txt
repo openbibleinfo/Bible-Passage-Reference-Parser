@@ -1,0 +1,271 @@
+$FIRST	Premye	1	I
+$SECOND	Dezyèm	2	II
+$THIRD	3	III
+$FOURTH	4	IV
+$AB	[a-e]
+$AND	and
+$CHAPTER	chapter
+$FF	ff
+$TITLE	title
+$TRANS	HCV
+$TO	-
+$VERSE	verse
+$UNICODE_BLOCK	Latin
+
+Gen	Jenèz	liv Konmansman an	Konmansman	Jen
+Exod	Egzòd	liv delivrans lan	Delivrans	Egz
+Lev	Levitik	liv Prensip lavi nan Bondye	Lev
+Num	Nonb	liv Resansman an	Resansman	Res
+Deut	Detewonòm	Dezyèm liv Lalwa a	Deteronòm	Det
+Josh	Liv Jozye a	Jozye	Joz
+Judg	Jij	Liv Chèf yo
+Ruth	Liv Rit la	Rit
+1Sam	Premye liv Samyèl la	$FIRST Samyèl	1 Sam
+2Sam	Dezyèm liv Samyèl la	$SECOND Samyèl	2 Sam
+1Kgs	Premye liv Wa yo	$FIRST Wa
+2Kgs	Dezyèm liv Wa yo	$SECOND Wa
+1Chr	Premye liv Kwonik la	$FIRST Kwonik	$FIRST Istwa	1 Ist
+2Chr	Dezyèm liv Kwonik la	$SECOND Kwonik	$SECOND Istwa	2 Ist
+Ezra	Liv Esdras la	Esdras	Esd
+Neh	Liv Neyemi an	Neyemi	Neemi	Ne
+Esth	Liv Estè a	Estè	Est
+Job	Liv Jòb la	Jòb
+Ps	Liv Sòm yo	Sòm
+Prov	Liv Pwovèb yo	Pwovèb	Pw
+Eccl	Eklezyas	Liv Filozòf la	Filozòf	Eklezyas - Liv Filozòf la	Ekl
+Song	Kantid de Kantik	Pi bèl Chante a	Chante Salomon	Chante
+Isa	Liv Ezayi a	Ezayi	Ez
+Jer	Liv Jeremi an	Jeremi	Jer
+Lam	Lamantasyon	Chante pou plenn Sò lavil Jerizalèm	Plenn	Pl
+Ezek	Liv Ezekyèl la	Ezekyèl	Eze
+Dan	Liv Danyèl la	Danyèl	Dan
+Hos	Liv Oze a	Oze
+Joel	Liv Jowèl la	Jowèl
+Amos	Liv Amòs la	Amòs
+Obad	Liv Abdyas la	Abdyas	Abdias	Abd
+Jonah	Liv Jonas la	Jonas
+Mic	Liv Miche a	Miche
+Nah	Liv Nawoum lan	Nawoum	Nawoun	Naw
+Hab	Liv Abakik la	Abakik	Abakouk	Abak
+Zeph	Liv Sofoni an	Sofoni	Sof
+Hag	Liv Aje a	Aje
+Zech	Liv Zakari a	Zakari	Zak
+Mal	Liv Malachi a	Malachi	Mal
+Matt	Matye	Mat	Mt
+Mark	Mak	Mk
+Luke	Lik	Lk
+John	Jan	Jn
+Acts	Travay apòt yo	Aksyon apòt yo	Akdèzapot	Travay	Tr
+Rom	Romen	Ròm
+1Cor	$FIRST Korentyen	$FIRST Korint	1 Kor
+2Cor	$SECOND Korentyen	$SECOND Korint	2 Kor
+Gal	Galasyen	Galasi	Gal
+Eph	Efezyen	Efèz	Ef
+Phil	Filipyen	Filip	Fil
+Col	Kolosyen	Kolòs	Kol
+1Thess	$FIRST Tesalonikyen	$FIRST Tesalonik	1 Tes
+2Thess	$SECOND Tesalonikyen	$SECOND Tesalonik	2 Tes
+1Tim	$FIRST Timote	1 Tim
+2Tim	$SECOND Timote	2 Tim
+Titus	Tit
+Phlm	Filemon	Filem
+Heb	Ebre	Eb
+Jas	Jak
+1Pet	$FIRST P[iy]è
+2Pet	$SECOND P[iy]è
+1John	$FIRST Jan	1 Jn
+2John	$SECOND Jan	2 Jn
+3John	III Jan	3 Jan	3 Jn
+Jude	Jid
+Rev	Revelasyon	Apokalips	Rev
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=Bel
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Jenèz	Jen
+*Exod	Egzòd	Egz
+*Lev	Levitik	Lev
+*Num	Resansman	Res
+*Deut	Deteronòm	Det
+*Josh	Jozye	Joz
+*Judg	Jij
+*Ruth	Rit
+*1Sam	1 Samyèl	1 Sam
+*2Sam	2 Samyèl	2 Sam
+*1Kgs	1 Wa
+*2Kgs	2 Wa
+*1Chr	1 Istwa	1 Ist
+*2Chr	2 Istwa	2 Ist
+*Ezra	Esdras	Esd
+*Neh	Neemi	Ne
+*Esth	Estè	Est
+*Job	Jòb
+*Ps	Sòm
+*Prov	Pwovèb	Pw
+*Eccl	Eklezyas	Ekl
+*Song	Chante Salomon	Chante
+*Isa	Ezayi	Ez
+*Jer	Jeremi	Jer
+*Lam	Plenn	Pl
+*Ezek	Ezekyèl	Eze
+*Dan	Danyèl	Dan
+*Hos	Oze
+*Joel	Jowèl
+*Amos	Amòs
+*Obad	Abdias	Abd
+*Jonah	Jonas
+*Mic	Miche
+*Nah	Nawoun	Naw
+*Hab	Abakouk	Abak
+*Zeph	Sofoni	Sof
+*Hag	Aje
+*Zech	Zakari	Zak
+*Mal	Malachi	Mal
+*Matt	Matye	Mat
+*Mark	Mak	Mk
+*Luke	Lik	Lk
+*John	Jan	Jn
+*Acts	Travay	Tr
+*Rom	Ròm
+*1Cor	1 Korint	1 Kor
+*2Cor	2 Korint	2 Kor
+*Gal	Galasi	Gal
+*Eph	Efèz	Ef
+*Phil	Filip	Fil
+*Col	Kolòs	Kol
+*1Thess	1 Tesalonik	1 Tes
+*2Thess	2 Tesalonik	2 Tes
+*1Tim	1 Timote	1 Tim
+*2Tim	2 Timote	2 Tim
+*Titus	Tit
+*Phlm	Filemon	Filem
+*Heb	Ebre	Eb
+*Jas	Jak
+*1Pet	1 Piè
+*2Pet	2 Piè
+*1John	1 Jan	1 Jn
+*2John	2 Jan	2 Jn
+*3John	3 Jan	3 Jn
+*Jude	Jid
+*Rev	Revelasyon	Rev
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

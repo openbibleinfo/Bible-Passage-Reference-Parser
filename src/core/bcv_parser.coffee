@@ -576,6 +576,8 @@ class bcv_parser
 		for own key of entity.passages[passage_i][target_entity]
 			entity.passages[passage_i][target_entity][key] = entity.passages[passage_i][source_entity][key]
 		if entity.type is "sequence"
+			# This can be too long if a range is converted into a sequence where it ends with an open book range (`Matt 10-Rev`) that you want to ignore.
+			passage_i = entity.value.length - 1 if passage_i >= entity.value.length
 			temp = @snap_range @passage.pluck(type, entity.value[passage_i]), 0
 			if passage_i == 0
 				entity.absolute_indices[0] = temp.absolute_indices[0]

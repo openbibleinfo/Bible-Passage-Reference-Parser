@@ -1,0 +1,1218 @@
+1Chr	इतिहासको पहिलो पुस्तक
+1Chr	itihasko pustak
+1Chr	itihāsko pustak
+1Chr	1. itihasko
+1Chr	1. itihāsko
+1Chr	1. इतिहासको
+1Chr	1 itihasko
+1Chr	1 itihāsko
+1Chr	1 इतिहासको
+1Chr	1. इतिहास
+1Chr	1 इतिहास
+1Chr	1Chr
+1Cor	कोरिन्थीहरूलाई पावलको पहिलो पत्र
+1Cor	korintʰiharulai pahilo patra
+1Cor	korintʰiharulaī pahilo patra
+1Cor	korintʰiharulāi pahilo patra
+1Cor	korintʰiharulāī pahilo patra
+1Cor	korintʰiharūlai pahilo patra
+1Cor	korintʰiharūlaī pahilo patra
+1Cor	korintʰiharūlāi pahilo patra
+1Cor	korintʰiharūlāī pahilo patra
+1Cor	korintʰīharulai pahilo patra
+1Cor	korintʰīharulaī pahilo patra
+1Cor	korintʰīharulāi pahilo patra
+1Cor	korintʰīharulāī pahilo patra
+1Cor	korintʰīharūlai pahilo patra
+1Cor	korintʰīharūlaī pahilo patra
+1Cor	korintʰīharūlāi pahilo patra
+1Cor	korintʰīharūlāī pahilo patra
+1Cor	कोरिन्थीहरूलाई पहिलो पत्र
+1Cor	1. korintʰiharulai
+1Cor	1. korintʰiharulaī
+1Cor	1. korintʰiharulāi
+1Cor	1. korintʰiharulāī
+1Cor	1. korintʰiharūlai
+1Cor	1. korintʰiharūlaī
+1Cor	1. korintʰiharūlāi
+1Cor	1. korintʰiharūlāī
+1Cor	1. korintʰīharulai
+1Cor	1. korintʰīharulaī
+1Cor	1. korintʰīharulāi
+1Cor	1. korintʰīharulāī
+1Cor	1. korintʰīharūlai
+1Cor	1. korintʰīharūlaī
+1Cor	1. korintʰīharūlāi
+1Cor	1. korintʰīharūlāī
+1Cor	1 korintʰiharulai
+1Cor	1 korintʰiharulaī
+1Cor	1 korintʰiharulāi
+1Cor	1 korintʰiharulāī
+1Cor	1 korintʰiharūlai
+1Cor	1 korintʰiharūlaī
+1Cor	1 korintʰiharūlāi
+1Cor	1 korintʰiharūlāī
+1Cor	1 korintʰīharulai
+1Cor	1 korintʰīharulaī
+1Cor	1 korintʰīharulāi
+1Cor	1 korintʰīharulāī
+1Cor	1 korintʰīharūlai
+1Cor	1 korintʰīharūlaī
+1Cor	1 korintʰīharūlāi
+1Cor	1 korintʰīharūlāī
+1Cor	1. कोरिन्थीहरूलाई
+1Cor	1 कोरिन्थीहरूलाई
+1Cor	1. कोरिन्थी
+1Cor	1 कोरिन्थी
+1Cor	1Cor
+1Esd	1Esd
+1John	yuhannako pahilo patra
+1John	yuhannāko pahilo patra
+1John	yūhannako pahilo patra
+1John	yūhannāko pahilo patra
+1John	यूहन्नाको पहिलो पत्र
+1John	1. yuhannako
+1John	1. yuhannāko
+1John	1. yūhannako
+1John	1. yūhannāko
+1John	1. यूहन्नाको
+1John	1 yuhannako
+1John	1 yuhannāko
+1John	1 yūhannako
+1John	1 yūhannāko
+1John	1 यूहन्नाको
+1John	1. यूहन्ना
+1John	1 यूहन्ना
+1John	1John
+1Kgs	राजाहरूक पहिल पुस्तक
+1Kgs	raǳaharuko pustak
+1Kgs	raǳaharūko pustak
+1Kgs	raǳāharuko pustak
+1Kgs	raǳāharūko pustak
+1Kgs	rāǳaharuko pustak
+1Kgs	rāǳaharūko pustak
+1Kgs	rāǳāharuko pustak
+1Kgs	rāǳāharūko pustak
+1Kgs	1. raǳaharuko
+1Kgs	1. raǳaharūko
+1Kgs	1. raǳāharuko
+1Kgs	1. raǳāharūko
+1Kgs	1. rāǳaharuko
+1Kgs	1. rāǳaharūko
+1Kgs	1. rāǳāharuko
+1Kgs	1. rāǳāharūko
+1Kgs	1 raǳaharuko
+1Kgs	1 raǳaharūko
+1Kgs	1 raǳāharuko
+1Kgs	1 raǳāharūko
+1Kgs	1 rāǳaharuko
+1Kgs	1 rāǳaharūko
+1Kgs	1 rāǳāharuko
+1Kgs	1 rāǳāharūko
+1Kgs	1. राजाहरूको
+1Kgs	1 राजाहरूको
+1Kgs	1. राजा
+1Kgs	1 राजा
+1Kgs	1Kgs
+1Macc	1Macc
+1Pet	patrusko pahilo patra
+1Pet	पत्रुसको पहिलो पत्र
+1Pet	1. patrusko
+1Pet	1. पत्रुसको
+1Pet	1 patrusko
+1Pet	1 पत्रुसको
+1Pet	1. पत्रुस
+1Pet	1 पत्रुस
+1Pet	1Pet
+1Sam	शमूएलको पहिलो पुस्तक
+1Sam	samuelko pustak
+1Sam	samūelko pustak
+1Sam	šamuelko pustak
+1Sam	šamūelko pustak
+1Sam	1. samuelko
+1Sam	1. samūelko
+1Sam	1. šamuelko
+1Sam	1. šamūelko
+1Sam	1 samuelko
+1Sam	1 samūelko
+1Sam	1 šamuelko
+1Sam	1 šamūelko
+1Sam	1. शमूएलको
+1Sam	1 शमूएलको
+1Sam	1. शामुएल
+1Sam	1 शामुएल
+1Sam	1. शमूएल
+1Sam	1 शमूएल
+1Sam	1Sam
+1Thess	थिस्सलोनिकीहरूलाई पावलको पहिलो पत्र
+1Thess	tʰissalonikiharulai pahilo patra
+1Thess	tʰissalonikiharulaī pahilo patra
+1Thess	tʰissalonikiharulāi pahilo patra
+1Thess	tʰissalonikiharulāī pahilo patra
+1Thess	tʰissalonikiharūlai pahilo patra
+1Thess	tʰissalonikiharūlaī pahilo patra
+1Thess	tʰissalonikiharūlāi pahilo patra
+1Thess	tʰissalonikiharūlāī pahilo patra
+1Thess	tʰissalonikīharulai pahilo patra
+1Thess	tʰissalonikīharulaī pahilo patra
+1Thess	tʰissalonikīharulāi pahilo patra
+1Thess	tʰissalonikīharulāī pahilo patra
+1Thess	tʰissalonikīharūlai pahilo patra
+1Thess	tʰissalonikīharūlaī pahilo patra
+1Thess	tʰissalonikīharūlāi pahilo patra
+1Thess	tʰissalonikīharūlāī pahilo patra
+1Thess	थिस्सलोनिकीहरूलाई पहिलो पत्र
+1Thess	1. tʰissalonikiharulai
+1Thess	1. tʰissalonikiharulaī
+1Thess	1. tʰissalonikiharulāi
+1Thess	1. tʰissalonikiharulāī
+1Thess	1. tʰissalonikiharūlai
+1Thess	1. tʰissalonikiharūlaī
+1Thess	1. tʰissalonikiharūlāi
+1Thess	1. tʰissalonikiharūlāī
+1Thess	1. tʰissalonikīharulai
+1Thess	1. tʰissalonikīharulaī
+1Thess	1. tʰissalonikīharulāi
+1Thess	1. tʰissalonikīharulāī
+1Thess	1. tʰissalonikīharūlai
+1Thess	1. tʰissalonikīharūlaī
+1Thess	1. tʰissalonikīharūlāi
+1Thess	1. tʰissalonikīharūlāī
+1Thess	1 tʰissalonikiharulai
+1Thess	1 tʰissalonikiharulaī
+1Thess	1 tʰissalonikiharulāi
+1Thess	1 tʰissalonikiharulāī
+1Thess	1 tʰissalonikiharūlai
+1Thess	1 tʰissalonikiharūlaī
+1Thess	1 tʰissalonikiharūlāi
+1Thess	1 tʰissalonikiharūlāī
+1Thess	1 tʰissalonikīharulai
+1Thess	1 tʰissalonikīharulaī
+1Thess	1 tʰissalonikīharulāi
+1Thess	1 tʰissalonikīharulāī
+1Thess	1 tʰissalonikīharūlai
+1Thess	1 tʰissalonikīharūlaī
+1Thess	1 tʰissalonikīharūlāi
+1Thess	1 tʰissalonikīharūlāī
+1Thess	1. थिस्सलोनिकीहरूलाई
+1Thess	1 थिस्सलोनिकीहरूलाई
+1Thess	1. थिस्सलोनिकी
+1Thess	1 थिस्सलोनिकी
+1Thess	1Thess
+1Tim	तिमोथीलाईर् पावलको पहिलो पत्र
+1Tim	timotʰilai pahilo patra
+1Tim	timotʰilaī pahilo patra
+1Tim	timotʰilāi pahilo patra
+1Tim	timotʰilāī pahilo patra
+1Tim	timotʰīlai pahilo patra
+1Tim	timotʰīlaī pahilo patra
+1Tim	timotʰīlāi pahilo patra
+1Tim	timotʰīlāī pahilo patra
+1Tim	तिमोथीलाई पहिलो पत्र
+1Tim	1. timotʰilai
+1Tim	1. timotʰilaī
+1Tim	1. timotʰilāi
+1Tim	1. timotʰilāī
+1Tim	1. timotʰīlai
+1Tim	1. timotʰīlaī
+1Tim	1. timotʰīlāi
+1Tim	1. timotʰīlāī
+1Tim	1 timotʰilai
+1Tim	1 timotʰilaī
+1Tim	1 timotʰilāi
+1Tim	1 timotʰilāī
+1Tim	1 timotʰīlai
+1Tim	1 timotʰīlaī
+1Tim	1 timotʰīlāi
+1Tim	1 timotʰīlāī
+1Tim	1. तिमोथीलाई
+1Tim	1 तिमोथीलाई
+1Tim	1. तिमोथी
+1Tim	1 तिमोथी
+1Tim	1Tim
+2Chr	इतिहासको दोस्रो पुस्तक
+2Chr	2. itihasko
+2Chr	2. itihāsko
+2Chr	2. इतिहासको
+2Chr	2 itihasko
+2Chr	2 itihāsko
+2Chr	2 इतिहासको
+2Chr	2. इतिहास
+2Chr	2 इतिहास
+2Chr	2Chr
+2Cor	कोरिन्थीहरूलाई पावलको दोस्रो पत्र
+2Cor	korintʰiharulai dostro patra
+2Cor	korintʰiharulaī dostro patra
+2Cor	korintʰiharulāi dostro patra
+2Cor	korintʰiharulāī dostro patra
+2Cor	korintʰiharūlai dostro patra
+2Cor	korintʰiharūlaī dostro patra
+2Cor	korintʰiharūlāi dostro patra
+2Cor	korintʰiharūlāī dostro patra
+2Cor	korintʰīharulai dostro patra
+2Cor	korintʰīharulaī dostro patra
+2Cor	korintʰīharulāi dostro patra
+2Cor	korintʰīharulāī dostro patra
+2Cor	korintʰīharūlai dostro patra
+2Cor	korintʰīharūlaī dostro patra
+2Cor	korintʰīharūlāi dostro patra
+2Cor	korintʰīharūlāī dostro patra
+2Cor	कोरिन्थीहरूलाई दोस्त्रो पत्र
+2Cor	2. korintʰiharulai
+2Cor	2. korintʰiharulaī
+2Cor	2. korintʰiharulāi
+2Cor	2. korintʰiharulāī
+2Cor	2. korintʰiharūlai
+2Cor	2. korintʰiharūlaī
+2Cor	2. korintʰiharūlāi
+2Cor	2. korintʰiharūlāī
+2Cor	2. korintʰīharulai
+2Cor	2. korintʰīharulaī
+2Cor	2. korintʰīharulāi
+2Cor	2. korintʰīharulāī
+2Cor	2. korintʰīharūlai
+2Cor	2. korintʰīharūlaī
+2Cor	2. korintʰīharūlāi
+2Cor	2. korintʰīharūlāī
+2Cor	2 korintʰiharulai
+2Cor	2 korintʰiharulaī
+2Cor	2 korintʰiharulāi
+2Cor	2 korintʰiharulāī
+2Cor	2 korintʰiharūlai
+2Cor	2 korintʰiharūlaī
+2Cor	2 korintʰiharūlāi
+2Cor	2 korintʰiharūlāī
+2Cor	2 korintʰīharulai
+2Cor	2 korintʰīharulaī
+2Cor	2 korintʰīharulāi
+2Cor	2 korintʰīharulāī
+2Cor	2 korintʰīharūlai
+2Cor	2 korintʰīharūlaī
+2Cor	2 korintʰīharūlāi
+2Cor	2 korintʰīharūlāī
+2Cor	2. कोरिन्थीहरूलाई
+2Cor	2 कोरिन्थीहरूलाई
+2Cor	2. कोरिन्थी
+2Cor	2 कोरिन्थी
+2Cor	2Cor
+2Esd	2Esd
+2John	यूहन्नाको दोस्त्रो पत्र
+2John	yuhannako dostro patra
+2John	yuhannāko dostro patra
+2John	yūhannako dostro patra
+2John	yūhannāko dostro patra
+2John	यूहन्नाको दोस्रो पत्र
+2John	2. yuhannako
+2John	2. yuhannāko
+2John	2. yūhannako
+2John	2. yūhannāko
+2John	2. यूहन्नाको
+2John	2 yuhannako
+2John	2 yuhannāko
+2John	2 yūhannako
+2John	2 yūhannāko
+2John	2 यूहन्नाको
+2John	2. यूहन्ना
+2John	2 यूहन्ना
+2John	2John
+2Kgs	राजाहरूको दोस्रो पुस्तक
+2Kgs	2. raǳaharuko
+2Kgs	2. raǳaharūko
+2Kgs	2. raǳāharuko
+2Kgs	2. raǳāharūko
+2Kgs	2. rāǳaharuko
+2Kgs	2. rāǳaharūko
+2Kgs	2. rāǳāharuko
+2Kgs	2. rāǳāharūko
+2Kgs	2 raǳaharuko
+2Kgs	2 raǳaharūko
+2Kgs	2 raǳāharuko
+2Kgs	2 raǳāharūko
+2Kgs	2 rāǳaharuko
+2Kgs	2 rāǳaharūko
+2Kgs	2 rāǳāharuko
+2Kgs	2 rāǳāharūko
+2Kgs	2. राजाहरूको
+2Kgs	2 राजाहरूको
+2Kgs	2. राजा
+2Kgs	2 राजा
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	पत्रुसको दोस्त्रो पत्र
+2Pet	patrusko dostro patra
+2Pet	पत्रुसको दोस्रो पत्र
+2Pet	2. patrusko
+2Pet	2. पत्रुसको
+2Pet	2 patrusko
+2Pet	2 पत्रुसको
+2Pet	2. पत्रुस
+2Pet	2 पत्रुस
+2Pet	2Pet
+2Sam	शमूएलको दोस्रो पुस्तक
+2Sam	2. samuelko
+2Sam	2. samūelko
+2Sam	2. šamuelko
+2Sam	2. šamūelko
+2Sam	2 samuelko
+2Sam	2 samūelko
+2Sam	2 šamuelko
+2Sam	2 šamūelko
+2Sam	2. शमूएलको
+2Sam	2 शमूएलको
+2Sam	2. शामुएल
+2Sam	2 शामुएल
+2Sam	2. शमूएल
+2Sam	2 शमूएल
+2Sam	2Sam
+2Thess	थिस्सलोनिकीहरूलाई पावलको दोस्रो पत्र
+2Thess	tʰissalonikiharulai dostro patra
+2Thess	tʰissalonikiharulaī dostro patra
+2Thess	tʰissalonikiharulāi dostro patra
+2Thess	tʰissalonikiharulāī dostro patra
+2Thess	tʰissalonikiharūlai dostro patra
+2Thess	tʰissalonikiharūlaī dostro patra
+2Thess	tʰissalonikiharūlāi dostro patra
+2Thess	tʰissalonikiharūlāī dostro patra
+2Thess	tʰissalonikīharulai dostro patra
+2Thess	tʰissalonikīharulaī dostro patra
+2Thess	tʰissalonikīharulāi dostro patra
+2Thess	tʰissalonikīharulāī dostro patra
+2Thess	tʰissalonikīharūlai dostro patra
+2Thess	tʰissalonikīharūlaī dostro patra
+2Thess	tʰissalonikīharūlāi dostro patra
+2Thess	tʰissalonikīharūlāī dostro patra
+2Thess	थिस्सलोनिकीहरूलाई दोस्त्रो पत्र
+2Thess	2. tʰissalonikiharulai
+2Thess	2. tʰissalonikiharulaī
+2Thess	2. tʰissalonikiharulāi
+2Thess	2. tʰissalonikiharulāī
+2Thess	2. tʰissalonikiharūlai
+2Thess	2. tʰissalonikiharūlaī
+2Thess	2. tʰissalonikiharūlāi
+2Thess	2. tʰissalonikiharūlāī
+2Thess	2. tʰissalonikīharulai
+2Thess	2. tʰissalonikīharulaī
+2Thess	2. tʰissalonikīharulāi
+2Thess	2. tʰissalonikīharulāī
+2Thess	2. tʰissalonikīharūlai
+2Thess	2. tʰissalonikīharūlaī
+2Thess	2. tʰissalonikīharūlāi
+2Thess	2. tʰissalonikīharūlāī
+2Thess	2 tʰissalonikiharulai
+2Thess	2 tʰissalonikiharulaī
+2Thess	2 tʰissalonikiharulāi
+2Thess	2 tʰissalonikiharulāī
+2Thess	2 tʰissalonikiharūlai
+2Thess	2 tʰissalonikiharūlaī
+2Thess	2 tʰissalonikiharūlāi
+2Thess	2 tʰissalonikiharūlāī
+2Thess	2 tʰissalonikīharulai
+2Thess	2 tʰissalonikīharulaī
+2Thess	2 tʰissalonikīharulāi
+2Thess	2 tʰissalonikīharulāī
+2Thess	2 tʰissalonikīharūlai
+2Thess	2 tʰissalonikīharūlaī
+2Thess	2 tʰissalonikīharūlāi
+2Thess	2 tʰissalonikīharūlāī
+2Thess	2. थिस्सलोनिकीहरूलाई
+2Thess	2 थिस्सलोनिकीहरूलाई
+2Thess	2. थिस्सलोनिकी
+2Thess	2 थिस्सलोनिकी
+2Thess	2Thess
+2Tim	तिमोथीलाई पावलको दोस्रो पत्र
+2Tim	timotʰilai dostro patra
+2Tim	timotʰilaī dostro patra
+2Tim	timotʰilāi dostro patra
+2Tim	timotʰilāī dostro patra
+2Tim	timotʰīlai dostro patra
+2Tim	timotʰīlaī dostro patra
+2Tim	timotʰīlāi dostro patra
+2Tim	timotʰīlāī dostro patra
+2Tim	तिमोथीलाई दोस्त्रो पत्र
+2Tim	2. timotʰilai
+2Tim	2. timotʰilaī
+2Tim	2. timotʰilāi
+2Tim	2. timotʰilāī
+2Tim	2. timotʰīlai
+2Tim	2. timotʰīlaī
+2Tim	2. timotʰīlāi
+2Tim	2. timotʰīlāī
+2Tim	2 timotʰilai
+2Tim	2 timotʰilaī
+2Tim	2 timotʰilāi
+2Tim	2 timotʰilāī
+2Tim	2 timotʰīlai
+2Tim	2 timotʰīlaī
+2Tim	2 timotʰīlāi
+2Tim	2 timotʰīlāī
+2Tim	2. तिमोथीलाई
+2Tim	2 तिमोथीलाई
+2Tim	2. तिमोथी
+2Tim	2 तिमोथी
+2Tim	2Tim
+3John	यूहन्नाको तेस्त्रो पत्र
+3John	yuhannako testro patra
+3John	yuhannāko testro patra
+3John	yūhannako testro patra
+3John	yūhannāko testro patra
+3John	यूहन्नाको तेस्रो पत्र
+3John	3. yuhannako
+3John	3. yuhannāko
+3John	3. yūhannako
+3John	3. yūhannāko
+3John	3. यूहन्नाको
+3John	3 yuhannako
+3John	3 yuhannāko
+3John	3 yūhannako
+3John	3 yūhannāko
+3John	3 यूहन्नाको
+3John	3. यूहन्ना
+3John	3 यूहन्ना
+3John	3John
+3Macc	3Macc
+4Macc	4Macc
+Acts	preritharuka kam
+Acts	preritharuka kām
+Acts	preritharukā kam
+Acts	preritharukā kām
+Acts	preritharūka kam
+Acts	preritharūka kām
+Acts	preritharūkā kam
+Acts	preritharūkā kām
+Acts	प्रेरितहरूका काम
+Acts	प्रेरित
+Acts	Acts
+Amos	आमोसको पुस्तक
+Amos	Amos
+Amos	amos
+Amos	āmos
+Amos	अमोस
+Amos	आमोस
+Bar	Bar
+Bel	Bel
+Col	कलस्सीहरूलाई पावलको पत्र
+Col	kalassiharulai patra
+Col	kalassiharulaī patra
+Col	kalassiharulāi patra
+Col	kalassiharulāī patra
+Col	kalassiharūlai patra
+Col	kalassiharūlaī patra
+Col	kalassiharūlāi patra
+Col	kalassiharūlāī patra
+Col	kalassīharulai patra
+Col	kalassīharulaī patra
+Col	kalassīharulāi patra
+Col	kalassīharulāī patra
+Col	kalassīharūlai patra
+Col	kalassīharūlaī patra
+Col	kalassīharūlāi patra
+Col	kalassīharūlāī patra
+Col	कलस्सीहरूलाई पत्र
+Col	kalassiharulai
+Col	kalassiharulaī
+Col	kalassiharulāi
+Col	kalassiharulāī
+Col	kalassiharūlai
+Col	kalassiharūlaī
+Col	kalassiharūlāi
+Col	kalassiharūlāī
+Col	kalassīharulai
+Col	kalassīharulaī
+Col	kalassīharulāi
+Col	kalassīharulāī
+Col	kalassīharūlai
+Col	kalassīharūlaī
+Col	kalassīharūlāi
+Col	kalassīharūlāī
+Col	कलस्सीहरूलाई
+Col	कलस्सी
+Col	Col
+Dan	daniyalko pustak
+Dan	dāniyalko pustak
+Dan	दानियलको पुस्तक
+Dan	daniyalko
+Dan	dāniyalko
+Dan	दानियलको
+Dan	दानियल
+Dan	Dan
+Deut	vyavastʰako pustak
+Deut	vyavastʰāko pustak
+Deut	व्यवस्थाको पुस्तक
+Deut	vyavastʰako
+Deut	vyavastʰāko
+Deut	व्यवस्थाको
+Deut	व्यावस्था
+Deut	व्यवस्था
+Deut	Deut
+Eccl	upadesakko pustak
+Eccl	upadešakko pustak
+Eccl	उपदेशकको पुस्तक
+Eccl	upadesakko
+Eccl	upadešakko
+Eccl	उपदेशकको
+Eccl	उपदेशक
+Eccl	Eccl
+EpJer	EpJer
+Eph	एफिसीहरूलाई पावलको पत्र
+Eph	epʰisiharulai patra
+Eph	epʰisiharulaī patra
+Eph	epʰisiharulāi patra
+Eph	epʰisiharulāī patra
+Eph	epʰisiharūlai patra
+Eph	epʰisiharūlaī patra
+Eph	epʰisiharūlāi patra
+Eph	epʰisiharūlāī patra
+Eph	epʰisīharulai patra
+Eph	epʰisīharulaī patra
+Eph	epʰisīharulāi patra
+Eph	epʰisīharulāī patra
+Eph	epʰisīharūlai patra
+Eph	epʰisīharūlaī patra
+Eph	epʰisīharūlāi patra
+Eph	epʰisīharūlāī patra
+Eph	एफिसीहरूलाई पत्र
+Eph	epʰisiharulai
+Eph	epʰisiharulaī
+Eph	epʰisiharulāi
+Eph	epʰisiharulāī
+Eph	epʰisiharūlai
+Eph	epʰisiharūlaī
+Eph	epʰisiharūlāi
+Eph	epʰisiharūlāī
+Eph	epʰisīharulai
+Eph	epʰisīharulaī
+Eph	epʰisīharulāi
+Eph	epʰisīharulāī
+Eph	epʰisīharūlai
+Eph	epʰisīharūlaī
+Eph	epʰisīharūlāi
+Eph	epʰisīharūlāī
+Eph	एफिसीहरूलाई
+Eph	एफिसी
+Eph	Eph
+Esth	estarko pustak
+Esth	एस्तरको पुस्तक
+Esth	estarko
+Esth	एस्तरको
+Esth	एस्तर
+Esth	Esth
+Exod	prastʰanko pustak
+Exod	prastʰānko pustak
+Exod	प्रस्थानको पुस्तक
+Exod	prastʰanko
+Exod	prastʰānko
+Exod	प्रस्थानको
+Exod	प्रस्थान
+Exod	Exod
+Ezek	iǳakielko pustak
+Ezek	इजकिएलको पुस्तक
+Ezek	iǳakielko
+Ezek	इजकिएलको
+Ezek	इजकिएल
+Ezek	Ezek
+Ezra	एज्राको पुस्तक
+Ezra	एज्राको
+Ezra	eǳrako
+Ezra	eǳrāko
+Ezra	एज्रा
+Ezra	Ezra
+Gal	गलातीहरूलाई पावलको पत्र
+Gal	galatiharulai patra
+Gal	galatiharulaī patra
+Gal	galatiharulāi patra
+Gal	galatiharulāī patra
+Gal	galatiharūlai patra
+Gal	galatiharūlaī patra
+Gal	galatiharūlāi patra
+Gal	galatiharūlāī patra
+Gal	galatīharulai patra
+Gal	galatīharulaī patra
+Gal	galatīharulāi patra
+Gal	galatīharulāī patra
+Gal	galatīharūlai patra
+Gal	galatīharūlaī patra
+Gal	galatīharūlāi patra
+Gal	galatīharūlāī patra
+Gal	galātiharulai patra
+Gal	galātiharulaī patra
+Gal	galātiharulāi patra
+Gal	galātiharulāī patra
+Gal	galātiharūlai patra
+Gal	galātiharūlaī patra
+Gal	galātiharūlāi patra
+Gal	galātiharūlāī patra
+Gal	galātīharulai patra
+Gal	galātīharulaī patra
+Gal	galātīharulāi patra
+Gal	galātīharulāī patra
+Gal	galātīharūlai patra
+Gal	galātīharūlaī patra
+Gal	galātīharūlāi patra
+Gal	galātīharūlāī patra
+Gal	गलातीहरूलाई पत्र
+Gal	galatiharulai
+Gal	galatiharulaī
+Gal	galatiharulāi
+Gal	galatiharulāī
+Gal	galatiharūlai
+Gal	galatiharūlaī
+Gal	galatiharūlāi
+Gal	galatiharūlāī
+Gal	galatīharulai
+Gal	galatīharulaī
+Gal	galatīharulāi
+Gal	galatīharulāī
+Gal	galatīharūlai
+Gal	galatīharūlaī
+Gal	galatīharūlāi
+Gal	galatīharūlāī
+Gal	galātiharulai
+Gal	galātiharulaī
+Gal	galātiharulāi
+Gal	galātiharulāī
+Gal	galātiharūlai
+Gal	galātiharūlaī
+Gal	galātiharūlāi
+Gal	galātiharūlāī
+Gal	galātīharulai
+Gal	galātīharulaī
+Gal	galātīharulāi
+Gal	galātīharulāī
+Gal	galātīharūlai
+Gal	galātīharūlaī
+Gal	galātīharūlāi
+Gal	galātīharūlāī
+Gal	गलातीहरूलाई
+Gal	गलाती
+Gal	Gal
+Gen	उत्पत्तिको पुस्तक
+Gen	utpattiko pustak
+Gen	उत्पत्तिको
+Gen	utpattiko
+Gen	उत्पत्ति
+Gen	Gen
+GkEsth	GkEsth
+Hab	हबकूकको पुस्तक
+Hab	habakuk
+Hab	habakūk
+Hab	हबकूक
+Hab	Hab
+Hag	हाग्गैको पुस्तक
+Hag	haggəi
+Hag	hāggəi
+Hag	हाग्गै
+Hag	Hag
+Heb	hibruharuko nimti patra
+Heb	hibruharūko nimti patra
+Heb	hibrūharuko nimti patra
+Heb	hibrūharūko nimti patra
+Heb	हिब्रूहरूको निम्ति पत्र
+Heb	हिब्रूहरूको निम्ति
+Heb	hibruharuko nimti
+Heb	hibruharūko nimti
+Heb	hibrūharuko nimti
+Heb	hibrūharūko nimti
+Heb	हिब्रू
+Heb	Heb
+Hos	होशेको पुस्तक
+Hos	hose
+Hos	hoše
+Hos	होशे
+Hos	Hos
+Isa	yasəiyako pustak
+Isa	yasəiyāko pustak
+Isa	yašəiyako pustak
+Isa	yašəiyāko pustak
+Isa	यशैयाको पुस्तक
+Isa	yasəiyako
+Isa	yasəiyāko
+Isa	yašəiyako
+Isa	yašəiyāko
+Isa	यशैयाको
+Isa	येशैया
+Isa	यशैया
+Isa	Isa
+Jas	yakubko patra
+Jas	yakūbko patra
+Jas	yākubko patra
+Jas	yākūbko patra
+Jas	याकूबको पत्र
+Jas	yakubko
+Jas	yakūbko
+Jas	yākubko
+Jas	yākūbko
+Jas	याकूबको
+Jas	याकूब
+Jas	Jas
+Jdt	Jdt
+Jer	yarmiyako pustak
+Jer	yarmiyāko pustak
+Jer	यर्मियाको पुस्तक
+Jer	yarmiyako
+Jer	yarmiyāko
+Jer	यर्मियाको
+Jer	यर्मिया
+Jer	Jer
+Job	अय्यूबको पुस्तक
+Job	ayyubko pustak
+Job	ayyūbko pustak
+Job	अय्यूबको
+Job	ayyubko
+Job	ayyūbko
+Job	अय्यूब
+Job	Job
+Joel	योएलको पुस्तक
+Joel	Joel
+Joel	yoel
+Joel	योएल
+John	yuhannale lekʰeko susmacar
+John	yuhannale lekʰeko susmacār
+John	yuhannale lekʰeko susmācar
+John	yuhannale lekʰeko susmācār
+John	yuhannāle lekʰeko susmacar
+John	yuhannāle lekʰeko susmacār
+John	yuhannāle lekʰeko susmācar
+John	yuhannāle lekʰeko susmācār
+John	yūhannale lekʰeko susmacar
+John	yūhannale lekʰeko susmacār
+John	yūhannale lekʰeko susmācar
+John	yūhannale lekʰeko susmācār
+John	yūhannāle lekʰeko susmacar
+John	yūhannāle lekʰeko susmacār
+John	yūhannāle lekʰeko susmācar
+John	yūhannāle lekʰeko susmācār
+John	यूहन्नाले लेखेको सुसमाचार
+John	यूहन्नाको सुसमाचार
+John	yuhannale
+John	yuhannāle
+John	yūhannale
+John	yūhannāle
+John	यूहन्नाले
+John	यूहान्ना
+John	यहून्ना
+John	युहन्ना
+John	यूहन्ना
+John	यूहना
+John	John
+Jonah	योनाको पुस्तक
+Jonah	Jonah
+Jonah	yona
+Jonah	yonā
+Jonah	योना
+Josh	yahosuko pustak
+Josh	yahosūko pustak
+Josh	yahošuko pustak
+Josh	yahošūko pustak
+Josh	यहोशूको पुस्तक
+Josh	yahosuko
+Josh	yahosūko
+Josh	yahošuko
+Josh	yahošūko
+Josh	यहोशूको
+Josh	यहोशू
+Josh	Josh
+Jude	yahudako patra
+Jude	yahudāko patra
+Jude	yahūdako patra
+Jude	yahūdāko patra
+Jude	यहूदाको पत्र
+Jude	yahudako
+Jude	yahudāko
+Jude	yahūdako
+Jude	yahūdāko
+Jude	यहूदाको
+Jude	यहूदा
+Jude	Jude
+Judg	nyayakarttaharuko pustak
+Judg	nyayakarttaharūko pustak
+Judg	nyayakarttāharuko pustak
+Judg	nyayakarttāharūko pustak
+Judg	nyāyakarttaharuko pustak
+Judg	nyāyakarttaharūko pustak
+Judg	nyāyakarttāharuko pustak
+Judg	nyāyakarttāharūko pustak
+Judg	न्यायकर्त्ताहरूको पुस्तक
+Judg	न्यायकर्ताहरूको पुस्तक
+Judg	nyayakarttaharuko
+Judg	nyayakarttaharūko
+Judg	nyayakarttāharuko
+Judg	nyayakarttāharūko
+Judg	nyāyakarttaharuko
+Judg	nyāyakarttaharūko
+Judg	nyāyakarttāharuko
+Judg	nyāyakarttāharūko
+Judg	न्यायकर्त्ताहरूको
+Judg	न्यायकर्ता
+Judg	Judg
+Lam	yarmiyako vilap
+Lam	yarmiyako vilāp
+Lam	yarmiyāko vilap
+Lam	yarmiyāko vilāp
+Lam	यर्मियाको विलाप
+Lam	विलाप
+Lam	Lam
+Lev	leviharuko pustak
+Lev	leviharūko pustak
+Lev	levīharuko pustak
+Lev	levīharūko pustak
+Lev	लेवीहरूको पुस्तक
+Lev	leviharuko
+Lev	leviharūko
+Lev	levīharuko
+Lev	levīharūko
+Lev	लेवीहरूको
+Lev	लेवि
+Lev	लेवी
+Lev	Lev
+Luke	lukale lekʰeko susmacar
+Luke	lukale lekʰeko susmacār
+Luke	lukale lekʰeko susmācar
+Luke	lukale lekʰeko susmācār
+Luke	lukāle lekʰeko susmacar
+Luke	lukāle lekʰeko susmacār
+Luke	lukāle lekʰeko susmācar
+Luke	lukāle lekʰeko susmācār
+Luke	lūkale lekʰeko susmacar
+Luke	lūkale lekʰeko susmacār
+Luke	lūkale lekʰeko susmācar
+Luke	lūkale lekʰeko susmācār
+Luke	lūkāle lekʰeko susmacar
+Luke	lūkāle lekʰeko susmacār
+Luke	lūkāle lekʰeko susmācar
+Luke	lūkāle lekʰeko susmācār
+Luke	लूकाले लेखेको सुसमाचार
+Luke	लूकाको सुसमाचार
+Luke	lukale
+Luke	lukāle
+Luke	lūkale
+Luke	lūkāle
+Luke	लूकाले
+Luke	Luke
+Luke	लुका
+Luke	लूका
+Mal	मलाकीको पुस्तक
+Mal	malaki
+Mal	malakī
+Mal	malāki
+Mal	malākī
+Mal	मलाकी
+Mal	मलकी
+Mal	Mal
+Mark	markusle lekʰeko susmacar
+Mark	markusle lekʰeko susmacār
+Mark	markusle lekʰeko susmācar
+Mark	markusle lekʰeko susmācār
+Mark	markūsle lekʰeko susmacar
+Mark	markūsle lekʰeko susmacār
+Mark	markūsle lekʰeko susmācar
+Mark	markūsle lekʰeko susmācār
+Mark	मर्कूसले लेखेको सुसमाचार
+Mark	मर्कूसको सुसमाचार
+Mark	markusle
+Mark	markūsle
+Mark	मर्कूसले
+Mark	मर्कुस
+Mark	मर्कूश
+Mark	मर्कूस
+Mark	र्मकूस
+Mark	र्मकस
+Mark	Mark
+Matt	mattile lekʰeko susmacar
+Matt	mattile lekʰeko susmacār
+Matt	mattile lekʰeko susmācar
+Matt	mattile lekʰeko susmācār
+Matt	mattīle lekʰeko susmacar
+Matt	mattīle lekʰeko susmacār
+Matt	mattīle lekʰeko susmācar
+Matt	mattīle lekʰeko susmācār
+Matt	मत्तीले लेखेको सुसमाचार
+Matt	मत्तीको सुसमाचार
+Matt	mattile
+Matt	mattīle
+Matt	मत्तीले
+Matt	मत्ति
+Matt	मत्ती
+Matt	Matt
+Mic	मीकाको पुस्तक
+Mic	mika
+Mic	mikā
+Mic	mīka
+Mic	mīkā
+Mic	मिका
+Mic	मीका
+Mic	Mic
+Nah	नहूमको पुस्तक
+Nah	nahum
+Nah	nahūm
+Nah	नहूम
+Nah	Nah
+Neh	nahemyahko pustak
+Neh	nahemyāhko pustak
+Neh	नहेम्याहको पुस्तक
+Neh	nahemyahko
+Neh	nahemyāhko
+Neh	नहेम्याहको
+Neh	नहेम्याह
+Neh	Neh
+Num	gantiko pustak
+Num	gantīko pustak
+Num	गन्तीको पुस्तक
+Num	gantiko
+Num	gantīko
+Num	गन्तीको
+Num	गन्ती
+Num	Num
+Obad	ओबदियाको पुस्तक
+Obad	obadiya
+Obad	obadiyā
+Obad	ओबदिया
+Obad	Obad
+Phil	फिलिप्पीहरूलाई पावलको पत्र
+Phil	pʰilippiharulai patra
+Phil	pʰilippiharulaī patra
+Phil	pʰilippiharulāi patra
+Phil	pʰilippiharulāī patra
+Phil	pʰilippiharūlai patra
+Phil	pʰilippiharūlaī patra
+Phil	pʰilippiharūlāi patra
+Phil	pʰilippiharūlāī patra
+Phil	pʰilippīharulai patra
+Phil	pʰilippīharulaī patra
+Phil	pʰilippīharulāi patra
+Phil	pʰilippīharulāī patra
+Phil	pʰilippīharūlai patra
+Phil	pʰilippīharūlaī patra
+Phil	pʰilippīharūlāi patra
+Phil	pʰilippīharūlāī patra
+Phil	फिलिप्पीहरूलाई पत्र
+Phil	pʰilippiharulai
+Phil	pʰilippiharulaī
+Phil	pʰilippiharulāi
+Phil	pʰilippiharulāī
+Phil	pʰilippiharūlai
+Phil	pʰilippiharūlaī
+Phil	pʰilippiharūlāi
+Phil	pʰilippiharūlāī
+Phil	pʰilippīharulai
+Phil	pʰilippīharulaī
+Phil	pʰilippīharulāi
+Phil	pʰilippīharulāī
+Phil	pʰilippīharūlai
+Phil	pʰilippīharūlaī
+Phil	pʰilippīharūlāi
+Phil	pʰilippīharūlāī
+Phil	फिलिप्पीहरूलाई
+Phil	फिलिप्पी
+Phil	Phil
+Phlm	फिलेमोनलाई पावलको पत्र
+Phlm	pʰilemonlai patra
+Phlm	pʰilemonlaī patra
+Phlm	pʰilemonlāi patra
+Phlm	pʰilemonlāī patra
+Phlm	फिलेमोनलाई पत्र
+Phlm	pʰilemonlai
+Phlm	pʰilemonlaī
+Phlm	pʰilemonlāi
+Phlm	pʰilemonlāī
+Phlm	फिलेमोनलाई
+Phlm	फिलेमोन
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	hitopadesko pustak
+Prov	hitopadeško pustak
+Prov	हितोपदेशको पुस्तक
+Prov	hitopadesko
+Prov	hitopadeško
+Prov	हितोपदेशको
+Prov	हितोपदेश
+Prov	Prov
+Ps	bʰaǳansamgrah
+Ps	bʰaǳansaṃgrah
+Ps	भजनसंग्रह
+Ps	भजनसग्रह
+Ps	भजन
+Ps	Ps
+Rev	yuhannalai bʰaeko prakas
+Rev	yuhannalai bʰaeko prakaš
+Rev	yuhannalai bʰaeko prakās
+Rev	yuhannalai bʰaeko prakāš
+Rev	yuhannalaī bʰaeko prakas
+Rev	yuhannalaī bʰaeko prakaš
+Rev	yuhannalaī bʰaeko prakās
+Rev	yuhannalaī bʰaeko prakāš
+Rev	yuhannalāi bʰaeko prakas
+Rev	yuhannalāi bʰaeko prakaš
+Rev	yuhannalāi bʰaeko prakās
+Rev	yuhannalāi bʰaeko prakāš
+Rev	yuhannalāī bʰaeko prakas
+Rev	yuhannalāī bʰaeko prakaš
+Rev	yuhannalāī bʰaeko prakās
+Rev	yuhannalāī bʰaeko prakāš
+Rev	yuhannālai bʰaeko prakas
+Rev	yuhannālai bʰaeko prakaš
+Rev	yuhannālai bʰaeko prakās
+Rev	yuhannālai bʰaeko prakāš
+Rev	yuhannālaī bʰaeko prakas
+Rev	yuhannālaī bʰaeko prakaš
+Rev	yuhannālaī bʰaeko prakās
+Rev	yuhannālaī bʰaeko prakāš
+Rev	yuhannālāi bʰaeko prakas
+Rev	yuhannālāi bʰaeko prakaš
+Rev	yuhannālāi bʰaeko prakās
+Rev	yuhannālāi bʰaeko prakāš
+Rev	yuhannālāī bʰaeko prakas
+Rev	yuhannālāī bʰaeko prakaš
+Rev	yuhannālāī bʰaeko prakās
+Rev	yuhannālāī bʰaeko prakāš
+Rev	yūhannalai bʰaeko prakas
+Rev	yūhannalai bʰaeko prakaš
+Rev	yūhannalai bʰaeko prakās
+Rev	yūhannalai bʰaeko prakāš
+Rev	yūhannalaī bʰaeko prakas
+Rev	yūhannalaī bʰaeko prakaš
+Rev	yūhannalaī bʰaeko prakās
+Rev	yūhannalaī bʰaeko prakāš
+Rev	yūhannalāi bʰaeko prakas
+Rev	yūhannalāi bʰaeko prakaš
+Rev	yūhannalāi bʰaeko prakās
+Rev	yūhannalāi bʰaeko prakāš
+Rev	yūhannalāī bʰaeko prakas
+Rev	yūhannalāī bʰaeko prakaš
+Rev	yūhannalāī bʰaeko prakās
+Rev	yūhannalāī bʰaeko prakāš
+Rev	yūhannālai bʰaeko prakas
+Rev	yūhannālai bʰaeko prakaš
+Rev	yūhannālai bʰaeko prakās
+Rev	yūhannālai bʰaeko prakāš
+Rev	yūhannālaī bʰaeko prakas
+Rev	yūhannālaī bʰaeko prakaš
+Rev	yūhannālaī bʰaeko prakās
+Rev	yūhannālaī bʰaeko prakāš
+Rev	yūhannālāi bʰaeko prakas
+Rev	yūhannālāi bʰaeko prakaš
+Rev	yūhannālāi bʰaeko prakās
+Rev	yūhannālāi bʰaeko prakāš
+Rev	yūhannālāī bʰaeko prakas
+Rev	yūhannālāī bʰaeko prakaš
+Rev	yūhannālāī bʰaeko prakās
+Rev	yūhannālāī bʰaeko prakāš
+Rev	यूहन्नालाई भएको प्रकाश
+Rev	प्रकाश
+Rev	Rev
+Rom	रोमीहरूलाई पावलको पत्र
+Rom	romiharulai patra
+Rom	romiharulaī patra
+Rom	romiharulāi patra
+Rom	romiharulāī patra
+Rom	romiharūlai patra
+Rom	romiharūlaī patra
+Rom	romiharūlāi patra
+Rom	romiharūlāī patra
+Rom	romīharulai patra
+Rom	romīharulaī patra
+Rom	romīharulāi patra
+Rom	romīharulāī patra
+Rom	romīharūlai patra
+Rom	romīharūlaī patra
+Rom	romīharūlāi patra
+Rom	romīharūlāī patra
+Rom	रोमीहरूलाई पत्र
+Rom	romiharulai
+Rom	romiharulaī
+Rom	romiharulāi
+Rom	romiharulāī
+Rom	romiharūlai
+Rom	romiharūlaī
+Rom	romiharūlāi
+Rom	romiharūlāī
+Rom	romīharulai
+Rom	romīharulaī
+Rom	romīharulāi
+Rom	romīharulāī
+Rom	romīharūlai
+Rom	romīharūlaī
+Rom	romīharūlāi
+Rom	romīharūlāī
+Rom	रोमीहरूलाई
+Rom	रोमी
+Rom	Rom
+Ruth	rutʰko pustak
+Ruth	rūtʰko pustak
+Ruth	रूथको पुस्तक
+Ruth	rutʰko
+Ruth	rūtʰko
+Ruth	रूथको
+Ruth	Ruth
+Ruth	रूथ
+SgThree	SgThree
+Sir	Sir
+Song	sulemanko srestʰagit
+Song	sulemanko srestʰagīt
+Song	sulemanko sresṭʰagit
+Song	sulemanko sresṭʰagīt
+Song	sulemanko sreṣtʰagit
+Song	sulemanko sreṣtʰagīt
+Song	sulemanko sreṣṭʰagit
+Song	sulemanko sreṣṭʰagīt
+Song	sulemanko šrestʰagit
+Song	sulemanko šrestʰagīt
+Song	sulemanko šresṭʰagit
+Song	sulemanko šresṭʰagīt
+Song	sulemanko šreṣtʰagit
+Song	sulemanko šreṣtʰagīt
+Song	sulemanko šreṣṭʰagit
+Song	sulemanko šreṣṭʰagīt
+Song	sulemānko srestʰagit
+Song	sulemānko srestʰagīt
+Song	sulemānko sresṭʰagit
+Song	sulemānko sresṭʰagīt
+Song	sulemānko sreṣtʰagit
+Song	sulemānko sreṣtʰagīt
+Song	sulemānko sreṣṭʰagit
+Song	sulemānko sreṣṭʰagīt
+Song	sulemānko šrestʰagit
+Song	sulemānko šrestʰagīt
+Song	sulemānko šresṭʰagit
+Song	sulemānko šresṭʰagīt
+Song	sulemānko šreṣtʰagit
+Song	sulemānko šreṣtʰagīt
+Song	sulemānko šreṣṭʰagit
+Song	sulemānko šreṣṭʰagīt
+Song	सुलेमानको श्रेष्ठगीत
+Song	श्रेष्ठगीत
+Song	Song
+Sus	Sus
+Titus	तीतसलाई पावलको पत्र
+Titus	titaslai patra
+Titus	titaslaī patra
+Titus	titaslāi patra
+Titus	titaslāī patra
+Titus	tītaslai patra
+Titus	tītaslaī patra
+Titus	tītaslāi patra
+Titus	tītaslāī patra
+Titus	तीतसलाई पत्र
+Titus	titaslai
+Titus	titaslaī
+Titus	titaslāi
+Titus	titaslāī
+Titus	tītaslai
+Titus	tītaslaī
+Titus	tītaslāi
+Titus	tītaslāī
+Titus	तीतसलाई
+Titus	Titus
+Titus	तीतस
+Tob	Tob
+Wis	Wis
+Zech	जकरियाको पुस्तक
+Zech	jakariya
+Zech	jakariyā
+Zech	जकरिया
+Zech	Zech
+Zeph	सपन्याहको पुस्तक
+Zeph	sapanyah
+Zeph	sapanyāh
+Zeph	सपन्याह
+Zeph	Zeph

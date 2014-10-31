@@ -1,0 +1,278 @@
+$FIRST	První	1	I
+$SECOND	Druhá	Druhý	2	II
+$THIRD	Třetí	3	III
+$FOURTH	Čtvrtá	4	IV
+$FIFTH	Pátá	5	V
+$AB	[a-e]
+# srv. = cf. (http://cs.wikipedia.org/wiki/Druh%C3%BD_list_Petr%C5%AFv)
+$AND	a	srv.
+# http://cs.wikipedia.org/wiki/Evangelium_podle_Matou%C5%A1e and http://cs.wikipedia.org/wiki/Skutky_apo%C5%A1tol%C5%AF and http://cs.wikipedia.org/wiki/Zjeven%C3%AD_Janovo (kap.)
+$CHAPTER	kapitola	kapitoly	kapitol	kap.
+$FF	ff
+# http://cs.wikipedia.org/wiki/Kniha_%C5%BEalm%C5%AF
+$TITLE	titul
+$TRANS	B21
+$TO	-
+# http://cs.wikipedia.org/wiki/Kniha_Abdij%C3%A1%C5%A1
+$VERSE	verše
+$UNICODE_BLOCK	Latin
+
+Gen	$FIRST Mojžíšova	Genesis	Ge?n	$FIRST kniha Mojžíšova
+Exod	$SECOND Mojžíšova	Exodus	Ex	$SECOND kniha Mojžíšova
+Lev	$THIRD Mojžíšova	Leviticus	Lv	$THIRD kniha Mojžíšova	Levitikus	Leviticusi
+Num	$FOURTH Mojžíšova	Numeri	Num	$FOURTH kniha Mojžíšova	Nu
+Deut	$FIFTH Mojžíšova	Deuteronomium	Dt	$FIFTH kniha Mojžíšova
+Josh	Jozue	Joz	Jz
+Judg	Soudců	Sdc	Sd
+Ruth	Rút	Rt
+1Sam	$FIRST Samuelova	$FIRST Samuel	$FIRST Sam	$FIRST kniha Samuelova	$FIRST S
+2Sam	$SECOND Samuelova	$SECOND Samuel	$SECOND Sam	$SECOND kniha Samuelova	$SECOND S
+1Kgs	$FIRST Královská	$FIRST Král	$FIRST kniha královská	$FIRST Kr
+2Kgs	$SECOND Královská	$SECOND Král	$SECOND kniha královská	$SECOND Kr
+1Chr	$FIRST Letopisu	$FIRST Letopisů	$FIRST Paralipomenon	$FIRST kniha kronik	$FIRST Kronik	$FIRST Pa
+2Chr	$SECOND Letopisu	$SECOND Letopisů	$SECOND Paralipomenon	$SECOND kniha kronik	$SECOND Kronik	$SECOND Pa
+Ezra	Ezdráš	Ezd
+Neh	Nehemjáš	Nehemiáš	Neh
+Esth	Ester	Est
+Job	Jób	Job	Jb
+Ps	Žalmy	Žalm	Ž	Kniha žalmů
+Prov	Přísloví	Přís	Přísloví Šalomounova	Př
+Eccl	Kazatel	Kohelet	Kaz
+Song	Píseň písní	Píseň	Píseň Šalamounova	Pís
+Isa	Izajáš	Izaiáš	Iz
+Jer	Jeremjáš	Jeremiáš	Jer	Jr
+Lam	Pláč	Pláč Jeremjášův	Kniha nářků	Pláč Jeremiášův	Pl
+Ezek	Ezechiel	Ez
+Dan	Daniel	Da
+Hos	Ozeáš	Oz
+Joel	Jóel	Joel	Jo	Jl
+Amos	Ámos	Amos	Am
+Obad	Abdijáš	Abdiáš	Obadjáš	Obadjá	Abd
+Jonah	Jonáš	Jon
+Mic	Micheáš	Mich	Mi	Michaáš
+Nah	Nahum	Na
+Hab	Abakuk	Abk
+Zeph	Sofonjáš	Sofoniáš	Sf
+Hag	Ageus	Aggeus	Ag
+Zech	Zacharjáš	Zachariáš	Za
+Mal	Malachiáš	Mal
+Matt	Matouš	Mat	Mt	Matoušovo evangelium	Evangelium podle Matouše
+Mark	Marek	Mk	Markovo evangelium	Evangelium podle Marka
+Luke	Lukáš	Lk	L	Lukášovo evangelium	Evangelium podle Lukáše
+John	Jan	J	Janovo evangelium	Evangelium podle Jana
+Acts	Skutky apoštolské	Skutky	Skutky apoštolů	Sk
+Rom	Římanům	Řím	Ř	List Římanům
+1Cor	$FIRST list Korintským	$FIRST Korintským	$FIRST Kor	$FIRST ?K	$FIRST list Korinským
+2Cor	$SECOND list Korintským	$SECOND Korintským	2Kor	$SECOND ?K	$SECOND list Korinským
+Gal	Galatským	Gal?	List Galatským
+Eph	Efezským	Efeským	Ef	List Efezským	List Efezanům	List Efézským
+Phil	Filipským	Fp	List Filipským	Filipenským
+Col	Koloským	Kol?	List Koloským	Kolosanům	Kolosenským	List Kolosanům	Kolossenským
+1Thess	$FIRST list Tesalonickým	$FIRST Tesalonickým	$FIRST Te	$FIRST Sol	$FIRST list Soluňským	$FIRST Soluňským	$FIRST Tessalonicenským
+2Thess	$SECOND list Tesalonickým	$SECOND Tesalonickým	$SECOND Te	$SECOND Sol	$SECOND list Soluňským	$SECOND Soluňským	$SECOND Tessalonicenským
+1Tim	$FIRST list Timoteovi	$FIRST Timoteus	$FIRST Timoteovi	$FIRST Ti?m	$FIRST list Timeteovi
+2Tim	$SECOND list Timoteovi	$SECOND Timoteus	$SECOND Timoteovi	$SECOND Ti?m	$SECOND list Timeteovi
+Titus	Titovi	Titus	Ti?t	List Titovi
+Phlm	Filemonovi	Filemon	Flm	Fm	List Filemonovi
+Heb	Židům	Žd	List Židům	List Hebrejům	Hebrejům
+Jas	List Jakubův	Jakub	Jak	Jk
+1Pet	$FIRST list Petrův	$FIRST Petr	$FIRST Pt?	$FIRST Petrův	$FIRST Petrova
+2Pet	$SECOND list Petrův	$SECOND Petr	$SECOND Pt?	$SECOND Petrův	$SECOND Petrova
+1John	$FIRST list Janův	$FIRST Jan	$FIRST J	$FIRST Janův	$FIRST Janova
+2John	$SECOND list Janův	$SECOND Jan	$SECOND J	$SECOND Janův	$SECOND Janova
+3John	$THIRD list Janův	$THIRD Jan	$THIRD J	$THIRD Janův	$THIRD Janova
+Jude	List Judův	Juda	J[ud]	Judova
+Rev	Zjevení Janovo	Zjevení	Zj	Zjeveni svatého Jana	Apokalypsa	Kniha Zjevení
+Tob	Tóbijáš	Tobiáš	Tóbit	Tob
+Jdt	Júdit	Jdt	Júd
+GkEsth	Ester (řecké dodatky)	Ester (řecké části)
+Wis	Moudrost	Mdr	Kniha Moudrosti	Moudrost Šalomounova	Kniha moudrostí
+Sir	Sírachovec	Sír	Kniha Sírachovcova	Ecclesiasticus	Sir
+Bar	Báruch	Bar	Báruk	Kniha Báruchova	Kniha Bárukova	Bár
+PrAzar	Azarjášova modlitba
+Sus	Zuzana	Zuz
+Bel	Bél a drak	Bél
+SgThree	Píseň mládenců v hořící peci	Tři muži v rozpálené peci
+EpJer	List Jeremjášův
+1Macc	$FIRST Makabejská	$FIRST Mak
+2Macc	$SECOND Makabejská	$SECOND Mak
+3Macc	$THIRD Makabejská	$THIRD Mak
+4Macc	$FOURTH Makabejská	$FOURTH Mak
+1Esd	$FIRST Ezdráš
+2Esd	$SECOND Ezdráš
+PrMan	Modlitbu Manasse
+AddEsth	Přídavky k Ester
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Genesis	Gen	Gn	
+*Exod	Exodus	Ex		
+*Lev	Leviticus	Lv		
+*Num	Numeri	Num	Nu	
+*Deut	Deuteronomium	Dt		
+*Josh	Jozue	Joz	Jz	
+*Judg	Soudců	Sdc	Sd	
+*Ruth	Rút	Rút	Rt	
+*1Sam	1 Samuel	1 Sam	1 S	
+*2Sam	2 Samuel	2 Sam	2 S	
+*1Kgs	1 Královská	1 Král	1 Kr	
+*2Kgs	2 Královská	2 Král	2 Kr	
+*1Chr	1 Letopisů	1 Pa		
+*2Chr	2 Letopisů	2 Pa		
+*Ezra	Ezdráš	Ezd		
+*Neh	Nehemiáš	Neh		
+*Esth	Ester	Est		
+*Job	Job	Jb		
+*Ps	Žalmy	Žalm	Ž	Žalm
+*Prov	Přísloví	Přís		
+*Eccl	Kazatel	Kaz		
+*Song	Píseň písní	Píseň	Pís	
+*Isa	Izaiáš	Iz		
+*Jer	Jeremiáš	Jer	Jr	
+*Lam	Pláč	Pláč	Pl	
+*Ezek	Ezechiel	Ez		
+*Dan	Daniel	Da		
+*Hos	Ozeáš	Oz		
+*Joel	Joel	Jo		
+*Amos	Amos	Am		
+*Obad	Abdiáš	Abd		
+*Jonah	Jonáš	Jon		
+*Mic	Micheáš	Mich	Mi	
+*Nah	Nahum	Na		
+*Hab	Abakuk	Abk		
+*Zeph	Sofoniáš	Sf		
+*Hag	Ageus	Ag		
+*Zech	Zachariáš	Za		
+*Mal	Malachiáš	Mal		
+*Matt	Matouš	Mat	Mt	
+*Mark	Marek	Mk	Mk	
+*Luke	Lukáš	Lk	L	
+*John	Jan	Jan	J	
+*Acts	Skutky	Sk		
+*Rom	Římanům	Řím	Ř	
+*1Cor	1 Korintským	1 Kor	1 K	
+*2Cor	2 Korintským	2 Kor	2 K	
+*Gal	Galatským	Gal	Ga	
+*Eph	Efeským	Ef		
+*Phil	Filipským	Fp		
+*Col	Koloským	Kol	Ko	
+*1Thess	1 Tesalonickým	1 Te		
+*2Thess	2 Tesalonickým	2 Te		
+*1Tim	1 Timoteus	1 Tim	1 Tm	
+*2Tim	2 Timoteus	2 Tim	2 Tm	
+*Titus	Titus	Tit	Tt	
+*Phlm	Filemon	Flm	Fm	
+*Heb	Židům	Žd		
+*Jas	Jakub	Jak	Jk	
+*1Pet	1 Petr	1 Pt	1 P	
+*2Pet	2 Petr	2 Pt	2 P	
+*1John	1 Jan	1 Jan	1 J	
+*2John	2 Jan	2 Jan	2 J	
+*3John	3 Jan	3 Jan	3 J	
+*Jude	Juda	Ju	Jd	
+*Rev	Zjevení	Zj		
+*Tob	Tóbijáš	Tob		
+*Jdt	Júdit	Jdt		
+*GkEsth	Ester (řecké dodatky)	Ester (řecké části)		
+*Wis	Moudrost	Mdr		
+*Sir	Sírachovec	Sír		
+*Bar	Báruch	Bar		
+*PrAzar	Azarjášova modlitba			
+*Sus	Zuzana	Zuz		
+*Bel	Bél a drak	Bél		
+*SgThree	Píseň mládenců v hořící peci			
+*EpJer	List Jeremjášův			
+*1Macc	1 Makabejská	1 Mak		
+*2Macc	2 Makabejská	2 Mak		
+*3Macc	3 Makabejská	3 Mak		
+*4Macc	4 Makabejská	4 Mak		
+*1Esd	1 Ezdráš			
+*2Esd	2 Ezdráš			
+*PrMan	Modlitbu Manasse			
+*AddEsth	Přídavky k Ester			

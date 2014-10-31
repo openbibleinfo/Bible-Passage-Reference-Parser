@@ -1,0 +1,278 @@
+$FIRST	Kwanza	I	1
+$SECOND	Pili	II	2
+$THIRD	Tatu	III	3
+$FOURTH	Nne	IV	4
+$AB	[a-e]
+# taz = cf. http://sw.wikipedia.org/wiki/Kitabu_cha_Yoshua
+$AND	taz.	na
+# http://sw.wikipedia.org/wiki/Kitabu_cha_Danieli
+$CHAPTER	sura
+$FF	ff
+$TITLE	title
+# Swahili Union Bible
+$TRANS	SUV	HN
+# http://sw.wikipedia.org/wiki/Kutoka_(Biblia)
+$TO	hadi
+# http://sw.wikipedia.org/wiki/Kitabu_cha_Zaburi
+$VERSE	mistari
+$UNICODE_BLOCK	Latin
+
+Gen	Mwanzo	Kitabu cha Kwanza cha Musa	Mwa
+Exod	Kutoka	Kitabu cha Pili cha Musa	Kut
+Lev	Walawi	Kitabu cha Tatu cha Musa	Mambo ya Walawi	Law	Wal
+Num	Hesabu	Kitabu cha Nne cha Musa	Hes
+Deut	Kumbukumbu la Sheria	Kumbukumbu la Torati	Kumbukumbu	Kitabu cha Tano cha Musa	Kum	Kumb
+Josh	Yoshua	Yos
+Judg	Waamuzi	Amu	Waam
+Ruth	Ruthu	Kitabu cha Ruth[iu]	Ruthi?	Rut
+1Sam	Samueli I	Kitabu cha Kwanza cha Samueli	$FIRST Sam	$FIRST Sam[uw]eli
+2Sam	Samueli II	Kitabu cha Pili cha Samueli	$SECOND Sam	$SECOND Sam[uw]eli
+1Kgs	Wafalme I	Kitabu cha Kwanza cha Wafalme	$FIRST Fal	$FIRST Wafalme
+2Kgs	Wafalme II	Kitabu cha Pili cha Wafalme	$SECOND Fal	$SECOND Wafalme
+1Chr	Mambo ya Nyakati I	$FIRST Nya	$FIRST Mambo ya Nyakati
+2Chr	Mambo ya Nyakati II	$SECOND Nya	$SECOND Mambo ya Nyakati
+Ezra	Ezra?
+Neh	Nehemia	Neh
+Esth	Esta?	Esth?er
+Job	Yobu	Kitabu cha Ayubu	Kitabu cha Yobu	Yob	Ayu	Ayubu
+Ps	Zaburi	Zab
+Prov	Methali	Meth	Mith	Mithali	Mit
+Eccl	Mhubiri	Mhu
+Song	Wimbo Ulio Bora	Wimbo Bora	Wim
+Isa	Isaya	Isa?
+Jer	Yeremia	Yer
+Lam	Maombolezo	Maombolezo ya Yeremia	Mao	Omb
+Ezek	Ezekieli	Eze
+Dan	Danieli	Dan
+Hos	Hosea	Hos
+Joel	Yoeli	Yoe
+Amos	Amosi	Amo
+Obad	Obadia	Oba?
+Jonah	Yona?
+Mic	Mika?
+Nah	Nahumu?	Nah
+Hab	Habakuki	Hab
+Zeph	Sefania	Sef
+Hag	Hagai	Hag
+Zech	Zekaria	Zek
+Mal	Malaki	Mal
+Matt	Injili ya Mathayo	Math?ayo	Mt	Math?
+Mark	Injili ya Marko	Marko	Mk
+Luke	Injili ya Luka	Luka	Lk
+John	Injili ya Yohane	Yohan[ae]	Injili ya Yohana	Yoh
+Acts	Matendo ya Mitume	Matendo	Mdo
+Rom	Barua kwa Waroma	Waroma	Waraka kwa Warumi	Waraka kwa Waroma	Rom	Rum	Warumi
+1Cor	Barua ya Kwanza kwa Wakorintho	Wakorintho I	Waraka wa Kwanza kwa Wakorinth?o	$FIRST Kor	$FIRST Wakorinth?o
+2Cor	Barua ya Pili kwa Wakorintho	Wakorintho II	Waraka wa Pili kwa Wakorinth?o	$SECOND Kor	$SECOND Wakorinth?o
+Gal	Barua kwa Wagalatia	Wagalatia	Gal
+Eph	Barua kwa Waefeso	Waefeso	Waraka kwa Waefeso	Efe?
+Phil	Barua kwa Wafilipi	Wafilipi	Waraka kwa Wafilipi	Fil	Flp
+Col	Barua kwa Wakolosai	Wakolosai	Waraka kwa Wakolosai	Kol
+1Thess	Barua ya Kwanza kwa Wathesalonike	Wathesalonike I	Waraka wa Kwanza kwa Wathesalonik[ei]	$FIRST Thes?	$FIRST Th	$FIRST Wathesalonike
+2Thess	Barua ya Pili kwa Wathesalonike	Wathesalonike II	Waraka wa Pili kwa Wathesalonik[ei]	$SECOND Thes?	$SECOND Th	$SECOND Wathesalonike
+1Tim	Barua ya Kwanza kwa Timotheo	Timotheo I	Waraka wa Kwanza kwa Timotheo	$FIRST Tim	$FIRST Timotheo
+2Tim	Barua ya Pili kwa Timotheo	Timotheo II	Waraka wa Pili kwa Timotheo	$SECOND Tim	$SECOND Timotheo
+Titus	Barua kwa Tito	Tito?	Waraka kwa Tito
+Phlm	Barua kwa Filemoni	Filemoni	Waraka kwa Filemoni	Fi?lm
+Heb	Barua kwa Waebrania	Waebrania	Waraka kwa Waebrania	Ebr?
+Jas	Barua ya Yakobo	Yakobo	Waraka wa Yakobo	Yak
+1Pet	Barua ya Kwanza ya Petro	Petro I	Waraka wa Kwanza wa Petro	$FIRST Pet	$FIRST Petro
+2Pet	Barua ya Pili ya Petro	Petro II	Waraka wa Pili wa Petro	$SECOND Pet	$SECOND Petro
+1John	Barua ya Kwanza ya Yohane	Yohane I	Waraka wa Kwanza wa Yohane	$FIRST Yoh	$FIRST Yohan[ae]
+2John	Barua ya Pili ya Yohane	Yohane II	Waraka wa Pili wa Yohane	$SECOND Yoh	$SECOND Yohan[ae]
+3John	Barua ya Tatu ya Yohane	Yohane III	Waraka wa Tatu wa Yohane	$THIRD Yoh	$THIRD Yohan[ae]
+Jude	Barua ya Yuda	Yuda?
+Rev	Ufunuo	Ufunuo wa Yohane	Ufu?	Ufunu[ao] wa Yohana
+Tob	Tobiti	Tob
+Jdt	Yudith	Yudithi	Yuditi?	Yudt
+GkEsth	GkEsth
+Wis	Hekima	Hekima ya Solomoni	Hek
+Sir	Yoshua bin Sira	Sira?	YbS
+Bar	Baruku?	Bar
+PrAzar	PrAzar
+Sus	Susana	Sus
+Bel	Danieli na Makuhani wa Beli
+SgThree	Wimbo wa Vijana Watatu
+EpJer	Barua ya Yeremia
+1Macc	Wamakabayo I	Kitabu cha Wamakabayo I	$FIRST Mak	$FIRST Wamakabayo
+2Macc	Wamakabayo II	Kitabu cha Wamakabayo II	$SECOND Mak	$SECOND Wamakabayo
+3Macc	Wamakabayo III	Kitabu cha Wamakabayo III	$THIRD Mak	$THIRD Wamakabayo
+4Macc	Wamakabayo IV	Kitabu cha Wamakabayo IV	$FOURTH Mak	$FOURTH Wamakabayo
+1Esd	Kitabu cha Kwanza cha Ezra	$FIRST Ezra
+2Esd	Kitabu cha Pili cha Ezra	$SECOND Ezra
+PrMan	PrMan
+
+John,Jonah	Yn
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Mwanzo	Mwa
+*Exod	Kutoka	Kut
+*Lev	Walawi	Law
+*Num	Hesabu	Hes
+*Deut	Kumbukumbu	Kum
+*Josh	Yoshua	Yos
+*Judg	Waamuzi	Amu
+*Ruth	Ruthu	Ruth
+*1Sam	1 Samueli	1 Sam
+*2Sam	2 Samueli	2 Sam
+*1Kgs	1 Wafalme	1 Fal
+*2Kgs	2 Wafalme	2 Fal
+*1Chr	1 Mambo ya Nyakati	1 Nya
+*2Chr	2 Mambo ya Nyakati	2 Nya
+*Ezra	Ezra	Ezra
+*Neh	Nehemia	Neh
+*Esth	Esta	Est
+*Job	Yobu	Yob
+*Ps	Zaburi	Zab		Zaburi
+*Prov	Methali	Meth
+*Eccl	Mhubiri	Mhu
+*Song	Wimbo Bora	Wim
+*Isa	Isaya	Isa
+*Jer	Yeremia	Yer
+*Lam	Maombolezo	Mao
+*Ezek	Ezekieli	Eze
+*Dan	Danieli	Dan
+*Hos	Hosea	Hos
+*Joel	Yoeli	Yoe
+*Amos	Amosi	Amo
+*Obad	Obadia	Ob
+*Jonah	Yona	Yon
+*Mic	Mika	Mik
+*Nah	Nahumu	Nah
+*Hab	Habakuki	Hab
+*Zeph	Sefania	Sef
+*Hag	Hagai	Hag
+*Zech	Zekaria	Zek
+*Mal	Malaki	Mal
+*Matt	Mathayo	Mt
+*Mark	Marko	Mk
+*Luke	Luka	Lk
+*John	Yohane	Yoh
+*Acts	Matendo	Mdo
+*Rom	Waroma	Rom
+*1Cor	1 Wakorintho	1 Kor
+*2Cor	2 Wakorintho	2 Kor
+*Gal	Wagalatia	Gal
+*Eph	Waefeso	Ef
+*Phil	Wafilipi	Fil
+*Col	Wakolosai	Kol
+*1Thess	1 Wathesalonike	1 Thes
+*2Thess	2 Wathesalonike	2 Thes
+*1Tim	1 Timotheo	1 Tim
+*2Tim	2 Timotheo	2 Tim
+*Titus	Tito	Tit
+*Phlm	Filemoni	Film
+*Heb	Waebrania	Eb
+*Jas	Yakobo	Yak
+*1Pet	1 Petro	1 Pet
+*2Pet	2 Petro	2 Pet
+*1John	1 Yohana	1 Yoh
+*2John	2 Yohana	2 Yoh
+*3John	3 Yohana	3 Yoh
+*Jude	Yuda	Yud
+*Rev	Ufunuo	Ufu
+*Tob	Tobiti	Tob
+*Jdt	Yudithi	Yudt
+*GkEsth	GkEsth
+*Wis	Hekima	Hek
+*Sir	Sira	Sir
+*Bar	Baruku	Bar
+*PrAzar	PrAzar
+*Sus	Susana	Sus
+*Bel	Danieli na Makuhani wa Beli
+*SgThree	Wimbo wa Vijana Watatu
+*EpJer	Barua ya Yeremia
+*1Macc	1 Wamakabayo	1 Mak
+*2Macc	2 Wamakabayo	2 Mak
+*3Macc	3 Wamakabayo	3 Mak
+*4Macc	4 Wamakabayo	4 Mak
+*1Esd	1 Ezra
+*2Esd	2 Ezra
+*PrMan	PrMan

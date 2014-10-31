@@ -54,35 +54,35 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Gen"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:창(?:세기?)?|Gen)
+		(?:Gen|창(?:세기?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Exod"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:탈출기?|Exod|출(?:애굽기)?)
+		(?:Exod|탈출기?|출(?:애굽기)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Bel"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:벨과[\s\xa0]*[용뱀]|Bel)
+		(?:벨과[\s\xa0]*[뱀용]|Bel)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Num"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:민(?:수기?)?|Num)
+		(?:Num|민(?:수기?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Sir"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:집회서?|벤시(?:리크의[\s\xa0]*지혜|라(?:[\s\xa0]*지혜|의[\s\xa0]*지혜|크(?:[\s\xa0]*지혜|의[\s\xa0]*지혜)))|Sir)
+		(?:벤시(?:리크의[\s\xa0]*지혜|라(?:의[\s\xa0]*지혜|크(?:의[\s\xa0]*지혜|[\s\xa0]*지혜)|[\s\xa0]*지혜))|Sir|집회서?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Wis"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:지혜서?|Wis)
+		(?:Wis|지혜서?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Lam"]
@@ -98,18 +98,18 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:요한(?:[계묵]시록|[\s\xa0]*[묵계]시록)|Rev|묵시)
+		(?:요한(?:[\s\xa0]*[계묵]시록|[계묵]시록)|Rev|묵시)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["PrMan"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:PrMan|므나쎄의[\s\xa0]*기도)
+		(?:므나쎄의[\s\xa0]*기도|PrMan)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Deut"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:신(?:명기?)?|Deut)
+		(?:Deut|신(?:명기?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Josh"]
@@ -119,7 +119,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Judg"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:판관기?|사사기|삿|Judg)
+		(?:Judg|사사기|판관기?|삿)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ruth"]
@@ -130,7 +130,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["1Esd"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:1Esd|에스드라[\s\xa0]*1서)
+		(?:에스드라[\s\xa0]*1서|1Esd)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Esd"]
@@ -141,37 +141,37 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Isa"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Isa|사|이사(?:야서?)?)
+		(?:Isa|이사(?:야서?)?|사)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Sam"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:사무엘(?:기(?:[\s\xa0]*하권|하)|[\s\xa0]*하|하)|2(?:사무|Sam)|삼하)
+		(?:사무엘(?:[\s\xa0]*하|기(?:[\s\xa0]*하권|하)|하)|2(?:Sam|사무)|삼하)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Sam"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:사무엘(?:기(?:[\s\xa0]*상권|상)|상|[\s\xa0]*상)|1(?:사무|Sam)|삼상)
+		(?:사무엘(?:[\s\xa0]*상|기(?:[\s\xa0]*상권|상)|상)|1(?:Sam|사무)|삼상)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Kgs"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:열왕기(?:[\s\xa0]*하권?|하)|왕하|2(?:열왕|Kgs))
+		(?:열왕기(?:[\s\xa0]*하권?|하)|2(?:Kgs|열왕)|왕하)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Kgs"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:열왕기(?:[\s\xa0]*상권?|상)|왕상|1(?:열왕|Kgs))
+		(?:열왕기(?:[\s\xa0]*상권?|상)|1(?:Kgs|열왕)|왕상)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:대하|2(?:Chr|역대)|역대(?:기[\s\xa0]*하권?|지하|하))
+		(?:2(?:Chr|역대)|역대(?:기[\s\xa0]*하권?|지하|하)|대하)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:역대(?:기[\s\xa0]*상권?|상|지상)|1(?:Chr|역대)|대상)
+		(?:1(?:Chr|역대)|역대(?:기[\s\xa0]*상권?|지상|상)|대상)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["GkEsth"]
@@ -182,17 +182,17 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Esth"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Esth|에(?:스(?:더기?|텔|테르기)?)?)
+		(?:Esth|에(?:스(?:테르기|더기?|텔)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Neh"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:느(?:헤(?:미(?:야기?|아))?)?|Neh)
+		(?:Neh|느(?:헤(?:미(?:아|야기?))?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Job"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:욥기?|Job)
+		(?:Job|욥기?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ps"]
@@ -208,7 +208,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Prov"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:잠언?|Prov)
+		(?:Prov|잠언?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Acts"]
@@ -218,7 +218,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Eccl"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:전(?:도서)?|코헬렛?|Eccl)
+		(?:Eccl|코헬렛?|전(?:도서)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["SgThree"]
@@ -229,37 +229,37 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Jer"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Jer|예레(?:미(?:야서?|아))?|렘)
+		(?:Jer|예레(?:미(?:아|야서?))?|렘)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Phlm"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:빌레몬서|필레(?:몬(?:에게[\s\xa0]*보낸[\s\xa0]*서간|서))?|Phlm)
+		(?:Phlm|빌레몬서|필레(?:몬(?:에게[\s\xa0]*보낸[\s\xa0]*서간|서))?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Lev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:레(?:위기?)?|Lev)
+		(?:Lev|레(?:위기?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezek"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:에(?:제(?:키엘서?)?|스겔서?)|Ezek|겔)
+		(?:Ezek|에(?:스겔서?|제(?:키엘서?)?)|겔)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Dan"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:다니(?:엘서?)?|단|Dan)
+		(?:Dan|다니(?:엘서?)?|단)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Hos"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:호(?:세(?:아서?)?)?|Hos)
+		(?:Hos|호(?:세(?:아서?)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Joel"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Joel|욜|요엘서?)
+		(?:Joel|요엘서?|욜)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Amos"]
@@ -269,22 +269,22 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Ezra"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:에(?:즈(?:라기?)?|스라기?)|Ezra|스)
+		(?:Ezra|에(?:스라기?|즈(?:라기?)?)|스)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Obad"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Obad|옵|오바(?:드야서|디야|댜서?)?)
+		(?:Obad|오바(?:드야서|디야|댜서?)?|옵)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jonah"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Jonah|욘|요나서?)
+		(?:Jonah|요나서?|욘)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Mic"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:미(?:[카가]서?)?|Mic)
+		(?:Mic|미(?:[가카]서?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Sus"]
@@ -300,32 +300,32 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Hab"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:하(?:바(?:쿡서|꾹)?|박국서?)|합|Hab)
+		(?:Hab|하(?:박국서?|바(?:쿡서|꾹)?)|합)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Zeph"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Zeph|습|스바(?:니야서?|냐서?)?)
+		(?:Zeph|스바(?:니야서?|냐서?)?|습)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Hag"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:학(?:개서?)?|하(?:깨|까(?:이서)?)|Hag)
+		(?:Hag|하(?:까(?:이서)?|깨)|학(?:개서?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Zech"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Zech|즈(?:카(?:르야서)?|가리야)|슥|스가랴서?)
+		(?:Zech|스가랴서?|즈(?:가리야|카(?:르야서)?)|슥)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Mal"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:말(?:라(?:키서|기서?)?)?|Mal)
+		(?:Mal|말(?:라(?:키서|기서?)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Gal"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Gal|갈라(?:디아서|티아[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*서간)?)
+		(?:Gal|갈라(?:티아[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*서간|디아서)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Song"]
@@ -340,7 +340,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Mark"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Mark|마(?:르(?:코[\s\xa0]*복음서?)?|가(?:복음서?)?))
+		(?:Mark|마(?:가(?:복음서?)?|르(?:코[\s\xa0]*복음서?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Luke"]
@@ -355,17 +355,17 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:2(?:John|요한)|요한(?:[2이]서|의[\s\xa0]*둘째[\s\xa0]*서간))
+		(?:요한(?:의[\s\xa0]*둘째[\s\xa0]*서간|[2이]서)|2(?:John|요한))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:3(?:John|요한)|요한(?:의[\s\xa0]*셋째[\s\xa0]*서간|[삼3]서))
+		(?:요한(?:의[\s\xa0]*셋째[\s\xa0]*서간|[3삼]서)|3(?:John|요한))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:John|요한(?:복음서?|[\s\xa0]*복음서?)?)
+		(?:John|요한(?:[\s\xa0]*복음서?|복음서?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Rom"]
@@ -375,17 +375,17 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:고린도[2후]서|2(?:코린|Cor)|코린토(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*둘째[\s\xa0]*서간|2서))
+		(?:고린도[2후]서|코린토(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*둘째[\s\xa0]*서간|2서)|2(?:Cor|코린))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:1(?:코린|Cor)|고린도[전1]서|코린토(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*첫째[\s\xa0]*서간|1서))
+		(?:고린도[1전]서|코린토(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*첫째[\s\xa0]*서간|1서)|1(?:Cor|코린))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Eph"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Eph|에(?:페(?:소(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*서간|서))?|베소서))
+		(?:Eph|에(?:베소서|페(?:소(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*서간|서))?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Phil"]
@@ -395,32 +395,32 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Col"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Col|골로새서|콜로(?:새(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*서간|서))?)
+		(?:골로새서|Col|콜로(?:새(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*서간|서))?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Thess"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:데살로니가[2후]서|2(?:테살|Thess)|테살로니카(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*둘째[\s\xa0]*서간|2서))
+		(?:데살로니가[2후]서|테살로니카(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*둘째[\s\xa0]*서간|2서)|2(?:Thess|테살))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Thess"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:데살로니가[전1]서|테살로니카(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*첫째[\s\xa0]*서간|1서)|1(?:테살|Thess))
+		(?:데살로니가[1전]서|테살로니카(?:[\s\xa0]*신자들에게[\s\xa0]*보낸[\s\xa0]*첫째[\s\xa0]*서간|1서)|1(?:Thess|테살))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Tim"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:디모데[후2]서|티모테오(?:에게[\s\xa0]*보낸[\s\xa0]*둘째[\s\xa0]*서간|2서)|2(?:티모|Tim))
+		(?:티모테오(?:에게[\s\xa0]*보낸[\s\xa0]*둘째[\s\xa0]*서간|2서)|디모데[2후]서|2(?:Tim|티모))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Tim"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:디모데1서|티모테오(?:1서|에게[\s\xa0]*보낸[\s\xa0]*첫째[\s\xa0]*서간)|1(?:티모|Tim))
+		(?:티모테오(?:에게[\s\xa0]*보낸[\s\xa0]*첫째[\s\xa0]*서간|1서)|디모데1서|1(?:Tim|티모))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Titus"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:티토(?:에게[\s\xa0]*보낸[\s\xa0]*서간|서)?|Titus|디도서)
+		(?:Titus|디도서|티토(?:에게[\s\xa0]*보낸[\s\xa0]*서간|서)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Heb"]
@@ -430,34 +430,34 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Jas"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Jas|야고(?:보(?:서|[\s\xa0]*서간))?)
+		(?:Jas|야고(?:보(?:[\s\xa0]*서간|서))?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:2(?:Pet|베드)|베드로(?:[후2]서|의[\s\xa0]*둘째[\s\xa0]*서간))
+		(?:베드로(?:의[\s\xa0]*둘째[\s\xa0]*서간|[2후]서)|2(?:Pet|베드))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:1(?:Pet|베드)|베드로(?:의[\s\xa0]*첫째[\s\xa0]*서간|[1전]서))
+		(?:베드로(?:의[\s\xa0]*첫째[\s\xa0]*서간|[1전]서)|1(?:Pet|베드))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jude"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:유다(?:서|[\s\xa0]*서간)?|Jude)
+		(?:Jude|유다(?:[\s\xa0]*서간|서)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Tob"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Tob|토(?:빗기?|비트))
+		(?:Tob|토(?:비트|빗기?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jdt"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:유딧기?|Jdt)
+		(?:Jdt|유딧기?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Bar"]
@@ -469,25 +469,25 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["2Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:마카베오(?:기[\s\xa0]*하권|하)|2(?:마카|Macc))
+		(?:마카베오(?:기[\s\xa0]*하권|하)|2(?:Macc|마카))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:3(?:마카|Macc)|마카베오[\s\xa0]*3서)
+		(?:마카베오[\s\xa0]*3서|3(?:Macc|마카))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["4Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:4(?:마카|Macc)|마카베오[\s\xa0]*4서)
+		(?:마카베오[\s\xa0]*4서|4(?:Macc|마카))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-Ɀ々-〆〪-〭〱-〵〻-〼㐀-䶵一-鿌Ꜣ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ가-힯豈-舘並-龎])(
-		(?:1(?:마카|Macc)|마카베오(?:기[\s\xa0]*상권|상))
+		(?:마카베오(?:기[\s\xa0]*상권|상)|1(?:Macc|마카))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	]
 	# Short-circuit the look if we know we want all the books.
@@ -495,7 +495,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	# Filter out books in the Apocrypha if we don't want them. `Array.map` isn't supported below IE9.
 	out = []
 	for book in books
-		continue if book.apocrypha? and book.apocrypha is true
+		continue if include_apocrypha is false and book.apocrypha? and book.apocrypha is true
 		if case_sensitive is "books"
 			book.regexp = new RegExp book.regexp.source, "g"
 		out.push book

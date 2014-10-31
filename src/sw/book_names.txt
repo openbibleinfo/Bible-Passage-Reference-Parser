@@ -1,0 +1,590 @@
+1Chr	Kwanza Mambo ya Nyakati
+1Chr	1. Mambo ya Nyakati
+1Chr	I. Mambo ya Nyakati
+1Chr	1 Mambo ya Nyakati
+1Chr	I Mambo ya Nyakati
+1Chr	Mambo ya Nyakati I
+1Chr	Kwanza Nya
+1Chr	1. Nya
+1Chr	I. Nya
+1Chr	1 Nya
+1Chr	I Nya
+1Chr	1Chr
+1Cor	Waraka wa Kwanza kwa Wakorintho
+1Cor	Barua ya Kwanza kwa Wakorintho
+1Cor	Waraka wa Kwanza kwa Wakorinto
+1Cor	Kwanza Wakorintho
+1Cor	Kwanza Wakorinto
+1Cor	1. Wakorintho
+1Cor	I. Wakorintho
+1Cor	1 Wakorintho
+1Cor	1. Wakorinto
+1Cor	I Wakorintho
+1Cor	I. Wakorinto
+1Cor	Wakorintho I
+1Cor	1 Wakorinto
+1Cor	I Wakorinto
+1Cor	Kwanza Kor
+1Cor	1. Kor
+1Cor	I. Kor
+1Cor	1 Kor
+1Cor	I Kor
+1Cor	1Cor
+1Esd	Kitabu cha Kwanza cha Ezra
+1Esd	Kwanza Ezra
+1Esd	1. Ezra
+1Esd	I. Ezra
+1Esd	1 Ezra
+1Esd	I Ezra
+1Esd	1Esd
+1John	Waraka wa Kwanza wa Yohane
+1John	Barua ya Kwanza ya Yohane
+1John	Kwanza Yohana
+1John	Kwanza Yohane
+1John	Kwanza Yoh
+1John	1. Yohana
+1John	1. Yohane
+1John	I. Yohana
+1John	I. Yohane
+1John	1 Yohana
+1John	1 Yohane
+1John	I Yohana
+1John	I Yohane
+1John	Yohane I
+1John	1. Yoh
+1John	I. Yoh
+1John	1 Yoh
+1John	1John
+1John	I Yoh
+1Kgs	Kitabu cha Kwanza cha Wafalme
+1Kgs	Kwanza Wafalme
+1Kgs	1. Wafalme
+1Kgs	I. Wafalme
+1Kgs	Kwanza Fal
+1Kgs	1 Wafalme
+1Kgs	I Wafalme
+1Kgs	Wafalme I
+1Kgs	1. Fal
+1Kgs	I. Fal
+1Kgs	1 Fal
+1Kgs	I Fal
+1Kgs	1Kgs
+1Macc	Kitabu cha Wamakabayo I
+1Macc	Kwanza Wamakabayo
+1Macc	1. Wamakabayo
+1Macc	I. Wamakabayo
+1Macc	1 Wamakabayo
+1Macc	I Wamakabayo
+1Macc	Wamakabayo I
+1Macc	Kwanza Mak
+1Macc	1. Mak
+1Macc	I. Mak
+1Macc	1 Mak
+1Macc	1Macc
+1Macc	I Mak
+1Pet	Waraka wa Kwanza wa Petro
+1Pet	Barua ya Kwanza ya Petro
+1Pet	Kwanza Petro
+1Pet	Kwanza Pet
+1Pet	1. Petro
+1Pet	I. Petro
+1Pet	1 Petro
+1Pet	I Petro
+1Pet	Petro I
+1Pet	1. Pet
+1Pet	I. Pet
+1Pet	1 Pet
+1Pet	I Pet
+1Pet	1Pet
+1Sam	Kitabu cha Kwanza cha Samueli
+1Sam	Kwanza Samueli
+1Sam	Kwanza Samweli
+1Sam	1. Samueli
+1Sam	1. Samweli
+1Sam	I. Samueli
+1Sam	I. Samweli
+1Sam	Kwanza Sam
+1Sam	1 Samueli
+1Sam	1 Samweli
+1Sam	I Samueli
+1Sam	I Samweli
+1Sam	Samueli I
+1Sam	1. Sam
+1Sam	I. Sam
+1Sam	1 Sam
+1Sam	I Sam
+1Sam	1Sam
+1Thess	Waraka wa Kwanza kwa Wathesalonike
+1Thess	Waraka wa Kwanza kwa Wathesaloniki
+1Thess	Barua ya Kwanza kwa Wathesalonike
+1Thess	Kwanza Wathesalonike
+1Thess	1. Wathesalonike
+1Thess	I. Wathesalonike
+1Thess	1 Wathesalonike
+1Thess	I Wathesalonike
+1Thess	Wathesalonike I
+1Thess	Kwanza Thes
+1Thess	Kwanza The
+1Thess	Kwanza Th
+1Thess	1. Thes
+1Thess	I. Thes
+1Thess	1 Thes
+1Thess	1. The
+1Thess	1Thess
+1Thess	I Thes
+1Thess	I. The
+1Thess	1 The
+1Thess	1. Th
+1Thess	I The
+1Thess	I. Th
+1Thess	1 Th
+1Thess	I Th
+1Tim	Waraka wa Kwanza kwa Timotheo
+1Tim	Barua ya Kwanza kwa Timotheo
+1Tim	Kwanza Timotheo
+1Tim	1. Timotheo
+1Tim	I. Timotheo
+1Tim	1 Timotheo
+1Tim	I Timotheo
+1Tim	Kwanza Tim
+1Tim	Timotheo I
+1Tim	1. Tim
+1Tim	I. Tim
+1Tim	1 Tim
+1Tim	I Tim
+1Tim	1Tim
+2Chr	Pili Mambo ya Nyakati
+2Chr	II. Mambo ya Nyakati
+2Chr	2. Mambo ya Nyakati
+2Chr	II Mambo ya Nyakati
+2Chr	Mambo ya Nyakati II
+2Chr	2 Mambo ya Nyakati
+2Chr	Pili Nya
+2Chr	II. Nya
+2Chr	2. Nya
+2Chr	II Nya
+2Chr	2 Nya
+2Chr	2Chr
+2Cor	Waraka wa Pili kwa Wakorintho
+2Cor	Barua ya Pili kwa Wakorintho
+2Cor	Waraka wa Pili kwa Wakorinto
+2Cor	Pili Wakorintho
+2Cor	II. Wakorintho
+2Cor	Pili Wakorinto
+2Cor	2. Wakorintho
+2Cor	II Wakorintho
+2Cor	II. Wakorinto
+2Cor	Wakorintho II
+2Cor	2 Wakorintho
+2Cor	2. Wakorinto
+2Cor	II Wakorinto
+2Cor	2 Wakorinto
+2Cor	Pili Kor
+2Cor	II. Kor
+2Cor	2. Kor
+2Cor	II Kor
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	Kitabu cha Pili cha Ezra
+2Esd	Pili Ezra
+2Esd	II. Ezra
+2Esd	2. Ezra
+2Esd	II Ezra
+2Esd	2 Ezra
+2Esd	2Esd
+2John	Waraka wa Pili wa Yohane
+2John	Barua ya Pili ya Yohane
+2John	Pili Yohana
+2John	Pili Yohane
+2John	II. Yohana
+2John	II. Yohane
+2John	2. Yohana
+2John	2. Yohane
+2John	II Yohana
+2John	II Yohane
+2John	Yohane II
+2John	2 Yohana
+2John	2 Yohane
+2John	Pili Yoh
+2John	II. Yoh
+2John	2. Yoh
+2John	II Yoh
+2John	2 Yoh
+2John	2John
+2Kgs	Kitabu cha Pili cha Wafalme
+2Kgs	Pili Wafalme
+2Kgs	II. Wafalme
+2Kgs	2. Wafalme
+2Kgs	II Wafalme
+2Kgs	Wafalme II
+2Kgs	2 Wafalme
+2Kgs	Pili Fal
+2Kgs	II. Fal
+2Kgs	2. Fal
+2Kgs	II Fal
+2Kgs	2 Fal
+2Kgs	2Kgs
+2Macc	Kitabu cha Wamakabayo II
+2Macc	Pili Wamakabayo
+2Macc	II. Wamakabayo
+2Macc	2. Wamakabayo
+2Macc	II Wamakabayo
+2Macc	Wamakabayo II
+2Macc	2 Wamakabayo
+2Macc	Pili Mak
+2Macc	II. Mak
+2Macc	2. Mak
+2Macc	II Mak
+2Macc	2 Mak
+2Macc	2Macc
+2Pet	Waraka wa Pili wa Petro
+2Pet	Barua ya Pili ya Petro
+2Pet	Pili Petro
+2Pet	II. Petro
+2Pet	2. Petro
+2Pet	II Petro
+2Pet	Petro II
+2Pet	Pili Pet
+2Pet	2 Petro
+2Pet	II. Pet
+2Pet	2. Pet
+2Pet	II Pet
+2Pet	2 Pet
+2Pet	2Pet
+2Sam	Kitabu cha Pili cha Samueli
+2Sam	Pili Samueli
+2Sam	Pili Samweli
+2Sam	II. Samueli
+2Sam	II. Samweli
+2Sam	2. Samueli
+2Sam	2. Samweli
+2Sam	II Samueli
+2Sam	II Samweli
+2Sam	Samueli II
+2Sam	2 Samueli
+2Sam	2 Samweli
+2Sam	Pili Sam
+2Sam	II. Sam
+2Sam	2. Sam
+2Sam	II Sam
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	Waraka wa Pili kwa Wathesalonike
+2Thess	Waraka wa Pili kwa Wathesaloniki
+2Thess	Barua ya Pili kwa Wathesalonike
+2Thess	Pili Wathesalonike
+2Thess	II. Wathesalonike
+2Thess	2. Wathesalonike
+2Thess	II Wathesalonike
+2Thess	Wathesalonike II
+2Thess	2 Wathesalonike
+2Thess	Pili Thes
+2Thess	II. Thes
+2Thess	Pili The
+2Thess	2. Thes
+2Thess	II Thes
+2Thess	II. The
+2Thess	Pili Th
+2Thess	2 Thes
+2Thess	2. The
+2Thess	2Thess
+2Thess	II The
+2Thess	II. Th
+2Thess	2 The
+2Thess	2. Th
+2Thess	II Th
+2Thess	2 Th
+2Tim	Waraka wa Pili kwa Timotheo
+2Tim	Barua ya Pili kwa Timotheo
+2Tim	Pili Timotheo
+2Tim	II. Timotheo
+2Tim	2. Timotheo
+2Tim	II Timotheo
+2Tim	Timotheo II
+2Tim	2 Timotheo
+2Tim	Pili Tim
+2Tim	II. Tim
+2Tim	2. Tim
+2Tim	II Tim
+2Tim	2 Tim
+2Tim	2Tim
+3John	Waraka wa Tatu wa Yohane
+3John	Barua ya Tatu ya Yohane
+3John	III. Yohana
+3John	III. Yohane
+3John	Tatu Yohana
+3John	Tatu Yohane
+3John	III Yohana
+3John	III Yohane
+3John	Yohane III
+3John	3. Yohana
+3John	3. Yohane
+3John	3 Yohana
+3John	3 Yohane
+3John	III. Yoh
+3John	Tatu Yoh
+3John	III Yoh
+3John	3. Yoh
+3John	3 Yoh
+3John	3John
+3Macc	Kitabu cha Wamakabayo III
+3Macc	III. Wamakabayo
+3Macc	Tatu Wamakabayo
+3Macc	III Wamakabayo
+3Macc	Wamakabayo III
+3Macc	3. Wamakabayo
+3Macc	3 Wamakabayo
+3Macc	III. Mak
+3Macc	Tatu Mak
+3Macc	III Mak
+3Macc	3. Mak
+3Macc	3 Mak
+3Macc	3Macc
+4Macc	Kitabu cha Wamakabayo IV
+4Macc	IV. Wamakabayo
+4Macc	Nne Wamakabayo
+4Macc	4. Wamakabayo
+4Macc	IV Wamakabayo
+4Macc	Wamakabayo IV
+4Macc	4 Wamakabayo
+4Macc	IV. Mak
+4Macc	Nne Mak
+4Macc	4. Mak
+4Macc	IV Mak
+4Macc	4 Mak
+4Macc	4Macc
+Acts	Matendo ya Mitume
+Acts	Matendo
+Acts	Acts
+Acts	Mdo
+Amos	Amosi
+Amos	Amos
+Amos	Amo
+Bar	Baruku
+Bar	Baruk
+Bar	Bar
+Bel	Danieli na Makuhani wa Beli
+Bel	Bel
+Col	Waraka kwa Wakolosai
+Col	Barua kwa Wakolosai
+Col	Wakolosai
+Col	Col
+Col	Kol
+Dan	Danieli
+Dan	Dan
+Deut	Kitabu cha Tano cha Musa
+Deut	Kumbukumbu la Sheria
+Deut	Kumbukumbu la Torati
+Deut	Kumbukumbu
+Deut	Deut
+Deut	Kumb
+Deut	Kum
+Eccl	Mhubiri
+Eccl	Eccl
+Eccl	Mhu
+EpJer	Barua ya Yeremia
+EpJer	EpJer
+Eph	Waraka kwa Waefeso
+Eph	Barua kwa Waefeso
+Eph	Waefeso
+Eph	Efe
+Eph	Eph
+Eph	Ef
+Esth	Esther
+Esth	Ester
+Esth	Esta
+Esth	Esth
+Esth	Est
+Exod	Kitabu cha Pili cha Musa
+Exod	Kutoka
+Exod	Exod
+Exod	Kut
+Ezek	Ezekieli
+Ezek	Ezek
+Ezek	Eze
+Ezra	Ezra
+Ezra	Ezr
+Gal	Barua kwa Wagalatia
+Gal	Wagalatia
+Gal	Gal
+Gen	Kitabu cha Kwanza cha Musa
+Gen	Mwanzo
+Gen	Gen
+Gen	Mwa
+GkEsth	GkEsth
+Hab	Habakuki
+Hab	Hab
+Hag	Hagai
+Hag	Hag
+Heb	Waraka kwa Waebrania
+Heb	Barua kwa Waebrania
+Heb	Waebrania
+Heb	Ebr
+Heb	Heb
+Heb	Eb
+Hos	Hosea
+Hos	Hos
+Isa	Isaya
+Isa	Isa
+Isa	Is
+Jas	Waraka wa Yakobo
+Jas	Barua ya Yakobo
+Jas	Yakobo
+Jas	Jas
+Jas	Yak
+Jdt	Yudithi
+Jdt	Yudith
+Jdt	Yuditi
+Jdt	Yudit
+Jdt	Yudt
+Jdt	Jdt
+Jer	Yeremia
+Jer	Jer
+Jer	Yer
+Job	Kitabu cha Ayubu
+Job	Kitabu cha Yobu
+Job	Ayubu
+Job	Yobu
+Job	Ayu
+Job	Job
+Job	Yob
+Joel	Yoeli
+Joel	Joel
+Joel	Yoe
+John	Injili ya Yohana
+John	Injili ya Yohane
+John	Yohana
+John	Yohane
+John	John
+John	Yoh
+John,Jonah	Yn
+Jonah	Jonah
+Jonah	Yona
+Jonah	Yon
+Josh	Yoshua
+Josh	Josh
+Josh	Yos
+Jude	Barua ya Yuda
+Jude	Jude
+Jude	Yuda
+Jude	Yud
+Judg	Waamuzi
+Judg	Judg
+Judg	Waam
+Judg	Amu
+Lam	Maombolezo ya Yeremia
+Lam	Maombolezo
+Lam	Lam
+Lam	Mao
+Lam	Omb
+Lev	Kitabu cha Tatu cha Musa
+Lev	Mambo ya Walawi
+Lev	Walawi
+Lev	Law
+Lev	Lev
+Lev	Wal
+Luke	Injili ya Luka
+Luke	Luka
+Luke	Luke
+Luke	Lk
+Mal	Malaki
+Mal	Mal
+Mark	Injili ya Marko
+Mark	Marko
+Mark	Mark
+Mark	Mk
+Matt	Injili ya Mathayo
+Matt	Mathayo
+Matt	Matayo
+Matt	Math
+Matt	Matt
+Matt	Mat
+Matt	Mt
+Mic	Mika
+Mic	Mic
+Mic	Mik
+Nah	Nahumu
+Nah	Nahum
+Nah	Nah
+Neh	Nehemia
+Neh	Neh
+Num	Kitabu cha Nne cha Musa
+Num	Hesabu
+Num	Hes
+Num	Num
+Obad	Obadia
+Obad	Obad
+Obad	Oba
+Obad	Ob
+Phil	Waraka kwa Wafilipi
+Phil	Barua kwa Wafilipi
+Phil	Wafilipi
+Phil	Phil
+Phil	Fil
+Phil	Flp
+Phlm	Waraka kwa Filemoni
+Phlm	Barua kwa Filemoni
+Phlm	Filemoni
+Phlm	Film
+Phlm	Phlm
+Phlm	Flm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	Methali
+Prov	Mithali
+Prov	Meth
+Prov	Mith
+Prov	Prov
+Prov	Mit
+Ps	Zaburi
+Ps	Zab
+Ps	Ps
+Rev	Ufunua wa Yohana
+Rev	Ufunuo wa Yohana
+Rev	Ufunuo wa Yohane
+Rev	Ufunuo
+Rev	Rev
+Rev	Ufu
+Rev	Uf
+Rom	Waraka kwa Waroma
+Rom	Waraka kwa Warumi
+Rom	Barua kwa Waroma
+Rom	Waroma
+Rom	Warumi
+Rom	Rom
+Rom	Rum
+Ruth	Kitabu cha Ruthi
+Ruth	Kitabu cha Ruthu
+Ruth	Ruthi
+Ruth	Ruthu
+Ruth	Ruth
+Ruth	Rut
+SgThree	Wimbo wa Vijana Watatu
+SgThree	SgThree
+Sir	Yoshua bin Sira
+Sir	Sira
+Sir	Sir
+Sir	YbS
+Song	Wimbo Ulio Bora
+Song	Wimbo Bora
+Song	Song
+Song	Wim
+Sus	Susana
+Sus	Sus
+Titus	Waraka kwa Tito
+Titus	Barua kwa Tito
+Titus	Titus
+Titus	Tito
+Titus	Tit
+Tob	Tobiti
+Tob	Tob
+Wis	Hekima ya Solomoni
+Wis	Hekima
+Wis	Hek
+Wis	Wis
+Zech	Zekaria
+Zech	Zech
+Zech	Zek
+Zeph	Sefania
+Zeph	Zeph
+Zeph	Sef

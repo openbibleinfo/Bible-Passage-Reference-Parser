@@ -499,7 +499,7 @@ sub make_tests
 		my @tests;
 		my ($first) = split /,/, $osis;
 		my $match = "$first\.1\.1";
-		foreach my $abbrev (sort { length $b <=> length $a } keys %{$abbrevs{$osis}})
+		foreach my $abbrev (sort_abbrevs_by_length(keys %{$abbrevs{$osis}}))
 		{
 			foreach my $expanded (expand_abbrev_vars($abbrev))
 			{
@@ -541,7 +541,7 @@ sub make_tests
 		if ($valid_osises{$first} ne 'apocrypha')
 		{
 			push @out, "		p.include_apocrypha(false)";
-			foreach my $abbrev (sort { length $b <=> length $a } keys %{$abbrevs{$osis}})
+			foreach my $abbrev (sort_abbrevs_by_length(keys %{$abbrevs{$osis}}))
 			{
 				foreach my $expanded (expand_abbrev_vars($abbrev))
 				{
@@ -557,7 +557,7 @@ sub make_tests
 	open OUT, '>:utf8', "$dir/$lang/book_names.txt";
 	foreach my $osis (sort keys %all_abbrevs)
 	{
-		my @osis_abbrevs = sort { length $b <=> length $a } keys %{$all_abbrevs{$osis}};
+		my @osis_abbrevs = sort_abbrevs_by_length(keys %{$all_abbrevs{$osis}});
 		my $use_osis = $osis;
 		$use_osis =~ s/,+$//;
 		foreach my $abbrev (@osis_abbrevs)
@@ -599,6 +599,22 @@ sub make_tests
 		die "$1\nTests: Capital variable";
 	}
 	return %all_abbrevs;
+}
+
+sub sort_abbrevs_by_length
+{
+	my (%lengths, @out);
+	foreach my $abbrev (@_)
+	{
+		my $length = length $abbrev;
+		push @{$lengths{$length}}, $abbrev;
+	}
+	foreach my $length (sort { $b <=> $a } keys %lengths)
+	{
+		my @abbrevs = sort @{$lengths{$length}};
+		push @out, @abbrevs;
+	}
+	return @out;
 }
 
 sub add_abbrev_to_all_abbrevs
@@ -847,7 +863,7 @@ sub get_abbrevs
 			}
 			foreach my $alt (@alts)
 			{
-				if ($abbrev =~ /[\[\?]/)
+				if ($alt =~ /[\[\?]/)
 				{
 					#print Dumper("$osis / $abbrev");
 					foreach my $expanded (expand_abbrev($alt))
@@ -858,7 +874,7 @@ sub get_abbrevs
 				else
 				{
 					#print " $osis abbrev already exists: " . Dumper($abbrev) if (exists $out{$osis}->{$abbrev} && !$is_literal && $abbrev ne $osis && $abbrev !~ /\$/);
-					$out{$osis}->{$abbrev} = 1;
+					$out{$osis}->{$alt} = 1;
 				}
 			}
 		}
@@ -881,6 +897,7 @@ sub expand_abbrev_vars
 	{
 		foreach my $val (expand_abbrev($value))
 		{
+			$val = handle_accents($val);
 			my $temp = $abbrev;
 			$temp =~ s/\$[A-Z]+(?!\w)/$val/;
 			$recurse = 1 if ($temp =~ /\$/);
@@ -1090,9 +1107,12 @@ sub expand_abbrev
 			my @temps;
 			foreach my $out (@outs)
 			{
+				my %alreadys;
 				foreach my $next (@nexts)
 				{
+					next if (exists $alreadys{$next});
 					push @temps, "$out$next";
+					$alreadys{$next} = 1;
 				}
 			}
 			@outs = @temps;
@@ -1159,7 +1179,12 @@ sub expand_abbrev
 			@outs = @temps;
 		}
 	}
-	#print Dumper(\@outs) if (Dumper(\@outs) =~ /John/);
+	if (join('', @outs) =~ /[\[\]]/)
+	{
+		print "Unexpected char: ";
+		print Dumper(\@outs);
+		exit;
+	}
 	return @outs;
 }
 
@@ -1185,7 +1210,7 @@ sub handle_accents
 	$text =~ s/([\x80-\x{ffff}])`/$1/g;
 	$text =~ s/[\x{2b9}\x{374}]/['\x{2019}\x{384}\x{374}\x{2b9}]/g;
 	$text =~ s/([\x{300}\x{370}]-)\['\x{2019}\x{384}\x{374}\x{2b9}\](\x{376})/$1\x{374}$2/;
-	$text =~ s/\.$//;
+	#$text =~ s/\.$//;
 	$text =~ s/\./\\.?/g;
 	return $text;
 }

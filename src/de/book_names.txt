@@ -14,8 +14,8 @@
 1Esd	1. Esra
 1Esd	1 Esra
 1Esd	1. Esr
-1Esd	1. Es
 1Esd	1 Esr
+1Esd	1. Es
 1Esd	1 Es
 1Esd	1Esd
 1John	Erste Johannes
@@ -25,16 +25,16 @@
 1John	1 Joh
 1John	1John
 1Kgs	Erste Koenige
-1Kgs	Erste Könige
 1Kgs	Erste Konige
+1Kgs	Erste Könige
 1Kgs	1. Koenige
 1Kgs	1 Koenige
 1Kgs	1. Konige
 1Kgs	1. Könige
 1Kgs	1 Konige
 1Kgs	1 Könige
-1Kgs	1. Kön
 1Kgs	1. Kon
+1Kgs	1. Kön
 1Kgs	1 Kon
 1Kgs	1 Kön
 1Kgs	1Kgs
@@ -85,27 +85,27 @@
 2Cor	2Cor
 2Esd	Zweite Esra
 2Esd	2. Esra
-2Esd	2. Esr
 2Esd	2 Esra
-2Esd	2. Es
+2Esd	2. Esr
 2Esd	2 Esr
-2Esd	2Esd
+2Esd	2. Es
 2Esd	2 Es
+2Esd	2Esd
 2John	Zweite Johannes
 2John	2. Johannes
 2John	2 Johannes
 2John	2. Joh
-2John	2John
 2John	2 Joh
+2John	2John
 2Kgs	Zweite Koenige
-2Kgs	Zweite Könige
 2Kgs	Zweite Konige
+2Kgs	Zweite Könige
 2Kgs	2. Koenige
+2Kgs	2 Koenige
 2Kgs	2. Konige
 2Kgs	2. Könige
-2Kgs	2 Koenige
-2Kgs	2 Könige
 2Kgs	2 Konige
+2Kgs	2 Könige
 2Kgs	2. Kon
 2Kgs	2. Kön
 2Kgs	2 Kon
@@ -113,8 +113,8 @@
 2Kgs	2Kgs
 2Macc	Zweite Makkabaer
 2Macc	Zweite Makkabäer
-2Macc	2. Makkabäer
 2Macc	2. Makkabaer
+2Macc	2. Makkabäer
 2Macc	2 Makkabaer
 2Macc	2 Makkabäer
 2Macc	2. Makk
@@ -148,21 +148,21 @@
 3John	3. Johannes
 3John	3 Johannes
 3John	3. Joh
-3John	3John
 3John	3 Joh
-3Macc	Dritte Makkabäer
+3John	3John
 3Macc	Dritte Makkabaer
+3Macc	Dritte Makkabäer
 3Macc	3. Makkabaer
 3Macc	3. Makkabäer
-3Macc	3 Makkabäer
 3Macc	3 Makkabaer
+3Macc	3 Makkabäer
 3Macc	3. Makk
 3Macc	3 Makk
 3Macc	3Macc
-4Macc	Vierte Makkabäer
 4Macc	Vierte Makkabaer
-4Macc	4. Makkabäer
+4Macc	Vierte Makkabäer
 4Macc	4. Makkabaer
+4Macc	4. Makkabäer
 4Macc	4 Makkabaer
 4Macc	4 Makkabäer
 4Macc	4. Makk
@@ -182,21 +182,23 @@ Col	Col
 Col	Kol
 Dan	Daniel
 Dan	Dan
+Deut	Funfte Buch Mose
 Deut	Fünfte Buch Mose
 Deut	Deuteronomium
 Deut	5. Buch Mose
 Deut	5 Buch Mose
+Deut	Funfte Mose
 Deut	Fünfte Mose
 Deut	5. Mose
 Deut	5 Mose
 Deut	5. Mos
-Deut	5. Mo
 Deut	5 Mos
+Deut	5. Mo
 Deut	5 Mo
 Deut	Deut
 Deut	Dtn
-Eccl	Ekklesiastes
 Eccl	Ecclesiastes
+Eccl	Ekklesiastes
 Eccl	Prediger
 Eccl	Kohelet
 Eccl	Eccl
@@ -212,19 +214,19 @@ Esth	Esth
 Esth	Est
 Exod	Zweite Buch Mose
 Exod	2. Buch Mose
-Exod	Zweite Mose
 Exod	2 Buch Mose
+Exod	Zweite Mose
 Exod	2. Mose
-Exod	2. Mos
 Exod	2 Mose
+Exod	2. Mos
 Exod	Exodus
 Exod	2 Mos
 Exod	2. Mo
-Exod	Exod
 Exod	2 Mo
+Exod	Exod
 Exod	Ex
-Ezek	Hesekiel
 Ezek	Ezechiel
+Ezek	Hesekiel
 Ezek	Ezek
 Ezek	Hes
 Ezek	Ez
@@ -240,27 +242,27 @@ Gen	1 Buch Mose
 Gen	Erste Mose
 Gen	1. Mose
 Gen	Genesis
-Gen	1. Mos
 Gen	1 Mose
+Gen	1. Mos
 Gen	1 Mos
 Gen	1. Mo
 Gen	1 Mo
 Gen	Gen
 GkEsth	Ester \(Griechisch\)
 GkEsth	Ester (Griechisch)
-GkEsth	Gr Est
 GkEsth	GkEsth
+GkEsth	Gr Est
 Hab	Habakuk
 Hab	Hab
+Hag	Aggaus
 Hag	Aggäus
 Hag	Haggai
-Hag	Aggaus
-Hag	Hag
 Hag	Agg
+Hag	Hag
 Hag	Ag
 Heb	Hebraeer
-Heb	Hebräer
 Heb	Hebraer
+Heb	Hebräer
 Heb	Hebr
 Heb	Heb
 Hos	Hosea
@@ -268,11 +270,11 @@ Hos	Osee
 Hos	Hos
 Isa	Isaias
 Isa	Jesaja
-Isa	Jes
 Isa	Isa
+Isa	Jes
 Jas	Jakobusbrief
-Jas	Jas
 Jas	Jak
+Jas	Jas
 Jdt	Judit
 Jdt	Jdt
 Jer	Jeremias
@@ -305,14 +307,14 @@ Lam	Klgl
 Lam	Lam
 Lev	Dritte Buch Mose
 Lev	3. Buch Mose
-Lev	Dritte Mose
 Lev	3 Buch Mose
+Lev	Dritte Mose
 Lev	Levitikus
 Lev	3. Mose
 Lev	3 Mose
 Lev	3. Mos
-Lev	3. Mo
 Lev	3 Mos
+Lev	3. Mo
 Lev	3 Mo
 Lev	Lev
 Luke	Lukas
@@ -339,18 +341,18 @@ Neh	Nehemia
 Neh	Neh
 Num	Vierte Buch Mose
 Num	4. Buch Mose
-Num	Vierte Mose
 Num	4 Buch Mose
+Num	Vierte Mose
 Num	4. Mose
+Num	4 Mose
 Num	4. Mos
 Num	Numeri
-Num	4 Mose
-Num	4. Mo
 Num	4 Mos
+Num	4. Mo
 Num	4 Mo
 Num	Num
-Obad	Obadja
 Obad	Abdias
+Obad	Obadja
 Obad	Obad
 Obad	Obd
 Phil	Philipper
@@ -368,8 +370,8 @@ PrMan	Gebet Manasse
 PrMan	Geb Man
 PrMan	Or Man
 PrMan	PrMan
-Prov	Sprichwörter
 Prov	Sprichworter
+Prov	Sprichwörter
 Prov	Sprueche
 Prov	Spruche
 Prov	Sprüche
@@ -382,20 +384,20 @@ Rev	Offenbarung
 Rev	Offb
 Rev	Rev
 Rom	Roemer
-Rom	Römer
 Rom	Romer
+Rom	Römer
 Rom	Rom
 Rom	Röm
 Ruth	Ruth
 Ruth	Rut
-SgThree	Lobgesang der drei jungen Männer im Feuerofen
 SgThree	Lobgesang der drei jungen Manner im Feuerofen
-SgThree	Der Gesang der Drei Männer im feurigen Ofen
+SgThree	Lobgesang der drei jungen Männer im Feuerofen
 SgThree	Der Gesang der Drei Manner im feurigen Ofen
+SgThree	Der Gesang der Drei Männer im feurigen Ofen
 SgThree	Lobgesang der drei jungen Manner
 SgThree	Lobgesang der drei jungen Männer
-SgThree	Lobgesang der 3 jungen Männer
 SgThree	Lobgesang der 3 jungen Manner
+SgThree	Lobgesang der 3 jungen Männer
 SgThree	Der Gesang der Drei
 SgThree	Gesang der Drei
 SgThree	SgThree
@@ -425,11 +427,11 @@ Wis	Weish
 Wis	Wis
 Zech	Zacharias
 Zech	Sacharja
-Zech	Zech
 Zech	Sach
+Zech	Zech
 Zeph	Sophonias
 Zeph	Zephanja
 Zeph	Zefanja
-Zeph	Zeph
 Zeph	Soph
+Zeph	Zeph
 Zeph	Zef

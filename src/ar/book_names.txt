@@ -2,8 +2,8 @@
 1Chr	أخبار الأيام الأول
 1Chr	ﺃﺧﺒﺎﺭ ﺍﻷﻳﺎﻡ ﺍﻷ
 1Chr	الأخبار 1
-1Chr	1Chr
 1Chr	1 أخ
+1Chr	1Chr
 1Cor	رسالة بولس الرسول الأولى إلى أهل كورنثوس
 1Cor	الرسالة الأولى إلى أهل كورنثوس
 1Cor	كورنثوس الأولى
@@ -36,8 +36,8 @@
 1Pet	رسالة بطرس الأولى
 1Pet	رسالة بطرس 1
 1Pet	بطرس الأولى
-1Pet	1Pet
 1Pet	1 بط
+1Pet	1Pet
 1Pet	1بط
 1Sam	سفر صموئيل الأول
 1Sam	الممالك الأول
@@ -62,8 +62,8 @@
 2Chr	أخبار الأيام الثاني
 2Chr	ﺃﺧﺒﺎﺭ ﺍﻷﻳﺎﻡ ﺍﻟﺜﺎﻥ
 2Chr	الأخبار 2
-2Chr	2Chr
 2Chr	2 أخ
+2Chr	2Chr
 2Cor	رسالة بولس الرسول الثانية إلى أهل كورنثوس
 2Cor	الرسالة الثانية إلى أهل كورنثوس
 2Cor	كورنثوس الثانية
@@ -74,8 +74,8 @@
 2Esd	2Esd
 2John	رسالة القديس يوحنا الثانية
 2John	رسالة يوحنا الثانية
-2John	يوحنا الثانية
 2John	رسالة يوحنا 2
+2John	يوحنا الثانية
 2John	2John
 2John	2 يو
 2Kgs	سفر الملوك الثاني
@@ -91,10 +91,10 @@
 2Macc	2 مك
 2Pet	رسالة القديس بطرس الثانية
 2Pet	رسالة بطرس الثانية
-2Pet	رسالة بطرس 2
 2Pet	بطرس الثانية
-2Pet	2Pet
+2Pet	رسالة بطرس 2
 2Pet	2 بط
+2Pet	2Pet
 2Pet	2بط
 2Sam	سفر صموئيل الثاني
 2Sam	الممالك الثاني
@@ -111,8 +111,8 @@
 2Thess	2 تس
 2Tim	رسالة بولس الرسول الثانية إلى تيموثاوس
 2Tim	الرسالة الثانية إلى تيموثاوس
-2Tim	ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ
 2Tim	تيموثاوس الثانية
+2Tim	ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ
 2Tim	2 طيم
 2Tim	2Tim
 3John	رسالة القديس يوحنا الثالثة
@@ -182,8 +182,8 @@ Ezek	حزقيال
 Ezek	Ezek
 Ezek	حز
 Ezra	سفر عزرا
-Ezra	عزرا
 Ezra	Ezra
+Ezra	عزرا
 Ezra	عـز
 Gal	رسالة بولس الرسول إلى أهل غلاطية
 Gal	الرسالة إلى أهل غلاطية
@@ -204,8 +204,8 @@ Hab	حب
 Hag	سفر حجي
 Hag	حجَّي
 Hag	حجاي
-Hag	حجي
 Hag	Hag
+Hag	حجي
 Hag	حج
 Heb	الرسالة إلى العبرانيين
 Heb	العبرانيين
@@ -249,8 +249,8 @@ John	يوحنا
 John	John
 John	يو
 Jonah	سفر يونان
-Jonah	يونان
 Jonah	Jonah
+Jonah	يونان
 Jonah	يون
 Josh	سفر يشوع
 Josh	Josh
@@ -269,28 +269,28 @@ Judg	قض
 Lam	سفر مراثي إرميا
 Lam	مراثي إرميا
 Lam	المراثي
-Lam	مرا
 Lam	Lam
+Lam	مرا
 Lev	سفر اللاويين
 Lev	اللاويين
 Lev	الأحبار
 Lev	ﺍﻟﻼﻭﻳﻲ
 Lev	Lev
-Lev	لا
 Lev	أح
+Lev	لا
 Luke	إنجيل لوقا
 Luke	Luke
 Luke	لوقا
 Luke	لو
 Mal	سفر ملاخي
 Mal	ملاخي
+Mal	Mal
 Mal	ملا
 Mal	ﻣﻼﺥ
-Mal	Mal
 Mal	مل
 Mark	إنجيل مرقس
-Mark	مرقس
 Mark	Mark
+Mark	مرقس
 Mark	مر
 Matt	إنجيل متى
 Matt	Matt
@@ -349,8 +349,8 @@ Ps	المزمور
 Ps	مزمور
 Ps	Ps
 Ps	مز
-Rev	ﻳﻮﺣﻨﺎ ﺭﺅﻳﺎ
 Rev	رؤيا يوحنا
+Rev	ﻳﻮﺣﻨﺎ ﺭﺅﻳﺎ
 Rev	الرؤيــا
 Rev	Rev
 Rev	رؤ
@@ -358,8 +358,8 @@ Rom	رسالة بولس الرسول إلى أهل رومية
 Rom	الرسالة إلى أهل رومية
 Rom	رسالة روما
 Rom	ﺭﻭﻣﻴﺔ
-Rom	روم
 Rom	Rom
+Rom	روم
 Rom	رو
 Ruth	سفر راعوث
 Ruth	راعوث
@@ -367,8 +367,8 @@ Ruth	Ruth
 Ruth	را
 SgThree	أنشودة الأطفال الثلاثة
 SgThree	SgThree
-Sir	يشوع بن سيراخ
 Sir	سفر ابن سيراخ
+Sir	يشوع بن سيراخ
 Sir	سيراخ
 Sir	Sir
 Sir	سي
@@ -385,8 +385,8 @@ Titus	الرسالة إلى تيطس
 Titus	Titus
 Titus	طيطس
 Titus	ﺗﻴﻄﺲ
-Titus	طي
 Titus	تي
+Titus	طي
 Tob	سفر طوبيا
 Tob	طوبيا
 Tob	Tob

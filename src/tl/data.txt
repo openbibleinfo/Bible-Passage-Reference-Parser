@@ -1,0 +1,273 @@
+$FIRST	Unang	Una	1	I
+$SECOND	Ikalawang	2	II
+$THIRD	Ikatlong	3	III
+$FOURTH	Ikaapat	4	IV
+$AB	[a-e]
+$AND	at
+$CHAPTER	chapter
+# http://tl.wikipedia.org/wiki/Aklat_ng_mga_Bilang
+$FF	k
+$TITLE	title
+$TRANS	ASND
+$TO	-
+# http://tl.wikipedia.org/wiki/Sulat_ni_Hudas
+$VERSE	talatang
+$UNICODE_BLOCK	Latin
+
+Gen	[GH]enesis	Gen
+Exod	Exodo	Exodus	Exo
+Lev	Le[bv]itico	Lebitikus	Le[bv]
+Num	Mga Bilang	B[ae]midbar	Bil
+Deut	Deuteronomiy?o	D[ei]?yuteronomyo	Deuteronomi?y?a	Deuteronomio?	Dt	Deut
+Josh	Josué	Joshua	Jos
+Judg	Mga Hukom	Huk	Hukom
+Ruth	Ruth?
+1Sam	$FIRST Samuel	1 Sam
+2Sam	$SECOND Samuel	2 Sam
+1Kgs	$FIRST Mga Hari	$THIRD Mga Hari	1 Ha	$FIRST Hari
+2Kgs	$SECOND Mga Hari	$FOURTH Mga Hari	2 Ha	$SECOND Hari
+1Chr	$FIRST Paralipomeno	$FIRST Cronica	$FIRST Kronika	$FIRST Kronikel	$FIRST Mga Kronika	$FIRST Chronicle	1 Cro	$FIRST Mga Cronica
+2Chr	$SECOND Paralipomeno	$SECOND Cronica	$SECOND Kronika	$SECOND Kronikel	$SECOND Mga Kronika	$SECOND Chronicle	2 Cro	$SECOND Mga Cronica
+Ezra	Esdras	Ezra	Ez
+Neh	Nehemía[hs]	Neh
+Esth	Esth?er	Est
+Job	Job
+Ps	Mga Salmo	Mga Awit	Awit
+Prov	Mga Kawikaan	Kaw	Kawikaan
+Eccl	Ecclesiastes	Mangangaral	E[ck]les[iy]astés	E[ck]lis[iy]astes	Kohelet	Manga	Ang Mangangaral
+Song	Awit ng mga Awit	Awit ni S[ao]lomón	Ang Awit ni S[ao]lomón	Kantiko	Kantikulo	Aw ni S	Ang Awit ng mga Awit
+Isa	Isaía[hs]?	Isa
+Jer	Jeremia[hs]	Sulat ni Jeremias	Aklat ni Jeremia[hs]	H[ei]r[ei]m[iy]as	Jer
+Lam	Mga Panaghoy	Mga Lamentasyon	Aklat ng Pagtaghoy	Aklat ng Pananaghoy	Panag	Panaghoy
+Ezek	E[sz]ek[iy]el	Ezequiel	Eze
+Dan	Daniel	Dan
+Hos	Osei?a[hs]?	Hosei?as?	Hos
+Joel	Joel	Yole
+Amos	Amós
+Obad	Obadia[hs]	Abdías	Oba
+Jonah	Joná[hs]?	Jon
+Mic	Mikas	Miqueas	Mi[ck]ah?	Mikey?as	Mikieas	Mik
+Nah	Nahúm	Nah
+Hab	Habacuc	Habakk?uk	Hab
+Zeph	Sofonías	Zephania[hs]	Se[fp]anias?	Ze[fp]anias	Zef
+Hag	Agg?eo	Hagg?eo	Hagg?ai	Agai	Hag
+Zech	[SZ]acarías	Zechariah	Zac
+Mal	Malakias	Malaquías	Malachi	Mal
+Matt	Mateo	Ebanghelyo ni Mateo	Ebanghelyo ayon kay Mateo	Ebanghelyo ni San Mateo	Mabuting Balita ayon kay San Mateo	Mabuting Balita ayon kay Mateo	Mt
+Mark	Mar[ck]os	Ebanghelyo ni Mar[ck]os	Ebanghelyo ayon kay Marcos	Ebanghelyo ni San Mar[ck]os	Mabuting Balita ayon kay San Mar[ck]os	Mabuting Balita ayon kay Mar[ck]os	Mc
+Luke	Lu[ck]as	Ebanghelyo ayon kay Lu[ck]as	Ebanghelyo ayon kay San Lu[ck]as	Ebanghelyo ni San Lu[ck]as	Mabuting Balita ayon kay San Lu[ck]as	Mabuting Balita ayon kay Lu[ck]as	Lu
+John	Juan	Ebanghelyo ayon kay Juan	Ebanghelyo ayon kay San Juan	Ebanghelyo ni San Juan	Mabuting Balita ayon kay San Juan	Mabuting Balita ayon kay Juan	Jn
+Acts	Mga Gawa	Mga Gawa ng mga Alagad	Mga Gawa ng mga Apostol	Mga Gawa ng mga Apostoles	Gawa ng Apostoles	Gawa ng mga Apostol	Mga Gawain	Ebanghelyo ng Espiritu Santo	Mabuting Balita ayon sa Espiritu Santo	Mabuting Balita ng Espiritu Santo	Gw	Gawa
+Rom	Mga Taga-? Roma	Sulat sa mga Romano	Ro	Roma	Taga-? Roma
+1Cor	$FIRST Mga Taga-? Corinto	$FIRST [CK]orinti?o	Ika-? 1 Sulat sa mga Corinti?o	$FIRST Sulat sa mga Corinti?o	1 Cor
+2Cor	$SECOND Mga Taga-? Corinto	$SECOND [CK]orinti?o	Ika-? 2 Sulat sa mga Corinti?o	SECOND Sulat sa mga Corinti?o	2 Cor
+Gal	Mga Taga-? Galacia	Sulat sa mga taga Galacia	Sulat sa mga Galacia	Mga Taga-? Galasya	Galasyano	Ga	Taga-? Galacia
+Eph	Mga Taga-? E[fp]esi?o	Sulat sa mga E[fp]esi?o	Mga E[fp]esi?o	Mga Taga-? E[fp]esi?o	Ef	Taga-? E[fp]esi?o
+Phil	Mga Taga-? [FP]ilipos	Sulat sa mga [FP]ilipense	Mga [FP]ilipense	Sulat sa mga Pilipyano	Mga Pilipyano	Mga Taga-? [FP]ilipos	Fil	Taga-? [FP]ilipos
+Col	Mga Taga-? [CK]olosas	Sulat sa mga [CK]olon?sense	Mga [CK]olon?sense	Mga Taga-? [CK]olosas	Co	Taga-? Colosas
+1Thess	$FIRST Mga Taga-? Tesaloni[ck]a	$FIRST Mga Tesaloni[cs]ense	$FIRST Tesaloni[ck]a	$FIRST Tesaloni[cs]ense	1 Th?es
+2Thess	$SECOND Mga Taga-? Tesaloni[ck]a	$SECOND Mga Tesaloni[cs]ense	$SECOND Tesaloni[ck]a	$SECOND Tesaloni[cs]ense	2 Th?es
+1Tim	$FIRST Timoteo	$FIRST Kay Timoteo	1 Tim
+2Tim	$SECOND Timoteo	$SECOND Kay Timoteo	2 Tim
+Titus	Tito	Kay Tito
+Phlm	Filemon	Kay Filemon	Filem
+Heb	Mga Hebreo	Mga Ebreo	Heb	Hebreo
+Jas	Santiago	Jacobo	San
+1Pet	$FIRST Pedro	1 Ped
+2Pet	$SECOND Pedro	2 Ped
+1John	$FIRST Juan	1 Jn
+2John	$SECOND Juan	2 Jn
+3John	$THIRD Juan	3 Jn
+Jude	Judas	Hudas	Ju
+Rev	Pahayag	Pahayag kay Juan	Apo[ck]alipsis	Apo[ck]alipsis ni Juan	Rebelasyon	Pah
+Tob	Tobit	Tobías	Tb
+Jdt	Judith?	Jdt
+GkEsth	Ester Gri?y?ego	Ester \(Gri?y?ego\)	Estg
+Wis	Karunungan	Ang Karunungan ni S[ao]lomón	Karunungan ni S[ao]lomón	Kar	S[ao]lomón
+Sir	Sirac	Ecc?lesiastico	Ekk?les[iy]astiko	Ang Karunungan ni Jesus,? Anak ni Sirac	Karunungan ng Anak ni Sirac	Ecclesiasticus	Ekk?les[iy]astikus	Sirá[ck]h?	Sirá[ck]ida	Sirá[ck]id[ae]s?	Sir
+Bar	Baru[ck]h?	Bar
+PrAzar	Panalangin ni Azarias	Ang Panalangin ni Azarias
+Sus	Si Susana	Su	Susana
+Bel	Si Bel at ang Dragon	Bel at ang Dragon	Bel
+SgThree	Awit ng Tatlong Kabataan	Awit ng Tatlong Binata	Awit ng Tatlong Banal na Kabataan	Tatlong Kabataan	Awit ng 3 Kabataan	Awit ng Tatlong Kabataang Banal	Aw ng 3 Kab
+EpJer	Liham ni Jeremias	Lih Jer	Ang Liham ni Jeremias
+1Macc	$FIRST Mga Macabeo	$FIRST Macabeos?	1 Mcb
+2Macc	$SECOND Mga Macabeo	$SECOND Macabeos?	2 Mcb
+3Macc	$THIRD Mga Macabeo	$THIRD Macabeos?	3 Mcb
+4Macc	$FOURTH Mga Macabeo	$FOURTH Macabeos?	4 Mcb
+1Esd	$FIRST Esdras	$FIRST Ezra	1 Esd
+2Esd	$SECOND Esdras	$SECOND Ezra	2 Esd
+PrMan	Panalangin ni Manases	Ang Panalangin ni Manases	Dalangin ni Manases	Dasal ni Manases
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=SgThree
+=Song
+=Ps
+=Wis
+=PrAzar
+=Prov
+=Eccl
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Genesis	Gen
+*Exod	Exodo	Exo
+*Lev	Levitico	Lev
+*Num	Mga Bilang	Bil
+*Deut	Deuteronomio	Deut
+*Josh	Josue	Jos
+*Judg	Mga Hukom	Huk
+*Ruth	Ruth	Ruth
+*1Sam	1 Samuel	1 Sam
+*2Sam	2 Samuel	2 Sam
+*1Kgs	1 Mga Hari	1 Ha
+*2Kgs	2 Mga Hari	2 Ha
+*1Chr	1 Paralipomeno	1 Cro
+*2Chr	2 Paralipomeno	2 Cro
+*Ezra	Ezra	Ez
+*Neh	Nehemias	Neh
+*Esth	Ester	Est
+*Job	Job	Job
+*Ps	Awit	Awit
+*Prov	Kawikaan	Kaw
+*Eccl	Mangangaral	Manga
+*Song	Awit ng mga Awit	Aw ni S
+*Isa	Isaias	Isa
+*Jer	Jeremias	Jer
+*Lam	Panaghoy	Panag
+*Ezek	Ezekiel	Eze
+*Dan	Daniel	Dan
+*Hos	Hosea	Hos
+*Joel	Joel	Joel
+*Amos	Amos	Amos
+*Obad	Obadias	Oba
+*Jonah	Jonas	Jon
+*Mic	Mikas	Mik
+*Nah	Nahum	Nah
+*Hab	Habacuc	Hab
+*Zeph	Sofonias	Zef
+*Hag	Hagai	Hag
+*Zech	Zacarias	Zac
+*Mal	Malakias	Mal
+*Matt	Mateo	Mt
+*Mark	Marcos	Mc
+*Luke	Lucas	Lu
+*John	Juan	Jn
+*Acts	Mga Gawa	Gw
+*Rom	Mga Taga-Roma	Ro
+*1Cor	1 Corinto	1 Cor
+*2Cor	2 Corinto	2 Cor
+*Gal	Mga Taga-Galacia	Ga
+*Eph	Mga Taga-Efeso	Ef
+*Phil	Mga Taga-Filipos	Fil
+*Col	Mga Taga-Colosas	Co
+*1Thess	1 Tesalonica	1 Tes
+*2Thess	2 Tesalonica	2 Tes
+*1Tim	1 Timoteo	1 Tim
+*2Tim	2 Timoteo	2 Tim
+*Titus	Tito	Tito
+*Phlm	Filemon	Filem
+*Heb	Mga Hebreo	Heb
+*Jas	Santiago	San
+*1Pet	1 Pedro	1 Ped
+*2Pet	2 Pedro	2 Ped
+*1John	1 Juan	1 Jn
+*2John	2 Juan	2 Jn
+*3John	3 Juan	3 Jn
+*Jude	Judas	Ju
+*Rev	Pahayag	Pah
+*Tob	Tobit	Tb
+*Jdt	Judith	Jdt
+*GkEsth	Ester Griyego	Estg
+*Wis	Karunungan	Kar
+*Sir	Sirac	Sir
+*Bar	Baruc	Bar
+*PrAzar	Panalangin ni Azarias	
+*Sus	Susana	Su
+*Bel	Bel at ang Dragon	Bel
+*SgThree	Awit ng Tatlong Kabataan	Aw ng 3 Kab
+*EpJer	Liham ni Jeremias	Lih Jer
+*1Macc	1 Mga Macabeo	1 Mcb
+*2Macc	2 Mga Macabeo	2 Mcb
+*3Macc	3 Mga Macabeo	3 Mcb
+*4Macc	4 Mga Macabeo	4 Mcb
+*1Esd	1 Esdras	1 Esd
+*2Esd	2 Esdras	2 Esd
+*PrMan	Panalangin ni Manases	

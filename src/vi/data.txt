@@ -49,9 +49,9 @@ Jonah	Jonah	Giô-na
 Mic	Mi-ca	Micah	Mi-chê	Mi
 Nah	Nahum	Na-hum	Na-hâm	Na
 Hab	Habakkuk	Ha-ba-cúc	Ha
-Zeph	Xê-pha-ni-a	Zephaniah	Sô-phô-ni	Xô-phô-ni	Xô
+Zeph	Xê-pha-ni-a	Zephaniah	Sô-phô-ni-a	Sô-phô-ni	Xô-phô-ni	Xô
 Hag	Ha-gai	Haggai	A-ghê	A-gai
-Zech	Xê-ca-ri-a	Zechariah	Xa-cha-ri	Xa
+Zech	Xê-ca-ri-a	Zechariah	Xa-cha-ri-a	Xa-cha-ri	Xa
 Mal	Ma-la-ki	Malachi	Ma-la-chi	Mal
 Matt	Mátthêu	Ma-thi-ơ	Mat?
 Mark	Máccô	Mác

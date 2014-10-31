@@ -1,230 +1,286 @@
+1Chr	Premieres Chroniques
 1Chr	Premières Chroniques
+1Chr	Premiere Chroniques
 1Chr	Premiers Chroniques
 1Chr	Première Chroniques
 1Chr	Premier Chroniques
+1Chr	1ere. Chroniques
 1Chr	1ère. Chroniques
+1Chr	1er. Chroniques
+1Chr	1ere Chroniques
 1Chr	1re. Chroniques
 1Chr	1ère Chroniques
-1Chr	1er. Chroniques
-1Chr	1re Chroniques
 1Chr	1er Chroniques
+1Chr	1re Chroniques
 1Chr	1. Chroniques
 1Chr	I. Chroniques
-1Chr	I Chroniques
 1Chr	1 Chroniques
+1Chr	I Chroniques
 1Chr	1 Chron
 1Chr	1 Chro
 1Chr	1 Chr
-1Chr	1Chr
 1Chr	1 Ch
+1Chr	1Chr
+1Cor	Premieres Corinthiens
 1Cor	Premières Corinthiens
+1Cor	Premiere Corinthiens
 1Cor	Premiers Corinthiens
 1Cor	Première Corinthiens
 1Cor	Premier Corinthiens
+1Cor	1ere. Corinthiens
 1Cor	1ère. Corinthiens
-1Cor	1ère Corinthiens
-1Cor	1re. Corinthiens
 1Cor	1er. Corinthiens
+1Cor	1ere Corinthiens
+1Cor	1re. Corinthiens
+1Cor	1ère Corinthiens
 1Cor	1er Corinthiens
 1Cor	1re Corinthiens
-1Cor	I. Corinthiens
 1Cor	1. Corinthiens
+1Cor	I. Corinthiens
 1Cor	1 Corinthiens
 1Cor	I Corinthiens
 1Cor	1 Cor
-1Cor	1Cor
 1Cor	1 Co
+1Cor	1Cor
+1Esd	Premieres Esdras
 1Esd	Premières Esdras
-1Esd	Première Esdras
+1Esd	Premiere Esdras
 1Esd	Premiers Esdras
+1Esd	Première Esdras
 1Esd	Premier Esdras
+1Esd	1ere. Esdras
 1Esd	1ère. Esdras
-1Esd	1re. Esdras
 1Esd	1er. Esdras
+1Esd	1ere Esdras
+1Esd	1re. Esdras
 1Esd	1ère Esdras
 1Esd	1er Esdras
 1Esd	1re Esdras
-1Esd	I. Esdras
 1Esd	1. Esdras
-1Esd	I Esdras
+1Esd	I. Esdras
 1Esd	1 Esdras
+1Esd	I Esdras
 1Esd	1 Esdr
 1Esd	1 Esd
-1Esd	1Esd
 1Esd	1 Es
+1Esd	1Esd
+1John	Premieres Jean
 1John	Premières Jean
-1John	Première Jean
+1John	Premiere Jean
 1John	Premiers Jean
+1John	Première Jean
 1John	Premier Jean
+1John	1ere. Jean
 1John	1ère. Jean
-1John	1re. Jean
 1John	1er. Jean
+1John	1ere Jean
+1John	1re. Jean
 1John	1ère Jean
-1John	1re Jean
 1John	1er Jean
-1John	I. Jean
+1John	1re Jean
 1John	1. Jean
+1John	I. Jean
 1John	1 Jean
 1John	I Jean
 1John	1John
 1John	1 Jn
+1Kgs	Premieres Rois
 1Kgs	Premières Rois
-1Kgs	Première Rois
+1Kgs	Premiere Rois
 1Kgs	Premiers Rois
+1Kgs	Première Rois
 1Kgs	Premier Rois
+1Kgs	1ere. Rois
 1Kgs	1ère. Rois
-1Kgs	1re. Rois
 1Kgs	1er. Rois
+1Kgs	1ere Rois
+1Kgs	1re. Rois
 1Kgs	1ère Rois
-1Kgs	1re Rois
 1Kgs	1er Rois
+1Kgs	1re Rois
 1Kgs	1. Rois
 1Kgs	I. Rois
-1Kgs	I Rois
 1Kgs	1 Rois
+1Kgs	I Rois
 1Kgs	1Kgs
 1Kgs	1 R
+1Macc	Premieres Maccabees
+1Macc	Premieres Maccabées
 1Macc	Premières Maccabees
 1Macc	Premières Maccabées
-1Macc	Première Maccabées
+1Macc	Premiere Maccabees
+1Macc	Premiere Maccabées
+1Macc	Premiers Maccabees
 1Macc	Premiers Maccabées
 1Macc	Première Maccabees
-1Macc	Premiers Maccabees
-1Macc	Premier Maccabées
+1Macc	Première Maccabées
 1Macc	Premier Maccabees
-1Macc	1ère. Maccabées
+1Macc	Premier Maccabées
+1Macc	1ere. Maccabees
+1Macc	1ere. Maccabées
 1Macc	1ère. Maccabees
-1Macc	1ère Maccabées
+1Macc	1ère. Maccabées
 1Macc	1er. Maccabees
-1Macc	1re. Maccabees
 1Macc	1er. Maccabées
+1Macc	1ere Maccabees
+1Macc	1ere Maccabées
+1Macc	1re. Maccabees
 1Macc	1re. Maccabées
 1Macc	1ère Maccabees
-1Macc	1re Maccabées
+1Macc	1ère Maccabées
+1Macc	1er Maccabees
 1Macc	1er Maccabées
 1Macc	1re Maccabees
-1Macc	1er Maccabees
-1Macc	1. Maccabées
-1Macc	I. Maccabées
+1Macc	1re Maccabées
 1Macc	1. Maccabees
+1Macc	1. Maccabées
 1Macc	I. Maccabees
-1Macc	I Maccabées
+1Macc	I. Maccabées
 1Macc	1 Maccabees
 1Macc	1 Maccabées
 1Macc	I Maccabees
+1Macc	I Maccabées
 1Macc	1 Macc
 1Macc	1Macc
 1Macc	1 M
+1Pet	Premieres Pierre
 1Pet	Premières Pierre
-1Pet	Première Pierre
+1Pet	Premiere Pierre
 1Pet	Premiers Pierre
+1Pet	Première Pierre
 1Pet	Premier Pierre
+1Pet	1ere. Pierre
 1Pet	1ère. Pierre
 1Pet	1er. Pierre
-1Pet	1ère Pierre
+1Pet	1ere Pierre
 1Pet	1re. Pierre
+1Pet	1ère Pierre
 1Pet	1er Pierre
 1Pet	1re Pierre
-1Pet	I. Pierre
 1Pet	1. Pierre
+1Pet	I. Pierre
 1Pet	1 Pierre
 1Pet	I Pierre
-1Pet	1Pet
 1Pet	1 Pi
+1Pet	1Pet
 1Pet	1 P
+1Sam	Premieres Samuel
 1Sam	Premières Samuel
-1Sam	Première Samuel
+1Sam	Premiere Samuel
 1Sam	Premiers Samuel
+1Sam	Première Samuel
 1Sam	Premier Samuel
+1Sam	1ere. Samuel
 1Sam	1ère. Samuel
 1Sam	1er. Samuel
-1Sam	1ère Samuel
+1Sam	1ere Samuel
 1Sam	1re. Samuel
+1Sam	1ère Samuel
 1Sam	1er Samuel
 1Sam	1re Samuel
-1Sam	I. Samuel
 1Sam	1. Samuel
+1Sam	I. Samuel
 1Sam	1 Samuel
 1Sam	I Samuel
 1Sam	1 Sam
-1Sam	1Sam
 1Sam	1 Sa
+1Sam	1Sam
 1Sam	1 S
+1Thess	Premieres Thessaloniciens
 1Thess	Premières Thessaloniciens
-1Thess	Premières Thesaloniciens
-1Thess	Première Thessaloniciens
+1Thess	Premiere Thessaloniciens
+1Thess	Premieres Thesaloniciens
 1Thess	Premiers Thessaloniciens
+1Thess	Première Thessaloniciens
+1Thess	Premières Thesaloniciens
 1Thess	Premier Thessaloniciens
+1Thess	Premiere Thesaloniciens
 1Thess	Premiers Thesaloniciens
 1Thess	Première Thesaloniciens
 1Thess	Premier Thesaloniciens
+1Thess	1ere. Thessaloniciens
 1Thess	1ère. Thessaloniciens
 1Thess	1er. Thessaloniciens
-1Thess	1ère. Thesaloniciens
+1Thess	1ere Thessaloniciens
+1Thess	1ere. Thesaloniciens
 1Thess	1re. Thessaloniciens
 1Thess	1ère Thessaloniciens
-1Thess	1re Thessaloniciens
-1Thess	1re. Thesaloniciens
+1Thess	1ère. Thesaloniciens
 1Thess	1er Thessaloniciens
 1Thess	1er. Thesaloniciens
+1Thess	1ere Thesaloniciens
+1Thess	1re Thessaloniciens
+1Thess	1re. Thesaloniciens
 1Thess	1ère Thesaloniciens
-1Thess	1re Thesaloniciens
 1Thess	1. Thessaloniciens
 1Thess	1er Thesaloniciens
+1Thess	1re Thesaloniciens
 1Thess	I. Thessaloniciens
-1Thess	I. Thesaloniciens
 1Thess	1 Thessaloniciens
-1Thess	I Thessaloniciens
 1Thess	1. Thesaloniciens
+1Thess	I Thessaloniciens
+1Thess	I. Thesaloniciens
 1Thess	1 Thesaloniciens
 1Thess	I Thesaloniciens
 1Thess	1 Thess
 1Thess	1 Thes
 1Thess	1Thess
 1Thess	1 Th
+1Tim	Premieres Timothee
+1Tim	Premieres Timothée
 1Tim	Premières Timothee
 1Tim	Premières Timothée
-1Tim	Première Timothée
-1Tim	Premiers Timothée
+1Tim	Premiere Timothee
+1Tim	Premiere Timothée
 1Tim	Premiers Timothee
+1Tim	Premiers Timothée
 1Tim	Première Timothee
+1Tim	Première Timothée
 1Tim	Premier Timothee
 1Tim	Premier Timothée
-1Tim	1ère. Timothée
+1Tim	1ere. Timothee
+1Tim	1ere. Timothée
 1Tim	1ère. Timothee
-1Tim	1er. Timothée
-1Tim	1ère Timothee
-1Tim	1re. Timothee
-1Tim	1ère Timothée
-1Tim	1re. Timothée
+1Tim	1ère. Timothée
 1Tim	1er. Timothee
+1Tim	1er. Timothée
+1Tim	1ere Timothee
+1Tim	1ere Timothée
+1Tim	1re. Timothee
+1Tim	1re. Timothée
+1Tim	1ère Timothee
+1Tim	1ère Timothée
 1Tim	1er Timothee
 1Tim	1er Timothée
 1Tim	1re Timothee
 1Tim	1re Timothée
 1Tim	1. Timothee
 1Tim	1. Timothée
-1Tim	I. Timothée
 1Tim	I. Timothee
-1Tim	I Timothee
+1Tim	I. Timothée
 1Tim	1 Timothee
-1Tim	I Timothée
 1Tim	1 Timothée
+1Tim	I Timothee
+1Tim	I Timothée
 1Tim	1 Tim
 1Tim	1 Ti
 1Tim	1Tim
+2Chr	Deuxiemes Chroniques
 2Chr	Deuxièmes Chroniques
+2Chr	Deuxieme Chroniques
 2Chr	Deuxième Chroniques
+2Chr	2eme. Chroniques
 2Chr	2ème. Chroniques
 2Chr	2de. Chroniques
+2Chr	2eme Chroniques
 2Chr	2ème Chroniques
 2Chr	2d. Chroniques
 2Chr	2de Chroniques
-2Chr	II. Chroniques
 2Chr	2e. Chroniques
-2Chr	2e Chroniques
-2Chr	2d Chroniques
+2Chr	II. Chroniques
 2Chr	2. Chroniques
+2Chr	2d Chroniques
+2Chr	2e Chroniques
 2Chr	II Chroniques
 2Chr	2 Chroniques
 2Chr	2 Chron
@@ -232,262 +288,330 @@
 2Chr	2 Chr
 2Chr	2 Ch
 2Chr	2Chr
+2Cor	Deuxiemes Corinthiens
 2Cor	Deuxièmes Corinthiens
+2Cor	Deuxieme Corinthiens
 2Cor	Deuxième Corinthiens
+2Cor	2eme. Corinthiens
 2Cor	2ème. Corinthiens
 2Cor	2de. Corinthiens
+2Cor	2eme Corinthiens
 2Cor	2ème Corinthiens
 2Cor	2d. Corinthiens
+2Cor	2de Corinthiens
 2Cor	2e. Corinthiens
 2Cor	II. Corinthiens
-2Cor	2de Corinthiens
-2Cor	2e Corinthiens
-2Cor	II Corinthiens
 2Cor	2. Corinthiens
 2Cor	2d Corinthiens
+2Cor	2e Corinthiens
+2Cor	II Corinthiens
 2Cor	2 Corinthiens
 2Cor	2 Cor
-2Cor	2Cor
 2Cor	2 Co
+2Cor	2Cor
+2Esd	Deuxiemes Esdras
 2Esd	Deuxièmes Esdras
+2Esd	Deuxieme Esdras
 2Esd	Deuxième Esdras
+2Esd	2eme. Esdras
 2Esd	2ème. Esdras
 2Esd	2de. Esdras
+2Esd	2eme Esdras
 2Esd	2ème Esdras
-2Esd	2e. Esdras
-2Esd	2de Esdras
-2Esd	II. Esdras
 2Esd	2d. Esdras
+2Esd	2de Esdras
+2Esd	2e. Esdras
+2Esd	II. Esdras
 2Esd	2. Esdras
-2Esd	II Esdras
-2Esd	2e Esdras
 2Esd	2d Esdras
+2Esd	2e Esdras
+2Esd	II Esdras
 2Esd	2 Esdras
 2Esd	2 Esdr
 2Esd	2 Esd
-2Esd	2Esd
 2Esd	2 Es
+2Esd	2Esd
+2John	Deuxiemes Jean
 2John	Deuxièmes Jean
+2John	Deuxieme Jean
 2John	Deuxième Jean
+2John	2eme. Jean
 2John	2ème. Jean
 2John	2de. Jean
+2John	2eme Jean
 2John	2ème Jean
-2John	II. Jean
-2John	2e. Jean
-2John	2de Jean
 2John	2d. Jean
-2John	2e Jean
-2John	II Jean
+2John	2de Jean
+2John	2e. Jean
+2John	II. Jean
 2John	2. Jean
 2John	2d Jean
+2John	2e Jean
+2John	II Jean
 2John	2 Jean
 2John	2John
 2John	2 Jn
+2Kgs	Deuxiemes Rois
 2Kgs	Deuxièmes Rois
+2Kgs	Deuxieme Rois
 2Kgs	Deuxième Rois
+2Kgs	2eme. Rois
 2Kgs	2ème. Rois
 2Kgs	2de. Rois
+2Kgs	2eme Rois
 2Kgs	2ème Rois
 2Kgs	2d. Rois
 2Kgs	2de Rois
 2Kgs	2e. Rois
 2Kgs	II. Rois
-2Kgs	II Rois
 2Kgs	2. Rois
 2Kgs	2d Rois
 2Kgs	2e Rois
+2Kgs	II Rois
 2Kgs	2 Rois
 2Kgs	2Kgs
 2Kgs	2 R
+2Macc	Deuxiemes Maccabees
+2Macc	Deuxiemes Maccabées
 2Macc	Deuxièmes Maccabees
 2Macc	Deuxièmes Maccabées
-2Macc	Deuxième Maccabées
+2Macc	Deuxieme Maccabees
+2Macc	Deuxieme Maccabées
 2Macc	Deuxième Maccabees
+2Macc	Deuxième Maccabées
+2Macc	2eme. Maccabees
+2Macc	2eme. Maccabées
 2Macc	2ème. Maccabees
 2Macc	2ème. Maccabées
-2Macc	2de. Maccabées
-2Macc	2ème Maccabées
 2Macc	2de. Maccabees
+2Macc	2de. Maccabées
+2Macc	2eme Maccabees
+2Macc	2eme Maccabées
 2Macc	2ème Maccabees
+2Macc	2ème Maccabées
+2Macc	2d. Maccabees
 2Macc	2d. Maccabées
 2Macc	2de Maccabees
-2Macc	2e. Maccabées
-2Macc	2e. Maccabees
-2Macc	II. Maccabées
-2Macc	2d. Maccabees
-2Macc	II. Maccabees
 2Macc	2de Maccabées
-2Macc	II Maccabées
+2Macc	2e. Maccabees
+2Macc	2e. Maccabées
+2Macc	II. Maccabees
+2Macc	II. Maccabées
+2Macc	2. Maccabees
 2Macc	2. Maccabées
-2Macc	2e Maccabées
 2Macc	2d Maccabees
-2Macc	II Maccabees
 2Macc	2d Maccabées
 2Macc	2e Maccabees
-2Macc	2. Maccabees
-2Macc	2 Maccabées
+2Macc	2e Maccabées
+2Macc	II Maccabees
+2Macc	II Maccabées
 2Macc	2 Maccabees
+2Macc	2 Maccabées
 2Macc	2 Macc
 2Macc	2Macc
 2Macc	2 M
+2Pet	Deuxiemes Pierre
 2Pet	Deuxièmes Pierre
+2Pet	Deuxieme Pierre
 2Pet	Deuxième Pierre
+2Pet	2eme. Pierre
 2Pet	2ème. Pierre
 2Pet	2de. Pierre
+2Pet	2eme Pierre
 2Pet	2ème Pierre
-2Pet	2e. Pierre
-2Pet	II. Pierre
 2Pet	2d. Pierre
 2Pet	2de Pierre
-2Pet	2e Pierre
-2Pet	2d Pierre
+2Pet	2e. Pierre
+2Pet	II. Pierre
 2Pet	2. Pierre
+2Pet	2d Pierre
+2Pet	2e Pierre
 2Pet	II Pierre
 2Pet	2 Pierre
-2Pet	2Pet
 2Pet	2 Pi
+2Pet	2Pet
 2Pet	2 P
+2Sam	Deuxiemes Samuel
 2Sam	Deuxièmes Samuel
+2Sam	Deuxieme Samuel
 2Sam	Deuxième Samuel
+2Sam	2eme. Samuel
 2Sam	2ème. Samuel
-2Sam	2ème Samuel
 2Sam	2de. Samuel
-2Sam	2de Samuel
+2Sam	2eme Samuel
+2Sam	2ème Samuel
 2Sam	2d. Samuel
-2Sam	II. Samuel
+2Sam	2de Samuel
 2Sam	2e. Samuel
-2Sam	2e Samuel
-2Sam	2d Samuel
+2Sam	II. Samuel
 2Sam	2. Samuel
+2Sam	2d Samuel
+2Sam	2e Samuel
 2Sam	II Samuel
 2Sam	2 Samuel
 2Sam	2 Sam
-2Sam	2Sam
 2Sam	2 Sa
+2Sam	2Sam
 2Sam	2 S
+2Thess	Deuxiemes Thessaloniciens
 2Thess	Deuxièmes Thessaloniciens
+2Thess	Deuxieme Thessaloniciens
+2Thess	Deuxiemes Thesaloniciens
 2Thess	Deuxième Thessaloniciens
 2Thess	Deuxièmes Thesaloniciens
+2Thess	Deuxieme Thesaloniciens
 2Thess	Deuxième Thesaloniciens
+2Thess	2eme. Thessaloniciens
 2Thess	2ème. Thessaloniciens
 2Thess	2de. Thessaloniciens
-2Thess	2ème. Thesaloniciens
+2Thess	2eme Thessaloniciens
+2Thess	2eme. Thesaloniciens
 2Thess	2ème Thessaloniciens
+2Thess	2ème. Thesaloniciens
+2Thess	2d. Thessaloniciens
+2Thess	2de Thessaloniciens
 2Thess	2de. Thesaloniciens
 2Thess	2e. Thessaloniciens
-2Thess	2d. Thessaloniciens
-2Thess	II. Thessaloniciens
+2Thess	2eme Thesaloniciens
 2Thess	2ème Thesaloniciens
-2Thess	2de Thessaloniciens
+2Thess	II. Thessaloniciens
+2Thess	2. Thessaloniciens
 2Thess	2d Thessaloniciens
+2Thess	2d. Thesaloniciens
+2Thess	2de Thesaloniciens
 2Thess	2e Thessaloniciens
 2Thess	2e. Thesaloniciens
-2Thess	2de Thesaloniciens
-2Thess	2d. Thesaloniciens
 2Thess	II Thessaloniciens
 2Thess	II. Thesaloniciens
-2Thess	2. Thessaloniciens
+2Thess	2 Thessaloniciens
+2Thess	2. Thesaloniciens
 2Thess	2d Thesaloniciens
 2Thess	2e Thesaloniciens
 2Thess	II Thesaloniciens
-2Thess	2. Thesaloniciens
-2Thess	2 Thessaloniciens
 2Thess	2 Thesaloniciens
 2Thess	2 Thess
-2Thess	2Thess
 2Thess	2 Thes
+2Thess	2Thess
 2Thess	2 Th
-2Tim	Deuxièmes Timothée
+2Tim	Deuxiemes Timothee
+2Tim	Deuxiemes Timothée
 2Tim	Deuxièmes Timothee
-2Tim	Deuxième Timothée
+2Tim	Deuxièmes Timothée
+2Tim	Deuxieme Timothee
+2Tim	Deuxieme Timothée
 2Tim	Deuxième Timothee
-2Tim	2ème. Timothée
+2Tim	Deuxième Timothée
+2Tim	2eme. Timothee
+2Tim	2eme. Timothée
 2Tim	2ème. Timothee
-2Tim	2de. Timothée
-2Tim	2ème Timothée
-2Tim	2ème Timothee
+2Tim	2ème. Timothée
 2Tim	2de. Timothee
-2Tim	II. Timothee
-2Tim	2d. Timothée
+2Tim	2de. Timothée
+2Tim	2eme Timothee
+2Tim	2eme Timothée
+2Tim	2ème Timothee
+2Tim	2ème Timothée
 2Tim	2d. Timothee
-2Tim	2e. Timothee
-2Tim	2de Timothée
-2Tim	II. Timothée
+2Tim	2d. Timothée
 2Tim	2de Timothee
+2Tim	2de Timothée
+2Tim	2e. Timothee
 2Tim	2e. Timothée
-2Tim	2. Timothée
-2Tim	2d Timothée
+2Tim	II. Timothee
+2Tim	II. Timothée
 2Tim	2. Timothee
-2Tim	2e Timothée
+2Tim	2. Timothée
 2Tim	2d Timothee
-2Tim	II Timothee
+2Tim	2d Timothée
 2Tim	2e Timothee
+2Tim	2e Timothée
+2Tim	II Timothee
 2Tim	II Timothée
 2Tim	2 Timothee
 2Tim	2 Timothée
 2Tim	2 Tim
-2Tim	2Tim
 2Tim	2 Ti
+2Tim	2Tim
+3John	Troisiemes Jean
 3John	Troisièmes Jean
+3John	Troisieme Jean
 3John	Troisième Jean
+3John	3eme. Jean
 3John	3ème. Jean
+3John	3eme Jean
 3John	3ème Jean
 3John	III. Jean
 3John	3e. Jean
 3John	III Jean
-3John	3e Jean
 3John	3. Jean
+3John	3e Jean
 3John	3 Jean
 3John	3John
 3John	3 Jn
-3Macc	Troisièmes Maccabées
+3Macc	Troisiemes Maccabees
+3Macc	Troisiemes Maccabées
 3Macc	Troisièmes Maccabees
-3Macc	Troisième Maccabées
+3Macc	Troisièmes Maccabées
+3Macc	Troisieme Maccabees
+3Macc	Troisieme Maccabées
 3Macc	Troisième Maccabees
+3Macc	Troisième Maccabées
+3Macc	3eme. Maccabees
+3Macc	3eme. Maccabées
 3Macc	3ème. Maccabees
 3Macc	3ème. Maccabées
-3Macc	III. Maccabées
-3Macc	III. Maccabees
-3Macc	3ème Maccabées
+3Macc	3eme Maccabees
+3Macc	3eme Maccabées
 3Macc	3ème Maccabees
-3Macc	III Maccabees
+3Macc	3ème Maccabées
+3Macc	III. Maccabees
+3Macc	III. Maccabées
 3Macc	3e. Maccabees
-3Macc	III Maccabées
 3Macc	3e. Maccabées
-3Macc	3e Maccabees
-3Macc	3. Maccabées
-3Macc	3e Maccabées
+3Macc	III Maccabees
+3Macc	III Maccabées
 3Macc	3. Maccabees
-3Macc	3 Maccabées
+3Macc	3. Maccabées
+3Macc	3e Maccabees
+3Macc	3e Maccabées
 3Macc	3 Maccabees
+3Macc	3 Maccabées
 3Macc	3 Macc
 3Macc	3Macc
 3Macc	3 M
+4Macc	Quatriemes Maccabees
+4Macc	Quatriemes Maccabées
 4Macc	Quatrièmes Maccabees
 4Macc	Quatrièmes Maccabées
-4Macc	Quatrième Maccabées
+4Macc	Quatrieme Maccabees
+4Macc	Quatrieme Maccabées
 4Macc	Quatrième Maccabees
+4Macc	Quatrième Maccabées
+4Macc	4eme. Maccabees
+4Macc	4eme. Maccabées
 4Macc	4ème. Maccabees
 4Macc	4ème. Maccabées
+4Macc	4eme Maccabees
+4Macc	4eme Maccabées
 4Macc	4ème Maccabees
 4Macc	4ème Maccabées
-4Macc	IV. Maccabées
 4Macc	4e. Maccabees
-4Macc	IV. Maccabees
 4Macc	4e. Maccabées
-4Macc	IV Maccabées
-4Macc	4e Maccabees
-4Macc	IV Maccabees
-4Macc	4. Maccabées
-4Macc	4e Maccabées
+4Macc	IV. Maccabees
+4Macc	IV. Maccabées
 4Macc	4. Maccabees
-4Macc	4 Maccabées
+4Macc	4. Maccabées
+4Macc	4e Maccabees
+4Macc	4e Maccabées
+4Macc	IV Maccabees
+4Macc	IV Maccabées
 4Macc	4 Maccabees
+4Macc	4 Maccabées
 4Macc	4 Macc
 4Macc	4Macc
 4Macc	4 M
-Acts	Actes des Apôtres
 Acts	Actes des Apotres
+Acts	Actes des Apôtres
 Acts	Actes
 Acts	Acts
 Acts	Act
@@ -498,18 +622,18 @@ Amos	Am
 Bar	Baruch
 Bar	Bar
 Bar	Ba
-Bel	Bel et le serpent
 Bel	Bel et le Serpent
-Bel	Bel et le dragon
+Bel	Bel et le serpent
 Bel	Bel et le Dragon
+Bel	Bel et le dragon
 Bel	Bel
 Col	Colossiens
 Col	Col
 Dan	Daniel
 Dan	Dan
 Dan	Da
-Deut	Deutéronome
 Deut	Deuteronome
+Deut	Deutéronome
 Deut	Deut
 Deut	Deu
 Deut	Dt
@@ -521,61 +645,61 @@ Eccl	Eccles
 Eccl	Ecclés
 Eccl	Eccl
 Eccl	Ec
-EpJer	Épître de Jerémie
 EpJer	Epitre de Jeremie
 EpJer	Epitre de Jerémie
+EpJer	Epitre de Jéremie
 EpJer	Epitre de Jérémie
+EpJer	Epître de Jeremie
+EpJer	Epître de Jerémie
+EpJer	Epître de Jéremie
+EpJer	Epître de Jérémie
 EpJer	Épitre de Jeremie
+EpJer	Épitre de Jerémie
+EpJer	Épitre de Jéremie
 EpJer	Épitre de Jérémie
 EpJer	Épître de Jeremie
-EpJer	Épitre de Jerémie
+EpJer	Épître de Jerémie
 EpJer	Épître de Jéremie
-EpJer	Epître de Jeremie
 EpJer	Épître de Jérémie
-EpJer	Epître de Jéremie
-EpJer	Epitre de Jéremie
-EpJer	Epître de Jérémie
-EpJer	Epître de Jerémie
-EpJer	Épitre de Jéremie
-EpJer	Ép. Jeremie
-EpJer	Ep. Jéremie
-EpJer	Ep. Jerémie
 EpJer	Ep. Jeremie
-EpJer	Ép. Jérémie
+EpJer	Ep. Jerémie
+EpJer	Ep. Jéremie
 EpJer	Ep. Jérémie
+EpJer	Ép. Jeremie
 EpJer	Ép. Jerémie
 EpJer	Ép. Jéremie
-EpJer	Ep Jerémie
-EpJer	Ép Jerémie
-EpJer	Ép Jérémie
+EpJer	Ép. Jérémie
 EpJer	Ep Jeremie
-EpJer	Ep Jérémie
-EpJer	Ép Jéremie
-EpJer	Ép Jeremie
+EpJer	Ep Jerémie
 EpJer	Ep Jéremie
+EpJer	Ep Jérémie
+EpJer	Ép Jeremie
+EpJer	Ép Jerémie
+EpJer	Ép Jéremie
+EpJer	Ép Jérémie
 EpJer	Ep. Jer
+EpJer	Ep. Jér
 EpJer	Ép. Jer
 EpJer	Ép. Jér
-EpJer	Ep. Jér
-EpJer	Ép Jér
-EpJer	Ép Jer
 EpJer	Ep Jer
 EpJer	Ep Jér
+EpJer	Ép Jer
+EpJer	Ép Jér
 EpJer	EpJer
-Eph	Éphésiens
+Eph	Ephesiens
 Eph	Ephésiens
 Eph	Éphesiens
-Eph	Ephesiens
+Eph	Éphésiens
 Eph	Ephes
 Eph	Ephés
 Eph	Éphes
 Eph	Éphés
-Eph	Éphé
 Eph	Ephe
 Eph	Ephé
 Eph	Éphe
-Eph	Éph
+Eph	Éphé
 Eph	Eph
+Eph	Éph
 Eph	Ep
 Eph	Ép
 Esth	Esther
@@ -585,14 +709,14 @@ Exod	Exode
 Exod	Exod
 Exod	Exo
 Exod	Ex
+Ezek	Ezechiel
+Ezek	Ezéchiel
 Ezek	Ézechiel
 Ezek	Ézéchiel
-Ezek	Ezéchiel
-Ezek	Ezechiel
-Ezek	Ézéch
+Ezek	Ezech
 Ezek	Ezéch
 Ezek	Ézech
-Ezek	Ezech
+Ezek	Ézéch
 Ezek	Ezek
 Ezek	Eze
 Ezek	Ezé
@@ -603,19 +727,19 @@ Ezra	Ezra
 Ezra	Esd
 Gal	Galates
 Gal	Gal
-Gal	Gl
 Gal	Ga
-Gen	Genèse
+Gal	Gl
 Gen	Genese
+Gen	Genèse
 Gen	Gen
 Gen	Ge
 Gen	Gn
-GkEsth	Esther (grec)
 GkEsth	Esther (Grec)
+GkEsth	Esther (grec)
 GkEsth	Esther Grec
 GkEsth	Esther grec
-GkEsth	Esther gr
 GkEsth	Esther Gr
+GkEsth	Esther gr
 GkEsth	Esth Gr
 GkEsth	Esth gr
 GkEsth	GkEsth
@@ -625,17 +749,17 @@ Hab	Habac
 Hab	Habak
 Hab	Hab
 Hab	Ha
-Hag	Aggée
 Hag	Aggee
-Hag	Hag
+Hag	Aggée
 Hag	Agg
+Hag	Hag
 Hag	Ag
-Heb	Hébreux
 Heb	Hebreux
-Heb	Hébr
+Heb	Hébreux
 Heb	Hebr
-Heb	Héb
+Heb	Hébr
 Heb	Heb
+Heb	Héb
 Heb	He
 Heb	Hé
 Hos	Osee
@@ -643,38 +767,38 @@ Hos	Osée
 Hos	Hos
 Hos	Os
 Isa	Esaie
-Isa	Ésaie
 Isa	Esaïe
-Isa	Isaïe
 Isa	Isaie
+Isa	Isaïe
+Isa	Ésaie
 Isa	Ésaïe
+Isa	Esa
 Isa	Isa
 Isa	Ésa
-Isa	Esa
-Isa	És
-Isa	Is
 Isa	Es
+Isa	Is
+Isa	És
 Jas	Jacques
 Jas	Jaques
 Jas	Jacq
-Jas	Jas
 Jas	Jac
+Jas	Jas
 Jas	Ja
 Jdt	Judith
 Jdt	Jdt
 Jer	Jeremie
+Jer	Jerémie
 Jer	Jéremie
 Jer	Jérémie
-Jer	Jerémie
-Jer	Jerém
-Jer	Jérém
-Jer	Jérem
 Jer	Jerem
+Jer	Jerém
+Jer	Jérem
+Jer	Jérém
 Jer	Jer
 Jer	Jér
+Jer	Je
 Jer	Jr
 Jer	Jé
-Jer	Je
 Job	Job
 Job	Jb
 Joel	Joel
@@ -700,24 +824,24 @@ Judg	Judg
 Judg	Jug
 Judg	Jg
 Judg,Jude	Ju
-Lam	Lamentations de Jerémie
 Lam	Lamentations de Jeremie
-Lam	Lamentations de Jérémie
+Lam	Lamentations de Jerémie
 Lam	Lamentations de Jéremie
+Lam	Lamentations de Jérémie
 Lam	Lamentations
 Lam	Lam
 Lam	La
-Lev	Lévitique
 Lev	Levitique
+Lev	Lévitique
 Lev	Lev
 Lev	Lév
-Lev	Lé
-Lev	Lv
 Lev	Le
+Lev	Lv
+Lev	Lé
 Luke	Luke
 Luke	Luc
-Luke	Lu
 Luke	Lc
+Luke	Lu
 Mal	Malachie
 Mal	Malach
 Mal	Malac
@@ -743,21 +867,21 @@ Mic	Mi
 Nah	Nahum
 Nah	Nah
 Nah	Na
-Neh	Nehémie
 Neh	Nehemie
+Neh	Nehémie
 Neh	Néhemie
 Neh	Néhémie
 Neh	Neh
 Neh	Néh
-Neh	Né
 Neh	Ne
+Neh	Né
 Num	Nombres
 Num	Nomb
-Num	Num
 Num	Nom
-Num	No
-Num	Nm
+Num	Num
 Num	Nb
+Num	Nm
+Num	No
 Obad	Abdias
 Obad	Obad
 Obad	Abd
@@ -767,48 +891,48 @@ Phil	Phil
 Phil	Ph
 Phil,Phlm	Phl
 Phil,Phlm	Ph
-Phlm	Philémon
 Phlm	Philemon
+Phlm	Philémon
 Phlm	Phlm
 Phlm	Phm
-PrAzar	La Prière d'Azariah
-PrAzar	La Priere d’Azariah
-PrAzar	La Prière d'Azarias
-PrAzar	La Priere d’Azarias
 PrAzar	La Priere d'Azariah
+PrAzar	La Priere d'Azarias
+PrAzar	La Priere d’Azariah
+PrAzar	La Priere d’Azarias
+PrAzar	La Prière d'Azariah
+PrAzar	La Prière d'Azarias
 PrAzar	La Prière d’Azariah
 PrAzar	La Prière d’Azarias
-PrAzar	La Priere d'Azarias
-PrAzar	Prière d’Azariah
+PrAzar	Priere d'Azariah
+PrAzar	Priere d'Azarias
+PrAzar	Priere d’Azariah
+PrAzar	Priere d’Azarias
 PrAzar	Prière d'Azariah
 PrAzar	Prière d'Azarias
-PrAzar	Priere d’Azarias
+PrAzar	Prière d’Azariah
 PrAzar	Prière d’Azarias
-PrAzar	Priere d'Azarias
-PrAzar	Priere d'Azariah
-PrAzar	Priere d’Azariah
 PrAzar	Pr. Azar
 PrAzar	Pr Azar
 PrAzar	PrAzar
+PrMan	La Priere de Manasse
 PrMan	La Priere de Manassé
 PrMan	La Prière de Manasse
-PrMan	La Priere de Manasse
 PrMan	La Prière de Manassé
-PrMan	Prière de Manasse
-PrMan	Priere de Manassé
 PrMan	Priere de Manasse
+PrMan	Priere de Manassé
+PrMan	Prière de Manasse
 PrMan	Prière de Manassé
-PrMan	Pr. Manassé
 PrMan	Pr. Manasse
-PrMan	Pr Manassé
+PrMan	Pr. Manassé
 PrMan	Pr Manasse
+PrMan	Pr Manassé
 PrMan	Pr. Man
 PrMan	Pr Man
 PrMan	PrMan
 Prov	Proverbes
 Prov	Prov
-Prov	Prv
 Prov	Pro
+Prov	Prv
 Prov	Pr
 Ps	Psaumes
 Ps	Psaume
@@ -819,13 +943,13 @@ Rev	Apocalypse de Jean
 Rev	Apocalypse
 Rev	Apoc
 Rev	Apc
-Rev	Rev
 Rev	Apo
+Rev	Rev
 Rev	Ap
 Rom	Romains
 Rom	Rom
-Rom	Ro
 Rom	Rm
+Rom	Ro
 Ruth	Ruth
 Ruth	Rut
 Ruth	Rt
@@ -847,18 +971,18 @@ Song	Cantiques
 Song	Cantique
 Song	Song
 Song	Cnt
-Song	Ct
 Song	Ca
+Song	Ct
 Sus	Susanne et les deux vieillards
 Sus	Suzanne et les deux vieillards
-Sus	Suzanne et les vieillards
 Sus	Susanne et les vieillards
-Sus	Suzanne au bain
+Sus	Suzanne et les vieillards
 Sus	Susanne au bain
+Sus	Suzanne au bain
 Sus	Susanne
 Sus	Suzanne
-Sus	Suz
 Sus	Sus
+Sus	Suz
 Titus	Titus
 Titus	Tite
 Titus	Tit
@@ -872,14 +996,14 @@ Wis	Sg
 Zech	Zaccharie
 Zech	Zacharie
 Zech	Zacch
+Zech	Zacc
 Zech	Zach
 Zech	Zech
-Zech	Zacc
 Zech	Zac
 Zech	Zah
-Zech	Zc
 Zech	Za
+Zech	Zc
 Zeph	Sophonie
-Zeph	Zeph
 Zeph	Soph
+Zeph	Zeph
 Zeph	So

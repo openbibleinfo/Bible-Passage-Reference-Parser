@@ -559,7 +559,8 @@ class bcv_passage
 	# Pluck the object or value matching a type from an array.
 	pluck: (type, passages) ->
 		for passage in passages
-			continue unless passage.type? and passage.type is type
+			# `passage` can be null if a range needed to be adjusted into a sequence.
+			continue unless passage? and passage.type? and passage.type is type
 			return @pluck("integer", passage.value) if type is "c" or type is "v"
 			return passage
 		null

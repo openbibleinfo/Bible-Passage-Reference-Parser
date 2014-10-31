@@ -1,0 +1,441 @@
+1Chr	Premye liv Kwonik la
+1Chr	Premye Kwonik
+1Chr	Premye Istwa
+1Chr	1. Kwonik
+1Chr	I. Kwonik
+1Chr	1 Kwonik
+1Chr	1. Istwa
+1Chr	I Kwonik
+1Chr	I. Istwa
+1Chr	1 Istwa
+1Chr	I Istwa
+1Chr	1 Ist
+1Chr	1Chr
+1Cor	Premye Korentyen
+1Cor	Premye Korint
+1Cor	1. Korentyen
+1Cor	I. Korentyen
+1Cor	1 Korentyen
+1Cor	I Korentyen
+1Cor	1. Korint
+1Cor	I. Korint
+1Cor	1 Korint
+1Cor	I Korint
+1Cor	1 Kor
+1Cor	1Cor
+1Esd	1Esd
+1John	Premye Jan
+1John	1. Jan
+1John	I. Jan
+1John	1 Jan
+1John	1John
+1John	I Jan
+1John	1 Jn
+1Kgs	Premye liv Wa yo
+1Kgs	Premye Wa
+1Kgs	1. Wa
+1Kgs	I. Wa
+1Kgs	1 Wa
+1Kgs	1Kgs
+1Kgs	I Wa
+1Macc	1Macc
+1Pet	Premye Pie
+1Pet	Premye Piè
+1Pet	Premye Pye
+1Pet	Premye Pyè
+1Pet	1. Pie
+1Pet	1. Piè
+1Pet	1. Pye
+1Pet	1. Pyè
+1Pet	I. Pie
+1Pet	I. Piè
+1Pet	I. Pye
+1Pet	I. Pyè
+1Pet	1 Pie
+1Pet	1 Piè
+1Pet	1 Pye
+1Pet	1 Pyè
+1Pet	I Pie
+1Pet	I Piè
+1Pet	I Pye
+1Pet	I Pyè
+1Pet	1Pet
+1Sam	Premye liv Samyel la
+1Sam	Premye liv Samyèl la
+1Sam	Premye Samyel
+1Sam	Premye Samyèl
+1Sam	1. Samyel
+1Sam	1. Samyèl
+1Sam	I. Samyel
+1Sam	I. Samyèl
+1Sam	1 Samyel
+1Sam	1 Samyèl
+1Sam	I Samyel
+1Sam	I Samyèl
+1Sam	1 Sam
+1Sam	1Sam
+1Thess	Premye Tesalonikyen
+1Thess	Premye Tesalonik
+1Thess	1. Tesalonikyen
+1Thess	I. Tesalonikyen
+1Thess	1 Tesalonikyen
+1Thess	I Tesalonikyen
+1Thess	1. Tesalonik
+1Thess	I. Tesalonik
+1Thess	1 Tesalonik
+1Thess	I Tesalonik
+1Thess	1Thess
+1Thess	1 Tes
+1Tim	Premye Timote
+1Tim	1. Timote
+1Tim	I. Timote
+1Tim	1 Timote
+1Tim	I Timote
+1Tim	1 Tim
+1Tim	1Tim
+2Chr	Dezyem liv Kwonik la
+2Chr	Dezyèm liv Kwonik la
+2Chr	Dezyem Kwonik
+2Chr	Dezyèm Kwonik
+2Chr	Dezyem Istwa
+2Chr	Dezyèm Istwa
+2Chr	II. Kwonik
+2Chr	2. Kwonik
+2Chr	II Kwonik
+2Chr	II. Istwa
+2Chr	2 Kwonik
+2Chr	2. Istwa
+2Chr	II Istwa
+2Chr	2 Istwa
+2Chr	2 Ist
+2Chr	2Chr
+2Cor	Dezyem Korentyen
+2Cor	Dezyèm Korentyen
+2Cor	Dezyem Korint
+2Cor	Dezyèm Korint
+2Cor	II. Korentyen
+2Cor	2. Korentyen
+2Cor	II Korentyen
+2Cor	2 Korentyen
+2Cor	II. Korint
+2Cor	2. Korint
+2Cor	II Korint
+2Cor	2 Korint
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	2Esd
+2John	Dezyem Jan
+2John	Dezyèm Jan
+2John	II. Jan
+2John	2. Jan
+2John	II Jan
+2John	2 Jan
+2John	2John
+2John	2 Jn
+2Kgs	Dezyem liv Wa yo
+2Kgs	Dezyèm liv Wa yo
+2Kgs	Dezyem Wa
+2Kgs	Dezyèm Wa
+2Kgs	II. Wa
+2Kgs	2. Wa
+2Kgs	II Wa
+2Kgs	2 Wa
+2Kgs	2Kgs
+2Macc	2Macc
+2Pet	Dezyem Pie
+2Pet	Dezyem Piè
+2Pet	Dezyem Pye
+2Pet	Dezyem Pyè
+2Pet	Dezyèm Pie
+2Pet	Dezyèm Piè
+2Pet	Dezyèm Pye
+2Pet	Dezyèm Pyè
+2Pet	II. Pie
+2Pet	II. Piè
+2Pet	II. Pye
+2Pet	II. Pyè
+2Pet	2. Pie
+2Pet	2. Piè
+2Pet	2. Pye
+2Pet	2. Pyè
+2Pet	II Pie
+2Pet	II Piè
+2Pet	II Pye
+2Pet	II Pyè
+2Pet	2 Pie
+2Pet	2 Piè
+2Pet	2 Pye
+2Pet	2 Pyè
+2Pet	2Pet
+2Sam	Dezyem liv Samyel la
+2Sam	Dezyem liv Samyèl la
+2Sam	Dezyèm liv Samyel la
+2Sam	Dezyèm liv Samyèl la
+2Sam	Dezyem Samyel
+2Sam	Dezyem Samyèl
+2Sam	Dezyèm Samyel
+2Sam	Dezyèm Samyèl
+2Sam	II. Samyel
+2Sam	II. Samyèl
+2Sam	2. Samyel
+2Sam	2. Samyèl
+2Sam	II Samyel
+2Sam	II Samyèl
+2Sam	2 Samyel
+2Sam	2 Samyèl
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	Dezyem Tesalonikyen
+2Thess	Dezyèm Tesalonikyen
+2Thess	Dezyem Tesalonik
+2Thess	Dezyèm Tesalonik
+2Thess	II. Tesalonikyen
+2Thess	2. Tesalonikyen
+2Thess	II Tesalonikyen
+2Thess	2 Tesalonikyen
+2Thess	II. Tesalonik
+2Thess	2. Tesalonik
+2Thess	II Tesalonik
+2Thess	2 Tesalonik
+2Thess	2Thess
+2Thess	2 Tes
+2Tim	Dezyem Timote
+2Tim	Dezyèm Timote
+2Tim	II. Timote
+2Tim	2. Timote
+2Tim	II Timote
+2Tim	2 Timote
+2Tim	2 Tim
+2Tim	2Tim
+3John	III Jan
+3John	3 Jan
+3John	3John
+3John	3 Jn
+3Macc	3Macc
+4Macc	4Macc
+Acts	Aksyon apot yo
+Acts	Aksyon apòt yo
+Acts	Travay apot yo
+Acts	Travay apòt yo
+Acts	Akdezapot
+Acts	Akdèzapot
+Acts	Travay
+Acts	Acts
+Acts	Tr
+Amos	Liv Amos la
+Amos	Liv Amòs la
+Amos	Amos
+Amos	Amòs
+Bar	Bar
+Bel	Bel
+Col	Kolosyen
+Col	Kolos
+Col	Kolòs
+Col	Col
+Col	Kol
+Dan	Liv Danyel la
+Dan	Liv Danyèl la
+Dan	Danyel
+Dan	Danyèl
+Dan	Dan
+Deut	Dezyem liv Lalwa a
+Deut	Dezyèm liv Lalwa a
+Deut	Deteronom
+Deut	Deteronòm
+Deut	Detewonom
+Deut	Detewonòm
+Deut	Deut
+Deut	Det
+Eccl	Eklezyas - Liv Filozof la
+Eccl	Eklezyas - Liv Filozòf la
+Eccl	Liv Filozof la
+Eccl	Liv Filozòf la
+Eccl	Eklezyas
+Eccl	Filozof
+Eccl	Filozòf
+Eccl	Eccl
+Eccl	Ekl
+EpJer	EpJer
+Eph	Efezyen
+Eph	Efez
+Eph	Efèz
+Eph	Eph
+Eph	Ef
+Esth	Liv Este a
+Esth	Liv Estè a
+Esth	Este
+Esth	Esth
+Esth	Estè
+Esth	Est
+Exod	liv delivrans lan
+Exod	Delivrans
+Exod	Egzod
+Exod	Egzòd
+Exod	Exod
+Exod	Egz
+Ezek	Liv Ezekyel la
+Ezek	Liv Ezekyèl la
+Ezek	Ezekyel
+Ezek	Ezekyèl
+Ezek	Ezek
+Ezek	Eze
+Ezra	Liv Esdras la
+Ezra	Esdras
+Ezra	Ezra
+Ezra	Esd
+Gal	Galasyen
+Gal	Galasi
+Gal	Gal
+Gen	liv Konmansman an
+Gen	Konmansman
+Gen	Jenez
+Gen	Jenèz
+Gen	Gen
+Gen	Jen
+GkEsth	GkEsth
+Hab	Liv Abakik la
+Hab	Abakouk
+Hab	Abakik
+Hab	Abak
+Hab	Hab
+Hag	Liv Aje a
+Hag	Aje
+Hag	Hag
+Heb	Ebre
+Heb	Heb
+Heb	Eb
+Hos	Liv Oze a
+Hos	Hos
+Hos	Oze
+Isa	Liv Ezayi a
+Isa	Ezayi
+Isa	Isa
+Isa	Ez
+Jas	Jak
+Jas	Jas
+Jdt	Jdt
+Jer	Liv Jeremi an
+Jer	Jeremi
+Jer	Jer
+Job	Liv Job la
+Job	Liv Jòb la
+Job	Job
+Job	Jòb
+Joel	Liv Jowel la
+Joel	Liv Jowèl la
+Joel	Jowel
+Joel	Jowèl
+Joel	Joel
+John	John
+John	Jan
+John	Jn
+Jonah	Liv Jonas la
+Jonah	Jonah
+Jonah	Jonas
+Josh	Liv Jozye a
+Josh	Jozye
+Josh	Josh
+Josh	Joz
+Jude	Jude
+Jude	Jid
+Judg	Liv Chef yo
+Judg	Liv Chèf yo
+Judg	Judg
+Judg	Jij
+Lam	Chante pou plenn So lavil Jerizalem
+Lam	Chante pou plenn So lavil Jerizalèm
+Lam	Chante pou plenn Sò lavil Jerizalem
+Lam	Chante pou plenn Sò lavil Jerizalèm
+Lam	Lamantasyon
+Lam	Plenn
+Lam	Lam
+Lam	Pl
+Lev	liv Prensip lavi nan Bondye
+Lev	Levitik
+Lev	Lev
+Luke	Luke
+Luke	Lik
+Luke	Lk
+Mal	Liv Malachi a
+Mal	Malachi
+Mal	Mal
+Mark	Mark
+Mark	Mak
+Mark	Mk
+Matt	Matye
+Matt	Matt
+Matt	Mat
+Matt	Mt
+Mic	Liv Miche a
+Mic	Miche
+Mic	Mic
+Nah	Liv Nawoum lan
+Nah	Nawoum
+Nah	Nawoun
+Nah	Nah
+Nah	Naw
+Neh	Liv Neyemi an
+Neh	Neyemi
+Neh	Neemi
+Neh	Neh
+Neh	Ne
+Num	liv Resansman an
+Num	Resansman
+Num	Nonb
+Num	Num
+Num	Res
+Obad	Liv Abdyas la
+Obad	Abdias
+Obad	Abdyas
+Obad	Obad
+Obad	Abd
+Phil	Filipyen
+Phil	Filip
+Phil	Phil
+Phil	Fil
+Phlm	Filemon
+Phlm	Filem
+Phlm	Phlm
+PrAzar	PrAzar
+PrMan	PrMan
+Prov	Liv Pwoveb yo
+Prov	Liv Pwovèb yo
+Prov	Pwoveb
+Prov	Pwovèb
+Prov	Prov
+Prov	Pw
+Ps	Liv Som yo
+Ps	Liv Sòm yo
+Ps	Som
+Ps	Sòm
+Ps	Ps
+Rev	Revelasyon
+Rev	Apokalips
+Rev	Rev
+Rom	Romen
+Rom	Rom
+Rom	Ròm
+Ruth	Liv Rit la
+Ruth	Ruth
+Ruth	Rit
+SgThree	SgThree
+Sir	Sir
+Song	Kantid de Kantik
+Song	Pi bel Chante a
+Song	Pi bèl Chante a
+Song	Chante Salomon
+Song	Chante
+Song	Song
+Sus	Sus
+Titus	Titus
+Titus	Tit
+Tob	Tob
+Wis	Wis
+Zech	Liv Zakari a
+Zech	Zakari
+Zech	Zech
+Zech	Zak
+Zeph	Liv Sofoni an
+Zeph	Sofoni
+Zeph	Zeph
+Zeph	Sof

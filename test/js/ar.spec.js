@@ -172,16 +172,16 @@
 		expect(p.parse("الأحبار 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("ﺍﻟﻼﻭﻳﻲ 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lev 1:1").osis()).toEqual("Lev.1.1")
-		expect(p.parse("لا 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("أح 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("لا 1:1").osis()).toEqual("Lev.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر اللاويين 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("اللاويين 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("الأحبار 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("ﺍﻟﻼﻭﻳﻲ 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LEV 1:1").osis()).toEqual("Lev.1.1")
-		expect(p.parse("لا 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("أح 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("لا 1:1").osis()).toEqual("Lev.1.1")
 		;
       return true;
     });
@@ -231,8 +231,8 @@
     });
     return it("should handle book: Sir (ar)", function() {
       
-		expect(p.parse("يشوع بن سيراخ 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("سفر ابن سيراخ 1:1").osis()).toEqual("Sir.1.1")
+		expect(p.parse("يشوع بن سيراخ 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("سيراخ 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("Sir 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("سي 1:1").osis()).toEqual("Sir.1.1")
@@ -284,14 +284,14 @@
 		expect(p.parse("سفر مراثي إرميا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("مراثي إرميا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("المراثي 1:1").osis()).toEqual("Lam.1.1")
-		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("Lam 1:1").osis()).toEqual("Lam.1.1")
+		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر مراثي إرميا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("مراثي إرميا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("المراثي 1:1").osis()).toEqual("Lam.1.1")
-		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("LAM 1:1").osis()).toEqual("Lam.1.1")
+		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1")
 		;
       return true;
     });
@@ -390,13 +390,13 @@
     return it("should handle book: Josh (ar)", function() {
       
 		expect(p.parse("سفر يشوع 1:1").osis()).toEqual("Josh.1.1")
-		expect(p.parse("يشوع 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Josh 1:1").osis()).toEqual("Josh.1.1")
+		expect(p.parse("يشوع 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("يش 1:1").osis()).toEqual("Josh.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر يشوع 1:1").osis()).toEqual("Josh.1.1")
-		expect(p.parse("يشوع 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("JOSH 1:1").osis()).toEqual("Josh.1.1")
+		expect(p.parse("يشوع 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("يش 1:1").osis()).toEqual("Josh.1.1")
 		;
       return true;
@@ -728,15 +728,15 @@
 		expect(p.parse("أخبار الأيام الأول 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("ﺃﺧﺒﺎﺭ ﺍﻷﻳﺎﻡ ﺍﻷ 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("الأخبار 1 1:1").osis()).toEqual("1Chr.1.1")
-		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 أخ 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر أخبار الأيام الأول 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("أخبار الأيام الأول 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("ﺃﺧﺒﺎﺭ ﺍﻷﻳﺎﻡ ﺍﻷ 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("الأخبار 1 1:1").osis()).toEqual("1Chr.1.1")
-		expect(p.parse("1CHR 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 أخ 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1CHR 1:1").osis()).toEqual("1Chr.1.1")
 		;
       return true;
     });
@@ -758,13 +758,13 @@
     return it("should handle book: Ezra (ar)", function() {
       
 		expect(p.parse("سفر عزرا 1:1").osis()).toEqual("Ezra.1.1")
-		expect(p.parse("عزرا 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ezra 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("عزرا 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("عـز 1:1").osis()).toEqual("Ezra.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر عزرا 1:1").osis()).toEqual("Ezra.1.1")
-		expect(p.parse("عزرا 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("EZRA 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("عزرا 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("عـز 1:1").osis()).toEqual("Ezra.1.1")
 		;
       return true;
@@ -953,16 +953,16 @@
       
 		expect(p.parse("سفر الأمثال 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("الأمثال 1:1").osis()).toEqual("Prov.1.1")
-		expect(p.parse("ﺃﻣﺜﺎﻝ 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("أمثال 1:1").osis()).toEqual("Prov.1.1")
+		expect(p.parse("ﺃﻣﺜﺎﻝ 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("Prov 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("مثل 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("ام 1:1").osis()).toEqual("Prov.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر الأمثال 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("الأمثال 1:1").osis()).toEqual("Prov.1.1")
-		expect(p.parse("ﺃﻣﺜﺎﻝ 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("أمثال 1:1").osis()).toEqual("Prov.1.1")
+		expect(p.parse("ﺃﻣﺜﺎﻝ 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("PROV 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("مثل 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("ام 1:1").osis()).toEqual("Prov.1.1")
@@ -1276,13 +1276,13 @@
     return it("should handle book: Jonah (ar)", function() {
       
 		expect(p.parse("سفر يونان 1:1").osis()).toEqual("Jonah.1.1")
-		expect(p.parse("يونان 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("Jonah 1:1").osis()).toEqual("Jonah.1.1")
+		expect(p.parse("يونان 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("يون 1:1").osis()).toEqual("Jonah.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر يونان 1:1").osis()).toEqual("Jonah.1.1")
-		expect(p.parse("يونان 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("JONAH 1:1").osis()).toEqual("Jonah.1.1")
+		expect(p.parse("يونان 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("يون 1:1").osis()).toEqual("Jonah.1.1")
 		;
       return true;
@@ -1336,15 +1336,15 @@
 		expect(p.parse("سفر ناحوم 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("ناحوم 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("نحوم 1:1").osis()).toEqual("Nah.1.1")
-		expect(p.parse("نحو 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("Nah 1:1").osis()).toEqual("Nah.1.1")
+		expect(p.parse("نحو 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("نا 1:1").osis()).toEqual("Nah.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر ناحوم 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("ناحوم 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("نحوم 1:1").osis()).toEqual("Nah.1.1")
-		expect(p.parse("نحو 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("NAH 1:1").osis()).toEqual("Nah.1.1")
+		expect(p.parse("نحو 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("نا 1:1").osis()).toEqual("Nah.1.1")
 		;
       return true;
@@ -1427,15 +1427,15 @@
 		expect(p.parse("سفر حجي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حجَّي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حجاي 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("حجي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("Hag 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("حجي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حج 1:1").osis()).toEqual("Hag.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر حجي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حجَّي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حجاي 1:1").osis()).toEqual("Hag.1.1")
-		expect(p.parse("حجي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("HAG 1:1").osis()).toEqual("Hag.1.1")
+		expect(p.parse("حجي 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حج 1:1").osis()).toEqual("Hag.1.1")
 		;
       return true;
@@ -1490,16 +1490,16 @@
       
 		expect(p.parse("سفر ملاخي 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("ملاخي 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("ﻣﻼﺥ 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("ملا 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("Mal 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("ملا 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("ﻣﻼﺥ 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("مل 1:1").osis()).toEqual("Mal.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("سفر ملاخي 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("ملاخي 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("ﻣﻼﺥ 1:1").osis()).toEqual("Mal.1.1")
-		expect(p.parse("ملا 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("MAL 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("ملا 1:1").osis()).toEqual("Mal.1.1")
+		expect(p.parse("ﻣﻼﺥ 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("مل 1:1").osis()).toEqual("Mal.1.1")
 		;
       return true;
@@ -1551,13 +1551,13 @@
     return it("should handle book: Mark (ar)", function() {
       
 		expect(p.parse("إنجيل مرقس 1:1").osis()).toEqual("Mark.1.1")
-		expect(p.parse("مرقس 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Mark 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("مرقس 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("مر 1:1").osis()).toEqual("Mark.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("إنجيل مرقس 1:1").osis()).toEqual("Mark.1.1")
-		expect(p.parse("مرقس 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("MARK 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("مرقس 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("مر 1:1").osis()).toEqual("Mark.1.1")
 		;
       return true;
@@ -1580,13 +1580,13 @@
     return it("should handle book: Luke (ar)", function() {
       
 		expect(p.parse("إنجيل لوقا 1:1").osis()).toEqual("Luke.1.1")
-		expect(p.parse("لوقا 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Luke 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("لوقا 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("لو 1:1").osis()).toEqual("Luke.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("إنجيل لوقا 1:1").osis()).toEqual("Luke.1.1")
-		expect(p.parse("لوقا 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LUKE 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("لوقا 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("لو 1:1").osis()).toEqual("Luke.1.1")
 		;
       return true;
@@ -1645,15 +1645,15 @@
       
 		expect(p.parse("رسالة القديس يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("رسالة يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
-		expect(p.parse("يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("رسالة يوحنا 2 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2John 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2 يو 1:1").osis()).toEqual("2John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("رسالة القديس يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("رسالة يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
-		expect(p.parse("يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("رسالة يوحنا 2 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("يوحنا الثانية 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2JOHN 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2 يو 1:1").osis()).toEqual("2John.1.1")
 		;
@@ -1709,14 +1709,14 @@
     });
     return it("should handle book: Rev (ar)", function() {
       
-		expect(p.parse("ﻳﻮﺣﻨﺎ ﺭﺅﻳﺎ 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("رؤيا يوحنا 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("ﻳﻮﺣﻨﺎ ﺭﺅﻳﺎ 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("الرؤيــا 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Rev 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("رؤ 1:1").osis()).toEqual("Rev.1.1")
 		p.include_apocrypha(false)
-		expect(p.parse("ﻳﻮﺣﻨﺎ ﺭﺅﻳﺎ 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("رؤيا يوحنا 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("ﻳﻮﺣﻨﺎ ﺭﺅﻳﺎ 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("الرؤيــا 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("REV 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("رؤ 1:1").osis()).toEqual("Rev.1.1")
@@ -1804,16 +1804,16 @@
 		expect(p.parse("الرسالة إلى أهل رومية 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("رسالة روما 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ﺭﻭﻣﻴﺔ 1:1").osis()).toEqual("Rom.1.1")
-		expect(p.parse("روم 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("Rom 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("روم 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("رو 1:1").osis()).toEqual("Rom.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("رسالة بولس الرسول إلى أهل رومية 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("الرسالة إلى أهل رومية 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("رسالة روما 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ﺭﻭﻣﻴﺔ 1:1").osis()).toEqual("Rom.1.1")
-		expect(p.parse("روم 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ROM 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("روم 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("رو 1:1").osis()).toEqual("Rom.1.1")
 		;
       return true;
@@ -2008,16 +2008,16 @@
 		expect(p.parse("الرسالة إلى أهل كولوسي 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("رسالة كولوسي 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("ﻛﻮﻟﻮﺳﻲ 1:1").osis()).toEqual("Col.1.1")
-		expect(p.parse("قول 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Col 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("قول 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("كو 1:1").osis()).toEqual("Col.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("رسالة بولس الرسول إلى أهل كولوسي 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("الرسالة إلى أهل كولوسي 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("رسالة كولوسي 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("ﻛﻮﻟﻮﺳﻲ 1:1").osis()).toEqual("Col.1.1")
-		expect(p.parse("قول 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("COL 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("قول 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("كو 1:1").osis()).toEqual("Col.1.1")
 		;
       return true;
@@ -2107,15 +2107,15 @@
       
 		expect(p.parse("رسالة بولس الرسول الثانية إلى تيموثاوس 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("الرسالة الثانية إلى تيموثاوس 1:1").osis()).toEqual("2Tim.1.1")
-		expect(p.parse("ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("تيموثاوس الثانية 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 طيم 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2Tim 1:1").osis()).toEqual("2Tim.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("رسالة بولس الرسول الثانية إلى تيموثاوس 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("الرسالة الثانية إلى تيموثاوس 1:1").osis()).toEqual("2Tim.1.1")
-		expect(p.parse("ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("تيموثاوس الثانية 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 طيم 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2TIM 1:1").osis()).toEqual("2Tim.1.1")
 		;
@@ -2176,16 +2176,16 @@
 		expect(p.parse("Titus 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("طيطس 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("ﺗﻴﻄﺲ 1:1").osis()).toEqual("Titus.1.1")
-		expect(p.parse("طي 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("تي 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("طي 1:1").osis()).toEqual("Titus.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("رسالة بولس الرسول إلى تيطس 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("الرسالة إلى تيطس 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITUS 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("طيطس 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("ﺗﻴﻄﺲ 1:1").osis()).toEqual("Titus.1.1")
-		expect(p.parse("طي 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("تي 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("طي 1:1").osis()).toEqual("Titus.1.1")
 		;
       return true;
     });
@@ -2301,18 +2301,18 @@
       
 		expect(p.parse("رسالة القديس بطرس الثانية 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("رسالة بطرس الثانية 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("رسالة بطرس 2 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("بطرس الثانية 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("رسالة بطرس 2 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2 بط 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2بط 1:1").osis()).toEqual("2Pet.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("رسالة القديس بطرس الثانية 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("رسالة بطرس الثانية 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("رسالة بطرس 2 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("بطرس الثانية 1:1").osis()).toEqual("2Pet.1.1")
-		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("رسالة بطرس 2 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2 بط 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2بط 1:1").osis()).toEqual("2Pet.1.1")
 		;
       return true;

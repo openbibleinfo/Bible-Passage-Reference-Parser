@@ -1,0 +1,271 @@
+$FIRST	1
+$SECOND	2
+$THIRD	3
+$FOURTH	4
+$AB	[a-e]
+$AND	and
+$CHAPTER	chapter
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+$TO	to
+$VERSE	verse
+$UNICODE_BLOCK	Devanagari
+
+Gen	उत्पत्ति	Utpaati	उत्पाति
+Exod	निर्गमन	Nirgaman
+Lev	लैव्यव्यवस्था	लैव्य	लैव्य्व्य्वस्था	लैव्यवस्था	Laaivyavyavastha	लैव्यव्यवस्थ
+Num	गिनती	Ginatee
+Deut	व्यवस्था विवरण	व्यवस्था	व्य्वस्थाविवरन	व्यवस्थाविवरण	Vyavasthaavivaran
+Josh	यहोशू	यहोशु	Yahoshoo
+Judg	न्यायियों	न्यायिय का विर्तान्त	Nyayiyon
+Ruth	रूत	रुत	Root
+1Sam	$FIRST शमूएल	$FIRST शमू	शमुऐल की १ली पुस्तक	$FIRST Shamooael
+2Sam	$SECOND शमूएल	$SECOND शमू	शमुऐयल की २री पुस्तक	$SECOND Shamooael
+1Kgs	$FIRST राजा	राजाओ का विर्तान्त १ला भाग्	$FIRST Raja	$FIRST राजाओं
+2Kgs	$SECOND राजा	राजाओ का विर्तान्त २रा भाग	$SECOND Raja	$SECOND राजाओं
+1Chr	$FIRST इतिहास	$FIRST इति	इतिहास १ला भाग	$FIRST Itihas
+2Chr	$SECOND इतिहास	$SECOND इति	इतिहास २रा भाग	$SECOND Itihas
+Ezra	एज्रा	Aejra
+Neh	नहेमायाह	नहेमा	न्हेम्याह	Nahemyah	नहेम्याह
+Esth	एस्तेर	ऐस्तेर	Aester
+Job	अय्यूब	अययुब	Ayyoob
+Ps	भजन संहिता	भजन	भजन-सहिन्ता	Bhjan
+Prov	नीतिवचन	नीति	नीति वचन	Neetivachan	नीतिबचन
+Eccl	सभोपदेशक	सभो	Sabhopadeshak
+Song	श्रेष्ठगीत	श्रेष्ठ	स्रेस्ट गीत	Reshthageet
+Isa	यशायाह	यशा	yashaayaah	यशाया
+Jer	यिर्मयाह	यिर्म	Yirmayah
+Lam	विलापगीत	विलाप	Vilapageet	विलापगेत
+Ezek	यहेजकेल	यहेज	Yahejakel
+Dan	दानिय्येल	दानि	Daaniyyel	दानिय्यल
+Hos	होशे	Hosho
+Joel	योएल	Yoael
+Amos	आमोस	Amos
+Obad	ओबद्याह	ओब	ओबेधाह	ओबद्दाह	Obadhah	ओबधाह
+Jonah	योना	Yona
+Mic	मीका	Meeka
+Nah	नहूम	Nahoom
+Hab	हबक्कूक	हबक	Habakkook
+Zeph	सपन्याह	सपन	Sapanyah
+Hag	हाग्गै	हाग्गे	Haggaai
+Zech	जकर्याह	जकयार्ह	Jakaryah
+Mal	मलाकी	Malakee
+Matt	मत्ती	Mattee
+Mark	मरकुस	Marakus
+Luke	लूका	Looka
+John	यूहन्ना	Yuhanna	युहत्रा
+Acts	प्रेरितों के काम	प्र. क	मसीह-दूत	Praeriton Ke Kam	प्रेरितों के कामों
+Rom	रोमियों	रोमी	रोमियो	Romiyon
+1Cor	$FIRST कुरिन्थियों?	$FIRST कुरिन्यि़यों	$FIRST कुरिन्थ	$FIRST कुरन्थियों	$FIRST कोरिन्‍थी	$FIRST Kurinthiayon
+2Cor	$SECOND कुरिन्थियों?	$SECOND कुरिन्यि़यों	$SECOND कुरिन्थ	$SECOND कुरन्थियों	$SECOND कोरिन्‍थी	$SECOND Kurinthiayon
+Gal	गलातियों	गलाति	गलाती	Galatiyon	गलतियों
+Eph	इफिसियों	इफिसि	इफिसी	Iafisiyon
+Phil	फिलिप्पियों	फिलिप्पि	फिलिप्‍पी	Filippaiyon
+Col	कुलुस्सियों	कुलुस्सि	कुलुस्‍सी	Kulussaiyon
+1Thess	$FIRST थिस्सलुनीकियों	$FIRST थिस्स	$FIRST थिसलुनिकी	$FIRST Thaissaluneekiyon
+2Thess	$SECOND थिस्सलुनीकियों	$SECOND थिस्स	$SECOND थिसलुनिकी	$SECOND Thaissaluneekiyon
+1Tim	$FIRST तीमुथियुस	$FIRST तीम	$FIRST तिमुथियुस	$FIRST Teemuathaiyus	$FIRST तीमुाथैयुस
+2Tim	$SECOND तीमुथियुस	$SECOND तीम	$SECOND तिमुथियुस	$SECOND Teemuathaiyus	$SECOND तीमुाथैयुस
+Titus	तीतुस	Teetus
+Phlm	फिलेमोन	फले	Filemon
+Heb	इब्रानियों	इब्रानि	इब्रानी	Ibraaaniyon
+Jas	याकूब	Yakoob
+1Pet	$FIRST पतरस	$FIRST पतर	$FIRST पत्रुस	$FIRST Pataras
+2Pet	$SECOND पतरस	$SECOND पतर	$SECOND पत्रुस	$SECOND Pataras
+1John	$FIRST यूहन्ना	$FIRST Yoohanna	$FIRST युहत्रा
+2John	$SECOND यूहन्ना	$SECOND Yoohanna	$SECOND युहत्रा
+3John	$THIRD यूहन्ना	$THIRD Yoohanna	$THIRD युहत्रा
+Jude	यहूदा	Yahooda
+Rev	प्रकाशित वाक्य	प्र. व	प्रकाशित-वाक्‍य	Prakashaitavakya	प्रकाशितवाक्य
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+Gen	उत्पत्ति
+*Exod	निर्गमन
+*Lev	लैव्यव्यवस्था	लैव्य
+*Num	गिनती
+*Deut	व्यवस्था विवरण	व्यवस्था
+*Josh	यहोशू
+*Judg	न्यायियों
+*Ruth	रूत
+*1Sam	1 शमूएल	1 शमू
+*2Sam	2 शमूएल	2 शमू
+*1Kgs	1 राजा
+*2Kgs	2 राजा
+*1Chr	1 इतिहास	1 इति
+*2Chr	2 इतिहास	2 इति
+*Ezra	एज्रा
+*Neh	नहेमायाह	नहेमा
+*Esth	एस्तेर
+*Job	अय्यूब
+*Ps	भजन संहिता	भजन
+*Prov	नीतिवचन	नीति
+*Eccl	सभोपदेशक	सभो
+*Song	श्रेष्ठगीत	श्रेष्ठ
+*Isa	यशायाह	यशा
+*Jer	यिर्मयाह	यिर्म
+*Lam	विलापगीत	विलाप
+*Ezek	यहेजकेल	यहेज
+*Dan	दानिय्येल	दानि
+*Hos	होशे
+*Joel	योएल
+*Amos	आमोस
+*Obad	ओबद्याह	ओब
+*Jonah	योना
+*Mic	मीका
+*Nah	नहूम
+*Hab	हबक्कूक	हबक
+*Zeph	सपन्याह	सपन
+*Hag	हाग्गै
+*Zech	जकर्याह
+*Mal	मलाकी
+*Matt	मत्ती
+*Mark	मरकुस
+*Luke	लूका
+*John	यूहन्ना
+*Acts	प्रेरितों के काम	प्र.क
+*Rom	रोमियों	रोमी
+*1Cor	1 कुरिन्थियों	1 कुरिन्थ
+*2Cor	2 कुरिन्थियों	2 कुरिन्थ
+*Gal	गलातियों	गलाति
+*Eph	इफिसियों	इफिसि
+*Phil	फिलिप्पियों	फिलिप्पि
+*Col	कुलुस्सियों	कुलुस्सि
+*1Thess	1 थिस्सलुनीकियों	1 थिस्स
+*2Thess	2 थिस्सलुनीकियों	2 थिस्स
+*1Tim	1 तीमुथियुस	1 तीम
+*2Tim	2 तीमुथियुस	2 तीम
+*Titus	तीतुस
+*Phlm	फिलेमोन	फले
+*Heb	इब्रानियों	इब्रानि
+*Jas	याकूब
+*1Pet	1 पतरस	1 पतर
+*2Pet	2 पतरस	2 पतर
+*1John	1 यूहन्ना
+*2John	2 यूहन्ना
+*3John	3 यूहन्ना
+*Jude	यहूदा
+*Rev	प्रकाशित वाक्य	प्र. व
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

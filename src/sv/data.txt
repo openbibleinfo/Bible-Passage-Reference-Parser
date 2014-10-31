@@ -1,0 +1,278 @@
+$FIRST	Första	1
+$SECOND	Andra	2
+# http://sv.wikipedia.org/w/index.php?title=Special:L%C3%A4nkar_hit/Tredje_Moseboken&hidelinks=1 (3e)
+$THIRD	Tredje	3e	3
+$FOURTH	Fjärde	4
+$FIFTH	Femte	5
+$AB	[a-e]
+$AND	och
+# http://sv.wikipedia.org/wiki/Jesaja (kapitlen) and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Visheten and http://sv.wikipedia.org/wiki/Jesus_Syraks_vishet and http://sv.wikipedia.org/wiki/Johannesevangeliet
+$CHAPTER	kapitlen	kapitlet	kapitel	kap
+# http://sv.wikipedia.org/wiki/Apostlag%C3%A4rningarna and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Judit (f) and http://sv.wikipedia.org/wiki/Joel (f)
+$FF	ff	f
+# http://sv.wikipedia.org/wiki/Psaltaren (called "rubriken")
+$TITLE	rubrik
+$TRANS	B2000	SFB	B1917
+# http://sv.wikipedia.org/wiki/Apostlag%C3%A4rningarna
+$TO	till
+# http://sv.wikipedia.org/wiki/Obadja (verser) and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Visheten (v)
+$VERSE	verser	v
+$UNICODE_BLOCK	Latin
+
+Gen	$FIRST Mosebok	$FIRST Moseboken	1 Mos	Genesis
+Exod	$SECOND Mosebok	$SECOND Moseboken	2 Mos	Exodus
+Lev	$THIRD Mosebok	$THIRD Moseboken	3 Mos	Leviticus
+Num	$FOURTH Mosebok	$FOURTH Moseboken	4 Mos	Numeri
+Deut	$FIFTH Mosebok	$FIFTH Moseboken	5 Mos	Deuteronomium
+Josh	Josua	Jos
+Judg	Domarboken	Dom
+Ruth	Rut	Ruts bok
+1Sam	$FIRST Samuelsboken	1 Sam
+2Sam	$SECOND Samuelsboken	2 Sam
+1Kgs	$FIRST Kungaboken	$FIRST Konungaboken	1 Kon	1 Kung
+2Kgs	$SECOND Kungaboken	$SECOND Konungaboken	2 Kon	2 Kung
+1Chr	$FIRST Krönikeboken	1 Krön
+2Chr	$SECOND Krönikeboken	2 Krön
+Ezra	Esra?
+Neh	Nehem[ij]a	Neh
+Esth	Ester	Esters bok	Est
+Job	Job	Jobs bok
+Ps	Psaltaren	Psalm	Psalmen	Ps
+Prov	Ordspråksboken	Ords
+Eccl	Predikaren	Predikarboken	Predikarens bok	Pred
+Song	Höga visan	Höga V	Högav	Hoga v	Höga
+Isa	Jesaja	Jesajas bok	Jes
+Jer	Jeremias?	Jer
+Lam	Klagovisorna	Klag
+Ezek	Hesekiel	Hesekiels bok	Hes
+Dan	Daniel	Daniels bok	Dan
+Hos	Hosea	Hoseas bok	Hos
+Joel	Joel	Joels bok
+Amos	Amos	Am
+Obad	Obadja	Obadjas bok	Ob
+Jonah	Jona	Jonas bok	Jona bok	Jon
+Mic	Mika	Mikas bok	Mik
+Nah	Nahum	Nah
+Hab	Habac?kuk	Hab
+Zeph	Sefanja	Zefanias	Sefanjas bok	Sef
+Hag	Hagga[ij]	Hagg
+Zech	Sakar[ij]a	Sak
+Mal	Malaki	Malakias	Mal
+Matt	Matteus	Matteusevangeliet	Matt	Mt	Mattei evangelium
+Mark	Markus	Markusevangeliet	Mark	Mk	Markus evangelium
+Luke	Lukas	Lukasevangeliet	Luk	Lk	Lukas evangelium
+John	Johannes	Johannesevangeliet	Joh	Jh	Johannis evangelium
+Acts	Apostlagärningarna	Apg
+Rom	Romarbrevet	Rom
+1Cor	$FIRST Korinth?i?erbrevet	1 Kor
+2Cor	$SECOND Korinth?i?erbrevet	2 Kor
+Gal	Galaterbref?vet	Gal
+Eph	Efesierbrevet	Ef	Efeserbrevet
+Phil	Filipperbrevet	Fil
+Col	Kolosserbrevet	Kol
+1Thess	$FIRST Th?essalonikerbrevet	1 Th?ess
+2Thess	$SECOND Th?essalonikerbrevet	2 Th?ess
+1Tim	$FIRST Timotheosbrevet	$FIRST Timoteusbrevet	1 Tim
+2Tim	$SECOND Timotheosbrevet	$SECOND Timoteusbrevet	2 Tim
+Titus	Titusbrevet	Brevet till Titus	Tit
+Phlm	Filemonbrevet	Brevet till Filemon	Filem
+Heb	Hebreerbrevet	Hebr	Hebréerbrevet	Ebr	Heb
+Jas	Jakobsbrevet	Jakobs brev	Jak	Jakobs epistel
+1Pet	$FIRST Petrusbrevet	Petrus första brev	1 Petr?
+2Pet	$SECOND Petrusbrevet	Petrus andra brev	2 Petr?
+1John	$FIRST Johannesbrevet	Johannes första brev	1 Joh
+2John	$SECOND Johannesbrevet	Johannes andra brev	2 Joh
+3John	$THIRD Johannesbrevet	Johannes tredje brev	3 Joh
+Jude	Judasbrevet	Judas brev	Jud	Judas epistel
+Rev	Uppenbarelseboken	Johannes Uppenbarelse	Upp	Johannes apokalyps
+Tob	Tobit	Tobits bok	Tob
+Jdt	Judit
+GkEsth	Ester enligt den grekiska texten	Est gr
+Wis	Salomos vishet	Vishetens bok	Visheten	Vish
+Sir	Jesus Syraks vishet	Ben Sira	Ecclesiasticus	Syrak	Syr
+Bar	Baruk	Baruks bok	Bar
+PrAzar	Asar[ij]as’? bön
+Sus	Susanna	Susanna i badet	Sus
+Bel	Bel och Ormguden
+SgThree	De tre männens lovsång
+EpJer	Jeremias brev	Jer br
+1Macc	$FIRST Mackabeerboken	1 Mack	$FIRST Mackabéerboken
+2Macc	$SECOND Mackabeerboken	2 Mack	$SECOND Mackabéerboken
+3Macc	$THIRD Mackabéerboken	$THIRD Mackabeerboken	3 Mack
+4Macc	$FOURTH Mackabéerboken	$FOURTH Mackabeerboken	4 Mack
+1Esd	$THIRD Esra	$FIRST Esra
+2Esd	$FOURTH Esra	$SECOND Esra
+PrMan	Manasses’? bön	Manasse bön	Man
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	1 Mosebok	1 Mos
+*Exod	2 Mosebok	2 Mos
+*Lev	3 Mosebok	3 Mos
+*Num	4 Mosebok	4 Mos
+*Deut	5 Mosebok	5 Mos
+*Josh	Josua	Jos
+*Judg	Domarboken	Dom
+*Ruth	Rut	Rut
+*1Sam	1 Samuelsboken	1 Sam
+*2Sam	2 Samuelsboken	2 Sam
+*1Kgs	1 Kungaboken	1 Kung
+*2Kgs	2 Kungaboken	2 Kung
+*1Chr	1 Krönikeboken	1 Krön
+*2Chr	2 Krönikeboken	2 Krön
+*Ezra	Esra	Esr
+*Neh	Nehemja	Neh
+*Esth	Ester	Est
+*Job	Job	Job
+*Ps	Psaltaren	Ps		Psaltaren
+*Prov	Ordspråksboken	Ords
+*Eccl	Predikaren	Pred
+*Song	Höga Visan	Höga V	Höga
+*Isa	Jesaja	Jes
+*Jer	Jeremia	Jer
+*Lam	Klagovisorna	Klag
+*Ezek	Hesekiel	Hes
+*Dan	Daniel	Dan
+*Hos	Hosea	Hos
+*Joel	Joel	Joel
+*Amos	Amos	Am
+*Obad	Obadja	Ob
+*Jonah	Jona	Jon
+*Mic	Mika	Mik
+*Nah	Nahum	Nah
+*Hab	Habackuk	Hab
+*Zeph	Sefanja	Sef
+*Hag	Haggaj	Hagg
+*Zech	Sakarja	Sak
+*Mal	Malaki	Mal
+*Matt	Matteusevangeliet	Matt
+*Mark	Markusevangeliet	Mark
+*Luke	Lukasevangeliet	Luk
+*John	Johannesevangeliet	Joh
+*Acts	Apostlagärningarna	Apg
+*Rom	Romarbrevet	Rom
+*1Cor	1 Korinthierbrevet	1 Kor
+*2Cor	2 Korinthierbrevet	2 Kor
+*Gal	Galaterbrevet	Gal
+*Eph	Efesierbrevet	Ef
+*Phil	Filipperbrevet	Fil
+*Col	Kolosserbrevet	Kol
+*1Thess	1 Thessalonikerbrevet	1 Thess
+*2Thess	2 Thessalonikerbrevet	2 Thess
+*1Tim	1 Timotheosbrevet	1 Tim
+*2Tim	2 Timotheosbrevet	2 Tim
+*Titus	Titusbrevet	Tit
+*Phlm	Filemonbrevet	Filem
+*Heb	Hebreerbrevet	Heb
+*Jas	Jakobsbrevet	Jak
+*1Pet	1 Petrusbrevet	1 Pet
+*2Pet	2 Petrusbrevet	2 Pet
+*1John	1 Johannesbrevet	1 Joh
+*2John	2 Johannesbrevet	2 Joh
+*3John	3 Johannesbrevet	3 Joh
+*Jude	Judasbrevet	Jud
+*Rev	Uppenbarelseboken	Upp
+*Tob	Tobit	Tob
+*Jdt	Judit	Judit
+*GkEsth	Ester enligt den grekiska texten	Est gr
+*Wis	Visheten	Vish
+*Sir	Ben Sira	Syr
+*Bar	Baruk	Bar
+*PrAzar	Asarjas bön
+*Sus	Susanna	Sus
+*Bel	Bel och Ormguden
+*SgThree	De tre männens lovsång
+*EpJer	Jeremias brev	Jer br
+*1Macc	1 Mackabeerboken	1 Mack
+*2Macc	2 Mackabeerboken	2 Mack
+*3Macc	3 Mackabéerboken	3 Mack
+*4Macc	4 Mackabéerboken	4 Mack
+*1Esd	3 Esra
+*2Esd	4 Esra
+*PrMan	Manasses bön	Man

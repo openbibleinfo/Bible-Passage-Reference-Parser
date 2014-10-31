@@ -160,7 +160,7 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 
 This function is separate from the parsing sequence and provides data that may be useful for other applications.
 
-#### `translation_info("")`
+#### `.translation_info("")`
 
 This function returns an object of data about the requested translation. You can use this data to determine, for example, the previous and next chapters for a given chapter, even when the given chapter is at the beginning or end of a book.
 
@@ -219,7 +219,6 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 	* Include `c` in the string to validate chapter existence. If omitted, strings like "Genesis 51" (which doesn't exist) return as valid. Omitting `c` means that looking up full books will return `999` as the end chapter: "Genesis to Exodus" → "Gen.1-Exod.999".
 	* Include `v` in the string to validate verse existence. If omitted, strings like `Genesis 1:100` (which doesn't exist) return as valid. Omitting `v` means that looking up full chapters will return `999` as the end verse: "Genesis 1:2 to chapter 3" → "Gen.1.2-Gen.3.999".
 	* Tested values are `b`, `bc`, `bcv`, `bv`, `c`, `cv`, `v`, and `none`. In all cases, single-chapter books still respond as single-chapter books to allow treating strings like `Obadiah 2` as `Obad.1.2`.
-
 * `zero_chapter_strategy: "error"`
 	* `error`: zero chapters ("Matthew 0") are invalid.
 	* `upgrade`: zero chapters are upgraded to 1: "Matthew 0" → "Matt.1".
@@ -424,22 +423,54 @@ Using the files in `src/template` as a base, you can add support for additional 
 
 ### Supported Languages
 
+Most of these languages are in [Google Translate](https://translate.google.com/).
+
 <table>
 	<tr><th>Prefix</th><th>Language</th>
 	<tr><td>ar</td><td>Arabic</td></tr>
 	<tr><td>bg</td><td>Bulgarian</td></tr>
+	<tr><td>ceb</td><td>Cebuano</td></tr>
+	<tr><td>cs</td><td>Czech</td></tr>
+	<tr><td>da</td><td>Danish</td></tr>
 	<tr><td>de</td><td>German</td></tr>
 	<tr><td>el</td><td>Greek (mostly ancient)</td></tr>
 	<tr><td>en</td><td>English</td></tr>
 	<tr><td>es</td><td>Spanish</td></tr>
+	<tr><td>fi</td><td>Finnish</td></tr>
 	<tr><td>fr</td><td>French</td></tr>
 	<tr><td>he</td><td>Hebrew</td></tr>
+	<tr><td>hi</td><td>Hindi</td></tr>
+	<tr><td>hr</td><td>Croatian</td></tr>
+	<tr><td>ht</td><td>Haitian Creole</td></tr>
+	<tr><td>hu</td><td>Hungarian</td></tr>
+	<tr><td>is</td><td>Icelandic</td></tr>
 	<tr><td>it</td><td>Italian</td></tr>
 	<tr><td>ja</td><td>Japanese</td></tr>
+	<tr><td>jv</td><td>Javanese</td></tr>
 	<tr><td>ko</td><td>Korean</td></tr>
 	<tr><td>la</td><td>Latin</td></tr>
+	<tr><td>mk</td><td>Macedonian</td></tr>
+	<tr><td>mr</td><td>Marathi</td></tr>
+	<tr><td>ne</td><td>Nepali</td></tr>
+	<tr><td>nl</td><td>Dutch</td></tr>
+	<tr><td>no</td><td>Norwegian</td></tr>
+	<tr><td>or</td><td>Oriya</td></tr>
+	<tr><td>pa</td><td>Punjabi</td></tr>
+	<tr><td>pl</td><td>Polish</td></tr>
+	<tr><td>pt</td><td>Portuguese</td></tr>
+	<tr><td>ro</td><td>Romanian</td></tr>
 	<tr><td>ru</td><td>Russian</td></tr>
+	<tr><td>sk</td><td>Slovak</td></tr>
+	<tr><td>so</td><td>Somali</td></tr>
+	<tr><td>sq</td><td>Albanian</td></tr>
+	<tr><td>sr</td><td>Serbian</td></tr>
+	<tr><td>sv</td><td>Swedish</td></tr>
+	<tr><td>sw</td><td>Swahili</td></tr>
+	<tr><td>ta</td><td>Tamil</td></tr>
 	<tr><td>th</td><td>Thai</td></tr>
+	<tr><td>tl</td><td>Tagalog</td></tr>
+	<tr><td>uk</td><td>Ukrainian</td></tr>
+	<tr><td>ur</td><td>Urdu</td></tr>
 	<tr><td>vi</td><td>Vietnamese</td></tr>
 	<tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
 </table>
@@ -452,7 +483,7 @@ When using non-English `<script>`s on the web, be sure to serve the script with 
 
 I've specifically tested the following browsers, but it should work in any modern browser. If not, please feel free to open an issue.
 
-* Internet Explorer 6+. Support for Internet Explorer 6 and 7 is deprecated; PEG.js doesn't officially support these browsers, though all the tests pass.
+* Internet Explorer 8+. Internet Explorer 6 and 7 may work; PEG.js doesn't officially support these browsers.
 * Firefox 12+.
 * Chrome 19+ and Node 0.10.x.
 
@@ -491,6 +522,8 @@ This code is in production use on a site that indexes [Bible verses on Twitter a
 The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language--it's not necessary to run the parser in your project. If you're only parsing content, that usage falls entirely under the MIT License.
 
 ## Changelog
+
+November 3, 2014. Fixed two bugs related to range rewriting. Updated frak to the latest development version. Added quite a few more languages, bringing the total to 46.
 
 May 2, 2014. Added the `passage_existence_strategy` option to relax how much validation the parser should do when given a possibly invalid reference. The extensive tests written for this feature uncovered a few other bugs. Added the `book_range_strategy` option to specify how to handle books when they appear in a range. Added `translation_info()`. Fixed bug when changing versification systems several times and improved support for changing versification systems that rely on a different book order from the default. Updated PEG.js to 0.8.0. Added support for Arabic, Bulgarian, Russian, Thai, and Vietnamese.
 

@@ -1,0 +1,980 @@
+1Chr	Fyrri Kronikubok
+1Chr	Fyrri Kronikubók
+1Chr	Fyrri Kroníkubok
+1Chr	Fyrri Kroníkubók
+1Chr	Fyrri kroníkubók
+1Chr	1. Kro
+1Chr	I. Kro
+1Chr	1 Kro
+1Chr	I Kro
+1Chr	1Chr
+1Cor	Fyrra bref Pals til Korintumanna
+1Cor	Fyrra bref Páls til Korintumanna
+1Cor	Fyrra bréf Pals til Korintumanna
+1Cor	Fyrra bréf Páls til Korintumanna
+1Cor	Fyrra bref Pals til Korin
+1Cor	Fyrra bref Páls til Korin
+1Cor	Fyrra bréf Pals til Korin
+1Cor	Fyrra bréf Páls til Korin
+1Cor	Fyrra Korintubref
+1Cor	Fyrra Korintubréf
+1Cor	1. Kor
+1Cor	I. Kor
+1Cor	1 Kor
+1Cor	I Kor
+1Cor	1Cor
+1Esd	1Esd
+1John	Fyrsta bref Johannesar hið almenna
+1John	Fyrsta bref Jóhannesar hið almenna
+1John	Fyrsta bréf Johannesar hið almenna
+1John	Fyrsta bréf Jóhannesar hið almenna
+1John	Fyrsta bref Johannesar
+1John	Fyrsta bref Jóhannesar
+1John	Fyrsta bréf Johannesar
+1John	Fyrsta bréf Jóhannesar
+1John	Fyrsta Johannesarbref
+1John	Fyrsta Johannesarbréf
+1John	Fyrsta Jóhannesarbref
+1John	Fyrsta Jóhannesarbréf
+1John	1. Joh
+1John	1. Jóh
+1John	I. Joh
+1John	I. Jóh
+1John	1 Joh
+1John	1 Jóh
+1John	1John
+1John	I Joh
+1John	I Jóh
+1Kgs	Fyrri bok konunganna
+1Kgs	Fyrri bók konunganna
+1Kgs	Fyrri Konungabok
+1Kgs	Fyrri Konungabók
+1Kgs	Fyrri konungabók
+1Kgs	1. Kon
+1Kgs	I. Kon
+1Kgs	1 Kon
+1Kgs	I Kon
+1Kgs	1Kgs
+1Macc	Fyrsta Makkabeabok
+1Macc	Fyrsta Makkabeabók
+1Macc	1. Makk
+1Macc	I. Makk
+1Macc	1 Makk
+1Macc	I Makk
+1Macc	1Macc
+1Pet	Fyrra almenna bref Peturs
+1Pet	Fyrra almenna bref Péturs
+1Pet	Fyrra almenna bréf Peturs
+1Pet	Fyrra almenna bréf Péturs
+1Pet	Fyrra Petursbref
+1Pet	Fyrra Petursbréf
+1Pet	Fyrra Pétursbref
+1Pet	Fyrra Pétursbréf
+1Pet	1. Pet
+1Pet	1. Pét
+1Pet	I. Pet
+1Pet	I. Pét
+1Pet	1 Pet
+1Pet	1 Pét
+1Pet	I Pet
+1Pet	I Pét
+1Pet	1Pet
+1Sam	Fyrri Samuelsbok
+1Sam	Fyrri Samuelsbók
+1Sam	Fyrri Samúelsbok
+1Sam	Fyrri Samúelsbók
+1Sam	1. Sam
+1Sam	I. Sam
+1Sam	1 Sam
+1Sam	I Sam
+1Sam	1Sam
+1Thess	Fyrra bref Pals til Þessalonikumanna
+1Thess	Fyrra bref Pals til Þessaloníkumanna
+1Thess	Fyrra bref Páls til Þessalonikumanna
+1Thess	Fyrra bref Páls til Þessaloníkumanna
+1Thess	Fyrra bréf Pals til Þessalonikumanna
+1Thess	Fyrra bréf Pals til Þessaloníkumanna
+1Thess	Fyrra bréf Páls til Þessalonikumanna
+1Thess	Fyrra bréf Páls til Þessaloníkumanna
+1Thess	Fyrra bref Pals til Þessa
+1Thess	Fyrra bref Páls til Þessa
+1Thess	Fyrra bréf Pals til Þessa
+1Thess	Fyrra bréf Páls til Þessa
+1Thess	Fyrra Þessalonikubref
+1Thess	Fyrra Þessalonikubréf
+1Thess	Fyrra Þessaloníkubref
+1Thess	Fyrra Þessaloníkubréf
+1Thess	1. Þess
+1Thess	I. Þess
+1Thess	1 Þess
+1Thess	1Thess
+1Thess	I Þess
+1Tim	Fyrra bref Pals til Timoteusar
+1Tim	Fyrra bref Pals til Timóteusar
+1Tim	Fyrra bref Pals til Tímoteusar
+1Tim	Fyrra bref Pals til Tímóteusar
+1Tim	Fyrra bref Páls til Timoteusar
+1Tim	Fyrra bref Páls til Timóteusar
+1Tim	Fyrra bref Páls til Tímoteusar
+1Tim	Fyrra bref Páls til Tímóteusar
+1Tim	Fyrra bréf Pals til Timoteusar
+1Tim	Fyrra bréf Pals til Timóteusar
+1Tim	Fyrra bréf Pals til Tímoteusar
+1Tim	Fyrra bréf Pals til Tímóteusar
+1Tim	Fyrra bréf Páls til Timoteusar
+1Tim	Fyrra bréf Páls til Timóteusar
+1Tim	Fyrra bréf Páls til Tímoteusar
+1Tim	Fyrra bréf Páls til Tímóteusar
+1Tim	Fyrra bref Pals til Timot
+1Tim	Fyrra bref Pals til Timót
+1Tim	Fyrra bref Pals til Tímot
+1Tim	Fyrra bref Pals til Tímót
+1Tim	Fyrra bref Páls til Timot
+1Tim	Fyrra bref Páls til Timót
+1Tim	Fyrra bref Páls til Tímot
+1Tim	Fyrra bref Páls til Tímót
+1Tim	Fyrra bréf Pals til Timot
+1Tim	Fyrra bréf Pals til Timót
+1Tim	Fyrra bréf Pals til Tímot
+1Tim	Fyrra bréf Pals til Tímót
+1Tim	Fyrra bréf Páls til Timot
+1Tim	Fyrra bréf Páls til Timót
+1Tim	Fyrra bréf Páls til Tímot
+1Tim	Fyrra bréf Páls til Tímót
+1Tim	Fyrra Timoteusarbref
+1Tim	Fyrra Timoteusarbréf
+1Tim	Fyrra Timóteusarbref
+1Tim	Fyrra Timóteusarbréf
+1Tim	Fyrra Tímoteusarbref
+1Tim	Fyrra Tímoteusarbréf
+1Tim	Fyrra Tímóteusarbref
+1Tim	Fyrra Tímóteusarbréf
+1Tim	1. Tim
+1Tim	1. Tím
+1Tim	I. Tim
+1Tim	I. Tím
+1Tim	1 Tim
+1Tim	1 Tím
+1Tim	I Tim
+1Tim	I Tím
+1Tim	1Tim
+2Chr	Siðari Kronikubok
+2Chr	Siðari Kronikubók
+2Chr	Siðari Kroníkubok
+2Chr	Siðari Kroníkubók
+2Chr	Síðari Kronikubok
+2Chr	Síðari Kronikubók
+2Chr	Síðari Kroníkubok
+2Chr	Síðari Kroníkubók
+2Chr	Síðari kroníkubók
+2Chr	II. Kro
+2Chr	2. Kro
+2Chr	II Kro
+2Chr	2 Kro
+2Chr	2Chr
+2Cor	Siðara bref Pals til Korintumanna
+2Cor	Siðara bref Páls til Korintumanna
+2Cor	Siðara bréf Pals til Korintumanna
+2Cor	Siðara bréf Páls til Korintumanna
+2Cor	Síðara bref Pals til Korintumanna
+2Cor	Síðara bref Páls til Korintumanna
+2Cor	Síðara bréf Pals til Korintumanna
+2Cor	Síðara bréf Páls til Korintumanna
+2Cor	Siðara bref Pals til Kori
+2Cor	Siðara bref Páls til Kori
+2Cor	Siðara bréf Pals til Kori
+2Cor	Siðara bréf Páls til Kori
+2Cor	Síðara bref Pals til Kori
+2Cor	Síðara bref Páls til Kori
+2Cor	Síðara bréf Pals til Kori
+2Cor	Síðara bréf Páls til Kori
+2Cor	Siðara Korintubref
+2Cor	Siðara Korintubréf
+2Cor	Siðara Kórintubref
+2Cor	Siðara Kórintubréf
+2Cor	Síðara Korintubref
+2Cor	Síðara Korintubréf
+2Cor	Síðara Kórintubref
+2Cor	Síðara Kórintubréf
+2Cor	II. Kor
+2Cor	2. Kor
+2Cor	II Kor
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	2Esd
+2John	Annað bref Johannesar
+2John	Annað bref Jóhannesar
+2John	Annað bréf Johannesar
+2John	Annað bréf Jóhannesar
+2John	Annað Johannesarbref
+2John	Annað Johannesarbréf
+2John	Annað Jóhannesarbref
+2John	Annað Jóhannesarbréf
+2John	II. Joh
+2John	II. Jóh
+2John	2. Joh
+2John	2. Jóh
+2John	II Joh
+2John	II Jóh
+2John	2 Joh
+2John	2 Jóh
+2John	2John
+2Kgs	Siðari bok konunganna
+2Kgs	Siðari bók konunganna
+2Kgs	Síðari bok konunganna
+2Kgs	Síðari bók konunganna
+2Kgs	Siðari Konungabok
+2Kgs	Siðari Konungabók
+2Kgs	Síðari Konungabok
+2Kgs	Síðari Konungabók
+2Kgs	Síðari konungabók
+2Kgs	II. Kon
+2Kgs	2. Kon
+2Kgs	II Kon
+2Kgs	2 Kon
+2Kgs	2Kgs
+2Macc	Onnur Makkabeabok
+2Macc	Onnur Makkabeabók
+2Macc	Önnur Makkabeabok
+2Macc	Önnur Makkabeabók
+2Macc	II. Makk
+2Macc	2. Makk
+2Macc	II Makk
+2Macc	2 Makk
+2Macc	2Macc
+2Pet	Siðara almenna bref Peturs
+2Pet	Siðara almenna bref Péturs
+2Pet	Siðara almenna bréf Peturs
+2Pet	Siðara almenna bréf Péturs
+2Pet	Síðara almenna bref Peturs
+2Pet	Síðara almenna bref Péturs
+2Pet	Síðara almenna bréf Peturs
+2Pet	Síðara almenna bréf Péturs
+2Pet	Siðara Petursbref
+2Pet	Siðara Petursbréf
+2Pet	Siðara Pétursbref
+2Pet	Siðara Pétursbréf
+2Pet	Síðara Petursbref
+2Pet	Síðara Petursbréf
+2Pet	Síðara Pétursbref
+2Pet	Síðara Pétursbréf
+2Pet	II. Pet
+2Pet	II. Pét
+2Pet	2. Pet
+2Pet	2. Pét
+2Pet	II Pet
+2Pet	II Pét
+2Pet	2 Pet
+2Pet	2 Pét
+2Pet	2Pet
+2Sam	Siðari Samuelsbok
+2Sam	Siðari Samuelsbók
+2Sam	Siðari Samúelsbok
+2Sam	Siðari Samúelsbók
+2Sam	Síðari Samuelsbok
+2Sam	Síðari Samuelsbók
+2Sam	Síðari Samúelsbok
+2Sam	Síðari Samúelsbók
+2Sam	II. Sam
+2Sam	2. Sam
+2Sam	II Sam
+2Sam	2 Sam
+2Sam	2Sam
+2Thess	Siðara bref Pals til Þessalonikumanna
+2Thess	Siðara bref Pals til Þessaloníkumanna
+2Thess	Siðara bref Páls til Þessalonikumanna
+2Thess	Siðara bref Páls til Þessaloníkumanna
+2Thess	Siðara bréf Pals til Þessalonikumanna
+2Thess	Siðara bréf Pals til Þessaloníkumanna
+2Thess	Siðara bréf Páls til Þessalonikumanna
+2Thess	Siðara bréf Páls til Þessaloníkumanna
+2Thess	Síðara bref Pals til Þessalonikumanna
+2Thess	Síðara bref Pals til Þessaloníkumanna
+2Thess	Síðara bref Páls til Þessalonikumanna
+2Thess	Síðara bref Páls til Þessaloníkumanna
+2Thess	Síðara bréf Pals til Þessalonikumanna
+2Thess	Síðara bréf Pals til Þessaloníkumanna
+2Thess	Síðara bréf Páls til Þessalonikumanna
+2Thess	Síðara bréf Páls til Þessaloníkumanna
+2Thess	Siðara bref Pals til Þess
+2Thess	Siðara bref Páls til Þess
+2Thess	Siðara bréf Pals til Þess
+2Thess	Siðara bréf Páls til Þess
+2Thess	Síðara bref Pals til Þess
+2Thess	Síðara bref Páls til Þess
+2Thess	Síðara bréf Pals til Þess
+2Thess	Síðara bréf Páls til Þess
+2Thess	Siðara Þessalonikubref
+2Thess	Siðara Þessalonikubréf
+2Thess	Siðara Þessaloníkubref
+2Thess	Siðara Þessaloníkubréf
+2Thess	Síðara Þessalonikubref
+2Thess	Síðara Þessalonikubréf
+2Thess	Síðara Þessaloníkubref
+2Thess	Síðara Þessaloníkubréf
+2Thess	II. Þess
+2Thess	2. Þess
+2Thess	II Þess
+2Thess	2 Þess
+2Thess	2Thess
+2Tim	Siðara bref Pals til Timoteusar
+2Tim	Siðara bref Pals til Timóteusar
+2Tim	Siðara bref Pals til Tímoteusar
+2Tim	Siðara bref Pals til Tímóteusar
+2Tim	Siðara bref Páls til Timoteusar
+2Tim	Siðara bref Páls til Timóteusar
+2Tim	Siðara bref Páls til Tímoteusar
+2Tim	Siðara bref Páls til Tímóteusar
+2Tim	Siðara bréf Pals til Timoteusar
+2Tim	Siðara bréf Pals til Timóteusar
+2Tim	Siðara bréf Pals til Tímoteusar
+2Tim	Siðara bréf Pals til Tímóteusar
+2Tim	Siðara bréf Páls til Timoteusar
+2Tim	Siðara bréf Páls til Timóteusar
+2Tim	Siðara bréf Páls til Tímoteusar
+2Tim	Siðara bréf Páls til Tímóteusar
+2Tim	Síðara bref Pals til Timoteusar
+2Tim	Síðara bref Pals til Timóteusar
+2Tim	Síðara bref Pals til Tímoteusar
+2Tim	Síðara bref Pals til Tímóteusar
+2Tim	Síðara bref Páls til Timoteusar
+2Tim	Síðara bref Páls til Timóteusar
+2Tim	Síðara bref Páls til Tímoteusar
+2Tim	Síðara bref Páls til Tímóteusar
+2Tim	Síðara bréf Pals til Timoteusar
+2Tim	Síðara bréf Pals til Timóteusar
+2Tim	Síðara bréf Pals til Tímoteusar
+2Tim	Síðara bréf Pals til Tímóteusar
+2Tim	Síðara bréf Páls til Timoteusar
+2Tim	Síðara bréf Páls til Timóteusar
+2Tim	Síðara bréf Páls til Tímoteusar
+2Tim	Síðara bréf Páls til Tímóteusar
+2Tim	Siðara bref Pals til Timo
+2Tim	Siðara bref Pals til Timó
+2Tim	Siðara bref Pals til Tímo
+2Tim	Siðara bref Pals til Tímó
+2Tim	Siðara bref Páls til Timo
+2Tim	Siðara bref Páls til Timó
+2Tim	Siðara bref Páls til Tímo
+2Tim	Siðara bref Páls til Tímó
+2Tim	Siðara bréf Pals til Timo
+2Tim	Siðara bréf Pals til Timó
+2Tim	Siðara bréf Pals til Tímo
+2Tim	Siðara bréf Pals til Tímó
+2Tim	Siðara bréf Páls til Timo
+2Tim	Siðara bréf Páls til Timó
+2Tim	Siðara bréf Páls til Tímo
+2Tim	Siðara bréf Páls til Tímó
+2Tim	Síðara bref Pals til Timo
+2Tim	Síðara bref Pals til Timó
+2Tim	Síðara bref Pals til Tímo
+2Tim	Síðara bref Pals til Tímó
+2Tim	Síðara bref Páls til Timo
+2Tim	Síðara bref Páls til Timó
+2Tim	Síðara bref Páls til Tímo
+2Tim	Síðara bref Páls til Tímó
+2Tim	Síðara bréf Pals til Timo
+2Tim	Síðara bréf Pals til Timó
+2Tim	Síðara bréf Pals til Tímo
+2Tim	Síðara bréf Pals til Tímó
+2Tim	Síðara bréf Páls til Timo
+2Tim	Síðara bréf Páls til Timó
+2Tim	Síðara bréf Páls til Tímo
+2Tim	Síðara bréf Páls til Tímó
+2Tim	Siðara Timoteusarbref
+2Tim	Siðara Timoteusarbréf
+2Tim	Siðara Timóteusarbref
+2Tim	Siðara Timóteusarbréf
+2Tim	Siðara Tímoteusarbref
+2Tim	Siðara Tímoteusarbréf
+2Tim	Siðara Tímóteusarbref
+2Tim	Siðara Tímóteusarbréf
+2Tim	Síðara Timoteusarbref
+2Tim	Síðara Timoteusarbréf
+2Tim	Síðara Timóteusarbref
+2Tim	Síðara Timóteusarbréf
+2Tim	Síðara Tímoteusarbref
+2Tim	Síðara Tímoteusarbréf
+2Tim	Síðara Tímóteusarbref
+2Tim	Síðara Tímóteusarbréf
+2Tim	II. Tim
+2Tim	II. Tím
+2Tim	2. Tim
+2Tim	2. Tím
+2Tim	II Tim
+2Tim	II Tím
+2Tim	2 Tim
+2Tim	2 Tím
+2Tim	2Tim
+3John	Þriðja bref Johannesar
+3John	Þriðja bref Jóhannesar
+3John	Þriðja bréf Johannesar
+3John	Þriðja bréf Jóhannesar
+3John	Þriðja Johannesarbref
+3John	Þriðja Johannesarbréf
+3John	Þriðja Jóhannesarbref
+3John	Þriðja Jóhannesarbréf
+3John	III. Joh
+3John	III. Jóh
+3John	III Joh
+3John	III Jóh
+3John	3. Joh
+3John	3. Jóh
+3John	3 Joh
+3John	3 Jóh
+3John	3John
+3Macc	Þriðja Makkabeabok
+3Macc	Þriðja Makkabeabók
+3Macc	III. Makk
+3Macc	III Makk
+3Macc	3. Makk
+3Macc	3 Makk
+3Macc	3Macc
+4Macc	Fjorða Makkabeabok
+4Macc	Fjorða Makkabeabók
+4Macc	Fjórða Makkabeabok
+4Macc	Fjórða Makkabeabók
+4Macc	IV. Makk
+4Macc	4. Makk
+4Macc	IV Makk
+4Macc	4 Makk
+4Macc	4Macc
+Acts	Postulasagan
+Acts	Acts
+Acts	Post
+Amos	Amos
+Amos	Am
+Bar	Baruksbok
+Bar	Baruksbók
+Bar	Barúksbok
+Bar	Barúksbók
+Bar	Bar
+Bel	Bel og drekinn
+Bel	Bel
+Col	Bref Pals til Kolossumanna
+Col	Bref Pals til Kólossumanna
+Col	Bref Páls til Kolossumanna
+Col	Bref Páls til Kólossumanna
+Col	Bréf Pals til Kolossumanna
+Col	Bréf Pals til Kólossumanna
+Col	Bréf Páls til Kolossumanna
+Col	Bréf Páls til Kólossumanna
+Col	Bref Pals til Kolossumann
+Col	Bref Pals til Kólossumann
+Col	Bref Páls til Kolossumann
+Col	Bref Páls til Kólossumann
+Col	Bréf Pals til Kolossumann
+Col	Bréf Pals til Kólossumann
+Col	Bréf Páls til Kolossumann
+Col	Bréf Páls til Kólossumann
+Col	Kolossubrefið
+Col	Kolossubréfið
+Col	Kolussubrefið
+Col	Kolussubréfið
+Col	Kólossubrefið
+Col	Kólossubréfið
+Col	Kólussubrefið
+Col	Kólussubréfið
+Col	Col
+Col	Kol
+Col	Kól
+Dan	Daniel
+Dan	Daníel
+Dan	Dan
+Deut	Fimmta bok Mose
+Deut	Fimmta bok Móse
+Deut	Fimmta bók Mose
+Deut	Fimmta bók Móse
+Deut	Fimmta Mosebok
+Deut	Fimmta Mosebók
+Deut	Fimmta Mósebok
+Deut	Fimmta Mósebók
+Deut	Deuteronomium
+Deut	5. Mosebok
+Deut	5. Mosebók
+Deut	5. Mósebok
+Deut	5. Mósebók
+Deut	V. Mosebok
+Deut	V. Mosebók
+Deut	V. Mósebok
+Deut	V. Mósebók
+Deut	5 Mosebok
+Deut	5 Mosebók
+Deut	5 Mósebok
+Deut	5 Mósebók
+Deut	V Mosebok
+Deut	V Mosebók
+Deut	V Mósebok
+Deut	V Mósebók
+Deut	5. Mos
+Deut	5. Mós
+Deut	V. Mos
+Deut	V. Mós
+Deut	5 Mos
+Deut	5 Mós
+Deut	V Mos
+Deut	V Mós
+Deut	5Mós
+Deut	Deut
+Eccl	Predikarinn
+Eccl	Prédikarinn
+Eccl	Eccl
+Eccl	Pred
+Eccl	Préd
+EpJer	Bref Jeremia
+EpJer	Bref Jeremía
+EpJer	Bréf Jeremia
+EpJer	Bréf Jeremía
+EpJer	EpJer
+EpJer	BJer
+Eph	Bref Pals til Efesusmanna
+Eph	Bref Páls til Efesusmanna
+Eph	Bréf Pals til Efesusmanna
+Eph	Bréf Páls til Efesusmanna
+Eph	Efesusbrefið
+Eph	Efesusbréfið
+Eph	Eph
+Eph	Ef
+Esth	Esterarbok
+Esth	Esterarbók
+Esth	Esth
+Esth	Est
+Exod	Onnur bok Mose
+Exod	Onnur bok Móse
+Exod	Onnur bók Mose
+Exod	Onnur bók Móse
+Exod	Önnur bok Mose
+Exod	Önnur bok Móse
+Exod	Önnur bók Mose
+Exod	Önnur bók Móse
+Exod	Onnur Mosebok
+Exod	Onnur Mosebók
+Exod	Onnur Mósebok
+Exod	Onnur Mósebók
+Exod	Önnur Mosebok
+Exod	Önnur Mosebók
+Exod	Önnur Mósebok
+Exod	Önnur Mósebók
+Exod	II. Mosebok
+Exod	II. Mosebók
+Exod	II. Mósebok
+Exod	II. Mósebók
+Exod	2. Mosebok
+Exod	2. Mosebók
+Exod	2. Mósebok
+Exod	2. Mósebók
+Exod	II Mosebok
+Exod	II Mosebók
+Exod	II Mósebok
+Exod	II Mósebók
+Exod	2 Mosebok
+Exod	2 Mosebók
+Exod	2 Mósebok
+Exod	2 Mósebók
+Exod	II. Mos
+Exod	II. Mós
+Exod	2. Mos
+Exod	2. Mós
+Exod	Exodus
+Exod	II Mos
+Exod	II Mós
+Exod	2 Mos
+Exod	2 Mós
+Exod	2Mós
+Exod	Exod
+Ezek	Esekiel
+Ezek	Esekíel
+Ezek	Ezek
+Ezek	Esk
+Ezra	Esrabok
+Ezra	Esrabók
+Ezra	Ezra
+Ezra	Esr
+Gal	Bref Pals til Galatamanna
+Gal	Bref Páls til Galatamanna
+Gal	Bréf Pals til Galatamanna
+Gal	Bréf Páls til Galatamanna
+Gal	Galatabrefið
+Gal	Galatabréfið
+Gal	Gal
+Gen	Fyrsta bok Mose
+Gen	Fyrsta bok Móse
+Gen	Fyrsta bók Mose
+Gen	Fyrsta bók Móse
+Gen	Fyrsta Mosebok
+Gen	Fyrsta Mosebók
+Gen	Fyrsta Mósebok
+Gen	Fyrsta Mósebók
+Gen	1. Mosebok
+Gen	1. Mosebók
+Gen	1. Mósebok
+Gen	1. Mósebók
+Gen	I. Mosebok
+Gen	I. Mosebók
+Gen	I. Mósebok
+Gen	I. Mósebók
+Gen	1 Mosebok
+Gen	1 Mosebók
+Gen	1 Mósebok
+Gen	1 Mósebók
+Gen	I Mosebok
+Gen	I Mosebók
+Gen	I Mósebok
+Gen	I Mósebók
+Gen	Genesis
+Gen	1. Mos
+Gen	1. Mós
+Gen	I. Mos
+Gen	I. Mós
+Gen	1 Mos
+Gen	1 Mós
+Gen	I Mos
+Gen	I Mós
+Gen	1Mós
+Gen	Gen
+GkEsth	Esterarbok hin griska
+GkEsth	Esterarbok hin gríska
+GkEsth	Esterarbók hin griska
+GkEsth	Esterarbók hin gríska
+GkEsth	GkEsth
+Hab	Habakkuk
+Hab	Hab
+Hag	Haggai
+Hag	Haggaí
+Hag	Hag
+Heb	Brefið til Hebrea
+Heb	Bréfið til Hebrea
+Heb	Hebreabrefið
+Heb	Hebreabréfið
+Heb	Heb
+Hos	Hosea
+Hos	Hósea
+Hos	Hos
+Hos	Hós
+Isa	Jesaja
+Isa	Isa
+Isa	Jes
+Jas	Hið almenna bref Jakobs
+Jas	Hið almenna bréf Jakobs
+Jas	Jakobsbrefið
+Jas	Jakobsbréfið
+Jas	Jak
+Jas	Jas
+Jdt	Juditarbok
+Jdt	Juditarbók
+Jdt	Judítarbok
+Jdt	Judítarbók
+Jdt	Júditarbok
+Jdt	Júditarbók
+Jdt	Júdítarbok
+Jdt	Júdítarbók
+Jdt	Judt
+Jdt	Júdt
+Jdt	Jdt
+Jer	Jeremia
+Jer	Jeremía
+Jer	Jer
+Job	Jobsbok
+Job	Jobsbók
+Job	Job
+Joel	Joel
+Joel	Jóel
+Joel	Jl
+John	Johannesarguðspjall
+John	Jóhannesarguðspjall
+John	John
+John	Joh
+John	Jóh
+Jonah	Jonah
+Jonah	Jonas
+Jonah	Jónas
+Jonah	Jon
+Jonah	Jón
+Josh	Josuabok
+Josh	Josuabók
+Josh	Josúabok
+Josh	Josúabók
+Josh	Jósuabok
+Josh	Jósuabók
+Josh	Jósúabok
+Josh	Jósúabók
+Josh	Josh
+Josh	Jos
+Josh	Jós
+Jude	Hið almenna bref Judasar
+Jude	Hið almenna bref Júdasar
+Jude	Hið almenna bréf Judasar
+Jude	Hið almenna bréf Júdasar
+Jude	Judasarbrefið
+Jude	Judasarbréfið
+Jude	Júdasarbrefið
+Jude	Júdasarbréfið
+Jude	Judasarbref
+Jude	Judasarbréf
+Jude	Júdasarbref
+Jude	Júdasarbréf
+Jude	Jude
+Jude	Jud
+Jude	Júd
+Judg	Domarabokin
+Judg	Domarabókin
+Judg	Dómarabokin
+Judg	Dómarabókin
+Judg	Domarabok
+Judg	Domarabók
+Judg	Dómarabok
+Judg	Dómarabók
+Judg	Judg
+Judg	Dom
+Judg	Dóm
+Lam	Harmljoðin
+Lam	Harmljóðin
+Lam	Hlj
+Lam	Lam
+Lev	Þriðja bok Mose
+Lev	Þriðja bok Móse
+Lev	Þriðja bók Mose
+Lev	Þriðja bók Móse
+Lev	Þriðja Mosebok
+Lev	Þriðja Mosebók
+Lev	Þriðja Mósebok
+Lev	Þriðja Mósebók
+Lev	III. Mosebok
+Lev	III. Mosebók
+Lev	III. Mósebok
+Lev	III. Mósebók
+Lev	III Mosebok
+Lev	III Mosebók
+Lev	III Mósebok
+Lev	III Mósebók
+Lev	3. Mosebok
+Lev	3. Mosebók
+Lev	3. Mósebok
+Lev	3. Mósebók
+Lev	3 Mosebok
+Lev	3 Mosebók
+Lev	3 Mósebok
+Lev	3 Mósebók
+Lev	Leviticus
+Lev	III. Mos
+Lev	III. Mós
+Lev	III Mos
+Lev	III Mós
+Lev	3. Mos
+Lev	3. Mós
+Lev	3 Mos
+Lev	3 Mós
+Lev	3Mós
+Lev	Lev
+Luke	Lukasarguðspjall
+Luke	Lúkasarguðspjall
+Luke	Luke
+Luke	Luk
+Luke	Lúk
+Mal	Malaki
+Mal	Malakí
+Mal	Mal
+Mark	Markusarguðspjall
+Mark	Markúsarguðspjall
+Mark	Mark
+Mark	Mrk
+Matt	Matteusarguðspjall
+Matt	Matt
+Mic	Mika
+Mic	Míka
+Mic	Mic
+Mic	Mik
+Mic	Mík
+Nah	Nahum
+Nah	Nahúm
+Nah	Nah
+Neh	Nehemiabok
+Neh	Nehemiabók
+Neh	Nehemíabok
+Neh	Nehemíabók
+Neh	Neh
+Num	Fjorða bok Mose
+Num	Fjorða bok Móse
+Num	Fjorða bók Mose
+Num	Fjorða bók Móse
+Num	Fjórða bok Mose
+Num	Fjórða bok Móse
+Num	Fjórða bók Mose
+Num	Fjórða bók Móse
+Num	Fjorða Mosebok
+Num	Fjorða Mosebók
+Num	Fjorða Mósebok
+Num	Fjorða Mósebók
+Num	Fjórða Mosebok
+Num	Fjórða Mosebók
+Num	Fjórða Mósebok
+Num	Fjórða Mósebók
+Num	IV. Mosebok
+Num	IV. Mosebók
+Num	IV. Mósebok
+Num	IV. Mósebók
+Num	4. Mosebok
+Num	4. Mosebók
+Num	4. Mósebok
+Num	4. Mósebók
+Num	IV Mosebok
+Num	IV Mosebók
+Num	IV Mósebok
+Num	IV Mósebók
+Num	4 Mosebok
+Num	4 Mosebók
+Num	4 Mósebok
+Num	4 Mósebók
+Num	IV. Mos
+Num	IV. Mós
+Num	4. Mos
+Num	4. Mós
+Num	IV Mos
+Num	IV Mós
+Num	Numeri
+Num	4 Mos
+Num	4 Mós
+Num	4Mós
+Num	Num
+Obad	Obadia
+Obad	Obadía
+Obad	Óbadia
+Obad	Óbadía
+Obad	Obad
+Obad	Ob
+Obad	Ób
+Phil	Bref Pals til Filippimanna
+Phil	Bref Pals til Filippímanna
+Phil	Bref Páls til Filippimanna
+Phil	Bref Páls til Filippímanna
+Phil	Bréf Pals til Filippimanna
+Phil	Bréf Pals til Filippímanna
+Phil	Bréf Páls til Filippimanna
+Phil	Bréf Páls til Filippímanna
+Phil	Bref Pals til Filippimann
+Phil	Bref Pals til Filippímann
+Phil	Bref Páls til Filippimann
+Phil	Bref Páls til Filippímann
+Phil	Bréf Pals til Filippimann
+Phil	Bréf Pals til Filippímann
+Phil	Bréf Páls til Filippimann
+Phil	Bréf Páls til Filippímann
+Phil	Filippibrefið
+Phil	Filippibréfið
+Phil	Filippíbrefið
+Phil	Filippíbréfið
+Phil	Phil
+Phil	Fil
+Phlm	Bref Pals til Filemons
+Phlm	Bref Pals til Fílemons
+Phlm	Bref Páls til Filemons
+Phlm	Bref Páls til Fílemons
+Phlm	Bréf Pals til Filemons
+Phlm	Bréf Pals til Fílemons
+Phlm	Bréf Páls til Filemons
+Phlm	Bréf Páls til Fílemons
+Phlm	Filemonsbrefið
+Phlm	Filemonsbréfið
+Phlm	Fílemonsbrefið
+Phlm	Fílemonsbréfið
+Phlm	Film
+Phlm	Fílm
+Phlm	Phlm
+PrAzar	Bæn Asarja
+PrAzar	PrAzar
+PrMan	Bæn Manasse
+PrMan	PrMan
+PrMan	BMn
+Prov	Orðskviðirnir
+Prov	Prov
+Prov	Okv
+Ps	Salmarnir
+Ps	Sálmarnir
+Ps	Slm
+Ps	Ps
+Rev	Opinberunarbok Johannesar
+Rev	Opinberunarbok Jóhannesar
+Rev	Opinberunarbók Johannesar
+Rev	Opinberunarbók Jóhannesar
+Rev	Opinberun Johannesar
+Rev	Opinberun Jóhannesar
+Rev	Opinberunarbokin
+Rev	Opinberunarbókin
+Rev	Opb
+Rev	Rev
+Rom	Bref Pals til Romverja
+Rom	Bref Pals til Rómverja
+Rom	Bref Páls til Romverja
+Rom	Bref Páls til Rómverja
+Rom	Bréf Pals til Romverja
+Rom	Bréf Pals til Rómverja
+Rom	Bréf Páls til Romverja
+Rom	Bréf Páls til Rómverja
+Rom	Romverjabrefið
+Rom	Romverjabréfið
+Rom	Rómverjabrefið
+Rom	Rómverjabréfið
+Rom	Rom
+Rom	Róm
+Ruth	Rutarbok
+Ruth	Rutarbók
+Ruth	Ruth
+Ruth	Rut
+SgThree	Lofsongur ungmennanna þriggja
+SgThree	Lofsöngur ungmennanna þriggja
+SgThree	SgThree
+Sir	Siraksbok
+Sir	Siraksbók
+Sir	Síraksbok
+Sir	Síraksbók
+Sir	Sir
+Sir	Sír
+Song	Ljoðaljoðin
+Song	Ljoðaljóðin
+Song	Ljóðaljoðin
+Song	Ljóðaljóðin
+Song	Song
+Song	Ljl
+Sus	Susanna
+Sus	Súsanna
+Sus	Sus
+Titus	Bref Pals til Titusar
+Titus	Bref Pals til Títusar
+Titus	Bref Páls til Titusar
+Titus	Bref Páls til Títusar
+Titus	Bréf Pals til Titusar
+Titus	Bréf Pals til Títusar
+Titus	Bréf Páls til Titusar
+Titus	Bréf Páls til Títusar
+Titus	Titusarbrefið
+Titus	Titusarbréfið
+Titus	Títusarbrefið
+Titus	Títusarbréfið
+Titus	Titusarbref
+Titus	Titusarbréf
+Titus	Títusarbref
+Titus	Títusarbréf
+Titus	Titus
+Titus	Tit
+Titus	Tít
+Tob	Tobitsbok
+Tob	Tobitsbók
+Tob	Tobítsbok
+Tob	Tobítsbók
+Tob	Tóbitsbok
+Tob	Tóbitsbók
+Tob	Tóbítsbok
+Tob	Tóbítsbók
+Tob	Tob
+Wis	Speki Salomons
+Wis	Speki Salómons
+Wis	SSal
+Wis	Wis
+Zech	Sakaria
+Zech	Sakaría
+Zech	Zech
+Zech	Sak
+Zeph	Sefania
+Zeph	Sefanía
+Zeph	Zeph
+Zeph	Sef

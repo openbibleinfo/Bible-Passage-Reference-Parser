@@ -1,0 +1,2039 @@
+1Chr	Prva kniha Paralipomenon
+1Chr	Prvá kniha Paralipomenon
+1Chr	Prvy list Paralipomenon
+1Chr	Prvý list Paralipomenon
+1Chr	Prva kniha Kronicka
+1Chr	Prva kniha Kronická
+1Chr	Prvá kniha Kronicka
+1Chr	Prvá kniha Kronická
+1Chr	1 k. Paralipomenon
+1Chr	Prva Paralipomenon
+1Chr	Prvy Paralipomenon
+1Chr	Prvy list Kronicka
+1Chr	Prvy list Kronická
+1Chr	Prvá Paralipomenon
+1Chr	Prvý Paralipomenon
+1Chr	Prvý list Kronicka
+1Chr	Prvý list Kronická
+1Chr	1 k Paralipomenon
+1Chr	Prva kniha Kronik
+1Chr	Prva kniha Kroník
+1Chr	Prvá kniha Kronik
+1Chr	Prvá kniha Kroník
+1Chr	1. Paralipomenon
+1Chr	I. Paralipomenon
+1Chr	Prvy list Kronik
+1Chr	Prvy list Kroník
+1Chr	Prvý list Kronik
+1Chr	Prvý list Kroník
+1Chr	1 Paralipomenon
+1Chr	I Paralipomenon
+1Chr	1 k. Kronicka
+1Chr	1 k. Kronická
+1Chr	Prva Kronicka
+1Chr	Prva Kronická
+1Chr	Prvy Kronicka
+1Chr	Prvy Kronická
+1Chr	Prvá Kronicka
+1Chr	Prvá Kronická
+1Chr	Prvý Kronicka
+1Chr	Prvý Kronická
+1Chr	1 k Kronicka
+1Chr	1 k Kronická
+1Chr	1 k. Kronik
+1Chr	1 k. Kroník
+1Chr	1. Kronicka
+1Chr	1. Kronická
+1Chr	I. Kronicka
+1Chr	I. Kronická
+1Chr	Prva Kronik
+1Chr	Prva Kroník
+1Chr	Prvy Kronik
+1Chr	Prvy Kroník
+1Chr	Prvá Kronik
+1Chr	Prvá Kroník
+1Chr	Prvý Kronik
+1Chr	Prvý Kroník
+1Chr	1 Kronicka
+1Chr	1 Kronická
+1Chr	1 k Kronik
+1Chr	1 k Kroník
+1Chr	I Kronicka
+1Chr	I Kronická
+1Chr	1. Kronik
+1Chr	1. Kroník
+1Chr	I. Kronik
+1Chr	I. Kroník
+1Chr	1 Kronik
+1Chr	1 Kroník
+1Chr	I Kronik
+1Chr	I Kroník
+1Chr	1 Kron
+1Chr	1 Krn
+1Chr	1Chr
+1Cor	Prva kniha Korintanom
+1Cor	Prva kniha Korintskym
+1Cor	Prva kniha Korintským
+1Cor	Prva kniha Korinťanom
+1Cor	Prvá kniha Korintanom
+1Cor	Prvá kniha Korintskym
+1Cor	Prvá kniha Korintským
+1Cor	Prvá kniha Korinťanom
+1Cor	Prvy list Korintanom
+1Cor	Prvy list Korintskym
+1Cor	Prvy list Korintským
+1Cor	Prvy list Korinťanom
+1Cor	Prvý list Korintanom
+1Cor	Prvý list Korintskym
+1Cor	Prvý list Korintským
+1Cor	Prvý list Korinťanom
+1Cor	1 k. Korintanom
+1Cor	1 k. Korintskym
+1Cor	1 k. Korintským
+1Cor	1 k. Korinťanom
+1Cor	Prva Korintanom
+1Cor	Prva Korintskym
+1Cor	Prva Korintským
+1Cor	Prva Korinťanom
+1Cor	Prvy Korintanom
+1Cor	Prvy Korintskym
+1Cor	Prvy Korintským
+1Cor	Prvy Korinťanom
+1Cor	Prvá Korintanom
+1Cor	Prvá Korintskym
+1Cor	Prvá Korintským
+1Cor	Prvá Korinťanom
+1Cor	Prvý Korintanom
+1Cor	Prvý Korintskym
+1Cor	Prvý Korintským
+1Cor	Prvý Korinťanom
+1Cor	1 k Korintanom
+1Cor	1 k Korintskym
+1Cor	1 k Korintským
+1Cor	1 k Korinťanom
+1Cor	1. Korintanom
+1Cor	1. Korintskym
+1Cor	1. Korintským
+1Cor	1. Korinťanom
+1Cor	I. Korintanom
+1Cor	I. Korintskym
+1Cor	I. Korintským
+1Cor	I. Korinťanom
+1Cor	1 Korintanom
+1Cor	1 Korintskym
+1Cor	1 Korintským
+1Cor	1 Korinťanom
+1Cor	I Korintanom
+1Cor	I Korintskym
+1Cor	I Korintským
+1Cor	I Korinťanom
+1Cor	1 Kor
+1Cor	1Cor
+1Esd	Prva kniha Ezdrasova
+1Esd	Prva kniha Ezdrašova
+1Esd	Prva kniha Ezdrásova
+1Esd	Prva kniha Ezdrášova
+1Esd	Prvá kniha Ezdrasova
+1Esd	Prvá kniha Ezdrašova
+1Esd	Prvá kniha Ezdrásova
+1Esd	Prvá kniha Ezdrášova
+1Esd	Prvy list Ezdrasova
+1Esd	Prvy list Ezdrašova
+1Esd	Prvy list Ezdrásova
+1Esd	Prvy list Ezdrášova
+1Esd	Prvý list Ezdrasova
+1Esd	Prvý list Ezdrašova
+1Esd	Prvý list Ezdrásova
+1Esd	Prvý list Ezdrášova
+1Esd	Prva kniha Ezdras
+1Esd	Prva kniha Ezdraš
+1Esd	Prva kniha Ezdrás
+1Esd	Prva kniha Ezdráš
+1Esd	Prvá kniha Ezdras
+1Esd	Prvá kniha Ezdraš
+1Esd	Prvá kniha Ezdrás
+1Esd	Prvá kniha Ezdráš
+1Esd	Prvy list Ezdras
+1Esd	Prvy list Ezdraš
+1Esd	Prvy list Ezdrás
+1Esd	Prvy list Ezdráš
+1Esd	Prvý list Ezdras
+1Esd	Prvý list Ezdraš
+1Esd	Prvý list Ezdrás
+1Esd	Prvý list Ezdráš
+1Esd	1 k. Ezdrasova
+1Esd	1 k. Ezdrašova
+1Esd	1 k. Ezdrásova
+1Esd	1 k. Ezdrášova
+1Esd	Prva Ezdrasova
+1Esd	Prva Ezdrašova
+1Esd	Prva Ezdrásova
+1Esd	Prva Ezdrášova
+1Esd	Prvy Ezdrasova
+1Esd	Prvy Ezdrašova
+1Esd	Prvy Ezdrásova
+1Esd	Prvy Ezdrášova
+1Esd	Prvá Ezdrasova
+1Esd	Prvá Ezdrašova
+1Esd	Prvá Ezdrásova
+1Esd	Prvá Ezdrášova
+1Esd	Prvý Ezdrasova
+1Esd	Prvý Ezdrašova
+1Esd	Prvý Ezdrásova
+1Esd	Prvý Ezdrášova
+1Esd	1 k Ezdrasova
+1Esd	1 k Ezdrašova
+1Esd	1 k Ezdrásova
+1Esd	1 k Ezdrášova
+1Esd	1. Ezdrasova
+1Esd	1. Ezdrašova
+1Esd	1. Ezdrásova
+1Esd	1. Ezdrášova
+1Esd	I. Ezdrasova
+1Esd	I. Ezdrašova
+1Esd	I. Ezdrásova
+1Esd	I. Ezdrášova
+1Esd	1 Ezdrasova
+1Esd	1 Ezdrašova
+1Esd	1 Ezdrásova
+1Esd	1 Ezdrášova
+1Esd	1 k. Ezdras
+1Esd	1 k. Ezdraš
+1Esd	1 k. Ezdrás
+1Esd	1 k. Ezdráš
+1Esd	I Ezdrasova
+1Esd	I Ezdrašova
+1Esd	I Ezdrásova
+1Esd	I Ezdrášova
+1Esd	Prva Ezdras
+1Esd	Prva Ezdraš
+1Esd	Prva Ezdrás
+1Esd	Prva Ezdráš
+1Esd	Prvy Ezdras
+1Esd	Prvy Ezdraš
+1Esd	Prvy Ezdrás
+1Esd	Prvy Ezdráš
+1Esd	Prvá Ezdras
+1Esd	Prvá Ezdraš
+1Esd	Prvá Ezdrás
+1Esd	Prvá Ezdráš
+1Esd	Prvý Ezdras
+1Esd	Prvý Ezdraš
+1Esd	Prvý Ezdrás
+1Esd	Prvý Ezdráš
+1Esd	1 k Ezdras
+1Esd	1 k Ezdraš
+1Esd	1 k Ezdrás
+1Esd	1 k Ezdráš
+1Esd	1. Ezdras
+1Esd	1. Ezdraš
+1Esd	1. Ezdrás
+1Esd	1. Ezdráš
+1Esd	I. Ezdras
+1Esd	I. Ezdraš
+1Esd	I. Ezdrás
+1Esd	I. Ezdráš
+1Esd	1 Ezdras
+1Esd	1 Ezdraš
+1Esd	1 Ezdrás
+1Esd	1 Ezdráš
+1Esd	I Ezdras
+1Esd	I Ezdraš
+1Esd	I Ezdrás
+1Esd	I Ezdráš
+1Esd	1Esd
+1John	Prva kniha Janov
+1John	Prva kniha Jánov
+1John	Prvá kniha Janov
+1John	Prvá kniha Jánov
+1John	Prvy Janov list
+1John	Prvy Jánov list
+1John	Prvy list Janov
+1John	Prvy list Jánov
+1John	Prvý Janov list
+1John	Prvý Jánov list
+1John	Prvý list Janov
+1John	Prvý list Jánov
+1John	1 k. Janov
+1John	1 k. Jánov
+1John	Prva Janov
+1John	Prva Jánov
+1John	Prvy Janov
+1John	Prvy Jánov
+1John	Prvá Janov
+1John	Prvá Jánov
+1John	Prvý Janov
+1John	Prvý Jánov
+1John	1 k Janov
+1John	1 k Jánov
+1John	1. Janov
+1John	1. Jánov
+1John	I. Janov
+1John	I. Jánov
+1John	1 Janov
+1John	1 Jánov
+1John	I Janov
+1John	I Jánov
+1John	1John
+1John	1 Jn
+1John	1 J
+1Kgs	Tretia kniha Kralov
+1Kgs	Tretia kniha Kraľov
+1Kgs	Tretia kniha Králov
+1Kgs	Tretia kniha Kráľov
+1Kgs	Prva kniha Kralov
+1Kgs	Prva kniha Kraľov
+1Kgs	Prva kniha Králov
+1Kgs	Prva kniha Kráľov
+1Kgs	Prvá kniha Kralov
+1Kgs	Prvá kniha Kraľov
+1Kgs	Prvá kniha Králov
+1Kgs	Prvá kniha Kráľov
+1Kgs	Prvy list Kralov
+1Kgs	Prvy list Kraľov
+1Kgs	Prvy list Králov
+1Kgs	Prvy list Kráľov
+1Kgs	Prvý list Kralov
+1Kgs	Prvý list Kraľov
+1Kgs	Prvý list Králov
+1Kgs	Prvý list Kráľov
+1Kgs	Tretia Kralov
+1Kgs	Tretia Kraľov
+1Kgs	Tretia Králov
+1Kgs	Tretia Kráľov
+1Kgs	Treti Kralov
+1Kgs	Treti Kraľov
+1Kgs	Treti Králov
+1Kgs	Treti Kráľov
+1Kgs	Tretí Kralov
+1Kgs	Tretí Kraľov
+1Kgs	Tretí Králov
+1Kgs	Tretí Kráľov
+1Kgs	1 k. Kralov
+1Kgs	1 k. Kraľov
+1Kgs	1 k. Králov
+1Kgs	1 k. Kráľov
+1Kgs	3 k. Kralov
+1Kgs	3 k. Kraľov
+1Kgs	3 k. Králov
+1Kgs	3 k. Kráľov
+1Kgs	III. Kralov
+1Kgs	III. Kraľov
+1Kgs	III. Králov
+1Kgs	III. Kráľov
+1Kgs	Prva Kralov
+1Kgs	Prva Kraľov
+1Kgs	Prva Králov
+1Kgs	Prva Kráľov
+1Kgs	Prvy Kralov
+1Kgs	Prvy Kraľov
+1Kgs	Prvy Králov
+1Kgs	Prvy Kráľov
+1Kgs	Prvá Kralov
+1Kgs	Prvá Kraľov
+1Kgs	Prvá Králov
+1Kgs	Prvá Kráľov
+1Kgs	Prvý Kralov
+1Kgs	Prvý Kraľov
+1Kgs	Prvý Králov
+1Kgs	Prvý Kráľov
+1Kgs	1 k Kralov
+1Kgs	1 k Kraľov
+1Kgs	1 k Králov
+1Kgs	1 k Kráľov
+1Kgs	3 k Kralov
+1Kgs	3 k Kraľov
+1Kgs	3 k Králov
+1Kgs	3 k Kráľov
+1Kgs	III Kralov
+1Kgs	III Kraľov
+1Kgs	III Králov
+1Kgs	III Kráľov
+1Kgs	1. Kralov
+1Kgs	1. Kraľov
+1Kgs	1. Králov
+1Kgs	1. Kráľov
+1Kgs	3. Kralov
+1Kgs	3. Kraľov
+1Kgs	3. Králov
+1Kgs	3. Kráľov
+1Kgs	I. Kralov
+1Kgs	I. Kraľov
+1Kgs	I. Králov
+1Kgs	I. Kráľov
+1Kgs	1 Kralov
+1Kgs	1 Kraľov
+1Kgs	1 Králov
+1Kgs	1 Kráľov
+1Kgs	3 Kralov
+1Kgs	3 Kraľov
+1Kgs	3 Králov
+1Kgs	3 Kráľov
+1Kgs	I Kralov
+1Kgs	I Kraľov
+1Kgs	I Králov
+1Kgs	I Kráľov
+1Kgs	1 Krl
+1Kgs	1 Krľ
+1Kgs	1 Kr
+1Kgs	1Kgs
+1Macc	Prva kniha Machabejcov
+1Macc	Prvá kniha Machabejcov
+1Macc	Prvy list Machabejcov
+1Macc	Prvý list Machabejcov
+1Macc	1 k. Machabejcov
+1Macc	Prva Machabejcov
+1Macc	Prvy Machabejcov
+1Macc	Prvá Machabejcov
+1Macc	Prvý Machabejcov
+1Macc	1 k Machabejcov
+1Macc	Prva Makabejcov
+1Macc	Prvá Makabejcov
+1Macc	1. Machabejcov
+1Macc	I. Machabejcov
+1Macc	1 Machabejcov
+1Macc	I Machabejcov
+1Macc	1 Mach
+1Macc	1 Mak
+1Macc	1Macc
+1Pet	Prva kniha Petrov
+1Pet	Prvá kniha Petrov
+1Pet	Prvy Petrov list
+1Pet	Prvy list Petrov
+1Pet	Prvý Petrov list
+1Pet	Prvý list Petrov
+1Pet	1 k. Petrov
+1Pet	Prva Petrov
+1Pet	Prvy Petrov
+1Pet	Prvá Petrov
+1Pet	Prvý Petrov
+1Pet	1 k Petrov
+1Pet	1. Petrov
+1Pet	I. Petrov
+1Pet	1 Petrov
+1Pet	I Petrov
+1Pet	1 Pt
+1Pet	1Pet
+1Sam	Prva kniha Samuelova
+1Sam	Prvá kniha Samuelova
+1Sam	Prvy list Samuelova
+1Sam	Prvý list Samuelova
+1Sam	1 k. Samuelova
+1Sam	Prva Samuelova
+1Sam	Prvy Samuelova
+1Sam	Prvá Samuelova
+1Sam	Prvý Samuelova
+1Sam	1 k Samuelova
+1Sam	1. Samuelova
+1Sam	I. Samuelova
+1Sam	1 Samuelova
+1Sam	I Samuelova
+1Sam	1 Sam
+1Sam	1Sam
+1Sam	1 S
+1Thess	Prva kniha Tesalonicanom
+1Thess	Prva kniha Tesaloničanom
+1Thess	Prvá kniha Tesalonicanom
+1Thess	Prvá kniha Tesaloničanom
+1Thess	Prva kniha Tesalonickym
+1Thess	Prva kniha Tesalonickým
+1Thess	Prvy list Tesalonicanom
+1Thess	Prvy list Tesaloničanom
+1Thess	Prvá kniha Tesalonickym
+1Thess	Prvá kniha Tesalonickým
+1Thess	Prvý list Tesalonicanom
+1Thess	Prvý list Tesaloničanom
+1Thess	Prvy list Tesalonickym
+1Thess	Prvy list Tesalonickým
+1Thess	Prvý list Tesalonickym
+1Thess	Prvý list Tesalonickým
+1Thess	Prva kniha Soluncanom
+1Thess	Prva kniha Solunčanom
+1Thess	Prva kniha Solúncanom
+1Thess	Prva kniha Solúnčanom
+1Thess	Prvá kniha Soluncanom
+1Thess	Prvá kniha Solunčanom
+1Thess	Prvá kniha Solúncanom
+1Thess	Prvá kniha Solúnčanom
+1Thess	Prva kniha Solunskym
+1Thess	Prva kniha Solúnskym
+1Thess	Prvy list Soluncanom
+1Thess	Prvy list Solunčanom
+1Thess	Prvy list Solúncanom
+1Thess	Prvy list Solúnčanom
+1Thess	Prvá kniha Solunskym
+1Thess	Prvá kniha Solúnskym
+1Thess	Prvý list Soluncanom
+1Thess	Prvý list Solunčanom
+1Thess	Prvý list Solúncanom
+1Thess	Prvý list Solúnčanom
+1Thess	Prvy list Solunskym
+1Thess	Prvy list Solúnskym
+1Thess	Prvý list Solunskym
+1Thess	Prvý list Solúnskym
+1Thess	1 k. Tesalonicanom
+1Thess	1 k. Tesaloničanom
+1Thess	Prva Tesalonicanom
+1Thess	Prva Tesaloničanom
+1Thess	Prvy Tesalonicanom
+1Thess	Prvy Tesaloničanom
+1Thess	Prvá Tesalonicanom
+1Thess	Prvá Tesaloničanom
+1Thess	Prvý Tesalonicanom
+1Thess	Prvý Tesaloničanom
+1Thess	1 k Tesalonicanom
+1Thess	1 k Tesaloničanom
+1Thess	1 k. Tesalonickym
+1Thess	1 k. Tesalonickým
+1Thess	Prva Tesalonickym
+1Thess	Prva Tesalonickým
+1Thess	Prvy Tesalonickym
+1Thess	Prvy Tesalonickým
+1Thess	Prvá Tesalonickym
+1Thess	Prvá Tesalonickým
+1Thess	Prvý Tesalonickym
+1Thess	Prvý Tesalonickým
+1Thess	1 k Tesalonickym
+1Thess	1 k Tesalonickým
+1Thess	1. Tesalonicanom
+1Thess	1. Tesaloničanom
+1Thess	I. Tesalonicanom
+1Thess	I. Tesaloničanom
+1Thess	1 Tesalonicanom
+1Thess	1 Tesaloničanom
+1Thess	1 k. Soluncanom
+1Thess	1 k. Solunčanom
+1Thess	1 k. Solúncanom
+1Thess	1 k. Solúnčanom
+1Thess	1. Tesalonickym
+1Thess	1. Tesalonickým
+1Thess	I Tesalonicanom
+1Thess	I Tesaloničanom
+1Thess	I. Tesalonickym
+1Thess	I. Tesalonickým
+1Thess	Prva Soluncanom
+1Thess	Prva Solunčanom
+1Thess	Prva Solúncanom
+1Thess	Prva Solúnčanom
+1Thess	Prvy Soluncanom
+1Thess	Prvy Solunčanom
+1Thess	Prvy Solúncanom
+1Thess	Prvy Solúnčanom
+1Thess	Prvá Soluncanom
+1Thess	Prvá Solunčanom
+1Thess	Prvá Solúncanom
+1Thess	Prvá Solúnčanom
+1Thess	Prvý Soluncanom
+1Thess	Prvý Solunčanom
+1Thess	Prvý Solúncanom
+1Thess	Prvý Solúnčanom
+1Thess	1 Tesalonickym
+1Thess	1 Tesalonickým
+1Thess	1 k Soluncanom
+1Thess	1 k Solunčanom
+1Thess	1 k Solúncanom
+1Thess	1 k Solúnčanom
+1Thess	1 k. Solunskym
+1Thess	1 k. Solúnskym
+1Thess	I Tesalonickym
+1Thess	I Tesalonickým
+1Thess	Prva Solunskym
+1Thess	Prva Solúnskym
+1Thess	Prvy Solunskym
+1Thess	Prvy Solúnskym
+1Thess	Prvá Solunskym
+1Thess	Prvá Solúnskym
+1Thess	Prvý Solunskym
+1Thess	Prvý Solúnskym
+1Thess	1 k Solunskym
+1Thess	1 k Solúnskym
+1Thess	1. Soluncanom
+1Thess	1. Solunčanom
+1Thess	1. Solúncanom
+1Thess	1. Solúnčanom
+1Thess	I. Soluncanom
+1Thess	I. Solunčanom
+1Thess	I. Solúncanom
+1Thess	I. Solúnčanom
+1Thess	1 Soluncanom
+1Thess	1 Solunčanom
+1Thess	1 Solúncanom
+1Thess	1 Solúnčanom
+1Thess	1. Solunskym
+1Thess	1. Solúnskym
+1Thess	I Soluncanom
+1Thess	I Solunčanom
+1Thess	I Solúncanom
+1Thess	I Solúnčanom
+1Thess	I. Solunskym
+1Thess	I. Solúnskym
+1Thess	1 Solunskym
+1Thess	1 Solúnskym
+1Thess	I Solunskym
+1Thess	I Solúnskym
+1Thess	1Thess
+1Thess	1 Sol
+1Thess	1 Tes
+1Tim	Prva kniha Timotejovi
+1Tim	Prvá kniha Timotejovi
+1Tim	Prva kniha Timoteovi
+1Tim	Prvy list Timotejovi
+1Tim	Prvá kniha Timoteovi
+1Tim	Prvý list Timotejovi
+1Tim	Prvy list Timoteovi
+1Tim	Prvý list Timoteovi
+1Tim	1 k. Timotejovi
+1Tim	Prva Timotejovi
+1Tim	Prvy Timotejovi
+1Tim	Prvá Timotejovi
+1Tim	Prvý Timotejovi
+1Tim	1 k Timotejovi
+1Tim	1 k. Timoteovi
+1Tim	Prva Timoteovi
+1Tim	Prvy Timoteovi
+1Tim	Prvá Timoteovi
+1Tim	Prvý Timoteovi
+1Tim	1 k Timoteovi
+1Tim	1. Timotejovi
+1Tim	I. Timotejovi
+1Tim	1 Timotejovi
+1Tim	1. Timoteovi
+1Tim	I Timotejovi
+1Tim	I. Timoteovi
+1Tim	1 Timoteovi
+1Tim	I Timoteovi
+1Tim	1 Tim
+1Tim	1Tim
+2Chr	Druha kniha Paralipomenon
+2Chr	Druhá kniha Paralipomenon
+2Chr	Druhy list Paralipomenon
+2Chr	Druhý list Paralipomenon
+2Chr	Druha kniha Kronicka
+2Chr	Druha kniha Kronická
+2Chr	Druhá kniha Kronicka
+2Chr	Druhá kniha Kronická
+2Chr	Druha Paralipomenon
+2Chr	Druhy Paralipomenon
+2Chr	Druhy list Kronicka
+2Chr	Druhy list Kronická
+2Chr	Druhá Paralipomenon
+2Chr	Druhý Paralipomenon
+2Chr	Druhý list Kronicka
+2Chr	Druhý list Kronická
+2Chr	2 k. Paralipomenon
+2Chr	Druha kniha Kronik
+2Chr	Druha kniha Kroník
+2Chr	Druhá kniha Kronik
+2Chr	Druhá kniha Kroník
+2Chr	2 k Paralipomenon
+2Chr	Druhy list Kronik
+2Chr	Druhy list Kroník
+2Chr	Druhý list Kronik
+2Chr	Druhý list Kroník
+2Chr	II. Paralipomenon
+2Chr	2. Paralipomenon
+2Chr	II Paralipomenon
+2Chr	2 Paralipomenon
+2Chr	Druha Kronicka
+2Chr	Druha Kronická
+2Chr	Druhy Kronicka
+2Chr	Druhy Kronická
+2Chr	Druhá Kronicka
+2Chr	Druhá Kronická
+2Chr	Druhý Kronicka
+2Chr	Druhý Kronická
+2Chr	2 k. Kronicka
+2Chr	2 k. Kronická
+2Chr	2 k Kronicka
+2Chr	2 k Kronická
+2Chr	Druha Kronik
+2Chr	Druha Kroník
+2Chr	Druhy Kronik
+2Chr	Druhy Kroník
+2Chr	Druhá Kronik
+2Chr	Druhá Kroník
+2Chr	Druhý Kronik
+2Chr	Druhý Kroník
+2Chr	II. Kronicka
+2Chr	II. Kronická
+2Chr	2 k. Kronik
+2Chr	2 k. Kroník
+2Chr	2. Kronicka
+2Chr	2. Kronická
+2Chr	II Kronicka
+2Chr	II Kronická
+2Chr	2 Kronicka
+2Chr	2 Kronická
+2Chr	2 k Kronik
+2Chr	2 k Kroník
+2Chr	II. Kronik
+2Chr	II. Kroník
+2Chr	2. Kronik
+2Chr	2. Kroník
+2Chr	II Kronik
+2Chr	II Kroník
+2Chr	2 Kronik
+2Chr	2 Kroník
+2Chr	2 Kron
+2Chr	2 Krn
+2Chr	2Chr
+2Cor	Druha kniha Korintanom
+2Cor	Druha kniha Korintskym
+2Cor	Druha kniha Korintským
+2Cor	Druha kniha Korinťanom
+2Cor	Druhá kniha Korintanom
+2Cor	Druhá kniha Korintskym
+2Cor	Druhá kniha Korintským
+2Cor	Druhá kniha Korinťanom
+2Cor	Druhy list Korintanom
+2Cor	Druhy list Korintskym
+2Cor	Druhy list Korintským
+2Cor	Druhy list Korinťanom
+2Cor	Druhý list Korintanom
+2Cor	Druhý list Korintskym
+2Cor	Druhý list Korintským
+2Cor	Druhý list Korinťanom
+2Cor	Druha Korintanom
+2Cor	Druha Korintskym
+2Cor	Druha Korintským
+2Cor	Druha Korinťanom
+2Cor	Druhy Korintanom
+2Cor	Druhy Korintskym
+2Cor	Druhy Korintským
+2Cor	Druhy Korinťanom
+2Cor	Druhá Korintanom
+2Cor	Druhá Korintskym
+2Cor	Druhá Korintským
+2Cor	Druhá Korinťanom
+2Cor	Druhý Korintanom
+2Cor	Druhý Korintskym
+2Cor	Druhý Korintským
+2Cor	Druhý Korinťanom
+2Cor	2 k. Korintanom
+2Cor	2 k. Korintskym
+2Cor	2 k. Korintským
+2Cor	2 k. Korinťanom
+2Cor	2 k Korintanom
+2Cor	2 k Korintskym
+2Cor	2 k Korintským
+2Cor	2 k Korinťanom
+2Cor	II. Korintanom
+2Cor	II. Korintskym
+2Cor	II. Korintským
+2Cor	II. Korinťanom
+2Cor	2. Korintanom
+2Cor	2. Korintskym
+2Cor	2. Korintským
+2Cor	2. Korinťanom
+2Cor	II Korintanom
+2Cor	II Korintskym
+2Cor	II Korintským
+2Cor	II Korinťanom
+2Cor	2 Korintanom
+2Cor	2 Korintskym
+2Cor	2 Korintským
+2Cor	2 Korinťanom
+2Cor	2 Kor
+2Cor	2Cor
+2Esd	Druha kniha Ezdrasova
+2Esd	Druha kniha Ezdrašova
+2Esd	Druha kniha Ezdrásova
+2Esd	Druha kniha Ezdrášova
+2Esd	Druhá kniha Ezdrasova
+2Esd	Druhá kniha Ezdrašova
+2Esd	Druhá kniha Ezdrásova
+2Esd	Druhá kniha Ezdrášova
+2Esd	Druhy list Ezdrasova
+2Esd	Druhy list Ezdrašova
+2Esd	Druhy list Ezdrásova
+2Esd	Druhy list Ezdrášova
+2Esd	Druhý list Ezdrasova
+2Esd	Druhý list Ezdrašova
+2Esd	Druhý list Ezdrásova
+2Esd	Druhý list Ezdrášova
+2Esd	Druha kniha Ezdras
+2Esd	Druha kniha Ezdraš
+2Esd	Druha kniha Ezdrás
+2Esd	Druha kniha Ezdráš
+2Esd	Druhá kniha Ezdras
+2Esd	Druhá kniha Ezdraš
+2Esd	Druhá kniha Ezdrás
+2Esd	Druhá kniha Ezdráš
+2Esd	Druhy list Ezdras
+2Esd	Druhy list Ezdraš
+2Esd	Druhy list Ezdrás
+2Esd	Druhy list Ezdráš
+2Esd	Druhý list Ezdras
+2Esd	Druhý list Ezdraš
+2Esd	Druhý list Ezdrás
+2Esd	Druhý list Ezdráš
+2Esd	Druha Ezdrasova
+2Esd	Druha Ezdrašova
+2Esd	Druha Ezdrásova
+2Esd	Druha Ezdrášova
+2Esd	Druhy Ezdrasova
+2Esd	Druhy Ezdrašova
+2Esd	Druhy Ezdrásova
+2Esd	Druhy Ezdrášova
+2Esd	Druhá Ezdrasova
+2Esd	Druhá Ezdrašova
+2Esd	Druhá Ezdrásova
+2Esd	Druhá Ezdrášova
+2Esd	Druhý Ezdrasova
+2Esd	Druhý Ezdrašova
+2Esd	Druhý Ezdrásova
+2Esd	Druhý Ezdrášova
+2Esd	2 k. Ezdrasova
+2Esd	2 k. Ezdrašova
+2Esd	2 k. Ezdrásova
+2Esd	2 k. Ezdrášova
+2Esd	2 k Ezdrasova
+2Esd	2 k Ezdrašova
+2Esd	2 k Ezdrásova
+2Esd	2 k Ezdrášova
+2Esd	II. Ezdrasova
+2Esd	II. Ezdrašova
+2Esd	II. Ezdrásova
+2Esd	II. Ezdrášova
+2Esd	2. Ezdrasova
+2Esd	2. Ezdrašova
+2Esd	2. Ezdrásova
+2Esd	2. Ezdrášova
+2Esd	Druha Ezdras
+2Esd	Druha Ezdraš
+2Esd	Druha Ezdrás
+2Esd	Druha Ezdráš
+2Esd	Druhy Ezdras
+2Esd	Druhy Ezdraš
+2Esd	Druhy Ezdrás
+2Esd	Druhy Ezdráš
+2Esd	Druhá Ezdras
+2Esd	Druhá Ezdraš
+2Esd	Druhá Ezdrás
+2Esd	Druhá Ezdráš
+2Esd	Druhý Ezdras
+2Esd	Druhý Ezdraš
+2Esd	Druhý Ezdrás
+2Esd	Druhý Ezdráš
+2Esd	II Ezdrasova
+2Esd	II Ezdrašova
+2Esd	II Ezdrásova
+2Esd	II Ezdrášova
+2Esd	2 Ezdrasova
+2Esd	2 Ezdrašova
+2Esd	2 Ezdrásova
+2Esd	2 Ezdrášova
+2Esd	2 k. Ezdras
+2Esd	2 k. Ezdraš
+2Esd	2 k. Ezdrás
+2Esd	2 k. Ezdráš
+2Esd	2 k Ezdras
+2Esd	2 k Ezdraš
+2Esd	2 k Ezdrás
+2Esd	2 k Ezdráš
+2Esd	II. Ezdras
+2Esd	II. Ezdraš
+2Esd	II. Ezdrás
+2Esd	II. Ezdráš
+2Esd	2. Ezdras
+2Esd	2. Ezdraš
+2Esd	2. Ezdrás
+2Esd	2. Ezdráš
+2Esd	II Ezdras
+2Esd	II Ezdraš
+2Esd	II Ezdrás
+2Esd	II Ezdráš
+2Esd	2 Ezdras
+2Esd	2 Ezdraš
+2Esd	2 Ezdrás
+2Esd	2 Ezdráš
+2Esd	2Esd
+2John	Druha kniha Janov
+2John	Druha kniha Jánov
+2John	Druhá kniha Janov
+2John	Druhá kniha Jánov
+2John	Druhy Janov list
+2John	Druhy Jánov list
+2John	Druhy list Janov
+2John	Druhy list Jánov
+2John	Druhý Janov list
+2John	Druhý Jánov list
+2John	Druhý list Janov
+2John	Druhý list Jánov
+2John	Druha Janov
+2John	Druha Jánov
+2John	Druhy Janov
+2John	Druhy Jánov
+2John	Druhá Janov
+2John	Druhá Jánov
+2John	Druhý Janov
+2John	Druhý Jánov
+2John	2 k. Janov
+2John	2 k. Jánov
+2John	2 k Janov
+2John	2 k Jánov
+2John	II. Janov
+2John	II. Jánov
+2John	2. Janov
+2John	2. Jánov
+2John	II Janov
+2John	II Jánov
+2John	2 Janov
+2John	2 Jánov
+2John	2John
+2John	2 Jn
+2John	2 J
+2Kgs	Stvrta kniha Kralov
+2Kgs	Stvrta kniha Kraľov
+2Kgs	Stvrta kniha Králov
+2Kgs	Stvrta kniha Kráľov
+2Kgs	Stvrtá kniha Kralov
+2Kgs	Stvrtá kniha Kraľov
+2Kgs	Stvrtá kniha Králov
+2Kgs	Stvrtá kniha Kráľov
+2Kgs	Štvrta kniha Kralov
+2Kgs	Štvrta kniha Kraľov
+2Kgs	Štvrta kniha Králov
+2Kgs	Štvrta kniha Kráľov
+2Kgs	Štvrtá kniha Kralov
+2Kgs	Štvrtá kniha Kraľov
+2Kgs	Štvrtá kniha Králov
+2Kgs	Štvrtá kniha Kráľov
+2Kgs	Druha kniha Kralov
+2Kgs	Druha kniha Kraľov
+2Kgs	Druha kniha Králov
+2Kgs	Druha kniha Kráľov
+2Kgs	Druhá kniha Kralov
+2Kgs	Druhá kniha Kraľov
+2Kgs	Druhá kniha Králov
+2Kgs	Druhá kniha Kráľov
+2Kgs	Druhy list Kralov
+2Kgs	Druhy list Kraľov
+2Kgs	Druhy list Králov
+2Kgs	Druhy list Kráľov
+2Kgs	Druhý list Kralov
+2Kgs	Druhý list Kraľov
+2Kgs	Druhý list Králov
+2Kgs	Druhý list Kráľov
+2Kgs	Stvrta Kralov
+2Kgs	Stvrta Kraľov
+2Kgs	Stvrta Králov
+2Kgs	Stvrta Kráľov
+2Kgs	Stvrtá Kralov
+2Kgs	Stvrtá Kraľov
+2Kgs	Stvrtá Králov
+2Kgs	Stvrtá Kráľov
+2Kgs	Štvrta Kralov
+2Kgs	Štvrta Kraľov
+2Kgs	Štvrta Králov
+2Kgs	Štvrta Kráľov
+2Kgs	Štvrtá Kralov
+2Kgs	Štvrtá Kraľov
+2Kgs	Štvrtá Králov
+2Kgs	Štvrtá Kráľov
+2Kgs	Druha Kralov
+2Kgs	Druha Kraľov
+2Kgs	Druha Králov
+2Kgs	Druha Kráľov
+2Kgs	Druhy Kralov
+2Kgs	Druhy Kraľov
+2Kgs	Druhy Králov
+2Kgs	Druhy Kráľov
+2Kgs	Druhá Kralov
+2Kgs	Druhá Kraľov
+2Kgs	Druhá Králov
+2Kgs	Druhá Kráľov
+2Kgs	Druhý Kralov
+2Kgs	Druhý Kraľov
+2Kgs	Druhý Králov
+2Kgs	Druhý Kráľov
+2Kgs	2 k. Kralov
+2Kgs	2 k. Kraľov
+2Kgs	2 k. Králov
+2Kgs	2 k. Kráľov
+2Kgs	4 k. Kralov
+2Kgs	4 k. Kraľov
+2Kgs	4 k. Králov
+2Kgs	4 k. Kráľov
+2Kgs	2 k Kralov
+2Kgs	2 k Kraľov
+2Kgs	2 k Králov
+2Kgs	2 k Kráľov
+2Kgs	4 k Kralov
+2Kgs	4 k Kraľov
+2Kgs	4 k Králov
+2Kgs	4 k Kráľov
+2Kgs	II. Kralov
+2Kgs	II. Kraľov
+2Kgs	II. Králov
+2Kgs	II. Kráľov
+2Kgs	IV. Kralov
+2Kgs	IV. Kraľov
+2Kgs	IV. Králov
+2Kgs	IV. Kráľov
+2Kgs	2. Kralov
+2Kgs	2. Kraľov
+2Kgs	2. Králov
+2Kgs	2. Kráľov
+2Kgs	4. Kralov
+2Kgs	4. Kraľov
+2Kgs	4. Králov
+2Kgs	4. Kráľov
+2Kgs	II Kralov
+2Kgs	II Kraľov
+2Kgs	II Králov
+2Kgs	II Kráľov
+2Kgs	IV Kralov
+2Kgs	IV Kraľov
+2Kgs	IV Králov
+2Kgs	IV Kráľov
+2Kgs	2 Kralov
+2Kgs	2 Kraľov
+2Kgs	2 Králov
+2Kgs	2 Kráľov
+2Kgs	4 Kralov
+2Kgs	4 Kraľov
+2Kgs	4 Králov
+2Kgs	4 Kráľov
+2Kgs	2 Krl
+2Kgs	2 Krľ
+2Kgs	2 Kr
+2Kgs	2Kgs
+2Macc	Druha kniha Machabejcov
+2Macc	Druhá kniha Machabejcov
+2Macc	Druha kniha Makabejcov
+2Macc	Druhy list Machabejcov
+2Macc	Druhá kniha Makabejcov
+2Macc	Druhý list Machabejcov
+2Macc	Druhy list Makabejcov
+2Macc	Druhý list Makabejcov
+2Macc	Druha Machabejcov
+2Macc	Druhy Machabejcov
+2Macc	Druhá Machabejcov
+2Macc	Druhý Machabejcov
+2Macc	2 k. Machabejcov
+2Macc	Druha Makabejcov
+2Macc	Druhy Makabejcov
+2Macc	Druhá Makabejcov
+2Macc	Druhý Makabejcov
+2Macc	2 k Machabejcov
+2Macc	2 k. Makabejcov
+2Macc	II. Machabejcov
+2Macc	2 k Makabejcov
+2Macc	2. Machabejcov
+2Macc	II Machabejcov
+2Macc	II. Makabejcov
+2Macc	2 Machabejcov
+2Macc	2. Makabejcov
+2Macc	II Makabejcov
+2Macc	2 Makabejcov
+2Macc	2 Mach
+2Macc	2 Mak
+2Macc	2Macc
+2Pet	Druha kniha Petrov
+2Pet	Druhá kniha Petrov
+2Pet	Druhy Petrov list
+2Pet	Druhy list Petrov
+2Pet	Druhý Petrov list
+2Pet	Druhý list Petrov
+2Pet	Druha Petrov
+2Pet	Druhy Petrov
+2Pet	Druhá Petrov
+2Pet	Druhý Petrov
+2Pet	2 k. Petrov
+2Pet	2 k Petrov
+2Pet	II. Petrov
+2Pet	2. Petrov
+2Pet	II Petrov
+2Pet	2 Petrov
+2Pet	2 Pt
+2Pet	2Pet
+2Sam	Druha kniha Samuelova
+2Sam	Druhá kniha Samuelova
+2Sam	Druhy list Samuelova
+2Sam	Druhý list Samuelova
+2Sam	Druha Samuelova
+2Sam	Druhy Samuelova
+2Sam	Druhá Samuelova
+2Sam	Druhý Samuelova
+2Sam	2 k. Samuelova
+2Sam	2 k Samuelova
+2Sam	II. Samuelova
+2Sam	2. Samuelova
+2Sam	II Samuelova
+2Sam	2 Samuelova
+2Sam	2 Sam
+2Sam	2Sam
+2Sam	2 S
+2Thess	Druha kniha Tesalonicanom
+2Thess	Druha kniha Tesaloničanom
+2Thess	Druhá kniha Tesalonicanom
+2Thess	Druhá kniha Tesaloničanom
+2Thess	Druha kniha Tesalonickym
+2Thess	Druha kniha Tesalonickým
+2Thess	Druhy list Tesalonicanom
+2Thess	Druhy list Tesaloničanom
+2Thess	Druhá kniha Tesalonickym
+2Thess	Druhá kniha Tesalonickým
+2Thess	Druhý list Tesalonicanom
+2Thess	Druhý list Tesaloničanom
+2Thess	Druhy list Tesalonickym
+2Thess	Druhy list Tesalonickým
+2Thess	Druhý list Tesalonickym
+2Thess	Druhý list Tesalonickým
+2Thess	Druha kniha Soluncanom
+2Thess	Druha kniha Solunčanom
+2Thess	Druha kniha Solúncanom
+2Thess	Druha kniha Solúnčanom
+2Thess	Druhá kniha Soluncanom
+2Thess	Druhá kniha Solunčanom
+2Thess	Druhá kniha Solúncanom
+2Thess	Druhá kniha Solúnčanom
+2Thess	Druha kniha Solunskym
+2Thess	Druha kniha Solúnskym
+2Thess	Druhy list Soluncanom
+2Thess	Druhy list Solunčanom
+2Thess	Druhy list Solúncanom
+2Thess	Druhy list Solúnčanom
+2Thess	Druhá kniha Solunskym
+2Thess	Druhá kniha Solúnskym
+2Thess	Druhý list Soluncanom
+2Thess	Druhý list Solunčanom
+2Thess	Druhý list Solúncanom
+2Thess	Druhý list Solúnčanom
+2Thess	Druhy list Solunskym
+2Thess	Druhy list Solúnskym
+2Thess	Druhý list Solunskym
+2Thess	Druhý list Solúnskym
+2Thess	Druha Tesalonicanom
+2Thess	Druha Tesaloničanom
+2Thess	Druhy Tesalonicanom
+2Thess	Druhy Tesaloničanom
+2Thess	Druhá Tesalonicanom
+2Thess	Druhá Tesaloničanom
+2Thess	Druhý Tesalonicanom
+2Thess	Druhý Tesaloničanom
+2Thess	2 k. Tesalonicanom
+2Thess	2 k. Tesaloničanom
+2Thess	Druha Tesalonickym
+2Thess	Druha Tesalonickým
+2Thess	Druhy Tesalonickym
+2Thess	Druhy Tesalonickým
+2Thess	Druhá Tesalonickym
+2Thess	Druhá Tesalonickým
+2Thess	Druhý Tesalonickym
+2Thess	Druhý Tesalonickým
+2Thess	2 k Tesalonicanom
+2Thess	2 k Tesaloničanom
+2Thess	2 k. Tesalonickym
+2Thess	2 k. Tesalonickým
+2Thess	II. Tesalonicanom
+2Thess	II. Tesaloničanom
+2Thess	2 k Tesalonickym
+2Thess	2 k Tesalonickým
+2Thess	2. Tesalonicanom
+2Thess	2. Tesaloničanom
+2Thess	Druha Soluncanom
+2Thess	Druha Solunčanom
+2Thess	Druha Solúncanom
+2Thess	Druha Solúnčanom
+2Thess	Druhy Soluncanom
+2Thess	Druhy Solunčanom
+2Thess	Druhy Solúncanom
+2Thess	Druhy Solúnčanom
+2Thess	Druhá Soluncanom
+2Thess	Druhá Solunčanom
+2Thess	Druhá Solúncanom
+2Thess	Druhá Solúnčanom
+2Thess	Druhý Soluncanom
+2Thess	Druhý Solunčanom
+2Thess	Druhý Solúncanom
+2Thess	Druhý Solúnčanom
+2Thess	II Tesalonicanom
+2Thess	II Tesaloničanom
+2Thess	II. Tesalonickym
+2Thess	II. Tesalonickým
+2Thess	2 Tesalonicanom
+2Thess	2 Tesaloničanom
+2Thess	2 k. Soluncanom
+2Thess	2 k. Solunčanom
+2Thess	2 k. Solúncanom
+2Thess	2 k. Solúnčanom
+2Thess	2. Tesalonickym
+2Thess	2. Tesalonickým
+2Thess	Druha Solunskym
+2Thess	Druha Solúnskym
+2Thess	Druhy Solunskym
+2Thess	Druhy Solúnskym
+2Thess	Druhá Solunskym
+2Thess	Druhá Solúnskym
+2Thess	Druhý Solunskym
+2Thess	Druhý Solúnskym
+2Thess	II Tesalonickym
+2Thess	II Tesalonickým
+2Thess	2 Tesalonickym
+2Thess	2 Tesalonickým
+2Thess	2 k Soluncanom
+2Thess	2 k Solunčanom
+2Thess	2 k Solúncanom
+2Thess	2 k Solúnčanom
+2Thess	2 k. Solunskym
+2Thess	2 k. Solúnskym
+2Thess	II. Soluncanom
+2Thess	II. Solunčanom
+2Thess	II. Solúncanom
+2Thess	II. Solúnčanom
+2Thess	2 k Solunskym
+2Thess	2 k Solúnskym
+2Thess	2. Soluncanom
+2Thess	2. Solunčanom
+2Thess	2. Solúncanom
+2Thess	2. Solúnčanom
+2Thess	II Soluncanom
+2Thess	II Solunčanom
+2Thess	II Solúncanom
+2Thess	II Solúnčanom
+2Thess	II. Solunskym
+2Thess	II. Solúnskym
+2Thess	2 Soluncanom
+2Thess	2 Solunčanom
+2Thess	2 Solúncanom
+2Thess	2 Solúnčanom
+2Thess	2. Solunskym
+2Thess	2. Solúnskym
+2Thess	II Solunskym
+2Thess	II Solúnskym
+2Thess	2 Solunskym
+2Thess	2 Solúnskym
+2Thess	2Thess
+2Thess	2 Sol
+2Thess	2 Tes
+2Tim	Druha kniha Timotejovi
+2Tim	Druhá kniha Timotejovi
+2Tim	Druha kniha Timoteovi
+2Tim	Druhy list Timotejovi
+2Tim	Druhá kniha Timoteovi
+2Tim	Druhý list Timotejovi
+2Tim	Druhy list Timoteovi
+2Tim	Druhý list Timoteovi
+2Tim	Druha Timotejovi
+2Tim	Druhy Timotejovi
+2Tim	Druhá Timotejovi
+2Tim	Druhý Timotejovi
+2Tim	2 k. Timotejovi
+2Tim	Druha Timoteovi
+2Tim	Druhy Timoteovi
+2Tim	Druhá Timoteovi
+2Tim	Druhý Timoteovi
+2Tim	2 k Timotejovi
+2Tim	2 k. Timoteovi
+2Tim	II. Timotejovi
+2Tim	2 k Timoteovi
+2Tim	2. Timotejovi
+2Tim	II Timotejovi
+2Tim	II. Timoteovi
+2Tim	2 Timotejovi
+2Tim	2. Timoteovi
+2Tim	II Timoteovi
+2Tim	2 Timoteovi
+2Tim	2 Tim
+2Tim	2Tim
+3John	Tretia kniha Janov
+3John	Tretia kniha Jánov
+3John	Treti Janov list
+3John	Treti Jánov list
+3John	Tretí Janov list
+3John	Tretí Jánov list
+3John	Tretia Janov
+3John	Tretia Jánov
+3John	Treti Janov
+3John	Treti Jánov
+3John	Tretí Janov
+3John	Tretí Jánov
+3John	3 k. Janov
+3John	3 k. Jánov
+3John	III. Janov
+3John	III. Jánov
+3John	3 k Janov
+3John	3 k Jánov
+3John	III Janov
+3John	III Jánov
+3John	3. Janov
+3John	3. Jánov
+3John	3 Janov
+3John	3 Jánov
+3John	3John
+3John	3 Jn
+3John	3 J
+3Macc	Tretia kniha Machabejcov
+3Macc	Tretia Machabejcov
+3Macc	Treti Machabejcov
+3Macc	Tretí Machabejcov
+3Macc	3 k. Machabejcov
+3Macc	III. Machabejcov
+3Macc	3 k Machabejcov
+3Macc	III Machabejcov
+3Macc	3. Machabejcov
+3Macc	3 Machabejcov
+3Macc	3 Mach
+3Macc	3 Mak
+3Macc	3Macc
+4Macc	Stvrta kniha Machabejcov
+4Macc	Stvrtá kniha Machabejcov
+4Macc	Štvrta kniha Machabejcov
+4Macc	Štvrtá kniha Machabejcov
+4Macc	Stvrta Machabejcov
+4Macc	Stvrtá Machabejcov
+4Macc	Štvrta Machabejcov
+4Macc	Štvrtá Machabejcov
+4Macc	4 k. Machabejcov
+4Macc	4 k Machabejcov
+4Macc	IV. Machabejcov
+4Macc	4. Machabejcov
+4Macc	IV Machabejcov
+4Macc	4 Machabejcov
+4Macc	4 Mach
+4Macc	4 Mak
+4Macc	4Macc
+Acts	Skutky apostolov
+Acts	Skutky apoštolov
+Acts	Skutky
+Acts	Acts
+Acts	Sk
+Amos	Amos
+Amos	Ámos
+Amos	Am
+Amos	Ám
+Bar	Proroctvo Baruchovo
+Bar	Baruch
+Bar	Bar
+Bel	Bel a drak
+Bel	Bél a drak
+Bel	Bel
+Bel	Bél
+Col	List Kolosanom
+Col	Kolosenskym
+Col	Kolosenským
+Col	Kolosanom
+Col	Col
+Col	Kol
+Dan	Daniel
+Dan	Dan
+Deut	Piata kniha Mojzisova
+Deut	Piata kniha Mojzišova
+Deut	Piata kniha Mojžisova
+Deut	Piata kniha Mojžišova
+Deut	Piata Mojzisova
+Deut	Piata Mojzišova
+Deut	Piata Mojžisova
+Deut	Piata Mojžišova
+Deut	5 k. Mojzisova
+Deut	5 k. Mojzišova
+Deut	5 k. Mojžisova
+Deut	5 k. Mojžišova
+Deut	5 k Mojzisova
+Deut	5 k Mojzišova
+Deut	5 k Mojžisova
+Deut	5 k Mojžišova
+Deut	Deuteronomium
+Deut	Deuteronómium
+Deut	5. Mojzisova
+Deut	5. Mojzišova
+Deut	5. Mojžisova
+Deut	5. Mojžišova
+Deut	V. Mojzisova
+Deut	V. Mojzišova
+Deut	V. Mojžisova
+Deut	V. Mojžišova
+Deut	5 Mojzisova
+Deut	5 Mojzišova
+Deut	5 Mojžisova
+Deut	5 Mojžišova
+Deut	V Mojzisova
+Deut	V Mojzišova
+Deut	V Mojžisova
+Deut	V Mojžišova
+Deut	Deut
+Deut	5 M
+Deut	Dt
+Eccl	Kohelet — Kazatel
+Eccl	Kohelet — Kazateľ
+Eccl	Kniha kazatelova
+Eccl	Kniha kazateľova
+Eccl	K. kazatelova
+Eccl	K. kazateľova
+Eccl	K kazatelova
+Eccl	K kazateľova
+Eccl	Ekleziastes
+Eccl	Kazatel
+Eccl	Kazateľ
+Eccl	Kohelet
+Eccl	Eccl
+Eccl	Kaz
+Eccl	Koh
+EpJer	Jeremiasov list
+EpJer	Jeremiašov list
+EpJer	Jeremiásov list
+EpJer	Jeremiášov list
+EpJer	EpJer
+Eph	List Efezanom
+Eph	Efezanom
+Eph	Efezskym
+Eph	Efezským
+Eph	Eph
+Eph	Ef
+Esth	Ester
+Esth	Esth
+Esth	Est
+Exod	Druha kniha Mojzisova
+Exod	Druha kniha Mojzišova
+Exod	Druha kniha Mojžisova
+Exod	Druha kniha Mojžišova
+Exod	Druhá kniha Mojzisova
+Exod	Druhá kniha Mojzišova
+Exod	Druhá kniha Mojžisova
+Exod	Druhá kniha Mojžišova
+Exod	Druhy list Mojzisova
+Exod	Druhy list Mojzišova
+Exod	Druhy list Mojžisova
+Exod	Druhy list Mojžišova
+Exod	Druhý list Mojzisova
+Exod	Druhý list Mojzišova
+Exod	Druhý list Mojžisova
+Exod	Druhý list Mojžišova
+Exod	Druha Mojzisova
+Exod	Druha Mojzišova
+Exod	Druha Mojžisova
+Exod	Druha Mojžišova
+Exod	Druhy Mojzisova
+Exod	Druhy Mojzišova
+Exod	Druhy Mojžisova
+Exod	Druhy Mojžišova
+Exod	Druhá Mojzisova
+Exod	Druhá Mojzišova
+Exod	Druhá Mojžisova
+Exod	Druhá Mojžišova
+Exod	Druhý Mojzisova
+Exod	Druhý Mojzišova
+Exod	Druhý Mojžisova
+Exod	Druhý Mojžišova
+Exod	2 k. Mojzisova
+Exod	2 k. Mojzišova
+Exod	2 k. Mojžisova
+Exod	2 k. Mojžišova
+Exod	2 k Mojzisova
+Exod	2 k Mojzišova
+Exod	2 k Mojžisova
+Exod	2 k Mojžišova
+Exod	II. Mojzisova
+Exod	II. Mojzišova
+Exod	II. Mojžisova
+Exod	II. Mojžišova
+Exod	2. Mojzisova
+Exod	2. Mojzišova
+Exod	2. Mojžisova
+Exod	2. Mojžišova
+Exod	II Mojzisova
+Exod	II Mojzišova
+Exod	II Mojžisova
+Exod	II Mojžišova
+Exod	2 Mojzisova
+Exod	2 Mojzišova
+Exod	2 Mojžisova
+Exod	2 Mojžišova
+Exod	Exodus
+Exod	Exod
+Exod	2 M
+Exod	Ex
+Ezek	Ezechiel
+Ezek	Ezek
+Ezek	Ez
+Ezra	Ezdras
+Ezra	Ezdraš
+Ezra	Ezdrás
+Ezra	Ezdráš
+Ezra	Ezra
+Ezra	Ezd
+Gal	List Galatanom
+Gal	List Galaťanom
+Gal	Galatanom
+Gal	Galatskym
+Gal	Galatským
+Gal	Galaťanom
+Gal	Gal
+Gal	Ga
+Gen	Prva kniha Mojzisova
+Gen	Prva kniha Mojzišova
+Gen	Prva kniha Mojžisova
+Gen	Prva kniha Mojžišova
+Gen	Prvá kniha Mojzisova
+Gen	Prvá kniha Mojzišova
+Gen	Prvá kniha Mojžisova
+Gen	Prvá kniha Mojžišova
+Gen	Prvy list Mojzisova
+Gen	Prvy list Mojzišova
+Gen	Prvy list Mojžisova
+Gen	Prvy list Mojžišova
+Gen	Prvý list Mojzisova
+Gen	Prvý list Mojzišova
+Gen	Prvý list Mojžisova
+Gen	Prvý list Mojžišova
+Gen	Kniha stvorenia
+Gen	1 k. Mojzisova
+Gen	1 k. Mojzišova
+Gen	1 k. Mojžisova
+Gen	1 k. Mojžišova
+Gen	Prva Mojzisova
+Gen	Prva Mojzišova
+Gen	Prva Mojžisova
+Gen	Prva Mojžišova
+Gen	Prvy Mojzisova
+Gen	Prvy Mojzišova
+Gen	Prvy Mojžisova
+Gen	Prvy Mojžišova
+Gen	Prvá Mojzisova
+Gen	Prvá Mojzišova
+Gen	Prvá Mojžisova
+Gen	Prvá Mojžišova
+Gen	Prvý Mojzisova
+Gen	Prvý Mojzišova
+Gen	Prvý Mojžisova
+Gen	Prvý Mojžišova
+Gen	1 k Mojzisova
+Gen	1 k Mojzišova
+Gen	1 k Mojžisova
+Gen	1 k Mojžišova
+Gen	1. Mojzisova
+Gen	1. Mojzišova
+Gen	1. Mojžisova
+Gen	1. Mojžišova
+Gen	I. Mojzisova
+Gen	I. Mojzišova
+Gen	I. Mojžisova
+Gen	I. Mojžišova
+Gen	K. stvorenia
+Gen	Kniha povodu
+Gen	Kniha pôvodu
+Gen	1 Mojzisova
+Gen	1 Mojzišova
+Gen	1 Mojžisova
+Gen	1 Mojžišova
+Gen	I Mojzisova
+Gen	I Mojzišova
+Gen	I Mojžisova
+Gen	I Mojžišova
+Gen	K stvorenia
+Gen	K. povodu
+Gen	K. pôvodu
+Gen	K povodu
+Gen	K pôvodu
+Gen	Genezis
+Gen	1 M
+Gen	Gen
+Gen	Gn
+GkEsth	Grecke casti knihy Ester
+GkEsth	Grecke časti knihy Ester
+GkEsth	Grécke casti knihy Ester
+GkEsth	Grécke časti knihy Ester
+GkEsth	Ester gr
+GkEsth	GkEsth
+Hab	Habakuk
+Hab	Abakuk
+Hab	Hab
+Hab	Ab
+Hag	Haggeus
+Hag	Aggeus
+Hag	Ageus
+Hag	Hag
+Hag	Ag
+Heb	List Hebrejom
+Heb	Hebrejom
+Heb	Zidom
+Heb	Židom
+Heb	Hebr
+Heb	Heb
+Heb	Zid
+Heb	Žid
+Hos	Hozeas
+Hos	Hozeaš
+Hos	Hozeás
+Hos	Hozeáš
+Hos	Ozeas
+Hos	Ozeaš
+Hos	Ozeás
+Hos	Ozeáš
+Hos	Hos
+Hos	Oz
+Isa	Izaias
+Isa	Izaiaš
+Isa	Izaiás
+Isa	Izaiáš
+Isa	Izajas
+Isa	Izajaš
+Isa	Izajás
+Isa	Izajáš
+Isa	Isa
+Isa	Iz
+Jas	Jakubov List
+Jas	Jakubov
+Jas	Jak
+Jas	Jas
+Jas	Jk
+Jdt	Kniha Juditina
+Jdt	K. Juditina
+Jdt	K Juditina
+Jdt	Judita
+Jdt	Judit
+Jdt	Jdt
+Jer	Jeremias
+Jer	Jeremiaš
+Jer	Jeremiás
+Jer	Jeremiáš
+Jer	Jer
+Job	Kniha Jobova
+Job	Kniha Jóbova
+Job	K. Jobova
+Job	K. Jóbova
+Job	K Jobova
+Job	K Jóbova
+Job	Job
+Job	Jób
+Joel	Joel
+John	Evanjelium Podla Jana
+John	Evanjelium Podla Jána
+John	Evanjelium Podľa Jana
+John	Evanjelium Podľa Jána
+John	Jana
+John	John
+John	Jána
+John	Jan
+John	Ján
+John	Jn
+Jonah	Jonah
+Jonah	Jonas
+Jonah	Jonaš
+Jonah	Jonás
+Jonah	Jonáš
+Jonah	Jon
+Josh	Josuova
+Josh	Jozuova
+Josh	Jošuova
+Josh	Józuova
+Josh	Iosua
+Josh	Josua
+Josh	Jozua
+Josh	Jozue
+Josh	Jošua
+Josh	Józua
+Josh	Josh
+Josh	Joz
+Jude	Judov List
+Jude	Júdov List
+Jude	Judov
+Jude	Júdov
+Jude	Jude
+Jude	Jud
+Jude	Júd
+Judg	K. sudcov
+Judg	K sudcov
+Judg	Sudcovia
+Judg	Sudcov
+Judg	Judg
+Judg	Sdc
+Judg	Sud
+Lam	Jeremiasov Plac
+Lam	Jeremiasov Plač
+Lam	Jeremiašov Plac
+Lam	Jeremiašov Plač
+Lam	Jeremiásov Plac
+Lam	Jeremiásov Plač
+Lam	Jeremiášov Plac
+Lam	Jeremiášov Plač
+Lam	Plac Jeremiasov
+Lam	Plac Jeremiašov
+Lam	Plac Jeremiásov
+Lam	Plac Jeremiášov
+Lam	Plač Jeremiasov
+Lam	Plač Jeremiašov
+Lam	Plač Jeremiásov
+Lam	Plač Jeremiášov
+Lam	Kniha narekov
+Lam	Kniha nárekov
+Lam	K. narekov
+Lam	K. nárekov
+Lam	K narekov
+Lam	K nárekov
+Lam	Zalospevy
+Lam	Žalospevy
+Lam	Nareky
+Lam	Náreky
+Lam	Zalosp
+Lam	Žalosp
+Lam	Plac
+Lam	Plač
+Lam	Lam
+Lam	Nar
+Lam	Nár
+Lev	Tretia kniha Mojzisova
+Lev	Tretia kniha Mojzišova
+Lev	Tretia kniha Mojžisova
+Lev	Tretia kniha Mojžišova
+Lev	Tretia Mojzisova
+Lev	Tretia Mojzišova
+Lev	Tretia Mojžisova
+Lev	Tretia Mojžišova
+Lev	Treti Mojzisova
+Lev	Treti Mojzišova
+Lev	Treti Mojžisova
+Lev	Treti Mojžišova
+Lev	Tretí Mojzisova
+Lev	Tretí Mojzišova
+Lev	Tretí Mojžisova
+Lev	Tretí Mojžišova
+Lev	3 k. Mojzisova
+Lev	3 k. Mojzišova
+Lev	3 k. Mojžisova
+Lev	3 k. Mojžišova
+Lev	III. Mojzisova
+Lev	III. Mojzišova
+Lev	III. Mojžisova
+Lev	III. Mojžišova
+Lev	3 k Mojzisova
+Lev	3 k Mojzišova
+Lev	3 k Mojžisova
+Lev	3 k Mojžišova
+Lev	III Mojzisova
+Lev	III Mojzišova
+Lev	III Mojžisova
+Lev	III Mojžišova
+Lev	3. Mojzisova
+Lev	3. Mojzišova
+Lev	3. Mojžisova
+Lev	3. Mojžišova
+Lev	3 Mojzisova
+Lev	3 Mojzišova
+Lev	3 Mojžisova
+Lev	3 Mojžišova
+Lev	Levitikus
+Lev	3 M
+Lev	Lev
+Lev	Lv
+Luke	Evanjelium Podla Lukasa
+Luke	Evanjelium Podla Lukaša
+Luke	Evanjelium Podla Lukása
+Luke	Evanjelium Podla Lukáša
+Luke	Evanjelium Podľa Lukasa
+Luke	Evanjelium Podľa Lukaša
+Luke	Evanjelium Podľa Lukása
+Luke	Evanjelium Podľa Lukáša
+Luke	Lukasa
+Luke	Lukaša
+Luke	Lukása
+Luke	Lukáša
+Luke	Lukas
+Luke	Lukaš
+Luke	Lukás
+Luke	Lukáš
+Luke	Luke
+Luke	Lk
+Mal	Malachias
+Mal	Malachiaš
+Mal	Malachiás
+Mal	Malachiáš
+Mal	Mal
+Mark	Evanjelium Podla Marka
+Mark	Evanjelium Podľa Marka
+Mark	Marek
+Mark	Marka
+Mark	Mark
+Mark	Mk
+Matt	Evanjelium Podla Matusa
+Matt	Evanjelium Podla Matuša
+Matt	Evanjelium Podla Matúsa
+Matt	Evanjelium Podla Matúša
+Matt	Evanjelium Podľa Matusa
+Matt	Evanjelium Podľa Matuša
+Matt	Evanjelium Podľa Matúsa
+Matt	Evanjelium Podľa Matúša
+Matt	Matusa
+Matt	Matuša
+Matt	Matúsa
+Matt	Matúša
+Matt	Matus
+Matt	Matuš
+Matt	Matús
+Matt	Matúš
+Matt	Matt
+Matt	Mt
+Mic	Micheas
+Mic	Micheaš
+Mic	Micheás
+Mic	Micheáš
+Mic	Mich
+Mic	Mic
+Nah	Nahum
+Nah	Náhum
+Nah	Nah
+Neh	Nehemias
+Neh	Nehemiaš
+Neh	Nehemiás
+Neh	Nehemiáš
+Neh	Neh
+Num	Stvrta kniha Mojzisova
+Num	Stvrta kniha Mojzišova
+Num	Stvrta kniha Mojžisova
+Num	Stvrta kniha Mojžišova
+Num	Stvrtá kniha Mojzisova
+Num	Stvrtá kniha Mojzišova
+Num	Stvrtá kniha Mojžisova
+Num	Stvrtá kniha Mojžišova
+Num	Štvrta kniha Mojzisova
+Num	Štvrta kniha Mojzišova
+Num	Štvrta kniha Mojžisova
+Num	Štvrta kniha Mojžišova
+Num	Štvrtá kniha Mojzisova
+Num	Štvrtá kniha Mojzišova
+Num	Štvrtá kniha Mojžisova
+Num	Štvrtá kniha Mojžišova
+Num	Stvrta Mojzisova
+Num	Stvrta Mojzišova
+Num	Stvrta Mojžisova
+Num	Stvrta Mojžišova
+Num	Stvrtá Mojzisova
+Num	Stvrtá Mojzišova
+Num	Stvrtá Mojžisova
+Num	Stvrtá Mojžišova
+Num	Štvrta Mojzisova
+Num	Štvrta Mojzišova
+Num	Štvrta Mojžisova
+Num	Štvrta Mojžišova
+Num	Štvrtá Mojzisova
+Num	Štvrtá Mojzišova
+Num	Štvrtá Mojžisova
+Num	Štvrtá Mojžišova
+Num	4 k. Mojzisova
+Num	4 k. Mojzišova
+Num	4 k. Mojžisova
+Num	4 k. Mojžišova
+Num	4 k Mojzisova
+Num	4 k Mojzišova
+Num	4 k Mojžisova
+Num	4 k Mojžišova
+Num	IV. Mojzisova
+Num	IV. Mojzišova
+Num	IV. Mojžisova
+Num	IV. Mojžišova
+Num	4. Mojzisova
+Num	4. Mojzišova
+Num	4. Mojžisova
+Num	4. Mojžišova
+Num	IV Mojzisova
+Num	IV Mojzišova
+Num	IV Mojžisova
+Num	IV Mojžišova
+Num	4 Mojzisova
+Num	4 Mojzišova
+Num	4 Mojžisova
+Num	4 Mojžišova
+Num	Numeri
+Num	4 M
+Num	Num
+Num	Nm
+Obad	Obadias
+Obad	Obadiaš
+Obad	Obadiás
+Obad	Obadiáš
+Obad	Obedias
+Obad	Obediaš
+Obad	Obediás
+Obad	Obediáš
+Obad	Abdias
+Obad	Abdiaš
+Obad	Abdiás
+Obad	Abdiáš
+Obad	Obad
+Obad	Abd
+Phil	List Filipanom
+Phil	Filipanom
+Phil	Filipskym
+Phil	Filipským
+Phil	Phil
+Phil	Flp
+Phlm	List Filemonovi
+Phlm	List Filemónovi
+Phlm	Filemonovi
+Phlm	Filem
+Phlm	Phlm
+Phlm	Flm
+PrAzar	Azarjasova modlitba
+PrAzar	Azarjašova modlitba
+PrAzar	Azarjásova modlitba
+PrAzar	Azarjášova modlitba
+PrAzar	PrAzar
+PrMan	Manasesova modlitba
+PrMan	PrMan
+Prov	Kniha prislovi
+Prov	Kniha prisloví
+Prov	Kniha príslovi
+Prov	Kniha prísloví
+Prov	K. prislovi
+Prov	K. prisloví
+Prov	K. príslovi
+Prov	K. prísloví
+Prov	K prislovi
+Prov	K prisloví
+Prov	K príslovi
+Prov	K prísloví
+Prov	Prislovia
+Prov	Príslovia
+Prov	Pris
+Prov	Prov
+Prov	Prís
+Prov	Pr
+Ps	Kniha zalmov
+Ps	Kniha žalmov
+Ps	K. zalmov
+Ps	K. žalmov
+Ps	K zalmov
+Ps	K žalmov
+Ps	Zaltar
+Ps	Zaltár
+Ps	Žaltar
+Ps	Žaltár
+Ps	Zalmy
+Ps	Žalmy
+Ps	Zalm
+Ps	Žalm
+Ps	Ps
+Ps	Z
+Ps	Ž
+Rev	Zjavenie Apostola Jana
+Rev	Zjavenie Apostola Jána
+Rev	Zjavenie Apoštola Jana
+Rev	Zjavenie Apoštola Jána
+Rev	Zjavenie svateho Jana
+Rev	Zjavenie svateho Jána
+Rev	Zjavenie svatého Jana
+Rev	Zjavenie svatého Jána
+Rev	Zjavenie sväteho Jana
+Rev	Zjavenie sväteho Jána
+Rev	Zjavenie svätého Jana
+Rev	Zjavenie svätého Jána
+Rev	Zjavenie Jana
+Rev	Zjavenie Jána
+Rev	Apokalypsa
+Rev	Zjavenie
+Rev	Zjav
+Rev	Rev
+Rev	Zjv
+Rev	Zj
+Rom	List Rimanom
+Rom	Rimanom
+Rom	Rimskym
+Rom	Rímskym
+Rom	Rim
+Rom	Rom
+Ruth	Ruth
+Ruth	Rut
+Ruth	Rút
+SgThree	Traja mladenci v rozpalenej peci
+SgThree	Traja mladenci v rozpálenej peci
+SgThree	Traja mládenci v rozpalenej peci
+SgThree	Traja mládenci v rozpálenej peci
+SgThree	Piesen mladencov v ohnivej peci
+SgThree	Piesen mládencov v ohnivej peci
+SgThree	Pieseň mladencov v ohnivej peci
+SgThree	Pieseň mládencov v ohnivej peci
+SgThree	SgThree
+Sir	Kniha Sirachovho syna
+Sir	Kniha Ekleziastikus
+Sir	K. Sirachovho syna
+Sir	Kniha Sirachovcova
+Sir	K Sirachovho syna
+Sir	K. Ekleziastikus
+Sir	Kniha Sirachovca
+Sir	K Ekleziastikus
+Sir	K. Sirachovcova
+Sir	K Sirachovcova
+Sir	K. Sirachovca
+Sir	K Sirachovca
+Sir	Sirachovcova
+Sir	Sirachovec
+Sir	Sir
+Song	Velpiesen Salamunova
+Song	Velpiesen Salamúnova
+Song	Velpiesen Šalamunova
+Song	Velpiesen Šalamúnova
+Song	Velpieseň Salamunova
+Song	Velpieseň Salamúnova
+Song	Velpieseň Šalamunova
+Song	Velpieseň Šalamúnova
+Song	Veľpiesen Salamunova
+Song	Veľpiesen Salamúnova
+Song	Veľpiesen Šalamunova
+Song	Veľpiesen Šalamúnova
+Song	Veľpieseň Salamunova
+Song	Veľpieseň Salamúnova
+Song	Veľpieseň Šalamunova
+Song	Veľpieseň Šalamúnova
+Song	Piesen Salamunova
+Song	Piesen Salamúnova
+Song	Piesen Šalamunova
+Song	Piesen Šalamúnova
+Song	Pieseň Salamunova
+Song	Pieseň Salamúnova
+Song	Pieseň Šalamunova
+Song	Pieseň Šalamúnova
+Song	Piesen piesni
+Song	Piesen piesní
+Song	Pieseň piesni
+Song	Pieseň piesní
+Song	Velpiesen
+Song	Velpieseň
+Song	Veľpiesen
+Song	Veľpieseň
+Song	Piesen
+Song	Pieseň
+Song	Pies
+Song	Song
+Song	Velp
+Song	Veľp
+Song	Vlp
+Song	Vľp
+Song	PŠ
+Sus	Zuzana
+Sus	Zuzane
+Sus	Sus
+Titus	List Titovi
+Titus	List Títovi
+Titus	Titovi
+Titus	Títovi
+Titus	Titus
+Titus	Tit
+Titus	Tít
+Tob	Tobias
+Tob	Tobiaš
+Tob	Tobiás
+Tob	Tobiáš
+Tob	Tob
+Wis	Mudrosti
+Wis	Múdrosti
+Wis	Mudrost
+Wis	Mudrosť
+Wis	Múdrost
+Wis	Múdrosť
+Wis	Mud
+Wis	Múd
+Wis	Wis
+Zech	Zacharias
+Zech	Zachariaš
+Zech	Zachariás
+Zech	Zachariáš
+Zech	Zach
+Zech	Zech
+Zeph	Sofonias
+Zeph	Sofoniaš
+Zeph	Sofoniás
+Zeph	Sofoniáš
+Zeph	Zeph
+Zeph	Sof

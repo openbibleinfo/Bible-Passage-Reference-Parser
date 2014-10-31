@@ -1,0 +1,276 @@
+$FIRST	اوّل	۱	1
+$SECOND	دوم	۲	2
+$THIRD	تیسرا	۳	3
+$FOURTH	4
+$AB	[a-e]
+$AND	،	؛	۔
+# Google Translate
+$CHAPTER	باب	ابواب
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+# Google: "آیات 1" bible
+$TO	تا
+# Google Translate
+$VERSE	آیت	آیات
+$COLLAPSE_COMBINING_CHARACTERS	false
+$BOUNDARY_CHARACTERS	،	؛	۔
+$UNICODE_BLOCK	Arabic	Latin
+
+Gen	پیدایش	pīdāyiš	پیدائش	پَیدایش	پيدائش
+Exod	خروج	ḫurūj	خُرُوج
+Lev	احبار	iḥbār
+Num	گنتی	gintī	گِنتی
+Deut	استثنا	istis̱nā	استثناء	اِستِثنا
+Josh	یشوع	yašūʿ	یشُوع
+Judg	قضاہ	qużāh	قضاة	قُضاۃ	قضاۃ
+Ruth	روت	rūt	رُوت
+1Sam	1 samūʾīl	$FIRST سموئیل	$FIRST سموئيل	$FIRST-سموئیل	$FIRST۔سموایل
+2Sam	2 samūʾīl	$SECOND سموئیل	$SECOND-سموئیل	$SECOND۔سموایل
+1Kgs	1 salāṭīn	$FIRST سلاطین	$FIRST-سلاطِین	$FIRST۔سلاطین
+2Kgs	2 salāṭīn	$SECOND سلاطین	$SECOND-سلاطِین	$SECOND۔سلاطین
+1Chr	1 tavārīḫ	$FIRST تواریخ	$FIRST-توارِیخ	$FIRST۔تواریخ
+2Chr	2 tavārīḫ	$SECOND تو اریخ	$SECOND- توارِیخ	$SECOND۔تواریخ
+Ezra	عزرا	ʿizrā	عز را
+Neh	نحمیاہ	niḥimyāh
+Esth	آستر	āstar	ایستر
+Job	ایوب	ayyūb	ایّوب	ایُّوب
+Ps	زبور	zabūr	زبُور	زبُو
+Prov	امثال	ams̱āl	اَمثال
+Eccl	واعظ	vāʿẓ	واعِظ
+Song	غزل الغزلات	ġazalu l-ġazalāt	غزلُ الغزلات
+Isa	یسعیاہ	یعسیاہ	yasaʿyāh
+Jer	یرمیاہ	yirmayāh	یرمِیاہ
+Lam	نوحہ	nūḥâ	نَوحہ
+Ezek	حزقی‌ایل	ḥiziqīʾīl	حزقی ایل	حِزقی ایل
+Dan	دانی‌ایل	dānīʾīl	دانیال	دانی ایل
+Hos	ہوسیع	hūsīʿ	ہوسیعَِ	ہو سیعاہ
+Joel	یوایل	yōʾīl	یُوایل
+Amos	عاموس	ʿāmōs	عامُوس
+Obad	عبدیاہ	ʿabadiyāh
+Jonah	یونس	yūnas	یُوناہ
+Mic	میکاہ	mīkāh	مِیکاہ
+Nah	ناحوم	nāḥūm	نا حُوم	ناحُوم
+Hab	حبقوق	ḥabaqqūq	حبقّوق	حبقُّوق
+Zeph	صفنیاہ	ṣafaniyāh
+Hag	حجی	ḥajjai	حجيّ	حجَّی
+Zech	زکریاہ	زکریا	zakariyāh
+Mal	ملاکی	malākī
+Matt	متّی کی انجیل	متی کی انجیل	mattī kī injīl	متّی	متی
+Mark	مرقُس کی انجیل	مرقس کی انجیل	marqus kī injīl	مرقس
+Luke	لُوقا کی انجیل	لوقا کی انجیل	lūqā kī injīl	لوقا	لُوقا
+John	یُوحنّا کی انجیل	یوحنا کی انجیل	yūḥannā kī injīl	یوحنا	یُوحنّا
+Acts	رسُولوں کے اعمال	یوحنا کے اعمال	rasūlōṅ ke aʿmāl	رسولوں	رسولوں کے اعمال	اعمال	اَعمال
+Rom	رومیوں کے نام کا خط	rōmiyōṅ ke nām kā ḫaṭ	رومیوں	رومیوں کے نام پولس رسول کا خط	رُومِیوں
+1Cor	کُرِنتھِیوں کے نام کا پہلا خط	کرنتھیوں کے نام کا پہلا خط	kurintʰiyōṅ ke nām kā pahlā ḫaṭ	$FIRST کرنتھِیُوں	کرنتھِیُوں کے نام پولس رسول کا پہلا خط	$FIRST-کُرِنتھِیوں	$FIRST۔کرنتھیوں	$FIRST کُرنتھِیوں
+2Cor	کُرِنتھِیوں کے نام کا دوسرا خط	کرنتھیوں کے نام کا دوسرا خط	kurintʰiyōṅ ke nām kā dūsrā ḫaṭ	$SECOND کرنتھیوں	کرنتھِیُوں کے نام پولس رسول کا دوسرا خط	$SECOND کرنتھِیُوں	$SECOND-کُرِنتھِیوں	$SECOND۔کرنتھیوں	$SECOND کُرنتھِیوں
+Gal	گلتِیوں کے نام کا خط	گلتیوں کے نام کا خط	galatiyōṅ ke nām kā ḫaṭ	گلتیوں	گلتیوں کے نام پولُس رسول کا خط	گلتِیوں
+Eph	اِفِسِیوں کے نام کا خط	افسیوں کے نام کا خط	ifisiyōṅ ke nām kā ḫaṭ	افسیوں	افسیوں کے نام پو لس رسول کا خط	اِفسِیوں	اِفسیوں
+Phil	فِلِپِّیوں کے نام کا خط	فلپیوں کے نام کا خط	filippiyōṅ ke nām kā ḫaṭ	فِلِپّیُوں	فِلِپّیُوں کے نام پو لس رسُول کا خط	فِلپّیوں	فلپیوں
+Col	کُلُسِّیوں کے نام کا خط	کلسیوں کے نام کا خط	kulussiyōṅ ke nām kā ḫaṭ	کُلِسّیوں	کُلِسّیوں کے نام پولُس رسُول کا خط	کُلسِیوں	کلسیوں	کُلسّیوں
+1Thess	تھِسّلُنیکیوں کے نام کا پہلا خط	تھسلنیکیوں کے نام کا پہلا خط	tʰissalunīkiyōṅ ke nām kā pahlā ḫaṭ	$FIRST تھسّلنیکیوں	تھسّلنیکیوں کے نام پولس رسول کا پہلا خط	$FIRST-تھِسّلُنیکیوں	$FIRST۔تھسلنیکیوں	$FIRST تھِسلُنیکیوں
+2Thess	تھِسّلُنیکیوں کے نام کا دوسرا خط	تھسلنیکیوں کے نام کا دوسرا خط	tʰissalunīkiyōṅ ke nām kā dūsrā ḫaṭ	$SECOND تھسلنیکوں	تھسلنیکوں کے نام پو لس رسول کادوسرا خط	$SECOND تھسّلنیکیوں	$SECOND-تھِسّلُنیکیوں	$SECOND۔تھسلنیکیوں	$SECOND تھِسلُنیکیوں
+1Tim	تِیمُتھِیُس کے نام کا پہلا خط	تیمتھیس کے نام کا پہلا خط	tīmutʰiyus ke nām kā pahlā ḫaṭ	$FIRST تِیمُتھِیُس	تِیمُتھِیُس کے نام پولُس رسول کا پہلا خط	$FIRST-تِیمُتھِیُس	$FIRST۔تیمتھیس	$FIRST تیمِتھُیس
+2Tim	تِیمُتھِیُس کے نام کا دوسرا خط	تیمتھیس کے نام کا دوسرا خط	tīmutʰiyus ke nām kā dūsrā ḫaṭ	$SECOND تیِمُتھِیُس	تیِمُتھِیُس کے نام پولس رسول کا دوسرا خط	$SECOND تِیمُتھِیُس	$SECOND-تِیمُتھِیُس	$SECOND۔تیمتھیس	$SECOND تیمِتھُیس
+Titus	طِطُس کے نام کا خط	ططس کے نام کا خط	ṭiṭus ke nām kā ḫaṭ	طِطُس	طِطُس کے نام پولس رسُول کا خط	ططس
+Phlm	فِلیمون کے نام کا خط	فلیمون کے نام کا خط	filēmōn ke nām kā ḫaṭ	فلیمون	فلیمون کے نام پولس رسُول کا خط	فِلیمون
+Heb	عِبرانیوں کے نام کا خط	عبرانیوں کے نام کا خط	ʿibrāniyōṅ ke nām kā ḫaṭ	عبرانیوں	عبرانیوں کے نام پولس رسول کا خط	عِبرانیوں
+Jas	یعقُوب کا عام خط	یعقوب کا عام خط	yaʿqūb kā ʿām ḫaṭ	يعقوب	یعقوب کا عا م خط	یعقوب	یعقُوب
+1Pet	پطرس کا پہلا عام خط	paṭras kā pahlā ʿām ḫaṭ	$FIRST پطر س	پطر س کاپہلا عا م خط	$FIRST-پطرس	$FIRST۔پطرس	$FIRST پطرس
+2Pet	پطرس کا دوسرا عام خط	paṭras kā dūsrā ʿām ḫaṭ	$SECOND پطرس	$SECOND پطر س	$SECOND-پطرس	$SECOND۔پطرس
+1John	یُوحنّا کا پہلا عام خط	یوحنا کا پہلا عام خط	yūḥannā kā pahlā ʿām ḫaṭ	$FIRST یوحنّا	یوحنّا کا پہلا عام خط	$FIRST-یُوحنّا	$FIRST۔یوحنا	$FIRST یُوحنّا
+2John	یُوحنّا کا دوسرا عام خط	یوحنا کا دوسرا عام خط	yūḥannā kā dūsrā ʿām ḫaṭ	$SECOND یوحنّا	یوحنّا کا دوسرا خط	$SECOND-یُوحنّا	$SECOND۔یوحنا	$SECOND یُوحنّا
+3John	یُوحنّا کا تیسرا عام خط	یوحنا کا تیسرا عام خط	yūḥannā kā tīsrā ʿām ḫaṭ	$THIRD یوحنّا	یوحنّا کا $THIRD خط	$THIRD-یُوحنّا	$THIRD۔یوحنا	$THIRD یُوحنّا
+Jude	یہُوداہ کا عام خط	یہوداہ کا عام خط	yahūdāh kā ʿām ḫaṭ	یہوداہ	یہُوداہ
+Rev	یُو حنّا عارِف کا مُکاشفہ	یو حنا عارف کا مکاشفہ	yūḥannā ʿārif kā mukāšafâ	مکاشفہ	یُوحنا عارف کا مکاشفہ	مُکاشفہ
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=2John
+=3John
+=1John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	پیدائش
+*Exod	خروج
+*Lev	احبار
+*Num	گنتی
+*Deut	استثناء
+*Josh	یشوع
+*Judg	قضاة
+*Ruth	روت
+*1Sam	۱۔سموایل
+*2Sam	۲۔سموایل
+*1Kgs	۱۔سلاطین
+*2Kgs	۲۔سلاطین
+*1Chr	۱۔تواریخ
+*2Chr	۲۔تواریخ
+*Ezra	عز را
+*Neh	نحمیاہ
+*Esth	ایستر
+*Job	ایّوب
+*Ps	زبُور
+*Prov	امثال
+*Eccl	واعظ
+*Song	غزل الغزلات
+*Isa	یسعیاہ
+*Jer	یرمیاہ
+*Lam	نوحہ
+*Ezek	حزقی ایل
+*Dan	دانیال
+*Hos	ہوسیع
+*Joel	یوایل
+*Amos	عاموس
+*Obad	عبدیاہ
+*Jonah	یونس
+*Mic	میکاہ
+*Nah	نا حُوم
+*Hab	حبقّوق
+*Zeph	صفنیاہ
+*Hag	حجيّ
+*Zech	زکریاہ
+*Mal	ملاکی
+*Matt	متّی
+*Mark	مرقس
+*Luke	لوقا
+*John	یوحنا
+*Acts	رسولوں
+*Rom	رومیوں
+*1Cor	۱ کرنتھِیُوں
+*2Cor	۲ کرنتھیوں
+*Gal	گلتیوں
+*Eph	افسیوں
+*Phil	فِلِپّیُوں
+*Col	کُلِسّیوں
+*1Thess	۱ تھسّلنیکیوں
+*2Thess	۲ تھسلنیکوں
+*1Tim	۱ تِیمُتھِیُس
+*2Tim	۲ تیِمُتھِیُس
+*Titus	طِطُس
+*Phlm	فلیمون
+*Heb	عبرانیوں
+*Jas	يعقوب
+*1Pet	۱ پطر س
+*2Pet	۲ پطرس
+*1John	۱ یوحنّا
+*2John	۲ یوحنّا
+*3John	۳ یوحنّا
+*Jude	یہوداہ
+*Rev	مکاشفہ
+*Tob	Tob
+*Jdt	Jdt
+*GkEsth	GkEsth
+*Wis	Wis
+*Sir	Sir
+*Bar	Bar
+*PrAzar	PrAzar
+*Sus	Sus
+*Bel	Bel
+*SgThree	SgThree
+*EpJer	EpJer
+*1Macc	1Macc
+*2Macc	2Macc
+*3Macc	3Macc
+*4Macc	4Macc
+*1Esd	1Esd
+*2Esd	2Esd
+*PrMan	PrMan

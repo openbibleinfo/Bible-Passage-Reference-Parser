@@ -1,0 +1,276 @@
+# http://www.nativlang.com/po/qg_otherwords_ordinalnumbers.htm
+$FIRST	Primeir[ao]	1[ao]?	I
+$SECOND	Segund[ao]	2[ao]?	II
+$THIRD	Terceir[ao]	3[ao]?	III
+$FOURTH	Quart[ao]	4[ao]?	IV
+$AB	[a-d]
+$AND	e! sig
+$CHAPTER	capítulos	capítulo	caps	cap
+$FF	e sig
+$TITLE	título
+# http://pt.wikipedia.org/wiki/Tradu%C3%A7%C3%B5es_da_B%C3%ADblia_em_l%C3%ADngua_portuguesa
+$TRANS	NVI	JFA	BPT
+$TO	á`
+$VERSE	versículos	versículo	vers.	ver.	vss.	vs.	vv.	v.
+$UNICODE_BLOCK	Latin
+
+# http://pt.wikipedia.org/wiki/Antigo_Testamento
+# http://pt.wikipedia.org/wiki/Novo_Testamento
+# http://pt.wikipedia.org/wiki/Livros_deuterocan%C3%B4nicos
+# http://pt.wikipedia.org/wiki/Adi%C3%A7%C3%B5es_em_Daniel
+# http://pt.wikipedia.org/wiki/Livros_da_B%C3%ADblia
+Gen	Gênesis	Génesis	Gên	Gén
+Exod	Êxodo	Éxodo	Êxo?d?
+Lev	Levíticos?	Lev?	Lv
+Num	Números	Núm?	Nm
+Deut	Deuteronómio	Deuteronômio	Deut?	Dt
+Josh	Josué	Jo?s
+Judg	Juízes	Juíz	Jz
+Ruth	Rute	Rut?	Rt
+1Sam	$FIRST Samuel	$FIRST Reinos	1 Sa?m?
+2Sam	$SECOND Samuel	$SECOND Reinos	2 Sa?m?
+1Kgs	$FIRST Reis	$THIRD Reinos	1 Re?
+2Kgs	$SECOND Reis	$FOURTH Reinos	2 Re?
+1Chr	$FIRST Crônicas	1 Crôn?	1 Cr
+2Chr	$SECOND Crônicas	2 Crôn?	2 Cr
+Ezra	Esdras	Esdr?
+Neh	Neemias	Ne
+Esth	Ester	Est
+Job	Jó`	Job
+Ps	Salmos?	Sa?l
+Prov	Provérbios	Pro?v?	Pv
+Eccl	Eclesiastes	Coélet	Ecl
+Song	Cânticos? dos Cânticos	Cantares de Salomão	Cantares	Cânticos	Cântico Superlativo	Cântico de Salomão	Cânt	Cn?t
+Isa	Isaías	Isa?
+Jer	Jeremias	Jer?	Jr
+Lam	Lamentações de Jeremias	Lamentaçôes de Jeremias	Lamentações	Lam
+Ezek	Ezequiel	Ezeq?	Ez
+Dan	Daniel	Dan?	Dn
+Hos	Oséias	Os
+Joel	Joel	Jl
+Amos	Amós	Am
+Obad	Obadias	Abdias	Abd	Oba?d?
+Jonah	Jonas	Jo?n
+Mic	Miquéias	Mi?q
+Nah	Naum	Na
+Hab	Habacuque	Habacuc	Hab
+Zeph	Sofonias	So?f
+Hag	Ageu	Ag
+Zech	Zacarias	Za?c
+Mal	Malaquias	Ma?l
+Matt	Mateus	Ma?t
+Mark	Marcos	Mr?c
+Luke	Lucas	Lu?c
+John	João	Jo
+Acts	Atos dos Apóstolos	Atos	At
+Rom	Romanos	Ro?m	Ro
+1Cor	$FIRST Coríntios	1 Cor?
+2Cor	$SECOND Coríntios	2 Cor?
+Gal	Gálatas	Gál
+Eph	Efésios	Ef
+Phil	Filipenses	Fi?l
+Col	Colossenses	Co?l
+1Thess	$FIRST Tessalonicenses	1 Tess	1 Ts
+2Thess	$SECOND Tessalonicenses	2 Tess	2 Ts
+1Tim	$FIRST Timóteo	1 Tim	1 Ti
+2Tim	$SECOND Timóteo	2 Tim	2 Ti
+Titus	Tito	Tit
+Phlm	Filémon	Filemom	Fl?mn	Flm
+Heb	Hebreus	Heb
+Jas	Tiago	Tg
+1Pet	$FIRST Pedro	1 Ped?
+2Pet	$SECOND Pedro	2 Ped?
+1John	$FIRST João	1 Jo?
+2John	$SECOND João	2 Jo?
+3John	$THIRD João	3 Jo?
+Jude	Judas	Jud
+Rev	Apocalipse de São João	Apocalipse de João	Apocalipse	Apo?c	Ap
+Tob	Tobias	Tob
+Jdt	Judite	Jdt
+GkEsth	Ester [Gg]rega	Ester \([Gg]rega\)	Est \(Gr\)
+Wis	Sabedoria de Salomão	Sabedoria	Sab	Sb
+Sir	Eclesiástico	Sirácida	Sir
+Bar	Baruque	Baru[ck]	Bar
+PrAzar	Salmo de Azarias	Sal Azar
+Sus	História de Susana	Susana	Sus
+Bel	Bel e o [Dd]ragão	Bel
+SgThree	Cântico dos Três Jovens	Cântico dos 3 Jovens	C3J
+EpJer	Carta de Jeremias	Cart. Jer
+1Macc	$FIRST Macabeus	1 Mac	1 Mc	1 M
+2Macc	$SECOND Macabeus	2 Mac	2 Mc	2 M
+3Macc	$THIRD Macabeus	3 Mac	3 Mc	3 M
+4Macc	$FOURTH Macabeus	4 Mac	4 Mc	4 M
+1Esd	$FIRST Esdras	1 Esd?
+2Esd	$SECOND Esdras	2 Esd?
+PrMan	Prece de Manassés	Pr Man
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=2Esd
+=1Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=PrAzar
+=Ps
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=1Macc
+=2Macc
+=3Macc
+=4Macc
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+
+*Gen	Gênesis	Gên
+*Exod	Êxodo	Êx
+*Lev	Levítico	Lev
+*Num	Números	Núm
+*Deut	Deuteronómio	Dt
+*Josh	Josué	Js
+*Judg	Juízes	Jz
+*Ruth	Rute	Rt
+*1Sam	1 Samuel	1 Sam
+*2Sam	2 Samuel	2 Sam
+*1Kgs	1 Reis	1 R
+*2Kgs	2 Reis	2 R
+*1Chr	1 Crônicas	1 Cr
+*2Chr	2 Crônicas	2 Cr
+*Ezra	Esdras	Esd
+*Neh	Neemias	Ne
+*Esth	Ester	Est
+*Job	Jó	Jó
+*Ps	Salmos	Sal		Salmo
+*Prov	Provérbios	Pr
+*Eccl	Eclesiastes	Ecl
+*Song	Cânticos dos Cânticos	Ct
+*Isa	Isaías	Is
+*Jer	Jeremias	Jer
+*Lam	Lamentações de Jeremias	Lam
+*Ezek	Ezequiel	Ez
+*Dan	Daniel	Dn
+*Hos	Oséias	Os
+*Joel	Joel	Jl
+*Amos	Amós	Am
+*Obad	Obadias	Ob
+*Jonah	Jonas	Jon
+*Mic	Miquéias	Miq
+*Nah	Naum	Na
+*Hab	Habacuque	Hab
+*Zeph	Sofonias	Sof
+*Hag	Ageu	Ag
+*Zech	Zacarias	Zac
+*Mal	Malaquias	Mal
+*Matt	Mateus	Mt
+*Mark	Marcos	Mc
+*Luke	Lucas	Lc
+*John	João	João
+*Acts	Atos	At
+*Rom	Romanos	Ro
+*1Cor	1 Coríntios	1 Cor
+*2Cor	2 Coríntios	2 Cor
+*Gal	Gálatas	Gál
+*Eph	Efésios	Ef
+*Phil	Filipenses	Fil
+*Col	Colossenses	Col
+*1Thess	1 Tessalonicenses	1 Tess
+*2Thess	2 Tessalonicenses	2 Tess
+*1Tim	1 Timóteo	1 Tim
+*2Tim	2 Timóteo	2 Tim
+*Titus	Tito	Tit
+*Phlm	Filémon	Flmn
+*Heb	Hebreus	Heb
+*Jas	Tiago	Tg
+*1Pet	1 Pedro	1 Ped
+*2Pet	2 Pedro	2 Ped
+*1John	1 João	1 João
+*2John	2 João	2 João
+*3John	3 João	3 João
+*Jude	Judas	Jud
+*Rev	Apocalipse de São João	Ap
+*Tob	Tobias	Tob
+*Jdt	Judite	Jdt
+*GkEsth	Ester Grega	Est (Gr)
+*Wis	Sabedoria	Sab
+*Sir	Sirácida	Sir
+*Bar	Baruque	Bar
+*PrAzar	Salmo de Azarias	Sal Azar
+*Sus	Susana	Sus
+*Bel	Bel e o Dragão	Bel
+*SgThree	Cântico dos Três Jovens
+*EpJer	Carta de Jeremias	Cart Jer
+*1Macc	1 Macabeus	1 Mc
+*2Macc	2 Macabeus	2 Mc
+*3Macc	3 Macabeus	3 Mc
+*4Macc	4 Macabeus	4 Mc
+*1Esd	1 Esdras	1 Esd
+*2Esd	2 Esdras	2 Esd
+*PrMan	Prece de Manassés	Pr Man
