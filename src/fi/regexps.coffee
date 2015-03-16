@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* johdannolla
-	| \d+ \W* ss (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* johdannolla
+	| \d \W* ss (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -135,13 +135,13 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["1Esd"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Ensimm[aä]inen[\s\xa0]*Esra|I(?:\.[\s\xa0]*Esra|[\s\xa0]*Esra)|1(?:\.[\s\xa0]*Esra|[\s\xa0]*Es(?:ra)?|Esd))
+		1Esd|(?:Ensimm[aä]inen[\s\xa0]*Esra|I(?:\.[\s\xa0]*Esra|[\s\xa0]*Esra)|1(?:\.[\s\xa0]*Esra|[\s\xa0]*Es(?:ra)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Esd"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Toinen[\s\xa0]*Esra|II(?:\.[\s\xa0]*Esra|[\s\xa0]*Esra)|2(?:\.[\s\xa0]*Esra|[\s\xa0]*Es(?:ra)?|Esd))
+		2Esd|(?:Toinen[\s\xa0]*Esra|II(?:\.[\s\xa0]*Esra|[\s\xa0]*Esra)|2(?:\.[\s\xa0]*Esra|[\s\xa0]*Es(?:ra)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Isa"]
@@ -329,17 +329,17 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Ensimm(?:[aä]inen[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?)|I(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?)|1(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|John))
+		1John|(?:Ensimm(?:[aä]inen[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?)|I(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?)|1(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Toinen[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|II(?:\.[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?)|2(?:\.[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|John))
+		2John|(?:Toinen[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|II(?:\.[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?)|2(?:\.[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Kolmas[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|III(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?)|3(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?|John))
+		3John|(?:Kolmas[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|III(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?)|3(?:\.[\s\xa0]*Johanneksen(?:[\s\xa0]*kirje)?|[\s\xa0]*Joh(?:anneksen(?:[\s\xa0]*kirje)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]

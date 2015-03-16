@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* tytuł
-	| \d+ \W* (?:nn|n) (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* tytuł
+	| \d \W* (?:nn|n) (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -119,7 +119,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Judg"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Ks(?:i[eę]g(?:[ai][\s\xa0]*S(?:[eę]dzi(?:[oó]w)))|\.[\s\xa0]*S[eę]dzi(?:[oó]w)|[\s\xa0]*S[eę]dzi(?:[oó]w))|Judg|S(?:[eę]dz|dz))|S[ęe]dzi(?:[óo]w)
+		(?:Ks(?:i[eę]g(?:[ai][\s\xa0]*S(?:[eę]dzi(?:[oó]w)))|\.[\s\xa0]*S[eę]dzi(?:[oó]w)|[\s\xa0]*S[eę]dzi(?:[oó]w))|Judg|S(?:[eę]dz|dz))|S[eę]dzi(?:[óo]w)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ruth"]
@@ -197,7 +197,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Job"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Ks(?:i(?:[eę]g(?:[ai][\s\xa0]*(?:Hioba|Ijoba|Joba)))|\.[\s\xa0]*(?:Hioba|Ijoba|Joba)|[\s\xa0]*(?:Hioba|Ijoba|Joba))|Job|Hi(?:ob)?)|(?:Joba|Hioba)
+		(?:Ks(?:i(?:[eę]g(?:[ai][\s\xa0]*(?:Hioba|Ijoba|Joba)))|\.[\s\xa0]*(?:Hioba|Ijoba|Joba)|[\s\xa0]*(?:Hioba|Ijoba|Joba))|Job|Hi(?:ob)?)|(?:Hioba|Joba)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ps"]
@@ -329,7 +329,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Ks(?:i(?:[eę]g(?:[ai][\s\xa0]*(?:Apokalipsy|Objawienia)))|\.[\s\xa0]*(?:Apokalipsy|Objawienia)|[\s\xa0]*(?:Apokalipsy|Objawienia))|Obj(?:awienie[\s\xa0]*(?:(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))|Jana))?|Rev|Ap(?:okalipsa[\s\xa0]*(?:[SŚ]wi(?:[eę]tego[\s\xa0]*Jana)|(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))))?)|(?:Apokalipsa|Objawienie)
+		(?:Ks(?:i(?:[eę]g(?:[ai][\s\xa0]*(?:Apokalipsy|Objawienia)))|\.[\s\xa0]*(?:Apokalipsy|Objawienia)|[\s\xa0]*(?:Apokalipsy|Objawienia))|Obj(?:awienie[\s\xa0]*(?:(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))|Jana))?|Rev|Ap(?:okalipsa[\s\xa0]*(?:[SŚ]wi(?:[eę]tego[\s\xa0]*Jana)|(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))))?)|(?:Objawienie|Apokalipsa)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1John"]

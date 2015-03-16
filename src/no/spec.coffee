@@ -1937,11 +1937,15 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 KAPITLENE 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, kapitel 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAPITEL 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, kap. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 KAP. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, kap 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAP 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (no)", ->
 		expect(p.parse("Exod 1:1 vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 v. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm V. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 v 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm V 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (no)", ->

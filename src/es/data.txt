@@ -19,7 +19,7 @@ Lev	Levítico	Le?v
 Num	Números	Núm?	Nm
 Deut	Deut[eo]?rono?mio	Dueteronomio	Deut?	Dt
 Josh	Josué	Jos
-Judg	Jueces	Juec?
+Judg	Jueces	Juec?	Jc
 Ruth	Rut	R[tu]
 1Sam	$FIRST Samuel	1 Sam	1 S[am]?
 2Sam	$SECOND Samuel	2 Sam	2 S[am]?
@@ -33,10 +33,10 @@ Esth	Ester	Est	Es
 Job	Jo?b
 Ps	Salmos?	Salm?	Slm?
 Prov	Pr[eo]?verbios?	Probv?erbios	Por?verbios	Provebios	Prvbo?s?	Pro?v?	Pv
-Eccl	Ecc?less?[ai][ai]s?tés?	Ecc?lesiastic?és	Ecc?les	Eccl?	Ecl?
+Eccl	Ecc?less?[ai][ai]s?tés?	Ecc?lesiastic?és	Ecc?les	Eccl?	Ecl?	Qo
 Song	El Cantar de los Cantares	Cantar de los Cantares	Cantares	Cant?	Cn?t
 Isa	Isaías	Isa?
-Jer	Jeremías?	Jere?
+Jer	Jeremías?	Jere?	Jr
 Lam	Lam[ei]ntaciones?	Lam?	Lm
 Ezek	Ez[ei][ei]?qui?el	Ezequial	Ezequ?	Ez[eq]?
 Dan	Daniel	Da?n	D[al]
@@ -48,10 +48,10 @@ Jonah	Jonás	Jon	Jns
 Mic	Miqueas	Miq?	Mq
 Nah	Nahúm?	Nah?	Nh
 Hab	Habb?ac[au]c	Habc?
-Zeph	Sofonías	So?f
+Zeph	Sofonías	So?f	So
 Hag	Hagg?eo	Ageo	Hag	[AH]g
-Zech	Zacarías	Zacar	Zac
-Mal	Malaquías	Malaqu	Mala?
+Zech	Zacarías	Zacar	Zac?
+Mal	Malaquías	Malaqu	Mala?	Ml
 Matt	El Evangelio de Mateo	Evangelio de Mateo	San Mateo	Mateo	Matt?	Mt
 Mark	El Evangelio de Marcos	Evangelio de Marcos	San Marcos	Ma?rcos	Marc?	Mrc?	Mc
 Luke	El Evangelio de Lucas	Evangelio de Lucas	San Lucas	Lucas	Luc?	Lc
@@ -60,18 +60,18 @@ Acts	Los Hechos de los Apóstoles	Hechos de los Apóstoles	Los Hechos	Hechos	He?
 Rom	Romanos?	Rom?s?	Rmn?s?
 1Cor	$FIRST Corintios	1 Corint?i?	1 Cor?
 2Cor	$SECOND Corintios	2 Corint?i?	2 Cor?
-Gal	Gálatas	Gálat	Gál
+Gal	Gálatas	Gálat	Gál?
 Eph	Efesios	Efes	Ef
-Phil	Filipenses	Filip?	Fil
+Phil	Filipenses	Filip?	Fil	Flp
 Col	Colosenses	Colos	Col
 1Thess	$FIRST Tesaloni[cs]enses?	1 Thess	1 Te?s
 2Thess	$SECOND Tesaloni[cs]enses?	2 Thess	2 Te?s
 1Tim	$FIRST Timoteo	1 Tim?	1 Tm
 2Tim	$SECOND Timoteo	2 Tim?	2 Tm
-Titus	Tito	Tit?
+Titus	Tito	Tit?	Tt
 Phlm	Filemón	Filem	Flmn?	Fmn
 Heb	Heb[eor][eor]?[eor]?s	Hebreo	Hebr	Heb?
-Jas	Santiago	Sant	Stg
+Jas	Santiago	Sant	Stg?
 1Pet	$FIRST Pedro	$FIRST San Pedro	1 Pe?d?
 2Pet	$SECOND Pedro	$SECOND San Pedro	2 Pe?d?
 1John	$FIRST J[au][au]n	$FIRST San J[au][au]n	1 Jn
@@ -86,12 +86,12 @@ Jude,Judg	Ju
 Matt,Mark,Mal	Ma
 Phil,Phlm	Fil
 # http://es.wikipedia.org/wiki/Deuterocan%C3%B3nicos
-Tob	Tobi?t?
+Tob	Tobi?t?	Tb
 Jdt	Ju?di?t
 GkEsth	Ester [Gg]riego	Ester \([Gg]riego\)	Est Gr
-Wis	Sabiduría	Sab
-Sir	Sirácida	Sirácides	Sirác	Sir	Eclesiástico	Ecclus
-Bar	Baruc	Bar
+Wis	Sabiduría	Sab	Sb
+Sir	Sirácida	Sirácides	Sirác	Sir?	Eclesiástico	Ecclus
+Bar	Baruc	Bar?
 PrAzar	Oración de Azarías	Cántico de Azarías	Azarías	Or Azar	Or Az
 Sus	Susana	Sus
 Bel	Bel y el Dragón	Bel y el Serpiente

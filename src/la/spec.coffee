@@ -1979,15 +1979,23 @@ describe "Miscellaneous tests", ->
 	it "should handle chapters (la)", ->
 		expect(p.parse("Titus 1:1, caput 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 CAPUT 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, cap. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 CAP. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, cap 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 CAP 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (la)", ->
 		expect(p.parse("Exod 1:1 versus 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERSUS 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vers. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VERS. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 ver. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VER. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 ver 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VER 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 v. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm V. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 v 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm V 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (la)", ->
@@ -1999,6 +2007,8 @@ describe "Miscellaneous tests", ->
 	it "should handle 'ff' (la)", ->
 		expect(p.parse("Rev 3et sequentes, 4:2et sequentes").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 ET SEQUENTES, 4:2 ET SEQUENTES").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
+		expect(p.parse("Rev 3et seq., 4:2et seq.").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
+		expect(p.parse("REV 3 ET SEQ., 4:2 ET SEQ.").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("Rev 3et seq, 4:2et seq").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 ET SEQ, 4:2 ET SEQ").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (la)", ->

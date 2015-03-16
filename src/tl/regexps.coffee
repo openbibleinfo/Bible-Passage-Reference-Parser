@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
-	| \d+ \W* k (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* title
+	| \d \W* k (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -374,7 +374,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Eph"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*E(?:[fp]es(?:io|o))|Mga[\s\xa0]*(?:Taga(?:[\s\xa0]*E(?:[fp]es(?:io|o))|-?(?:[\s\xa0]*E(?:[fp]es(?:io|o))|Efeso))|E(?:[fp]es(?:io|o)))|E(?:ph|f))|Taga(?:-?[\s\xa0]*E(?:[pf]es(?:io|o))|[\s\xa0]*E(?:[pf]es(?:io|o)))
+		(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*E(?:[fp]es(?:io|o))|Mga[\s\xa0]*Taga(?:[\s\xa0]*E(?:[fp]es(?:io|o))|-?(?:[\s\xa0]*E(?:[fp]es(?:io|o))|Efeso))|E(?:ph|f))|(?:Taga(?:-?[\s\xa0]*E(?:[pf]es(?:io|o))|[\s\xa0]*E(?:[fp]es(?:io|o)))|Mga[\s\xa0]*E(?:[pf]es(?:io|o)))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Phil"]

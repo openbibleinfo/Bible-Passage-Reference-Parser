@@ -21,6 +21,7 @@ my @order = get_order();
 my %all_abbrevs = make_tests();
 make_regexps();
 make_grammar();
+my $default_alternates_file = "$dir/en/translation_alternates.coffee";
 make_translations();
 
 sub make_translations
@@ -45,7 +46,7 @@ sub make_translations
 		$alias = get_file_contents("$dir/$lang/translation_aliases.coffee");
 		$out =~ s/\t+(\$TRANS_ALIAS)/$1/g;
 	}
-	my $alternate = '';
+	my $alternate = get_file_contents($default_alternates_file);
 	$alternate = get_file_contents("$dir/$lang/translation_alternates.coffee") if (-f "$dir/$lang/translation_alternates.coffee");
 	$out =~ s/\$TRANS_REGEXP/$regexp/g;
 	$out =~ s/\$TRANS_ALIAS/$alias/g;
@@ -194,15 +195,19 @@ sub make_book_regexp
 {
 	my ($osis, $abbrevs, $recurse_level) = @_;
 	#print "  Regexping $osis..\n";
-	#return 'aaaa' unless ($osis eq 'Acts');
+	#return 'aaaa' unless ($osis eq 'Rom');
 	map { s/\\//g; } @{$abbrevs};
 	my @subsets = get_book_subsets($abbrevs);
 	my @out;
+	#print Dumper(\@subsets); exit;
+	my $i = 1;
 	foreach my $subset (@subsets)
 	{
+		#print "Sub $i\n";
+		$i++;
 		#print Dumper($subset);
 		my $json = JSON->new->ascii(1)->encode($subset);
-		#print "$json\n" if ($osis eq 'GkEsth');
+		#print "$json\n";
 		my $base64 = encode_base64($json, "");
 		print "$osis " . length($base64) . "\n";
 		my $use_file = 0;
@@ -229,7 +234,19 @@ sub make_book_regexp
 		$pattern = validate_node_regexp($osis, $pattern, $subset, $recurse_level);
 		push @out, $pattern;
 	}
+	validate_full_node_regexp($osis, join('|', @out), $abbrevs);
 	return join('|', @out);
+}
+
+sub validate_full_node_regexp
+{
+	my ($osis, $pattern, $abbrevs) = @_;
+	foreach my $abbrev (@{$abbrevs})
+	{
+		my $compare = "$abbrev 1";
+		$compare =~ s/^(?:$pattern) //;
+		print Dumper("  Not parsable ($abbrev): $compare") unless ($compare eq '1');
+	}
 }
 
 sub get_book_subsets
@@ -238,6 +255,7 @@ sub get_book_subsets
 	return ([@abbrevs]) unless (scalar @abbrevs > 20);
 	my @groups = ([]);
 	my %subs;
+	@abbrevs = sort { length $b <=> length $a } @abbrevs;
 	while (@abbrevs)
 	{
 		my $long = shift @abbrevs;
@@ -245,12 +263,12 @@ sub get_book_subsets
 		for my $i (0 .. $#abbrevs)
 		{
 			my $short = quotemeta $abbrevs[$i];
-			next unless ($long =~ /\b$short\b/);
+			next unless ($long =~ /(?:^|[\s\p{InPunctuation}\p{Punct}])$short(?:[\s\p{InPunctuation}\p{Punct}]|$)/i);
 			$subs{$abbrevs[$i]}++;
 		}
 		push @{$groups[0]}, $long;
 	}
-	$groups[1] = [keys %subs] if (%subs);
+	$groups[1] = [sort { length $b <=> length $a } keys %subs] if (%subs);
 	return @groups;
 }
 
@@ -292,6 +310,23 @@ sub validate_node_regexp
 	my @oks = @{$oks};
 	my @not_oks = @{$not_oks};
 	return $pattern unless (@not_oks);
+	#print scalar(@not_oks) . " not oks\n";
+	if ($recurse_level > 10)
+	{
+		print "Splitting $osis by length...\n";
+		if ($note && $note eq 'lengths')
+		{
+			die "'Lengths' didn't work: $osis";
+		}
+		my %lengths = split_by_length(@{$abbrevs});
+		my @patterns;
+		foreach my $length (sort { $b <=> $a } keys %lengths)
+		{
+			push @patterns, make_book_regexp($osis, $lengths{$length}, 1);
+		}
+		return validate_node_regexp($osis, join('|', @patterns), $abbrevs, $recurse_level + 1, 'lengths');
+
+	}
 	print "  Recurse ($osis): $recurse_level\n";# if ($recurse_level > 3);
 	#if ($note && $note eq 'final')
 	#{
@@ -304,6 +339,7 @@ sub validate_node_regexp
 	#print Dumper(\@not_oks);
 	my $ok_pattern = make_book_regexp($osis, \@oks, $recurse_level + 1);
 	my $not_ok_pattern = make_book_regexp($osis, \@not_oks, $recurse_level + 1);
+	#print "Nop: $not_ok_pattern\n";
 	my ($shortest_ok) = sort { length $a <=> length $b } @oks;
 	my ($shortest_not_ok) = sort { length $a <=> length $b } @not_oks;
 	my $new_pattern = (length $shortest_ok > length $shortest_not_ok && $recurse_level < 10) ? "$ok_pattern|$not_ok_pattern" : "$not_ok_pattern|$ok_pattern";
@@ -312,15 +348,26 @@ sub validate_node_regexp
 	return $new_pattern;
 }
 
+sub split_by_length
+{
+	my %lengths;
+	foreach my $abbrev (@_)
+	{
+		my $length = int(length($abbrev) / 2);
+		push @{$lengths{$length}}, $abbrev;
+	}
+	return %lengths;
+}
+
 sub check_regexp_pattern
 {
 	my ($osis, $pattern, $abbrevs) = @_;
 	my (@oks, @not_oks);
 	foreach my $abbrev (@{$abbrevs})
 	{
-		my $compare = $abbrev;
-		$compare =~ s/^$pattern(?:$|\b|(?=\W))//i;
-		if (length $compare)
+		my $compare = "$abbrev 1";
+		$compare =~ s/^(?:$pattern)//i;
+		if ($compare ne ' 1')
 		{
 			push @not_oks, $abbrev;
 		}
@@ -1079,7 +1126,7 @@ sub expand_abbrev
 {
 	my ($abbrev) = @_;
 	return ($abbrev) unless ($abbrev =~ /[\[\(?\|\\]/);
-	$abbrev =~ s/\./\\./g;
+	$abbrev =~ s/(<!\\)\./\\./g;
 	my @chars = split //, $abbrev;
 	my @outs = ('');
 	while (@chars)

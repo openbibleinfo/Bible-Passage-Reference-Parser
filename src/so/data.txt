@@ -16,7 +16,7 @@ Gen	Bilowgii	Bil
 Exod	Baxniintii	Bax
 Lev	Laawiyiintii	Laaw
 Num	Tirintii	Tir
-Deut	Sharciga Kunoqoshadiisa
+Deut	Sharciga Kunoqoshadiisa	Sharci
 Josh	Yashuuca	Yash
 Judg	Xaakinnada	Xaak
 Ruth	Ruud
@@ -29,24 +29,24 @@ Ruth	Ruud
 Ezra	Cesraa	Cesr?
 Neh	Nexemyaah	Nex
 Esth	Esteer	Est
-Job	Ayuub
+Job	Ayuub	Ayu
 Ps	Sabuurradii	Sab	Sabuur
 Prov	Maahmaahyadii	Maah
-Eccl	Wacdiyahii	Wac
+Eccl	Wacdiyahii	Wac	Wacdiyaha
 Song	Gabaygii Sulaymaan	Gabaygii	Gab
 Isa	Ishacyaah	Ish
 Jer	Yeremyaah	Yer
-Lam	Baroorashadii Yeremyaah	Baroorashadii
+Lam	Baroorashadii Yeremyaah	Baroorashadii	Baroor
 Ezek	Yexesqeel	Yex
 Dan	Daanyeel	Daan
 Hos	Hoosheeca	Hoosh
 Joel	Yoo'eel	Yool
 Amos	Caamoos	Caam
-Obad	Cobadyaah	Cobad
+Obad	Cobadyaah	Cobad	Cob
 Jonah	Yoonis	Yoon
-Mic	Miikaah	Niik
+Mic	Miikaah	Miik
 Nah	Naxuum	Nax
-Hab	Xabaquuq	Hab
+Hab	Xabaquuq	Xab
 Zeph	Sefanyaah	Sef
 Hag	Xaggay	Xagg?
 Zech	Sekaryaah	Sek
@@ -56,26 +56,26 @@ Mark	Markos	Mar	Mark
 Luke	Luukos	Luuk
 John	Yooxanaa	Yoox
 Acts	Falimaha Rasuullada	Fal
-Rom	Rooma
-1Cor	$FIRST Korintos	$FIRST Kor
-2Cor	$SECOND Korintos	$SECOND Kor
+Rom	Rooma	Room
+1Cor	$FIRST Korintos	$FIRST Kor	Korintos Kowaad
+2Cor	$SECOND Korintos	$SECOND Kor	Korintos Labaad
 Gal	Galatiya	Gal
 Eph	Efesos	Ef
 Phil	Filiboy	Fil
 Col	Kolosay	Kol
-1Thess	$FIRST Tesaloniika	$FIRST Tes
-2Thess	$SECOND Tesaloniika	$SECOND Tes
-1Tim	$FIRST Timoteyos	$FIRST Tim
-2Tim	$SECOND Timoteyos	$SECOND Tim
+1Thess	$FIRST Tesaloniika	$FIRST Tes	Tesoloniika Kowaad
+2Thess	$SECOND Tesaloniika	$SECOND Tes	Tesoloniika Labaad
+1Tim	$FIRST Timoteyos	$FIRST Tim	Timoteyos Kowaad
+2Tim	$SECOND Timoteyos	$SECOND Tim	Timoteyos Labaad
 Titus	Tiitos	Tiit
-Phlm	Filemon	Flmn?
+Phlm	Filemon	Flmn?	Filem
 Heb	Cibraaniyada	Cib
 Jas	Yacquub	Yacq?
-1Pet	$FIRST Butros	$FIRST But
-2Pet	$SECOND Butros	$SECOND But
-1John	$FIRST Yooxanaa	$FIRST Yoox
-2John	$SECOND Yooxanaa	$SECOND Yoox
-3John	$THIRD Yooxanaa	$THIRD Yoox
+1Pet	$FIRST Butros	$FIRST But	Butros Kowaad
+2Pet	$SECOND Butros	$SECOND But	Butros Labaad
+1John	$FIRST Yooxanaa	$FIRST Yoox	Yooxanaa Kowaad
+2John	$SECOND Yooxanaa	$SECOND Yoox	Yooxanaa Labaad
+3John	$THIRD Yooxanaa	$THIRD Yoox	Yooxanaa Saddexaad
 Jude	Yuudas	Yuud
 Rev	Muujintii	Muuj
 Tob	Tob
@@ -192,7 +192,7 @@ Jonah,Joel	Yoo
 *Exod	Baxniintii	Bax
 *Lev	Laawiyiintii	Laaw
 *Num	Tirintii	Tir
-*Deut	Sharciga Kunoqoshadiisa
+*Deut	Sharciga Kunoqoshadiisa	Sharci
 *Josh	Yashuuca	Yash
 *Judg	Xaakinnada	Xaak
 *Ruth	Ruud
@@ -205,24 +205,24 @@ Jonah,Joel	Yoo
 *Ezra	Cesraa	Ces
 *Neh	Nexemyaah	Nex
 *Esth	Esteer	Est
-*Job	Ayuub
+*Job	Ayuub	Ayu
 *Ps	Sabuurradii	Sab		Sabuur
 *Prov	Maahmaahyadii	Maah
 *Eccl	Wacdiyahii	Wac
 *Song	Gabaygii Sulaymaan	Gab
 *Isa	Ishacyaah	Ish
 *Jer	Yeremyaah	Yer
-*Lam	Baroorashadii Yeremyaah	Baroorashadii
+*Lam	Baroorashadii Yeremyaah	Baroor
 *Ezek	Yexesqeel	Yex
 *Dan	Daanyeel	Daan
 *Hos	Hoosheeca	Hoosh
-*Joel	Yoo'eel
+*Joel	Yoo'eel	Yool
 *Amos	Caamoos	Caam
-*Obad	Cobadyaah	Cobad
+*Obad	Cobadyaah	Cobad	Cob
 *Jonah	Yoonis	Yoon
-*Mic	Miikaah	Niik
+*Mic	Miikaah	Miik
 *Nah	Naxuum	Nax
-*Hab	Xabaquuq	Hab
+*Hab	Xabaquuq	Xab
 *Zeph	Sefanyaah	Sef
 *Hag	Xaggay	Xag
 *Zech	Sekaryaah	Sek
@@ -232,7 +232,7 @@ Jonah,Joel	Yoo
 *Luke	Luukos	Luuk
 *John	Yooxanaa	Yoox
 *Acts	Falimaha Rasuullada	Fal
-*Rom	Rooma
+*Rom	Rooma	Room
 *1Cor	1 Korintos	1 Kor
 *2Cor	2 Korintos	2 Kor
 *Gal	Galatiya	Gal

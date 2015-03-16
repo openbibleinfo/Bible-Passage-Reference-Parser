@@ -6,7 +6,7 @@ $AB	[a-e]
 # vö = cf.: http://hu.wikipedia.org/wiki/Jakab_levele
 $AND	és	vö	vagy
 # $CHAPTER should appear after the number
-$CHAPTER	fejezetében	fejezet	fej
+$CHAPTER	fejezetében	fejezet	fej.
 # http://hu.wikipedia.org/wiki/Jeremi%C3%A1s_siralmai
 $FF	kk
 # https://www.google.com/search?q=%22Zsolt+3+c%C3%ADm%22&ie=utf-8&oe=utf-8
@@ -15,7 +15,7 @@ $TRANS	KAR	ERV
 # köv also means $FF. See http://hu.wikipedia.org/wiki/Jeremi%C3%A1s_siralmai
 $TO	köv
 # http://hu.wikipedia.org/wiki/Abdi%C3%A1s_k%C3%B6nyve
-$VERSE	versekre	versek	vers
+$VERSE	versekre	versek	vers.
 $UNICODE_BLOCK	Latin
 
 Gen	Mózes I	Teremtés	Ter	$FIRST Mózes	1 Mó?z

@@ -4,12 +4,12 @@ $THIRD	III	3
 $FOURTH	IV	4
 $AB	[a-e]
 $AND	et
-$CHAPTER	caput	cap
-$FF	et sequentes	et seq
+$CHAPTER	caput	cap.
+$FF	et sequentes	et seq.
 $TITLE	titulus
 $TRANS	VULG	VG
 $TO	ad
-$VERSE	versus	vers	ver	v
+$VERSE	versus	vers.	ver.	v.
 $UNICODE_BLOCK	Latin
 
 Gen	Liber Genesis	Gen	Genesis

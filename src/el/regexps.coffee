@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* (?:ο#{bcv_parser::regexps.space}+τ[ίι]τλος|ο#{bcv_parser::regexps.space}+τ[ίι]τλοσ|τ[ίι]τλος|τ[ίι]τλοσ)
-	| \d+ \W* και#{bcv_parser::regexps.space}+μετ[άα] (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [α-ε] (?! \w )
+	  \d \W* (?:ο#{bcv_parser::regexps.space}+τ[ίι]τλος|ο#{bcv_parser::regexps.space}+τ[ίι]τλοσ|τ[ίι]τλος|τ[ίι]τλοσ)
+	| \d \W* και#{bcv_parser::regexps.space}+μετ[άα] (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [α-ε] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏ̀-ʹͶ-ͷͺ-ͽΆΈ-ΊΌΎ-ΡΣ-ϵϷ-Ͽ᷀-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼ⃐-⃿Ⱡ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -171,12 +171,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏ̀-ʹͶ-ͷͺ-ͽΆΈ-ΊΌΎ-ΡΣ-ϵϷ-Ͽ᷀-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼ⃐-⃿Ⱡ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:δυτικ[οό]ς[\s\xa0]*Χρονικ(?:[ωώ]ν[\s\xa0]*Β['ʹʹ΄’])|Παραλειπομ[έε]νων[\s\xa0]*Β['ʹʹ΄’]|Χρονικ[ωώ]ν[\s\xa0]*Β['΄’]|Β(?:['ʹʹ΄’][\s\xa0]*(?:Παρ?|Χρ(?:ον(?:ικ[ωώ]ν)?)?))|2Chr)|Χρονικ(?:[ώω]ν[\s\xa0]*Β[ʹʹ])
+		(?:δυτικ[οό]ς[\s\xa0]*Χρονικ(?:[ωώ]ν[\s\xa0]*Β['ʹʹ΄’])|Παραλειπομ[έε]νων[\s\xa0]*Β['ʹʹ΄’]|Β(?:['ʹʹ΄’][\s\xa0]*(?:Παρ?|Χρ(?:ον(?:ικ[ωώ]ν)?)?))|2Chr)|Χρονικ(?:[ώω]ν[\s\xa0]*Β['ʹʹ΄’])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏ̀-ʹͶ-ͷͺ-ͽΆΈ-ΊΌΎ-ΡΣ-ϵϷ-Ͽ᷀-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼ⃐-⃿Ⱡ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:δυτικ[οό]ς[\s\xa0]*Χρονικ(?:[ωώ]ν[\s\xa0]*Α['ʹʹ΄’])|Παραλειπομ[έε]νων[\s\xa0]*Α['ʹʹ΄’]|Χρονικ[ωώ]ν[\s\xa0]*Α['΄’]|Α(?:['ʹʹ΄’][\s\xa0]*(?:Παρ?|Χρ(?:ον(?:ικ[ωώ]ν)?)?))|1Chr)|Χρονικ(?:[ώω]ν[\s\xa0]*Α[ʹʹ])
+		(?:δυτικ[οό]ς[\s\xa0]*Χρονικ(?:[ωώ]ν[\s\xa0]*Α['ʹʹ΄’])|Παραλειπομ[έε]νων[\s\xa0]*Α['ʹʹ΄’]|Α(?:['ʹʹ΄’][\s\xa0]*(?:Παρ?|Χρ(?:ον(?:ικ[ωώ]ν)?)?))|1Chr)|Χρονικ(?:[ώω]ν[\s\xa0]*Α['ʹ΄’ʹ])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezra"]

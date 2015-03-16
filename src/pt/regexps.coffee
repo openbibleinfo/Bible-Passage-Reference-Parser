@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* t[íi]tulo
-	| \d+ \W* e#{bcv_parser::regexps.space}+sig (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-d] (?! \w )
+	  \d \W* t[íi]tulo
+	| \d \W* e#{bcv_parser::regexps.space}+sig (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-d] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -234,7 +234,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Song"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Song|C(?:ant(?:ares[\s\xa0]*de[\s\xa0]*Salom[aã]o|ico(?:s[\s\xa0]*dos[\s\xa0]*C[aâ]nticos|[\s\xa0]*(?:Superlativo|d(?:os[\s\xa0]*C[aâ]nticos|e[\s\xa0]*Salom[aã]o))))?|ânt(?:ico(?:s[\s\xa0]*dos[\s\xa0]*C[aâ]nticos|[\s\xa0]*(?:Superlativo|d(?:os[\s\xa0]*C[aâ]nticos|e[\s\xa0]*Salom[aã]o))))?|nt|t))|C(?:ânticos|ant(?:ares|icos))
+		(?:Song|C(?:ant(?:ares[\s\xa0]*de[\s\xa0]*Salom[aã]o|ico(?:s[\s\xa0]*dos[\s\xa0]*C[aâ]nticos|[\s\xa0]*(?:Superlativo|d(?:os[\s\xa0]*C[aâ]nticos|e[\s\xa0]*Salom[aã]o))))?|ânt(?:ico(?:s[\s\xa0]*dos[\s\xa0]*C[aâ]nticos|[\s\xa0]*(?:Superlativo|d(?:os[\s\xa0]*C[aâ]nticos|e[\s\xa0]*Salom[aã]o))))?|nt|t))|C(?:ânticos|ant(?:icos|ares))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jer"]
@@ -453,12 +453,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Segund[ao][\s\xa0]*Pedro|II(?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro)|2(?:\.[\s\xa0]*Pedro|(?:[ao](?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro))|[\s\xa0]*Pe(?:d(?:ro)?)?|Pet))
+		2Pet|(?:Segund[ao][\s\xa0]*Pedro|II(?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro)|2(?:\.[\s\xa0]*Pedro|(?:[ao](?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro))|[\s\xa0]*Pe(?:d(?:ro)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Primeir[ao][\s\xa0]*Pedro|I(?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro)|1(?:\.[\s\xa0]*Pedro|(?:[ao](?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro))|[\s\xa0]*Pe(?:d(?:ro)?)?|Pet))
+		1Pet|(?:Primeir[ao][\s\xa0]*Pedro|I(?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro)|1(?:\.[\s\xa0]*Pedro|(?:[ao](?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro))|[\s\xa0]*Pe(?:d(?:ro)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jude"]

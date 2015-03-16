@@ -2770,10 +2770,10 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 ГЛАВЫ 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, глав 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 ГЛАВ 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, гл\. 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 ГЛ\. 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, гл\ 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 ГЛ\ 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, гл. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 ГЛ. 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, гл 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 ГЛ 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (ru)", ->
 		expect(p.parse("Exod 1:1 стихи 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm СТИХИ 6").osis()).toEqual "Phlm.1.6"
@@ -2795,7 +2795,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 sz").osis_and_translations()).toEqual [["Lev.1", "SZ"]]
 	it "should handle book ranges (ru)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("1-я — 3-я  Иоанна").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1-я — 3-я  послание Иоанна").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (ru)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

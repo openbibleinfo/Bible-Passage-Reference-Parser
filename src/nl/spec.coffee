@@ -2882,8 +2882,12 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Phlm VERZEN 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vs. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VS. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 vs 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VS 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 v. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm V. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 v 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm V 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (nl)", ->

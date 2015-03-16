@@ -6,6 +6,10 @@
 1Chr	I. Paralipomena
 1Chr	1 Paralipomena
 1Chr	I Paralipomena
+1Chr	1. Cronicilor
+1Chr	I. Cronicilor
+1Chr	1 Cronicilor
+1Chr	I Cronicilor
 1Chr	1. Cronici
 1Chr	I. Cronici
 1Chr	1 Cronici
@@ -170,6 +174,10 @@
 2Chr	2. Paralipomena
 2Chr	II Paralipomena
 2Chr	2 Paralipomena
+2Chr	II. Cronicilor
+2Chr	2. Cronicilor
+2Chr	II Cronicilor
+2Chr	2 Cronicilor
 2Chr	II. Cronici
 2Chr	2. Cronici
 2Chr	II Cronici
@@ -343,6 +351,8 @@
 4Macc	4 Macabei
 4Macc	4Macc
 Acts	Faptele Apostolilor
+Acts	Fapte Apostolilor
+Acts	Faptele
 Acts	F. Ap
 Acts	Fapte
 Acts	Acts
@@ -485,6 +495,8 @@ Lam	Plangerile lui Ieremia
 Lam	Plângerile lui Ieremia
 Lam	Plangeri
 Lam	Plângeri
+Lam	Plang
+Lam	Plâng
 Lam	Lam
 Lam	Pl
 Lev	Leviticul
@@ -497,6 +509,7 @@ Luke	Lc
 Mal	Maleahi
 Mal	Mal
 Mark	Marcu
+Mark	Marc
 Mark	Mark
 Mark	Mc
 Matt	Matei
@@ -520,6 +533,7 @@ Obad	Obad
 Phil	Filipeni
 Phil	Filip
 Phil	Phil
+Phil	Fil
 Phil	Flp
 Phlm	Filimon
 Phlm	Filim
@@ -584,6 +598,7 @@ Song	Cantări
 Song	Cântari
 Song	Cântări
 Song	Cant
+Song	Cânt
 Song	Song
 Sus	Istoria Susanei
 Sus	Susanei
@@ -617,3 +632,5 @@ Zeph	Ţefania
 Zeph	Țefania
 Zeph	Zeph
 Zeph	Tef
+Zeph	Ţef
+Zeph	Țef

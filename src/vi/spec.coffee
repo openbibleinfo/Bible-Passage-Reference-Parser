@@ -1994,7 +1994,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 1934").osis_and_translations()).toEqual [["Lev.1", "1934"]]
 	it "should handle book ranges (vi)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("I to III  Giăng").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("I to III  Gioan").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (vi)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

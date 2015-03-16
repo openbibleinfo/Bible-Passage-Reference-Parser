@@ -4,15 +4,15 @@ $THIRD	3	III
 $FOURTH	4	IV
 $AB	[a-e]
 # http://ro.orthodoxwiki.org/Pildele_lui_Solomon (şi) and http://ro.wikipedia.org/wiki/Evanghelia_dup%C4%83_Marcu (cf. = cf) and http://ro.wikipedia.org/wiki/Epistola_lui_Pavel_c%C4%83tre_romani (cp)
-$AND	şi	cf	cp
+$AND	şi	cf.	cp.
 # http://ro.orthodoxwiki.org/Cartea_a_IV-a_a_Regilor (capitolele) and http://www.bibliaortodoxa.ro/carte.php?id=20 (capitolul) and http://intercer.net/resurse/biblia-si-studii-biblice/articole-biblice/comentarii-la-cartile-biblice/cartea-lui-rut.html (cap)
-$CHAPTER	capitolele	capitolul	cap
+$CHAPTER	capitolele	capitolul	cap.
 $FF	ff
-$TITLE	title
+$TITLE	titlu
 $TRANS	NTLR
 $TO	-
 # http://ro.orthodoxwiki.org/Epistola_c%C4%83tre_Efeseni_a_Sf%C3%A2ntului_Apostol_Pavel (versetul) and http://ro.orthodoxwiki.org/Epistola_c%C4%83tre_Galateni_a_Sf%C3%A2ntului_Apostol_Pavel (vers) and http://ro.orthodoxwiki.org/Epistola_c%C4%83tre_Filimon_a_Sf%C3%A2ntului_Apostol_Pavel (versete) and http://ro.orthodoxwiki.org/Epistola_soborniceasc%C4%83_a_Sf%C3%A2ntului_Apostol_Iuda (versetele) and NTLR on BibleGateway (vs and v)
-$VERSE	versetul	versetele	versete	vers	vs	v
+$VERSE	versetul	versetele	versete	vers.	vs.	v.
 $UNICODE_BLOCK	Latin
 
 Gen	Facerea	Geneza	Gen	Genesa
@@ -27,8 +27,8 @@ Ruth	Rut
 2Sam	Cartea II a Regilor	Cartea II a lui Samuel	$SECOND Samuel	$SECOND Sam?	Cartea a doua a Regilor	$SECOND Regilor
 1Kgs	$THIRD Regi	Cartea III a Regilor	I a Împăraţilor	$FIRST Împ	$FIRST Imparati	$FIRST Imp	Cartea a treia a Regilor	$FIRST Regi	$FIRST Împăraţi
 2Kgs	$FOURTH Regi	Cartea IV a Regilor	II a Împăraţilor	$SECOND Împ	$SECOND Imparati	$SECOND Imp	Cartea a patra a Regilor	$SECOND Regi	$SECOND Împăraţi
-1Chr	$FIRST Paralipomena	$FIRST Cronici	$FIRST Cron	Cartea întâi Paralipomena
-2Chr	$SECOND Paralipomena	$SECOND Cronici	$SECOND Cron	Cartea a doua Paralipomena
+1Chr	$FIRST Paralipomena	$FIRST Cronici	$FIRST Cron	Cartea întâi Paralipomena	$FIRST Cronicilor
+2Chr	$SECOND Paralipomena	$SECOND Cronici	$SECOND Cron	Cartea a doua Paralipomena	$SECOND Cronicilor
 Ezra	Ezra
 Neh	Neemia	Neem
 Esth	Esterei	Estera	Est
@@ -36,10 +36,10 @@ Job	Iov
 Ps	Psalmi	Cartea Psalmilor	Psalmul	Psalm	Psalmii	Ps
 Prov	Pildele lui Solomon	Proverbele lui Solomon	Prov	Proverbele	Proverbe
 Eccl	Ecclesiastul	Eccl	Ecl	Eclesiastul	Ecleziast	Ecleziastul
-Song	Cântări	Cântarea Cântărilor	Cantarea cantarilor	Cant	Cântarea lui Solomon
+Song	Cântări	Cântarea Cântărilor	Cantarea cantarilor	Cânt	Cântarea lui Solomon
 Isa	Isaia	Isa?
 Jer	Ieremia	Ier
-Lam	Plangeri	Plângerile profetului Ieremia	Plangerile lui Ieremia	Pl	Plângerile lui Ieremia	Plângeri
+Lam	Plangeri	Plângerile profetului Ieremia	Plangerile lui Ieremia	Pl	Plângerile lui Ieremia	Plângeri	Plâng
 Ezek	Iezechiel	Ezechiel	Ezech?	Eze?
 Dan	Daniel	Dan
 Hos	Osea	Os
@@ -50,21 +50,21 @@ Jonah	Iona
 Mic	Miheia	Mica	Mic
 Nah	Naum
 Hab	Avacum	Habacuc	Hab
-Zeph	Sofonie	Tefania	Tef	Țefania	Ţefania
+Zeph	Sofonie	Tefania	Tef	Țefania	Ţefania	Țef	Ţef
 Hag	Agheu	Hagai	Hag
 Zech	Zaharia	Zah
 Mal	Maleahi	Mal
 Matt	Matei	Mt	Mat
-Mark	Marcu	Mc	Mark
+Mark	Marcu?	Mc	Mark
 Luke	Luca	Lc	Luc
 John	Ioan	In
-Acts	Faptele Apostolilor	Fapte	Fap	F.A.	F. Ap.	Fapt
+Acts	Faptele Apostolilor	Fapte Apostolilor	Faptele	Fapte	Fap	F.A.	F. Ap.	Fapt
 Rom	Romani	Rom
 1Cor	$FIRST Corinteni	$FIRST Cor	$FIRST Co	$FIRST Corintieni
 2Cor	$SECOND Corinteni	$SECOND Cor	$SECOND Co	$SECOND Corintieni
 Gal	Galateni	Gal
 Eph	Efeseni	Efes	Ef
-Phil	Filipeni	Flp	Filip
+Phil	Filipeni	Flp	Filip	Fil
 Col	Coloseni	Col
 1Thess	$FIRST Tesaloniceni	$FIRST Tes
 2Thess	$SECOND Tesaloniceni	$SECOND Tes

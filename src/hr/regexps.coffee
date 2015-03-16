@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
-	| \d+ \W* ff (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* title
+	| \d \W* ff (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -339,7 +339,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Tre[cæć]a[\s\xa0]*Ivanova(?:[\s\xa0]*(?:[Pp]oslanica)?)|III(?:\.[\s\xa0]*Ivanova(?:[\s\xa0]*Poslanica)?|[\s\xa0]*Ivanova(?:[\s\xa0]*Poslanica)?)|3(?:\.[\s\xa0]*Ivanova(?:[\s\xa0]*Poslanica)?|John|[\s\xa0]*Iv(?:anova(?:[\s\xa0]*Poslanica)?)?))|Tre(?:[cæć]a[\s\xa0]*Ivanova)
+		Tre[cæć]a[\s\xa0]*Ivanova[\s\xa0]*(?:[Pp]oslanica)|(?:Tre[cæć]a[\s\xa0]*Ivanova|III(?:\.[\s\xa0]*Ivanova(?:[\s\xa0]*Poslanica)?|[\s\xa0]*Ivanova(?:[\s\xa0]*Poslanica)?)|3(?:\.[\s\xa0]*Ivanova(?:[\s\xa0]*Poslanica)?|John|[\s\xa0]*Iv(?:anova(?:[\s\xa0]*Poslanica)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]
@@ -359,12 +359,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Pavlova[\s\xa0]*druga[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|Druga[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korin[cæć]anima)|II(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|2(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:II(?:\.[\s\xa0]*Korin[ćc]anima|[\s\xa0]*Korin[ćc]anima)|Druga[\s\xa0]*Korin[ćc]anima|2(?:\.[\s\xa0]*Korin[ćc]anima|[\s\xa0]*Korin[cć]anima))
+		(?:Pavlova[\s\xa0]*druga[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|Druga[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korinæanima)|II(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|2(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Druga[\s\xa0]*(?:poslanica[\s\xa0]*Korin[ćc]anima|Korin[ćc]anima)|II(?:\.[\s\xa0]*Korin[cć]anima|[\s\xa0]*Korin[ćc]anima)|2(?:\.[\s\xa0]*Korin[ćc]anima|[\s\xa0]*Korin[cć]anima))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:P(?:avlova[\s\xa0]*prva[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|rva[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korin[cæć]anima))|I(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|1(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Prva[\s\xa0]*Korin[ćc]anima|[1I](?:[\s\xa0]*Korin(?:[ćc]anima|\.[\s\xa0]*Korin[ćc]anima)))|[1I]\.[\s\xa0]*Korin(?:[ćc]anima)
+		(?:P(?:avlova[\s\xa0]*prva[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|rva[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korinæanima))|I(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|1(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Prva[\s\xa0]*(?:poslanica[\s\xa0]*Korin[cć]anima|Korin[ćc]anima)|[I1](?:\.[\s\xa0]*Korin(?:[cć]anima|[\s\xa0]*Korin[ćc]anima)))|[I1][\s\xa0]*Korin(?:[ćc]anima)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Gal"]

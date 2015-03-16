@@ -8,7 +8,7 @@ $AB	[a-e]
 # http://www.biblegateway.com/passage/?search=Jan%201&version=NP (oraz) and http://pl.wikipedia.org/wiki/1_Ksi%C4%99ga_Samuela (por. = cf.) and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Kap%C5%82a%C5%84ska (i = and)
 $AND	oraz	por	i
 # http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Rodzaju and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Wyj%C5%9Bcia (rozdział) and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Jeremiasza (rozdz.) and http://pl.wikipedia.org/wiki/Ewangelia_Jana (rr and r)
-$CHAPTER	rozdziały	rozdziałów	rozdział	rozdz	rr	r
+$CHAPTER	rozdziały	rozdziałów	rozdział	rozdz	rr.	r.
 # http://www.biblegateway.com/passage/?search=Rom%203:25&version=NP and http://www.biblegateway.com/passage/?search=1%20Cor%2016:22&version=NP
 $FF	nn	n
 # http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Psalm%C3%B3w
@@ -17,7 +17,7 @@ $TRANS	NP
 # http://pl.wikipedia.org/wiki/1_Ksi%C4%99ga_Kronik and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Micheasza
 $TO	do
 # http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Rut (wersetów) and http://pl.wikipedia.org/wiki/1_Ksi%C4%99ga_Kronik and http://pl.wikipedia.org/wiki/2._List_Jana (wers) and http://pl.wikipedia.org/wiki/List_do_Filemona (w)
-$VERSE	wersetów	wersety	werset	wers	w
+$VERSE	wersetów	wersety	werset	wers.	w.
 $UNICODE_BLOCK	Latin
 
 Gen	$FIRST Mojżeszowa	$BOOK Rodzaju	Rdz	Rodz	I Moj	1 Moj	1 M	$FIRST $BOOK Moyżeszowe	$FIRST $BOOK Mojżeszowa	$FIRST Mojż	Genezis

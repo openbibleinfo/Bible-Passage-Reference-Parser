@@ -19,19 +19,19 @@ bcv_parser::regexps.escaped_passage = ///
 				    /\d+\x1f				#special Psalm chapters
 				  | [\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014]
 				  | rubrik (?! [a-z] )		#could be followed by a number
-				  | kapitlen | kapitlet | kapitel | verser | till | kap | och | ff | f | v
+				  | kapitlen | kapitlet | kapitel | verser | till | kap | och | jfr | ff | f | v
 				  | [a-e] (?! \w )			#a-e allows 1:1a
 				  | $						#or the end of the string
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* rubrik
-	| \d+ \W* (?:ff|f) (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* rubrik
+	| \d \W* (?:ff|f) (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -39,7 +39,7 @@ bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-�
 bcv_parser::regexps.first = "(?:F[öo]rsta|1)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.second = "(?:Andra|2)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.third = "(?:Tredje|3e|3)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|och|till)"
+bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|(?:och|jfr)|till)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|till)"
 # Each book regexp should return two parenthesized objects: an optional preliminary character and the book itself.
 bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
@@ -234,7 +234,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Song"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:H(?:oga(?:[\s\xa0]*(?:V|v(?:isan)?)|v)?|öga(?:[\s\xa0]*(?:visan|V(?:isan)?)|v)?)|Song)
+		Hoga[\s\xa0]*visan|(?:H(?:oga(?:[\s\xa0]*[Vv]|v)?|öga(?:[\s\xa0]*(?:visan|V(?:isan)?)|v)?)|Song)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jer"]
@@ -329,17 +329,17 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:F[oö]rsta[\s\xa0]*Johannesbrevet|Johannes[\s\xa0]*f[oö]rsta[\s\xa0]*brev|1(?:\.[\s\xa0]*Johannesbrevet|[\s\xa0]*Joh(?:annesbrevet)?|John))
+		1John|(?:F[oö]rsta[\s\xa0]*Johannesbrevet|Johannes[\s\xa0]*f[oö]rsta[\s\xa0]*brev|1(?:\.[\s\xa0]*Johannesbrevet|[\s\xa0]*Joh(?:annesbrevet)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Andra[\s\xa0]*Johannesbrevet|Johannes[\s\xa0]*andra[\s\xa0]*brev|2(?:\.[\s\xa0]*Johannesbrevet|[\s\xa0]*Joh(?:annesbrevet)?|John))
+		2John|(?:Andra[\s\xa0]*Johannesbrevet|Johannes[\s\xa0]*andra[\s\xa0]*brev|2(?:\.[\s\xa0]*Johannesbrevet|[\s\xa0]*Joh(?:annesbrevet)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Tredje[\s\xa0]*Johannesbrevet|Johannes[\s\xa0]*tredje[\s\xa0]*brev|3(?:\.[\s\xa0]*Johannesbrevet|e(?:\.[\s\xa0]*Johannesbrevet|[\s\xa0]*Johannesbrevet)|[\s\xa0]*Joh(?:annesbrevet)?|John))
+		3John|(?:Tredje[\s\xa0]*Johannesbrevet|Johannes[\s\xa0]*tredje[\s\xa0]*brev|3(?:\.[\s\xa0]*Johannesbrevet|e(?:\.[\s\xa0]*Johannesbrevet|[\s\xa0]*Johannesbrevet)|[\s\xa0]*Joh(?:annesbrevet)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]

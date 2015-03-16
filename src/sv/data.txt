@@ -5,18 +5,19 @@ $THIRD	Tredje	3e	3
 $FOURTH	Fjärde	4
 $FIFTH	Femte	5
 $AB	[a-e]
-$AND	och
+# jfr = cf.
+$AND	och	jfr.
 # http://sv.wikipedia.org/wiki/Jesaja (kapitlen) and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Visheten and http://sv.wikipedia.org/wiki/Jesus_Syraks_vishet and http://sv.wikipedia.org/wiki/Johannesevangeliet
-$CHAPTER	kapitlen	kapitlet	kapitel	kap
+$CHAPTER	kapitlen	kapitlet	kapitel	kap.
 # http://sv.wikipedia.org/wiki/Apostlag%C3%A4rningarna and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Judit (f) and http://sv.wikipedia.org/wiki/Joel (f)
-$FF	ff	f
+$FF	ff.	f.
 # http://sv.wikipedia.org/wiki/Psaltaren (called "rubriken")
 $TITLE	rubrik
-$TRANS	B2000	SFB	B1917
+$TRANS	B2000	SFB	B1917	SFB14
 # http://sv.wikipedia.org/wiki/Apostlag%C3%A4rningarna
 $TO	till
 # http://sv.wikipedia.org/wiki/Obadja (verser) and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Visheten (v)
-$VERSE	verser	v
+$VERSE	verser	v.
 $UNICODE_BLOCK	Latin
 
 Gen	$FIRST Mosebok	$FIRST Moseboken	1 Mos	Genesis

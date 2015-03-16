@@ -17,7 +17,7 @@ $TITLE	opschrift
 $TRANS	GNB96	NBG51	NBV	SV	SV77	WV95	NB
 $TO	-
 # http://nl.wikipedia.org/wiki/Bijbelboek (verzen) and http://nl.wikisource.org/wiki/Apocriefe_boeken/Het_gebed_van_Azarja (vs) and http://nl.wikipedia.org/wiki/Rechters (vers) and http://nl.wikipedia.org/wiki/Brief_van_Judas (v)
-$VERSE	verzen	vers	vs	v
+$VERSE	verzen	vers	vs.	v.
 $UNICODE_BLOCK	Latin
 
 Gen	Genesis	Ge?n	$FIRST Mozes	Beresjiet

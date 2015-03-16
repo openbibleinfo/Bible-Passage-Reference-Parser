@@ -2064,10 +2064,10 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Exod 1:1 mistari 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm MISTARI 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (sw)", ->
-		expect(p.parse("Exod 1:1 taz\. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 TAZ\. 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
-		expect(p.parse("Exod 1:1 taz\ 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 TAZ\ 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
+		expect(p.parse("Exod 1:1 taz. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm 2 TAZ. 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
+		expect(p.parse("Exod 1:1 taz 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm 2 TAZ 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
 		expect(p.parse("Exod 1:1 na 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm 2 NA 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
 	it "should handle titles (sw)", ->
@@ -2083,8 +2083,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 hn").osis_and_translations()).toEqual [["Lev.1", "HN"]]
 	it "should handle book ranges (sw)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Kwanza hadi Tatu  Yohana").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Kwanza hadi Tatu  Yohane").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Kwanza hadi Tatu  Yoh").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (sw)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

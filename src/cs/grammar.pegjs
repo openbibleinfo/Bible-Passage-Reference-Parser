@@ -1,9 +1,9 @@
 start
-  = (bcv_hyphen_range / sequence / cb_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / translation_sequence_enclosed / translation_sequence / sequence_sep / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v / word / word_parenthesis)+
+  = (bcv_hyphen_range / sequence / cb_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / translation_sequence_enclosed / translation_sequence / sequence_sep / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v / word / word_parenthesis / context)+
 
 /* Multiples */
 sequence
-  = val_1:(cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal) val_2:(sequence_sep? sequence_post)+
+  = val_1:(cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / context) val_2:(sequence_sep? sequence_post)+
     { val_2.unshift([val_1]); return {"type": "sequence", "value": val_2, "indices": [offset(), peg$currPos - 1]} }
 
 sequence_post_enclosed
@@ -21,7 +21,7 @@ range
 
 /* Singles */
 b
-  = "\x1f" val:any_integer ("/" [1-9])? "\x1f"
+  = "\x1f" val:any_integer ("/" [1-8])? "\x1f"
     { return {"type": "b", "value": val.value, "indices": [offset(), peg$currPos - 1]} }
 
 // `v_explicit` is OK only if we're sure it's a cv--otherwise, treat it as a bv.
@@ -39,7 +39,7 @@ bc_title
     { return {"type": "bc_title", "value": [val_1, val_2], "indices": [offset(), peg$currPos - 1]} }
 
 bcv
-  = val_1:(ps151_bc / bc) !("." v_explicit v) ((cv_sep / sequence_sep)? v_explicit / cv_sep) val_2:(v_letter / v)
+  = val_1:(ps151_bc / bc) !("." v_explicit v / sequence_sep? v_explicit cv) ((cv_sep / sequence_sep)? v_explicit / cv_sep) val_2:(v_letter / v)
     { return {"type": "bcv", "value": [val_1, val_2], "indices": [offset(), peg$currPos - 1]} }
 
 bcv_weak
@@ -94,7 +94,7 @@ c_title
     { return {"type": "c_title", "value": [val_1, val_2], "indices": [offset(), peg$currPos - 1]} }
 
 cv
-  = val_1:c !("." v_explicit v) (cv_sep? v_explicit / cv_sep) val_2:(v_letter / v)
+  = v_explicit? val_1:c !("." v_explicit v) (cv_sep? v_explicit / cv_sep) val_2:(v_letter / v)
     { return {"type": "cv", "value": [val_1, val_2], "indices": [offset(), peg$currPos - 1]} }
 
 cv_weak
@@ -107,12 +107,16 @@ c
 
 // No `b` or `ps151`.
 ff
-  = val_1:(bcv / bcv_weak / bc / cv / cv_weak / integer / c / v) sp "ff" abbrev? ![a-z]
+  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp "ff" abbrev? ![a-z]
     { return {"type": "ff", "value": [val_1], "indices": [offset(), peg$currPos - 1]} }
 
 integer_title
   = val_1:integer (cv_sep / sequence_sep)? "titul"
     { return {"type": "integer_title", "value": [val_1], "indices": [offset(), peg$currPos - 1]} }
+
+context
+  = "\x1f" val:any_integer "/9\x1f"
+    { return {"type": "context", "value": val.value, "indices": [offset(), peg$currPos - 1]} }
 
 // The `ps151` rules should round-trip `Ps151.1` and `Ps151.1.\d+` OSIS references. Without these rules, `Ps151` gets interpreted as a `bc`, throwing off future verses.
 ps151_b

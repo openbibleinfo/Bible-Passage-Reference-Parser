@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
-	| \d+ \W* ff (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* title
+	| \d \W* ff (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏऀ-ंऄ-ऺ़-ऽु-ै्ॐ-ॣॱ-ॷॹ-ॿḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ꣠-ꣷꣻ]"
@@ -103,7 +103,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:yoh[aā]n(?:[aā]l(?:[aā][\s\xa0]*ǳʰ(?:[aā]lele[\s\xa0]*praka(?:[tṭ](?:[iī]kara[nṇ])))))|योहानाला[\s\xa0]*झालेले[\s\xa0]*प्रकटीकरण|Rev)|(?:प्रकटीकरण|praka[tṭ](?:[iī]kara[ṇn]))
+		(?:yoh[aā]n(?:[aā]l(?:[aā][\s\xa0]*ǳʰ(?:[aā]lele[\s\xa0]*praka(?:[tṭ](?:[iī]kara[nṇ])))))|योहानाला[\s\xa0]*झालेले[\s\xa0]*प्रकटीकरण|Rev)|(?:praka[ṭt](?:[īi]kara[nṇ])|प्रकटीकरण)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["PrMan"]
@@ -319,12 +319,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Mark"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:m[aā]rk(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|मार्क(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|Mark)|(?:मार्काने|m[āa]rk(?:[āa]ne))
+		(?:m[aā]rk(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|मार्क(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|Mark)|(?:मार्काने|m[āa]rk(?:[aā]ne))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Luke"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:l[uū]k(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|Luke|लूक(?:ा(?:ने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?)?)|(?:l[uū]k(?:[āa]ne)|लूकाने)
+		(?:l[uū]k(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|Luke|लूक(?:ा(?:ने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?)?)|(?:l[uū]k(?:[aā]ne)|लूकाने)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1John"]
@@ -344,7 +344,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["John"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:yoh[aā]n(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|योहान(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|John)|(?:yoh[āa]n(?:[āa]ne)|योहानाने)
+		(?:yoh[aā]n(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|योहान(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|John)|(?:योहानाने|yoh[āa]n(?:[aā]ne))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Acts"]

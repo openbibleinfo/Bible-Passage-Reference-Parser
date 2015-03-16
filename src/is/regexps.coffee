@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
-	| \d+ \W* ff (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* title
+	| \d \W* ff (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -329,17 +329,17 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Fyrsta[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar[\s\xa0]*hið[\s\xa0]*almenna)|J[oó]hannesarbr(?:[eé]f))|1(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h|John)|I(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h))|Fyrsta[\s\xa0]*br[eé]f[\s\xa0]*J(?:[oó]hannesar)
+		1John|(?:Fyrsta[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar[\s\xa0]*hið[\s\xa0]*almenna)|J[oó]hannesarbr(?:[eé]f))|[1I](?:\.[\s\xa0]*J(?:[oó]h|[\s\xa0]*J[oó]h)))|[1I][\s\xa0]*J(?:[oó]h)|Fyrsta[\s\xa0]*br[ée]f[\s\xa0]*J(?:[oó]hannesar)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Annað[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar)|J[oó]hannesarbr(?:[eé]f))|II(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h)|2(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h|John))
+		2John|(?:Annað[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar)|J[oó]hannesarbr(?:[eé]f))|II(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h)|2(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Þriðja[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar)|J[oó]hannesarbr(?:[eé]f))|III(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h)|3(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h|John))
+		3John|(?:Þriðja[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar)|J[oó]hannesarbr(?:[eé]f))|III(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h)|3(?:\.[\s\xa0]*J[oó]h|[\s\xa0]*J[oó]h))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]

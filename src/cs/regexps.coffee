@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* titul
-	| \d+ \W* ff (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* titul
+	| \d \W* ff (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -92,7 +92,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Lam"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Kniha[\s\xa0]*n[aá](?:[rř]k[uů])|Lam|Pl[aá](?:[cč][\s\xa0]*Jerem(?:[ij](?:[aá](?:[sš](?:[uů]v)))))?)|Pl|Pl(?:[aá][čc])
+		(?:Kniha[\s\xa0]*n[aá](?:[rř]k[uů])|Lam|Pl[aá](?:[cč][\s\xa0]*Jerem(?:[ij](?:[aá](?:[sš](?:[uů]v)))))?)|Pl|Pl(?:[aá][cč])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["EpJer"]
@@ -218,7 +218,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Prov"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Pr[ií]slov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))|P(?:r(?:[ií]s|ov)?|ř[ií]s(?:lov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))?)?)|Př|P[řr](?:[ií]slov[ií])
+		Pr[ií]slov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))|P(?:r(?:[ií]s|ov)?|ř[ií]s(?:lov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))?)?)|Př|P[řr](?:[íi]slov[íi])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Eccl"]
@@ -354,7 +354,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rom"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:List[\s\xa0]*[RŘ](?:[ií]man(?:[uů]m))|R(?:[ioí]m)?|Ř(?:[ií]m)?)|[ŘR](?:[ií]man(?:[ůu]m))
+		(?:List[\s\xa0]*[RŘ](?:[ií]man(?:[uů]m))|R(?:[ioí]m)?|Ř(?:[ií]m)?)|[ŘR](?:[ií]man(?:[uů]m))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Cor"]

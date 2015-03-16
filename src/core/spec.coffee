@@ -48,7 +48,16 @@ describe "Pre-parsing", ->
 
 	it "should allow setting whether to include the Apocrypha via `set_options`", ->
 		expect(p.options.include_apocrypha).toBeFalsy()
+		p.set_options {include_apocrypha: "unknown"}
+		expect(p.options.include_apocrypha).toBeFalsy()
 		p.set_options {include_apocrypha: true}
+		expect(p.options.include_apocrypha).toBeTruthy()
+
+	it "should allow setting whether to include the Apocrypha via `include_apocrypha()`", ->
+		expect(p.options.include_apocrypha).toBeFalsy()
+		p.include_apocrypha "unknown"
+		expect(p.options.include_apocrypha).toBeFalsy()
+		p.include_apocrypha true
 		expect(p.options.include_apocrypha).toBeTruthy()
 
 	it "shouldn't allow changing to an unknown versification system", ->
@@ -86,6 +95,14 @@ describe "Pre-parsing", ->
 	it "should handle inline alternate versification systems", ->
 		expect(p.parse("Matt 15 ESV, Matt 15 NIV, Matt 15").osis_and_translations()).toEqual [["Matt.15", "ESV"], ["Matt.15", "NIV"], ["Matt.15", ""]]
 		expect(p.parse("Third John 15 ESV, Third John 15 NIV, Third John 15").osis_and_translations()).toEqual [["3John.1.15", "ESV"], ["3John.1.15", ""]]
+		expect(p.parse("Third John 15 ESV, NIV, KJV").osis_and_translations()).toEqual [["3John.1.15", "ESV,NIV,KJV"]]
+		expect(p.parse("Third John 15 NIV, KJV, ESV, ").osis_and_translations()).toEqual [["3John.1.15", "NIV,KJV,ESV"]]
+		expect(p.parse("Third John 15 NIV, ESV, KJV").osis_and_translations()).toEqual [["3John.1.15", "NIV,ESV,KJV"]]
+
+	it "should create (promote) start books based on the default translation when a translation doesn't explicitly define them", ->
+		expect(p.parse("Num 14-Deut 6 KJV").osis_and_translations()).toEqual [["Num.14-Deut.6", "KJV"]]
+		p.set_options versification_system: "kjv"
+		expect(p.parse("Joshua 14:2-Judges 6 CEB").osis_and_translations()).toEqual [["Josh.14.2-Judg.6.40", "CEB"]]
 
 	it "should reset versification systems properly when switching among several systems", ->
 		expect(p.parse("Ps 118:176").osis()).toEqual ""
@@ -120,6 +137,11 @@ describe "Pre-parsing", ->
 		expect(p.parse("Ps 3-Matt 2:8").osis()).toEqual "Ps.3-Matt.2"
 		expect(p.parse("Ps 3-Matt 4").osis()).toEqual "Ps.3-Matt.3"
 
+	it "should handle two translations in a row", ->
+		expect(p.parse("Matt 1,4 ESV 2-3 NIV").osis_and_indices()).toEqual [{osis: "Matt.1,Matt.4", translations: ["ESV"], indices: [0, 12]}, {osis: "Matt.2-Matt.3", translations: ["NIV"], indices: [13, 20]}]
+		expect(p.parse("3 Jn 15 ESV 15 NIV").osis_and_indices()).toEqual [{osis: "3John.1.15", translations: ["ESV"], indices: [0, 11]}]
+		expect(p.parse("3 Jn 15 NIV 15 ESV").osis_and_indices()).toEqual [{osis: "3John.1.15", translations: ["ESV"], indices: [12, 18]}]
+
 	# This is actually testing the opposite of what the description says. Ideally, a new object would be totally new, but I don't think it's worth the overhead.
 	it "should delete the previously added new versification system when creating a new object", ->
 		expect(p.translations.new_system).toBeDefined()
@@ -140,8 +162,8 @@ describe "Pre-parsing", ->
 	it "should match basic books", ->
 		[s, books] = p.match_books "Jeremiah, Genesisjer (NIV)"
 		expect(books.length).toEqual 2
-		expect(books[0]).toEqual value: "Jeremiah", parsed: ["Jer"], start_index: 0
-		expect(books[1]).toEqual value: "NIV", parsed: "niv", start_index: 22
+		expect(books[0]).toEqual value: "Jeremiah", parsed: ["Jer"], type: "book", start_index: 0
+		expect(books[1]).toEqual value: "NIV", parsed: "niv", type: "translation", start_index: 22
 		expect(s).toEqual "\x1f0\x1f, Genesisjer (\x1e1\x1e)"
 
 	it "should match passage sequences", ->
@@ -195,6 +217,11 @@ describe "Pre-parsing", ->
 		p.reset()
 		test_string = "heb 12, ex 3, i macc2"
 		expect(p.parse(test_string).osis()).toEqual "Heb.12,Exod.3"
+		p.set_options case_sensitive: "unknown"
+		expect(p.parse(test_string).osis()).toEqual "Heb.12,Exod.3"
+		p.set_options case_sensitive: "books"
+		expect(p.parse(test_string).osis()).toEqual ""
+		# Set it equal to what it already is.
 		p.set_options case_sensitive: "books"
 		expect(p.parse(test_string).osis()).toEqual ""
 		p.set_options include_apocrypha: true
@@ -211,6 +238,11 @@ describe "Pre-parsing", ->
 		expect(p.replace_match_end "\x1f0\x1f 3.").toEqual "\x1f0\x1f 3"
 		expect(p.replace_match_end "(\x1e0\x1e)").toEqual "(\x1e0\x1e)"
 		expect(p.replace_match_end "[\x1e0\x1e]").toEqual "[\x1e0\x1e]"
+
+	it "should pluck null passages", ->
+		p.parse("Jonah 2")
+		expect(p.passage.pluck("none", [])).toEqual null
+		expect(p.passage.pluck("none", [{type: "b"}])).toEqual null
 
 describe "OSIS parsing strategies", ->
 	p = {}
@@ -404,18 +436,18 @@ describe "Basic passage parsing", ->
 		expect(psg.validate_ref null, {b: "Matt", c: 50, v: 12}, {b: "Matt", c: 2}).toEqual {valid: false, messages: {start_chapter_not_exist: 28, end_chapter_before_start: true}}
 
 	it "should validate start refs", ->
-		expect(psg.validate_start_ref "default", {b: "Matt"}, true, {}).toEqual [true, {}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: 5}, true, {}).toEqual [true, {}]
-		expect(psg.validate_start_ref "default", {}, true, {}).toEqual [false, {start_book_not_exist: true}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: "five"}, true, {}).toEqual [false, {start_chapter_not_numeric: true}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: 10}, true, {}).toEqual [true, {}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: "ten"}, true, {}).toEqual [false, {start_verse_not_numeric: true}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: "five", v: "ten"}, true, {}).toEqual [false, {start_chapter_not_numeric: true}]
-		expect(psg.validate_start_ref "default", {b: "Matt", v: 10}, true, {}).toEqual [true, {}]
-		expect(psg.validate_start_ref "default", {b: "Matt", v: "ten"}, true, {}).toEqual [false, {start_verse_not_numeric: true}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: 100}, true, {}).toEqual [false, {start_verse_not_exist: 48}]
-		expect(psg.validate_start_ref "default", {b: "Matt", c: 100, v: 100}, true, {}).toEqual [false, {start_chapter_not_exist: 28}]
-		expect(psg.validate_start_ref "default", {b: "None", c: 2, v: 1}, true, {}).toEqual [false, {start_book_not_exist: true}]
+		expect(psg.validate_start_ref "default", {b: "Matt"}, {}).toEqual [true, {}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: 5}, {}).toEqual [true, {}]
+		expect(psg.validate_start_ref "default", {}, {}).toEqual [false, {start_book_not_exist: true}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: "five"}, {}).toEqual [false, {start_chapter_not_numeric: true}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: 10}, {}).toEqual [true, {}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: "ten"}, {}).toEqual [false, {start_verse_not_numeric: true}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: "five", v: "ten"}, {}).toEqual [false, {start_chapter_not_numeric: true}]
+		expect(psg.validate_start_ref "default", {b: "Matt", v: 10}, {}).toEqual [true, {}]
+		expect(psg.validate_start_ref "default", {b: "Matt", v: "ten"}, {}).toEqual [false, {start_verse_not_numeric: true}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: 100}, {}).toEqual [false, {start_verse_not_exist: 48}]
+		expect(psg.validate_start_ref "default", {b: "Matt", c: 100, v: 100}, {}).toEqual [false, {start_chapter_not_exist: 28}]
+		expect(psg.validate_start_ref "default", {b: "None", c: 2, v: 1}, {}).toEqual [false, {start_book_not_exist: true}]
 
 	it "should validate end refs", ->
 		expect(psg.validate_end_ref "default", {b: "Matt"}, {b: "Mark"}, true, {}).toEqual [true, {}]
@@ -438,9 +470,10 @@ describe "Basic passage parsing", ->
 		expect(psg.validate_end_ref "default", {b: "Matt", c: 5, v: 7}, {b: "Matt", c: 5, v: "eight"}, true, {}).toEqual [false, {end_verse_not_numeric: true}]
 		expect(psg.validate_end_ref "default", {b: "Matt", c: 5, v: "seven"}, {b: "Matt", c: 5, v: "eight"}, true, {}).toEqual [false, {end_verse_not_numeric: true}]
 		expect(psg.validate_end_ref "default", {b: "Matt", c: 5, v: 7}, {b: "Matt", c: 5, v: 100}, true, {}).toEqual [true, {end_verse_not_exist: 48}]
-		# These two are really undefined cases that would be caught if called through `validate_ref`
+		# The following are really undefined cases that would be caught if called through `validate_ref`
 		expect(psg.validate_end_ref "default", {b: "Matt", c: 5, v: "seven"}, {b: "Matt", c: 5, v: 8}, true, {}).toEqual [true, {}]
 		expect(psg.validate_end_ref "default", {b: "Matt", c: "four", v: "seven"}, {b: "Matt", c: 5, v: 8}, true, {}).toEqual [true, {}]
+		expect(psg.validate_end_ref "default", {b: "Matt", c: null, v: 7}, {b: "Matt", c: null, v: 8}, true, {}).toEqual [true, {}]
 		expect(psg.validate_end_ref "default", {b: "Matt"}, {b: "Exod", c: "one", v: "two"}, true, {}).toEqual [false, {end_book_before_start: true, end_chapter_not_numeric: true, end_verse_not_numeric: true}]
 
 	it "should handle translations", ->
@@ -448,37 +481,100 @@ describe "Basic passage parsing", ->
 		# No `translation`, so use the default translation
 		expect(psg.validate_ref [{no_key: "none"}], {b: "Obad", c: 1}).toEqual valid: true, messages: {}
 		expect(psg.validate_ref null, {b: "Obad", c: 1, "translations": null}).toEqual valid: true, messages: {}
-		# Given a string instead of an array, it iterates over each character. Since there's no `String.translation` object (i.e., the `translation` object is invalid), it uses the default and doesn't set `alias`. In practice, this won't hapepen
-		expect(psg.validate_ref "12", {b: "Obad", c: 1}).toEqual valid: false, messages: {translation_invalid: true}
-		# Given a number, it just doesn't work
-		expect(psg.validate_ref 12, {b: "Obad", c: 1}).toEqual valid: false, messages: {translation_invalid: true}
+		# Given a string instead of an array, it iterates over each character. Since there's no `String.translation` object (i.e., the `translation` object is invalid), it uses the default and doesn't set `alias`. In practice, this won't hapepen.
+		expect(psg.validate_ref "12", {b: "Obad", c: 1}).toEqual valid: false, messages: {translation_invalid: ["1", "2"]}
+		# Given a number, it converts it to a "default" translation object.
+		expect(psg.validate_ref 12, {b: "Obad", c: 1}).toEqual valid: true, messages: {}
+		expect(psg.validate_ref [12], {b: "Obad", c: 1}).toEqual valid: false, messages: {translation_invalid: [12]}
+		expect(psg.validate_ref [], {b: "Obad", c: 1}).toEqual valid: true, messages: {}
+		expect(() -> psg.validate_ref [null], {b: "Obad", c: 1}).toThrow()
 
 	it "should handle bvs posing as bcs", ->
 		psg.books[0] = parsed: ["Phlm"]
-		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 2}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 2}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 2}, end: {b: "Phlm", c: 1, v: 2}, valid: {valid: true, messages: {}}}]}], {b: "Phlm", c: 1, v: 2}]
+		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 2}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 2}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 2}, end: {b: "Phlm", c: 1, v: 2}, valid: {valid: true, messages: {start_chapter_not_exist_in_single_chapter_book: 1}}}]}], {b: "Phlm", c: 1, v: 2}]
 
-		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}}}]}], {b: "Phlm", c: 1, v: 7}]
+		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {start_chapter_not_exist_in_single_chapter_book: 1}}}]}], {b: "Phlm", c: 1, v: 7}]
 
 		psg.books[0] = parsed: ["Phlm", "Phil"]
-		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 2}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",value:0},{type:"c",value:[{type:"integer",value:2}]}],start_context:{translations:[{translation:"niv",osis:"NIV",alias:"default"},{translation:"kjv",osis:"KJV",alias:"default"}]},passages:[{start:{b:"Phlm",c:1,v:2},end:{b:"Phlm",c:1,v:2},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phil",c:2},end:{b:"Phil",c:2},valid:{valid:true,messages:{}}}], translations:[{translation:"niv",osis:"NIV",alias:"default"},{ translation:"kjv",osis:"KJV",alias:"default"}]}]}], {b:"Phlm",c:1,v:2,translations : [ { translation : "niv", osis : "NIV", alias : "default" }, { translation : "kjv", osis : "KJV", alias : "default" }]}]
+		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 2}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",value:0},{type:"c",value:[{type:"integer",value:2}]}],start_context:{translations:[{translation:"niv",osis:"NIV",alias:"default"},{translation:"kjv",osis:"KJV",alias:"default"}]},passages:[{start:{b:"Phlm",c:1,v:2},end:{b:"Phlm",c:1,v:2},valid:{valid:true,messages:{start_chapter_not_exist_in_single_chapter_book: 1}},alternates:[{start:{b:"Phil",c:2},end:{b:"Phil",c:2},valid:{valid:true,messages:{}}}], translations:[{translation:"niv",osis:"NIV",alias:"default"},{ translation:"kjv",osis:"KJV",alias:"default"}]}]}], {b:"Phlm",c:1,v:2,translations : [ { translation : "niv", osis : "NIV", alias : "default" }, { translation : "kjv", osis : "KJV", alias : "default" }]}]
 
-		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 7}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",value:0},{type:"c",value:[{type:"integer",value:7}]}],start_context:{translations:[{translation:"niv",osis:"NIV",alias:"default"},{translation:"kjv",osis:"KJV",alias:"default"}]},passages:[{start:{b:"Phlm",c:1,v:7},end:{b:"Phlm",c:1,v:7},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phil",c:7},end:{b:"Phil",c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}], translations:[{translation:"niv",osis:"NIV",alias:"default"},{ translation:"kjv",osis:"KJV",alias:"default"}]}]}], {b:"Phlm",c:1,v:7,translations : [ { translation : "niv", osis : "NIV", alias : "default" }, { translation : "kjv", osis : "KJV", alias : "default" }]}]
+		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", value: 0}, {type: "c", value: [{type: "integer", value: 7}]}]}, [], {translations: [{translation: "niv", osis: "NIV", alias: "default"},{translation: "kjv", osis: "KJV", alias: "default"}]}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",value:0},{type:"c",value:[{type:"integer",value:7}]}],start_context:{translations:[{translation:"niv",osis:"NIV",alias:"default"},{translation:"kjv",osis:"KJV",alias:"default"}]},passages:[{start:{b:"Phlm",c:1,v:7},end:{b:"Phlm",c:1,v:7},valid:{valid:true,messages:{start_chapter_not_exist_in_single_chapter_book: 1}},alternates:[{start:{b:"Phil",c:7},end:{b:"Phil",c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}], translations:[{translation:"niv",osis:"NIV",alias:"default"},{ translation:"kjv",osis:"KJV",alias:"default"}]}]}], {b:"Phlm",c:1,v:7,translations : [ { translation : "niv", osis : "NIV", alias : "default" }, { translation : "kjv", osis : "KJV", alias : "default" }]}]
 
 		psg.books[0] = parsed: ["Phil", "Phlm"]
-		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", value: [{type: "integer",absolute_indices:[5,6], value: 2}]}]},[],{}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",absolute_indices:[0,3],value:0},{type:"c",value:[{type:"integer",absolute_indices:[5,6],value:2}]}],start_context:{},passages:[{start:{b:"Phil",c:2},end:{b:"Phil",c:2},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phlm",c:1,v:2},end:{b:"Phlm",c:1,v:2},valid:{valid:true,messages:{}}}]}]}],{b:"Phil",c:2}]
+		expect(psg.bc {absolute_indices: [0, 6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", value: [{type: "integer",absolute_indices:[5,6], value: 2}]}]},[],{}).toEqual [[{absolute_indices:[0,6],value:[{type:"b",absolute_indices:[0,3],value:0},{type:"c",value:[{type:"integer",absolute_indices:[5,6],value:2}]}],start_context:{},passages:[{start:{b:"Phil",c:2},end:{b:"Phil",c:2},valid:{valid:true,messages:{}},alternates:[{start:{b:"Phlm",c:1,v:2},end:{b:"Phlm",c:1,v:2},valid:{valid:true,messages:{start_chapter_not_exist_in_single_chapter_book: 1}}}]}]}],{b:"Phil",c:2}]
 
-		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {}},alternates:[{start:{b:"Phil",c:7},end:{b:"Phil",c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}]}]}], {b: "Phlm", c: 1, v: 7}]
+		expect(psg.bc {absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, [], {b: "Gen", c: 6, v: 6}).toEqual [[{absolute_indices: [0,6], value: [{type: "b", absolute_indices: [0,3], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}], start_context: {b:"Gen",c:6,v:6}, passages: [{start: {b: "Phlm", c: 1, v: 7}, end: {b: "Phlm", c: 1, v: 7}, valid: {valid: true, messages: {start_chapter_not_exist_in_single_chapter_book: 1}},alternates:[{start:{b:"Phil",c:7},end:{b:"Phil",c:7},valid:{valid:false,messages:{start_chapter_not_exist:4}}}]}]}], {b: "Phlm", c: 1, v: 7}]
 
+	# Psalm7 title (where "Psalm" could be interpreted different ways).
 	it "should handle `bc_title`s", ->
-		# Psalm7 title (where "Psalm" could be interpreted different ways)
 		psg.books[0].parsed = ["Phil", "Phlm", "Ps"]
-		expect(psg.bc_title {type:"bc_title", indices: [0,10],absolute_indices: [0,12], value:[{type: "bc", absolute_indices:[0,6], value: [{type: "b", absolute_indices: [0,5], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, {type:"title", value:["title"], indices:[5,9]}]}, [], {}).toEqual [[{type:"bcv",indices:[0,10],absolute_indices:[0,12],value:[{type:"bc",absolute_indices:[0,6],value:[{type:"b",absolute_indices:[0,5],value:0},{type:"c",absolute_indices:[5,6],value:[{type:"integer",absolute_indices:[5,6],value:7}]}],start_context:{},passages:[{start:{b:"Ps",c:7},end:{b:"Ps",c:7},valid:{valid:true,messages:{}}}]},{type:"v",value:[{type:"integer",value:1,indices:[5,9]}],indices:[5,9]}],start_context:{},original_type:"bc_title",passages:[{start:{b:"Ps",c:7,v:1},end:{b:"Ps",c:7,v:1},valid:{valid:true,messages:{}}}]}],{b:"Ps",c:7,v:1}]
+		expect(psg.bc_title {type:"bc_title", indices: [0,10],absolute_indices: [0,12], value:[{type: "bc", absolute_indices:[0,6], value: [{type: "b", absolute_indices: [0,5], value: 0}, {type: "c", absolute_indices: [5,6], value: [{type: "integer", absolute_indices:[5,6], value: 7}]}]}, {type:"title", value:["title"], indices:[5,9]}]}, [], {}).toEqual [[{type:"bcv",indices:[0,10],absolute_indices:[0,12],value:[{type:"bc",absolute_indices:[0,6],value:[{type:"b",absolute_indices:[0,5],value:0},{type:"c",absolute_indices:[5,6],value:[{type:"integer",absolute_indices:[5,6],value:7}]}],start_context:{},passages:[{start:{b:"Ps",c:7},end:{b:"Ps",c:7},valid:{valid:true,messages:{}}}]},{type:"v",value:[{type:"integer",value:1,indices:[5,9]}],indices:[5,9]}],start_context:{},passages:[{start:{b:"Ps",c:7,v:1},end:{b:"Ps",c:7,v:1},valid:{valid:true,messages:{}}}]}],{b:"Ps",c:7,v:1}]
 
 	it "should adjust `RegExp.lastIndex` correctly", ->
 		expect(p.adjust_regexp_end([], 10, 10)).toEqual 0
 		expect(p.adjust_regexp_end([], 10, 9)).toEqual 1
 		expect(p.adjust_regexp_end([{},{indices:[0,5]}], 10, 10)).toEqual 4
 		expect(p.adjust_regexp_end([{},{indices:[0,9]}], 10, 10)).toEqual 0
+
+describe "Parsing with context", ->
+	p = {}
+	beforeEach ->
+		p = new bcv_parser
+		p.options.osis_compaction_strategy = "b"
+		p.options.sequence_combination_strategy = "combine"
+
+	it "should handle book context", ->
+		expect(p.parse_with_context("2", "Gen").osis_and_indices()).toEqual [osis: "Gen.2", translations: [""], indices: [0, 1]]
+		expect(p.parse_with_context("2:3", "Gen").osis_and_indices()).toEqual [osis: "Gen.2.3", translations: [""], indices: [0, 3]]
+		expect(p.parse_with_context("2ff", "Gen").osis_and_indices()).toEqual [osis: "Gen.2-Gen.50", translations: [""], indices: [0, 3]]
+		expect(p.parse_with_context("verse 2", "Gen").osis_and_indices()).toEqual [osis: "Gen.1.2", translations: [""], indices: [0, 7]]
+		expect(p.parse_with_context("ch. 2-10", "Gen").osis_and_indices()).toEqual [osis: "Gen.2-Gen.10", translations: [""], indices: [0, 8]]
+		expect(p.parse_with_context("chapter 6", "Gen").osis_and_indices()).toEqual [osis: "Gen.6", translations: [""], indices: [0, 9]]
+		expect(p.parse_with_context("and 6 KJV", "Gen").osis_and_indices()).toEqual [osis: "Gen.6", translations: ["KJV"], indices: [4, 9]]
+
+	it "should handle chapter context", ->
+		expect(p.parse_with_context("2", "Gen 1").osis_and_indices()).toEqual [osis: "Gen.2", translations: [""], indices: [0, 1]]
+		expect(p.parse_with_context("2:3", "Gen 1").osis_and_indices()).toEqual [osis: "Gen.2.3", translations: [""], indices: [0, 3]]
+		expect(p.parse_with_context("2ff", "Gen 1").osis_and_indices()).toEqual [osis: "Gen.2-Gen.50", translations: [""], indices: [0, 3]]
+		expect(p.parse_with_context("verse 16", "John 3").osis_and_indices()).toEqual [osis: "John.3.16", translations: [""], indices: [0, 8]]
+		expect(p.parse_with_context("ch. 2-10", "Gen 8").osis_and_indices()).toEqual [osis: "Gen.2-Gen.10", translations: [""], indices: [0, 8]]
+		expect(p.parse_with_context("chapter 6", "Gen 1").osis_and_indices()).toEqual [osis: "Gen.6", translations: [""], indices: [0, 9]]
+		expect(p.parse_with_context("and 6 KJV", "Gen 5").osis_and_indices()).toEqual [osis: "Gen.6", translations: ["KJV"], indices: [4, 9]]
+		expect(p.parse_with_context("verse 2", "Genesis 3").osis()).toEqual "Gen.3.2"
+
+	it "should handle verse context", ->
+		expect(p.parse_with_context("2", "Gen 1:5").osis_and_indices()).toEqual [osis: "Gen.1.2", translations: [""], indices: [0, 1]]
+		expect(p.parse_with_context("2:3", "Gen 1:6").osis_and_indices()).toEqual [osis: "Gen.2.3", translations: [""], indices: [0, 3]]
+		expect(p.parse_with_context("2ff", "Gen 1:8").osis_and_indices()).toEqual [osis: "Gen.1.2-Gen.1.31", translations: [""], indices: [0, 3]]
+		expect(p.parse_with_context("verse 16", "John 3:2").osis_and_indices()).toEqual [osis: "John.3.16", translations: [""], indices: [0, 8]]
+		expect(p.parse_with_context("ch. 2-10", "Gen 1:5").osis_and_indices()).toEqual [osis: "Gen.2-Gen.10", translations: [""], indices: [0, 8]]
+		expect(p.parse_with_context("chapter 6", "Gen 1:7").osis_and_indices()).toEqual [osis: "Gen.6", translations: [""], indices: [0, 9]]
+		expect(p.parse_with_context("and 6 KJV", "Gen 17:5").osis_and_indices()).toEqual [osis: "Gen.17.6", translations: ["KJV"], indices: [4, 9]]
+
+	it "should handle sequences", ->
+		expect(p.parse_with_context("19-80,4,5,20:6-10", "Gen 17:5").osis_and_indices()).toEqual [osis: "Gen.17.19-Gen.17.27,Gen.17.4-Gen.17.5,Gen.20.6-Gen.20.10", translations: [""], indices: [0, 17]]
+		expect(p.parse_with_context("19:2-80,4,5,20:6-10", "Gen 17:5").osis_and_indices()).toEqual [osis: "Gen.19.2-Gen.19.38,Gen.19.4-Gen.19.5,Gen.20.6-Gen.20.10", translations: [""], indices: [0, 19]]
+
+	it "should handle translations", ->
+		expect(p.parse_with_context("15", "3 John 14 NIV").osis_and_indices()).toEqual [{osis: "3John.1.15", translations: [""], indices: [0, 2]}]
+		expect(p.parse_with_context("15 NIV", "3 John 14 NIV").osis_and_indices()).toEqual []
+
+	it "should handle unusual cases", ->
+		expect(p.parse_with_context("-16", "Gen 14").osis_and_indices()).toEqual [{osis: "Gen.16", translations: [""], indices: [1, 3]}]
+		expect(p.parse_with_context("Exodus 22", "Gen 14").osis_and_indices()).toEqual [{osis: "Exod.22", translations: [""], indices: [0, 9]}]
+
+	it "should handle lack of context", ->
+		expect(p.parse_with_context("16", "none").osis_and_indices()).toEqual []
+		# It shouldn't handle null contexts--it expects a string.
+		expect(
+			() -> p.parse_with_context("16", null).osis_and_indices()
+			).toThrow()
+		expect(p.parse_with_context("chapter 22", "see").osis_and_indices()).toEqual []
+
+	it "should not find matches in a few places", ->
+		expect(p.parse_with_context("ff", "Gen 17").osis_and_indices()).toEqual []
+		expect(p.parse_with_context("a", "Gen 17:4").osis_and_indices()).toEqual []
+		expect(p.parse_with_context("and", "Gen 17:5").osis_and_indices()).toEqual []
 
 describe "Parsing", ->
 	p = {}
@@ -562,6 +658,8 @@ describe "Parsing", ->
 		expect(p.parse("Genesis 2-Philemon").osis_and_indices()).toEqual [{osis: "Gen.2", translations: [""], indices: [0, 9]}]
 		expect(p.parse("Genesis-Philemon 2").osis_and_indices()).toEqual [{osis: "Phlm.1.2", translations: [""], indices: [8, 18]}]
 		expect(p.parse("Luke-Acts").osis()).toEqual ""
+		expect(p.parse("Gen-Exodus 2 (NIV)").osis_and_indices()).toEqual [{osis: "Exod.2", translations: ["NIV"], indices: [4, 18]}]
+		expect(p.parse("Gen 2-Exodus (NIV)").osis_and_indices()).toEqual [{osis: "Gen.2", translations: ["NIV"], indices: [0, 18]}]
 
 	it "should handle book ranges with an `ignore` `book_sequence_strategy` and an `include` `book_range_strategy`", ->
 		p.options.book_alone_strategy = "ignore"
@@ -578,6 +676,8 @@ describe "Parsing", ->
 		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2-Phlm.1"
 		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Gen.1.1-Phlm.1.2"
 		expect(p.parse("Luke-Acts").osis()).toEqual "Luke-Acts"
+		expect(p.parse("Gen-Exodus 2 (NIV)").osis_and_indices()).toEqual [{osis: "Gen.1-Exod.2", translations: ["NIV"], indices: [0, 18]}]
+		expect(p.parse("Gen 2-Exodus (NIV)").osis_and_indices()).toEqual [{osis: "Gen.2-Exod.40", translations: ["NIV"], indices: [0, 18]}]
 
 	it "should handle book ranges with an `include` `book_sequence_strategy` and an `ignore` `book_range_strategy`", ->
 		p.options.book_alone_strategy = "full"
@@ -594,6 +694,8 @@ describe "Parsing", ->
 		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2"
 		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Phlm.1.2"
 		expect(p.parse("Luke-Acts").osis()).toEqual ""
+		expect(p.parse("Gen-Exodus 2 (NIV)").osis_and_indices()).toEqual [{osis: "Exod.2", translations: ["NIV"], indices: [4, 18]}]
+		expect(p.parse("Gen 2-Exodus (NIV)").osis_and_indices()).toEqual [{osis: "Gen.2", translations: ["NIV"], indices: [0, 18]}]
 
 	it "should handle book ranges with an `include` `book_sequence_strategy` and an `include` `book_range_strategy`", ->
 		p.options.book_alone_strategy = "full"
@@ -610,6 +712,8 @@ describe "Parsing", ->
 		expect(p.parse("Genesis 2-Philemon").osis()).toEqual "Gen.2-Phlm.1"
 		expect(p.parse("Genesis-Philemon 2").osis()).toEqual "Gen.1.1-Phlm.1.2"
 		expect(p.parse("Luke-Acts").osis()).toEqual "Luke-Acts"
+		expect(p.parse("Gen-Exodus 2 (NIV)").osis_and_indices()).toEqual [{osis: "Gen.1-Exod.2", translations: ["NIV"], indices: [0, 18]}]
+		expect(p.parse("Gen 2-Exodus (NIV)").osis_and_indices()).toEqual [{osis: "Gen.2-Exod.40", translations: ["NIV"], indices: [0, 18]}]
 
 	it "should handle sequences", ->
 		expect(p.parse("Genesis 1, 2, 3, 4").osis_and_indices()).toEqual [{osis: "Gen.1-Gen.4", translations: [""], indices: [0, 18]}]
@@ -731,6 +835,18 @@ describe "Parsing", ->
 		expect(p.entities[2].passages[0].translations[0].osis).toEqual "TNIV"
 		expect(p.entities[4].passages[0].translations).not.toBeDefined()
 		expect(p.osis_and_translations()).toEqual [["Jer.1", "NIV"], ["Gen.50", "TNIV"], ["Gen.6", ""]]
+		expect(p.parse("Matt 1 ESV 2-3 NIV").osis_and_translations()).toEqual [["Matt.1", "ESV"], ["Matt.2-Matt.3", "NIV"]]
+		p.set_options book_alone_strategy: "full"
+		expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual [{osis: "Rom", indices: [0, 7], translations: ["AMP"], entity_id: 0, entities: [{osis: "Rom", type: "b", indices: [0, 7], translations: ["AMP"], start: {b: "Rom", c: 1, v: 1}, end: {b: "Rom", c: 16, v: 27}, enclosed_indices: undefined, entity_id: 0, entities: [{start: {b: "Rom", c: 1, v: 1}, end: {b: "Rom", c: 16, v: 27}, valid: {valid: true, messages: {}}, translations: [{translation: "amp", alias: "default", osis: "AMP"}], type: "b", absolute_indices: [0, 7]}]}]}]
+
+	it "should handle translations preceded by various bcv types", ->
+		p.set_options book_alone_strategy: "full", book_range_strategy: "include"
+		expect(p.parse("Psalm 3:title (ESV)").osis_and_indices()).toEqual [{osis: "Ps.3.1", translations: ["ESV"], indices: [0, 19]}]
+		expect(p.parse("1-2 John (ESV)").osis_and_indices()).toEqual [{osis: "1John-2John", translations: ["ESV"], indices: [0, 14]}]
+		expect(p.parse("23rd Psalm (ESV)").osis_and_indices()).toEqual [{osis: "Ps.23", translations: ["ESV"], indices: [0, 16]}]
+		expect(p.parse("23rd Psalm ESV").osis_and_indices()).toEqual [{osis: "Ps.23", translations: ["ESV"], indices: [0, 14]}]
+		expect(p.parse("1-2 Thess (NASB, TNIV )3").osis_and_indices()).toEqual [{osis: "1Thess-2Thess", translations: ["NASB", "TNIV"], indices: [0, 23]}, {osis: "2Thess.3", translations: [""], indices: [23, 24]}]
+		expect(p.parse("1-2 Thess (NASB, TNIV )43").osis_and_indices()).toEqual [{osis: "1Thess-2Thess", translations: ["NASB", "TNIV"], indices: [0, 23]}]
 
 	it "should check ends before start", ->
 		p.reset()
@@ -790,6 +906,8 @@ describe "Parsing", ->
 		expect(p.parse("Ps 119:6-7a,3:5").osis_and_indices()[0].osis).toEqual "Ps.119.6-Ps.119.7,Ps.3.5"
 
 	it "should handle ffs", ->
+		expect(p.parse("Gen5ff").osis_and_indices()).toEqual [osis: "Gen.5-Gen.50", translations: [""], indices: [0, 6]]
+		expect(p.parse("Gen 6ff").osis_and_indices()).toEqual [osis: "Gen.6-Gen.50", translations: [""], indices: [0, 7]]
 		expect(p.parse("Ps 121ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150"
 		expect(p.parse("Ps 121:1ff .").osis_and_indices()[0].osis).toEqual "Ps.121"
 		expect(p.parse("Ps 121:2f.").osis_and_indices()[0].osis).toEqual "Ps.121.2-Ps.121.8"
@@ -798,6 +916,7 @@ describe "Parsing", ->
 		expect(p.parse("Phm 1:1ff").osis_and_indices()[0].osis).toEqual "Phlm"
 		expect(p.parse("Phm 1:2ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
 		expect(p.parse("Phm 2ff").osis_and_indices()[0].osis).toEqual "Phlm.1.2-Phlm.1.25"
+		expect(p.parse("Phm v. 3ff").osis_and_indices()[0].osis).toEqual "Phlm.1.3-Phlm.1.25"
 		expect(p.parse("ge 50f").osis_and_indices()[0]).toEqual osis:"Gen.50",indices:[0,6], translations: [""]
 		expect(p.parse("ge 50:60ff").osis_and_indices()[0]).toEqual undefined
 		expect(p.parse("Ps 121-2ff").osis_and_indices()[0].osis).toEqual "Ps.121-Ps.150"
@@ -819,6 +938,8 @@ describe "Parsing", ->
 		expect(p.parse("so f").osis_and_indices()).toEqual []
 		expect(p.parse("and 1 COR 11: 5 FF.").osis_and_indices()).toEqual [osis:"1Cor.11.5-1Cor.11.34", indices:[4,19], translations:[""]]
 		expect(p.parse("and 1 COR 11: 5 FF").osis_and_indices()).toEqual [osis:"1Cor.11.5-1Cor.11.34", indices:[4,18], translations:[""]]
+		expect(p.parse("Eccl 10:2-99ff").osis_and_indices()).toEqual [osis: "Eccl.10.2-Eccl.10.20", indices: [0, 14], translations: [""]]
+		expect(p.parse("Eccl 10:21ff").osis_and_indices()).toEqual []
 
 	it "should handle zeroes as errors", ->
 		p.options.zero_chapter_strategy = "error"
@@ -947,6 +1068,14 @@ describe "Parsing", ->
 		expect(p.parse("Heb 13-15a").osis()).toEqual "Heb.13.15"
 		expect(p.parse("Gal 5-22a").osis()).toEqual "Gal.5.22"
 		expect(p.parse("Matt 5- verse 6").osis()).toEqual "Matt.5.6"
+		expect(p.parse("Phm 7-8").osis()).toEqual "Phlm.1.7-Phlm.1.8"
+		expect(p.parse("Phm 8-7").osis()).toEqual "Phlm.1.8,Phlm.1.7"
+		expect(p.parse("Phm 7 to verse 6").osis()).toEqual "Phlm.1.7,Phlm.1.6"
+		expect(p.parse("Phm 17 to verse 0").osis()).toEqual "Phlm.1.17"
+		expect(p.parse("Phil 2, verse 3:1").osis()).toEqual "Phil.2.1-Phil.3.1"
+		expect(p.parse("Phil 2, verse 4:1").osis()).toEqual "Phil.2,Phil.4.1"
+		expect(p.parse("Phil 2 to verse 3:1").osis()).toEqual "Phil.2.1-Phil.3.1"
+		expect(p.parse("Phil 2 to verse 1:1").osis()).toEqual "Phil.2,Phil.1.1"
 
 	it "should handle a `sequence` `end_range_digits_strategy`", ->
 		p.options.end_range_digits_strategy = "sequence"
@@ -956,6 +1085,13 @@ describe "Parsing", ->
 		expect(p.parse("Heb 13-15a").osis()).toEqual "Heb.13.1-Heb.13.15"
 		expect(p.parse("Gal 5-22a").osis()).toEqual "Gal.5.1-Gal.5.22"
 		expect(p.parse("Matt 5- verse 6").osis()).toEqual "Matt.5.6"
+		expect(p.parse("Phm 8-7").osis()).toEqual "Phlm.1.8,Phlm.1.7"
+		expect(p.parse("Phm 7 to verse 6").osis()).toEqual "Phlm.1.7,Phlm.1.6"
+		expect(p.parse("Phm 17 to verse 0").osis()).toEqual "Phlm.1.17"
+		expect(p.parse("Phil 2, verse 3:1").osis()).toEqual "Phil.2.1-Phil.3.1"
+		expect(p.parse("Phil 2, verse 4:1").osis()).toEqual "Phil.2,Phil.4.1"
+		expect(p.parse("Phil 2 to verse 3:1").osis()).toEqual "Phil.2.1-Phil.3.1"
+		expect(p.parse("Phil 2 to verse 1:1").osis()).toEqual "Phil.2,Phil.1.1"
 
 	it "should handle no matches", ->
 		expect(p.parse("Nothing").osis()).toEqual ""
@@ -1038,7 +1174,7 @@ describe "Parsing", ->
 		expect(p.parse("matt 29-34").osis_and_translations()).toEqual []
 		expect(p.parse("heb 0:6").osis()).toEqual ""
 		expect(p.parse("1 Kings 45, 12:3").osis_and_translations()).toEqual [["1Kgs.12.3", ""]]
-		expect(p.parse("ha 67").parsed_entities()[0].entities).toEqual [{osis:"",type:"bc",indices:[0,5],translations:[""],start:{b:"Hab",c:67,v:undefined},end:{b:"Hab",c:67},entity_id:0,entities:[{start:{b:"Hab",c:67,v:undefined},end:{b:"Hab",c:67},valid:{valid:false,messages:{start_chapter_not_exist:3}},alternates:[{start:{b:"Hag",c:67,v:undefined},end:{b:"Hag",c:67},valid:{valid:false,messages:{start_chapter_not_exist:2}}}],type:"bc",absolute_indices:[0,5]}]}]
+		expect(p.parse("ha 67").parsed_entities()[0].entities).toEqual [{osis:"",type:"bc",indices:[0,5],translations:[""],start:{b:"Hab",c:67},end:{b:"Hab",c:67},entity_id:0,enclosed_indices: undefined,entities:[{start:{b:"Hab",c:67},end:{b:"Hab",c:67},valid:{valid:false,messages:{start_chapter_not_exist:3}},alternates:[{start:{b:"Hag",c:67},end:{b:"Hag",c:67},valid:{valid:false,messages:{start_chapter_not_exist:2}}}],type:"bc",absolute_indices:[0,5]}]}]
 
 	it "should handle `pre_book` ranges", ->
 		p.set_options book_alone_strategy: "full"
@@ -1050,29 +1186,17 @@ describe "Parsing", ->
 		expect(p.parse("1-2 Sam 3").osis_and_indices()).toEqual [{osis:"2Sam.3", translations: [""], indices:[2,9]}]
 		expect(p.parse("Ruth 1-2 Sam").osis_and_indices()).toEqual [{osis:"Ruth-2Sam", translations: [""], indices:[0,12]}]
 		expect(p.parse("Ruth 1-2 Chr").osis_and_indices()).toEqual [{osis:"Ruth-2Chr", translations: [""], indices:[0,12]}]
+		expect(p.parse("Joel 1-2 Chr").osis_and_indices()).toEqual [{osis:"Joel.1", translations: [""], indices:[0,6]}]
 		expect(p.parse("1-2 Sam, 1-2 Kings, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam-2Kgs,Ruth.3,Ruth-3John", translations: [""], indices:[2,36]}]
 		expect(p.parse("1-2 Sam, 1-2 Chronicles, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam-2Chr,Ruth.3,Ruth-3John", translations: [""], indices:[2,41]}]
-		expect(p.parse("Ez 2. Then 1-3 John (NIV)").osis_and_indices()).toEqual [{osis:"Ezek.2", translations: [""], indices:[0,4]}, {osis:"3John", translations: ["NIV"], indices:[13,25]}]
+		expect(p.parse("Ez 2. Then 1-3 John (NIV)").osis_and_indices()).toEqual [{osis:"Ezek.2", translations: [""], indices:[0,4]}, {osis:"1John-3John", translations: ["NIV"], indices:[11,25]}]
 		expect(p.parse("1-3 John").osis_and_indices()).toEqual [{osis:"1John-3John", translations: [""], indices:[0,8]}]
 		expect(p.parse("3-3 John").osis_and_indices()).toEqual [{osis:"3John", translations: [""], indices:[2,8]}]
 		expect(p.parse("1 and 3 John").osis_and_indices()).toEqual [{osis:"3John", translations: [""], indices:[6,12]}]
+		expect(p.parse("Mark 2. Then 1-3 John (NIV), Revelation 6").osis_and_indices()).toEqual [{osis:"Mark.2", translations: [""], indices:[0,6]}, {osis:"1John-3John", translations: ["NIV"], indices:[13,27]}, {osis:"Rev.6", translations: [""], indices:[29,41]}]
 		# These two are debatable
 		expect(p.parse("Phil 2:4; 1 and 2 Timothy").osis_and_indices()).toEqual [{osis:"Phil.2.4,Phil.2.1", translations: [""], indices:[0,11]}]
 		expect(p.parse("Phil 2:4; 1-2 Timothy").osis_and_indices()).toEqual [{osis:"Phil.2.4,Phil.2-2Tim.4", translations: [""], indices:[0,21]}]
-
-	it "should handle `pre_book` ranges in the Apocrypha", ->
-		p.set_options book_alone_strategy: "full"
-		p.set_options book_range_strategy: "include"
-		p.include_apocrypha(true)
-		expect(p.parse("1-3 Macc").osis_and_indices()).toEqual [{osis:"1Macc-3Macc", translations: [""], indices:[0,8]}]
-		expect(p.parse("1 and 4 Macc").osis_and_indices()).toEqual [{osis:"4Macc", translations: [""], indices:[6,12]}]
-		expect(p.parse("2 and 3 Macc").osis_and_indices()).toEqual [{osis:"2Macc-3Macc", translations: [""], indices:[0,12]}]
-		expect(p.parse("2 and 4 Macc").osis_and_indices()).toEqual [{osis:"4Macc", translations: [""], indices:[6,12]}]
-		expect(p.parse("1-4 Macc").osis_and_indices()).toEqual [{osis:"1Macc-4Macc", translations: [""], indices:[0,8]}]
-		expect(p.parse("2-4 Macc").osis_and_indices()).toEqual [{osis:"2Macc-4Macc", translations: [""], indices:[0,8]}]
-		expect(p.parse("3-3 Macc").osis_and_indices()).toEqual [{osis:"3Macc", translations: [""], indices:[2,8]}]
-		expect(p.parse("3-4 Macc").osis_and_indices()).toEqual [{osis:"3Macc-4Macc", translations: [""], indices:[0,8]}]
-		expect(p.parse("3 and 4 Macc").osis_and_indices()).toEqual [{osis:"3Macc-4Macc", translations: [""], indices:[0,12]}]
 
 	it "should handle `pre_book` ranges with an `include` `book_sequence_strategy`", ->
 		p.set_options book_alone_strategy: "full"
@@ -1085,7 +1209,9 @@ describe "Parsing", ->
 		expect(p.parse("Numbers 1-2 Sam").osis_and_indices()).toEqual [{osis:"Num-2Sam", translations: [""], indices:[0,15]}]
 		expect(p.parse("Ruth 1-2 Sam").osis_and_indices()).toEqual [{osis:"Ruth-2Sam", translations: [""], indices:[0,12]}]
 		expect(p.parse("Ruth 1-2 Chr").osis_and_indices()).toEqual [{osis:"Ruth-2Chr", translations: [""], indices:[0,12]}]
-		expect(p.parse("Ez 2. Then 1-3 John (NIV)").osis_and_indices()).toEqual [{osis:"Ezek.2", translations: [""], indices:[0,4]}, {osis:"3John", translations: ["NIV"], indices:[13,25]}]
+		expect(p.parse("Joel 1-2 Chr").osis_and_indices()).toEqual [{osis:"Joel.1,2Chr", translations: [""], indices:[0,12]}]
+		expect(p.parse("Ez 2. Then 1-3 John (NIV)").osis_and_indices()).toEqual [{osis:"Ezek.2", translations: [""], indices:[0,4]}, {osis:"1John-3John", translations: ["NIV"], indices:[11,25]}]
+		expect(p.parse("Mark 2. Then 1-3 John (NIV), Revelation 6").osis_and_indices()).toEqual [{osis:"Mark.2", translations: [""], indices:[0,6]}, {osis:"1John-3John", translations: ["NIV"], indices:[13,27]}, {osis:"Rev.6", translations: [""], indices:[29,41]}]
 		# These don't seem great.
 		expect(p.parse("1-2 Sam, 1-2 Kings, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam,2Sam-2Kgs,Ruth.3,Ruth-3John", translations: [""], indices:[2,36]}]
 		expect(p.parse("1-2 Sam, 1-2 Chronicles, Ruth 3, 1-3 John").osis_and_indices()).toEqual [{osis:"2Sam,2Sam-2Chr,Ruth.3,Ruth-3John", translations: [""], indices:[2,41]}]
@@ -1114,6 +1240,9 @@ describe "Parsing", ->
 		expect(p.parse("Ps 3:title and").osis()).toEqual "Ps.3.1"
 		expect(p.parse("Matt 3:4a title and").osis_and_indices()).toEqual [osis: "Matt.3.4", translations: [""], indices: [0,9]]
 		expect(p.parse("Matt 3:4a and.").osis_and_indices()).toEqual [osis: "Matt.3.4", translations: [""], indices: [0,9]]
+		expect(p.parse("1st Thessalonaians 37 title - vs. 722 II Choranthians 141").osis()).toEqual ""
+		expect(p.parse("Psalms - chapter 128 title MSG").osis()).toEqual "Ps.128.1"
+		expect(p.parse("John 137 chapts. 153 title NKJV").osis_and_indices()).toEqual []
 
 	it "should handle parentheses with a `combine` `sequence_combination_strategy`", ->
 		expect(p.parse("Ps 117 (118,119, and 120)").osis_and_indices()).toEqual [{osis: "Ps.117-Ps.120", translations: [""], indices: [0,25]}]
@@ -1185,6 +1314,100 @@ describe "Parsing", ->
 			expect(p.parse(bcv).osis()).toEqual bcv
 			expect(p.parse(bcv_range).osis()).toEqual bcv_range
 
+	it "should handle books preceded by `\\w`", ->
+		expect(p.parse("1Matt2").osis_and_indices()).toEqual []
+		expect(p.parse("1 Matt2").osis_and_indices()).toEqual [osis:"Matt.2", translations:[""], indices:[2,7]]
+		expect(p.parse("1Matt2John1").osis_and_indices()).toEqual []
+		expect(p.parse("1 Matt2John1").osis_and_indices()).toEqual [osis:"2John", translations:[""], indices:[6,12]]
+		expect(p.parse("1 Matt2Phlm3").osis_and_indices()).toEqual [osis:"Matt.2,Phlm.1.3", translations:[""], indices:[2,12]]
+		expect(p.parse("1Matt2-4Phlm3").osis_and_indices()).toEqual []
+		expect(p.parse("1 Matt2-4John3").osis_and_indices()).toEqual [osis:"Matt.2-Matt.4,John.3", translations:[""], indices:[2,14]]
+		expect(p.parse("1John1:2John2").osis_and_indices()).toEqual [{osis:"1John.1,2John.1.2", translations:[""], indices:[0,13]}]
+		expect(p.parse("1John21John2").osis_and_indices()).toEqual [{osis:"John.2", translations:[""], indices:[7,12]}]
+
+	it "should handle alternate names for books", ->
+		expect(p.parse("1 Kingdoms 1:1").osis()).toEqual "1Sam.1.1"
+		expect(p.parse("2 Kingdoms 1:1").osis()).toEqual "2Sam.1.1"
+		expect(p.parse("Third Kingdoms 1:1").osis()).toEqual "1Kgs.1.1"
+		expect(p.parse("4th Kingdoms 1:1").osis()).toEqual "2Kgs.1.1"
+		expect(p.parse("paralipomenon 1:1").osis()).toEqual "1Chr.1.1"
+		expect(p.parse("2 Paralipomenon 1:1").osis()).toEqual "2Chr.1.1"
+
+	it "should handle translations with different book orders when setting the `versification_system` manually", ->
+		p.include_apocrypha true
+		tests = [
+			["Genesis 1 to Exodus 2",	"Gen.1-Exod.2", "Gen.1-Exod.2"]
+			["1 Esdras 1 to Tobit 2",	"1Esd.1,Tob.2",	"1Esd.1-Tob.2"]
+			["2 Esdras 3\u2014Tobit 5",	"2Esd.3,Tob.5",	"2Esd.3-Tob.5"]
+		]
+		for [query, kjv, nab] in tests
+			p.set_options versification_system: "default"
+			expect(p.parse("#{query}").osis()).toEqual kjv
+			p.set_options versification_system: "nab"
+			expect(p.parse("#{query}").osis()).toEqual nab
+
+	it "should handle translations with different book orders in parsed strings", ->
+		p.include_apocrypha true
+		tests = [
+			["Genesis 1 to Exodus 2",	"Gen.1-Exod.2", "Gen.1-Exod.2"]
+			["1 Esdras 1 to Tobit 2",	"1Esd.1,Tob.2",	"1Esd.1-Tob.2"]
+			["2 Esdras 3\u2014Tobit 5",	"2Esd.3,Tob.5",	"2Esd.3-Tob.5"]
+		]
+		for [query, kjv, nab] in tests
+			expect(p.parse("#{query} KJV").osis()).toEqual kjv
+			expect(p.parse("#{query} NAB").osis()).toEqual nab
+		
+	it "should handle long strings", ->
+		strings = []
+		for i in [1..1001]
+			strings.push "John.1"
+		string = strings.join ","
+		expect(p.parse(string).osis()).toEqual string
+		expect(p.parse("Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Psalm 1").osis()).toEqual "Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1"
+
+	it "should handle weird invalid ranges", ->
+		p.set_options
+			book_alone_strategy: "first_chapter",
+			book_sequence_strategy: "include",
+			book_range_strategy: "include",
+
+		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9,Matt.10-Rev.22"
+		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Phil-Col"
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10-Dan.12.13", translations: [""], indices: [0, 27]}]
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan. Is a good").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10-Dan.12.13,Isa.1", translations: [""], indices: [0, 31]}]
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan. Is a (NIV) good").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10-Dan.12.13,Isa.1", translations: ["NIV"], indices: [0, 39]}]
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan (NIV). Is a good").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10-Dan.12.13", translations: ["NIV"], indices: [0, 33]}, {osis: "Isa.1", translations: [""], indices: [35, 37]}]
+
+		p.set_options
+			book_alone_strategy: "ignore",
+			book_sequence_strategy: "ignore",
+			book_range_strategy: "ignore",
+
+		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9,Matt.10"
+		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Col.4"
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10", translations: [""], indices: [0, 20]}]
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan. Is a good").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10", translations: [""], indices: [0, 20]}]
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan. Is a (NIV) good").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10", translations: ["NIV"], indices: [0, 39]}]
+		expect(p.parse("Proverbs 31:2. Vs 10 to dan (NIV). Is a (NIV) good").osis_and_indices()).toEqual [{osis: "Prov.31.2,Prov.31.10", translations: ["NIV"], indices: [0, 33]}]
+
+	it "should handle ambiguous books", ->
+		expect(p.parse("Ph 80").osis()).toEqual ""
+		expect(p.parse("Ph 1:4").osis()).toEqual "Phil.1.4"
+		expect(p.parse("Ph 80 KJV").osis_and_translations()).toEqual []
+		expect(p.parse("Ph 1:4 KJV").osis_and_translations()).toEqual [["Phil.1.4", "KJV"]]
+		expect(p.parse_with_context("Ph 1:4 KJV", "Mark 2:3 NIV").osis_and_translations()).toEqual [["Phil.1.4", "KJV"]]
+		expect(p.parse_with_context("Ph 1:5", "Mark 2:3 NIV").osis_and_translations()).toEqual [["Phil.1.5", ""]]
+		expect(p.parse("Ph 1:6, Ma 1:1 NIV").osis_and_translations()).toEqual [["Phil.1.6,Matt.1.1", "NIV"]]
+		expect(p.parse("Ph 1:7 ESV, Ma 1:2 NIV").osis_and_translations()).toEqual [["Phil.1.7", "ESV"], ["Matt.1.2", "NIV"]]
+		expect(p.parse("Ph 3 ESV, Ma 3 NIV").osis_and_translations()).toEqual [["Phil.3", "ESV"], ["Matt.3", "NIV"]]
+
+describe "Apocrypha parsing", ->
+	p = {}
+	beforeEach ->
+		p = new bcv_parser
+		p.options.osis_compaction_strategy = "b"
+		p.options.sequence_combination_strategy = "combine"
+
 	it "should round-trip OSIS Apocrypha references", ->
 		p.set_options osis_compaction_strategy: "bc", ps151_strategy: "b"
 		p.include_apocrypha true
@@ -1196,7 +1419,7 @@ describe "Parsing", ->
 			expect(p.parse(bc).osis()).toEqual bc
 			expect(p.parse(bcv).osis()).toEqual bcv
 			expect(p.parse(bcv_range).osis()).toEqual bcv_range
-		p.set_options ps151_strategy: "bc"
+		p.set_options ps151_strategy: "c"
 		expect(p.parse("Ps151.1").osis()).toEqual "Ps.151"
 		expect(p.parse("Ps151.1.1").osis()).toEqual "Ps.151.1"
 		expect(p.parse("Ps151.1-Ps151.2").osis()).toEqual "Ps.151.1-Ps.151.2"
@@ -1227,246 +1450,219 @@ describe "Parsing", ->
 		expect(p.parse("Rev 21-Tobit 3").osis()).toEqual "Rev.21-Tob.3"
 		p.include_apocrypha false
 
+	it "should handle `pre_book` ranges in the Apocrypha", ->
+		p.set_options book_alone_strategy: "full"
+		p.set_options book_range_strategy: "include"
+		p.include_apocrypha(true)
+		expect(p.parse("1-3 Macc").osis_and_indices()).toEqual [{osis:"1Macc-3Macc", translations: [""], indices:[0,8]}]
+		expect(p.parse("1 and 4 Macc").osis_and_indices()).toEqual [{osis:"4Macc", translations: [""], indices:[6,12]}]
+		expect(p.parse("2 and 3 Macc").osis_and_indices()).toEqual [{osis:"2Macc-3Macc", translations: [""], indices:[0,12]}]
+		expect(p.parse("2 and 4 Macc").osis_and_indices()).toEqual [{osis:"4Macc", translations: [""], indices:[6,12]}]
+		expect(p.parse("1-4 Macc").osis_and_indices()).toEqual [{osis:"1Macc-4Macc", translations: [""], indices:[0,8]}]
+		expect(p.parse("2-4 Macc").osis_and_indices()).toEqual [{osis:"2Macc-4Macc", translations: [""], indices:[0,8]}]
+		expect(p.parse("3-3 Macc").osis_and_indices()).toEqual [{osis:"3Macc", translations: [""], indices:[2,8]}]
+		expect(p.parse("3-4 Macc").osis_and_indices()).toEqual [{osis:"3Macc-4Macc", translations: [""], indices:[0,8]}]
+		expect(p.parse("3 and 4 Macc").osis_and_indices()).toEqual [{osis:"3Macc-4Macc", translations: [""], indices:[0,12]}]
+
 	it "should handle Psalm 151 with the Apocrypha enabled and `ps151_strategy` = `b`", ->
 		p.set_options osis_compaction_strategy: "bc", include_apocrypha: true, ps151_strategy: "b"
 
-		expect(p.parse("Ps 149, 151, 2").osis()).toEqual "Ps.149,Ps151.1,Ps.2"
-		expect(p.parse("Ps 150, 151, 2").osis()).toEqual "Ps.150,Ps151.1,Ps.2"
-		expect(p.parse("Ps 151").osis()).toEqual "Ps151.1"
-		expect(p.parse("Ps 151:2").osis()).toEqual "Ps151.1.2"
-		expect(p.parse("Ps 151 title").osis()).toEqual "Ps151.1.1"
-		expect(p.parse("151st Psalm").osis()).toEqual "Ps151.1"
-		expect(p.parse("151st Psalm, verse 2").osis()).toEqual "Ps151.1.2"
+		tests = [
+			["Ps 149, 151, 2", "Ps.149,Ps151.1,Ps.2"],
+			["Ps 150, 151, 2", "Ps.150,Ps151.1,Ps.2"],
+			["Ps 151", "Ps151.1"],
+			["Ps 151:2", "Ps151.1.2"],
+			["Ps 151 title", "Ps151.1.1"],
+			["151st Psalm", "Ps151.1"],
+			["151st Psalm, verse 2", "Ps151.1.2"],
+			["Ps 119-150, 151, 2", "Ps.119-Ps.150,Ps151.1,Ps.2"],
+			["Ps 151:2,3", "Ps151.1.2-Ps151.1.3"],
+			["Ps 151:2,4", "Ps151.1.2,Ps151.1.4"],
+			["Ps 151:2-4", "Ps151.1.2-Ps151.1.4"],
+			["Ps 151, 2", "Ps151.1,Ps.2"],
+			["Ps 119, 151:2, 3", "Ps.119,Ps151.1.2-Ps151.1.3"],
+			["Ps 119, 151:2, 4", "Ps.119,Ps151.1.2,Ps151.1.4"],
+			["Ps 119, 151 title, 3", "Ps.119,Ps151.1.1,Ps151.1.3"],
+			["Job 3-Pr 3", "Job.3-Prov.3"],
+			["Ps 119-151 title", "Ps.119-Ps.150,Ps151.1.1"],
+			["Ps 149ff", "Ps.149-Ps.150,Ps151.1"],
+			["chapters 140 to 151 from Psalms", "Ps.140-Ps.150,Ps151.1"],
+			["Ps 149:2-151:3", "Ps.149.2-Ps.150.6,Ps151.1.1-Ps151.1.3"],
+			["Ps 149-151", "Ps.149-Ps.150,Ps151.1"],
+			["Ps 151-Proverbs 3", "Ps151.1,Prov.1-Prov.3"],
+			["Ps 151:2-Proverbs 3:3", "Ps151.1.2-Ps151.1.7,Prov.1.1-Prov.3.3"],
+			["Ps 150:5-151:2", "Ps.150.5-Ps.150.6,Ps151.1.1-Ps151.1.2"],
+			["Ps 150:6-151:2", "Ps.150.6,Ps151.1.1-Ps151.1.2"],
+			["Ps 150-151", "Ps.150,Ps151.1"],
+			["Ps 150, 151", "Ps.150,Ps151.1"],
+			["Ps 149-Psalm 151", "Ps.149-Ps.150,Ps151.1"],
+			["1 Maccabees 3 through Ps 151, 151:3", "1Macc.3,Ps151.1,Ps151.1.3"],
+			["Job 3-Ps 151", "Job.3-Ps.150,Ps151.1"],
+			["Prov 3-Ps 151", "Prov.3,Ps151.1"],
+			["Ps151.1", "Ps151.1"],
+			["Ps151.1.3", "Ps151.1.3"],
+			["Ps151.1.3-Ps151.1.4", "Ps151.1.3-Ps151.1.4"],
+			["Ps151.1.3-4", "Ps151.1.3-Ps151.1.4"],
+			["Ps151", "Ps151.1"],
+			["Ps151.1, 3-4", "Ps151.1,Ps.3-Ps.4"],
+			["Ps151, 2:3-4", "Ps151.1,Ps.2.3-Ps.2.4"],
+			["Ps150. 6:3-4", "Ps.150.6,Ps.150.3-Ps.150.4"],
+			["Ps151. 6:3-4", "Ps151.1.6,Ps151.1.3-Ps151.1.4"],
+			["Ps151.1 verse 3-4", "Ps151.1.3-Ps151.1.4"],
+			["Ps151.1:3-4", "Ps151.1.3-Ps151.1.4"],
+			["Ps151.1 title", "Ps151.1.1"],
+			["Ps151.1 title-3", "Ps151.1.1-Ps151.1.3"],
+			["Ps151.1 2", "Ps151.1.2"],
+			["Ps151.1 2-3", "Ps151.1.2-Ps151.1.3"],
+			["Ps150.2-Ps151.1.3", "Ps.150.2-Ps.150.6,Ps151.1.1-Ps151.1.3"],
+			["Ps150.2-Ps151.1", "Ps.150.2-Ps.150.6,Ps151.1"],
+			["Ps150.2-Ps151", "Ps.150.2-Ps.150.6,Ps151.1"],
+			["ps151.1.3-ps151.1.4", "Ps151.1.1,Ps151.1.3,Ps151.1.1,Ps151.1.4"],
+			["ps151.1", "Ps151.1.1"],
+			["psalms-39-789", "Ps.39-Ps.150,Ps151.1"],
+		]
+
+		for [test, result] in tests
+			expect(p.parse(test).osis()).toEqual result
+		for [test, result] in tests
+			expect(p.parse("#{test} (KJV)").osis()).toEqual result
+
 		expect(p.parse("Ps 150 (151)").osis_and_indices()).toEqual [osis: "Ps.150,Ps151.1", translations: [""], indices: [0, 12]]
-		expect(p.parse("Ps 119-150, 151, 2").osis()).toEqual "Ps.119-Ps.150,Ps151.1,Ps.2"
-		expect(p.parse("Ps 151:2,3").osis()).toEqual "Ps151.1.2-Ps151.1.3"
-		expect(p.parse("Ps 151:2,4").osis()).toEqual "Ps151.1.2,Ps151.1.4"
-		expect(p.parse("Ps 151:2-4").osis()).toEqual "Ps151.1.2-Ps151.1.4"
-		expect(p.parse("Ps 151, 2").osis()).toEqual "Ps151.1,Ps.2"
-		expect(p.parse("Ps 119, 151:2, 3").osis()).toEqual "Ps.119,Ps151.1.2-Ps151.1.3"
-		expect(p.parse("Ps 119, 151:2, 4").osis()).toEqual "Ps.119,Ps151.1.2,Ps151.1.4"
-		expect(p.parse("Ps 119, 151 title, 3").osis()).toEqual "Ps.119,Ps151.1.1,Ps151.1.3"
-		expect(p.parse("Job 3-Pr 3").osis()).toEqual "Job.3-Prov.3"
-		expect(p.parse("Ps 119-151 title").osis()).toEqual "Ps.119-Ps.150,Ps151.1.1"
-		expect(p.parse("Ps 149ff").osis()).toEqual "Ps.149-Ps.150,Ps151.1"
-		expect(p.parse("chapters 140 to 151 from Psalms").osis()).toEqual "Ps.140-Ps.150,Ps151.1"
-		expect(p.parse("Ps 149:2-151:3").osis()).toEqual "Ps.149.2-Ps.150.6,Ps151.1.1-Ps151.1.3"
-		expect(p.parse("Ps 149-151").osis()).toEqual "Ps.149-Ps.150,Ps151.1"
-		expect(p.parse("Ps 151-Proverbs 3").osis()).toEqual "Ps151.1,Prov.1-Prov.3"
-		expect(p.parse("Ps 151:2-Proverbs 3:3").osis()).toEqual "Ps151.1.2-Ps151.1.7,Prov.1.1-Prov.3.3"
-		expect(p.parse("Ps 150:5-151:2").osis()).toEqual "Ps.150.5-Ps.150.6,Ps151.1.1-Ps151.1.2"
-		expect(p.parse("Ps 150:6-151:2").osis()).toEqual "Ps.150.6,Ps151.1.1-Ps151.1.2"
-		expect(p.parse("Ps 150-151").osis()).toEqual "Ps.150,Ps151.1"
-		expect(p.parse("Ps 150, 151").osis()).toEqual "Ps.150,Ps151.1"
-		expect(p.parse("Ps 149-Psalm 151").osis()).toEqual "Ps.149-Ps.150,Ps151.1"
-		expect(p.parse("1 Maccabees 3 through Ps 151, 151:3").osis()).toEqual "1Macc.3,Ps151.1,Ps151.1.3"
-		expect(p.parse("Job 3-Ps 151").osis()).toEqual "Job.3-Ps.150,Ps151.1"
-		expect(p.parse("Prov 3-Ps 151").osis()).toEqual "Prov.3,Ps151.1"
-		expect(p.parse("Ps151.1").osis()).toEqual "Ps151.1"
-		expect(p.parse("Ps151.1.3").osis()).toEqual "Ps151.1.3"
-		expect(p.parse("Ps151.1.3-Ps151.1.4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
-		expect(p.parse("Ps151.1.3-4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
-		expect(p.parse("Ps151").osis()).toEqual "Ps151.1"
-		expect(p.parse("Ps151.1, 3-4").osis()).toEqual "Ps151.1,Ps.3-Ps.4"
-		expect(p.parse("Ps151, 2:3-4").osis()).toEqual "Ps151.1,Ps.2.3-Ps.2.4"
-		expect(p.parse("Ps150. 6:3-4").osis()).toEqual "Ps.150.6,Ps.150.3-Ps.150.4"
-		expect(p.parse("Ps151. 6:3-4").osis()).toEqual "Ps151.1.6,Ps151.1.3-Ps151.1.4"
-		expect(p.parse("Ps151.1 verse 3-4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
-		expect(p.parse("Ps151.1:3-4").osis()).toEqual "Ps151.1.3-Ps151.1.4"
-		expect(p.parse("Ps151.1 title").osis()).toEqual "Ps151.1.1"
-		expect(p.parse("Ps151.1 title-3").osis()).toEqual "Ps151.1.1-Ps151.1.3"
-		expect(p.parse("Ps151.1 2").osis()).toEqual "Ps151.1.2"
-		expect(p.parse("Ps151.1 2-3").osis()).toEqual "Ps151.1.2-Ps151.1.3"
-		expect(p.parse("Ps150.2-Ps151.1.3").osis()).toEqual "Ps.150.2-Ps.150.6,Ps151.1.1-Ps151.1.3"
-		expect(p.parse("Ps150.2-Ps151.1").osis()).toEqual "Ps.150.2-Ps.150.6,Ps151.1"
-		expect(p.parse("Ps150.2-Ps151").osis()).toEqual "Ps.150.2-Ps.150.6,Ps151.1"
-		# It's case-sensitive.
-		expect(p.parse("ps151.1.3-ps151.1.4").osis()).toEqual "Ps151.1.1,Ps151.1.3,Ps151.1.1,Ps151.1.4"
-		expect(p.parse("ps151.1").osis()).toEqual "Ps151.1.1"
+		expect(p.parse("Ps 150 (151) (KJV)").osis_and_indices()).toEqual [osis: "Ps.150,Ps151.1", translations: ["KJV"], indices: [0, 18]]
 
-	it "should handle Psalm 151 with the Apocrypha enabled and `ps151_strategy` = `bc` (the default)", ->
-		p.set_options osis_compaction_strategy: "bc", include_apocrypha: true
+	it "should handle Psalm 151 with the Apocrypha enabled and `ps151_strategy` = `c` (the default)", ->
+		p.set_options osis_compaction_strategy: "bc", include_apocrypha: true, ps151_strategy: "c"
 
-		expect(p.parse("Ps 149, 151, 2").osis()).toEqual "Ps.149,Ps.151,Ps.2"
-		expect(p.parse("Ps 150, 151, 2").osis()).toEqual "Ps.150-Ps.151,Ps.2"
-		expect(p.parse("Ps 151").osis()).toEqual "Ps.151"
-		expect(p.parse("Ps 151:2").osis()).toEqual "Ps.151.2"
-		expect(p.parse("Ps 151 title").osis()).toEqual "Ps.151.1"
-		expect(p.parse("151st Psalm").osis()).toEqual "Ps.151"
-		expect(p.parse("151st Psalm, verse 2").osis()).toEqual "Ps.151.2"
+		tests = [
+			["Ps 149, 151, 2", "Ps.149,Ps.151,Ps.2"],
+			["Ps 150, 151, 2", "Ps.150-Ps.151,Ps.2"],
+			["Ps 151", "Ps.151"],
+			["Ps 151:2", "Ps.151.2"],
+			["Ps 151 title", "Ps.151.1"],
+			["151st Psalm", "Ps.151"],
+			["151st Psalm, verse 2", "Ps.151.2"],
+			["Ps 119-150, 151, 2", "Ps.119-Ps.151,Ps.2"],
+			["Ps 151:2,3", "Ps.151.2-Ps.151.3"],
+			["Ps 151:2,4", "Ps.151.2,Ps.151.4"],
+			["Ps 151:2-4", "Ps.151.2-Ps.151.4"],
+			["Ps 151, 2", "Ps.151,Ps.2"],
+			["Ps 119, 151:2, 3", "Ps.119,Ps.151.2-Ps.151.3"],
+			["Ps 119, 151:2, 4", "Ps.119,Ps.151.2,Ps.151.4"],
+			["Ps 119, 151 title, 3", "Ps.119,Ps.151.1,Ps.151.3"],
+			["Job 3-Pr 3", "Job.3-Prov.3"],
+			["Ps 119-151 title", "Ps.119.1-Ps.151.1"],
+			["Ps 149ff", "Ps.149-Ps.151"],
+			["chapters 140 to 151 from Psalms", "Ps.140-Ps.151"],
+			["Ps 149:2-151:3", "Ps.149.2-Ps.151.3"],
+			["Ps 149-151", "Ps.149-Ps.151"],
+			["Ps 151-Proverbs 3", "Ps.151-Prov.3"],
+			["Ps 151:2-Proverbs 3:3", "Ps.151.2-Prov.3.3"],
+			["Ps 150:5-151:2", "Ps.150.5-Ps.151.2"],
+			["Ps 150:6-151:2", "Ps.150.6-Ps.151.2"],
+			["Ps 150-151", "Ps.150-Ps.151"],
+			["Ps 150, 151", "Ps.150-Ps.151"],
+			["Ps 149-Psalm 151", "Ps.149-Ps.151"],
+			["1 Maccabees 3 through Ps 151, 151:3", "1Macc.3,Ps.151,Ps.151.3"],
+			["Job 3-Ps 151", "Job.3-Ps.151"],
+			["Prov 3-Ps 151", "Prov.3,Ps.151"],
+			["Ps151.1", "Ps.151"],
+			["Ps151.1.3", "Ps.151.3"],
+			["Ps151.1.3-Ps151.1.4", "Ps.151.3-Ps.151.4"],
+			["Ps151.1.3-4", "Ps.151.3-Ps.151.4"],
+			["Ps151", "Ps.151"],
+			["Ps151.1, 3-4", "Ps.151,Ps.3-Ps.4"],
+			["Ps151, 2:3-4", "Ps.151,Ps.2.3-Ps.2.4"],
+			["Ps150. 6:3-4", "Ps.150.6,Ps.150.3-Ps.150.4"],
+			["Ps151. 6:3-4", "Ps.151.6,Ps.151.3-Ps.151.4"],
+			["Ps151.1 verse 3-4", "Ps.151.3-Ps.151.4"],
+			["Ps151.1:3-4", "Ps.151.3-Ps.151.4"],
+			["Ps151.1 title", "Ps.151.1"],
+			["Ps151.1 title-3", "Ps.151.1-Ps.151.3"],
+			["Ps151.1 2", "Ps.151.2"],
+			["Ps151.1 2-3", "Ps.151.2-Ps.151.3"],
+			["Ps150.2-Ps151.1.3", "Ps.150.2-Ps.151.3"],
+			["Ps150.2-Ps151.1", "Ps.150.2-Ps.151.7"],
+			["Ps150.2-Ps151", "Ps.150.2-Ps.151.7"],
+			["ps151.1.3-ps151.1.4", "Ps.151.1,Ps.151.3,Ps.151.1,Ps.151.4"],
+			["ps151.1", "Ps.151.1"],
+			["psalms-39-789", "Ps.39-Ps.151"],
+		]
+		for [test, result] in tests
+			expect(p.parse(test).osis()).toEqual result
+		for [test, result] in tests
+			expect(p.parse("#{test} (KJV)").osis()).toEqual result
+
 		expect(p.parse("Ps 150 (151)").osis_and_indices()).toEqual [osis: "Ps.150-Ps.151", translations: [""], indices: [0, 12]]
-		expect(p.parse("Ps 119-150, 151, 2").osis()).toEqual "Ps.119-Ps.151,Ps.2"
-		expect(p.parse("Ps 151:2,3").osis()).toEqual "Ps.151.2-Ps.151.3"
-		expect(p.parse("Ps 151:2,4").osis()).toEqual "Ps.151.2,Ps.151.4"
-		expect(p.parse("Ps 151:2-4").osis()).toEqual "Ps.151.2-Ps.151.4"
-		expect(p.parse("Ps 151, 2").osis()).toEqual "Ps.151,Ps.2"
-		expect(p.parse("Ps 119, 151:2, 3").osis()).toEqual "Ps.119,Ps.151.2-Ps.151.3"
-		expect(p.parse("Ps 119, 151:2, 4").osis()).toEqual "Ps.119,Ps.151.2,Ps.151.4"
-		expect(p.parse("Ps 119, 151 title, 3").osis()).toEqual "Ps.119,Ps.151.1,Ps.151.3"
-		expect(p.parse("Job 3-Pr 3").osis()).toEqual "Job.3-Prov.3"
-		expect(p.parse("Ps 119-151 title").osis()).toEqual "Ps.119.1-Ps.151.1"
-		expect(p.parse("Ps 149ff").osis()).toEqual "Ps.149-Ps.151"
-		expect(p.parse("chapters 140 to 151 from Psalms").osis()).toEqual "Ps.140-Ps.151"
-		expect(p.parse("Ps 149:2-151:3").osis()).toEqual "Ps.149.2-Ps.151.3"
-		expect(p.parse("Ps 149-151").osis()).toEqual "Ps.149-Ps.151"
-		expect(p.parse("Ps 151-Proverbs 3").osis()).toEqual "Ps.151-Prov.3"
-		expect(p.parse("Ps 151:2-Proverbs 3:3").osis()).toEqual "Ps.151.2-Prov.3.3"
-		expect(p.parse("Ps 150:5-151:2").osis()).toEqual "Ps.150.5-Ps.151.2"
-		expect(p.parse("Ps 150:6-151:2").osis()).toEqual "Ps.150.6-Ps.151.2"
-		expect(p.parse("Ps 150-151").osis()).toEqual "Ps.150-Ps.151"
-		expect(p.parse("Ps 150, 151").osis()).toEqual "Ps.150-Ps.151"
-		expect(p.parse("Ps 149-Psalm 151").osis()).toEqual "Ps.149-Ps.151"
-		expect(p.parse("1 Maccabees 3 through Ps 151, 151:3").osis()).toEqual "1Macc.3,Ps.151,Ps.151.3"
-		expect(p.parse("Job 3-Ps 151").osis()).toEqual "Job.3-Ps.151"
-		expect(p.parse("Prov 3-Ps 151").osis()).toEqual "Prov.3,Ps.151"
-		expect(p.parse("Ps151.1").osis()).toEqual "Ps.151"
-		expect(p.parse("Ps151.1.3").osis()).toEqual "Ps.151.3"
-		expect(p.parse("Ps151.1.3-Ps151.1.4").osis()).toEqual "Ps.151.3-Ps.151.4"
-		expect(p.parse("Ps151.1.3-4").osis()).toEqual "Ps.151.3-Ps.151.4"
-		expect(p.parse("Ps151").osis()).toEqual "Ps.151"
-		expect(p.parse("Ps151.1, 3-4").osis()).toEqual "Ps.151,Ps.3-Ps.4"
-		expect(p.parse("Ps151, 2:3-4").osis()).toEqual "Ps.151,Ps.2.3-Ps.2.4"
-		expect(p.parse("Ps150. 6:3-4").osis()).toEqual "Ps.150.6,Ps.150.3-Ps.150.4"
-		expect(p.parse("Ps151. 6:3-4").osis()).toEqual "Ps.151.6,Ps.151.3-Ps.151.4"
-		expect(p.parse("Ps151.1 verse 3-4").osis()).toEqual "Ps.151.3-Ps.151.4"
-		expect(p.parse("Ps151.1:3-4").osis()).toEqual "Ps.151.3-Ps.151.4"
-		expect(p.parse("Ps151.1 title").osis()).toEqual "Ps.151.1"
-		expect(p.parse("Ps151.1 title-3").osis()).toEqual "Ps.151.1-Ps.151.3"
-		expect(p.parse("Ps151.1 2").osis()).toEqual "Ps.151.2"
-		expect(p.parse("Ps151.1 2-3").osis()).toEqual "Ps.151.2-Ps.151.3"
-		expect(p.parse("Ps150.2-Ps151.1.3").osis()).toEqual "Ps.150.2-Ps.151.3"
-		expect(p.parse("Ps150.2-Ps151.1").osis()).toEqual "Ps.150.2-Ps.151.7"
-		expect(p.parse("Ps150.2-Ps151").osis()).toEqual "Ps.150.2-Ps.151.7"
-		# It's case-sensitive.
-		expect(p.parse("ps151.1.3-ps151.1.4").osis()).toEqual "Ps.151.1,Ps.151.3,Ps.151.1,Ps.151.4"
-		expect(p.parse("ps151.1").osis()).toEqual "Ps.151.1"
+		expect(p.parse("Ps 150 (151) (KJV)").osis_and_indices()).toEqual [osis: "Ps.150-Ps.151", translations: ["KJV"], indices: [0, 18]]
 
 	it "should handle Psalm 151 with the Apocrypha disabled (the default)", ->
 		p.set_options osis_compaction_strategy: "bc", include_apocrypha: false
 
-		expect(p.parse("Ps 149, 151, 2").osis()).toEqual "Ps.149,Ps.2"
-		expect(p.parse("Ps 150, 151, 2").osis()).toEqual "Ps.150,Ps.2"
-		expect(p.parse("Ps 151").osis()).toEqual ""
-		expect(p.parse("Ps 151:2").osis()).toEqual ""
-		expect(p.parse("Ps 151 title").osis()).toEqual ""
-		expect(p.parse("151st Psalm").osis()).toEqual ""
-		expect(p.parse("151st Psalm, verse 2").osis()).toEqual ""
+		tests = [
+			["Ps 149, 151, 2", "Ps.149,Ps.2"],
+			["Ps 150, 151, 2", "Ps.150,Ps.2"],
+			["Ps 151", ""],
+			["Ps 151:2", ""],
+			["Ps 151 title", ""],
+			["151st Psalm", ""],
+			["151st Psalm, verse 2", ""],
+			["Ps 119-150, 151, 2", "Ps.119-Ps.150,Ps.2"],
+			["Ps 151:2,3", ""],
+			["Ps 151:2,4", ""],
+			["Ps 151:2-4", ""],
+			["Ps 119, 151:2, 3", "Ps.119"],
+			["Ps 119, 151:2, 4", "Ps.119"],
+			["Ps 119, 151 title, 3", "Ps.119"],
+			["Job 3-Pr 3", "Job.3-Prov.3"],
+			["Ps 119-151 title", "Ps.119-Ps.150"],
+			["Ps 149ff", "Ps.149-Ps.150"],
+			["chapters 140 to 151 from Psalms", "Ps.140-Ps.150"],
+			["Ps 149:2-151:3", "Ps.149.2-Ps.150.6"],
+			["Ps 149-151", "Ps.149-Ps.150"],
+			["Ps 151-Proverbs 3", "Prov.3"],
+			["Ps 151:2-Proverbs 3:3", "Prov.3.3"],
+			["Ps 150:5-151:2", "Ps.150.5-Ps.150.6"],
+			["Ps 150:6-151:2", "Ps.150.6"],
+			["Ps 150-151", "Ps.150"],
+			["Ps 150, 151", "Ps.150"],
+			["Ps 149-Psalm 151", "Ps.149-Ps.150"],
+			["1 Maccabees 3 through Ps 151, 151:3", ""],
+			["Job 3-Ps 151", "Job.3-Ps.150"],
+			["Prov 3-Ps 151", "Prov.3"],
+			["Ps151.1", ""],
+			["Ps151.1.3", ""],
+			["Ps151.1.3-Ps151.1.4", ""],
+			["Ps151.1.3-4", ""],
+			["Ps151", ""],
+			["Ps151.1, 3-4", ""],
+			["Ps151, 2:3-4", "Ps.2.3-Ps.2.4"],
+			["Ps150. 6:3-4", "Ps.150.6,Ps.150.3-Ps.150.4"],
+			# This is a little odd. The `6` binds to Ps151 rather than to the `3`.
+			["Ps151. 6:3-4", ""],
+			["Ps151.1 verse 3-4", ""],
+			["Ps151.1:3-4", ""],
+			["Ps151.1 title", ""],
+			["Ps151.1 title-3", ""],
+			["Ps151.1 2", ""],
+			["Ps151.1 2-3", ""],
+			["Ps150.2-Ps151.1.3", "Ps.150.2-Ps.150.6"],
+			["Ps150.2-Ps151.1", "Ps.150.2-Ps.150.6"],
+			["Ps150.2-Ps151", "Ps.150.2-Ps.150.6"],
+			["psalms-39-789", "Ps.39-Ps.150"],
+			# It's case-sensitive.
+			["ps151.1.3-ps151.1.4", ""],
+			["ps151.1", ""],
+		]
+
+		for [test, result] in tests
+			expect(p.parse(test).osis()).toEqual result
+		for [test, result] in tests
+			expect(p.parse("#{test} (KJV)").osis()).toEqual result
+
 		expect(p.parse("Ps 150 (151)").osis_and_indices()).toEqual [osis: "Ps.150", translations: [""], indices: [0, 6]]
-		expect(p.parse("Ps 119-150, 151, 2").osis()).toEqual "Ps.119-Ps.150,Ps.2"
-		expect(p.parse("Ps 151:2,3").osis()).toEqual ""
-		expect(p.parse("Ps 151:2,4").osis()).toEqual ""
-		expect(p.parse("Ps 151:2-4").osis()).toEqual ""
 		expect(p.parse("Ps 151, 2").osis_and_indices()).toEqual [osis: "Ps.2", translations: [""], indices: [0, 9]]
-		expect(p.parse("Ps 119, 151:2, 3").osis()).toEqual "Ps.119"
-		expect(p.parse("Ps 119, 151:2, 4").osis()).toEqual "Ps.119"
-		expect(p.parse("Ps 119, 151 title, 3").osis()).toEqual "Ps.119"
-		expect(p.parse("Job 3-Pr 3").osis()).toEqual "Job.3-Prov.3"
-		expect(p.parse("Ps 119-151 title").osis()).toEqual "Ps.119-Ps.150"
-		expect(p.parse("Ps 149ff").osis()).toEqual "Ps.149-Ps.150"
-		expect(p.parse("chapters 140 to 151 from Psalms").osis()).toEqual "Ps.140-Ps.150"
-		expect(p.parse("Ps 149:2-151:3").osis()).toEqual "Ps.149.2-Ps.150.6"
-		expect(p.parse("Ps 149-151").osis()).toEqual "Ps.149-Ps.150"
-		expect(p.parse("Ps 151-Proverbs 3").osis()).toEqual "Prov.3"
-		expect(p.parse("Ps 151:2-Proverbs 3:3").osis()).toEqual "Prov.3.3"
-		expect(p.parse("Ps 150:5-151:2").osis()).toEqual "Ps.150.5-Ps.150.6"
-		expect(p.parse("Ps 150:6-151:2").osis()).toEqual "Ps.150.6"
-		expect(p.parse("Ps 150-151").osis()).toEqual "Ps.150"
-		expect(p.parse("Ps 150, 151").osis()).toEqual "Ps.150"
-		expect(p.parse("Ps 149-Psalm 151").osis()).toEqual "Ps.149-Ps.150"
-		expect(p.parse("1 Maccabees 3 through Ps 151, 151:3").osis()).toEqual ""
-		expect(p.parse("Job 3-Ps 151").osis()).toEqual "Job.3-Ps.150"
-		expect(p.parse("Prov 3-Ps 151").osis()).toEqual "Prov.3"
-		expect(p.parse("Ps151.1").osis()).toEqual ""
-		expect(p.parse("Ps151.1.3").osis()).toEqual ""
-		expect(p.parse("Ps151.1.3-Ps151.1.4").osis()).toEqual ""
-		expect(p.parse("Ps151.1.3-4").osis()).toEqual ""
-		expect(p.parse("Ps151").osis()).toEqual ""
-		expect(p.parse("Ps151.1, 3-4").osis()).toEqual ""
-		expect(p.parse("Ps151, 2:3-4").osis()).toEqual "Ps.2.3-Ps.2.4"
-		expect(p.parse("Ps150. 6:3-4").osis()).toEqual "Ps.150.6,Ps.150.3-Ps.150.4"
-		# This is a little odd. The `6` binds to Ps151 rather than to the `3`.
-		expect(p.parse("Ps151. 6:3-4").osis()).toEqual ""
-		expect(p.parse("Ps151.1 verse 3-4").osis()).toEqual ""
-		expect(p.parse("Ps151.1:3-4").osis()).toEqual ""
-		expect(p.parse("Ps151.1 title").osis()).toEqual ""
-		expect(p.parse("Ps151.1 title-3").osis()).toEqual ""
-		expect(p.parse("Ps151.1 2").osis()).toEqual ""
-		expect(p.parse("Ps151.1 2-3").osis()).toEqual ""
-		expect(p.parse("Ps150.2-Ps151.1.3").osis()).toEqual "Ps.150.2-Ps.150.6"
-		expect(p.parse("Ps150.2-Ps151.1").osis()).toEqual "Ps.150.2-Ps.150.6"
-		expect(p.parse("Ps150.2-Ps151").osis()).toEqual "Ps.150.2-Ps.150.6"
-		# It's case-sensitive.
-		expect(p.parse("ps151.1.3-ps151.1.4").osis()).toEqual ""
-		expect(p.parse("ps151.1").osis()).toEqual ""
-
-	it "should handle books preceded by `\\w`", ->
-		expect(p.parse("1Matt2").osis_and_indices()).toEqual []
-		expect(p.parse("1 Matt2").osis_and_indices()).toEqual [osis:"Matt.2", translations:[""], indices:[2,7]]
-		expect(p.parse("1Matt2John1").osis_and_indices()).toEqual []
-		expect(p.parse("1 Matt2John1").osis_and_indices()).toEqual [osis:"2John", translations:[""], indices:[6,12]]
-		expect(p.parse("1 Matt2Phlm3").osis_and_indices()).toEqual [osis:"Matt.2,Phlm.1.3", translations:[""], indices:[2,12]]
-		expect(p.parse("1Matt2-4Phlm3").osis_and_indices()).toEqual []
-		expect(p.parse("1 Matt2-4John3").osis_and_indices()).toEqual [osis:"Matt.2-Matt.4,John.3", translations:[""], indices:[2,14]]
-		expect(p.parse("1John1:2John2").osis_and_indices()).toEqual [{osis:"1John.1,2John.1.2", translations:[""], indices:[0,13]}]
-		expect(p.parse("1John21John2").osis_and_indices()).toEqual [{osis:"John.2", translations:[""], indices:[7,12]}]
-
-	it "should handle alternate names for books", ->
-		expect(p.parse("1 Kingdoms 1:1").osis()).toEqual "1Sam.1.1"
-		expect(p.parse("2 Kingdoms 1:1").osis()).toEqual "2Sam.1.1"
-		expect(p.parse("Third Kingdoms 1:1").osis()).toEqual "1Kgs.1.1"
-		expect(p.parse("4th Kingdoms 1:1").osis()).toEqual "2Kgs.1.1"
-		expect(p.parse("paralipomenon 1:1").osis()).toEqual "1Chr.1.1"
-		expect(p.parse("2 Paralipomenon 1:1").osis()).toEqual "2Chr.1.1"
-
-	it "should handle translations with different book orders when setting the `versification_system` manually", ->
-		p.include_apocrypha true
-		strings = [
-			["Genesis 1 to Exodus 2",	"Gen.1-Exod.2", "Gen.1-Exod.2"]
-			["1 Esdras 1 to Tobit 2",	"1Esd.1,Tob.2",	"1Esd.1-Tob.2"]
-			["2 Esdras 3\u2014Tobit 5",	"2Esd.3,Tob.5",	"2Esd.3-Tob.5"]
-		]
-		for string in strings
-			[query, kjv, nab] = string
-			p.set_options versification_system: "default"
-			expect(p.parse("#{query}").osis()).toEqual kjv
-			p.set_options versification_system: "nab"
-			expect(p.parse("#{query}").osis()).toEqual nab
-
-	it "should handle translations with different book orders in parsed strings", ->
-		p.include_apocrypha true
-		strings = [
-			["Genesis 1 to Exodus 2",	"Gen.1-Exod.2", "Gen.1-Exod.2"]
-			["1 Esdras 1 to Tobit 2",	"1Esd.1,Tob.2",	"1Esd.1-Tob.2"]
-			["2 Esdras 3\u2014Tobit 5",	"2Esd.3,Tob.5",	"2Esd.3-Tob.5"]
-		]
-		for string in strings
-			[query, kjv, nab] = string
-			expect(p.parse("#{query} KJV").osis()).toEqual kjv
-			expect(p.parse("#{query} NAB").osis()).toEqual nab
-		
-	it "should handle long strings", ->
-		strings = []
-		for i in [1..1001]
-			strings.push "John.1"
-		string = strings.join ","
-		expect(p.parse(string).osis()).toEqual string
-		expect(p.parse("Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Ps 1,Psalm 1").osis()).toEqual "Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1,Ps.1"
-
-	it "should handle weird invalid ranges", ->
-		p.set_options {
-			book_alone_strategy: "first_chapter",
-			book_sequence_strategy: "include",
-			book_range_strategy: "include",
-		}
-		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9,Matt.10-Rev.22"
-		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Phil-Col"
-		p.set_options {
-			book_alone_strategy: "ignore",
-			book_sequence_strategy: "ignore",
-			book_range_strategy: "ignore",
-		}
-		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9,Matt.10"
-		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Col.4"
+		expect(p.parse("Ps 150 (151) (KJV)").osis_and_indices()).toEqual [osis: "Ps.150", translations: ["KJV"], indices: [0, 18]]
+		expect(p.parse("Ps 151, 2 (KJV)").osis_and_indices()).toEqual [osis: "Ps.2", translations: ["KJV"], indices: [0, 15]]
 
 describe "Passage existence", ->
 	bcv = {}
@@ -1477,15 +1673,15 @@ describe "Passage existence", ->
 	# Use a tab-stop of four spaces to line up these columns.
 	it "should handle reversed ranges", ->
 		strategies =
-			strings:	["Exodus 4 to Genesis 2",	"Exodus 8 to Genesis 2:7",	"Exodus 7:7 to Genesis 2",	"Exodus 5:5 to Genesis 2:6",	]
-			b:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
-			bc:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
-			bcv:		["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
-			bv:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				]
-			c:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				]
-			cv:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.25",		"Exod.5.5-Gen.2.6",				]
-			v:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.25",		"Exod.5.5-Gen.2.6",				]
-			none:		["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				]
+			strings:	["Exodus 4 to Genesis 2",	"Exodus 8 to Genesis 2:7",	"Exodus 7:7 to Genesis 2",	"Exodus 5:5 to Genesis 2:6",	"Mark 2-Matthew 11ff",		]
+			b:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				"Mark.2,Matt.11-Matt.999",	]
+			bc:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				"Mark.2,Matt.11-Matt.28",	]
+			bcv:		["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				"Mark.2,Matt.11-Matt.28",	]
+			bv:			["Exod.4,Gen.2",			"Exod.8,Gen.2.7",			"Exod.7.7,Gen.2",			"Exod.5.5,Gen.2.6",				"Mark.2,Matt.11-Matt.999",	]
+			c:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				"Mark.2-Matt.28",			]
+			cv:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.25",		"Exod.5.5-Gen.2.6",				"Mark.2-Matt.28",			]
+			v:			["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.25",		"Exod.5.5-Gen.2.6",				"Mark.2-Matt.999",			]
+			none:		["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				"Mark.2-Matt.999",			]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy
@@ -1498,10 +1694,10 @@ describe "Passage existence", ->
 			b:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.999",		"Gen.51.2-Exod.3.3",		]
 			bc:			["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
 			bcv:		["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
-			bv:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.22",		"Gen.51.2-Exod.3.3",					]
+			bv:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.22",		"Gen.51.2-Exod.3.3",		]
 			c:			["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
 			cv:			["",			"",				"Exod.5",				"Exod.5.9",					"Exod.3",					"Exod.3.3",					]
-			v:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.22",		"Gen.51.2-Exod.3.3",					]
+			v:			["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.22",		"Gen.51.2-Exod.3.3",		]
 			none:		["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.999",		"Gen.51.2-Exod.3.3",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
@@ -1733,15 +1929,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: ignore`", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Genesis to Obadiah",	"Obadiah to Genesis",	]
-			b:			["",					"",						"",						"",						]
-			bc:			["",					"",						"",						"",						]
-			bcv:		["",					"",						"",						"",						]
-			bv:			["",					"",						"",						"",						]
-			c:			["",					"",						"",						"",						]
-			cv:			["",					"",						"",						"",						]
-			v:			["",					"",						"",						"",						]
-			none:		["",					"",						"",						"",						]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Genesis to Obadiah",	"Obadiah to Genesis",	"Genesis to Revelation (KJV)",	]
+			b:			["",					"",						"",						"",						"",								]
+			bc:			["",					"",						"",						"",						"",								]
+			bcv:		["",					"",						"",						"",						"",								]
+			bv:			["",					"",						"",						"",						"",								]
+			c:			["",					"",						"",						"",						"",								]
+			cv:			["",					"",						"",						"",						"",								]
+			v:			["",					"",						"",						"",						"",								]
+			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "ignore"
@@ -1750,15 +1946,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter` and `book_sequence_strategy: ignore` and `book_range_strategy: ignore`", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["",					"",						"",						"",						]
-			bc:			["",					"",						"",						"",						]
-			bcv:		["",					"",						"",						"",						]
-			bv:			["",					"",						"",						"",						]
-			c:			["",					"",						"",						"",						]
-			cv:			["",					"",						"",						"",						]
-			v:			["",					"",						"",						"",						]
-			none:		["",					"",						"",						"",						]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["",					"",						"",						"",						"",								]
+			bc:			["",					"",						"",						"",						"",								]
+			bcv:		["",					"",						"",						"",						"",								]
+			bv:			["",					"",						"",						"",						"",								]
+			c:			["",					"",						"",						"",						"",								]
+			cv:			["",					"",						"",						"",						"",								]
+			v:			["",					"",						"",						"",						"",								]
+			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
@@ -1767,15 +1963,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter`, `book_sequence_strategy: ignore` and `book_range_strategy: include`", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
-			bc:			["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
-			bcv:		["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
-			bv:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
-			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
-			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
-			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
-			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			bc:			["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bcv:		["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bv:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "include"
@@ -1784,15 +1980,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter`, `book_sequence_strategy: include` and `book_range_strategy: ignore", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
-			bc:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
-			bcv:		["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
-			bv:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						]
-			c:			["",					"",						"",						"",						]
-			cv:			["",					"",						"",						"",						]
-			v:			["",					"",						"",						"",						]
-			none:		["",					"",						"",						"",						]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						"",								]
+			bc:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						"",								]
+			bcv:		["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						"",								]
+			bv:			["Exod.1,Gen.1",		"",						"Obad.1,Gen.1",			"",						"",								]
+			c:			["",					"",						"",						"",						"",								]
+			cv:			["",					"",						"",						"",						"",								]
+			v:			["",					"",						"",						"",						"",								]
+			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "ignore"
@@ -1801,15 +1997,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter` and `book_sequence_strategy: include` and `book_range_strategy: include", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["Exod.1,Gen.1",		"Gen.1-Exod.999",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
-			bc:			["Exod.1,Gen.1",		"Gen.1-Exod.40",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
-			bcv:		["Exod.1,Gen.1",		"Gen.1-Exod.40",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
-			bv:			["Exod.1,Gen.1",		"Gen.1-Exod.999",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			]
-			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
-			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
-			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
-			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["Exod.1,Gen.1",		"Gen.1-Exod.999",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			bc:			["Exod.1,Gen.1",		"Gen.1-Exod.40",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bcv:		["Exod.1,Gen.1",		"Gen.1-Exod.40",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bv:			["Exod.1,Gen.1",		"Gen.1-Exod.999",		"Obad.1,Gen.1",			"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "include"
@@ -1818,15 +2014,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: ignore`, and `book_range_strategy: ignore`", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["",					"",						"",						"",						]
-			bc:			["",					"",						"",						"",						]
-			bcv:		["",					"",						"",						"",						]
-			bv:			["",					"",						"",						"",						]
-			c:			["",					"",						"",						"",						]
-			cv:			["",					"",						"",						"",						]
-			v:			["",					"",						"",						"",						]
-			none:		["",					"",						"",						"",						]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["",					"",						"",						"",						"",								]
+			bc:			["",					"",						"",						"",						"",								]
+			bcv:		["",					"",						"",						"",						"",								]
+			bv:			["",					"",						"",						"",						"",								]
+			c:			["",					"",						"",						"",						"",								]
+			cv:			["",					"",						"",						"",						"",								]
+			v:			["",					"",						"",						"",						"",								]
+			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
@@ -1835,15 +2031,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: ignore`, and `book_range_strategy: include`", ->
 		strategies =
-			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
-			bc:			["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
-			bcv:		["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			]
-			bv:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			]
-			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
-			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			]
-			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
-			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			]
+			strings:	["Exodus to Genesis",	"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			bc:			["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bcv:		["",					"Gen.1-Exod.40",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bv:			["",					"Gen.1-Exod.999",		"",						"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			c:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			cv:			["Exod.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1-Gen.50",		"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			v:			["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "include"
@@ -1852,15 +2048,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: include`, and `book_range_strategy: ignore`", ->
 		strategies =
-			strings:	["Exodus to Genesis",				"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	]
-			b:			["Exod.1-Exod.999,Gen.1-Gen.999",	"",						"Obad.1,Gen.1-Gen.999",	"",						]
-			bc:			["Exod.1-Exod.40,Gen.1-Gen.50",		"",						"Obad.1,Gen.1-Gen.50",	"",						]
-			bcv:		["Exod.1-Exod.40,Gen.1-Gen.50",		"",						"Obad.1,Gen.1-Gen.50",	"",						]
-			bv:			["Exod.1-Exod.999,Gen.1-Gen.999",	"",						"Obad.1,Gen.1-Gen.999",	"",						]
-			c:			["",								"",						"",						"",						]
-			cv:			["",								"",						"",						"",						]
-			v:			["",								"",						"",						"",						]
-			none:		["",								"",						"",						"",						]
+			strings:	["Exodus to Genesis",				"Genesis to Exodus",	"Obadiah to Genesis",	"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["Exod.1-Exod.999,Gen.1-Gen.999",	"",						"Obad.1,Gen.1-Gen.999",	"",						"",								]
+			bc:			["Exod.1-Exod.40,Gen.1-Gen.50",		"",						"Obad.1,Gen.1-Gen.50",	"",						"",								]
+			bcv:		["Exod.1-Exod.40,Gen.1-Gen.50",		"",						"Obad.1,Gen.1-Gen.50",	"",						"",								]
+			bv:			["Exod.1-Exod.999,Gen.1-Gen.999",	"",						"Obad.1,Gen.1-Gen.999",	"",						"",								]
+			c:			["",								"",						"",						"",						"",								]
+			cv:			["",								"",						"",						"",						"",								]
+			v:			["",								"",						"",						"",						"",								]
+			none:		["",								"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "ignore"
@@ -1869,15 +2065,15 @@ describe "Passage existence", ->
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: include`, and `book_range_strategy: include`", ->
 		strategies =
-			strings:	["Exodus to Genesis",				"Genesis to Exodus",	"Obadiah to Genesis",				"Genesis to Obadiah",	]
-			b:			["Exod.1-Exod.999,Gen.1-Gen.999",	"Gen.1-Exod.999",		"Obad.1,Gen.1-Gen.999",				"Gen.1-Obad.1",			]
-			bc:			["Exod.1-Exod.40,Gen.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1,Gen.1-Gen.50",				"Gen.1-Obad.1",			]
-			bcv:		["Exod.1-Exod.40,Gen.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1,Gen.1-Gen.50",				"Gen.1-Obad.1",			]
-			bv:			["Exod.1-Exod.999,Gen.1-Gen.999",	"Gen.1-Exod.999",		"Obad.1,Gen.1-Gen.999",				"Gen.1-Obad.1",			]
-			c:			["Exod.1-Gen.50",					"Gen.1-Exod.40",		"Obad.1-Gen.50",					"Gen.1-Obad.1",			]
-			cv:			["Exod.1-Gen.50",					"Gen.1-Exod.40",		"Obad.1-Gen.50",					"Gen.1-Obad.1",			]
-			v:			["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			]
-			none:		["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			]
+			strings:	["Exodus to Genesis",				"Genesis to Exodus",	"Obadiah to Genesis",				"Genesis to Obadiah",	"Genesis to Revelation (KJV)",	]
+			b:			["Exod.1-Exod.999,Gen.1-Gen.999",	"Gen.1-Exod.999",		"Obad.1,Gen.1-Gen.999",				"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			bc:			["Exod.1-Exod.40,Gen.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1,Gen.1-Gen.50",				"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bcv:		["Exod.1-Exod.40,Gen.1-Gen.50",		"Gen.1-Exod.40",		"Obad.1,Gen.1-Gen.50",				"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			bv:			["Exod.1-Exod.999,Gen.1-Gen.999",	"Gen.1-Exod.999",		"Obad.1,Gen.1-Gen.999",				"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			c:			["Exod.1-Gen.50",					"Gen.1-Exod.40",		"Obad.1-Gen.50",					"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			cv:			["Exod.1-Gen.50",					"Gen.1-Exod.40",		"Obad.1-Gen.50",					"Gen.1-Obad.1",			"Gen.1-Rev.22",					]
+			v:			["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
+			none:		["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
 			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "include"
@@ -1918,7 +2114,8 @@ describe "Passage existence", ->
 			for i in [0 ... strategies.strings.length]
 				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
-	xit "should handle template", ->
+	###
+	xit "should handle ...template", ->
 		strategies =
 			strings:	["",	"",	"",	"",	]
 			b:			["",			"",			"",			]
@@ -1934,6 +2131,7 @@ describe "Passage existence", ->
 			bcv.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
 				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+	###
 
 describe "Documentation compatibility", ->
 	bcv = {}
@@ -2183,8 +2381,7 @@ describe "Real-world parsing", ->
 		expect(p.parse("Romans 5:12-21 0. Prelude").osis()).toEqual "Rom.5.12-Rom.5.21"
 		# Better: Prov.6.9-Prov.6.15
 		expect(p.parse("Proverbs 6:/9-15").osis()).toEqual "Prov.6.1-Prov.6.35,Prov.9.1-Prov.15.33"
-		#Better (vs = versus): Gen.1.27,Gen.2.7
-		expect(p.parse("origin of man in Genesis 1:27 vs 2:7.").osis()).toEqual "Gen.1.27,Gen.1.2,Gen.1.7"
+		expect(p.parse("origin of man in Genesis 1:27 vs 2:7.").osis()).toEqual "Gen.1.27,Gen.2.7"
 		expect(p.parse("Genesis verse 6:4 and Numbers 13:33? ( ").osis()).toEqual "Gen.6.4,Num.13.33"
 		# Better: 2Cor.4.16
 		expect(p.parse("2 corinthians 4~16").osis()).toEqual "2Cor.4.1-2Cor.4.18"
@@ -2210,8 +2407,7 @@ describe "Real-world parsing", ->
 		expect(p.parse("John<3").osis()).toEqual ""
 		expect(p.parse("Compare Is 59:16ff to Eph 6.").osis()).toEqual "Isa.59.16-Isa.59.21,Eph.6.1-Eph.6.24"
 		expect(p.parse("Isaiah 54:10, 32:17. 55.12, 57:12").osis()).toEqual "Isa.54.10,Isa.32.17,Isa.55.12,Isa.57.12"
-		# Better: John.12.20-John.13.20,John.12.45
-		expect(p.parse("John 12:20-13:20 compare verses 12:45 And whoever").osis()).toEqual "John.12.20-John.13.20,John.13.12"
+		expect(p.parse("John 12:20-13:20 compare verses 12:45 And whoever").osis()).toEqual "John.12.20-John.13.20,John.12.45"
 		expect(p.parse("Numbers 15:37 - Malachi 4:2 - Mark 5:25").osis()).toEqual "Num.15.37-Mal.4.2,Mark.5.25"
 		expect(p.parse("John 13:1-17, 31b-35Have").osis()).toEqual "John.13.1-John.13.17,John.13.31-John.13.35"
 		expect(p.parse("Acts 2 Revelation: v1. Seven days").osis()).toEqual "Acts.2.1-Acts.2.47,Rev.1.1"
@@ -2277,22 +2473,33 @@ describe "Real-world parsing", ->
 		expect(p.parse("Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)").osis_and_indices()).toEqual([{osis:"Luke.8.1-Luke.8.3,Luke.24.10", translations:[""], indices:[0, 17]}, {osis:"Matt.14.1-Matt.14.12,Luke.23.7-Luke.23.12", translations:[""], indices:[23, 55]}])
 		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9.1-Num.9.23,Matt.10.1-Matt.10.42"
 		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Col.4.1-Col.4.18"
+		expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual []
 
 describe "Adding new translations", ->
 	p = {}
 
 	beforeEach ->
 		p = new bcv_parser
+		p.set_options book_alone_strategy: "full"
 		# Don't do this in real life. It edits the prototype and affects all subsequent objects on the page.
-		p.regexps.translations = /\b(?:niv|comp)\b/gi
+		p.regexps.translations = /\b(?:niv|comp|notrans|noalias)\b/gi
 		p.translations.aliases.comp = osis: "COMP", alias: "comp"
+		# Test a misconfigured `osis` value.
+		p.translations.aliases.notrans = alias: "no_translation_alias"
 		p.translations.comp = order: {"Matt": 1, "Gen": 2}
 		p.translations.comp.chapters = {"Matt": p.translations.default.chapters.Matt, "Gen": p.translations.default.chapters.Gen}
+
+	it "should handle a nonexistent book", ->
+		expect(p.parse("Psalm 23 COMP").osis_and_translations()).toEqual []
+		expect(p.parse("Psalms NIV").osis_and_translations()).toEqual [["Ps", "NIV"]]
+		expect(p.parse("Psalms COMP").osis_and_translations()).toEqual []
 
 	it "should handle reparsing when given a new translation", ->
 		expect(p.parse("Matt 2-Gen3 NIV").osis_and_translations()).toEqual [["Matt.2,Gen.3", "NIV"]]
 		expect(p.parse("Matt 2-Gen3 COMP").osis_and_translations()).toEqual [["Matt.2-Gen.3", "COMP"]]
 		expect(p.parse("Exodus 3, Matt 5 COMP").osis_and_translations()).toEqual [["Matt.5", "COMP"]]
 		expect(p.parse("Exodus 3-Matt 5 COMP").osis_and_translations()).toEqual [["Matt.5", "COMP"]]
+		expect(p.parse("Exodus 3-Matt 5 NOTRANS").osis_and_translations()).toEqual [["Exod.3-Matt.5", ""]]
+		expect(p.parse("Exodus 3-Matt 5 NOALIAS").osis_and_translations()).toEqual [["Exod.3-Matt.5", "NOALIAS"]]
 
 # "Adding new translations" should be the last spec; it overwrites `bcv_parser` in destructive ways.

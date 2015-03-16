@@ -18,20 +18,20 @@ bcv_parser::regexps.escaped_passage = ///
 				(?:
 				    /\d+\x1f				#special Psalm chapters
 				  | [\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014]
-				  | title (?! [a-z] )		#could be followed by a number
+				  | titlu (?! [a-z] )		#could be followed by a number
 				  | capitolele | capitolul | versetele | versetul | versete | [şs]i | vers | cap | ff | cf | cp | vs | - | v
 				  | [a-e] (?! \w )			#a-e allows 1:1a
 				  | $						#or the end of the string
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
-	| \d+ \W* ff (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* titlu
+	| \d \W* ff (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -86,7 +86,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Lam"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Lam|Pl(?:[aâ]ngeri(?:le[\s\xa0]*(?:profetului[\s\xa0]*Ieremia|lui[\s\xa0]*Ieremia))?)?)
+		(?:Lam|Pl(?:[aâ]ng(?:eri(?:le[\s\xa0]*(?:profetului[\s\xa0]*Ieremia|lui[\s\xa0]*Ieremia))?)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["EpJer"]
@@ -160,12 +160,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Cartea[\s\xa0]*a[\s\xa0]*doua[\s\xa0]*Paralipomena|II(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici)?))|2(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici)?)|Chr))
+		(?:Cartea[\s\xa0]*a[\s\xa0]*doua[\s\xa0]*Paralipomena|II(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?))|2(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?)|Chr))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Cartea[\s\xa0]*[iî]nt(?:[aâ]i[\s\xa0]*Paralipomena)|I(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici)?))|1(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici)?)|Chr))
+		(?:Cartea[\s\xa0]*[iî]nt(?:[aâ]i[\s\xa0]*Paralipomena)|I(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?))|1(?:\.[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?)|[\s\xa0]*(?:Paralipomena|Cron(?:ici(?:lor)?)?)|Chr))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezra"]
@@ -223,7 +223,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Song"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:C(?:ânt(?:ar(?:ea[\s\xa0]*(?:lui[\s\xa0]*Solomon|C[aâ]nt(?:[aă]rilor))|i)|ări)|ant(?:ar(?:ea[\s\xa0]*(?:lui[\s\xa0]*Solomon|C[aâ]nt(?:[aă]rilor)|cantarilor)|i)|ări)?)|Song)
+		(?:C(?:ant(?:ar(?:ea[\s\xa0]*(?:lui[\s\xa0]*Solomon|C[aâ]nt(?:[aă]rilor)|cantarilor)|i)|ări)?|ânt(?:ar(?:ea[\s\xa0]*(?:lui[\s\xa0]*Solomon|C[aâ]nt(?:[aă]rilor))|i)|ări)?)|Song)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Wis"]
@@ -289,7 +289,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Zeph"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Sofonie|[ŢȚ]efania|Zeph|Tef(?:ania)?)
+		(?:Sofonie|Zeph|(?:[TŢȚ]ef(?:ania)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Hag"]
@@ -314,7 +314,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Mark"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		M(?:ar(?:cu|k)|c)
+		M(?:ar(?:cu?|k)|c)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Luke"]
@@ -339,7 +339,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Acts"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Acts|F(?:[\s\xa0]*Ap|\.(?:[\s\xa0]*Ap|A)|ap(?:t(?:e(?:le[\s\xa0]*Apostolilor)?)?)?|A))
+		Fapt(?:e(?:[\s\xa0]*Apostolilor|le(?:[\s\xa0]*Apostolilor)?)?)?|(?:Acts|F(?:[\s\xa0]*Ap|\.(?:[\s\xa0]*Ap|A)|ap|A))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Rev"]
@@ -379,7 +379,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Phil"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Phil|F(?:ilip(?:eni)?|lp))
+		(?:Phil|F(?:il(?:ip(?:eni)?)?|lp))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Col"]

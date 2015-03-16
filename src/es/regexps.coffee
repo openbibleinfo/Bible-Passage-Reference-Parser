@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* (?:subt[íi]tulo|t[íi]tulo|tít)
-	| \d+ \W* (?:y#{bcv_parser::regexps.space}+siguientes|y#{bcv_parser::regexps.space}+sig) (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* (?:subt[íi]tulo|t[íi]tulo|tít)
+	| \d \W* (?:y#{bcv_parser::regexps.space}+siguientes|y#{bcv_parser::regexps.space}+sig) (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -81,13 +81,13 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["Sir"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Ec(?:lesi[aá]stico|clus)|Sir(?:[aá]c(?:id(?:es|a))?)?)
+		(?:Ec(?:lesi[aá]stico|clus)|Si(?:r(?:[aá]c(?:id(?:es|a))?)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Wis"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Sab(?:idur[ií]a)?|Wis)
+		(?:Wis|S(?:ab(?:idur[ií]a)?|b))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Lam"]
@@ -124,7 +124,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Judg"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Ju(?:dg|e(?:c(?:es)?)?)
+		J(?:u(?:dg|e(?:c(?:es)?)?)|c)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ruth"]
@@ -223,13 +223,13 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Eccl"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Ec(?:cles(?:s[ai](?:[ai]t(?:[eé]s?))|a[ai]t(?:[eé]s?))|les(?:s[ai](?:[ai]t(?:[eé]s?))|a[ai]t(?:[eé]s?)))|Ec(?:c(?:l(?:es(?:s[ai](?:[ai]st(?:[eé]s?))|a[ai]st(?:[eé]s?)|i(?:a(?:st(?:i(?:c[eé]s|[eé]s)|[eé]s?)|t[eé]s?)|i(?:st[eé]s?|t[eé]s?)))?)?)?|l(?:es(?:s[ai](?:[ai]st(?:[eé]s?))|a[ai]st(?:[eé]s?)|i(?:a(?:st(?:i(?:c[eé]s|[eé]s)|[eé]s?)|t[eé]s?)|i(?:st[eé]s?|t[eé]s?)))?)?)?
+		Ec(?:cles(?:s[ai](?:[ai]t(?:[eé]s?))|a[ai]t(?:[eé]s?))|les(?:s[ai](?:[ai]t(?:[eé]s?))|a[ai]t(?:[eé]s?)))|(?:Ec(?:c(?:l(?:es(?:s[ai](?:[ai]st(?:[eé]s?))|a[ai]st(?:[eé]s?)|i(?:a(?:st(?:i(?:c[eé]s|[eé]s)|[eé]s?)|t[eé]s?)|i(?:st[eé]s?|t[eé]s?)))?)?)?|l(?:es(?:s[ai](?:[ai]st(?:[eé]s?))|a[ai]st(?:[eé]s?)|i(?:a(?:st(?:i(?:c[eé]s|[eé]s)|[eé]s?)|t[eé]s?)|i(?:st[eé]s?|t[eé]s?)))?)?)?|Qo)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["SgThree"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:El[\s\xa0]*(?:Canto[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os))|3[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os)))|Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os))|3[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os))))|Ct[\s\xa0]*3[\s\xa0]*J[oó]|SgThree)|Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*3[\s\xa0]*J(?:[oó]venes[\s\xa0]*Hebreos)|(?:Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J(?:óvenes[\s\xa0]*Jud[ií]os|ovenes(?:[\s\xa0]*Jud[íi]os)?)|3[\s\xa0]*J(?:óvenes[\s\xa0]*Jud[íi]os|ovenes(?:[\s\xa0]*Jud[ií]os)?))|Canto[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:3[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[íi]os))|Tres[\s\xa0]*J(?:ovenes[\s\xa0]*(?:Hebreos|Jud[íi]os)|óvenes(?:[\s\xa0]*(?:Hebreos|Jud[íi]os))?)))|(?:3[\s\xa0]*J[óo]venes|Tres[\s\xa0]*J[óo]venes|Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*Jóvenes|3[\s\xa0]*Jóvenes)|Canto[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*Jovenes|3[\s\xa0]*J[oó]venes))
+		(?:El[\s\xa0]*(?:Canto[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os))|3[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os)))|Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os))|3[\s\xa0]*J(?:[oó]venes[\s\xa0]*(?:Hebreos|Jud[ií]os))))|Ct[\s\xa0]*3[\s\xa0]*J[oó]|SgThree)|(?:Canto[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J(?:[oó]venes(?:[\s\xa0]*(?:Hebreos|Jud[íi]os))?)|3[\s\xa0]*J(?:[óo]venes(?:[\s\xa0]*(?:Hebreos|Jud[íi]os))?))|Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*(?:Tres[\s\xa0]*J[oó]venes(?:[\s\xa0]*Jud(?:[íi]os)?)|3[\s\xa0]*J(?:[oó]venes(?:[\s\xa0]*(?:Hebreos|Jud[íi]os))?))|Tres[\s\xa0]*J[oó]venes|3[\s\xa0]*J[óo]venes)|Himno[\s\xa0]*de[\s\xa0]*los[\s\xa0]*Tres[\s\xa0]*J(?:[oó]venes)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Song"]
@@ -239,7 +239,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Jer"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Jer(?:e(?:m[ií]as?)?)?
+		J(?:er(?:e(?:m[ií]as?)?)?|r)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezek"]
@@ -294,7 +294,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Zeph"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Zeph|S(?:of(?:on[ií]as)?|f))
+		(?:Zeph|S(?:f|o(?:f(?:on[ií]as)?)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Hag"]
@@ -304,12 +304,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Zech"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Z(?:ech|ac(?:ar(?:[ií]as)?)?)
+		Z(?:ech|a(?:c(?:ar(?:[ií]as)?)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Mal"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Mal(?:a(?:qu(?:[ií]as)?)?)?
+		M(?:al(?:a(?:qu(?:[ií]as)?)?)?|l)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Matt"]
@@ -393,7 +393,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Gal"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		G(?:[aá]l(?:at(?:as)?)?)
+		G(?:[aá](?:l(?:at(?:as)?)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Eph"]
@@ -403,7 +403,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Phil"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Phil|Fil(?:i(?:p(?:enses)?)?)?)
+		(?:Phil|F(?:il(?:i(?:p(?:enses)?)?)?|lp))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Col"]
@@ -433,7 +433,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Titus"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Ti(?:t(?:us|o)?)?
+		T(?:i(?:t(?:us|o)?)?|t)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Phlm"]
@@ -448,7 +448,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Jas"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Jas|S(?:ant(?:iago)?|tg))
+		(?:Jas|S(?:ant(?:iago)?|tg?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Pet"]
@@ -469,7 +469,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["Tob"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Tob(?:it?|t)?
+		T(?:ob(?:it?|t)?|b)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jdt"]
@@ -481,7 +481,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["Bar"]
 		apocrypha: true
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Bar(?:uc)?
+		Ba(?:r(?:uc)?)?
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Sus"]

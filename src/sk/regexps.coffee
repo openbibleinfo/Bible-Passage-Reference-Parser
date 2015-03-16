@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* title
-	| \d+ \W* ff (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [b-e] (?! \w )
+	  \d \W* title
+	| \d \W* ff (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [b-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -92,7 +92,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Lam"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Jeremi[aá](?:[sš]ov[\s\xa0]*Pla[cč])|Pla[cč][\s\xa0]*Jeremi(?:[aá](?:[sš]ov))|K(?:niha[\s\xa0]*n[aá]rekov|\.[\s\xa0]*n[aá]rekov|[\s\xa0]*n[aá]rekov)|(?:[ZŽ]alosp(?:evy)?)|Lam|N(?:[aá]r(?:eky)?))|Pla[cč]
+		(?:Jeremi[aá](?:[sš]ov[\s\xa0]*Pla[cč])|Pla[cč][\s\xa0]*Jeremi(?:[aá](?:[sš]ov))|K(?:niha[\s\xa0]*n[aá]rekov|\.[\s\xa0]*n[aá]rekov|[\s\xa0]*n[aá]rekov)|(?:[ZŽ]alosp(?:evy)?)|Lam|N(?:[aá]r(?:eky)?))|Pla[čc]
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["EpJer"]
@@ -234,7 +234,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Song"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Song|V(?:e[lľ]p(?:iese(?:[nň][\s\xa0]*(?:[SŠ]alam(?:[uú]nova)))?)|[lľ]p)|P(?:ies(?:e[nň][\s\xa0]*(?:(?:[SŠ]alam(?:[uú]nova)|piesn[ií])))?|Š))|Ve(?:[lľ]p)|(?:Piese[nň]|Ve[lľ]piese[nň])
+		(?:Song|V(?:e[lľ]p(?:iese(?:[nň][\s\xa0]*(?:[SŠ]alam(?:[uú]nova)))?)|[lľ]p)|P(?:ies(?:e[nň][\s\xa0]*(?:(?:[SŠ]alam(?:[uú]nova)|piesn[ií])))?|Š))|Ve(?:[lľ]p)|(?:Ve[ľl]piese[nň]|Piese[nň])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jer"]
@@ -334,12 +334,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Druh(?:[yý][\s\xa0]*(?:J(?:[aá]nov[\s\xa0]*list|list[\s\xa0]*J[aá]nov))|[aá][\s\xa0]*(?:kniha[\s\xa0]*J(?:[aá]nov|J[aá]nov)))|II(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|2(?:\.[\s\xa0]*J[aá]nov|John|[\s\xa0]*(?:k(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|J(?:[aá]nov|n)?)))|Druh(?:[yý][\s\xa0]*list[\s\xa0]*J(?:[aá]nov)|[aá][\s\xa0]*J(?:[aá]nov))|Druh[yý][\s\xa0]*J(?:[aá]nov)
+		(?:Druh(?:[yý][\s\xa0]*(?:J(?:[aá]nov[\s\xa0]*list|list[\s\xa0]*J[aá]nov))|[aá][\s\xa0]*(?:kniha[\s\xa0]*J(?:[aá]nov|J[aá]nov)))|II(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|2(?:\.[\s\xa0]*J[aá]nov|John|[\s\xa0]*(?:k(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|J(?:[aá]nov|n)?)))|Druh(?:[yý][\s\xa0]*list[\s\xa0]*J(?:[aá]nov)|[aá][\s\xa0]*J(?:[aá]nov))|Druh[yý][\s\xa0]*J(?:[áa]nov)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Tret(?:í[\s\xa0]*J[aá]nov[\s\xa0]*list|i(?:[\s\xa0]*J[aá]nov[\s\xa0]*list|a[\s\xa0]*(?:kniha[\s\xa0]*J[aá]nov|J[aá]nov)))|III(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|3(?:\.[\s\xa0]*J[aá]nov|John|[\s\xa0]*(?:k(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|J(?:[aá]nov|n)?)))|Tret[íi][\s\xa0]*J(?:[aá]nov)
+		(?:Tret(?:í[\s\xa0]*J[aá]nov[\s\xa0]*list|i(?:[\s\xa0]*J[aá]nov[\s\xa0]*list|a[\s\xa0]*(?:kniha[\s\xa0]*J[aá]nov|J[aá]nov)))|III(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|3(?:\.[\s\xa0]*J[aá]nov|John|[\s\xa0]*(?:k(?:\.[\s\xa0]*J[aá]nov|[\s\xa0]*J[aá]nov)|J(?:[aá]nov|n)?)))|Tret[íi][\s\xa0]*J(?:[áa]nov)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]

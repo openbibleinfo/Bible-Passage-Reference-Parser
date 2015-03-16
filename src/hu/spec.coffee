@@ -2976,6 +2976,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 FEJEZETEBEN 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, fejezet 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 FEJEZET 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, fej. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 FEJ. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, fej 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 FEJ 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (hu)", ->
@@ -2983,6 +2985,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Phlm VERSEKRE 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 versek 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERSEK 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vers. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VERS. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (hu)", ->
@@ -3011,8 +3015,10 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 	it "should handle book ranges (hu)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Első köv Harmadik  Jn").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Első kov Harmadik  Jn").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Első köv Harmadik  János").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Első kov Harmadik  János").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Első köv Harmadik  Janos").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Első kov Harmadik  Janos").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (hu)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

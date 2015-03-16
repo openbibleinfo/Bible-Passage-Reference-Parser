@@ -25,7 +25,7 @@ class bcv_passage
 			@[passage.type] passage, accum, context
 		else [accum, context]
 
-	# ## Types Returned from the Grammar
+	# ## Types Returned from the PEG.js Grammar
 	# These functions correspond to `type` attributes returned from the grammar. They're designed to be called multiple times if necessary.
 	#
 	# Handle a book on its own ("Gen").
@@ -37,12 +37,12 @@ class bcv_passage
 			valid = @validate_ref passage.start_context.translations, {b: b}
 			obj = start: {b: b}, end: {b: b}, valid: valid
 			# Use the first valid book.
-			if passage.passages.length is 0 and valid.valid
+			if passage.passages.length == 0 and valid.valid
 				passage.passages.push obj
 			else
 				alternates.push obj
 		# If none are valid, use the first one.
-		passage.passages.push alternates.shift() if passage.passages.length is 0
+		passage.passages.push alternates.shift() if passage.passages.length == 0
 		passage.passages[0].alternates = alternates if alternates.length > 0
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
@@ -92,6 +92,7 @@ class bcv_passage
 			# Is it really a `bv` object?
 			if valid.messages.start_chapter_not_exist_in_single_chapter_book
 				obj.valid = @validate_ref passage.start_context.translations, {b: b, v: c}
+				obj.valid.messages.start_chapter_not_exist_in_single_chapter_book = 1
 				obj.start.c = 1
 				obj.end.c = 1
 				context_key = "v"
@@ -101,11 +102,11 @@ class bcv_passage
 			# Don't want an undefined key hanging around the object.
 			delete obj.start.v unless obj.start.v?
 			obj.end[context_key] = obj.start[context_key]
-			if passage.passages.length is 0 and obj.valid.valid
+			if passage.passages.length == 0 and obj.valid.valid
 				passage.passages.push obj
 			else
 				alternates.push obj
-		passage.passages.push alternates.shift() if passage.passages.length is 0
+		passage.passages.push alternates.shift() if passage.passages.length == 0
 		passage.passages[0].alternates = alternates if alternates.length > 0
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
@@ -132,9 +133,10 @@ class bcv_passage
 		@books[@pluck("b", bc.value).value].parsed = ["Ps"]
 		# Set the `indices` of the new `v` object to the indices of the `title`. We won't actually use these indices anywhere.
 		title = @pluck "title", passage.value
+		# The `title` will be null if it's being reparsed from a future translation because we rewrite it as a `bcv` while discarding the original `title` object.
+		title ?= @pluck "v", passage.value
 		passage.value[1] = {type: "v", value: [{type: "integer", value: 1, indices: title.indices}], indices: title.indices}
-		# Not for reparsing but in case we're curious later.
-		passage.original_type = "bc_title"
+		# We don't need to preserve the original `type` for reparsing; if it gets here, it'll always be a `bcv`.
 		passage.type = "bcv"
 		# Treat it as a standard `bcv`.
 		@bcv passage, accum, passage.start_context
@@ -153,12 +155,12 @@ class bcv_passage
 			[c, v] = @fix_start_zeroes valid, c, v
 			obj = start: {b: b, c: c, v: v}, end: {b: b, c: c, v: v}, valid: valid
 			# Use the first valid option.
-			if passage.passages.length is 0 and valid.valid
+			if passage.passages.length == 0 and valid.valid
 				passage.passages.push obj
 			else
 				alternates.push obj
 		# If there are no valid options, use the first one.
-		passage.passages.push alternates.shift() if passage.passages.length is 0
+		passage.passages.push alternates.shift() if passage.passages.length == 0
 		passage.passages[0].alternates = alternates if alternates.length > 0
 		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
@@ -179,7 +181,6 @@ class bcv_passage
 			]
 		[[bcv], context] = @bcv bcv, [], context
 		passage.passages = bcv.passages
-		passage.passages[0].translations = passage.start_context.translations if passage.start_context.translations?
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
 		accum.push passage
 		[accum, context]
@@ -204,13 +205,12 @@ class bcv_passage
 
 	# Handle "23rd Psalm" by recasting it as a `bc`.
 	c_psalm: (passage, accum, context) ->
-		passage.original_type = passage.type
-		passage.original_value = passage.value
+		# We don't need to preserve the original `type` for reparsing.
 		passage.type = "bc"
 		# This string always starts with the chapter number, followed by other letters.
 		c = parseInt @books[passage.value].value.match(/^\d+/)[0], 10
 		passage.value = [
-			{type: "b", value: passage.original_value, indices: passage.indices}
+			{type: "b", value: passage.value, indices: passage.indices}
 			{type: "c", value: [{type: "integer", value: c, indices: passage.indices}], indices: passage.indices}
 		]
 		@bc passage, accum, context
@@ -220,12 +220,12 @@ class bcv_passage
 		passage.start_context = bcv_utils.shallow_clone context
 		# If it's not a Psalm, treat it as a regular chapter.
 		if context.b isnt "Ps"
+			# Don't change the `type` here because we're not updating the structure to match the `c` expectation if reparsing later.
 			return @c passage.value[0], accum, context
 		# Add a `v` object and treat it as a refular `cv`.
 		title = @pluck "title", passage.value
 		passage.value[1] = {type: "v", value: [{type: "integer", value: 1, indices: title.indices}], indices: title.indices}
-		# Not for reparsing but in case we're curious later.
-		passage.original_type = "c_title"
+		# Change the type to match the new parsing strategy.
 		passage.type = "cv"
 		@cv passage, accum, passage.start_context
 
@@ -246,21 +246,28 @@ class bcv_passage
 
 	# Handle "Chapters 1-2 from Daniel".
 	cb_range: (passage, accum, context) ->
-		passage.original_type = passage.type
+		# We don't need to preserve the original `type` for reparsing.
 		passage.type = "range"
 		[b, start_c, end_c] = passage.value
-		passage.original_value = [b, start_c, end_c]
 		passage.value = [{type: "bc", value:[b, start_c], indices: passage.indices}, end_c]
 		end_c.indices[1] = passage.indices[1]
 		@range passage, accum, context
 
+	# Use an object to establish context for later objects but don't otherwise use it.
+	context: (passage, accum, context) ->
+		passage.start_context = bcv_utils.shallow_clone context
+		passage.passages = []
+		for own key of @books[passage.value].context
+			context[key] = @books[passage.value].context[key]
+		accum.push passage
+		[accum, context]
+
 	# Handle "23rd Psalm verse 1" by recasting it as a `bcv`.
 	cv_psalm: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
-		passage.original_type = passage.type
-		passage.original_value = passage.value
-		[c_psalm, v] = passage.value
+		# We don't need to preserve the original `type` for reparsing.
 		passage.type = "bcv"
+		[c_psalm, v] = passage.value
 		[[bc]] = @c_psalm c_psalm, [], passage.start_context
 		passage.value = [bc, v]
 		@bcv passage, accum, context
@@ -271,15 +278,17 @@ class bcv_passage
 		# Create a virtual end to pass to `@range`.
 		passage.value.push type: "integer", indices: passage.indices, value: 999
 		[[passage], context] = @range passage, [], passage.start_context
+		# Set the indices to include the end of the range (the "ff").
+		passage.value[0].indices = passage.value[1].indices
+		passage.value[0].absolute_indices = passage.value[1].absolute_indices
 		# And then get rid of the virtual end so it doesn't stick around if we need to reparse it later.
 		passage.value.pop()
 		# Ignore any warnings that the end chapter / verse doesn't exist.
-		delete passage.passages[0].valid.end_verse_not_exist if passage.passages[0].valid.end_verse_not_exist?
-		delete passage.passages[0].valid.end_chapter_not_exist if passage.passages[0].valid.end_chapter_not_exist?
+		delete passage.passages[0].valid.messages.end_verse_not_exist if passage.passages[0].valid.messages.end_verse_not_exist?
+		delete passage.passages[0].valid.messages.end_chapter_not_exist if passage.passages[0].valid.messages.end_chapter_not_exist?
 		delete passage.passages[0].end.original_c if passage.passages[0].end.original_c?
-		# `translations` was handled in `@range`.
+		# `translations` and `absolute_indices` are handled in `@range`.
 		accum.push passage
-		passage.absolute_indices ?= @get_absolute_indices passage.indices
 		[accum, context]
 
 	# Handle "Ps 3-4:title" or "Acts 2:22-27. Title"
@@ -292,8 +301,7 @@ class bcv_passage
 		# Add a `v` object.
 		v_indices = [passage.indices[1] - 5, passage.indices[1]]
 		passage.value[1] = {type: "v", value: [{type: "integer", value: 1, indices: v_indices}], indices: v_indices}
-		# Not for reparsing but in case we're curious later.
-		passage.original_type = "integer_title"
+		# We don't need to preserve the original `type` for reparsing.
 		passage.type = "cv"
 		@cv passage, accum, passage.start_context
 
@@ -350,11 +358,13 @@ class bcv_passage
 	range: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		[start, end] = passage.value
-		# Matt 5-verse 6 = Matt.5.6
-		if end.type is "v" and (start.type is "bc" or start.type is "c") and @options.end_range_digits_strategy is "verse"
-			return @range_change_integer_end passage, accum
-		# These always return exactly one object that we're interested in.
+		# `@handle_obj` always returns exactly one object that we're interested in.
 		[[start], context] = @handle_obj start, [], context
+		# Matt 5-verse 6 = Matt.5.6
+		if end.type is "v" and ((start.type is "bc" and not start.passages?[0]?.valid?.messages?.start_chapter_not_exist_in_single_chapter_book)or start.type is "c") and @options.end_range_digits_strategy is "verse"
+			# If we had to change the `type`, reflect that here.
+			passage.value[0] = start
+			return @range_change_integer_end passage, accum
 		[[end], context] = @handle_obj end, [], context
 		# If we had to change the start or end `type`s, make sure that's reflected in the `value`.
 		passage.value = [start, end]
@@ -408,8 +418,9 @@ class bcv_passage
 	# For "Jer 33-11", treat the "11" as a verse.
 	range_change_integer_end: (passage, accum) ->
 		[start, end] = passage.value
-		passage.original_type = passage.type
-		passage.original_value = [start, end]
+		# We want to retain the originals beacuse a future reparsing may lead to a different outcome.
+		passage.original_type ?= passage.type
+		passage.original_value ?= [start, end]
 		# The start.type is only bc, c, or integer; we're just adding a v for the first two.
 		passage.type = if start.type is "integer" then "cv" else start.type + "v"
 		# Create the object in the expected format if it's not already a verse.
@@ -462,20 +473,22 @@ class bcv_passage
 			return @range_change_end passage, accum, new_end if new_end > 0
 		# If someone enters "Jer 33-11", they probably mean "Jer.33.11"; as in `@range_handle_valid`, this may be too clever for its own good.
 		if @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v")
+			# I don't know that `end.type` can ever be `v` here. Such a `c-v` pattern is parsed as `cv`.
 			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
 			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
 			return @range_change_integer_end passage, accum if temp_valid.valid
-		# Otherwise, if we couldn't fix the range, then treat the range as a sequence.
-		[passage.original_type, passage.type] = [passage.type, "sequence"]
+		# Otherwise, if we couldn't fix the range, then treat the range as a sequence. We want to retain the original `type` and `value` in case we need to reparse it differently later.
+		passage.original_type ?= passage.type
+		passage.type = "sequence"
 		# Construct the sequence value in the format expected.
 		[passage.original_value, passage.value] = [[start, end], [[start], [end]]]
 		# Don't use the `context` object because we changed it in `@range`.
-		return @handle_obj passage, accum, passage.start_context
+		return @sequence passage, accum, passage.start_context
 
 	# The range looks valid, but we should check for some special cases.
 	range_handle_valid: (valid, passage, start, start_obj, end, end_obj, accum) ->
 		# If Heb 13-15, treat it as Heb 13:15. This may be too clever for its own good. We check the `passage_existence_strategy` because otherwise `Gen 49-76` becomes `Gen.49.76`.
-		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v") and @options.passage_existence_strategy.indexOf "v" >= 0
+		if valid.messages.end_chapter_not_exist and @options.end_range_digits_strategy is "verse" and not start_obj.v? and (end.type is "integer" or end.type is "v") and @options.passage_existence_strategy.indexOf("v") >= 0
 			temp_value = if end.type is "v" then @pluck "integer", end.value else end.value
 			temp_valid = @validate_ref passage.start_context.translations, {b: start_obj.b, c: start_obj.c, v: temp_value}
 			return [true, @range_change_integer_end(passage, accum)] if temp_valid.valid
@@ -508,6 +521,7 @@ class bcv_passage
 	# ## Translations
 	# Even a single translation ("NIV") appears as part of a translation sequence. Here we handle the sequence and apply the translations to any previous passages lacking an explicit translation: in "Matt 1, 5 ESV," both `Matt 1` and `5` get applied, but in "Matt 1 NIV, 5 ESV," NIV only applies to Matt 1, and ESV only applies to Matt 5.
 	translation_sequence: (passage, accum, context) ->
+		passage.start_context = bcv_utils.shallow_clone context
 		translations = []
 		# First get all the translations in the sequence; the first one is separate from the others (which may not exist).
 		translations.push translation: @books[passage.value[0].value].parsed
@@ -523,37 +537,45 @@ class bcv_passage
 				# `alias` is what we use internally to get bcv data for the translation.
 				translation.alias = @translations.aliases[translation.translation].alias
 				# `osis` is what we'll eventually use in output.
-				translation.osis = @translations.aliases[translation.translation].osis
+				translation.osis = @translations.aliases[translation.translation].osis or ""
 			else
 				translation.alias = "default"
 				# If we don't know what the correct abbreviation should be, then just upper-case what we have.
 				translation.osis = translation.translation.toUpperCase()
-		# Now we need to go back and find the earliest already-parsed passage without a translation. We start with 0 because the below loop will never yield a 0.
-		if accum.length > 0
-			use_i = 0
-			# Start with the most recent and go backward--we don't want to overlap another `translation_sequence`.
-			for i in [accum.length - 1 .. 0]
-				# With a new translation comes the possibility that a previously invalid reference will become valid, so reset it to its original type. For example, a multi-book range may be correct in a different translation because the books are in a different order.
-				accum[i].type = accum[i].original_type if accum[i].original_type?
-				accum[i].value = accum[i].original_value if accum[i].original_value?
-				continue unless accum[i].type == "translation_sequence"
-				# If we made it here, then we hit a translation sequence, and we know that the item following it is the first one we care about.
-				use_i = i + 1
-				break
-			# Include the translations in the start context.
-			#
-			# `use_i` == `accum.length` if there are two translations sequences in a row separated by, e.g., numbers ("Matt 1 ESV 2-3 NIV").
-			if use_i < accum.length
-				accum[use_i].start_context.translations = translations
-				# The objects in accum are replaced in-place, so we don't need to try to merge them back. We re-parse them because the translation may cause previously valid (or invalid) references to flip the other way--if the new translation includes (or doesn't) the Deuterocanonicals, for example. We ignore the `new_accum`, but we definitely care about the new `context`.
-				[new_accum, context] = @handle_array accum.slice(use_i), [], accum[use_i].start_context
+		# Apply the new translations to the existing objects.
+		context = @translation_sequence_apply(accum, translations) if accum.length > 0
 		# We may need these indices later, depending on how we want to output the data.
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
-		# Include the `translation_sequence` object so that we can handle any later `translation_sequence` objects without overlapping this one.
+		# Include the `translation_sequence` object in `accum` so that we can handle any later `translation_sequence` objects without overlapping this one.
 		accum.push passage
 		# Don't carry over the translations into any later references; translations only apply backwards.
 		@reset_context context, ["translations"]
 		[accum, context]
+
+	# Go back and find the earliest already-parsed passage without a translation. We start with 0 because the below loop will never yield a 0.
+	translation_sequence_apply: (accum, translations) ->
+		use_i = 0
+		# Start with the most recent and go backward--we don't want to overlap another `translation_sequence`.
+		for i in [accum.length - 1 .. 0]
+			# With a new translation comes the possibility that a previously invalid reference will become valid, so reset it to its original type. For example, a multi-book range may be correct in a different translation because the books are in a different order.
+			accum[i].type = accum[i].original_type if accum[i].original_type?
+			accum[i].value = accum[i].original_value if accum[i].original_value?
+			continue unless accum[i].type is "translation_sequence"
+			# If we made it here, then we hit a translation sequence, and we know that the item following it is the first one we care about.
+			use_i = i + 1
+			break
+		# Include the translations in the start context.
+		#
+		# `use_i` == `accum.length` if there are two translations sequences in a row separated by, e.g., numbers ("Matt 1 ESV 2-3 NIV"). This is unusual.
+		if use_i < accum.length
+			accum[use_i].start_context.translations = translations
+			# The objects in accum are replaced in-place, so we don't need to try to merge them back. We re-parse them because the translation may cause previously valid (or invalid) references to flip the other way--if the new translation includes (or doesn't) the Deuterocanonicals, for example. We ignore the `new_accum`, but we definitely care about the new `context`.
+			[new_accum, context] = @handle_array accum.slice(use_i), [], accum[use_i].start_context
+		# Use the start context from the last translation_sequence if that's all that's available.
+		else
+			context = bcv_utils.shallow_clone accum[accum.length - 1].start_context
+		# We modify `accum` in-place but return the new `context` to the calling function.
+		context
 
 	# ## Utilities
 	# Pluck the object or value matching a type from an array.
@@ -644,29 +666,33 @@ class bcv_passage
 		[start_out, end_out]
 
 	# ## Validators
-	# Given a start and optional end bcv object, validate that the verse exists and is valid. It returns an array with validity for each translation.
+	# Given a start and optional end bcv object, validate that the verse exists and is valid. It returns a `true` value for `valid` if any of the translations is valid.
 	validate_ref: (translations, start, end) ->
 		# The `translation` key is optional; if it doesn't exist, assume the default translation.
-		translations or= [{translation: "default", osis: "", alias: "default"}]
-		translation = translations[0]
-		# Only true if `translations` isn't the right type.
-		return {valid: false, messages: {translation_invalid: true}} unless translation?
-		valid = true
+		translations = [{translation: "default", osis: "", alias: "default"}] unless translations? and translations.length > 0
+		valid = false
 		messages = {}
 		# `translation` is a translation object, but all we care about is the string.
-		translation.alias ?= "default"
-		# Only true if `translations` isn't the right type.
-		return {valid: false, messages: {translation_invalid: true}} unless translation.alias?
-		# Not a fatal error because we assume that translations match the default unless we know differently. But we still record it because we may want to know about it later. Translations in `alternates` get generated on-demand.
-		unless @translations.aliases[translation.alias]?
-			translation.alias = "default"
-			messages.translation_unknown = true
-		[valid, messages] = @validate_start_ref translation.alias, start, valid, messages
-		[valid, messages] = @validate_end_ref translation.alias, start, end, valid, messages if end
+		for translation in translations
+			translation.alias ?= "default"
+			# Only true if `translation` isn't the right type.
+			unless translation.alias?
+				messages.translation_invalid ?= []
+				messages.translation_invalid.push translation
+				continue
+			# Not a fatal error because we assume that translations match the default unless we know differently. But we still record it because we may want to know about it later. Translations in `alternates` get generated on-demand.
+			unless @translations.aliases[translation.alias]?
+				translation.alias = "default"
+				messages.translation_unknown ?= []
+				messages.translation_unknown.push translation
+			[temp_valid] = @validate_start_ref translation.alias, start, messages
+			[temp_valid] = @validate_end_ref translation.alias, start, end, temp_valid, messages if end
+			valid = true if temp_valid is true
 		valid: valid, messages: messages
 
 	# Make sure that the start ref exists in the given translation.
-	validate_start_ref: (translation, start, valid, messages) ->
+	validate_start_ref: (translation, start, messages) ->
+		valid = true
 		if translation isnt "default" and !@translations[translation]?.chapters[start.b]?
 			@promote_book_to_translation start.b, translation
 		translation_order = if @translations[translation]?.order? then translation else "default"
@@ -718,12 +744,12 @@ class bcv_passage
 		else
 			valid = false if @options.passage_existence_strategy.indexOf("b") >= 0
 			messages.start_book_not_exist = true
+		# We return an array to make unit testing easier; we only use `valid`.
 		[valid, messages]
 
 	# The end ref pretty much just has to be after the start ref; beyond the book, we don't	require the chapter or verse to exist. This approach is useful when people get end verses wrong.
 	validate_end_ref: (translation, start, end, valid, messages) ->
-		if translation isnt "default" and !@translations[translation]?.chapters[end.b]?
-			@promote_book_to_translation end.b, translation
+		# It's not necessary to check for whether the book exists in a non-default translation here because we've already validated that it works as a `start_ref`, which created the book if it didn't exist. So we don't call `@promote_book_to_translation`.
 		translation_order = if @translations[translation]?.order? then translation else "default"
 		# Matt 0
 		if end.c?
@@ -757,7 +783,7 @@ class bcv_passage
 				valid = false if @options.passage_existence_strategy.indexOf("b") >= 0
 				messages.end_book_before_start = true
 			# Matt 5-6
-			if start.b == end.b and end.c? and not isNaN end.c
+			if start.b is end.b and end.c? and not isNaN end.c
 				# Matt-Matt 4
 				start.c ?= 1
 				# Matt 5-4
@@ -774,7 +800,7 @@ class bcv_passage
 						messages.end_verse_before_start = true
 			if end.c? and not isNaN end.c
 				if not @translations[translation].chapters[end.b][end.c - 1]?
-					if @translations[translation].chapters[end.b].length is 1
+					if @translations[translation].chapters[end.b].length == 1
 						messages.end_chapter_not_exist_in_single_chapter_book = 1
 					else if end.c > 0 and @options.passage_existence_strategy.indexOf("c") >= 0
 						messages.end_chapter_not_exist = @translations[translation].chapters[end.b].length
@@ -786,6 +812,7 @@ class bcv_passage
 		else
 			valid = false
 			messages.end_book_not_exist = true
+		# We return an array to make unit testing easier; we only use `valid`.
 		[valid, messages]
 
 	# Gradually add books to translations as they're needed.

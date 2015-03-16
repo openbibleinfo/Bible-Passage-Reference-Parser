@@ -7,14 +7,14 @@ $AB	[a-e]
 # http://da.wikipedia.org/wiki/Hoseas%E2%80%99_Bog (jf)
 $AND	og	jf
 # http://da.wikipedia.org/wiki/Hoseas%E2%80%99_Bog and http://da.wikipedia.org/wiki/Daniels_Bog and http://da.wikipedia.org/wiki/Anden_Mosebog
-$CHAPTER	kapitlerne	kapitel	kap
+$CHAPTER	kapitlerne	kapitel	kap.
 # http://da.wikipedia.org/wiki/Femte_Mosebog
 $FF	ff
 $TITLE	title
 $TRANS	BPH	DO33	DO92
 $TO	-
 # http://da.wikipedia.org/wiki/Paulus%27_f%C3%B8rste_Brev_til_Timotheus and http://www.bibelselskabet.dk/BrugBibelen/BibelenOnline.aspx?book=tob&id=2&chapter=12b and http://da.wikipedia.org/wiki/Judas%27_Brev
-$VERSE	vers	v
+$VERSE	vers	v.
 $UNICODE_BLOCK	Latin
 
 Gen	$FIRST Mosebog	Genesis	$FIRST Mos

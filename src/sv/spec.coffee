@@ -1847,22 +1847,34 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 KAPITLET 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, kapitel 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAPITEL 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, kap. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 KAP. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, kap 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAP 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (sv)", ->
 		expect(p.parse("Exod 1:1 verser 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERSER 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 v. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm V. 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 v 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm V 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (sv)", ->
 		expect(p.parse("Exod 1:1 och 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm 2 OCH 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
+		expect(p.parse("Exod 1:1 jfr. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm 2 JFR. 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
+		expect(p.parse("Exod 1:1 jfr 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm 2 JFR 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
 	it "should handle titles (sv)", ->
 		expect(p.parse("Ps 3 rubrik, 4:2, 5:rubrik").osis()).toEqual "Ps.3.1,Ps.4.2,Ps.5.1"
 		expect(p.parse("PS 3 RUBRIK, 4:2, 5:RUBRIK").osis()).toEqual "Ps.3.1,Ps.4.2,Ps.5.1"
 	it "should handle 'ff' (sv)", ->
+		expect(p.parse("Rev 3ff., 4:2ff.").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
+		expect(p.parse("REV 3 FF., 4:2 FF.").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
+		expect(p.parse("Rev 3f., 4:2f.").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
+		expect(p.parse("REV 3 F., 4:2 F.").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("Rev 3f, 4:2f").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 F, 4:2 F").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (sv)", ->
@@ -1872,6 +1884,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 sfb").osis_and_translations()).toEqual [["Lev.1", "SFB"]]
 		expect(p.parse("Lev 1 (B1917)").osis_and_translations()).toEqual [["Lev.1", "B1917"]]
 		expect(p.parse("lev 1 b1917").osis_and_translations()).toEqual [["Lev.1", "B1917"]]
+		expect(p.parse("Lev 1 (SFB14)").osis_and_translations()).toEqual [["Lev.1", "SFB14"]]
+		expect(p.parse("lev 1 sfb14").osis_and_translations()).toEqual [["Lev.1", "SFB14"]]
 	it "should handle book ranges (sv)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Första till Tredje  Johannesbrevet").osis()).toEqual "1John.1-3John.1"

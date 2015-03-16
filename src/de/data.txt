@@ -10,7 +10,7 @@ $FF	ff
 $TITLE	Titel
 $TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
 $TO	bis
-$VERSE	Verse	Vers	Ver	Vs
+$VERSE	Verse	Vers.	Ver.	Vs.
 $UNICODE_BLOCK	Latin
 
 # http://de.wikipedia.org/wiki/Bibel

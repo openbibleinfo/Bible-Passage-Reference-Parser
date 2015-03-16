@@ -110,7 +110,31 @@ class bcv_parser
 		# Get a string representation suitable for passing to the parser.
 		[s, @passage.books] = @match_books s
 		# Replace potential BCVs one at a time to reduce processing time on long strings.
-		@entities = @match_passages s
+		[@entities] = @match_passages s
+		# Allow chaining.
+		this
+
+	# Parse a string and prepare the object for further interrogation, depending on what's needed. The second argument is a string that serves as the context for the first argument. If there's a valid partial match at the beginning of the first argument, then it will parse it using the supplied `context`. For example, `parse_string_with_context("verse 2", "Genesis 3").osis()` = `Gen.3.2`. You'd use this when you have some text that looks like it's a partial reference, and you already know the context.
+	parse_with_context: (s, context) ->
+		@reset()
+		[context, @passage.books] = @match_books @replace_control_characters(context)
+		[entities, context] = @match_passages context
+		@reset()
+		@s = s
+		# Replace any control characters already in the string.
+		s = @replace_control_characters s
+		# Get a string representation suitable for passing to the parser.
+		[s, @passage.books] = @match_books s
+		@passage.books.push
+			value: "",
+			parsed: [],
+			start_index: 0,
+			type: "context",
+			context: context
+		# Reconstruct the string, adding in the context. Because we've already called `match_books`, the resulting offsets will reflect the original string and not the new string.
+		s = "\x1f" + (@passage.books.length - 1) + "/9\x1f" + s
+		# Replace potential BCVs one at a time to reduce processing time on long strings.
+		[@entities] = @match_passages s
 		# Allow chaining.
 		this
 
@@ -142,15 +166,24 @@ class bcv_parser
 		return this unless arg? and (arg is true or arg is false)
 		@options.include_apocrypha = arg
 		@regexps.books = @regexps.get_books arg, @options.case_sensitive
-		if arg is true
-			# Add Ps 151 to the end of Psalms.
-			@translations.default.chapters.Ps[150] = @translations.default.chapters.Ps151[0]
-		else if arg is false
+		for own translation of @translations
+			continue if translation is "aliases" or translation is "alternates"
+			# If the `Ps` array in the `chapters` object doesn't exist, create it so that we can add Ps 151 to the end of it.
+			@translations[translation].chapters ?= {}
+			@translations[translation].chapters["Ps"] ?= bcv_utils.shallow_clone_array @translations["default"].chapters["Ps"]
+			# Add Ps 151 to the end of Psalms. The assumption here is that Ps151 always only is one chapter long.
+			if arg is true
+				if @translations[translation].chapters["Ps151"]?
+					verse_count = @translations[translation].chapters["Ps151"][0]
+				else
+					verse_count = @translations["default"].chapters["Ps151"][0]
+				@translations[translation].chapters["Ps"][150] = verse_count
 			# Remove Ps 151 from the end of Psalms.
-			@translations.default.chapters.Ps.pop() if @translations.default.chapters.Ps.length == 151
+			else
+				@translations[translation].chapters["Ps"].pop() if @translations[translation].chapters["Ps"].length == 151
 		this
 
-	# Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use KJV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering.
+	# Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use KJV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering. English offers several other versification systems; see the Readme for details.
 	versification_system: (system) ->
 		return this unless system? and @translations[system]?
 		# If we've already changed the `versification_system` once, we need to do some cleanup before we change it to something else.
@@ -236,12 +269,12 @@ class bcv_parser
 			# Using array concatenation instead of replacing text directly didn't offer performance improvements in tests of the approach.
 			s = s.replace book.regexp, (full, prev, bk) ->
 				# `value` contains the raw string; `book.osis` is the osis value for the book.
-				books.push value: bk, parsed: book.osis
+				books.push value: bk, parsed: book.osis, type: "book"
 				extra = if book.extra? then "/" + book.extra else ""
 				"#{prev}\x1f#{books.length - 1}#{extra}\x1f"
 		# Replace translations.
 		s = s.replace @regexps.translations, (match) ->
-			books.push value: match, parsed: match.toLowerCase()
+			books.push value: match, parsed: match.toLowerCase(), type: "translation"
 			"\x1e#{books.length - 1}\x1e";
 		[s, @get_book_indices(books, s)]
 
@@ -264,6 +297,7 @@ class bcv_parser
 	# Create an array of all the potential bcv matches in the string.
 	match_passages: (s) ->
 		entities = []
+		post_context = {}
 		while match = @regexps.escaped_passage.exec s
 			# * `match[0]` includes the preceding character (if any) for bounding.
 			# * `match[1]` is the full match minus the character preceding the match used for bounding.
@@ -289,20 +323,28 @@ class bcv_parser
 			# Though PEG.js doesn't have to be case-sensitive, using the case-insensitive feature involves some repeated processing. By lower-casing here, we only pay the cost once. The grammar for words like "also" is case-sensitive; we can safely lowercase ascii letters without changing indices. We don't just call .toLowerCase() because it could affect the length of the string if it contains certain characters; maintaining the indices is the most important thing.
 			part = part.replace(/[A-Z]+/g, (capitals) -> capitals.toLowerCase())
 			# If we're in a chapter-book situation, the first character won't be a book control character, which would throw off the `start_index`.
-			start_index_adjust = if part.substr 0, 1 is "\x1f" then 0 else part.split("\x1f")[0].length
+			start_index_adjust = if part.substr(0, 1) is "\x1f" then 0 else part.split("\x1f")[0].length
 			# * `match` is important for the length and whether it contains control characters, neither of which we've changed inconsistently with the original string. The `part` may be shorter than originally matched, but that's only to remove unneeded characters at the end.
 			# * `grammar` is the external PEG parser.
 			passage = value: grammar.parse(part), type: "base", start_index: @passage.books[book_id].start_index - start_index_adjust, match: part
 			# Are we looking at a single book on its own that could be part of a range like "1-2 Sam"?
-			if @options.book_alone_strategy is "full" and @options.book_range_strategy is "include" and passage.value.length == 1 and passage.value[0].type is "b" and start_index_adjust == 0 and @passage.books[book_id].parsed.length == 1 and /^[234]/.test @passage.books[book_id].parsed[0]
+			if @options.book_alone_strategy is "full" and
+			@options.book_range_strategy is "include" and
+			passage.value[0].type is "b" and
+			# Either it's on its own or a translation sequence follows it, making it effectively on its own.
+			(passage.value.length == 1 or (passage.value.length > 1 and passage.value[1].type is "translation_sequence")) and
+			start_index_adjust == 0 and
+			(@passage.books[book_id].parsed.length == 1 or (@passage.books[book_id].parsed.length > 1 and 
+			@passage.books[book_id].parsed[1].type is "translation")) and
+			/^[234]/.test @passage.books[book_id].parsed[0]
 				@create_book_range s, passage, book_id
 			# Handle each passage individually to prevent context leakage (e.g., translations back-propagating through unrelated entities).
-			[accum] = @passage.handle_obj passage
+			[accum, post_context] = @passage.handle_obj passage
 			entities = entities.concat accum
 			# Move the next RegExp iteration to start earlier if we didn't use everything we thought we were going to.
 			regexp_index_adjust = @adjust_regexp_end accum,original_part_length, part.length
 			@regexps.escaped_passage.lastIndex -= regexp_index_adjust if (regexp_index_adjust > 0)
-		entities
+		[entities, post_context]
 
 	# Handle the objects returned from the grammar to produce entities for further processing. We may need to adjust the `RegExp.lastIndex` if we discarded characters from the end of the match or if, after parsing, we're ignoring some of them--especially with ending parenthetical statements like "Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)".
 	adjust_regexp_end: (accum, old_length, new_length) ->
@@ -347,6 +389,16 @@ class bcv_parser
 		# These two are the most important ones; the `absolute_indices` function uses them.
 		passage.start_index -= length
 		passage.match = prev[1] + passage.match
+		return if passage.value.length == 1
+		# If there are subsequent objects, also adjust their offsets.
+		for i in [1 ... passage.value.length]
+			continue unless passage.value[i].value?
+			# If it's an `integer` type, `passage.value[i].value` is a scalar rather than an object, so we only need to adjust the indices for the top-level object.
+			if passage.value[i].value[0]?.indices?
+				passage.value[i].value[0].indices[0] += length
+				passage.value[i].value[0].indices[1] += length
+			passage.value[i].indices[0] += length
+			passage.value[i].indices[1] += length
 
 	# ## Output-Related Functions
 	# Return a single OSIS string (comma-separated) for all the references in the whole input string.
@@ -379,7 +431,7 @@ class bcv_parser
 			if entity.type and entity.type is "translation_sequence" and out.length > 0 and entity_id == out[out.length-1].entity_id + 1
 				out[out.length-1].indices[1] = entity.absolute_indices[1]
 			continue unless entity.passages?
-			continue if (entity.type is "b" and @options.book_alone_strategy is "ignore") or (entity.type is "b_range" and @options.book_range_strategy is "ignore")
+			continue if (entity.type is "b" and @options.book_alone_strategy is "ignore") or (entity.type is "b_range" and @options.book_range_strategy is "ignore") or entity.type is "context"
 			# A given entity, even if part of a sequence, always only has one set of translations associated with it.
 			translations = []
 			translation_alias = null
@@ -438,7 +490,7 @@ class bcv_parser
 
 	to_osis: (start, end, translation) ->
 		# If it's just a book on its own, how we deal with it depends on whether we want to return just the first chapter or the complete book.
-		end.c = 1 if not end.c? and not end.v? and start.b == end.b and not start.c? and not start.v? and @options.book_alone_strategy == "first_chapter"
+		end.c = 1 if not end.c? and not end.v? and start.b == end.b and not start.c? and not start.v? and @options.book_alone_strategy is "first_chapter"
 		osis = start: "", end: ""
 		# If no start chapter or verse, assume the first possible.
 		start.c ?= 1
@@ -457,7 +509,7 @@ class bcv_parser
 		if @options.include_apocrypha and @options.ps151_strategy is "b" and ((start.c == 151 and start.b is "Ps") or (end.c == 151 and end.b is "Ps"))
 			@fix_ps151 start, end, translation
 		# If it's a complete book or range of complete books and we want the shortest possible OSIS, return just the book names.
-		if @options.osis_compaction_strategy == "b" and start.c == 1 and start.v == 1 and end.c == @passage.translations[translation].chapters[end.b].length and end.v == @passage.translations[translation].chapters[end.b][end.c - 1]
+		if @options.osis_compaction_strategy is "b" and start.c == 1 and start.v == 1 and end.c == @passage.translations[translation].chapters[end.b].length and end.v == @passage.translations[translation].chapters[end.b][end.c - 1]
 			osis.start = start.b
 			osis.end = end.b
 		# If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters.
@@ -478,8 +530,11 @@ class bcv_parser
 		out += "," + end.extra if end.extra?
 		out
 
-	# If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it gets returned properly.
+	# If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it returns properly.
 	fix_ps151: (start, end, translation) ->
+		# Ps151 doesn't necessarily get promoted into the translation chapter list because during the string parsing, we treat it as `Ps` rather than `Ps151`.
+		if translation isnt "default" and !@translations[translation]?.chapters["Ps151"]?
+			@passage.promote_book_to_translation "Ps151", translation
 		if start.c == 151 and start.b is "Ps"
 			# If the whole range is in Ps151, we can just reset both sets of books and chapters; we don't have to worry about odd ranges.
 			if end.c == 151 and end.b is "Ps"
@@ -564,25 +619,33 @@ class bcv_parser
 
 	# Snap the start/end index of the range when it includes a book on its own and `@options.book_range_strategy` is `ignore`.
 	snap_range: (entity, passage_i) ->
+		# If the book is at the start of the range, we want to ignore the first part of the range.
 		if entity.type is "b_range_start" or (entity.type is "sequence" and entity.passages[passage_i].type is "b_range_start")
 			entity_i = 1
 			source_entity = "end"
 			type = "b_range_start"
+		# If the book is at the end of the range, we want to ignore the end of the range.
 		else
 			entity_i = 0
 			source_entity = "start"
 			type = "range_end_b"
 		target_entity = if source_entity is "end" then "start" else "end"
+		# Rewrite either the start or the end of the range to match the opposite. In effect, we're changing it from a range to a single point.
 		for own key of entity.passages[passage_i][target_entity]
 			entity.passages[passage_i][target_entity][key] = entity.passages[passage_i][source_entity][key]
 		if entity.type is "sequence"
-			# This can be too long if a range is converted into a sequence where it ends with an open book range (`Matt 10-Rev`) that you want to ignore.
+			# This can be too long if a range is converted into a sequence where it ends with an open book range (`Matt 10-Rev`) that we want to ignore. At this point, the `passages` and `value` keys can get out-of-sync.
 			passage_i = entity.value.length - 1 if passage_i >= entity.value.length
-			temp = @snap_range @passage.pluck(type, entity.value[passage_i]), 0
-			if passage_i == 0
-				entity.absolute_indices[0] = temp.absolute_indices[0]
-			else if passage_i == entity.passages.length - 1
-				entity.absolute_indices[1] = temp.absolute_indices[1]
+			pluck = @passage.pluck(type, entity.value[passage_i])
+			# The `pluck` can be null if we've already overwritten its `type` in a previous recursion. This process is unusual, but can happen in "Proverbs 31:2. Vs 10 to dan".
+			if pluck?
+				temp = @snap_range pluck, 0
+				# Move the indices to exclude what we've omitted. We want to move it even if it isn't the last one in case there are multiple books at the end--this way it'll use the correct indices.
+				if passage_i == 0
+					entity.absolute_indices[0] = temp.absolute_indices[0]
+				else
+					entity.absolute_indices[1] = temp.absolute_indices[1]
+		# If it's not a sequence, change the `type` and `absolute_indices` to exclude the book we're omitting.
 		else
 			entity.original_type = entity.type
 			entity.type = entity.value[entity_i].type

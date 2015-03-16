@@ -93,7 +93,6 @@ describe "Localized book Gen (sk)", ->
 		expect(p.parse("1 k Mojzišova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1 k Mojžisova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1 k Mojžišova 1:1").osis()).toEqual("Gen.1.1")
-		expect(p.parse("K. stvorenia 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1. Mojzisova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1. Mojzišova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1. Mojžisova 1:1").osis()).toEqual("Gen.1.1")
@@ -102,7 +101,7 @@ describe "Localized book Gen (sk)", ->
 		expect(p.parse("I. Mojzišova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I. Mojžisova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I. Mojžišova 1:1").osis()).toEqual("Gen.1.1")
-		expect(p.parse("K stvorenia 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("K. stvorenia 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Kniha povodu 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Kniha pôvodu 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1 Mojzisova 1:1").osis()).toEqual("Gen.1.1")
@@ -113,6 +112,7 @@ describe "Localized book Gen (sk)", ->
 		expect(p.parse("I Mojzišova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I Mojžisova 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I Mojžišova 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("K stvorenia 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("K. povodu 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("K. pôvodu 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("K povodu 1:1").osis()).toEqual("Gen.1.1")
@@ -163,7 +163,6 @@ describe "Localized book Gen (sk)", ->
 		expect(p.parse("1 K MOJZIŠOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1 K MOJŽISOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1 K MOJŽIŠOVA 1:1").osis()).toEqual("Gen.1.1")
-		expect(p.parse("K. STVORENIA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1. MOJZISOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1. MOJZIŠOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1. MOJŽISOVA 1:1").osis()).toEqual("Gen.1.1")
@@ -172,7 +171,7 @@ describe "Localized book Gen (sk)", ->
 		expect(p.parse("I. MOJZIŠOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I. MOJŽISOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I. MOJŽIŠOVA 1:1").osis()).toEqual("Gen.1.1")
-		expect(p.parse("K STVORENIA 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("K. STVORENIA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("KNIHA POVODU 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("KNIHA PÔVODU 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("1 MOJZISOVA 1:1").osis()).toEqual("Gen.1.1")
@@ -183,6 +182,7 @@ describe "Localized book Gen (sk)", ->
 		expect(p.parse("I MOJZIŠOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I MOJŽISOVA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("I MOJŽIŠOVA 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("K STVORENIA 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("K. POVODU 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("K. PÔVODU 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("K POVODU 1:1").osis()).toEqual("Gen.1.1")
@@ -577,14 +577,14 @@ describe "Localized book Sir (sk)", ->
 	it "should handle book: Sir (sk)", ->
 		`
 		expect(p.parse("Kniha Sirachovho syna 1:1").osis()).toEqual("Sir.1.1")
-		expect(p.parse("K. Sirachovho syna 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("Kniha Ekleziastikus 1:1").osis()).toEqual("Sir.1.1")
-		expect(p.parse("K Sirachovho syna 1:1").osis()).toEqual("Sir.1.1")
+		expect(p.parse("K. Sirachovho syna 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("Kniha Sirachovcova 1:1").osis()).toEqual("Sir.1.1")
+		expect(p.parse("K Sirachovho syna 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("K. Ekleziastikus 1:1").osis()).toEqual("Sir.1.1")
+		expect(p.parse("Kniha Sirachovca 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("K Ekleziastikus 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("K. Sirachovcova 1:1").osis()).toEqual("Sir.1.1")
-		expect(p.parse("Kniha Sirachovca 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("K Sirachovcova 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("K. Sirachovca 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("K Sirachovca 1:1").osis()).toEqual("Sir.1.1")
@@ -4680,6 +4680,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 KAPITOL 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, hlavy 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 HLAVY 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, kap. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 KAP. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, kap 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAP 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (sk)", ->

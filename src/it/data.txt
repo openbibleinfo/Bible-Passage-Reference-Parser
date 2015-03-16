@@ -8,7 +8,7 @@ $AB	[a-d]
 # http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022335_Lettere_Paoline.html (vedi anche = see also) and http://it.wikipedia.org/wiki/Libro_di_Gioele (ed = and with vowel) vedi = see; cfr. = cf.; e = and
 $AND	vedi anche	vedi	cfr	e
 # http://it.wikipedia.org/wiki/Libro_dell%27Esodo (capitoli) and http://www.bibbiaedu.it/pls/labibbia_new2/GestBibbia09.Ricerca?Libro=Genesi&capitolo=1 (capitolo) and http://it.wikipedia.org/wiki/Genesi (cap) and http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022332_Profetici.html (cc) and http://it.wikipedia.org/wiki/Levitico + http://it.wikipedia.org/wiki/Libro_di_Zaccaria (capp)
-$CHAPTER	capitoli	capitolo	capp	cap	cc
+$CHAPTER	capitoli	capitolo	capp.	cap.	cc.
 # http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022326_Introduzione_all_AT.html (ss). "ecc" seems to mean the same thing
 $FF	ss	, ecc	ecc
 # http://it.wikipedia.org/wiki/Salmi
@@ -17,7 +17,7 @@ $TRANS	CEI	NR	ND
 # http://it.wikipedia.org/wiki/Libro_di_Ester
 $TO	al
 # http://it.wikipedia.org/wiki/Libro_di_Ester (versetto and versetti) and http://it.wikipedia.org/wiki/Qoelet (versi) and http://it.wikipedia.org/wiki/Libro_di_Abdia (vv) and http://it.wikipedia.org/wiki/Genesi (v)
-$VERSE	versetto	versetti	versi	vv	v
+$VERSE	versetto	versetti	versi	vv.	v.
 $UNICODE_BLOCK	Latin
 
 Gen	Genesi	Ge	Gen

@@ -7,7 +7,7 @@ $AB	[a-e]
 # http://no.wikipedia.org/wiki/Hoseas_bok (cf) and http://no.wikipedia.org/wiki/Evangeliet_etter_Matteus (jf)
 $AND	og	cf	jf
 # http://www.bibel.no/Nettbibelen/Bibeltekstene?query=m5f0GvwIpRXl2Av6uJEhQ4JqDzdq9a4b1xp2kX2yQ3c2rO0HoHsBOQ== and http://no.wikipedia.org/wiki/F%C3%B8rste_mosebok and http://no.wikipedia.org/wiki/Jeremias_brev and http://no.wikipedia.org/wiki/Esekiels_bok and http://no.wikipedia.org/wiki/Daniels_bok and http://no.wikipedia.org/wiki/Evangeliet_etter_Markus
-$CHAPTER	kapittelet	kapittel	kapitler	kapitlene	kapitel	kap
+$CHAPTER	kapittelet	kapittel	kapitler	kapitlene	kapitel	kap.
 # http://no.wikipedia.org/wiki/Salme_23 and http://no.wikipedia.org/wiki/Femte_Mosebok
 $FF	ff	f
 # http://no.wikipedia.org/wiki/Salme_8
@@ -15,7 +15,7 @@ $TITLE	overskrift
 $TRANS	B1930
 $TO	-
 # http://no.wikipedia.org/wiki/Siraks_bok and http://no.wikipedia.org/wiki/F%C3%B8rste_Makkabeerbok
-$VERSE	vers	v
+$VERSE	vers	v.
 $UNICODE_BLOCK	Latin
 
 Gen	$FIRST Mosebok	$FIRST Mos	Genesis

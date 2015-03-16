@@ -9,6 +9,94 @@ my %ranges = (
 		chars => '.',
 		data => 'en',
 		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
+		exclude_langs => [qw(amf awa bba bqc bus chr dop dug fue fuh hil hwc leb mkl mqb mvc mwv nds pck ppl qu soy tmz twi udu wa wol yom zap)],
+		exclude_abbrevs => [
+			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
+			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
+			'Ri', #Judg
+			'Ca', 'En', 'Pi bel Chante a', #Song
+			'Ai', #Lam
+			'Ad', #Obad
+			'J', 'Iv', 'In', #John
+			'Nas', #Acts
+			],
+		post_abbrevs => {
+			Lev => ["\x{5229}"],
+			Josh => ["\x{66f8}"],
+			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re'],
+			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
+			Ezra => ["\x{62c9}"],
+			Job => ["\x{4f2f}"],
+			Song => ['Songs', "\x{6b4c}"],
+			Lam => ['La'],
+			Mic => ['Mi'],
+			Matt => ["\x{592a}"],
+			John => ['Jan', "\x{7d04}"],
+			Acts => ["\x{410}\x{43F}\x{43E}\x{441}\x{442}\x{43E}\x{43B}"],
+			Rev => ['Re'],
+			},
+		include_extra_abbrevs => 0,
+		},
+	ascii => {
+		chars => "[\x00-\x7f\x{2000}-\x{206F}]",
+		data => 'en',
+		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
+		exclude_langs => [qw(amf awa bba bqc bus chr dop dug fue fuh hil hwc leb mkl mqb mvc mwv nds pck ppl qu soy tmz twi udu wa wol yom zap)],
+		exclude_abbrevs => [
+			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
+			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
+			'Ri', #Judg
+			'Ca', 'En', 'Pi bel Chante a', #Song
+			'Ai', #Lam
+			'Ad', #Obad
+			'J', 'Iv', 'In', #John
+			'Nas', #Acts
+			],
+		post_abbrevs => {
+			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re'],
+			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
+			Song => ['Songs'],
+			Lam => ['La'],
+			Mic => ['Mi'],
+			John => ['Jan'],
+			Rev => ['Re'],
+			},
+		include_extra_abbrevs => 0,
+		},
+	asciibg => {
+		chars => "[\x00-\x7f\x{2000}-\x{206F}]",
+		data => 'en',
+		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
+		exclude_langs => [],
+		exclude_abbrevs => [
+			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
+			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
+			'Ri', #Judg
+			'Ca', 'En', 'Pi bel Chante a', #Song
+			'Ai', #Lam
+			'Ad', #Obad
+			'J', 'Iv', 'In', #John
+			'Nas', #Acts
+			'Su', #Sus
+			'Mak', #Eccl
+			],
+		post_abbrevs => {
+			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re'],
+			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
+			Song => ['Songs'],
+			Lam => ['La'],
+			Mic => ['Mi'],
+			John => ['Jan'],
+			Rev => ['Re'],
+			Sus => ['Su'],
+			Eccl => ['Mak'],
+			},
+		include_extra_abbrevs => 1,
+		},
+	fullbg => {
+		chars => '.',
+		data => 'en',
+		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
 		exclude_langs => [],
 		exclude_abbrevs => [
 			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
@@ -35,34 +123,10 @@ my %ranges = (
 			Acts => ["\x{410}\x{43F}\x{43E}\x{441}\x{442}\x{43E}\x{43B}"],
 			Rev => ['Re'],
 			},
-		},
-	ascii => {
-		chars => "[\x00-\x7f\x{2000}-\x{206F}]",
-		data => 'en',
-		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
-		exclude_langs => [],
-		exclude_abbrevs => [
-			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
-			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
-			'Ri', #Judg
-			'Ca', 'En', 'Pi bel Chante a', #Song
-			'Ai', #Lam
-			'Ad', #Obad
-			'J', 'Iv', 'In', #John
-			'Nas', #Acts
-			],
-		post_abbrevs => {
-			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re'],
-			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
-			Song => ['Songs'],
-			Lam => ['La'],
-			Mic => ['Mi'],
-			John => ['Jan'],
-			Rev => ['Re'],
-			},
+		include_extra_abbrevs => 1,
 		},
 	);
-my @lang_priorities = qw(en es de pt pl zh ru it hu cs uk tl hr);
+my @lang_priorities = qw(en es de pt pl zh ru it hu cs uk tl hr sv sk amf);
 
 unless ($ARGV[0] && exists $ranges{$ARGV[0]})
 {
@@ -70,11 +134,11 @@ unless ($ARGV[0] && exists $ranges{$ARGV[0]})
 }
 my $name = $ARGV[0];
 
-my %abbrevs = get_abbrevs();
+my $range = $ranges{$name};
+my %abbrevs = get_abbrevs($range);
 my ($langs, %abbrev_osis) = arrange_abbrevs_by_osis();
 
 mkdir "$src_dir/$name" unless (-d "$src_dir/$name");
-my $range = $ranges{$name};
 my %excludes = make_excludes($range);
 my $order = make_order($range->{order});
 my ($data, $used_langs) = make_valid_abbrevs($name, $range->{data}, $range->{chars}, $range->{post_abbrevs}, $excludes{exclude_langs}, $excludes{exclude_abbrevs}, $order);
@@ -270,7 +334,7 @@ sub check_abbrevs
 					next unless ($compare =~ /(?:^|\b|[\s\-])$safe_abbrev(?:[\s\-]|\b|$)/);
 					#next unless ($compare =~ /Plac/);
 					print OUT "$osis\t$abbrev\n$compare_osis\t$compare\n\n" ;
-					print Dumper("$osis:\t$abbrev\n         $compare_osis:\t$compare");
+					print Dumper("Conflict: $osis:\t$abbrev\n         $compare_osis:\t$compare");
 				}
 			}
 		}
@@ -292,11 +356,13 @@ sub get_matches
 		{
 			next if (exists $exclude_langs->{$lang});
 			$used_langs->{$lang}++;
+			$ok = 1;
 		}
-		push @out, $abbrev;
+		push @out, $abbrev if ($ok);
 	}
 	#die Dumper("No matches: $pattern") unless (@out);
 	@out = sort { length $b <=> length $a } @out;
+	print Dumper(\@out) if (Dumper(\@out) =~ /Mak/ && Dumper(\@out) =~ /Eccl/);
 	return @out;
 }
 
@@ -342,6 +408,7 @@ sub prioritize_lang
 
 sub get_abbrevs
 {
+	my ($range) = @_;
 	my %out;
 	opendir SRC, $src_dir;
 	while (my $lang = readdir SRC)
@@ -352,7 +419,7 @@ sub get_abbrevs
 		get_abbrevs_from_file("$src_dir/$lang/book_names.txt", \%out, $lang);
 	}
 	closedir SRC;
-	get_abbrevs_from_file("$src_dir/extra/book_names.txt", \%out) if (-f "$src_dir/extra/book_names.txt");
+	get_abbrevs_from_file("$src_dir/extra/book_names.txt", \%out) if (-f "$src_dir/extra/book_names.txt" && $range->{include_extra_abbrevs});
 	return %out;
 }
 

@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* titulus
-	| \d+ \W* (?:et#{bcv_parser::regexps.space}+sequentes|et#{bcv_parser::regexps.space}+seq) (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-e] (?! \w )
+	  \d \W* titulus
+	| \d \W* (?:et#{bcv_parser::regexps.space}+sequentes|et#{bcv_parser::regexps.space}+seq) (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -399,12 +399,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Tim"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Epistula[\s\xa0]*(?:II[\s\xa0]*ad[\s\xa0]*Timotheum|ad[\s\xa0]*Timotheum[\s\xa0]*II)|II(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m))|2(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|Tim))|(?:Timotheum[\s\xa0]*II|ad[\s\xa0]*Timotheum[\s\xa0]*II)
+		(?:Epistula[\s\xa0]*(?:II[\s\xa0]*ad[\s\xa0]*Timotheum|ad[\s\xa0]*Timotheum[\s\xa0]*II)|II(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m))|2(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|Tim))|(?:ad[\s\xa0]*Timotheum[\s\xa0]*II|Timotheum[\s\xa0]*II)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Tim"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Epistula[\s\xa0]*(?:I[\s\xa0]*ad[\s\xa0]*Timotheum|ad[\s\xa0]*Timotheum[\s\xa0]*I)|1(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|Tim)|I(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)))|(?:Timotheum[\s\xa0]*I|ad[\s\xa0]*Timotheum[\s\xa0]*I)
+		(?:Epistula[\s\xa0]*(?:I[\s\xa0]*ad[\s\xa0]*Timotheum|ad[\s\xa0]*Timotheum[\s\xa0]*I)|1(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|Tim)|I(?:\.[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)|[\s\xa0]*T(?:i(?:m(?:otheum)?)?|m)))|(?:ad[\s\xa0]*Timotheum[\s\xa0]*I|Timotheum[\s\xa0]*I)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Titus"]
@@ -469,25 +469,25 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["2Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Liber[\s\xa0]*(?:II[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*II)|Machabaeorum[\s\xa0]*II|II(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)|2(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?|Macc))
+		2Macc|(?:Liber[\s\xa0]*(?:II[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*II)|Machabaeorum[\s\xa0]*II|II(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)|2(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Liber[\s\xa0]*(?:III[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*III)|Machabaeorum[\s\xa0]*III|III(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)|3(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?|Macc))
+		3Macc|(?:Liber[\s\xa0]*(?:III[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*III)|Machabaeorum[\s\xa0]*III|III(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)|3(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["4Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Liber[\s\xa0]*(?:IV[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*IV)|Machabaeorum[\s\xa0]*IV|IV(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)|4(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?|Macc))
+		4Macc|(?:Liber[\s\xa0]*(?:IV[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*IV)|Machabaeorum[\s\xa0]*IV|IV(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)|4(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Liber[\s\xa0]*(?:I[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*I)|Machabaeorum[\s\xa0]*I|1(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?|Macc)|I(?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?))
+		1Macc|(?:Liber[\s\xa0]*(?:I[\s\xa0]*Maccabaeorum|Maccabaeorum[\s\xa0]*I)|Machabaeorum[\s\xa0]*I|(?:[1I](?:\.[\s\xa0]*Mac(?:habaeorum|abaeorum)?|[\s\xa0]*Mac(?:habaeorum|abaeorum)?)))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	]
 	# Short-circuit the look if we know we want all the books.

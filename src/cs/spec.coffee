@@ -5555,10 +5555,10 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 KAPITOLY 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, kapitol 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAPITOL 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, kap\. 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 KAP\. 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, kap\ 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 KAP\ 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, kap. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 KAP. 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, kap 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 KAP 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (cs)", ->
 		expect(p.parse("Exod 1:1 verše 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERŠE 6").osis()).toEqual "Phlm.1.6"
@@ -5567,10 +5567,10 @@ describe "Miscellaneous tests", ->
 	it "should handle 'and' (cs)", ->
 		expect(p.parse("Exod 1:1 a 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm 2 A 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
-		expect(p.parse("Exod 1:1 srv\. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 SRV\. 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
-		expect(p.parse("Exod 1:1 srv\ 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 SRV\ 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
+		expect(p.parse("Exod 1:1 srv. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm 2 SRV. 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
+		expect(p.parse("Exod 1:1 srv 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm 2 SRV 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
 	it "should handle titles (cs)", ->
 		expect(p.parse("Ps 3 titul, 4:2, 5:titul").osis()).toEqual "Ps.3.1,Ps.4.2,Ps.5.1"
 		expect(p.parse("PS 3 TITUL, 4:2, 5:TITUL").osis()).toEqual "Ps.3.1,Ps.4.2,Ps.5.1"
@@ -5582,8 +5582,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 b21").osis_and_translations()).toEqual [["Lev.1", "B21"]]
 	it "should handle book ranges (cs)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("První - Třetí  list Janův").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("První - Třetí  list Januv").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("První - Třetí  Janova").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (cs)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

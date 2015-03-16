@@ -8,6 +8,7 @@
 1Chr	1 Taar
 1Chr	I Taar
 1Chr	1Chr
+1Cor	Korintos Kowaad
 1Cor	1. Korintos
 1Cor	I. Korintos
 1Cor	1 Korintos
@@ -18,6 +19,7 @@
 1Cor	I Kor
 1Cor	1Cor
 1Esd	1Esd
+1John	Yooxanaa Kowaad
 1John	1. Yooxanaa
 1John	I. Yooxanaa
 1John	1 Yooxanaa
@@ -38,6 +40,7 @@
 1Kgs	I Boq
 1Kgs	1Kgs
 1Macc	1Macc
+1Pet	Butros Kowaad
 1Pet	1. Butros
 1Pet	I. Butros
 1Pet	1 Butros
@@ -62,6 +65,7 @@
 1Sam	1 Sam
 1Sam	I Sam
 1Sam	1Sam
+1Thess	Tesoloniika Kowaad
 1Thess	1. Tesaloniika
 1Thess	I. Tesaloniika
 1Thess	1 Tesaloniika
@@ -71,6 +75,7 @@
 1Thess	I. Tes
 1Thess	1 Tes
 1Thess	I Tes
+1Tim	Timoteyos Kowaad
 1Tim	1. Timoteyos
 1Tim	I. Timoteyos
 1Tim	1 Timoteyos
@@ -90,6 +95,7 @@
 2Chr	II Taar
 2Chr	2 Taar
 2Chr	2Chr
+2Cor	Korintos Labaad
 2Cor	II. Korintos
 2Cor	2. Korintos
 2Cor	II Korintos
@@ -100,6 +106,7 @@
 2Cor	2 Kor
 2Cor	2Cor
 2Esd	2Esd
+2John	Yooxanaa Labaad
 2John	II. Yooxanaa
 2John	2. Yooxanaa
 2John	II Yooxanaa
@@ -120,6 +127,7 @@
 2Kgs	2 Boq
 2Kgs	2Kgs
 2Macc	2Macc
+2Pet	Butros Labaad
 2Pet	II. Butros
 2Pet	2. Butros
 2Pet	II Butros
@@ -144,6 +152,7 @@
 2Sam	II Sam
 2Sam	2 Sam
 2Sam	2Sam
+2Thess	Tesoloniika Labaad
 2Thess	II. Tesaloniika
 2Thess	2. Tesaloniika
 2Thess	II Tesaloniika
@@ -153,6 +162,7 @@
 2Thess	2Thess
 2Thess	II Tes
 2Thess	2 Tes
+2Tim	Timoteyos Labaad
 2Tim	II. Timoteyos
 2Tim	2. Timoteyos
 2Tim	II Timoteyos
@@ -162,6 +172,7 @@
 2Tim	II Tim
 2Tim	2 Tim
 2Tim	2Tim
+3John	Yooxanaa Saddexaad
 3John	III. Yooxanaa
 3John	III Yooxanaa
 3John	3. Yooxanaa
@@ -188,8 +199,10 @@ Dan	Daanyeel
 Dan	Daan
 Dan	Dan
 Deut	Sharciga Kunoqoshadiisa
+Deut	Sharci
 Deut	Deut
 Eccl	Wacdiyahii
+Eccl	Wacdiyaha
 Eccl	Eccl
 Eccl	Wac
 EpJer	EpJer
@@ -217,6 +230,7 @@ Gen	Gen
 GkEsth	GkEsth
 Hab	Xabaquuq
 Hab	Hab
+Hab	Xab
 Hag	Xaggay
 Hag	Xagg
 Hag	Hag
@@ -239,6 +253,7 @@ Jer	Yeremyaah
 Jer	Jer
 Jer	Yer
 Job	Ayuub
+Job	Ayu
 Job	Job
 Joel	Yoo'eel
 Joel	Yoo’eel
@@ -262,6 +277,7 @@ Judg	Judg
 Judg	Xaak
 Lam	Baroorashadii Yeremyaah
 Lam	Baroorashadii
+Lam	Baroor
 Lam	Lam
 Lev	Laawiyiintii
 Lev	Laaw
@@ -278,7 +294,7 @@ Matt	Matayos
 Matt	Matt
 Matt	Mat
 Mic	Miikaah
-Mic	Niik
+Mic	Miik
 Mic	Mic
 Nah	Naxuum
 Nah	Nah
@@ -292,11 +308,13 @@ Num	Tir
 Obad	Cobadyaah
 Obad	Cobad
 Obad	Obad
+Obad	Cob
 Phil	Filiboy
 Phil	Phil
 Phil	Fil
 Phil,Phlm	Fi
 Phlm	Filemon
+Phlm	Filem
 Phlm	Flmn
 Phlm	Phlm
 Phlm	Flm
@@ -313,6 +331,7 @@ Rev	Muujintii
 Rev	Muuj
 Rev	Rev
 Rom	Rooma
+Rom	Room
 Rom	Rom
 Ruth	Ruth
 Ruth	Ruud

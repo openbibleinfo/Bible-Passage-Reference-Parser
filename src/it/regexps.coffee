@@ -25,13 +25,13 @@ bcv_parser::regexps.escaped_passage = ///
 				 )+
 		)
 	///gi
-# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**.
+# These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
-	  \d+ \W* titolo
-	| \d+ \W* (?:ss|,#{bcv_parser::regexps.space}+ecc|ecc) (?: [\s\xa0*]* \.)?
-	| \d+ [\s\xa0*]* [a-d] (?! \w )
+	  \d \W* titolo
+	| \d \W* (?:ss|,#{bcv_parser::regexps.space}+ecc|ecc) (?: [\s\xa0*]* \.)?
+	| \d [\s\xa0*]* [a-d] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
-	| [\d\x1f]+
+	| [\d\x1f]
 	///gi
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
@@ -469,25 +469,25 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["2Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Second(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|II(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|2(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?|Macc))
+		2Macc|(?:Second(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|II(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|2(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Terz(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|III(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|3(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?|Macc))
+		3Macc|(?:Terz(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|III(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|3(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["4Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Quart(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|IV(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|4(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?|Macc))
+		4Macc|(?:Quart(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|IV(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|4(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Prim(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|I(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|1(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?|Macc))
+		1Macc|(?:Prim(?:a[\s\xa0]*Maccabei|o[\s\xa0]*(?:libro[\s\xa0]*dei[\s\xa0]*Maccabei|Maccabei))|I(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|1(?:\.[\s\xa0]*Maccabei|°(?:\.[\s\xa0]*Maccabei|[\s\xa0]*Maccabei)|[\s\xa0]*Mac(?:cabei)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	]
 	# Short-circuit the look if we know we want all the books.

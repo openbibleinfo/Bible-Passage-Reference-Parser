@@ -1682,6 +1682,7 @@ Amos	Amó
 Amos	Am
 Bar	Baruc
 Bar	Bar
+Bar	Ba
 Bel	Bel y el Serpiente
 Bel	Bel y el Dragon
 Bel	Bel y el Dragón
@@ -1846,6 +1847,7 @@ Eccl	Eccl
 Eccl	Ecc
 Eccl	Ecl
 Eccl	Ec
+Eccl	Qo
 EpJer	La Carta de Jeremias
 EpJer	La Carta de Jeremías
 EpJer	Carta de Jeremias
@@ -1901,6 +1903,8 @@ Gal	Galat
 Gal	Gálat
 Gal	Gal
 Gal	Gál
+Gal	Ga
+Gal	Gá
 Gen	Genesis
 Gen	Génesis
 Gen	Gen
@@ -1982,6 +1986,7 @@ Jas	Santiago
 Jas	Sant
 Jas	Jas
 Jas	Stg
+Jas	St
 Jdt	Judit
 Jdt	Jdit
 Jdt	Judt
@@ -1992,6 +1997,7 @@ Jer	Jeremia
 Jer	Jeremía
 Jer	Jere
 Jer	Jer
+Jer	Jr
 Job	Job
 Job	Jb
 Joel	Joel
@@ -2029,6 +2035,7 @@ Judg	Jueces
 Judg	Judg
 Judg	Juec
 Judg	Jue
+Judg	Jc
 Lam	Lamentaciones
 Lam	Lamintaciones
 Lam	Lamentacione
@@ -2053,6 +2060,7 @@ Mal	Malaquías
 Mal	Malaqu
 Mal	Mala
 Mal	Mal
+Mal	Ml
 Mark	El Evangelio de Marcos
 Mark	Evangelio de Marcos
 Mark	San Marcos
@@ -2105,6 +2113,7 @@ Phil	Filip
 Phil	Fili
 Phil	Phil
 Phil	Fil
+Phil	Flp
 Phil,Phlm	Fil
 Phlm	Filemon
 Phlm	Filemón
@@ -2254,6 +2263,7 @@ Sir	Ecclus
 Sir	Sirac
 Sir	Sirác
 Sir	Sir
+Sir	Si
 Song	El Cantar de los Cantares
 Song	Cantare de los Cantares
 Song	Cantar de los Cantares
@@ -2269,21 +2279,26 @@ Titus	Titus
 Titus	Tito
 Titus	Tit
 Titus	Ti
+Titus	Tt
 Tob	Tobit
 Tob	Tobi
 Tob	Tobt
 Tob	Tob
+Tob	Tb
 Wis	Sabiduria
 Wis	Sabiduría
 Wis	Sab
 Wis	Wis
+Wis	Sb
 Zech	Zacarias
 Zech	Zacarías
 Zech	Zacar
 Zech	Zech
 Zech	Zac
+Zech	Za
 Zeph	Sofonias
 Zeph	Sofonías
 Zeph	Zeph
 Zeph	Sof
 Zeph	Sf
+Zeph	So

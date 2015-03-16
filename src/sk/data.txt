@@ -9,7 +9,7 @@ $AB	[b-e]
 # http://dkc.kbs.sk/dkc.php?frames=1&in=Zjv (porov. = cf. and pozri = see), http://sk.wikipedia.org/wiki/Kniha_proroka_Daniela (alebo = or)
 $AND	porov	pozri	alebo	a
 # http://sk.wikipedia.org/wiki/Exodus_%28Biblia%29 (kapitole), http://sk.wikipedia.org/wiki/Deuteron%C3%B3mium (kapitolu), http://sk.wikipedia.org/wiki/Kniha_m%C3%BAdrosti (hlavy)
-$CHAPTER	kapitoly	kapitole	kapitolu	kapitol	hlavy	kap
+$CHAPTER	kapitoly	kapitole	kapitolu	kapitol	hlavy	kap.
 $FF	ff
 $TITLE	title
 $TRANS	SEB
