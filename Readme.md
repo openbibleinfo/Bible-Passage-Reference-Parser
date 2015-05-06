@@ -505,6 +505,7 @@ Most of these languages are in [Google Translate](https://translate.google.com/)
 	<tr><td>ta</td><td>Tamil</td></tr>
 	<tr><td>th</td><td>Thai</td></tr>
 	<tr><td>tl</td><td>Tagalog</td></tr>
+	<tr><td>tr</td><td>Turkish</td></tr>
 	<tr><td>uk</td><td>Ukrainian</td></tr>
 	<tr><td>ur</td><td>Urdu</td></tr>
 	<tr><td>vi</td><td>Vietnamese</td></tr>
