@@ -2906,6 +2906,8 @@ describe "Miscellaneous tests", ->
 	it "should handle translations (nl)", ->
 		expect(p.parse("Lev 1 (GNB96)").osis_and_translations()).toEqual [["Lev.1", "GNB96"]]
 		expect(p.parse("lev 1 gnb96").osis_and_translations()).toEqual [["Lev.1", "GNB96"]]
+		expect(p.parse("Lev 1 (NB)").osis_and_translations()).toEqual [["Lev.1", "NB"]]
+		expect(p.parse("lev 1 nb").osis_and_translations()).toEqual [["Lev.1", "NB"]]
 		expect(p.parse("Lev 1 (NBG51)").osis_and_translations()).toEqual [["Lev.1", "NBG51"]]
 		expect(p.parse("lev 1 nbg51").osis_and_translations()).toEqual [["Lev.1", "NBG51"]]
 		expect(p.parse("Lev 1 (NBV)").osis_and_translations()).toEqual [["Lev.1", "NBV"]]
@@ -2916,8 +2918,6 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 sv77").osis_and_translations()).toEqual [["Lev.1", "SV77"]]
 		expect(p.parse("Lev 1 (WV95)").osis_and_translations()).toEqual [["Lev.1", "WV95"]]
 		expect(p.parse("lev 1 wv95").osis_and_translations()).toEqual [["Lev.1", "WV95"]]
-		expect(p.parse("Lev 1 (NB)").osis_and_translations()).toEqual [["Lev.1", "NB"]]
-		expect(p.parse("lev 1 nb").osis_and_translations()).toEqual [["Lev.1", "NB"]]
 	it "should handle book ranges (nl)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Eerste - Derde  Joh").osis()).toEqual "1John.1-3John.1"

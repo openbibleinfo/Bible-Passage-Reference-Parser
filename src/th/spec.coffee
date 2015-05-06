@@ -1490,10 +1490,10 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (th)", ->
-		expect(p.parse("Lev 1 (NCV)").osis_and_translations()).toEqual [["Lev.1", "NCV"]]
-		expect(p.parse("lev 1 ncv").osis_and_translations()).toEqual [["Lev.1", "NCV"]]
 		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
+		expect(p.parse("Lev 1 (NCV)").osis_and_translations()).toEqual [["Lev.1", "NCV"]]
+		expect(p.parse("lev 1 ncv").osis_and_translations()).toEqual [["Lev.1", "NCV"]]
 	it "should handle book ranges (th)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("1 - 3  ยอห์น").osis()).toEqual "1John.1-3John.1"

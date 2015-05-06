@@ -5590,12 +5590,12 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("Prvá kniha až Tretia kniha  Jánov").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("Prvá kniha az Tretia kniha  Jánov").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("Prvá kniha - Tretia kniha  Jánov").osis()).toEqual("1John.1-3John.1");
       expect(p.parse("Prvá kniha až Tretia kniha  Janov").osis()).toEqual("1John.1-3John.1");
       expect(p.parse("Prvá kniha az Tretia kniha  Janov").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("Prvá kniha - Tretia kniha  Janov").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("Prvá kniha - Tretia kniha  Janov").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("Prvá kniha až Tretia kniha  Jánov").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("Prvá kniha az Tretia kniha  Jánov").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("Prvá kniha - Tretia kniha  Jánov").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (sk)", function() {
       p.set_options({

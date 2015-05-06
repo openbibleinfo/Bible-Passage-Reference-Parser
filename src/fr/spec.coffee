@@ -2757,14 +2757,14 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3et suivant, 4:2et suivant").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 ET SUIVANT, 4:2 ET SUIVANT").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (fr)", ->
-		expect(p.parse("Lev 1 (LSG)").osis_and_translations()).toEqual [["Lev.1", "LSG"]]
-		expect(p.parse("lev 1 lsg").osis_and_translations()).toEqual [["Lev.1", "LSG"]]
-		expect(p.parse("Lev 1 (NEG1979)").osis_and_translations()).toEqual [["Lev.1", "NEG1979"]]
-		expect(p.parse("lev 1 neg1979").osis_and_translations()).toEqual [["Lev.1", "NEG1979"]]
 		expect(p.parse("Lev 1 (BDS)").osis_and_translations()).toEqual [["Lev.1", "BDS"]]
 		expect(p.parse("lev 1 bds").osis_and_translations()).toEqual [["Lev.1", "BDS"]]
+		expect(p.parse("Lev 1 (LSG)").osis_and_translations()).toEqual [["Lev.1", "LSG"]]
+		expect(p.parse("lev 1 lsg").osis_and_translations()).toEqual [["Lev.1", "LSG"]]
 		expect(p.parse("Lev 1 (LSG21)").osis_and_translations()).toEqual [["Lev.1", "LSG21"]]
 		expect(p.parse("lev 1 lsg21").osis_and_translations()).toEqual [["Lev.1", "LSG21"]]
+		expect(p.parse("Lev 1 (NEG1979)").osis_and_translations()).toEqual [["Lev.1", "NEG1979"]]
+		expect(p.parse("lev 1 neg1979").osis_and_translations()).toEqual [["Lev.1", "NEG1979"]]
 	it "should handle book ranges (fr)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Premières á Troisièmes  Jean").osis()).toEqual "1John.1-3John.1"

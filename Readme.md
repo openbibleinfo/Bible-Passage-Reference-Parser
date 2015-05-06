@@ -2,7 +2,7 @@
 
 Try a [demo of the Bible passage reference parser](http://www.openbible.info/labs/reference-parser/).
 
-This project is a Coffeescript implementation of a Bible-passage reference parser (e.g., seeing `John 3:16` and both understanding that it's a Bible reference and converting it into a form that computers can process). It parses Bible **B**ooks, **C**hapters, and **V**erses—thus the file names involving "BCV Parser."
+This project is a Coffeescript implementation of a Bible-passage reference parser (seeing `John 3:16`, for example, and both understanding that it's a Bible reference and converting it into a form that computers can process). It parses Bible **B**ooks, **C**hapters, and **V**erses—thus the file names involving "BCV Parser."
 
 Its primary use is to interpret query strings for use in a Bible application. It can extract BCVs from text but may be too aggressive for some uses. (See [Caveats](#caveats).)
 
@@ -10,7 +10,7 @@ It should be fairly speedy, taking under a millisecond to parse a short string o
 
 The code occupies about 135KB minified and 24KB gzipped.
 
-This project also provides extensively commented code and 465,000 real-world strings that you can use as a starting point to build your own BCV parser.
+This project also provides extensively commented code and 4.7 million real-world strings that you can use as a starting point to build your own BCV parser.
 
 ## Usage
 
@@ -51,7 +51,7 @@ bcv.parse("John 3:16"); // Returns the `bcv` object.
 This function parses a string with a string context as the second argument. As with `.parse()`, it returns the `bcv` object and is suitable for chaining. Use this function if you have a string that starts with what you suspect is a reference and you already know the context. For example, maybe you're parsing a footnote that refers to "verse 16," and you know that the footnote is attached to John 3:
 
 ```javascript
-bcv.parse("verse 16", "John 3"); // Returns the `bcv` object.
+bcv.parse_with_context("verse 16", "John 3"); // Returns the `bcv` object.
 bcv.osis(); // "John.3.16"
 ```
 
@@ -59,17 +59,21 @@ It only matches relevant content at the beginning of the first argument; parsing
 
 Without this function, you could manually prepend the context to the string, but it could get messy: with the context `John 3:16`, the string `verse 17` would become `John 3:16,verse 17`. Depending on your settings, this string might parse as `John.3.16-John.3.17`, which isn't what you want. `.parse_with_context()` lets you avoid such messiness.
 
-Passing a translation as part of the context (`John 3:16 NIV`) doesn't apply the translation to the first argument. Translations always propagate backward, not forward (`Matt 5:6 (NIV)` rather than `NIV: Matt 5:6`). You can set the `versification_system` option to change the default translation.
+Passing a translation as part of the context—`bcv.parse_with_context("verse 16", "John 3 NIV")`—doesn't apply the translation to the first argument. Translations always propagate backward, not forward (`Matt 5:6 (NIV)` rather than `NIV: Matt 5:6`). You can set the `versification_system` option to change the default translation.
 
 #### `.osis()`
 
-This function returns a single OSIS for the entire input, ignoring translations.
+This function returns a single OSIS for the entire input, providing no information about any translations included in the input.
 
 ```javascript
-bcv.parse("John 3:16 NIV").osis(); // "John.3.16"
-bcv.parse("John 3:16-17").osis(); // "John.3.16-John.3.17"
-bcv.parse("John 3:16,18").osis(); // "John.3.16,John.3.18"
-bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis(); // "John.3.16,John.3.18,Matt.1"
+bcv.parse("John 3:16 NIV").osis();
+// "John.3.16"
+bcv.parse("John 3:16-17").osis();
+// "John.3.16-John.3.17"
+bcv.parse("John 3:16,18").osis();
+// "John.3.16,John.3.18"
+bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis();
+// "John.3.16,John.3.18,Matt.1"
 ```
 
 #### `.osis_and_translations()`
@@ -77,10 +81,14 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis(); // "John.3.16,John.3
 This function returns an array. Each element in the array is an `[OSIS, Translation]` pair (both are strings).
 
 ```javascript
-bcv.parse("John 3:16 NIV").osis_and_translations(); // [["John.3.16", "NIV"]]
-bcv.parse("John 3:16-17").osis_and_translations(); // [["John.3.16-John.3.17", ""]]
-bcv.parse("John 3:16,18").osis_and_translations(); // [["John.3.16,John.3.18", ""]]
-bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_translations(); // [["John.3.16,John.3.18", ""], ["Matt.1", "NIV,ESV"]]
+bcv.parse("John 3:16 NIV").osis_and_translations();
+// [["John.3.16", "NIV"]]
+bcv.parse("John 3:16-17").osis_and_translations();
+// [["John.3.16-John.3.17", ""]]
+bcv.parse("John 3:16,18").osis_and_translations();
+// [["John.3.16,John.3.18", ""]]
+bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_translations();
+// [["John.3.16,John.3.18", ""], ["Matt.1", "NIV,ESV"]]
 ```
 
 #### `.osis_and_indices()`
@@ -88,10 +96,14 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_translations(); // 
 This function returns an array. Each element in the array is an object with `osis` (a string), `translations` (an array of translation identifiers—an empty string unless a translation is specified), and `indices` (the start and end position in the string). The `indices` key is designed to be consistent with Twitter's implementation (the first character in a string has indices `[0, 1]`).
 
 ```javascript
-bcv.parse("John 3:16 NIV").osis_and_indices(); // [{"osis": "John.3.16", "translations": ["NIV"], "indices": [0, 13]}]
-bcv.parse("John 3:16-17").osis_and_indices(); // [{"osis": "John.3.16-John.3.17", "translations": [""], "indices": [0, 12]}]
-bcv.parse("John 3:16,18").osis_and_indices(); // [{"osis": "John.3.16,John.3.18", "translations": [""], "indices": [0, 12]}]
-bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_indices(); // [{"osis": "John.3.16,John.3.18", "translations": [""], "indices":[0, 12]}, {"osis": "Matt.1", "translations": ["NIV","ESV"], "indices": [18, 38]}]
+bcv.parse("John 3:16 NIV").osis_and_indices();
+// [{"osis": "John.3.16", "translations": ["NIV"], "indices": [0, 13]}]
+bcv.parse("John 3:16-17").osis_and_indices();
+// [{"osis": "John.3.16-John.3.17", "translations": [""], "indices": [0, 12]}]
+bcv.parse("John 3:16,18").osis_and_indices();
+// [{"osis": "John.3.16,John.3.18", "translations": [""], "indices": [0, 12]}]
+bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_indices();
+// [{"osis": "John.3.16,John.3.18", "translations": [""], "indices":[0, 12]}, {"osis": "Matt.1", "translations": ["NIV","ESV"], "indices": [18, 38]}]
 ```
 
 #### `.parsed_entities()`
@@ -109,45 +121,45 @@ Returns:
 
 ```javascript
 [{ "osis": "John.3",
-   "indices": [0, 10],
-   "translations": [""],
-   "entity_id": 0,
-   "entities": [
-   		{ "osis": "John.3",
-		  "type": "bc",
-		  "indices": [0, 6],
-		  "translations": [""],
-		  "start": { "b": "John", "c": 3, "v": 1 },
-		  "end": { "b": "John", "c": 3, "v": 36 },
-		  "enclosed_indices": [-1, -1],
-		  "entity_id": 0,
-		  "entities": [{
-			"start": { "b": "John", "c": 3, "v": 1 },
-			"end": { "b": "John", "c": 3, "v": 36 },
-			"valid": { "valid": true, "messages": {} },
-			"type": "bc",
-			"absolute_indices": [0, 6],
-			"enclosed_absolute_indices": [-1, -1]
-			}]
-		},
-		{ "osis": "",
-		  "type": "integer",
-		  "indices": [8, 10],
-		  "translations": [""],
-		  "start": { "b": "John", "c": 99 },
-		  "end": { "b": "John", "c": 99 },
-		  "enclosed_indices": [-1, -1],
-		  "entity_id": 0,
-		  "entities": [{
-			"start": { "b": "John", "c": 99 },
-			"end": { "b": "John", "c": 99 },
-			"valid": { "valid": false, "messages": { "start_chapter_not_exist": 21 } },
-			"type": "integer",
-			"absolute_indices": [8, 10],
-			"enclosed_absolute_indices": [-1, -1]
-			}]
-		}
-   	]
+  "indices": [0, 10],
+  "translations": [""],
+  "entity_id": 0,
+  "entities": [
+    { "osis": "John.3",
+      "type": "bc",
+      "indices": [0, 6],
+      "translations": [""],
+      "start": { "b": "John", "c": 3, "v": 1 },
+      "end": { "b": "John", "c": 3, "v": 36 },
+      "enclosed_indices": [-1, -1],
+      "entity_id": 0,
+      "entities": [{
+        "start": { "b": "John", "c": 3, "v": 1 },
+        "end": { "b": "John", "c": 3, "v": 36 },
+        "valid": { "valid": true, "messages": {} },
+        "type": "bc",
+        "absolute_indices": [0, 6],
+        "enclosed_absolute_indices": [-1, -1]
+      }]
+    },
+    { "osis": "",
+      "type": "integer",
+      "indices": [8, 10],
+      "translations": [""],
+      "start": { "b": "John", "c": 99 },
+      "end": { "b": "John", "c": 99 },
+      "enclosed_indices": [-1, -1],
+      "entity_id": 0,
+      "entities": [{
+        "start": { "b": "John", "c": 99 },
+        "end": { "b": "John", "c": 99 },
+        "valid": { "valid": false, "messages": { "start_chapter_not_exist": 21 } },
+        "type": "integer",
+        "absolute_indices": [8, 10],
+        "enclosed_absolute_indices": [-1, -1]
+      }]
+    }
+  ]
 }]
 ```
 
@@ -167,7 +179,7 @@ You shouldn't call `include_apocrypha()` between calling `parse()` and one of th
 
 #### `.set_options({})`
 
-This function takes an object that sets parsing and output options. See "Options" below for available keys and values. This function doesn't enforce valid values, but using values other than the ones described in "Options" will lead to unexpected behavior.
+This function takes an object that sets parsing and output options. See "Options" below for available keys and values. This function doesn't enforce valid values, but using values other than the ones described in [Options](#options) will lead to unexpected behavior.
 
 ```javascript
 bcv.set_options({"osis_compaction_strategy": "bcv"});
@@ -182,15 +194,15 @@ This function is separate from the parsing sequence and provides data that may b
 
 This function returns an object of data about the requested translation. You can use this data to determine, for example, the previous and next chapters for a given chapter, even when the given chapter is at the beginning or end of a book.
 
-It takes an optional string argument that identifies the translation--if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, and `nrsv`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
+It takes an optional string argument that identifies the translation—if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, and `nrsv`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
 
 The returned object has three keys:
 
 ```javascript
 {
-	"order": {"Gen": 1, "Exod": 2, ...},
-	"books": ["Gen", "Exod", "Lev", ...],
-	"chapters": {"Gen": [31, 25, ...], "Exod": [22, 25, ...], ...}
+  "order": {"Gen": 1, "Exod": 2, ...},
+  "books": ["Gen", "Exod", "Lev", ...],
+  "chapters": {"Gen": [31, 25, ...], "Exod": [22, 25, ...], ...}
 }
 ```
 
@@ -328,7 +340,7 @@ In addition, a number of the tests in the "real-world" section of [`src/core/spe
 
 One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file [`src/core/spec.coffee`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/src/core/spec.coffee) has over 3,700 tests that illustrate the range of input that this parser can handle.
 
-Separate from this repository (I used to bundle it until the file size became too large) are four data files that you can use to test your own parser. Derived from Twitter and Facebook mentions of Bible references, the dataset reflects how people really type references. It includes 4.7 million unique strings across 180 million total mentions. (For example, the most-popular string, "Philippians 4:13", is mentioned over 1.3 million times.)
+Separate from this repository are four data files that you can use to test your own parser. Derived from Twitter and Facebook mentions of Bible references, the dataset reflects how people really type references in English. It includes 4.7 million unique strings across 180 million total mentions. (For example, the most-popular string, "Philippians 4:13", is mentioned over 1.3 million times.)
 
 1. [10+ mentions in the dataset](http://a.openbible.info/data/bcv-parser/10plus.zip). 465,000 unique strings, 4 MB. If you're just beginning to develop your own parser and are looking for raw data, start with this file.
 2. [3-9 mentions in the dataset](http://a.openbible.info/data/bcv-parser/3-9.zip). 818,000 unique strings, 7 MB.
@@ -348,6 +360,7 @@ This dataset has a few limitations:
 3. Its coverage of Deuterocanonical books is very limited; as with misspellings, the queries used to retrieve the data don't include books from the Apocrypha.
 4. It doesn't include context that could change the interpretation of the string.
 5. Sequences interrupted by translation identifiers are separated: the parsing of `Matt 1 NIV Matt 2 KJV` appears in two separate lines.
+6. It's only in English.
 
 ## OSIS
 
@@ -429,7 +442,7 @@ You're probably not calling this function directly but instead are using one of 
 
 ## Performance
 
-Performance degrades linearly with the number of passages found in a string. Using Node.js 0.10.33, it processes 1,300 tweets per second on a single 2.5 GHz core of an EC2 C4 Large instance.
+Performance degrades linearly with the number of passages found in a string. Using Node.js 0.10.33, it processes 2,000 tweets per second on a single 2.5 GHz core of an EC2 C4 Large instance.
 
 In the worst case, given a string consisting of almost nothing but Bible passage references, it processes about 50-60 KB of text per second. In more realistic applications, it parses around 300 KB of text per second.
 
@@ -500,7 +513,7 @@ Most of these languages are in [Google Translate](https://translate.google.com/)
 
 When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `replace`.
 
-When using `<script>`s on the web, be sure to serve them with the `utf-8` character set--many of the files contain raw UTF-8 characters. The safest way to ensure the right character set is to include the `charset` attribute on the `<script>` tag:
+When using `<script>`s on the web, be sure to serve them with the `utf-8` character set—many of the files contain raw UTF-8 characters. The safest way to ensure the right character set is to include the `charset` attribute on the `<script>` tag:
 
 ```html
 <script src="en_bcv_parser.min.js" charset="UTF-8"></script>
@@ -557,15 +570,17 @@ This code is in production use on a site that indexes [Bible verses on Twitter a
 
 ## License
 
-The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language--it's not necessary to run the parser in your project. If you're only parsing content, that usage falls entirely under the MIT License.
+The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language—it's not necessary to run the parser in your project. If you're only parsing content, that usage falls entirely under the MIT License.
 
 ## Changelog
 
-March 16, 2015. Added `parse_with_context()` to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a fuzz tester in `bin/fuzz`, which uncovered several crashing bugs.
+May 6, 2015. Hand-tuned some of the PEG.js output to improve overall performance by around 50% in most languages.
+
+March 16, 2015. Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a [fuzz tester](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/bin/fuzz/fuzz_lang.coffee), which uncovered several crashing bugs.
 
 November 3, 2014. Fixed two bugs related to range rewriting. Updated frak to the latest development version. Added quite a few more languages, bringing the total to 46.
 
-May 2, 2014. Added the `passage_existence_strategy` option to relax how much validation the parser should do when given a possibly invalid reference. The extensive tests written for this feature uncovered a few other bugs. Added the `book_range_strategy` option to specify how to handle books when they appear in a range. Added `translation_info()`. Fixed bug when changing versification systems several times and improved support for changing versification systems that rely on a different book order from the default. Updated PEG.js to 0.8.0. Added support for Arabic, Bulgarian, Russian, Thai, and Vietnamese.
+May 2, 2014. Added the `passage_existence_strategy` option to relax how much validation the parser should do when given a possibly invalid reference. The extensive tests written for this feature uncovered a few other bugs. Added the `book_range_strategy` option to specify how to handle books when they appear in a range. Added [`translation_info()`](#translation_info). Fixed bug when changing versification systems several times and improved support for changing versification systems that rely on a different book order from the default. Updated PEG.js to 0.8.0. Added support for Arabic, Bulgarian, Russian, Thai, and Vietnamese.
 
 November 8, 2013. Recast English as just another language that uses the same build process as all the other languages. Fixed bug with parentheses in sequences. Made specs runnable using [jasmine-node](https://github.com/mhevery/jasmine-node). Optimized generated regular expressions for speed using [Frak](https://github.com/noprompt/frak). Added support for German, Greek, Italian, and Latin.
 

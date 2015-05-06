@@ -2550,14 +2550,14 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3и сл, 4:2и сл").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 И СЛ, 4:2 И СЛ").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (bg)", ->
-		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
-		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 		expect(p.parse("Lev 1 (BPB)").osis_and_translations()).toEqual [["Lev.1", "BPB"]]
 		expect(p.parse("lev 1 bpb").osis_and_translations()).toEqual [["Lev.1", "BPB"]]
+		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
+		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 	it "should handle book ranges (bg)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Първа - Трето  Йоаново").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Първа - Трето  Иоаново").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Първа - Трето  Иоан").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Първа - Трето  Йоан").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (bg)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

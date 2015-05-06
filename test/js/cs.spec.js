@@ -6463,7 +6463,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("První - Třetí  Janova").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("První - Třetí  J").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (cs)", function() {
       p.set_options({

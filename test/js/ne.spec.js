@@ -4281,7 +4281,10 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("1 - 3  यूहन्नाको").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1 - 3  yuhannako").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1 - 3  yuhannāko").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1 - 3  yūhannako").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("1 - 3  yūhannāko").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (ne)", function() {
       p.set_options({

@@ -1988,13 +1988,13 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (vi)", ->
-		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
-		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 		expect(p.parse("Lev 1 (1934)").osis_and_translations()).toEqual [["Lev.1", "1934"]]
 		expect(p.parse("lev 1 1934").osis_and_translations()).toEqual [["Lev.1", "1934"]]
+		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
+		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 	it "should handle book ranges (vi)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("I to III  Gioan").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("I to III  Gi").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (vi)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

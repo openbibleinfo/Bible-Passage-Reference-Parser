@@ -2597,7 +2597,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("1 - 3  Yooxanaa").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("1 - 3  Yoox").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (so)", function() {
       p.set_options({

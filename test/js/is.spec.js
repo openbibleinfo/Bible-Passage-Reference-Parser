@@ -3736,8 +3736,8 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("1 - 3  Jóh").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("1 - 3  Joh").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1 - 3  Joh").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("1 - 3  Jóh").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (is)", function() {
       p.set_options({

@@ -13,7 +13,7 @@ sequence_post_enclosed
 sequence_post
   = sequence_post_enclosed / cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v
 
-// `cv_weak` is after `integer` in `val_2` to avoid cases like "Mark 16:1-6 10". `b` is a special case to avoid oddities like "Ezekiel - 25:16"
+// `cv_weak` is after `integer` in `val_2` to avoid cases like "Mark 16:1-6 10". `b` is a special case to avoid oddities like "Ezekiel - 25:16".
 range
   = val_1:(bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b &(range_sep (bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / bv / b)) / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v) range_sep val_2:(ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / v_letter / integer / cv_weak / c / v)
     { if (val_1.length && val_1.length === 2) val_1 = val_1[0]; // for `b`, which returns [object, undefined]
@@ -145,7 +145,7 @@ c_explicit
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "вірші"i / "вірш"i ) ![a-z] sp
+  = sp ( "вірш"i ( "і"i / ""i ) ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -171,7 +171,7 @@ abbrev
   = sp "." !(sp "." sp ".")
 
 /* Translations */
-// Prevents a reference entirely enclosed in parentheses from incorrectly grabbing the closing parenthesis of the reference rather than just the closing parenthesis of the translation
+// Prevents a reference entirely enclosed in parentheses from incorrectly grabbing the closing parenthesis of the reference rather than just the closing parenthesis of the translation.
 translation_sequence_enclosed
   = sp [\(\[] sp val:(translation (sequence_sep translation)*) sp [\)\]]
     { return {"type": "translation_sequence", "value": val, "indices": [offset(), peg$currPos - 1]} }
@@ -185,11 +185,12 @@ translation
     { return {"type": "translation", "value": val.value, "indices": [offset(), peg$currPos - 1]} }
 
 /* Base nodes */
-// Integer is never four or more digits long or followed by, e.g., ",000"
+// Integer is never four or more digits long or followed by, e.g., ",000". The build process overwrites this function with a faster version.
 integer
   = val:([0-9] [0-9]? [0-9]?) !([0-9] / ",000")
     { return {"type": "integer", "value": parseInt(val.join(""), 10), "indices": [offset(), peg$currPos - 1]} }
 
+// The build process overwrites this function with a faster version.
 any_integer
   = val:([0-9]+)
     { return {"type": "integer", "value": parseInt(val.join(""), 10), "indices": [offset(), peg$currPos - 1]} }
@@ -198,7 +199,7 @@ word
   = val:( [^\x1f\x1e\(\[]+ )
     { return {"type": "word", "value": val.join(""), "indices": [offset(), peg$currPos - 1]} }
 
-// Don't gobble up opening parenthesis in an enclosed translation sequence--stop parsing when reaching an unmatched parenthesis
+// Don't gobble up opening parenthesis in an enclosed translation sequence--stop parsing when reaching an unmatched parenthesis.
 word_parenthesis
   = val:[\(\[]
     { return {"type": "stop", "value": val, "indices": [offset(), peg$currPos - 1]} }
@@ -206,6 +207,6 @@ word_parenthesis
 sp
   = space?
 
-// Older IE doesn't consider `\xa0` part of the `\s` class
+// Older IE doesn't consider `\xa0` part of the `\s` class. The build process overwrites this function with a faster version.
 space
   = [ \t\r\n\xa0\*]+

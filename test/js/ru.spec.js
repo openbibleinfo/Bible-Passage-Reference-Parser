@@ -3676,7 +3676,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("1-я — 3-я  послание Иоанна").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("1-я — 3-я  Иоанна").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (ru)", function() {
       p.set_options({

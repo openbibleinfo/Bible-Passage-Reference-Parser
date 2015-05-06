@@ -5582,7 +5582,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 b21").osis_and_translations()).toEqual [["Lev.1", "B21"]]
 	it "should handle book ranges (cs)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("První - Třetí  Janova").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("První - Třetí  J").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (cs)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

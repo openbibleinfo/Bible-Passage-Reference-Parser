@@ -6,7 +6,7 @@ $FOURTH	Δʹ
 $AB	[α-ε]
 $AND	και
 # http://users.otenet.gr/~louka/triodion.htm and http://en.wiktionary.org/wiki/%CE%BA%CE%B5%CF%86%CE%AC%CE%BB%CE%B1%CE%B9%CE%BF and http://el.wikisource.org/wiki/%CE%86%CF%83%CE%BC%CE%B1_%CE%91%CF%83%CE%BC%CE%AC%CF%84%CF%89%CE%BD
-$CHAPTER	κεφάλαια	κεφάλαιον	κεφάλαιο	κεφ
+$CHAPTER	κεφάλαια	κεφάλαιον	κεφάλαιο	κεφ.
 # https://www.google.com/search?q=Γένεσις "και μετά" "στίχοι"&ie=utf-8&oe=utf-8
 $FF	και μετά
 # The terminal sigma throws off the case-insensitive matching

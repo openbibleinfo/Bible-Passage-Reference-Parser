@@ -4683,10 +4683,10 @@
       return expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (zh)", function() {
-      expect(p.parse("Lev 1 (CUV)").osis_and_translations()).toEqual([["Lev.1", "CUV"]]);
-      expect(p.parse("lev 1 cuv").osis_and_translations()).toEqual([["Lev.1", "CUV"]]);
       expect(p.parse("Lev 1 (CNV)").osis_and_translations()).toEqual([["Lev.1", "CNV"]]);
       expect(p.parse("lev 1 cnv").osis_and_translations()).toEqual([["Lev.1", "CNV"]]);
+      expect(p.parse("Lev 1 (CUV)").osis_and_translations()).toEqual([["Lev.1", "CUV"]]);
+      expect(p.parse("lev 1 cuv").osis_and_translations()).toEqual([["Lev.1", "CUV"]]);
       expect(p.parse("Lev 1 (CUVMP)").osis_and_translations()).toEqual([["Lev.1", "CUVMP"]]);
       return expect(p.parse("lev 1 cuvmp").osis_and_translations()).toEqual([["Lev.1", "CUVMP"]]);
     });

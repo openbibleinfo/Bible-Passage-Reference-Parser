@@ -266,12 +266,17 @@ class bcv_parser
 		books = []
 		# Replace all book strings.
 		for book in @regexps.books
+			has_replacement = false
 			# Using array concatenation instead of replacing text directly didn't offer performance improvements in tests of the approach.
 			s = s.replace book.regexp, (full, prev, bk) ->
+				has_replacement = true
 				# `value` contains the raw string; `book.osis` is the osis value for the book.
 				books.push value: bk, parsed: book.osis, type: "book"
-				extra = if book.extra? then "/" + book.extra else ""
+				extra = if book.extra? then "/#{book.extra}" else ""
 				"#{prev}\x1f#{books.length - 1}#{extra}\x1f"
+			# If we've already replaced all possible books in the string, we don't need to check any further.
+			if has_replacement is true and /^[\s\x1f\d:.,;\-\u2013\u2014]+$/.test(s)
+				break
 		# Replace translations.
 		s = s.replace @regexps.translations, (match) ->
 			books.push value: match, parsed: match.toLowerCase(), type: "translation"

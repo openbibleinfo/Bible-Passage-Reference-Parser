@@ -2380,16 +2380,16 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3e sig, 4:2e sig").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 E SIG, 4:2 E SIG").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (pt)", ->
-		expect(p.parse("Lev 1 (NVI)").osis_and_translations()).toEqual [["Lev.1", "NVI"]]
-		expect(p.parse("lev 1 nvi").osis_and_translations()).toEqual [["Lev.1", "NVI"]]
-		expect(p.parse("Lev 1 (JFA)").osis_and_translations()).toEqual [["Lev.1", "JFA"]]
-		expect(p.parse("lev 1 jfa").osis_and_translations()).toEqual [["Lev.1", "JFA"]]
 		expect(p.parse("Lev 1 (BPT)").osis_and_translations()).toEqual [["Lev.1", "BPT"]]
 		expect(p.parse("lev 1 bpt").osis_and_translations()).toEqual [["Lev.1", "BPT"]]
+		expect(p.parse("Lev 1 (JFA)").osis_and_translations()).toEqual [["Lev.1", "JFA"]]
+		expect(p.parse("lev 1 jfa").osis_and_translations()).toEqual [["Lev.1", "JFA"]]
+		expect(p.parse("Lev 1 (NVI)").osis_and_translations()).toEqual [["Lev.1", "NVI"]]
+		expect(p.parse("lev 1 nvi").osis_and_translations()).toEqual [["Lev.1", "NVI"]]
 	it "should handle book ranges (pt)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Primeira á Terceira  João").osis()).toEqual "1John.1-3John.1"
 		expect(p.parse("Primeira á Terceira  Joao").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Primeira á Terceira  João").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (pt)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

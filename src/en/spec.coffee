@@ -12209,12 +12209,15 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 tniv").osis_and_translations()).toEqual [["Lev.1", "TNIV"]]
 	it "should handle book ranges (en)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("1st through 3rd  Jophn").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("1st thru 3rd  Jophn").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("1st to 3rd  Jophn").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("1st through 3rd  Jphn").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("1st thru 3rd  Jphn").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("1st to 3rd  Jphn").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st through 3rd  Jh").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st thru 3rd  Jh").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st to 3rd  Jh").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st through 3rd  Jn").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st thru 3rd  Jn").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st to 3rd  Jn").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st through 3rd  Jo").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st thru 3rd  Jo").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1st to 3rd  Jo").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (en)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

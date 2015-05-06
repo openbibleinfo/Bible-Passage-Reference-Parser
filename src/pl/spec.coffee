@@ -6765,10 +6765,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 np").osis_and_translations()).toEqual [["Lev.1", "NP"]]
 	it "should handle book ranges (pl)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Pierwsza do Trzecia  List św. Jana").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Pierwsza do Trzecia  List św Jana").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Pierwsza do Trzecia  List sw. Jana").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Pierwsza do Trzecia  List sw Jana").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Pierwsza do Trzecia  Jana").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (pl)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

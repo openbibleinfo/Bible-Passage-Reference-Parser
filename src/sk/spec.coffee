@@ -4709,12 +4709,12 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 seb").osis_and_translations()).toEqual [["Lev.1", "SEB"]]
 	it "should handle book ranges (sk)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Prvá kniha až Tretia kniha  Jánov").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Prvá kniha az Tretia kniha  Jánov").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Prvá kniha - Tretia kniha  Jánov").osis()).toEqual "1John.1-3John.1"
 		expect(p.parse("Prvá kniha až Tretia kniha  Janov").osis()).toEqual "1John.1-3John.1"
 		expect(p.parse("Prvá kniha az Tretia kniha  Janov").osis()).toEqual "1John.1-3John.1"
 		expect(p.parse("Prvá kniha - Tretia kniha  Janov").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Prvá kniha až Tretia kniha  Jánov").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Prvá kniha az Tretia kniha  Jánov").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Prvá kniha - Tretia kniha  Jánov").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (sk)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

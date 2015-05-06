@@ -2795,7 +2795,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 sz").osis_and_translations()).toEqual [["Lev.1", "SZ"]]
 	it "should handle book ranges (ru)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("1-я — 3-я  послание Иоанна").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("1-я — 3-я  Иоанна").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (ru)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

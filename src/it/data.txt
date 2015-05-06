@@ -13,7 +13,7 @@ $CHAPTER	capitoli	capitolo	capp.	cap.	cc.
 $FF	ss	, ecc	ecc
 # http://it.wikipedia.org/wiki/Salmi
 $TITLE	titolo
-$TRANS	CEI	NR	ND
+$TRANS	CEI	NR2006	NR1994	LND	NR	ND
 # http://it.wikipedia.org/wiki/Libro_di_Ester
 $TO	al
 # http://it.wikipedia.org/wiki/Libro_di_Ester (versetto and versetti) and http://it.wikipedia.org/wiki/Qoelet (versi) and http://it.wikipedia.org/wiki/Libro_di_Abdia (vv) and http://it.wikipedia.org/wiki/Genesi (v)

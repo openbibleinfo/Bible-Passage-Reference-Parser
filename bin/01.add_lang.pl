@@ -67,7 +67,7 @@ sub make_grammar
 	{
 		my $safe_key = $key;
 		$safe_key =~ s/^\$/\\\$/;
-		$out =~ s/$safe_key(?!\w)/format_var('pegjs', $key)/ge;
+		$out =~ s/$safe_key\b/format_var('pegjs', $key)/ge;
 	}
 
 	open OUT, ">:utf8", "$dir/$lang/grammar.pegjs";
@@ -522,12 +522,55 @@ sub format_var
 		{
 			$out = "( $out )";
 		}
+		elsif (scalar @values >= 2 && ($var_name eq '$CHAPTER' || $var_name eq '$VERSE' || $var_name eq '$FF'))
+		{
+			$out = handle_pegjs_prepends($out, @values);
+			#print Dumper(\@values);
+		}
 		return $out;
 	}
 	else
 	{
 		die "Unknown var type: $type / $var_name";
 	}
+}
+
+sub handle_pegjs_prepends
+{
+	my $out = shift;
+	my $count = scalar @_;
+	my %lcs;
+	foreach my $c (@_)
+	{
+		next unless ($c =~ /^"/);
+		for my $length (2 .. length $c)
+		{
+			push @{$lcs{substr($c, 0, $length)}}, $c;
+		}
+	}
+	my $longest = '';
+	foreach my $lc (keys %lcs)
+	{
+		$longest = $lc if (scalar @{$lcs{$lc}} == $count && length $lc > length $longest);
+	}
+	return $out unless ($longest);
+	my $length = length $longest;
+	my @out;
+	foreach my $c (@_)
+	{
+		$c = substr($c, $length);
+		$c = '"' . $c unless ($c =~ /^\s*\[|^\s*abbrev\?/);
+		return $out if ($c eq '"');
+		$c =~ s!^"" !!;
+		next unless (length $c);
+		push @out, $c;
+	}
+	unless ($longest =~ /"i?\s*$/)
+	{
+		$longest .= '"';
+		$longest .= 'i' if ($longest =~ /[\x80-\x{ffff}]/);
+	}
+	return "$longest ( " . join(' / ', @out) . " )";
 }
 
 sub make_tests
@@ -803,7 +846,7 @@ sub add_trans_tests
 {
 	my @out;
 	push @out, "	it \"should handle translations ($lang)\", ->";
-	foreach my $abbrev (@{$vars{'$TRANS'}})
+	foreach my $abbrev (sort @{$vars{'$TRANS'}})
 	{
 		foreach my $translation (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
@@ -823,7 +866,7 @@ sub add_book_range_tests
 	#my ($and) = sort { length $b <=> length $a } keys %{$vars{'$AND'}};
 	#my ($to) = sort { length $b <=> length $a } keys %{$vars{'$TO'}};
 	my $john = '';
-	foreach my $key (%{$raw_abbrevs{'1John'}})
+	foreach my $key (sort keys %{$raw_abbrevs{'1John'}})
 	{
 		next unless ($key =~ /^\$FIRST/);
 		$key =~ s/^\$FIRST(?!\w)//;
@@ -832,7 +875,7 @@ sub add_book_range_tests
 	}
 	unless ($john)
 	{
-		print "Warning: no available John abbreviation for testing book ranges\n";
+		print "  Warning: no available John abbreviation for testing book ranges\n";
 		return;
 	}
 	my @out;
@@ -840,7 +883,7 @@ sub add_book_range_tests
 	push @out, "	it \"should handle book ranges ($lang)\", ->";
 	push @out, "		p.set_options {book_alone_strategy: \"full\", book_range_strategy: \"include\"}";
 	my %alreadys;
-	foreach my $abbrev (@johns)
+	foreach my $abbrev (sort @johns)
 	{
 		foreach my $to_regex (@{$vars{'$TO'}})
 		{
@@ -1206,7 +1249,6 @@ sub expand_abbrev
 		elsif ($char eq '|')
 		{
 			push @outs, expand_abbrev(join('', @chars));
-			print Dumper(\@outs);
 			return @outs;
 		}
 		else

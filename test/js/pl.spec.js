@@ -7646,10 +7646,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("Pierwsza do Trzecia  List św. Jana").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("Pierwsza do Trzecia  List św Jana").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("Pierwsza do Trzecia  List sw. Jana").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("Pierwsza do Trzecia  List sw Jana").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("Pierwsza do Trzecia  Jana").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (pl)", function() {
       p.set_options({

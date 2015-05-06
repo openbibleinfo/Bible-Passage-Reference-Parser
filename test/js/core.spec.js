@@ -11,11 +11,11 @@
       return p = new bcv_parser;
     });
     it("should be defined", function() {
-      return expect(p).toBeDefined;
+      return expect(p).toBeDefined();
     });
     it("should have book regexps", function() {
       expect(p.regexps.books[0].osis).toEqual(["Gen"]);
-      return expect(p.regexps.escaped_passage).toBeDefined;
+      return expect(p.regexps.escaped_passage).toBeDefined();
     });
     it("should reset itself", function() {
       p.s = "string";
@@ -3540,7 +3540,7 @@
       p.set_options({
         book_alone_strategy: "full"
       });
-      return expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual([
+      expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual([
         {
           osis: "Rom",
           indices: [0, 7],
@@ -3593,6 +3593,21 @@
               ]
             }
           ]
+        }
+      ]);
+      return expect(p.parse("Matthew 3:1 NIV 12 7:1").osis_and_indices()).toEqual([
+        {
+          osis: "Matt.3.1",
+          translations: ["NIV"],
+          indices: [0, 15]
+        }, {
+          osis: "Matt.3.12",
+          translations: [""],
+          indices: [16, 18]
+        }, {
+          osis: "Matt.7.1",
+          translations: [""],
+          indices: [19, 22]
         }
       ]);
     });

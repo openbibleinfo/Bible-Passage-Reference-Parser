@@ -3447,18 +3447,18 @@
       return expect(p.parse("REV 3 И СЛ, 4:2 И СЛ").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (bg)", function() {
-      expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
-      expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
       expect(p.parse("Lev 1 (BPB)").osis_and_translations()).toEqual([["Lev.1", "BPB"]]);
-      return expect(p.parse("lev 1 bpb").osis_and_translations()).toEqual([["Lev.1", "BPB"]]);
+      expect(p.parse("lev 1 bpb").osis_and_translations()).toEqual([["Lev.1", "BPB"]]);
+      expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
+      return expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
     });
     it("should handle book ranges (bg)", function() {
       p.set_options({
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("Първа - Трето  Йоаново").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("Първа - Трето  Иоаново").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("Първа - Трето  Иоан").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("Първа - Трето  Йоан").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (bg)", function() {
       p.set_options({

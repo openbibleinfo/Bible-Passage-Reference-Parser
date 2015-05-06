@@ -13170,12 +13170,15 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("1st through 3rd  Jophn").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("1st thru 3rd  Jophn").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("1st to 3rd  Jophn").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("1st through 3rd  Jphn").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("1st thru 3rd  Jphn").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("1st to 3rd  Jphn").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st through 3rd  Jh").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st thru 3rd  Jh").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st to 3rd  Jh").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st through 3rd  Jn").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st thru 3rd  Jn").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st to 3rd  Jn").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st through 3rd  Jo").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1st thru 3rd  Jo").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("1st to 3rd  Jo").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (en)", function() {
       p.set_options({

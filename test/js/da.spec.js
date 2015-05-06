@@ -2892,7 +2892,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("Første - Tredje  Johannes").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("Første - Tredje  Joh").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (da)", function() {
       p.set_options({

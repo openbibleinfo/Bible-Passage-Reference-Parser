@@ -6,11 +6,11 @@ describe "Pre-parsing", ->
 		p = new bcv_parser
 
 	it "should be defined", ->
-		expect(p).toBeDefined
+		expect(p).toBeDefined()
 
 	it "should have book regexps", ->
 		expect(p.regexps.books[0].osis).toEqual ["Gen"]
-		expect(p.regexps.escaped_passage).toBeDefined
+		expect(p.regexps.escaped_passage).toBeDefined()
 
 	it "should reset itself", ->
 		p.s = "string"
@@ -838,6 +838,7 @@ describe "Parsing", ->
 		expect(p.parse("Matt 1 ESV 2-3 NIV").osis_and_translations()).toEqual [["Matt.1", "ESV"], ["Matt.2-Matt.3", "NIV"]]
 		p.set_options book_alone_strategy: "full"
 		expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual [{osis: "Rom", indices: [0, 7], translations: ["AMP"], entity_id: 0, entities: [{osis: "Rom", type: "b", indices: [0, 7], translations: ["AMP"], start: {b: "Rom", c: 1, v: 1}, end: {b: "Rom", c: 16, v: 27}, enclosed_indices: undefined, entity_id: 0, entities: [{start: {b: "Rom", c: 1, v: 1}, end: {b: "Rom", c: 16, v: 27}, valid: {valid: true, messages: {}}, translations: [{translation: "amp", alias: "default", osis: "AMP"}], type: "b", absolute_indices: [0, 7]}]}]}]
+		expect(p.parse("Matthew 3:1 NIV 12 7:1").osis_and_indices()).toEqual [{osis: "Matt.3.1", translations: ["NIV"], indices: [0, 15]}, {osis: "Matt.3.12", translations: [""], indices: [16, 18]}, {osis: "Matt.7.1", translations: [""], indices: [19, 22]}]
 
 	it "should handle translations preceded by various bcv types", ->
 		p.set_options book_alone_strategy: "full", book_range_strategy: "include"

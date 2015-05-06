@@ -3793,6 +3793,8 @@
     it("should handle translations (nl)", function() {
       expect(p.parse("Lev 1 (GNB96)").osis_and_translations()).toEqual([["Lev.1", "GNB96"]]);
       expect(p.parse("lev 1 gnb96").osis_and_translations()).toEqual([["Lev.1", "GNB96"]]);
+      expect(p.parse("Lev 1 (NB)").osis_and_translations()).toEqual([["Lev.1", "NB"]]);
+      expect(p.parse("lev 1 nb").osis_and_translations()).toEqual([["Lev.1", "NB"]]);
       expect(p.parse("Lev 1 (NBG51)").osis_and_translations()).toEqual([["Lev.1", "NBG51"]]);
       expect(p.parse("lev 1 nbg51").osis_and_translations()).toEqual([["Lev.1", "NBG51"]]);
       expect(p.parse("Lev 1 (NBV)").osis_and_translations()).toEqual([["Lev.1", "NBV"]]);
@@ -3802,9 +3804,7 @@
       expect(p.parse("Lev 1 (SV77)").osis_and_translations()).toEqual([["Lev.1", "SV77"]]);
       expect(p.parse("lev 1 sv77").osis_and_translations()).toEqual([["Lev.1", "SV77"]]);
       expect(p.parse("Lev 1 (WV95)").osis_and_translations()).toEqual([["Lev.1", "WV95"]]);
-      expect(p.parse("lev 1 wv95").osis_and_translations()).toEqual([["Lev.1", "WV95"]]);
-      expect(p.parse("Lev 1 (NB)").osis_and_translations()).toEqual([["Lev.1", "NB"]]);
-      return expect(p.parse("lev 1 nb").osis_and_translations()).toEqual([["Lev.1", "NB"]]);
+      return expect(p.parse("lev 1 wv95").osis_and_translations()).toEqual([["Lev.1", "WV95"]]);
     });
     it("should handle book ranges (nl)", function() {
       p.set_options({

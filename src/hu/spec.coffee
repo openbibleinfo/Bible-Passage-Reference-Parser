@@ -3009,16 +3009,14 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3kk, 4:2kk").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 KK, 4:2 KK").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (hu)", ->
-		expect(p.parse("Lev 1 (KAR)").osis_and_translations()).toEqual [["Lev.1", "KAR"]]
-		expect(p.parse("lev 1 kar").osis_and_translations()).toEqual [["Lev.1", "KAR"]]
 		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
 		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
+		expect(p.parse("Lev 1 (KAR)").osis_and_translations()).toEqual [["Lev.1", "KAR"]]
+		expect(p.parse("lev 1 kar").osis_and_translations()).toEqual [["Lev.1", "KAR"]]
 	it "should handle book ranges (hu)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Első köv Harmadik  János").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Első kov Harmadik  János").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Első köv Harmadik  Janos").osis()).toEqual "1John.1-3John.1"
-		expect(p.parse("Első kov Harmadik  Janos").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Első köv Harmadik  Jn").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Első kov Harmadik  Jn").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (hu)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"

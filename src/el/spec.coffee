@@ -3341,6 +3341,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 3:4 ΚΕΦΆΛΑΙΟ 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, κεφαλαιο 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 ΚΕΦΑΛΑΙΟ 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, κεφ. 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 ΚΕΦ. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, κεφ 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 ΚΕΦ 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (el)", ->
@@ -3382,10 +3384,10 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Rev 3και μετα, 4:2και μετα").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 ΚΑΙ ΜΕΤΑ, 4:2 ΚΑΙ ΜΕΤΑ").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 	it "should handle translations (el)", ->
-		expect(p.parse("Lev 1 (SEPTUAGINT)").osis_and_translations()).toEqual [["Lev.1", "SEPTUAGINT"]]
-		expect(p.parse("lev 1 septuagint").osis_and_translations()).toEqual [["Lev.1", "SEPTUAGINT"]]
 		expect(p.parse("Lev 1 (SEPT)").osis_and_translations()).toEqual [["Lev.1", "SEPT"]]
 		expect(p.parse("lev 1 sept").osis_and_translations()).toEqual [["Lev.1", "SEPT"]]
+		expect(p.parse("Lev 1 (SEPTUAGINT)").osis_and_translations()).toEqual [["Lev.1", "SEPTUAGINT"]]
+		expect(p.parse("lev 1 septuagint").osis_and_translations()).toEqual [["Lev.1", "SEPTUAGINT"]]
 	it "should handle book ranges (el)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Α' - Γ'  Ιω").osis()).toEqual "1John.1-3John.1"

@@ -2865,17 +2865,17 @@
       return expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (vi)", function() {
-      expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
-      expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
       expect(p.parse("Lev 1 (1934)").osis_and_translations()).toEqual([["Lev.1", "1934"]]);
-      return expect(p.parse("lev 1 1934").osis_and_translations()).toEqual([["Lev.1", "1934"]]);
+      expect(p.parse("lev 1 1934").osis_and_translations()).toEqual([["Lev.1", "1934"]]);
+      expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
+      return expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
     });
     it("should handle book ranges (vi)", function() {
       p.set_options({
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("I to III  Gioan").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("I to III  Gi").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (vi)", function() {
       p.set_options({

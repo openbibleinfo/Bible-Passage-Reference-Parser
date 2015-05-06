@@ -5603,10 +5603,10 @@
       expect(p.parse("lev 1 ntv").osis_and_translations()).toEqual([["Lev.1", "NTV"]]);
       expect(p.parse("Lev 1 (NVI)").osis_and_translations()).toEqual([["Lev.1", "NVI"]]);
       expect(p.parse("lev 1 nvi").osis_and_translations()).toEqual([["Lev.1", "NVI"]]);
-      expect(p.parse("Lev 1 (RVR1960)").osis_and_translations()).toEqual([["Lev.1", "RVR1960"]]);
-      expect(p.parse("lev 1 rvr1960").osis_and_translations()).toEqual([["Lev.1", "RVR1960"]]);
       expect(p.parse("Lev 1 (RVR)").osis_and_translations()).toEqual([["Lev.1", "RVR"]]);
       expect(p.parse("lev 1 rvr").osis_and_translations()).toEqual([["Lev.1", "RVR"]]);
+      expect(p.parse("Lev 1 (RVR1960)").osis_and_translations()).toEqual([["Lev.1", "RVR1960"]]);
+      expect(p.parse("lev 1 rvr1960").osis_and_translations()).toEqual([["Lev.1", "RVR1960"]]);
       expect(p.parse("Lev 1 (TLA)").osis_and_translations()).toEqual([["Lev.1", "TLA"]]);
       return expect(p.parse("lev 1 tla").osis_and_translations()).toEqual([["Lev.1", "TLA"]]);
     });
@@ -5615,10 +5615,10 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("1.º á 3.º  San Jaan").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("1.º á 3.º  San Jaun").osis()).toEqual("1John.1-3John.1");
-      expect(p.parse("1.º á 3.º  San Juan").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("1.º á 3.º  San Juun").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1.º á 3.º  Jaan").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1.º á 3.º  Jaun").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("1.º á 3.º  Juan").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("1.º á 3.º  Juun").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (es)", function() {
       p.set_options({

@@ -1972,10 +1972,16 @@ describe "Miscellaneous tests", ->
 	it "should handle translations (it)", ->
 		expect(p.parse("Lev 1 (CEI)").osis_and_translations()).toEqual [["Lev.1", "CEI"]]
 		expect(p.parse("lev 1 cei").osis_and_translations()).toEqual [["Lev.1", "CEI"]]
-		expect(p.parse("Lev 1 (NR)").osis_and_translations()).toEqual [["Lev.1", "NR"]]
-		expect(p.parse("lev 1 nr").osis_and_translations()).toEqual [["Lev.1", "NR"]]
+		expect(p.parse("Lev 1 (LND)").osis_and_translations()).toEqual [["Lev.1", "LND"]]
+		expect(p.parse("lev 1 lnd").osis_and_translations()).toEqual [["Lev.1", "LND"]]
 		expect(p.parse("Lev 1 (ND)").osis_and_translations()).toEqual [["Lev.1", "ND"]]
 		expect(p.parse("lev 1 nd").osis_and_translations()).toEqual [["Lev.1", "ND"]]
+		expect(p.parse("Lev 1 (NR)").osis_and_translations()).toEqual [["Lev.1", "NR"]]
+		expect(p.parse("lev 1 nr").osis_and_translations()).toEqual [["Lev.1", "NR"]]
+		expect(p.parse("Lev 1 (NR1994)").osis_and_translations()).toEqual [["Lev.1", "NR1994"]]
+		expect(p.parse("lev 1 nr1994").osis_and_translations()).toEqual [["Lev.1", "NR1994"]]
+		expect(p.parse("Lev 1 (NR2006)").osis_and_translations()).toEqual [["Lev.1", "NR2006"]]
+		expect(p.parse("lev 1 nr2006").osis_and_translations()).toEqual [["Lev.1", "NR2006"]]
 	it "should handle book ranges (it)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Primo al Terzo  Giovanni").osis()).toEqual "1John.1-3John.1"

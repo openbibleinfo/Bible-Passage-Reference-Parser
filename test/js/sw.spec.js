@@ -2964,10 +2964,10 @@
       return expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (sw)", function() {
-      expect(p.parse("Lev 1 (SUV)").osis_and_translations()).toEqual([["Lev.1", "SUV"]]);
-      expect(p.parse("lev 1 suv").osis_and_translations()).toEqual([["Lev.1", "SUV"]]);
       expect(p.parse("Lev 1 (HN)").osis_and_translations()).toEqual([["Lev.1", "HN"]]);
-      return expect(p.parse("lev 1 hn").osis_and_translations()).toEqual([["Lev.1", "HN"]]);
+      expect(p.parse("lev 1 hn").osis_and_translations()).toEqual([["Lev.1", "HN"]]);
+      expect(p.parse("Lev 1 (SUV)").osis_and_translations()).toEqual([["Lev.1", "SUV"]]);
+      return expect(p.parse("lev 1 suv").osis_and_translations()).toEqual([["Lev.1", "SUV"]]);
     });
     it("should handle book ranges (sw)", function() {
       p.set_options({

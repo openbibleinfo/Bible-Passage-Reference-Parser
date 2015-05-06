@@ -3520,7 +3520,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("اوّل تا تیسرا  یُوحنّا").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("اوّل تا تیسرا  یوحنّا").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (ur)", function() {
       p.set_options({

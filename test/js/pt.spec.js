@@ -3257,20 +3257,20 @@
       return expect(p.parse("REV 3 E SIG, 4:2 E SIG").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (pt)", function() {
-      expect(p.parse("Lev 1 (NVI)").osis_and_translations()).toEqual([["Lev.1", "NVI"]]);
-      expect(p.parse("lev 1 nvi").osis_and_translations()).toEqual([["Lev.1", "NVI"]]);
+      expect(p.parse("Lev 1 (BPT)").osis_and_translations()).toEqual([["Lev.1", "BPT"]]);
+      expect(p.parse("lev 1 bpt").osis_and_translations()).toEqual([["Lev.1", "BPT"]]);
       expect(p.parse("Lev 1 (JFA)").osis_and_translations()).toEqual([["Lev.1", "JFA"]]);
       expect(p.parse("lev 1 jfa").osis_and_translations()).toEqual([["Lev.1", "JFA"]]);
-      expect(p.parse("Lev 1 (BPT)").osis_and_translations()).toEqual([["Lev.1", "BPT"]]);
-      return expect(p.parse("lev 1 bpt").osis_and_translations()).toEqual([["Lev.1", "BPT"]]);
+      expect(p.parse("Lev 1 (NVI)").osis_and_translations()).toEqual([["Lev.1", "NVI"]]);
+      return expect(p.parse("lev 1 nvi").osis_and_translations()).toEqual([["Lev.1", "NVI"]]);
     });
     it("should handle book ranges (pt)", function() {
       p.set_options({
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      expect(p.parse("Primeira á Terceira  João").osis()).toEqual("1John.1-3John.1");
-      return expect(p.parse("Primeira á Terceira  Joao").osis()).toEqual("1John.1-3John.1");
+      expect(p.parse("Primeira á Terceira  Joao").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("Primeira á Terceira  João").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (pt)", function() {
       p.set_options({

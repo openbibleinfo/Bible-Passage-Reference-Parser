@@ -6780,7 +6780,7 @@
         book_alone_strategy: "full",
         book_range_strategy: "include"
       });
-      return expect(p.parse("Перша - Третя  Послання Івана").osis()).toEqual("1John.1-3John.1");
+      return expect(p.parse("Перша - Третя  Івана").osis()).toEqual("1John.1-3John.1");
     });
     return it("should handle boundaries (uk)", function() {
       p.set_options({

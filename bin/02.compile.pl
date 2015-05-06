@@ -25,9 +25,44 @@ sub add_peg
 	open FILE, "<:utf8", "../temp_$prefix${lang}_grammar.js";
 	my $peg = join '', <FILE>;
 	close FILE;
+
+	# Ideally, it would `return res[0].split("");`, but this is faster, and PEG.js doesn't care.
+	my $new_parsespace = 'function peg$parsespace() {
+      var res;
+      if (res = /^[\s\xa0*]+/.exec(input.substr(peg$currPos))) {
+        peg$reportedPos = peg$currPos;
+        peg$currPos += res[0].length;
+        return [];
+      }
+      return peg$c1;
+    }';
+    my $new_parseinteger = 'function peg$parseinteger() {
+      var res;
+      if (res = /^[0-9]{1,3}(?!\d|,000)/.exec(input.substr(peg$currPos))) {
+        peg$reportedPos = peg$currPos;
+        peg$currPos += res[0].length;
+        return {"type": "integer", "value": parseInt(res[0], 10), "indices": [peg$reportedPos, peg$currPos - 1]}
+      } else {
+        return peg$c1;
+      }
+    }';
+    my $new_parseany_integer = 'function peg$parseany_integer() {
+      var res;
+      if (res = /^[0-9]+/.exec(input.substr(peg$currPos))) {
+        peg$reportedPos = peg$currPos;
+        peg$currPos += res[0].length;
+        return {"type": "integer", "value": parseInt(res[0], 10), "indices": [peg$reportedPos, peg$currPos - 1]}
+      } else {
+        return peg$c1;
+      }
+    }';
+
+	$peg =~ s@function peg\$parsespace\(\) \{(?:(?:.|\n)(?!return s0))*?.return s0;\s*\}@$new_parsespace@;
+	$peg =~ s@function peg\$parseinteger\(\) \{(?:(?:.|\n)(?!return s0))*?.return s0;\s*\}@$new_parseinteger@;
+	$peg =~ s@function peg\$parseany_integer\(\) \{(?:(?:.|\n)(?!return s0))*?.return s0;\s*\}@$new_parseany_integer@;
 	$peg =~ s! \\t\\r\\n\\xa0!\\s\\xa0!gi;
 	$peg =~ s! \\\\t\\\\r\\\\n\\\\xa0!\\\\s\\\\xa0!gi;
-	die "Unreplaced PEG Space: $peg" if ($peg =~ /\\r\\n|\\u00A0/i);
+	die "Unreplaced PEG space: $peg" if ($peg =~ /parse(?:space|integer|any_integer)\(\) \{\s+var s/i);
 	merge_file("../js/#PREFIX${lang}_bcv_parser.js", $peg, $prefix);
 }
 

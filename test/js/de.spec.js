@@ -2695,10 +2695,10 @@
       expect(p.parse("lev 1 elb").osis_and_translations()).toEqual([["Lev.1", "ELB"]]);
       expect(p.parse("Lev 1 (HFA)").osis_and_translations()).toEqual([["Lev.1", "HFA"]]);
       expect(p.parse("lev 1 hfa").osis_and_translations()).toEqual([["Lev.1", "HFA"]]);
-      expect(p.parse("Lev 1 (LUTHER)").osis_and_translations()).toEqual([["Lev.1", "LUTHER"]]);
-      expect(p.parse("lev 1 luther").osis_and_translations()).toEqual([["Lev.1", "LUTHER"]]);
       expect(p.parse("Lev 1 (LUTH1545)").osis_and_translations()).toEqual([["Lev.1", "LUTH1545"]]);
       expect(p.parse("lev 1 luth1545").osis_and_translations()).toEqual([["Lev.1", "LUTH1545"]]);
+      expect(p.parse("Lev 1 (LUTHER)").osis_and_translations()).toEqual([["Lev.1", "LUTHER"]]);
+      expect(p.parse("lev 1 luther").osis_and_translations()).toEqual([["Lev.1", "LUTHER"]]);
       expect(p.parse("Lev 1 (SCH1950)").osis_and_translations()).toEqual([["Lev.1", "SCH1950"]]);
       expect(p.parse("lev 1 sch1950").osis_and_translations()).toEqual([["Lev.1", "SCH1950"]]);
       expect(p.parse("Lev 1 (SCH2000)").osis_and_translations()).toEqual([["Lev.1", "SCH2000"]]);

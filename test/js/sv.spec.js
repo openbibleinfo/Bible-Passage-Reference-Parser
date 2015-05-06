@@ -2755,12 +2755,12 @@
       return expect(p.parse("REV 3 F, 4:2 F").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (sv)", function() {
+      expect(p.parse("Lev 1 (B1917)").osis_and_translations()).toEqual([["Lev.1", "B1917"]]);
+      expect(p.parse("lev 1 b1917").osis_and_translations()).toEqual([["Lev.1", "B1917"]]);
       expect(p.parse("Lev 1 (B2000)").osis_and_translations()).toEqual([["Lev.1", "B2000"]]);
       expect(p.parse("lev 1 b2000").osis_and_translations()).toEqual([["Lev.1", "B2000"]]);
       expect(p.parse("Lev 1 (SFB)").osis_and_translations()).toEqual([["Lev.1", "SFB"]]);
       expect(p.parse("lev 1 sfb").osis_and_translations()).toEqual([["Lev.1", "SFB"]]);
-      expect(p.parse("Lev 1 (B1917)").osis_and_translations()).toEqual([["Lev.1", "B1917"]]);
-      expect(p.parse("lev 1 b1917").osis_and_translations()).toEqual([["Lev.1", "B1917"]]);
       expect(p.parse("Lev 1 (SFB14)").osis_and_translations()).toEqual([["Lev.1", "SFB14"]]);
       return expect(p.parse("lev 1 sfb14").osis_and_translations()).toEqual([["Lev.1", "SFB14"]]);
     });

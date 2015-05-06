@@ -2367,10 +2367,10 @@
       return expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
     });
     it("should handle translations (th)", function() {
-      expect(p.parse("Lev 1 (NCV)").osis_and_translations()).toEqual([["Lev.1", "NCV"]]);
-      expect(p.parse("lev 1 ncv").osis_and_translations()).toEqual([["Lev.1", "NCV"]]);
       expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
-      return expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
+      expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
+      expect(p.parse("Lev 1 (NCV)").osis_and_translations()).toEqual([["Lev.1", "NCV"]]);
+      return expect(p.parse("lev 1 ncv").osis_and_translations()).toEqual([["Lev.1", "NCV"]]);
     });
     it("should handle book ranges (th)", function() {
       p.set_options({
