@@ -532,6 +532,7 @@ Most of these languages are in [Google Translate](https://translate.google.com/)
 	<tr><td>ta</td><td>Tamil</td></tr>
 	<tr><td>th</td><td>Thai</td></tr>
 	<tr><td>tl</td><td>Tagalog</td></tr>
+	<tr><td>tr</td><td>Turkish</td></tr>
 	<tr><td>uk</td><td>Ukrainian</td></tr>
 	<tr><td>ur</td><td>Urdu</td></tr>
 	<tr><td>vi</td><td>Vietnamese</td></tr>
@@ -623,4 +624,4 @@ November 20, 2012 (0.3.0). Improved support for parentheses. Added some alternat
 
 May 16, 2012 (0.2.0). Added basic Spanish support. Fixed multiple capital-letter sequences. Upgraded PEG.js and Coffeescript to the latest versions. Deprecated support for IE6 and 7.
 
-November 18, 2011 (0.1.0). First commit.
+November 18, 2011. First commit.
