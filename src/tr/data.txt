@@ -1,103 +1,104 @@
-$FIRST	1	I	Bir	Birinci	İlk
-$SECOND	2	II	İki	İkinci
-$THIRD	3	III	Üç	Üçüncü
-$FOURTH	4	IV	Dört	Dördüncü
+$FIRST	1	I	Bir(inci)?	[İi]lk
+$SECOND	2	II	[İi]ki	[İi]kinci
+$THIRD	3	III	Üç(üncü)?
+$FOURTH	4	IV	Dör(t|düncü)
 $BOOK	Kitap	Kitab[ıi]
-$GOSPEL	'?y?[ae] Göre İncil	'?n?[ıiİü]n İncili	İncili
+$GOSPEL	'?y?a Göre [İi]ncil	'?n?[ıİu]n [İi]ncili	[İi]ncili
 $AB	[b-e]
 $AND	ve
-$CHAPTER	bölüm	bap	bö.	bp.	bölümler	baplar
+$CHAPTER	baplar	bap	bp.
+#bölümler	bölüm	bö.
 $FF	vs	vd
 $TITLE	başl[ıi]k
-$TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HADİ
+$TRANS	YC	YC198,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HADI
 $TO	ile
-$VERSE	ayet	a.	ayeti
+$VERSE	ayet	a. ayeti
 $UNICODE_BLOCK	Latin
 
-Gen	Yarat[ıi]l[ıi]ş	Tesniye	Tekvin	Yar
-Exod	M[ıi]s[ıi]r'dan Ç[ıi]k[ıi]ş	Ç[ıi]k[ıi]ş	Ç[ıi]k
-Lev	Lev[ıi]l[ıi]ler	Lev
-Num	Çölde Say[ıi]m	Say[ıi]lar	Say
-Deut	Yasa'n[ıi]n Tekrar[ıi]	Yas
+Gen	Yarat(ı|i|I|İ)l(ı|i|I|İ)ş	Tesn(ı|i|I|İ)ye	Tekv(ı|i|I|İ)n	Yar
+Exod	M(ı|i|I|İ)s(ı|i|I|İ)r'?dan Ç(ı|i|I|İ)k(ı|i|I|İ)ş	Ç(ı|i|I|İ)k(ı|i|I|İ)ş	Ç(ı|i|I|İ)k
+Lev	Lev(ı|i|I|İ)l(ı|i|I|İ)ler	Lev
+Num	Çölde Say(ı|i|I|İ)m	Say(ı|i|I|İ)lar	Say
+Deut	Yasa'?n(ı|i|I|İ)n Tekrar(ı|i|I|İ)	Yas
 Josh	Yeşu	Yşu
-Judg	Hakimler	Hak
+Judg	Hak(ı|i|I|İ)mler	Hak
 Ruth	Rut	Rut
-1Sam	$FIRST Samuel	1 Sa
-2Sam	$SECOND Samuel	2 Sa
-1Kgs	$FIRST Krallar	1 Kr
-2Kgs	$SECOND Krallar	2 Kr
-1Chr	$FIRST Tarihler	1 Ta
-2Chr	$SECOND Tarihler	2 Ta
+1Sam	$FIRST Samuel	1.? Sa
+2Sam	$SECOND Samuel	2.? Sa
+1Kgs	$FIRST Krallar	1.? Kr
+2Kgs	$SECOND Krallar	2.? Kr
+1Chr	$FIRST Tar(ı|i|I|İ)hler	1.? Ta
+2Chr	$SECOND Tar(ı|i|I|İ)hler	2.? Ta
 Ezra	Ezra	Ezr
 Neh	Nehemya	Neh
 Esth	Ester	Est
 Job	Eyüp	Eyü
 Ps	Mezmurlar	Mezmur	Mez
-Prov	Süleyman'[ıi]n Özdeyişleri	Süleyman'[ıi]n Meselleri	Meseller	Özd
-Eccl	Vaiz	Vai
-Song	Ezgiler Ezgisi	Ezg
+Prov	Süleyman'?(ı|i|I|İ)n Özdey(ı|i|I|İ)şler(ı|i|I|İ)	Süleyman'?(ı|i|I|İ)n Meseller(ı|i|I|İ)	Meseller	Özd
+Eccl	Va(ı|i|I|İ)z	Va(ı|i|I|İ)
+Song	Ezg(ı|i|I|İ)ler Ezg(ı|i|I|İ)s(ı|i|I|İ)	Ezg
 Isa	Yeşaya	Yşa
 Jer	Yeremya	Yer
-Lam	Ağitlar	Ağ[ıi]
-Ezek	Hezekiel	Hez
-Dan	Daniel	Dan
+Lam	Ağ(ı|i|I|İ)tlar	Ağ(ı|i|I|İ)
+Ezek	Hezek(ı|i|I|İ)el	Hez
+Dan	Dan(ı|i|I|İ)el	Dan
 Hos	Hosea	Hoş
 Joel	Yoel	Yoe
 Amos	Amos	Amo
 Obad	Ovadya	Ova
 Jonah	Yunus	Yun
-Mic	Mika	Mik
+Mic	M(ı|i|I|İ)ka	M(ı|i|I|İ)k
 Nah	Nahum	Nah
 Hab	Habakkuk	Hab
 Zeph	Sefanya	Sef
 Hag	Hagay	Hag
-Zech	Zekeriya	Zek
-Mal	Malaki	Mal
+Zech	Zeker(ı|i|I|İ)ya	Zek
+Mal	Malak(ı|i|I|İ)	Mal
 Matt	Matta$GOSPEL	Matta	Mat
 Mark	Markos$GOSPEL	Markos	Mar
 Luke	Luka$GOSPEL	Luka	Luk
-John	Yuhanna$GOSPEL	Yuhanna	Yu
-Acts	Elçilerin İşleri	Elç
-Rom	Romal[ıi]lar	Rom
-1Cor	$FIRST Korintliler	$FIRST Korintoslular	1 Ko
-2Cor	$SECOND Korintliler	$SECOND Korintoslular	2 Ko
-Gal	Galatyal[ıi]lar	Gal
-Eph	Efesliler	Ef
-Phil	Filipililer	Flp
-Col	Koloseliler	Kol
-1Thess	$FIRST Selanikiler	1 Se
-2Thess	$SECOND Selanikiler	2 Se
-1Tim	$FIRST Timoteos	1 Ti
-2Tim	$SECOND Timoteos	2 Ti
-Titus	Titus	Tit
-Phlm	Filimon	Flm
-Heb	İbraniler	İbr
+John	Yuhanna$GOSPEL	Yuhanna	Yuh	Yu
+Acts	Elç(ı|i|I|İ)ler(ı|i|I|İ)n (ı|i|I|İ)şler(ı|i|I|İ)	Elç
+Rom	Romal(ı|i|I|İ)lar	Rom
+1Cor	$FIRST Kor(ı|i|I|İ)ntl(ı|i|I|İ)ler	$FIRST Kor(ı|i|I|İ)ntoslular	1.? Ko
+2Cor	$SECOND Kor(ı|i|I|İ)ntl(ı|i|I|İ)ler	$SECOND Kor(ı|i|I|İ)ntoslular	2.? Ko
+Gal	Galatyal(ı|i|I|İ)lar	Gal
+Eph	Efesl(ı|i|I|İ)ler	Efe	Ef
+Phil	F(ı|i|I|İ)l(ı|i|I|İ)p(ı|i|I|İ)l(ı|i|I|İ)ler	Flp
+Col	Kolosel(ı|i|I|İ)ler	Kol
+1Thess	$FIRST Selan(ı|i|I|İ)kl(ı|i|I|İ)ler	1.? Se
+2Thess	$SECOND Selan(ı|i|I|İ)kl(ı|i|I|İ)ler	2.? Se
+1Tim	$FIRST T(ı|i|I|İ)moteos	1.? T(ı|i|I|İ)
+2Tim	$SECOND T(ı|i|I|İ)moteos	2.? T(ı|i|I|İ)
+Titus	T(ı|i|I|İ)tus	T(ı|i|I|İ)t
+Phlm	F(ı|i|I|İ)l(ı|i|I|İ)mon	Flm
+Heb	(ı|i|I|İ)bran(ı|i|I|İ)ler	(ı|i|I|İ)br
 Jas	Yakup	Yak
-1Pet	$FIRST Petrus	1 Pe
-2Pet	$SECOND Petrus	2 Pe
-1John	$FIRST Yuhanna	1 Yu
-2John	$SECOND Yuhanna	2 Yu
-3John	$THIRD Yuhanna	3 Yu
+1Pet	$FIRST Petrus	1.? Pe
+2Pet	$SECOND Petrus	2.? Pe
+1John	$FIRST Yuhanna	1.? Yu
+2John	$SECOND Yuhanna	2.? Yu
+3John	$THIRD Yuhanna	3.? Yu
 Jude	Yahuda	Yah
-Rev	Vahiy	Va
-Tob	Tobit
-Jdt	Yudit
-GkEsth	GkEsth
-Wis	Bilgelik
-Sir	Sirak
+Rev	Vah(ı|i|I|İ)y	Vah	Va
+Tob	Tob(ı|i|I|İ)t
+Jdt	Yud(ı|i|I|İ)t
+GkEsth	Grekçe Ester	Yunanca Ester
+Wis	B(ı|i|I|İ)lgelik
+Sir	S(ı|i|I|İ)rak
 Bar	Baruk
-PrAzar	Azarya’n[ıi]n Duas[ıi]
+PrAzar	Azarya'?n(ı|i|I|İ)n Duas(ı|i|I|İ)
 Sus	Suzanna
 Bel	Bel ve Ejderha
-SgThree	Üç Genç Adam[ıi]n Ezgisi
-EpJer	Yeremya’n[ıi]n Mektubu
+SgThree	Üç Genç Adam(ı|i|I|İ)n Ezg(ı|i|I|İ)s(ı|i|I|İ)
+EpJer	Yeremya'?n(ı|i|I|İ)n Mektubu
 1Macc	$FIRST Makabeler
 2Macc	$SECOND Makabeler
 3Macc	$THIRD Makabeler
 4Macc	$FOURTH Makabeler
 1Esd	$FIRST Esdras
 2Esd	$SECOND Esdras
-PrMan	Manaşşe’nin Duas[ıi]
+PrMan	Manaşşe'?n(ı|i|I|İ)n Duas(ı|i|I|İ)
 
 # Order
 =Gen
@@ -238,8 +239,8 @@ PrMan	Manaşşe’nin Duas[ıi]
 *Eph	Efesliler	Ef
 *Phil	Filipililer	Flp
 *Col	Koloseliler	Kol
-*1Thess	1. Selanikiler	1Se
-*2Thess	2. Selanikiler	2Se
+*1Thess	1. Selanikliler	1Se
+*2Thess	2. Selanikliler	2Se
 *1Tim	1. Timoteos	1Ti
 *2Tim	2. Timoteos	2Ti
 *Titus	Titus	Tit
