@@ -2,43 +2,43 @@ $FIRST	1	I	Bir	Birinci	İlk
 $SECOND	2	II	İki	İkinci
 $THIRD	3	III	Üç	Üçüncü
 $FOURTH	4	IV	Dört	Dördüncü
-$BOOK	Kitap	Kitabı
-$GOSPEL	'?y?[ae] Göre İncil	('?n?[ıİuü]n )?İncili
-$AB	[a-e]
+$BOOK	Kitap	Kitab[ıi]
+$GOSPEL	'?y?[ae] Göre İncil	'?n?[ıiİü]n İncili	İncili
+$AB	[b-e]
 $AND	ve
 $CHAPTER	bölüm	bap	bö.	bp.	bölümler	baplar
 $FF	vs	vd
-$TITLE	başlık
+$TITLE	başl[ıi]k
 $TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HADİ
 $TO	ile
-$VERSES	ayet	a.	. ayeti
+$VERSE	ayet	a.	ayeti
 $UNICODE_BLOCK	Latin
 
-Gen	Yaratılış	Tesniye	Tekvin	Yar
-Exod	Mısır'dan Çıkış	Çıkış	Çık
-Lev	Levılıler	Lev
-Num	Çölde Sayım	Sayılar	Say
-Deut	Yasa'nın Tekrarı	Yas
+Gen	Yarat[ıi]l[ıi]ş	Tesniye	Tekvin	Yar
+Exod	M[ıi]s[ıi]r'dan Ç[ıi]k[ıi]ş	Ç[ıi]k[ıi]ş	Ç[ıi]k
+Lev	Lev[ıi]l[ıi]ler	Lev
+Num	Çölde Say[ıi]m	Say[ıi]lar	Say
+Deut	Yasa'n[ıi]n Tekrar[ıi]	Yas
 Josh	Yeşu	Yşu
 Judg	Hakimler	Hak
 Ruth	Rut	Rut
-1Sam	$FIRST ?Samuel	1Sa
-2Sam	$SECOND ?Samuel	2Sa
-1Kgs	$FIRST ?Krallar	1Kr
-2Kgs	$SECOND ?Krallar	2Kr
-1Chr	$FIRST ?Tarihler	1Ta
-2Chr	$SECOND ?Tarihler	2Ta
+1Sam	$FIRST Samuel	1 Sa
+2Sam	$SECOND Samuel	2 Sa
+1Kgs	$FIRST Krallar	1 Kr
+2Kgs	$SECOND Krallar	2 Kr
+1Chr	$FIRST Tarihler	1 Ta
+2Chr	$SECOND Tarihler	2 Ta
 Ezra	Ezra	Ezr
 Neh	Nehemya	Neh
 Esth	Ester	Est
 Job	Eyüp	Eyü
 Ps	Mezmurlar	Mezmur	Mez
-Prov	Süleyman'ın Özdeyişleri	Süleyman'ın Meselleri	Meseller	Özd
+Prov	Süleyman'[ıi]n Özdeyişleri	Süleyman'[ıi]n Meselleri	Meseller	Özd
 Eccl	Vaiz	Vai
 Song	Ezgiler Ezgisi	Ezg
 Isa	Yeşaya	Yşa
 Jer	Yeremya	Yer
-Lam	Ağitlar	Ağı
+Lam	Ağitlar	Ağ[ıi]
 Ezek	Hezekiel	Hez
 Dan	Daniel	Dan
 Hos	Hosea	Hoş
@@ -58,59 +58,84 @@ Mark	Markos$GOSPEL	Markos	Mar
 Luke	Luka$GOSPEL	Luka	Luk
 John	Yuhanna$GOSPEL	Yuhanna	Yu
 Acts	Elçilerin İşleri	Elç
-Rom	Romalılar	Rom
-1Cor	$FIRST ?Korintliler	$FIRST ?Korintoslular	1Ko
-2Cor	$SECOND ?Korintliler	$SECOND ?Korintoslular	2Ko
-Gal	Galatyalılar	Gal
+Rom	Romal[ıi]lar	Rom
+1Cor	$FIRST Korintliler	$FIRST Korintoslular	1 Ko
+2Cor	$SECOND Korintliler	$SECOND Korintoslular	2 Ko
+Gal	Galatyal[ıi]lar	Gal
 Eph	Efesliler	Ef
 Phil	Filipililer	Flp
 Col	Koloseliler	Kol
-1Thess	$FIRST ?Selanikiler	1Se
-2Thess	$SECOND ?Selanikiler	2Se
-1Tim	$FIRST ?Timoteos	1Ti
-2Tim	$SECOND ?Timoteos	2Ti
+1Thess	$FIRST Selanikiler	1 Se
+2Thess	$SECOND Selanikiler	2 Se
+1Tim	$FIRST Timoteos	1 Ti
+2Tim	$SECOND Timoteos	2 Ti
 Titus	Titus	Tit
 Phlm	Filimon	Flm
 Heb	İbraniler	İbr
 Jas	Yakup	Yak
-1Pet	$FIRST ?Petrus	1Pe
-2Pet	$SECOND ?Petrus	2Pe
-1John	$FIRST ?Yuhanna	1Yu
-2John	$SECOND ?Yuhanna	2Yu
-3John	$THIRD ?Yuhanna	3Yu
+1Pet	$FIRST Petrus	1 Pe
+2Pet	$SECOND Petrus	2 Pe
+1John	$FIRST Yuhanna	1 Yu
+2John	$SECOND Yuhanna	2 Yu
+3John	$THIRD Yuhanna	3 Yu
 Jude	Yahuda	Yah
 Rev	Vahiy	Va
-
-Jonah,Job,Josh,Joel
-Judg,Jude
-Phil,Phlm
+Tob	Tobit
+Jdt	Yudit
+GkEsth	GkEsth
+Wis	Bilgelik
+Sir	Sirak
+Bar	Baruk
+PrAzar	Azarya’n[ıi]n Duas[ıi]
+Sus	Suzanna
+Bel	Bel ve Ejderha
+SgThree	Üç Genç Adam[ıi]n Ezgisi
+EpJer	Yeremya’n[ıi]n Mektubu
+1Macc	$FIRST Makabeler
+2Macc	$SECOND Makabeler
+3Macc	$THIRD Makabeler
+4Macc	$FOURTH Makabeler
+1Esd	$FIRST Esdras
+2Esd	$SECOND Esdras
+PrMan	Manaşşe’nin Duas[ıi]
 
 # Order
 =Gen
 =Exod
+=Bel
 =Lev
 =Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
 =Deut
 =Josh
 =Judg
 =Ruth
-=1Sam
+=1Esd
+=2Esd
+=Isa
 =2Sam
-=1Kgs
+=1Sam
 =2Kgs
-=1Chr
+=1Kgs
 =2Chr
+=1Chr
 =Ezra
 =Neh
+=GkEsth
 =Esth
 =Job
 =Ps
+=PrAzar
 =Prov
 =Eccl
+=SgThree
 =Song
-=Isa
 =Jer
-=Lam
 =Ezek
 =Dan
 =Hos
@@ -128,30 +153,37 @@ Phil,Phlm
 =Matt
 =Mark
 =Luke
+=1John
+=2John
+=3John
 =John
 =Acts
 =Rom
-=1Cor
 =2Cor
+=1Cor
 =Gal
 =Eph
 =Phil
 =Col
-=1Thess
 =2Thess
-=1Tim
+=1Thess
 =2Tim
+=1Tim
 =Titus
 =Phlm
 =Heb
 =Jas
-=1Pet
 =2Pet
-=1John
-=2John
-=3John
+=1Pet
 =Jude
-=Rev
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
 
 # Preferred names
 # OSIS	Long	Short	Shorter	Single (Ps)
@@ -221,5 +253,23 @@ Phil,Phlm
 *3John	3. Yuhanna	3Yu
 *Jude	Yahuda	Yah
 *Rev	Vahiy	Va
+*Tob	Tobit
+*Jdt	Yudit
+*GkEsth	GkEsth
+*Wis	Bilgelik
+*Sir	Sirak
+*Bar	Baruk
+*PrAzar	Azarya’nın Duası
+*Sus	Suzanna
+*Bel	Bel ve Ejderha
+*SgThree	Üç Genç Adamın Ezgisi
+*EpJer	Yeremya’nın Mektubu
+*1Macc	1. Makabeler
+*2Macc	2. Makabeler
+*3Macc	3. Makabeler
+*4Macc	4. Makabeler
+*1Esd	1. Esdras
+*2Esd	2. Esdras
+*PrMan	Manaşşe’nin Duası
 
 # vim: ts=7 sw=7
