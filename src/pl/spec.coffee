@@ -6758,8 +6758,15 @@ describe "Miscellaneous tests", ->
 	it "should handle 'ff' (pl)", ->
 		expect(p.parse("Rev 3nn, 4:2nn").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
 		expect(p.parse("REV 3 NN, 4:2 NN").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
-		expect(p.parse("Rev 3n, 4:2n").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
-		expect(p.parse("REV 3 N, 4:2 N").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
+	it "should handle 'next' (pl)", ->
+		expect(p.parse("Rev 3:1n, 4:2n").osis()).toEqual "Rev.3.1-Rev.3.2,Rev.4.2-Rev.4.3"
+		expect(p.parse("REV 3 N, 4:2 N").osis()).toEqual "Rev.3-Rev.4,Rev.4.2-Rev.4.3"
+		expect(p.parse("Jude 1n, 2n").osis()).toEqual "Jude.1.1-Jude.1.2,Jude.1.2-Jude.1.3"
+		expect(p.parse("Gen 1:31n").osis()).toEqual "Gen.1.31-Gen.2.1"
+		expect(p.parse("Gen 1:2-31n").osis()).toEqual "Gen.1.2-Gen.2.1"
+		expect(p.parse("Gen 1:2n-30").osis()).toEqual "Gen.1.2-Gen.1.3,Gen.1.30"
+		expect(p.parse("Gen 50n, Gen 50:26n").osis()).toEqual "Gen.50,Gen.50.26"
+		expect(p.parse("Gen 1:32n, Gen 51n").osis()).toEqual ""
 	it "should handle translations (pl)", ->
 		expect(p.parse("Lev 1 (NP)").osis_and_translations()).toEqual [["Lev.1", "NP"]]
 		expect(p.parse("lev 1 np").osis_and_translations()).toEqual [["Lev.1", "NP"]]

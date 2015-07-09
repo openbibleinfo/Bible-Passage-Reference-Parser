@@ -10,7 +10,9 @@ $AND	oraz	por	i
 # http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Rodzaju and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Wyj%C5%9Bcia (rozdział) and http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Jeremiasza (rozdz.) and http://pl.wikipedia.org/wiki/Ewangelia_Jana (rr and r)
 $CHAPTER	rozdziały	rozdziałów	rozdział	rozdz	rr.	r.
 # http://www.biblegateway.com/passage/?search=Rom%203:25&version=NP and http://www.biblegateway.com/passage/?search=1%20Cor%2016:22&version=NP
-$FF	nn	n
+$FF	nn
+# Next verse only
+$NEXT	n![n]
 # http://pl.wikipedia.org/wiki/Ksi%C4%99ga_Psalm%C3%B3w
 $TITLE	tytuł
 $TRANS	NP
