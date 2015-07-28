@@ -149,13 +149,12 @@ v_explicit
     { return {"type": "v_explicit"} }
 
 cv_sep
-  = sp (":"+ / "." !(sp "." sp ".") ) sp
-
+  = sp "," sp
 cv_sep_weak
   = sp ["'] sp / space
 
 sequence_sep
-  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "ve" / space)+
+  = ([;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "ve" / space)+
     { return "" }
 
 range_sep
