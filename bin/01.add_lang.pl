@@ -63,6 +63,14 @@ sub make_translations
 sub make_grammar
 {
 	my $out = get_file_contents("$dir/template/grammar.pegjs");
+	unless (defined $vars{'$NEXT'})
+	{
+		$out =~ s/\nnext_v\s+=.+\s+\{ return[^\}]+\}\s+\}\s+/\n/;
+		$out =~ s/\bnext_v \/ //g;
+		$out =~ s/\$NEXT \/ //g;
+		die "Grammar: next_v" if ($out =~ /\bnext_v\b|\$NEXT/);
+	}
+
 	foreach my $key (sort keys %vars)
 	{
 		my $safe_key = $key;
@@ -91,6 +99,11 @@ sub make_grammar
 sub make_regexps
 {
 	my $out = get_file_contents("$dir/template/regexps.coffee");
+	unless (defined $vars{'$NEXT'})
+	{
+		$out =~ s/\n.+\$NEXT.+\n/\n/;
+		die "Regexps: next" if ($out =~ /\$NEXT\b/);
+	}
 	my @osises = @order;
 	foreach my $osis (sort keys %raw_abbrevs)
 	{
@@ -107,7 +120,7 @@ sub make_regexps
 	my $pre = join '|', map { format_value('quote', $_)} @{$vars{'$PRE_BOOK_ALLOWED_CHARACTERS'}};
 	$out =~ s/\$PRE_BOOK_ALLOWED_CHARACTERS/$pre/;
 	my @passage_components;
-	foreach my $var ('$CHAPTER', '$FF', '$TO', '$AND', '$VERSE')
+	foreach my $var ('$CHAPTER', '$NEXT', '$FF', '$TO', '$AND', '$VERSE')
 	{
 		push @passage_components, map { format_value('regexp', $_) } @{$vars{$var}} if (exists $vars{$var});
 	}
@@ -259,6 +272,7 @@ sub get_book_subsets
 	while (@abbrevs)
 	{
 		my $long = shift @abbrevs;
+		#print "$long\n";
 		next if (exists $subs{$long});
 		for my $i (0 .. $#abbrevs)
 		{
@@ -475,7 +489,8 @@ sub format_var
 	elsif ($type eq 'pegjs')
 	{
 		map {
-			s/\./" abbrev? "/;
+			s/\.(?!`)/" abbrev? "/;
+			s/\.`/" abbrev "/;
 			s/([A-Z])/lc $1/ge;
 			$_ = handle_accents($_);
 			s/\[/" [/g;
@@ -518,11 +533,11 @@ sub format_var
 			$_ .= ' sp' if ($var_name eq '$TO')
 			} @values;
 		my $out = join(' / ', @values);
-		if (($var_name eq '$TITLE' || $var_name eq '$FF') && scalar @values > 1)
+		if (($var_name eq '$TITLE' || $var_name eq '$NEXT' || $var_name eq '$FF') && scalar @values > 1)
 		{
 			$out = "( $out )";
 		}
-		elsif (scalar @values >= 2 && ($var_name eq '$CHAPTER' || $var_name eq '$VERSE' || $var_name eq '$FF'))
+		elsif (scalar @values >= 2 && ($var_name eq '$CHAPTER' || $var_name eq '$VERSE' || $var_name eq '$NEXT' || $var_name eq '$FF'))
 		{
 			$out = handle_pegjs_prepends($out, @values);
 			#print Dumper(\@values);
@@ -664,6 +679,7 @@ sub make_tests
 	push @misc_tests, add_sequence_tests();
 	push @misc_tests, add_title_tests();
 	push @misc_tests, add_ff_tests();
+	push @misc_tests, add_next_tests();
 	push @misc_tests, add_trans_tests();
 	push @misc_tests, add_book_range_tests();
 	push @misc_tests, add_boundary_tests();
@@ -836,6 +852,30 @@ sub add_ff_tests
 		{
 			push @out, "		expect(p.parse(\"Rev 3$ff, 4:2$ff\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"";
 			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $ff, 4:2 $ff") . "\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"" unless ($lang eq 'it');
+		}
+	}
+	push @out, "\t\tp.set_options {case_sensitive: \"none\"}" if ($lang eq 'it');
+	return @out;
+}
+
+sub add_next_tests
+{
+	return () unless (defined $vars{'$NEXT'});
+	my @out;
+	push @out, "	it \"should handle 'next' ($lang)\", ->";
+	push @out, "\t\tp.set_options {case_sensitive: \"books\"}" if ($lang eq 'it');
+	foreach my $abbrev (@{$vars{'$NEXT'}})
+	{
+		foreach my $next (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
+		{
+			push @out, "		expect(p.parse(\"Rev 3:1$next, 4:2$next\").osis()).toEqual \"Rev.3.1-Rev.3.2,Rev.4.2-Rev.4.3\"";
+			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $next, 4:2 $next") . "\").osis()).toEqual \"Rev.3-Rev.4,Rev.4.2-Rev.4.3\"" unless ($lang eq 'it');
+			push @out, "		expect(p.parse(\"Jude 1$next, 2$next\").osis()).toEqual \"Jude.1.1-Jude.1.2,Jude.1.2-Jude.1.3\"";
+			push @out, "		expect(p.parse(\"Gen 1:31$next\").osis()).toEqual \"Gen.1.31-Gen.2.1\"";
+			push @out, "		expect(p.parse(\"Gen 1:2-31$next\").osis()).toEqual \"Gen.1.2-Gen.2.1\"";
+			push @out, "		expect(p.parse(\"Gen 1:2$next-30\").osis()).toEqual \"Gen.1.2-Gen.1.3,Gen.1.30\"";
+			push @out, "		expect(p.parse(\"Gen 50$next, Gen 50:26$next\").osis()).toEqual \"Gen.50,Gen.50.26\"";
+			push @out, "		expect(p.parse(\"Gen 1:32$next, Gen 51$next\").osis()).toEqual \"\"";
 		}
 	}
 	push @out, "\t\tp.set_options {case_sensitive: \"none\"}" if ($lang eq 'it');
@@ -1187,9 +1227,18 @@ sub expand_abbrev
 				{
 					last;
 				}
+				elsif ($next eq '\\')
+				{
+					next;
+				}
 				else
 				{
-					push @nexts, $next unless ($next eq '\\');
+					my $accents = handle_accent($next);
+					$accents =~ s/^\[|\]$//g;
+					foreach my $accent (split //, $accents)
+					{
+						push @nexts, $accent;
+					}
 				}
 			}
 			($is_optional, @chars) = is_next_char_optional(@chars);
@@ -1293,14 +1342,45 @@ sub is_next_char_optional
 sub handle_accents
 {
 	my ($text) = @_;
-	$text =~ s/([\x80-\x{ffff}])(?!`)/handle_accent($1)/ge;
+	my @chars = split //, $text;
+	my @texts;
+	my $context = '';
+	while (@chars)
+	{
+		my $char = shift @chars;
+		if ($char =~ /^[\x80-\x{ffff}]$/)
+		{
+			if (@chars && $chars[0] eq '`')
+			{
+				push @texts, $char;
+				push @texts, shift @chars;
+				next;
+			}
+			$char = handle_accent($char);
+			$char =~ s/^\[|\]$//g if ($context eq '[');
+		}
+		elsif ($char eq '[' && !(@texts && $texts[-1] eq '\\'))
+		{
+			$context = '[';
+		}
+		elsif ($char eq ']' && !(@texts && $texts[-1] eq '\\'))
+		{
+			$context = '';
+		}
+		push @texts, $char;
+
+	}
+	$text = join '', @texts;
+	#exit;
+	#$text =~ s/([\x80-\x{ffff}])(?!`)/handle_accent($1)/ge;
 	$text =~ s/'/[\x{2019}']/g;
 	$text =~ s/\x{2c8}(?!`)/[\x{2c8}']/g unless (exists $vars{'$COLLAPSE_COMBINING_CHARACTERS'} && $vars{'$COLLAPSE_COMBINING_CHARACTERS'}->[0] eq 'false');
 	$text =~ s/([\x80-\x{ffff}])`/$1/g;
 	$text =~ s/[\x{2b9}\x{374}]/['\x{2019}\x{384}\x{374}\x{2b9}]/g;
 	$text =~ s/([\x{300}\x{370}]-)\['\x{2019}\x{384}\x{374}\x{2b9}\](\x{376})/$1\x{374}$2/;
 	#$text =~ s/\.$//;
-	$text =~ s/\./\\.?/g;
+	$text =~ s/\.(?!`)/\\.?/g;
+	$text =~ s/\.`/\\./g;
 	return $text;
 }
 
