@@ -9,7 +9,7 @@ my %ranges = (
 		chars => '.',
 		data => 'en',
 		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Judg Mark Jas Amos Tob Jdt Bar)],
-		exclude_langs => [qw(amf awa bba bqc bus chr dop dug fue fuh hil hwc leb mkl mqb mvc mwv nds pck ppl qu soy tmz tr twi udu wa wol yom zap)],
+		exclude_langs => [qw(amf awa bba bqc bus chr dop dug fue fuh hil hwc leb mkl mqb mvc mwv nds pck ppl qu soy tmz twi udu wa wol yom zap)],
 		exclude_abbrevs => [
 			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK', 'I. Ki', 'I Ki',
 			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
