@@ -1,10 +1,10 @@
 # When adding a new translation, add it both here and bcv_parser::translations.aliases
 bcv_parser::regexps.translations = ///(?:
-	  (?:YC(?:198|200[189])?|KM|C(?:OS|AN)|T(?:C|SV)|HADI)
+	  (?:YC(?:1998|200[189])?|KM|C(?:OS|AN)|T(?:C|SV)|HADI)
 	)\b///gi
 bcv_parser::translations = 
 	aliases:
-		yc198:
+		yc1998:
 			osis: "YC"
 			alias: "default"
 		yc2001:

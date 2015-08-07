@@ -111,7 +111,7 @@ ff
     { return {"type": "ff", "value": [val_1], "indices": [offset(), peg$currPos - 1]} }
 
 integer_title
-  = val_1:integer (cv_sep / sequence_sep)? "ba" [şs]i "l" [ıi]i "k"
+  = val_1:integer (cv_sep / sequence_sep)? "ba" [şs]i "l" [İIiı]i "k"
     { return {"type": "integer_title", "value": [val_1], "indices": [offset(), peg$currPos - 1]} }
 
 context
@@ -145,7 +145,7 @@ c_explicit
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "a" ( "yet" / abbrev? space "ayeti" ) ) ![a-z] sp
+  = sp ( "a" ( abbrev / "yeti" / "yet" ) ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -162,7 +162,7 @@ range_sep
   = sp ([\-\u2013\u2014] sp / "ile" sp )+
 
 title
-  = (cv_sep / sequence_sep)? val:"ba" [şs]i "l" [ıi]i "k"
+  = (cv_sep / sequence_sep)? val:"ba" [şs]i "l" [İIiı]i "k"
     { return {type:"title", value: [val], "indices": [offset(), peg$currPos - 1]} }
 
 in_book_of
