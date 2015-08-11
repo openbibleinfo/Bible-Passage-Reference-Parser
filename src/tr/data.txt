@@ -18,7 +18,7 @@ Gen	Yarat[İiı]l[İiı]ş	Tekv[İiı]n	Yar
 Exod	M[İiı]s[İiı]r'?dan Ç[İiı]k[İiı]ş	Ç[İiı]k[İiı]ş	Ç[İiı]k
 Lev	Lev[İiı]l[İiı]ler	Lev
 Num	Çölde Say[İiı]m	Say[İiı]lar	Say
-Deut	Yasa'?n[İiı]n Tekrar[İiı]	Tesn[İiı]ye	Yas
+Deut	(Yasa'?n[İiı]n|Kunun'?un) Tekrar[İiı]	Tesn[İiı]ye	Yas
 Josh	Yeşu	Yşu
 Judg	H[aâ]k[İiı]mler	Hak
 Ruth	Rut	Rut
