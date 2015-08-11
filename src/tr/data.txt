@@ -14,71 +14,71 @@ $TO	[İiı]le
 $VERSE	a.`	ayet[İiı]	ayet
 $UNICODE_BLOCK	Latin
 
-Gen	Yarat[İiı]l[İiı]ş	Tesn[İiı]ye	Tekv[İiı]n	Yar
+Gen	Yarat[İiı]l[İiı]ş	Tekv[İiı]n	Yar
 Exod	M[İiı]s[İiı]r'?dan Ç[İiı]k[İiı]ş	Ç[İiı]k[İiı]ş	Ç[İiı]k
 Lev	Lev[İiı]l[İiı]ler	Lev
 Num	Çölde Say[İiı]m	Say[İiı]lar	Say
-Deut	Yasa'?n[İiı]n Tekrar[İiı]	Yas
+Deut	Yasa'?n[İiı]n Tekrar[İiı]	Tesn[İiı]ye	Yas
 Josh	Yeşu	Yşu
 Judg	Hak[İiı]mler	Hak
 Ruth	Rut	Rut
 1Sam	$FIRST Samuel	1. Sa
 2Sam	$SECOND Samuel	2. Sa
-1Kgs	$FIRST Krallar	1. Kr
-2Kgs	$SECOND Krallar	2. Kr
+1Kgs	$FIRST K[İiı]?rallar	1. Kr
+2Kgs	$SECOND K[İiı]?rallar	2. Kr
 1Chr	$FIRST Tar[İiı]hler	1. Ta
 2Chr	$SECOND Tar[İiı]hler	2. Ta
 Ezra	Ezra	Ezr
 Neh	Nehemya	Neh
 Esth	Ester	Est
-Job	Eyüp	Eyü
-Ps	Mezmurlar	Mezmur	Mez
+Job	Eyü[pb]	Eyü
+Ps	Mezmurlar	Zebur	Mezmur	Mez
 Prov	Süleyman'?[İiı]n Özdey[İiı]şler[İiı]	Süleyman'?[İiı]n Meseller[İiı]	Meseller	Özd
 Eccl	Va[İiı]z	Va[İiı]
-Song	Ezg[İiı]ler Ezg[İiı]s[İiı]	Ezg
-Isa	Yeşaya	Yşa
+Song	Ezg[İiı]ler Ezg[İiı]s[İiı]	Neş[İiı]deler Neş[İiı]des[İiı]	Ezg
+Isa	Yeşaya	[İiı]şaya	Yşa
 Jer	Yeremya	Yer
-Lam	Ağ[İiı]tlar	Ağ[İiı]
+Lam	Ağ[İiı]tlar	Yeremya'?n[İiı]n Mers[İiı]yeler[İiı]	Ağ[İiı]
 Ezek	Hezek[İiı]el	Hez
 Dan	Dan[İiı]el	Dan
-Hos	Hosea	Hoş
+Hos	Hoşea	Hoş
 Joel	Yoel	Yoe
 Amos	Amos	Amo
-Obad	Ovadya	Ova
+Obad	O[vb]adya	Ova
 Jonah	Yunus	Yun
 Mic	M[İiı]ka	M[İiı]k
 Nah	Nahum	Nah
 Hab	Habakkuk	Hab
-Zeph	Sefanya	Sef
-Hag	Hagay	Hag
-Zech	Zeker[İiı]ya	Zek
+Zeph	Sefanya	Tsefanya	Sef
+Hag	Hagg?ay	Hag
+Zech	Zek[ea]r[İiı]?ya	Zek
 Mal	Malak[İiı]	Mal
 Matt	Matta$GOSPEL	Matta	Mat
 Mark	Markos$GOSPEL	Markos	Mar
 Luke	Luka$GOSPEL	Luka	Luk
 John	Yuhanna$GOSPEL	Yuhanna	Yuh	Yu
-Acts	Elç[İiı]ler[İiı]n [İiı]şler[İiı]	Elç
-Rom	Romal[İiı]lar	Rom
-1Cor	$FIRST Kor[İiı]ntl[İiı]ler	$FIRST Kor[İiı]ntoslular	1. Ko
-2Cor	$SECOND Kor[İiı]ntl[İiı]ler	$SECOND Kor[İiı]ntoslular	2. Ko
-Gal	Galatyal[İiı]lar	Gal
-Eph	Efesl[İiı]ler	Efe	Ef
-Phil	F[İiı]l[İiı]p[İiı]l[İiı]ler	Flp
-Col	Kolosel[İiı]ler	Kol
-1Thess	$FIRST Selan[İiı]kl[İiı]ler	1. Se
-2Thess	$SECOND Selan[İiı]kl[İiı]ler	2. Se
-1Tim	$FIRST T[İiı]moteos	1. T[İiı]
-2Tim	$SECOND T[İiı]moteos	2. T[İiı]
-Titus	T[İiı]tus	T[İiı]t
-Phlm	F[İiı]l[İiı]mon	Flm
-Heb	[İiı]bran[İiı]ler	[İiı]br
-Jas	Yakup	Yak
-1Pet	$FIRST Petrus	1. Pe
-2Pet	$SECOND Petrus	2. Pe
-1John	$FIRST Yuhanna	1. Yu
-2John	$SECOND Yuhanna	2. Yu
-3John	$THIRD Yuhanna	3. Yu
-Jude	Yahuda	Yah
+Acts	Elç[İiı]ler[İiı]n [İiı]şler[İiı]	Resuller[İiı]n [İiı]şler[İiı]	Elç
+Rom	Romal[İiı]lar	Romal[İiı]lara Mektup	Rom
+1Cor	$FIRST Kor[İiı]ntl[İiı]ler	$FIRST Kor[İiı]ntoslular	Kor[İiı]ntoslulara $FIRST Mektup	Kor[İiı]ntl[İiı]ler $FIRST Mektup	1. Ko
+2Cor	$SECOND Kor[İiı]ntl[İiı]ler	$SECOND Kor[İiı]ntoslular	Kor[İiı]ntoslulara $SECOND Mektup	Kor[İiı]ntl[İiı]ler $SECOND Mektup	2. Ko
+Gal	Galatyal[İiı]lar(a Mektup)?	Gal
+Eph	Efesl[İiı]ler(e Mektup)?	Efe	Ef
+Phil	F[İiı]l[İiı]p[İiı]l[İiı]ler(e Mektup)?	Flp
+Col	Kolosel[İiı]ler(e Mektup)?	Kol
+1Thess	$FIRST Selan[İiı]kl[İiı]ler	Selan[İiı]kl[İiı]lere $FIRST Mektup	1. Se
+2Thess	$SECOND Selan[İiı]kl[İiı]ler	Selan[İiı]kl[İiı]lere $SECOND Mektup	2. Se
+1Tim	$FIRST T[İiı]moteos	T[İiı]moteos'?a $FIRST Mektup	1. T[İiı]
+2Tim	$SECOND T[İiı]moteos	T[İiı]moteos'?a $SECOND Mektup	2. T[İiı]
+Titus	T[İiı]tus('?a Mektup)?	T[İiı]t
+Phlm	F[İiı]l[İiı]mon('?a Mektup)?	Flm
+Heb	[İiı]bran[İiı]ler('?e Mektup)?	[İiı]br
+Jas	Yakup	Yakubun Mektubu	Yak
+1Pet	$FIRST Petrus	Petrus'?un $FIRST Mektubu	1. Pe
+2Pet	$SECOND Petrus	Petrus'?un $SECOND Mektubu	2. Pe
+1John	$FIRST Yuhanna	Yuhanna'?n[İiı]n $FIRST Mektubu	1. Yu
+2John	$SECOND Yuhanna	Yuhanna'?n[İiı]n $SECOND Mektubu	2. Yu
+3John	$THIRD Yuhanna	Yuhanna'?n[İiı]n $THIRD Mektubu	3. Yu
+Jude	Yahuda('?n[İiı]n Mektubu)?	Yah
 Rev	Vah[İiı]y	Vah	Va
 Tob	Tob[İiı]t
 Jdt	Yud[İiı]t
