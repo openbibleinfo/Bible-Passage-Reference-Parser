@@ -1,18 +1,18 @@
-$FIRST	1	I	Bir	Birinci	[İiı]lk
-$SECOND	2	II	[İiı]ki	[İiı]kinci
+$FIRST	1	I	B[İiı]r	B[İiı]r[İiı]nc[İiı]	[İiı]lk
+$SECOND	2	II	[İiı]k[İiı]	[İiı]k[İiı]nc[İiı]
 $THIRD	3	III	Üç	Üçüncü
 $FOURTH	4	IV	Dört	Dördüncü
 $BOOK	Kitap	Kitab[İiı]
-$GOSPEL	'?y?a Göre [İiı]ncil	'?n?[İiıu]n [İiı]ncili	[İiı]ncili
+$GOSPEL	'?y?a Göre [İiı]nc[İiı]l	'?n?[İiıu]n [İiı]nc[İiı]l[İiı]	[İiı]nc[İiı]l[İiı]
 $AB	[b-e]
 $AND	ve
 $CHAPTER	baplar	bap	bp.
 #bölümler	bölüm	bö.
 $FF	vs	vd
 $TITLE	başl[İiı]k
-$TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HADI
-$TO	ile
-$VERSE	a.`	ayeti	ayet
+$TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HAD[İI]
+$TO	[İiı]le
+$VERSE	a.`	ayet[İiı]	ayet
 $UNICODE_BLOCK	Latin
 
 Gen	Yarat[İiı]l[İiı]ş	Tesn[İiı]ye	Tekv[İiı]n	Yar
