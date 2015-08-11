@@ -9,7 +9,7 @@ $AND	ve
 $CHAPTER	baplar	bap	bp.	bölümler	bölüm	bö.
 $FF	vs	vd
 $TITLE	başl[İiı]k
-$TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HAD[İI]
+$TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	TKK,YC	KM	TC	COS,TC	CAN	TSV	HAD[İI]
 $TO	[İiı]le
 $VERSE	a.`	ayet[İiı]	ayet
 $UNICODE_BLOCK	Latin
