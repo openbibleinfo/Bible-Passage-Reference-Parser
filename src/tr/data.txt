@@ -6,8 +6,7 @@ $BOOK	Kitap	Kitab[İiı]
 $GOSPEL	'?y?a Göre [İiı]nc[İiı]l	'?n?[İiıu]n [İiı]nc[İiı]l[İiı]	[İiı]nc[İiı]l[İiı]
 $AB	[b-e]
 $AND	ve
-$CHAPTER	baplar	bap	bp.
-#bölümler	bölüm	bö.
+$CHAPTER	baplar	bap	bp.	bölümler	bölüm	bö.
 $FF	vs	vd
 $TITLE	başl[İiı]k
 $TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HAD[İI]
