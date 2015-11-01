@@ -31,10 +31,13 @@ class bcv_parser
 		# * `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" -> "Gen.1,Gen.3".
 		# * `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" -> "Gen.1" and "Gen.3".
 		sequence_combination_strategy: "combine"
+		# * `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
+		# * `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
+		punctuation_strategy: "us"
 
 		# ### Potentially Invalid Input
-		# * `ignore`: Don't include invalid passages in `@parsed_entities()`.
-		# * `include`: Include invalid passages in `@parsed_entities()` (they still don't have OSIS values).
+		# * `ignore`: Include only valid passages in `parsed_entities()`.
+		# * `include`: Include invalid passages in `parsed_entities()` (they still don't have OSIS values).
 		invalid_passage_strategy: "ignore"
 		# * `ignore`: treat non-Latin digits the same as any other character.
 		# * `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
@@ -52,6 +55,9 @@ class bcv_parser
 		# * `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" -> "Matt.5.1".
 		# * `allow`: zero verses are kept as-is: "Matthew 5:0" -> "Matt.5.0". Some traditions use 0 for Psalm titles.
 		zero_verse_strategy: "error"
+		# * `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
+		# * `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
+		single_chapter_1_strategy: "chapter"
 
 		# ### Context
 		# * `ignore`: any books that appear on their own don't get parsed as books ("Gen saw" doesn't trigger a match, but "Gen 1" does).
@@ -295,7 +301,7 @@ class bcv_parser
 		while match = re.exec s
 			# Keep track of the actual start index.
 			books[match[2]].start_index = match.index + add_index
-			# Add the difference between the real length of the book and what we replaced it with (match[0] is the replacement).
+			# Add the difference between the real length of the book and what we replaced it with (`match[0]` is the replacement).
 			add_index += books[match[2]].value.length - match[0].length
 		books
 
@@ -313,8 +319,7 @@ class bcv_parser
 			match.index += full.length - original_part_length
 			# Remove most three+-character digits at the end; they won't match.
 			if (/\s[2-9]\d\d\s*$|\s\d{4,}\s*$/).test part
-				re = /\s+\d+\s*$/
-				part = part.replace re, ""
+				part = part.replace /\s+\d+\s*$/, ""
 			# Clean up the end of the match to avoid irrelevant context.
 			unless /[\d\x1f\x1e)]$/.test part
 				# Remove superfluous characters from the end of the match.
@@ -330,8 +335,8 @@ class bcv_parser
 			# If we're in a chapter-book situation, the first character won't be a book control character, which would throw off the `start_index`.
 			start_index_adjust = if part.substr(0, 1) is "\x1f" then 0 else part.split("\x1f")[0].length
 			# * `match` is important for the length and whether it contains control characters, neither of which we've changed inconsistently with the original string. The `part` may be shorter than originally matched, but that's only to remove unneeded characters at the end.
-			# * `grammar` is the external PEG parser.
-			passage = value: grammar.parse(part), type: "base", start_index: @passage.books[book_id].start_index - start_index_adjust, match: part
+			# * `grammar` is the external PEG parser. The `@options.punctuation_strategy` determines which punctuation is used for sequences and `cv` separators.
+			passage = value: grammar.parse(part, {punctuation_strategy: @options.punctuation_strategy}), type: "base", start_index: @passage.books[book_id].start_index - start_index_adjust, match: part
 			# Are we looking at a single book on its own that could be part of a range like "1-2 Sam"?
 			if @options.book_alone_strategy is "full" and
 			@options.book_range_strategy is "include" and
@@ -513,12 +518,24 @@ class bcv_parser
 				end.v = 999
 		if @options.include_apocrypha and @options.ps151_strategy is "b" and ((start.c == 151 and start.b is "Ps") or (end.c == 151 and end.b is "Ps"))
 			@fix_ps151 start, end, translation
-		# If it's a complete book or range of complete books and we want the shortest possible OSIS, return just the book names.
-		if @options.osis_compaction_strategy is "b" and start.c == 1 and start.v == 1 and end.c == @passage.translations[translation].chapters[end.b].length and end.v == @passage.translations[translation].chapters[end.b][end.c - 1]
+		# If it's a complete book or range of complete books and we want the shortest possible OSIS, return just the book names. The `end.c` and `end.v` equaling 999 is for when the `passage_existence_strategy` sets them to 999, indicating that we should treat it as a complete book or chapter.
+		if @options.osis_compaction_strategy is "b" and
+		start.c == 1 and
+		start.v == 1 and
+		((end.c == 999 and end.v == 999) or
+		(end.c == @passage.translations[translation].chapters[end.b].length and
+		@options.passage_existence_strategy.indexOf("c") >= 0 and
+		(end.v == 999 or
+		(end.v == @passage.translations[translation].chapters[end.b][end.c - 1] and @options.passage_existence_strategy.indexOf("v") >= 0))
+		))
 			osis.start = start.b
 			osis.end = end.b
-		# If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters.
-		else if @options.osis_compaction_strategy.length <= 2 and start.v == 1 and (end.v == 999 or end.v == @passage.translations[translation].chapters[end.b][end.c - 1])
+		# If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters. We only care when `osis_compaction_strategy` isn't `bcv` (i.e., length 3) because `bcv` is always fully specified.
+		else if @options.osis_compaction_strategy.length <= 2 and
+		start.v == 1 and
+		(end.v == 999 or
+		(end.v == @passage.translations[translation].chapters[end.b][end.c - 1] and @options.passage_existence_strategy.indexOf("v") >= 0)
+		)
 			osis.start = start.b + "." + start.c.toString()
 			osis.end = end.b + "." + end.c.toString()
 		# Otherwise, return the full BCV reference for both.
@@ -526,7 +543,7 @@ class bcv_parser
 			osis.start = start.b + "." + start.c.toString() + "." + start.v.toString()
 			osis.end = end.b + "." + end.c.toString() + "." + end.v.toString()
 		# If it's the same verse ("Gen.1.1-Gen.1.1"), chapter ("Gen.1-Gen.1") or book ("Gen-Gen"), return just the start so we don't end up with an empty range.
-		if osis.start == osis.end
+		if osis.start is osis.end
 			out = osis.start
 		# Otherwise return the range.
 		else

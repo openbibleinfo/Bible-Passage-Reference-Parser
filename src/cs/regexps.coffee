@@ -92,7 +92,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Lam"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Kniha[\s\xa0]*n[aá](?:[rř]k[uů])|Lam|Pl[aá](?:[cč][\s\xa0]*Jerem(?:[ij](?:[aá](?:[sš](?:[uů]v)))))?)|Pl|Pl(?:[aá][cč])
+		(?:Kniha[\s\xa0]*n[aá](?:[rř]k[uů])|Lam|Pl[aá](?:[cč][\s\xa0]*Jerem(?:[ij](?:[aá](?:[sš](?:[uů]v)))))?)|Pl|Pl(?:[áa][čc])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["EpJer"]
@@ -218,7 +218,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Prov"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		Pr[ií]slov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))|P(?:r(?:[ií]s|ov)?|ř[ií]s(?:lov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))?)?)|Př|P[řr](?:[íi]slov[íi])
+		Pr[ií]slov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))|P(?:r(?:[ií]s|ov)?|ř[ií]s(?:lov(?:[ií][\s\xa0]*(?:[SŠ]alomounova))?)?)|Př|P[rř](?:[ií]slov[ií])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Eccl"]
@@ -234,7 +234,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Song"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Song|P[ií]s(?:e(?:[nň][\s\xa0]*(?:(?:[SŠ]alamounova|p[ií]sn[ií])))?))|P(?:[ií]s)|P(?:[íi]se[nň])
+		(?:Song|P[ií]s(?:e(?:[nň][\s\xa0]*(?:(?:[SŠ]alamounova|p[ií]sn[ií])))?))|P(?:[ií]s)|P(?:[ií]se[nň])
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jer"]
@@ -354,7 +354,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rom"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:List[\s\xa0]*[RŘ](?:[ií]man(?:[uů]m))|R(?:[ioí]m)?|Ř(?:[ií]m)?)|[ŘR](?:[ií]man(?:[uů]m))
+		(?:List[\s\xa0]*[RŘ](?:[ií]man(?:[uů]m))|R(?:[ioí]m)?|Ř(?:[ií]m)?)|[ŘR](?:[íi]man(?:[uů]m))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Cor"]

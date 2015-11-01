@@ -120,7 +120,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Judg"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Ks(?:i[eę]g(?:[ai][\s\xa0]*S(?:[eę]dzi(?:[oó]w)))|\.[\s\xa0]*S[eę]dzi(?:[oó]w)|[\s\xa0]*S[eę]dzi(?:[oó]w))|Judg|S(?:[eę]dz|dz))|S[ęe]dzi(?:[óo]w)
+		(?:Ks(?:i[eę]g(?:[ai][\s\xa0]*S(?:[eę]dzi(?:[oó]w)))|\.[\s\xa0]*S[eę]dzi(?:[oó]w)|[\s\xa0]*S[eę]dzi(?:[oó]w))|Judg|S(?:[eę]dz|dz))|S[eę]dzi(?:[óo]w)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ruth"]
@@ -330,7 +330,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Ks(?:i(?:[eę]g(?:[ai][\s\xa0]*(?:Apokalipsy|Objawienia)))|\.[\s\xa0]*(?:Apokalipsy|Objawienia)|[\s\xa0]*(?:Apokalipsy|Objawienia))|Obj(?:awienie[\s\xa0]*(?:(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))|Jana))?|Rev|Ap(?:okalipsa[\s\xa0]*(?:[SŚ]wi(?:[eę]tego[\s\xa0]*Jana)|(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))))?)|(?:Objawienie|Apokalipsa)
+		(?:Ks(?:i(?:[eę]g(?:[ai][\s\xa0]*(?:Apokalipsy|Objawienia)))|\.[\s\xa0]*(?:Apokalipsy|Objawienia)|[\s\xa0]*(?:Apokalipsy|Objawienia))|Obj(?:awienie[\s\xa0]*(?:(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))|Jana))?|Rev|Ap(?:okalipsa[\s\xa0]*(?:[SŚ]wi(?:[eę]tego[\s\xa0]*Jana)|(?:[sś]w(?:\.[\s\xa0]*Jana|[\s\xa0]*Jana))))?)|(?:Apokalipsa|Objawienie)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1John"]

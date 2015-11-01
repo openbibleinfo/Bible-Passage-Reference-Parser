@@ -359,12 +359,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Pavlova[\s\xa0]*druga[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|Druga[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korinæanima)|II(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|2(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Druga[\s\xa0]*(?:poslanica[\s\xa0]*Korin[ćc]anima|Korin[ćc]anima)|II(?:\.[\s\xa0]*Korin[cć]anima|[\s\xa0]*Korin[ćc]anima)|2(?:\.[\s\xa0]*Korin[ćc]anima|[\s\xa0]*Korin[cć]anima))
+		(?:Pavlova[\s\xa0]*druga[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|Druga[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korinæanima)|II(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|2(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Druga[\s\xa0]*(?:poslanica[\s\xa0]*Korin[ćc]anima|Korin[ćc]anima)|II(?:\.[\s\xa0]*Korin[ćc]anima|[\s\xa0]*Korin[cć]anima)|2(?:\.[\s\xa0]*Korin[cć]anima|[\s\xa0]*Korin[cć]anima))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:P(?:avlova[\s\xa0]*prva[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|rva[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korinæanima))|I(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|1(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Prva[\s\xa0]*(?:poslanica[\s\xa0]*Korin[cć]anima|Korin[ćc]anima)|[I1](?:\.[\s\xa0]*Korin(?:[cć]anima|[\s\xa0]*Korin[ćc]anima)))|[I1][\s\xa0]*Korin(?:[ćc]anima)
+		(?:P(?:avlova[\s\xa0]*prva[\s\xa0]*poslanica[\s\xa0]*Korin[cć]anima|rva[\s\xa0]*(?:Korin[cć]anima[\s\xa0]*Poslanica|poslanica[\s\xa0]*Korinæanima))|I(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica)|1(?:\.[\s\xa0]*Korin[cć]anima[\s\xa0]*Poslanica|[\s\xa0]*Kor(?:in[cć]anima[\s\xa0]*Poslanica)?|Cor))|(?:Prva[\s\xa0]*(?:poslanica[\s\xa0]*Korin[ćc]anima|Korin[cć]anima)|[I1](?:\.[\s\xa0]*Korin(?:[ćc]anima|[\s\xa0]*Korin[cć]anima)))|[I1][\s\xa0]*Korin(?:[cć]anima)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Gal"]

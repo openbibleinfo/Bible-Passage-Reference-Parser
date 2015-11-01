@@ -196,7 +196,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:I(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký)))|1(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|Chr))|(?:[I1](?:\.[\s\xa0]*Sử(?:[\s\xa0]*ký)?|[\s\xa0]*Sử(?:[\s\xa0]*ký)?))
+		(?:I(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký)))|1(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|Chr))|(?:[1I](?:\.[\s\xa0]*Sử(?:[\s\xa0]*ký)?|[\s\xa0]*Sử(?:[\s\xa0]*ký)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezra"]
@@ -434,7 +434,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:I(?:\.[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô))|[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô)))|1(?:\.[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô))|[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô))|Pet))|(?:[I1](?:\.[\s\xa0]*Phia|[\s\xa0]*Phia))
+		(?:I(?:\.[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô))|[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô)))|1(?:\.[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô))|[\s\xa0]*Ph(?:i(?:a-?rơ|-?(?:e-?rơ|rơ))|ê(?:-?rơ|rô))|Pet))|(?:[1I](?:\.[\s\xa0]*Phia|[\s\xa0]*Phia))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jude"]

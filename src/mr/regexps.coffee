@@ -103,7 +103,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:yoh[aā]n(?:[aā]l(?:[aā][\s\xa0]*ǳʰ(?:[aā]lele[\s\xa0]*praka(?:[tṭ](?:[iī]kara[nṇ])))))|योहानाला[\s\xa0]*झालेले[\s\xa0]*प्रकटीकरण|Rev)|(?:praka[ṭt](?:[īi]kara[nṇ])|प्रकटीकरण)
+		(?:yoh[aā]n(?:[aā]l(?:[aā][\s\xa0]*ǳʰ(?:[aā]lele[\s\xa0]*praka(?:[tṭ](?:[iī]kara[nṇ])))))|योहानाला[\s\xa0]*झालेले[\s\xa0]*प्रकटीकरण|Rev)|(?:praka[tṭ](?:[iī]kara[ṇn])|प्रकटीकरण)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["PrMan"]
@@ -319,12 +319,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Mark"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:m[aā]rk(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|मार्क(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|Mark)|(?:मार्काने|m[āa]rk(?:[aā]ne))
+		(?:m[aā]rk(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|मार्क(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|Mark)|(?:मार्काने|m[aā]rk(?:[āa]ne))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Luke"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:l[uū]k(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|Luke|लूक(?:ा(?:ने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?)?)|(?:l[uū]k(?:[aā]ne)|लूकाने)
+		(?:l[uū]k(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|Luke|लूक(?:ा(?:ने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?)?)|(?:लूकाने|l[uū]k(?:[aā]ne))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1John"]
@@ -344,7 +344,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["John"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:yoh[aā]n(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|योहान(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|John)|(?:योहानाने|yoh[āa]n(?:[aā]ne))
+		(?:yoh[aā]n(?:[aā]ne[\s\xa0]*lihilele[\s\xa0]*(?:[sŝ]ubʰavartam(?:[aā]n)))|योहान(?:ाने[\s\xa0]*लिहिलेले[\s\xa0]*शुभवर्तमान)?|John)|(?:yoh[āa]n(?:[aā]ne)|योहानाने)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Acts"]

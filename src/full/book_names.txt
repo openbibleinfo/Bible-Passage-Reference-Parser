@@ -1,3 +1,4 @@
+1Chr	Hanidabaa Odiyaa Koiro Maxaafaa
 1Chr	или Първа книга Паралипоменон
 1Chr	நாளாகமத்தின் முதலாம் புத்தகம்
 1Chr	Cartea intai Paralipomena
@@ -841,6 +842,7 @@
 1Chr	1 Cron
 1Chr	1 Crón
 1Chr	1 Crôn
+1Chr	1 HanO
 1Chr	1 Kron
 1Chr	1 Krón
 1Chr	1 Krön
@@ -1354,6 +1356,7 @@
 1Cor	I list Korintským
 1Cor	I. list Korinskym
 1Cor	I. list Korinským
+1Cor	Koiro Qoronttoosa
 1Cor	Kwanza Wakorintho
 1Cor	Pierwsza Koryntow
 1Cor	Pierwsza Koryntów
@@ -2337,6 +2340,7 @@
 1Cor	适凌爾福前》
 1Cor	1 Cor
 1Cor	1 Kor
+1Cor	1 Qor
 1Cor	1 Кор
 1Cor	1 قور
 1Cor	1. Co
@@ -2998,6 +3002,7 @@
 1John	I. List św. Jana
 1John	Johannes' 1 Brev
 1John	Johannes’ 1 Brev
+1John	Koiro Yohaannisa
 1John	Primero San Jaan
 1John	Primero San Jaun
 1John	Primero San Juan
@@ -3725,6 +3730,7 @@
 1Kgs	Pierwszy Księgi Krolewska
 1Kgs	Pierwszy Księgi Królewska
 1Kgs	Cartea a treia a Regilor
+1Kgs	Kawotu Maxaafaa Koiruwaa
 1Kgs	Prva knjiga o Kraljevima
 1Kgs	Tredje Kongerigernes Bog
 1Kgs	Trzecia Ksiega Krolewska
@@ -4847,6 +4853,7 @@
 1Kgs	1 Boq
 1Kgs	1 Fal
 1Kgs	1 Imp
+1Kgs	1 Kaw
 1Kgs	1 Kgs
 1Kgs	1 Kig
 1Kgs	1 Kin
@@ -4871,7 +4878,6 @@
 1Kgs	1. Kg
 1Kgs	1. Ki
 1Kgs	1. Kn
-1Kgs	1. Ko
 1Kgs	1. Kr
 1Kgs	1. Wa
 1Kgs	1e Ko
@@ -4892,7 +4898,6 @@
 1Kgs	I Vua
 1Kgs	I Împ
 1Kgs	I. Kg
-1Kgs	I. Ki
 1Kgs	I. Kn
 1Kgs	I. Ko
 1Kgs	I. Kr
@@ -4916,7 +4921,6 @@
 1Kgs	1 Kg
 1Kgs	1 Ki
 1Kgs	1 Kn
-1Kgs	1 Ko
 1Kgs	1 Kr
 1Kgs	1 Mb
 1Kgs	1 Rs
@@ -4926,7 +4930,6 @@
 1Kgs	1 அர
 1Kgs	1Kgs
 1Kgs	I Kg
-1Kgs	I Ki
 1Kgs	I Kn
 1Kgs	I Ko
 1Kgs	I Kr
@@ -4953,9 +4956,11 @@
 1Kgs	왕상
 1Kgs	1. Ks
 1Kgs	1. Re
+1Kgs	I. Ki
 1Kgs	I. Ks
 1Kgs	1 Ks
 1Kgs	1 Re
+1Kgs	I Ki
 1Kgs	I Ks
 1Macc	Ensimmainen makkabilaiskirja
 1Macc	Ensimmäinen makkabilaiskirja
@@ -6046,6 +6051,7 @@
 1Pet	I. List św Piotra
 1Pet	I. Pietarin kirje
 1Pet	I. послання Петра
+1Pet	Koiro PHeexiroosa
 1Pet	Primero San Pedro
 1Pet	Prva kniha Petrov
 1Pet	Prvni list Petruv
@@ -6524,6 +6530,7 @@
 1Pet	《撇特爾前》
 1Pet	伯多祿前書》
 1Pet	1 But
+1Pet	1 PHe
 1Pet	1 Ped
 1Pet	1 Per
 1Pet	1 Pet
@@ -6614,6 +6621,7 @@
 1Sam	Pierwszy Ksiegi Samuelowa
 1Sam	Pierwszy Księga Samuelowa
 1Sam	Pierwszy Księgi Samuelowa
+1Sam	Sameela Maxaafaa Koiruwaa
 1Sam	Første Kongerigernes Bog
 1Sam	Pierwsza Ksiega Samuela
 1Sam	Pierwsza Ksiegi Samuela
@@ -8268,6 +8276,7 @@
 1Thess	I. Thessolonians
 1Thess	I. Thesszalonika
 1Thess	I. Wathesalonike
+1Thess	Koiro Tasalonqqe
 1Thess	Premye Tesalonik
 1Thess	Prva Solunjanima
 1Thess	Unang Tesalonica
@@ -8786,6 +8795,7 @@
 1Thess	Α’ Θεσ
 1Thess	得撒洛尼前書
 1Thess	1 Sol
+1Thess	1 Tas
 1Thess	1 Tes
 1Thess	1 The
 1Thess	1 Ths
@@ -9112,6 +9122,7 @@
 1Tim	1 послання Тимофію
 1Tim	1. Timotheosbrevet
 1Tim	I послання Тимофію
+1Tim	Koiro Ximootiyoosa
 1Tim	Premieres Timothee
 1Tim	Premieres Timothée
 1Tim	Premières Timothee
@@ -9650,6 +9661,7 @@
 1Tim	1 Tim
 1Tim	1 Tym
 1Tim	1 Tím
+1Tim	1 Xim
 1Tim	1 Тим
 1Tim	1 طيم
 1Tim	1 तीम
@@ -9687,6 +9699,7 @@
 1Tim	《提前
 1Tim	提前》
 1Tim	提前
+2Chr	Hanidabaa Odiya Naa77antto Maxaafaa
 2Chr	நாளாகமத்தின் இரண்டாம் புத்தகம்
 2Chr	или Втора книга Паралипоменон
 2Chr	Cartea a doua Paralipomena
@@ -10516,6 +10529,7 @@
 2Chr	2 Cron
 2Chr	2 Crón
 2Chr	2 Crôn
+2Chr	2 HanO
 2Chr	2 Kron
 2Chr	2 Krón
 2Chr	2 Krön
@@ -10801,6 +10815,7 @@
 2Cor	Druhá kniha Korintskym
 2Cor	Druhá kniha Korintským
 2Cor	Druhá kniha Korinťanom
+2Cor	Naa77antto Qoronttoosa
 2Cor	Andra Korintherbrevet
 2Cor	Andra Korintierbrevet
 2Cor	Deuxiemes Corinthiens
@@ -11950,6 +11965,7 @@
 2Cor	适凌爾福後》
 2Cor	2 Cor
 2Cor	2 Kor
+2Cor	2 Qor
 2Cor	2 Кор
 2Cor	2 قور
 2Cor	2. Co
@@ -12549,6 +12565,7 @@
 2John	II посланица Јованова
 2John	II. Ivanova Poslanica
 2John	II. Johanneksen kirje
+2John	Naa77antto Yohaannisa
 2John	yohanacem dusre patra
 2John	yohanaceṃ dusre patra
 2John	yohanācem dusre patra
@@ -13328,6 +13345,7 @@
 2John	約貳
 2John	约贰
 2Kgs	இராஜாக்களின் இரண்டாம் புத்தகம்
+2Kgs	Kawotu Maxaafaa Naa77anttuwaa
 2Kgs	Kitabu cha Pili cha Wafalme
 2Kgs	राजाओ का विर्तान्त 2रा भाग
 2Kgs	राजाओ का विर्तान्त २रा भाग
@@ -14476,6 +14494,7 @@
 2Kgs	2 Boq
 2Kgs	2 Fal
 2Kgs	2 Imp
+2Kgs	2 Kaw
 2Kgs	2 Kgs
 2Kgs	2 Kig
 2Kgs	2 Kin
@@ -14501,7 +14520,6 @@
 2Kgs	2. Kg
 2Kgs	2. Ki
 2Kgs	2. Kn
-2Kgs	2. Ko
 2Kgs	2. Kr
 2Kgs	2. Wa
 2Kgs	2e Ko
@@ -14532,7 +14550,6 @@
 2Kgs	2 Kg
 2Kgs	2 Ki
 2Kgs	2 Kn
-2Kgs	2 Ko
 2Kgs	2 Kr
 2Kgs	2 Mb
 2Kgs	2 Rs
@@ -15590,6 +15607,7 @@
 2Pet	Второ послание на Петър
 2Pet	Друга посланица Петрова
 2Pet	Barua ya Pili ya Petro
+2Pet	Naa77antto PHeexiroosa
 2Pet	पत्रुसको दोस्त्रो पत्र
 2Pet	Druga List sw. Piotra
 2Pet	Druga List św. Piotra
@@ -16171,6 +16189,7 @@
 2Pet	《撇特爾後》
 2Pet	伯多祿後書》
 2Pet	2 But
+2Pet	2 PHe
 2Pet	2 Ped
 2Pet	2 Per
 2Pet	2 Pet
@@ -16236,6 +16255,7 @@
 2Pet	彼後》
 2Pet	彼后
 2Pet	彼後
+2Sam	Sameela Maxaafaa Naa77anttuwaa
 2Sam	சாமுவேலின் இரண்டாம் புத்தகம்
 2Sam	Kitabu cha Pili cha Samueli
 2Sam	ଶାମୁୟେଲଙ୍କ ଦ୍ୱିତୀୟ ପୁସ୍ତକ
@@ -17408,6 +17428,7 @@
 2Thess	II. list Tesalonickým
 2Thess	Masodik Thesszalonika
 2Thess	Második Thesszalonika
+2Thess	Naa77antto Tasalonqqe
 2Thess	Second Thessallonians
 2Thess	Second Thessalonaians
 2Thess	Second Thessalonciens
@@ -18422,6 +18443,7 @@
 2Thess	Β’ Θεσ
 2Thess	得撒洛尼後書
 2Thess	2 Sol
+2Thess	2 Tas
 2Thess	2 Tes
 2Thess	2 The
 2Thess	2 Ths
@@ -18774,6 +18796,7 @@
 2Tim	II. Kirje Timoteukselle
 2Tim	II. послання до Тимотея
 2Tim	II. послання до Тимофія
+2Tim	Naa77antto Ximootiyoosa
 2Tim	timatʰtʰala dusre patra
 2Tim	timatʰtʰalā dusre patra
 2Tim	timatʰtʰāla dusre patra
@@ -19409,6 +19432,7 @@
 2Tim	2 Tim
 2Tim	2 Tym
 2Tim	2 Tím
+2Tim	2 Xim
 2Tim	2 Тим
 2Tim	2 طيم
 2Tim	2 तीम
@@ -19694,6 +19718,7 @@
 3John	3. Johanneksen kirje
 3John	Epistula III Ioannis
 3John	Epistula Ioannis III
+3John	Hezzantto Yohaannisa
 3John	Johannes tredje brev
 3John	Trzeci List sw. Jana
 3John	Trzeci List św. Jana
@@ -22155,6 +22180,7 @@
 4Macc	4마카
 Acts	Mabuting Balita ayon sa Espiritu Santo
 Acts	Mabuting Balita ng Espiritu Santo
+Acts	Yesuusi Kiittidoogeetu Oosuwaa
 Acts	Ebanghelyo ng Espiritu Santo
 Acts	Handelingen van de apostelen
 Acts	ପ୍ରେରିତମାନଙ୍କ କାର୍ଯ୍ୟର ବିବରଣ
@@ -22435,6 +22461,7 @@ Acts	Hch
 Acts	Hec
 Acts	Hnd
 Acts	Mdo
+Acts	Osu
 Acts	Vep
 Acts	Πρξ
 Acts	Д А
@@ -22490,6 +22517,7 @@ Amos	A-mốt
 Amos	Amosa
 Amos	Amosi
 Amos	Amosz
+Amos	Amoxa
 Amos	Ámosz
 Amos	ʿāmōs
 Amos	Амоса
@@ -22503,6 +22531,7 @@ Amos	アモスしょ
 Amos	阿摩司书》
 Amos	阿摩司書》
 Amos	Amos
+Amos	Amox
 Amos	Amòs
 Amos	Amós
 Amos	Amōs
@@ -22934,6 +22963,7 @@ Col	Kolosianeve
 Col	Kolosianëve
 Col	Kolossenzen
 Col	Kulussaiyon
+Col	Qolasiyaasa
 Col	До колоссян
 Col	אל הקולוסים
 Col	कलस्सैकरांस
@@ -23047,6 +23077,7 @@ Col	Col
 Col	Côl
 Col	Kol
 Col	Kól
+Col	Qol
 Col	Κολ
 Col	Кол
 Col	قول
@@ -23089,6 +23120,7 @@ Dan	Daaniyyel
 Dan	daniyalko
 Dan	dāniyalko
 Dan	दानिय्येल
+Dan	Daaneela
 Dan	Daanyeel
 Dan	Danielin
 Dan	Ða-ni-ên
@@ -23159,6 +23191,7 @@ Dan	ダニエル書
 Dan	但以理书》
 Dan	但以理書》
 Dan	Daan
+Dan	Dane
 Dan	दानि
 Dan	தானி
 Dan	《達尼爾
@@ -23420,6 +23453,7 @@ Deut	V Ks. Mojżeszowa
 Deut	V. Ks Mojzeszowa
 Deut	V. Ks Mojżeszowa
 Deut	Viides Mooseksen
+Deut	Zaarettido Wogaa
 Deut	Повторени закони
 Deut	Поновљени закони
 Deut	5 Ks Mojzeszowa
@@ -23710,6 +23744,7 @@ Deut	Deut
 Deut	Duet
 Deut	Kumb
 Deut	Phục
+Deut	ZarW
 Deut	Δευτ
 Deut	Втор
 Deut	Повт
@@ -23971,6 +24006,7 @@ Eccl	Eclessiate
 Eccl	Eclessiaté
 Eccl	Eclessiite
 Eccl	Eclessiité
+Eccl	Eranchchaa
 Eccl	Predikaren
 Eccl	Predikator
 Eccl	Predikeren
@@ -24080,6 +24116,7 @@ Eccl	訓道篇》
 Eccl	Ecc
 Eccl	Ecl
 Eccl	Ekl
+Eccl	Era
 Eccl	Kaz
 Eccl	Koh
 Eccl	Mhu
@@ -24436,6 +24473,7 @@ Eph	Efeziers
 Eph	Efeziërs
 Eph	Efezskym
 Eph	Efezským
+Eph	Efisoona
 Eph	Epesians
 Eph	Ephesain
 Eph	Ephesian
@@ -24504,6 +24542,7 @@ Eph	以弗所書》
 Eph	厄弗所書》
 Eph	Efes
 Eph	Efez
+Eph	Efis
 Eph	Efèz
 Eph	Ephe
 Eph	Ephs
@@ -24569,6 +24608,7 @@ Esth	Liv Estè a
 Esth	Ks Estery
 Esth	سفر أستير
 Esth	เอสเธอร์
+Esth	Asttiro
 Esth	Esterei
 Esth	Esterin
 Esth	estarko
@@ -24627,6 +24667,7 @@ Esth	エステル
 Esth	以斯帖記
 Esth	以斯帖记
 Esth	에스더기
+Esth	Ast
 Esth	Est
 Esth	Εσθ
 Esth	Ест
@@ -25022,6 +25063,7 @@ Exod	Andre Mos
 Exod	Delivrans
 Exod	II. Mozes
 Exod	II. Mózes
+Exod	Kessaabaa
 Exod	Kivonulas
 Exod	Kivonulás
 Exod	Xuất Hành
@@ -25120,6 +25162,7 @@ Exod	2 Mo
 Exod	2 Mz
 Exod	2Mós
 Exod	Exod
+Exod	Kess
 Exod	Xuất
 Exod	Éxod
 Exod	Êxod
@@ -25214,6 +25257,7 @@ Ezek	Ezeiquiel
 Ezek	Eziequiel
 Ezek	Eziiquiel
 Ezek	Hezechiel
+Ezek	Hizqqeela
 Ezek	Iezechiel
 Ezek	Jezekiil'
 Ezek	Jezekiil’
@@ -25356,6 +25400,7 @@ Ezek	Ezk
 Ezek	Ezq
 Ezek	Ezé
 Ezek	Hes
+Ezek	Hiz
 Ezek	Yex
 Ezek	Ιεζ
 Ezek	Јез
@@ -25430,6 +25475,7 @@ Ezra	Esdra
 Ezra	Esran
 Ezra	Esras
 Ezra	Ezdra
+Ezra	Izira
 Ezra	edzra
 Ezra	edzrā
 Ezra	ʿizrā
@@ -25460,6 +25506,7 @@ Ezra	Esṛā
 Ezra	Ezdr
 Ezra	Ezra
 Ezra	Ezsd
+Ezra	Izir
 Ezra	azrā
 Ezra	eǳra
 Ezra	eǳrā
@@ -25672,6 +25719,7 @@ Gal	गलातीहरूलाई
 Gal	ਗਲਾਤੀਆਂ ਨੂੰ
 Gal	カラテヤの信徒への手紙
 Gal	ガラテヤの信徒への手紙
+Gal	Galaatiyaa
 Gal	Galacanima
 Gal	Galataians
 Gal	Galataions
@@ -26177,6 +26225,7 @@ Gen	1. Mojžíšova
 Gen	1. Mooseksen
 Gen	1. Moseboken
 Gen	1. Мојсијева
+Gen	Doomettaabaa
 Gen	Eerste Mozes
 Gen	I Mojzeszowa
 Gen	I Mojżeszowa
@@ -26599,6 +26648,7 @@ Hab	हबकूकको पुस्तक
 Hab	Habakkuks Bog
 Hab	Habakkuks bok
 Hab	Liv Abakik la
+Hab	Irmbbaaqooma
 Hab	Ks. Habakuka
 Hab	Ks Habakuka
 Hab	Habbakkakk
@@ -26690,6 +26740,7 @@ Hab	哈巴谷書》
 Hab	Abak
 Hab	Habc
 Hab	Habk
+Hab	Imba
 Hab	Авак
 Hab	《哈巴谷
 Hab	ハハクク
@@ -26781,6 +26832,7 @@ Hag	Hagai
 Hag	Hagaj
 Hag	Hagej
 Hag	Hageo
+Hag	Hagga
 Hag	Аггеи
 Hag	Аггей
 Hag	Аггея
@@ -27065,6 +27117,7 @@ Heb	Hebwers
 Heb	Hebwres
 Heb	Hwbrews
 Heb	Hébreux
+Heb	Ibraawe
 Heb	Евреите
 Heb	इब्रानि
 Heb	इब्रानी
@@ -27130,6 +27183,7 @@ Heb	Ebre
 Heb	Hebr
 Heb	Hepr
 Heb	Hébr
+Heb	Ibra
 Heb	Zsid
 Heb	ヘフライ
 Heb	ヘフル書
@@ -27196,6 +27250,7 @@ Hos	Liv Oze a
 Hos	سفر هوشع
 Hos	ہو سیعاہ
 Hos	โฮเชยาห์
+Hos	Hoose7a
 Hos	Hoosean
 Hos	Hoseias
 Hos	Hô-sê-a
@@ -27355,6 +27410,7 @@ Isa	Isiiaaha
 Isa	Isiiaiha
 Isa	Isiiiaha
 Isa	Isiiiiha
+Isa	Isiyaasa
 Isa	Izajasza
 Isa	yasaʿyāh
 Isa	إشَعْياء
@@ -27498,6 +27554,7 @@ Isa	Esai
 Isa	I-sa
 Isa	Isah
 Isa	Isai
+Isa	Isiy
 Isa	Ісая
 Isa	Ісаі
 Isa	Ісаї
@@ -27641,6 +27698,7 @@ Jas	אגרת יעקב
 Jas	याकोबाचें
 Jas	Jaakobin
 Jas	Santiago
+Jas	Yaaqooba
 Jas	Јаковова
 Jas	ଯାକୁବଙ୍କ
 Jas	யாக்கோபு
@@ -27733,6 +27791,7 @@ Jas	San
 Jas	Stg
 Jas	Yac
 Jas	Yak
+Jas	Yaq
 Jas	Јак
 Jas	Иак
 Jas	᾿Ια
@@ -27871,6 +27930,7 @@ Jer	yarmiyako
 Jer	yarmiyāko
 Jer	سفر إرميا
 Jer	यर्मियाको
+Jer	Ermmaasa
 Jer	Heremias
 Jer	Heremyas
 Jer	Herimias
@@ -27984,6 +28044,7 @@ Jer	耶利米書
 Jer	耶肋米亞
 Jer	예레미아
 Jer	예레미야
+Jer	Erm
 Jer	Ger
 Jer	Giê
 Jer	Ier
@@ -28056,6 +28117,7 @@ Job	Ks Ijoba
 Job	Ks. Joba
 Job	سفر أيوب
 Job	अय्यूबको
+Job	Iyyooba
 Job	Jobsbok
 Job	Jobsbók
 Job	Ks Joba
@@ -28081,6 +28143,7 @@ Job	Ayub
 Job	Gióp
 Job	Hiob
 Job	Ijob
+Job	Iyob
 Job	Joba
 Job	Jobi
 Job	Jobs
@@ -28162,6 +28225,7 @@ Joel	Книга Йоіла
 Joel	Joels Bog
 Joel	Joels bok
 Joel	Ks. Joela
+Joel	Yuu77eela
 Joel	سفر يوئيل
 Joel	Ks Joela
 Joel	Yoo'eel
@@ -28208,6 +28272,7 @@ Joel	Jóél
 Joel	Yoel
 Joel	Yole
 Joel	Yool
+Joel	Yu7e
 Joel	yoel
 Joel	Ιωήλ
 Joel	Ιωηλ
@@ -28588,6 +28653,7 @@ John	Saint John
 John	Saint Jonh
 John	Saint Joon
 John	Saint Jphn
+John	Yohaannisa
 John	Saint Jhn
 John	Saint Joh
 John	St. Jophn
@@ -28781,6 +28847,7 @@ Jonah	Ks Jonasza
 Jonah	Jonas bok
 Jonah	سفر يونان
 Jonah	Jona bok
+Jonah	Yoonaasa
 Jonah	Jonasza
 Jonah	Giô-na
 Jonah	Joonan
@@ -28979,6 +29046,7 @@ Josh	Jozue
 Josh	Jozye
 Josh	Jošua
 Josh	Józua
+Josh	Yaasu
 Josh	Yosua
 Josh	Yusak
 Josh	yašūʿ
@@ -29150,6 +29218,7 @@ Jude	yahūdako
 Jude	yahūdāko
 Jude	यहूदाचें
 Jude	Yahooda
+Jude	Yihudaa
 Jude	yahūdāh
 Jude	یہُوداہ
 Jude	यहूदाको
@@ -29191,6 +29260,7 @@ Jude	Juda
 Jude	Jude
 Jude	Judy
 Jude	Juud
+Jude	Yihu
 Jude	Yuda
 Jude	Yuta
 Jude	Yutā
@@ -29355,6 +29425,7 @@ Judg	Richteren
 Judg	Thẩm phán
 Judg	Tuomarien
 Judg	न्यायियों
+Judg	Daannata
 Judg	Dommerne
 Judg	K sudcov
 Judg	Nyayiyon
@@ -29414,6 +29485,7 @@ Judg	《士师记》
 Judg	《士師記》
 Judg	《民長紀》
 Judg	Barn
+Judg	Dana
 Judg	Jdgs
 Judg	Judg
 Judg	Juec
@@ -29438,7 +29510,6 @@ Judg	士师记》
 Judg	士師記》
 Judg	民長紀》
 Judg	Amu
-Judg	Bir
 Judg	Bír
 Judg	Dom
 Judg	Dóm
@@ -29477,6 +29548,7 @@ Judg	士師
 Judg	판관
 Judg	士
 Judg	삿
+Judg	Bir
 Lam	Chante pou plenn So lavil Jerizalem
 Lam	Chante pou plenn So lavil Jerizalèm
 Lam	Chante pou plenn Sò lavil Jerizalem
@@ -29505,6 +29577,7 @@ Lam	Jeremijine tuzaljke
 Lam	Jeremijine tužaljke
 Lam	Книга Плач Иеремиев
 Lam	Aklat ng Pagtaghoy
+Lam	Ermmaasa Zilaassaa
 Lam	Galarnad Jeremiah
 Lam	Jeremias siralmai
 Lam	Jeremiás siralmai
@@ -29734,6 +29807,7 @@ Lam	புலம்
 Lam	《連同哀歌
 Lam	耶利米哀歌
 Lam	連同哀歌》
+Lam	ErmZ
 Lam	Klag
 Lam	Klgl
 Lam	Plac
@@ -30191,6 +30265,7 @@ Lev	Levítico
 Lev	Livetcus
 Lev	Livitcus
 Lev	Lê-vi ký
+Lev	Wogaabaa
 Lev	Λευιτικο
 Lev	Λευιτικό
 Lev	Λευϊτικο
@@ -30276,6 +30351,7 @@ Lev	Lef
 Lev	Lev
 Lev	Lév
 Lev	Wal
+Lev	Wog
 Lev	Λευ
 Lev	Лев
 Lev	ลนต
@@ -30509,6 +30585,7 @@ Luke	Saint Lu
 Luke	St. Luke
 Luke	Від Луки
 Luke	ルカによる福音書
+Luke	Luqaasa
 Luke	St Luke
 Luke	St. Luk
 Luke	От Лука
@@ -30583,6 +30660,7 @@ Luke	Lik
 Luke	Llu
 Luke	Luc
 Luke	Luk
+Luke	Luq
 Luke	Lúk
 Luke	Łuk
 Luke	लूक
@@ -30637,6 +30715,7 @@ Mal	Malachiás
 Mal	Malachiáš
 Mal	Malaquias
 Mal	Malaquías
+Mal	Mikiyaasa
 Mal	سفر ملاخي
 Mal	Ma-la-ki
 Mal	Malaakii
@@ -30929,6 +31008,7 @@ Mark	San Marcos
 Mark	إنجيل مرقس
 Mark	Ew. Marka
 Mark	Markuksen
+Mark	Marqqoosa
 Mark	Saint Mar
 Mark	Saint Mrk
 Mark	Від Марка
@@ -31007,6 +31087,7 @@ Mark	马可福音》
 Mark	마가복음서
 Mark	Marc
 Mark	Mark
+Mark	Marq
 Mark	Márk
 Mark	Μάρκ
 Mark	Μαρκ
@@ -31713,6 +31794,7 @@ Matt	St. Matthew
 Matt	St. Matthwe
 Matt	St. Mattiew
 Matt	St. Matttew
+Matt	Maatiyoosa
 Matt	Matteuksen
 Matt	Saint Matt
 Matt	St Mathhew
@@ -31900,6 +31982,7 @@ Mic	मीकाको पुस्तक
 Mic	Ks Micheasza
 Mic	Miikan kirja
 Mic	Liv Miche a
+Mic	Milkkiyaasa
 Mic	Micheasza
 Mic	Mikas Bog
 Mic	Mikas bok
@@ -31971,6 +32054,7 @@ Mic	Mich
 Mic	Miik
 Mic	Mika
 Mic	Mikā
+Mic	Milk
 Mic	Míka
 Mic	Mīka
 Mic	Mīkā
@@ -32043,6 +32127,7 @@ Nah	Nahums Bog
 Nah	Nahums bok
 Nah	Ks Nahuma
 Nah	سفر ناحوم
+Nah	Naahooma
 Nah	Nahumin
 Nah	نا حُوم
 Nah	Na-hum
@@ -32077,6 +32162,7 @@ Nah	《那鴻書》
 Nah	《那鸿书》
 Nah	ナホムしょ
 Nah	Nach
+Nah	Naho
 Nah	Nahu
 Nah	Nahú
 Nah	Naum
@@ -32153,6 +32239,7 @@ Neh	Nê-hê-mi-a
 Neh	nahemyahko
 Neh	nahemyāhko
 Neh	नहेम्याहको
+Neh	Nahimiyaa
 Neh	Nehemaaah
 Neh	Nehemaaih
 Neh	Nehemaiah
@@ -32258,6 +32345,7 @@ Neh	厄斯德拉下
 Neh	尼希米記》
 Neh	尼希米记》
 Neh	느헤미야기
+Neh	Nahi
 Neh	Neem
 Neh	Неем
 Neh	Неєм
@@ -32635,6 +32723,7 @@ Num	Eṇṇākamam
 Num	IV. Mozes
 Num	IV. Mózes
 Num	Ks. Liczb
+Num	Qoodaabaa
 Num	Resansman
 Num	سفر العدد
 Num	எண்ணாகமம்
@@ -32748,6 +32837,7 @@ Num	Dân
 Num	Nom
 Num	Num
 Num	Núm
+Num	Qod
 Num	Res
 Num	Tir
 Num	Чис
@@ -32798,6 +32888,7 @@ Obad	سفر عوبديا
 Obad	Cobadyaah
 Obad	Ô-ba-đi-a
 Obad	ʿabadiyāh
+Obad	Abddiyyu
 Obad	Abdiasza
 Obad	โอบาดีย์
 Obad	โอบาดีห์
@@ -32902,6 +32993,7 @@ Obad	亞北底亞》
 Obad	俄巴底亚书
 Obad	俄巴底亞書
 Obad	오바드야서
+Obad	Abdi
 Obad	Obad
 Obad	ओबधा
 Obad	ஒபதி
@@ -33045,6 +33137,7 @@ Phil	List do Filipian
 Phil	Mga Taga Filipos
 Phil	Mga Taga Pilipos
 Phil	Mga Taga-Filipos
+Phil	Piliphphisiyuusa
 Phil	Filippilaisille
 Phil	Filippiläisille
 Phil	ad Philippenses
@@ -33268,6 +33361,7 @@ Phil	腓立比書》
 Phil	Fili
 Phil	Phil
 Phil	Phlp
+Phil	Pilp
 Phil	பிலி
 Phil	《肥利批
 Phil	ヒリヒ書
@@ -33430,6 +33524,7 @@ Phlm	फिलेमोनलाई
 Phlm	फिलेमोनाला
 Phlm	ଫିଲୀମୋନଙ୍କ
 Phlm	Filemonit
+Phlm	Pilimoona
 Phlm	フィレモンへの手紙
 Phlm	Filemona
 Phlm	Filemone
@@ -33493,6 +33588,7 @@ Phlm	Flmn
 Phlm	Fílm
 Phlm	Phlm
 Phlm	Phmn
+Phlm	Pilm
 Phlm	பிலே
 Phlm	《肥利孟
 Phlm	肥利孟》
@@ -33927,6 +34023,7 @@ Prov	Приказок
 Prov	नीति वचन
 Prov	हितोपदेश
 Prov	ହିତୋପଦେଶ
+Prov	Leemiso
 Prov	Methali
 Prov	Mithali
 Prov	Poverbs
@@ -33988,6 +34085,7 @@ Prov	《箴言》
 Prov	格言の書
 Prov	Izr
 Prov	Kaw
+Prov	Lem
 Prov	Mit
 Prov	Okv
 Prov	Pro
@@ -34085,6 +34183,7 @@ Ps	Caṅkitam
 Ps	Caṅkītam
 Ps	K zalmov
 Ps	K žalmov
+Ps	Mazamure
 Ps	Mga Awit
 Ps	Psalmien
 Ps	Salmenes
@@ -34244,6 +34343,7 @@ Ps	《聖詠集
 Ps	《詩篇》
 Ps	《诗篇》
 Ps	聖詠集》
+Ps	Maz
 Ps	Psa
 Ps	Psm
 Ps	Pss
@@ -34828,6 +34928,7 @@ Rev	Αποκάλυψη
 Rev	Αποκαλυψη
 Rev	Откривење
 Rev	प्रकटीकरण
+Rev	Ajjuutaa
 Rev	Ilmestys
 Rev	Khải thị
 Rev	Zjavenie
@@ -34881,6 +34982,7 @@ Rev	启示录》
 Rev	啓示錄》
 Rev	啟示錄》
 Rev	默示錄》
+Rev	Aju
 Rev	Apc
 Rev	Apk
 Rev	Apo
@@ -35123,6 +35225,7 @@ Rom	Roman
 Rom	Romen
 Rom	Romer
 Rom	Rooma
+Rom	Roome
 Rom	Rô-ma
 Rom	Römer
 Rom	ரோமர்
@@ -35223,6 +35326,7 @@ Ruth	นางรูธ
 Ruth	Ru-tơ
 Ruth	Ruthi
 Ruth	Ruthu
+Ruth	Uruto
 Ruth	راعوث
 Ruth	रूथको
 Ruth	《盧德傳》
@@ -35253,6 +35357,7 @@ Ruth	Rth
 Ruth	Rut
 Ruth	Rút
 Ruth	Rūt
+Ruth	Uru
 Ruth	rūt
 Ruth	Рут
 Ruth	Руф
@@ -36079,6 +36184,7 @@ Song	Piesn Salomona
 Song	Piesń Salomona
 Song	Pieśn Salomona
 Song	Pieśń Salomona
+Song	Siiquwaa Sabaa
 Song	Songs of Songs
 Song	salemān dā gīt
 Song	உன்னத சங்கீதம்
@@ -36260,6 +36366,7 @@ Song	Pis
 Song	Pnp
 Song	Pís
 Song	Sgs
+Song	Siq
 Song	Sng
 Song	SoS
 Song	Sol
@@ -36492,6 +36599,7 @@ Titus	К Титу
 Titus	तीताला
 Titus	தீத்து
 Titus	テトスへの書
+Titus	Tiitu
 Titus	Titit
 Titus	Titum
 Titus	Titus
@@ -36856,6 +36964,7 @@ Zech	Ks Zachariasza
 Zech	Sakarjan kirja
 Zech	Zakarias' Bog
 Zech	Zakarias’ Bog
+Zech	Zakkaariyaasa
 Zech	Книга Захаріі
 Zech	Книга Захарії
 Zech	Liv Zakari a
@@ -36995,6 +37104,7 @@ Zech	Sach
 Zech	Sech
 Zech	Zacc
 Zech	Zach
+Zech	Zakk
 Zech	Zech
 Zech	சகரி
 Zech	செக்
@@ -37062,6 +37172,7 @@ Zeph	Ceppaṉiya
 Zeph	Ceppaṉiyā
 Zeph	Sefanyaah
 Zeph	Seffaneia
+Zeph	Sofonaasa
 Zeph	Sophonias
 Zeph	Szefanias
 Zeph	Szefaniás
@@ -37167,6 +37278,7 @@ Zeph	西番雅書》
 Zeph	스바니야서
 Zeph	Seff
 Zeph	Seph
+Zeph	Sofo
 Zeph	Soph
 Zeph	Szof
 Zeph	Zeph

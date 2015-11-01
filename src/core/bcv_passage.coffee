@@ -90,9 +90,11 @@ class bcv_passage
 			valid = @validate_ref passage.start_context.translations, {b: b, c: c}
 			obj = start: {b: b}, end: {b: b}, valid: valid
 			# Is it really a `bv` object?
-			if valid.messages.start_chapter_not_exist_in_single_chapter_book
+			if valid.messages.start_chapter_not_exist_in_single_chapter_book or valid.messages.start_chapter_1
 				obj.valid = @validate_ref passage.start_context.translations, {b: b, v: c}
-				obj.valid.messages.start_chapter_not_exist_in_single_chapter_book = 1
+				# If it's `Jude 2`, then note that that chapter doesn't exist.
+				if valid.messages.start_chapter_not_exist_in_single_chapter_book
+					obj.valid.messages.start_chapter_not_exist_in_single_chapter_book = 1
 				obj.start.c = 1
 				obj.end.c = 1
 				context_key = "v"
@@ -187,6 +189,7 @@ class bcv_passage
 
 	# Handle a chapter.
 	c: (passage, accum, context) ->
+		# This can happen in places like `chapt. 11-1040 of II Kings`, where the invalid range separates the `b` and the `c`.
 		passage.start_context = bcv_utils.shallow_clone context
 		# If it's an actual chapter object, the value we want is in the integer object inside it.
 		c = if passage.type is "integer" then passage.value else @pluck("integer", passage.value).value
@@ -309,6 +312,38 @@ class bcv_passage
 	integer: (passage, accum, context) ->
 		return @v passage, accum, context if context.v?
 		return @c passage, accum, context
+
+	# Handle "next verse" (e.g., in Polish, "Matt 1:1n" should be treated as "Matt 1:1-2"). It crosses chapter boundaries but not book boundaries. When given a whole chapter, it assumes the next chapter (again, not crossing book boundaries). The logic here is similar to that of `@ff`.
+	next_v: (passage, accum, context) ->
+		passage.start_context = bcv_utils.shallow_clone context
+		# Create a virtual end to pass to `@range`. Start out by just incrementing the last integer in the `passage`.
+		prev_integer = @pluck_last_recursively "integer", passage.value
+		# The grammar should always produce at least one object in `passage` with an integer, so this shouldn't be necessary.
+		prev_integer ?= {value: 1}
+		# Add a temporary object to serve as the next verse or chapter. We set it to an integer so that we don't have to worry about whether to create a `c` or a `v`.
+		passage.value.push type: "integer", indices: passage.indices, value: prev_integer.value + 1
+		# We don't overwrite the `passage` object here the way we do in `@ff` because the next `if` statement needs access to the original `passage`.
+		[[psg], context] = @range passage, [], passage.start_context
+		# If it's at the end of the chapter, try the first verse of the next chapter (unless at the end of a book). Only try if the start verse is valid.
+		if psg.passages[0].valid.messages.end_verse_not_exist? and !psg.passages[0].valid.messages.start_verse_not_exist? and !psg.passages[0].valid.messages.start_chapter_not_exist? and context.c?
+			# Get rid of the previous attempt to find the next verse.
+			passage.value.pop()
+			# Construct a `cv` object that points to the first verse of the next chapter. The `context.c` always indicates the current chapter. The indices don't matter because we discard this entire object once we're done with it.
+			passage.value.push type: "cv", indices: passage.indices, value: [{type: "c", value: [{type: "integer", value: context.c + 1, indices: passage.indices}], indices: passage.indices}, {type: "v", value: [{type: "integer", value: 1, indices: passage.indices}], indices: passage.indices}]
+			# And then try again, forcing `@range` to use the first verse of the next chapter.
+			[[psg], context] = @range passage, [], passage.start_context
+		# Set the indices to include the end of the range (the "n" in Polish).
+		psg.value[0].indices = psg.value[1].indices
+		psg.value[0].absolute_indices = psg.value[1].absolute_indices
+		# And then get rid of the virtual end so it doesn't stick around if we need to reparse it later.
+		psg.value.pop()
+		# Ignore any warnings that the end chapter / verse doesn't exist.
+		delete psg.passages[0].valid.messages.end_verse_not_exist if psg.passages[0].valid.messages.end_verse_not_exist?
+		delete psg.passages[0].valid.messages.end_chapter_not_exist if psg.passages[0].valid.messages.end_chapter_not_exist?
+		delete psg.passages[0].end.original_c if psg.passages[0].end.original_c?
+		# `translations` and `absolute_indices` are handled in `@range`.
+		accum.push psg
+		[accum, context]
 
 	# Handle a sequence of references. This is the only function that can return more than one object in the `passage.passages` array.
 	sequence: (passage, accum, context) ->
@@ -587,6 +622,19 @@ class bcv_passage
 			return passage
 		null
 
+	# Pluck the last object or value matching a type, descending as needed into objects.
+	pluck_last_recursively: (type, passages) ->
+		# The `-1` means: walk backwards through the array.
+		for passage in passages by -1
+			# Skip null values.
+			continue unless passage? and passage.type?
+			# Rely on `@pluck` if we've found a match. It expects an array.
+			return @pluck(type, [passage]) if (passage.type is type)
+			# If `passage.type` exists, we know that `passage.value` exists.
+			value = @pluck_last_recursively(type, passage.value)
+			return value if value?
+		null
+
 	# Set all the available context keys.
 	set_context_from_object: (context, keys, obj) ->
 		for type in keys
@@ -731,6 +779,9 @@ class bcv_passage
 						if @options.passage_existence_strategy.indexOf("v") >= 0
 							valid = false
 							messages.start_verse_not_exist = @translations[translation].chapters[start.b][start.c - 1]
+				# Jude 1 when wanting to treat the `1` as a verse rather than a chapter.
+				else if start.c == 1 and @options.single_chapter_1_strategy is "verse" and @translations[translation].chapters[start.b].length == 1
+					messages.start_chapter_1 = 1
 			# Matt 50
 			else
 				if start.c != 1 and @translations[translation].chapters[start.b].length == 1
@@ -739,7 +790,10 @@ class bcv_passage
 				else if start.c > 0 and @options.passage_existence_strategy.indexOf("c") >= 0
 					valid = false
 					messages.start_chapter_not_exist = @translations[translation].chapters[start.b].length
-
+		# An unusual situation in which there's no defined start book. This only happens when a `c` becomes dissociated from its `b`.
+		else if not start.b?
+			valid = false
+			messages.start_book_not_defined = true
 		# None 2:1
 		else
 			valid = false if @options.passage_existence_strategy.indexOf("b") >= 0

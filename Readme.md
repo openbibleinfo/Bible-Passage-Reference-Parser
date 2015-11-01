@@ -1,16 +1,16 @@
 # Bible Passage Reference Parser
 
-Try a [demo of the Bible passage reference parser](http://www.openbible.info/labs/reference-parser/).
-
 This project is a Coffeescript implementation of a Bible-passage reference parser (seeing `John 3:16`, for example, and both understanding that it's a Bible reference and converting it into a form that computers can process). It parses Bible **B**ooks, **C**hapters, and **V**erses—thus the file names involving "BCV Parser."
 
-Its primary use is to interpret query strings for use in a Bible application. It can extract BCVs from text but may be too aggressive for some uses. (See [Caveats](#caveats).)
+Its primary use is to interpret query strings for use in a Bible application. As such, it is designed to handle typos and ambiguous references. It can extract BCVs from text but may be too aggressive for some uses. (See [Caveats](#caveats).)
 
-It should be fairly speedy, taking under a millisecond to parse a short string of around 100 bytes.
+It should be fairly speedy for most applications, taking under a millisecond to parse a short string and able to parse about 130KB of reference-heavy text per second on a single core.
 
-The code occupies about 135KB minified and 24KB gzipped.
+The code occupies about 137KB minified and 25KB gzipped.
 
 This project also provides extensively commented code and 4.7 million real-world strings that you can use as a starting point to build your own BCV parser.
+
+Try a [demo of the Bible passage reference parser](http://www.openbible.info/labs/reference-parser/).
 
 ## Usage
 
@@ -27,10 +27,27 @@ These usage examples are in Javascript. You can also use Coffeescript, of course
 </script>
 ```
 
-### Setup: Node.js
+### Setup: Node.js (npm)
+
+To install from the command line:
+
+```shell
+npm i bible-passage-reference-parser
+```
+
+To run:
 
 ```javascript
-var bcv_parser = require("/path/js/en_bcv_parser.min.js").bcv_parser;
+var bcv_parser = require("bible-passage-reference-parser/js/en_bcv_parser").bcv_parser;
+var bcv = new bcv_parser;
+```
+
+### Setup: Node.js (manual)
+
+After downloading the language file you want:
+
+```javascript
+var bcv_parser = require("/path/js/en_bcv_parser.js").bcv_parser;
 var bcv = new bcv_parser;
 ```
 
@@ -38,7 +55,7 @@ var bcv = new bcv_parser;
 
 Assuming you have an object named `bcv`:
 
-#### `.parse("")`
+#### `.parse("[string to parse]")`
 
 This function does the parsing. It returns the `bcv` object and is suitable for chaining.
 
@@ -46,7 +63,7 @@ This function does the parsing. It returns the `bcv` object and is suitable for 
 bcv.parse("John 3:16"); // Returns the `bcv` object.
 ```
 
-#### `.parse_with_context("", "")`
+#### `.parse_with_context("[string to parse]", "[string context]")`
 
 This function parses a string with a string context as the second argument. As with `.parse()`, it returns the `bcv` object and is suitable for chaining. Use this function if you have a string that starts with what you suspect is a reference and you already know the context. For example, maybe you're parsing a footnote that refers to "verse 16," and you know that the footnote is attached to John 3:
 
@@ -78,7 +95,7 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis();
 
 #### `.osis_and_translations()`
 
-This function returns an array. Each element in the array is an `[OSIS, Translation]` pair (both are strings).
+This function returns an array. Each element in the array is an `[OSIS, Translation]` tuple (both are strings).
 
 ```javascript
 bcv.parse("John 3:16 NIV").osis_and_translations();
@@ -165,7 +182,7 @@ Returns:
 
 You may also see an `alternates` object if you provide an ambiguous book abbreviation (`Ph 2` could mean "Phil.2" or "Phlm.1.2").
 
-#### `.include_apocrypha()`
+#### `.include_apocrypha([Boolean])`
 
 This function takes a single Boolean value (`true` or `false`). If `true`, it tries to find the following books in the Apocrypha (or Deuterocanonicals): Tob, Jdt, GkEsth, Wis, Sir, Bar, PrAzar, Sus, Bel, SgThree, EpJer, 1Macc, 2Macc, 3Macc, 4Macc, 1Esd, 2Esd, PrMan, Ps151. Your canon may vary in the number of books, their order, or the number of verses in each chapter. If you set the value to `false` (the default behavior), it ignores books in the Apocrypha.
 
@@ -179,7 +196,7 @@ You shouldn't call `include_apocrypha()` between calling `parse()` and one of th
 
 #### `.set_options({})`
 
-This function takes an object that sets parsing and output options. See "Options" below for available keys and values. This function doesn't enforce valid values, but using values other than the ones described in [Options](#options) will lead to unexpected behavior.
+This function takes an object that sets parsing and output options. See [Options](#options) for available keys and values. This function doesn't enforce valid values, but using values other than the ones described in [Options](#options) will lead to unexpected behavior.
 
 ```javascript
 bcv.set_options({"osis_compaction_strategy": "bcv"});
@@ -190,7 +207,7 @@ bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 
 This function is separate from the parsing sequence and provides data that may be useful for other applications.
 
-#### `.translation_info("")`
+#### `.translation_info("[translation]")`
 
 This function returns an object of data about the requested translation. You can use this data to determine, for example, the previous and next chapters for a given chapter, even when the given chapter is at the beginning or end of a book.
 
@@ -235,12 +252,15 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 * `sequence_combination_strategy: "combine"`
 	* `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" → "Gen.1,Gen.3".
 	* `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" → "Gen.1" and "Gen.3".
+* `punctuation_strategy: "us"`
+	* `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
+	* `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
 
 #### Potentially Invalid Input
 
 * `invalid_passage_strategy: "ignore"`
-	* `ignore`: Don't include invalid passages in `@parsed_entities()`.
-	* `include`: Include invalid passages in `@parsed_entities()` (they still don't have OSIS values).
+	* `ignore`: Include only valid passages in `parsed_entities()`.
+	* `include`: Include invalid passages in `parsed_entities()` (they still don't have OSIS values).
 * `non_latin_digits_strategy: "ignore"`
 	* `ignore`: treat non-Latin digits the same as any other character.
 	* `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
@@ -257,6 +277,9 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 	* `error`: zero verses ("Matthew 5:0") are invalid.
 	* `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" → "Matt.5.1".
 	* `allow`: zero verses are kept as-is: "Matthew 5:0" → "Matt.5.0". Some traditions use 0 for Psalm titles.
+* `single_chapter_1_strategy: "chapter"`
+	* `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
+	* `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
 
 #### Context
 
@@ -300,6 +323,7 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 
 #### Start Objects
 
+* `start_book_not_defined`: `true` if a `c` or similar non-book object is lacking a book context. This message only occurs when the object becomes dissociated from the related book, as in `Chapters 11-1040 of II Kings`. It's highly unusual.
 * `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to have an entry in the language's `regexps.coffee` file for this message to appear.
 * `start_chapter_is_zero`: `1` if the requested start chapter is 0.
 * `start_chapter_not_exist`: The value is the last valid chapter in the book.
@@ -452,7 +476,7 @@ The BCV parser supports several versification systems (described above). The app
 
 ## Non-English Support
 
-The Javascript files that don't start with `en` provide support for other languages. The [`js/eu/`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/js/eu) files provide support for alternate punctuation: commas rather than colons to separate chapters and verses; periods rather than commas to separate sequences.
+The Javascript files that don't start with `en` provide support for other languages.
 
 Using the files in [`src/template`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/src/template) as a base, you can add support for additional languages; just use the appropriate ISO 639 language prefix. I'm happy to accept pull requests for new languages.
 
@@ -525,12 +549,12 @@ Two files in [`/js`](https://github.com/openbibleinfo/Bible-Passage-Reference-Pa
 
 The files are:
 
-1. `ascii_bcv_parser.js`. Only supports characters in the set `[\x00-\x7f\u2000-\u206F]` (ASCII characters and certain punctuation marks like em-dashes). It runs about 13% slower than just the `en` file: around 1,150 tweets per second on an EC2 C4 Large.
-1. `full_bcv_parser.js`. Parse book names across all languages. It runs about 25% slower than the `ascii` file, or 34% slower than the `en` file: around 900 tweets per second on an EC2 C4 Large.
+1. `ascii_bcv_parser.js`. Only supports characters in the set `[\x00-\x7f\u2000-\u206F]` (ASCII characters and certain punctuation marks like em-dashes). It runs about 4% slower than just the `en` file, parsing around 122KB per second in the fuzz tester.
+1. `full_bcv_parser.js`. Parse book names across all languages. It runs about 6% slower than the `en` file, parsing around 120KB per second in the fuzz tester.
 
-Some features, such as psalm titles, are still English-only, even in these cross-language titles.
+Some features, such as psalm titles, are still English-only, even in these cross-language files.
 
-Executing `bin/add_cross_lang.pl full` or `bin/add_cross_lang.pl ascii` will recompile the needed source files. You can then compile the files as usual using the below build instructions.
+Executing `bin/add_cross_lang.pl full` or `bin/add_cross_lang.pl ascii` will recompile the needed source files. You can then compile the files as usual using the [build instructions](#building).
 
 ## Compatibility
 
@@ -545,10 +569,10 @@ I've specifically tested the following browsers, but it should work in any moder
 The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files or run tests):
 
 * [Closure](http://code.google.com/closure/) for minifying.
-* [Coffeescript 1.9.1](http://coffeescript.org/) for compiling into Javascript.
+* [Coffeescript 1.10.0](http://coffeescript.org/) for compiling into Javascript.
 * [Frak](https://github.com/noprompt/frak) for optimizing generated regular expressions.
 * [Jasmine 2.2.0](http://jasmine.github.io/) for the testing framework. To run tests, install it in the project's `/lib` folder.
-* [PEG.js 0.8.0](http://pegjs.majda.cz/) for the parsing grammar.
+* [PEG.js 0.9.0](http://pegjs.org/) for the parsing grammar.
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
@@ -574,22 +598,24 @@ The code in this project is licensed under the included MIT License except for t
 
 ## Changelog
 
-May 6, 2015. Hand-tuned some of the PEG.js output to improve overall performance by around 50% in most languages.
+November 1, 2015 (1.0.0). Added [`punctuation_strategy`](#punctuation_strategy) to replace the "eu"-style files that were previously necessary for this functionality. Added [`single_chapter_1_strategy`](#single_chapter_1_strategy) to allow parsing of "Jude 1" as `Jude.1.1` rather than `Jude.1`. Fixed crashing bug related to dissociated chapter/book ranges. Upgraded to the latest versions of pegjs and Coffeescript. Added npm compatibility. Added support for a "next verse" syntax, which is used in Polish ("n" for next verse, compared to "nn" for "and following"). The parsing grammar includes this support only when the $NEXT variable is set in the language's data.txt file (only Polish for now). Thanks to [nirski](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues/16) for identifying this limitation.
 
-March 16, 2015. Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a [fuzz tester](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/bin/fuzz/fuzz_lang.coffee), which uncovered several crashing bugs.
+May 4, 2015 (0.10.0). Hand-tuned some of the PEG.js output to improve overall performance by around 50% in most languages.
 
-November 3, 2014. Fixed two bugs related to range rewriting. Updated frak to the latest development version. Added quite a few more languages, bringing the total to 46.
+March 16, 2015 (0.9.0). Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a [fuzz tester](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/bin/fuzz/fuzz_lang.coffee), which uncovered several crashing bugs.
 
-May 2, 2014. Added the `passage_existence_strategy` option to relax how much validation the parser should do when given a possibly invalid reference. The extensive tests written for this feature uncovered a few other bugs. Added the `book_range_strategy` option to specify how to handle books when they appear in a range. Added [`translation_info()`](#translation_info). Fixed bug when changing versification systems several times and improved support for changing versification systems that rely on a different book order from the default. Updated PEG.js to 0.8.0. Added support for Arabic, Bulgarian, Russian, Thai, and Vietnamese.
+November 3, 2014 (0.8.0). Fixed two bugs related to range rewriting. Updated frak to the latest development version. Added quite a few more languages, bringing the total to 46.
 
-November 8, 2013. Recast English as just another language that uses the same build process as all the other languages. Fixed bug with parentheses in sequences. Made specs runnable using [jasmine-node](https://github.com/mhevery/jasmine-node). Optimized generated regular expressions for speed using [Frak](https://github.com/noprompt/frak). Added support for German, Greek, Italian, and Latin.
+May 2, 2014 (0.7.0). Added the `passage_existence_strategy` option to relax how much validation the parser should do when given a possibly invalid reference. The extensive tests written for this feature uncovered a few other bugs. Added the `book_range_strategy` option to specify how to handle books when they appear in a range. Added [`translation_info()`](#translation_info). Fixed bug when changing versification systems several times and improved support for changing versification systems that rely on a different book order from the default. Updated PEG.js to 0.8.0. Added support for Arabic, Bulgarian, Russian, Thai, and Vietnamese.
 
-May 1, 2013. Added option to allow case-sensitive book-name matching. Supported parsing `Ps151` as a book rather than a chapter for more-complete OSIS coverage. Added Japanese, Korean, and Chinese book names. Added an additional 90,000 real-world strings, sharing actual counts rather than orders of magnitude.
+November 8, 2013 (0.6.0). Recast English as just another language that uses the same build process as all the other languages. Fixed bug with parentheses in sequences. Made specs runnable using [jasmine-node](https://github.com/mhevery/jasmine-node). Optimized generated regular expressions for speed using [Frak](https://github.com/noprompt/frak). Added support for German, Greek, Italian, and Latin.
 
-December 30, 2012. Per request, added compile tools and Hebrew support.
+May 1, 2013 (0.5.0). Added option to allow case-sensitive book-name matching. Supported parsing `Ps151` as a book rather than a chapter for more-complete OSIS coverage. Added Japanese, Korean, and Chinese book names. Added an additional 90,000 real-world strings, sharing actual counts rather than orders of magnitude.
 
-November 20, 2012. Improved support for parentheses. Added some alternate versification systems. Added French support. Removed `docs` folder because it was getting unwieldy; the source itself remains commented. Increased the number of real-world strings from 200,000 to 370,000.
+December 30, 2012 (0.4.0). Per request, added compile tools and Hebrew support.
 
-May 16, 2012. Added basic Spanish support. Fixed multiple capital-letter sequences. Upgraded PEG.js and Coffeescript to the latest versions. Deprecated support for IE6 and 7.
+November 20, 2012 (0.3.0). Improved support for parentheses. Added some alternate versification systems. Added French support. Removed `docs` folder because it was getting unwieldy; the source itself remains commented. Increased the number of real-world strings from 200,000 to 370,000.
 
-November 18, 2011. First commit.
+May 16, 2012 (0.2.0). Added basic Spanish support. Fixed multiple capital-letter sequences. Upgraded PEG.js and Coffeescript to the latest versions. Deprecated support for IE6 and 7.
+
+November 18, 2011 (0.1.0). First commit.

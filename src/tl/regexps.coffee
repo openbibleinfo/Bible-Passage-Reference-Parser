@@ -374,7 +374,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Eph"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*E(?:[fp]es(?:io|o))|Mga[\s\xa0]*Taga(?:[\s\xa0]*E(?:[fp]es(?:io|o))|-?(?:[\s\xa0]*E(?:[fp]es(?:io|o))|Efeso))|E(?:ph|f))|(?:Taga(?:-?[\s\xa0]*E(?:[pf]es(?:io|o))|[\s\xa0]*E(?:[fp]es(?:io|o)))|Mga[\s\xa0]*E(?:[pf]es(?:io|o)))
+		(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*E(?:[fp]es(?:io|o))|Mga[\s\xa0]*Taga(?:[\s\xa0]*E(?:[fp]es(?:io|o))|-?(?:[\s\xa0]*E(?:[fp]es(?:io|o))|Efeso))|E(?:ph|f))|(?:Taga(?:-?[\s\xa0]*E(?:[fp]es(?:io|o))|[\s\xa0]*E(?:[fp]es(?:io|o)))|Mga[\s\xa0]*E(?:[pf]es(?:io|o)))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Phil"]

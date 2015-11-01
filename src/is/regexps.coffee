@@ -329,7 +329,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		1John|(?:Fyrsta[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar[\s\xa0]*hið[\s\xa0]*almenna)|J[oó]hannesarbr(?:[eé]f))|[1I](?:\.[\s\xa0]*J(?:[oó]h|[\s\xa0]*J[oó]h)))|[1I][\s\xa0]*J(?:[oó]h)|Fyrsta[\s\xa0]*br[ée]f[\s\xa0]*J(?:[oó]hannesar)
+		1John|(?:Fyrsta[\s\xa0]*(?:br[eé]f[\s\xa0]*J(?:[oó]hannesar[\s\xa0]*hið[\s\xa0]*almenna)|J[oó]hannesarbr(?:[eé]f))|[1I](?:\.[\s\xa0]*J(?:[oó]h|[\s\xa0]*J[oó]h)))|[1I][\s\xa0]*J(?:[oó]h)|Fyrsta[\s\xa0]*br[ée]f[\s\xa0]*J(?:[óo]hannesar)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2John"]

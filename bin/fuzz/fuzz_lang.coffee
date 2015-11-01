@@ -96,7 +96,7 @@ possibles =
 	space: [" ", "\t", "\n", "\u00a0"]
 	punctuation: [",", ".", "!", "?", "-", "'", "\"", "\u2019"]
 	parentheses: ["(", ")", "[", "]", "{", "}"]
-	letter: ["f", "g", "h", "i"]
+	letter: ["f", "g", "h", "n"]
 	char_ascii: [0 .. 127]
 	char_unicode: [128 .. 65535]
 	bcv: "$book$chapter$cv_sep$verse"
@@ -120,13 +120,14 @@ for i in [1 .. 10000000]
 	text = build_text(possible_keys)
 	total_length += text.length
 	if (i % 1000 == 0)
-		elapsed_time = (new Date() - start_time) / 1000
+		elapsed_time = Math.round((new Date() - start_time) / 1000)
 		bytes_per_second = Math.round(total_length / elapsed_time)
-		console.log i, elapsed_time, (total_length / 1000000), bytes_per_second
+		console.log i, elapsed_time, "sec", Math.round(total_length / 1000000), "mb", bytes_per_second, "bps"
 	#console.log i, text, "====="
 	try
-		osis = bcv.parse(text).osis()
-		#console.log osis, text, "======" if osis
+		results = bcv.parse(text).osis_and_indices()
+		for result in results
+			throw result if result.indices[0] >= result.indices[1]
 	catch e
 		console.log e
 		console.log my_options

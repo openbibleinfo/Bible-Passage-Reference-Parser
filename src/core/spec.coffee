@@ -3,6 +3,7 @@ bcv_parser = require("../../js/en_bcv_parser.js").bcv_parser
 describe "Pre-parsing", ->
 	p = {}
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 
 	it "should be defined", ->
@@ -244,10 +245,19 @@ describe "Pre-parsing", ->
 		expect(p.passage.pluck("none", [])).toEqual null
 		expect(p.passage.pluck("none", [{type: "b"}])).toEqual null
 
+	it "should handle `pluck_last_recursively` with various input", ->
+		p.parse("Jonah 3")
+		expect(p.passage.pluck_last_recursively("integer", [])).toEqual null
+		expect(p.passage.pluck_last_recursively("integer", [null])).toEqual null
+		# Missing required `value` key.
+		expect(() -> p.passage.pluck_last_recursively("integer", [{type: "b"}])).toThrow()
+		expect(() -> p.passage.pluck_last_recursively("integer", null)).toThrow()
+
 describe "OSIS parsing strategies", ->
 	p = {}
 	translation = {}
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 		p.reset()
 		translation = "default"
@@ -389,6 +399,7 @@ describe "Basic passage parsing", ->
 	psg = {}
 	translation_obj = translation: "default", osis: "", alias: "default"
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 		p.reset()
 		psg = p.passage
@@ -438,7 +449,7 @@ describe "Basic passage parsing", ->
 	it "should validate start refs", ->
 		expect(psg.validate_start_ref "default", {b: "Matt"}, {}).toEqual [true, {}]
 		expect(psg.validate_start_ref "default", {b: "Matt", c: 5}, {}).toEqual [true, {}]
-		expect(psg.validate_start_ref "default", {}, {}).toEqual [false, {start_book_not_exist: true}]
+		expect(psg.validate_start_ref "default", {}, {}).toEqual [false, {start_book_not_defined: true}]
 		expect(psg.validate_start_ref "default", {b: "Matt", c: "five"}, {}).toEqual [false, {start_chapter_not_numeric: true}]
 		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: 10}, {}).toEqual [true, {}]
 		expect(psg.validate_start_ref "default", {b: "Matt", c: 5, v: "ten"}, {}).toEqual [false, {start_verse_not_numeric: true}]
@@ -452,6 +463,7 @@ describe "Basic passage parsing", ->
 	it "should validate end refs", ->
 		expect(psg.validate_end_ref "default", {b: "Matt"}, {b: "Mark"}, true, {}).toEqual [true, {}]
 		expect(psg.validate_end_ref "default", {b: "Mark"}, {b: "Matt"}, true, {}).toEqual [false, {end_book_before_start: true}]
+		expect(psg.validate_end_ref "default", {}, {}, {}, {}, {}).toEqual [false, {end_book_not_exist: true}]
 		expect(psg.validate_end_ref "default", {b: "Mark", c: 4}, {b: "Matt", c: 5}, true, {}).toEqual [false, {end_book_before_start: true}]
 		# When called through validate_ref, as in the next example, it's invalid
 		expect(psg.validate_end_ref "default", {b: "None", c: 5}, {b: "Mark", c: 4}, true, {}).toEqual [true, {}]
@@ -516,9 +528,24 @@ describe "Basic passage parsing", ->
 		expect(p.adjust_regexp_end([{},{indices:[0,5]}], 10, 10)).toEqual 4
 		expect(p.adjust_regexp_end([{},{indices:[0,9]}], 10, 10)).toEqual 0
 
+	it "should handle `next_v` correctly", ->
+		# The `parse` sets the indices so that `next_v` can return correct results.
+		p.parse("Gen 1:2a")
+		passage = {"type":"next_v","value":[{"type":"bcv","value":[{"type":"bc","value":[{"type":"b","value":0,"indices":[0,2]},{"type":"c","value":[{"type":"integer","value":1,"indices":[4,4]}],"indices":[4,4]}],"indices":[0,4]},{"type":"v","value":[{"type":"integer","value":2,"indices":[6,6]}],"indices":[6,6]}],"indices":[0,7]}],"indices":[0,7]}
+		[out, context] = p.passage.next_v passage, [], {}
+		expect(context).toEqual b: "Gen", c: 1, v: 3
+		expect(out[0].absolute_indices).toEqual [0, 8]
+
+		p.parse("Gen 6f")
+		passage = {"type":"next_v","value":[{"type":"bc","value":[{"type":"b","value":0,"indices":[0,2]},{"type":"c","value":[{"type":"integer","value":6,"indices":[4,4]}],"indices":[4,4]}],"indices":[0,4]}],"indices":[0,5]}
+		[out, context] = p.passage.next_v passage, [], {}
+		expect(context).toEqual b: "Gen", c: 7
+		expect(out[0].absolute_indices).toEqual [0, 6]
+
 describe "Parsing with context", ->
 	p = {}
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 		p.options.osis_compaction_strategy = "b"
 		p.options.sequence_combination_strategy = "combine"
@@ -1402,6 +1429,43 @@ describe "Parsing", ->
 		expect(p.parse("Ph 1:7 ESV, Ma 1:2 NIV").osis_and_translations()).toEqual [["Phil.1.7", "ESV"], ["Matt.1.2", "NIV"]]
 		expect(p.parse("Ph 3 ESV, Ma 3 NIV").osis_and_translations()).toEqual [["Phil.3", "ESV"], ["Matt.3", "NIV"]]
 
+	it "should handle `single_chapter_1_strategy`", ->
+		p.set_options {book_range_strategy: "include"}
+		expect(p.parse("Jude 1").osis()).toEqual "Jude"
+		expect(p.parse("Jude 1:1").osis()).toEqual "Jude.1.1"
+		expect(p.parse("Jude 1-2").osis()).toEqual "Jude.1.1-Jude.1.2"
+		expect(p.parse("Jude 1:1-4").osis()).toEqual "Jude.1.1-Jude.1.4"
+		expect(p.parse("Titus 2-Philemon 1").osis()).toEqual "Titus.2-Phlm.1"
+		expect(p.parse("Titus 3-Philemon").osis()).toEqual "Titus.3-Phlm.1"
+
+		p.set_options {single_chapter_1_strategy: "verse"}
+		expect(p.parse("Jude 1").osis()).toEqual "Jude.1.1"
+		expect(p.parse("Jude 1:1").osis()).toEqual "Jude.1.1"
+		expect(p.parse("Jude 1-2").osis()).toEqual "Jude.1.1-Jude.1.2"
+		expect(p.parse("Jude 1:1-4").osis()).toEqual "Jude.1.1-Jude.1.4"
+		expect(p.parse("Titus 2-Philemon 1").osis()).toEqual "Titus.2.1-Phlm.1.1"
+		expect(p.parse("Titus 3-Philemon").osis()).toEqual "Titus.3-Phlm.1"
+
+	it "should handle a `punctuation_strategy` switch", ->
+		expect(p.parse("Matt 1, 2. 3").osis()).toEqual "Matt.1,Matt.2.3"
+
+		p.set_options punctuation_strategy: "eu"
+		expect(p.options.punctuation_strategy).toEqual "eu"
+		expect(p.parse("Matt 2, 3. 4").osis()).toEqual "Matt.2.3-Matt.2.4"
+
+		p.set_options punctuation_strategy: "unknown"
+		expect(p.options.punctuation_strategy).toEqual "unknown"
+		expect(p.parse("Matt 3, 4. 5").osis()).toEqual "Matt.3,Matt.4.5"
+
+		p.set_options punctuation_strategy: "us"
+		expect(p.options.punctuation_strategy).toEqual "us"
+		expect(p.parse("Matt 4, 5. 6 NIV, 7").osis()).toEqual "Matt.4,Matt.5.6,Matt.5.7"
+
+		p.set_options punctuation_strategy: "unknown"
+		expect(p.options.punctuation_strategy).toEqual "unknown"
+		expect(p.parse("Matt 5, 6. 7").osis()).toEqual "Matt.5,Matt.6.7"
+
+
 describe "Apocrypha parsing", ->
 	p = {}
 	beforeEach ->
@@ -1666,10 +1730,10 @@ describe "Apocrypha parsing", ->
 		expect(p.parse("Ps 151, 2 (KJV)").osis_and_indices()).toEqual [osis: "Ps.2", translations: ["KJV"], indices: [0, 15]]
 
 describe "Passage existence", ->
-	bcv = {}
+	p = {}
 	beforeEach ->
-		bcv = new bcv_parser
-		bcv.set_options osis_compaction_strategy: "bc"
+		p = new bcv_parser
+		p.set_options osis_compaction_strategy: "bc"
 
 	# Use a tab-stop of four spaces to line up these columns.
 	it "should handle reversed ranges", ->
@@ -1685,9 +1749,9 @@ describe "Passage existence", ->
 			none:		["Exod.4-Gen.2",			"Exod.8.1-Gen.2.7",			"Exod.7.7-Gen.2.999",		"Exod.5.5-Gen.2.6",				"Mark.2-Matt.999",			]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy
+			p.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle start verses not existing", ->
 		strategies =
@@ -1702,9 +1766,9 @@ describe "Passage existence", ->
 			none:		["Gen.52",		"Gen.52.3",		"Gen.51-Exod.5",		"Gen.51.1-Exod.5.9",		"Gen.51.2-Exod.3.999",		"Gen.51.2-Exod.3.3",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy
+			p.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle end verses not existing", ->
 		strategies =
@@ -1720,9 +1784,9 @@ describe "Passage existence", ->
 
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, end_range_digits_strategy: "sequence"
+			p.set_options "passage_existence_strategy": strategy, end_range_digits_strategy: "sequence"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle both start and end verses not existing", ->
 		strategies =
@@ -1737,9 +1801,9 @@ describe "Passage existence", ->
 			none:		["Gen.51-Gen.52",	"Gen.51.1-Gen.52.4",	"Gen.51.2-Gen.52.999",		"Gen.51.2-Gen.52.3",	"Gen.51.2-Exod.41.999",		"Gen.51.2-Exod.41.4",		"Gen.51-Exod.41",		"Gen.51.1-Exod.41.5",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy
+			p.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero verses with a `zero_verse_strategy: error`", ->
 		strategies =
@@ -1754,9 +1818,9 @@ describe "Passage existence", ->
 			none:		["Exod.6",					"Exod.6.5",						"",								"",				"Gen.49",					"Gen.49",					"Gen.49.3",					"Gen.51",					"Exod.10",					"Exod.3.6",					"Gen.51.2",					"",							]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "error"
+			p.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "error"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero verses with a `zero_verse_strategy: upgrade`", ->
 		strategies =
@@ -1771,9 +1835,9 @@ describe "Passage existence", ->
 			none:		["Exod.7.1-Gen.2.1",		"Exod.6.5-Gen.2.1",				"Exod.6.1-Gen.2.1",				"Gen.52.1",		"Gen.49.1-Exod.5.1",		"Gen.49.1-Exod.41.1",		"Gen.49.3-Exod.5.1",		"Gen.51.1-Exod.5.1",		"Gen.51-Exod.10",			"Gen.51.1-Exod.3.6",		"Gen.51.2-Exod.3.1",		"Gen.51.1-Exod.41.1",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "upgrade"
+			p.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "upgrade"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero verses with a `zero_verse_strategy: allow`", ->
 		strategies =
@@ -1788,9 +1852,9 @@ describe "Passage existence", ->
 			none:		["Exod.7.1-Gen.2.0",		"Exod.6.5-Gen.2.0",				"Exod.6.0-Gen.2.0",				"Gen.52.0",		"Gen.49.1-Exod.5.0",		"Gen.49.1-Exod.41.0",		"Gen.49.3-Exod.5.0",		"Gen.51.1-Exod.5.0",		"Gen.51.0-Exod.10.999",		"Gen.51.0-Exod.3.6",		"Gen.51.2-Exod.3.0",		"Gen.51.0-Exod.41.0",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "allow"
+			p.set_options "passage_existence_strategy": strategy, zero_verse_strategy: "allow"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters with a `zero_chapter_strategy: error`", ->
 		strategies =
@@ -1805,9 +1869,9 @@ describe "Passage existence", ->
 			none:		["Gen.12",			"Gen.12.2",			"Exod.2",				"Exod.2.3",				"",						"",						"Gen.49",				"Gen.49",					"Gen.49.6",					"Gen.49.5",					"Gen.51",				"Gen.51",					"Gen.51.3",					"Gen.51.4",					]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters with a `zero_chapter_strategy: upgrade`", ->
 		strategies =
@@ -1822,9 +1886,9 @@ describe "Passage existence", ->
 			none:		["Gen.1-Gen.12",	"Gen.1.1-Gen.12.2",	"Gen.1-Exod.2",			"Gen.1.1-Exod.2.3",		"Gen.1-Exod.1",			"Gen.1.1-Exod.1.5",		"Gen.49-Exod.1",		"Gen.49.1-Exod.1.4",		"Gen.49.6-Exod.1.999",		"Gen.49.5-Exod.1.6",		"Gen.51-Exod.1",		"Gen.51.1-Exod.1.7",		"Gen.51.3-Exod.1.999",		"Gen.51.4-Exod.1.4",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters and verses with a `zero_chapter_strategy: error` and `zero_verse_strategy: error`", ->
 		strategies =
@@ -1839,9 +1903,9 @@ describe "Passage existence", ->
 			none:		["",						"",						"",					"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "error"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "error"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters and verses with a `zero_chapter_strategy: error` and `zero_verse_strategy: allow`", ->
 		strategies =
@@ -1856,9 +1920,9 @@ describe "Passage existence", ->
 			none:		["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.0",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.0",					"Gen.49.6",					"Gen.51",					"Gen.51.0",					"Gen.52.5",					]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "allow"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "allow"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters and verses with a `zero_chapter_strategy: error` and `zero_verse_strategy: upgrade`", ->
 		strategies =
@@ -1873,9 +1937,9 @@ describe "Passage existence", ->
 			none:		["",						"",						"",					"Gen.14",					"Exod.3",				"Exod.3.1",					"Exod.3.2",					"",							"Gen.47",					"Gen.48.1",					"Gen.49.6",					"Gen.51",					"Gen.51.1",					"Gen.52.5",					]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "upgrade"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "error", zero_verse_strategy: "upgrade"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters and verses with a `zero_chapter_strategy: upgrade` and `zero_verse_strategy: error`", ->
 		strategies =
@@ -1890,9 +1954,9 @@ describe "Passage existence", ->
 			none:		["Gen.1",					"Exod.1",				"Gen.1.14",			"Gen.14",					"Exod.3",				"",							"Exod.3.2",					"",							"Gen.47",					"",							"Gen.49.6",					"Gen.51",					"",							"Gen.52.5",					]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "error"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "error"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters and verses with a `zero_chapter_strategy: upgrade` and `zero_verse_strategy: allow`", ->
 		strategies =
@@ -1907,9 +1971,9 @@ describe "Passage existence", ->
 			none:		["Gen.1.1-Exod.1.0",		"Gen.1.0-Exod.1.999",	"Gen.1.0-Gen.1.14",	"Gen.1.0-Gen.14.999",		"Gen.1.0-Exod.3.999",	"Gen.1.0-Exod.3.0",			"Gen.1.0-Exod.3.2",			"Gen.1.0-Exod.1.0",			"Gen.47.1-Exod.1.0",		"Gen.48.0-Exod.1.0",		"Gen.49.6-Exod.1.0",		"Gen.51.1-Exod.1.0",		"Gen.51.0-Exod.1.0",		"Gen.52.5-Exod.1.0",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "allow"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "allow"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle zero chapters and verses with a `zero_chapter_strategy: upgrade` and `zero_verse_strategy: upgrade`", ->
 		strategies =
@@ -1924,9 +1988,9 @@ describe "Passage existence", ->
 			none:		["Gen.1.1-Exod.1.1",		"Gen.1-Exod.1",			"Gen.1.1-Gen.1.14",	"Gen.1-Gen.14",				"Gen.1-Exod.3",			"Gen.1.1-Exod.3.1",			"Gen.1.1-Exod.3.2",			"Gen.1.1-Exod.1.1",			"Gen.47.1-Exod.1.1",		"Gen.48.1-Exod.1.1",		"Gen.49.6-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.51.1-Exod.1.1",		"Gen.52.5-Exod.1.1",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "upgrade"
+			p.set_options "passage_existence_strategy": strategy, zero_chapter_strategy: "upgrade", zero_verse_strategy: "upgrade"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: ignore`", ->
 		strategies =
@@ -1941,9 +2005,9 @@ describe "Passage existence", ->
 			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "ignore"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "ignore"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter` and `book_sequence_strategy: ignore` and `book_range_strategy: ignore`", ->
 		strategies =
@@ -1958,9 +2022,9 @@ describe "Passage existence", ->
 			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter`, `book_sequence_strategy: ignore` and `book_range_strategy: include`", ->
 		strategies =
@@ -1975,9 +2039,9 @@ describe "Passage existence", ->
 			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "include"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "ignore", book_range_strategy: "include"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter`, `book_sequence_strategy: include` and `book_range_strategy: ignore", ->
 		strategies =
@@ -1992,9 +2056,9 @@ describe "Passage existence", ->
 			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "ignore"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "ignore"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: first_chapter` and `book_sequence_strategy: include` and `book_range_strategy: include", ->
 		strategies =
@@ -2009,9 +2073,9 @@ describe "Passage existence", ->
 			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "include"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "first_chapter", book_sequence_strategy: "include", book_range_strategy: "include"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: ignore`, and `book_range_strategy: ignore`", ->
 		strategies =
@@ -2026,9 +2090,9 @@ describe "Passage existence", ->
 			none:		["",					"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "ignore"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: ignore`, and `book_range_strategy: include`", ->
 		strategies =
@@ -2043,9 +2107,9 @@ describe "Passage existence", ->
 			none:		["Exod.1-Gen.999",		"Gen.1-Exod.999",		"Obad.1-Gen.999",		"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "include"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "ignore", book_range_strategy: "include"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: include`, and `book_range_strategy: ignore`", ->
 		strategies =
@@ -2060,9 +2124,9 @@ describe "Passage existence", ->
 			none:		["",								"",						"",						"",						"",								]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "ignore"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "ignore"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle book-only ranges with `book_alone_strategy: full`, `book_sequence_strategy: include`, and `book_range_strategy: include`", ->
 		strategies =
@@ -2077,9 +2141,9 @@ describe "Passage existence", ->
 			none:		["Exod.1-Gen.999",					"Gen.1-Exod.999",		"Obad.1-Gen.999",					"Gen.1-Obad.1",			"Gen.1-Rev.999",				]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "include"
+			p.set_options "passage_existence_strategy": strategy, book_alone_strategy: "full", book_sequence_strategy: "include", book_range_strategy: "include"
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle single-chapter start books", ->
 		strategies =
@@ -2094,9 +2158,9 @@ describe "Passage existence", ->
 			none:		["Obad.1-Mal.5",		"Obad.1.1-Mal.5.8",			"Obad.1.4-Mal.5.999",		"Obad.1.5-Mal.5.8",			"Obad.1.8-Mal.5.999",	"Obad.1.9-Mal.5.8",			"Obad.1.24-Mal.5.999",	"Obad.1.25-Mal.5.8",		"Obad.1.28-Mal.5.999",		"Obad.1.29-Mal.5.8",		]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy
+			p.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	it "should handle single-chapter end books", ->
 		strategies =
@@ -2111,9 +2175,9 @@ describe "Passage existence", ->
 			none:		["Gen.49-Obad.1",			"Gen.49.1-Obad.1.32",		"Gen.49.1-Obad.1.1",		"Gen.49.1-Obad.1.33",		"Gen.49-Obad.1",			"Gen.49.2-Obad.1.999",		"Gen.49.3-Obad.1.35",		"Gen.49.4-Obad.1.1",		"Gen.49.5-Obad.1.36",			"Gen.49.6-Obad.1.999",			"Gen.51-Obad.1",		"Gen.51.1-Obad.1.38",		"Gen.51.1-Obad.1.1",		"Gen.51.1-Obad.1.39",		"Gen.51-Obad.1",			"Gen.51.2-Obad.1.999",		"Gen.51.3-Obad.1.41",		"Gen.51.4-Obad.1.1",		"Gen.51.5-Obad.1.42",			"Gen.51.6-Obad.1.999",			]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy
+			p.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 
 	###
 	xit "should handle ...template", ->
@@ -2129,15 +2193,55 @@ describe "Passage existence", ->
 			none:		["",			"",			"",			]
 		for strategy in ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"]
 			continue unless strategies[strategy]?
-			bcv.set_options "passage_existence_strategy": strategy
+			p.set_options "passage_existence_strategy": strategy
 			for i in [0 ... strategies.strings.length]
-				expect(bcv.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
+				expect(p.parse(strategies.strings[i]).osis()).toEqual strategies[strategy][i]
 	###
+
+	it "should handle full books with `passage_existence_strategy = b`", ->
+		p.set_options osis_compaction_strategy: "b", book_alone_strategy: "full", p.set_options passage_existence_strategy: "b"
+		expect(p.parse("Genesis").osis()).toEqual "Gen"
+		expect(p.parse("Genesis 1-50").osis()).toEqual "Gen.1-Gen.50"
+		expect(p.parse("Genesis 1-50:26").osis()).toEqual "Gen.1.1-Gen.50.26"
+		expect(p.parse("Genesis 1-50:998").osis()).toEqual "Gen.1.1-Gen.50.998"
+		expect(p.parse("Genesis 1-50:999").osis()).toEqual "Gen.1-Gen.50"
+
+	it "should handle full books with `passage_existence_strategy = bc`", ->
+		p.set_options osis_compaction_strategy: "b", book_alone_strategy: "full", passage_existence_strategy: "bc"
+		expect(p.parse("Genesis").osis()).toEqual "Gen"
+		expect(p.parse("Genesis 1-50").osis()).toEqual "Gen"
+		expect(p.parse("Genesis 1-50:26").osis()).toEqual "Gen.1.1-Gen.50.26"
+		expect(p.parse("Genesis 1-50:998").osis()).toEqual "Gen.1.1-Gen.50.998"
+		expect(p.parse("Genesis 1-50:999").osis()).toEqual "Gen"
+
+	# Would these `Jude.1` compactions be more consistent if they were `Jude`?
+	it "should handle full single-chapter books with `passage_existence_strategy = b`", ->
+		p.set_options osis_compaction_strategy: "b", book_alone_strategy: "full", passage_existence_strategy: "b"
+		expect(p.parse("Jude").osis()).toEqual "Jude.1"
+		expect(p.parse("Jude 1-25").osis()).toEqual "Jude.1.1-Jude.1.25"
+		expect(p.parse("Jude 1:1-26").osis()).toEqual "Jude.1.1-Jude.1.26"
+		expect(p.parse("Jude 1-998").osis()).toEqual "Jude.1.1-Jude.1.998"
+		expect(p.parse("Jude 1:1-998").osis()).toEqual "Jude.1.1-Jude.1.998"
+		expect(p.parse("Jude 1:1-999").osis()).toEqual "Jude.1"
+		expect(p.parse("Jude 1-2:2").osis()).toEqual "Jude.1"
+		expect(p.parse("Jude 1-50:999").osis()).toEqual "Jude.1"
+
+	it "should handle full single-chapter books with `passage_existence_strategy = bc`", ->
+		p.set_options osis_compaction_strategy: "b", book_alone_strategy: "full", passage_existence_strategy: "bc"
+		expect(p.parse("Jude").osis()).toEqual "Jude"
+		expect(p.parse("Jude 1-25").osis()).toEqual "Jude.1.1-Jude.1.25"
+		expect(p.parse("Jude 1:1-26").osis()).toEqual "Jude.1.1-Jude.1.26"
+		expect(p.parse("Jude 1-998").osis()).toEqual "Jude.1.1-Jude.1.998"
+		expect(p.parse("Jude 1:1-998").osis()).toEqual "Jude.1.1-Jude.1.998"
+		expect(p.parse("Jude 1:1-999").osis()).toEqual "Jude"
+		expect(p.parse("Jude 1-2:2").osis()).toEqual "Jude"
+		expect(p.parse("Jude 1-50:999").osis()).toEqual "Jude"
 
 describe "Documentation compatibility", ->
 	bcv = {}
 
 	beforeEach ->
+		bcv = {}
 		bcv = new bcv_parser
 
 	it "should match `osis()`", ->
@@ -2159,21 +2263,28 @@ describe "Documentation compatibility", ->
 		expect(bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_indices()).toEqual [{"osis": "John.3.16,John.3.18", "translations": [""], "indices":[0, 12]}, {"osis": "Matt.1", "translations": ["NIV","ESV"], "indices": [18, 38]}]
 
 	it "should match `parsed_entities()`", ->
-		bcv.set_options({"invalid_passage_strategy": "include", "invalid_sequence_strategy": "include"});
+		bcv.set_options({"invalid_passage_strategy": "include", "invalid_sequence_strategy": "include"})
 		expect(bcv.parse("John 3, 99").parsed_entities()).toEqual [{"osis": "John.3","indices": [0, 10],"translations": [""],"entity_id": 0, "entities": [{ "osis": "John.3", "type": "bc", "indices": [0, 6], "translations": [""], "start": { "b": "John", "c": 3, "v": 1 }, "end": { "b": "John", "c": 3, "v": 36 }, "enclosed_indices": [-1,-1], "entity_id": 0, "entities": [{"start": { "b": "John", "c": 3, "v": 1 },"end": { "b": "John", "c": 3, "v": 36 }, "valid": { "valid": true, "messages": {} },"type": "bc","absolute_indices": [0, 6], "enclosed_absolute_indices": [-1,-1]}]},{ "osis": "", "type": "integer", "indices": [8, 10], "translations": [""], "start": { "b": "John", "c": 99 }, "end": { "b": "John", "c": 99 }, "enclosed_indices": [-1,-1], "entity_id": 0, "entities": [{"start": { "b": "John", "c": 99 },"end": { "b": "John", "c": 99 },"valid": { "valid": false, "messages": { "start_chapter_not_exist": 21 } },"type": "integer","absolute_indices": [8, 10], "enclosed_absolute_indices": [-1,-1]}]}]}]
 
 	it "should match `include_apocrypha()`", ->
 		expect(bcv.parse("Tobit 1").osis()).toEqual ""
-		bcv.include_apocrypha(true);
+		bcv.include_apocrypha(true)
 		expect(bcv.parse("Tobit 1").osis()).toEqual "Tob.1"
 
 	it "should match `set_options()`", ->
-		bcv.set_options({"osis_compaction_strategy": "bcv"});
+		bcv.set_options({"osis_compaction_strategy": "bcv"})
 		expect(bcv.parse("Genesis 1").osis()).toEqual "Gen.1.1-Gen.1.31"
+
+	it "should handle `punctuation_strategy` examples in the documentation", ->
+		bcv.set_options punctuation_strategy: "us"
+		expect(bcv.parse("Matt 1, 2. 4").osis()).toEqual "Matt.1,Matt.2.4"
+		bcv.set_options punctuation_strategy: "eu"
+		expect(bcv.parse("Matt 1, 2. 4").osis()).toEqual "Matt.1.2,Matt.1.4"
 
 describe "Administrative behavior", ->
 	p = {}
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 
 	it "should handle `translation_info` given known inputs", ->
@@ -2206,10 +2317,10 @@ describe "Administrative behavior", ->
 		expect(array_response.chapters["3John"][0]).toEqual 15
 		expect(null_response.chapters["3John"][0]).toEqual 15
 
-
 describe "Real-world parsing", ->
 	p = {}
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 		p.options.book_alone_strategy = "ignore"
 		p.options.book_sequence_strategy = "ignore"
@@ -2475,11 +2586,13 @@ describe "Real-world parsing", ->
 		expect(p.parse("Ti 8- Nu 9- Ma 10- Re").osis()).toEqual "Num.9.1-Num.9.23,Matt.10.1-Matt.10.42"
 		expect(p.parse("EX34 9PH to CO7").osis()).toEqual "Exod.34.9,Col.4.1-Col.4.18"
 		expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual []
+		expect(p.parse("chapt. 11-1040 of II Kings").osis()).toEqual ""
 
 describe "Adding new translations", ->
 	p = {}
 
 	beforeEach ->
+		p = {}
 		p = new bcv_parser
 		p.set_options book_alone_strategy: "full"
 		# Don't do this in real life. It edits the prototype and affects all subsequent objects on the page.

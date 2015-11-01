@@ -1,3 +1,4 @@
+1Chr	Hanidabaa Odiyaa Koiro Maxaafaa
 1Chr	Cartea intai Paralipomena
 1Chr	Prva kniha Paralipomenon
 1Chr	Kwanza Mambo ya Nyakati
@@ -416,6 +417,7 @@
 1Chr	1 Chrn
 1Chr	1 Chro
 1Chr	1 Cron
+1Chr	1 HanO
 1Chr	1 Kron
 1Chr	1 Ljet
 1Chr	1 Taar
@@ -631,6 +633,7 @@
 1Cor	I Korinthusiakhoz
 1Cor	I list Korintskym
 1Cor	I. list Korinskym
+1Cor	Koiro Qoronttoosa
 1Cor	Kwanza Wakorintho
 1Cor	Pierwsza Koryntow
 1Cor	Pierwsze Koryntow
@@ -1299,6 +1302,7 @@
 1Cor	PrvniK
 1Cor	1 Cor
 1Cor	1 Kor
+1Cor	1 Qor
 1Cor	1. Co
 1Cor	I Cor
 1Cor	I Kor
@@ -1533,6 +1537,7 @@
 1John	I. List sw. Jana
 1John	Johannes' 1 Brev
 1John	Johannes’ 1 Brev
+1John	Koiro Yohaannisa
 1John	Primero San Jaan
 1John	Primero San Jaun
 1John	Primero San Juan
@@ -1898,6 +1903,7 @@
 1Kgs	Pierwszy Ksiega Krolewska
 1Kgs	Pierwszy Ksiegi Krolewska
 1Kgs	Cartea a treia a Regilor
+1Kgs	Kawotu Maxaafaa Koiruwaa
 1Kgs	Prva knjiga o Kraljevima
 1Kgs	Tredje Kongerigernes Bog
 1Kgs	Trzecia Ksiega Krolewska
@@ -2308,6 +2314,7 @@
 1Kgs	1 Boq
 1Kgs	1 Fal
 1Kgs	1 Imp
+1Kgs	1 Kaw
 1Kgs	1 Kgs
 1Kgs	1 Kig
 1Kgs	1 Kin
@@ -2327,7 +2334,6 @@
 1Kgs	1. Kg
 1Kgs	1. Ki
 1Kgs	1. Kn
-1Kgs	1. Ko
 1Kgs	1. Kr
 1Kgs	1. Wa
 1Kgs	1e Ko
@@ -2345,7 +2351,6 @@
 1Kgs	I Reg
 1Kgs	I Vua
 1Kgs	I. Kg
-1Kgs	I. Ki
 1Kgs	I. Kn
 1Kgs	I. Ko
 1Kgs	I. Kr
@@ -2356,7 +2361,6 @@
 1Kgs	1 Kg
 1Kgs	1 Ki
 1Kgs	1 Kn
-1Kgs	1 Ko
 1Kgs	1 Kr
 1Kgs	1 Mb
 1Kgs	1 Rs
@@ -2364,7 +2368,6 @@
 1Kgs	1 Wa
 1Kgs	1Kgs
 1Kgs	I Kg
-1Kgs	I Ki
 1Kgs	I Kn
 1Kgs	I Ko
 1Kgs	I Kr
@@ -2377,9 +2380,11 @@
 1Kgs	Kin
 1Kgs	1. Ks
 1Kgs	1. Re
+1Kgs	I. Ki
 1Kgs	I. Ks
 1Kgs	1 Ks
 1Kgs	1 Re
+1Kgs	I Ki
 1Kgs	I Ks
 1Macc	Ensimmainen makkabilaiskirja
 1Macc	Pierwsza Ksiega Machabejska
@@ -3040,6 +3045,7 @@
 1Pet	I List sw. Piotra
 1Pet	I. List sw Piotra
 1Pet	I. Pietarin kirje
+1Pet	Koiro PHeexiroosa
 1Pet	Primero San Pedro
 1Pet	Prva kniha Petrov
 1Pet	Prvni list Petruv
@@ -3265,6 +3271,7 @@
 1Pet	I. Ptr
 1Pet	I. Pye
 1Pet	1 But
+1Pet	1 PHe
 1Pet	1 Ped
 1Pet	1 Per
 1Pet	1 Pet
@@ -3304,6 +3311,7 @@
 1Sam	Pierwsze Ksiegi Samuelowa
 1Sam	Pierwszy Ksiega Samuelowa
 1Sam	Pierwszy Ksiegi Samuelowa
+1Sam	Sameela Maxaafaa Koiruwaa
 1Sam	Pierwsza Ksiega Samuela
 1Sam	Pierwsza Ksiegi Samuela
 1Sam	Pierwsze Ksiega Samuela
@@ -4050,6 +4058,7 @@
 1Thess	I. Thessolonians
 1Thess	I. Thesszalonika
 1Thess	I. Wathesalonike
+1Thess	Koiro Tasalonqqe
 1Thess	Premye Tesalonik
 1Thess	Prva Solunjanima
 1Thess	Unang Tesalonica
@@ -4351,6 +4360,7 @@
 1Thess	I. The
 1Thess	I. Ths
 1Thess	1 Sol
+1Thess	1 Tas
 1Thess	1 Tes
 1Thess	1 The
 1Thess	1 Ths
@@ -4414,6 +4424,7 @@
 1Tim	Pierwszy Tymoteusza
 1Tim	Prvy list Timoteovi
 1Tim	1. Timotheosbrevet
+1Tim	Koiro Ximootiyoosa
 1Tim	Premieres Timothee
 1Tim	1 Timotheosbrevet
 1Tim	1. Timoteusbrevet
@@ -4643,6 +4654,7 @@
 1Tim	Timoth
 1Tim	1 Tim
 1Tim	1 Tym
+1Tim	1 Xim
 1Tim	1. Ti
 1Tim	1. Tm
 1Tim	I Tim
@@ -4654,6 +4666,7 @@
 1Tim	1Tim
 1Tim	I Ti
 1Tim	I Tm
+2Chr	Hanidabaa Odiya Naa77antto Maxaafaa
 2Chr	Cartea a doua Paralipomena
 2Chr	Druha kniha Paralipomenon
 2Chr	Druhy list Paralipomenon
@@ -5056,6 +5069,7 @@
 2Chr	2 Chrn
 2Chr	2 Chro
 2Chr	2 Cron
+2Chr	2 HanO
 2Chr	2 Kron
 2Chr	2 Ljet
 2Chr	2 Taar
@@ -5121,6 +5135,7 @@
 2Cor	Andra Korinthierbrevet
 2Cor	Druha kniha Korintanom
 2Cor	Druha kniha Korintskym
+2Cor	Naa77antto Qoronttoosa
 2Cor	Andra Korintherbrevet
 2Cor	Andra Korintierbrevet
 2Cor	Deuxiemes Corinthiens
@@ -5865,6 +5880,7 @@
 2Cor	II. Co
 2Cor	2 Cor
 2Cor	2 Kor
+2Cor	2 Qor
 2Cor	2. Co
 2Cor	II Co
 2Cor	2 Co
@@ -6051,6 +6067,7 @@
 2John	yuhannako dostro patra
 2John	II. Ivanova Poslanica
 2John	II. Johanneksen kirje
+2John	Naa77antto Yohaannisa
 2John	yohanacem dusre patra
 2John	2. Ivanova Poslanica
 2John	2. Johanneksen kirje
@@ -6434,6 +6451,7 @@
 2John	2. J
 2John	II J
 2John	2 J
+2Kgs	Kawotu Maxaafaa Naa77anttuwaa
 2Kgs	Kitabu cha Pili cha Wafalme
 2Kgs	Druga knjiga o Kraljevima
 2Kgs	Cartea a patra a Regilor
@@ -6867,6 +6885,7 @@
 2Kgs	2 Boq
 2Kgs	2 Fal
 2Kgs	2 Imp
+2Kgs	2 Kaw
 2Kgs	2 Kgs
 2Kgs	2 Kig
 2Kgs	2 Kin
@@ -6887,7 +6906,6 @@
 2Kgs	2. Kg
 2Kgs	2. Ki
 2Kgs	2. Kn
-2Kgs	2. Ko
 2Kgs	2. Kr
 2Kgs	2. Wa
 2Kgs	2e Ko
@@ -6903,7 +6921,6 @@
 2Kgs	2 Kg
 2Kgs	2 Ki
 2Kgs	2 Kn
-2Kgs	2 Ko
 2Kgs	2 Kr
 2Kgs	2 Mb
 2Kgs	2 Rs
@@ -7539,6 +7556,7 @@
 2Pet	Druga Petrova poslanica
 2Pet	Waraka wa Pili wa Petro
 2Pet	Barua ya Pili ya Petro
+2Pet	Naa77antto PHeexiroosa
 2Pet	Druga List sw. Piotra
 2Pet	Drugi List sw. Piotra
 2Pet	II. Petrova Poslanica
@@ -7803,6 +7821,7 @@
 2Pet	II. Pe
 2Pet	II. Pt
 2Pet	2 But
+2Pet	2 PHe
 2Pet	2 Ped
 2Pet	2 Per
 2Pet	2 Pet
@@ -7825,6 +7844,7 @@
 2Pet	2Pet
 2Pet	II P
 2Pet	2 P
+2Sam	Sameela Maxaafaa Naa77anttuwaa
 2Sam	Kitabu cha Pili cha Samueli
 2Sam	Anden Kongerigernes Bog
 2Sam	Cartea a doua a Regilor
@@ -8228,6 +8248,7 @@
 2Thess	II. Mga Tesalonisense
 2Thess	II. list Tesalonickym
 2Thess	Masodik Thesszalonika
+2Thess	Naa77antto Tasalonqqe
 2Thess	Second Thessallonians
 2Thess	Second Thessalonaians
 2Thess	Second Thessalonciens
@@ -8827,6 +8848,7 @@
 2Thess	II. Te
 2Thess	II. Th
 2Thess	2 Sol
+2Thess	2 Tas
 2Thess	2 Tes
 2Thess	2 The
 2Thess	2 Ths
@@ -8854,6 +8876,7 @@
 2Tim	Epistula II ad Timotheum
 2Tim	Epistula ad Timotheum II
 2Tim	II. Kirje Timoteukselle
+2Tim	Naa77antto Ximootiyoosa
 2Tim	2. Kirje Timoteukselle
 2Tim	Druha kniha Timotejovi
 2Tim	II Kirje Timoteukselle
@@ -9109,6 +9132,7 @@
 2Tim	II. Tm
 2Tim	2 Tim
 2Tim	2 Tym
+2Tim	2 Xim
 2Tim	2. Ti
 2Tim	2. Tm
 2Tim	II Ti
@@ -9139,6 +9163,7 @@
 3John	3. Johanneksen kirje
 3John	Epistula III Ioannis
 3John	Epistula Ioannis III
+3John	Hezzantto Yohaannisa
 3John	Johannes tredje brev
 3John	Trzeci List sw. Jana
 3John	Trzecia List sw Jana
@@ -10705,6 +10730,7 @@
 4Macc	4 M
 Acts	Mabuting Balita ayon sa Espiritu Santo
 Acts	Mabuting Balita ng Espiritu Santo
+Acts	Yesuusi Kiittidoogeetu Oosuwaa
 Acts	Ebanghelyo ng Espiritu Santo
 Acts	Handelingen van de apostelen
 Acts	Los Hechos de los Apostoles
@@ -10810,6 +10836,7 @@ Acts	Hch
 Acts	Hec
 Acts	Hnd
 Acts	Mdo
+Acts	Osu
 Acts	Vep
 Acts	Ac
 Acts	At
@@ -10835,7 +10862,9 @@ Amos	Caamoos
 Amos	Amosa
 Amos	Amosi
 Amos	Amosz
+Amos	Amoxa
 Amos	Amos
+Amos	Amox
 Amos	Caam
 Amos	amos
 Amos	Aam
@@ -10972,6 +11001,7 @@ Col	Kolosenskym
 Col	Kolosianeve
 Col	Kolossenzen
 Col	Kulussaiyon
+Col	Qolasiyaasa
 Col	Calassians
 Col	Calassions
 Col	Callasians
@@ -11023,6 +11053,7 @@ Col	Colos
 Col	Kolos
 Col	Col
 Col	Kol
+Col	Qol
 Col	Cl
 Col	Co
 Col	Ko
@@ -11038,6 +11069,7 @@ Dan	Ks. Daniela
 Dan	Ks Daniela
 Dan	Daaniyyel
 Dan	daniyalko
+Dan	Daaneela
 Dan	Daanyeel
 Dan	Danielin
 Dan	Daniela
@@ -11051,6 +11083,7 @@ Dan	Danyel
 Dan	Danyil
 Dan	daniel
 Dan	Daan
+Dan	Dane
 Dan	Dan
 Dan	Da
 Dan	Dl
@@ -11107,6 +11140,7 @@ Deut	Ponovljeni zakon
 Deut	V Ks. Mojzeszowa
 Deut	V. Ks Mojzeszowa
 Deut	Viides Mooseksen
+Deut	Zaarettido Wogaa
 Deut	5 Ks Mojzeszowa
 Deut	Femte Moseboken
 Deut	Fimmta bok Mose
@@ -11223,6 +11257,7 @@ Deut	5 Mz
 Deut	Deut
 Deut	Duet
 Deut	Kumb
+Deut	ZarW
 Deut	5 M
 Deut	Det
 Deut	Deu
@@ -11357,6 +11392,7 @@ Eccl	Eclessaate
 Eccl	Eclessaite
 Eccl	Eclessiate
 Eccl	Eclessiite
+Eccl	Eranchchaa
 Eccl	Predikaren
 Eccl	Predikator
 Eccl	Predikeren
@@ -11403,6 +11439,7 @@ Eccl	Saar
 Eccl	Ecc
 Eccl	Ecl
 Eccl	Ekl
+Eccl	Era
 Eccl	Kaz
 Eccl	Koh
 Eccl	Mhu
@@ -11534,6 +11571,7 @@ Eph	Efeserne
 Eph	Efezanom
 Eph	Efeziers
 Eph	Efezskym
+Eph	Efisoona
 Eph	Epesians
 Eph	Ephesain
 Eph	Ephesian
@@ -11558,6 +11596,7 @@ Eph	Efeso
 Eph	Ephes
 Eph	Efes
 Eph	Efez
+Eph	Efis
 Eph	Ephe
 Eph	Ephs
 Eph	Efe
@@ -11577,6 +11616,7 @@ Esth	Esters bok
 Esth	Ks. Estery
 Esth	Liv Este a
 Esth	Ks Estery
+Esth	Asttiro
 Esth	Esterei
 Esth	Esterin
 Esth	estarko
@@ -11596,6 +11636,7 @@ Esth	Esta
 Esth	Este
 Esth	Esth
 Esth	Eszt
+Esth	Ast
 Esth	Est
 Esth	Es
 Esth	Et
@@ -11693,6 +11734,7 @@ Exod	Anden Mos
 Exod	Andre Mos
 Exod	Delivrans
 Exod	II. Mozes
+Exod	Kessaabaa
 Exod	Kivonulas
 Exod	2. Mozes
 Exod	2e Mozes
@@ -11737,6 +11779,7 @@ Exod	Vyhid
 Exod	2 Mo
 Exod	2 Mz
 Exod	Exod
+Exod	Kess
 Exod	Bax
 Exod	Dal
 Exod	Ecs
@@ -11770,6 +11813,7 @@ Ezek	Ezeiquiel
 Ezek	Eziequiel
 Ezek	Eziiquiel
 Ezek	Hezechiel
+Ezek	Hizqqeela
 Ezek	Iezechiel
 Ezek	Jezekiil'
 Ezek	Jezekiil’
@@ -11832,6 +11876,7 @@ Ezek	Eze
 Ezek	Ezk
 Ezek	Ezq
 Ezek	Hes
+Ezek	Hiz
 Ezek	Yex
 Ezek,Ezra	Ez
 Ezra	Ksiega Ezdrasza
@@ -11856,6 +11901,7 @@ Ezra	Esdra
 Ezra	Esran
 Ezra	Esras
 Ezra	Ezdra
+Ezra	Izira
 Ezra	edzra
 Ezra	Cesr
 Ezra	Esdr
@@ -11863,6 +11909,7 @@ Ezra	Esra
 Ezra	Ezdr
 Ezra	Ezra
 Ezra	Ezsd
+Ezra	Izir
 Ezra	Ces
 Ezra	Esd
 Ezra	Esr
@@ -11907,6 +11954,7 @@ Gal	Galatenbrief
 Gal	Taga Galacia
 Gal	Taga-Galacia
 Gal	galatikarams
+Gal	Galaatiyaa
 Gal	Galacanima
 Gal	Galataians
 Gal	Galataions
@@ -12070,6 +12118,7 @@ Gen	1. Buch Mose
 Gen	1. Mojzisova
 Gen	1. Mooseksen
 Gen	1. Moseboken
+Gen	Doomettaabaa
 Gen	Eerste Mozes
 Gen	I Mojzeszowa
 Gen	I. Mojzisova
@@ -12259,6 +12308,7 @@ Hab	Ksiegi Habakuka
 Hab	Habakkuks Bog
 Hab	Habakkuks bok
 Hab	Liv Abakik la
+Hab	Irmbbaaqooma
 Hab	Ks. Habakuka
 Hab	Ks Habakuka
 Hab	Habbakkakk
@@ -12305,6 +12355,7 @@ Hab	Habak
 Hab	Abak
 Hab	Habc
 Hab	Habk
+Hab	Imba
 Hab	Abk
 Hab	Hab
 Hab	Xab
@@ -12343,6 +12394,7 @@ Hag	Hagai
 Hag	Hagaj
 Hag	Hagej
 Hag	Hageo
+Hag	Hagga
 Hag	Agai
 Hag	Agej
 Hag	Ageo
@@ -12455,6 +12507,7 @@ Heb	Hebrwes
 Heb	Hebwers
 Heb	Hebwres
 Heb	Hwbrews
+Heb	Ibraawe
 Heb	Hbrews
 Heb	Hebees
 Heb	Hebeos
@@ -12481,6 +12534,7 @@ Heb	Zydow
 Heb	Ebre
 Heb	Hebr
 Heb	Hepr
+Heb	Ibra
 Heb	Zsid
 Heb	Cib
 Heb	Ebr
@@ -12503,6 +12557,7 @@ Hos	Hoseas bok
 Hos	Ks Ozeasza
 Hos	Hoosheeca
 Hos	Liv Oze a
+Hos	Hoose7a
 Hos	Hoosean
 Hos	Hoseias
 Hos	Ozeasza
@@ -12564,6 +12619,7 @@ Isa	Isiiaaha
 Isa	Isiiaiha
 Isa	Isiiiaha
 Isa	Isiiiiha
+Isa	Isiyaasa
 Isa	Izajasza
 Isa	Ezsaias
 Isa	I-sai-a
@@ -12635,6 +12691,7 @@ Isa	Esai
 Isa	I-sa
 Isa	Isah
 Isa	Isai
+Isa	Isiy
 Isa	Esa
 Isa	Ezs
 Isa	Isa
@@ -12668,6 +12725,7 @@ Jas	Jakovljeva
 Jas	yakobacem
 Jas	Jaakobin
 Jas	Santiago
+Jas	Yaaqooba
 Jas	Giacomo
 Jas	Jacques
 Jas	Jakobit
@@ -12709,6 +12767,7 @@ Jas	San
 Jas	Stg
 Jas	Yac
 Jas	Yak
+Jas	Yaq
 Jas	Gc
 Jas	Gm
 Jas	Ja
@@ -12769,6 +12828,7 @@ Jer	Jeremiasza
 Jer	Jeremaiah
 Jer	Yeremyaah
 Jer	yarmiyako
+Jer	Ermmaasa
 Jer	Heremias
 Jer	Heremyas
 Jer	Herimias
@@ -12814,6 +12874,7 @@ Jer	yirmaya
 Jer	Jeremi
 Jer	Jerem
 Jer	Jere
+Jer	Erm
 Jer	Ger
 Jer	Ier
 Jer	Jer
@@ -12844,6 +12905,7 @@ Job	K Jobova
 Job	Ks Hioba
 Job	Ks Ijoba
 Job	Ks. Joba
+Job	Iyyooba
 Job	Jobsbok
 Job	Ks Joba
 Job	ayyubko
@@ -12857,6 +12919,7 @@ Job	Jobin
 Job	Ayub
 Job	Hiob
 Job	Ijob
+Job	Iyob
 Job	Joba
 Job	Jobi
 Job	Jobs
@@ -12881,6 +12944,7 @@ Joel	Liv Jowel la
 Joel	Joels Bog
 Joel	Joels bok
 Joel	Ks. Joela
+Joel	Yuu77eela
 Joel	Ks Joela
 Joel	Yoo'eel
 Joel	Yoo’eel
@@ -12900,6 +12964,7 @@ Joel	Joil
 Joel	Yoel
 Joel	Yole
 Joel	Yool
+Joel	Yu7e
 Joel	yoel
 Joel	Joe
 Joel	Yoe
@@ -13136,6 +13201,7 @@ John	Saint John
 John	Saint Jonh
 John	Saint Joon
 John	Saint Jphn
+John	Yohaannisa
 John	Saint Jhn
 John	Saint Joh
 John	St. Jophn
@@ -13225,6 +13291,7 @@ Jonah	Jonas’ Bog
 Jonah	Ks Jonasza
 Jonah	Jonas bok
 Jonah	Jona bok
+Jonah	Yoonaasa
 Jonah	Jonasza
 Jonah	Joonan
 Jonah	Yoonis
@@ -13286,6 +13353,7 @@ Josh	Josva
 Josh	Jozua
 Josh	Jozue
 Josh	Jozye
+Josh	Yaasu
 Josh	Yosua
 Josh	Yusak
 Josh	Gsua
@@ -13328,6 +13396,7 @@ Jude	San Judas
 Jude	yahudacem
 Jude	yahudako
 Jude	Yahooda
+Jude	Yihudaa
 Jude	Judina
 Jude	Judova
 Jude	Yuudas
@@ -13344,6 +13413,7 @@ Jude	Juda
 Jude	Jude
 Jude	Judy
 Jude	Juud
+Jude	Yihu
 Jude	Yuda
 Jude	Yuta
 Jude	Yuud
@@ -13384,6 +13454,7 @@ Judg	K. sudcov
 Judg	Mga Hukom
 Judg	Richteren
 Judg	Tuomarien
+Judg	Daannata
 Judg	Dommerne
 Judg	K sudcov
 Judg	Nyayiyon
@@ -13409,6 +13480,7 @@ Judg	Recht
 Judg	Richt
 Judg	saste
 Judg	Barn
+Judg	Dana
 Judg	Jdgs
 Judg	Judg
 Judg	Juec
@@ -13420,7 +13492,6 @@ Judg	Tuom
 Judg	Waam
 Judg	Xaak
 Judg	Amu
-Judg	Bir
 Judg	Dom
 Judg	Gdc
 Judg	Gjy
@@ -13438,6 +13509,7 @@ Judg	Jc
 Judg	Jg
 Judg	Jz
 Judg	Sd
+Judg	Bir
 Lam	Chante pou plenn So lavil Jerizalem
 Lam	Plangerile profetului Ieremia
 Lam	Baroorashadii Yeremyaah
@@ -13450,6 +13522,7 @@ Lam	Klagelieder Jeremias
 Lam	Aklat ng Pananaghoy
 Lam	Jeremijine tuzaljke
 Lam	Aklat ng Pagtaghoy
+Lam	Ermmaasa Zilaassaa
 Lam	Galarnad Jeremiah
 Lam	Jeremias siralmai
 Lam	Ksiega Lamentacji
@@ -13519,6 +13592,7 @@ Lam	Plenn
 Lam	Siral
 Lam	Treny
 Lam	Valit
+Lam	ErmZ
 Lam	Klag
 Lam	Klgl
 Lam	Plac
@@ -13656,6 +13730,7 @@ Lev	Levitico
 Lev	Levitiku
 Lev	Livetcus
 Lev	Livitcus
+Lev	Wogaabaa
 Lev	3 Mozes
 Lev	3. Mojz
 Lev	3. Mose
@@ -13688,6 +13763,7 @@ Lev	Leb
 Lev	Lef
 Lev	Lev
 Lev	Wal
+Lev	Wog
 Lev	Le
 Lev	Lv
 Luke	Mabuting Balita ayon kay San Lucas
@@ -13792,6 +13868,7 @@ Luke	Luukkaan
 Luke	Saint Lk
 Luke	Saint Lu
 Luke	St. Luke
+Luke	Luqaasa
 Luke	St Luke
 Luke	St. Luk
 Luke	Lukacs
@@ -13818,6 +13895,7 @@ Luke	Lik
 Luke	Llu
 Luke	Luc
 Luke	Luk
+Luke	Luq
 Luke	Lc
 Luke	Lk
 Luke	Lu
@@ -13836,6 +13914,7 @@ Mal	Malakis bok
 Mal	Ma-la-chi
 Mal	Malachias
 Mal	Malaquias
+Mal	Mikiyaasa
 Mal	Ma-la-ki
 Mal	Malaakii
 Mal	Malachia
@@ -13979,6 +14058,7 @@ Mark	Saint Mark
 Mark	San Marcos
 Mark	Ew. Marka
 Mark	Markuksen
+Mark	Marqqoosa
 Mark	Saint Mar
 Mark	Saint Mrk
 Mark	Ew Marka
@@ -14012,6 +14092,7 @@ Mark	St Mk
 Mark	St Mr
 Mark	Marc
 Mark	Mark
+Mark	Marq
 Mark	Mar
 Mark	Mrc
 Mark	Mrk
@@ -14615,6 +14696,7 @@ Matt	St. Matthew
 Matt	St. Matthwe
 Matt	St. Mattiew
 Matt	St. Matttew
+Matt	Maatiyoosa
 Matt	Matteuksen
 Matt	Saint Matt
 Matt	St Mathhew
@@ -14708,6 +14790,7 @@ Mic	Ks. Micheasza
 Mic	Ks Micheasza
 Mic	Miikan kirja
 Mic	Liv Miche a
+Mic	Milkkiyaasa
 Mic	Micheasza
 Mic	Mikas Bog
 Mic	Mikas bok
@@ -14741,6 +14824,7 @@ Mic	Mica
 Mic	Mich
 Mic	Miik
 Mic	Mika
+Mic	Milk
 Mic	mika
 Mic	Mic
 Mic	Mih
@@ -14758,6 +14842,7 @@ Nah	Ks. Nahuma
 Nah	Nahums Bog
 Nah	Nahums bok
 Nah	Ks Nahuma
+Nah	Naahooma
 Nah	Nahumin
 Nah	Na-hum
 Nah	Nahoom
@@ -14771,6 +14856,7 @@ Nah	Nahum
 Nah	Nakum
 Nah	nahum
 Nah	Nach
+Nah	Naho
 Nah	Nahu
 Nah	Naum
 Nah	Nah
@@ -14792,6 +14878,7 @@ Neh	Nehemjas bok
 Neh	Nehemiabok
 Neh	Nehemiasza
 Neh	nahemyahko
+Neh	Nahimiyaa
 Neh	Nehemaaah
 Neh	Nehemaaih
 Neh	Nehemaiah
@@ -14842,6 +14929,7 @@ Neh	nahemya
 Neh	Neemia
 Neh	Neyemi
 Neh	Neemi
+Neh	Nahi
 Neh	Neem
 Neh	Neh
 Neh	Nex
@@ -14927,6 +15015,7 @@ Num	4 Mosebok
 Num	Ennakamam
 Num	IV. Mozes
 Num	Ks. Liczb
+Num	Qoodaabaa
 Num	Resansman
 Num	4. Mozes
 Num	Bamidbar
@@ -14978,6 +15067,7 @@ Num	Szam
 Num	Bil
 Num	Nom
 Num	Num
+Num	Qod
 Num	Res
 Num	Tir
 Num	Lb
@@ -14997,6 +15087,7 @@ Obad	Obadias’ Bog
 Obad	Ks Abdiasza
 Obad	Obadjas bok
 Obad	Cobadyaah
+Obad	Abddiyyu
 Obad	Abdiasza
 Obad	Abdijas
 Obad	Obadeia
@@ -15021,6 +15112,7 @@ Obad	Cobad
 Obad	Obadj
 Obad	Obaja
 Obad	Ovdij
+Obad	Abdi
 Obad	Obad
 Obad	Abd
 Obad	Cob
@@ -15055,6 +15147,7 @@ Phil	List do Filipian
 Phil	Mga Taga Filipos
 Phil	Mga Taga Pilipos
 Phil	Mga Taga-Filipos
+Phil	Piliphphisiyuusa
 Phil	Filippilaisille
 Phil	ad Philippenses
 Phil	Filipperbrevet
@@ -15186,12 +15279,13 @@ Phil	Phlpp
 Phil	Fili
 Phil	Phil
 Phil	Phlp
-Phil	Fil
+Phil	Pilp
 Phil	Flp
 Phil	Phi
 Phil	Php
 Phil	Fl
 Phil	Fp
+Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Poslannja apostola Pavla do Fylymona
@@ -15223,6 +15317,7 @@ Phlm	Filemonhoz
 Phlm	Filemonovi
 Phlm	Philemonem
 Phlm	Filemonit
+Phlm	Pilimoona
 Phlm	Filemona
 Phlm	Filemone
 Phlm	Filemoni
@@ -15242,6 +15337,7 @@ Phlm	Film
 Phlm	Flmn
 Phlm	Phlm
 Phlm	Phmn
+Phlm	Pilm
 Phlm	Flm
 Phlm	Fmn
 Phlm	Phm
@@ -15422,6 +15518,7 @@ Prov	Proverbs
 Prov	Prverbio
 Prov	Spreuken
 Prov	Sprueche
+Prov	Leemiso
 Prov	Methali
 Prov	Mithali
 Prov	Poverbs
@@ -15450,6 +15547,7 @@ Prov	Prvb
 Prov	Przy
 Prov	Izr
 Prov	Kaw
+Prov	Lem
 Prov	Mit
 Prov	Okv
 Prov	Pro
@@ -15482,6 +15580,7 @@ Ps	Salmarnir
 Ps	Zsoltarok
 Ps	Cankitam
 Ps	K zalmov
+Ps	Mazamure
 Ps	Mga Awit
 Ps	Psalmien
 Ps	Salmenes
@@ -15598,6 +15697,7 @@ Ps	Psmm
 Ps	Pssm
 Ps	Salm
 Ps	Zalm
+Ps	Maz
 Ps	Psa
 Ps	Psm
 Ps	Pss
@@ -15708,6 +15808,7 @@ Rev	Jelenesek
 Rev	Muujintii
 Rev	Pamedaran
 Rev	Revlation
+Rev	Ajjuutaa
 Rev	Ilmestys
 Rev	Zjavenie
 Rev	Datgudd
@@ -15722,6 +15823,7 @@ Rev	Apoc
 Rev	Muuj
 Rev	Offb
 Rev	Zjav
+Rev	Aju
 Rev	Apc
 Rev	Apk
 Rev	Apo
@@ -15807,6 +15909,7 @@ Rom	Roman
 Rom	Romen
 Rom	Romer
 Rom	Rooma
+Rom	Roome
 Rom	Rhuf
 Rom	Rmns
 Rom	Roma
@@ -15843,6 +15946,7 @@ Ruth	Ks Rut
 Ruth	Ruutin
 Ruth	Ruthi
 Ruth	Ruthu
+Ruth	Uruto
 Ruth	Root
 Ruth	Ruta
 Ruth	Rute
@@ -15853,6 +15957,7 @@ Ruth	Ruut
 Ruth	Rit
 Ruth	Rth
 Ruth	Rut
+Ruth	Uru
 Ruth	Rt
 Ruth	Ru
 SgThree	Kolmen nuoren miehen ollessa tulisessa patsissa
@@ -16176,6 +16281,7 @@ Song	Caniad Solomon
 Song	Chante Salomon
 Song	Laulujen laulu
 Song	Piesn Salomona
+Song	Siiquwaa Sabaa
 Song	Songs of Songs
 Song	Piesen piesni
 Song	Salamon eneke
@@ -16236,6 +16342,7 @@ Song	PNP
 Song	Pis
 Song	Pnp
 Song	Sgs
+Song	Siq
 Song	Sng
 Song	SoS
 Song	Sol
@@ -16322,6 +16429,7 @@ Titus	Titovi
 Titus	Titusz
 Titus	Tytusa
 Titus	titala
+Titus	Tiitu
 Titus	Titit
 Titus	Titum
 Titus	Titus
@@ -16460,6 +16568,7 @@ Zech	Ks Zachariasza
 Zech	Sakarjan kirja
 Zech	Zakarias' Bog
 Zech	Zakarias’ Bog
+Zech	Zakkaariyaasa
 Zech	Liv Zakari a
 Zech	Sakarjaboken
 Zech	Sakarjas bok
@@ -16527,6 +16636,7 @@ Zech	Sach
 Zech	Sech
 Zech	Zacc
 Zech	Zach
+Zech	Zakk
 Zech	Zech
 Zech	Sak
 Zech	Sek
@@ -16555,6 +16665,7 @@ Zeph	Zephanaiah
 Zeph	Ceppaniya
 Zeph	Sefanyaah
 Zeph	Seffaneia
+Zeph	Sofonaasa
 Zeph	Sophonias
 Zeph	Szefanias
 Zeph	Szofonias
@@ -16595,6 +16706,7 @@ Zeph	Sofoni
 Zeph	Zephan
 Zeph	Seff
 Zeph	Seph
+Zeph	Sofo
 Zeph	Soph
 Zeph	Szof
 Zeph	Zeph

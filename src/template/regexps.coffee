@@ -28,6 +28,7 @@ bcv_parser::regexps.escaped_passage = ///
 # These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
 	  \d \W* $TITLE
+	| \d \W* $NEXT (?: [\s\xa0*]* \.)?
 	| \d \W* $FF (?: [\s\xa0*]* \.)?
 	| \d [\s\xa0*]* $AB (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis

@@ -1,0 +1,28 @@
+{
+  "name": "bible-passage-reference-parser",
+  "version": "1.0.0",
+  "description": "Identifies and parses Bible references (\"John 3:16\") in many languages.",
+  "main": "js/",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "js/",
+    "Readme.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openbibleinfo/Bible-Passage-Reference-Parser.git"
+  },
+  "keywords": [
+    "bible",
+    "verses"
+  ],
+  "author": "OpenBible.info <openbibleinfo@gmail.com> (http://www.openbible.info/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues"
+  },
+  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser"
+}
