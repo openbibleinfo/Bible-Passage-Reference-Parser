@@ -75,7 +75,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Lev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		L(?:ev|ê(?:-?vi(?:[\s\xa0]*ký)?)?)
+		L(?:ev|ê(?:[\s\xa0]*Vi|-?vi(?:[\s\xa0]*ký)?)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Num"]
@@ -196,7 +196,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["1Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:I(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký)))|1(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|Chr))|(?:[1I](?:\.[\s\xa0]*Sử(?:[\s\xa0]*ký)?|[\s\xa0]*Sử(?:[\s\xa0]*ký)?))
+		(?:I(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký)))|1(?:\.[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|[\s\xa0]*(?:Lịch[\s\xa0]*sử|Sử[\s\xa0]*(?:biên[\s\xa0]*niên|Ký))|Chr))|(?:[I1](?:\.[\s\xa0]*Sử(?:[\s\xa0]*ký)?|[\s\xa0]*Sử(?:[\s\xa0]*ký)?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezra"]

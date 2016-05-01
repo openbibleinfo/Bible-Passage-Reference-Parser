@@ -412,6 +412,7 @@ Lam	Ai Ca
 Lam	Lam
 Lam	Ai
 Lev	Lê-vi ký
+Lev	Lê Vi
 Lev	Lê-vi
 Lev	Lev
 Lev	Lê

@@ -103,7 +103,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Rev"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:யோவானுக்கு[\s\xa0]*வெளிப்படுத்தின[\s\xa0]*விசேஷம்|Ve[lḷ]ippa(?:[tṭ]utti(?:[nṉ]a[\s\xa0]*Vic(?:[eē](?:[tṭ]a(?:[nṅ]ka[lḷ])))))|தி(?:ருவெளிப்பாடு|வெ)|வெளி(?:ப்படுத்தின[\s\xa0]*விசேடங்கள்)?|Rev)|Ve[ḷl]ippa(?:[ṭt]utti(?:[nṉ]a))
+		(?:யோவானுக்கு[\s\xa0]*வெளிப்படுத்தின[\s\xa0]*விசேஷம்|Ve[lḷ]ippa(?:[tṭ]utti(?:[nṉ]a[\s\xa0]*Vic(?:[eē](?:[tṭ]a(?:[nṅ]ka[lḷ])))))|தி(?:ருவெளிப்பாடு|வெ)|வெளி(?:ப்படுத்தின[\s\xa0]*விசேடங்கள்)?|Rev)|Ve[ḷl]ippa(?:[tṭ]utti(?:[ṉn]a))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["PrMan"]
@@ -344,7 +344,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["John"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:அருளப்பர்[\s\xa0]*நற்செய்தி|Y[oō]v(?:[aā](?:[nṉ][\s\xa0]*Na(?:[rṛ]ceyti)))|John|யோவா(?:ன்[\s\xa0]*(?:எழுதிய[\s\xa0]*(?:சுவிசேஷம்|நற்செய்தி)|நற்செய்தி))?)|(?:யோவான்|Y[ōo]v(?:[āa][ṉn]))
+		(?:அருளப்பர்[\s\xa0]*நற்செய்தி|Y[oō]v(?:[aā](?:[nṉ][\s\xa0]*Na(?:[rṛ]ceyti)))|John|யோவா(?:ன்[\s\xa0]*(?:எழுதிய[\s\xa0]*(?:சுவிசேஷம்|நற்செய்தி)|நற்செய்தி))?)|(?:யோவான்|Y[oō]v(?:[āa][nṉ]))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Acts"]
@@ -414,7 +414,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Phlm"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:P(?:il[eē]m(?:[oō](?:[nṉ]ukku[\s\xa0]*E(?:[lḻ]utiya[\s\xa0]*Nirupam)))|hlm)|பில(?:மோன(?:ுக்கு[\s\xa0]*எழுதிய[\s\xa0]*திருமுகம்|்)|ே(?:மோன(?:ுக்கு[\s\xa0]*எழுதிய[\s\xa0]*(?:நிருபம்|கடிதம்)|்))?)?)|Pil[eē]m(?:[oō](?:[nṉ]ukku))
+		(?:P(?:il[eē]m(?:[oō](?:[nṉ]ukku[\s\xa0]*E(?:[lḻ]utiya[\s\xa0]*Nirupam)))|hlm)|பில(?:மோன(?:ுக்கு[\s\xa0]*எழுதிய[\s\xa0]*திருமுகம்|்)|ே(?:மோன(?:ுக்கு[\s\xa0]*எழுதிய[\s\xa0]*(?:நிருபம்|கடிதம்)|்))?)?)|Pil[eē]m(?:[ōo](?:[nṉ]ukku))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Heb"]

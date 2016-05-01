@@ -154,6 +154,7 @@ cv_sep
 cv_sep_weak
   = sp ["'] sp / space
 
+/* The opening regexp is overwritten during post-processing to allow flexibility on including the comma. */
 sequence_sep
   = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "and" / "compare" / "cf" abbrev? / "see" space "also" / "also" / "see" / space)+
     { return "" }
@@ -170,6 +171,10 @@ in_book_of
 
 abbrev
   = sp "." !(sp "." sp ".")
+
+/* EU-style separators, where "," is a cv separator and "." is a sequence separator. The sequence is post-processed into the grammar rather than specified here. */
+eu_cv_sep
+  = sp "," sp
 
 /* Translations */
 // Prevents a reference entirely enclosed in parentheses from incorrectly grabbing the closing parenthesis of the reference rather than just the closing parenthesis of the translation.

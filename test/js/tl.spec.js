@@ -116,11 +116,13 @@
 		expect(p.parse("Exodo 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("Exod 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("Exo 1:1").osis()).toEqual("Exod.1.1")
+		expect(p.parse("Ex 1:1").osis()).toEqual("Exod.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("EXODUS 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("EXODO 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("EXOD 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("EXO 1:1").osis()).toEqual("Exod.1.1")
+		expect(p.parse("EX 1:1").osis()).toEqual("Exod.1.1")
 		;
       return true;
     });
@@ -199,12 +201,14 @@
 		expect(p.parse("Bamidbar 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Bemidbar 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Bil 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("Blg 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Num 1:1").osis()).toEqual("Num.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("MGA BILANG 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("BAMIDBAR 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("BEMIDBAR 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("BIL 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("BLG 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUM 1:1").osis()).toEqual("Num.1.1")
 		;
       return true;
@@ -322,6 +326,7 @@
       
 		expect(p.parse("Ang Liham ni Jeremias 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Liham ni Jeremias 1:1").osis()).toEqual("EpJer.1.1")
+		expect(p.parse("Li ni Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Lih Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("EpJer 1:1").osis()).toEqual("EpJer.1.1")
 		;
@@ -351,6 +356,8 @@
 		expect(p.parse("Apokalipsis 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Rebelasyon 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Pahayag 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("Apoc 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("Apok 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Pah 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Rev 1:1").osis()).toEqual("Rev.1.1")
 		p.include_apocrypha(false)
@@ -361,6 +368,8 @@
 		expect(p.parse("APOKALIPSIS 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("REBELASYON 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("PAHAYAG 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("APOC 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("APOK 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("PAH 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("REV 1:1").osis()).toEqual("Rev.1.1")
 		;
@@ -611,6 +620,7 @@
 		expect(p.parse("Isaia 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Isaía 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Isa 1:1").osis()).toEqual("Isa.1.1")
+		expect(p.parse("Is 1:1").osis()).toEqual("Isa.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ISAIAH 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("ISAIAS 1:1").osis()).toEqual("Isa.1.1")
@@ -619,6 +629,7 @@
 		expect(p.parse("ISAIA 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("ISAÍA 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("ISA 1:1").osis()).toEqual("Isa.1.1")
+		expect(p.parse("IS 1:1").osis()).toEqual("Isa.1.1")
 		;
       return true;
     });
@@ -860,6 +871,7 @@
 		expect(p.parse("II Kronika 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 Cronica 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 Kronika 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2 Cron 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 Cro 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2Chr 1:1").osis()).toEqual("2Chr.1.1")
 		p.include_apocrypha(false)
@@ -898,6 +910,7 @@
 		expect(p.parse("II KRONIKA 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 CRONICA 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 KRONIKA 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2 CRON 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 CRO 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2CHR 1:1").osis()).toEqual("2Chr.1.1")
 		;
@@ -962,6 +975,7 @@
 		expect(p.parse("1 Kronika 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I Cronica 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I Kronika 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1 Cron 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 Cro 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1")
 		p.include_apocrypha(false)
@@ -1007,6 +1021,7 @@
 		expect(p.parse("1 KRONIKA 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I CRONICA 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I KRONIKA 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1 CRON 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 CRO 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1CHR 1:1").osis()).toEqual("1Chr.1.1")
 		;
@@ -1031,11 +1046,9 @@
       
 		expect(p.parse("Esdras 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ezra 1:1").osis()).toEqual("Ezra.1.1")
-		expect(p.parse("Ez 1:1").osis()).toEqual("Ezra.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ESDRAS 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("EZRA 1:1").osis()).toEqual("Ezra.1.1")
-		expect(p.parse("EZ 1:1").osis()).toEqual("Ezra.1.1")
 		;
       return true;
     });
@@ -1208,8 +1221,12 @@
 		expect(p.parse("Awit ni Solomon 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Awit ni Solomón 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Kantikulo 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A. ng A. 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A ng A. 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A. ng A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Aw ni S 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Kantiko 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A ng A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Song 1:1").osis()).toEqual("Song.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ANG AWIT NG MGA AWIT 1:1").osis()).toEqual("Song.1.1")
@@ -1223,8 +1240,12 @@
 		expect(p.parse("AWIT NI SOLOMON 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("AWIT NI SOLOMÓN 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("KANTIKULO 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A. NG A. 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A NG A. 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A. NG A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("AW NI S 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("KANTIKO 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A NG A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("SONG 1:1").osis()).toEqual("Song.1.1")
 		;
       return true;
@@ -1380,6 +1401,7 @@
 		expect(p.parse("Kohelet 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("Manga 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("Eccl 1:1").osis()).toEqual("Eccl.1.1")
+		expect(p.parse("Ec 1:1").osis()).toEqual("Eccl.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ANG MANGANGARAL 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("ECCLESIASTES 1:1").osis()).toEqual("Eccl.1.1")
@@ -1399,6 +1421,7 @@
 		expect(p.parse("KOHELET 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("MANGA 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("ECCL 1:1").osis()).toEqual("Eccl.1.1")
+		expect(p.parse("EC 1:1").osis()).toEqual("Eccl.1.1")
 		;
       return true;
     });
@@ -1539,6 +1562,7 @@
 		expect(p.parse("Oseia 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("Osea 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("Hos 1:1").osis()).toEqual("Hos.1.1")
+		expect(p.parse("Os 1:1").osis()).toEqual("Hos.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("HOSEIAS 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("HOSEAS 1:1").osis()).toEqual("Hos.1.1")
@@ -1551,6 +1575,7 @@
 		expect(p.parse("OSEIA 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("OSEA 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("HOS 1:1").osis()).toEqual("Hos.1.1")
+		expect(p.parse("OS 1:1").osis()).toEqual("Hos.1.1")
 		;
       return true;
     });
@@ -1943,6 +1968,7 @@
 		expect(p.parse("Ebanghelyo ni Mateo 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("Mateo 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("Matt 1:1").osis()).toEqual("Matt.1.1")
+		expect(p.parse("Mat 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("Mt 1:1").osis()).toEqual("Matt.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("MABUTING BALITA AYON KAY SAN MATEO 1:1").osis()).toEqual("Matt.1.1")
@@ -1952,6 +1978,7 @@
 		expect(p.parse("EBANGHELYO NI MATEO 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("MATEO 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("MATT 1:1").osis()).toEqual("Matt.1.1")
+		expect(p.parse("MAT 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("MT 1:1").osis()).toEqual("Matt.1.1")
 		;
       return true;
@@ -1985,6 +2012,7 @@
 		expect(p.parse("Marcos 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Markos 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Mark 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("Mar 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Mc 1:1").osis()).toEqual("Mark.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("MABUTING BALITA AYON KAY SAN MARCOS 1:1").osis()).toEqual("Mark.1.1")
@@ -1999,6 +2027,7 @@
 		expect(p.parse("MARCOS 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("MARKOS 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("MARK 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("MAR 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("MC 1:1").osis()).toEqual("Mark.1.1")
 		;
       return true;
@@ -2033,6 +2062,7 @@
 		expect(p.parse("Lucas 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Lukas 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Luke 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("Luc 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Lu 1:1").osis()).toEqual("Luke.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("MABUTING BALITA AYON KAY SAN LUCAS 1:1").osis()).toEqual("Luke.1.1")
@@ -2048,6 +2078,7 @@
 		expect(p.parse("LUCAS 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LUKAS 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LUKE 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("LUC 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LU 1:1").osis()).toEqual("Luke.1.1")
 		;
       return true;
@@ -2535,6 +2566,7 @@
 		expect(p.parse("Taga- Galacia 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Taga Galacia 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Galasyano 1:1").osis()).toEqual("Gal.1.1")
+		expect(p.parse("Galacia 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Gal 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Ga 1:1").osis()).toEqual("Gal.1.1")
 		p.include_apocrypha(false)
@@ -2548,6 +2580,7 @@
 		expect(p.parse("TAGA- GALACIA 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("TAGA GALACIA 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GALASYANO 1:1").osis()).toEqual("Gal.1.1")
+		expect(p.parse("GALACIA 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GAL 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GA 1:1").osis()).toEqual("Gal.1.1")
 		;
@@ -2595,6 +2628,10 @@
 		expect(p.parse("Taga Epeso 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Mga Efeso 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Mga Epeso 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Efesio 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Epesio 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Efeso 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Epeso 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Eph 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Ef 1:1").osis()).toEqual("Eph.1.1")
 		p.include_apocrypha(false)
@@ -2623,6 +2660,10 @@
 		expect(p.parse("TAGA EPESO 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("MGA EFESO 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("MGA EPESO 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EFESIO 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EPESIO 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EFESO 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EPESO 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EPH 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EF 1:1").osis()).toEqual("Eph.1.1")
 		;
@@ -2660,6 +2701,8 @@
 		expect(p.parse("Taga- Pilipos 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Taga Filipos 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Taga Pilipos 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("Filipos 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("Pilipos 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Fil 1:1").osis()).toEqual("Phil.1.1")
 		p.include_apocrypha(false)
@@ -2678,6 +2721,8 @@
 		expect(p.parse("TAGA- PILIPOS 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("TAGA FILIPOS 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("TAGA PILIPOS 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("FILIPOS 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("PILIPOS 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("FIL 1:1").osis()).toEqual("Phil.1.1")
 		;
@@ -2715,6 +2760,8 @@
 		expect(p.parse("Mga Kolosense 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Taga- Colosas 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Taga Colosas 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("Colosas 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("Kolosas 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Col 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Co 1:1").osis()).toEqual("Col.1.1")
 		p.include_apocrypha(false)
@@ -2733,6 +2780,8 @@
 		expect(p.parse("MGA KOLOSENSE 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("TAGA- COLOSAS 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("TAGA COLOSAS 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("COLOSAS 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("KOLOSAS 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("COL 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("CO 1:1").osis()).toEqual("Col.1.1")
 		;
@@ -3126,10 +3175,12 @@
 		expect(p.parse("Kay Tito 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Titus 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Tito 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("Tit 1:1").osis()).toEqual("Titus.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("KAY TITO 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITUS 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITO 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("TIT 1:1").osis()).toEqual("Titus.1.1")
 		;
       return true;
     });
@@ -3154,11 +3205,13 @@
 		expect(p.parse("Filemon 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Filem 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Phlm 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("Flm 1:1").osis()).toEqual("Phlm.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("KAY FILEMON 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("FILEMON 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("FILEM 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("PHLM 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("FLM 1:1").osis()).toEqual("Phlm.1.1")
 		;
       return true;
     });
@@ -3210,11 +3263,13 @@
       
 		expect(p.parse("Santiago 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jacobo 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("Sant 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jas 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("San 1:1").osis()).toEqual("Jas.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("SANTIAGO 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JACOBO 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("SANT 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAS 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("SAN 1:1").osis()).toEqual("Jas.1.1")
 		;
@@ -3312,11 +3367,13 @@
 		expect(p.parse("Hudas 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Judas 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Jude 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("Jud 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Ju 1:1").osis()).toEqual("Jude.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("HUDAS 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JUDAS 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JUDE 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("JUD 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JU 1:1").osis()).toEqual("Jude.1.1")
 		;
       return true;
@@ -3571,6 +3628,29 @@
     });
   });
 
+  describe("Localized book Ezek,Ezra (tl)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser;
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Ezek,Ezra (tl)", function() {
+      
+		expect(p.parse("Ez 1:1").osis()).toEqual("Ezek.1.1")
+		p.include_apocrypha(false)
+		expect(p.parse("EZ 1:1").osis()).toEqual("Ezek.1.1")
+		;
+      return true;
+    });
+  });
+
   describe("Miscellaneous tests", function() {
     var p;
     p = {};
@@ -3584,26 +3664,41 @@
       });
       return p.include_apocrypha(true);
     });
+    it("should return the expected language", function() {
+      return expect(p.languages).toEqual(["tl"]);
+    });
     it("should handle ranges (tl)", function() {
       expect(p.parse("Titus 1:1 - 2").osis()).toEqual("Titus.1.1-Titus.1.2");
       expect(p.parse("Matt 1-2").osis()).toEqual("Matt.1-Matt.2");
       return expect(p.parse("Phlm 2 - 3").osis()).toEqual("Phlm.1.2-Phlm.1.3");
     });
     it("should handle chapters (tl)", function() {
-      expect(p.parse("Titus 1:1, chapter 2").osis()).toEqual("Titus.1.1,Titus.2");
-      return expect(p.parse("Matt 3:4 CHAPTER 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, pangkat 2").osis()).toEqual("Titus.1.1,Titus.2");
+      expect(p.parse("Matt 3:4 PANGKAT 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, pang 2").osis()).toEqual("Titus.1.1,Titus.2");
+      expect(p.parse("Matt 3:4 PANG 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, kapitulo 2").osis()).toEqual("Titus.1.1,Titus.2");
+      expect(p.parse("Matt 3:4 KAPITULO 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, kap 2").osis()).toEqual("Titus.1.1,Titus.2");
+      return expect(p.parse("Matt 3:4 KAP 6").osis()).toEqual("Matt.3.4,Matt.6");
     });
     it("should handle verses (tl)", function() {
       expect(p.parse("Exod 1:1 talatang 3").osis()).toEqual("Exod.1.1,Exod.1.3");
-      return expect(p.parse("Phlm TALATANG 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Phlm TALATANG 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 tal. 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm TAL. 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 tal 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      return expect(p.parse("Phlm TAL 6").osis()).toEqual("Phlm.1.6");
     });
     it("should handle 'and' (tl)", function() {
       expect(p.parse("Exod 1:1 at 3").osis()).toEqual("Exod.1.1,Exod.1.3");
       return expect(p.parse("Phlm 2 AT 6").osis()).toEqual("Phlm.1.2,Phlm.1.6");
     });
     it("should handle titles (tl)", function() {
-      expect(p.parse("Ps 3 title, 4:2, 5:title").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
-      return expect(p.parse("PS 3 TITLE, 4:2, 5:TITLE").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
+      expect(p.parse("Ps 3 titik, 4:2, 5:titik").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
+      expect(p.parse("PS 3 TITIK, 4:2, 5:TITIK").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
+      expect(p.parse("Ps 3 pamagat, 4:2, 5:pamagat").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
+      return expect(p.parse("PS 3 PAMAGAT, 4:2, 5:PAMAGAT").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
     });
     it("should handle 'ff' (tl)", function() {
       expect(p.parse("Rev 3k, 4:2k").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");

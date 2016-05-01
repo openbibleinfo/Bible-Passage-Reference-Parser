@@ -11045,6 +11045,7 @@ Col	Kolosser
 Col	Kolosyen
 Col	Colosas
 Col	Kolosan
+Col	Kolosas
 Col	Kolosay
 Col	Kolosse
 Col	Coloss
@@ -11488,6 +11489,7 @@ EpJer	Ep. Jeremie
 EpJer	Ep Jeremie
 EpJer	Cart. Jer
 EpJer	Carta Jer
+EpJer	Li ni Jer
 EpJer	Cart Jer
 EpJer	Ep. Jer
 EpJer	Let-ger
@@ -11587,12 +11589,15 @@ Eph	Efezyen
 Eph	Epheser
 Eph	Ephsian
 Eph	Waefeso
+Eph	Efesio
 Eph	Efesos
 Eph	Efesus
 Eph	Efezow
 Eph	Efezus
+Eph	Epesio
 Eph	Efese
 Eph	Efeso
+Eph	Epeso
 Eph	Ephes
 Eph	Efes
 Eph	Efez
@@ -15065,6 +15070,7 @@ Num	Nonb
 Num	Numb
 Num	Szam
 Num	Bil
+Num	Blg
 Num	Nom
 Num	Num
 Num	Qod
@@ -15266,6 +15272,7 @@ Phil	Filippi
 Phil	Philipp
 Phil	Phillip
 Phil	Philpan
+Phil	Pilipos
 Phil	Filipi
 Phil	Philip
 Phil	Philli
@@ -15820,6 +15827,7 @@ Rev	Openb
 Rev	Revel
 Rev	Wahyu
 Rev	Apoc
+Rev	Apok
 Rev	Muuj
 Rev	Offb
 Rev	Zjav
@@ -16311,11 +16319,13 @@ Song	Gabaygii
 Song	Hohelied
 Song	Hooglied
 Song	gitratna
+Song	A. ng A
 Song	Aw ni S
 Song	Cantari
 Song	Cantico
 Song	Kantiko
 Song	Laul. l
+Song	A ng A
 Song	Chante
 Song	Hoga V
 Song	Hoga v

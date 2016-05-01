@@ -12067,6 +12067,9 @@ describe "Miscellaneous tests", ->
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
+	it "should return the expected language", ->
+		expect(p.languages).toEqual ["en"]
+
 	it "should handle ranges (en)", ->
 		expect(p.parse("Titus 1:1 through 2").osis()).toEqual "Titus.1.1-Titus.1.2"
 		expect(p.parse("Matt 1through2").osis()).toEqual "Matt.1-Matt.2"
@@ -12183,6 +12186,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 hcsb").osis_and_translations()).toEqual [["Lev.1", "HCSB"]]
 		expect(p.parse("Lev 1 (KJV)").osis_and_translations()).toEqual [["Lev.1", "KJV"]]
 		expect(p.parse("lev 1 kjv").osis_and_translations()).toEqual [["Lev.1", "KJV"]]
+		expect(p.parse("Lev 1 (LXX)").osis_and_translations()).toEqual [["Lev.1", "LXX"]]
+		expect(p.parse("lev 1 lxx").osis_and_translations()).toEqual [["Lev.1", "LXX"]]
 		expect(p.parse("Lev 1 (MSG)").osis_and_translations()).toEqual [["Lev.1", "MSG"]]
 		expect(p.parse("lev 1 msg").osis_and_translations()).toEqual [["Lev.1", "MSG"]]
 		expect(p.parse("Lev 1 (NAB)").osis_and_translations()).toEqual [["Lev.1", "NAB"]]

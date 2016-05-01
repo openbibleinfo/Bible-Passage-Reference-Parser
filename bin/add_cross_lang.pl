@@ -277,7 +277,7 @@ sub make_valid_abbrevs
 
 	check_abbrevs($name, $order, @out);
 	# combining characters are already taken care of in each language's book_names.txt
-	my $out = $data{pre} . "\$COLLAPSE_COMBINING_CHARACTERS\tfalse\n\$FORCE_OSIS_ABBREV\tfalse\n\$LANG_ISOS\t" . join("\t", sort keys %used_langs) . "\n" . join("\n", @out) . "\n" . $data{post};
+	my $out = $data{pre} . "\$DEFAULT_TRANS_LANG\t$lang\n\$COLLAPSE_COMBINING_CHARACTERS\tfalse\n\$FORCE_OSIS_ABBREV\tfalse\n\$LANG_ISOS\t" . join("\t", sort keys %used_langs) . "\n" . join("\n", @out) . "\n" . $data{post};
 	$out =~ s/\n{2,}/\n/g;
 	return ($out, \%used_langs);
 }
@@ -432,7 +432,7 @@ sub get_abbrevs_from_file
 	while (<FILE>)
 	{
 		next if (/^#/);
-		chomp;
+		s/\s+$//;
 		my ($osis, $abbrev, @langs) = split /\t/;
 		next unless ($osis);
 		if (@langs)

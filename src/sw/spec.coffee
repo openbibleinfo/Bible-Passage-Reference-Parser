@@ -2053,6 +2053,9 @@ describe "Miscellaneous tests", ->
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
+	it "should return the expected language", ->
+		expect(p.languages).toEqual ["sw"]
+
 	it "should handle ranges (sw)", ->
 		expect(p.parse("Titus 1:1 hadi 2").osis()).toEqual "Titus.1.1-Titus.1.2"
 		expect(p.parse("Matt 1hadi2").osis()).toEqual "Matt.1-Matt.2"

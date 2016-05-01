@@ -23038,6 +23038,7 @@ Col	କଲସୀୟଙ୍କ
 Col	コロサイ人への書
 Col	Colosas
 Col	Kolosan
+Col	Kolosas
 Col	Kolosay
 Col	Kolosse
 Col	Kolossé
@@ -24253,6 +24254,7 @@ EpJer	Ép Jéremie
 EpJer	Ép Jérémie
 EpJer	Cart. Jer
 EpJer	Carta Jer
+EpJer	Li ni Jer
 EpJer	Cart Jer
 EpJer	イエレミヤの達書
 EpJer	예레미야의 편지
@@ -24509,11 +24511,13 @@ Eph	اِفسیوں
 Eph	เอเฟซัส
 Eph	エヘソ人への書
 Eph	エペソ人への書
+Eph	Efesio
 Eph	Efesos
 Eph	Efesus
 Eph	Efezow
 Eph	Efezus
 Eph	Efezów
+Eph	Epesio
 Eph	Êphêsô
 Eph	Ефесян
 Eph	افسیوں
@@ -24523,6 +24527,7 @@ Eph	《厄弗所書》
 Eph	Efese
 Eph	Efeso
 Eph	Efése
+Eph	Epeso
 Eph	Ephes
 Eph	Ephés
 Eph	Éfeso
@@ -30308,6 +30313,7 @@ Lev	3 Mós
 Lev	3 Móz
 Lev	3. Mo
 Lev	Levyt
+Lev	Lê Vi
 Lev	Lê-vi
 Lev	iḥbār
 Lev	lewiy
@@ -32833,6 +32839,7 @@ Num	民数记》
 Num	民數記》
 Num	4 М
 Num	Bil
+Num	Blg
 Num	Dân
 Num	Nom
 Num	Num
@@ -33328,6 +33335,7 @@ Phil	Phi-líp
 Phil	Philipp
 Phil	Phillip
 Phil	Philpan
+Phil	Pilipos
 Phil	ฟีลิปปี
 Phil	ヒリヒ人への書
 Phil	ヒリピ人への書
@@ -33376,6 +33384,7 @@ Phil	腓立比书
 Phil	腓立比書
 Phil	빌립보서
 Phil	필리피서
+Phil	Fil
 Phil	Flp
 Phil	Phi
 Phil	Php
@@ -33393,7 +33402,6 @@ Phil	《腓
 Phil	腓》
 Phil	필리
 Phil	腓
-Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Послання св. апостола Павла до Филимона
@@ -34966,6 +34974,7 @@ Rev	若望默示錄
 Rev	요한계시록
 Rev	요한묵시록
 Rev	Apoc
+Rev	Apok
 Rev	Khải
 Rev	Muuj
 Rev	Offb
@@ -36305,6 +36314,7 @@ Song	Hohelied
 Song	Hooglied
 Song	gitratna
 Song	gītratna
+Song	A. ng A
 Song	Aw ni S
 Song	Cantari
 Song	Cantico
@@ -36317,6 +36327,7 @@ Song	Laul. l
 Song	Tình ca
 Song	गीतरत्न
 Song	श्रेष्ठ
+Song	A ng A
 Song	Chante
 Song	Hoga V
 Song	Hoga v

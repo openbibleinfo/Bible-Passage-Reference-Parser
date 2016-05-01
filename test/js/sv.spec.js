@@ -2707,6 +2707,9 @@
       });
       return p.include_apocrypha(true);
     });
+    it("should return the expected language", function() {
+      return expect(p.languages).toEqual(["sv"]);
+    });
     it("should handle ranges (sv)", function() {
       expect(p.parse("Titus 1:1 till 2").osis()).toEqual("Titus.1.1-Titus.1.2");
       expect(p.parse("Matt 1till2").osis()).toEqual("Matt.1-Matt.2");
@@ -2761,8 +2764,8 @@
       expect(p.parse("lev 1 b2000").osis_and_translations()).toEqual([["Lev.1", "B2000"]]);
       expect(p.parse("Lev 1 (SFB)").osis_and_translations()).toEqual([["Lev.1", "SFB"]]);
       expect(p.parse("lev 1 sfb").osis_and_translations()).toEqual([["Lev.1", "SFB"]]);
-      expect(p.parse("Lev 1 (SFB14)").osis_and_translations()).toEqual([["Lev.1", "SFB14"]]);
-      return expect(p.parse("lev 1 sfb14").osis_and_translations()).toEqual([["Lev.1", "SFB14"]]);
+      expect(p.parse("Lev 1 (SFB15)").osis_and_translations()).toEqual([["Lev.1", "SFB15"]]);
+      return expect(p.parse("lev 1 sfb15").osis_and_translations()).toEqual([["Lev.1", "SFB15"]]);
     });
     it("should handle book ranges (sv)", function() {
       p.set_options({

@@ -2693,6 +2693,9 @@
       });
       return p.include_apocrypha(true);
     });
+    it("should return the expected language", function() {
+      return expect(p.languages).toEqual(["ht"]);
+    });
     it("should handle ranges (ht)", function() {
       expect(p.parse("Titus 1:1 - 2").osis()).toEqual("Titus.1.1-Titus.1.2");
       expect(p.parse("Matt 1-2").osis()).toEqual("Matt.1-Matt.2");
@@ -2703,8 +2706,14 @@
       return expect(p.parse("Matt 3:4 CHAPTER 6").osis()).toEqual("Matt.3.4,Matt.6");
     });
     it("should handle verses (ht)", function() {
-      expect(p.parse("Exod 1:1 verse 3").osis()).toEqual("Exod.1.1,Exod.1.3");
-      return expect(p.parse("Phlm VERSE 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 vèsè 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm VÈSÈ 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 vèse 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm VÈSE 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 vesè 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm VESÈ 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 vese 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      return expect(p.parse("Phlm VESE 6").osis()).toEqual("Phlm.1.6");
     });
     it("should handle 'and' (ht)", function() {
       expect(p.parse("Exod 1:1 and 3").osis()).toEqual("Exod.1.1,Exod.1.3");

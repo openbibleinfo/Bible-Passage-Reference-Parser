@@ -125,11 +125,13 @@ describe "Localized book Lev (vi)", ->
 	it "should handle book: Lev (vi)", ->
 		`
 		expect(p.parse("Lê-vi ký 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("Lê Vi 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lê-vi 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lev 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lê 1:1").osis()).toEqual("Lev.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("LÊ-VI KÝ 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("LÊ VI 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LÊ-VI 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LEV 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LÊ 1:1").osis()).toEqual("Lev.1.1")
@@ -1967,6 +1969,9 @@ describe "Miscellaneous tests", ->
 		p = new bcv_parser
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
+
+	it "should return the expected language", ->
+		expect(p.languages).toEqual ["vi"]
 
 	it "should handle ranges (vi)", ->
 		expect(p.parse("Titus 1:1 to 2").osis()).toEqual "Titus.1.1-Titus.1.2"

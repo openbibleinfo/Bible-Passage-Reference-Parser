@@ -3833,6 +3833,9 @@
       });
       return p.include_apocrypha(true);
     });
+    it("should return the expected language", function() {
+      return expect(p.languages).toEqual(["hu"]);
+    });
     it("should handle ranges (hu)", function() {
       expect(p.parse("Titus 1:1 köv 2").osis()).toEqual("Titus.1.1-Titus.1.2");
       expect(p.parse("Matt 1köv2").osis()).toEqual("Matt.1-Matt.2");

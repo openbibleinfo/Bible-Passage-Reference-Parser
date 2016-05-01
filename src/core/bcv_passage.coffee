@@ -572,7 +572,7 @@ class bcv_passage
 				# `alias` is what we use internally to get bcv data for the translation.
 				translation.alias = @translations.aliases[translation.translation].alias
 				# `osis` is what we'll eventually use in output.
-				translation.osis = @translations.aliases[translation.translation].osis or ""
+				translation.osis = @translations.aliases[translation.translation].osis or translation.translation.toUpperCase()
 			else
 				translation.alias = "default"
 				# If we don't know what the correct abbreviation should be, then just upper-case what we have.

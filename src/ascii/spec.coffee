@@ -6322,6 +6322,7 @@ describe "Localized book EpJer (ascii)", ->
 		expect(p.parse("Ep Jeremie 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Cart. Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Carta Jer 1:1").osis()).toEqual("EpJer.1.1")
+		expect(p.parse("Li ni Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Cart Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Ep. Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Let-ger 1:1").osis()).toEqual("EpJer.1.1")
@@ -6680,6 +6681,7 @@ describe "Localized book Num (ascii)", ->
 		expect(p.parse("Numb 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Szam 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Bil 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("Blg 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Nom 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Num 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Qod 1:1").osis()).toEqual("Num.1.1")
@@ -6822,6 +6824,7 @@ describe "Localized book Num (ascii)", ->
 		expect(p.parse("NUMB 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("SZAM 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("BIL 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("BLG 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NOM 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUM 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("QOD 1:1").osis()).toEqual("Num.1.1")
@@ -7414,6 +7417,7 @@ describe "Localized book Rev (ascii)", ->
 		expect(p.parse("Revel 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Wahyu 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Apoc 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("Apok 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Muuj 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Offb 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Zjav 1:1").osis()).toEqual("Rev.1.1")
@@ -7552,6 +7556,7 @@ describe "Localized book Rev (ascii)", ->
 		expect(p.parse("REVEL 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("WAHYU 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("APOC 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("APOK 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("MUUJ 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("OFFB 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("ZJAV 1:1").osis()).toEqual("Rev.1.1")
@@ -9288,11 +9293,13 @@ describe "Localized book Song (ascii)", ->
 		expect(p.parse("Hohelied 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Hooglied 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("gitratna 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A. ng A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Aw ni S 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Cantari 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Cantico 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Kantiko 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Laul. l 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A ng A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Chante 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Hoga V 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Hoga v 1:1").osis()).toEqual("Song.1.1")
@@ -9441,11 +9448,13 @@ describe "Localized book Song (ascii)", ->
 		expect(p.parse("HOHELIED 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("HOOGLIED 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("GITRATNA 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A. NG A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("AW NI S 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("CANTARI 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("CANTICO 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("KANTIKO 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("LAUL. L 1:1").osis()).toEqual("Song.1.1")
+		expect(p.parse("A NG A 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("CHANTE 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("HOGA V 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("HOGA V 1:1").osis()).toEqual("Song.1.1")
@@ -24840,12 +24849,15 @@ describe "Localized book Eph (ascii)", ->
 		expect(p.parse("Epheser 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Ephsian 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Waefeso 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Efesio 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efesos 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efesus 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efezow 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efezus 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Epesio 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efese 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efeso 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("Epeso 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Ephes 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efes 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Efez 1:1").osis()).toEqual("Eph.1.1")
@@ -24946,12 +24958,15 @@ describe "Localized book Eph (ascii)", ->
 		expect(p.parse("EPHESER 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EPHSIAN 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("WAEFESO 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EFESIO 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFESOS 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFESUS 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFEZOW 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFEZUS 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EPESIO 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFESE 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFESO 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("EPESO 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EPHES 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFES 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EFEZ 1:1").osis()).toEqual("Eph.1.1")
@@ -25076,6 +25091,7 @@ describe "Localized book Col (ascii)", ->
 		expect(p.parse("Kolosyen 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Colosas 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Kolosan 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("Kolosas 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Kolosay 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Kolosse 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Coloss 1:1").osis()).toEqual("Col.1.1")
@@ -25191,6 +25207,7 @@ describe "Localized book Col (ascii)", ->
 		expect(p.parse("KOLOSYEN 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("COLOSAS 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("KOLOSAN 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("KOLOSAS 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("KOLOSAY 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("KOLOSSE 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("COLOSS 1:1").osis()).toEqual("Col.1.1")
@@ -27282,6 +27299,7 @@ describe "Localized book Phil (ascii)", ->
 		expect(p.parse("Philipp 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Phillip 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Philpan 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("Pilipos 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Filipi 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Philip 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Philli 1:1").osis()).toEqual("Phil.1.1")
@@ -27448,6 +27466,7 @@ describe "Localized book Phil (ascii)", ->
 		expect(p.parse("PHILIPP 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHILLIP 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHILPAN 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("PILIPOS 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("FILIPI 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHILIP 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHILLI 1:1").osis()).toEqual("Phil.1.1")
@@ -31084,6 +31103,9 @@ describe "Miscellaneous tests", ->
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
+	it "should return the expected language", ->
+		expect(p.languages).toEqual ["ar","bg","ceb","cs","cy","da","de","el","en","es","fi","fr","he","hi","hr","ht","hu","is","it","ja","jv","ko","la","mk","mr","ne","nl","no","or","pa","pl","pt","ro","ru","sk","so","sq","sr","sv","sw","ta","th","tl","uk","ur","vi","wal","zh"]
+
 	it "should handle ranges (ascii)", ->
 		expect(p.parse("Titus 1:1 through 2").osis()).toEqual "Titus.1.1-Titus.1.2"
 		expect(p.parse("Matt 1through2").osis()).toEqual "Matt.1-Matt.2"
@@ -31200,6 +31222,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 hcsb").osis_and_translations()).toEqual [["Lev.1", "HCSB"]]
 		expect(p.parse("Lev 1 (KJV)").osis_and_translations()).toEqual [["Lev.1", "KJV"]]
 		expect(p.parse("lev 1 kjv").osis_and_translations()).toEqual [["Lev.1", "KJV"]]
+		expect(p.parse("Lev 1 (LXX)").osis_and_translations()).toEqual [["Lev.1", "LXX"]]
+		expect(p.parse("lev 1 lxx").osis_and_translations()).toEqual [["Lev.1", "LXX"]]
 		expect(p.parse("Lev 1 (MSG)").osis_and_translations()).toEqual [["Lev.1", "MSG"]]
 		expect(p.parse("lev 1 msg").osis_and_translations()).toEqual [["Lev.1", "MSG"]]
 		expect(p.parse("Lev 1 (NAB)").osis_and_translations()).toEqual [["Lev.1", "NAB"]]

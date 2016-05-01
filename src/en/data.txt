@@ -9,7 +9,7 @@ $CHAPTER	chapters	chapter	chapts.	chpts.	chapt.	chaps.	chap.	chp.	chs.	cha.	ch.
 $FF	ff![a-z0-9]	f![a-z0-9]
 $TITLE	title
 # Separate by commas: Abbreviation in string, OSIS, alias
-$TRANS	AMP	ASV	CEB,CEB,ceb	CEV	ERV	ESV	HCSB	KJV,KJV,kjv	MSG	NAB,NAB,nab	NABRE,NABRE,nab	NAS,NASB	NASB	NIRV,,kjv	NIV,,kjv	NKJV,,nkjv	NLT,,nlt	NRSV,NRSV,nrsv	RSV	TNIV,,kjv
+$TRANS	AMP	ASV	CEB,,ceb	CEV	ERV	ESV	HCSB	KJV,,kjv	LXX,,nab	MSG	NAB,,nab	NABRE,,nab	NAS,NASB	NASB	NIRV,,kjv	NIV,,kjv	NKJV,,nkjv	NLT,,nlt	NRSV,,nrsv	RSV	TNIV,,kjv
 $TO	through	thru	to
 $VERSE	verses	verse	ver.	vss.	vs.	vv.	v.
 #$PRE_BOOK_ALLOWED_CHARACTERS	\d|\b

@@ -40,6 +40,7 @@
 1Chr	1 Kronika
 1Chr	I Cronica
 1Chr	I Kronika
+1Chr	1 Cron
 1Chr	1 Cro
 1Chr	1Chr
 1Cor	Ika- 1 Sulat sa mga Corintio
@@ -285,6 +286,7 @@
 2Chr	II Kronika
 2Chr	2 Cronica
 2Chr	2 Kronika
+2Chr	2 Cron
 2Chr	2 Cro
 2Chr	2Chr
 2Cor	Ika- 2 Sulat sa mga Corintio
@@ -536,6 +538,8 @@ Col	Mga Colosense
 Col	Mga Kolosense
 Col	Taga- Colosas
 Col	Taga Colosas
+Col	Colosas
+Col	Kolosas
 Col	Col
 Col	Co
 Dan	Daniel
@@ -570,8 +574,10 @@ Eccl	Mangangaral
 Eccl	Kohelet
 Eccl	Manga
 Eccl	Eccl
+Eccl	Ec
 EpJer	Ang Liham ni Jeremias
 EpJer	Liham ni Jeremias
+EpJer	Li ni Jer
 EpJer	Lih Jer
 EpJer	EpJer
 Eph	Sulat sa mga Efesio
@@ -599,6 +605,10 @@ Eph	Taga Efeso
 Eph	Taga Epeso
 Eph	Mga Efeso
 Eph	Mga Epeso
+Eph	Efesio
+Eph	Epesio
+Eph	Efeso
+Eph	Epeso
 Eph	Eph
 Eph	Ef
 Esth	Esther
@@ -609,6 +619,7 @@ Exod	Exodus
 Exod	Exodo
 Exod	Exod
 Exod	Exo
+Exod	Ex
 Ezek	Ezequiel
 Ezek	Esekiel
 Ezek	Esekyel
@@ -616,9 +627,9 @@ Ezek	Ezekiel
 Ezek	Ezekyel
 Ezek	Ezek
 Ezek	Eze
+Ezek,Ezra	Ez
 Ezra	Esdras
 Ezra	Ezra
-Ezra	Ez
 Gal	Sulat sa mga taga Galacia
 Gal	Sulat sa mga Galacia
 Gal	Mga Taga- Galacia
@@ -629,6 +640,7 @@ Gal	Mga Taga-Galacia
 Gal	Taga- Galacia
 Gal	Taga Galacia
 Gal	Galasyano
+Gal	Galacia
 Gal	Gal
 Gal	Ga
 Gen	Genesis
@@ -671,6 +683,7 @@ Hos	Oseas
 Hos	Oseia
 Hos	Osea
 Hos	Hos
+Hos	Os
 Isa	Isaiah
 Isa	Isaias
 Isa	Isaíah
@@ -678,8 +691,10 @@ Isa	Isaías
 Isa	Isaia
 Isa	Isaía
 Isa	Isa
+Isa	Is
 Jas	Santiago
 Jas	Jacobo
+Jas	Sant
 Jas	Jas
 Jas	San
 Jdt	Judith
@@ -725,6 +740,7 @@ Josh	Jos
 Jude	Hudas
 Jude	Judas
 Jude	Jude
+Jude	Jud
 Jude	Ju
 Judg	Mga Hukom
 Judg	Hukom
@@ -755,6 +771,7 @@ Luke	Ebanghelyo ni San Lukas
 Luke	Lucas
 Luke	Lukas
 Luke	Luke
+Luke	Luc
 Luke	Lu
 Mal	Malaquias
 Mal	Malaquías
@@ -773,6 +790,7 @@ Mark	Ebanghelyo ni Markos
 Mark	Marcos
 Mark	Markos
 Mark	Mark
+Mark	Mar
 Mark	Mc
 Matt	Mabuting Balita ayon kay San Mateo
 Matt	Mabuting Balita ayon kay Mateo
@@ -781,6 +799,7 @@ Matt	Ebanghelyo ni San Mateo
 Matt	Ebanghelyo ni Mateo
 Matt	Mateo
 Matt	Matt
+Matt	Mat
 Matt	Mt
 Mic	Mikeyas
 Mic	Mikieas
@@ -805,6 +824,7 @@ Num	Mga Bilang
 Num	Bamidbar
 Num	Bemidbar
 Num	Bil
+Num	Blg
 Num	Num
 Obad	Obadiah
 Obad	Obadias
@@ -827,12 +847,15 @@ Phil	Taga- Filipos
 Phil	Taga- Pilipos
 Phil	Taga Filipos
 Phil	Taga Pilipos
+Phil	Filipos
+Phil	Pilipos
 Phil	Phil
 Phil	Fil
 Phlm	Kay Filemon
 Phlm	Filemon
 Phlm	Filem
 Phlm	Phlm
+Phlm	Flm
 PrAzar	Ang Panalangin ni Azarias
 PrAzar	Panalangin ni Azarias
 PrAzar	PrAzar
@@ -856,6 +879,8 @@ Rev	Apocalipsis
 Rev	Apokalipsis
 Rev	Rebelasyon
 Rev	Pahayag
+Rev	Apoc
+Rev	Apok
 Rev	Pah
 Rev	Rev
 Rom	Sulat sa mga Romano
@@ -927,8 +952,10 @@ Song	Awit ni Salomón
 Song	Awit ni Solomon
 Song	Awit ni Solomón
 Song	Kantikulo
+Song	A. ng A
 Song	Aw ni S
 Song	Kantiko
+Song	A ng A
 Song	Song
 Sus	Si Susana
 Sus	Susana
@@ -937,6 +964,7 @@ Sus	Su
 Titus	Kay Tito
 Titus	Titus
 Titus	Tito
+Titus	Tit
 Tob	Tobias
 Tob	Tobías
 Tob	Tobit

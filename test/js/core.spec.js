@@ -6934,22 +6934,25 @@
       expect(niv.books.length).toEqual(84);
       expect(niv.chapters["3John"][0]).toEqual(14);
       expect(p.options.versification_system).toEqual("default");
+      expect(niv.alias).toEqual("kjv");
       esv = p.translation_info("esv");
       expect(esv.order["1Esd"]).toEqual(82);
       expect(esv.books[65]).toEqual("Rev");
       expect(esv.books.length).toEqual(84);
       expect(esv.chapters["3John"][0]).toEqual(15);
       expect(p.options.versification_system).toEqual("default");
+      expect(esv.alias).toEqual("default");
       nab = p.translation_info("nabre");
       expect(nab.order["1Esd"]).toEqual(18);
       expect(nab.books[65]).toEqual("Gal");
       expect(nab.books.length).toEqual(84);
       expect(nab.chapters["3John"][0]).toEqual(15);
       expect(p.options.versification_system).toEqual("default");
+      expect(nab.alias).toEqual("nab");
       nab.order["Gen"] = 15;
       return expect(p.translations["default"].order["Gen"]).toEqual(1);
     });
-    return it("should handle `translation_info` given unknown inputs", function() {
+    it("should handle `translation_info` given unknown inputs", function() {
       var array_response, null_response;
       p.set_options({
         versification_system: "nab"
@@ -6958,6 +6961,9 @@
       null_response = p.translation_info(null);
       expect(array_response.chapters["3John"][0]).toEqual(15);
       return expect(null_response.chapters["3John"][0]).toEqual(15);
+    });
+    return it("should return `.languages`", function() {
+      return expect(p.languages).toEqual(["en"]);
     });
   });
 
@@ -7405,7 +7411,7 @@
       expect(p.parse("Matt 2-Gen3 COMP").osis_and_translations()).toEqual([["Matt.2-Gen.3", "COMP"]]);
       expect(p.parse("Exodus 3, Matt 5 COMP").osis_and_translations()).toEqual([["Matt.5", "COMP"]]);
       expect(p.parse("Exodus 3-Matt 5 COMP").osis_and_translations()).toEqual([["Matt.5", "COMP"]]);
-      expect(p.parse("Exodus 3-Matt 5 NOTRANS").osis_and_translations()).toEqual([["Exod.3-Matt.5", ""]]);
+      expect(p.parse("Exodus 3-Matt 5 NOTRANS").osis_and_translations()).toEqual([["Exod.3-Matt.5", "NOTRANS"]]);
       return expect(p.parse("Exodus 3-Matt 5 NOALIAS").osis_and_translations()).toEqual([["Exod.3-Matt.5", "NOALIAS"]]);
     });
   });

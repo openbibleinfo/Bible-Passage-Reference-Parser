@@ -13,7 +13,7 @@ $CHAPTER	kapitlen	kapitlet	kapitel	kap.
 $FF	ff.	f.
 # http://sv.wikipedia.org/wiki/Psaltaren (called "rubriken")
 $TITLE	rubrik
-$TRANS	B2000	SFB	B1917	SFB14
+$TRANS	B2000	SFB	B1917	SFB15
 # http://sv.wikipedia.org/wiki/Apostlag%C3%A4rningarna
 $TO	till
 # http://sv.wikipedia.org/wiki/Obadja (verser) and http://sv.wikisource.org/wiki/De_apokryfiska_b%C3%B6ckerna_%281921%29/Visheten (v)

@@ -1822,6 +1822,9 @@ describe "Miscellaneous tests", ->
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
+	it "should return the expected language", ->
+		expect(p.languages).toEqual ["ht"]
+
 	it "should handle ranges (ht)", ->
 		expect(p.parse("Titus 1:1 - 2").osis()).toEqual "Titus.1.1-Titus.1.2"
 		expect(p.parse("Matt 1-2").osis()).toEqual "Matt.1-Matt.2"
@@ -1830,8 +1833,14 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Titus 1:1, chapter 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 CHAPTER 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (ht)", ->
-		expect(p.parse("Exod 1:1 verse 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm VERSE 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vèsè 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VÈSÈ 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vèse 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VÈSE 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vesè 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VESÈ 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 vese 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VESE 6").osis()).toEqual "Phlm.1.6"
 	it "should handle 'and' (ht)", ->
 		expect(p.parse("Exod 1:1 and 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm 2 AND 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"

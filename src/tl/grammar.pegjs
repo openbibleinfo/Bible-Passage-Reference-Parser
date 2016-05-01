@@ -111,7 +111,7 @@ ff
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 integer_title
-  = val_1:integer (cv_sep / sequence_sep)? "title"
+  = val_1:integer (cv_sep / sequence_sep)? ( "titik" / "pamagat" )
     { return {"type": "integer_title", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 context
@@ -141,11 +141,11 @@ v
 
 /* BCV helpers */
 c_explicit
-  = sp ( "chapter" ) sp
+  = sp ( "pangkat" / "pang" / "kapitulo" / "kap" ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "talatang" ) ![a-z] sp
+  = sp ( "tal" ( "atang" / abbrev? ) ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -163,7 +163,7 @@ range_sep
   = sp ([\-\u2013\u2014] sp / "-" sp )+
 
 title
-  = (cv_sep / sequence_sep)? val:"title"
+  = (cv_sep / sequence_sep)? val:( "titik" / "pamagat" )
     { return {type:"title", value: [val], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 in_book_of

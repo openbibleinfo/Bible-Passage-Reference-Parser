@@ -198,11 +198,13 @@
     return it("should handle book: Lev (vi)", function() {
       
 		expect(p.parse("Lê-vi ký 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("Lê Vi 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lê-vi 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lev 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lê 1:1").osis()).toEqual("Lev.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("LÊ-VI KÝ 1:1").osis()).toEqual("Lev.1.1")
+		expect(p.parse("LÊ VI 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LÊ-VI 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LEV 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("LÊ 1:1").osis()).toEqual("Lev.1.1")
@@ -2838,6 +2840,9 @@
         captive_end_digits_strategy: "delete"
       });
       return p.include_apocrypha(true);
+    });
+    it("should return the expected language", function() {
+      return expect(p.languages).toEqual(["vi"]);
     });
     it("should handle ranges (vi)", function() {
       expect(p.parse("Titus 1:1 to 2").osis()).toEqual("Titus.1.1-Titus.1.2");

@@ -218,9 +218,10 @@
         this.versification_system(new_translation);
       }
       out = {
-        order: bcv_utils.shallow_clone(this.translations["default"].order),
+        alias: new_translation,
         books: [],
-        chapters: {}
+        chapters: {},
+        order: bcv_utils.shallow_clone(this.translations["default"].order)
       };
       ref1 = this.translations["default"].chapters;
       for (book in ref1) {
@@ -1760,7 +1761,7 @@
         translation = translations[l];
         if (this.translations.aliases[translation.translation] != null) {
           translation.alias = this.translations.aliases[translation.translation].alias;
-          translation.osis = this.translations.aliases[translation.translation].osis || "";
+          translation.osis = this.translations.aliases[translation.translation].osis || translation.translation.toUpperCase();
         } else {
           translation.alias = "default";
           translation.osis = translation.translation.toUpperCase();
@@ -2379,7 +2380,41 @@
     },
     vulgate: {
       chapters: {
-        "Ps": [6, 13, 9, 10, 13, 11, 18, 10, 39, 8, 9, 6, 7, 5, 10, 15, 51, 15, 10, 14, 32, 6, 10, 22, 12, 14, 9, 11, 13, 25, 11, 22, 23, 28, 13, 40, 23, 14, 18, 14, 12, 5, 26, 18, 12, 10, 15, 21, 23, 21, 11, 7, 9, 24, 13, 12, 12, 18, 14, 9, 13, 12, 11, 14, 20, 8, 36, 37, 6, 24, 20, 28, 23, 11, 13, 21, 72, 13, 20, 17, 8, 19, 13, 14, 17, 7, 19, 53, 17, 16, 16, 5, 23, 11, 13, 12, 9, 9, 5, 8, 29, 22, 35, 45, 48, 43, 14, 31, 7, 10, 10, 9, 26, 9, 19, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 14, 10, 8, 12, 15, 21, 10, 11, 20, 14, 9, 7]
+        "Gen": [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 55, 32, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 32, 25],
+        "Exod": [22, 25, 22, 31, 23, 30, 25, 32, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 36, 31, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 36],
+        "Lev": [17, 16, 17, 35, 19, 30, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 45, 34],
+        "Num": [54, 34, 51, 49, 31, 27, 89, 26, 23, 36, 34, 15, 34, 45, 41, 50, 13, 32, 22, 30, 35, 41, 30, 25, 18, 65, 23, 31, 39, 17, 54, 42, 56, 29, 34, 13],
+        "Josh": [18, 24, 17, 25, 16, 27, 26, 35, 27, 44, 23, 24, 33, 15, 63, 10, 18, 28, 51, 9, 43, 34, 16, 33],
+        "Judg": [36, 23, 31, 24, 32, 40, 25, 35, 57, 18, 40, 15, 25, 20, 20, 31, 13, 31, 30, 48, 24],
+        "1Sam": [28, 36, 21, 22, 12, 21, 17, 22, 27, 27, 15, 25, 23, 52, 35, 23, 58, 30, 24, 43, 15, 23, 28, 23, 44, 25, 12, 25, 11, 31, 13],
+        "1Kgs": [53, 46, 28, 34, 18, 38, 51, 66, 28, 29, 43, 33, 34, 31, 34, 34, 24, 46, 21, 43, 29, 54],
+        "1Chr": [54, 55, 24, 43, 26, 81, 40, 40, 44, 14, 46, 40, 14, 17, 29, 43, 27, 17, 19, 7, 30, 19, 32, 31, 31, 32, 34, 21, 30],
+        "Neh": [11, 20, 31, 23, 19, 19, 73, 18, 38, 39, 36, 46, 31],
+        "Job": [22, 13, 26, 21, 27, 30, 21, 22, 35, 22, 20, 25, 28, 22, 35, 23, 16, 21, 29, 29, 34, 30, 17, 25, 6, 14, 23, 28, 25, 31, 40, 22, 33, 37, 16, 33, 24, 41, 35, 28, 25, 16],
+        "Ps": [6, 13, 9, 10, 13, 11, 18, 10, 39, 8, 9, 6, 7, 5, 10, 15, 51, 15, 10, 14, 32, 6, 10, 22, 12, 14, 9, 11, 13, 25, 11, 22, 23, 28, 13, 40, 23, 14, 18, 14, 12, 5, 26, 18, 12, 10, 15, 21, 23, 21, 11, 7, 9, 24, 13, 12, 12, 18, 14, 9, 13, 12, 11, 14, 20, 8, 36, 37, 6, 24, 20, 28, 23, 11, 13, 21, 72, 13, 20, 17, 8, 19, 13, 14, 17, 7, 19, 53, 17, 16, 16, 5, 23, 11, 13, 12, 9, 9, 5, 8, 29, 22, 35, 45, 48, 43, 14, 31, 7, 10, 10, 9, 26, 9, 10, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 14, 10, 8, 12, 15, 21, 10, 11, 9, 14, 9, 6],
+        "Eccl": [18, 26, 22, 17, 19, 11, 30, 17, 18, 20, 10, 14],
+        "Song": [16, 17, 11, 16, 17, 12, 13, 14],
+        "Jer": [19, 37, 25, 31, 31, 30, 34, 22, 26, 25, 23, 17, 27, 22, 21, 21, 27, 23, 15, 18, 14, 30, 40, 10, 38, 24, 22, 17, 32, 24, 40, 44, 26, 22, 19, 32, 20, 28, 18, 16, 18, 22, 13, 30, 5, 28, 7, 47, 39, 46, 64, 34],
+        "Ezek": [28, 9, 27, 17, 17, 14, 27, 18, 11, 22, 25, 28, 23, 23, 8, 63, 24, 32, 14, 49, 32, 31, 49, 27, 17, 21, 36, 26, 21, 26, 18, 32, 33, 31, 15, 38, 28, 23, 29, 49, 26, 20, 27, 31, 25, 24, 23, 35],
+        "Dan": [21, 49, 100, 34, 31, 28, 28, 27, 27, 21, 45, 13, 65, 42],
+        "Hos": [11, 24, 5, 19, 15, 11, 16, 14, 17, 15, 12, 14, 15, 10],
+        "Amos": [15, 16, 15, 13, 27, 15, 17, 14, 14],
+        "Jonah": [16, 11, 10, 11],
+        "Mic": [16, 13, 12, 13, 14, 16, 20],
+        "Hag": [14, 24],
+        "Matt": [25, 23, 17, 25, 48, 34, 29, 34, 38, 42, 30, 50, 58, 36, 39, 28, 26, 35, 30, 34, 46, 46, 39, 51, 46, 75, 66, 20],
+        "Mark": [45, 28, 35, 40, 43, 56, 37, 39, 49, 52, 33, 44, 37, 72, 47, 20],
+        "John": [51, 25, 36, 54, 47, 72, 53, 59, 41, 42, 57, 50, 38, 31, 27, 33, 26, 40, 42, 31, 25],
+        "Acts": [26, 47, 26, 37, 42, 15, 59, 40, 43, 48, 30, 25, 52, 27, 41, 40, 34, 28, 40, 38, 40, 30, 35, 27, 27, 32, 44, 31],
+        "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
+        "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
+        "Tob": [25, 23, 25, 23, 28, 22, 20, 24, 12, 13, 21, 22, 23, 17],
+        "Jdt": [12, 18, 15, 17, 29, 21, 25, 34, 19, 20, 21, 20, 31, 18, 15, 31],
+        "Wis": [16, 25, 19, 20, 24, 27, 30, 21, 19, 21, 27, 27, 19, 31, 19, 29, 20, 25, 20],
+        "Sir": [40, 23, 34, 36, 18, 37, 40, 22, 25, 34, 36, 19, 32, 27, 22, 31, 31, 33, 28, 33, 31, 33, 38, 47, 36, 28, 33, 30, 35, 27, 42, 28, 33, 31, 26, 28, 34, 39, 41, 32, 28, 26, 37, 27, 31, 23, 31, 28, 19, 31, 38, 13],
+        "Bar": [22, 35, 38, 37, 9, 72],
+        "1Macc": [67, 70, 60, 61, 68, 63, 50, 32, 73, 89, 74, 54, 54, 49, 41, 24],
+        "2Macc": [36, 33, 40, 50, 27, 31, 42, 36, 29, 38, 38, 46, 26, 46, 40]
       }
     },
     ceb: {
@@ -2534,11 +2569,13 @@
     }
   };
 
+  bcv_parser.prototype.languages = ["tl"];
+
   bcv_parser.prototype.regexps.space = "[\\s\\xa0]";
 
-  bcv_parser.prototype.regexps.escaped_passage = /(?:^|[^\x1f\x1e\dA-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:[\u2013\u2014\-]|through|thru|to)\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:\d+(?:th|nd|st)\s*ch(?:apter|a?pt\.?|a?p?\.?)?\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*))?\x1f(\d+)(?:\/\d+)?\x1f(?:\/\d+\x1f|[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014]|title(?![a-z])|talatang|chapter|at|k|-|[a-e](?!\w)|$)+)/gi;
+  bcv_parser.prototype.regexps.escaped_passage = /(?:^|[^\x1f\x1e\dA-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:[\u2013\u2014\-]|through|thru|to)\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:\d+(?:th|nd|st)\s*ch(?:apter|a?pt\.?|a?p?\.?)?\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*))?\x1f(\d+)(?:\/\d+)?\x1f(?:\/\d+\x1f|[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014]|(?:titik|pamagat)(?![a-z])|kapitulo|talatang|pangkat|pang|kap|tal|at|k|-|[a-e](?!\w)|$)+)/gi;
 
-  bcv_parser.prototype.regexps.match_end_split = /\d\W*title|\d\W*k(?:[\s\xa0*]*\.)?|\d[\s\xa0*]*[a-e](?!\w)|\x1e(?:[\s\xa0*]*[)\]\uff09])?|[\d\x1f]/gi;
+  bcv_parser.prototype.regexps.match_end_split = /\d\W*(?:titik|pamagat)|\d\W*k(?:[\s\xa0*]*\.)?|\d[\s\xa0*]*[a-e](?!\w)|\x1e(?:[\s\xa0*]*[)\]\uff09])?|[\d\x1f]/gi;
 
   bcv_parser.prototype.regexps.control = /[\x1e\x1f]/g;
 
@@ -2567,7 +2604,7 @@
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Henesis|Gen(?:esis)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Exod"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Exo(?:d(?:us|o)?)?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ex(?:o(?:d(?:us|o)?)?)?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Bel"],
         apocrypha: true,
@@ -2577,7 +2614,7 @@
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Le(?:b(?:iti(?:kus|co))?|v(?:itico)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Num"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mga[\\s\\xa0]*Bilang|B(?:[ae]midbar|il)|Num))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mga[\\s\\xa0]*Bilang|B(?:[ae]midbar|il|lg)|Num))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Sir"],
         apocrypha: true,
@@ -2588,10 +2625,10 @@
       }, {
         osis: ["EpJer"],
         apocrypha: true,
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ang[\\s\\xa0]*Liham[\\s\\xa0]*ni[\\s\\xa0]*Jeremias|Lih(?:am[\\s\\xa0]*ni[\\s\\xa0]*Jeremias|[\\s\\xa0]*Jer)|EpJer))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ang[\\s\\xa0]*Liham[\\s\\xa0]*ni[\\s\\xa0]*Jeremias|Li(?:[\\s\\xa0]*ni[\\s\\xa0]*Jer|h(?:am[\\s\\xa0]*ni[\\s\\xa0]*Jeremias|[\\s\\xa0]*Jer))|EpJer))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Rev"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Apo(?:[ck]alipsis(?:[\\s\\xa0]*ni[\\s\\xa0]*Juan)?)|Pah(?:ayag(?:[\\s\\xa0]*kay[\\s\\xa0]*Juan)?)?|Re(?:belasyon|v)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Apo(?:[ck](?:alipsis(?:[\\s\\xa0]*ni[\\s\\xa0]*Juan)?)?)|Pah(?:ayag(?:[\\s\\xa0]*kay[\\s\\xa0]*Juan)?)?|Re(?:belasyon|v)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["PrMan"],
         apocrypha: true,
@@ -2618,7 +2655,7 @@
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:I(?:kalawang[\s\xa0]*E(?:sdras|zra)|I(?:\.[\s\xa0]*E(?:sdras|zra)|[\s\xa0]*E(?:sdras|zra)))|2(?:\.[\s\xa0]*E(?:sdras|zra)|[\s\xa0]*E(?:zra|sd(?:ras)?)|Esd)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Isa"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Isa(?:[ií]a[hs]?)?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Is(?:a(?:[ií]a[hs]?)?)?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Sam"],
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:I(?:kalawang[\s\xa0]*Samuel|I(?:\.[\s\xa0]*Samuel|[\s\xa0]*Samuel))|2(?:\.[\s\xa0]*Samuel|[\s\xa0]*Sam(?:uel)?|Sam)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
@@ -2633,13 +2670,13 @@
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:3(?:\.[\s\xa0]*Mga[\s\xa0]*Hari|[\s\xa0]*Mga[\s\xa0]*Hari)|Una(?:ng[\s\xa0]*(?:Mga[\s\xa0]*Hari|Hari)|[\s\xa0]*(?:Mga[\s\xa0]*Hari|Hari))|I(?:katlong[\s\xa0]*Mga[\s\xa0]*Hari|II(?:\.[\s\xa0]*Mga[\s\xa0]*Hari|[\s\xa0]*Mga[\s\xa0]*Hari)|\.[\s\xa0]*(?:Mga[\s\xa0]*Hari|Hari)|[\s\xa0]*(?:Mga[\s\xa0]*Hari|Hari))|1(?:\.[\s\xa0]*(?:Mga[\s\xa0]*Hari|Hari)|[\s\xa0]*(?:Mga[\s\xa0]*Hari|Ha(?:ri)?)|Kgs)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["2Chr"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:I(?:kalawang[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|I(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))))|2(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|Kronik(?:el|a)|C(?:hronicle|ro(?:nica)?))|Chr)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:I(?:kalawang[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|I(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))))|2(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|Kronik(?:el|a)|C(?:hronicle|ro(?:n(?:ica)?)?))|Chr)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["1Chr"],
-        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a)))|I(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a)))|1(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|Kronik(?:el|a)|C(?:hronicle|ro(?:nica)?))|Chr)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+        regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a)))|I(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a)))|1(?:\.[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|C(?:hronicle|ronica)|Kronik(?:el|a))|[\s\xa0]*(?:Paralipomeno|Mga[\s\xa0]*(?:Cronica|Kronika)|Kronik(?:el|a)|C(?:hronicle|ro(?:n(?:ica)?)?))|Chr)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Ezra"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(E(?:sdras|z(?:ra)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(E(?:sdras|zra))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Neh"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Neh(?:em[ií]a[hs])?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
@@ -2659,7 +2696,7 @@
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Tatlong[\s\xa0]*Kabataan|Aw(?:it[\s\xa0]*ng[\s\xa0]*(?:Tatlong[\s\xa0]*(?:Kabataan(?:g[\s\xa0]*Banal)?|B(?:anal[\s\xa0]*na[\s\xa0]*Kabataan|inata))|3[\s\xa0]*Kabataan)|[\s\xa0]*ng[\s\xa0]*3[\s\xa0]*Kab)|SgThree))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Song"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:A(?:ng[\\s\\xa0]*Awit[\\s\\xa0]*n(?:g[\\s\\xa0]*mga[\\s\\xa0]*Awit|i[\\s\\xa0]*S[ao]lom(?:[oó]n))|w(?:it[\\s\\xa0]*n(?:g[\\s\\xa0]*mga[\\s\\xa0]*Awit|i[\\s\\xa0]*S[ao]lom(?:[oó]n))|[\\s\\xa0]*ni[\\s\\xa0]*S))|Kantik(?:ulo|o)|Song))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Kantik(?:ulo|o)|A(?:ng[\\s\\xa0]*Awit[\\s\\xa0]*n(?:g[\\s\\xa0]*mga[\\s\\xa0]*Awit|i[\\s\\xa0]*S[ao]lom(?:[oó]n))|\\.[\\s\\xa0]*ng[\\s\\xa0]*A|w(?:it[\\s\\xa0]*n(?:g[\\s\\xa0]*mga[\\s\\xa0]*Awit|i[\\s\\xa0]*S[ao]lom(?:[oó]n))|[\\s\\xa0]*ni[\\s\\xa0]*S)|[\\s\\xa0]*ng[\\s\\xa0]*A)|Song))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Ps"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mga[\\s\\xa0]*(?:Salmo|Awit)|Awit|Ps))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
@@ -2676,7 +2713,7 @@
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mga[\\s\\xa0]*Kawikaan|Prov|Kaw(?:ikaan)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Eccl"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ang[\\s\\xa0]*Mangangaral|Kohelet|Manga(?:ngaral)?|E(?:kl(?:es[iy]ast(?:[eé]s)|is[iy]astes)|c(?:l(?:es[iy]ast(?:[eé]s)|is[iy]astes)|cl(?:esiastes)?))))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ang[\\s\\xa0]*Mangangaral|Kohelet|Manga(?:ngaral)?|E(?:kl(?:es[iy]ast(?:[eé]s)|is[iy]astes)|c(?:l(?:es[iy]ast(?:[eé]s)|is[iy]astes)|cl(?:esiastes)?)?)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jer"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Aklat[\\s\\xa0]*ni[\\s\\xa0]*Jeremia[hs]|Sulat[\\s\\xa0]*ni[\\s\\xa0]*Jeremias|H[ei]r(?:[ei]m(?:[iy]as))|Jer(?:emia[hs])?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
@@ -2688,7 +2725,7 @@
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Dan(?:iel)?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Hos"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ose(?:ia[hs]?|a[hs]?)|Hos(?:e(?:ias?|as?))?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Hos(?:e(?:ias?|as?))?|Os(?:e(?:ia[hs]?|a[hs]?))?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Joel"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Joel|Yole))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
@@ -2724,13 +2761,13 @@
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Mal(?:a(?:qu[ií]as|kias|chi))?)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Matt"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ebanghelyo[\\s\\xa0]*(?:ayon[\\s\\xa0]*kay[\\s\\xa0]*Mateo|ni[\\s\\xa0]*(?:San[\\s\\xa0]*Mateo|Mateo))|M(?:a(?:buting[\\s\\xa0]*Balita[\\s\\xa0]*ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Mateo|Mateo)|t(?:eo|t))|t)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ebanghelyo[\\s\\xa0]*(?:ayon[\\s\\xa0]*kay[\\s\\xa0]*Mateo|ni[\\s\\xa0]*(?:San[\\s\\xa0]*Mateo|Mateo))|M(?:a(?:buting[\\s\\xa0]*Balita[\\s\\xa0]*ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Mateo|Mateo)|t(?:eo|t)?)|t)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Mark"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ebanghelyo[\\s\\xa0]*(?:ayon[\\s\\xa0]*kay[\\s\\xa0]*Marcos|ni[\\s\\xa0]*(?:San[\\s\\xa0]*Mar[ck]os|Mar[ck]os))|M(?:a(?:buting[\\s\\xa0]*Balita[\\s\\xa0]*ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Mar[ck]os|Mar[ck]os)|r(?:cos|k(?:os)?))|c)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ebanghelyo[\\s\\xa0]*(?:ayon[\\s\\xa0]*kay[\\s\\xa0]*Marcos|ni[\\s\\xa0]*(?:San[\\s\\xa0]*Mar[ck]os|Mar[ck]os))|M(?:a(?:buting[\\s\\xa0]*Balita[\\s\\xa0]*ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Mar[ck]os|Mar[ck]os)|r(?:cos|k(?:os)?)?)|c)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Luke"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mabuting[\\s\\xa0]*Balita[\\s\\xa0]*ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Lu[ck]as|Lu[ck]as)|Ebanghelyo[\\s\\xa0]*(?:ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Lu[ck]as|Lu[ck]as)|ni[\\s\\xa0]*San[\\s\\xa0]*Lu[ck]as)|Lu(?:cas|k(?:as|e))?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mabuting[\\s\\xa0]*Balita[\\s\\xa0]*ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Lu[ck]as|Lu[ck]as)|Ebanghelyo[\\s\\xa0]*(?:ayon[\\s\\xa0]*kay[\\s\\xa0]*(?:San[\\s\\xa0]*Lu[ck]as|Lu[ck]as)|ni[\\s\\xa0]*San[\\s\\xa0]*Lu[ck]as)|Lu(?:k(?:as|e)|c(?:as)?)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["1John"],
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*Juan|[\s\xa0]*Juan)|I(?:\.[\s\xa0]*Juan|[\s\xa0]*Juan)|1(?:\.[\s\xa0]*Juan|John|[\s\xa0]*J(?:uan|n))))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
@@ -2757,16 +2794,16 @@
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o)|Mga[\s\xa0]*Taga(?:-?[\s\xa0]*Corinto|[\s\xa0]*Corinto)|(?:[CK]orint(?:io|o)))|[\s\xa0]*(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o)|Mga[\s\xa0]*Taga(?:-?[\s\xa0]*Corinto|[\s\xa0]*Corinto)|(?:[CK]orint(?:io|o))))|I(?:ka(?:-?[\s\xa0]*1[\s\xa0]*Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o)|[\s\xa0]*1[\s\xa0]*Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o))|\.[\s\xa0]*(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o)|Mga[\s\xa0]*Taga(?:-?[\s\xa0]*Corinto|[\s\xa0]*Corinto)|(?:[CK]orint(?:io|o)))|[\s\xa0]*(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o)|Mga[\s\xa0]*Taga(?:-?[\s\xa0]*Corinto|[\s\xa0]*Corinto)|(?:[CK]orint(?:io|o))))|1(?:\.[\s\xa0]*(?:Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o)|Mga[\s\xa0]*Taga(?:-?[\s\xa0]*Corinto|[\s\xa0]*Corinto)|(?:[CK]orint(?:io|o)))|[\s\xa0]*(?:Mga[\s\xa0]*Taga(?:-?[\s\xa0]*Corinto|[\s\xa0]*Corinto)|Korint(?:io|o)|Cor(?:int(?:io|o))?)|Cor))|1[\s\xa0]*Sulat[\s\xa0]*sa[\s\xa0]*mga[\s\xa0]*Corint(?:io|o))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Gal"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*(?:taga[\\s\\xa0]*Galacia|Galacia)|Mga[\\s\\xa0]*Taga(?:[\\s\\xa0]*Gala(?:cia|sya)|-?(?:[\\s\\xa0]*Gala(?:cia|sya)|Galacia))|Taga(?:-?[\\s\\xa0]*Galacia|[\\s\\xa0]*Galacia)|Ga(?:l(?:asyano)?)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*(?:taga[\\s\\xa0]*Galacia|Galacia)|Mga[\\s\\xa0]*Taga(?:[\\s\\xa0]*Gala(?:cia|sya)|-?(?:[\\s\\xa0]*Gala(?:cia|sya)|Galacia))|Taga(?:-?[\\s\\xa0]*Galacia|[\\s\\xa0]*Galacia)|Ga(?:l(?:a(?:syano|cia))?)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Eph"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*E(?:[fp]es(?:io|o))|Mga[\\s\\xa0]*Taga(?:[\\s\\xa0]*E(?:[fp]es(?:io|o))|-?(?:[\\s\\xa0]*E(?:[fp]es(?:io|o))|Efeso))|E(?:ph|f))|(?:Taga(?:-?[\\s\\xa0]*E(?:[fp]es(?:io|o))|[\\s\\xa0]*E(?:[fp]es(?:io|o)))|Mga[\\s\\xa0]*E(?:[pf]es(?:io|o))))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*E(?:[fp]es(?:io|o))|Mga[\\s\\xa0]*Taga(?:[\\s\\xa0]*E(?:[fp]es(?:io|o))|-?(?:[\\s\\xa0]*E(?:[fp]es(?:io|o))|Efeso))|E(?:ph|f))|(?:Taga(?:-?[\\s\\xa0]*E(?:[pf]es(?:io|o))|[\\s\\xa0]*E(?:[fp]es(?:io|o)))|Mga[\\s\\xa0]*E(?:[fp]es(?:io|o))|E(?:[fp]es(?:io|o))))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Phil"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*(?:Filipense|Pilip(?:ense|yano))|Mga[\\s\\xa0]*(?:Taga(?:[\\s\\xa0]*[FP]ilipos|-?(?:[\\s\\xa0]*[FP]ilipos|Filipos))|Filipense|Pilip(?:ense|yano))|Taga(?:-?[\\s\\xa0]*[FP]ilipos|[\\s\\xa0]*[FP]ilipos)|Phil|Fil))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*(?:Filipense|Pilip(?:ense|yano))|Mga[\\s\\xa0]*(?:Taga(?:[\\s\\xa0]*[FP]ilipos|-?(?:[\\s\\xa0]*[FP]ilipos|Filipos))|Filipense|Pilip(?:ense|yano))|Taga(?:-?[\\s\\xa0]*[FP]ilipos|[\\s\\xa0]*[FP]ilipos)|P(?:ilipos|hil)|Fil(?:ipos)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Col"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*(?:[CK]olo(?:nsense|sense))|Mga[\\s\\xa0]*(?:Taga(?:[\\s\\xa0]*[CK]olosas|-?(?:[\\s\\xa0]*[CK]olosas|Colosas))|(?:[CK]olo(?:nsense|sense)))|Taga(?:-?[\\s\\xa0]*Colosas|[\\s\\xa0]*Colosas)|Col?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Sulat[\\s\\xa0]*sa[\\s\\xa0]*mga[\\s\\xa0]*(?:[CK]olo(?:nsense|sense))|Mga[\\s\\xa0]*(?:Taga(?:[\\s\\xa0]*[CK]olosas|-?(?:[\\s\\xa0]*[CK]olosas|Colosas))|(?:[CK]olo(?:nsense|sense)))|Taga(?:-?[\\s\\xa0]*Colosas|[\\s\\xa0]*Colosas)|Kolosas|Co(?:l(?:osas)?)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Thess"],
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:I(?:kalawang[\s\xa0]*(?:Mga[\s\xa0]*T(?:aga(?:-?[\s\xa0]*Tesaloni[ck]a|[\s\xa0]*Tesaloni[ck]a)|esaloni[cs]ense)|Tesaloni(?:sense|c(?:ense|a)|ka))|I(?:\.[\s\xa0]*(?:Mga[\s\xa0]*T(?:aga(?:-?[\s\xa0]*Tesaloni[ck]a|[\s\xa0]*Tesaloni[ck]a)|esaloni[cs]ense)|Tesaloni(?:sense|c(?:ense|a)|ka))|[\s\xa0]*(?:Mga[\s\xa0]*T(?:aga(?:-?[\s\xa0]*Tesaloni[ck]a|[\s\xa0]*Tesaloni[ck]a)|esaloni[cs]ense)|Tesaloni(?:sense|c(?:ense|a)|ka))))|2(?:\.[\s\xa0]*(?:Mga[\s\xa0]*T(?:aga(?:-?[\s\xa0]*Tesaloni[ck]a|[\s\xa0]*Tesaloni[ck]a)|esaloni[cs]ense)|Tesaloni(?:sense|c(?:ense|a)|ka))|Thess|[\s\xa0]*(?:Mga[\s\xa0]*T(?:aga(?:-?[\s\xa0]*Tesaloni[ck]a|[\s\xa0]*Tesaloni[ck]a)|esaloni[cs]ense)|T(?:hes|es(?:aloni(?:sense|c(?:ense|a)|ka))?)))))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
@@ -2781,16 +2818,16 @@
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*(?:Kay[\s\xa0]*Timoteo|Timoteo)|[\s\xa0]*(?:Kay[\s\xa0]*Timoteo|Timoteo))|I(?:\.[\s\xa0]*(?:Kay[\s\xa0]*Timoteo|Timoteo)|[\s\xa0]*(?:Kay[\s\xa0]*Timoteo|Timoteo))|1(?:\.[\s\xa0]*(?:Kay[\s\xa0]*Timoteo|Timoteo)|[\s\xa0]*(?:Kay[\s\xa0]*Timoteo|Tim(?:oteo)?)|Tim)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Titus"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Kay[\\s\\xa0]*Tito|Tit(?:us|o)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Kay[\\s\\xa0]*Tito|Tit(?:us|o)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Phlm"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Kay[\\s\\xa0]*Filemon|Filem(?:on)?|Phlm))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Kay[\\s\\xa0]*Filemon|Phlm|F(?:ilem(?:on)?|lm)))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Heb"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Mga[\\s\\xa0]*(?:Hebreo|Ebreo)|Heb(?:reo)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jas"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ja(?:cobo|s)|San(?:tiago)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Ja(?:cobo|s)|San(?:t(?:iago)?)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["2Pet"],
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:I(?:kalawang[\s\xa0]*Pedro|I(?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro))|2(?:\.[\s\xa0]*Pedro|[\s\xa0]*Ped(?:ro)?|Pet)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
@@ -2799,7 +2836,7 @@
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*Pedro|[\s\xa0]*Pedro)|I(?:\.[\s\xa0]*Pedro|[\s\xa0]*Pedro)|1(?:\.[\s\xa0]*Pedro|[\s\xa0]*Ped(?:ro)?|Pet)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
       }, {
         osis: ["Jude"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Hudas|Ju(?:d(?:as|e))?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:Hudas|Ju(?:d(?:as|e)?)?))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Tob"],
         apocrypha: true,
@@ -2832,6 +2869,9 @@
         osis: ["1Macc"],
         apocrypha: true,
         regexp: /(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])((?:Una(?:ng[\s\xa0]*M(?:ga[\s\xa0]*Macabeo|acabeos?)|[\s\xa0]*M(?:ga[\s\xa0]*Macabeo|acabeos?))|I(?:\.[\s\xa0]*M(?:ga[\s\xa0]*Macabeo|acabeos?)|[\s\xa0]*M(?:ga[\s\xa0]*Macabeo|acabeos?))|1(?:\.[\s\xa0]*M(?:ga[\s\xa0]*Macabeo|acabeos?)|[\s\xa0]*M(?:ga[\s\xa0]*Macabeo|acabeos?|cb)|Macc)))(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-\u2013\u2014])|$)/gi
+      }, {
+        osis: ["Ezek", "Ezra"],
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")(Ez)(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)（）\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }
     ];
     if (include_apocrypha === true && case_sensitive === "none") {
@@ -2936,68 +2976,78 @@ var grammar = (function() {
         peg$c42 = /^[a-z]/,
         peg$c43 = { type: "class", value: "[a-z]", description: "[a-z]" },
         peg$c44 = function(val_1) { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c45 = "title",
-        peg$c46 = { type: "literal", value: "title", description: "\"title\"" },
-        peg$c47 = function(val_1) { return {"type": "integer_title", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c48 = "/9\x1F",
-        peg$c49 = { type: "literal", value: "/9\x1F", description: "\"/9\\x1F\"" },
-        peg$c50 = function(val) { return {"type": "context", "value": val.value, "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c51 = "/2\x1F",
-        peg$c52 = { type: "literal", value: "/2\x1F", description: "\"/2\\x1F\"" },
-        peg$c53 = ".1",
-        peg$c54 = { type: "literal", value: ".1", description: "\".1\"" },
-        peg$c55 = /^[0-9]/,
-        peg$c56 = { type: "class", value: "[0-9]", description: "[0-9]" },
-        peg$c57 = function(val) { return {"type": "bc", "value": [val, {"type": "c", "value": [{"type": "integer", "value": 151, "indices": [peg$currPos - 2, peg$currPos - 1]}], "indices": [peg$currPos - 2, peg$currPos - 1]}], "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c58 = function(val_1, val_2) { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c59 = /^[a-e]/,
-        peg$c60 = { type: "class", value: "[a-e]", description: "[a-e]" },
-        peg$c61 = function(val) { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c62 = "chapter",
-        peg$c63 = { type: "literal", value: "chapter", description: "\"chapter\"" },
-        peg$c64 = function() { return {"type": "c_explicit"} },
-        peg$c65 = "talatang",
-        peg$c66 = { type: "literal", value: "talatang", description: "\"talatang\"" },
-        peg$c67 = function() { return {"type": "v_explicit"} },
-        peg$c68 = ":",
-        peg$c69 = { type: "literal", value: ":", description: "\":\"" },
-        peg$c70 = /^["']/,
-        peg$c71 = { type: "class", value: "[\"']", description: "[\"']" },
-        peg$c72 = /^[,;\/:&\-\u2013\u2014~]/,
-        peg$c73 = { type: "class", value: "[,;/:&\\-\\u2013\\u2014~]", description: "[,;/:&\\-\\u2013\\u2014~]" },
-        peg$c74 = "at",
-        peg$c75 = { type: "literal", value: "at", description: "\"at\"" },
-        peg$c76 = function() { return "" },
-        peg$c77 = /^[\-\u2013\u2014]/,
-        peg$c78 = { type: "class", value: "[\\-\\u2013\\u2014]", description: "[\\-\\u2013\\u2014]" },
-        peg$c79 = function(val) { return {type:"title", value: [val], "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c80 = "from",
-        peg$c81 = { type: "literal", value: "from", description: "\"from\"" },
-        peg$c82 = "of",
-        peg$c83 = { type: "literal", value: "of", description: "\"of\"" },
-        peg$c84 = "in",
-        peg$c85 = { type: "literal", value: "in", description: "\"in\"" },
-        peg$c86 = "the",
-        peg$c87 = { type: "literal", value: "the", description: "\"the\"" },
-        peg$c88 = "book",
-        peg$c89 = { type: "literal", value: "book", description: "\"book\"" },
-        peg$c90 = /^[([]/,
-        peg$c91 = { type: "class", value: "[\\(\\[]", description: "[\\(\\[]" },
-        peg$c92 = /^[)\]]/,
-        peg$c93 = { type: "class", value: "[\\)\\]]", description: "[\\)\\]]" },
-        peg$c94 = function(val) { return {"type": "translation_sequence", "value": val, "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c95 = "\x1E",
-        peg$c96 = { type: "literal", value: "\x1E", description: "\"\\x1E\"" },
-        peg$c97 = function(val) { return {"type": "translation", "value": val.value, "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c98 = ",000",
-        peg$c99 = { type: "literal", value: ",000", description: "\",000\"" },
-        peg$c100 = function(val) { return {"type": "integer", "value": parseInt(val.join(""), 10), "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c101 = /^[^\x1F\x1E([]/,
-        peg$c102 = { type: "class", value: "[^\\x1f\\x1e\\(\\[]", description: "[^\\x1f\\x1e\\(\\[]" },
-        peg$c103 = function(val) { return {"type": "word", "value": val.join(""), "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c104 = function(val) { return {"type": "stop", "value": val, "indices": [peg$savedPos, peg$currPos - 1]} },
-        peg$c105 = /^[\s\xa0*]/,
-        peg$c106 = { type: "class", value: "[\\s\\xa0\\*]", description: "[\\s\\xa0\\*]" },
+        peg$c45 = "titik",
+        peg$c46 = { type: "literal", value: "titik", description: "\"titik\"" },
+        peg$c47 = "pamagat",
+        peg$c48 = { type: "literal", value: "pamagat", description: "\"pamagat\"" },
+        peg$c49 = function(val_1) { return {"type": "integer_title", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c50 = "/9\x1F",
+        peg$c51 = { type: "literal", value: "/9\x1F", description: "\"/9\\x1F\"" },
+        peg$c52 = function(val) { return {"type": "context", "value": val.value, "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c53 = "/2\x1F",
+        peg$c54 = { type: "literal", value: "/2\x1F", description: "\"/2\\x1F\"" },
+        peg$c55 = ".1",
+        peg$c56 = { type: "literal", value: ".1", description: "\".1\"" },
+        peg$c57 = /^[0-9]/,
+        peg$c58 = { type: "class", value: "[0-9]", description: "[0-9]" },
+        peg$c59 = function(val) { return {"type": "bc", "value": [val, {"type": "c", "value": [{"type": "integer", "value": 151, "indices": [peg$currPos - 2, peg$currPos - 1]}], "indices": [peg$currPos - 2, peg$currPos - 1]}], "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c60 = function(val_1, val_2) { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c61 = /^[a-e]/,
+        peg$c62 = { type: "class", value: "[a-e]", description: "[a-e]" },
+        peg$c63 = function(val) { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c64 = "pangkat",
+        peg$c65 = { type: "literal", value: "pangkat", description: "\"pangkat\"" },
+        peg$c66 = "pang",
+        peg$c67 = { type: "literal", value: "pang", description: "\"pang\"" },
+        peg$c68 = "kapitulo",
+        peg$c69 = { type: "literal", value: "kapitulo", description: "\"kapitulo\"" },
+        peg$c70 = "kap",
+        peg$c71 = { type: "literal", value: "kap", description: "\"kap\"" },
+        peg$c72 = function() { return {"type": "c_explicit"} },
+        peg$c73 = "tal",
+        peg$c74 = { type: "literal", value: "tal", description: "\"tal\"" },
+        peg$c75 = "atang",
+        peg$c76 = { type: "literal", value: "atang", description: "\"atang\"" },
+        peg$c77 = function() { return {"type": "v_explicit"} },
+        peg$c78 = ":",
+        peg$c79 = { type: "literal", value: ":", description: "\":\"" },
+        peg$c80 = /^["']/,
+        peg$c81 = { type: "class", value: "[\"']", description: "[\"']" },
+        peg$c82 = /^[,;\/:&\-\u2013\u2014~]/,
+        peg$c83 = { type: "class", value: "[,;/:&\\-\\u2013\\u2014~]", description: "[,;/:&\\-\\u2013\\u2014~]" },
+        peg$c84 = "at",
+        peg$c85 = { type: "literal", value: "at", description: "\"at\"" },
+        peg$c86 = function() { return "" },
+        peg$c87 = /^[\-\u2013\u2014]/,
+        peg$c88 = { type: "class", value: "[\\-\\u2013\\u2014]", description: "[\\-\\u2013\\u2014]" },
+        peg$c89 = function(val) { return {type:"title", value: [val], "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c90 = "from",
+        peg$c91 = { type: "literal", value: "from", description: "\"from\"" },
+        peg$c92 = "of",
+        peg$c93 = { type: "literal", value: "of", description: "\"of\"" },
+        peg$c94 = "in",
+        peg$c95 = { type: "literal", value: "in", description: "\"in\"" },
+        peg$c96 = "the",
+        peg$c97 = { type: "literal", value: "the", description: "\"the\"" },
+        peg$c98 = "book",
+        peg$c99 = { type: "literal", value: "book", description: "\"book\"" },
+        peg$c100 = /^[([]/,
+        peg$c101 = { type: "class", value: "[\\(\\[]", description: "[\\(\\[]" },
+        peg$c102 = /^[)\]]/,
+        peg$c103 = { type: "class", value: "[\\)\\]]", description: "[\\)\\]]" },
+        peg$c104 = function(val) { return {"type": "translation_sequence", "value": val, "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c105 = "\x1E",
+        peg$c106 = { type: "literal", value: "\x1E", description: "\"\\x1E\"" },
+        peg$c107 = function(val) { return {"type": "translation", "value": val.value, "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c108 = ",000",
+        peg$c109 = { type: "literal", value: ",000", description: "\",000\"" },
+        peg$c110 = function(val) { return {"type": "integer", "value": parseInt(val.join(""), 10), "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c111 = /^[^\x1F\x1E([]/,
+        peg$c112 = { type: "class", value: "[^\\x1f\\x1e\\(\\[]", description: "[^\\x1f\\x1e\\(\\[]" },
+        peg$c113 = function(val) { return {"type": "word", "value": val.join(""), "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c114 = function(val) { return {"type": "stop", "value": val, "indices": [peg$savedPos, peg$currPos - 1]} },
+        peg$c115 = /^[\s\xa0*]/,
+        peg$c116 = { type: "class", value: "[\\s\\xa0\\*]", description: "[\\s\\xa0\\*]" },
 
         peg$currPos          = 0,
         peg$savedPos         = 0,
@@ -3018,7 +3068,7 @@ var grammar = (function() {
 
     if ("punctuation_strategy" in options && options.punctuation_strategy === "eu") {
         peg$parsecv_sep = peg$parseeu_cv_sep;
-        peg$c72 = /^[;\/:&\-\u2013\u2014~]/;
+        peg$c82 = /^[;\/:&\-\u2013\u2014~]/;
     }
 
     function text() {
@@ -5295,9 +5345,18 @@ var grammar = (function() {
             s3 = peg$FAILED;
             if (peg$silentFails === 0) { peg$fail(peg$c46); }
           }
+          if (s3 === peg$FAILED) {
+            if (input.substr(peg$currPos, 7) === peg$c47) {
+              s3 = peg$c47;
+              peg$currPos += 7;
+            } else {
+              s3 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c48); }
+            }
+          }
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c47(s1);
+            s1 = peg$c49(s1);
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -5329,16 +5388,16 @@ var grammar = (function() {
       if (s1 !== peg$FAILED) {
         s2 = peg$parseany_integer();
         if (s2 !== peg$FAILED) {
-          if (input.substr(peg$currPos, 3) === peg$c48) {
-            s3 = peg$c48;
+          if (input.substr(peg$currPos, 3) === peg$c50) {
+            s3 = peg$c50;
             peg$currPos += 3;
           } else {
             s3 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c49); }
+            if (peg$silentFails === 0) { peg$fail(peg$c51); }
           }
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c50(s2);
+            s1 = peg$c52(s2);
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -5370,12 +5429,12 @@ var grammar = (function() {
       if (s1 !== peg$FAILED) {
         s2 = peg$parseany_integer();
         if (s2 !== peg$FAILED) {
-          if (input.substr(peg$currPos, 3) === peg$c51) {
-            s3 = peg$c51;
+          if (input.substr(peg$currPos, 3) === peg$c53) {
+            s3 = peg$c53;
             peg$currPos += 3;
           } else {
             s3 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c52); }
+            if (peg$silentFails === 0) { peg$fail(peg$c54); }
           }
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
@@ -5403,22 +5462,22 @@ var grammar = (function() {
       s0 = peg$currPos;
       s1 = peg$parseps151_b();
       if (s1 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 2) === peg$c53) {
-          s2 = peg$c53;
+        if (input.substr(peg$currPos, 2) === peg$c55) {
+          s2 = peg$c55;
           peg$currPos += 2;
         } else {
           s2 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c54); }
+          if (peg$silentFails === 0) { peg$fail(peg$c56); }
         }
         if (s2 !== peg$FAILED) {
           s3 = peg$currPos;
           peg$silentFails++;
-          if (peg$c55.test(input.charAt(peg$currPos))) {
+          if (peg$c57.test(input.charAt(peg$currPos))) {
             s4 = input.charAt(peg$currPos);
             peg$currPos++;
           } else {
             s4 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c56); }
+            if (peg$silentFails === 0) { peg$fail(peg$c58); }
           }
           peg$silentFails--;
           if (s4 === peg$FAILED) {
@@ -5429,7 +5488,7 @@ var grammar = (function() {
           }
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c57(s1);
+            s1 = peg$c59(s1);
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -5464,7 +5523,7 @@ var grammar = (function() {
           s3 = peg$parseinteger();
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c58(s1, s3);
+            s1 = peg$c60(s1, s3);
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -5512,12 +5571,12 @@ var grammar = (function() {
               s4 = peg$FAILED;
             }
             if (s4 !== peg$FAILED) {
-              if (peg$c59.test(input.charAt(peg$currPos))) {
+              if (peg$c61.test(input.charAt(peg$currPos))) {
                 s5 = input.charAt(peg$currPos);
                 peg$currPos++;
               } else {
                 s5 = peg$FAILED;
-                if (peg$silentFails === 0) { peg$fail(peg$c60); }
+                if (peg$silentFails === 0) { peg$fail(peg$c62); }
               }
               if (s5 !== peg$FAILED) {
                 s6 = peg$currPos;
@@ -5538,7 +5597,7 @@ var grammar = (function() {
                 }
                 if (s6 !== peg$FAILED) {
                   peg$savedPos = s0;
-                  s1 = peg$c61(s2);
+                  s1 = peg$c63(s2);
                   s0 = s1;
                 } else {
                   peg$currPos = s0;
@@ -5580,7 +5639,7 @@ var grammar = (function() {
         s2 = peg$parseinteger();
         if (s2 !== peg$FAILED) {
           peg$savedPos = s0;
-          s1 = peg$c61(s2);
+          s1 = peg$c63(s2);
           s0 = s1;
         } else {
           peg$currPos = s0;
@@ -5600,18 +5659,45 @@ var grammar = (function() {
       s0 = peg$currPos;
       s1 = peg$parsesp();
       if (s1 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 7) === peg$c62) {
-          s2 = peg$c62;
+        if (input.substr(peg$currPos, 7) === peg$c64) {
+          s2 = peg$c64;
           peg$currPos += 7;
         } else {
           s2 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c63); }
+          if (peg$silentFails === 0) { peg$fail(peg$c65); }
+        }
+        if (s2 === peg$FAILED) {
+          if (input.substr(peg$currPos, 4) === peg$c66) {
+            s2 = peg$c66;
+            peg$currPos += 4;
+          } else {
+            s2 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c67); }
+          }
+          if (s2 === peg$FAILED) {
+            if (input.substr(peg$currPos, 8) === peg$c68) {
+              s2 = peg$c68;
+              peg$currPos += 8;
+            } else {
+              s2 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$c69); }
+            }
+            if (s2 === peg$FAILED) {
+              if (input.substr(peg$currPos, 3) === peg$c70) {
+                s2 = peg$c70;
+                peg$currPos += 3;
+              } else {
+                s2 = peg$FAILED;
+                if (peg$silentFails === 0) { peg$fail(peg$c71); }
+              }
+            }
+          }
         }
         if (s2 !== peg$FAILED) {
           s3 = peg$parsesp();
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c64();
+            s1 = peg$c72();
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -5635,12 +5721,38 @@ var grammar = (function() {
       s0 = peg$currPos;
       s1 = peg$parsesp();
       if (s1 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 8) === peg$c65) {
-          s2 = peg$c65;
-          peg$currPos += 8;
+        s2 = peg$currPos;
+        if (input.substr(peg$currPos, 3) === peg$c73) {
+          s3 = peg$c73;
+          peg$currPos += 3;
         } else {
+          s3 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$c74); }
+        }
+        if (s3 !== peg$FAILED) {
+          if (input.substr(peg$currPos, 5) === peg$c75) {
+            s4 = peg$c75;
+            peg$currPos += 5;
+          } else {
+            s4 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c76); }
+          }
+          if (s4 === peg$FAILED) {
+            s4 = peg$parseabbrev();
+            if (s4 === peg$FAILED) {
+              s4 = null;
+            }
+          }
+          if (s4 !== peg$FAILED) {
+            s3 = [s3, s4];
+            s2 = s3;
+          } else {
+            peg$currPos = s2;
+            s2 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s2;
           s2 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c66); }
         }
         if (s2 !== peg$FAILED) {
           s3 = peg$currPos;
@@ -5663,7 +5775,7 @@ var grammar = (function() {
             s4 = peg$parsesp();
             if (s4 !== peg$FAILED) {
               peg$savedPos = s0;
-              s1 = peg$c67();
+              s1 = peg$c77();
               s0 = s1;
             } else {
               peg$currPos = s0;
@@ -5693,21 +5805,21 @@ var grammar = (function() {
       if (s1 !== peg$FAILED) {
         s2 = [];
         if (input.charCodeAt(peg$currPos) === 58) {
-          s3 = peg$c68;
+          s3 = peg$c78;
           peg$currPos++;
         } else {
           s3 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c69); }
+          if (peg$silentFails === 0) { peg$fail(peg$c79); }
         }
         if (s3 !== peg$FAILED) {
           while (s3 !== peg$FAILED) {
             s2.push(s3);
             if (input.charCodeAt(peg$currPos) === 58) {
-              s3 = peg$c68;
+              s3 = peg$c78;
               peg$currPos++;
             } else {
               s3 = peg$FAILED;
-              if (peg$silentFails === 0) { peg$fail(peg$c69); }
+              if (peg$silentFails === 0) { peg$fail(peg$c79); }
             }
           }
         } else {
@@ -5810,12 +5922,12 @@ var grammar = (function() {
       s0 = peg$currPos;
       s1 = peg$parsesp();
       if (s1 !== peg$FAILED) {
-        if (peg$c70.test(input.charAt(peg$currPos))) {
+        if (peg$c80.test(input.charAt(peg$currPos))) {
           s2 = input.charAt(peg$currPos);
           peg$currPos++;
         } else {
           s2 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c71); }
+          if (peg$silentFails === 0) { peg$fail(peg$c81); }
         }
         if (s2 !== peg$FAILED) {
           s3 = peg$parsesp();
@@ -5846,12 +5958,12 @@ var grammar = (function() {
 
       s0 = peg$currPos;
       s1 = [];
-      if (peg$c72.test(input.charAt(peg$currPos))) {
+      if (peg$c82.test(input.charAt(peg$currPos))) {
         s2 = input.charAt(peg$currPos);
         peg$currPos++;
       } else {
         s2 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c73); }
+        if (peg$silentFails === 0) { peg$fail(peg$c83); }
       }
       if (s2 === peg$FAILED) {
         s2 = peg$currPos;
@@ -5923,12 +6035,12 @@ var grammar = (function() {
           s2 = peg$FAILED;
         }
         if (s2 === peg$FAILED) {
-          if (input.substr(peg$currPos, 2) === peg$c74) {
-            s2 = peg$c74;
+          if (input.substr(peg$currPos, 2) === peg$c84) {
+            s2 = peg$c84;
             peg$currPos += 2;
           } else {
             s2 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c75); }
+            if (peg$silentFails === 0) { peg$fail(peg$c85); }
           }
           if (s2 === peg$FAILED) {
             s2 = peg$parsespace();
@@ -5938,12 +6050,12 @@ var grammar = (function() {
       if (s2 !== peg$FAILED) {
         while (s2 !== peg$FAILED) {
           s1.push(s2);
-          if (peg$c72.test(input.charAt(peg$currPos))) {
+          if (peg$c82.test(input.charAt(peg$currPos))) {
             s2 = input.charAt(peg$currPos);
             peg$currPos++;
           } else {
             s2 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c73); }
+            if (peg$silentFails === 0) { peg$fail(peg$c83); }
           }
           if (s2 === peg$FAILED) {
             s2 = peg$currPos;
@@ -6015,12 +6127,12 @@ var grammar = (function() {
               s2 = peg$FAILED;
             }
             if (s2 === peg$FAILED) {
-              if (input.substr(peg$currPos, 2) === peg$c74) {
-                s2 = peg$c74;
+              if (input.substr(peg$currPos, 2) === peg$c84) {
+                s2 = peg$c84;
                 peg$currPos += 2;
               } else {
                 s2 = peg$FAILED;
-                if (peg$silentFails === 0) { peg$fail(peg$c75); }
+                if (peg$silentFails === 0) { peg$fail(peg$c85); }
               }
               if (s2 === peg$FAILED) {
                 s2 = peg$parsespace();
@@ -6033,7 +6145,7 @@ var grammar = (function() {
       }
       if (s1 !== peg$FAILED) {
         peg$savedPos = s0;
-        s1 = peg$c76();
+        s1 = peg$c86();
       }
       s0 = s1;
 
@@ -6048,12 +6160,12 @@ var grammar = (function() {
       if (s1 !== peg$FAILED) {
         s2 = [];
         s3 = peg$currPos;
-        if (peg$c77.test(input.charAt(peg$currPos))) {
+        if (peg$c87.test(input.charAt(peg$currPos))) {
           s4 = input.charAt(peg$currPos);
           peg$currPos++;
         } else {
           s4 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c78); }
+          if (peg$silentFails === 0) { peg$fail(peg$c88); }
         }
         if (s4 !== peg$FAILED) {
           s5 = peg$parsesp();
@@ -6095,12 +6207,12 @@ var grammar = (function() {
           while (s3 !== peg$FAILED) {
             s2.push(s3);
             s3 = peg$currPos;
-            if (peg$c77.test(input.charAt(peg$currPos))) {
+            if (peg$c87.test(input.charAt(peg$currPos))) {
               s4 = input.charAt(peg$currPos);
               peg$currPos++;
             } else {
               s4 = peg$FAILED;
-              if (peg$silentFails === 0) { peg$fail(peg$c78); }
+              if (peg$silentFails === 0) { peg$fail(peg$c88); }
             }
             if (s4 !== peg$FAILED) {
               s5 = peg$parsesp();
@@ -6176,9 +6288,18 @@ var grammar = (function() {
           s2 = peg$FAILED;
           if (peg$silentFails === 0) { peg$fail(peg$c46); }
         }
+        if (s2 === peg$FAILED) {
+          if (input.substr(peg$currPos, 7) === peg$c47) {
+            s2 = peg$c47;
+            peg$currPos += 7;
+          } else {
+            s2 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$c48); }
+          }
+        }
         if (s2 !== peg$FAILED) {
           peg$savedPos = s0;
-          s1 = peg$c79(s2);
+          s1 = peg$c89(s2);
           s0 = s1;
         } else {
           peg$currPos = s0;
@@ -6198,28 +6319,28 @@ var grammar = (function() {
       s0 = peg$currPos;
       s1 = peg$parsesp();
       if (s1 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 4) === peg$c80) {
-          s2 = peg$c80;
+        if (input.substr(peg$currPos, 4) === peg$c90) {
+          s2 = peg$c90;
           peg$currPos += 4;
         } else {
           s2 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c81); }
+          if (peg$silentFails === 0) { peg$fail(peg$c91); }
         }
         if (s2 === peg$FAILED) {
-          if (input.substr(peg$currPos, 2) === peg$c82) {
-            s2 = peg$c82;
+          if (input.substr(peg$currPos, 2) === peg$c92) {
+            s2 = peg$c92;
             peg$currPos += 2;
           } else {
             s2 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c83); }
+            if (peg$silentFails === 0) { peg$fail(peg$c93); }
           }
           if (s2 === peg$FAILED) {
-            if (input.substr(peg$currPos, 2) === peg$c84) {
-              s2 = peg$c84;
+            if (input.substr(peg$currPos, 2) === peg$c94) {
+              s2 = peg$c94;
               peg$currPos += 2;
             } else {
               s2 = peg$FAILED;
-              if (peg$silentFails === 0) { peg$fail(peg$c85); }
+              if (peg$silentFails === 0) { peg$fail(peg$c95); }
             }
           }
         }
@@ -6227,32 +6348,32 @@ var grammar = (function() {
           s3 = peg$parsesp();
           if (s3 !== peg$FAILED) {
             s4 = peg$currPos;
-            if (input.substr(peg$currPos, 3) === peg$c86) {
-              s5 = peg$c86;
+            if (input.substr(peg$currPos, 3) === peg$c96) {
+              s5 = peg$c96;
               peg$currPos += 3;
             } else {
               s5 = peg$FAILED;
-              if (peg$silentFails === 0) { peg$fail(peg$c87); }
+              if (peg$silentFails === 0) { peg$fail(peg$c97); }
             }
             if (s5 !== peg$FAILED) {
               s6 = peg$parsesp();
               if (s6 !== peg$FAILED) {
-                if (input.substr(peg$currPos, 4) === peg$c88) {
-                  s7 = peg$c88;
+                if (input.substr(peg$currPos, 4) === peg$c98) {
+                  s7 = peg$c98;
                   peg$currPos += 4;
                 } else {
                   s7 = peg$FAILED;
-                  if (peg$silentFails === 0) { peg$fail(peg$c89); }
+                  if (peg$silentFails === 0) { peg$fail(peg$c99); }
                 }
                 if (s7 !== peg$FAILED) {
                   s8 = peg$parsesp();
                   if (s8 !== peg$FAILED) {
-                    if (input.substr(peg$currPos, 2) === peg$c82) {
-                      s9 = peg$c82;
+                    if (input.substr(peg$currPos, 2) === peg$c92) {
+                      s9 = peg$c92;
                       peg$currPos += 2;
                     } else {
                       s9 = peg$FAILED;
-                      if (peg$silentFails === 0) { peg$fail(peg$c83); }
+                      if (peg$silentFails === 0) { peg$fail(peg$c93); }
                     }
                     if (s9 !== peg$FAILED) {
                       s10 = peg$parsesp();
@@ -6430,12 +6551,12 @@ var grammar = (function() {
       s0 = peg$currPos;
       s1 = peg$parsesp();
       if (s1 !== peg$FAILED) {
-        if (peg$c90.test(input.charAt(peg$currPos))) {
+        if (peg$c100.test(input.charAt(peg$currPos))) {
           s2 = input.charAt(peg$currPos);
           peg$currPos++;
         } else {
           s2 = peg$FAILED;
-          if (peg$silentFails === 0) { peg$fail(peg$c91); }
+          if (peg$silentFails === 0) { peg$fail(peg$c101); }
         }
         if (s2 !== peg$FAILED) {
           s3 = peg$parsesp();
@@ -6491,16 +6612,16 @@ var grammar = (function() {
             if (s4 !== peg$FAILED) {
               s5 = peg$parsesp();
               if (s5 !== peg$FAILED) {
-                if (peg$c92.test(input.charAt(peg$currPos))) {
+                if (peg$c102.test(input.charAt(peg$currPos))) {
                   s6 = input.charAt(peg$currPos);
                   peg$currPos++;
                 } else {
                   s6 = peg$FAILED;
-                  if (peg$silentFails === 0) { peg$fail(peg$c93); }
+                  if (peg$silentFails === 0) { peg$fail(peg$c103); }
                 }
                 if (s6 !== peg$FAILED) {
                   peg$savedPos = s0;
-                  s1 = peg$c94(s4);
+                  s1 = peg$c104(s4);
                   s0 = s1;
                 } else {
                   peg$currPos = s0;
@@ -6611,7 +6732,7 @@ var grammar = (function() {
           }
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c94(s3);
+            s1 = peg$c104(s3);
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -6634,25 +6755,25 @@ var grammar = (function() {
 
       s0 = peg$currPos;
       if (input.charCodeAt(peg$currPos) === 30) {
-        s1 = peg$c95;
+        s1 = peg$c105;
         peg$currPos++;
       } else {
         s1 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c96); }
+        if (peg$silentFails === 0) { peg$fail(peg$c106); }
       }
       if (s1 !== peg$FAILED) {
         s2 = peg$parseany_integer();
         if (s2 !== peg$FAILED) {
           if (input.charCodeAt(peg$currPos) === 30) {
-            s3 = peg$c95;
+            s3 = peg$c105;
             peg$currPos++;
           } else {
             s3 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c96); }
+            if (peg$silentFails === 0) { peg$fail(peg$c106); }
           }
           if (s3 !== peg$FAILED) {
             peg$savedPos = s0;
-            s1 = peg$c97(s2);
+            s1 = peg$c107(s2);
             s0 = s1;
           } else {
             peg$currPos = s0;
@@ -6686,22 +6807,22 @@ var grammar = (function() {
 
       s0 = peg$currPos;
       s1 = [];
-      if (peg$c55.test(input.charAt(peg$currPos))) {
+      if (peg$c57.test(input.charAt(peg$currPos))) {
         s2 = input.charAt(peg$currPos);
         peg$currPos++;
       } else {
         s2 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c56); }
+        if (peg$silentFails === 0) { peg$fail(peg$c58); }
       }
       if (s2 !== peg$FAILED) {
         while (s2 !== peg$FAILED) {
           s1.push(s2);
-          if (peg$c55.test(input.charAt(peg$currPos))) {
+          if (peg$c57.test(input.charAt(peg$currPos))) {
             s2 = input.charAt(peg$currPos);
             peg$currPos++;
           } else {
             s2 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c56); }
+            if (peg$silentFails === 0) { peg$fail(peg$c58); }
           }
         }
       } else {
@@ -6709,7 +6830,7 @@ var grammar = (function() {
       }
       if (s1 !== peg$FAILED) {
         peg$savedPos = s0;
-        s1 = peg$c100(s1);
+        s1 = peg$c110(s1);
       }
       s0 = s1;
 
@@ -6721,22 +6842,22 @@ var grammar = (function() {
 
       s0 = peg$currPos;
       s1 = [];
-      if (peg$c101.test(input.charAt(peg$currPos))) {
+      if (peg$c111.test(input.charAt(peg$currPos))) {
         s2 = input.charAt(peg$currPos);
         peg$currPos++;
       } else {
         s2 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c102); }
+        if (peg$silentFails === 0) { peg$fail(peg$c112); }
       }
       if (s2 !== peg$FAILED) {
         while (s2 !== peg$FAILED) {
           s1.push(s2);
-          if (peg$c101.test(input.charAt(peg$currPos))) {
+          if (peg$c111.test(input.charAt(peg$currPos))) {
             s2 = input.charAt(peg$currPos);
             peg$currPos++;
           } else {
             s2 = peg$FAILED;
-            if (peg$silentFails === 0) { peg$fail(peg$c102); }
+            if (peg$silentFails === 0) { peg$fail(peg$c112); }
           }
         }
       } else {
@@ -6744,7 +6865,7 @@ var grammar = (function() {
       }
       if (s1 !== peg$FAILED) {
         peg$savedPos = s0;
-        s1 = peg$c103(s1);
+        s1 = peg$c113(s1);
       }
       s0 = s1;
 
@@ -6755,16 +6876,16 @@ var grammar = (function() {
       var s0, s1;
 
       s0 = peg$currPos;
-      if (peg$c90.test(input.charAt(peg$currPos))) {
+      if (peg$c100.test(input.charAt(peg$currPos))) {
         s1 = input.charAt(peg$currPos);
         peg$currPos++;
       } else {
         s1 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c91); }
+        if (peg$silentFails === 0) { peg$fail(peg$c101); }
       }
       if (s1 !== peg$FAILED) {
         peg$savedPos = s0;
-        s1 = peg$c104(s1);
+        s1 = peg$c114(s1);
       }
       s0 = s1;
 

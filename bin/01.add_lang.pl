@@ -33,11 +33,13 @@ sub make_translations
 		my ($trans, $osis, $alias) = split /,/, $translation;
 		push @regexps, $trans;
 		next unless ($osis || $alias);
-		$osis = $trans unless ($osis);
 		$alias = 'default' unless ($alias);
 		my $lc = lc $trans;
 		$lc = '"' . $lc . '"' if ($lc =~ /\W/);
-		push @aliases, "$lc:\x0a\t\t\tosis: \"$osis\"\x0a\t\t\talias: \"$alias\""
+		my $string = "$lc:";
+		$string .= "\x0a\t\t\tosis: \"$osis\"" if ($osis);
+		$string .= "\x0a\t\t\talias: \"$alias\"" if ($alias);
+		push @aliases, $string
 	}
 	my $regexp = make_book_regexp('translations', \@regexps, 1);
 	my $alias = join "\x0a\t\t", @aliases;
@@ -51,6 +53,8 @@ sub make_translations
 	$out =~ s/\$TRANS_REGEXP/$regexp/g;
 	$out =~ s/\$TRANS_ALIAS/$alias/g;
 	$out =~ s/\s*\$TRANS_ALTERNATE/\n$alternate/g;
+	my $lang_isos = to_json($vars{'$LANG_ISOS'});
+	$out =~ s/\$LANG_ISOS/$lang_isos/g;
 	open OUT, ">:utf8", "$dir/$lang/translations.coffee";
 	print OUT $out;
 	close OUT;
@@ -675,6 +679,8 @@ sub make_tests
 	push @misc_tests, add_book_range_tests();
 	push @misc_tests, add_boundary_tests();
 	my $out = get_file_contents("$dir/template/spec.coffee");
+	my $lang_isos = to_json($vars{'$LANG_ISOS'});
+	$out =~ s/\$LANG_ISOS/$lang_isos/g;
 	$out =~ s/\$LANG/$lang/g;
 	$out =~ s/\$BOOK_TESTS/join("\x0a", @out)/e;
 	$out =~ s/\$MISC_TESTS/join("\x0a", @misc_tests)/e;
@@ -1089,6 +1095,9 @@ sub get_vars
 	$out{'$PRE_BOOK_ALLOWED_CHARACTERS'} = [$letters] unless (exists $out{'$PRE_BOOK_ALLOWED_CHARACTERS'});
 	$out{'$POST_BOOK_ALLOWED_CHARACTERS'} = [$valid_characters] unless (exists $out{'$POST_BOOK_ALLOWED_CHARACTERS'});
 	$out{'$PRE_PASSAGE_ALLOWED_CHARACTERS'} = [get_pre_passage_characters($out{'$PRE_BOOK_ALLOWED_CHARACTERS'})] unless (exists $out{'$PRE_PASSAGE_ALLOWED_CHARACTERS'});
+	$out{'$LANG'} = [$lang];
+	$out{'$LANG_ISOS'} = [$lang] unless (exists $out{'$LANG_ISOS'});
+
 	return %out;
 }
 

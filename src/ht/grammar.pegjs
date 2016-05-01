@@ -145,7 +145,7 @@ c_explicit
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "verse" ) ![a-z] sp
+  = sp ( "v" [èe]i "s" [èe]i ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep

@@ -16,7 +16,7 @@ $COLLAPSE_COMBINING_CHARACTERS	false
 
 Gen	Sáng Thế	Sáng thế ký	Sáng
 Exod	Xuất Hành	Xuất Ai Cập Ký	Xuất Ê-díp-tô ký	Xuất Ai-cập	Xuất
-Lev	Lê-vi	Lê-vi ký	Lê
+Lev	Lê-vi	Lê-vi ký	Lê	Lê Vi
 Num	Dân Số	Dân số ký	Dân
 Deut	Phục Truyền Luật Lệ	Đệ nhị luật	Phục truyền luật lệ ký	Phục Truyền	Phục
 Josh	Giô-sua	Joshua	Giô-suê	Giôs?	Gsua

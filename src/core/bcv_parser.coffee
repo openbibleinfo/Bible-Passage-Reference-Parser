@@ -28,8 +28,8 @@ class bcv_parser
 		# * `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
 		# * `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
 		invalid_sequence_strategy: "ignore"
-		# * `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" -> "Gen.1,Gen.3".
-		# * `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" -> "Gen.1" and "Gen.3".
+		# * `combine`: sequential references in the text are combined into a single comma-separated OSIS string: "Gen 1, 3" → `"Gen.1,Gen.3"`.
+		# * `separate`: sequential references in the text are separated into an array of their component parts: "Gen 1, 3" → `["Gen.1", "Gen.3"]`.
 		sequence_combination_strategy: "combine"
 		# * `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
 		# * `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
@@ -240,9 +240,10 @@ class bcv_parser
 		old_translation = @options.versification_system
 		@versification_system(new_translation) if new_translation isnt old_translation
 		out =
-			order: bcv_utils.shallow_clone @translations.default.order
+			alias: new_translation
 			books: []
 			chapters: {}
+			order: bcv_utils.shallow_clone @translations.default.order
 		for own book, chapter_list of @translations.default.chapters
 			out.chapters[book] = bcv_utils.shallow_clone_array chapter_list
 		for own book, id of out.order

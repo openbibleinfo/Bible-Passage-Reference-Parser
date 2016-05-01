@@ -213,21 +213,24 @@ This function returns an object of data about the requested translation. You can
 
 It takes an optional string argument that identifies the translation—if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, and `nrsv`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
 
-The returned object has three keys:
+The returned object has the following structure:
 
 ```javascript
 {
-  "order": {"Gen": 1, "Exod": 2, ...},
+  "alias": "default",
   "books": ["Gen", "Exod", "Lev", ...],
-  "chapters": {"Gen": [31, 25, ...], "Exod": [22, 25, ...], ...}
+  "chapters": {"Gen": [31, 25, ...], "Exod": [22, 25, ...], ...},
+  "order": {"Gen": 1, "Exod": 2, ...}
 }
 ```
 
-The `order` key returns the order in which the books appear in the translation, starting at 1.
+The `alias` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification.
 
 The `books` key lists the books in order, which you can use to find surrounding books. For example, if you know from `order` that `"Exod": 2`, you know that you can find it at `books[1]` (because the array is zero-based). Similarly, the book before `Exod` is at `books[0]`, and the book after it is at `books[2]`.
 
 The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][0]` tells you how many verses are in Genesis 1. Further, the `length` of each book's array tells you how many chapters are in each book: `chapters["Gen"].length` tells you how many chapters are in Genesis.
+
+The `order` key returns the order in which the books appear in the translation, starting at 1.
 
 ### Options
 
@@ -250,8 +253,8 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 	* `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
 	* `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
 * `sequence_combination_strategy: "combine"`
-	* `combine`: sequential references in the text are combined into a single OSIS list: "Gen 1, 3" → "Gen.1,Gen.3".
-	* `separate`: sequential references in the text are separated into their component parts: "Gen 1, 3" → "Gen.1" and "Gen.3".
+	* `combine`: sequential references in the text are combined into a single comma-separated OSIS string: "Gen 1, 3" → `"Gen.1,Gen.3"`.
+	* `separate`: sequential references in the text are separated into an array of their component parts: "Gen 1, 3" → `["Gen.1", "Gen.3"]`.
 * `punctuation_strategy: "us"`
 	* `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
 	* `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
@@ -407,7 +410,7 @@ The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can inclu
 This section describes the parsing of a typical string:
 
 ```javascript
-bcv = new bcv_parser; // Declare the object
+var bcv = new bcv_parser; // Declare the object
 bcv.parse("John 3:16"); // Do the parsing
 console.log(bcv.osis()); // "John.3.16"
 ```
@@ -594,11 +597,13 @@ This code is in production use on a site that indexes [Bible verses on Twitter a
 
 ## License
 
-The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language—it's not necessary to run the parser in your project. If you're only parsing content, that usage falls entirely under the MIT License.
+The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language—it's not necessary to run the parser in your project. If you're using the npm package or only parsing content, that usage falls entirely under the MIT License.
 
 ## Changelog
 
-November 1, 2015 (1.0.0). Added [`punctuation_strategy`](#punctuation_strategy) to replace the "eu"-style files that were previously necessary for this functionality. Added [`single_chapter_1_strategy`](#single_chapter_1_strategy) to allow parsing of "Jude 1" as `Jude.1.1` rather than `Jude.1`. Fixed crashing bug related to dissociated chapter/book ranges. Upgraded to the latest versions of pegjs and Coffeescript. Added npm compatibility. Added support for a "next verse" syntax, which is used in Polish ("n" for next verse, compared to "nn" for "and following"). The parsing grammar includes this support only when the $NEXT variable is set in the language's data.txt file (only Polish for now). Thanks to [nirski](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues/16) for identifying this limitation.
+May 1, 2016 (2.0.0). Added additional Vulgate versification beyond Psalms. Because these changes are technically backwards-incompatible, the major version number is incrementing, but in practice the changes are minor.
+
+November 1, 2015 (1.0.0). Added `punctuation_strategy` option to replace the "eu"-style files that were previously necessary for this functionality. Added `single_chapter_1_strategy` option to allow parsing of "Jude 1" as `Jude.1.1` rather than `Jude.1`. Fixed crashing bug related to dissociated chapter/book ranges. Upgraded to the latest versions of pegjs and Coffeescript. Added npm compatibility. Added support for a "next verse" syntax, which is used in Polish ("n" for next verse, compared to "nn" for "and following"). The parsing grammar includes this support only when the $NEXT variable is set in the language's data.txt file (only Polish for now). Thanks to [nirski](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues/16) for identifying this limitation.
 
 May 4, 2015 (0.10.0). Hand-tuned some of the PEG.js output to improve overall performance by around 50% in most languages.
 

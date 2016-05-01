@@ -1,4 +1,4 @@
-In versions prior to the November 2015 release, this folder contained "eu"-style punctuation, where periods (".") are used in sequences and commas (",") are used to separate chapters and verses:
+In versions prior to the November 2015 release (1.0.0), this folder contained "eu"-style punctuation, where periods (".") are used in sequences and commas (",") are used to separate chapters and verses:
 
 ```javascript
 bcv.parse("Matt 1, 2. 4").osis();
@@ -7,7 +7,7 @@ bcv.parse("Matt 1, 2. 4").osis();
 
 These files duplicated nearly all the code found in `/js/`.
 
-As of November 2015, this functionality is available to you as the `punctuation_strategy` runtime option:
+As of 1.0.0, this functionality is available to you in the `punctuation_strategy` runtime option:
 
 ```javascript
 bcv.parse("Matt 1, 2. 4").osis();

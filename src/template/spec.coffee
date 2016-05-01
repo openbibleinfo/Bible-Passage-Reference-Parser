@@ -53,4 +53,7 @@ describe "Miscellaneous tests", ->
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
+	it "should return the expected language", ->
+		expect(p.languages).toEqual $LANG_ISOS
+
 $MISC_TESTS

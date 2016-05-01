@@ -2294,18 +2294,21 @@ describe "Administrative behavior", ->
 		expect(niv.books.length).toEqual 84
 		expect(niv.chapters["3John"][0]).toEqual 14
 		expect(p.options.versification_system).toEqual "default"
+		expect(niv.alias).toEqual "kjv"
 		esv = p.translation_info("esv")
 		expect(esv.order["1Esd"]).toEqual 82
 		expect(esv.books[65]).toEqual "Rev"
 		expect(esv.books.length).toEqual 84
 		expect(esv.chapters["3John"][0]).toEqual 15
 		expect(p.options.versification_system).toEqual "default"
+		expect(esv.alias).toEqual "default"
 		nab = p.translation_info("nabre")
 		expect(nab.order["1Esd"]).toEqual 18
 		expect(nab.books[65]).toEqual "Gal"
 		expect(nab.books.length).toEqual 84
 		expect(nab.chapters["3John"][0]).toEqual 15
 		expect(p.options.versification_system).toEqual "default"
+		expect(nab.alias).toEqual "nab"
 		# Verify that we've made a copy, not a reference.
 		nab.order["Gen"] = 15
 		expect(p.translations.default.order["Gen"]).toEqual 1
@@ -2316,6 +2319,9 @@ describe "Administrative behavior", ->
 		null_response = p.translation_info(null)
 		expect(array_response.chapters["3John"][0]).toEqual 15
 		expect(null_response.chapters["3John"][0]).toEqual 15
+
+	it "should return `.languages`", ->
+		expect(p.languages).toEqual ["en"]
 
 describe "Real-world parsing", ->
 	p = {}
@@ -2598,7 +2604,7 @@ describe "Adding new translations", ->
 		# Don't do this in real life. It edits the prototype and affects all subsequent objects on the page.
 		p.regexps.translations = /\b(?:niv|comp|notrans|noalias)\b/gi
 		p.translations.aliases.comp = osis: "COMP", alias: "comp"
-		# Test a misconfigured `osis` value.
+		# Test lacking an `osis` value.
 		p.translations.aliases.notrans = alias: "no_translation_alias"
 		p.translations.comp = order: {"Matt": 1, "Gen": 2}
 		p.translations.comp.chapters = {"Matt": p.translations.default.chapters.Matt, "Gen": p.translations.default.chapters.Gen}
@@ -2613,7 +2619,7 @@ describe "Adding new translations", ->
 		expect(p.parse("Matt 2-Gen3 COMP").osis_and_translations()).toEqual [["Matt.2-Gen.3", "COMP"]]
 		expect(p.parse("Exodus 3, Matt 5 COMP").osis_and_translations()).toEqual [["Matt.5", "COMP"]]
 		expect(p.parse("Exodus 3-Matt 5 COMP").osis_and_translations()).toEqual [["Matt.5", "COMP"]]
-		expect(p.parse("Exodus 3-Matt 5 NOTRANS").osis_and_translations()).toEqual [["Exod.3-Matt.5", ""]]
+		expect(p.parse("Exodus 3-Matt 5 NOTRANS").osis_and_translations()).toEqual [["Exod.3-Matt.5", "NOTRANS"]]
 		expect(p.parse("Exodus 3-Matt 5 NOALIAS").osis_and_translations()).toEqual [["Exod.3-Matt.5", "NOALIAS"]]
 
 # "Adding new translations" should be the last spec; it overwrites `bcv_parser` in destructive ways.

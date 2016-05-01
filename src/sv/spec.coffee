@@ -1836,6 +1836,9 @@ describe "Miscellaneous tests", ->
 		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
 		p.include_apocrypha true
 
+	it "should return the expected language", ->
+		expect(p.languages).toEqual ["sv"]
+
 	it "should handle ranges (sv)", ->
 		expect(p.parse("Titus 1:1 till 2").osis()).toEqual "Titus.1.1-Titus.1.2"
 		expect(p.parse("Matt 1till2").osis()).toEqual "Matt.1-Matt.2"
@@ -1884,8 +1887,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 b2000").osis_and_translations()).toEqual [["Lev.1", "B2000"]]
 		expect(p.parse("Lev 1 (SFB)").osis_and_translations()).toEqual [["Lev.1", "SFB"]]
 		expect(p.parse("lev 1 sfb").osis_and_translations()).toEqual [["Lev.1", "SFB"]]
-		expect(p.parse("Lev 1 (SFB14)").osis_and_translations()).toEqual [["Lev.1", "SFB14"]]
-		expect(p.parse("lev 1 sfb14").osis_and_translations()).toEqual [["Lev.1", "SFB14"]]
+		expect(p.parse("Lev 1 (SFB15)").osis_and_translations()).toEqual [["Lev.1", "SFB15"]]
+		expect(p.parse("lev 1 sfb15").osis_and_translations()).toEqual [["Lev.1", "SFB15"]]
 	it "should handle book ranges (sv)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
 		expect(p.parse("Första till Tredje  Johannesbrevet").osis()).toEqual "1John.1-3John.1"

@@ -9,7 +9,7 @@ $FF	ff
 $TITLE	title
 $TRANS	HCV
 $TO	-
-$VERSE	verse
+$VERSE	vèsè
 $UNICODE_BLOCK	Latin
 
 Gen	Jenèz	liv Konmansman an	Konmansman	Jen
