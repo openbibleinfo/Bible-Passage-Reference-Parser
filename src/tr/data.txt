@@ -14,7 +14,7 @@ $TO	[İi]le
 $VERSE	a.`	ayet[İi]	ayet
 $UNICODE_BLOCK	Latin
 
-Gen	Yarat[İiı]l[İiı]ş	Tekv[İi]n	Yar
+Gen	Yarat[İiı]l[İiı]ş	Başlang[İiı]ç	Tekv[İi]n	Baş	Yar
 Exod	M[İiı]s[İiı]r'?dan Ç[İiı]k[İiı]ş	Ç[İiı]k[İiı]ş	Ç[İiı]k
 Lev	Lev[İi]l[İi]ler	Lev
 Num	Çölde Say[İiı]m	Say[İiı]lar	Say
@@ -38,7 +38,7 @@ Eccl	Va[İi]z	Va[İi]
 Song	Ezg[İi]ler Ezg[İi]s[İi]	Neş[İi]deler Neş[İi]des[İi]	Ezg
 Isa	Yeşaya	[İi]şaya	Yşa
 Jer	Yeremya	Yer
-Lam	Ağ[İiı]tlar	Yeremya'?n[İiı]n Mers[İi]yeler[İi]	Ağ[İiı]
+Lam	Ağ[İiı]t(lar)?	Yeremya'?n[İiı]n Mers[İi]yeler[İi]	Ağ[İiı]
 Ezek	Hezek[İi]el	Hez
 Dan	Dan[İi]el	Dan
 Hos	Hoşea	Hoş
