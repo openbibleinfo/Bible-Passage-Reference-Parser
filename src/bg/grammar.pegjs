@@ -111,8 +111,8 @@ ff
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 integer_title
-  = val_1:integer (cv_sep / sequence_sep)? "title"
-    { return {"type": "integer_title", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
+  = val_1:integer val_2:title
+    { return {"type": "integer_title", "value": [val_1, val_2], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 context
   = "\x1f" val:any_integer "/9\x1f"
@@ -132,7 +132,7 @@ ps151_bcv
     { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v_letter
-  = v_explicit? val:integer sp !( "и"i space "сл"i ) [aаб]i ![a-z]
+  = v_explicit? val:integer sp !( "и"i space "сл"i ) [aавб]i ![a-z]
     { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v
@@ -145,7 +145,7 @@ c_explicit
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "verse" ) ![a-z] sp
+  = sp ( "ст"i ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep

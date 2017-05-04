@@ -19,7 +19,7 @@ Exod	Xuất Hành	Xuất Ai Cập Ký	Xuất Ê-díp-tô ký	Xuất Ai-cập	Xu�
 Lev	Lê-vi	Lê-vi ký	Lê	Lê Vi
 Num	Dân Số	Dân số ký	Dân
 Deut	Phục Truyền Luật Lệ	Đệ nhị luật	Phục truyền luật lệ ký	Phục Truyền	Phục
-Josh	Giô-sua	Joshua	Giô-suê	Giôs?	Gsua
+Josh	Giô-sua	Joshua	Giô-suê	Giôs?	Gsua	Gsuê
 Judg	Các Thủ lãnh	Thủ lãnh	Thẩm phán	Các quan xét	Quan án	Quan	Thủ
 Ruth	Ruth	Ru-tơ	Ru
 1Sam	$FIRST Samuel	$FIRST Sa-mu-ên	$FIRST Sam?
@@ -28,7 +28,7 @@ Ruth	Ruth	Ru-tơ	Ru
 2Kgs	$SECOND Các Vua	$SECOND Vua
 1Chr	$FIRST Sử biên niên	$FIRST Sử ký	$FIRST Sử Ký	$FIRST Lịch sử	$FIRST Sử
 2Chr	$SECOND Sử biên niên	$SECOND Sử ký	$SECOND  Sử Ký	$SECOND Lịch sử	$SECOND Sử
-Ezra	Étra	E-xơ-ra	Ê-xơ-ra	Êxra
+Ezra	Étra	E-xơ-ra	Ê-xơ-ra	Êxra	Êxr
 Neh	Nê-hê-mi-a	Nơkhemia	Nê-hê-mi	Nê
 Esth	Esther	Ê-xơ-tê
 Job	Gióp

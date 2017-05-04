@@ -329,6 +329,7 @@ describe "Localized book Josh (vi)", ->
 		expect(p.parse("Joshua 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Giôs 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Gsua 1:1").osis()).toEqual("Josh.1.1")
+		expect(p.parse("Gsuê 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Josh 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Giô 1:1").osis()).toEqual("Josh.1.1")
 		p.include_apocrypha(false)
@@ -337,6 +338,7 @@ describe "Localized book Josh (vi)", ->
 		expect(p.parse("JOSHUA 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("GIÔS 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("GSUA 1:1").osis()).toEqual("Josh.1.1")
+		expect(p.parse("GSUÊ 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("JOSH 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("GIÔ 1:1").osis()).toEqual("Josh.1.1")
 		`
@@ -697,12 +699,14 @@ describe "Localized book Ezra (vi)", ->
 		expect(p.parse("Ezra 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Étra 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Êxra 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("Êxr 1:1").osis()).toEqual("Ezra.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("E-XƠ-RA 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ê-XƠ-RA 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("EZRA 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("ÉTRA 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("ÊXRA 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("ÊXR 1:1").osis()).toEqual("Ezra.1.1")
 		`
 		true
 describe "Localized book Neh (vi)", ->

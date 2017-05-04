@@ -104,6 +104,7 @@
 1Kgs	1 Reis
 1Kgs	I Reis
 1Kgs	1 Re
+1Kgs	1 Rs
 1Kgs	1Kgs
 1Kgs	1 R
 1Macc	Primeira Macabeus
@@ -193,6 +194,7 @@
 1Tim	I Timóteo
 1Tim	1 Tim
 1Tim	1 Ti
+1Tim	1 Tm
 1Tim	1Tim
 2Chr	Segunda Cronicas
 2Chr	Segunda Crônicas
@@ -300,6 +302,7 @@
 2Kgs	II Reis
 2Kgs	2 Reis
 2Kgs	2 Re
+2Kgs	2 Rs
 2Kgs	2Kgs
 2Kgs	2 R
 2Macc	Segunda Macabeus
@@ -389,6 +392,7 @@
 2Tim	2 Timóteo
 2Tim	2 Tim
 2Tim	2 Ti
+2Tim	2 Tm
 2Tim	2Tim
 3John	Terceira Joao
 3John	Terceira João
@@ -476,6 +480,7 @@ Eccl	Coelet
 Eccl	Coélet
 Eccl	Eccl
 Eccl	Ecl
+Eccl	Ec
 EpJer	Carta de Jeremias
 EpJer	Cart. Jer
 EpJer	Cart Jer
@@ -487,6 +492,7 @@ Eph	Ef
 Esth	Ester
 Esth	Esth
 Esth	Est
+Esth	Et
 Exod	Exodo
 Exod	Éxodo
 Exod	Êxodo
@@ -507,16 +513,19 @@ Ezra	Esdras
 Ezra	Esdr
 Ezra	Ezra
 Ezra	Esd
+Ezra	Ed
 Gal	Galatas
 Gal	Gálatas
 Gal	Gal
 Gal	Gál
+Gal	Gl
 Gen	Genesis
 Gen	Génesis
 Gen	Gênesis
 Gen	Gen
 Gen	Gén
 Gen	Gên
+Gen	Gn
 GkEsth	Ester (Grega)
 GkEsth	Ester (grega)
 GkEsth	Ester Grega
@@ -527,11 +536,13 @@ GkEsth	GkEsth
 Hab	Habacuque
 Hab	Habacuc
 Hab	Hab
+Hab	Hc
 Hag	Ageu
 Hag	Hag
 Hag	Ag
 Heb	Hebreus
 Heb	Heb
+Heb	Hb
 Hos	Oseias
 Hos	Oséias
 Hos	Hos
@@ -569,6 +580,7 @@ Josh	Js
 Jude	Judas
 Jude	Jude
 Jude	Jud
+Jude	Jd
 Judg	Juizes
 Judg	Juízes
 Judg	Judg
@@ -586,6 +598,7 @@ Lam	Lamentacões
 Lam	Lamentaçoes
 Lam	Lamentações
 Lam	Lam
+Lam	Lm
 Lev	Leviticos
 Lev	Levíticos
 Lev	Levitico
@@ -637,6 +650,7 @@ Phil	Filipenses
 Phil	Phil
 Phil	Fil
 Phil	Fl
+Phil	Fp
 Phlm	Filemom
 Phlm	Filemon
 Phlm	Filémon
@@ -644,6 +658,7 @@ Phlm	Flmn
 Phlm	Phlm
 Phlm	Flm
 Phlm	Fmn
+Phlm	Fm
 PrAzar	Salmo de Azarias
 PrAzar	Sal Azar
 PrAzar	PrAzar
@@ -727,6 +742,7 @@ Sus	Sus
 Titus	Titus
 Titus	Tito
 Titus	Tit
+Titus	Tt
 Tob	Tobias
 Tob	Tob
 Wis	Sabedoria de Salomao

@@ -61,10 +61,10 @@ Zeph	Sofoniasza	$BOOK Sofoniasza	So	Sof	Proroctwo Sofoniaszowe
 Hag	Aggeusza	$BOOK Aggeusza	Ag	Proroctwo Aggieuszowe
 Zech	Zachariasza	$BOOK Zachariasza	Za	Zach
 Mal	Malachiasza	$BOOK Malachiasza	Ml	Mal	Proroctwo Malachyaszowe
-Matt	Mateusz	Mt	Ewangelia według św. Mateusza	Ewangelia Mateusza	Ew. Mateusza	Mat	Ewangelia wg św. Mateusza	Ew Mat
-Mark	Marek	Mk	Ewangelia według św. Marka	Ewangelia Marka	Ew. Marka	Mar	Ewangelia wg św. Marka	Ew Mar
-Luke	Łukasz	Łk	Ewangelia według św. Łukasza	Ewangelia Łukasza	Ew. Łukasza	Łuk	Lk	Luk	Ewangelia wg św. Łukasza	Ew Łuk
-John	Jan	J	Ewangelia według św. Jana	Ewangelia Jana	Ew. Jana	Jn	Ewangelia wg św. Jana	Ew Jan
+Matt	Mateusza?	Mt	Ewangelia według św. Mateusza	Ewangelia Mateusza	Ew. Mateusza	Mat	Ewangelia wg św. Mateusza	Ew Mat
+Mark	Marek	Mk	Marka	Ewangelia według św. Marka	Ewangelia Marka	Ew. Marka	Mar	Ewangelia wg św. Marka	Ew Mar
+Luke	Łukasz	Łk	Łukasza	Ewangelia według św. Łukasza	Ewangelia Łukasza	Ew. Łukasza	Łuk	Lk	Luk	Ewangelia wg św. Łukasza	Ew Łuk
+John	Jana?	J	Ewangelia według św. Jana	Ewangelia Jana	Ew. Jana	Jn	Ewangelia wg św. Jana	Ew Jan
 Acts	Dzieje	Dz	Dzieje Apostolskie	Dzieje Apost.	Dziejach Apostolskich	Dz Ap
 Rom	Rzymian	List św. Pawła do Rzymian	List do Rzymian	Rz	Rzym
 1Cor	$FIRST Koryntian	1 Kor	$FIRST List św. Pawła do Koryntian	$FIRST Koryntów	$FIRST list do Koryntian
@@ -83,9 +83,9 @@ Heb	Hebrajczyków	Hbr	List do Hebrajczyków	Żydów	Heb	Hebr	List do Żydów	Ży
 Jas	Jakuba	Jk	List św. Jakuba	List Jakuba	Jak	List powszechny Świętego Iakuba Apostoła
 1Pet	$FIRST Piotra	1 P	$FIRST List św. Piotra	$FIRST List Piotra	$FIRST Piotr
 2Pet	$SECOND Piotra	2 P	$SECOND List św. Piotra	$SECOND List Piotra	$SECOND Piotr
-1John	$FIRST Jana	1 J	$FIRST List św. Jana	$FIRST List Jana	1 Jan
-2John	$SECOND Jana	2 J	$SECOND List św. Jana	$SECOND List Jana	2 Jan
-3John	$THIRD Jana	3 J	$THIRD List św. Jana	$THIRD List Jana	3 Jn	3 Jan
+1John	$FIRST Jana	1 J	$FIRST List św. Jana	$FIRST List Jana	1 Ja?n
+2John	$SECOND Jana	2 J	$SECOND List św. Jana	$SECOND List Jana	2 Ja?n
+3John	$THIRD Jana	3 J	$THIRD List św. Jana	$THIRD List Jana	3 Ja?n
 Jude	Judy	List św. Judy	List Judy	Jud	List powszechny Świętego Iudasa Apostoła	Jd
 Rev	Objawienie	Obj	Objawienie św. Jana	Apokalipsa	Ap	Apokalipsa św. Jana	Apokalipsa św. Jana	Apokalipsa Świętego Jana	$BOOK Apokalipsy	Objawienie Jana	$BOOK Objawienia
 Tob	$BOOK Tobiasza	Tb	Tob	$BOOK Tobita

@@ -26,7 +26,7 @@ Lev	Leviticus	Lev	$THIRD Mozes	Wajikra	Vajikra	Lv
 Num	Numb?eri	$FOURTH Mozes	B[ae]midbar	Num?
 Deut	Deuteronomium	Deut	$FIFTH Mozes	Dewariem	Dt
 Josh	Jozua	Joz
-Judg	Richteren?	Rechters	R[ei]cht	Re
+Judg	Richteren?	Rechters	R[ei]cht	Re	Ri
 Ruth	Ruth	Rt
 1Sam	$FIRST Samuël	$FIRST Sam	Samuel I	1 S
 2Sam	$SECOND Samuël	$SECOND Sam	Samuel II	2 S
@@ -60,7 +60,7 @@ Hag	Haggaï	Hagg?
 Zech	Zacharia	Zach
 Mal	Maleachi	Mal
 Matt	Matth?eüs	Matth?	Matthéüs	Evangelie volgens Matteüs	Ma?t
-Mark	Mar[ck]us	Mar[ck]	Evangelie volgens Mar[ck]us	M[ck]
+Mark	Mar[ck]us	Mar[ck]	Evangelie volgens Mar[ck]us	M[ckr]
 Luke	Lu[ck]as	Evangelie volgens Lu[ck]as	Lu?[ck]
 John	Johannes	Evangelie volgens Johannes	John?
 Acts	Handelingen	Handelingen der apostelen	Handelingen van de apostelen	Ha?nd
@@ -71,8 +71,8 @@ Gal	Galaten	Gal	Galatenbrief
 Eph	Efeziërs	Efez	Ef
 Phil	Filippenzen	Filip	Fil
 Col	[CK]olossenzen	[CK]ol
-1Thess	$FIRST Th?essalonicenzen	$FIRST Th?ess	$FIRST Tes
-2Thess	$SECOND Th?essalonicenzen	$SECOND Th?ess	$SECOND Tes
+1Thess	$FIRST Th?essalonicenzen	$FIRST Th?ess	$FIRST Tes	1 Thes
+2Thess	$SECOND Th?essalonicenzen	$SECOND Th?ess	$SECOND Tes	2 Thes
 1Tim	$FIRST Timoth?eüs	$FIRST Tim
 2Tim	$SECOND Timoth?eüs	$SECOND Tim
 Titus	Titus	Tit

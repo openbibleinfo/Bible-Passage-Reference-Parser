@@ -209,6 +209,7 @@ EpJer	Br Jer
 EpJer	EpJer
 Eph	Epheser
 Eph	Eph
+Esth	Esther
 Esth	Ester
 Esth	Esth
 Esth	Est
@@ -273,6 +274,7 @@ Isa	Jesaja
 Isa	Isa
 Isa	Jes
 Jas	Jakobusbrief
+Jas	Jakobus
 Jas	Jak
 Jas	Jas
 Jdt	Judit

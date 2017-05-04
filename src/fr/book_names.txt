@@ -264,6 +264,7 @@
 1Tim	I Timothée
 1Tim	1 Tim
 1Tim	1 Ti
+1Tim	1 Tm
 1Tim	1Tim
 2Chr	Deuxiemes Chroniques
 2Chr	Deuxièmes Chroniques
@@ -531,6 +532,7 @@
 2Tim	2 Timothée
 2Tim	2 Tim
 2Tim	2 Ti
+2Tim	2 Tm
 2Tim	2Tim
 3John	Troisiemes Jean
 3John	Troisièmes Jean
@@ -632,6 +634,7 @@ Col	Col
 Dan	Daniel
 Dan	Dan
 Dan	Da
+Dan	Dn
 Deut	Deuteronome
 Deut	Deutéronome
 Deut	Deut
@@ -745,6 +748,7 @@ GkEsth	Esth gr
 GkEsth	GkEsth
 Hab	Habacuc
 Hab	Habakuk
+Hab	Habaquq
 Hab	Habac
 Hab	Habak
 Hab	Hab
@@ -784,6 +788,7 @@ Jas	Jacq
 Jas	Jac
 Jas	Jas
 Jas	Ja
+Jas	Jc
 Jdt	Judith
 Jdt	Jdt
 Jer	Jeremie
@@ -819,6 +824,7 @@ Josh	Josh
 Josh	Jos
 Jude	Jude
 Jude	Jud
+Jude	Jd
 Judg	Juges
 Judg	Judg
 Judg	Jug
@@ -831,6 +837,7 @@ Lam	Lamentations de Jérémie
 Lam	Lamentations
 Lam	Lam
 Lam	La
+Lam	Lm
 Lev	Levitique
 Lev	Lévitique
 Lev	Lev
@@ -864,6 +871,7 @@ Mic	Michée
 Mic	Mich
 Mic	Mic
 Mic	Mi
+Nah	Nahoum
 Nah	Nahum
 Nah	Nah
 Nah	Na
@@ -986,6 +994,7 @@ Sus	Suz
 Titus	Titus
 Titus	Tite
 Titus	Tit
+Titus	Tt
 Tob	Tobie
 Tob	Tob
 Tob	Tb

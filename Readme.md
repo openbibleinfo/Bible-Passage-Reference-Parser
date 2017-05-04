@@ -6,11 +6,11 @@ Its primary use is to interpret query strings for use in a Bible application. As
 
 It should be fairly speedy for most applications, taking under a millisecond to parse a short string and able to parse about 130KB of reference-heavy text per second on a single core.
 
-The code occupies about 137KB minified and 25KB gzipped.
+The code occupies about 130KB minified and 25KB gzipped.
 
 This project also provides extensively commented code and 4.7 million real-world strings that you can use as a starting point to build your own BCV parser.
 
-Try a [demo of the Bible passage reference parser](http://www.openbible.info/labs/reference-parser/).
+Try a [demo of the Bible passage reference parser](https://www.openbible.info/labs/reference-parser/).
 
 ## Usage
 
@@ -224,7 +224,7 @@ The returned object has the following structure:
 }
 ```
 
-The `alias` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification.
+The `alias` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification. Objects with identical `alias` values are identical.
 
 The `books` key lists the books in order, which you can use to find surrounding books. For example, if you know from `order` that `"Exod": 2`, you know that you can find it at `books[1]` (because the array is zero-based). Similarly, the book before `Exod` is at `books[0]`, and the book after it is at `books[2]`.
 
@@ -369,10 +369,10 @@ One of the hardest parts of building a BCV parser is finding data to test it on 
 
 Separate from this repository are four data files that you can use to test your own parser. Derived from Twitter and Facebook mentions of Bible references, the dataset reflects how people really type references in English. It includes 4.7 million unique strings across 180 million total mentions. (For example, the most-popular string, "Philippians 4:13", is mentioned over 1.3 million times.)
 
-1. [10+ mentions in the dataset](http://a.openbible.info/data/bcv-parser/10plus.zip). 465,000 unique strings, 4 MB. If you're just beginning to develop your own parser and are looking for raw data, start with this file.
-2. [3-9 mentions in the dataset](http://a.openbible.info/data/bcv-parser/3-9.zip). 818,000 unique strings, 7 MB.
-3. [2 mentions in the dataset](http://a.openbible.info/data/bcv-parser/2.zip). 743,000 unique strings, 7 MB.
-4. [1 mention in the dataset](http://a.openbible.info/data/bcv-parser/1.zip). 2.7 million unique strings, 25 MB. This file contains strings that only appear once in the corpus.
+1. [10+ mentions in the dataset](https://a.openbible.info/data/bcv-parser/10plus.zip). 465,000 unique strings, 4 MB. If you're just beginning to develop your own parser and are looking for raw data, start with this file.
+2. [3-9 mentions in the dataset](https://a.openbible.info/data/bcv-parser/3-9.zip). 818,000 unique strings, 7 MB.
+3. [2 mentions in the dataset](https://a.openbible.info/data/bcv-parser/2.zip). 743,000 unique strings, 7 MB.
+4. [1 mention in the dataset](https://a.openbible.info/data/bcv-parser/1.zip). 2.7 million unique strings, 25 MB. This file contains strings that only appear once in the corpus.
 
 The tests are arranged in three columns:
 
@@ -423,7 +423,7 @@ Then it runs through all the regexps for Bible books (`@match_books()`). In this
 
 Once it has matched all the possible books in the string, we call `@match_passages()` to identify complete passages—we want to be sure to treat strings like `John 3:16, 17` as a single sequence. The `@regexps.escaped_passage` used for these matches is fairly complicated. It looks for some unusual cases (`chapter 23 of Matthew`) first, but it pivots around the escaped book sequence from `@match_books()`: it tries to find numbers and other characters that can comprise a valid sequence after a book (including other books). We know that we'll probably have to trim some of what it finds later; at this point, we want to be as comprehensive as possible.
 
-For each match, we trim some unnecessary parts from the end of it and then run it through the grammar file that identifies the components of the string (in this case, `John 3:16` fits the pattern of a `bcv`, or book-chapter-verse). The grammar uses [PEG.js](http://pegjs.majda.cz/), a [parsing expression grammar](http://en.wikipedia.org/wiki/Parsing_expression_grammar) with a DSL that compiles to Javascript. A PEG provides predictable performance, especially for shorter strings like Bible references. The grammar identifies components in the match and, importantly, records the indices of where each component starts and ends in the string. PEG.js's built-in extension mechanism provides an easy way to output the necessary data. The tradeoff of using a PEG arrives in the form of increased code size: more than half the code in the minified file comes from the auto-generated grammar.
+For each match, we trim some unnecessary parts from the end of it and then run it through the grammar file that identifies the components of the string (in this case, `John 3:16` fits the pattern of a `bcv`, or book-chapter-verse). The grammar uses [PEG.js](https://pegjs.org/), a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) with a DSL that compiles to Javascript. A PEG provides predictable performance, especially for shorter strings like Bible references. The grammar identifies components in the match and, importantly, records the indices of where each component starts and ends in the string. PEG.js's built-in extension mechanism provides an easy way to output the necessary data. The tradeoff of using a PEG arrives in the form of increased code size: more than half the code in the minified file comes from the auto-generated grammar.
 
 We also look here for a corner case of the format `1-2 Samuel`, where the book range precedes the book name. If it exists, we construct an object to use later.
 
@@ -532,6 +532,7 @@ Most of these languages are in [Google Translate](https://translate.google.com/)
 	<tr><td>ta</td><td>Tamil</td></tr>
 	<tr><td>th</td><td>Thai</td></tr>
 	<tr><td>tl</td><td>Tagalog</td></tr>
+	<tr><td>tr</td><td>Turkish</td></tr>
 	<tr><td>uk</td><td>Ukrainian</td></tr>
 	<tr><td>ur</td><td>Urdu</td></tr>
 	<tr><td>vi</td><td>Vietnamese</td></tr>
@@ -571,17 +572,17 @@ I've specifically tested the following browsers, but it should work in any moder
 
 The BCV Parser uses the following projects (none of them is necessary unless you want to edit the source files or run tests):
 
-* [Closure](http://code.google.com/closure/) for minifying.
-* [Coffeescript 1.10.0](http://coffeescript.org/) for compiling into Javascript.
-* [Frak](https://github.com/noprompt/frak) for optimizing generated regular expressions.
-* [Jasmine 2.2.0](http://jasmine.github.io/) for the testing framework. To run tests, install it in the project's `/lib` folder.
-* [PEG.js 0.9.0](http://pegjs.org/) for the parsing grammar.
+* [Closure](https://developers.google.com/closure/) for minifying.
+* [Coffeescript](http://coffeescript.org/) for compiling into Javascript.
+* [Jasmine 2.2.0](https://jasmine.github.io/) for the testing framework. To run tests, install it in the project's `/lib` folder.
+* [PEG.js](https://pegjs.org/) for the parsing grammar.
+* [Regexgen](https://github.com/devongovett/regexgen) for optimizing generated regular expressions.
 
 The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file. The `space` rule is changed to use the `\s` character class instead of enumerating different space characters. The current version of PEG.js doesn't support the `\s` character class, so we post-process the output to include it.
 
 ### Build Instructions
 
-1. In `src`, create a folder named after the [ISO 639 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`.
+1. In `src`, create a folder named after the [ISO 639 code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`.
 2. Create a data.txt file inside that folder. Lines that start with `#` are comments. Lines that start with `$` are variables. Lines that start with an OSIS book name are a tab-separated series of regular expressions (a backtick following an accented character means not to allow the unaccented version of that character). Lines that start with `=` are the order in which to check the regular expressions (check for "3 John" before "John," for example). Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application).
 3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. This file expects `node` to be available in your `$PATH`.For example, `01.add_lang.pl fr`.
 4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` and `coffee` to be available in your `$PATH`. For example: `02.compile.pl fr`.
@@ -589,17 +590,19 @@ The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file.
 
 ## Purpose
 
-This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which [saw production usage](http://about.esvbible.org/uncategorized/technical-introduction-to-the-esv-online-edition/) on a Bible search website from 2002-2011; the second in Perl (2007), which saw production usage on a Bible-related site starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This Coffeescript parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
+This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which [saw production usage](http://about.esvbible.org/uncategorized/technical-introduction-to-the-esv-online-edition/) on the ESV Bible website from 2002-2011; the second in Perl (2007), which saw production usage on openbible.info starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This Coffeescript parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
 
-I chose Coffeescript out of curiosity—does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript—the tests, in particular, are much easier to follow without all the Javascript punctuation.
+I chose Coffeescript out of curiosity—does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript—the tests, in particular, are much easier to follow without all the Javascript punctuation. If I were starting this project today, however, I would likely use modern Javascript rather than Coffeescript.
 
-This code is in production use on a site that indexes [Bible verses on Twitter and Facebook](http://www.openbible.info/realtime/).
+This code is in production use on a site that indexes [Bible verses on Twitter and Facebook](https://www.openbible.info/realtime/).
 
 ## License
 
-The code in this project is licensed under the included MIT License except for the bundled, Javscript-compiled version of Frak (`bin/js/frak.min.js`), which is licensed under the [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html). Frak is a dependency only if you're compiling a new language—it's not necessary to run the parser in your project. If you're using the npm package or only parsing content, that usage falls entirely under the MIT License.
+The code in this project is licensed under the standard MIT License.
 
 ## Changelog
+
+May 4, 2017 (2.0.1). Fixed a bug in calculating positions for non-English Psalm titles. Switched to regexgen from frak for more deterministic regular expressions to reduce diff sizes. Added support for Turkish (thanks to [alerque](https://github.com/alerque)).
 
 May 1, 2016 (2.0.0). Added additional Vulgate versification beyond Psalms. Because these changes are technically backwards-incompatible, the major version number is incrementing, but in practice the changes are minor.
 

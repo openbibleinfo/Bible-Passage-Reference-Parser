@@ -10,7 +10,7 @@ die "The first argument should be a language iso code (e.g., \"fr\")" unless ($l
 my $dir = '../src';
 my $test_dir = '../test';
 my $regexp_space = "[\\s\x{a0}]";
-my $valid_characters = "[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)\x{ff08}\x{ff09}\\[\\]/\"'\\*=~\\-\\u2013\\u2014]";
+my $valid_characters = "[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)\\uff08\\uff09\\[\\]/\"'\\*=~\\-\\u2013\\u2014]";
 my $letters = '';
 my %valid_osises = make_valid_osises(qw(Gen Exod Lev Num Deut Josh Judg Ruth 1Sam 2Sam 1Kgs 2Kgs 1Chr 2Chr Ezra Neh Esth Job Ps Prov Eccl Song Isa Jer Lam Ezek Dan Hos Joel Amos Obad Jonah Mic Nah Hab Zeph Hag Zech Mal Matt Mark Luke John Acts Rom 1Cor 2Cor Gal Eph Phil Col 1Thess 2Thess 1Tim 2Tim Titus Phlm Heb Jas 1Pet 2Pet 1John 2John 3John Jude Rev Tob Jdt GkEsth Wis Sir Bar PrAzar Sus Bel SgThree EpJer 1Macc 2Macc 3Macc 4Macc 1Esd 2Esd PrMan AddEsth AddDan));
 
@@ -203,7 +203,6 @@ sub make_book_regexp
 {
 	my ($osis, $abbrevs, $recurse_level) = @_;
 	#print "  Regexping $osis..\n";
-	#return 'aaaa' unless ($osis eq 'Rom');
 	map { s/\\//g; } @{$abbrevs};
 	my @subsets = get_book_subsets($abbrevs);
 	my @out;
@@ -253,7 +252,7 @@ sub validate_full_node_regexp
 	{
 		my $compare = "$abbrev 1";
 		$compare =~ s/^(?:$pattern) //;
-		print Dumper("  Not parsable ($abbrev): $compare") unless ($compare eq '1');
+		print Dumper("  Not parsable ($abbrev): '$compare'\n$pattern") unless ($compare eq '1');
 	}
 }
 
@@ -385,9 +384,6 @@ sub check_regexp_pattern
 			push @oks, $abbrev;
 		}
 	}
-	#print Dumper(\@oks);
-	#print Dumper($pattern);
-	#print Dumper(\@not_oks);
 	return (\@oks, \@not_oks);
 }
 
@@ -397,6 +393,7 @@ sub format_node_regexp_pattern
 	die "Unexpected regexp pattern: $pattern" unless ($pattern =~ /^\/\^/ && $pattern =~ /\$\/$/);
 	$pattern =~ s/^\/\^//;
 	$pattern =~ s/\$\/$//;
+	#$pattern =~ s/\x{2009}/::OPTIONAL_SPACE::/g;
 	if ($pattern =~ /\[/)
 	{
 		my @parts = split /\[/, $pattern;
@@ -454,6 +451,7 @@ sub format_node_regexp_pattern
 	}
 	$pattern =~ s/ /[\\s\\xa0]*/g;
 	$pattern =~ s/::OPTIONAL_SPACE::/\\s\\xa0/g;
+	$pattern =~ s/\x{2009}/[\\s\\xa0]/g;
 	return $pattern;
 }
 
@@ -662,7 +660,9 @@ sub make_tests
 		$use_osis =~ s/,+$//;
 		foreach my $abbrev (@osis_abbrevs)
 		{
-			print OUT "$use_osis\t$abbrev\n";
+			my $use = $abbrev;
+			$use =~ s/\x{2009}/ /g;
+			print OUT "$use_osis\t$use\n";
 		}
 		$all_abbrevs{$osis} = \@osis_abbrevs;
 	}
@@ -723,7 +723,7 @@ sub sort_abbrevs_by_length
 sub add_abbrev_to_all_abbrevs
 {
 	my ($osis, $abbrev, $all_abbrevs) = @_;
-	if ($abbrev =~ /\./)
+	if ($abbrev =~ /\./ && $abbrev ne "\x{418}.\x{41d}")
 	{
 		my @news = split /\./, $abbrev;
 		my @olds = (shift(@news));
@@ -1015,7 +1015,7 @@ sub get_abbrevs
 sub expand_abbrev_vars
 {
 	my ($abbrev) = @_;
-	$abbrev =~ s/\\(?![\(\)\[\]\|])//g;
+	$abbrev =~ s/\\(?![\(\)\[\]\|s])//g;
 	return ($abbrev) unless ($abbrev =~ /\$[A-Z]+/);
 	my ($var) = $abbrev =~ /(\$[A-Z]+)(?!\w)/;
 	my @out;
@@ -1359,6 +1359,12 @@ sub handle_accents
 			$char = handle_accent($char);
 			$char =~ s/^\[|\]$//g if ($context eq '[');
 		}
+		elsif (@chars && $chars[0] eq '`')
+		{
+			push @texts, $char;
+			push @texts, shift @chars;
+			next;
+		}
 		elsif ($char eq '[' && !(@texts && $texts[-1] eq '\\'))
 		{
 			$context = '[';
@@ -1381,6 +1387,7 @@ sub handle_accents
 	#$text =~ s/\.$//;
 	$text =~ s/\.(?!`)/\\.?/g;
 	$text =~ s/\.`/\\./g;
+	$text =~ s/ `/\x{2009}/g;
 	return $text;
 }
 

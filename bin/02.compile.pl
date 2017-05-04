@@ -4,12 +4,13 @@ use warnings;
 my ($lang) = @ARGV;
 
 die "Please specify a language identifier as the first argument" unless ($lang);
-`pegjs --export-var "var grammar" "../src/$lang/grammar.pegjs" "../temp_${lang}_grammar.js"`;
+`pegjs --format globals --export-var grammar -o "../temp_${lang}_grammar.js" "../src/$lang/grammar.pegjs"`;
+add_pegjs_global("../temp_${lang}_grammar.js");
 print "Joining...\n";
-`cat "../src/core/bcv_parser.coffee" "../src/core/bcv_passage.coffee" "../src/core/bcv_utils.coffee" "../src/$lang/translations.coffee" "../src/$lang/regexps.coffee" | coffee --compile --stdio > "../js/${lang}_bcv_parser.js"`;
+`cat "../src/core/bcv_parser.coffee" "../src/core/bcv_passage.coffee" "../src/core/bcv_utils.coffee" "../src/$lang/translations.coffee" "../src/$lang/regexps.coffee" | coffee --no-header --compile --stdio > "../js/${lang}_bcv_parser.js"`;
 add_peg('');
 print "Compiling spec...\n";
-`coffee -c "../src/$lang/spec.coffee"`;
+`coffee --no-header -c "../src/$lang/spec.coffee"`;
 `mv "../src/$lang/spec.js" "../test/js/${lang}.spec.js"`;
 #compile_closure();
 unlink "../temp_${lang}_grammar.js";
@@ -95,4 +96,17 @@ sub compile_closure
 {
 	print "Minifying...\n";
 	#print `node template_closure.js $lang`;
+}
+
+sub add_pegjs_global
+{
+	my ($file) = @_;
+	open FILE, '<:utf8', $file;
+	$_ = join '', <FILE>;
+	close FILE;
+	$_ = "var grammar;\n$_";
+	s!\broot\.grammar!grammar!;
+	open OUT, '>:utf8', $file;
+	print OUT;
+	close OUT;
 }

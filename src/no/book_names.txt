@@ -474,6 +474,7 @@ Rev	Åpenbaringsboken
 Rev	Apenbaringen
 Rev	Åpenbaringen
 Rev	Apenbaring
+Rev	Åpenbaring
 Rev	Rev
 Rev	Ap
 Rev	Åp

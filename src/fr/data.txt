@@ -42,17 +42,17 @@ Eccl	Ecclésiaste	Qoheleth?	Eccl	Ec	Ecclés
 Song	Cantique des [Cc]antiques	Ca	Cantiques?	Cn?t
 Isa	Ésaïe	Isaïe	Isa	Ésa?	Is
 Jer	Jérémie	Jer	Jérém	Jér?	Jr
-Lam	Lamentations de Jérémie	Lamentations	Lam?
+Lam	Lamentations de Jérémie	Lamentations	Lam?	Lm
 Ezek	Ézéchiel	Ézéch	Ezé?
-Dan	Daniel	Dan?
+Dan	Daniel	Dan?	Dn
 Hos	Osée	Os
 Joel	Joël	Joë	Jl
 Amos	Amos	Amo?
 Obad	Abdias	Abd?
 Jonah	Jonas	Jon
 Mic	Michée	Mich?	Mi
-Nah	Nahum	Nah?
-Hab	Habacuc	Habakuk	Hab	Haba[ck]	Hab?
+Nah	Nahum	Nah?	Nahoum
+Hab	Habacuc	Habakuk	Hab	Haba[ck]	Hab?	Habaquq
 Zeph	Sophonie	Soph	So
 Hag	Aggée	Hag	Agg?
 Zech	Zacc?harie	Zac?c?h?	Zc
@@ -71,18 +71,18 @@ Phil	Philippiens	Phil
 Col	Colossiens	Col
 1Thess	$FIRST Thess?aloniciens	1 Thess?	1 Th
 2Thess	$SECOND Thess?aloniciens	2 Thess?	2 Th
-1Tim	$FIRST Timothée	1 Tim?
-2Tim	$SECOND Timothée	2 Tim?
-Titus	Tite	Tit
+1Tim	$FIRST Timothée	1 Tim?	1 Tm
+2Tim	$SECOND Timothée	2 Tim?	2 Tm
+Titus	Tite	Ti?t
 Phlm	Philémon	Phl?m
 Heb	Hébreux	Hébr?	Héb?
-Jas	Jac?ques	Jacq	Jac?
+Jas	Jac?ques	Jacq	Jac?	Jc
 1Pet	$FIRST Pierre	1 Pi?
 2Pet	$SECOND Pierre	2 Pi?
 1John	$FIRST Jean	1 Jn
 2John	$SECOND Jean	2 Jn
 3John	$THIRD Jean	3 Jn
-Jude	Jude	Jud
+Jude	Jude	Ju?d
 Rev	Apocalypse de Jean	Apocalypse	Apo?c?
 Tob	Tobie	Tob	Tb
 Jdt	Judith	Jdt	Jdt

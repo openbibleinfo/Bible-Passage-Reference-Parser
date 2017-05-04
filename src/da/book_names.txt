@@ -15,9 +15,12 @@
 1Cor	Paulus' 1 Brev til Korintherne
 1Cor	Paulus’ 1 Brev til Korintherne
 1Cor	Første Korintherbrev
+1Cor	Første Korinterbrev
 1Cor	Første Korinterne
 1Cor	1. Korintherbrev
 1Cor	1 Korintherbrev
+1Cor	1. Korinterbrev
+1Cor	1 Korinterbrev
 1Cor	1. Korinterne
 1Cor	1 Korinterne
 1Cor	Første Kor
@@ -31,11 +34,17 @@
 1Esd	1 Esdrasbog
 1Esd	3 Esdrasbog
 1Esd	1Esd
+1John	Første Johannes' Brev
+1John	Første Johannes’ Brev
 1John	Johannes' Første Brev
 1John	Johannes’ Første Brev
 1John	Første Johannesbrev
+1John	1. Johannes' Brev
+1John	1. Johannes’ Brev
 1John	Johannes' 1. Brev
 1John	Johannes’ 1. Brev
+1John	1 Johannes' Brev
+1John	1 Johannes’ Brev
 1John	Johannes' 1 Brev
 1John	Johannes’ 1 Brev
 1John	1. Johannesbrev
@@ -113,9 +122,12 @@
 1Tim	Paulus' 1 Brev til Timotheus
 1Tim	Paulus’ 1 Brev til Timotheus
 1Tim	Første Timotheusbrev
+1Tim	Første Timoteusbrev
 1Tim	1. Timotheusbrev
 1Tim	1 Timotheusbrev
+1Tim	1. Timoteusbrev
 1Tim	Første Timoteus
+1Tim	1 Timoteusbrev
 1Tim	1. Timoteus
 1Tim	1 Timoteus
 1Tim	Første Tim
@@ -136,9 +148,12 @@
 2Cor	Paulus’ Andet Brev til Korintherne
 2Cor	Anden Korintherbrev
 2Cor	Andet Korintherbrev
+2Cor	Anden Korinterbrev
 2Cor	2. Korintherbrev
 2Cor	Anden Korinterne
 2Cor	2 Korintherbrev
+2Cor	2. Korinterbrev
+2Cor	2 Korinterbrev
 2Cor	2. Korinterne
 2Cor	2 Korinterne
 2Cor	Anden Kor
@@ -152,10 +167,16 @@
 2Esd	2 Esdrasbog
 2Esd	4 Esdrasbog
 2Esd	2Esd
+2John	Anden Johannes' Brev
+2John	Anden Johannes’ Brev
 2John	Johannes' Andet Brev
 2John	Johannes’ Andet Brev
 2John	Anden Johannesbrev
 2John	Andet Johannesbrev
+2John	2. Johannes' Brev
+2John	2. Johannes’ Brev
+2John	2 Johannes' Brev
+2John	2 Johannes’ Brev
 2John	2. Johannesbrev
 2John	2 Johannesbrev
 2John	Anden Johannes
@@ -224,8 +245,11 @@
 2Tim	Paulus’ Andet Brev til Timotheus
 2Tim	Anden Timotheusbrev
 2Tim	Andet Timotheusbrev
+2Tim	Anden Timoteusbrev
 2Tim	2. Timotheusbrev
 2Tim	2 Timotheusbrev
+2Tim	2. Timoteusbrev
+2Tim	2 Timoteusbrev
 2Tim	Anden Timoteus
 2Tim	2. Timoteus
 2Tim	2 Timoteus
@@ -235,9 +259,15 @@
 2Tim	2Tim
 3John	Johannes' Tredje Brev
 3John	Johannes’ Tredje Brev
+3John	Tredje Johannes' Brev
+3John	Tredje Johannes’ Brev
 3John	Tredje Johannesbrev
+3John	3. Johannes' Brev
+3John	3. Johannes’ Brev
 3John	Johannes' 3. Brev
 3John	Johannes’ 3. Brev
+3John	3 Johannes' Brev
+3John	3 Johannes’ Brev
 3John	Johannes' 3 Brev
 3John	Johannes’ 3 Brev
 3John	3. Johannesbrev
@@ -409,6 +439,7 @@ Judg	Judg
 Judg	Dom
 Lam	Klagesangene
 Lam	Klages
+Lam	Klag
 Lam	Lam
 Lev	Tredje Mosebog
 Lev	3. Mosebog
@@ -467,6 +498,7 @@ Phlm	Filemonbrevet
 Phlm	Filemon
 Phlm	Filem
 Phlm	Phlm
+Phlm	Flm
 PrAzar	Azarjas Bøn
 PrAzar	Azarjas bøn
 PrAzar	PrAzar
@@ -538,6 +570,8 @@ Zech	Zech
 Zech	Zak
 Zeph	Sefanias' Bog
 Zeph	Sefanias’ Bog
+Zeph	Zefanias’ Bog
 Zeph	Zefanias
 Zeph	Zeph
 Zeph	Sef
+Zeph	Zef

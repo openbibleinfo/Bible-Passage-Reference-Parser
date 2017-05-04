@@ -8,12 +8,22 @@
 1Chr	Първа Книга на летописите
 1Chr	Първа книга Паралипоменон
 1Chr	Първа книга на летописите
+1Chr	Първо Книга на летописите
+1Chr	1-е. Книга Паралипоменон
+1Chr	1-я. Книга Паралипоменон
 1Chr	Prva kniha Paralipomenon
 1Chr	Prvá kniha Paralipomenon
+1Chr	1-е Книга Паралипоменон
+1Chr	1-я Книга Паралипоменон
+1Chr	1е. Книга Паралипоменон
+1Chr	1я. Книга Паралипоменон
 1Chr	Kwanza Mambo ya Nyakati
 1Chr	Prvy list Paralipomenon
 1Chr	Prvý list Paralipomenon
+1Chr	1. Книга Паралипоменон
 1Chr	1. Книга на летописите
+1Chr	1е Книга Паралипоменон
+1Chr	1я Книга Паралипоменон
 1Chr	I. Книга на летописите
 1Chr	Pierwsza Ksiega Kronik
 1Chr	Pierwsza Ksiegi Kronik
@@ -29,6 +39,7 @@
 1Chr	Pierwszy Księgi Kronik
 1Chr	itahās dī pahilī potʰī
 1Chr	سفر أخبار الأيام الأول
+1Chr	1 Книга Паралипоменон
 1Chr	1 Книга на летописите
 1Chr	Ensimmainen Aikakirja
 1Chr	Ensimmäinen Aikakirja
@@ -307,6 +318,7 @@
 1Chr	Перша Літопису
 1Chr	Перше Літопису
 1Chr	Първа Летописи
+1Chr	Първо Летописи
 1Chr	इतिहास 1ला भाग
 1Chr	इतिहास १ला भाग
 1Chr	ପ୍ରଥମ ବଂଶାବଳୀର
@@ -617,6 +629,8 @@
 1Chr	Χρονικών Αʹ
 1Chr	Χρονικών Α΄
 1Chr	Χρονικών Α’
+1Chr	Първа Парал
+1Chr	Първо Парал
 1Chr	اوّل تواریخ
 1Chr	اوّل۔تواریخ
 1Chr	1 Cronache
@@ -766,6 +780,7 @@
 1Chr	I. Kwonik
 1Chr	I. Хронік
 1Chr	Първа Лет
+1Chr	Първо Лет
 1Chr	الأخبار 1
 1Chr	۱-توارِیخ
 1Chr	1 Itihas
@@ -784,6 +799,7 @@
 1Chr	1. Istwa
 1Chr	1. Sử Ký
 1Chr	1. Sử ký
+1Chr	1. Парал
 1Chr	1e. Kron
 1Chr	1st Chrn
 1Chr	1st Chro
@@ -801,6 +817,7 @@
 1Chr	I. Istwa
 1Chr	I. Sử Ký
 1Chr	I. Sử ký
+1Chr	I. Парал
 1Chr	Prvni Pa
 1Chr	První Pa
 1Chr	۱ تواریخ
@@ -811,6 +828,7 @@
 1Chr	1 Istwa
 1Chr	1 Sử Ký
 1Chr	1 Sử ký
+1Chr	1 Парал
 1Chr	1 ਇਤਹਾਸ
 1Chr	1. Chrn
 1Chr	1. Chro
@@ -826,6 +844,7 @@
 1Chr	I Istwa
 1Chr	I Sử Ký
 1Chr	I Sử ký
+1Chr	I Парал
 1Chr	I. Chrn
 1Chr	I. Chro
 1Chr	I. Cron
@@ -934,19 +953,25 @@
 1Chr	I Pa
 1Chr	I Sử
 1Chr	《代上》
+1Chr	《歷上》
 1Chr	历代志上
 1Chr	歴代史上
 1Chr	歴代志上
+1Chr	歴代誌Ⅰ
 1Chr	歴代誌上
 1Chr	歷代志上
 1Chr	編年紀上
 1Chr	역대지상
 1Chr	1역대
+1Chr	Ⅰ歴代
 1Chr	《代上
+1Chr	《歷上
 1Chr	代上》
+1Chr	歷上》
 1Chr	역대상
 1Chr	代上
 1Chr	歴上
+1Chr	歷上
 1Chr	대상
 1Cor	Прва писмо од апостол Павле до христијаните во Коринт
 1Cor	Прво писмо од апостол Павле до христијаните во Коринт
@@ -1018,6 +1043,7 @@
 1Cor	Paulus’ 1 Brev til Korintherne
 1Cor	Waraka wa Kwanza kwa Wakorinto
 1Cor	Първо послание към коринтяните
+1Cor	אגרת פולוס הראשונה אל-הקורנתים
 1Cor	الرسالة الأولى إلى أهل كورنثوس
 1Cor	கொரிந்தியருக்கு எழுதிய முதலாம்
 1Cor	1 List sw. Pawła do Koryntian
@@ -1189,6 +1215,7 @@
 1Cor	1. Mga Taga Corinto
 1Cor	1. Mga Taga-Corinto
 1Cor	First Coriinthiians
+1Cor	Første Korinterbrev
 1Cor	Første korinterbrev
 1Cor	I Korinttolaiskirje
 1Cor	I Mga Taga- Corinto
@@ -1196,6 +1223,7 @@
 1Cor	I. Korinttilaisille
 1Cor	I. Mga Taga Corinto
 1Cor	Premier Corinthiens
+1Cor	הראשונה אל הקורנתים
 1Cor	1 Korinthierbrevet
 1Cor	1 Korinttilaisille
 1Cor	1 Mga Taga Corinto
@@ -1368,6 +1396,7 @@
 1Cor	Перша до коринтян
 1Cor	Перше до коринтян
 1Cor	Първа Коринтяните
+1Cor	Първо Коринтяните
 1Cor	ପ୍ରଥମ କରିନ୍ଥୀୟଙ୍କ
 1Cor	1 Korinterbrevet
 1Cor	1 Korintiyarukku
@@ -1501,6 +1530,7 @@
 1Cor	1. Cornithaians
 1Cor	1. Corrinthains
 1Cor	1. Corrinthians
+1Cor	1. Korinterbrev
 1Cor	1. Kurinthiayon
 1Cor	1. Taga-Corinto
 1Cor	1. korinterbrev
@@ -1595,6 +1625,7 @@
 1Cor	Прва Коринтјани
 1Cor	Прво Коринтјани
 1Cor	Първа Коринтяни
+1Cor	Първо Коринтяни
 1Cor	اوّل کرنتھِیُوں
 1Cor	اوّل کُرنتھِیوں
 1Cor	1 Choranthians
@@ -1618,6 +1649,7 @@
 1Cor	1 Cornithaians
 1Cor	1 Corrinthains
 1Cor	1 Corrinthians
+1Cor	1 Korinterbrev
 1Cor	1 Kurinthiayon
 1Cor	1 Taga-Corinto
 1Cor	1 e Korintasve
@@ -2252,6 +2284,7 @@
 1Cor	Kwanza Kor
 1Cor	۱۔کرنتھیوں
 1Cor	コリント人への前の書
+1Cor	コリント人への手紙Ⅰ
 1Cor	コリント人への手紙一
 1Cor	1 Corinth
 1Cor	1 Corinti
@@ -2283,6 +2316,7 @@
 1Cor	Prvni Kor
 1Cor	První Kor
 1Cor	Първа Кор
+1Cor	Първо Кор
 1Cor	1 Corini
 1Cor	1 Corint
 1Cor	1 Korint
@@ -2296,6 +2330,7 @@
 1Cor	I Korint
 1Cor	I. Corin
 1Cor	I. Corth
+1Cor	Ⅰ コリント人へ
 1Cor	1 Corin
 1Cor	1 Corth
 1Cor	1e. Kor
@@ -2377,6 +2412,7 @@
 1Cor	《林前
 1Cor	林前》
 1Cor	林前
+1Cor	고전
 1Esd	Kitabu cha Kwanza cha Ezra
 1Esd	Pierwsza Ksiega Ezdrasza
 1Esd	Pierwsza Ksiegi Ezdrasza
@@ -2593,6 +2629,7 @@
 1Esd	Перше Ездра
 1Esd	Перше Ездри
 1Esd	Първа Ездра
+1Esd	Първо Ездра
 1Esd	1 Ezdrasza
 1Esd	1 k Ezdras
 1Esd	1 k Ezdraš
@@ -2773,6 +2810,7 @@
 1Esd	1 Esdr
 1Esd	1 Esra
 1Esd	1 Ezra
+1Esd	1 Ездр
 1Esd	1. Esd
 1Esd	1. Esr
 1Esd	1. Ezd
@@ -2872,6 +2910,7 @@
 1John	1-ше послання апостола Івана
 1John	1. послание на апостол Јован
 1John	I. послание на апостол Јован
+1John	אגרתו הראשונה של יוחנן השליח
 1John	யோவான் எழுதிய முதலாம் கடிதம்
 1John	1 послание на апостол Јован
 1John	1-а послання апостола Івана
@@ -2933,6 +2972,8 @@
 1John	Fyrsta Jóhannesarbref
 1John	Fyrsta Jóhannesarbréf
 1John	Första Johannesbrevet
+1John	Første Johannes' Brev
+1John	Første Johannes’ Brev
 1John	I. посланица Јованова
 1John	Johannes' Første Brev
 1John	Johannes’ Første Brev
@@ -2986,14 +3027,18 @@
 1John	رسالة يوحنا الأولى
 1John	ଯୋହନଙ୍କ ପ୍ରଥମ ପତ୍ର
 1John	1 послание Иоанна
+1John	1. Johannes' Brev
 1John	1. Johannesbrevet
+1John	1. Johannes’ Brev
 1John	1. Послання Івана
 1John	I. Послання Івана
 1John	Johannes' 1. Brev
 1John	Johannes’ 1. Brev
 1John	Mutalavatu யோவான்
 1John	Mutalāvatu யோவான்
+1John	1 Johannes' Brev
 1John	1 Johannesbrevet
+1John	1 Johannes’ Brev
 1John	1 Послання Івана
 1John	1. List sw. Jana
 1John	1. List św. Jana
@@ -3089,6 +3134,9 @@
 1John	Прво Јованово
 1John	Първа Иоаново
 1John	Първа Йоаново
+1John	Първо Иоаново
+1John	Първо Йоаново
+1John	הראשונה יוחנן
 1John	رسالة يوحنا 1
 1John	1 list Januv
 1John	1 list Janův
@@ -3304,6 +3352,8 @@
 1John	Прво Јован
 1John	Първа Иоан
 1John	Първа Йоан
+1John	Първо Иоан
+1John	Първо Йоан
 1John	اوّل۔یوحنا
 1John	ﻳﻮﺣﻨﺎ ﺍﻻﻭﻝ
 1John	1 Ioannis
@@ -3554,6 +3604,7 @@
 1John	Prvni J
 1John	První J
 1John	۱۔یوحنا
+1John	ヨハネの手紙Ⅰ
 1John	ヨハネの手紙一
 1John	1 Ioan
 1John	1 Jaan
@@ -3645,13 +3696,13 @@
 1John	Αʹ Ιω
 1John	Α΄ Ιω
 1John	Α’ Ιω
+1John	Ⅰ ヨハネ
 1John	《伊望第一
 1John	《約翰一書
 1John	《約翰壹書
 1John	《约翰一书
 1John	《约翰壹书
 1John	《若望一書
-1John	ヨハネ 1
 1John	伊望第一》
 1John	約翰一書》
 1John	約翰壹書》
@@ -3669,6 +3720,7 @@
 1John	1 Ів
 1John	1 Јн
 1John	1 Ин
+1John	1 Йн
 1John	1 يو
 1John	1 யோ
 1John	1 ยน
@@ -3699,6 +3751,7 @@
 1John	约壹》
 1John	約壹
 1John	约壹
+1John	요일
 1Kgs	Ensimmainen Kuninkaiden kirja
 1Kgs	Ensimmäinen Kuninkaiden kirja
 1Kgs	Kitabu cha Kwanza cha Wafalme
@@ -3832,6 +3885,7 @@
 1Kgs	První kniha královská
 1Kgs	Trzecia Ks. Krolewska
 1Kgs	Trzecia Ks. Królewska
+1Kgs	Трета Книга на царете
 1Kgs	Трета книга на царете
 1Kgs	Трето Книга на царете
 1Kgs	ରାଜାବଳୀର ପ୍ରଥମ ପୁସ୍ତକ
@@ -4252,6 +4306,7 @@
 1Kgs	Tretia Kraľov
 1Kgs	Tretia Králov
 1Kgs	Tretia Kráľov
+1Kgs	Трета Царства
 1Kgs	Трето Царства
 1Kgs	ପ୍ରଥମ ରାଜାବଳୀ
 1Kgs	1 Boqorradii
@@ -4339,6 +4394,8 @@
 1Kgs	Βασιλειών Γ΄
 1Kgs	Βασιλειών Γ’
 1Kgs	Прва краљева
+1Kgs	Трета Царств
+1Kgs	Трето Царств
 1Kgs	الملوك الأول
 1Kgs	اوّل-سلاطِین
 1Kgs	1 Irajakkal
@@ -4429,6 +4486,7 @@
 1Kgs	III. Králov
 1Kgs	III. Kráľov
 1Kgs	III. Reinos
+1Kgs	III. Царств
 1Kgs	Prva Kralov
 1Kgs	Prva Kraľov
 1Kgs	Prva Králov
@@ -4549,6 +4607,7 @@
 1Kgs	III Králov
 1Kgs	III Kráľov
 1Kgs	III Reinos
+1Kgs	III Царств
 1Kgs	III. Царів
 1Kgs	Kiralyok I
 1Kgs	Királyok I
@@ -4558,6 +4617,7 @@
 1Kgs	První Kral
 1Kgs	První Král
 1Kgs	Unang Hari
+1Kgs	Трета Царе
 1Kgs	Трето Царе
 1Kgs	पहिले राजे
 1Kgs	ﺍﻟﻤﻠﻮﻙ ﺍﻷﻭ
@@ -4638,6 +4698,8 @@
 1Kgs	III. Царе
 1Kgs	Premye Wa
 1Kgs	Wafalme I
+1Kgs	Трета Цар
+1Kgs	Трето Цар
 1Kgs	۱-سلاطِین
 1Kgs	1 Konige
 1Kgs	1 Kralov
@@ -4705,6 +4767,7 @@
 1Kgs	I. царів
 1Kgs	III Regi
 1Kgs	III Царе
+1Kgs	III. Цар
 1Kgs	Prima Re
 1Kgs	Primo Re
 1Kgs	Prvni Kr
@@ -4766,6 +4829,7 @@
 1Kgs	I. Regi
 1Kgs	I. Reis
 1Kgs	I. Rois
+1Kgs	III Цар
 1Kgs	Regum I
 1Kgs	מלכים א
 1Kgs	1 Bren
@@ -4817,6 +4881,7 @@
 1Kgs	1°. Re
 1Kgs	3 Regi
 1Kgs	3 Царе
+1Kgs	3. Цар
 1Kgs	I Hari
 1Kgs	I Kigs
 1Kgs	I King
@@ -4940,6 +5005,7 @@
 1Kgs	列王 1
 1Kgs	列王紀上
 1Kgs	列王纪上
+1Kgs	列王記Ⅰ
 1Kgs	列王記上
 1Kgs	列王记上
 1Kgs	열왕기상
@@ -4949,6 +5015,7 @@
 1Kgs	I K
 1Kgs	Kgs
 1Kgs	Kin
+1Kgs	Ⅰ列王
 1Kgs	《王上
 1Kgs	王上》
 1Kgs	列上
@@ -5457,6 +5524,7 @@
 1Macc	Μακκαβαιων Α’
 1Macc	Прва Макавеја
 1Macc	Първа Макавеи
+1Macc	Първо Макавеи
 1Macc	1 Macabbbeee
 1Macc	1 Macabbbees
 1Macc	1 Macabbeees
@@ -5931,6 +5999,7 @@
 1Pet	I. послание на апостол Петар
 1Pet	Перша соборне послання Петра
 1Pet	Перше соборне послання Петра
+1Pet	אגרתו הראשונה של פטרוס השליח
 1Pet	பேதுரு எழுதிய முதலாம் கடிதம்
 1Pet	1 послание на апостол Петар
 1Pet	1-а послання апостола Петра
@@ -6127,12 +6196,16 @@
 1Pet	Перша Петрово
 1Pet	Перше Петрово
 1Pet	Първа Петрово
+1Pet	Първо Петрово
+1Pet	הראשונה פטרוס
 1Pet	1 Petersbrev
 1Pet	1 e. Pjetrit
 1Pet	1 i. Pjetrit
 1Pet	1-а. Петрово
 1Pet	1-е. Петрово
+1Pet	1-е. Петруса
 1Pet	1-ше Петрово
+1Pet	1-я. Петруса
 1Pet	1. San Pedro
 1Pet	1ere. Pierre
 1Pet	1o San Pedro
@@ -6162,8 +6235,10 @@
 1Pet	1 இராயப்பர்
 1Pet	1-а Петрово
 1Pet	1-е Петрово
+1Pet	1-е Петруса
 1Pet	1-е. Петира
 1Pet	1-ше. Петра
+1Pet	1-я Петруса
 1Pet	1-я. Петира
 1Pet	1. Phi-e-rơ
 1Pet	1. Pietarin
@@ -6173,6 +6248,8 @@
 1Pet	1ere Pierre
 1Pet	1re. Pierre
 1Pet	1ère Pierre
+1Pet	1е. Петруса
+1Pet	1я. Петруса
 1Pet	Eerste Petr
 1Pet	First Peter
 1Pet	I San Pedro
@@ -6186,6 +6263,7 @@
 1Pet	Перша Петра
 1Pet	Перше Петра
 1Pet	Първа Петър
+1Pet	Първо Петър
 1Pet	بطرس الأولى
 1Pet	ପ୍ରଥମ ପିତରଙ
 1Pet	1 Phi-e-rơ
@@ -6209,6 +6287,7 @@
 1Pet	1. Pjetrit
 1Pet	1. Петрова
 1Pet	1. Петрово
+1Pet	1. Петруса
 1Pet	1.o. Pedro
 1Pet	1.º. Pedro
 1Pet	1e. Petrus
@@ -6216,7 +6295,9 @@
 1Pet	1re Pierre
 1Pet	1st. Peter
 1Pet	1°. Pietro
+1Pet	1е Петруса
 1Pet	1е. Петира
+1Pet	1я Петруса
 1Pet	1я. Петира
 1Pet	Eerste Pet
 1Pet	Elso Peter
@@ -6242,6 +6323,7 @@
 1Pet	Прва Петар
 1Pet	Прво Петар
 1Pet	Първа Петр
+1Pet	Първо Петр
 1Pet	اوّل پطر س
 1Pet	베드로의 첫째 서간
 1Pet	1 Pataras
@@ -6250,6 +6332,7 @@
 1Pet	1 Pjetrit
 1Pet	1 Петрова
 1Pet	1 Петрово
+1Pet	1 Петруса
 1Pet	1-а Петра
 1Pet	1-е Петра
 1Pet	1-я Петра
@@ -6321,6 +6404,7 @@
 1Pet	Πετρου Α΄
 1Pet	Πετρου Α’
 1Pet	Първа Пет
+1Pet	Първо Пет
 1Pet	اوّل پطرس
 1Pet	اوّل-پطرس
 1Pet	اوّل۔پطرس
@@ -6466,8 +6550,10 @@
 1Pet	۱ پطر س
 1Pet	《伯多祿前書》
 1Pet	ヘテロの前の書
+1Pet	ヘテロの手紙Ⅰ
 1Pet	ヘトロの手紙一
 1Pet	ペテロの前の書
+1Pet	ペテロの手紙Ⅰ
 1Pet	ペトロの手紙一
 1Pet	1 Pedr
 1Pet	1 Pete
@@ -6569,6 +6655,8 @@
 1Pet	Α΄ Πε
 1Pet	Α’ Πέ
 1Pet	Α’ Πε
+1Pet	Ⅰ ヘテロ
+1Pet	Ⅰ ペテロ
 1Pet	《彼得前书
 1Pet	《彼得前書
 1Pet	《撇特爾前
@@ -6605,6 +6693,7 @@
 1Pet	《彼前
 1Pet	彼前》
 1Pet	彼前
+1Pet	벧전
 1Sam	Kitabu cha Kwanza cha Samueli
 1Sam	சாமுவேலின் முதலாம் புத்தகம்
 1Sam	Ensimmainen Samuelin kirja
@@ -6660,6 +6749,7 @@
 1Sam	Перше книга Самуїлова
 1Sam	Първа Книга на царете
 1Sam	Първа книга на Самуил
+1Sam	Първо Книга на царете
 1Sam	1-а. книга Самуілова
 1Sam	1-а. книга Самуїлова
 1Sam	1-е. книга Самуілова
@@ -6875,6 +6965,7 @@
 1Sam	Primer Samuel
 1Sam	Primo Samuele
 1Sam	Първа Царства
+1Sam	Първо Царства
 1Sam	الممالك الأول
 1Sam	ପ୍ରଥମ ଶାମୁୟେଲ
 1Sam	1 Ks Samuela
@@ -6938,6 +7029,9 @@
 1Sam	Перше Самуіл
 1Sam	Перше Самуїл
 1Sam	Първа Самуил
+1Sam	Първа Царств
+1Sam	Първо Самуил
+1Sam	Първо Царств
 1Sam	صموئيل الأول
 1Sam	पहिले शमुवेल
 1Sam	1 Samuelova
@@ -7098,6 +7192,7 @@
 1Sam	Α’ Σαμουήλ
 1Sam	Α’ Σαμουηλ
 1Sam	Първа Царе
+1Sam	Първо Царе
 1Sam	1 Camuvel
 1Sam	1 Camuvēl
 1Sam	1 Cāmuvel
@@ -7169,9 +7264,12 @@
 1Sam	I. Самуил
 1Sam	I. Самуіл
 1Sam	I. Самуїл
+1Sam	I. Царств
 1Sam	Prvni Sam
 1Sam	První Sam
 1Sam	Samueli I
+1Sam	Първа Цар
+1Sam	Първо Цар
 1Sam	1 Reinos
 1Sam	1 Samual
 1Sam	1 Samuel
@@ -7214,6 +7312,7 @@
 1Sam	I Самуил
 1Sam	I Самуіл
 1Sam	I Самуїл
+1Sam	I Царств
 1Sam	Samuel I
 1Sam	Sámuel I
 1Sam	שמואל א'
@@ -7247,6 +7346,7 @@
 1Sam	1. Sam
 1Sam	1. Sma
 1Sam	1. Sám
+1Sam	1. Цар
 1Sam	1. शमू
 1Sam	1. ซมอ
 1Sam	1e Sam
@@ -7256,6 +7356,7 @@
 1Sam	I. Sam
 1Sam	I. Sma
 1Sam	I. Sám
+1Sam	I. Цар
 1Sam	Samual
 1Sam	Samuel
 1Sam	Α' Σαμ
@@ -7268,6 +7369,7 @@
 1Sam	《撒母耳记上
 1Sam	サムエル 1
 1Sam	サムエル前書
+1Sam	サムエル記Ⅰ
 1Sam	サムエル記上
 1Sam	列王記第一巻
 1Sam	撒慕爾紀上》
@@ -7285,8 +7387,10 @@
 1Sam	I Sam
 1Sam	I Sma
 1Sam	I Sám
+1Sam	I Цар
 1Sam	I. Sa
 1Sam	I. Sm
+1Sam	Ⅰサムエル
 1Sam	サムエル上
 1Sam	撒慕爾紀上
 1Sam	撒母耳記上
@@ -7459,6 +7563,7 @@
 1Thess	tʰissalonikīharūlaī pahilo patra
 1Thess	tʰissalonikīharūlāi pahilo patra
 1Thess	tʰissalonikīharūlāī pahilo patra
+1Thess	אגרת פולוס הראשונה אל-התסלוניקים
 1Thess	الرسالة الأولى إلى أهل تسالونيكي
 1Thess	1 List sw Pawła do Tesaloniczan
 1Thess	1 List św Pawła do Tesaloniczan
@@ -8420,6 +8525,7 @@
 1Thess	Wathesalonike I
 1Thess	Прва Солуњанима
 1Thess	Първа Солунците
+1Thess	Първо Солунците
 1Thess	اوّل۔تھسلنیکیوں
 1Thess	۱-تھِسّلُنیکیوں
 1Thess	1 Tesaloniceni
@@ -8515,6 +8621,8 @@
 1Thess	Прва Солунјани
 1Thess	Прво Солунците
 1Thess	Прво Солунјани
+1Thess	Първа Солуняни
+1Thess	Първо Солуняни
 1Thess	۱ تھِسلُنیکیوں
 1Thess	ﺍﻻﻭﻝ ﺗﺴﺎﻟﻮﻧﻴﻜﻲ
 1Thess	1 Selanikasve
@@ -8578,6 +8686,7 @@
 1Thess	Перша Солунян
 1Thess	Перше Солунян
 1Thess	Първа Солунци
+1Thess	Първо Солунци
 1Thess	۱ تھسّلنیکیوں
 1Thess	テサロニケの信徒への手紙一
 1Thess	テサロニケ人への第一の手紙
@@ -8656,6 +8765,7 @@
 1Thess	1-а Солунян
 1Thess	1-е Солунян
 1Thess	1. Солуньці
+1Thess	1. Солуняни
 1Thess	1st. Thesss
 1Thess	Eerste Tess
 1Thess	Elso Thessz
@@ -8672,14 +8782,17 @@
 1Thess	I Солунците
 1Thess	I Солунјани
 1Thess	I. Солуньці
+1Thess	I. Солуняни
 1Thess	Kwanza Thes
 1Thess	Thesalonian
 1Thess	Thesalonins
 1Thess	Theselonian
 1Thess	Thesolonian
 1Thess	テサロニケ人への前の書
+1Thess	テサロニケ人への手紙Ⅰ
 1Thess	テサロニケ人への手紙一
 1Thess	1 Солуньці
+1Thess	1 Солуняни
 1Thess	1. Солунци
 1Thess	1. Солунян
 1Thess	1st Thesss
@@ -8691,6 +8804,7 @@
 1Thess	First Thes
 1Thess	First Thss
 1Thess	I Солуньці
+1Thess	I Солуняни
 1Thess	I. Солунци
 1Thess	I. Солунян
 1Thess	Kwanza The
@@ -8712,6 +8826,8 @@
 1Thess	Prvni Sol
 1Thess	První Sol
 1Thess	Първа Сол
+1Thess	Първо Сол
+1Thess	Ⅰ テサロニケ人へ
 1Thess	《帖撒罗尼迦前书》
 1Thess	《帖撒羅尼迦前書》
 1Thess	1 Thesss
@@ -8836,6 +8952,7 @@
 1Thess	帖前》
 1Thess	莎倫前
 1Thess	帖前
+1Thess	살전
 1Tim	1-ше. послання св. апостола Павла до Ти­мофія
 1Tim	Перша послання св. апостола Павла до Ти­мофія
 1Tim	Перше послання св. апостола Павла до Ти­мофія
@@ -8969,6 +9086,7 @@
 1Tim	I. List sw Pawła do Tymoteusza
 1Tim	I. List św Pawła do Tymoteusza
 1Tim	tīmutʰiyus ke nām kā pahlā ḫaṭ
+1Tim	אגרת פולוס הראשונה אל-טימותיוס
 1Tim	1 List sw Pawła do Tymoteusza
 1Tim	1 List św Pawła do Tymoteusza
 1Tim	I List sw Pawła do Tymoteusza
@@ -9081,6 +9199,8 @@
 1Tim	I. Timoteju Poslanica
 1Tim	I. посланица Тимотеју
 1Tim	Prva kniha Timotejovi
+1Tim	Prvni list Timotejovi
+1Tim	První list Timotejovi
 1Tim	Prvá kniha Timotejovi
 1Tim	1 List do Tymoteusza
 1Tim	1 Timoteju Poslanica
@@ -9121,16 +9241,20 @@
 1Tim	הראשונה אל טימותיוס
 1Tim	1 послання Тимофію
 1Tim	1. Timotheosbrevet
+1Tim	1. list Timotejovi
 1Tim	I послання Тимофію
+1Tim	I. list Timotejovi
 1Tim	Koiro Ximootiyoosa
 1Tim	Premieres Timothee
 1Tim	Premieres Timothée
 1Tim	Premières Timothee
 1Tim	Premières Timothée
 1Tim	1 Timotheosbrevet
+1Tim	1 list Timotejovi
 1Tim	1. Timoteusbrevet
 1Tim	1. list Timeteovi
 1Tim	1. list Timoteovi
+1Tim	I list Timotejovi
 1Tim	I. list Timeteovi
 1Tim	I. list Timoteovi
 1Tim	Premiere Timothee
@@ -9175,6 +9299,8 @@
 1Tim	Primeira Timóteo
 1Tim	Primeiro Timoteo
 1Tim	Primeiro Timóteo
+1Tim	Prvni Timotejovi
+1Tim	První Timotejovi
 1Tim	Timoteyos Kowaad
 1Tim	Προς Τιμοθεον Α'
 1Tim	Προς Τιμοθεον Αʹ
@@ -9335,6 +9461,8 @@
 1Tim	Прва Тимотеју
 1Tim	Първа Тимотеи
 1Tim	Първа Тимотей
+1Tim	Първо Тимотеи
+1Tim	Първо Тимотей
 1Tim	۱ تِیمُتھِیُس
 1Tim	۱-تِیمُتھِیُس
 1Tim	ﺍﻻﻭﻝ ﺗﻴﻤﻮﺛﺎﻭﺱ
@@ -9604,6 +9732,7 @@
 1Tim	Prvni Tim
 1Tim	První Tim
 1Tim	Първа Тим
+1Tim	Първо Тим
 1Tim	۱۔تیمتھیس
 1Tim	1 Timote
 1Tim	1 Timoth
@@ -9622,6 +9751,7 @@
 1Tim	Prvni Tm
 1Tim	První Tm
 1Tim	テモテへの前の書
+1Tim	テモテへの手紙Ⅰ
 1Tim	テモテへの手紙一
 1Tim	1e. Tim
 1Tim	1st Tim
@@ -9650,6 +9780,7 @@
 1Tim	Αʹ Τιμ
 1Tim	Α΄ Τιμ
 1Tim	Α’ Τιμ
+1Tim	Ⅰ テモテへ
 1Tim	《弟茂德前書
 1Tim	《提摩太前书
 1Tim	《提摩太前書
@@ -9686,6 +9817,7 @@
 1Tim	提摩太前書
 1Tim	提摩斐前》
 1Tim	디모데1서
+1Tim	디모데전서
 1Tim	1 Ti
 1Tim	1 Tm
 1Tim	1 ทธ
@@ -9699,6 +9831,7 @@
 1Tim	《提前
 1Tim	提前》
 1Tim	提前
+1Tim	딤전
 2Chr	Hanidabaa Odiya Naa77antto Maxaafaa
 2Chr	நாளாகமத்தின் இரண்டாம் புத்தகம்
 2Chr	или Втора книга Паралипоменон
@@ -9708,17 +9841,28 @@
 2Chr	Втора Книга на летописите
 2Chr	Втора книга Паралипоменон
 2Chr	Втора книга на летописите
+2Chr	Второ Книга на летописите
+2Chr	2-е. Книга Паралипоменон
+2Chr	2-я. Книга Паралипоменон
 2Chr	Druhy list Paralipomenon
 2Chr	Druhý list Paralipomenon
+2Chr	2-е Книга Паралипоменон
+2Chr	2-я Книга Паралипоменон
+2Chr	2е. Книга Паралипоменон
+2Chr	2я. Книга Паралипоменон
 2Chr	II. Книга на летописите
 2Chr	سفر أخبار الأيام الثاني
 2Chr	ବଂଶାବଳୀର ଦ୍ୱିତୀୟ ପୁସ୍ତକ
+2Chr	2. Книга Паралипоменон
 2Chr	2. Книга на летописите
+2Chr	2е Книга Паралипоменон
+2Chr	2я Книга Паралипоменон
 2Chr	Druga knjiga Ljetopisa
 2Chr	II Книга на летописите
 2Chr	Ikalawang Paralipomeno
 2Chr	Liber II Paralipomenon
 2Chr	इतिहासको दोस्रो पुस्तक
+2Chr	2 Книга Паралипоменон
 2Chr	2 Книга на летописите
 2Chr	Ikalawang Mga Cronica
 2Chr	Ikalawang Mga Kronika
@@ -10340,6 +10484,8 @@
 2Chr	Χρονικών Βʹ
 2Chr	Χρονικών Β΄
 2Chr	Χρονικών Β’
+2Chr	Втора Парал
+2Chr	Второ Парал
 2Chr	دوم تو اریخ
 2Chr	2 Cronache
 2Chr	2 Cronicas
@@ -10453,7 +10599,9 @@
 2Chr	II. Chron
 2Chr	II. Istwa
 2Chr	II. Sử ký
+2Chr	II. Парал
 2Chr	Втора Лет
+2Chr	Второ Лет
 2Chr	الأخبار 2
 2Chr	۲ تو اریخ
 2Chr	2  Sử Ký
@@ -10471,6 +10619,7 @@
 2Chr	2. Chron
 2Chr	2. Istwa
 2Chr	2. Sử ký
+2Chr	2. Парал
 2Chr	2e. Kron
 2Chr	2nd Chrn
 2Chr	2nd Chro
@@ -10485,6 +10634,7 @@
 2Chr	II Chron
 2Chr	II Istwa
 2Chr	II Sử ký
+2Chr	II Парал
 2Chr	II. Chrn
 2Chr	II. Chro
 2Chr	II. Cron
@@ -10498,6 +10648,7 @@
 2Chr	2 Chron
 2Chr	2 Istwa
 2Chr	2 Sử ký
+2Chr	2 Парал
 2Chr	2 ਇਤਹਾਸ
 2Chr	2. Chrn
 2Chr	2. Chro
@@ -10610,19 +10761,25 @@
 2Chr	2 أخ
 2Chr	2Chr
 2Chr	《代下》
+2Chr	《歷下》
 2Chr	历代志下
 2Chr	歴代史下
 2Chr	歴代志下
+2Chr	歴代誌Ⅱ
 2Chr	歴代誌下
 2Chr	歷代志下
 2Chr	編年紀下
 2Chr	역대지하
 2Chr	2역대
+2Chr	Ⅱ歴代
 2Chr	《代下
+2Chr	《歷下
 2Chr	代下》
+2Chr	歷下》
 2Chr	역대하
 2Chr	代下
 2Chr	歴下
+2Chr	歷下
 2Chr	대하
 2Cor	Втора писмо од апостол Павле до христијаните во Коринт
 2Cor	Второ писмо од апостол Павле до христијаните во Коринт
@@ -10712,6 +10869,7 @@
 2Cor	II List św Pawła do Koryntian
 2Cor	Toinen Kirje korinttilaisille
 2Cor	Waraka wa Pili kwa Wakorintho
+2Cor	אגרת פולוס השנייה אל-הקורנתים
 2Cor	2 List sw Pawła do Koryntian
 2Cor	2 List św Pawła do Koryntian
 2Cor	Barua ya Pili kwa Wakorintho
@@ -10919,6 +11077,7 @@
 2Cor	2. list Korintskym
 2Cor	2. list Korintským
 2Cor	2nd. Coriinthiians
+2Cor	Anden Korinterbrev
 2Cor	Andre korinterbrev
 2Cor	II Korinthusiakhoz
 2Cor	II list Korintskym
@@ -10966,6 +11125,7 @@
 2Cor	Προς Κορινθιους Βʹ
 2Cor	Προς Κορινθιους Β΄
 2Cor	Προς Κορινθιους Β’
+2Cor	השנייה אל הקורנתים
 2Cor	코린토 신자들에게 보낸 둘째 서간
 2Cor	2 Korintherbrevet
 2Cor	2 Korinthusiakhoz
@@ -11058,6 +11218,7 @@
 2Cor	Втора Коринтяните
 2Cor	Втора Коринќаните
 2Cor	Второ Коринканите
+2Cor	Второ Коринтяните
 2Cor	Второ Коринќаните
 2Cor	Друга Коринћанима
 2Cor	Друга до коринтян
@@ -11214,6 +11375,7 @@
 2Cor	2. Cornithaians
 2Cor	2. Corrinthains
 2Cor	2. Corrinthians
+2Cor	2. Korinterbrev
 2Cor	2. Kurinthiayon
 2Cor	2. Taga-Corinto
 2Cor	2. korinterbrev
@@ -11317,6 +11479,7 @@
 2Cor	Tweede Corinthe
 2Cor	Tweede Korinthe
 2Cor	Втора Коринтяни
+2Cor	Второ Коринтяни
 2Cor	Друга Коринтяни
 2Cor	Друге Коринтяни
 2Cor	دوم-کُرِنتھِیوں
@@ -11342,6 +11505,7 @@
 2Cor	2 Cornithaians
 2Cor	2 Corrinthains
 2Cor	2 Corrinthians
+2Cor	2 Korinterbrev
 2Cor	2 Kurinthiayon
 2Cor	2 Taga-Corinto
 2Cor	2 e Korintasve
@@ -11882,6 +12046,7 @@
 2Cor	۲ کرنتھیوں
 2Cor	۲۔کرنتھیوں
 2Cor	コリント人への後の書
+2Cor	コリント人への手紙Ⅱ
 2Cor	コリント人への手紙二
 2Cor	2 Corinth
 2Cor	2 Corinti
@@ -11905,6 +12070,7 @@
 2Cor	II. Corth
 2Cor	Second Co
 2Cor	Втора Кор
+2Cor	Второ Кор
 2Cor	2 Corini
 2Cor	2 Corint
 2Cor	2 Korint
@@ -11914,6 +12080,7 @@
 2Cor	II Corin
 2Cor	II Corth
 2Cor	Pili Kor
+2Cor	Ⅱ コリント人へ
 2Cor	2 Corin
 2Cor	2 Corth
 2Cor	2e. Kor
@@ -12002,6 +12169,7 @@
 2Cor	林後》
 2Cor	林后
 2Cor	林後
+2Cor	고후
 2Esd	Kitabu cha Pili cha Ezra
 2Esd	Druga Ksiega Ezdrasza
 2Esd	Druga Ksiegi Ezdrasza
@@ -12211,10 +12379,13 @@
 2Esd	Vierde Ezra
 2Esd	Zweite Esra
 2Esd	Втора Ездра
+2Esd	Второ Ездра
 2Esd	Друга Ездра
 2Esd	Друга Ездри
 2Esd	Друге Ездра
 2Esd	Друге Ездри
+2Esd	Трета Ездра
+2Esd	Трето Ездра
 2Esd	2 Ezdrasza
 2Esd	2 k Ezdras
 2Esd	2 k Ezdraš
@@ -12251,6 +12422,7 @@
 2Esd	II. Ezdrás
 2Esd	II. Ezdráš
 2Esd	II. Ésdras
+2Esd	III. Ездра
 2Esd	IV. Esdras
 2Esd	Second Esd
 2Esd	2 Ездрина
@@ -12293,6 +12465,7 @@
 2Esd	II. Ezdra
 2Esd	II. Ездра
 2Esd	II. Ездри
+2Esd	III Ездра
 2Esd	IV Esdras
 2Esd	IV. Esdra
 2Esd	IV. Ezdra
@@ -12332,6 +12505,7 @@
 2Esd	2nd Esdr
 2Esd	2nd. Esd
 2Esd	2° Esdra
+2Esd	3. Ездра
 2Esd	3. Ездры
 2Esd	3е Ездры
 2Esd	3я Ездры
@@ -12358,6 +12532,7 @@
 2Esd	2. Ezra
 2Esd	2e Ezra
 2Esd	2nd Esd
+2Esd	3 Ездра
 2Esd	3 Ездры
 2Esd	4 Esdra
 2Esd	4 Ezdra
@@ -12387,9 +12562,11 @@
 2Esd	2 Esdr
 2Esd	2 Esra
 2Esd	2 Ezra
+2Esd	2 Ездр
 2Esd	2. Esd
 2Esd	2. Esr
 2Esd	2. Ezd
+2Esd	3 Ездр
 2Esd	4 Esra
 2Esd	4 Ezra
 2Esd	II Esd
@@ -12584,6 +12761,8 @@
 2John	2-я. послание Иоанна
 2John	2. Ivanova Poslanica
 2John	2. Johanneksen kirje
+2John	Anden Johannes' Brev
+2John	Anden Johannes’ Brev
 2John	Andra Johannesbrevet
 2John	Annað Johannesarbref
 2John	Annað Johannesarbréf
@@ -12631,7 +12810,9 @@
 2John	איגרת יוחנן השנייה
 2John	یوحنّا کا دوسرا خط
 2John	2 послание Иоанна
+2John	2. Johannes' Brev
 2John	2. Johannesbrevet
+2John	2. Johannes’ Brev
 2John	2. Послання Івана
 2John	Druha kniha Janov
 2John	Druha kniha Jánov
@@ -12640,7 +12821,9 @@
 2John	II Послання Івана
 2John	II. List sw. Jana
 2John	II. List św. Jana
+2John	2 Johannes' Brev
 2John	2 Johannesbrevet
+2John	2 Johannes’ Brev
 2John	2 Послання Івана
 2John	2. List sw. Jana
 2John	2. List św. Jana
@@ -12724,6 +12907,8 @@
 2John	Második János
 2John	Втора Иоаново
 2John	Втора Йоаново
+2John	Второ Иоаново
+2John	Второ Йоаново
 2John	Друга Иоаново
 2John	Друга Йоаново
 2John	Друге Иоаново
@@ -12789,6 +12974,7 @@
 2John	Segundo Juun
 2John	Друга Іоанна
 2John	Друге Іоанна
+2John	השנייה יוחנן
 2John	2 List Jana
 2John	2 e. Gjonit
 2John	2 i. Gjonit
@@ -12957,6 +13143,8 @@
 2John	Ιωαννου Β’
 2John	Втора Иоан
 2John	Втора Йоан
+2John	Второ Иоан
+2John	Второ Йоан
 2John	دوم یوحنّا
 2John	2 Ioannis
 2John	2 Ivanova
@@ -13223,6 +13411,7 @@
 2John	II. Jóh
 2John	II. Yoh
 2John	۲۔یوحنا
+2John	ヨハネの手紙Ⅱ
 2John	ヨハネの手紙二
 2John	2 Ioan
 2John	2 Jaan
@@ -13296,13 +13485,13 @@
 2John	Βʹ Ιω
 2John	Β΄ Ιω
 2John	Β’ Ιω
+2John	Ⅱ ヨハネ
 2John	《伊望第二
 2John	《約翰二書
 2John	《約翰貳書
 2John	《约翰二书
 2John	《约翰贰书
 2John	《若望二書
-2John	ヨハネ 2
 2John	伊望第二》
 2John	約翰二書》
 2John	約翰貳書》
@@ -13320,12 +13509,14 @@
 2John	2 Ів
 2John	2 Јн
 2John	2 Ин
+2John	2 Йн
 2John	2 يو
 2John	2 யோ
 2John	2 ยน
 2John	2. J
 2John	II J
 2John	《約貳》
+2John	《約贰》
 2John	《约贰》
 2John	二ヨハネ
 2John	伊望第二
@@ -13339,11 +13530,15 @@
 2John	2 J
 2John	2요한
 2John	《約貳
+2John	《約贰
 2John	《约贰
 2John	約貳》
+2John	約贰》
 2John	约贰》
 2John	約貳
+2John	約贰
 2John	约贰
+2John	요이
 2Kgs	இராஜாக்களின் இரண்டாம் புத்தகம்
 2Kgs	Kawotu Maxaafaa Naa77anttuwaa
 2Kgs	Kitabu cha Pili cha Wafalme
@@ -13363,6 +13558,7 @@
 2Kgs	Toinen Kuninkaiden kirja
 2Kgs	Четвърта Книга на царете
 2Kgs	Четвърта книга на царете
+2Kgs	Четвърто Книга на царете
 2Kgs	Втора книга за царевите
 2Kgs	Второ книга за царевите
 2Kgs	राजाहरूको दोस्रो पुस्तक
@@ -13712,6 +13908,7 @@
 2Kgs	Második Királyok
 2Kgs	Друга о царевима
 2Kgs	Четвърта Царства
+2Kgs	Четвърто Царства
 2Kgs	ଦ୍ୱିତୀୟ ରାଜାବଳୀର
 2Kgs	2 Ks. Krolewska
 2Kgs	2 Ks. Królewska
@@ -13781,6 +13978,8 @@
 2Kgs	IV Ks Krolewska
 2Kgs	IV Ks Królewska
 2Kgs	Tweede Koningen
+2Kgs	Четвърта Царств
+2Kgs	Четвърто Царств
 2Kgs	ଦ୍ୱିତୀୟ ରାଜାବଳୀ
 2Kgs	2 Konungaboken
 2Kgs	2 Ks Krolewska
@@ -13897,6 +14096,7 @@
 2Kgs	Štvrtá Kráľov
 2Kgs	Друга краљева
 2Kgs	Четвърта Царе
+2Kgs	Четвърто Царе
 2Kgs	ﺍﻟﻤﻠﻮﻙ ﺍﻟﺜﺎﻧﻲ
 2Kgs	2 Boqorradii
 2Kgs	2 Breninoedd
@@ -13996,6 +14196,8 @@
 2Kgs	Втора Цареви
 2Kgs	Второ Цареви
 2Kgs	Друга Царева
+2Kgs	Четвърта Цар
+2Kgs	Четвърто Цар
 2Kgs	2 Irajakkal
 2Kgs	2 Irajakkaḷ
 2Kgs	2 Irajākkal
@@ -14174,6 +14376,7 @@
 2Kgs	IV. Králov
 2Kgs	IV. Kráľov
 2Kgs	IV. Reinos
+2Kgs	IV. Царств
 2Kgs	Second Kgs
 2Kgs	Second Kig
 2Kgs	Second Kin
@@ -14259,6 +14462,7 @@
 2Kgs	IV Králov
 2Kgs	IV Kráľov
 2Kgs	IV Reinos
+2Kgs	IV Царств
 2Kgs	IV. Царів
 2Kgs	Second Kg
 2Kgs	Second Ki
@@ -14409,6 +14613,7 @@
 2Kgs	II. Împ
 2Kgs	IV Regi
 2Kgs	IV Царе
+2Kgs	IV. Цар
 2Kgs	מלכים ב
 2Kgs	2 Bren
 2Kgs	2 Hari
@@ -14460,6 +14665,7 @@
 2Kgs	2°. Re
 2Kgs	4 Regi
 2Kgs	4 Царе
+2Kgs	4. Цар
 2Kgs	II Boq
 2Kgs	II Fal
 2Kgs	II Imp
@@ -14481,6 +14687,7 @@
 2Kgs	II. Kr
 2Kgs	II. Re
 2Kgs	II. Wa
+2Kgs	IV Цар
 2Kgs	Β' Βασ
 2Kgs	Βʹ Βασ
 2Kgs	Βʹ Βασ
@@ -14563,12 +14770,14 @@
 2Kgs	列王 2
 2Kgs	列王紀下
 2Kgs	列王纪下
+2Kgs	列王記Ⅱ
 2Kgs	列王記下
 2Kgs	列王记下
 2Kgs	열왕기하
 2Kgs	2 R
 2Kgs	2열왕
 2Kgs	4 Ц
+2Kgs	Ⅱ列王
 2Kgs	《王下
 2Kgs	王下》
 2Kgs	列下
@@ -15109,6 +15318,7 @@
 2Macc	Μακκαβαιων Β΄
 2Macc	Μακκαβαιων Β’
 2Macc	Втора Макавеи
+2Macc	Второ Макавеи
 2Macc	2 Macabbbeee
 2Macc	2 Macabbbees
 2Macc	2 Macabbeees
@@ -15773,6 +15983,8 @@
 2Pet	2-а. Петрово
 2Pet	2-ге Петрово
 2Pet	2-е. Петрово
+2Pet	2-е. Петруса
+2Pet	2-я. Петруса
 2Pet	2. San Pedro
 2Pet	2eme. Pierre
 2Pet	2o San Pedro
@@ -15797,6 +16009,7 @@
 2Pet	II. Phi-e-rơ
 2Pet	II. Pietarin
 2Pet	Second Peter
+2Pet	השנייה פטרוס
 2Pet	بطرس الثانية
 2Pet	رسالة بطرس 2
 2Pet	2 San Pedro
@@ -15808,7 +16021,9 @@
 2Pet	2-а Петрово
 2Pet	2-ге. Петра
 2Pet	2-е Петрово
+2Pet	2-е Петруса
 2Pet	2-е. Петира
+2Pet	2-я Петруса
 2Pet	2-я. Петира
 2Pet	2. Phi-e-rơ
 2Pet	2. Pietarin
@@ -15817,6 +16032,8 @@
 2Pet	2de. Pierre
 2Pet	2eme Pierre
 2Pet	2ème Pierre
+2Pet	2е. Петруса
+2Pet	2я. Петруса
 2Pet	Anden Peter
 2Pet	Andre Peter
 2Pet	Druga Piotr
@@ -15837,6 +16054,7 @@
 2Pet	Втора Петар
 2Pet	Втора Петър
 2Pet	Второ Петар
+2Pet	Второ Петър
 2Pet	Друга Петра
 2Pet	Друге Петра
 2Pet	2 Phi-e-rơ
@@ -15860,6 +16078,7 @@
 2Pet	2. Pjetrit
 2Pet	2. Петрова
 2Pet	2. Петрово
+2Pet	2. Петруса
 2Pet	2.o. Pedro
 2Pet	2.º. Pedro
 2Pet	2d. Pierre
@@ -15868,7 +16087,9 @@
 2Pet	2e. Pierre
 2Pet	2nd. Peter
 2Pet	2°. Pietro
+2Pet	2е Петруса
 2Pet	2е. Петира
+2Pet	2я Петруса
 2Pet	2я. Петира
 2Pet	Dezyem Pie
 2Pet	Dezyem Piè
@@ -15903,6 +16124,7 @@
 2Pet	Second Ptr
 2Pet	Tweede Pet
 2Pet	Втора Петр
+2Pet	Второ Петр
 2Pet	베드로의 둘째 서간
 2Pet	2 Pataras
 2Pet	2 Petrova
@@ -15910,6 +16132,7 @@
 2Pet	2 Pjetrit
 2Pet	2 Петрова
 2Pet	2 Петрово
+2Pet	2 Петруса
 2Pet	2-а Петра
 2Pet	2-е Петра
 2Pet	2-я Петра
@@ -15990,6 +16213,7 @@
 2Pet	Πετρου Β΄
 2Pet	Πετρου Β’
 2Pet	Втора Пет
+2Pet	Второ Пет
 2Pet	دوم پطر س
 2Pet	ヘテロの第二の手紙
 2Pet	ヘトロの第二の手紙
@@ -16128,8 +16352,10 @@
 2Pet	۲ پطر س
 2Pet	《伯多祿後書》
 2Pet	ヘテロの後の書
+2Pet	ヘテロの手紙Ⅱ
 2Pet	ヘトロの手紙二
 2Pet	ペテロの後の書
+2Pet	ペテロの手紙Ⅱ
 2Pet	ペトロの手紙二
 2Pet	2 Pedr
 2Pet	2 Pete
@@ -16218,6 +16444,8 @@
 2Pet	Β΄ Πε
 2Pet	Β’ Πέ
 2Pet	Β’ Πε
+2Pet	Ⅱ ヘテロ
+2Pet	Ⅱ ペテロ
 2Pet	《彼得后书
 2Pet	《彼得後書
 2Pet	《撇特爾後
@@ -16255,6 +16483,7 @@
 2Pet	彼後》
 2Pet	彼后
 2Pet	彼後
+2Pet	벧후
 2Sam	Sameela Maxaafaa Naa77anttuwaa
 2Sam	சாமுவேலின் இரண்டாம் புத்தகம்
 2Sam	Kitabu cha Pili cha Samueli
@@ -16282,6 +16511,7 @@
 2Sam	Втора Книга на царете
 2Sam	Втора книга Самоилова
 2Sam	Втора книга на Самуил
+2Sam	Второ Книга на царете
 2Sam	Второ книга Самоилова
 2Sam	Друга книга Самуілова
 2Sam	Друга книга Самуїлова
@@ -16521,6 +16751,7 @@
 2Sam	Tweede Samuël
 2Sam	Zweite Samuel
 2Sam	Втора Царства
+2Sam	Второ Царства
 2Sam	صموئيل الثاني
 2Sam	2 Ks Samuela
 2Sam	2 Samuelsbog
@@ -16581,7 +16812,9 @@
 2Sam	Βασιλειών Β΄
 2Sam	Βασιλειών Β’
 2Sam	Втора Самуил
+2Sam	Втора Царств
 2Sam	Второ Самуил
+2Sam	Второ Царств
 2Sam	Друга Samuil
 2Sam	Друга Samuïl
 2Sam	Друга Самуіл
@@ -16734,6 +16967,7 @@
 2Sam	II. Самуил
 2Sam	II. Самуіл
 2Sam	II. Самуїл
+2Sam	II. Царств
 2Sam	Samueli II
 2Sam	Second Sam
 2Sam	Second Sma
@@ -16749,6 +16983,7 @@
 2Sam	Β’ Σαμουήλ
 2Sam	Β’ Σαμουηλ
 2Sam	Втора Царе
+2Sam	Второ Царе
 2Sam	دوم سموئیل
 2Sam	دوم-سموئیل
 2Sam	دوم۔سموایل
@@ -16818,10 +17053,13 @@
 2Sam	II Самуил
 2Sam	II Самуіл
 2Sam	II Самуїл
+2Sam	II Царств
 2Sam	Samuel II
 2Sam	Second Sa
 2Sam	Second Sm
 2Sam	Sámuel II
+2Sam	Втора Цар
+2Sam	Второ Цар
 2Sam	2 Reinos
 2Sam	2 Samual
 2Sam	2 Samuel
@@ -16868,6 +17106,7 @@
 2Sam	II. Sam
 2Sam	II. Sma
 2Sam	II. Sám
+2Sam	II. Цар
 2Sam	שמואל ב
 2Sam	《撒慕爾紀下》
 2Sam	《撒母耳記下》
@@ -16878,6 +17117,7 @@
 2Sam	2. Sam
 2Sam	2. Sma
 2Sam	2. Sám
+2Sam	2. Цар
 2Sam	2. शमू
 2Sam	2. ซมอ
 2Sam	2e Sam
@@ -16886,6 +17126,7 @@
 2Sam	II Sam
 2Sam	II Sma
 2Sam	II Sám
+2Sam	II Цар
 2Sam	II. Sa
 2Sam	II. Sm
 2Sam	Β' Σαμ
@@ -16898,6 +17139,7 @@
 2Sam	《撒母耳记下
 2Sam	サムエル 2
 2Sam	サムエル後書
+2Sam	サムエル記Ⅱ
 2Sam	サムエル記下
 2Sam	列王記第二巻
 2Sam	撒慕爾紀下》
@@ -16915,6 +17157,7 @@
 2Sam	II Sa
 2Sam	II Sm
 2Sam	II. S
+2Sam	Ⅱサムエル
 2Sam	サムエル下
 2Sam	撒慕爾紀下
 2Sam	撒母耳記下
@@ -17143,6 +17386,7 @@
 2Thess	Epistula ad Thessalonicenses II
 2Thess	II. послання до фессалонікіиців
 2Thess	II. послання до фессалонікійців
+2Thess	אגרת פולוס השנייה אל-התסלוניקים
 2Thess	थिस्सलोनिकीहरूलाई दोस्त्रो पत्र
 2Thess	ଥେସଲନୀକୀୟଙ୍କ ପ୍ରତି ଦ୍ୱିତୀୟ ପତ୍ର
 2Thess	2-ге. послання до салонікіиців
@@ -17558,6 +17802,7 @@
 2Thess	Second Thesselonians
 2Thess	Second Thessolonians
 2Thess	השנייה אל התסלוניקים
+2Thess	השנייה אל-התסלוניקים
 2Thess	테살로니카 신자들에게 보낸 둘째 서간
 2Thess	2 Mga Tesalonicense
 2Thess	2 Mga Tesalonisense
@@ -18191,6 +18436,8 @@
 2Thess	II. до солунян
 2Thess	Masodik Thessz
 2Thess	Második Thessz
+2Thess	Втора Солуняни
+2Thess	Второ Солуняни
 2Thess	Друга Солуньці
 2Thess	Друге Солуньці
 2Thess	دوم۔تھسلنیکیوں
@@ -18247,6 +18494,7 @@
 2Thess	Második Tessz
 2Thess	Second Thesss
 2Thess	Втора Солунци
+2Thess	Второ Солунци
 2Thess	Друга Солунян
 2Thess	Друге Солунян
 2Thess	دوم تھسلنیکوں
@@ -18292,6 +18540,7 @@
 2Thess	II Солунците
 2Thess	II Солунјани
 2Thess	II. Солуньці
+2Thess	II. Солуняни
 2Thess	Second Thess
 2Thess	Second Thsss
 2Thess	Tweede Thess
@@ -18309,9 +18558,11 @@
 2Thess	2-а Солунян
 2Thess	2-е Солунян
 2Thess	2. Солуньці
+2Thess	2. Солуняни
 2Thess	2nd. Thesss
 2Thess	Anden Thess
 2Thess	II Солуньці
+2Thess	II Солуняни
 2Thess	II. Солунци
 2Thess	II. Солунян
 2Thess	Second Thes
@@ -18319,13 +18570,16 @@
 2Thess	Tweede Tess
 2Thess	۲ تھسلنیکوں
 2Thess	テサロニケ人への後の書
+2Thess	テサロニケ人への手紙Ⅱ
 2Thess	テサロニケ人への手紙二
 2Thess	2 Солуньці
+2Thess	2 Солуняни
 2Thess	2. Солунци
 2Thess	2. Солунян
 2Thess	2nd Thesss
 2Thess	2nd. Thess
 2Thess	2nd. Thsss
+2Thess	2ธสะโลนิกา
 2Thess	Andre Tess
 2Thess	II Солунци
 2Thess	II Солунян
@@ -18354,6 +18608,8 @@
 2Thess	Pili Thes
 2Thess	Second Th
 2Thess	Втора Сол
+2Thess	Второ Сол
+2Thess	Ⅱ テサロニケ人へ
 2Thess	《帖撒罗尼迦后书》
 2Thess	《帖撒羅尼迦後書》
 2Thess	2 Thesss
@@ -18480,6 +18736,7 @@
 2Thess	莎倫後
 2Thess	帖后
 2Thess	帖後
+2Thess	살후
 2Tim	2-ге. послання св. апостола Павла до Ти­мофія
 2Tim	Друга послання св. апостола Павла до Ти­мофія
 2Tim	Друге послання св. апостола Павла до Ти­мофія
@@ -18723,6 +18980,7 @@
 2Tim	تِیمُتھِیُس کے نام کا دوسرا خط
 2Tim	2 List sw Pawła do Tymoteusza
 2Tim	2 List św Pawła do Tymoteusza
+2Tim	אגרת פולוס השנייה אל-טימותיוס
 2Tim	الرسالة الثانية إلى تيموثاوس
 2Tim	तिमोथीलाई पावलको दोस्रो पत्र
 2Tim	Waraka wa Pili kwa Timotheo
@@ -18839,8 +19097,14 @@
 2Tim	2. посланица Тимотеју
 2Tim	Andra Timotheosbrevet
 2Tim	Druha kniha Timoteovi
+2Tim	Druha list Timetejovi
+2Tim	Druha list Timotejovi
+2Tim	Druhy list Timetejovi
 2Tim	Druhy list Timotejovi
 2Tim	Druhá kniha Timoteovi
+2Tim	Druhá list Timetejovi
+2Tim	Druhá list Timotejovi
+2Tim	Druhý list Timetejovi
 2Tim	Druhý list Timotejovi
 2Tim	II List do Tymoteusza
 2Tim	II Timoteju Poslanica
@@ -18868,13 +19132,9 @@
 2Tim	2-а послання Тимофію
 2Tim	2-е послання Тимофію
 2Tim	Andra Timoteusbrevet
-2Tim	Druha list Timeteovi
 2Tim	Druha list Timoteovi
-2Tim	Druhy list Timeteovi
 2Tim	Druhy list Timoteovi
-2Tim	Druhá list Timeteovi
 2Tim	Druhá list Timoteovi
-2Tim	Druhý list Timeteovi
 2Tim	Druhý list Timoteovi
 2Tim	II. послання Тимофію
 2Tim	Toinen Timoteukselle
@@ -18884,6 +19144,8 @@
 2Tim	Anden Timotheusbrev
 2Tim	Andet Timotheusbrev
 2Tim	II послання Тимофію
+2Tim	II. list Timetejovi
+2Tim	II. list Timotejovi
 2Tim	Masodik Timoteushoz
 2Tim	Masodik Timoteusnak
 2Tim	Masodik Timóteushoz
@@ -18895,12 +19157,16 @@
 2Tim	השנייה אל טימותיאוס
 2Tim	2 послання Тимофію
 2Tim	2. Timotheosbrevet
+2Tim	2. list Timetejovi
+2Tim	2. list Timotejovi
+2Tim	Anden Timoteusbrev
 2Tim	Andre Timoteusbrev
 2Tim	Deuxiemes Timothee
 2Tim	Deuxiemes Timothée
 2Tim	Deuxièmes Timothee
 2Tim	Deuxièmes Timothée
-2Tim	II. list Timeteovi
+2Tim	II list Timetejovi
+2Tim	II list Timotejovi
 2Tim	II. list Timoteovi
 2Tim	Masodik Timotheosz
 2Tim	Masodik Timótheosz
@@ -18908,14 +19174,14 @@
 2Tim	Második Timótheosz
 2Tim	השנייה אל טימותיוס
 2Tim	2 Timotheosbrevet
+2Tim	2 list Timetejovi
+2Tim	2 list Timotejovi
 2Tim	2. Timoteusbrevet
-2Tim	2. list Timeteovi
 2Tim	2. list Timoteovi
 2Tim	Deuxieme Timothee
 2Tim	Deuxieme Timothée
 2Tim	Deuxième Timothee
 2Tim	Deuxième Timothée
-2Tim	II list Timeteovi
 2Tim	II list Timoteovi
 2Tim	II. Timoteukselle
 2Tim	II. Timoteuskirje
@@ -18929,7 +19195,6 @@
 2Tim	2 Tīmottēyuvukku
 2Tim	2 Tīmōtteyuvukku
 2Tim	2 Tīmōttēyuvukku
-2Tim	2 list Timeteovi
 2Tim	2 list Timoteovi
 2Tim	2. Teemuathaiyus
 2Tim	2. Timoteukselle
@@ -19105,6 +19370,8 @@
 2Tim	Втора Тимотеи
 2Tim	Втора Тимотей
 2Tim	Втора Тимотеј
+2Tim	Второ Тимотеи
+2Tim	Второ Тимотей
 2Tim	Второ Тимотеј
 2Tim	Друга Тимотеи
 2Tim	Друга Тимотей
@@ -19378,6 +19645,7 @@
 2Tim	Second Ti
 2Tim	Second Tm
 2Tim	Втора Тим
+2Tim	Второ Тим
 2Tim	۲۔تیمتھیس
 2Tim	2 Timote
 2Tim	2 Timoth
@@ -19392,6 +19660,7 @@
 2Tim	Druhý Tm
 2Tim	Pili Tim
 2Tim	テモテへの後の書
+2Tim	テモテへの手紙Ⅱ
 2Tim	テモテへの手紙二
 2Tim	2e. Tim
 2Tim	2nd Tim
@@ -19421,6 +19690,7 @@
 2Tim	Βʹ Τιμ
 2Tim	Β΄ Τιμ
 2Tim	Β’ Τιμ
+2Tim	Ⅱ テモテへ
 2Tim	《弟茂德後書
 2Tim	《提摩太后书
 2Tim	《提摩太後書
@@ -19469,6 +19739,7 @@
 2Tim	提後》
 2Tim	提后
 2Tim	提後
+2Tim	딤후
 3John	Трето съборно послание на св. ап. Иоана Богослова
 3John	Трето съборно послание на св ап. Иоана Богослова
 3John	Трето съборно послание на св. ап Иоана Богослова
@@ -19643,6 +19914,7 @@
 3John	III. послання апостола Івана
 3John	Трета писмо од апостол Јован
 3John	Трето писмо од апостол Јован
+3John	אגרתו השלישית של יוחנן השליח
 3John	3 послание на апостол Јован
 3John	3-а послання апостола Івана
 3John	3-е послання апостола Івана
@@ -19691,7 +19963,9 @@
 3John	Johannes' Tredje Brev
 3John	Johannes’ Tredje Brev
 3John	Johannes’ tredje brev
+3John	Tredje Johannes' Brev
 3John	Tredje Johannesbrevet
+3John	Tredje Johannes’ Brev
 3John	Trzecia List sw. Jana
 3John	Trzecia List św. Jana
 3John	yohanacem tisre patra
@@ -19758,7 +20032,9 @@
 3John	یوحنّا کا تیسرا خط
 3John	ଯୋହନଙ୍କ ତୃତୀୟ ପତ୍ର
 3John	3 послание Иоанна
+3John	3. Johannes' Brev
 3John	3. Johannesbrevet
+3John	3. Johannes’ Brev
 3John	3. Послання Івана
 3John	3e Johannesbrevet
 3John	III List sw. Jana
@@ -19768,7 +20044,9 @@
 3John	Johannes' 3. Brev
 3John	Johannes’ 3. Brev
 3John	Trzecia List Jana
+3John	3 Johannes' Brev
 3John	3 Johannesbrevet
+3John	3 Johannes’ Brev
 3John	3 Послання Івана
 3John	3. List sw. Jana
 3John	3. List św. Jana
@@ -19880,12 +20158,15 @@
 3John	Treca Ivanova
 3John	Treæa Ivanova
 3John	Treća Ivanova
+3John	Трета Иоаново
+3John	Трета Йоаново
 3John	Трето Иоаново
 3John	Трето Йоаново
 3John	Третя Иоаново
 3John	Третя Йоаново
 3John	Третє Иоаново
 3John	Третє Йоаново
+3John	השלישית יוחנן
 3John	تیسرا یُوحنّا
 3John	تیسرا-یُوحنّا
 3John	رسالة يوحنا 3
@@ -20113,6 +20394,8 @@
 3John	Ιωαννου Γʹ
 3John	Ιωαννου Γ΄
 3John	Ιωαννου Γ’
+3John	Трета Иоан
+3John	Трета Йоан
 3John	Трето Иоан
 3John	Трето Йоан
 3John	3 Ioannis
@@ -20371,6 +20654,7 @@
 3John	Třeti J
 3John	Třetí J
 3John	۳۔یوحنا
+3John	ヨハネの手紙Ⅲ
 3John	ヨハネの手紙三
 3John	3 Ioan
 3John	3 Jaan
@@ -20435,13 +20719,13 @@
 3John	Γʹ Ιω
 3John	Γ΄ Ιω
 3John	Γ’ Ιω
+3John	Ⅲ ヨハネ
 3John	《伊望第三
 3John	《約翰三書
 3John	《約翰參書
 3John	《约翰三书
 3John	《约翰叁书
 3John	《若望三書
-3John	ヨハネ 3
 3John	伊望第三》
 3John	約翰三書》
 3John	約翰參書》
@@ -20459,12 +20743,15 @@
 3John	3 Ів
 3John	3 Јн
 3John	3 Ин
+3John	3 Йн
 3John	3 يو
 3John	3 யோ
 3John	3 ยน
 3John	3. J
 3John	《約三》
+3John	《約叁》
 3John	《约三》
+3John	《约叁》
 3John	三ヨハネ
 3John	伊望第三
 3John	約翰三書
@@ -20477,11 +20764,18 @@
 3John	3 J
 3John	3요한
 3John	《約三
+3John	《約叁
 3John	《约三
+3John	《约叁
 3John	約三》
+3John	約叁》
 3John	约三》
+3John	约叁》
 3John	約三
+3John	約叁
 3John	约三
+3John	约叁
+3John	요삼
 3Macc	Treca knjiga o Makabejcima
 3Macc	Treća knjiga o Makabejcima
 3Macc	Trzecia Ksiega Machabejska
@@ -21045,6 +21339,7 @@
 3Macc	Μακκαβαιων Γʹ
 3Macc	Μακκαβαιων Γ΄
 3Macc	Μακκαβαιων Γ’
+3Macc	Трета Макавеи
 3Macc	Трето Макавеи
 3Macc	3 Macabbbeee
 3Macc	3 Macabbbees
@@ -21503,6 +21798,7 @@
 4Macc	Vierte Makkabäer
 4Macc	Четврта Макавеја
 4Macc	Четвърта Макавеи
+4Macc	Четвърто Макавеи
 4Macc	4 k Machabejcov
 4Macc	4. Machabaeorum
 4Macc	4. Makkabeerbok
@@ -22331,6 +22627,7 @@ Acts	rasūlōṅ ke aʿmāl
 Acts	رسُولوں کے اعمال
 Acts	प्रेरितहरूका काम
 Acts	प्रेरितों के काम
+Acts	กิจการของอัครทูต
 Acts	Apostolien teot
 Acts	Appostalar Pani
 Acts	Appostalar Paṇi
@@ -22338,8 +22635,10 @@ Acts	Appōstalar Pani
 Acts	Appōstalar Paṇi
 Acts	Công vụ Tông đồ
 Acts	Skutky apostolu
+Acts	Skutky apostolü
 Acts	Skutky apostolů
 Acts	Skutky apoštolu
+Acts	Skutky apoštolü
 Acts	Skutky apoštolů
 Acts	Дела Апостолска
 Acts	رسولوں کے اعمال
@@ -22417,6 +22716,7 @@ Acts	அப்போ
 Acts	《使徒行传
 Acts	《使徒行傳
 Acts	《宗徒行實
+Acts	使徒の働き
 Acts	使徒行传》
 Acts	使徒行傳》
 Acts	使徒言行録
@@ -22487,6 +22787,7 @@ Acts	使徒
 Acts	徒》
 Acts	사도
 Acts	徒
+Acts	행
 Acts	Апостол
 Amos	ଆମୋଷ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
 Amos	Книга на пророк Амоса
@@ -22771,6 +23072,7 @@ Bel	Bela i weza
 Bel	Bela i weża
 Bel	Bela i węza
 Bel	Bela i węża
+Bel	Вил и змеят
 Bel	Bel a drak
 Bel	Bél a drak
 Bel	בל והדרקון
@@ -22792,6 +23094,7 @@ Bel	Bél
 Bel	Βηλ
 Bel	Βὴλ
 Bel	Бел
+Bel	Вил
 Col	Писмо од апостол Павле до христијаните во Колос
 Col	Послання св. апостола Павла до колосян
 Col	Послание на св. ап. Павла до Колосяни
@@ -22812,6 +23115,7 @@ Col	Kolōceyarukku Elutiya Nirupam
 Col	Kolōceyarukku Eḻutiya Nirupam
 Col	Pavlova poslanica Kolosanima
 Col	Pavlova poslanica Kološanima
+Col	אגרת פולוס השליח אל-הקולוסים
 Col	கொலோசெயருக்கு எழுதிய நிருபம்
 Col	Paulus’ brev til kolosserne
 Col	אגרת פולוס השליח אל-הקולוסי
@@ -23053,6 +23357,7 @@ Col	โคโลสี
 Col	《哥羅森書》
 Col	《歌罗西书》
 Col	《歌羅西書》
+Col	コロサイ人へ
 Col	ﻛﻮﻟﻮﺳﻲ
 Col	Colos
 Col	Kolos
@@ -23094,6 +23399,7 @@ Col	《西
 Col	西》
 Col	콜로
 Col	西
+Col	골
 Dan	Книга на пророк Даниила
 Dan	Книга на пророк Даниил
 Dan	Книга пророка Даниила
@@ -23175,6 +23481,8 @@ Dan	Данило
 Dan	Даниял
 Dan	Даниіл
 Dan	Даниїл
+Dan	Дониел
+Dan	Дониёл
 Dan	دانيال
 Dan	دانیال
 Dan	दानियल
@@ -23780,6 +24088,7 @@ Deut	تث
 Deut	இச
 Deut	《申
 Deut	申》
+Deut	申命
 Deut	신명
 Deut	申
 Deut	신
@@ -24087,6 +24396,7 @@ Eccl	واعِظ
 Eccl	《传道书》
 Eccl	《傳道書》
 Eccl	《訓道篇》
+Eccl	伝道者の書
 Eccl	Eccl
 Eccl	Fork
 Eccl	Giáo
@@ -24110,6 +24420,7 @@ Eccl	《傳道書
 Eccl	《訓道篇
 Eccl	コヘレト
 Eccl	伝道の書
+Eccl	伝道者の
 Eccl	传道书》
 Eccl	傳道之書
 Eccl	傳道書》
@@ -24162,6 +24473,7 @@ EpJer	Epistle of Jeremiah
 EpJer	The Ep. of Jeremiah
 EpJer	The Let of Jeremiah
 EpJer	Послание на Иеремия
+EpJer	Послание на Йеремия
 EpJer	Letter of Jeremiah
 EpJer	Lettera di Geremia
 EpJer	The Ep of Jeremiah
@@ -24255,7 +24567,11 @@ EpJer	Ép Jérémie
 EpJer	Cart. Jer
 EpJer	Carta Jer
 EpJer	Li ni Jer
+EpJer	Поел. Иер
 EpJer	Cart Jer
+EpJer	Поел Иер
+EpJer	Пос. Иер
+EpJer	Пос. Йер
 EpJer	イエレミヤの達書
 EpJer	예레미야의 편지
 EpJer	Ep. Jer
@@ -24265,6 +24581,8 @@ EpJer	Lih Jer
 EpJer	Or. Ier
 EpJer	Ép. Jer
 EpJer	Ép. Jér
+EpJer	Пос Иер
+EpJer	Пос Йер
 EpJer	《EpJer》
 EpJer	エレミヤの手紙
 EpJer	エレミヤの書翰
@@ -24307,6 +24625,7 @@ Eph	Epēciyarukku Elutiya Nirupam
 Eph	Epēciyarukku Eḻutiya Nirupam
 Eph	Pavlova poslanica Efezanima
 Eph	Pavlova poslanica Efežanima
+Eph	אגרת פולוס השליח אל האפסיים
 Eph	எபேசியருக்கு எழுதிய நிருபம்
 Eph	אגרת פולוס השליח אל-האפסים
 Eph	எபேசியருக்கு எழுதிய கடிதம்
@@ -24370,6 +24689,7 @@ Eph	ipʰiskarāṃs patra
 Eph	Mga Taga- Efesio
 Eph	Mga Taga- Epesio
 Eph	האיגרת אל האפסים
+Eph	השליח אל האפסיים
 Eph	एफिसीहरूलाई पत्र
 Eph	Epheszosziakhoz
 Eph	List do Efezjan
@@ -24542,6 +24862,8 @@ Eph	《以弗所書
 Eph	《厄弗所書
 Eph	《耶斐斯》
 Eph	エフェソ書
+Eph	エヘソ人へ
+Eph	エペソ人へ
 Eph	以弗所书》
 Eph	以弗所書》
 Eph	厄弗所書》
@@ -24588,6 +24910,7 @@ Eph	《弗
 Eph	弗》
 Eph	에페
 Eph	弗
+Eph	엡
 Esth	אסתר, כולל פרקים גנוזים
 Esth	எஸ்தரின் சரித்திரம்
 Esth	estarko pustak
@@ -24636,6 +24959,7 @@ Esth	எஸ்தர்
 Esth	《以斯帖記》
 Esth	《以斯帖记》
 Esth	《艾斯德爾傳
+Esth	エステル 記
 Esth	艾斯德爾傳》
 Esth	Estar
 Esth	Ester
@@ -24942,6 +25266,7 @@ Exod	Önnur bok Móse
 Exod	Önnur bók Mose
 Exod	Önnur bók Móse
 Exod	Втора Моисеева
+Exod	Второ Моисеева
 Exod	2 k Mojzisova
 Exod	2 k Mojzišova
 Exod	2 k Mojžisova
@@ -25161,6 +25486,10 @@ Exod	《出埃及》
 Exod	《出埃及記
 Exod	《出埃及记
 Exod	《出谷紀》
+Exod	出エシフト
+Exod	出エシプト
+Exod	出エジフト
+Exod	出エジプト
 Exod	出埃及記》
 Exod	出埃及记》
 Exod	2 Mo
@@ -25533,6 +25862,7 @@ Ezra	Esd
 Ezra	Esr
 Ezra	Ezd
 Ezra	Ezr
+Ezra	Êxr
 Ezra	Єзд
 Ezra	Езд
 Ezra	Езр
@@ -25819,6 +26149,8 @@ Gal	《加拉太书》
 Gal	《加拉太書》
 Gal	《戛拉提亞》
 Gal	《迦拉達書》
+Gal	カラテヤ人へ
+Gal	ガラテヤ人へ
 Gal	Galat
 Gal	Galát
 Gal	Gálat
@@ -25860,6 +26192,7 @@ Gal	《加
 Gal	加》
 Gal	갈라
 Gal	加
+Gal	갈
 Gen	Ensimmainen Mooseksen kirja
 Gen	Ensimmäinen Mooseksen kirja
 Gen	Kitabu cha Kwanza cha Musa
@@ -26201,6 +26534,7 @@ Gen	Prvý Mojžisova
 Gen	Prvý Mojžišova
 Gen	Прва Мојсијева
 Gen	Първа Моисеева
+Gen	Първо Моисеева
 Gen	1 k Mojzisova
 Gen	1 k Mojzišova
 Gen	1 k Mojžisova
@@ -26497,11 +26831,13 @@ Gen	《创
 Gen	《創
 Gen	创》
 Gen	創》
+Gen	創世
 Gen	창세
 Gen	创
 Gen	創
 Gen	창
 GkEsth	Ester enligt den grekiska texten
+GkEsth	Книга Естир (според Септуагинта)
 GkEsth	Eszter konyvenek kiegeszitese
 GkEsth	Eszter konyvenek kiegeszitése
 GkEsth	Eszter konyvenek kiegeszítese
@@ -26535,6 +26871,7 @@ GkEsth	Eszter könyvének kiegészitése
 GkEsth	Eszter könyvének kiegészítese
 GkEsth	Eszter könyvének kiegészítése
 GkEsth	Kreikkalainen Esterin kirja
+GkEsth	Естир (според Септуагинта)
 GkEsth	Ester \(versione greca\)
 GkEsth	Grecke casti knihy Ester
 GkEsth	Grecke časti knihy Ester
@@ -26613,9 +26950,11 @@ GkEsth	எஸ் \(கி\)
 GkEsth	Esther Gr
 GkEsth	Esther gr
 GkEsth	Greek Est
+GkEsth	Ест. Септ
 GkEsth	Est (Gr)
 GkEsth	Ester Gr
 GkEsth	Ester gr
+GkEsth	Ест Септ
 GkEsth	எஸ் (கி)
 GkEsth	《GkEsth》
 GkEsth	Esth Gr
@@ -26699,6 +27038,7 @@ Hab	Habacac
 Hab	Habacuc
 Hab	Habakak
 Hab	Habakuk
+Hab	Habaquq
 Hab	habakuk
 Hab	habakūk
 Hab	Авакума
@@ -26759,6 +27099,7 @@ Hab	Abk
 Hab	Hab
 Hab	Xab
 Hab	Авв
+Hab	Авк
 Hab	हबक
 Hab	ฮบก
 Hab	《哈》
@@ -26988,6 +27329,7 @@ Heb	Послание к Евреям
 Heb	इब्री लोकांस पत्र
 Heb	Писмо до Евреите
 Heb	האיגרת אל העברים
+Heb	האיגרת אל-העברים
 Heb	Heprealaiskirje
 Heb	האגרת אל-העברים
 Heb	Heprealaisille
@@ -27076,6 +27418,8 @@ Heb	Εβραιους
 Heb	К Евреям
 Heb	عبرانیوں
 Heb	எபிரேயர்
+Heb	へフル人への手紙
+Heb	へブル人への手紙
 Heb	ヘフル人への手紙
 Heb	ヘブル人への手紙
 Heb	Do Thái
@@ -27179,7 +27523,9 @@ Heb	《希伯來書
 Heb	《希伯来书
 Heb	《耶烏雷爾
 Heb	ヘフライ書
+Heb	ヘフル人へ
 Heb	ヘブライ書
+Heb	ヘブル人へ
 Heb	希伯來书》
 Heb	希伯來書》
 Heb	希伯来书》
@@ -27233,6 +27579,7 @@ Heb	来》
 Heb	히브
 Heb	來
 Heb	来
+Heb	히
 Heb,Hab	Hb
 Hos	ହୋଶେୟ ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
 Hos	Книга на пророк Осия
@@ -27715,6 +28062,8 @@ Jas	Jacques
 Jas	Jakobit
 Jas	Jakobus
 Jas	Jakubov
+Jas	Jakubuv
+Jas	Jakubův
 Jas	Yacquub
 Jas	Yakkopu
 Jas	Yakkōpu
@@ -27774,6 +28123,7 @@ Jas	Sant
 Jas	Yacq
 Jas	Яков
 Jas	Якуб
+Jas	יעקב
 Jas	யாக்
 Jas	《亞适烏
 Jas	《雅各书
@@ -27821,6 +28171,7 @@ Jas	《雅
 Jas	雅》
 Jas	야고
 Jas	雅
+Jas	약
 Jdt	Kniha Juditina
 Jdt	Книга за Юдита
 Jdt	Књига о Јудити
@@ -27884,6 +28235,7 @@ Jdt	Jdth
 Jdt	Judt
 Jdt	Júdt
 Jdt	Yudt
+Jdt	Юдит
 Jdt	யூதி
 Jdt	ユティト
 Jdt	ユテト書
@@ -28171,6 +28523,8 @@ Job	யோபு
 Job	《約伯傳
 Job	《約伯記
 Job	《约伯记
+Job	ヨフ 記
+Job	ヨブ 記
 Job	約伯傳》
 Job	約伯記》
 Job	约伯记》
@@ -28714,6 +29068,7 @@ John	युहत्रा
 John	युहन्ना
 John	यूहन्ना
 John	ਯੂਹਾਂਨਾ
+John	ヨハネの福音書
 John	ヨハネ傳福音書
 John	Ew Jan
 John	St Jhn
@@ -28723,6 +29078,7 @@ John	St. Jn
 John	Yohana
 John	Yohane
 John	yūhãnā
+John	Иоанна
 John	ਯੂਹੰਨਾ
 John	யோவான்
 John	《約翰福音》
@@ -28751,6 +29107,7 @@ John	Јован
 John	Иоана
 John	Иохан
 John	Йоана
+John	יוחנן
 John	يوحنا
 John	یوحنا
 John	यूहना
@@ -28804,6 +29161,7 @@ John	Yoh
 John	《伊望
 John	《約》
 John	《约》
+John	ヨハネ
 John	伊望》
 John	Gg
 John	Gi
@@ -28815,6 +29173,7 @@ John	Ів
 John	Ін
 John	Јн
 John	Ин
+John	Йн
 John	يو
 John	ยน
 John	ยฮ
@@ -28826,6 +29185,7 @@ John	約》
 John	约》
 John	요한
 John	约
+John	요
 John	Jan
 John	約
 John,Jonah	Yn
@@ -28998,6 +29358,7 @@ Josh	yahošuko
 Josh	yahošūko
 Josh	Ιησ Ναυή
 Josh	Ιησ Ναυη
+Josh	Иис. Нав
 Josh	سفر يشوع
 Josh	Giô-sua
 Josh	Giô-suê
@@ -29010,6 +29371,7 @@ Josh	Jošuova
 Josh	Józuova
 Josh	yahošuā
 Josh	Ιησ Ναυ
+Josh	Иис Нав
 Josh	Ис. Нав
 Josh	यहोशूको
 Josh	ਯਹੋਸ਼ੁਆ
@@ -29059,6 +29421,7 @@ Josh	І Нав
 Josh	Јешуа
 Josh	Јошуа
 Josh	Иешуа
+Josh	Навин
 Josh	יהושע
 Josh	یشُوع
 Josh	यहोशु
@@ -29073,6 +29436,7 @@ Josh	若蘇厄書》
 Josh	여호수아기
 Josh	Giôs
 Josh	Gsua
+Josh	Gsuê
 Josh	Joos
 Josh	Josh
 Josh	Jozs
@@ -29096,7 +29460,9 @@ Josh	Jsh
 Josh	Jós
 Josh	Yos
 Josh	И Н
+Josh	И.Н
 Josh	Иеш
+Josh	И Н
 Josh	Нав
 Josh	ยชว
 Josh	《书》
@@ -29242,7 +29608,9 @@ Jude	Hudas
 Jude	Iudae
 Jude	Judas
 Jude	Judov
+Jude	Juduv
 Jude	Judás
+Jude	Judův
 Jude	Jwdas
 Jude	Júdas
 Jude	Júdov
@@ -29250,6 +29618,7 @@ Jude	Júdás
 Jude	Yudas
 Jude	Ιουδα
 Jude	Ιούδα
+Jude	יהודה
 Jude	يهوذا
 Jude	यहूदा
 Jude	《伊屋達》
@@ -29319,6 +29688,7 @@ Jude	猶》
 Jude	유다
 Jude	犹
 Jude	猶
+Jude	유
 Jude,Judg	Jud
 Jude,Judg	Jd
 Jude,Judg	Ju
@@ -29768,6 +30138,7 @@ Lam	wilapgit
 Lam	wilapgīt
 Lam	wilāpgit
 Lam	wilāpgīt
+Lam	Плач Иер
 Lam	विलापगीत
 Lam	विलापगेत
 Lam	புலம்பல்
@@ -30117,6 +30488,7 @@ Lev	Þriðja Mosebók
 Lev	Þriðja Mósebok
 Lev	Þriðja Mósebók
 Lev	Левитска книга
+Lev	Трета Моисеева
 Lev	Трето Моисеева
 Lev	ਲੇਵੀਆਂ ਦੀ ਪੋਥੀ
 Lev	3 k Mojzisova
@@ -30594,6 +30966,7 @@ Luke	ルカによる福音書
 Luke	Luqaasa
 Luke	St Luke
 Luke	St. Luk
+Luke	Łukasza
 Luke	От Лука
 Luke	От Луки
 Luke	Ew Łuk
@@ -30622,6 +30995,7 @@ Luke	लूकाने
 Luke	लूकाले
 Luke	லூக்கா
 Luke	《路加福音》
+Luke	ルカの福音書
 Luke	ルカ傳福音書
 Luke	루카 복음서
 Luke	Lluka
@@ -30653,6 +31027,8 @@ Luke	Λουκ
 Luke	Лукa
 Luke	Лука
 Luke	Луки
+Luke	Луко
+Luke	לוקס
 Luke	لوقا
 Luke	लुका
 Luke	लूका
@@ -30669,6 +31045,7 @@ Luke	Luk
 Luke	Luq
 Luke	Lúk
 Luke	Łuk
+Luke	Лук
 Luke	लूक
 Luke	ଲୂକ
 Luke	《路》
@@ -30693,6 +31070,7 @@ Luke	누가
 Luke	루카
 Luke	L
 Luke	路
+Luke	눅
 Mal	ମଲାଖି ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
 Mal	Proroctwo Malachyaszowe
 Mal	Книга на пророк Малахия
@@ -31037,6 +31415,7 @@ Mark	markāne
 Mark	mārkane
 Mark	mārkāne
 Mark	《馬爾谷福音》
+Mark	マルコの福音書
 Mark	マルコ傳福音書
 Mark	마르코 복음서
 Mark	Ew Mar
@@ -31079,6 +31458,7 @@ Mark	St Mr
 Mark	Маркo
 Mark	Марка
 Mark	Марко
+Mark	מרקוס
 Mark	मरकुस
 Mark	मार्क
 Mark	र्मकस
@@ -31112,6 +31492,7 @@ Mark	Mrc
 Mark	Mrk
 Mark	Mác
 Mark	《可》
+Mark	マルコ
 Mark	瑪爾克
 Mark	Mc
 Mark	Mk
@@ -31126,6 +31507,7 @@ Mark	可》
 Mark	마가
 Mark	마르
 Mark	可
+Mark	막
 Matt	The Gospel according to Saint Mathhhiew
 Matt	The Gospel according to Saint Mathhtiew
 Matt	The Gospel according to Saint Maththiew
@@ -31833,6 +32215,7 @@ Matt	От Матфея
 Matt	إنجيل متى
 Matt	マタイによる福音書
 Matt	Ma-thi-ơ
+Matt	Mateusza
 Matt	Mathhhew
 Matt	Mathhiew
 Matt	Mathhtew
@@ -31879,6 +32262,7 @@ Matt	mattile
 Matt	mattīle
 Matt	मत्तीले
 Matt	மத்தேயு
+Matt	マタイの福音書
 Matt	マタイ傳福音書
 Matt	마태오 복음서
 Matt	Ew Mat
@@ -31901,6 +32285,7 @@ Matt	St Mat
 Matt	St. Mt
 Matt	Матвія
 Matt	Матеја
+Matt	Матфея
 Matt	มัทธิว
 Matt	《瑪竇福音》
 Matt	《馬太福音》
@@ -31924,6 +32309,7 @@ Matt	Матай
 Matt	Матеи
 Matt	Матей
 Matt	Матеј
+Matt	Матто
 Matt	मत्तय
 Matt	मत्ति
 Matt	मत्ती
@@ -31957,10 +32343,12 @@ Matt	Mat
 Matt	Mth
 Matt	Mtt
 Matt	Мат
+Matt	מתי
 Matt	متى
 Matt	متی
 Matt	மத்
 Matt	《太》
+Matt	マタイ
 Matt	瑪特斐
 Matt	Mt
 Matt	Μθ
@@ -31971,6 +32359,7 @@ Matt	มธ
 Matt	《太
 Matt	太》
 Matt	마태
+Matt	마
 Matt	太
 Matt,Mark,Mal	Ma
 Mic	ମୀଖା ଭବିଷ୍ୟ‌ଦ୍‌ବକ୍ତାଙ୍କ ପୁସ୍ତକ
@@ -32139,6 +32528,7 @@ Nah	نا حُوم
 Nah	Na-hum
 Nah	Na-hâm
 Nah	Nahoom
+Nah	Nahoum
 Nah	Nahuma
 Nah	Nahumi
 Nah	Nahumu
@@ -32339,6 +32729,7 @@ Neh	ਨਹਮਯਾਹ
 Neh	《厄斯德拉下
 Neh	《尼希米記》
 Neh	《尼希米记》
+Neh	ネヘミヤ 記
 Neh	厄斯德拉下》
 Neh	Neemi
 Neh	נחמיה
@@ -32530,6 +32921,7 @@ Num	IV. Ks Mojzeszowa
 Num	IV. Ks Mojżeszowa
 Num	Четврта Мојсијева
 Num	Четвърта Моисеева
+Num	Четвърто Моисеева
 Num	4 Ks. Mojzeszowa
 Num	4 Ks. Mojżeszowa
 Num	4 книга Моисеева
@@ -32828,6 +33220,7 @@ Num	Numb
 Num	Szam
 Num	Szám
 Num	Αριθ
+Num	Числ
 Num	گنتی
 Num	गणना
 Num	ଗଣନା
@@ -32868,6 +33261,7 @@ Num	عد
 Num	Ἀρ
 Num	《民
 Num	民》
+Num	民数
 Num	민수
 Num	民
 Num	민
@@ -33057,6 +33451,7 @@ Phil	Pavlova poslanica Filipljanima
 Phil	Pilippiyarukku Elutiya Nirupam
 Phil	Pilippiyarukku Eḻutiya Nirupam
 Phil	பிலிப்பியருக்கு எழுதிய நிருபம்
+Phil	אגרת פולוס השליח אל-הפיליפיים
 Phil	பிலிப்பியருக்கு எழுதிய கடிதம்
 Phil	Paulus' Brev til Filipperne
 Phil	Paulus’ Brev til Filipperne
@@ -33219,6 +33614,7 @@ Phil	Taga Pilipos
 Phil	Taga-Filipos
 Phil	Φιλιππησίους
 Phil	Φιλιππησιους
+Phil	אל הפיליפיים
 Phil	Filipenskym
 Phil	Filipenským
 Phil	Filipianeve
@@ -33361,6 +33757,10 @@ Phil	《斐理伯書
 Phil	《肥利批》
 Phil	《腓立比书
 Phil	《腓立比書
+Phil	ヒリヒ人へ
+Phil	ヒリピ人へ
+Phil	ピリヒ人へ
+Phil	ピリピ人へ
 Phil	フィリヒ書
 Phil	フィリピ書
 Phil	斐理伯書》
@@ -33384,7 +33784,6 @@ Phil	腓立比书
 Phil	腓立比書
 Phil	빌립보서
 Phil	필리피서
-Phil	Fil
 Phil	Flp
 Phil	Phi
 Phil	Php
@@ -33402,6 +33801,8 @@ Phil	《腓
 Phil	腓》
 Phil	필리
 Phil	腓
+Phil	빌
+Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Послання св. апостола Павла до Филимона
@@ -33585,7 +33986,9 @@ Phlm	《肥利孟》
 Phlm	《腓利門書
 Phlm	《腓利门书
 Phlm	《費肋孟書
+Phlm	ヒレモンへ
 Phlm	ヒレモン書
+Phlm	ピレモンへ
 Phlm	ピレモン書
 Phlm	フィレモン
 Phlm	腓利門書》
@@ -33627,6 +34030,7 @@ Phlm	필레
 Phlm	ف
 Phlm	門
 Phlm	门
+Phlm	본
 PrAzar	Ang Panalangin ni Azarias
 PrAzar	The Prayers of Azariah
 PrAzar	תפילת עזריה בתוך הכבשן
@@ -33649,6 +34053,7 @@ PrAzar	La Prière d'Azarias
 PrAzar	La Prière d’Azariah
 PrAzar	La Prière d’Azarias
 PrAzar	Preghiera di Azaria
+PrAzar	Молитвата на Азария
 PrAzar	Cantico de Azarias
 PrAzar	Cantico de Azarías
 PrAzar	Cántico de Azarias
@@ -33748,9 +34153,11 @@ PrAzar	アザルヤの祈り
 PrAzar	Azaria
 PrAzar	Geb As
 PrAzar	PrAzar
+PrAzar	М. Аза
 PrAzar	அசரியா
 PrAzar	Or Az
 PrAzar	PrAzr
+PrAzar	М Аза
 PrMan	Orazione di Manasse Re di Giuda
 PrMan	Ang Panalangin ni Manases
 PrMan	Rugaciunea regelui Manase
@@ -33771,6 +34178,7 @@ PrMan	La Prière de Manasse
 PrMan	La Prière de Manassé
 PrMan	Preghiera di Manasse
 PrMan	The Prayers Manasseh
+PrMan	Молитвата на Манасия
 PrMan	Dalangin ni Manases
 PrMan	Manasesova modlitba
 PrMan	Orazione di Manasse
@@ -33837,6 +34245,7 @@ PrMan	Geb Man
 PrMan	Manasse
 PrMan	Or. Man
 PrMan	Pr. Man
+PrMan	Манасия
 PrMan	《PrMan》
 PrMan	マナセのいのり
 PrMan	므나쎄의 기도
@@ -33846,10 +34255,12 @@ PrMan	Or Man
 PrMan	Pr Man
 PrMan	PrMan》
 PrMan	Πρ Μαν
+PrMan	М. Ман
 PrMan	《PrMan
 PrMan	マナセの祈り
 PrMan	マナセの祈禱
 PrMan	PrMan
+PrMan	М Ман
 PrMan	BMn
 PrMan	Man
 Prov	Книга Приповістеи Соломонових
@@ -34047,6 +34458,7 @@ Prov	नीतिवचन
 Prov	ਕਹਾਉਂਤਾ
 Prov	ਕਹਾਉਤਾਂ
 Prov	สุภาษิต
+Prov	箴言 知恵の泉
 Prov	Prvbos
 Prov	Prverb
 Prov	Pwoveb
@@ -34918,6 +35330,7 @@ Rev	Revelasyon
 Rev	Revelation
 Rev	Revlations
 Rev	Revolation
+Rev	Åpenbaring
 Rev	Об'явлення
 Rev	Об’явлення
 Rev	Откровение
@@ -35036,6 +35449,7 @@ Rev	啟》
 Rev	묵시
 Rev	启
 Rev	啟
+Rev	계
 Rev	Re
 Rom	Писмо од апостол Павле до христијаните во Рим
 Rom	Послання св. апостола Павла до римлян
@@ -35167,6 +35581,7 @@ Rom	Urōmarukku
 Rom	ad Romanos
 Rom	К Римлянам
 Rom	אל הרומאים
+Rom	אל הרומיים
 Rom	رسالة روما
 Rom	रोमीहरूलाई
 Rom	ਰੋਮੀਆਂ ਨੂੰ
@@ -35241,6 +35656,7 @@ Rom	ரோமர்
 Rom	《罗马书》
 Rom	《羅爾瑪書
 Rom	《羅馬書》
+Rom	ローマ人へ
 Rom	羅爾瑪書》
 Rom	ﺭﻭﻣﻴﺔ
 Rom	Rhuf
@@ -35297,6 +35713,7 @@ Rom	R
 Rom	Ř
 Rom	罗
 Rom	羅
+Rom	롬
 Ruth	ரூத்தின் சரித்திரம்
 Ruth	Kitabu cha Ruthi
 Ruth	Kitabu cha Ruthu
@@ -35629,6 +36046,7 @@ SgThree	Pieśnią trzech młodzienców
 SgThree	Pieśnią trzech młodzieńcow
 SgThree	Pieśnią trzech młodzieńców
 SgThree	The Song of the Three Jews
+SgThree	Песента на тримата младежи
 SgThree	Cantarea celor trei evrei
 SgThree	Cantico dei tre fanciulli
 SgThree	Canto de los Tres Jovenes
@@ -35805,7 +36223,9 @@ SgThree	S Th Y
 SgThree	S. 3 Y
 SgThree	Sg Thr
 SgThree	S 3 Y
+SgThree	П. Мл
 SgThree	三童兒の歌
+SgThree	П Мл
 SgThree	C3J
 SgThree	L3J
 Sir	Cartea intelepciunii lui Isus, fiul lui Sirah
@@ -35975,6 +36395,7 @@ Sir	Sirak
 Sir	Sirác
 Sir	Sirák
 Sir	Syrak
+Sir	Сирах
 Sir	سيراخ
 Sir	《德訓篇》
 Sir	Eccs
@@ -36183,6 +36604,8 @@ Song	Song of Salomon
 Song	Song of Soloman
 Song	Song of Solomon
 Song	Wimbo Ulio Bora
+Song	Песнь Сулаимона
+Song	Песнь Сулаймона
 Song	Песнь Сулеимана
 Song	Песнь Сулеймана
 Song	இனிமைமிகு பாடல்
@@ -36253,6 +36676,7 @@ Song	Άσμα Ασμάτων
 Song	Άσμα Ασματων
 Song	Ασμα Ασμάτων
 Song	Ασμα Ασματων
+Song	Пес. на песн
 Song	Песни Песнеи
 Song	Песни Песней
 Song	Пісня Піснеи
@@ -36282,6 +36706,7 @@ Song	Píseň pisní
 Song	Píseň písni
 Song	Píseň písní
 Song	Reshthageet
+Song	Пес на песн
 Song	غزل الغزلات
 Song	स्रेस्ट गीत
 Song	เพลงซาโลมอน
@@ -36457,6 +36882,7 @@ Sus	Susana
 Sus	Suzana
 Sus	Zuzana
 Sus	Zuzane
+Sus	Сусана
 Sus	سوزانا
 Sus	スサンナ物語
 Sus	スザンナ物語
@@ -36641,6 +37067,7 @@ Titus	《弟鐸書
 Titus	《提多书
 Titus	《提多書
 Titus	《提特書
+Titus	テトスへ
 Titus	テトス書
 Titus	弟鐸書》
 Titus	提多书》
@@ -36672,6 +37099,7 @@ Titus	《多
 Titus	多》
 Titus	티토
 Titus	多
+Titus	딛
 Tob	Cartea lui Tobit
 Tob	Ksiega Tobiasza
 Tob	Ksiegi Tobiasza
@@ -36793,6 +37221,7 @@ Wis	Karunungan ni Solomon
 Wis	Karunungan ni Solomón
 Wis	The Wisdom of Solomon
 Wis	Премъдрост Соломонова
+Wis	Премъдрост на Соломон
 Wis	Cartea Intelepciunii
 Wis	Cartea Ințelepciunii
 Wis	Cartea Întelepciunii
@@ -37172,6 +37601,7 @@ Zeph	Ks Sofoniasza
 Zeph	Liv Sofoni an
 Zeph	Sefanias' Bog
 Zeph	Sefanias’ Bog
+Zeph	Zefanias’ Bog
 Zeph	Sefanjas bok
 Zeph	Sô-phô-ni-a
 Zeph	Xê-pha-ni-a
@@ -37294,6 +37724,10 @@ Zeph	Soph
 Zeph	Szof
 Zeph	Zeph
 Zeph	செப்
+Zeph	セハニヤ
+Zeph	セパニヤ
+Zeph	ゼハニヤ
+Zeph	ゼパニヤ
 Zeph	索福尼亞
 Zeph	西番雅书
 Zeph	西番雅書

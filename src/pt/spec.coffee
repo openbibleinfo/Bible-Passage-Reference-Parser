@@ -58,6 +58,7 @@ describe "Localized book Gen (pt)", ->
 		expect(p.parse("Gen 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Gén 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Gên 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("Gn 1:1").osis()).toEqual("Gen.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("GENESIS 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("GÉNESIS 1:1").osis()).toEqual("Gen.1.1")
@@ -65,6 +66,7 @@ describe "Localized book Gen (pt)", ->
 		expect(p.parse("GEN 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("GÉN 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("GÊN 1:1").osis()).toEqual("Gen.1.1")
+		expect(p.parse("GN 1:1").osis()).toEqual("Gen.1.1")
 		`
 		true
 describe "Localized book Exod (pt)", ->
@@ -215,6 +217,7 @@ describe "Localized book Lam (pt)", ->
 		expect(p.parse("Lamentaçoes 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("Lamentações 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("Lam 1:1").osis()).toEqual("Lam.1.1")
+		expect(p.parse("Lm 1:1").osis()).toEqual("Lam.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("LAMENTACOES DE JEREMIAS 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("LAMENTACÔES DE JEREMIAS 1:1").osis()).toEqual("Lam.1.1")
@@ -227,6 +230,7 @@ describe "Localized book Lam (pt)", ->
 		expect(p.parse("LAMENTAÇOES 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("LAMENTAÇÕES 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("LAM 1:1").osis()).toEqual("Lam.1.1")
+		expect(p.parse("LM 1:1").osis()).toEqual("Lam.1.1")
 		`
 		true
 describe "Localized book EpJer (pt)", ->
@@ -594,6 +598,7 @@ describe "Localized book 2Kgs (pt)", ->
 		expect(p.parse("II Reis 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 Reis 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 Re 1:1").osis()).toEqual("2Kgs.1.1")
+		expect(p.parse("2 Rs 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2Kgs 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 R 1:1").osis()).toEqual("2Kgs.1.1")
 		p.include_apocrypha(false)
@@ -618,6 +623,7 @@ describe "Localized book 2Kgs (pt)", ->
 		expect(p.parse("II REIS 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 REIS 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 RE 1:1").osis()).toEqual("2Kgs.1.1")
+		expect(p.parse("2 RS 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2KGS 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("2 R 1:1").osis()).toEqual("2Kgs.1.1")
 		`
@@ -651,6 +657,7 @@ describe "Localized book 1Kgs (pt)", ->
 		expect(p.parse("1 Reis 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("I Reis 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 Re 1:1").osis()).toEqual("1Kgs.1.1")
+		expect(p.parse("1 Rs 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1Kgs 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 R 1:1").osis()).toEqual("1Kgs.1.1")
 		p.include_apocrypha(false)
@@ -675,6 +682,7 @@ describe "Localized book 1Kgs (pt)", ->
 		expect(p.parse("1 REIS 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("I REIS 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 RE 1:1").osis()).toEqual("1Kgs.1.1")
+		expect(p.parse("1 RS 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1KGS 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("1 R 1:1").osis()).toEqual("1Kgs.1.1")
 		`
@@ -817,11 +825,13 @@ describe "Localized book Ezra (pt)", ->
 		expect(p.parse("Esdr 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ezra 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Esd 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("Ed 1:1").osis()).toEqual("Ezra.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ESDRAS 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("ESDR 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("EZRA 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("ESD 1:1").osis()).toEqual("Ezra.1.1")
+		expect(p.parse("ED 1:1").osis()).toEqual("Ezra.1.1")
 		`
 		true
 describe "Localized book Neh (pt)", ->
@@ -869,10 +879,12 @@ describe "Localized book Esth (pt)", ->
 		expect(p.parse("Ester 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Esth 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Est 1:1").osis()).toEqual("Esth.1.1")
+		expect(p.parse("Et 1:1").osis()).toEqual("Esth.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ESTER 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("ESTH 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("EST 1:1").osis()).toEqual("Esth.1.1")
+		expect(p.parse("ET 1:1").osis()).toEqual("Esth.1.1")
 		`
 		true
 describe "Localized book Job (pt)", ->
@@ -962,12 +974,14 @@ describe "Localized book Eccl (pt)", ->
 		expect(p.parse("Coélet 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("Eccl 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("Ecl 1:1").osis()).toEqual("Eccl.1.1")
+		expect(p.parse("Ec 1:1").osis()).toEqual("Eccl.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ECLESIASTES 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("COELET 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("COÉLET 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("ECCL 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("ECL 1:1").osis()).toEqual("Eccl.1.1")
+		expect(p.parse("EC 1:1").osis()).toEqual("Eccl.1.1")
 		`
 		true
 describe "Localized book SgThree (pt)", ->
@@ -1250,10 +1264,12 @@ describe "Localized book Hab (pt)", ->
 		expect(p.parse("Habacuque 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("Habacuc 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("Hab 1:1").osis()).toEqual("Hab.1.1")
+		expect(p.parse("Hc 1:1").osis()).toEqual("Hab.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("HABACUQUE 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("HABACUC 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("HAB 1:1").osis()).toEqual("Hab.1.1")
+		expect(p.parse("HC 1:1").osis()).toEqual("Hab.1.1")
 		`
 		true
 describe "Localized book Zeph (pt)", ->
@@ -1837,11 +1853,13 @@ describe "Localized book Gal (pt)", ->
 		expect(p.parse("Gálatas 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Gal 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Gál 1:1").osis()).toEqual("Gal.1.1")
+		expect(p.parse("Gl 1:1").osis()).toEqual("Gal.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("GALATAS 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GÁLATAS 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GAL 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GÁL 1:1").osis()).toEqual("Gal.1.1")
+		expect(p.parse("GL 1:1").osis()).toEqual("Gal.1.1")
 		`
 		true
 describe "Localized book Eph (pt)", ->
@@ -1875,11 +1893,13 @@ describe "Localized book Phil (pt)", ->
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Fil 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Fl 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("Fp 1:1").osis()).toEqual("Phil.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("FILIPENSES 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("FIL 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("FL 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("FP 1:1").osis()).toEqual("Phil.1.1")
 		`
 		true
 describe "Localized book Col (pt)", ->
@@ -2003,6 +2023,7 @@ describe "Localized book 2Tim (pt)", ->
 		expect(p.parse("2 Timóteo 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 Tim 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 Ti 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("2 Tm 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2Tim 1:1").osis()).toEqual("2Tim.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("SEGUNDA TIMOTEO 1:1").osis()).toEqual("2Tim.1.1")
@@ -2027,6 +2048,7 @@ describe "Localized book 2Tim (pt)", ->
 		expect(p.parse("2 TIMÓTEO 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 TIM 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2 TI 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("2 TM 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2TIM 1:1").osis()).toEqual("2Tim.1.1")
 		`
 		true
@@ -2060,6 +2082,7 @@ describe "Localized book 1Tim (pt)", ->
 		expect(p.parse("I Timóteo 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 Tim 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 Ti 1:1").osis()).toEqual("1Tim.1.1")
+		expect(p.parse("1 Tm 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1Tim 1:1").osis()).toEqual("1Tim.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("PRIMEIRA TIMOTEO 1:1").osis()).toEqual("1Tim.1.1")
@@ -2084,6 +2107,7 @@ describe "Localized book 1Tim (pt)", ->
 		expect(p.parse("I TIMÓTEO 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 TIM 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1 TI 1:1").osis()).toEqual("1Tim.1.1")
+		expect(p.parse("1 TM 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1TIM 1:1").osis()).toEqual("1Tim.1.1")
 		`
 		true
@@ -2098,10 +2122,12 @@ describe "Localized book Titus (pt)", ->
 		expect(p.parse("Titus 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Tito 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Tit 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("Tt 1:1").osis()).toEqual("Titus.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("TITUS 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITO 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TIT 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("TT 1:1").osis()).toEqual("Titus.1.1")
 		`
 		true
 describe "Localized book Phlm (pt)", ->
@@ -2119,6 +2145,7 @@ describe "Localized book Phlm (pt)", ->
 		expect(p.parse("Phlm 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Flm 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Fmn 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("Fm 1:1").osis()).toEqual("Phlm.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("FILEMOM 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("FILEMON 1:1").osis()).toEqual("Phlm.1.1")
@@ -2127,6 +2154,7 @@ describe "Localized book Phlm (pt)", ->
 		expect(p.parse("PHLM 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("FLM 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("FMN 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("FM 1:1").osis()).toEqual("Phlm.1.1")
 		`
 		true
 describe "Localized book Heb (pt)", ->
@@ -2139,9 +2167,11 @@ describe "Localized book Heb (pt)", ->
 		`
 		expect(p.parse("Hebreus 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Heb 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("Hb 1:1").osis()).toEqual("Heb.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("HEBREUS 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("HEB 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("HB 1:1").osis()).toEqual("Heb.1.1")
 		`
 		true
 describe "Localized book Jas (pt)", ->
@@ -2246,10 +2276,12 @@ describe "Localized book Jude (pt)", ->
 		expect(p.parse("Judas 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Jude 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Jud 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("Jd 1:1").osis()).toEqual("Jude.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("JUDAS 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JUDE 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JUD 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("JD 1:1").osis()).toEqual("Jude.1.1")
 		`
 		true
 describe "Localized book Tob (pt)", ->

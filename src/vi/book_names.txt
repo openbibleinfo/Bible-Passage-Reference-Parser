@@ -338,6 +338,7 @@ Ezra	Ê-xơ-ra
 Ezra	Ezra
 Ezra	Étra
 Ezra	Êxra
+Ezra	Êxr
 Gal	Ga-la-ti
 Gal	Galát
 Gal	Gal
@@ -394,6 +395,7 @@ Josh	Giô-suê
 Josh	Joshua
 Josh	Giôs
 Josh	Gsua
+Josh	Gsuê
 Josh	Josh
 Josh	Giô
 Jude	Giu-đe

@@ -83,7 +83,7 @@ Jas	Jakobs	Jakob	Jakobs brev	Jak
 2John	$SECOND Johannes	$SECOND Joh	Johannes’ andre brev
 3John	$THIRD Johannes	$THIRD Joh	Johannes’ tredje brev
 Jude	Judas	Judasbrevet	Jud	Judas’ brev
-Rev	Apenbaring	Johannes' åpenbaring	Åpenbaringen	Åp	Åpenbaringsboken	Johannes’ åpenbaring
+Rev	Apenbaring	Åpenbaring	Johannes' åpenbaring	Åpenbaringen	Åp	Åpenbaringsboken	Johannes’ åpenbaring
 Tob	Tobit	Tobits bok	Tobias' bok	Tob
 Jdt	Judit	Judits bok
 GkEsth	Den greske Ester-boken	Den greske Ester-boka	GrEst

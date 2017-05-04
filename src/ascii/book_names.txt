@@ -732,6 +732,7 @@
 1Cor	1. Cornithaians
 1Cor	1. Corrinthains
 1Cor	1. Corrinthians
+1Cor	1. Korinterbrev
 1Cor	1. Kurinthiayon
 1Cor	1. Taga-Corinto
 1Cor	1. korinterbrev
@@ -823,6 +824,7 @@
 1Cor	1 Cornithaians
 1Cor	1 Corrinthains
 1Cor	1 Corrinthians
+1Cor	1 Korinterbrev
 1Cor	1 Kurinthiayon
 1Cor	1 Taga-Corinto
 1Cor	1 e Korintasve
@@ -1529,10 +1531,14 @@
 1John	Pierwsza List Jana
 1John	Pierwsze List Jana
 1John	Pierwszy List Jana
+1John	1. Johannes' Brev
 1John	1. Johannesbrevet
+1John	1. Johannes’ Brev
 1John	Johannes' 1. Brev
 1John	Johannes’ 1. Brev
+1John	1 Johannes' Brev
 1John	1 Johannesbrevet
+1John	1 Johannes’ Brev
 1John	1. List sw. Jana
 1John	I. List sw. Jana
 1John	Johannes' 1 Brev
@@ -4410,6 +4416,7 @@
 1Tim	I. List do Tymoteusza
 1Tim	I. Timoteju Poslanica
 1Tim	Prva kniha Timotejovi
+1Tim	Prvni list Timotejovi
 1Tim	1 List do Tymoteusza
 1Tim	1 Timoteju Poslanica
 1Tim	Fyrra Timoteusarbref
@@ -4424,12 +4431,16 @@
 1Tim	Pierwszy Tymoteusza
 1Tim	Prvy list Timoteovi
 1Tim	1. Timotheosbrevet
+1Tim	1. list Timotejovi
+1Tim	I. list Timotejovi
 1Tim	Koiro Ximootiyoosa
 1Tim	Premieres Timothee
 1Tim	1 Timotheosbrevet
+1Tim	1 list Timotejovi
 1Tim	1. Timoteusbrevet
 1Tim	1. list Timeteovi
 1Tim	1. list Timoteovi
+1Tim	I list Timotejovi
 1Tim	I. list Timeteovi
 1Tim	I. list Timoteovi
 1Tim	Premiere Timothee
@@ -4453,6 +4464,7 @@
 1Tim	Premier Timothee
 1Tim	Primeira Timoteo
 1Tim	Primeiro Timoteo
+1Tim	Prvni Timotejovi
 1Tim	Timoteyos Kowaad
 1Tim	1 Teemuathaiyus
 1Tim	1 Timoteukselle
@@ -5201,6 +5213,7 @@
 2Cor	2. Korintierbrevet
 2Cor	2. list Korintskym
 2Cor	2nd. Coriinthiians
+2Cor	Anden Korinterbrev
 2Cor	Andre korinterbrev
 2Cor	II Korinthusiakhoz
 2Cor	II list Korintskym
@@ -5388,6 +5401,7 @@
 2Cor	2. Cornithaians
 2Cor	2. Corrinthains
 2Cor	2. Corrinthians
+2Cor	2. Korinterbrev
 2Cor	2. Kurinthiayon
 2Cor	2. Taga-Corinto
 2Cor	2. korinterbrev
@@ -5497,6 +5511,7 @@
 2Cor	2 Cornithaians
 2Cor	2 Corrinthains
 2Cor	2 Corrinthians
+2Cor	2 Korinterbrev
 2Cor	2 Kurinthiayon
 2Cor	2 Taga-Corinto
 2Cor	2 e Korintasve
@@ -6071,6 +6086,8 @@
 2John	yohanacem dusre patra
 2John	2. Ivanova Poslanica
 2John	2. Johanneksen kirje
+2John	Anden Johannes' Brev
+2John	Anden Johannes’ Brev
 2John	Andra Johannesbrevet
 2John	II Ivanova Poslanica
 2John	II Johanneksen kirje
@@ -6089,10 +6106,14 @@
 2John	Druga List sw Jana
 2John	Drugi List sw Jana
 2John	Toinen Johanneksen
+2John	2. Johannes' Brev
 2John	2. Johannesbrevet
+2John	2. Johannes’ Brev
 2John	Druha kniha Janov
 2John	II. List sw. Jana
+2John	2 Johannes' Brev
 2John	2 Johannesbrevet
+2John	2 Johannes’ Brev
 2John	2. List sw. Jana
 2John	Druha list Januv
 2John	Druhy Janov list
@@ -8887,6 +8908,9 @@
 2Tim	2. Timoteju Poslanica
 2Tim	Andra Timotheosbrevet
 2Tim	Druha kniha Timoteovi
+2Tim	Druha list Timetejovi
+2Tim	Druha list Timotejovi
+2Tim	Druhy list Timetejovi
 2Tim	Druhy list Timotejovi
 2Tim	II List do Tymoteusza
 2Tim	II Timoteju Poslanica
@@ -8894,35 +8918,38 @@
 2Tim	2 List do Tymoteusza
 2Tim	2 Timoteju Poslanica
 2Tim	Andra Timoteusbrevet
-2Tim	Druha list Timeteovi
 2Tim	Druha list Timoteovi
-2Tim	Druhy list Timeteovi
 2Tim	Druhy list Timoteovi
 2Tim	Toinen Timoteukselle
 2Tim	Toinen Timoteuskirje
 2Tim	Anden Timotheusbrev
 2Tim	Andet Timotheusbrev
+2Tim	II. list Timetejovi
+2Tim	II. list Timotejovi
 2Tim	Masodik Timoteushoz
 2Tim	Masodik Timoteusnak
 2Tim	2. Timotheosbrevet
+2Tim	2. list Timetejovi
+2Tim	2. list Timotejovi
+2Tim	Anden Timoteusbrev
 2Tim	Andre Timoteusbrev
 2Tim	Deuxiemes Timothee
-2Tim	II. list Timeteovi
+2Tim	II list Timetejovi
+2Tim	II list Timotejovi
 2Tim	II. list Timoteovi
 2Tim	Masodik Timotheosz
 2Tim	2 Timotheosbrevet
+2Tim	2 list Timetejovi
+2Tim	2 list Timotejovi
 2Tim	2. Timoteusbrevet
-2Tim	2. list Timeteovi
 2Tim	2. list Timoteovi
 2Tim	Deuxieme Timothee
-2Tim	II list Timeteovi
 2Tim	II list Timoteovi
 2Tim	II. Timoteukselle
 2Tim	II. Timoteuskirje
 2Tim	Ikalawang Timoteo
 2Tim	2 Timoteusbrevet
 2Tim	2 Timotteyuvukku
-2Tim	2 list Timeteovi
 2Tim	2 list Timoteovi
 2Tim	2. Teemuathaiyus
 2Tim	2. Timoteukselle
@@ -9156,7 +9183,9 @@
 3John	Johannes' Tredje Brev
 3John	Johannes’ Tredje Brev
 3John	Johannes’ tredje brev
+3John	Tredje Johannes' Brev
 3John	Tredje Johannesbrevet
+3John	Tredje Johannes’ Brev
 3John	Trzecia List sw. Jana
 3John	yohanacem tisre patra
 3John	3. Ivanova Poslanica
@@ -9176,14 +9205,18 @@
 3John	Kolmas Johanneksen
 3John	Tretia kniha Janov
 3John	Yooxanaa Saddexaad
+3John	3. Johannes' Brev
 3John	3. Johannesbrevet
+3John	3. Johannes’ Brev
 3John	3e Johannesbrevet
 3John	III List sw. Jana
 3John	III. List sw Jana
 3John	Johannes' 3. Brev
 3John	Johannes’ 3. Brev
 3John	Trzecia List Jana
+3John	3 Johannes' Brev
 3John	3 Johannesbrevet
+3John	3 Johannes’ Brev
 3John	3. List sw. Jana
 3John	III List sw Jana
 3John	III. Johanneksen
@@ -12348,6 +12381,7 @@ Hab	Habacac
 Hab	Habacuc
 Hab	Habakak
 Hab	Habakuk
+Hab	Habaquq
 Hab	habakuk
 Hab	Abacuc
 Hab	Abakik
@@ -12736,6 +12770,7 @@ Jas	Jacques
 Jas	Jakobit
 Jas	Jakobus
 Jas	Jakubov
+Jas	Jakubuv
 Jas	Yacquub
 Jas	Yakkopu
 Jas	Yakobus
@@ -13410,6 +13445,7 @@ Jude	Hudas
 Jude	Iudae
 Jude	Judas
 Jude	Judov
+Jude	Juduv
 Jude	Jwdas
 Jude	Yudas
 Jude	Iuda
@@ -14728,6 +14764,7 @@ Matt	St Mathew
 Matt	St Mattew
 Matt	St Mattwe
 Matt	mattayane
+Matt	Mateusza
 Matt	Mathhhew
 Matt	Mathhiew
 Matt	Mathhtew
@@ -14851,6 +14888,7 @@ Nah	Naahooma
 Nah	Nahumin
 Nah	Na-hum
 Nah	Nahoom
+Nah	Nahoum
 Nah	Nahuma
 Nah	Nahumi
 Nah	Nahumu
@@ -15287,12 +15325,12 @@ Phil	Fili
 Phil	Phil
 Phil	Phlp
 Phil	Pilp
+Phil	Fil
 Phil	Flp
 Phil	Phi
 Phil	Php
 Phil	Fl
 Phil	Fp
-Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Poslannja apostola Pavla do Fylymona
@@ -16669,6 +16707,7 @@ Zeph	Ks Sofoniasza
 Zeph	Liv Sofoni an
 Zeph	Sefanias' Bog
 Zeph	Sefanias’ Bog
+Zeph	Zefanias’ Bog
 Zeph	Sefanjas bok
 Zeph	Sofoniasza
 Zeph	Zephanaiah

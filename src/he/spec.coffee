@@ -847,12 +847,14 @@ describe "Localized book Matt (he)", ->
 		expect(p.parse("הבשורה על-פי מתי 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("הבשורה לפי מתי 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("Matt 1:1").osis()).toEqual("Matt.1.1")
+		expect(p.parse("מתי 1:1").osis()).toEqual("Matt.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("הבשורה הקדושה על-פי מתי 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("הבשורה על פי מתי 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("הבשורה על-פי מתי 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("הבשורה לפי מתי 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("MATT 1:1").osis()).toEqual("Matt.1.1")
+		expect(p.parse("מתי 1:1").osis()).toEqual("Matt.1.1")
 		`
 		true
 describe "Localized book Mark (he)", ->
@@ -865,10 +867,12 @@ describe "Localized book Mark (he)", ->
 		`
 		expect(p.parse("הבשורה על פי מרקוס 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("הבשורה על-פי מרקוס 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("מרקוס 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Mark 1:1").osis()).toEqual("Mark.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("הבשורה על פי מרקוס 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("הבשורה על-פי מרקוס 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("מרקוס 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("MARK 1:1").osis()).toEqual("Mark.1.1")
 		`
 		true
@@ -884,11 +888,13 @@ describe "Localized book Luke (he)", ->
 		expect(p.parse("הבשורה על פי לוקס 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("הבשורה על-פי לוקס 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Luke 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("לוקס 1:1").osis()).toEqual("Luke.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("הבשורה על-פי לוקאס 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("הבשורה על פי לוקס 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("הבשורה על-פי לוקס 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LUKE 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("לוקס 1:1").osis()).toEqual("Luke.1.1")
 		`
 		true
 describe "Localized book 1John (he)", ->
@@ -899,12 +905,16 @@ describe "Localized book 1John (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 1John (he)", ->
 		`
+		expect(p.parse("אגרתו הראשונה של יוחנן השליח 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("אגרתו הראשונה של יוחנן השלי 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("איגרת יוחנן הראשונה 1:1").osis()).toEqual("1John.1.1")
+		expect(p.parse("הראשונה יוחנן 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1John 1:1").osis()).toEqual("1John.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרתו הראשונה של יוחנן השליח 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("אגרתו הראשונה של יוחנן השלי 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("איגרת יוחנן הראשונה 1:1").osis()).toEqual("1John.1.1")
+		expect(p.parse("הראשונה יוחנן 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1JOHN 1:1").osis()).toEqual("1John.1.1")
 		`
 		true
@@ -918,10 +928,12 @@ describe "Localized book 2John (he)", ->
 		`
 		expect(p.parse("אגרתו השנייה של יוחנן השליח 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("איגרת יוחנן השנייה 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("השנייה יוחנן 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2John 1:1").osis()).toEqual("2John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("אגרתו השנייה של יוחנן השליח 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("איגרת יוחנן השנייה 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("השנייה יוחנן 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2JOHN 1:1").osis()).toEqual("2John.1.1")
 		`
 		true
@@ -933,12 +945,16 @@ describe "Localized book 3John (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 3John (he)", ->
 		`
+		expect(p.parse("אגרתו השלישית של יוחנן השליח 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("אגרתו השלישית של יוחנן השלי 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("איגרת יוחנן השלישית 1:1").osis()).toEqual("3John.1.1")
+		expect(p.parse("השלישית יוחנן 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3John 1:1").osis()).toEqual("3John.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרתו השלישית של יוחנן השליח 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("אגרתו השלישית של יוחנן השלי 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("איגרת יוחנן השלישית 1:1").osis()).toEqual("3John.1.1")
+		expect(p.parse("השלישית יוחנן 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3JOHN 1:1").osis()).toEqual("3John.1.1")
 		`
 		true
@@ -952,10 +968,12 @@ describe "Localized book John (he)", ->
 		`
 		expect(p.parse("הבשורה על פי יוחנן 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("הבשורה על-פי יוחנן 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("יוחנן 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("John 1:1").osis()).toEqual("John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("הבשורה על פי יוחנן 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("הבשורה על-פי יוחנן 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("יוחנן 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("JOHN 1:1").osis()).toEqual("John.1.1")
 		`
 		true
@@ -985,12 +1003,14 @@ describe "Localized book Rom (he)", ->
 		expect(p.parse("אגרת פולוס השליח אל-הרומיים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("האיגרת אל הרומאים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("אל הרומאים 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("אל הרומיים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("אל הרומים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("Rom 1:1").osis()).toEqual("Rom.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("אגרת פולוס השליח אל-הרומיים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("האיגרת אל הרומאים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("אל הרומאים 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("אל הרומיים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("אל הרומים 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ROM 1:1").osis()).toEqual("Rom.1.1")
 		`
@@ -1003,14 +1023,18 @@ describe "Localized book 2Cor (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Cor (he)", ->
 		`
+		expect(p.parse("אגרת פולוס השנייה אל-הקורנתים 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("אגרת פולוס השנייה אל-הקורינ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("האיגרת השנייה אל הקורינתים 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("השנייה אל הקורינתים 1:1").osis()).toEqual("2Cor.1.1")
+		expect(p.parse("השנייה אל הקורנתים 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2Cor 1:1").osis()).toEqual("2Cor.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס השנייה אל-הקורנתים 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("אגרת פולוס השנייה אל-הקורינ 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("האיגרת השנייה אל הקורינתים 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("השנייה אל הקורינתים 1:1").osis()).toEqual("2Cor.1.1")
+		expect(p.parse("השנייה אל הקורנתים 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2COR 1:1").osis()).toEqual("2Cor.1.1")
 		`
 		true
@@ -1022,14 +1046,18 @@ describe "Localized book 1Cor (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Cor (he)", ->
 		`
+		expect(p.parse("אגרת פולוס הראשונה אל-הקורנתים 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("אגרת פולוס הראשונה אל-הקורי 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("האיגרת הראשונה אל הקורינתים 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("הראשונה אל הקורינתים 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("הראשונה אל הקורנתים 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1Cor 1:1").osis()).toEqual("1Cor.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס הראשונה אל-הקורנתים 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("אגרת פולוס הראשונה אל-הקורי 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("האיגרת הראשונה אל הקורינתים 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("הראשונה אל הקורינתים 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("הראשונה אל הקורנתים 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1COR 1:1").osis()).toEqual("1Cor.1.1")
 		`
 		true
@@ -1060,13 +1088,17 @@ describe "Localized book Eph (he)", ->
 		p.include_apocrypha true
 	it "should handle book: Eph (he)", ->
 		`
+		expect(p.parse("אגרת פולוס השליח אל האפסיים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("אגרת פולוס השליח אל-האפסים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("האיגרת אל האפסים 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("השליח אל האפסיים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("אל האפסים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Eph 1:1").osis()).toEqual("Eph.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס השליח אל האפסיים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("אגרת פולוס השליח אל-האפסים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("האיגרת אל האפסים 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("השליח אל האפסיים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("אל האפסים 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EPH 1:1").osis()).toEqual("Eph.1.1")
 		`
@@ -1079,13 +1111,17 @@ describe "Localized book Phil (he)", ->
 		p.include_apocrypha true
 	it "should handle book: Phil (he)", ->
 		`
+		expect(p.parse("אגרת פולוס השליח אל-הפיליפיים 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("אגרת פולוס השליח אל-הפיליפי 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("האיגרת אל הפיליפים 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("אל הפיליפיים 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("אל הפיליפים 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס השליח אל-הפיליפיים 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("אגרת פולוס השליח אל-הפיליפי 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("האיגרת אל הפיליפים 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("אל הפיליפיים 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("אל הפיליפים 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1")
 		`
@@ -1098,11 +1134,13 @@ describe "Localized book Col (he)", ->
 		p.include_apocrypha true
 	it "should handle book: Col (he)", ->
 		`
+		expect(p.parse("אגרת פולוס השליח אל-הקולוסים 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("אגרת פולוס השליח אל-הקולוסי 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("האיגרת אל הקולוסים 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("אל הקולוסים 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Col 1:1").osis()).toEqual("Col.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס השליח אל-הקולוסים 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("אגרת פולוס השליח אל-הקולוסי 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("האיגרת אל הקולוסים 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("אל הקולוסים 1:1").osis()).toEqual("Col.1.1")
@@ -1117,14 +1155,18 @@ describe "Localized book 2Thess (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Thess (he)", ->
 		`
+		expect(p.parse("אגרת פולוס השנייה אל-התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("אגרת פולוס השנייה אל-התסלונ 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("האיגרת השנייה אל התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("השנייה אל התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("השנייה אל-התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2Thess 1:1").osis()).toEqual("2Thess.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס השנייה אל-התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("אגרת פולוס השנייה אל-התסלונ 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("האיגרת השנייה אל התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("השנייה אל התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("השנייה אל-התסלוניקים 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2THESS 1:1").osis()).toEqual("2Thess.1.1")
 		`
 		true
@@ -1136,11 +1178,13 @@ describe "Localized book 1Thess (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Thess (he)", ->
 		`
+		expect(p.parse("אגרת פולוס הראשונה אל-התסלוניקים 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("האיגרת הראשונה אל התסלוניקים 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("אגרת פולוס הראשונה אל-התסלו 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("הראשונה אל התסלוניקים 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1Thess 1:1").osis()).toEqual("1Thess.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס הראשונה אל-התסלוניקים 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("האיגרת הראשונה אל התסלוניקים 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("אגרת פולוס הראשונה אל-התסלו 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("הראשונה אל התסלוניקים 1:1").osis()).toEqual("1Thess.1.1")
@@ -1155,12 +1199,14 @@ describe "Localized book 2Tim (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 2Tim (he)", ->
 		`
+		expect(p.parse("אגרת פולוס השנייה אל-טימותיוס 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("אגרת פולוס השנייה אל-טימותי 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("האיגרת השנייה אל טימותיוס 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("השנייה אל טימותיאוס 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("השנייה אל טימותיוס 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2Tim 1:1").osis()).toEqual("2Tim.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס השנייה אל-טימותיוס 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("אגרת פולוס השנייה אל-טימותי 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("האיגרת השנייה אל טימותיוס 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("השנייה אל טימותיאוס 1:1").osis()).toEqual("2Tim.1.1")
@@ -1176,12 +1222,14 @@ describe "Localized book 1Tim (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Tim (he)", ->
 		`
+		expect(p.parse("אגרת פולוס הראשונה אל-טימותיוס 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("אגרת פולוס הראשונה אל-טימות 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("האיגרת הראשונה אל טימותיוס 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("הראשונה אל טימותיאוס 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("הראשונה אל טימותיוס 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1Tim 1:1").osis()).toEqual("1Tim.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרת פולוס הראשונה אל-טימותיוס 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("אגרת פולוס הראשונה אל-טימות 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("האיגרת הראשונה אל טימותיוס 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("הראשונה אל טימותיאוס 1:1").osis()).toEqual("1Tim.1.1")
@@ -1236,11 +1284,13 @@ describe "Localized book Heb (he)", ->
 	it "should handle book: Heb (he)", ->
 		`
 		expect(p.parse("האיגרת אל העברים 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("האיגרת אל-העברים 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("האגרת אל-העברים 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("אל העברים 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Heb 1:1").osis()).toEqual("Heb.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("האיגרת אל העברים 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("האיגרת אל-העברים 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("האגרת אל-העברים 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("אל העברים 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("HEB 1:1").osis()).toEqual("Heb.1.1")
@@ -1256,10 +1306,12 @@ describe "Localized book Jas (he)", ->
 		`
 		expect(p.parse("איגרת יעקב 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("אגרת יעקב 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("יעקב 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jas 1:1").osis()).toEqual("Jas.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("איגרת יעקב 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("אגרת יעקב 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("יעקב 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAS 1:1").osis()).toEqual("Jas.1.1")
 		`
 		true
@@ -1273,10 +1325,12 @@ describe "Localized book 2Pet (he)", ->
 		`
 		expect(p.parse("אגרתו השנייה של פטרוס השליח 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("איגרת פטרוס השנייה 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("השנייה פטרוס 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("אגרתו השנייה של פטרוס השליח 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("איגרת פטרוס השנייה 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("השנייה פטרוס 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
 		`
 		true
@@ -1288,12 +1342,16 @@ describe "Localized book 1Pet (he)", ->
 		p.include_apocrypha true
 	it "should handle book: 1Pet (he)", ->
 		`
+		expect(p.parse("אגרתו הראשונה של פטרוס השליח 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("אגרתו הראשונה של פטרוס השלי 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("איגרת פטרוס הראשונה 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("הראשונה פטרוס 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1Pet 1:1").osis()).toEqual("1Pet.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("אגרתו הראשונה של פטרוס השליח 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("אגרתו הראשונה של פטרוס השלי 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("איגרת פטרוס הראשונה 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("הראשונה פטרוס 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1PET 1:1").osis()).toEqual("1Pet.1.1")
 		`
 		true
@@ -1307,10 +1365,12 @@ describe "Localized book Jude (he)", ->
 		`
 		expect(p.parse("איגרת יהודה 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("אגרת יהודה 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("יהודה 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Jude 1:1").osis()).toEqual("Jude.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("איגרת יהודה 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("אגרת יהודה 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("יהודה 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JUDE 1:1").osis()).toEqual("Jude.1.1")
 		`
 		true

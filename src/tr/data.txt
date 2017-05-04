@@ -1,0 +1,276 @@
+$FIRST	1	I	Bir	Birinci	[İiı]lk
+$SECOND	2	II	[İiı]ki	[İiı]kinci
+$THIRD	3	III	Üç	Üçüncü
+$FOURTH	4	IV	Dört	Dördüncü
+$BOOK	Kitap	Kitab[İiı]
+$GOSPEL	'?y?a Göre [İiı]ncil	'?n?[İiıu]n [İiı]ncili	[İiı]ncili
+$AB	[b-e]
+$AND	ve
+$CHAPTER	baplar	bap	bp.
+#bölümler	bölüm	bö.
+$FF	vs	vd
+$TITLE	başl[İiı]k
+$TRANS	YC	YC1998,YC	YC2001,YC	YC2008,YC	YC2009,YC	KM	TC	COS,TC	CAN	TSV	HADI
+$TO	ile
+$VERSE	a.`	ayeti	ayet
+$UNICODE_BLOCK	Latin
+
+Gen	Yarat[İiı]l[İiı]ş	Tesn[İiı]ye	Tekv[İiı]n	Yar
+Exod	M[İiı]s[İiı]r'?dan Ç[İiı]k[İiı]ş	Ç[İiı]k[İiı]ş	Ç[İiı]k
+Lev	Lev[İiı]l[İiı]ler	Lev
+Num	Çölde Say[İiı]m	Say[İiı]lar	Say
+Deut	Yasa'?n[İiı]n Tekrar[İiı]	Yas
+Josh	Yeşu	Yşu
+Judg	Hak[İiı]mler	Hak
+Ruth	Rut	Rut
+1Sam	$FIRST Samuel	1. Sa
+2Sam	$SECOND Samuel	2. Sa
+1Kgs	$FIRST Krallar	1. Kr
+2Kgs	$SECOND Krallar	2. Kr
+1Chr	$FIRST Tar[İiı]hler	1. Ta
+2Chr	$SECOND Tar[İiı]hler	2. Ta
+Ezra	Ezra	Ezr
+Neh	Nehemya	Neh
+Esth	Ester	Est
+Job	Eyüp	Eyü
+Ps	Mezmurlar	Mezmur	Mez
+Prov	Süleyman'?[İiı]n Özdey[İiı]şler[İiı]	Süleyman'?[İiı]n Meseller[İiı]	Meseller	Özd
+Eccl	Va[İiı]z	Va[İiı]
+Song	Ezg[İiı]ler Ezg[İiı]s[İiı]	Ezg
+Isa	Yeşaya	Yşa
+Jer	Yeremya	Yer
+Lam	Ağ[İiı]tlar	Ağ[İiı]
+Ezek	Hezek[İiı]el	Hez
+Dan	Dan[İiı]el	Dan
+Hos	Hosea	Hoş
+Joel	Yoel	Yoe
+Amos	Amos	Amo
+Obad	Ovadya	Ova
+Jonah	Yunus	Yun
+Mic	M[İiı]ka	M[İiı]k
+Nah	Nahum	Nah
+Hab	Habakkuk	Hab
+Zeph	Sefanya	Sef
+Hag	Hagay	Hag
+Zech	Zeker[İiı]ya	Zek
+Mal	Malak[İiı]	Mal
+Matt	Matta$GOSPEL	Matta	Mat
+Mark	Markos$GOSPEL	Markos	Mar
+Luke	Luka$GOSPEL	Luka	Luk
+John	Yuhanna$GOSPEL	Yuhanna	Yuh	Yu
+Acts	Elç[İiı]ler[İiı]n [İiı]şler[İiı]	Elç
+Rom	Romal[İiı]lar	Rom
+1Cor	$FIRST Kor[İiı]ntl[İiı]ler	$FIRST Kor[İiı]ntoslular	1. Ko
+2Cor	$SECOND Kor[İiı]ntl[İiı]ler	$SECOND Kor[İiı]ntoslular	2. Ko
+Gal	Galatyal[İiı]lar	Gal
+Eph	Efesl[İiı]ler	Efe	Ef
+Phil	F[İiı]l[İiı]p[İiı]l[İiı]ler	Flp
+Col	Kolosel[İiı]ler	Kol
+1Thess	$FIRST Selan[İiı]kl[İiı]ler	1. Se
+2Thess	$SECOND Selan[İiı]kl[İiı]ler	2. Se
+1Tim	$FIRST T[İiı]moteos	1. T[İiı]
+2Tim	$SECOND T[İiı]moteos	2. T[İiı]
+Titus	T[İiı]tus	T[İiı]t
+Phlm	F[İiı]l[İiı]mon	Flm
+Heb	[İiı]bran[İiı]ler	[İiı]br
+Jas	Yakup	Yak
+1Pet	$FIRST Petrus	1. Pe
+2Pet	$SECOND Petrus	2. Pe
+1John	$FIRST Yuhanna	1. Yu
+2John	$SECOND Yuhanna	2. Yu
+3John	$THIRD Yuhanna	3. Yu
+Jude	Yahuda	Yah
+Rev	Vah[İiı]y	Vah	Va
+Tob	Tob[İiı]t
+Jdt	Yud[İiı]t
+GkEsth	Grekçe Ester	Yunanca Ester
+Wis	B[İiı]lgelik
+Sir	S[İiı]rak
+Bar	Baruk
+PrAzar	Azarya'?n[İiı]n Duas[İiı]
+Sus	Suzanna
+Bel	Bel ve Ejderha
+SgThree	Üç Genç Adam[İiı]n Ezg[İiı]s[İiı]
+EpJer	Yeremya'?n[İiı]n Mektubu
+1Macc	$FIRST Makabeler
+2Macc	$SECOND Makabeler
+3Macc	$THIRD Makabeler
+4Macc	$FOURTH Makabeler
+1Esd	$FIRST Esdras
+2Esd	$SECOND Esdras
+PrMan	Manaşşe'?n[İiı]n Duas[İiı]
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Yaratılış	Yar
+*Exod	Mısır'dan Çıkış	Çık
+*Lev	Levılıler	Lev
+*Num	Çölde Sayım	Say
+*Deut	Yasa'nın Tekrarı	Yas
+*Josh	Yeşu	Yşu
+*Judg	Hakimler	Hak
+*Ruth	Rut	Rut
+*1Sam	1. Samuel	1Sa
+*2Sam	2. Samuel	2Sa
+*1Kgs	1. Krallar	1Kr
+*2Kgs	2. Krallar	2Kr
+*1Chr	1. Tarihler	1Ta
+*2Chr	2. Tarihler	2Ta
+*Ezra	Ezra	Ezr
+*Neh	Nehemya	Neh
+*Esth	Ester	Est
+*Job	Eyüp	Eyü
+*Ps	Mezmurlar	Mez
+*Prov	Süleyman'ın Özdeyişleri	Özd
+*Eccl	Vaiz	Vai
+*Song	Ezgiler Ezgisi	Ezg
+*Isa	Yeşaya	Yşa
+*Jer	Yeremya	Yer
+*Lam	Ağitlar	Ağı
+*Ezek	Hezekiel	Hez
+*Dan	Daniel	Dan
+*Hos	Hosea	Hoş
+*Joel	Yoel	Yoe
+*Amos	Amos	Amo
+*Obad	Ovadya	Ova
+*Jonah	Yunus	Yun
+*Mic	Mika	Mik
+*Nah	Nahum	Nah
+*Hab	Habakkuk	Hab
+*Zeph	Sefanya	Sef
+*Hag	Hagay	Hag
+*Zech	Zekeriya	Zek
+*Mal	Malaki	Mal
+*Matt	Matta	Mat
+*Mark	Markos	Mar
+*Luke	Luka	Luk
+*John	Yuhanna	Yu
+*Acts	Elçilerin İşleri	Elç
+*Rom	Romalılar	Rom
+*1Cor	1. Korintliler	1Ko
+*2Cor	2. Korintliler	2Ko
+*Gal	Galatyalılar	Gal
+*Eph	Efesliler	Ef
+*Phil	Filipililer	Flp
+*Col	Koloseliler	Kol
+*1Thess	1. Selanikliler	1Se
+*2Thess	2. Selanikliler	2Se
+*1Tim	1. Timoteos	1Ti
+*2Tim	2. Timoteos	2Ti
+*Titus	Titus	Tit
+*Phlm	Filimon	Flm
+*Heb	İbraniler	İbr
+*Jas	Yakup	Yak
+*1Pet	1. Petrus	1Pe
+*2Pet	2. Petrus	2Pe
+*1John	1. Yuhanna	1Yu
+*2John	2. Yuhanna	2Yu
+*3John	3. Yuhanna	3Yu
+*Jude	Yahuda	Yah
+*Rev	Vahiy	Va
+*Tob	Tobit
+*Jdt	Yudit
+*GkEsth	GkEsth
+*Wis	Bilgelik
+*Sir	Sirak
+*Bar	Baruk
+*PrAzar	Azarya’nın Duası
+*Sus	Suzanna
+*Bel	Bel ve Ejderha
+*SgThree	Üç Genç Adamın Ezgisi
+*EpJer	Yeremya’nın Mektubu
+*1Macc	1. Makabeler
+*2Macc	2. Makabeler
+*3Macc	3. Makabeler
+*4Macc	4. Makabeler
+*1Esd	1. Esdras
+*2Esd	2. Esdras
+*PrMan	Manaşşe’nin Duası
+
+# vim: ts=7 sw=7

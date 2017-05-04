@@ -31,7 +31,7 @@ Ruth	Rut
 2Chr	$SECOND Chronik	2. Chr
 Ezra	Esra	Esr
 Neh	Nehemia	Neh
-Esth	Ester	Est
+Esth	Esth?er	Est
 Job	Ijob	Hiob	Job	Hi
 Ps	Psalmen	Psalm	Ps
 Prov	Sprichwörter	Sprüche	Sprueche	Spr
@@ -73,7 +73,7 @@ Col	Kolosser	Kol
 Titus	Titus	Tit
 Phlm	Philemon	Phlm	Phm
 Heb	Hebräer	Hebraeer	Hebr
-Jas	Jakobusbrief	Jak
+Jas	Jakobusbrief	Jakobus	Jak
 1Pet	$FIRST Petrus	1. Petr
 2Pet	$SECOND Petrus	2. Petr
 1John	$FIRST Johannes	1. Joh

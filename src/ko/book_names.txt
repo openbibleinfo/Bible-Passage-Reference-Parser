@@ -11,6 +11,7 @@
 1Cor	코린토1서
 1Cor	1Cor
 1Cor	1코린
+1Cor	고전
 1Esd	에스드라 1서
 1Esd	1Esd
 1John	요한의 첫째 서간
@@ -18,6 +19,7 @@
 1John	요한1서
 1John	요한일서
 1John	1요한
+1John	요일
 1Kgs	열왕기 상권
 1Kgs	열왕기 상
 1Kgs	1Kgs
@@ -33,6 +35,7 @@
 1Pet	베드로전서
 1Pet	1Pet
 1Pet	1베드
+1Pet	벧전
 1Sam	사무엘기 상권
 1Sam	사무엘 상
 1Sam	사무엘기상
@@ -46,11 +49,14 @@
 1Thess	테살로니카1서
 1Thess	1Thess
 1Thess	1테살
+1Thess	살전
 1Tim	티모테오에게 보낸 첫째 서간
 1Tim	티모테오1서
 1Tim	디모데1서
+1Tim	디모데전서
 1Tim	1Tim
 1Tim	1티모
+1Tim	딤전
 2Chr	역대기 하권
 2Chr	역대기 하
 2Chr	2Chr
@@ -64,6 +70,7 @@
 2Cor	코린토2서
 2Cor	2Cor
 2Cor	2코린
+2Cor	고후
 2Esd	에스드라 2서
 2Esd	2Esd
 2John	요한의 둘째 서간
@@ -71,6 +78,7 @@
 2John	요한2서
 2John	요한이서
 2John	2요한
+2John	요이
 2Kgs	열왕기 하권
 2Kgs	열왕기 하
 2Kgs	2Kgs
@@ -86,6 +94,7 @@
 2Pet	베드로후서
 2Pet	2Pet
 2Pet	2베드
+2Pet	벧후
 2Sam	사무엘기 하권
 2Sam	사무엘 하
 2Sam	사무엘기하
@@ -99,17 +108,20 @@
 2Thess	테살로니카2서
 2Thess	2Thess
 2Thess	2테살
+2Thess	살후
 2Tim	티모테오에게 보낸 둘째 서간
 2Tim	티모테오2서
 2Tim	디모데2서
 2Tim	디모데후서
 2Tim	2Tim
 2Tim	2티모
+2Tim	딤후
 3John	요한의 셋째 서간
 3John	3John
 3John	요한3서
 3John	요한삼서
 3John	3요한
+3John	요삼
 3Macc	마카베오 3서
 3Macc	3Macc
 3Macc	3마카
@@ -119,6 +131,7 @@
 Acts	Acts
 Acts	사도행전
 Acts	사도
+Acts	행
 Amos	Amos
 Amos	아모스서
 Amos	아모스
@@ -135,6 +148,7 @@ Col	골로새서
 Col	콜로새서
 Col	Col
 Col	콜로
+Col	골
 Dan	다니엘서
 Dan	Dan
 Dan	다니엘
@@ -156,6 +170,7 @@ Eph	에베소서
 Eph	에페소서
 Eph	Eph
 Eph	에페
+Eph	엡
 Esth	에스테르기
 Esth	Esth
 Esth	에스더기
@@ -186,6 +201,7 @@ Gal	갈라티아 신자들에게 보낸 서간
 Gal	갈라디아서
 Gal	Gal
 Gal	갈라
+Gal	갈
 Gen	Gen
 Gen	창세기
 Gen	창세
@@ -211,6 +227,7 @@ Heb	히브리인들에게 보낸 서간
 Heb	히브리서
 Heb	Heb
 Heb	히브
+Heb	히
 Hos	호세아서
 Hos	Hos
 Hos	호세아
@@ -225,6 +242,7 @@ Jas	야고보 서간
 Jas	야고보서
 Jas	Jas
 Jas	야고
+Jas	약
 Jdt	Jdt
 Jdt	유딧기
 Jdt	유딧
@@ -247,6 +265,7 @@ John	요한복음서
 John	John
 John	요한복음
 John	요한
+John	요
 Jonah	Jonah
 Jonah	요나서
 Jonah	요나
@@ -260,6 +279,7 @@ Jude	유다 서간
 Jude	Jude
 Jude	유다서
 Jude	유다
+Jude	유
 Judg	Judg
 Judg	사사기
 Judg	판관기
@@ -282,6 +302,7 @@ Luke	Luke
 Luke	누가복음
 Luke	누가
 Luke	루카
+Luke	눅
 Mal	말라기서
 Mal	말라키서
 Mal	Mal
@@ -295,12 +316,14 @@ Mark	Mark
 Mark	마가복음
 Mark	마가
 Mark	마르
+Mark	막
 Matt	마태오 복음서
 Matt	마태오 복음
 Matt	마태복음서
 Matt	Matt
 Matt	마태복음
 Matt	마태
+Matt	마
 Mic	Mic
 Mic	미가서
 Mic	미카서
@@ -333,11 +356,13 @@ Phil	Phil
 Phil	빌립보서
 Phil	필리피서
 Phil	필리
+Phil	빌
 Phlm	필레몬에게 보낸 서간
 Phlm	Phlm
 Phlm	빌레몬서
 Phlm	필레몬서
 Phlm	필레
+Phlm	본
 PrAzar	PrAzar
 PrMan	므나쎄의 기도
 PrMan	PrMan
@@ -353,10 +378,12 @@ Rev	요한계시록
 Rev	요한묵시록
 Rev	Rev
 Rev	묵시
+Rev	계
 Rom	로마 신자들에게 보낸 서간
 Rom	Rom
 Rom	로마서
 Rom	로마
+Rom	롬
 Ruth	Ruth
 Ruth	룻기
 Ruth	룻
@@ -379,6 +406,7 @@ Titus	Titus
 Titus	디도서
 Titus	티토서
 Titus	티토
+Titus	딛
 Tob	Tob
 Tob	토비트
 Tob	토빗기

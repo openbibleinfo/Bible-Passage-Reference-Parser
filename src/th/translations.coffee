@@ -1,6 +1,6 @@
 # When adding a new translation, add it both here and bcv_parser::translations.aliases
 bcv_parser::regexps.translations = ///(?:
-	  (?:NCV|ERV)
+	  (?:(?:ER|NC)V)
 	)\b///gi
 bcv_parser::translations = 
 	aliases:

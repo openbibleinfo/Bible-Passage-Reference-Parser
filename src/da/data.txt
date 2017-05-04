@@ -41,7 +41,7 @@ Eccl	Prædikeren	Prædikerens Bog	Præd	Prad
 Song	Højsangen	Salomons Højsang	Højs	Hojs
 Isa	Esajas	Esajas' Bog	Jesaia	Es
 Jer	Jeremias	Jeremias' Bog	Jer
-Lam	Klagesangene	Klages
+Lam	Klagesangene	Klages	Klag
 Ezek	Ezekiel	Ezekiels’ Bog	Ezekiels Bog	Hezechiel	Ez
 Dan	Daniel	Daniels Bog	Dan
 Hos	Hoseas	Hoseas’ Bog	Hos
@@ -52,7 +52,7 @@ Jonah	Jonas	Jon	Jonas' Bog
 Mic	Mikas	Mikas Bog	Mika
 Nah	Nahum	Nahums Bog	Nah
 Hab	Habakkuk	Habakkuks Bog	Hab
-Zeph	Zefanias	Sefanias' Bog	Sef
+Zeph	Zefanias	Zefanias’ Bog	Sefanias' Bog	Sef	Zef
 Hag	Haggaj	Haggajs Bog	Hagg
 Zech	Zakarias	Zakarias' Bog	Zak
 Mal	Malakias	Malakias’ Bog	Mal
@@ -62,25 +62,25 @@ Luke	Lukas	Lukasevangeliet	Lu?k
 John	Johannes	Johannesevangeliet	Joh
 Acts	Gerninger	Apostlenes Gerninger	Ap.G
 Rom	Romerne	Romerbrevet	Paulus' Brev til Romerne	Rom
-1Cor	$FIRST Korinterne	$FIRST Korintherbrev	Paulus' $FIRST Brev til Korintherne	$FIRST Kor
-2Cor	$SECOND Korinterne	$SECOND Korintherbrev	Andet Korintherbrev	Paulus' Andet Brev til Korintherne	$SECOND Kor
+1Cor	$FIRST Korinterne	$FIRST Korinth?erbrev	Paulus' $FIRST Brev til Korintherne	$FIRST Kor
+2Cor	$SECOND Korinterne	$SECOND Korinth?erbrev	Andet Korintherbrev	Paulus' Andet Brev til Korintherne	$SECOND Kor
 Gal	Galaterne	Galaterbrevet	Brevet til Galaterne	Paulus' Brev til Galaterne	Gal
 Eph	Efeserne	Efeserbrevet	Paulus' Brev til Efeserne	Ef
 Phil	Filipperne	Filipperbrevet	Paulus' Brev til Filipperne	Fil
 Col	Kolossensern	Kolossenserbrevet	Paulus' Brev til Kolossenserne	Kol
 1Thess	$FIRST Tessalonikerne	$FIRST Thessalonikerbrev	Paulus' $FIRST Brev til Thessalonikerne	$FIRST Thess
 2Thess	$SECOND Tessalonikerne	$SECOND Thessalonikerbrev	Paulus' Andet Brev til Thessalonikerne	$SECOND Thess	Andet Thessalonikerbrev
-1Tim	$FIRST Timoteus	$FIRST Timotheusbrev	Paulus' $FIRST Brev til Timotheus	$FIRST Tim
-2Tim	$SECOND Timoteus	$SECOND Timotheusbrev	Paulus' Andet Brev til Timotheus	$SECOND Tim	Andet Timotheusbrev
+1Tim	$FIRST Timoteus	$FIRST Timoth?eusbrev	Paulus' $FIRST Brev til Timotheus	$FIRST Tim
+2Tim	$SECOND Timoteus	$SECOND Timoth?eusbrev	Paulus' Andet Brev til Timotheus	$SECOND Tim	Andet Timotheusbrev
 Titus	Titus	Titusbrevet	Paulus' Brev til Titus	Tit
-Phlm	Filemon	Filemonbrevet	Paulus' Brev til Filemon	Filem
+Phlm	Filemon	Filemonbrevet	Paulus' Brev til Filemon	Filem	Flm
 Heb	Hebræerne	Hebræerbrevet	Brevet til Hebræerne	Hebr
 Jas	Jakob	Jakobsbrevet	Jakobs Brev	Jak
 1Pet	$FIRST Peter	$FIRST Petersbrev	Peters $FIRST Brev	$FIRST Pet
 2Pet	$SECOND Peter	$SECOND Petersbrev	Peters Andet Brev	$SECOND Pet	Andet Petersbrev
-1John	$FIRST Johannes	$FIRST Johannesbrev	Johannes' $FIRST Brev	$FIRST Joh
-2John	$SECOND Johannes	$SECOND Johannesbrev	Johannes' Andet Brev	$SECOND Joh	Andet Johannesbrev
-3John	$THIRD Johannes	$THIRD Johannesbrev	Johannes' $THIRD Brev	$THIRD Joh
+1John	$FIRST Johannes	$FIRST Johannesbrev	Johannes' $FIRST Brev	$FIRST Joh	$FIRST Johannes' Brev
+2John	$SECOND Johannes	$SECOND Johannesbrev	Johannes' Andet Brev	$SECOND Joh	Andet Johannesbrev	$SECOND Johannes' Brev
+3John	$THIRD Johannes	$THIRD Johannesbrev	Johannes' $THIRD Brev	$THIRD Joh	$THIRD Johannes' Brev
 Jude	Judas	Judasbrevet	Judas' Brev	Jud
 Rev	Aabenbaringen	Johs. Åbenbaring	Åbenbaringen	Åbenbaringsbogen	Johannesapokalypsen	Apokalypsen	Åb	Johannes' Åbenbaring
 Tob	Tobits Bog	Tob	Tobit

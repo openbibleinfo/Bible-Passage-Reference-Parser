@@ -661,10 +661,12 @@ describe "Localized book Esth (de)", ->
 		p.include_apocrypha true
 	it "should handle book: Esth (de)", ->
 		`
+		expect(p.parse("Esther 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Ester 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Esth 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Est 1:1").osis()).toEqual("Esth.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("ESTHER 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("ESTER 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("ESTH 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("EST 1:1").osis()).toEqual("Esth.1.1")
@@ -1522,10 +1524,12 @@ describe "Localized book Jas (de)", ->
 	it "should handle book: Jas (de)", ->
 		`
 		expect(p.parse("Jakobusbrief 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("Jakobus 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jak 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jas 1:1").osis()).toEqual("Jas.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("JAKOBUSBRIEF 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("JAKOBUS 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAK 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAS 1:1").osis()).toEqual("Jas.1.1")
 		`

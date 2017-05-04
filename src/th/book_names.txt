@@ -76,6 +76,7 @@
 2Thess	2. เธสะโลนิกา
 2Thess	2 เธซะโลนิกา
 2Thess	2 เธสะโลนิกา
+2Thess	2ธสะโลนิกา
 2Thess	2Thess
 2Thess	2 ธส
 2Tim	2. ทิโมธี
@@ -93,6 +94,7 @@
 4Macc	4 มัคคาบี
 4Macc	4Macc
 Acts	กิจการ​ของ​อัครทูต
+Acts	กิจการของอัครทูต
 Acts	กิจการ
 Acts	Acts
 Acts	กจ

@@ -421,23 +421,35 @@
 1Thess	I. Te
 1Thess	1 Te
 1Thess	I Te
+1Tim	Prvni list Timotejovi
+1Tim	První list Timotejovi
 1Tim	Prvni list Timeteovi
 1Tim	Prvni list Timoteovi
 1Tim	První list Timeteovi
 1Tim	První list Timoteovi
+1Tim	1. list Timotejovi
+1Tim	I. list Timotejovi
+1Tim	1 list Timotejovi
 1Tim	1. list Timeteovi
 1Tim	1. list Timoteovi
+1Tim	I list Timotejovi
 1Tim	I. list Timeteovi
 1Tim	I. list Timoteovi
 1Tim	1 list Timeteovi
 1Tim	1 list Timoteovi
 1Tim	I list Timeteovi
 1Tim	I list Timoteovi
+1Tim	Prvni Timotejovi
+1Tim	První Timotejovi
 1Tim	Prvni Timoteovi
 1Tim	První Timoteovi
 1Tim	Prvni Timoteus
 1Tim	První Timoteus
+1Tim	1. Timotejovi
+1Tim	I. Timotejovi
+1Tim	1 Timotejovi
 1Tim	1. Timoteovi
+1Tim	I Timotejovi
 1Tim	I. Timoteovi
 1Tim	1 Timoteovi
 1Tim	1. Timoteus
@@ -1013,22 +1025,34 @@
 2Thess	2. Te
 2Thess	II Te
 2Thess	2 Te
-2Tim	Druha list Timeteovi
+2Tim	Druha list Timetejovi
+2Tim	Druha list Timotejovi
+2Tim	Druhy list Timetejovi
+2Tim	Druhy list Timotejovi
+2Tim	Druhá list Timetejovi
+2Tim	Druhá list Timotejovi
+2Tim	Druhý list Timetejovi
+2Tim	Druhý list Timotejovi
 2Tim	Druha list Timoteovi
-2Tim	Druhy list Timeteovi
 2Tim	Druhy list Timoteovi
-2Tim	Druhá list Timeteovi
 2Tim	Druhá list Timoteovi
-2Tim	Druhý list Timeteovi
 2Tim	Druhý list Timoteovi
-2Tim	II. list Timeteovi
+2Tim	II. list Timetejovi
+2Tim	II. list Timotejovi
+2Tim	2. list Timetejovi
+2Tim	2. list Timotejovi
+2Tim	II list Timetejovi
+2Tim	II list Timotejovi
 2Tim	II. list Timoteovi
-2Tim	2. list Timeteovi
+2Tim	2 list Timetejovi
+2Tim	2 list Timotejovi
 2Tim	2. list Timoteovi
-2Tim	II list Timeteovi
 2Tim	II list Timoteovi
-2Tim	2 list Timeteovi
 2Tim	2 list Timoteovi
+2Tim	Druha Timotejovi
+2Tim	Druhy Timotejovi
+2Tim	Druhá Timotejovi
+2Tim	Druhý Timotejovi
 2Tim	Druha Timoteovi
 2Tim	Druhy Timoteovi
 2Tim	Druhá Timoteovi
@@ -1037,7 +1061,11 @@
 2Tim	Druhy Timoteus
 2Tim	Druhá Timoteus
 2Tim	Druhý Timoteus
+2Tim	II. Timotejovi
+2Tim	2. Timotejovi
+2Tim	II Timotejovi
 2Tim	II. Timoteovi
+2Tim	2 Timotejovi
 2Tim	2. Timoteovi
 2Tim	II Timoteovi
 2Tim	II. Timoteus
@@ -1174,8 +1202,10 @@ Acts	Skutky apostolské
 Acts	Skutky apoštolske
 Acts	Skutky apoštolské
 Acts	Skutky apostolu
+Acts	Skutky apostolü
 Acts	Skutky apostolů
 Acts	Skutky apoštolu
+Acts	Skutky apoštolü
 Acts	Skutky apoštolů
 Acts	Skutky
 Acts	Acts
@@ -1682,6 +1712,8 @@ Isa	Isa
 Isa	Iz
 Jas	List Jakubuv
 Jas	List Jakubův
+Jas	Jakubuv
+Jas	Jakubův
 Jas	Jakub
 Jas	Jak
 Jas	Jas
@@ -1726,6 +1758,8 @@ Josh	Jz
 Jude	List Juduv
 Jude	List Judův
 Jude	Judova
+Jude	Juduv
+Jude	Judův
 Jude	Juda
 Jude	Jude
 Jude	Jd

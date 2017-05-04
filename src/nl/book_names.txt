@@ -312,6 +312,7 @@
 1Thess	I Thess
 1Thess	I. Tess
 1Thess	1 Tess
+1Thess	1 Thes
 1Thess	1. Tes
 1Thess	1Thess
 1Thess	1e Tes
@@ -667,6 +668,7 @@
 2Thess	II Tess
 2Thess	II. Tes
 2Thess	2 Tess
+2Thess	2 Thes
 2Thess	2. Tes
 2Thess	2Thess
 2Thess	2e Tes
@@ -896,6 +898,7 @@ Judg	Recht
 Judg	Richt
 Judg	Judg
 Judg	Re
+Judg	Ri
 Lam	Klaagliederen
 Lam	Klaagl
 Lam	Lam
@@ -931,6 +934,7 @@ Mark	Marc
 Mark	Mark
 Mark	Mc
 Mark	Mk
+Mark	Mr
 Matt	Evangelie volgens Matteus
 Matt	Evangelie volgens Matteüs
 Matt	Mattheus

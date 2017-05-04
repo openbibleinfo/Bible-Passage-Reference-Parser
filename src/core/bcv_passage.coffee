@@ -59,7 +59,6 @@ class bcv_passage
 	b_range_pre: (passage, accum, context) ->
 		passage.start_context = bcv_utils.shallow_clone context
 		passage.passages = []
-		alternates = []
 		book = @pluck "b", passage.value
 		[[end], context] = @b book, [], context
 		passage.absolute_indices ?= @get_absolute_indices passage.indices
@@ -92,7 +91,7 @@ class bcv_passage
 			# Is it really a `bv` object?
 			if valid.messages.start_chapter_not_exist_in_single_chapter_book or valid.messages.start_chapter_1
 				obj.valid = @validate_ref passage.start_context.translations, {b: b, v: c}
-				# If it's `Jude 2`, then note that that chapter doesn't exist.
+				# If it's `Jude 2`, then note that the chapter doesn't exist.
 				if valid.messages.start_chapter_not_exist_in_single_chapter_book
 					obj.valid.messages.start_chapter_not_exist_in_single_chapter_book = 1
 				obj.start.c = 1
@@ -225,7 +224,7 @@ class bcv_passage
 		if context.b isnt "Ps"
 			# Don't change the `type` here because we're not updating the structure to match the `c` expectation if reparsing later.
 			return @c passage.value[0], accum, context
-		# Add a `v` object and treat it as a refular `cv`.
+		# Add a `v` object and treat it as a regular `cv`.
 		title = @pluck "title", passage.value
 		passage.value[1] = {type: "v", value: [{type: "integer", value: 1, indices: title.indices}], indices: title.indices}
 		# Change the type to match the new parsing strategy.
@@ -300,10 +299,12 @@ class bcv_passage
 		# If it's not Psalms, treat it as a straight integer, ignoring the "title".
 		if context.b isnt "Ps"
 			return @integer passage.value[0], accum, context
+		# Change the `integer` to a `c` object for later passing to `@cv`.
 		passage.value[0] = type: "c", value: [passage.value[0]], indices: [passage.value[0].indices[0], passage.value[0].indices[1]]
-		# Add a `v` object.
-		v_indices = [passage.indices[1] - 5, passage.indices[1]]
-		passage.value[1] = {type: "v", value: [{type: "integer", value: 1, indices: v_indices}], indices: v_indices}
+		# Change the `title` object to a `v` object.
+		passage.value[1].type = "v"
+		passage.value[1].original_type = "title"
+		passage.value[1].value = [{type: "integer", value: 1, indices: passage.value[1].value.indices}]
 		# We don't need to preserve the original `type` for reparsing.
 		passage.type = "cv"
 		@cv passage, accum, passage.start_context

@@ -1016,11 +1016,13 @@ describe "Localized book Acts (th)", ->
 	it "should handle book: Acts (th)", ->
 		`
 		expect(p.parse("กิจการ​ของ​อัครทูต 1:1").osis()).toEqual("Acts.1.1")
+		expect(p.parse("กิจการของอัครทูต 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("กิจการ 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("Acts 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("กจ 1:1").osis()).toEqual("Acts.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("กิจการ​ของ​อัครทูต 1:1").osis()).toEqual("Acts.1.1")
+		expect(p.parse("กิจการของอัครทูต 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("กิจการ 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("ACTS 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("กจ 1:1").osis()).toEqual("Acts.1.1")
@@ -1165,6 +1167,7 @@ describe "Localized book 2Thess (th)", ->
 		expect(p.parse("2. เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("2ธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2Thess 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 ธส 1:1").osis()).toEqual("2Thess.1.1")
 		p.include_apocrypha(false)
@@ -1172,6 +1175,7 @@ describe "Localized book 2Thess (th)", ->
 		expect(p.parse("2. เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธซะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 เธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("2ธสะโลนิกา 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2THESS 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2 ธส 1:1").osis()).toEqual("2Thess.1.1")
 		`

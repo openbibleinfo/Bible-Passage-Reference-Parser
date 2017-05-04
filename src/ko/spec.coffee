@@ -196,6 +196,7 @@ describe "Localized book Rev (ko)", ->
 		expect(p.parse("요한묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("Rev 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("묵시 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("계 1:1").osis()).toEqual("Rev.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한 계시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("요한 묵시록 1:1").osis()).toEqual("Rev.1.1")
@@ -203,6 +204,7 @@ describe "Localized book Rev (ko)", ->
 		expect(p.parse("요한묵시록 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("REV 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("묵시 1:1").osis()).toEqual("Rev.1.1")
+		expect(p.parse("계 1:1").osis()).toEqual("Rev.1.1")
 		`
 		true
 describe "Localized book PrMan (ko)", ->
@@ -620,10 +622,12 @@ describe "Localized book Acts (ko)", ->
 		expect(p.parse("Acts 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("사도행전 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("사도 1:1").osis()).toEqual("Acts.1.1")
+		expect(p.parse("행 1:1").osis()).toEqual("Acts.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("ACTS 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("사도행전 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("사도 1:1").osis()).toEqual("Acts.1.1")
+		expect(p.parse("행 1:1").osis()).toEqual("Acts.1.1")
 		`
 		true
 describe "Localized book Eccl (ko)", ->
@@ -694,12 +698,14 @@ describe "Localized book Phlm (ko)", ->
 		expect(p.parse("빌레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("본 1:1").osis()).toEqual("Phlm.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("필레몬에게 보낸 서간 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("PHLM 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("빌레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레몬서 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("필레 1:1").osis()).toEqual("Phlm.1.1")
+		expect(p.parse("본 1:1").osis()).toEqual("Phlm.1.1")
 		`
 		true
 describe "Localized book Lev (ko)", ->
@@ -1086,11 +1092,13 @@ describe "Localized book Gal (ko)", ->
 		expect(p.parse("갈라디아서 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Gal 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("갈라 1:1").osis()).toEqual("Gal.1.1")
+		expect(p.parse("갈 1:1").osis()).toEqual("Gal.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("갈라티아 신자들에게 보낸 서간 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("갈라디아서 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GAL 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("갈라 1:1").osis()).toEqual("Gal.1.1")
+		expect(p.parse("갈 1:1").osis()).toEqual("Gal.1.1")
 		`
 		true
 describe "Localized book Song (ko)", ->
@@ -1124,6 +1132,7 @@ describe "Localized book Matt (ko)", ->
 		expect(p.parse("Matt 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("마태복음 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("마태 1:1").osis()).toEqual("Matt.1.1")
+		expect(p.parse("마 1:1").osis()).toEqual("Matt.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("마태오 복음서 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("마태오 복음 1:1").osis()).toEqual("Matt.1.1")
@@ -1131,6 +1140,7 @@ describe "Localized book Matt (ko)", ->
 		expect(p.parse("MATT 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("마태복음 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("마태 1:1").osis()).toEqual("Matt.1.1")
+		expect(p.parse("마 1:1").osis()).toEqual("Matt.1.1")
 		`
 		true
 describe "Localized book Mark (ko)", ->
@@ -1148,6 +1158,7 @@ describe "Localized book Mark (ko)", ->
 		expect(p.parse("마가복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마가 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("막 1:1").osis()).toEqual("Mark.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("마르코 복음서 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르코 복음 1:1").osis()).toEqual("Mark.1.1")
@@ -1156,6 +1167,7 @@ describe "Localized book Mark (ko)", ->
 		expect(p.parse("마가복음 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마가 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("마르 1:1").osis()).toEqual("Mark.1.1")
+		expect(p.parse("막 1:1").osis()).toEqual("Mark.1.1")
 		`
 		true
 describe "Localized book Luke (ko)", ->
@@ -1173,6 +1185,7 @@ describe "Localized book Luke (ko)", ->
 		expect(p.parse("누가복음 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("루카 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("눅 1:1").osis()).toEqual("Luke.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("루카 복음서 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가복음서 1:1").osis()).toEqual("Luke.1.1")
@@ -1181,6 +1194,7 @@ describe "Localized book Luke (ko)", ->
 		expect(p.parse("누가복음 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("누가 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("루카 1:1").osis()).toEqual("Luke.1.1")
+		expect(p.parse("눅 1:1").osis()).toEqual("Luke.1.1")
 		`
 		true
 describe "Localized book 1John (ko)", ->
@@ -1196,12 +1210,14 @@ describe "Localized book 1John (ko)", ->
 		expect(p.parse("요한1서 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("요한일서 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1요한 1:1").osis()).toEqual("1John.1.1")
+		expect(p.parse("요일 1:1").osis()).toEqual("1John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한의 첫째 서간 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1JOHN 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("요한1서 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("요한일서 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("1요한 1:1").osis()).toEqual("1John.1.1")
+		expect(p.parse("요일 1:1").osis()).toEqual("1John.1.1")
 		`
 		true
 describe "Localized book 2John (ko)", ->
@@ -1217,12 +1233,14 @@ describe "Localized book 2John (ko)", ->
 		expect(p.parse("요한2서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("요한이서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2요한 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("요이 1:1").osis()).toEqual("2John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한의 둘째 서간 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2JOHN 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("요한2서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("요한이서 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("2요한 1:1").osis()).toEqual("2John.1.1")
+		expect(p.parse("요이 1:1").osis()).toEqual("2John.1.1")
 		`
 		true
 describe "Localized book 3John (ko)", ->
@@ -1238,12 +1256,14 @@ describe "Localized book 3John (ko)", ->
 		expect(p.parse("요한3서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("요한삼서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3요한 1:1").osis()).toEqual("3John.1.1")
+		expect(p.parse("요삼 1:1").osis()).toEqual("3John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한의 셋째 서간 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3JOHN 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("요한3서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("요한삼서 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("3요한 1:1").osis()).toEqual("3John.1.1")
+		expect(p.parse("요삼 1:1").osis()).toEqual("3John.1.1")
 		`
 		true
 describe "Localized book John (ko)", ->
@@ -1260,6 +1280,7 @@ describe "Localized book John (ko)", ->
 		expect(p.parse("John 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한복음 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("요 1:1").osis()).toEqual("John.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("요한 복음서 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 복음 1:1").osis()).toEqual("John.1.1")
@@ -1267,6 +1288,7 @@ describe "Localized book John (ko)", ->
 		expect(p.parse("JOHN 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한복음 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("요한 1:1").osis()).toEqual("John.1.1")
+		expect(p.parse("요 1:1").osis()).toEqual("John.1.1")
 		`
 		true
 describe "Localized book Rom (ko)", ->
@@ -1281,11 +1303,13 @@ describe "Localized book Rom (ko)", ->
 		expect(p.parse("Rom 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("로마서 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("로마 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("롬 1:1").osis()).toEqual("Rom.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("로마 신자들에게 보낸 서간 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("ROM 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("로마서 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("로마 1:1").osis()).toEqual("Rom.1.1")
+		expect(p.parse("롬 1:1").osis()).toEqual("Rom.1.1")
 		`
 		true
 describe "Localized book 2Cor (ko)", ->
@@ -1302,6 +1326,7 @@ describe "Localized book 2Cor (ko)", ->
 		expect(p.parse("코린토2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2Cor 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2코린 1:1").osis()).toEqual("2Cor.1.1")
+		expect(p.parse("고후 1:1").osis()).toEqual("2Cor.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("코린토 신자들에게 보낸 둘째 서간 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("고린도2서 1:1").osis()).toEqual("2Cor.1.1")
@@ -1309,6 +1334,7 @@ describe "Localized book 2Cor (ko)", ->
 		expect(p.parse("코린토2서 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2COR 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("2코린 1:1").osis()).toEqual("2Cor.1.1")
+		expect(p.parse("고후 1:1").osis()).toEqual("2Cor.1.1")
 		`
 		true
 describe "Localized book 1Cor (ko)", ->
@@ -1325,6 +1351,7 @@ describe "Localized book 1Cor (ko)", ->
 		expect(p.parse("코린토1서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1Cor 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1코린 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("고전 1:1").osis()).toEqual("1Cor.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("코린토 신자들에게 보낸 첫째 서간 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("고린도1서 1:1").osis()).toEqual("1Cor.1.1")
@@ -1332,6 +1359,7 @@ describe "Localized book 1Cor (ko)", ->
 		expect(p.parse("코린토1서 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1COR 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("1코린 1:1").osis()).toEqual("1Cor.1.1")
+		expect(p.parse("고전 1:1").osis()).toEqual("1Cor.1.1")
 		`
 		true
 describe "Localized book Eph (ko)", ->
@@ -1347,12 +1375,14 @@ describe "Localized book Eph (ko)", ->
 		expect(p.parse("에페소서 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Eph 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("에페 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("엡 1:1").osis()).toEqual("Eph.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("에페소 신자들에게 보낸 서간 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("에베소서 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("에페소서 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("EPH 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("에페 1:1").osis()).toEqual("Eph.1.1")
+		expect(p.parse("엡 1:1").osis()).toEqual("Eph.1.1")
 		`
 		true
 describe "Localized book Phil (ko)", ->
@@ -1368,12 +1398,14 @@ describe "Localized book Phil (ko)", ->
 		expect(p.parse("빌립보서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리피서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("빌 1:1").osis()).toEqual("Phil.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("필리피 신자들에게 보낸 서간 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("빌립보서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리피서 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("필리 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("빌 1:1").osis()).toEqual("Phil.1.1")
 		`
 		true
 describe "Localized book Col (ko)", ->
@@ -1389,12 +1421,14 @@ describe "Localized book Col (ko)", ->
 		expect(p.parse("콜로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Col 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("콜로 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("골 1:1").osis()).toEqual("Col.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("콜로새 신자들에게 보낸 서간 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("골로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("콜로새서 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("COL 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("콜로 1:1").osis()).toEqual("Col.1.1")
+		expect(p.parse("골 1:1").osis()).toEqual("Col.1.1")
 		`
 		true
 describe "Localized book 2Thess (ko)", ->
@@ -1411,6 +1445,7 @@ describe "Localized book 2Thess (ko)", ->
 		expect(p.parse("테살로니카2서 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2Thess 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2테살 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("살후 1:1").osis()).toEqual("2Thess.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("테살로니카 신자들에게 보낸 둘째 서간 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("데살로니가2서 1:1").osis()).toEqual("2Thess.1.1")
@@ -1418,6 +1453,7 @@ describe "Localized book 2Thess (ko)", ->
 		expect(p.parse("테살로니카2서 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2THESS 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("2테살 1:1").osis()).toEqual("2Thess.1.1")
+		expect(p.parse("살후 1:1").osis()).toEqual("2Thess.1.1")
 		`
 		true
 describe "Localized book 1Thess (ko)", ->
@@ -1434,6 +1470,7 @@ describe "Localized book 1Thess (ko)", ->
 		expect(p.parse("테살로니카1서 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1Thess 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1테살 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("살전 1:1").osis()).toEqual("1Thess.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("테살로니카 신자들에게 보낸 첫째 서간 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("데살로니가1서 1:1").osis()).toEqual("1Thess.1.1")
@@ -1441,6 +1478,7 @@ describe "Localized book 1Thess (ko)", ->
 		expect(p.parse("테살로니카1서 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1THESS 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("1테살 1:1").osis()).toEqual("1Thess.1.1")
+		expect(p.parse("살전 1:1").osis()).toEqual("1Thess.1.1")
 		`
 		true
 describe "Localized book 2Tim (ko)", ->
@@ -1457,6 +1495,7 @@ describe "Localized book 2Tim (ko)", ->
 		expect(p.parse("디모데후서 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2Tim 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2티모 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("딤후 1:1").osis()).toEqual("2Tim.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("티모테오에게 보낸 둘째 서간 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("티모테오2서 1:1").osis()).toEqual("2Tim.1.1")
@@ -1464,6 +1503,7 @@ describe "Localized book 2Tim (ko)", ->
 		expect(p.parse("디모데후서 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2TIM 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("2티모 1:1").osis()).toEqual("2Tim.1.1")
+		expect(p.parse("딤후 1:1").osis()).toEqual("2Tim.1.1")
 		`
 		true
 describe "Localized book 1Tim (ko)", ->
@@ -1477,14 +1517,18 @@ describe "Localized book 1Tim (ko)", ->
 		expect(p.parse("티모테오에게 보낸 첫째 서간 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("티모테오1서 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("디모데1서 1:1").osis()).toEqual("1Tim.1.1")
+		expect(p.parse("디모데전서 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1Tim 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1티모 1:1").osis()).toEqual("1Tim.1.1")
+		expect(p.parse("딤전 1:1").osis()).toEqual("1Tim.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("티모테오에게 보낸 첫째 서간 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("티모테오1서 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("디모데1서 1:1").osis()).toEqual("1Tim.1.1")
+		expect(p.parse("디모데전서 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1TIM 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("1티모 1:1").osis()).toEqual("1Tim.1.1")
+		expect(p.parse("딤전 1:1").osis()).toEqual("1Tim.1.1")
 		`
 		true
 describe "Localized book Titus (ko)", ->
@@ -1500,12 +1544,14 @@ describe "Localized book Titus (ko)", ->
 		expect(p.parse("디도서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("티토서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("티토 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("딛 1:1").osis()).toEqual("Titus.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("티토에게 보낸 서간 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("TITUS 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("디도서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("티토서 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("티토 1:1").osis()).toEqual("Titus.1.1")
+		expect(p.parse("딛 1:1").osis()).toEqual("Titus.1.1")
 		`
 		true
 describe "Localized book Heb (ko)", ->
@@ -1520,11 +1566,13 @@ describe "Localized book Heb (ko)", ->
 		expect(p.parse("히브리서 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Heb 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("히브 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("히 1:1").osis()).toEqual("Heb.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("히브리인들에게 보낸 서간 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("히브리서 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("HEB 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("히브 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("히 1:1").osis()).toEqual("Heb.1.1")
 		`
 		true
 describe "Localized book Jas (ko)", ->
@@ -1539,11 +1587,13 @@ describe "Localized book Jas (ko)", ->
 		expect(p.parse("야고보서 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jas 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("야고 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("약 1:1").osis()).toEqual("Jas.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("야고보 서간 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("야고보서 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAS 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("야고 1:1").osis()).toEqual("Jas.1.1")
+		expect(p.parse("약 1:1").osis()).toEqual("Jas.1.1")
 		`
 		true
 describe "Localized book 2Pet (ko)", ->
@@ -1559,12 +1609,14 @@ describe "Localized book 2Pet (ko)", ->
 		expect(p.parse("베드로후서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2베드 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("벧후 1:1").osis()).toEqual("2Pet.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("베드로의 둘째 서간 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("베드로2서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("베드로후서 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("2베드 1:1").osis()).toEqual("2Pet.1.1")
+		expect(p.parse("벧후 1:1").osis()).toEqual("2Pet.1.1")
 		`
 		true
 describe "Localized book 1Pet (ko)", ->
@@ -1580,12 +1632,14 @@ describe "Localized book 1Pet (ko)", ->
 		expect(p.parse("베드로전서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1Pet 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1베드 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("벧전 1:1").osis()).toEqual("1Pet.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("베드로의 첫째 서간 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("베드로1서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("베드로전서 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1PET 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("1베드 1:1").osis()).toEqual("1Pet.1.1")
+		expect(p.parse("벧전 1:1").osis()).toEqual("1Pet.1.1")
 		`
 		true
 describe "Localized book Jude (ko)", ->
@@ -1600,11 +1654,13 @@ describe "Localized book Jude (ko)", ->
 		expect(p.parse("Jude 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("유다서 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("유다 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("유 1:1").osis()).toEqual("Jude.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("유다 서간 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("JUDE 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("유다서 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("유다 1:1").osis()).toEqual("Jude.1.1")
+		expect(p.parse("유 1:1").osis()).toEqual("Jude.1.1")
 		`
 		true
 describe "Localized book Tob (ko)", ->

@@ -19,7 +19,7 @@ $UNICODE_BLOCK	Latin
 # http://pt.wikipedia.org/wiki/Livros_deuterocan%C3%B4nicos
 # http://pt.wikipedia.org/wiki/Adi%C3%A7%C3%B5es_em_Daniel
 # http://pt.wikipedia.org/wiki/Livros_da_B%C3%ADblia
-Gen	Gênesis	Génesis	Gên	Gén
+Gen	Gênesis	Génesis	Gên	Gén	Gn
 Exod	Êxodo	Éxodo	Êxo?d?
 Lev	Levíticos?	Lev?	Lv
 Num	Números	Núm?	Nm
@@ -29,21 +29,21 @@ Judg	Juízes	Juíz	Jz
 Ruth	Rute	Rut?	Rt
 1Sam	$FIRST Samuel	$FIRST Reinos	1 Sa?m?
 2Sam	$SECOND Samuel	$SECOND Reinos	2 Sa?m?
-1Kgs	$FIRST Reis	$THIRD Reinos	1 Re?
-2Kgs	$SECOND Reis	$FOURTH Reinos	2 Re?
+1Kgs	$FIRST Reis	$THIRD Reinos	1 Re?	1 Rs
+2Kgs	$SECOND Reis	$FOURTH Reinos	2 Re?	2 Rs
 1Chr	$FIRST Crônicas	1 Crôn?	1 Cr
 2Chr	$SECOND Crônicas	2 Crôn?	2 Cr
-Ezra	Esdras	Esdr?
+Ezra	Esdras	Esdr?	Ed
 Neh	Neemias	Ne
-Esth	Ester	Est
+Esth	Ester	Est	Et
 Job	Jó`	Job
 Ps	Salmos?	Sa?l
 Prov	Provérbios	Pro?v?	Pv
-Eccl	Eclesiastes	Coélet	Ecl
+Eccl	Eclesiastes	Coélet	Ecl?
 Song	Cânticos? dos Cânticos	Cantares de Salomão	Cantares	Cânticos	Cântico Superlativo	Cântico de Salomão	Cânt	Cn?t
 Isa	Isaías	Isa?
 Jer	Jeremias	Jer?	Jr
-Lam	Lamentações de Jeremias	Lamentaçôes de Jeremias	Lamentações	Lam
+Lam	Lamentações de Jeremias	Lamentaçôes de Jeremias	Lamentações	La?m
 Ezek	Ezequiel	Ezeq?	Ez
 Dan	Daniel	Dan?	Dn
 Hos	Oséias	Os
@@ -53,7 +53,7 @@ Obad	Obadias	Abdias	Abd	Oba?d?
 Jonah	Jonas	Jo?n
 Mic	Miquéias	Mi?q
 Nah	Naum	Na
-Hab	Habacuque	Habacuc	Hab
+Hab	Habacuque	Habacuc	Hab	Hc
 Zeph	Sofonias	So?f
 Hag	Ageu	Ag
 Zech	Zacarias	Za?c
@@ -66,24 +66,24 @@ Acts	Atos dos Apóstolos	Atos	At
 Rom	Romanos	Ro?m	Ro
 1Cor	$FIRST Coríntios	1 Cor?
 2Cor	$SECOND Coríntios	2 Cor?
-Gal	Gálatas	Gál
+Gal	Gálatas	Gál	Gl
 Eph	Efésios	Ef
-Phil	Filipenses	Fi?l
+Phil	Filipenses	Fi?l	Fp
 Col	Colossenses	Co?l
 1Thess	$FIRST Tessalonicenses	1 Tess	1 Ts
 2Thess	$SECOND Tessalonicenses	2 Tess	2 Ts
-1Tim	$FIRST Timóteo	1 Tim	1 Ti
-2Tim	$SECOND Timóteo	2 Tim	2 Ti
-Titus	Tito	Tit
-Phlm	Filémon	Filemom	Fl?mn	Flm
-Heb	Hebreus	Heb
+1Tim	$FIRST Timóteo	1 Tim	1 Ti	1 Tm
+2Tim	$SECOND Timóteo	2 Tim	2 Ti	2 Tm
+Titus	Tito	Ti?t
+Phlm	Filémon	Filemom	Fl?mn	Fl?m
+Heb	Hebreus	He?b
 Jas	Tiago	Tg
 1Pet	$FIRST Pedro	1 Ped?
 2Pet	$SECOND Pedro	2 Ped?
 1John	$FIRST João	1 Jo?
 2John	$SECOND João	2 Jo?
 3John	$THIRD João	3 Jo?
-Jude	Judas	Jud
+Jude	Judas	Ju?d
 Rev	Apocalipse de São João	Apocalipse de João	Apocalipse	Apo?c	Ap
 Tob	Tobias	Tob
 Jdt	Judite	Jdt

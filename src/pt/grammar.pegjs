@@ -111,8 +111,8 @@ ff
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 integer_title
-  = val_1:integer (cv_sep / sequence_sep)? "t" [íi]i "tulo"
-    { return {"type": "integer_title", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
+  = val_1:integer val_2:title
+    { return {"type": "integer_title", "value": [val_1, val_2], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 context
   = "\x1f" val:any_integer "/9\x1f"
