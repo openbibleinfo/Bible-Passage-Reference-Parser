@@ -19,7 +19,7 @@ bcv_parser::regexps.escaped_passage = ///
 				    /\d+\x1f				#special Psalm chapters
 				  | [\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014]
 				  | Titel (?! [a-z] )		#could be followed by a number
-				  | und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch | siehe#{bcv_parser::regexps.space}+auch | und#{bcv_parser::regexps.space}+auch | ff(?![a-z0-9]) | f(?![a-z0-9]) | Kapitel[sn]? | Verse[sn]? | sowie | Vers | Vers | Kap | bis | und | vgl | Ver | Vs | u | &
+				  | und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch | siehe#{bcv_parser::regexps.space}+auch | und#{bcv_parser::regexps.space}+auch | ff(?![a-z0-9]) | f(?![a-z0-9]) | Kapitels | Kapiteln | Kapitel | Verses | Versen | sowie | Verse | Vers | Vers | Kap | bis | und | vgl | Ver | Vs | u | &
 				  | [a-e] (?! \w )			#a-e allows 1:1a
 				  | $						#or the end of the string
 				 )+
@@ -36,9 +36,9 @@ bcv_parser::regexps.match_end_split = ///
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
 
-bcv_parser::regexps.first = "(?:Erste[rn]?|1)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.second = "(?:Zweite[rn]?|2)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.third = "(?:Dritte[rn]?|3)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.first = "(?:Erste|Erstes|Ersten|1)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.second = "(?:Zweite|Zweites|Zweiten|2)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.third = "(?:Dritte|Drittes|Dritten|3)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|(?:und|u|&|vgl|sowie|und#{bcv_parser::regexps.space}+auch|und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch|siehe#{bcv_parser::regexps.space}+auch)|bis)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|bis)"
 # Each book regexp should return two parenthesized objects: an optional preliminary character and the book itself.
@@ -54,12 +54,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Gen"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste(?:[nr][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|1\.?[\s\xa0]*Buch[\s\xa0]*Mose|Genesis|1\.?[\s\xa0]*Mose|1(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Gen)
+		(?:Erste(?:[ns][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|1\.?[\s\xa0]*Buch[\s\xa0]*Mose|Genesis|1\.?[\s\xa0]*Mose|1(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Gen)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Exod"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite(?:[nr][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|2\.?[\s\xa0]*Buch[\s\xa0]*Mose|2\.?[\s\xa0]*Mose|2(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Exodus|Ex(?:od)?)
+		(?:Zweite(?:[ns][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|2\.?[\s\xa0]*Buch[\s\xa0]*Mose|2\.?[\s\xa0]*Mose|2(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Exodus|Ex(?:od)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Bel"]
@@ -70,12 +70,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Lev"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Dritte(?:[nr][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|3\.?[\s\xa0]*Buch[\s\xa0]*Mose|Levitikus|3\.?[\s\xa0]*Mose|3(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Lev)
+		(?:Dritte(?:[ns][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|3\.?[\s\xa0]*Buch[\s\xa0]*Mose|Levitikus|3\.?[\s\xa0]*Mose|3(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Lev)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Num"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Vierte(?:n[\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|4\.?[\s\xa0]*Buch[\s\xa0]*Mose|4\.?[\s\xa0]*Mose|4(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Numeri|Num)
+		(?:Vierte(?:[ns][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|4\.?[\s\xa0]*Buch[\s\xa0]*Mose|4\.?[\s\xa0]*Mose|4(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Numeri|Num)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Sir"]
@@ -114,7 +114,7 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Deut"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:F[u\xFC]nfte(?:n[\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|D(?:euteronomium|tn)|5\.?[\s\xa0]*Buch[\s\xa0]*Mose|5\.?[\s\xa0]*Mose|5(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Deut)
+		(?:F[u\xFC]nfte(?:[ns][\s\xa0]*(?:Buch[\s\xa0]*)?|[\s\xa0]*(?:Buch[\s\xa0]*)?)Mose|D(?:euteronomium|tn)|5\.?[\s\xa0]*Buch[\s\xa0]*Mose|5\.?[\s\xa0]*Mose|5(?:\.[\s\xa0]*Mos?|[\s\xa0]*Mos?)|Deut)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Josh"]
@@ -135,13 +135,13 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["1Esd"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:1Esd)|(?:Erste[nr]?[\s\xa0]*Esra|1(?:\.?[\s\xa0]*Esra|\.[\s\xa0]*Esr?|[\s\xa0]*Esr?))
+		(?:1Esd)|(?:Erste[ns]?[\s\xa0]*Esra|1(?:\.?[\s\xa0]*Esra|\.[\s\xa0]*Esr?|[\s\xa0]*Esr?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Esd"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:2Esd)|(?:Zweite[nr]?[\s\xa0]*Esra|2(?:\.?[\s\xa0]*Esra|\.[\s\xa0]*Esr?|[\s\xa0]*Esr?))
+		(?:2Esd)|(?:Zweite[ns]?[\s\xa0]*Esra|2(?:\.?[\s\xa0]*Esra|\.[\s\xa0]*Esr?|[\s\xa0]*Esr?))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Isa"]
@@ -151,32 +151,32 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Sam"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite[nr]?[\s\xa0]*Samuel|2(?:\.?[\s\xa0]*Samuel|(?:\.?[\s\xa0]*)?Sam))
+		(?:Zweite[ns]?[\s\xa0]*Samuel|2(?:\.?[\s\xa0]*Samuel|(?:\.?[\s\xa0]*)?Sam))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Sam"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste[nr]?[\s\xa0]*Samuel|1(?:\.?[\s\xa0]*Samuel|(?:\.?[\s\xa0]*)?Sam))
+		(?:Erste[ns]?[\s\xa0]*Samuel|1(?:\.?[\s\xa0]*Samuel|(?:\.?[\s\xa0]*)?Sam))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Kgs"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite(?:[nr][\s\xa0]*K(?:oe?|\xF6)|[\s\xa0]*K(?:oe?|\xF6))nige|2(?:\.?[\s\xa0]*Koenige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])nige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])n|Kgs))
+		(?:Zweite(?:[ns][\s\xa0]*K(?:oe?|\xF6)|[\s\xa0]*K(?:oe?|\xF6))nige|2(?:\.?[\s\xa0]*Koenige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])nige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])n|Kgs))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Kgs"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste(?:[nr][\s\xa0]*K(?:oe?|\xF6)|[\s\xa0]*K(?:oe?|\xF6))nige|1(?:\.?[\s\xa0]*Koenige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])nige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])n|Kgs))
+		(?:Erste(?:[ns][\s\xa0]*K(?:oe?|\xF6)|[\s\xa0]*K(?:oe?|\xF6))nige|1(?:\.?[\s\xa0]*Koenige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])nige|(?:\.[\s\xa0]*K[o\xF6]|[\s\xa0]*K[o\xF6])n|Kgs))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite[nr]?[\s\xa0]*Chronik|2(?:\.?[\s\xa0]*Chronik|(?:\.?[\s\xa0]*)?Chr))
+		(?:Zweite[ns]?[\s\xa0]*Chronik|2(?:\.?[\s\xa0]*Chronik|(?:\.?[\s\xa0]*)?Chr))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Chr"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste[nr]?[\s\xa0]*Chronik|1(?:\.?[\s\xa0]*Chronik|(?:\.?[\s\xa0]*)?Chr))
+		(?:Erste[ns]?[\s\xa0]*Chronik|1(?:\.?[\s\xa0]*Chronik|(?:\.?[\s\xa0]*)?Chr))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezra"]
@@ -314,37 +314,37 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["Matt"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:M(?:att(?:h[a\xE4]us(?:evangelium)?)?|t))
+		(?:Das[\s\xa0]*Evangelium[\s\xa0]*nach[\s\xa0]*Matth[a\xE4]us|Evangelium[\s\xa0]*nach[\s\xa0]*Matth[a\xE4]us|M(?:atth[a\xE4]usevangelium|att(?:h[a\xE4]us)?|t))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Mark"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:M(?:ark(?:us(?:evangelium)?)?|k))
+		(?:Das[\s\xa0]*Evangelium[\s\xa0]*nach[\s\xa0]*Markus|Evangelium[\s\xa0]*nach[\s\xa0]*Markus|M(?:arkusevangelium|ark(?:us)?|k))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Luke"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:L(?:uk(?:as(?:evangelium)?|e)|k))
+		(?:Das[\s\xa0]*Evangelium[\s\xa0]*nach[\s\xa0]*Lukas|Evangelium[\s\xa0]*nach[\s\xa0]*Lukas|L(?:uk(?:asevangelium|e)|ukas|k))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:1John)|(?:Erste[nr]?[\s\xa0]*Johannes|1(?:\.?[\s\xa0]*Johannes|\.?[\s\xa0]*Joh))
+		(?:1John)|(?:Erste[ns]?[\s\xa0]*Johannes|1(?:\.?[\s\xa0]*Johannes|\.?[\s\xa0]*Joh))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:2John)|(?:Zweite[nr]?[\s\xa0]*Johannes|2(?:\.?[\s\xa0]*Johannes|\.?[\s\xa0]*Joh))
+		(?:2John)|(?:Zweite[ns]?[\s\xa0]*Johannes|2(?:\.?[\s\xa0]*Johannes|\.?[\s\xa0]*Joh))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3John"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:3John)|(?:Dritte[nr]?[\s\xa0]*Johannes|3(?:\.?[\s\xa0]*Johannes|\.?[\s\xa0]*Joh))
+		(?:3John)|(?:Dritte[ns]?[\s\xa0]*Johannes|3(?:\.?[\s\xa0]*Johannes|\.?[\s\xa0]*Joh))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["John"]
 		regexp: ///(^|#{bcv_parser::regexps.pre_book})(
-		(?:Joh(?:annes(?:evangelium)?|n)?)
+		(?:Das[\s\xa0]*Evangelium[\s\xa0]*nach[\s\xa0]*Johannes|Evangelium[\s\xa0]*nach[\s\xa0]*Johannes|Joh(?:annesevangelium|annes|n)?)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Acts"]
@@ -359,12 +359,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:(?:Zweite[nr]?[\s\xa0]*Korinthe|2(?:\.?[\s\xa0]*Korinthe|(?:\.?[\s\xa0]*K|C)o))r)
+		(?:(?:Zweite[ns]?[\s\xa0]*Korinthe|2(?:\.?[\s\xa0]*Korinthe|(?:\.?[\s\xa0]*K|C)o))r)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Cor"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:(?:Erste[nr]?[\s\xa0]*Korinthe|1(?:\.?[\s\xa0]*Korinthe|(?:\.?[\s\xa0]*K|C)o))r)
+		(?:(?:Erste[ns]?[\s\xa0]*Korinthe|1(?:\.?[\s\xa0]*Korinthe|(?:\.?[\s\xa0]*K|C)o))r)
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Gal"]
@@ -389,22 +389,22 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Thess"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite[nr]?[\s\xa0]*Thessalonicher|2(?:\.?[\s\xa0]*Thessalonicher|(?:\.?[\s\xa0]*)?Thess))
+		(?:Zweite[ns]?[\s\xa0]*Thessalonicher|2(?:\.?[\s\xa0]*Thessalonicher|(?:\.?[\s\xa0]*)?Thess))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Thess"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste[nr]?[\s\xa0]*Thessalonicher|1(?:\.?[\s\xa0]*Thessalonicher|(?:\.?[\s\xa0]*)?Thess))
+		(?:Erste[ns]?[\s\xa0]*Thessalonicher|1(?:\.?[\s\xa0]*Thessalonicher|(?:\.?[\s\xa0]*)?Thess))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["2Tim"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite[nr]?[\s\xa0]*Timotheus|2(?:\.?[\s\xa0]*Timotheus|(?:\.?[\s\xa0]*)?Tim))
+		(?:Zweite[ns]?[\s\xa0]*Timotheus|2(?:\.?[\s\xa0]*Timotheus|(?:\.?[\s\xa0]*)?Tim))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Tim"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste[nr]?[\s\xa0]*Timotheus|1(?:\.?[\s\xa0]*Timotheus|(?:\.?[\s\xa0]*)?Tim))
+		(?:Erste[ns]?[\s\xa0]*Timotheus|1(?:\.?[\s\xa0]*Timotheus|(?:\.?[\s\xa0]*)?Tim))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Titus"]
@@ -429,12 +429,12 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 	,
 		osis: ["2Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite[nr]?[\s\xa0]*Petrus|2(?:\.?[\s\xa0]*Petrus|\.?[\s\xa0]*Petr|Pet))
+		(?:Zweite[ns]?[\s\xa0]*Petrus|2(?:\.?[\s\xa0]*Petrus|\.?[\s\xa0]*Petr|Pet))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Pet"]
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste[nr]?[\s\xa0]*Petrus|1(?:\.?[\s\xa0]*Petrus|\.?[\s\xa0]*Petr|Pet))
+		(?:Erste[ns]?[\s\xa0]*Petrus|1(?:\.?[\s\xa0]*Petrus|\.?[\s\xa0]*Petr|Pet))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Jude"]
@@ -469,25 +469,25 @@ bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->
 		osis: ["2Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Zweite(?:[nr][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|2(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
+		(?:Zweite(?:[ns][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|2(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["3Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Dritte(?:[nr][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|3(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
+		(?:Dritte(?:[ns][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|3(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["4Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Vierte(?:n[\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|4(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
+		(?:Vierte(?:[ns][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|4(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["1Macc"]
 		apocrypha: true
 		regexp: ///(^|[^0-9A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ])(
-		(?:Erste(?:[nr][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|1(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
+		(?:Erste(?:[ns][\s\xa0]*Makkab[a\xE4]|[\s\xa0]*Makkab[a\xE4])er|1(?:\.?[\s\xa0]*Makkab[a\xE4]er|\.?[\s\xa0]*Makk|Macc))
 			)(?:(?=[\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014])|$)///gi
 	,
 		osis: ["Ezra", "Esth"]

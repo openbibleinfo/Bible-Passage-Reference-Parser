@@ -141,11 +141,11 @@ v
 
 /* BCV helpers */
 c_explicit
-  = sp ( "kap" ( "itel" [sn] "?" / abbrev? ) ) sp
+  = sp ( "kap" ( "itel" / "itels" / "iteln" / abbrev? ) ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "v" ( "ers" / "erse" [sn] "?" / "ers" abbrev? / "er" abbrev? / "s" abbrev? ) ) ![a-z] sp
+  = sp ( "v" ( "ers" / "erse" / "erses" / "ersen" / "ers" abbrev? / "er" abbrev? / "s" abbrev? ) ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
