@@ -1,5 +1,5 @@
 1Chr	Ersten Chronik
-1Chr	Erster Chronik
+1Chr	Erstes Chronik
 1Chr	Erste Chronik
 1Chr	1. Chronik
 1Chr	1 Chronik
@@ -7,7 +7,7 @@
 1Chr	1 Chr
 1Chr	1Chr
 1Cor	Ersten Korinther
-1Cor	Erster Korinther
+1Cor	Erstes Korinther
 1Cor	Erste Korinther
 1Cor	1. Korinther
 1Cor	1 Korinther
@@ -15,7 +15,7 @@
 1Cor	1 Kor
 1Cor	1Cor
 1Esd	Ersten Esra
-1Esd	Erster Esra
+1Esd	Erstes Esra
 1Esd	Erste Esra
 1Esd	1. Esra
 1Esd	1 Esra
@@ -25,7 +25,7 @@
 1Esd	1 Es
 1Esd	1Esd
 1John	Ersten Johannes
-1John	Erster Johannes
+1John	Erstes Johannes
 1John	Erste Johannes
 1John	1. Johannes
 1John	1 Johannes
@@ -33,12 +33,12 @@
 1John	1 Joh
 1John	1John
 1Kgs	Ersten Koenige
-1Kgs	Erster Koenige
+1Kgs	Erstes Koenige
 1Kgs	Erste Koenige
 1Kgs	Ersten Konige
 1Kgs	Ersten Könige
-1Kgs	Erster Konige
-1Kgs	Erster Könige
+1Kgs	Erstes Konige
+1Kgs	Erstes Könige
 1Kgs	Erste Konige
 1Kgs	Erste Könige
 1Kgs	1. Koenige
@@ -54,8 +54,8 @@
 1Kgs	1Kgs
 1Macc	Ersten Makkabaer
 1Macc	Ersten Makkabäer
-1Macc	Erster Makkabaer
-1Macc	Erster Makkabäer
+1Macc	Erstes Makkabaer
+1Macc	Erstes Makkabäer
 1Macc	Erste Makkabaer
 1Macc	Erste Makkabäer
 1Macc	1. Makkabaer
@@ -66,7 +66,7 @@
 1Macc	1 Makk
 1Macc	1Macc
 1Pet	Ersten Petrus
-1Pet	Erster Petrus
+1Pet	Erstes Petrus
 1Pet	Erste Petrus
 1Pet	1. Petrus
 1Pet	1 Petrus
@@ -74,7 +74,7 @@
 1Pet	1 Petr
 1Pet	1Pet
 1Sam	Ersten Samuel
-1Sam	Erster Samuel
+1Sam	Erstes Samuel
 1Sam	Erste Samuel
 1Sam	1. Samuel
 1Sam	1 Samuel
@@ -82,7 +82,7 @@
 1Sam	1 Sam
 1Sam	1Sam
 1Thess	Ersten Thessalonicher
-1Thess	Erster Thessalonicher
+1Thess	Erstes Thessalonicher
 1Thess	Erste Thessalonicher
 1Thess	1. Thessalonicher
 1Thess	1 Thessalonicher
@@ -90,7 +90,7 @@
 1Thess	1 Thess
 1Thess	1Thess
 1Tim	Ersten Timotheus
-1Tim	Erster Timotheus
+1Tim	Erstes Timotheus
 1Tim	Erste Timotheus
 1Tim	1. Timotheus
 1Tim	1 Timotheus
@@ -98,7 +98,7 @@
 1Tim	1 Tim
 1Tim	1Tim
 2Chr	Zweiten Chronik
-2Chr	Zweiter Chronik
+2Chr	Zweites Chronik
 2Chr	Zweite Chronik
 2Chr	2. Chronik
 2Chr	2 Chronik
@@ -106,7 +106,7 @@
 2Chr	2 Chr
 2Chr	2Chr
 2Cor	Zweiten Korinther
-2Cor	Zweiter Korinther
+2Cor	Zweites Korinther
 2Cor	Zweite Korinther
 2Cor	2. Korinther
 2Cor	2 Korinther
@@ -114,7 +114,7 @@
 2Cor	2 Kor
 2Cor	2Cor
 2Esd	Zweiten Esra
-2Esd	Zweiter Esra
+2Esd	Zweites Esra
 2Esd	Zweite Esra
 2Esd	2. Esra
 2Esd	2 Esra
@@ -124,7 +124,7 @@
 2Esd	2 Es
 2Esd	2Esd
 2John	Zweiten Johannes
-2John	Zweiter Johannes
+2John	Zweites Johannes
 2John	Zweite Johannes
 2John	2. Johannes
 2John	2 Johannes
@@ -132,12 +132,12 @@
 2John	2 Joh
 2John	2John
 2Kgs	Zweiten Koenige
-2Kgs	Zweiter Koenige
+2Kgs	Zweites Koenige
 2Kgs	Zweite Koenige
 2Kgs	Zweiten Konige
 2Kgs	Zweiten Könige
-2Kgs	Zweiter Konige
-2Kgs	Zweiter Könige
+2Kgs	Zweites Konige
+2Kgs	Zweites Könige
 2Kgs	Zweite Konige
 2Kgs	Zweite Könige
 2Kgs	2. Koenige
@@ -153,8 +153,8 @@
 2Kgs	2Kgs
 2Macc	Zweiten Makkabaer
 2Macc	Zweiten Makkabäer
-2Macc	Zweiter Makkabaer
-2Macc	Zweiter Makkabäer
+2Macc	Zweites Makkabaer
+2Macc	Zweites Makkabäer
 2Macc	Zweite Makkabaer
 2Macc	Zweite Makkabäer
 2Macc	2. Makkabaer
@@ -165,7 +165,7 @@
 2Macc	2 Makk
 2Macc	2Macc
 2Pet	Zweiten Petrus
-2Pet	Zweiter Petrus
+2Pet	Zweites Petrus
 2Pet	Zweite Petrus
 2Pet	2. Petrus
 2Pet	2 Petrus
@@ -173,7 +173,7 @@
 2Pet	2 Petr
 2Pet	2Pet
 2Sam	Zweiten Samuel
-2Sam	Zweiter Samuel
+2Sam	Zweites Samuel
 2Sam	Zweite Samuel
 2Sam	2. Samuel
 2Sam	2 Samuel
@@ -181,7 +181,7 @@
 2Sam	2 Sam
 2Sam	2Sam
 2Thess	Zweiten Thessalonicher
-2Thess	Zweiter Thessalonicher
+2Thess	Zweites Thessalonicher
 2Thess	Zweite Thessalonicher
 2Thess	2. Thessalonicher
 2Thess	2 Thessalonicher
@@ -189,7 +189,7 @@
 2Thess	2 Thess
 2Thess	2Thess
 2Tim	Zweiten Timotheus
-2Tim	Zweiter Timotheus
+2Tim	Zweites Timotheus
 2Tim	Zweite Timotheus
 2Tim	2. Timotheus
 2Tim	2 Timotheus
@@ -197,7 +197,7 @@
 2Tim	2 Tim
 2Tim	2Tim
 3John	Dritten Johannes
-3John	Dritter Johannes
+3John	Drittes Johannes
 3John	Dritte Johannes
 3John	3. Johannes
 3John	3 Johannes
@@ -206,8 +206,8 @@
 3John	3John
 3Macc	Dritten Makkabaer
 3Macc	Dritten Makkabäer
-3Macc	Dritter Makkabaer
-3Macc	Dritter Makkabäer
+3Macc	Drittes Makkabaer
+3Macc	Drittes Makkabäer
 3Macc	Dritte Makkabaer
 3Macc	Dritte Makkabäer
 3Macc	3. Makkabaer
@@ -219,6 +219,8 @@
 3Macc	3Macc
 4Macc	Vierten Makkabaer
 4Macc	Vierten Makkabäer
+4Macc	Viertes Makkabaer
+4Macc	Viertes Makkabäer
 4Macc	Vierte Makkabaer
 4Macc	Vierte Makkabäer
 4Macc	4. Makkabaer
@@ -243,13 +245,17 @@ Col	Kol
 Dan	Daniel
 Dan	Dan
 Deut	Funften Buch Mose
+Deut	Funftes Buch Mose
 Deut	Fünften Buch Mose
+Deut	Fünftes Buch Mose
 Deut	Funfte Buch Mose
 Deut	Fünfte Buch Mose
 Deut	Deuteronomium
 Deut	5. Buch Mose
 Deut	Funften Mose
+Deut	Funftes Mose
 Deut	Fünften Mose
+Deut	Fünftes Mose
 Deut	5 Buch Mose
 Deut	Funfte Mose
 Deut	Fünfte Mose
@@ -278,11 +284,11 @@ Esth	Ester
 Esth	Esth
 Esth	Est
 Exod	Zweiten Buch Mose
-Exod	Zweiter Buch Mose
+Exod	Zweites Buch Mose
 Exod	Zweite Buch Mose
 Exod	2. Buch Mose
 Exod	Zweiten Mose
-Exod	Zweiter Mose
+Exod	Zweites Mose
 Exod	2 Buch Mose
 Exod	Zweite Mose
 Exod	2. Mose
@@ -306,12 +312,12 @@ Ezra,Esth	Es
 Gal	Galater
 Gal	Gal
 Gen	Ersten Buch Mose
-Gen	Erster Buch Mose
+Gen	Erstes Buch Mose
 Gen	Erste Buch Mose
 Gen	1. Buch Mose
 Gen	1 Buch Mose
 Gen	Ersten Mose
-Gen	Erster Mose
+Gen	Erstes Mose
 Gen	Erste Mose
 Gen	1. Mose
 Gen	Genesis
@@ -359,6 +365,8 @@ Job	Ijob
 Job	Job
 Job	Hi
 Joel	Joel
+John	Das Evangelium nach Johannes
+John	Evangelium nach Johannes
 John	Johannesevangelium
 John	Johannes
 John	John
@@ -381,11 +389,11 @@ Lam	Klag
 Lam	Klgl
 Lam	Lam
 Lev	Dritten Buch Mose
-Lev	Dritter Buch Mose
+Lev	Drittes Buch Mose
 Lev	Dritte Buch Mose
 Lev	3. Buch Mose
 Lev	Dritten Mose
-Lev	Dritter Mose
+Lev	Drittes Mose
 Lev	3 Buch Mose
 Lev	Dritte Mose
 Lev	Levitikus
@@ -396,6 +404,8 @@ Lev	3 Mos
 Lev	3. Mo
 Lev	3 Mo
 Lev	Lev
+Luke	Das Evangelium nach Lukas
+Luke	Evangelium nach Lukas
 Luke	Lukasevangelium
 Luke	Lukas
 Luke	Luke
@@ -403,10 +413,16 @@ Luke	Lk
 Mal	Malachias
 Mal	Maleachi
 Mal	Mal
+Mark	Das Evangelium nach Markus
+Mark	Evangelium nach Markus
 Mark	Markusevangelium
 Mark	Markus
 Mark	Mark
 Mark	Mk
+Matt	Das Evangelium nach Matthaus
+Matt	Das Evangelium nach Matthäus
+Matt	Evangelium nach Matthaus
+Matt	Evangelium nach Matthäus
 Matt	Matthausevangelium
 Matt	Matthäusevangelium
 Matt	Matthaus
@@ -423,9 +439,11 @@ Nah	Nah
 Neh	Nehemia
 Neh	Neh
 Num	Vierten Buch Mose
+Num	Viertes Buch Mose
 Num	Vierte Buch Mose
 Num	4. Buch Mose
 Num	Vierten Mose
+Num	Viertes Mose
 Num	4 Buch Mose
 Num	Vierte Mose
 Num	4. Mose
