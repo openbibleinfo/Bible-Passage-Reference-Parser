@@ -1,18 +1,18 @@
-$FIRST	Erste	Erstes	Ersten	1
-$SECOND	Zweite	Zweites	Zweiten	2
-$THIRD	Dritte	Drittes	Dritten	3
-$FOURTH	Vierte	Viertes	Vierten	4
-$FIFTH	Fünfte	Fünftes	Fünften	5
+$FIRST	Erstes	Ersten	Erste	1
+$SECOND	Zweites	Zweiten	Zweite	2
+$THIRD	Drittes	Dritten	Dritte	3
+$FOURTH	Viertes	Vierten	Vierte	4
+$FIFTH	Fünftes	Fünften	Fünfte	5
 
 $GOSPEL	Das Evangelium nach	Evangelium nach
 $AB	[a-e]
 $AND	und	u.	&	vgl.	sowie	und auch	und siehe auch	siehe auch
-$CHAPTER	Kapitel	Kapitels	Kapiteln	Kap.
+$CHAPTER	Kapitels	Kapiteln	Kapitel	Kap.
 $FF	ff![a-z0-9]	f![a-z0-9]
 $TITLE	Titel
 $TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
 $TO	bis
-$VERSE	Vers	Verse	Verses	Versen	Vers.	Ver.	Vs.
+$VERSE	Verses	Versen	Verse	Vers.	Vers	Ver.	Vs.
 $UNICODE_BLOCK	Latin
 
 # http://de.wikipedia.org/wiki/Bibel
