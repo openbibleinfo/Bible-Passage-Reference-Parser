@@ -36,9 +36,9 @@ bcv_parser::regexps.match_end_split = ///
 bcv_parser::regexps.control = /[\x1e\x1f]/g
 bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]"
 
-bcv_parser::regexps.first = "(?:Erste|Erstes|Ersten|1)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.second = "(?:Zweite|Zweites|Zweiten|2)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.third = "(?:Dritte|Drittes|Dritten|3)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.first = "(?:Erstes|Ersten|Erste|1)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.second = "(?:Zweites|Zweiten|Zweite|2)\\.?#{bcv_parser::regexps.space}*"
+bcv_parser::regexps.third = "(?:Drittes|Dritten|Dritte|3)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|(?:und|u|&|vgl|sowie|und#{bcv_parser::regexps.space}+auch|und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch|siehe#{bcv_parser::regexps.space}+auch)|bis)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|bis)"
 # Each book regexp should return two parenthesized objects: an optional preliminary character and the book itself.

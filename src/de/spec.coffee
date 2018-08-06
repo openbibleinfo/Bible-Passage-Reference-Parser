@@ -1948,27 +1948,27 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Matt 1bis2").osis()).toEqual "Matt.1-Matt.2"
 		expect(p.parse("Phlm 2 BIS 3").osis()).toEqual "Phlm.1.2-Phlm.1.3"
 	it "should handle chapters (de)", ->
-		expect(p.parse("Titus 1:1, Kapitel 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 KAPITEL 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, Kapitels 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAPITELS 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, Kapiteln 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAPITELN 6").osis()).toEqual "Matt.3.4,Matt.6"
+		expect(p.parse("Titus 1:1, Kapitel 2").osis()).toEqual "Titus.1.1,Titus.2"
+		expect(p.parse("Matt 3:4 KAPITEL 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, Kap. 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAP. 6").osis()).toEqual "Matt.3.4,Matt.6"
 		expect(p.parse("Titus 1:1, Kap 2").osis()).toEqual "Titus.1.1,Titus.2"
 		expect(p.parse("Matt 3:4 KAP 6").osis()).toEqual "Matt.3.4,Matt.6"
 	it "should handle verses (de)", ->
-		expect(p.parse("Exod 1:1 Vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
-		expect(p.parse("Exod 1:1 Verse 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm VERSE 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 Verses 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERSES 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 Versen 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERSEN 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 Verse 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VERSE 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 Vers. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERS. 6").osis()).toEqual "Phlm.1.6"
+		expect(p.parse("Exod 1:1 Vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
+		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 Vers 3").osis()).toEqual "Exod.1.1,Exod.1.3"
 		expect(p.parse("Phlm VERS 6").osis()).toEqual "Phlm.1.6"
 		expect(p.parse("Exod 1:1 Ver. 3").osis()).toEqual "Exod.1.1,Exod.1.3"
@@ -2023,7 +2023,7 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("lev 1 sch2000").osis_and_translations()).toEqual [["Lev.1", "SCH2000"]]
 	it "should handle book ranges (de)", ->
 		p.set_options {book_alone_strategy: "full", book_range_strategy: "include"}
-		expect(p.parse("Erste bis Dritte  Johannes").osis()).toEqual "1John.1-3John.1"
+		expect(p.parse("Erstes bis Drittes  Johannes").osis()).toEqual "1John.1-3John.1"
 	it "should handle boundaries (de)", ->
 		p.set_options {book_alone_strategy: "full"}
 		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"
