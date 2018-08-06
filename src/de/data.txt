@@ -1,17 +1,18 @@
-$FIRST	Erste[rn]?	1
-$SECOND	Zweite[rn]?	2
-$THIRD	Dritte[rn]?	3
-$FOURTH	Vierte[n]?	4
-$FIFTH	Fünfte[n]?	5
+$FIRST	Erste	Erstes	Ersten	1
+$SECOND	Zweite	Zweites	Zweiten	2
+$THIRD	Dritte	Drittes	Dritten	3
+$FOURTH	Vierte	Viertes	Vierten	4
+$FIFTH	Fünfte	Fünftes	Fünften	5
+
 $GOSPEL	Das Evangelium nach	Evangelium nach
 $AB	[a-e]
 $AND	und	u.	&	vgl.	sowie	und auch	und siehe auch	siehe auch
-$CHAPTER	Kapitel[sn]?	Kap.
+$CHAPTER	Kapitel	Kapitels	Kapiteln	Kap.
 $FF	ff![a-z0-9]	f![a-z0-9]
 $TITLE	Titel
 $TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
 $TO	bis
-$VERSE	Vers	Verse[sn]?	Vers.	Ver.	Vs.
+$VERSE	Vers	Verse	Verses	Versen	Vers.	Ver.	Vs.
 $UNICODE_BLOCK	Latin
 
 # http://de.wikipedia.org/wiki/Bibel
@@ -55,10 +56,10 @@ Zeph	Zefanja	Sophonias	Zephanja	Zef	Soph
 Hag	Haggai	Aggäus	Hag	Agg?
 Zech	Sacharja	Zacharias	Sach
 Mal	Maleachi	Malachias	Mal
-Matt	Matthäus	Matthäusevangelium	Mt
-Mark	Markus	Markusevangelium	Mk
-Luke	Lukas	Lukasevangelium	Lk
-John	Johannes	Johannesevangelium	Joh
+Matt	$GOSPEL Matthäus	Matthäus	Matthäusevangelium	Mt
+Mark	$GOSPEL Markus	Markus	Markusevangelium	Mk
+Luke	$GOSPEL Lukas	Lukas	Lukasevangelium	Lk
+John	$GOSPEL Johannes	Johannes	Johannesevangelium	Joh
 Acts	Apostelgeschichte	Apg
 Rom	Römer	Roemer	Röm
 1Cor	$FIRST Korinther	1. Kor
