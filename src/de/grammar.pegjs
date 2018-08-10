@@ -107,7 +107,7 @@ c
 
 // No `b` or `ps151`.
 ff
-  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp ( "ff" [\\b] / "f" [\\b] ) abbrev? ![a-z]
+  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp "ff" ! [a-z0-9äaöoüu]i abbrev? ![a-z]
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 integer_title
@@ -132,7 +132,7 @@ ps151_bcv
     { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v_letter
-  = v_explicit? val:integer sp !( ( "ff" [\\b] / "f" [\\b] ) ) [a-e] ![a-z]
+  = v_explicit? val:integer sp !( "ff" ! [a-z0-9äaöoüu]i ) [a-e] ![a-z]
     { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v

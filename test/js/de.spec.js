@@ -3293,10 +3293,8 @@
       return expect(p.parse("PS 3 TITEL, 4:2, 5:TITEL").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1", "parsing: 'PS 3 TITEL, 4:2, 5:TITEL'");
     });
     it("should handle 'ff' (de)", function() {
-      expect(p.parse("Rev 3ffb, 4:2ffb").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'Rev 3ffb, 4:2ffb'");
-      expect(p.parse("REV 3 FFB, 4:2 FFB").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'REV 3 FFB, 4:2 FFB'");
-      expect(p.parse("Rev 3fb, 4:2fb").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'Rev 3fb, 4:2fb'");
-      return expect(p.parse("REV 3 FB, 4:2 FB").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'REV 3 FB, 4:2 FB'");
+      expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'Rev 3ff, 4:2ff'");
+      return expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'REV 3 FF, 4:2 FF'");
     });
     it("should handle translations (de)", function() {
       expect(p.parse("Lev 1 (ELB)").osis_and_translations()).toEqual([["Lev.1", "ELB"]]);
