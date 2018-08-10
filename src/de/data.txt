@@ -92,18 +92,18 @@ GkEsth	Ester \(Griechisch\)	Gr Est
 Wis	Weisheit Salomos	Weisheit	Weish
 Sir	Jesus Sirach	Ecclesiasticus	Sir
 Bar	Baruch	Bar
-PrAzar	Gebet des Asarja	Geb As
-Sus	Susanna im Bade	Susanna und die Alten	Susanna	Sus
-Bel	Bel und Vom Drachen	Bel
-SgThree	(Der )?(Lob)?gesang der 3(( jungen)? Männer)?( im Feu(e)?r(igen )?ofen)?	L3J
+PrAzar	(Das )?Gebet des Asarja	(Das )?Gebet Asarjas	Geb As
+Sus	Susanna	Sus
+Bel	Bel und (der? )Drache	Bel
+SgThree	Gesang der drei( Männer)?( im Feuerofen)?	Gesang der drei Maenner( im Feuerofen)?	L3J
 EpJer	Brief des Jeremia	Br Jer
 1Macc	$FIRST Makkabäer	$FIRST Makkabaeer	1. Makk
 2Macc	$SECOND Makkabäer	$SECOND Makkabaeer	2. Makk
 3Macc	$THIRD Makkabäer	$THIRD Makkabaeer	3. Makk
 4Macc	$FOURTH Makkabäer	$FOURTH Makkabaeer	4. Makk
-1Esd	$FIRST Esra	1. Esr	1. Es
-2Esd	$SECOND Esra	2. Esr	2. Es
-PrMan	Gebet des Manasse	Gebet Manasses	Gebet Manasse	Geb Man	Or Man
+1Esd	$FIRST Esd?ra	1. Esd?r	1. Es
+2Esd	$SECOND Esd?ra	2. Esd?r	2. Es
+PrMan	(Das )?Gebet des Manasse	(Das )?Gebet Manasses	Gebet Manasse	Geb Man	Or Man
 
 # Parsing order
 =Gen

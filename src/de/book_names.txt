@@ -18,11 +18,19 @@
 1Cor	1. Kor
 1Cor	1 Kor
 1Cor	1Cor
+1Esd	Ersten Esdra
+1Esd	Erster Esdra
+1Esd	Erstes Esdra
+1Esd	Erste Esdra
 1Esd	Ersten Esra
 1Esd	Erster Esra
 1Esd	Erstes Esra
 1Esd	Erste Esra
+1Esd	1. Esdra
+1Esd	1 Esdra
+1Esd	1. Esdr
 1Esd	1. Esra
+1Esd	1 Esdr
 1Esd	1 Esra
 1Esd	1. Esr
 1Esd	1 Esr
@@ -158,11 +166,19 @@
 2Cor	2. Kor
 2Cor	2 Kor
 2Cor	2Cor
+2Esd	Zweiten Esdra
+2Esd	Zweiter Esdra
+2Esd	Zweites Esdra
+2Esd	Zweite Esdra
 2Esd	Zweiten Esra
 2Esd	Zweiter Esra
 2Esd	Zweites Esra
 2Esd	Zweite Esra
+2Esd	2. Esdra
+2Esd	2 Esdra
+2Esd	2. Esdr
 2Esd	2. Esra
+2Esd	2 Esdr
 2Esd	2 Esra
 2Esd	2. Esr
 2Esd	2 Esr
@@ -336,6 +352,8 @@ Amos	Am
 Bar	Baruch
 Bar	Bar
 Bel	Bel und Vom Drachen
+Bel	Bel und der Drache
+Bel	Bel und de Drache
 Bel	Bel
 Col	Kolosser
 Col	Col
@@ -569,9 +587,14 @@ Phil	Phil
 Phlm	Philemon
 Phlm	Phlm
 Phlm	Phm
+PrAzar	Das Gebet des Asarja
+PrAzar	Das Gebet Asarjas
 PrAzar	Gebet des Asarja
+PrAzar	Gebet Asarjas
 PrAzar	Geb As
 PrAzar	PrAzar
+PrMan	Das Gebet des Manasse
+PrMan	Das Gebet Manasses
 PrMan	Gebet des Manasse
 PrMan	Gebet Manasses
 PrMan	Gebet Manasse
@@ -603,263 +626,15 @@ Rom	Rm
 Ruth	Ruth
 Ruth	Rut
 Ruth	Ru
-SgThree	Der Lobgesang der 3 jungen Manner) im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 jungen Männer) im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 jungen Manner im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 jungen Manner) im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Männer im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 jungen Männer) im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Manner im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Männer im Feuerigen ofen
-SgThree	Der gesang der 3 jungen Manner) im Feuerigen ofen)
-SgThree	Der gesang der 3 jungen Männer) im Feuerigen ofen)
-SgThree	Der gesang der 3 jungen Manner im Feuerigen ofen)
-SgThree	Der gesang der 3 jungen Manner) im Feuerigen ofen
-SgThree	Der gesang der 3 jungen Männer im Feuerigen ofen)
-SgThree	Der gesang der 3 jungen Männer) im Feuerigen ofen
-SgThree	Lobgesang der 3 jungen Manner) im Feuerigen ofen)
-SgThree	Lobgesang der 3 jungen Männer) im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 jungen Manner) im Feuerofen)
-SgThree	Der Lobgesang der 3 jungen Männer) im Feuerofen)
-SgThree	Der gesang der 3 jungen Manner im Feuerigen ofen
-SgThree	Der gesang der 3 jungen Männer im Feuerigen ofen
-SgThree	Lobgesang der 3 jungen Manner im Feuerigen ofen)
-SgThree	Lobgesang der 3 jungen Manner) im Feuerigen ofen
-SgThree	Lobgesang der 3 jungen Männer im Feuerigen ofen)
-SgThree	Lobgesang der 3 jungen Männer) im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Manner im Feuerofen)
-SgThree	Der Lobgesang der 3 jungen Manner) im Feuerofen
-SgThree	Der Lobgesang der 3 jungen Männer im Feuerofen)
-SgThree	Der Lobgesang der 3 jungen Männer) im Feuerofen
-SgThree	Lobgesang der 3 jungen Manner im Feuerigen ofen
-SgThree	Lobgesang der 3 jungen Männer im Feuerigen ofen
-SgThree	Der Lobgesang der 3 Manner) im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 Männer) im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 jungen Manner im Feuerofen
-SgThree	Der Lobgesang der 3 jungen Männer im Feuerofen
-SgThree	gesang der 3 jungen Manner) im Feuerigen ofen)
-SgThree	gesang der 3 jungen Männer) im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 Manner im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 Manner) im Feuerigen ofen
-SgThree	Der Lobgesang der 3 Männer im Feuerigen ofen)
-SgThree	Der Lobgesang der 3 Männer) im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Manner)rigen ofen)
-SgThree	Der Lobgesang der 3 jungen Männer)rigen ofen)
-SgThree	Der gesang der 3 jungen Manner) im Feuerofen)
-SgThree	Der gesang der 3 jungen Männer) im Feuerofen)
-SgThree	gesang der 3 jungen Manner im Feuerigen ofen)
-SgThree	gesang der 3 jungen Manner) im Feuerigen ofen
-SgThree	gesang der 3 jungen Männer im Feuerigen ofen)
-SgThree	gesang der 3 jungen Männer) im Feuerigen ofen
-SgThree	Der Lobgesang der 3 Manner im Feuerigen ofen
-SgThree	Der Lobgesang der 3 Männer im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Manner)rigen ofen
-SgThree	Der Lobgesang der 3 jungen Mannerrigen ofen)
-SgThree	Der Lobgesang der 3 jungen Männer)rigen ofen
-SgThree	Der Lobgesang der 3 jungen Männerrigen ofen)
-SgThree	Der gesang der 3 jungen Manner im Feuerofen)
-SgThree	Der gesang der 3 jungen Manner) im Feuerofen
-SgThree	Der gesang der 3 jungen Männer im Feuerofen)
-SgThree	Der gesang der 3 jungen Männer) im Feuerofen
-SgThree	Lobgesang der 3 jungen Manner) im Feuerofen)
-SgThree	Lobgesang der 3 jungen Männer) im Feuerofen)
-SgThree	gesang der 3 jungen Manner im Feuerigen ofen
-SgThree	gesang der 3 jungen Männer im Feuerigen ofen
-SgThree	Der Lobgesang der 3 jungen Mannerrigen ofen
-SgThree	Der Lobgesang der 3 jungen Männerrigen ofen
-SgThree	Der gesang der 3 Manner) im Feuerigen ofen)
-SgThree	Der gesang der 3 Männer) im Feuerigen ofen)
-SgThree	Der gesang der 3 jungen Manner im Feuerofen
-SgThree	Der gesang der 3 jungen Männer im Feuerofen
-SgThree	Lobgesang der 3 jungen Manner im Feuerofen)
-SgThree	Lobgesang der 3 jungen Manner) im Feuerofen
-SgThree	Lobgesang der 3 jungen Männer im Feuerofen)
-SgThree	Lobgesang der 3 jungen Männer) im Feuerofen
-SgThree	Der gesang der 3 Manner im Feuerigen ofen)
-SgThree	Der gesang der 3 Manner) im Feuerigen ofen
-SgThree	Der gesang der 3 Männer im Feuerigen ofen)
-SgThree	Der gesang der 3 Männer) im Feuerigen ofen
-SgThree	Der gesang der 3 jungen Manner)rigen ofen)
-SgThree	Der gesang der 3 jungen Männer)rigen ofen)
-SgThree	Lobgesang der 3 Manner) im Feuerigen ofen)
-SgThree	Lobgesang der 3 Männer) im Feuerigen ofen)
-SgThree	Lobgesang der 3 jungen Manner im Feuerofen
-SgThree	Lobgesang der 3 jungen Männer im Feuerofen
-SgThree	Der Lobgesang der 3 Manner) im Feuerofen)
-SgThree	Der Lobgesang der 3 Männer) im Feuerofen)
-SgThree	Der gesang der 3 Manner im Feuerigen ofen
-SgThree	Der gesang der 3 Männer im Feuerigen ofen
-SgThree	Der gesang der 3 jungen Manner)rigen ofen
-SgThree	Der gesang der 3 jungen Mannerrigen ofen)
-SgThree	Der gesang der 3 jungen Männer)rigen ofen
-SgThree	Der gesang der 3 jungen Männerrigen ofen)
-SgThree	Lobgesang der 3 Manner im Feuerigen ofen)
-SgThree	Lobgesang der 3 Manner) im Feuerigen ofen
-SgThree	Lobgesang der 3 Männer im Feuerigen ofen)
-SgThree	Lobgesang der 3 Männer) im Feuerigen ofen
-SgThree	Lobgesang der 3 jungen Manner)rigen ofen)
-SgThree	Lobgesang der 3 jungen Männer)rigen ofen)
-SgThree	gesang der 3 jungen Manner) im Feuerofen)
-SgThree	gesang der 3 jungen Männer) im Feuerofen)
-SgThree	Der Lobgesang der 3 Manner im Feuerofen)
-SgThree	Der Lobgesang der 3 Manner) im Feuerofen
-SgThree	Der Lobgesang der 3 Männer im Feuerofen)
-SgThree	Der Lobgesang der 3 Männer) im Feuerofen
-SgThree	Der Lobgesang der 3 jungen Manner)rofen)
-SgThree	Der Lobgesang der 3 jungen Männer)rofen)
-SgThree	Der gesang der 3 jungen Mannerrigen ofen
-SgThree	Der gesang der 3 jungen Männerrigen ofen
-SgThree	Lobgesang der 3 Manner im Feuerigen ofen
-SgThree	Lobgesang der 3 Männer im Feuerigen ofen
-SgThree	Lobgesang der 3 jungen Manner)rigen ofen
-SgThree	Lobgesang der 3 jungen Mannerrigen ofen)
-SgThree	Lobgesang der 3 jungen Männer)rigen ofen
-SgThree	Lobgesang der 3 jungen Männerrigen ofen)
-SgThree	gesang der 3 jungen Manner im Feuerofen)
-SgThree	gesang der 3 jungen Manner) im Feuerofen
-SgThree	gesang der 3 jungen Männer im Feuerofen)
-SgThree	gesang der 3 jungen Männer) im Feuerofen
-SgThree	Der Lobgesang der 3 Manner im Feuerofen
-SgThree	Der Lobgesang der 3 Männer im Feuerofen
-SgThree	Der Lobgesang der 3 jungen Manner)rofen
-SgThree	Der Lobgesang der 3 jungen Mannerrofen)
-SgThree	Der Lobgesang der 3 jungen Männer)rofen
-SgThree	Der Lobgesang der 3 jungen Männerrofen)
-SgThree	Lobgesang der 3 jungen Mannerrigen ofen
-SgThree	Lobgesang der 3 jungen Männerrigen ofen
-SgThree	gesang der 3 Manner) im Feuerigen ofen)
-SgThree	gesang der 3 Männer) im Feuerigen ofen)
-SgThree	gesang der 3 jungen Manner im Feuerofen
-SgThree	gesang der 3 jungen Männer im Feuerofen
-SgThree	Der Lobgesang der 3 Manner)rigen ofen)
-SgThree	Der Lobgesang der 3 Männer)rigen ofen)
-SgThree	Der Lobgesang der 3 jungen Mannerrofen
-SgThree	Der Lobgesang der 3 jungen Männerrofen
-SgThree	Der gesang der 3 Manner) im Feuerofen)
-SgThree	Der gesang der 3 Männer) im Feuerofen)
-SgThree	gesang der 3 Manner im Feuerigen ofen)
-SgThree	gesang der 3 Manner) im Feuerigen ofen
-SgThree	gesang der 3 Männer im Feuerigen ofen)
-SgThree	gesang der 3 Männer) im Feuerigen ofen
-SgThree	gesang der 3 jungen Manner)rigen ofen)
-SgThree	gesang der 3 jungen Männer)rigen ofen)
-SgThree	Der Lobgesang der 3 Manner)rigen ofen
-SgThree	Der Lobgesang der 3 Mannerrigen ofen)
-SgThree	Der Lobgesang der 3 Männer)rigen ofen
-SgThree	Der Lobgesang der 3 Männerrigen ofen)
-SgThree	Der gesang der 3 Manner im Feuerofen)
-SgThree	Der gesang der 3 Manner) im Feuerofen
-SgThree	Der gesang der 3 Männer im Feuerofen)
-SgThree	Der gesang der 3 Männer) im Feuerofen
-SgThree	Der gesang der 3 jungen Manner)rofen)
-SgThree	Der gesang der 3 jungen Männer)rofen)
-SgThree	Lobgesang der 3 Manner) im Feuerofen)
-SgThree	Lobgesang der 3 Männer) im Feuerofen)
-SgThree	gesang der 3 Manner im Feuerigen ofen
-SgThree	gesang der 3 Männer im Feuerigen ofen
-SgThree	gesang der 3 jungen Manner)rigen ofen
-SgThree	gesang der 3 jungen Mannerrigen ofen)
-SgThree	gesang der 3 jungen Männer)rigen ofen
-SgThree	gesang der 3 jungen Männerrigen ofen)
-SgThree	Der Lobgesang der 3 Mannerrigen ofen
-SgThree	Der Lobgesang der 3 Männerrigen ofen
-SgThree	Der gesang der 3 Manner im Feuerofen
-SgThree	Der gesang der 3 Männer im Feuerofen
-SgThree	Der gesang der 3 jungen Manner)rofen
-SgThree	Der gesang der 3 jungen Mannerrofen)
-SgThree	Der gesang der 3 jungen Männer)rofen
-SgThree	Der gesang der 3 jungen Männerrofen)
-SgThree	Lobgesang der 3 Manner im Feuerofen)
-SgThree	Lobgesang der 3 Manner) im Feuerofen
-SgThree	Lobgesang der 3 Männer im Feuerofen)
-SgThree	Lobgesang der 3 Männer) im Feuerofen
-SgThree	Lobgesang der 3 jungen Manner)rofen)
-SgThree	Lobgesang der 3 jungen Männer)rofen)
-SgThree	gesang der 3 jungen Mannerrigen ofen
-SgThree	gesang der 3 jungen Männerrigen ofen
-SgThree	Der gesang der 3 Manner)rigen ofen)
-SgThree	Der gesang der 3 Männer)rigen ofen)
-SgThree	Der gesang der 3 jungen Mannerrofen
-SgThree	Der gesang der 3 jungen Männerrofen
-SgThree	Lobgesang der 3 Manner im Feuerofen
-SgThree	Lobgesang der 3 Männer im Feuerofen
-SgThree	Lobgesang der 3 jungen Manner)rofen
-SgThree	Lobgesang der 3 jungen Mannerrofen)
-SgThree	Lobgesang der 3 jungen Männer)rofen
-SgThree	Lobgesang der 3 jungen Männerrofen)
-SgThree	Der gesang der 3 Manner)rigen ofen
-SgThree	Der gesang der 3 Mannerrigen ofen)
-SgThree	Der gesang der 3 Männer)rigen ofen
-SgThree	Der gesang der 3 Männerrigen ofen)
-SgThree	Lobgesang der 3 Manner)rigen ofen)
-SgThree	Lobgesang der 3 Männer)rigen ofen)
-SgThree	Lobgesang der 3 jungen Mannerrofen
-SgThree	Lobgesang der 3 jungen Männerrofen
-SgThree	gesang der 3 Manner) im Feuerofen)
-SgThree	gesang der 3 Männer) im Feuerofen)
-SgThree	Der Lobgesang der 3 Manner)rofen)
-SgThree	Der Lobgesang der 3 Männer)rofen)
-SgThree	Der gesang der 3 Mannerrigen ofen
-SgThree	Der gesang der 3 Männerrigen ofen
-SgThree	Lobgesang der 3 Manner)rigen ofen
-SgThree	Lobgesang der 3 Mannerrigen ofen)
-SgThree	Lobgesang der 3 Männer)rigen ofen
-SgThree	Lobgesang der 3 Männerrigen ofen)
-SgThree	gesang der 3 Manner im Feuerofen)
-SgThree	gesang der 3 Manner) im Feuerofen
-SgThree	gesang der 3 Männer im Feuerofen)
-SgThree	gesang der 3 Männer) im Feuerofen
-SgThree	gesang der 3 jungen Manner)rofen)
-SgThree	gesang der 3 jungen Männer)rofen)
-SgThree	Der Lobgesang der 3 Manner)rofen
-SgThree	Der Lobgesang der 3 Mannerrofen)
-SgThree	Der Lobgesang der 3 Männer)rofen
-SgThree	Der Lobgesang der 3 Männerrofen)
-SgThree	Lobgesang der 3 Mannerrigen ofen
-SgThree	Lobgesang der 3 Männerrigen ofen
-SgThree	gesang der 3 Manner im Feuerofen
-SgThree	gesang der 3 Männer im Feuerofen
-SgThree	gesang der 3 jungen Manner)rofen
-SgThree	gesang der 3 jungen Mannerrofen)
-SgThree	gesang der 3 jungen Männer)rofen
-SgThree	gesang der 3 jungen Männerrofen)
-SgThree	Der Lobgesang der 3 Mannerrofen
-SgThree	Der Lobgesang der 3 Männerrofen
-SgThree	gesang der 3 Manner)rigen ofen)
-SgThree	gesang der 3 Männer)rigen ofen)
-SgThree	gesang der 3 jungen Mannerrofen
-SgThree	gesang der 3 jungen Männerrofen
-SgThree	Der gesang der 3 Manner)rofen)
-SgThree	Der gesang der 3 Männer)rofen)
-SgThree	gesang der 3 Manner)rigen ofen
-SgThree	gesang der 3 Mannerrigen ofen)
-SgThree	gesang der 3 Männer)rigen ofen
-SgThree	gesang der 3 Männerrigen ofen)
-SgThree	Der gesang der 3 Manner)rofen
-SgThree	Der gesang der 3 Mannerrofen)
-SgThree	Der gesang der 3 Männer)rofen
-SgThree	Der gesang der 3 Männerrofen)
-SgThree	Lobgesang der 3 Manner)rofen)
-SgThree	Lobgesang der 3 Männer)rofen)
-SgThree	gesang der 3 Mannerrigen ofen
-SgThree	gesang der 3 Männerrigen ofen
-SgThree	Der gesang der 3 Mannerrofen
-SgThree	Der gesang der 3 Männerrofen
-SgThree	Lobgesang der 3 Manner)rofen
-SgThree	Lobgesang der 3 Mannerrofen)
-SgThree	Lobgesang der 3 Männer)rofen
-SgThree	Lobgesang der 3 Männerrofen)
-SgThree	Lobgesang der 3 Mannerrofen
-SgThree	Lobgesang der 3 Männerrofen
-SgThree	gesang der 3 Manner)rofen)
-SgThree	gesang der 3 Männer)rofen)
-SgThree	gesang der 3 Manner)rofen
-SgThree	gesang der 3 Mannerrofen)
-SgThree	gesang der 3 Männer)rofen
-SgThree	gesang der 3 Männerrofen)
-SgThree	gesang der 3 Mannerrofen
-SgThree	gesang der 3 Männerrofen
+SgThree	Gesang der drei Maenner im Feuerofen
+SgThree	Gesang der drei Manner im Feuerofen
+SgThree	Gesang der drei Männer im Feuerofen
+SgThree	Gesang der drei im Feuerofen
+SgThree	Gesang der drei Maenner
+SgThree	Gesang der drei Manner
+SgThree	Gesang der drei Männer
 SgThree	Gesang der Drei
+SgThree	Gesang der drei
 SgThree	SgThree
 SgThree	L3J
 Sir	Ecclesiasticus
@@ -874,8 +649,6 @@ Song	Hoheslied
 Song	Hohelied
 Song	Song
 Song	Hld
-Sus	Susanna und die Alten
-Sus	Susanna im Bade
 Sus	Susanna
 Sus	Sus
 Titus	Titus
