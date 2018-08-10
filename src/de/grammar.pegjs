@@ -107,7 +107,7 @@ c
 
 // No `b` or `ps151`.
 ff
-  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp ( "ff" ! [a-z0-9] / "f" ! [a-z0-9] ) abbrev? ![a-z]
+  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp ( "ff" [\\b] / "f" [\\b] ) abbrev? ![a-z]
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 integer_title
@@ -132,7 +132,7 @@ ps151_bcv
     { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v_letter
-  = v_explicit? val:integer sp !( ( "ff" ! [a-z0-9] / "f" ! [a-z0-9] ) ) [a-e] ![a-z]
+  = v_explicit? val:integer sp !( ( "ff" [\\b] / "f" [\\b] ) ) [a-e] ![a-z]
     { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v
@@ -141,11 +141,11 @@ v
 
 /* BCV helpers */
 c_explicit
-  = sp ( "kap" ( "itels" / "iteln" / "itel" / abbrev? ) ) sp
+  = sp ( "kap" ( "iteln" / "iteln" / "itel" / abbrev? ) ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "v" ( "erses" / "ersen" / "erse" / "ers" abbrev? / "ers" / "er" abbrev? / "s" abbrev? ) ) ![a-z] sp
+  = sp ( "v" ( "ersen" / "erses" / "erse" / "ers" abbrev? / "ers" / "s" abbrev? ) ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -156,7 +156,7 @@ cv_sep_weak
 
 /* The opening regexp is overwritten during post-processing to allow flexibility on including the comma. */
 sequence_sep
-  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "und" / "u" abbrev? / "&" / "vgl" abbrev? / "sowie" / "und" space "auch" / "und" space "siehe" space "auch" / "siehe" space "auch" / space)+
+  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "und" space "siehe" space "auch" / "und" space "siehe" / "und" space "auch" / "sowie" space "auch" / "siehe" space "auch" / "siehe" / "sowie" / "u" abbrev? / "&" / "vgl" abbrev? / space)+
     { return "" }
 
 range_sep

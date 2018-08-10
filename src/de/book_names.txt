@@ -1,12 +1,16 @@
 1Chr	Ersten Chronik
+1Chr	Erster Chronik
 1Chr	Erstes Chronik
 1Chr	Erste Chronik
 1Chr	1. Chronik
 1Chr	1 Chronik
+1Chr	1. Chron
+1Chr	1 Chron
 1Chr	1. Chr
 1Chr	1 Chr
 1Chr	1Chr
 1Cor	Ersten Korinther
+1Cor	Erster Korinther
 1Cor	Erstes Korinther
 1Cor	Erste Korinther
 1Cor	1. Korinther
@@ -15,6 +19,7 @@
 1Cor	1 Kor
 1Cor	1Cor
 1Esd	Ersten Esra
+1Esd	Erster Esra
 1Esd	Erstes Esra
 1Esd	Erste Esra
 1Esd	1. Esra
@@ -25,18 +30,24 @@
 1Esd	1 Es
 1Esd	1Esd
 1John	Ersten Johannes
+1John	Erster Johannes
 1John	Erstes Johannes
 1John	Erste Johannes
 1John	1. Johannes
 1John	1 Johannes
 1John	1. Joh
 1John	1 Joh
+1John	1. Jo
 1John	1John
+1John	1 Jo
 1Kgs	Ersten Koenige
+1Kgs	Erster Koenige
 1Kgs	Erstes Koenige
 1Kgs	Erste Koenige
 1Kgs	Ersten Konige
 1Kgs	Ersten Könige
+1Kgs	Erster Konige
+1Kgs	Erster Könige
 1Kgs	Erstes Konige
 1Kgs	Erstes Könige
 1Kgs	Erste Konige
@@ -47,17 +58,35 @@
 1Kgs	1. Könige
 1Kgs	1 Konige
 1Kgs	1 Könige
+1Kgs	1. Koen
+1Kgs	1 Koen
+1Kgs	1. Kng
+1Kgs	1. Koe
 1Kgs	1. Kon
 1Kgs	1. Kön
+1Kgs	1 Kng
+1Kgs	1 Koe
 1Kgs	1 Kon
 1Kgs	1 Kön
+1Kgs	1. Ko
+1Kgs	1. Kö
+1Kgs	1 Ko
+1Kgs	1 Kö
 1Kgs	1Kgs
+1Macc	Ersten Makkabaeer
+1Macc	Erster Makkabaeer
+1Macc	Erstes Makkabaeer
+1Macc	Erste Makkabaeer
 1Macc	Ersten Makkabaer
 1Macc	Ersten Makkabäer
+1Macc	Erster Makkabaer
+1Macc	Erster Makkabäer
 1Macc	Erstes Makkabaer
 1Macc	Erstes Makkabäer
 1Macc	Erste Makkabaer
 1Macc	Erste Makkabäer
+1Macc	1. Makkabaeer
+1Macc	1 Makkabaeer
 1Macc	1. Makkabaer
 1Macc	1. Makkabäer
 1Macc	1 Makkabaer
@@ -66,22 +95,31 @@
 1Macc	1 Makk
 1Macc	1Macc
 1Pet	Ersten Petrus
+1Pet	Erster Petrus
 1Pet	Erstes Petrus
 1Pet	Erste Petrus
 1Pet	1. Petrus
 1Pet	1 Petrus
 1Pet	1. Petr
 1Pet	1 Petr
+1Pet	1. Pet
+1Pet	1 Pet
+1Pet	1. Pt
+1Pet	1 Pt
 1Pet	1Pet
 1Sam	Ersten Samuel
+1Sam	Erster Samuel
 1Sam	Erstes Samuel
 1Sam	Erste Samuel
 1Sam	1. Samuel
 1Sam	1 Samuel
 1Sam	1. Sam
 1Sam	1 Sam
+1Sam	1. Sa
+1Sam	1 Sa
 1Sam	1Sam
 1Thess	Ersten Thessalonicher
+1Thess	Erster Thessalonicher
 1Thess	Erstes Thessalonicher
 1Thess	Erste Thessalonicher
 1Thess	1. Thessalonicher
@@ -89,7 +127,10 @@
 1Thess	1. Thess
 1Thess	1 Thess
 1Thess	1Thess
+1Thess	1. Th
+1Thess	1 Th
 1Tim	Ersten Timotheus
+1Tim	Erster Timotheus
 1Tim	Erstes Timotheus
 1Tim	Erste Timotheus
 1Tim	1. Timotheus
@@ -98,14 +139,18 @@
 1Tim	1 Tim
 1Tim	1Tim
 2Chr	Zweiten Chronik
+2Chr	Zweiter Chronik
 2Chr	Zweites Chronik
 2Chr	Zweite Chronik
 2Chr	2. Chronik
 2Chr	2 Chronik
+2Chr	2. Chron
+2Chr	2 Chron
 2Chr	2. Chr
 2Chr	2 Chr
 2Chr	2Chr
 2Cor	Zweiten Korinther
+2Cor	Zweiter Korinther
 2Cor	Zweites Korinther
 2Cor	Zweite Korinther
 2Cor	2. Korinther
@@ -114,6 +159,7 @@
 2Cor	2 Kor
 2Cor	2Cor
 2Esd	Zweiten Esra
+2Esd	Zweiter Esra
 2Esd	Zweites Esra
 2Esd	Zweite Esra
 2Esd	2. Esra
@@ -124,18 +170,24 @@
 2Esd	2 Es
 2Esd	2Esd
 2John	Zweiten Johannes
+2John	Zweiter Johannes
 2John	Zweites Johannes
 2John	Zweite Johannes
 2John	2. Johannes
 2John	2 Johannes
 2John	2. Joh
 2John	2 Joh
+2John	2. Jo
 2John	2John
+2John	2 Jo
 2Kgs	Zweiten Koenige
+2Kgs	Zweiter Koenige
 2Kgs	Zweites Koenige
 2Kgs	Zweite Koenige
 2Kgs	Zweiten Konige
 2Kgs	Zweiten Könige
+2Kgs	Zweiter Konige
+2Kgs	Zweiter Könige
 2Kgs	Zweites Konige
 2Kgs	Zweites Könige
 2Kgs	Zweite Konige
@@ -146,17 +198,35 @@
 2Kgs	2. Könige
 2Kgs	2 Konige
 2Kgs	2 Könige
+2Kgs	2. Koen
+2Kgs	2 Koen
+2Kgs	2. Kng
+2Kgs	2. Koe
 2Kgs	2. Kon
 2Kgs	2. Kön
+2Kgs	2 Kng
+2Kgs	2 Koe
 2Kgs	2 Kon
 2Kgs	2 Kön
+2Kgs	2. Ko
+2Kgs	2. Kö
+2Kgs	2 Ko
+2Kgs	2 Kö
 2Kgs	2Kgs
+2Macc	Zweiten Makkabaeer
+2Macc	Zweiter Makkabaeer
+2Macc	Zweites Makkabaeer
+2Macc	Zweite Makkabaeer
 2Macc	Zweiten Makkabaer
 2Macc	Zweiten Makkabäer
+2Macc	Zweiter Makkabaer
+2Macc	Zweiter Makkabäer
 2Macc	Zweites Makkabaer
 2Macc	Zweites Makkabäer
 2Macc	Zweite Makkabaer
 2Macc	Zweite Makkabäer
+2Macc	2. Makkabaeer
+2Macc	2 Makkabaeer
 2Macc	2. Makkabaer
 2Macc	2. Makkabäer
 2Macc	2 Makkabaer
@@ -165,22 +235,31 @@
 2Macc	2 Makk
 2Macc	2Macc
 2Pet	Zweiten Petrus
+2Pet	Zweiter Petrus
 2Pet	Zweites Petrus
 2Pet	Zweite Petrus
 2Pet	2. Petrus
 2Pet	2 Petrus
 2Pet	2. Petr
 2Pet	2 Petr
+2Pet	2. Pet
+2Pet	2 Pet
+2Pet	2. Pt
+2Pet	2 Pt
 2Pet	2Pet
 2Sam	Zweiten Samuel
+2Sam	Zweiter Samuel
 2Sam	Zweites Samuel
 2Sam	Zweite Samuel
 2Sam	2. Samuel
 2Sam	2 Samuel
 2Sam	2. Sam
 2Sam	2 Sam
+2Sam	2. Sa
+2Sam	2 Sa
 2Sam	2Sam
 2Thess	Zweiten Thessalonicher
+2Thess	Zweiter Thessalonicher
 2Thess	Zweites Thessalonicher
 2Thess	Zweite Thessalonicher
 2Thess	2. Thessalonicher
@@ -188,7 +267,10 @@
 2Thess	2. Thess
 2Thess	2 Thess
 2Thess	2Thess
+2Thess	2. Th
+2Thess	2 Th
 2Tim	Zweiten Timotheus
+2Tim	Zweiter Timotheus
 2Tim	Zweites Timotheus
 2Tim	Zweite Timotheus
 2Tim	2. Timotheus
@@ -197,19 +279,30 @@
 2Tim	2 Tim
 2Tim	2Tim
 3John	Dritten Johannes
+3John	Dritter Johannes
 3John	Drittes Johannes
 3John	Dritte Johannes
 3John	3. Johannes
 3John	3 Johannes
 3John	3. Joh
 3John	3 Joh
+3John	3. Jo
 3John	3John
+3John	3 Jo
+3Macc	Dritten Makkabaeer
+3Macc	Dritter Makkabaeer
+3Macc	Drittes Makkabaeer
+3Macc	Dritte Makkabaeer
 3Macc	Dritten Makkabaer
 3Macc	Dritten Makkabäer
+3Macc	Dritter Makkabaer
+3Macc	Dritter Makkabäer
 3Macc	Drittes Makkabaer
 3Macc	Drittes Makkabäer
 3Macc	Dritte Makkabaer
 3Macc	Dritte Makkabäer
+3Macc	3. Makkabaeer
+3Macc	3 Makkabaeer
 3Macc	3. Makkabaer
 3Macc	3. Makkabäer
 3Macc	3 Makkabaer
@@ -217,12 +310,17 @@
 3Macc	3. Makk
 3Macc	3 Makk
 3Macc	3Macc
+4Macc	Vierten Makkabaeer
+4Macc	Viertes Makkabaeer
+4Macc	Vierte Makkabaeer
 4Macc	Vierten Makkabaer
 4Macc	Vierten Makkabäer
 4Macc	Viertes Makkabaer
 4Macc	Viertes Makkabäer
 4Macc	Vierte Makkabaer
 4Macc	Vierte Makkabäer
+4Macc	4. Makkabaeer
+4Macc	4 Makkabaeer
 4Macc	4. Makkabaer
 4Macc	4. Makkabäer
 4Macc	4 Makkabaer
@@ -244,21 +342,13 @@ Col	Col
 Col	Kol
 Dan	Daniel
 Dan	Dan
-Deut	Funften Buch Mose
 Deut	Funftes Buch Mose
-Deut	Fünften Buch Mose
 Deut	Fünftes Buch Mose
-Deut	Funfte Buch Mose
-Deut	Fünfte Buch Mose
 Deut	Deuteronomium
 Deut	5. Buch Mose
-Deut	Funften Mose
 Deut	Funftes Mose
-Deut	Fünften Mose
 Deut	Fünftes Mose
 Deut	5 Buch Mose
-Deut	Funfte Mose
-Deut	Fünfte Mose
 Deut	5. Mose
 Deut	5 Mose
 Deut	5. Mos
@@ -267,6 +357,7 @@ Deut	5. Mo
 Deut	5 Mo
 Deut	Deut
 Deut	Dtn
+Deut	Dt
 Eccl	Ecclesiastes
 Eccl	Ekklesiastes
 Eccl	Prediger
@@ -284,10 +375,12 @@ Esth	Ester
 Esth	Esth
 Esth	Est
 Exod	Zweiten Buch Mose
+Exod	Zweiter Buch Mose
 Exod	Zweites Buch Mose
 Exod	Zweite Buch Mose
 Exod	2. Buch Mose
 Exod	Zweiten Mose
+Exod	Zweiter Mose
 Exod	Zweites Mose
 Exod	2 Buch Mose
 Exod	Zweite Mose
@@ -302,21 +395,23 @@ Exod	Exod
 Exod	Ex
 Ezek	Ezechiel
 Ezek	Hesekiel
+Ezek	Hesek
 Ezek	Ezek
 Ezek	Hes
 Ezek	Ez
 Ezra	Esra
 Ezra	Ezra
 Ezra	Esr
-Ezra,Esth	Es
 Gal	Galater
 Gal	Gal
 Gen	Ersten Buch Mose
+Gen	Erster Buch Mose
 Gen	Erstes Buch Mose
 Gen	Erste Buch Mose
 Gen	1. Buch Mose
 Gen	1 Buch Mose
 Gen	Ersten Mose
+Gen	Erster Mose
 Gen	Erstes Mose
 Gen	Erste Mose
 Gen	1. Mose
@@ -327,25 +422,23 @@ Gen	1 Mos
 Gen	1. Mo
 Gen	1 Mo
 Gen	Gen
+Gen	Gn
 GkEsth	Ester \(Griechisch\)
 GkEsth	Ester (Griechisch)
 GkEsth	GkEsth
 GkEsth	Gr Est
 Hab	Habakuk
 Hab	Hab
-Hag	Aggaus
-Hag	Aggäus
 Hag	Haggai
-Hag	Agg
+Hag	Hagg
 Hag	Hag
-Hag	Ag
 Heb	Hebraeer
 Heb	Hebraer
 Heb	Hebräer
 Heb	Hebr
 Heb	Heb
+Heb	Hb
 Hos	Hosea
-Hos	Osee
 Hos	Hos
 Isa	Isaias
 Isa	Jesaja
@@ -355,6 +448,7 @@ Jas	Jakobusbrief
 Jas	Jakobus
 Jas	Jak
 Jas	Jas
+Jas	Jk
 Jdt	Judit
 Jdt	Jdt
 Jer	Jeremias
@@ -366,7 +460,7 @@ Job	Job
 Job	Hi
 Joel	Joel
 John	Das Evangelium nach Johannes
-John	Evangelium nach Johannes
+John	 Evangelium nach Johannes
 John	Johannesevangelium
 John	Johannes
 John	John
@@ -382,6 +476,7 @@ Jude	Jude
 Jude	Jud
 Judg	Richter
 Judg	Judg
+Judg	Rich
 Judg	Ri
 Lam	Klagelieder Jeremias
 Lam	Klagelieder
@@ -389,10 +484,12 @@ Lam	Klag
 Lam	Klgl
 Lam	Lam
 Lev	Dritten Buch Mose
+Lev	Dritter Buch Mose
 Lev	Drittes Buch Mose
 Lev	Dritte Buch Mose
 Lev	3. Buch Mose
 Lev	Dritten Mose
+Lev	Dritter Mose
 Lev	Drittes Mose
 Lev	3 Buch Mose
 Lev	Dritte Mose
@@ -404,34 +501,42 @@ Lev	3 Mos
 Lev	3. Mo
 Lev	3 Mo
 Lev	Lev
+Lev	Lv
 Luke	Das Evangelium nach Lukas
-Luke	Evangelium nach Lukas
+Luke	 Evangelium nach Lukas
 Luke	Lukasevangelium
 Luke	Lukas
 Luke	Luke
+Luke	Luk
 Luke	Lk
 Mal	Malachias
 Mal	Maleachi
 Mal	Mal
 Mark	Das Evangelium nach Markus
-Mark	Evangelium nach Markus
+Mark	 Evangelium nach Markus
 Mark	Markusevangelium
 Mark	Markus
 Mark	Mark
 Mark	Mk
+Matt	Das Evangelium nach Matthaeus
 Matt	Das Evangelium nach Matthaus
 Matt	Das Evangelium nach Matthäus
-Matt	Evangelium nach Matthaus
-Matt	Evangelium nach Matthäus
+Matt	 Evangelium nach Matthaeus
+Matt	 Evangelium nach Matthaus
+Matt	 Evangelium nach Matthäus
+Matt	Matthaeusevangelium
 Matt	Matthausevangelium
 Matt	Matthäusevangelium
+Matt	Matthaeus
 Matt	Matthaus
 Matt	Matthäus
 Matt	Matt
 Matt	Mt
+Mic	Michaeas
 Mic	Michaas
 Mic	Michäas
 Mic	Micha
+Mic	Mich
 Mic	Mic
 Mic	Mi
 Nah	Nahum
@@ -454,13 +559,13 @@ Num	4 Mos
 Num	4. Mo
 Num	4 Mo
 Num	Num
+Num	Nm
 Obad	Abdias
 Obad	Obadja
 Obad	Obad
 Obad	Obd
 Phil	Philipper
 Phil	Phil
-Phil,Phlm	Ph
 Phlm	Philemon
 Phlm	Phlm
 Phlm	Phm
@@ -473,6 +578,7 @@ PrMan	Gebet Manasse
 PrMan	Geb Man
 PrMan	Or Man
 PrMan	PrMan
+Prov	Sprichwoerter
 Prov	Sprichworter
 Prov	Sprichwörter
 Prov	Sprueche
@@ -482,6 +588,7 @@ Prov	Prov
 Prov	Spr
 Ps	Psalmen
 Ps	Psalm
+Ps	Pslm
 Ps	Ps
 Rev	Offenbarung
 Rev	Offb
@@ -489,27 +596,279 @@ Rev	Rev
 Rom	Roemer
 Rom	Romer
 Rom	Römer
+Rom	Roem
 Rom	Rom
 Rom	Röm
+Rom	Rm
 Ruth	Ruth
 Ruth	Rut
-SgThree	Lobgesang der drei jungen Manner im Feuerofen
-SgThree	Lobgesang der drei jungen Männer im Feuerofen
-SgThree	Der Gesang der Drei Manner im feurigen Ofen
-SgThree	Der Gesang der Drei Männer im feurigen Ofen
-SgThree	Lobgesang der drei jungen Manner
-SgThree	Lobgesang der drei jungen Männer
-SgThree	Lobgesang der 3 jungen Manner
-SgThree	Lobgesang der 3 jungen Männer
-SgThree	Der Gesang der Drei
+Ruth	Ru
+SgThree	Der Lobgesang der 3 jungen Manner) im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 jungen Männer) im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 jungen Manner im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 jungen Manner) im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Männer im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 jungen Männer) im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Manner im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Männer im Feuerigen ofen
+SgThree	Der gesang der 3 jungen Manner) im Feuerigen ofen)
+SgThree	Der gesang der 3 jungen Männer) im Feuerigen ofen)
+SgThree	Der gesang der 3 jungen Manner im Feuerigen ofen)
+SgThree	Der gesang der 3 jungen Manner) im Feuerigen ofen
+SgThree	Der gesang der 3 jungen Männer im Feuerigen ofen)
+SgThree	Der gesang der 3 jungen Männer) im Feuerigen ofen
+SgThree	Lobgesang der 3 jungen Manner) im Feuerigen ofen)
+SgThree	Lobgesang der 3 jungen Männer) im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 jungen Manner) im Feuerofen)
+SgThree	Der Lobgesang der 3 jungen Männer) im Feuerofen)
+SgThree	Der gesang der 3 jungen Manner im Feuerigen ofen
+SgThree	Der gesang der 3 jungen Männer im Feuerigen ofen
+SgThree	Lobgesang der 3 jungen Manner im Feuerigen ofen)
+SgThree	Lobgesang der 3 jungen Manner) im Feuerigen ofen
+SgThree	Lobgesang der 3 jungen Männer im Feuerigen ofen)
+SgThree	Lobgesang der 3 jungen Männer) im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Manner im Feuerofen)
+SgThree	Der Lobgesang der 3 jungen Manner) im Feuerofen
+SgThree	Der Lobgesang der 3 jungen Männer im Feuerofen)
+SgThree	Der Lobgesang der 3 jungen Männer) im Feuerofen
+SgThree	Lobgesang der 3 jungen Manner im Feuerigen ofen
+SgThree	Lobgesang der 3 jungen Männer im Feuerigen ofen
+SgThree	Der Lobgesang der 3 Manner) im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 Männer) im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 jungen Manner im Feuerofen
+SgThree	Der Lobgesang der 3 jungen Männer im Feuerofen
+SgThree	gesang der 3 jungen Manner) im Feuerigen ofen)
+SgThree	gesang der 3 jungen Männer) im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 Manner im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 Manner) im Feuerigen ofen
+SgThree	Der Lobgesang der 3 Männer im Feuerigen ofen)
+SgThree	Der Lobgesang der 3 Männer) im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Manner)rigen ofen)
+SgThree	Der Lobgesang der 3 jungen Männer)rigen ofen)
+SgThree	Der gesang der 3 jungen Manner) im Feuerofen)
+SgThree	Der gesang der 3 jungen Männer) im Feuerofen)
+SgThree	gesang der 3 jungen Manner im Feuerigen ofen)
+SgThree	gesang der 3 jungen Manner) im Feuerigen ofen
+SgThree	gesang der 3 jungen Männer im Feuerigen ofen)
+SgThree	gesang der 3 jungen Männer) im Feuerigen ofen
+SgThree	Der Lobgesang der 3 Manner im Feuerigen ofen
+SgThree	Der Lobgesang der 3 Männer im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Manner)rigen ofen
+SgThree	Der Lobgesang der 3 jungen Mannerrigen ofen)
+SgThree	Der Lobgesang der 3 jungen Männer)rigen ofen
+SgThree	Der Lobgesang der 3 jungen Männerrigen ofen)
+SgThree	Der gesang der 3 jungen Manner im Feuerofen)
+SgThree	Der gesang der 3 jungen Manner) im Feuerofen
+SgThree	Der gesang der 3 jungen Männer im Feuerofen)
+SgThree	Der gesang der 3 jungen Männer) im Feuerofen
+SgThree	Lobgesang der 3 jungen Manner) im Feuerofen)
+SgThree	Lobgesang der 3 jungen Männer) im Feuerofen)
+SgThree	gesang der 3 jungen Manner im Feuerigen ofen
+SgThree	gesang der 3 jungen Männer im Feuerigen ofen
+SgThree	Der Lobgesang der 3 jungen Mannerrigen ofen
+SgThree	Der Lobgesang der 3 jungen Männerrigen ofen
+SgThree	Der gesang der 3 Manner) im Feuerigen ofen)
+SgThree	Der gesang der 3 Männer) im Feuerigen ofen)
+SgThree	Der gesang der 3 jungen Manner im Feuerofen
+SgThree	Der gesang der 3 jungen Männer im Feuerofen
+SgThree	Lobgesang der 3 jungen Manner im Feuerofen)
+SgThree	Lobgesang der 3 jungen Manner) im Feuerofen
+SgThree	Lobgesang der 3 jungen Männer im Feuerofen)
+SgThree	Lobgesang der 3 jungen Männer) im Feuerofen
+SgThree	Der gesang der 3 Manner im Feuerigen ofen)
+SgThree	Der gesang der 3 Manner) im Feuerigen ofen
+SgThree	Der gesang der 3 Männer im Feuerigen ofen)
+SgThree	Der gesang der 3 Männer) im Feuerigen ofen
+SgThree	Der gesang der 3 jungen Manner)rigen ofen)
+SgThree	Der gesang der 3 jungen Männer)rigen ofen)
+SgThree	Lobgesang der 3 Manner) im Feuerigen ofen)
+SgThree	Lobgesang der 3 Männer) im Feuerigen ofen)
+SgThree	Lobgesang der 3 jungen Manner im Feuerofen
+SgThree	Lobgesang der 3 jungen Männer im Feuerofen
+SgThree	Der Lobgesang der 3 Manner) im Feuerofen)
+SgThree	Der Lobgesang der 3 Männer) im Feuerofen)
+SgThree	Der gesang der 3 Manner im Feuerigen ofen
+SgThree	Der gesang der 3 Männer im Feuerigen ofen
+SgThree	Der gesang der 3 jungen Manner)rigen ofen
+SgThree	Der gesang der 3 jungen Mannerrigen ofen)
+SgThree	Der gesang der 3 jungen Männer)rigen ofen
+SgThree	Der gesang der 3 jungen Männerrigen ofen)
+SgThree	Lobgesang der 3 Manner im Feuerigen ofen)
+SgThree	Lobgesang der 3 Manner) im Feuerigen ofen
+SgThree	Lobgesang der 3 Männer im Feuerigen ofen)
+SgThree	Lobgesang der 3 Männer) im Feuerigen ofen
+SgThree	Lobgesang der 3 jungen Manner)rigen ofen)
+SgThree	Lobgesang der 3 jungen Männer)rigen ofen)
+SgThree	gesang der 3 jungen Manner) im Feuerofen)
+SgThree	gesang der 3 jungen Männer) im Feuerofen)
+SgThree	Der Lobgesang der 3 Manner im Feuerofen)
+SgThree	Der Lobgesang der 3 Manner) im Feuerofen
+SgThree	Der Lobgesang der 3 Männer im Feuerofen)
+SgThree	Der Lobgesang der 3 Männer) im Feuerofen
+SgThree	Der Lobgesang der 3 jungen Manner)rofen)
+SgThree	Der Lobgesang der 3 jungen Männer)rofen)
+SgThree	Der gesang der 3 jungen Mannerrigen ofen
+SgThree	Der gesang der 3 jungen Männerrigen ofen
+SgThree	Lobgesang der 3 Manner im Feuerigen ofen
+SgThree	Lobgesang der 3 Männer im Feuerigen ofen
+SgThree	Lobgesang der 3 jungen Manner)rigen ofen
+SgThree	Lobgesang der 3 jungen Mannerrigen ofen)
+SgThree	Lobgesang der 3 jungen Männer)rigen ofen
+SgThree	Lobgesang der 3 jungen Männerrigen ofen)
+SgThree	gesang der 3 jungen Manner im Feuerofen)
+SgThree	gesang der 3 jungen Manner) im Feuerofen
+SgThree	gesang der 3 jungen Männer im Feuerofen)
+SgThree	gesang der 3 jungen Männer) im Feuerofen
+SgThree	Der Lobgesang der 3 Manner im Feuerofen
+SgThree	Der Lobgesang der 3 Männer im Feuerofen
+SgThree	Der Lobgesang der 3 jungen Manner)rofen
+SgThree	Der Lobgesang der 3 jungen Mannerrofen)
+SgThree	Der Lobgesang der 3 jungen Männer)rofen
+SgThree	Der Lobgesang der 3 jungen Männerrofen)
+SgThree	Lobgesang der 3 jungen Mannerrigen ofen
+SgThree	Lobgesang der 3 jungen Männerrigen ofen
+SgThree	gesang der 3 Manner) im Feuerigen ofen)
+SgThree	gesang der 3 Männer) im Feuerigen ofen)
+SgThree	gesang der 3 jungen Manner im Feuerofen
+SgThree	gesang der 3 jungen Männer im Feuerofen
+SgThree	Der Lobgesang der 3 Manner)rigen ofen)
+SgThree	Der Lobgesang der 3 Männer)rigen ofen)
+SgThree	Der Lobgesang der 3 jungen Mannerrofen
+SgThree	Der Lobgesang der 3 jungen Männerrofen
+SgThree	Der gesang der 3 Manner) im Feuerofen)
+SgThree	Der gesang der 3 Männer) im Feuerofen)
+SgThree	gesang der 3 Manner im Feuerigen ofen)
+SgThree	gesang der 3 Manner) im Feuerigen ofen
+SgThree	gesang der 3 Männer im Feuerigen ofen)
+SgThree	gesang der 3 Männer) im Feuerigen ofen
+SgThree	gesang der 3 jungen Manner)rigen ofen)
+SgThree	gesang der 3 jungen Männer)rigen ofen)
+SgThree	Der Lobgesang der 3 Manner)rigen ofen
+SgThree	Der Lobgesang der 3 Mannerrigen ofen)
+SgThree	Der Lobgesang der 3 Männer)rigen ofen
+SgThree	Der Lobgesang der 3 Männerrigen ofen)
+SgThree	Der gesang der 3 Manner im Feuerofen)
+SgThree	Der gesang der 3 Manner) im Feuerofen
+SgThree	Der gesang der 3 Männer im Feuerofen)
+SgThree	Der gesang der 3 Männer) im Feuerofen
+SgThree	Der gesang der 3 jungen Manner)rofen)
+SgThree	Der gesang der 3 jungen Männer)rofen)
+SgThree	Lobgesang der 3 Manner) im Feuerofen)
+SgThree	Lobgesang der 3 Männer) im Feuerofen)
+SgThree	gesang der 3 Manner im Feuerigen ofen
+SgThree	gesang der 3 Männer im Feuerigen ofen
+SgThree	gesang der 3 jungen Manner)rigen ofen
+SgThree	gesang der 3 jungen Mannerrigen ofen)
+SgThree	gesang der 3 jungen Männer)rigen ofen
+SgThree	gesang der 3 jungen Männerrigen ofen)
+SgThree	Der Lobgesang der 3 Mannerrigen ofen
+SgThree	Der Lobgesang der 3 Männerrigen ofen
+SgThree	Der gesang der 3 Manner im Feuerofen
+SgThree	Der gesang der 3 Männer im Feuerofen
+SgThree	Der gesang der 3 jungen Manner)rofen
+SgThree	Der gesang der 3 jungen Mannerrofen)
+SgThree	Der gesang der 3 jungen Männer)rofen
+SgThree	Der gesang der 3 jungen Männerrofen)
+SgThree	Lobgesang der 3 Manner im Feuerofen)
+SgThree	Lobgesang der 3 Manner) im Feuerofen
+SgThree	Lobgesang der 3 Männer im Feuerofen)
+SgThree	Lobgesang der 3 Männer) im Feuerofen
+SgThree	Lobgesang der 3 jungen Manner)rofen)
+SgThree	Lobgesang der 3 jungen Männer)rofen)
+SgThree	gesang der 3 jungen Mannerrigen ofen
+SgThree	gesang der 3 jungen Männerrigen ofen
+SgThree	Der gesang der 3 Manner)rigen ofen)
+SgThree	Der gesang der 3 Männer)rigen ofen)
+SgThree	Der gesang der 3 jungen Mannerrofen
+SgThree	Der gesang der 3 jungen Männerrofen
+SgThree	Lobgesang der 3 Manner im Feuerofen
+SgThree	Lobgesang der 3 Männer im Feuerofen
+SgThree	Lobgesang der 3 jungen Manner)rofen
+SgThree	Lobgesang der 3 jungen Mannerrofen)
+SgThree	Lobgesang der 3 jungen Männer)rofen
+SgThree	Lobgesang der 3 jungen Männerrofen)
+SgThree	Der gesang der 3 Manner)rigen ofen
+SgThree	Der gesang der 3 Mannerrigen ofen)
+SgThree	Der gesang der 3 Männer)rigen ofen
+SgThree	Der gesang der 3 Männerrigen ofen)
+SgThree	Lobgesang der 3 Manner)rigen ofen)
+SgThree	Lobgesang der 3 Männer)rigen ofen)
+SgThree	Lobgesang der 3 jungen Mannerrofen
+SgThree	Lobgesang der 3 jungen Männerrofen
+SgThree	gesang der 3 Manner) im Feuerofen)
+SgThree	gesang der 3 Männer) im Feuerofen)
+SgThree	Der Lobgesang der 3 Manner)rofen)
+SgThree	Der Lobgesang der 3 Männer)rofen)
+SgThree	Der gesang der 3 Mannerrigen ofen
+SgThree	Der gesang der 3 Männerrigen ofen
+SgThree	Lobgesang der 3 Manner)rigen ofen
+SgThree	Lobgesang der 3 Mannerrigen ofen)
+SgThree	Lobgesang der 3 Männer)rigen ofen
+SgThree	Lobgesang der 3 Männerrigen ofen)
+SgThree	gesang der 3 Manner im Feuerofen)
+SgThree	gesang der 3 Manner) im Feuerofen
+SgThree	gesang der 3 Männer im Feuerofen)
+SgThree	gesang der 3 Männer) im Feuerofen
+SgThree	gesang der 3 jungen Manner)rofen)
+SgThree	gesang der 3 jungen Männer)rofen)
+SgThree	Der Lobgesang der 3 Manner)rofen
+SgThree	Der Lobgesang der 3 Mannerrofen)
+SgThree	Der Lobgesang der 3 Männer)rofen
+SgThree	Der Lobgesang der 3 Männerrofen)
+SgThree	Lobgesang der 3 Mannerrigen ofen
+SgThree	Lobgesang der 3 Männerrigen ofen
+SgThree	gesang der 3 Manner im Feuerofen
+SgThree	gesang der 3 Männer im Feuerofen
+SgThree	gesang der 3 jungen Manner)rofen
+SgThree	gesang der 3 jungen Mannerrofen)
+SgThree	gesang der 3 jungen Männer)rofen
+SgThree	gesang der 3 jungen Männerrofen)
+SgThree	Der Lobgesang der 3 Mannerrofen
+SgThree	Der Lobgesang der 3 Männerrofen
+SgThree	gesang der 3 Manner)rigen ofen)
+SgThree	gesang der 3 Männer)rigen ofen)
+SgThree	gesang der 3 jungen Mannerrofen
+SgThree	gesang der 3 jungen Männerrofen
+SgThree	Der gesang der 3 Manner)rofen)
+SgThree	Der gesang der 3 Männer)rofen)
+SgThree	gesang der 3 Manner)rigen ofen
+SgThree	gesang der 3 Mannerrigen ofen)
+SgThree	gesang der 3 Männer)rigen ofen
+SgThree	gesang der 3 Männerrigen ofen)
+SgThree	Der gesang der 3 Manner)rofen
+SgThree	Der gesang der 3 Mannerrofen)
+SgThree	Der gesang der 3 Männer)rofen
+SgThree	Der gesang der 3 Männerrofen)
+SgThree	Lobgesang der 3 Manner)rofen)
+SgThree	Lobgesang der 3 Männer)rofen)
+SgThree	gesang der 3 Mannerrigen ofen
+SgThree	gesang der 3 Männerrigen ofen
+SgThree	Der gesang der 3 Mannerrofen
+SgThree	Der gesang der 3 Männerrofen
+SgThree	Lobgesang der 3 Manner)rofen
+SgThree	Lobgesang der 3 Mannerrofen)
+SgThree	Lobgesang der 3 Männer)rofen
+SgThree	Lobgesang der 3 Männerrofen)
+SgThree	Lobgesang der 3 Mannerrofen
+SgThree	Lobgesang der 3 Männerrofen
+SgThree	gesang der 3 Manner)rofen)
+SgThree	gesang der 3 Männer)rofen)
+SgThree	gesang der 3 Manner)rofen
+SgThree	gesang der 3 Mannerrofen)
+SgThree	gesang der 3 Männer)rofen
+SgThree	gesang der 3 Männerrofen)
+SgThree	gesang der 3 Mannerrofen
+SgThree	gesang der 3 Männerrofen
 SgThree	Gesang der Drei
 SgThree	SgThree
 SgThree	L3J
 Sir	Ecclesiasticus
 Sir	Jesus Sirach
 Sir	Sir
+Song	Hoheslied Salomonis
 Song	Hohelied Salomonis
 Song	Hoheslied Salomos
+Song	Hohelied Salomos
 Song	Hohes Lied
 Song	Hoheslied
 Song	Hohelied
@@ -532,9 +891,7 @@ Zech	Zacharias
 Zech	Sacharja
 Zech	Sach
 Zech	Zech
-Zeph	Sophonias
 Zeph	Zephanja
 Zeph	Zefanja
-Zeph	Soph
 Zeph	Zeph
 Zeph	Zef
