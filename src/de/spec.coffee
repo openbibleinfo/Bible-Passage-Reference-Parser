@@ -2177,6 +2177,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Phlm 2 SIEHE 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 SIEHE 6'")
 		expect(p.parse("Exod 1:1 sowie 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 sowie 3'")
 		expect(p.parse("Phlm 2 SOWIE 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 SOWIE 6'")
+		expect(p.parse("Exod 1:1 und 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 und 3'")
+		expect(p.parse("Phlm 2 UND 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 UND 6'")
 		expect(p.parse("Exod 1:1 u. 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 u. 3'")
 		expect(p.parse("Phlm 2 U. 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 U. 6'")
 		expect(p.parse("Exod 1:1 u 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 u 3'")
