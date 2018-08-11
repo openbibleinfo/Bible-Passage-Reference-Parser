@@ -2,19 +2,33 @@ sudo: false
 language: node_js
 
 cache:
-  yarn: true
+  directories:
+    - "node_modules"
 
 notifications:
   email:
     on_failure: change
 
 node_js:
-  - '8.9.4'
+  - 'lts/*'
 
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.5.1
-  - export PATH=$HOME/.yarn/bin:$PATH
+before_script:
+  # Install modules into ~/perl5 using system perl
+  - curl -L https://cpanmin.us | perl - App::cpanminus
+  - ~/perl5/bin/cpanm local::lib
+  - ~/perl5/bin/cpanm JSON
+  # Add path to ~/perl5 modules to ~/.bashrc
+  - echo '[ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >> ~/.bashrc
+  - source ~/.bashrc
 
 script:
   - npm run test
+  # TODO: Add a script to check which languages need to be built based on the changed files
+  - npm run build-language de
 
+after_success:
+  - .travis/commit-built-files.sh
+
+env:
+  global:
+    secure: LFqpiRGQqLBjQrnwKZn8l7afIMkP40JrHoLS0xAjVwmugftWDoZhWyUE//USgEjrgq4cv+mhD9pYI62I3852YyBX81M0wF/j00tfpWNJc1fW94GDtvT78dUrD95JdH6ULt+a+WdvMOdOmJjYpFBpUI1WNjs8/nMhcTuWJsmLb3uAOi1F/vDmSAhpk55RVPd9RTBKklwQ/uPxv7Zyvbffx50yf76VZD6zHaSNUlQKOfUlTfmQh6PIygKb9BXcNcMqzq5hUQz791PW5EN34i+r6Mq8SNtykDzxiCAeTQ7zOF/PVFZZDHGvExVj9zwQiKnSZvf9bp3TpICzjK5J3U4KukfiatdOVeOCWrLzSMwEYEPEEq+Kcp7z//5V0+zFKxy3jAJi/qVtwkU1rZJrv5n52UDnaWSWT79qzUkCZcmd/sRhdpp00ls8SsNdaXCSa4aJ0BhECGUN2jHLn33zsS+BfhKLld2T6eCVoqU2kidsGqc6R51uEGw0NuWXfv1pR3NCz8CLTqftazNDj3Q+RdYp/l94pj3TJnG4yx+6ZJoetmzzh8NtZvENyfkwZoPrzFSZR9sHxdvmwYGWV6Ptxe7IXwKM2wb8SHP/eNMkSl/iNL9GHs1531wxlCehA8MUji5Q4fiLHGZS1zYGkR+V94J7Xbotp5Kd9KxRCJ6MeizXtUU=
