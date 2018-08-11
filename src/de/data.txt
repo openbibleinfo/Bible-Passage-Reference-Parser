@@ -10,7 +10,7 @@ $GOSPEL	(Das)? Evangelium nach
 
 # Constants used only in the parser
 $AB	[a-e]
-$AND	und siehe auch	und siehe	und auch	sowie auch	siehe auch	siehe	sowie	u.	&	vgl.
+$AND	und siehe auch	und siehe	und auch	sowie auch	siehe auch	siehe	sowie	und	u.	&	vgl.
 $CHAPTER	Kapiteln	Kapiteln	Kapitel	Kap.
 $FF	ff![a-z0-9äöü]
 $TITLE	Titel
