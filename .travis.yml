@@ -1,0 +1,20 @@
+sudo: false
+language: node_js
+
+cache:
+  yarn: true
+
+notifications:
+  email:
+    on_failure: change
+
+node_js:
+  - '8.9.4'
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.5.1
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+script:
+  - npm run test
+
