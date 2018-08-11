@@ -27,7 +27,8 @@
   "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
   "scripts": {
     "add-language": "cd bin && perl 01.add_lang.pl",
-    "build-language": "cd bin && perl 02.compile.pl",
+    "compile-language": "cd bin && perl 02.compile.pl",
+    "build-language": "bash -c 'npm run add-language $0 && npm run compile-language $0'",
     "test-language": "bash -c 'jasmine-node test/js/$0.spec.js'",
     "test": "(find test/js -name *.spec.js | xargs -I % sh -c 'echo %; jasmine-node %';) || exit 1;"
   },
