@@ -13,6 +13,7 @@ $AB	[a-e]
 $AND	und siehe auch	und siehe	und auch	sowie auch	siehe auch	siehe	sowie	und	u.	&	vgl.
 $CHAPTER	Kapiteln	Kapiteln	Kapitel	Kap.
 $FF	ff![a-z0-9äöü]
+$NEXT	f![a-z0-9äöü]
 $TITLE	Titel
 $TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
 $TO	bis
