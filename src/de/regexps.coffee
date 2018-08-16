@@ -19,7 +19,7 @@ bcv_parser::regexps.escaped_passage = ///
 				    /\d+\x1f				#special Psalm chapters
 				  | [\d\s\xa0.:,;\x1e\x1f&\(\)\uff08\uff09\[\]/"'\*=~\-\u2013\u2014]
 				  | Titel (?! [a-z] )		#could be followed by a number
-				  | und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch | sowie#{bcv_parser::regexps.space}+auch | siehe#{bcv_parser::regexps.space}+auch | und#{bcv_parser::regexps.space}+siehe | und#{bcv_parser::regexps.space}+auch | ff(?![a-z0-9äaöoüu]) | Kapiteln | Kapiteln | Kapitel | Versen | Verses | siehe | sowie | Verse | Vers | Vers | Kap | bis | vgl | Vs | u | &
+				  | und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch | sowie#{bcv_parser::regexps.space}+auch | siehe#{bcv_parser::regexps.space}+auch | und#{bcv_parser::regexps.space}+siehe | und#{bcv_parser::regexps.space}+auch | ff(?![a-z0-9äaöoüu]) | f(?![a-z0-9äaöoüu]) | Kapiteln | Kapiteln | Kapitel | Versen | Verses | siehe | sowie | Verse | Vers | Vers | Kap | bis | und | vgl | Vs | u | &
 				  | [a-e] (?! \w )			#a-e allows 1:1a
 				  | $						#or the end of the string
 				 )+
@@ -28,6 +28,7 @@ bcv_parser::regexps.escaped_passage = ///
 # These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff.
 bcv_parser::regexps.match_end_split = ///
 	  \d \W* Titel
+	| \d \W* f(?![a-z0-9äaöoüu]) (?: [\s\xa0*]* \.)?
 	| \d \W* ff(?![a-z0-9äaöoüu]) (?: [\s\xa0*]* \.)?
 	| \d [\s\xa0*]* [a-e] (?! \w )
 	| \x1e (?: [\s\xa0*]* [)\]\uff09] )? #ff09 is a full-width closing parenthesis
@@ -39,7 +40,7 @@ bcv_parser::regexps.pre_book = "[^A-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-�
 bcv_parser::regexps.first = "(?:Erste[nrs]?|1)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.second = "(?:Zweite[nrs]?|2)\\.?#{bcv_parser::regexps.space}*"
 bcv_parser::regexps.third = "(?:Dritte[nrs]?|3)\\.?#{bcv_parser::regexps.space}*"
-bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|(?:und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch|und#{bcv_parser::regexps.space}+siehe|und#{bcv_parser::regexps.space}+auch|sowie#{bcv_parser::regexps.space}+auch|siehe#{bcv_parser::regexps.space}+auch|siehe|sowie|u|&|vgl)|bis)"
+bcv_parser::regexps.range_and = "(?:[&\u2013\u2014-]|(?:und#{bcv_parser::regexps.space}+siehe#{bcv_parser::regexps.space}+auch|und#{bcv_parser::regexps.space}+siehe|und#{bcv_parser::regexps.space}+auch|sowie#{bcv_parser::regexps.space}+auch|siehe#{bcv_parser::regexps.space}+auch|siehe|sowie|und|u|&|vgl)|bis)"
 bcv_parser::regexps.range_only = "(?:[\u2013\u2014-]|bis)"
 # Each book regexp should return two parenthesized objects: an optional preliminary character and the book itself.
 bcv_parser::regexps.get_books = (include_apocrypha, case_sensitive) ->

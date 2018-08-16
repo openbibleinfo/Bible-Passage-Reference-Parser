@@ -592,7 +592,8 @@ In preparation, run `npm install` once.
 
 #### Compiling and testing a language
 
-4. Run `npm run build-language [ISO code]` to create the output Javascript files and tests.
+4. Run `npm run compile-language [ISO code]` to create the output Javascript files and tests.
+  (The command `npm run build-language [ISO code]` combines steps 3. and 4.: add & compile.)
 5. Run `npm run test-language [ISO code]` to run the tests for that particular language or `npm test` to run the tests for all languages. (Alternatively, visit the relevant `test/[ISO code].html` file in a browser, which expects [Jasmine](https://github.com/pivotal/jasmine) to be available in `lib/jasmine`.)
 
 ## Purpose

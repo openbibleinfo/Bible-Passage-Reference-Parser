@@ -2177,6 +2177,8 @@ describe "Miscellaneous tests", ->
 		expect(p.parse("Phlm 2 SIEHE 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 SIEHE 6'")
 		expect(p.parse("Exod 1:1 sowie 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 sowie 3'")
 		expect(p.parse("Phlm 2 SOWIE 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 SOWIE 6'")
+		expect(p.parse("Exod 1:1 und 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 und 3'")
+		expect(p.parse("Phlm 2 UND 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 UND 6'")
 		expect(p.parse("Exod 1:1 u. 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 u. 3'")
 		expect(p.parse("Phlm 2 U. 6").osis()).toEqual("Phlm.1.2,Phlm.1.6", "parsing: 'Phlm 2 U. 6'")
 		expect(p.parse("Exod 1:1 u 3").osis()).toEqual("Exod.1.1,Exod.1.3", "parsing: 'Exod 1:1 u 3'")
@@ -2193,6 +2195,15 @@ describe "Miscellaneous tests", ->
 	it "should handle 'ff' (de)", ->
 		expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'Rev 3ff, 4:2ff'")
 		expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11", "parsing: 'REV 3 FF, 4:2 FF'")
+	it "should handle 'next' (de)", ->
+		expect(p.parse("Rev 3:1f, 4:2f").osis()).toEqual("Rev.3.1-Rev.3.2,Rev.4.2-Rev.4.3", "parsing: 'Rev 3:1f, 4:2f'")
+		expect(p.parse("REV 3 F, 4:2 F").osis()).toEqual("Rev.3-Rev.4,Rev.4.2-Rev.4.3", "parsing: 'REV 3 F, 4:2 F'")
+		expect(p.parse("Jude 1f, 2f").osis()).toEqual("Jude.1.1-Jude.1.2,Jude.1.2-Jude.1.3", "parsing: 'Jude 1f, 2f'")
+		expect(p.parse("Gen 1:31f").osis()).toEqual("Gen.1.31-Gen.2.1", "parsing: 'Gen 1:31f'")
+		expect(p.parse("Gen 1:2-31f").osis()).toEqual("Gen.1.2-Gen.2.1", "parsing: 'Gen 1:2-31f'")
+		expect(p.parse("Gen 1:2f-30").osis()).toEqual("Gen.1.2-Gen.1.3,Gen.1.30", "parsing: 'Gen 1:2f-30'")
+		expect(p.parse("Gen 50f, Gen 50:26f").osis()).toEqual("Gen.50,Gen.50.26", "parsing: 'Gen 50f, Gen 50:26f'")
+		expect(p.parse("Gen 1:32f, Gen 51f").osis()).toEqual("", "parsing: 'Gen 1:32f, Gen 51f'")
 	it "should handle translations (de)", ->
 		expect(p.parse("Lev 1 (ELB)").osis_and_translations()).toEqual [["Lev.1", "ELB"]]
 		expect(p.parse("lev 1 elb").osis_and_translations()).toEqual [["Lev.1", "ELB"]]
