@@ -1,9 +1,9 @@
 start
-  = (bcv_hyphen_range / sequence / cb_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / translation_sequence_enclosed / translation_sequence / sequence_sep / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v / word / word_parenthesis / context)+
+  = (bcv_hyphen_range / sequence / cb_range / range / next_v / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / translation_sequence_enclosed / translation_sequence / sequence_sep / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v / word / word_parenthesis / context)+
 
 /* Multiples */
 sequence
-  = val_1:(cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / context) val_2:(sequence_sep? sequence_post)+
+  = val_1:(cb_range / bcv_hyphen_range / range / next_v / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / context) val_2:(sequence_sep? sequence_post)+
     { val_2.unshift([val_1]); return {"type": "sequence", "value": val_2, "indices": [peg$savedPos, peg$currPos - 1]} }
 
 sequence_post_enclosed
@@ -11,11 +11,11 @@ sequence_post_enclosed
     { if (typeof(val_2) === "undefined") val_2 = []; val_2.unshift([val_1]); return {"type": "sequence_post_enclosed", "value": val_2, "indices": [peg$savedPos, peg$currPos - 1]} }
 
 sequence_post
-  = sequence_post_enclosed / cb_range / bcv_hyphen_range / range / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v
+  = sequence_post_enclosed / cb_range / bcv_hyphen_range / range / next_v / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / c_psalm / b / cbv / cbv_ordinal / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v
 
 // `cv_weak` is after `integer` in `val_2` to avoid cases like "Mark 16:1-6 10". `b` is a special case to avoid oddities like "Ezekiel - 25:16".
 range
-  = val_1:(bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b &(range_sep (bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / bv / b)) / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v) range_sep val_2:(ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / v_letter / integer / cv_weak / c / v)
+  = val_1:(bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b &(range_sep (bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / bv / b)) / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / cv_weak / v_letter / integer / c / v) range_sep val_2:(next_v / ff / bcv_comma / bc_title / ps151_bcv / bcv / bcv_weak / ps151_bc / bc / cv_psalm / bv / b / cbv / cbv_ordinal / c_psalm / cb / cb_ordinal / c_title / integer_title / cv / v_letter / integer / cv_weak / c / v)
     { if (val_1.length && val_1.length === 2) val_1 = val_1[0]; // for `b`, which returns [object, undefined]
       return {"type": "range", "value": [val_1, val_2], "indices": [peg$savedPos, peg$currPos - 1]} }
 
@@ -110,6 +110,10 @@ ff
   = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp "ff" ! [a-z0-9äaöoüu]i abbrev? ![a-z]
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
+next_v
+  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp "f" ! [a-z0-9äaöoüu]i abbrev? ![a-z]
+    { return {"type": "next_v", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
+
 integer_title
   = val_1:integer val_2:title
     { return {"type": "integer_title", "value": [val_1, val_2], "indices": [peg$savedPos, peg$currPos - 1]} }
@@ -132,7 +136,7 @@ ps151_bcv
     { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v_letter
-  = v_explicit? val:integer sp !( "ff" ! [a-z0-9äaöoüu]i ) [a-e] ![a-z]
+  = v_explicit? val:integer sp !( "f" ! [a-z0-9äaöoüu]i / "ff" ! [a-z0-9äaöoüu]i ) [a-e] ![a-z]
     { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v
