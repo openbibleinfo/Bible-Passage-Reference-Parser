@@ -2311,8 +2311,6 @@
              "Mal": [14, 17, 24]
          }
        }
-    }
-	}
   };
 
   bcv_parser.prototype.languages = ["he"];
