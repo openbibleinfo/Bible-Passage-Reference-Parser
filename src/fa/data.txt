@@ -1,0 +1,285 @@
+$FIRST	1st	1	I	First
+$SECOND	2nd	2	II	Second
+$THIRD	3rd	3	III	Third
+$FOURTH	4th	4	IV	Fourth
+$GOSPEL	The Gospel of Saint	The Gospel according to Saint	Gospel of Saint	Gospel according to Saint	The Gospel of St.	The Gospel according to St.	Gospel of St.	Gospel according to St.	The Gospel of	The Gospel according to	Gospel of	Gospel according to	Saint	St.
+$AB	[a-e]
+$AND	and	compare	cf.	see also	also	see
+$CHAPTER	chapters	chapter	chapts.	chpts.	chapt.	chaps.	chap.	chp.	chs.	cha.	ch.
+$FF	ff![a-z0-9]	f![a-z0-9]
+$TITLE	title
+# Separate by commas: Abbreviation in string, OSIS, alias
+$TRANS	AMP	ASV	CEB,,ceb	CEV	ERV	ESV	HCSB	KJV,,kjv	LXX,,nab	MSG	NAB,,nab	NABRE,,nab	NAS,NASB	NASB	NIRV,,kjv	NIV,,kjv	NKJV,,nkjv	NLT,,nlt	NRSV,,nrsv	RSV	TNIV,,kjv
+$TO	through	thru	to
+$VERSE	verses	verse	ver.	vss.	vs.	vv.	v.
+#$PRE_BOOK_ALLOWED_CHARACTERS	\d|\b
+#$POST_BOOK_ALLOWED_CHARACTERS	\d|\b
+$UNICODE_BLOCK	Latin
+
+Gen	Genesis	Gen	Gn	Ge	Genisis	Gensis	Geneses	Geneis	Genises	Genesi	Genesus	Genese	Geneisis	Genisus	Gennesis	Geniesis	Geneesis	Gennisis	Genieses	Gennisus	Gennieses	Genneisus	Genneses	Genniisus	Genneisis	Genneesis	Genneis	Gennises	Geniisis	Geneesus	Geniesus	Geniisus	Geneises	Geneeses	Genniisis	Genneeses	Genneesus	Genneises	Genniesis	Gennsis	Genniesus	Geniises	Geneisus	Genniises	Gennesus
+Exod	Exodus	Ex	Exod	Exo	Exd	Exode	Exods	Exodis
+Lev	Leviticus	Lev	Lv	Le	Levi	Leveticus	Levitcus	Liviticus	Liveticus	Levitecus	Livitecus	Livitcus	Livetecus	Livetcus	Levetecus	Levetcus
+Num	Number	Numbers	Num	Nu	Nm	Numb
+Deut	Deuteronomy	Deut	Deu	Dt	Duet	Deutronomy	Dueteronomy	Deutoronomy	Deuteronmy	Deutoronmy	Deutronmy	Duetoronomy	Deetoronomy	Deetoronmy	Dueteronmy	Duutronomy	Duetoronmy	Duuteronomy	Duetronmy	Duetronomy	Duuteronmy	Duutoronomy	Duutoronmy	Deeteronomy	Duutronmy	Deetronmy	Deeteronmy	Deetronomy
+Josh	Joshua	Josh	Jos	Jsh	Josua	Joushua	Jousua
+Judg	Judges	Judg	Jdg	Jg	Jgs	Jdgs
+Ruth	Ruth	Ru	Rth	Rut
+1Sam	$FIRST Samuel	$FIRST Sam	Samuel	$FIRST Sm	$FIRST Sa	1 S	$FIRST Samual	Samuels	$FIRST Samuels	$FIRST Sma	$FIRST Samuell	Samuall	Samuals	Samual	Samuell	$FIRST Samuals	$FIRST Samuall	$FIRST Kingdoms
+2Sam	$SECOND Samuel	$SECOND Sam	$SECOND Sm	2 S	$SECOND Sa	$SECOND Samual	$SECOND Samuels	$SECOND Sma	$SECOND Kingdoms	$SECOND Samuell	$SECOND Samuall	$SECOND Samuals
+1Kgs	$FIRST Kings	Kings	$FIRST King	$FIRST Kgs	$FIRST Ki	Kin	$FIRST Kin	$FIRST Kg	Kgs	$FIRST K	$FIRST Kng	$FIRST Kngs	$FIRST Kn	Kngs	$FIRST Kigs	$FIRST Kins	$FIRST Kig	$THIRD Kingdoms	$FIRST Ks	$FIRST Kns
+2Kgs	$SECOND Kings	$SECOND Kgs	$SECOND Ki	$SECOND King	$SECOND Kin	$SECOND K	$SECOND Kg	$SECOND Kng	$SECOND Kngs	$SECOND Kn	$FOURTH Kingdoms	$SECOND Kins	$SECOND Ks	$SECOND Kig	$SECOND Kis	$SECOND Kigs	$SECOND Kns
+1Chr	$FIRST Chronicles	Chronicles	$FIRST Chron	$FIRST Chr	$FIRST Chro	1 Ch	$FIRST Chronicle	Chronicle	$FIRST Cron	$FIRST Chronicals	$FIRST Cronicles	$FIRST Chrn	Cronicles	Chronicals	$FIRST Coronicles	Paralipomenon	$FIRST Paralipomenon	$FIRST Choronicles	$FIRST Chronocles	$FIRST Choronocles	Choronocles	Cronicle	Choronicle	Choronicles	Coronocles	Coronocle	$FIRST Chronocle	$FIRST Cronocle	Chronocle	$FIRST Cronocles	$FIRST Coronocles	$FIRST Coronicle	$FIRST Cronicle	Chronocles	$FIRST Choronocle	Coronicles	Cronocle	$FIRST Coronocle	Choronocle	Coronicle	Cronocles
+2Chr	$SECOND Chronicles	$SECOND Chron	$SECOND Chr	2 Ch	$SECOND Chro	$SECOND Chronicle	$SECOND Cron	$SECOND Chronicals	$SECOND Cronicles	$SECOND Chrn	$SECOND Chronocles	$SECOND Coronicles	$SECOND Cronicle	$SECOND Paralipomenon	$SECOND Coronicle	$SECOND Chronocle	$SECOND Choronocle	$SECOND Cronocles	$SECOND Choronicles	$SECOND Choronocles	$SECOND Choronicle	$SECOND Coronocles	$SECOND Coronocle	$SECOND Cronocle
+Ezra	Ezra	Ezr	Esra
+Neh	Nehemiah	Neh	Ne	Nehemaih	Nehimiah	Nehemaiah	Nehimah	Nehimaih	Nehemah	Nehemih	Nehemiaah	Nehimiih	Nehimih	Nehemiiih	Nehimiiah	Nehemiiah	Nehemaiih	Nehimaiah	Nehimaaih	Nehemiih	Nehemaah	Nehemaaah	Nehimiiih	Nehimiaah	Nehimaah	Nehemiaih	Nehemaaih	Nehimaaah	Nehimaiih	Nehimiaih	Nehamiah	Nehemia	Nehimia	Nehamia
+Esth	Esther	Est	Es	Esth	Esthr	Ester
+Job	Job	Jb
+# These are based on actual misspellings
+Ps	Psalm	Psalms	Ps	Psa	Psm	Pslam	Pslm	Pslams	Pss	Psal	Palms	Psam	Paslm	Pslms	Psamls	Psams	Psaml	Plasm	Plsm	Plasma	Plsam	Paslms	Psalam	Palsm	Psalma	Plsams	Plasms	Plams	Psallm	Psals	Plms	Palsms	Psalams	Plsa	Plas	Psaalm	Plss	Psmals	Plsms	Pslalm	Plam	Psla	Psallms	Psamlms	Psamlm	Psalmm	Psml	Pslalms	Psmal	Psmls	Plsss	Pasmls	Psaalms	Plasmas	Palls	Psmalms	Pamls	Psma	Plssss	Psamms	Psalmas	Psmalm	Plass	Plaas	Pslmm	Pamss	Pslmas	Psaaa	Psalmms	Pasms	Plamas	Psala	Psalmls	Psamas	Plsssss	Psalas	Psaams	Psamm	Plaa	Passs	Psamla	Pssm	Psalml	Psmm	Salms	Salm
+Prov	Proverbs	Prov	Pro	Pr	Proverb	Pv	Prv	Provebs	Proberbs	Prvbs	Prvb	Poverbs	Prverbs	Probverbs	Porverbs	Preverbs	Prverb	Oroverbs	Preverb
+Eccl	Ecclesiastes	Eccl	Eccles	Ecc	Ec	Ecclesiates	Ecl	Eclesiastes	Ecclessiastes	Ecclesiasties	Ecclesiaste	Ecclesistes	Ecclessiates	Eclessiastes	Ecclesastes	Eclesiates	Ecclesaistes	Ecclesiiastes	Eclessiates	Ecclesiaastes	Ecclesaiastes	Ecclesiaistes	Eclesiaste	Ecclesiaiastes	Eclesistes	Ecclesiate	Eclesiaiastes	Ecclesiast	Ecclesiaates	Ecclesites	Ecclessaistes	Ecclesaites	Qoh	Qoheleth	Qo
+Song	Song of Solomon	Song	Song of Songs	So	Son	SS	Songs	The Song of Solomon	Sg	SoS	Sol	Songs of Solomon	Sgs	The Song of Songs	Song of Soloman	Sng	Songs of Songs	Song of Song	S of S	Songs of Song	The Songs of Solomon	Song of Salomon	Songs of Solomons	Song of Solomons	Songs of Soloman	Sngs	The Song of Soloman	Songs of Salomon	The Song of Salomon	The Song of Solomons	The Song of Song	The Songs of Solomons	The Song of Solomans	Songs of Salomons	Song of Salomans	The Song of Salomons	Song of Solomans	Songs of Salomans	Song of Salomons	The Songs of Saloman	Songs of Solomans	The Songs of Song	The Songs of Songs	The Songs of Soloman	The Song of Salomans	Song of Saloman	The Song of Saloman	The Songs of Salomons	The Songs of Salomon	Songs of Saloman	The Songs of Solomans	The Songs of Salomans
+Isa	Isaiah	Is	Isa	Isiah	Isaih	Isai	Ia	Isaish	Isah	Isiaih	Isiaiah	Isaiha	Isaah	Isaaiah	Isaaih	Isiaha	Isaiaih	Isiaah	Isaiiah	Isaiaha	Issah	Isaiaah	Isiiah	Isiaaha	Isiaiih	Isaiaaha	Isiiaiha	Isiaiiha	Isaaaiha	Isaiiiha	Isaaaaha	Isiiiiha	Isaaiih	Isiaiaha	Isiiaah	Isaiiaha	Isiiiih	Isiiih	Isiiaaha	Isaiiih	Isaiiha	Isiiiha	Isaaiaha	Isaaah	Isaaaah	Isaaaih	Isiaaih	Isaaaha	Isiiaih	Isiaaah	Isaaiha	Isiaiha	Isiiiah	Isaaha	Isiih	Isiaaiha	Isaisha	Isaiih	Isaha	Isiha	Isiiiaha	Isiiha	Isaaiiha	Isiaaaha	Isaiaiha	Isiiaha
+Jer	Jeremiah	Jer	Jr	Jere	Je	Jerimiah	Jermiah	Jeremia	Jeremaih	Jeremaiah	Jeramiah	Jeremah	Jerimah	Jeremih	Jeramia	Jeremi	Jeremie	Jeremiha	Jeramah	Jerimih	Jeramih	Jeramaih	Jeramiha	Jerimiih	Jeramiih	Jermmah	Jeremiih	Jeraiah
+Lam	Lamentations?	Lam	L[am]	Lamintations?	Lamintation
+Ezek	Ezekiel	Ezek	Eze	Ezk	Ezekial	Exekiel	Ezekel	Ezikiel	Eziekiel	Eziekel	Ezeikel	Ezikel	Ezeikiel	Ezeekiel	Exiekiel	Exikiel	Exeikiel	Ezeekel	Exikel	Exeikel	Exiekel	Exiikiel	Exeekel	Eziikel	Exeekiel	Exiikel	Exekel	Eziikiel
+Dan	Dani[ae]l	Dan	D[aln]
+Hos	Hosea	Hos	H[os]
+Joel	Joel?	Jl
+Amos	Amos	Am[os]
+Obad	Obadiah?	Obad	Ob[ad]?	Obidah
+Jonah	Jonah	Jon	Jnh
+Mic	Mich?ah	Mic?	Mich?a
+Nah	Nahum	Na	Nahu?
+Hab	Habb?akk?[au]kk?	Habk?
+Zeph	Zephaniah?	Ze?ph?	Zp	Zephanaiah?	Zaphaniah?	Zefaniah?	Zafaniah?
+Hag	Hagg?ai	Hg	Ha?gg?	Haggiai	Haggiah
+Zech	Z[ae]ch[ae]riah?	Zech?	Za?c	Za?ch	Z[ae]ch[ae]r[ai][ai]?h	Zekariah?	Zakariah
+Mal	Mal[ai]chi	Mal	Malac[hi]
+Matt	Matthew	Matt	Mt	Mat	Mathew	Mattew	Mtt	$GOSPEL Matthew	Mathhew	Mattthew	Matthwe	Mattwe	$GOSPEL Mathew	Mathiew	Matthiew	Matthhew	$GOSPEL Matt	Mathtew	Matttew	Maththew	Mattiew	$GOSPEL Mat	$GOSPEL Mattew	Mathttew	$GOSPEL Mt	$GOSPEL Mattthew	Matthhiew	$GOSPEL Mathttiew	$GOSPEL Mathhtiew	$GOSPEL Mathiew	$GOSPEL Maththiew	Matttiew	Matthtiew	$GOSPEL Mathtiew	Mathhiew	$GOSPEL Mathhew	$GOSPEL Matttew	$GOSPEL Matthiew	Mathhtew	Mathttiew	$GOSPEL Mathhhew	$GOSPEL Mathttew	$GOSPEL Mattiew	Mathhtiew	Mathhhiew	$GOSPEL Mathtew	$GOSPEL Mathhhiew	Mathhhew	$GOSPEL Matthtiew	$GOSPEL Matthwe	$GOSPEL Mattwe	Matthtew	$GOSPEL Matthhiew	$GOSPEL Mathhiew	Mathtiew	$GOSPEL Matthtew	Maththiew	$GOSPEL Mathhtew	$GOSPEL Maththew	$GOSPEL Matttiew	$GOSPEL Mattthiew	Mattthiew	$GOSPEL Matthhew
+Mark	Mark	Mr?k	Ma?r	$GOSPEL Mark	$GOSPEL Mr?k	$GOSPEL Ma?r
+Luke	Luke?	L[ku]	$GOSPEL Luke?	$GOSPEL L[ku]
+John	Joh[mn]?	Jh?n	$GOSPEL Joh[mn]?	Jh	Jh[ho]n	Jonh	Jo?phn	$GOSPEL Jh?n	Joon	$GOSPEL Jh[ho]n	$GOSPEL Jh	$GOSPEL Jonh	$GOSPEL Jo?phn	$GOSPEL Joon
+Acts	Acts	Act?	Acts of the Apostles	Actsss?	The Acts of the Apostles
+Rom	R[op]mans	Rom	R[mo]	Roman	Ro?ms	Rmns?	Ros	Roamns	Romasn	Romands
+1Cor	$FIRST Corinthians	$FIRST Cor?	Corinthians	$FIRST Corinth	$FIRST Corin	$FIRST Corinthian	$FIRST Corithians	$FIRST Corintians	$FIRST Corth	Corithians	$FIRST Corint	$FIRST Corinthains	$FIRST Corinthinas	$FIRST Corinithians	Corinthianos	$FIRST Corinthins	$FIRST Corrinthians	$FIRST Corinthans	$FIRST Chorinthians	$FIRST Choranthians	Corintians	$FIRST Cornthians	$FIRST Cornithians	$FIRST Corthians	Corinthains	$FIRST Corninthians	Corrinthians	$FIRST Corinthaians	Corinthans	Corinthinas	Corinthins	Cornithians	$FIRST Coriinthians	Cornthians	Chorinthians	Choranthians	$FIRST Corinthiians	$FIRST Corithans	$FIRST Corrithians	$FIRST Corinathians	Corithains	Corninthians	Corrithians	$FIRST Corinthianas	$FIRST Chorinthains	$FIRST Corithains	Corinthiaans	$FIRST Cornithains	Corinithians	$FIRST Corinthions	Corithans	$FIRST Corinthiaans	Chorithians	$FIRST Corthian	$FIRST Corinithinas	$FIRST Corinithans	$FIRST Corithiians	$FIRST Corithins	Corinthions	$FIRST Cornithaians	Coriinthians	Cornthins	$FIRST Corinthoians	$FIRST Cornthains	$FIRST Chornthians	Corinthoans	$FIRST Corninthains	$FIRST Chorithians	Corinthiians	Corithins	Corinthaians	$FIRST Corinnthians	Corinthoians	Corintions	$FIRST Cornithans	Corrithains	Corinthian	Coriinthiians	Cornthains	Corinathians	$FIRST Cornthins	Corithiians	$FIRST Coriinthiians	Corinithains	$FIRST Corinithains	Corninthans	Corinithinas	$FIRST Chorinthins	Cornithans	$FIRST Corrinthains	Corinthianas	Corithoans	Corrinthains	Cornithains	$FIRST Corninthans	Cornthiians	Corninthains	Corinnthians	$FIRST Cornthiians	Corinthiains	Chornthians	$FIRST Corinthiains	Corinithans	$FIRST Corithoans	$FIRST Corinthoans	Chorinthains	$FIRST Corinthianos	Cornithaians	$FIRST Coranthians	$FIRST Corrithains	$FIRST Corintions	Chorinthins
+2Cor	$SECOND Corinthians	$SECOND Cor	$SECOND Corinth	$SECOND Co	$SECOND Corin	$SECOND Corinthian	$SECOND Corithians	$SECOND Corintians	$SECOND Corth	$SECOND Corinthains	$SECOND Cornithians	$SECOND Corint	$SECOND Corinthins	$SECOND Corinthinas	$SECOND Corrinthians	$SECOND Corthians	$SECOND Chorinthians	$SECOND Choranthians	$SECOND Corinthans	$SECOND Corinithians	$SECOND Cornthians	$SECOND Corninthians	$SECOND Corinthiians	$SECOND Corithans	$SECOND Coriinthians	$SECOND Corinnthians	$SECOND Cornithans	$SECOND Corinathians	$SECOND Corinthianos	$SECOND Corinthaians	$SECOND Corithains	$SECOND Cornthains	$SECOND Corrithains	$SECOND Coranthians	$SECOND Corrithians	$SECOND Corintions	$SECOND Corinithains	$SECOND Cornithains	$SECOND Chorithians	$SECOND Cornthins	$SECOND Corninthans	$SECOND Corinthions	$SECOND Chorinthains	$SECOND Corinithinas	$SECOND Corinthianas	$SECOND Corithiians	$SECOND Corthian	$SECOND Cornthiians	$SECOND Chornthians	$SECOND Corithins	$SECOND Corinthoians	$SECOND Corinthiains	$SECOND Corithoans	$SECOND Coriinthiians	$SECOND Corinthoans	$SECOND Corninthains	$SECOND Corrinthains	$SECOND Corinthiaans	$SECOND Cornithaians	$SECOND Corinithans	$SECOND Chorinthins
+Gal	Galatians	Gal	Galations	Ga	Gl	Galatian	Gala	Galatas	Galat	Galatains	Galatins	Galatioans	Galatinas	Gallatians	Galatans	Galatiians	Galatias	Galatiains	Galataians	Galatinans	Galationas	Galatoans	Galatiaans	Gallations	Galatios	Galatns	Galatiions	Galatons	Galatiins	Galataans	Galatianis	Galationns	Galatianas	Galataions	Galataons	Gallatins
+Eph	Eph[ei]sians?	Eph?	Ephes?	Ehp[ei]sians	Ephs	Ehp	Epesians	Ephsians?	Esphesians	Ephesains?	Ephesions	Epehesians	Ephesiand
+Phil	Philippians	Phil	Phillipians	Php	Phi	Phillippians	Philipians	Philip	Philp	Philippian	Philppians	Philipp	Philipian	Phillipian	Philippans	Phlp	Philippeans	Phillipans	Philpians	Phillppians	Phillippins	Phillipeans	Philippiens	Philippains	Philipppians	Phillpians	Phillippian	Philippins	Phlip	Phillipains	Philipans	Philipeans	Phillippans	Philipains	Philpp	Philllipians	Philippiians	Phillippains	Philllippians	Phillipiens	Phillippiians	Philpian	Philppian	Philippaians	Philipins	Phillippeans	Philipain	Philipiians	Phillipins	Phillipain	Philipan	Philllipian	Phlipp	Phillpian	Philippin	Phillpiens	Phillipaians	Phillpans	Philipppian	Philllpians	Philipens	Philpins	Philpeans	Philpains	Philippiains	Phillipieans	Phillippieans	Philippiaans	Phillippiains	Philpppians	Phillipppians	Phillppian	Philippean	Phillippean	Phillipiians	Phillipean	Philllppians	Philllipiians	Philippan	Philppiians	Philipiens	Philpan	Phillipiains	Phillipan	Phillipiaans	Philipaians	Phlpp	Phillip	Phlippians	Phlipians	Philli	Phili
+Col	Colossians	Col	Co	Colosians	Collosians	Colossian	Colossions	Colassians	Colassions	Colossans	Collosions	Collasians	Colasians	Collasions	Colosions	Calossians	Calossions	Calassians	Calasians	Calosians	Calassions	Callosians	Callasions	Colasions	Callasians	Callosions	Calosions	Calasions	Callossians	Coloss
+1Thess	$FIRST Thessalonians	$FIRST Thess	$FIRST Thes	Thessalonians	$FIRST Th	$FIRST Thessalonian	$FIRST Thesalonians	$FIRST Ths	$FIRST Thessolonians	$FIRST Thesselonians	Thessalonian	Thesalonians	$FIRST Thessaloniciens	$FIRST Thesolonians	Thessolonians	$FIRST Thessolonian	$FIRST Thessalonions	$FIRST Thss	$FIRST Thessalonains	Thessaloniciens	$FIRST Thesalonian	Thesselonians	$FIRST Thessalonins	$FIRST Theselonians	$FIRST Thessalonaians	Thesolonians	$FIRST Thesss	Thessalonions	$FIRST Thessalonoans	Thessalonains	$FIRST Thesselonian	$FIRST Thesalonions	$FIRST Thessalonans	Thesalonian	$FIRST Theselonian	$FIRST Thessaloneans	$FIRST Thessalonion	Thessaloniions	Thesselonian	Thessaloniaans	Theselonians	$FIRST Thesselonains	$FIRST Theselonains	Thessalonicans	Thessalonans	$FIRST Thesolonian	Thessalonoians	$FIRST Thesalonins	$FIRST Thessalonoians	Thesaloniians	$FIRST Thesalonicans	$FIRST Thessalonioans	$FIRST Thessolonins	$FIRST Thessaloniaans	Thesalonins	$FIRST Thessalonicians	Thessalonoans	Thessaloneans	Thesselonains	Thessalonciens	Thessolonian	Thesalonicans	$FIRST Thessalonain	$FIRST Thessalonicans	Theselonains	Thessalonins	Thessalonicians	Thesolonian	Thessalonion	$FIRST Thessaloniions	$FIRST Thessalonciens	Thessalonain	$FIRST Thesaloniians	Thessolonins	Theselonian	$FIRST Thsss	Thessalonioans	Thesalonions	Thessalonaians	$FIRST Thessallonians	$FIRST Thesallonians	Thessallonians	Thesallonians	$FIRST Thessaloniens
+2Thess	$SECOND Thessalonians	$SECOND Thess	$SECOND Thes	$SECOND Th	$SECOND Thessalonian	$SECOND Ths	$SECOND Thesalonians	$SECOND Thessolonians	$SECOND Thesselonians	$SECOND Thesolonians	$SECOND Thessaloniciens	$SECOND Thessalonions	$SECOND Thessalonaians	$SECOND Thessaloneans	$SECOND Thessalonans	$SECOND Thessalonains	$SECOND Thesss	$SECOND Thessalonicians	$SECOND Theselonians	$SECOND Thesalonian	$SECOND Thessalonioans	$SECOND Thesolonian	$SECOND Thessolonins	$SECOND Thesaloniians	$SECOND Thessalonoans	$SECOND Thessalonicans	$SECOND Thss	$SECOND Thessalonain	$SECOND Theselonian	$SECOND Thessaloniions	$SECOND Thessalonciens	$SECOND Thessaloniaans	$SECOND Thessalonins	$SECOND Theselonains	$SECOND Thesalonicans	$SECOND Thessolonian	$SECOND Thesalonins	$SECOND Thesalonions	$SECOND Thessalonion	$SECOND Thesselonian	$SECOND Thsss	$SECOND Thessalonoians	$SECOND Thesselonains	$SECOND Thessallonians	$SECOND Thesallonians	$SECOND Thessaloniens
+1Tim	$FIRST Timothy	$FIRST Tim	Timothy	$FIRST Ti	$FIRST Tm	$FIRST Thimothy	$FIRST Timoty	$FIRST Tomothy	$FIRST Timoth	$FIRST Thimoty	Timoth
+2Tim	$SECOND Timothy	$SECOND Tim	$SECOND Ti	$SECOND Tm	$SECOND Thimothy	$SECOND Timoth	$SECOND Timoty	$SECOND Tomothy	$SECOND Thimoty
+Titus	Titus	Tit	Ti
+Phlm	Philemon	Phm	Philem	Phmn	Phlmn	Phile	Phlm	Phlemon	Phlimon
+Heb	Hebrews	Heb	Hebrew	Hewbrews	Hebrws	Hebres	Hebrwes	Heberws	Hbrews	Heebrews	Hebrs	Hebwers	Hwbrews	Hebrewws	Hebwres	Hwebrewws	Heebrewws	Hebewrs	Hebewes	Hebrrws	Hwebrews	Hbrewws	Hwbrewws	Hwwbrews	Hewbrewws	Hwwbrewws	Hebewws
+Jas	James	Jas	Jam	Jm	Ja	Jms	Jame
+1Pet	$FIRST Peter	$FIRST Pet	Peter	$FIRST Pt	$FIRST Pe	$FIRST P	$FIRST Ptr	$FIRST Pete	$FIRST Per	$FIRST Petr
+2Pet	$SECOND Peter	$SECOND Pet	$SECOND Pe	$SECOND Pt	$SECOND P	$SECOND Ptr	$SECOND Pete	$SECOND Petr	$SECOND Per
+1John	$FIRST Jo?hn	$FIRST J[hno]	$FIRST Jon?h	$FIRST Jh[ho]n	$FIRST Johm	$FIRST Jo?phn	$FIRST Joon
+2John	$SECOND Jo?hn	$SECOND J[hno]	$SECOND Jon?h	$SECOND Jh[ho]n	$SECOND Jo?phn	$SECOND Joon	$SECOND Johm
+3John	$THIRD Jo?hn	$THIRD J[hno]	$THIRD Jon?h	$THIRD Jh[ho]n	$THIRD Jo?phn	$THIRD Joon	$THIRD Johm
+Jude	Jude	Jde
+Rev	Rev[aeo]?lations?	Rev	R[ev]	Revel
+Tob	Tb	Tobit	Tob[it]?	Tobias
+Jdt	Ju?di?th?
+GkEsth	Greek Esther	Esther (Greek)	Gr Est	Gk Esth	Gk Est	Greek Est	Greek Esth	Gr Esth
+Wis	Wisdom	Wisd?	The Wisd?om of Solomon	The Wisd? of Solomon	Wisd? of Solomon	Wisd?om of Solomon
+Sir	Sirach	Sir	Ecclesiasticus	Ecclus	Ben Sira	Eccs	Ecclusiasticus	Wisdom of Jesus ben Sirach	Wisdom of Jesus, Son of Sirach	The Wisdom of Jesus ben Sirach	The Wisdom of Jesus, Son of Sirach	The Wisdom of Jesus Son of Sirach	Wisdom of Jesus Son of Sirach
+Bar	Ba?r	Baruch
+PrAzar	Azariah	The Prayer of Azariah	Azaria	PrAzr	Prayer of Azaria	PrAzar	The Prayers of Azaria	Prayer of Azariah	The Prayer of Azaria	Prayers of Azaria	Prayers of Azariah	Pr of Azariah	The Pr of Azaria	Pr of Azaria	The Pr of Azariah	The Prayers of Azariah
+Sus	Sus	Susannah?	Shoshana
+Bel	Bel	Bel and the Dragon	Bel and the Snake	Bel and Serpent	Bel & Snake	Bel & Dragon	Bel & Serpent	Bel & the Snake	Bel and Snake	Bel and the Serpent	Bel & the Dragon	Bel & the Serpent	Bel and Dragon
+SgThree	Song of the Three Young Men	The Song of the Three Young Men	The Song of the 3 Holy Children	Song of 3 Holy Children	Song of Three Youths	Song of Three Holy Children	Song of the Three Youths	The Song of Three Holy Children	Song of the 3 Jews	Song of the Three Jews	S. 3. Y	The Song of the 3 Young Men	Sng Three	Song Three	Song of the 3 Youths	The Song of 3 Holy Children	S. Th. Ch	The Song of the Three Youths	S. of Th. Y	S. Three. Ch	The Song of Three Youths	Song of 3 Jews	The Song of Three Jews	S. 3. Ch	S. Th. Y	Song of Three Young Men	The Song of 3 Youths	S. of Th. Ch	Song of the 3 Young Men	S. of 3. Y	S. of Three. Ch	Song of 3 Youths	The Song of the 3 Youths	Sg Three	S. of 3. Ch	S. Three. Y	Song of Three Jews	Song of 3 Young Men	The Song of the Three Jews	The Song of 3 Jews	The Song of the 3 Jews	The Song of the Three Holy Children	The Song of 3 Young Men	The Song of Three Young Men	Song of the Three Holy Children	S. of Three. Y	Song of the 3 Holy Children	Sg Thr
+EpJer	Epistle of Jeremiah	Letter of Jeremiah	The Letter of Jeremiah	The Epistle of Jeremiah	The Ep. of Jeremiah	Ep. of Jeremiah	The Let. of Jeremiah	Epistle of Jeremy	Let. of Jeremiah	Ep Jer
+1Macc	$FIRST Maccabees	$FIRST Macc	Maccabees	1 Mc	1 Ma	$FIRST Mac	$FIRST Maccabbbes	$FIRST Maccabbeee	$FIRST Macabbeee	$FIRST Macabbbe	$FIRST Macccabbbe	$FIRST Macccabee	$FIRST Maccabes	$FIRST Macccabes	$FIRST Macabbes	$FIRST Macccabeee	$FIRST Macabbees	$FIRST Macccabe	$FIRST Macccabbe	$FIRST Maccabeees	$FIRST Macabee	$FIRST Macabbbees	$FIRST Maccabbbee	$FIRST Maccabbees	$FIRST Maccabee	$FIRST Macabeee	$FIRST Macabees	$FIRST Macabbbes	$FIRST Maccabeee	$FIRST Macabeees	$FIRST Macabbbeee	$FIRST Maccabbbe	$FIRST Maccabbes	$FIRST Maccabbee	$FIRST Maccabe	$FIRST Macabes	$FIRST Macabbeees	$FIRST Macccabbee	$FIRST Macabbe	$FIRST Macabe	$FIRST Macccabbes	$FIRST Macccabees	$FIRST Maccc	$FIRST Macabbbee	$FIRST Maccabbe	$FIRST Macabbee
+2Macc	$SECOND Maccabees	$SECOND Macc	$SECOND Mac	2 Mc	2 Ma	$SECOND Macabees	$SECOND Maccabbees	$SECOND Macabbeees	$SECOND Macccabbbe	$SECOND Macabbeee	$SECOND Maccabbes	$SECOND Maccabbbe	$SECOND Maccabbeee	$SECOND Macabbes	$SECOND Macccabes	$SECOND Macabeee	$SECOND Maccabbbes	$SECOND Maccabe	$SECOND Macccabee	$SECOND Macccabbe	$SECOND Maccabbbee	$SECOND Macabe	$SECOND Maccabeee	$SECOND Macccabe	$SECOND Macabbbeee	$SECOND Macccabeee	$SECOND Maccabee	$SECOND Macabbees	$SECOND Macabbee	$SECOND Maccabeees	$SECOND Maccabes	$SECOND Macabee	$SECOND Macabbbee	$SECOND Macabeees	$SECOND Maccabbee	$SECOND Macccabees	$SECOND Macabbbes	$SECOND Maccabbe	$SECOND Macccabbee	$SECOND Macabbbe	$SECOND Macabbe	$SECOND Macabbbees	$SECOND Macabes	$SECOND Macccabbes	$SECOND Maccc
+3Macc	$THIRD Mac	$THIRD Maccabees	$THIRD Macc	$THIRD Macccabe	$THIRD Macabbeee	$THIRD Macccabbbe	$THIRD Maccabeees	$THIRD Maccabee	$THIRD Maccabbes	$THIRD Macabees	$THIRD Maccabbees	$THIRD Macccabees	$THIRD Maccabbbee	$THIRD Macabbe	$THIRD Macabes	$THIRD Macabe	$THIRD Macccabes	$THIRD Macabbbes	$THIRD Maccabbe	$THIRD Macabbes	$THIRD Macccabbee	$THIRD Macabbbee	$THIRD Maccabes	$THIRD Maccabbee	$THIRD Macabbbees	$THIRD Maccabbbe	$THIRD Macccabbe	$THIRD Macabbee	$THIRD Maccc	$THIRD Macabeee	$THIRD Macabbeees	$THIRD Macccabbes	$THIRD Macabbbe	3 Mc	$THIRD Maccabbeee	$THIRD Macccabeee	$THIRD Macabbbeee	$THIRD Macabeees	$THIRD Macccabee	$THIRD Maccabbbes	$THIRD Macabee	$THIRD Macabbees	$THIRD Maccabe	$THIRD Maccabeee
+4Macc	$FOURTH Maccabees	$FOURTH Macc	4 Mc	$FOURTH Maccabe	$FOURTH Maccabbes	$FOURTH Macabbes	$FOURTH Maccabeee	$FOURTH Maccabbbee	$FOURTH Macabe	$FOURTH Macabbee	$FOURTH Macccabeee	$FOURTH Macccabbee	$FOURTH Maccabbe	$FOURTH Macabeee	$FOURTH Macabbbe	$FOURTH Maccabbbes	$FOURTH Macabbbee	$FOURTH Macccabbe	$FOURTH Maccabbee	$FOURTH Maccabbbe	$FOURTH Macccabes	$FOURTH Macccabees	$FOURTH Macabbeees	$FOURTH Maccabeees	$FOURTH Maccabes	$FOURTH Maccabee	$FOURTH Macabbees	$FOURTH Macabbeee	$FOURTH Macabbe	$FOURTH Macccabbes	$FOURTH Maccabbeee	$FOURTH Macabbbeee	$FOURTH Maccc	$FOURTH Macabbbes	$FOURTH Mac	$FOURTH Macccabe	$FOURTH Macabee	$FOURTH Macccabbbe	$FOURTH Macabees	$FOURTH Macabes	$FOURTH Macccabee	$FOURTH Macabeees	$FOURTH Macabbbees	$FOURTH Maccabbees
+1Esd	$FIRST Esdras	$FIRST Esd	$FIRST Esdr
+2Esd	$SECOND Esdras	$SECOND Esd	$SECOND Esdr
+PrMan	The Prayer of Manasseh	Pr of Manasseh	Prayers of Manasseh	The Prayers Manasseh	Prayer Manasseh	The Pr of Manasseh	The Prayer Manasseh	Pr Manasseh	Pr Man	Prayer of Manasseh	The Pr Manasseh	The Prayers of Manasseh	Prayers Manasseh
+
+Ezek,Ezra	Ez
+Hab,Hag	Ha
+Heb,Hab	Hb
+John,Jonah,Job,Josh,Joel	Jo
+Jude,Judg	Jud	Jd	Ju
+Matt,Mark,Mal	Ma
+Phil,Phlm	Ph
+Zeph,Zech	Ze
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Genesis	Gen	Ge
+*Exod	Exodus	Exod	Ex
+*Lev	Leviticus	Lev	Lv
+*Num	Numbers	Num	Nu
+*Deut	Deuteronomy	Deut	Dt
+*Josh	Joshua	Josh	Josh
+*Judg	Judges	Judg	Jg
+*Ruth	Ruth	Ruth	Rt
+*1Sam	1 Samuel	1 Sam	1 Sa
+*2Sam	2 Samuel	2 Sam	2 Sa
+*1Kgs	1 Kings	1 Kgs	1 Kg
+*2Kgs	2 Kings	2 Kgs	2 Kg
+*1Chr	1 Chronicles	1 Chr	1 Ch
+*2Chr	2 Chronicles	2 Chr	2 Ch
+*Ezra	Ezra	Ezra	Ezr
+*Neh	Nehemiah	Neh	Neh
+*Esth	Esther	Esth	Est
+*Job	Job	Job	Job
+*Ps	Psalms	Ps	Ps	Psalm
+*Prov	Proverbs	Prov	Pr
+*Eccl	Ecclesiastes	Eccl	Ec
+*Song	Song of Songs	Song	Sg
+*Isa	Isaiah	Isa	Is
+*Jer	Jeremiah	Jer	Je
+*Lam	Lamentations	Lam	La
+*Ezek	Ezekiel	Ezek	Ezk
+*Dan	Daniel	Dan	Dn
+*Hos	Hosea	Hos	Ho
+*Joel	Joel	Joel	Jl
+*Amos	Amos	Amos	Am
+*Obad	Obadiah	Obad	Ob
+*Jonah	Jonah	Jonah	Jon
+*Mic	Micah	Mic	Mic
+*Nah	Nahum	Nah	Na
+*Hab	Habakkuk	Hab	Hab
+*Zeph	Zephaniah	Zeph	Zph
+*Hag	Haggai	Hag	Hag
+*Zech	Zechariah	Zech	Zch
+*Mal	Malachi	Mal	Mal
+*Matt	Matthew	Matt	Mt
+*Mark	Mark	Mark	Mk
+*Luke	Luke	Luke	Lk
+*John	John	John	Jn
+*Acts	Acts	Acts	Ac
+*Rom	Romans	Rom	Ro
+*1Cor	1 Corinthians	1 Cor	1 Co
+*2Cor	2 Corinthians	2 Cor	2 Co
+*Gal	Galatians	Gal	Gal
+*Eph	Ephesians	Eph	Eph
+*Phil	Philippians	Phil	Phil
+*Col	Colossians	Col	Col
+*1Thess	1 Thessalonians	1 Thess	1 Th
+*2Thess	2 Thessalonians	2 Thess	2 Th
+*1Tim	1 Timothy	1 Tim	1 Ti
+*2Tim	2 Timothy	2 Tim	2 Ti
+*Titus	Titus	Titus	Titus
+*Phlm	Philemon	Phlm	Phm
+*Heb	Hebrews	Heb	Heb
+*Jas	James	Jas	Jas
+*1Pet	1 Peter	1 Pet	1 Pt
+*2Pet	2 Peter	2 Pet	2 Pt
+*1John	1 John	1 John	1 Jn
+*2John	2 John	2 John	2 Jn
+*3John	3 John	3 John	3 Jn
+*Jude	Jude	Jude	Jude
+*Rev	Revelation	Rev	Rv
+*Tob	Tobit	Tob	Tob
+*Jdt	Judith	Jdt	Jdt
+*GkEsth	Greek Esther	Gk Esth	Gk Est
+*Wis	Wisdom	Wis	Wis
+*Sir	Sirach	Sir	Sir
+*Bar	Baruch	Bar	Bar
+*PrAzar	Prayer of Azariah	Pr Azar	Pr Azar
+*Sus	Susannah	Sus	Sus
+*Bel	Bel and the Dragon	Bel	Bel
+*SgThree	Song of the Three Young Men	SgThree	SgThree
+*EpJer	Epistle of Jeremiah	Ep Jer	Ep Jer
+*1Macc	1 Maccabees	1 Macc	1 Mc
+*2Macc	2 Maccabees	2 Macc	2 Mc
+*3Macc	3 Maccabees	3 Macc	3 Mc
+*4Macc	4 Maccabees	4 Macc	4 Mc
+*1Esd	1 Esdras	1 Esd	1 Esd
+*2Esd	2 Esdras	2 Esd	2 Esd
+*PrMan	Prayer of Manasseh	Pr Man	Pr Man
