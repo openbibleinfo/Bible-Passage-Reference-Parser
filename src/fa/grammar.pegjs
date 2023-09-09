@@ -107,7 +107,7 @@ c
 
 // No `b` or `ps151`.
 ff
-  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp ( "ff" ! [a-z0-9] / "f" ! [a-z0-9] ) abbrev? ![a-z]
+  = val_1:(bcv / bcv_weak / bc / bv / cv / cv_weak / integer / c / v) sp "ff" abbrev? ![a-z]
     { return {"type": "ff", "value": [val_1], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 integer_title
@@ -132,7 +132,7 @@ ps151_bcv
     { return {"type": "bcv", "value": [val_1, {"type": "v", "value": [val_2], "indices": [val_2.indices[0], val_2.indices[1]]}], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v_letter
-  = v_explicit? val:integer sp !( ( "ff" ! [a-z0-9] / "f" ! [a-z0-9] ) ) [a-e] ![a-z]
+  = v_explicit? val:integer sp !( "ff" ) [a-e] ![a-z]
     { return {"type": "v", "value": [val], "indices": [peg$savedPos, peg$currPos - 1]} }
 
 v
@@ -141,11 +141,11 @@ v
 
 /* BCV helpers */
 c_explicit
-  = sp ( "ch" ( "apters" / "apter" / "apts" abbrev? / "pts" abbrev? / "apt" abbrev? / "aps" abbrev? / "ap" abbrev? / "p" abbrev? / "s" abbrev? / "a" abbrev? / abbrev? ) ) sp
+  = sp ( "فصل"i ) sp
     { return {"type": "c_explicit"} }
 
 v_explicit
-  = sp ( "v" ( "erses" / "erse" / "er" abbrev? / "ss" abbrev? / "s" abbrev? / "v" abbrev? / abbrev? ) ) ![a-z] sp
+  = sp ( "آیه"i ) ![a-z] sp
     { return {"type": "v_explicit"} }
 
 cv_sep
@@ -156,11 +156,11 @@ cv_sep_weak
 
 /* The opening regexp is overwritten during post-processing to allow flexibility on including the comma. */
 sequence_sep
-  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "and" / "compare" / "cf" abbrev? / "see" space "also" / "also" / "see" / space)+
+  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "،"i / "؛"i / "۔"i / space)+
     { return "" }
 
 range_sep
-  = sp ([\-\u2013\u2014] sp / "through" sp / "thru" sp / "to" sp )+
+  = sp ([\-\u2013\u2014] sp / "تا"i sp )+
 
 title
   = (cv_sep / sequence_sep)? val:"title"
