@@ -4828,6 +4828,10 @@ Ps	Mizamur
 Ps	Mizmoor
 Ps	Mizmur
 Ps	Ps
+Ps	mazm
+Ps	mazmūr
+Ps	mazmūrī
+Ps	zabūr
 Ps	زبور
 Ps	مز مور
 Ps	مزا
@@ -4857,10 +4861,6 @@ Ps	مَزموُر
 Ps	مَزمُر
 Ps	مِزمور
 Ps	مِزموُر
-Pss	mazm
-Pss	mazmūr
-Pss	mazmūrī
-Pss	zabūr
 Rev	Makaashf
 Rev	Makaashfa
 Rev	Makaashfaa
@@ -5061,7 +5061,6 @@ Song	shīrā
 Song	shīrāy
 Song	sol
 Song	solomon
-Song	غزل	غزلها
 Song	غزل غزل ها
 Song	غزل غزل هاا
 Song	غزل غزلها
