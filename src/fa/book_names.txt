@@ -9,6 +9,8 @@
 1Chr	1Towarikh
 1Chr	1Towarykh
 1Chr	1Towrikh
+1Chr	1tawā
+1Chr	1توا
 1Chr	Avval Tawarikh
 1Chr	Avval Toarikh
 1Chr	Avval Towarikh
@@ -40,11 +42,14 @@
 1Chr	Yektowarikh
 1Chr	Yektowarykh
 1Chr	Yektowrikh
+1Chr	avval tawārikh
+1Chr	avvalt
 1Chr	اول توارخ
 1Chr	اول تواريخ
 1Chr	اول تواریخ
 1Chr	اول تواریک
 1Chr	اول تواریکه
+1Chr	اولت
 1Chr	اولتوارخ
 1Chr	اولتواريخ
 1Chr	اولتواریخ
@@ -65,8 +70,14 @@
 1Chr	۱ تواریخ
 1Chr	۱ تواریک
 1Chr	۱ تواریکه
+1Chr	۱tow
+1Chr	۱towār
+1Chr	۱towāri
+1Chr	۱تو
+1Chr	۱توار
 1Chr	۱توارخ
 1Chr	۱تواريخ
+1Chr	۱تواری
 1Chr	۱تواریخ
 1Chr	۱تواریک
 1Chr	۱تواریکه
@@ -95,6 +106,8 @@
 1Cor	1Qorintian
 1Cor	1Qorintiyan
 1Cor	1Qorintyun
+1Cor	1qr
+1Cor	1قر
 1Cor	Avval Corinth
 1Cor	Avval Corinthian
 1Cor	Avval Corinthians
@@ -144,6 +157,8 @@
 1Cor	YekQorintian
 1Cor	YekQorintiyan
 1Cor	YekQorintyun
+1Cor	avval qorantiān
+1Cor	avvalq
 1Cor	اول قرنتيان
 1Cor	اول قرنتیان
 1Cor	اول قرنتیانان
@@ -159,6 +174,7 @@
 1Cor	اول قرنتیونها
 1Cor	اول قرنتیونی
 1Cor	اول قرنتیونیان
+1Cor	اولق
 1Cor	اولقرنتيان
 1Cor	اولقرنتیان
 1Cor	اولقرنتیانان
@@ -219,6 +235,12 @@
 1Cor	۱ قرنتیونها
 1Cor	۱ قرنتیونی
 1Cor	۱ قرنتیونیان
+1Cor	۱qr
+1Cor	۱qrn
+1Cor	۱qrnt
+1Cor	۱قر
+1Cor	۱قرن
+1Cor	۱قرنت
 1Cor	۱قرنتيان
 1Cor	۱قرنتیان
 1Cor	۱قرنتیانان
@@ -279,6 +301,8 @@
 1John	1Yuhanaah
 1John	1Yuhanna
 1John	1Yuhannah
+1John	1yo
+1John	1یو
 1John	1یوحنآ
 1John	1یوحنا
 1John	1یوحناء
@@ -384,6 +408,8 @@
 1John	YekYuhanaah
 1John	YekYuhanna
 1John	YekYuhannah
+1John	avval yohannā
+1John	avvlyo
 1John	اول Yohana
 1John	اول Yohanaah
 1John	اول Yohanna
@@ -426,6 +452,7 @@
 1John	اولYuhanaah
 1John	اولYuhanna
 1John	اولYuhannah
+1John	اولیو
 1John	اولیوحنآ
 1John	اولیوحنا
 1John	اولیوحناء
@@ -528,6 +555,12 @@
 1John	۱Yuhanaah
 1John	۱Yuhanna
 1John	۱Yuhannah
+1John	۱yo
+1John	۱yoh
+1John	۱yohn
+1John	۱یو
+1John	۱یوح
+1John	۱یوحن
 1John	۱یوحنآ
 1John	۱یوحنا
 1John	۱یوحناء
@@ -561,6 +594,8 @@
 1Kgs	1Padishahan
 1Kgs	1Padshahan
 1Kgs	1Padshahon
+1Kgs	1pād
+1Kgs	1پاد
 1Kgs	Avval Padeshahan
 1Kgs	Avval Padeshahnan
 1Kgs	Avval Padeshahon
@@ -598,11 +633,14 @@
 1Kgs	Yekpadishahan
 1Kgs	Yekpadshahan
 1Kgs	Yekpadshahon
+1Kgs	avval pādshāhān
+1Kgs	avvalp
 1Kgs	اول پادشاها
 1Kgs	اول پادشاهاان
 1Kgs	اول پادشاهان
 1Kgs	اول پادشاهن
 1Kgs	اول پادشهان
+1Kgs	اولپ
 1Kgs	اولپادشاها
 1Kgs	اولپادشاهاان
 1Kgs	اولپادشاهان
@@ -623,6 +661,12 @@
 1Kgs	۱ پادشاهان
 1Kgs	۱ پادشاهن
 1Kgs	۱ پادشهان
+1Kgs	۱pā
+1Kgs	۱pād
+1Kgs	۱pādsh
+1Kgs	۱پا
+1Kgs	۱پاد
+1Kgs	۱پادش
 1Kgs	۱پادشاها
 1Kgs	۱پادشاهاان
 1Kgs	۱پادشاهان
@@ -649,6 +693,8 @@
 1Pet	1Pet
 1Pet	1Peter
 1Pet	1Peters
+1Pet	1pt
+1Pet	1پط
 1Pet	Avval Pataris
 1Pet	Avval Patras
 1Pet	Avval Patrasa
@@ -704,6 +750,8 @@
 1Pet	Yekpatrus
 1Pet	Yekpeter
 1Pet	Yekpeters
+1Pet	avval petrus
+1Pet	avvalpt
 1Pet	اول پطرس
 1Pet	اول پطرسئ
 1Pet	اول پطرسا
@@ -724,6 +772,7 @@
 1Pet	اول پطرصه
 1Pet	اول پطرصى
 1Pet	اول پطرصی
+1Pet	اولپط
 1Pet	اولپطرس
 1Pet	اولپطرسئ
 1Pet	اولپطرسا
@@ -804,6 +853,11 @@
 1Pet	۱ پطرصه
 1Pet	۱ پطرصى
 1Pet	۱ پطرصی
+1Pet	۱pt
+1Pet	۱ptr
+1Pet	۱ptrus
+1Pet	۱پت
+1Pet	۱پطر
 1Pet	۱پطرس
 1Pet	۱پطرسئ
 1Pet	۱پطرسا
@@ -845,6 +899,8 @@
 1Sam	1Samuwil
 1Sam	1Samweil
 1Sam	1Samwiil
+1Sam	1sm
+1Sam	1سم
 1Sam	Avval Samoeil
 1Sam	Avval Samouel
 1Sam	Avval Samoweyl
@@ -906,6 +962,8 @@
 1Sam	Yeksamuwil
 1Sam	Yeksamweil
 1Sam	Yeksamwiil
+1Sam	avval samu'īl
+1Sam	avvals
 1Sam	اول سمؤیل
 1Sam	اول سمئویل
 1Sam	اول سموءیل
@@ -920,6 +978,7 @@
 1Sam	اول سموایل
 1Sam	اول سمویل
 1Sam	اول سموییل
+1Sam	اولس
 1Sam	اولسمؤیل
 1Sam	اولسمئویل
 1Sam	اولسموءیل
@@ -976,8 +1035,14 @@
 1Sam	۱ سموایل
 1Sam	۱ سمویل
 1Sam	۱ سموییل
+1Sam	۱sm
+1Sam	۱smu
+1Sam	۱sāmu
+1Sam	۱سامو
+1Sam	۱سم
 1Sam	۱سمؤیل
 1Sam	۱سمئویل
+1Sam	۱سمو
 1Sam	۱سموءیل
 1Sam	۱سموئئیل
 1Sam	۱سموئل
@@ -1037,6 +1102,8 @@
 1Thess	1Tsalonikee
 1Thess	1Tsaloniki
 1Thess	1Tsalonikian
+1Thess	1tsā
+1Thess	1تسا
 1Thess	Avval Tesalonikian
 1Thess	Avval Tessalonians
 1Thess	Avval Tessalonici
@@ -1134,6 +1201,8 @@
 1Thess	YekTsalonikian
 1Thess	Yektessalonikian
 1Thess	Yektessalonikyan
+1Thess	avval tsālūnīkān
+1Thess	avvalts
 1Thess	اول تسالونيکيان
 1Thess	اول تسالونيکيانه
 1Thess	اول تسالونيکیان
@@ -1143,6 +1212,7 @@
 1Thess	اول تسالونیکیان
 1Thess	اول تسالونیکیانه
 1Thess	اول تسالونیکیانی
+1Thess	اولتس
 1Thess	اولتسالونيکيان
 1Thess	اولتسالونيکيانه
 1Thess	اولتسالونيکیان
@@ -1171,6 +1241,10 @@
 1Thess	۱ تسالونیکیان
 1Thess	۱ تسالونیکیانه
 1Thess	۱ تسالونیکیانی
+1Thess	۱ts
+1Thess	۱tsl
+1Thess	۱tsln
+1Thess	۱تس
 1Thess	۱تسالونيکيان
 1Thess	۱تسالونيکيانه
 1Thess	۱تسالونيکیان
@@ -1180,6 +1254,8 @@
 1Thess	۱تسالونیکیان
 1Thess	۱تسالونیکیانه
 1Thess	۱تسالونیکیانی
+1Thess	۱تسل
+1Thess	۱تسلن
 1Tim	1Tim
 1Tim	1Timotaios
 1Tim	1Timotaos
@@ -1193,6 +1269,8 @@
 1Tim	1Timotheus
 1Tim	1Timothy
 1Tim	1stTimothy
+1Tim	1tīm
+1Tim	1تیم
 1Tim	AvvalTim
 1Tim	AvvalTimotaios
 1Tim	AvvalTimotaos
@@ -1211,7 +1289,10 @@
 1Tim	YekTimothaeus
 1Tim	YekTimothaos
 1Tim	YekTimotheus
+1Tim	avval tīmutā'ūs
+1Tim	avvaltī
 1Tim	اول تیموتائوس
+1Tim	اولتی
 1Tim	اولتیموتئاؤس
 1Tim	اولتیموتئوس
 1Tim	اولتیموتئوسه
@@ -1236,6 +1317,12 @@
 1Tim	یکتیموتیؤس
 1Tim	یکتیموتیئوس
 1Tim	یکتیموتیوس
+1Tim	۱tī
+1Tim	۱tīm
+1Tim	۱tīmt
+1Tim	۱تی
+1Tim	۱تیم
+1Tim	۱تیمت
 1Tim	۱تیموتئاؤس
 1Tim	۱تیموتئوس
 1Tim	۱تیموتئوسه
@@ -1259,6 +1346,8 @@
 2Chr	2Towarikh
 2Chr	2Towarykh
 2Chr	2Towrikh
+2Chr	2tawā
+2Chr	2توا
 2Chr	Do tawarikh
 2Chr	Do toarikh
 2Chr	Do towarikh
@@ -1285,6 +1374,8 @@
 2Chr	DovomTowarikh
 2Chr	DovomTowarykh
 2Chr	DovomTowrikh
+2Chr	dovvom tawārikh
+2Chr	dovvomt
 2Chr	دو توارخ
 2Chr	دو تواريخ
 2Chr	دو تواریخ
@@ -1300,6 +1391,7 @@
 2Chr	دوم تواریخ
 2Chr	دوم تواریک
 2Chr	دوم تواریکه
+2Chr	دومت
 2Chr	دومتوارخ
 2Chr	دومتواريخ
 2Chr	دومتواریخ
@@ -1310,8 +1402,14 @@
 2Chr	۲ تواریخ
 2Chr	۲ تواریک
 2Chr	۲ تواریکه
+2Chr	۲tow
+2Chr	۲towār
+2Chr	۲towāri
+2Chr	۲تو
+2Chr	۲توار
 2Chr	۲توارخ
 2Chr	۲تواريخ
+2Chr	۲تواری
 2Chr	۲تواریخ
 2Chr	۲تواریک
 2Chr	۲تواریکه
@@ -1340,6 +1438,8 @@
 2Cor	2Qorintian
 2Cor	2Qorintiyan
 2Cor	2Qorintyun
+2Cor	2qr
+2Cor	2قر
 2Cor	Do Corinth
 2Cor	Do Corinthian
 2Cor	Do Corinthians
@@ -1389,6 +1489,8 @@
 2Cor	DovomQorintian
 2Cor	DovomQorintiyan
 2Cor	DovomQorintyun
+2Cor	dovvom qorantiān
+2Cor	dovvomq
 2Cor	دو قرنتيان
 2Cor	دو قرنتیان
 2Cor	دو قرنتیانان
@@ -1434,6 +1536,7 @@
 2Cor	دوم قرنتیونها
 2Cor	دوم قرنتیونی
 2Cor	دوم قرنتیونیان
+2Cor	دومق
 2Cor	دومقرنتيان
 2Cor	دومقرنتیان
 2Cor	دومقرنتیانان
@@ -1464,6 +1567,12 @@
 2Cor	۲ قرنتیونها
 2Cor	۲ قرنتیونی
 2Cor	۲ قرنتیونیان
+2Cor	۲qr
+2Cor	۲qrn
+2Cor	۲qrnt
+2Cor	۲قر
+2Cor	۲قرن
+2Cor	۲قرنت
 2Cor	۲قرنتيان
 2Cor	۲قرنتیان
 2Cor	۲قرنتیانان
@@ -1524,6 +1633,8 @@
 2John	2Yuhanaah
 2John	2Yuhanna
 2John	2Yuhannah
+2John	2yo
+2John	2یو
 2John	2یوحنآ
 2John	2یوحنا
 2John	2یوحناء
@@ -1629,6 +1740,8 @@
 2John	Dovomیوهنه
 2John	Dovomیوهنى
 2John	Dovomیوهنی
+2John	dovvom yohannā
+2John	dovvomyo
 2John	دو یوحنآ
 2John	دو یوحنا
 2John	دو یوحناء
@@ -1691,6 +1804,7 @@
 2John	دومYuhanaah
 2John	دومYuhanna
 2John	دومYuhannah
+2John	دومیو
 2John	دومیوحنآ
 2John	دومیوحنا
 2John	دومیوحناء
@@ -1773,6 +1887,12 @@
 2John	۲Yuhanaah
 2John	۲Yuhanna
 2John	۲Yuhannah
+2John	۲yo
+2John	۲yoh
+2John	۲yohn
+2John	۲یو
+2John	۲یوح
+2John	۲یوحن
 2John	۲یوحنآ
 2John	۲یوحنا
 2John	۲یوحناء
@@ -1806,6 +1926,8 @@
 2Kgs	2Padishahan
 2Kgs	2Padshahan
 2Kgs	2Padshahon
+2Kgs	2pād
+2Kgs	2پاد
 2Kgs	Do padeshahan
 2Kgs	Do padeshahnan
 2Kgs	Do padeshahon
@@ -1843,6 +1965,8 @@
 2Kgs	Dovompadishahan
 2Kgs	Dovompadshahan
 2Kgs	Dovompadshahon
+2Kgs	dovvom pādshāhān
+2Kgs	dovvomp
 2Kgs	دو پادشاها
 2Kgs	دو پادشاهاان
 2Kgs	دو پادشاهان
@@ -1853,6 +1977,7 @@
 2Kgs	دوم پادشاهان
 2Kgs	دوم پادشاهن
 2Kgs	دوم پادشهان
+2Kgs	دومپ
 2Kgs	دومپادشاها
 2Kgs	دومپادشاهاان
 2Kgs	دومپادشاهان
@@ -1868,6 +1993,12 @@
 2Kgs	۲ پادشاهان
 2Kgs	۲ پادشاهن
 2Kgs	۲ پادشهان
+2Kgs	۲pā
+2Kgs	۲pād
+2Kgs	۲pādsh
+2Kgs	۲پا
+2Kgs	۲پاد
+2Kgs	۲پادش
 2Kgs	۲پادشاها
 2Kgs	۲پادشاهاان
 2Kgs	۲پادشاهان
@@ -1894,6 +2025,8 @@
 2Pet	2Pet
 2Pet	2Peter
 2Pet	2Peters
+2Pet	2pt
+2Pet	2پط
 2Pet	Do pataris
 2Pet	Do patras
 2Pet	Do patrasa
@@ -1949,6 +2082,8 @@
 2Pet	Dovompatrus
 2Pet	Dovompeter
 2Pet	Dovompeters
+2Pet	dovvom petrus
+2Pet	dovvompt
 2Pet	دو پطرس
 2Pet	دو پطرسئ
 2Pet	دو پطرسا
@@ -1989,6 +2124,7 @@
 2Pet	دوم پطرصه
 2Pet	دوم پطرصى
 2Pet	دوم پطرصی
+2Pet	دومپط
 2Pet	دومپطرس
 2Pet	دومپطرسئ
 2Pet	دومپطرسا
@@ -2049,6 +2185,11 @@
 2Pet	۲ پطرصه
 2Pet	۲ پطرصى
 2Pet	۲ پطرصی
+2Pet	۲pt
+2Pet	۲ptr
+2Pet	۲ptrus
+2Pet	۲پت
+2Pet	۲پطر
 2Pet	۲پطرس
 2Pet	۲پطرسئ
 2Pet	۲پطرسا
@@ -2090,6 +2231,8 @@
 2Sam	2Samuwil
 2Sam	2Samweil
 2Sam	2Samwiil
+2Sam	2sm
+2Sam	2سم
 2Sam	Do samoeil
 2Sam	Do samouel
 2Sam	Do samoweyl
@@ -2151,6 +2294,8 @@
 2Sam	Dovomsamuwil
 2Sam	Dovomsamweil
 2Sam	Dovomsamwiil
+2Sam	dovvom samu'īl
+2Sam	dovvoms
 2Sam	دو سمؤیل
 2Sam	دو سمئویل
 2Sam	دو سموءیل
@@ -2193,6 +2338,7 @@
 2Sam	دوم سموایل
 2Sam	دوم سمویل
 2Sam	دوم سموییل
+2Sam	دومس
 2Sam	دومسمؤیل
 2Sam	دومسمئویل
 2Sam	دومسموءیل
@@ -2221,8 +2367,14 @@
 2Sam	۲ سموایل
 2Sam	۲ سمویل
 2Sam	۲ سموییل
+2Sam	۲sm
+2Sam	۲smu
+2Sam	۲sāmu
+2Sam	۲سامو
+2Sam	۲سم
 2Sam	۲سمؤیل
 2Sam	۲سمئویل
+2Sam	۲سمو
 2Sam	۲سموءیل
 2Sam	۲سموئئیل
 2Sam	۲سموئل
@@ -2282,6 +2434,8 @@
 2Thess	2Tsalonikee
 2Thess	2Tsaloniki
 2Thess	2Tsalonikian
+2Thess	2tsā
+2Thess	2تسا
 2Thess	Do Tesalonikian
 2Thess	Do Tessalonians
 2Thess	Do Tessalonici
@@ -2379,6 +2533,8 @@
 2Thess	DovomTsalonikian
 2Thess	Dovomtessalonikian
 2Thess	Dovomtessalonikyan
+2Thess	dovvom tsālūnīkiān
+2Thess	dovvomts
 2Thess	دو تسالونيکيان
 2Thess	دو تسالونيکيانه
 2Thess	دو تسالونيکیان
@@ -2399,6 +2555,7 @@
 2Thess	دوم تسالونیکیان
 2Thess	دوم تسالونیکیانه
 2Thess	دوم تسالونیکیانی
+2Thess	دومتس
 2Thess	دومتسالونيکيان
 2Thess	دومتسالونيکيانه
 2Thess	دومتسالونيکیان
@@ -2415,6 +2572,10 @@
 2Thess	۲ تسالونیکیان
 2Thess	۲ تسالونیکیانه
 2Thess	۲ تسالونیکیانی
+2Thess	۲ts
+2Thess	۲tsl
+2Thess	۲tsln
+2Thess	۲تس
 2Thess	۲تسالونيکيان
 2Thess	۲تسالونيکيانه
 2Thess	۲تسالونيکیان
@@ -2423,6 +2584,8 @@
 2Thess	۲تسالونیکیان
 2Thess	۲تسالونیکیانه
 2Thess	۲تسالونیکیانی
+2Thess	۲تسل
+2Thess	۲تسلن
 2Tim	2Tim
 2Tim	2Timotaios
 2Tim	2Timotaos
@@ -2435,6 +2598,8 @@
 2Tim	2Timothaos
 2Tim	2Timotheus
 2Tim	2Timothy
+2Tim	2tīm
+2Tim	2تیم
 2Tim	DoTimoteos
 2Tim	DoTimoteus
 2Tim	DoTimothaeus
@@ -2452,6 +2617,8 @@
 2Tim	DovomTimothaos
 2Tim	DovomTimotheus
 2Tim	DovomTimothy
+2Tim	dovvom tīmutā'ūs
+2Tim	dovvomtī
 2Tim	دوتیموتئاؤس
 2Tim	دوتیموتئوس
 2Tim	دوتیموتئوسه
@@ -2465,6 +2632,7 @@
 2Tim	دوتیموتیئوس
 2Tim	دوتیموتیوس
 2Tim	دوم تیموتائوس
+2Tim	دومتی
 2Tim	دومتیموتئاؤس
 2Tim	دومتیموتئوس
 2Tim	دومتیموتئوسه
@@ -2477,6 +2645,12 @@
 2Tim	دومتیموتیؤس
 2Tim	دومتیموتیئوس
 2Tim	دومتیموتیوس
+2Tim	۲tī
+2Tim	۲tīm
+2Tim	۲tīmt
+2Tim	۲تی
+2Tim	۲تیم
+2Tim	۲تیمت
 2Tim	۲تیموتئاؤس
 2Tim	۲تیموتئوس
 2Tim	۲تیموتئوسه
@@ -2532,6 +2706,8 @@
 3John	3Yuhanaah
 3John	3Yuhanna
 3John	3Yuhannah
+3John	3yo
+3John	3یو
 3John	3یوحنآ
 3John	3یوحنا
 3John	3یوحناء
@@ -2618,6 +2794,8 @@
 3John	SevomYuhanaah
 3John	SevomYuhanna
 3John	SevomYuhannah
+3John	sevvom yohannā
+3John	sevvomyo
 3John	سه یوحنآ
 3John	سه یوحنا
 3John	سه یوحناء
@@ -2678,6 +2856,7 @@
 3John	سوم یوهنه
 3John	سوم یوهنى
 3John	سوم یوهنی
+3John	سومیو
 3John	سومیوحنآ
 3John	سومیوحنا
 3John	سومیوحناء
@@ -2740,6 +2919,12 @@
 3John	۳Yuhanaah
 3John	۳Yuhanna
 3John	۳Yuhannah
+3John	۳yo
+3John	۳yoh
+3John	۳yohn
+3John	۳یو
+3John	۳یوح
+3John	۳یوحن
 3John	۳یوحنآ
 3John	۳یوحنا
 3John	۳یوحناء
@@ -2791,6 +2976,10 @@ Acts	Amal-e-Rusulan
 Acts	Amal-e-Rusuleen
 Acts	Amale
 Acts	Amali
+Acts	a'm
+Acts	a'māl
+Acts	a'mālī
+Acts	اعم
 Acts	اعمال
 Acts	اعمال الرسول
 Acts	اعمال الرسولین
@@ -2823,6 +3012,10 @@ Amos	Amoose
 Amos	Amos
 Amos	Amose
 Amos	Amous
+Amos	ām
+Amos	āmūs
+Amos	āmūsī
+Amos	عام
 Amos	عامس
 Amos	عاموس
 Amos	عاموسس
@@ -2868,8 +3061,15 @@ Col	Kolusiyanians
 Col	Kolusiyun
 Col	Kolusiyunians
 Col	Kolusyans
+Col	kūl
+Col	kūlow
+Col	kūlsiān
+Col	kūlsī
 Col	کلُسیان
+Col	کول
+Col	کولسی
 Col	کولسیان
+Col	کولو
 Col	کولُسسیان
 Col	کولُسیان
 Col	کولُسیانان
@@ -2899,6 +3099,11 @@ Dan	Danyail
 Dan	Danyailh
 Dan	Danyal
 Dan	Danyel
+Dan	dān
+Dan	dāniāl
+Dan	dānī
+Dan	dānīl
+Dan	دان
 Dan	دانيئل
 Dan	دانيئلله
 Dan	دانيئلی
@@ -2913,6 +3118,7 @@ Dan	دانيايل
 Dan	دانيلی
 Dan	دانيیال
 Dan	دانيیل
+Dan	دانی
 Dan	دانیئل
 Dan	دانیئلله
 Dan	دانیئلی
@@ -2937,6 +3143,11 @@ Deut	Tesniye
 Deut	Tesniyeh
 Deut	Tesnyeh
 Deut	Tessniyeh
+Deut	ts
+Deut	tsn
+Deut	tsniyeh
+Deut	تث
+Deut	تثن
 Deut	تثنئه
 Deut	تثنه
 Deut	تثنی
@@ -2962,6 +3173,11 @@ Eccl	Jama'at
 Eccl	Jamaa
 Eccl	Jamaah
 Eccl	Jamaih
+Eccl	jām
+Eccl	jāme'
+Eccl	jāme'eh
+Eccl	kolliyāt
+Eccl	جام
 Eccl	جامع
 Eccl	جامع ه
 Eccl	جامعا
@@ -3006,8 +3222,14 @@ Eph	Afisyoon
 Eph	Eph
 Eph	Ephesian
 Eph	Ephesians
+Eph	afs
+Eph	afsiyān
+Eph	afso
+Eph	afssiyān
+Eph	افس
 Eph	افسسیان
 Eph	افسسیون
+Eph	افسو
 Eph	افسیان
 Eph	افسیون
 Eph	افِسسیان
@@ -3031,7 +3253,12 @@ Esth	Esth
 Esth	Esther
 Esth	Esthr
 Esth	Estr
+Esth	ast
+Esth	ester
+Esth	esterh
+Esth	است
 Esth	استر
+Esth	استره
 Esth	استِر
 Esth	اِ ستر
 Esth	اِستر
@@ -3052,10 +3279,18 @@ Exod	Khoruj
 Exod	Khrawj
 Exod	Khrooj
 Exod	Khrouj
+Exod	khorj
+Exod	khoroj
+Exod	khorojī
+Exod	khorr
+Exod	khorro
+Exod	خر
 Exod	خراج
 Exod	خراوج
 Exod	خراوچ
 Exod	خراوژ
+Exod	خرج
+Exod	خرو
 Exod	خروج
 Exod	خروجه
 Exod	خروجی
@@ -3091,11 +3326,18 @@ Ezek	Hizqiyailh
 Ezek	Hizqiyal
 Ezek	Hizqiyalh
 Ezek	Hizqiyalha
+Ezek	hazq
+Ezek	hazqiāl
+Ezek	hazqī
+Ezek	hazqīl
+Ezek	حزق
+Ezek	حزقی
 Ezek	حزقیئال
 Ezek	حزقیئل
 Ezek	حزقیائل
 Ezek	حزقیال
 Ezek	حزقیايل
+Ezek	حزقیل
 Ezek	حزقییال
 Ezek	حزکیئل
 Ezek	حزکیائل
@@ -3145,13 +3387,18 @@ Ezra	Izra a
 Ezra	Izra h
 Ezra	Izraa
 Ezra	Izrah
+Ezra	ezr
+Ezra	ezrā
+Ezra	ezrāy
 Ezra	ع ذرا
 Ezra	ع زرا
 Ezra	ع زراء
 Ezra	ع زره
 Ezra	عذرا
+Ezra	عزر
 Ezra	عزرا
 Ezra	عزراء
+Ezra	عزرای
 Ezra	عزره
 Ezra	عِ ذرا
 Ezra	عِ زرا
@@ -3171,6 +3418,13 @@ Gal	Galatiyunians
 Gal	Ghalatian
 Gal	Ghalatiyan
 Gal	Ghalatiyun
+Gal	ghalā
+Gal	ghalāt
+Gal	ghalātiān
+Gal	ghalātī
+Gal	غلا
+Gal	غلاط
+Gal	غلاطی
 Gal	غلاطیان
 Gal	غلاطیانان
 Gal	غلاطیانن
@@ -3208,16 +3462,22 @@ Gen	Pidaish
 Gen	Pidaiyesh
 Gen	Pidaiyish
 Gen	Pidayesh
+Gen	pedā
+Gen	pedāy
+Gen	pedāyesh
 Gen	پيدايش
 Gen	پيدايشه
 Gen	پيدايیش
 Gen	پيدایش
+Gen	پید
+Gen	پیدا
 Gen	پیداش
 Gen	پیداىش
 Gen	پیداىیش
 Gen	پیدايش
 Gen	پیدايشه
 Gen	پیدايیش
+Gen	پیدای
 Gen	پیدایث
 Gen	پیدایس
 Gen	پیدایش
@@ -3239,6 +3499,11 @@ Hab	Habbakkuc
 Hab	Habbakook
 Hab	Habbakuc
 Hab	Habbakuk
+Hab	habaq
+Hab	habaqū
+Hab	habaqūq
+Hab	حبق
+Hab	حبقو
 Hab	حبقوق
 Hab	حَبقوق
 Hab	حَبَقق
@@ -3287,8 +3552,15 @@ Hag	Haggay
 Hag	Haggi
 Hag	Haggy
 Hag	Hagi
+Hag	hajjā
+Hag	hajjī
+Hag	hajjīy
+Hag	hajjīyy
+Hag	حجا
 Hag	حجّی
 Hag	حجی
+Hag	حجیی
+Hag	حجییی
 Hag	حَجَّی
 Hag	حَجَّی
 Hag	حَجَّیء
@@ -3345,7 +3617,13 @@ Heb	Ibraaniyaan
 Heb	Ibraaniyan
 Heb	Ibraanyan
 Heb	Ibranian
+Heb	ebr
+Heb	ebri
+Heb	ebrāniān
+Heb	ebrānī
+Heb	عبر
 Heb	عبرانيان
+Heb	عبرانی
 Heb	عبرانیآن
 Heb	عبرانیائن
 Heb	عبرانیان
@@ -3363,6 +3641,7 @@ Heb	عبرانیهن
 Heb	عبرانیون
 Heb	عبرانیونه
 Heb	عبرانیین
+Heb	عبری
 Hos	Hos
 Hos	Hoshae
 Hos	Hoshaeah
@@ -3375,6 +3654,10 @@ Hos	Hushaeh
 Hos	Hushe
 Hos	Hushea
 Hos	Husheah
+Hos	hosh
+Hos	hosh'a
+Hos	hosh'ai
+Hos	هوش
 Hos	هوش؏
 Hos	هوش؏ع
 Hos	هوش؏عع
@@ -3430,9 +3713,15 @@ Isa	Iysha'ya
 Isa	Iyshaiyah
 Isa	Iyshaya
 Isa	Iyshayaa
+Isa	esh'a
+Isa	esh'ā
+Isa	esh'āyā
+Isa	īsh
+Isa	īshiā
 Isa	ا شعیا
 Isa	اش 3یا
 Isa	اش3یا
+Isa	اشع
 Isa	اشع یا
 Isa	اشع یاه
 Isa	اشعي
@@ -3465,6 +3754,7 @@ Isa	اشعیى
 Isa	اشعیی
 Isa	اشعییا
 Isa	اِشعیا
+Isa	ایش
 Isa	ایشیا
 Jas	Jas
 Jas	Yaaqoob
@@ -3482,6 +3772,11 @@ Jas	Yaqub
 Jas	Yaqubee
 Jas	Yaqubeh
 Jas	Yaqubi
+Jas	ya'qū
+Jas	ya'qūb
+Jas	ya'qūbi
+Jas	یعق
+Jas	یعقو
 Jas	یعقوب
 Jas	یعقوبئ
 Jas	یعقوبا
@@ -3555,8 +3850,13 @@ Jer	Yrmiah
 Jer	Yrmiaha
 Jer	Yrmiya
 Jer	Yrmiyah
+Jer	yirmiy
+Jer	yirmī
+Jer	yirmīy
+Jer	yirmīyā
 Jer	ا رمیا
 Jer	ار میا
+Jer	ارم
 Jer	ارمی
 Jer	ارمیا
 Jer	ارمیاء
@@ -3607,6 +3907,9 @@ Job	Eyub
 Job	Eyyub
 Job	Iyoub
 Job	Job
+Job	ayū
+Job	ayūb
+Job	ayūbi
 Job	آیوب
 Job	ئیوب
 Job	ا یوب
@@ -3615,6 +3918,7 @@ Job	اِیوب
 Job	اِیوُب
 Job	ای وب
 Job	ایـوب
+Job	ایو
 Job	ایوب
 Job	ایوبه
 Job	ایوبَ
@@ -3625,6 +3929,7 @@ Job	ایوُبی
 Job	ایوپ
 Job	ایُوب
 Job	ایُوُب
+Job	ایّ
 Job	ایّوب
 Joel	Jo'el
 Joel	Joael
@@ -3642,6 +3947,9 @@ Joel	Yooeil
 Joel	Yooel
 Joel	Yooil
 Joel	Yuoil
+Joel	yū'īl
+Joel	yū'īli
+Joel	یوئ
 Joel	یوئئیل
 Joel	یوئئیلـ
 Joel	یوئئیلل
@@ -3685,12 +3993,18 @@ John	Yuhana
 John	Yuhanaah
 John	Yuhanna
 John	Yuhannah
+John	yo
+John	yohannā
+John	yohannān
+John	یوح
+John	یوحن
 John	یوحنآ
 John	یوحنا
 John	یوحناء
 John	یوحناءه
 John	یوحنات
 John	یوحناه
+John	یوحنای
 John	یوحنة
 John	یوحنه
 John	یوحنى
@@ -3705,6 +4019,9 @@ John	یوهنة
 John	یوهنه
 John	یوهنى
 John	یوهنی
+Jon	jūnūs
+Jon	jūnūsī
+Jon	yūnūs
 Jonah	Jonah
 Jonah	Jonahs
 Jonah	Jonas
@@ -3723,6 +4040,7 @@ Jonah	Younas
 Jonah	Younis
 Jonah	Yunas
 Jonah	Yunis
+Jonah	یون
 Jonah	یوناس
 Jonah	یوناسی
 Jonah	یونس
@@ -3755,6 +4073,10 @@ Josh	Yoshuah
 Josh	Yowshua
 Josh	Yusha
 Josh	Yushua
+Josh	yūsh'a
+Josh	yūsh'ai
+Josh	yūsh'ā
+Josh	یوش
 Josh	یوشئع
 Josh	یوشا
 Josh	یوشع
@@ -3780,6 +4102,12 @@ Jude	Yehoodeh
 Jude	Yehuda
 Jude	Yehudaah
 Jude	Yehudah
+Jude	yahū
+Jude	yahūdā
+Jude	yahūdān
+Jude	yūd
+Jude	yūdā
+Jude	یهو
 Jude	یهودآ
 Jude	یهودا
 Jude	یهوداء
@@ -3790,6 +4118,7 @@ Jude	یهودة
 Jude	یهوده
 Jude	یهودى
 Jude	یهودی
+Jude	یهوذ
 Jude	یہودآ
 Jude	یہودا
 Jude	یہوداء
@@ -3808,9 +4137,11 @@ Judg	Davran
 Judg	Dawaran
 Judg	Dawooran
 Judg	Judg
+Judg	داو
 Judg	داواران
 Judg	داوارانه
 Judg	داوارن
+Judg	داور
 Judg	داوراان
 Judg	داوران
 Judg	داورانن
@@ -3872,6 +4203,10 @@ Lam	Marathiyeh
 Lam	Marathiyy
 Lam	Marathiyya
 Lam	Marathiyyah
+Lam	marzīyeh
+Lam	āh
+Lam	āheng
+Lam	مرا
 Lam	مراتهی
 Lam	مراتی
 Lam	مراث
@@ -3956,9 +4291,15 @@ Lev	Laweyan
 Lev	Lawian
 Lev	Lawyaan
 Lev	Lev
+Lev	law
+Lev	lawi
+Lev	lawiy
+Lev	lawiān
+Lev	leviy
 Lev	لاءویان
 Lev	لاؤیان
 Lev	لائویان
+Lev	لاو
 Lev	لاوئیان
 Lev	لاوویان
 Lev	لاويان
@@ -3967,8 +4308,10 @@ Lev	لاویان
 Lev	لاویانن
 Lev	لاویانه
 Lev	لاویانی
+Lev	لاویت
 Lev	لاوییان
 Lev	لاویین
+Lev	لوی
 Lev	لویان
 Luke	Loka
 Luke	Lokaah
@@ -3987,12 +4330,17 @@ Luke	Luqa
 Luke	Luqaa
 Luke	Luqaat
 Luke	Luqah
+Luke	lūq
+Luke	lūqā
+Luke	lūqān
+Luke	لوق
 Luke	لوقآ
 Luke	لوقا
 Luke	لوقاء
 Luke	لوقاءه
 Luke	لوقات
 Luke	لوقاه
+Luke	لوقای
 Luke	لوقة
 Luke	لوقه
 Luke	لوقى
@@ -4021,6 +4369,10 @@ Mal	Malakie
 Mal	Malakii
 Mal	Melaki
 Mal	Milaki
+Mal	mal'a
+Mal	mal'ākhi
+Mal	mal'ākhī
+Mal	ملا
 Mal	ملاک
 Mal	ملاکی
 Mal	ملاکیه
@@ -4055,13 +4407,20 @@ Mark	Marqous
 Mark	Marquos
 Mark	Marqus
 Mark	Marquss
+Mark	mārqū
+Mark	mārqūs
+Mark	mārqūsi
+Mark	مرق
 Mark	مرقس
+Mark	مرقسی
 Mark	مرقص
+Mark	مرقو
 Mark	مرقوس
 Mark	مرقُس
 Mark	مرقُوس
 Mark	مرقّس
 Mark	مركس
+Mark	مرک
 Mark	مرکس
 Mark	مَرقس
 Mark	مَرقسه
@@ -4102,6 +4461,12 @@ Matt	Mettie
 Matt	Metty
 Matt	Mitthy
 Matt	Mitti
+Matt	mattā
+Matt	mattā'ūs
+Matt	mattā'ūsi
+Matt	متای
+Matt	متایی
+Matt	متت
 Matt	متتی
 Matt	متى
 Matt	متي
@@ -4127,9 +4492,13 @@ Mic	Mikha
 Mic	Mycah
 Mic	Mykah
 Mic	Mykaha
+Mic	mīkhā
+Mic	mīkhāy
+Mic	mīkhāyā
 Mic	ميكاه
 Mic	ميکاه
 Mic	میكاه
+Mic	میک
 Mic	میکا
 Mic	میکاءه
 Mic	میکائه
@@ -4153,6 +4522,7 @@ Mic	میکاہه
 Mic	میکاہو
 Mic	میکاہی
 Mic	میکاۂ
+Mic	میکای
 Mic	میکه
 Nah	Naahom
 Nah	Naahoum
@@ -4163,7 +4533,12 @@ Nah	Nahoum
 Nah	Nahum
 Nah	Nahumme
 Nah	Nahuum
+Nah	nāhū
+Nah	nāhūm
+Nah	nāhūmi
+Nah	ناح
 Nah	ناحم
+Nah	ناحو
 Nah	ناحوم
 Nah	ناحومء
 Nah	ناحومئ
@@ -4209,7 +4584,13 @@ Neh	Nehemya
 Neh	Nehimia
 Neh	Nehimya
 Neh	Nihemia
+Neh	nīmiā
+Neh	nīmiān
+Neh	nīmī
+Neh	نحم
+Neh	نحمی
 Neh	نحمیا
+Neh	نحمیه
 Neh	نِ حِمیا
 Neh	نِحمیا
 Neh	نِحِم
@@ -4232,8 +4613,13 @@ Num	E'daad
 Num	E'edaad
 Num	Eadad
 Num	Num
+Num	adad
+Num	adadi
+Num	adadiān
+Num	adadī
 Num	اعاد
 Num	اعتاد
+Num	اعد
 Num	اعدا
 Num	اعدااد
 Num	اعدات
@@ -4262,8 +4648,14 @@ Obad	Oobadia
 Obad	Oobadya
 Obad	Oubadia
 Obad	Oubadya
+Obad	obd
+Obad	obdayyā
+Obad	obdiyā
+Obad	عوب
 Obad	عوبادیا
+Obad	عوبد
 Obad	عوبدِیا
+Obad	عوبدی
 Obad	عوبدیا
 Obad	عوبدیاه
 Obad	عوبدیاى
@@ -4294,7 +4686,14 @@ Phil	Filipyunians
 Phil	Phil
 Phil	Philipians
 Phil	Philippians
+Phil	fīlīp
+Phil	fīlīppiān
+Phil	fīlīppī
+Phil	فلیپ
 Phil	فلیپیان
+Phil	فیل
+Phil	فیلپ
+Phil	فیلپی
 Phil	فیلپیان
 Phil	فیلیپیان
 Phil	فیلیپیانان
@@ -4327,6 +4726,12 @@ Phlm	Philimon
 Phlm	Philmoun
 Phlm	Philmun
 Phlm	Phlm
+Phlm	fīlīm
+Phlm	fīlīmon
+Phlm	fīlīmoni
+Phlm	فلم
+Phlm	فلی
+Phlm	فلیم
 Phlm	فلیمون
 Phlm	فیلمون
 Phlm	فیلمونئ
@@ -4366,6 +4771,14 @@ Prov	Amthall
 Prov	Amthals
 Prov	Amthel
 Prov	Prov
+Prov	a'mthā
+Prov	a'mthāl
+Prov	a'mthāli
+Prov	amsāl
+Prov	hikm
+Prov	hikmā
+Prov	hikmāt
+Prov	امث
 Prov	امثآل
 Prov	امثا
 Prov	امثاال
@@ -4417,8 +4830,10 @@ Ps	Mizmur
 Ps	Ps
 Ps	زبور
 Ps	مز مور
+Ps	مزا
 Ps	مزامیر
 Ps	مززمور
+Ps	مزم
 Ps	مزممور
 Ps	مزمو
 Ps	مزمور
@@ -4442,6 +4857,10 @@ Ps	مَزموُر
 Ps	مَزمُر
 Ps	مِزمور
 Ps	مِزموُر
+Pss	mazm
+Pss	mazmūr
+Pss	mazmūrī
+Pss	zabūr
 Rev	Makaashf
 Rev	Makaashfa
 Rev	Makaashfaa
@@ -4518,7 +4937,15 @@ Rev	mukashfea
 Rev	mukashfeha
 Rev	mukshafah
 Rev	mukshafe
+Rev	vāh
+Rev	vāhy
+Rev	vāhyū
+Rev	vāhyūn
+Rev	vāhyūnn
+Rev	yūhannā
 Rev	مكاشفه
+Rev	مکا
+Rev	مکاش
 Rev	مکاشف
 Rev	مکاشفا
 Rev	مکاشفات
@@ -4535,6 +4962,7 @@ Rev	مکاشفيه
 Rev	مکاشفہ
 Rev	مکاشفی
 Rev	مکاشفیه
+Rev	مکش
 Rev	مکشفاه
 Rev	مکشفه
 Rom	Rom
@@ -4548,11 +4976,17 @@ Rom	Roomiyan
 Rom	Rumian
 Rom	Rumiun
 Rom	Rumiyan
+Rom	rūm
+Rom	rūmiān
+Rom	rūmiānī
+Rom	rūmī
+Rom	روم
 Rom	روميان
 Rom	روميانه
 Rom	روميانی
 Rom	روميونه
 Rom	روميونی
+Rom	رومی
 Rom	رومیان
 Rom	رومیانان
 Rom	رومیانن
@@ -4573,6 +5007,9 @@ Ruth	Rooth
 Ruth	Rut
 Ruth	Ruth
 Ruth	Ruti
+Ruth	rūth
+Ruth	rūthī
+Ruth	rūtī
 Ruth	روت
 Ruth	روتت
 Ruth	روتـ
@@ -4618,24 +5055,33 @@ Song	Ghazl_Ghazal_haa
 Song	Ghazl_Ghazalha
 Song	Ghazl_Ghazalhaa
 Song	Song
+Song	shīr
+Song	shīri
+Song	shīrā
+Song	shīrāy
+Song	sol
+Song	solomon
 Song	غزل	غزلها
-Song	غزل   غزلها
-Song	غزل  غزل ها
-Song	غزل  غزلها
-Song	غزل  غزلۀ ها
 Song	غزل غزل ها
 Song	غزل غزل هاا
 Song	غزل غزلها
 Song	غزل غزلهاا
 Song	غزل غزلۀ ها
 Song	غزل غزل‌ها
+Song	غزلغ
 Song	غزلغزل ها
 Song	غزلغزل هاا
 Song	غزلغزلها
 Song	غزلۀ غزلها
 Song	غزلۀ غزلۀ ها
+Song	غزلی
+Song	غزلیات
 Song	غزل‌غزل‌ها
 Sus	Sus
+Tit	tayū
+Tit	tayūtūs
+Tit	tītū
+Tit	tītūs
 Titus	Taitoos
 Titus	Taitous
 Titus	Taitus
@@ -4649,6 +5095,8 @@ Titus	Tytus
 Titus	تيتوس
 Titus	تيتوش
 Titus	تيتوص
+Titus	تیت
+Titus	تیتو
 Titus	تیتوث
 Titus	تیتوثه
 Titus	تیتوثی
@@ -4674,6 +5122,11 @@ Zech	Zechariah
 Zech	Zekaria
 Zech	Zekariah
 Zech	Zekariya
+Zech	zejarī
+Zech	zejarīyā
+Zech	zejār
+Zech	زکر
+Zech	زکری
 Zech	زکریا
 Zech	زکریاء
 Zech	زکریائۀ
@@ -4709,6 +5162,12 @@ Zeph	Zeph
 Zeph	Zephanaya
 Zeph	Zephania
 Zeph	Zephaniah
+Zeph	zof
+Zeph	zofanjā
+Zeph	zofanjī
+Zeph	zofanjīy
+Zeph	صفن
+Zeph	صفنی
 Zeph	صفنیا
 Zeph	صَفانیا
 Zeph	صَفَنیا
