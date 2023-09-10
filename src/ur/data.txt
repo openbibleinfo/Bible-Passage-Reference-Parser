@@ -1,20 +1,20 @@
-$FIRST	یکم	یک	اول	۱	1	Yekom	Yek	Avval
-$SECOND	دو	دوم	۲	2	Do	Dovvom
-$THIRD	سه	سوم	۳	3	Seh	Sevom
-$FOURTH	چهار	چهارم	۴	4	Chahar	Chaharom
+$FIRST	اوّل	۱	1
+$SECOND	دوم	۲	2
+$THIRD	تیسرا	۳	3
+$FOURTH	4
 $AB	[a-e]
-$AND	،	.	؛
+$AND	،	؛	۔
 # Google Translate
-$CHAPTER	باب	ابواب	فصل	فصول
+$CHAPTER	باب	ابواب
 $FF	ff
 $TITLE	title
 $TRANS	ERV
 # Google: "آیات 1" bible
 $TO	تا
 # Google Translate
-$VERSE	آیت	آیات	آیه	آیات
+$VERSE	آیت	آیات
 $COLLAPSE_COMBINING_CHARACTERS	false
-$BOUNDARY_CHARACTERS	،	.	؛
+$BOUNDARY_CHARACTERS	،	؛	۔
 $UNICODE_BLOCK	Arabic	Latin
 
 Gen	پیدایش	pīdāyiš	پیدائش	پَیدایش	پيدائش
