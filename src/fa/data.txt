@@ -2,6 +2,7 @@ $FIRST	I	یکم	یک	اول	۱	1	Yekom	Yek	Avval
 $SECOND	II	دو	دوم	۲	2	Do	Dovvom
 $THIRD	III	سه	سوم	۳	3	Seh	Sevom
 $FOURTH	IV	چهار	چهارم	۴	4	Chahar	Chaharom
+$GOSPEL	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل از	انجیل بر اساس	انجیل از	انجیل بر اساس	انجیل	سنت
 $AB	[a-e]
 $AND	،	.	؛
 # Google Translate
