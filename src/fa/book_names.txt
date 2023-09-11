@@ -15,7 +15,6 @@
 1Chr	Avvaltawarikh
 1Chr	Avvaltowarikh
 1Chr	Avvaltowarykh
-1Chr	1 Chronicles
 1Chr	AvvalToarikh
 1Chr	AvvalTowrikh
 1Chr	Avvaltoarikh
@@ -88,11 +87,9 @@
 1Chr	۱towār
 1Chr	۱توارخ
 1Chr	۱تواری
-1Chr	1 Chr
 1Chr	1tawā
 1Chr	1توار
 1Chr	۱توار
-1Chr	1 Ch
 1Chr	1Chr
 1Chr	1tow
 1Chr	1توا
@@ -293,12 +290,10 @@
 1Cor	۱قرنتيان
 1Cor	۱قرنتیان
 1Cor	۱قرنتیون
-1Cor	1 Cor
 1Cor	1qrnt
 1Cor	1قرنت
 1Cor	۱qrnt
 1Cor	۱قرنت
-1Cor	1 Co
 1Cor	1Cor
 1Cor	1qrn
 1Cor	1قرن
@@ -600,7 +595,6 @@
 1John	۱یوهناء
 1John	۱یوهنات
 1John	۱یوهناه
-1John	1 John
 1John	1یوحنآ
 1John	1یوحنا
 1John	1یوحنة
@@ -632,7 +626,6 @@
 1John	اولیو
 1John	۱yohn
 1John	۱یوحن
-1John	1 Jn
 1John	1yoh
 1John	1یوح
 1John	۱yoh
@@ -730,13 +723,10 @@
 1Kgs	۱پادشاها
 1Kgs	۱پادشاهن
 1Kgs	۱پادشهان
-1Kgs	1 Kings
 1Kgs	1pādsh
 1Kgs	۱pādsh
-1Kgs	1 Kgs
 1Kgs	1پادش
 1Kgs	۱پادش
-1Kgs	1 Kg
 1Kgs	1Kgs
 1Kgs	1pād
 1Kgs	1پاد
@@ -984,13 +974,11 @@
 1Pet	۱پطرصه
 1Pet	۱پطرصى
 1Pet	۱پطرصی
-1Pet	1 Pet
 1Pet	1پطرس
 1Pet	1پطرص
 1Pet	اولپط
 1Pet	۱پطرس
 1Pet	۱پطرص
-1Pet	1 Pt
 1Pet	1Pet
 1Pet	1ptr
 1Pet	1پطر
@@ -1205,12 +1193,10 @@
 1Sam	۱سمؤیل
 1Sam	۱سموئل
 1Sam	۱سمویل
-1Sam	1 Sam
 1Sam	1sāmu
 1Sam	1سامو
 1Sam	۱sāmu
 1Sam	۱سامو
-1Sam	1 Sa
 1Sam	1Sam
 1Sam	1smu
 1Sam	1سمو
@@ -1428,7 +1414,6 @@
 1Thess	۱تسالونیکان
 1Thess	1Tsaloniki
 1Thess	AvvalThess
-1Thess	1 Thess
 1Thess	avvalts
 1Thess	1Thess
 1Thess	1tsln
@@ -1436,7 +1421,6 @@
 1Thess	اولتس
 1Thess	۱tsln
 1Thess	۱تسلن
-1Thess	1 Th
 1Thess	1tsl
 1Thess	1tsā
 1Thess	1تسا
@@ -1490,6 +1474,7 @@
 1Tim	یکتیموتاؤسی
 1Tim	یکتیموتائوس
 1Tim	یکتیموتیئوس
+1Tim	۱ تیموتائوس
 1Tim	۱تیموتائوسه
 1Tim	۱تیموتائوسی
 1Tim	1Timotaios
@@ -1512,7 +1497,6 @@
 1Tim	۱تیموتاؤسی
 1Tim	۱تیموتائوس
 1Tim	۱تیموتیئوس
-1Tim	1 Timothy
 1Tim	1Timotaos
 1Tim	1Timoteos
 1Tim	1Timoteus
@@ -1530,13 +1514,11 @@
 1Tim	1Timothy
 1Tim	AvvalTim
 1Tim	avvaltī
-1Tim	1 Tim
 1Tim	1tīmt
 1Tim	1تیمت
 1Tim	اولتی
 1Tim	۱tīmt
 1Tim	۱تیمت
-1Tim	1 Ti
 1Tim	1Tim
 1Tim	1tīm
 1Tim	1تیم
@@ -1560,7 +1542,6 @@
 2Chr	DovomTawarikh
 2Chr	DovomTowarikh
 2Chr	DovomTowarykh
-2Chr	2 Chronicles
 2Chr	DovomToarikh
 2Chr	DovomTowrikh
 2Chr	Do tawarikh
@@ -1631,11 +1612,9 @@
 2Chr	۲towār
 2Chr	۲توارخ
 2Chr	۲تواری
-2Chr	2 Chr
 2Chr	2tawā
 2Chr	2توار
 2Chr	۲توار
-2Chr	2 Ch
 2Chr	2Chr
 2Chr	2tow
 2Chr	2توا
@@ -1836,12 +1815,10 @@
 2Cor	۲قرنتيان
 2Cor	۲قرنتیان
 2Cor	۲قرنتیون
-2Cor	2 Cor
 2Cor	2qrnt
 2Cor	2قرنت
 2Cor	۲qrnt
 2Cor	۲قرنت
-2Cor	2 Co
 2Cor	2Cor
 2Cor	2qrn
 2Cor	2قرن
@@ -2144,7 +2121,6 @@
 2John	۲یوهناء
 2John	۲یوهنات
 2John	۲یوهناه
-2John	2 John
 2John	2یوحنآ
 2John	2یوحنا
 2John	2یوحنة
@@ -2175,7 +2151,6 @@
 2John	دومیو
 2John	۲yohn
 2John	۲یوحن
-2John	2 Jn
 2John	2yoh
 2John	2یوح
 2John	۲yoh
@@ -2273,13 +2248,10 @@
 2Kgs	۲پادشاها
 2Kgs	۲پادشاهن
 2Kgs	۲پادشهان
-2Kgs	2 Kings
 2Kgs	2pādsh
 2Kgs	۲pādsh
-2Kgs	2 Kgs
 2Kgs	2پادش
 2Kgs	۲پادش
-2Kgs	2 Kg
 2Kgs	2Kgs
 2Kgs	2pād
 2Kgs	2پاد
@@ -2527,13 +2499,11 @@
 2Pet	۲پطرصه
 2Pet	۲پطرصى
 2Pet	۲پطرصی
-2Pet	2 Pet
 2Pet	2پطرس
 2Pet	2پطرص
 2Pet	دومپط
 2Pet	۲پطرس
 2Pet	۲پطرص
-2Pet	2 Pt
 2Pet	2Pet
 2Pet	2ptr
 2Pet	2پطر
@@ -2748,12 +2718,10 @@
 2Sam	۲سمؤیل
 2Sam	۲سموئل
 2Sam	۲سمویل
-2Sam	2 Sam
 2Sam	2sāmu
 2Sam	2سامو
 2Sam	۲sāmu
 2Sam	۲سامو
-2Sam	2 Sa
 2Sam	2Sam
 2Sam	2smu
 2Sam	2سمو
@@ -2969,14 +2937,12 @@
 2Thess	2Tsaloniki
 2Thess	DovomThess
 2Thess	dovvomts
-2Thess	2 Thess
 2Thess	2Thess
 2Thess	2tsln
 2Thess	2تسلن
 2Thess	دومتس
 2Thess	۲tsln
 2Thess	۲تسلن
-2Thess	2 Th
 2Thess	2tsl
 2Thess	2tsā
 2Thess	2تسا
@@ -3027,6 +2993,7 @@
 2Tim	دومتیموتائس
 2Tim	دومتیموتیؤس
 2Tim	دومتیموتیوس
+2Tim	۲ تیموتائوس
 2Tim	۲تیموتائوسه
 2Tim	۲تیموتائوسی
 2Tim	2Timotaios
@@ -3050,7 +3017,6 @@
 2Tim	۲تیموتاؤسی
 2Tim	۲تیموتائوس
 2Tim	۲تیموتیئوس
-2Tim	2 Timothy
 2Tim	2Timotaos
 2Tim	2Timoteos
 2Tim	2Timoteus
@@ -3068,13 +3034,11 @@
 2Tim	2Timothy
 2Tim	DovomTim
 2Tim	dovvomtī
-2Tim	2 Tim
 2Tim	2tīmt
 2Tim	2تیمت
 2Tim	دومتی
 2Tim	۲tīmt
 2Tim	۲تیمت
-2Tim	2 Ti
 2Tim	2Tim
 2Tim	2tīm
 2Tim	2تیم
@@ -3332,7 +3296,6 @@
 3John	۳یوهناء
 3John	۳یوهنات
 3John	۳یوهناه
-3John	3 John
 3John	3یوحنآ
 3John	3یوحنا
 3John	3یوحنة
@@ -3363,7 +3326,6 @@
 3John	سومیو
 3John	۳yohn
 3John	۳یوحن
-3John	3 Jn
 3John	3yoh
 3John	3یوح
 3John	۳yoh
@@ -3445,7 +3407,6 @@ Acts	a'm
 Acts	a’m
 Acts	اعم
 Acts	عمل
-Acts	Ac
 Amos	عامووسسیی
 Amos	عاموووسسس
 Amos	عاموووسیی
@@ -3495,7 +3456,6 @@ Amos	Amos
 Amos	āmūs
 Amos	عامس
 Amos	عام
-Amos	Am
 Amos	ām
 Bar	Baruch
 Bar	Bar
@@ -3585,8 +3545,6 @@ Dan	دانی
 Dan	Dan
 Dan	dān
 Dan	دان
-Dan	Dn
-Deut	Deuteronomy
 Deut	Tessniyeh
 Deut	Tesniyeh
 Deut	Tasnieh
@@ -3610,10 +3568,8 @@ Deut	تثنه
 Deut	تثنی
 Deut	tsn
 Deut	تثن
-Deut	Dt
 Deut	ts
 Deut	تث
-Eccl	Ecclesiastes
 Eccl	kolliyāt
 Eccl	Jam aeh
 Eccl	Jama'ah
@@ -3656,7 +3612,6 @@ Eccl	Eccl
 Eccl	جامع
 Eccl	jām
 Eccl	جام
-Eccl	Ec
 EpJer	Epistle of Jeremiah
 EpJer	Ep Jer
 EpJer	EpJer
@@ -3731,7 +3686,6 @@ Esth	اِسٹر
 Esth	Esth
 Esth	Estr
 Esth	استر
-Esth	Est
 Esth	ast
 Esth	است
 Exod	Khorojeh
@@ -3741,7 +3695,6 @@ Exod	Khoroje
 Exod	Khorojy
 Exod	Khorooj
 Exod	khorojī
-Exod	Exodus
 Exod	Khoroj
 Exod	Khoruj
 Exod	Khrawj
@@ -3769,7 +3722,6 @@ Exod	خروژ
 Exod	خرُج
 Exod	خرج
 Exod	خرو
-Exod	Ex
 Exod	خر
 Ezek	Hizkiyaelh
 Ezek	Hizkiyailh
@@ -3818,7 +3770,6 @@ Ezek	حِزکیائل
 Ezek	حِزکیالی
 Ezek	حِزکیايل
 Ezek	حِزکییال
-Ezek	Ezekiel
 Ezek	hazqiāl
 Ezek	حزقیئال
 Ezek	حزقیائل
@@ -3849,7 +3800,6 @@ Ezek	حزقیل
 Ezek	Ezek
 Ezek	hazq
 Ezek	حزقی
-Ezek	Ezk
 Ezek	حزق
 Ezra	عِ زراء
 Ezra	Ezra a
@@ -3880,7 +3830,6 @@ Ezra	ezrā
 Ezra	عذرا
 Ezra	عزرا
 Ezra	عزره
-Ezra	Ezr
 Ezra	ezr
 Ezra	عزر
 Gal	Galatiyanians
@@ -3934,7 +3883,6 @@ Gen	Pidaiyesh
 Gen	Pidaiyish
 Gen	Pidayesh
 Gen	pedāyesh
-Gen	Genesis
 Gen	Pedaish
 Gen	Pedyesh
 Gen	Pidaish
@@ -3960,7 +3908,6 @@ Gen	pedā
 Gen	پیدا
 Gen	Gen
 Gen	پید
-Gen	Ge
 GkEsth	Greek Esther
 GkEsth	Gk Esth
 GkEsth	Gk Est
@@ -4113,7 +4060,6 @@ Heb	عبرانیهن
 Heb	عبرانیون
 Heb	عبرانیین
 Heb	Ebreean
-Heb	Hebrews
 Heb	Ebraan
 Heb	ebrānī
 Heb	عبرانی
@@ -4141,7 +4087,6 @@ Hos	هوشاعع
 Hos	هوشععه
 Hos	هوشعلل
 Hos	هوشعیی
-Hos	Hosea
 Hos	Hoshe
 Hos	Husha
 Hos	Hushe
@@ -4158,7 +4103,6 @@ Hos	هوش؏
 Hos	هوشع
 Hos	Hos
 Hos	هوش
-Hos	Ho
 Isa	Eysha'iya
 Isa	Eysha'yaa
 Isa	Eyshaiyah
@@ -4217,7 +4161,6 @@ Isa	Ashaya
 Isa	Esh'ya
 Isa	Eshaya
 Isa	Esh’ya
-Isa	Isaiah
 Isa	Ishaya
 Isa	ا شعیا
 Isa	اش 3یا
@@ -4257,7 +4200,6 @@ Isa	Isa
 Isa	īsh
 Isa	اشع
 Isa	ایش
-Isa	Is
 Jas	Yaaqoobey
 Jas	Yaaqoobi
 Jas	Yaqoobee
@@ -4287,7 +4229,6 @@ Jas	یعقوبى
 Jas	یعقوبی
 Jas	یعقوپه
 Jas	یعقوپی
-Jas	James
 Jas	Yaqub
 Jas	ya'qū
 Jas	ya’qū
@@ -4314,7 +4255,6 @@ Jer	Erm’yaah
 Jer	Irmeiyah
 Jer	Irmeyaah
 Jer	Irmeyahh
-Jer	Jeremiah
 Jer	Yrm'yaah
 Jer	Yrmeiyah
 Jer	Yrmeyaah
@@ -4415,7 +4355,6 @@ Jer	ارمیى
 Jer	ارمی
 Jer	Jer
 Jer	ارم
-Jer	Je
 Job	Aiyoob
 Job	Ayyoob
 Job	Ayyoub
@@ -4513,7 +4452,6 @@ Joel	Joel
 Joel	یوئل
 Joel	یویل
 Joel	یوئ
-Joel	Jl
 John	Yoohanaah
 John	Yohanaah
 John	Yohannah
@@ -4551,7 +4489,6 @@ John	یوهنی
 John	John
 John	یوحن
 John	یوح
-John	Jn
 John	yo
 Jonah	Yooness
 Jonah	یوونییس
@@ -4594,7 +4531,6 @@ Jonah	یُونس
 Jonah	یونس
 Jonah	یونش
 Jonah	یونص
-Jonah	Jon
 Jonah	یون
 Josh	Yosh'ua
 Josh	Yoshu'a
@@ -4604,7 +4540,6 @@ Josh	Yosh’ua
 Josh	Yowshua
 Josh	yūsh'ai
 Josh	yūsh’ai
-Josh	Joshua
 Josh	Yoshua
 Josh	Yushua
 Josh	yūsh'a
@@ -4682,7 +4617,6 @@ Judg	داورانه
 Judg	داورران
 Judg	داووران
 Judg	Davran
-Judg	Judges
 Judg	داوارن
 Judg	داوران
 Judg	داوورن
@@ -4690,7 +4624,6 @@ Judg	داورن
 Judg	Judg
 Judg	داور
 Judg	داو
-Judg	Jg
 Lam	Marathi Erm'yaah
 Lam	Marathi Erm’yaah
 Lam	Marathi Eryaiyah
@@ -4741,7 +4674,6 @@ Lam	مراثی اِرمیاه
 Lam	مراثی اِرمیاى
 Lam	مراثی اِرمییا
 Lam	مراثی اِرمییه
-Lam	Lamentations
 Lam	Marathi Erya
 Lam	مراثی ارم یا
 Lam	مراثی ارمیاه
@@ -4830,9 +4762,7 @@ Lam	مراثی
 Lam	مراث
 Lam	Lam
 Lam	مرا
-Lam	La
 Lam	āh
-Lev	Leviticus
 Lev	Lavvyian
 Lev	Laawian
 Lev	Lavayan
@@ -4865,7 +4795,6 @@ Lev	Lev
 Lev	law
 Lev	لاو
 Lev	لوی
-Lev	Lv
 Luke	Looqaat
 Luke	Lokaah
 Luke	Lokaat
@@ -4906,7 +4835,6 @@ Luke	لوکا
 Luke	لوکة
 Luke	lūq
 Luke	لوق
-Luke	Lk
 Mal	Maalakie
 Mal	Maalakii
 Mal	Mal'aaki
@@ -4990,7 +4918,6 @@ Mark	مركس
 Mark	مرکس
 Mark	مرق
 Mark	مرک
-Mark	Mk
 Matt	Mat'thiya
 Matt	Mat’thiya
 Matt	mattā'ūsi
@@ -5005,7 +4932,6 @@ Matt	Mat'thi
 Matt	Matthea
 Matt	Matthee
 Matt	Matthei
-Matt	Matthew
 Matt	Mat’tee
 Matt	Mat’thi
 Matt	Maatti
@@ -5048,7 +4974,6 @@ Matt	متت
 Matt	متى
 Matt	متي
 Matt	متی
-Matt	Mt
 Mic	Mikaaha
 Mic	Mikahah
 Mic	mīkhāyā
@@ -5145,10 +5070,8 @@ Nah	ناحو
 Nah	نحوم
 Nah	Nah
 Nah	ناح
-Nah	Na
 Neh	Neheemia
 Neh	Neheemya
-Neh	Nehemiah
 Neh	نِ حِمیا
 Neh	نِحِم یا
 Neh	نِحِمیاء
@@ -5177,7 +5100,6 @@ Num	A'edaad
 Num	A’edaad
 Num	E'edaad
 Num	E’edaad
-Num	Numbers
 Num	adadiān
 Num	A'daad
 Num	Aedaad
@@ -5210,7 +5132,6 @@ Num	اعدد
 Num	عداد
 Num	Num
 Num	اعد
-Num	Nu
 Obad	عوبَدِیاء
 Obad	عُوبَدیاء
 Obad	Obadeyah
@@ -5255,7 +5176,6 @@ Obad	Obad
 Obad	عوبد
 Obad	obd
 Obad	عوب
-Obad	Ob
 Phil	Filipiyanians
 Phil	Filipyunians
 Phil	Philippians
@@ -5330,7 +5250,6 @@ Phlm	فیلمون
 Phlm	fīlīm
 Phlm	Phlm
 Phlm	فلیم
-Phlm	Phm
 Phlm	فلم
 Phlm	فلی
 PrAzar	Prayer of Azariah
@@ -5342,7 +5261,6 @@ PrMan	PrMan
 Prov	Am thale
 Prov	Am thals
 Prov	Amthaleh
-Prov	Proverbs
 Prov	a'mthāli
 Prov	a’mthāli
 Prov	Am sale
@@ -5383,7 +5301,6 @@ Prov	امثا
 Prov	امثل
 Prov	امصل
 Prov	امث
-Prov	Pr
 Ps	Mazamoure
 Ps	Mazamurah
 Ps	Maz moor
@@ -5424,7 +5341,6 @@ Ps	Mazmor
 Ps	Mazmur
 Ps	Mezmur
 Ps	Mizmur
-Ps	Psalms
 Ps	mazmūr
 Ps	مز مور
 Ps	مزامیر
@@ -5442,7 +5358,6 @@ Ps	مزمّور
 Ps	مَزمور
 Ps	مَزمُر
 Ps	مِزمور
-Ps	Psalm
 Ps	zabūr
 Ps	مزمور
 Ps	مزمُر
@@ -5471,7 +5386,6 @@ Rev	Makashefei
 Rev	Makashefey
 Rev	Makashefiy
 Rev	Makashephi
-Rev	Revelation
 Rev	makaaashfe
 Rev	makaashefa
 Rev	makaashfea
@@ -5559,7 +5473,6 @@ Rev	Rev
 Rev	vāh
 Rev	مکا
 Rev	مکش
-Rev	Rv
 Rom	رومیانیان
 Rom	رومیونیان
 Rom	Roomiyan
@@ -5582,7 +5495,6 @@ Rom	رومیانی
 Rom	رومیونن
 Rom	رومیونه
 Rom	رومیونی
-Rom	Romans
 Rom	Romian
 Rom	Romiun
 Rom	Romyan
@@ -5597,7 +5509,6 @@ Rom	رومی
 Rom	Rom
 Rom	rūm
 Rom	روم
-Rom	Ro
 Ruth	Roote
 Ruth	Rooth
 Ruth	rūthī
@@ -5615,7 +5526,6 @@ Ruth	روت
 Ruth	روث
 Ruth	روط
 Ruth	رۆت
-Ruth	Rt
 SgThree	Song of the Three Young Men
 SgThree	SgThree
 Sir	Sirach
@@ -5654,7 +5564,6 @@ Song	GhazlGhazal_ha
 Song	GhazlGhazalhaa
 Song	Ghazl_Ghazalha
 Song	GhazlGhazalha
-Song	Song of Songs
 Song	غزلۀ غزلۀ ها
 Song	غزل غزل هاا
 Song	غزل غزلۀ ها
@@ -5677,7 +5586,6 @@ Song	shīr
 Song	غزلغ
 Song	غزلی
 Song	sol
-Song	Sg
 Sus	Susannah
 Sus	Sus
 Titus	Taitoos
@@ -5753,7 +5661,6 @@ Zech	zejār
 Zech	زکریا
 Zech	Zech
 Zech	زکری
-Zech	Zch
 Zech	زکر
 Zeph	Zephanaya
 Zeph	Zephaniah
@@ -5792,6 +5699,5 @@ Zeph	صَفَنیۂ
 Zeph	صفنیا
 Zeph	Zeph
 Zeph	صفنی
-Zeph	Zph
 Zeph	zof
 Zeph	صفن
