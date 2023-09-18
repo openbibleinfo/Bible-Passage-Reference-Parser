@@ -19,12 +19,12 @@
     "bible",
     "verses"
   ],
-  "author": "OpenBible.info <ralaska@gmail.com> (http://www.openbible.info/)",
+  "author": "OpenBible.info <openbibleinfo@gmail.com> (http://www.openbible.info/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ralaska/Bible-Passage-Reference-Parser/issues"
+    "url": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues"
   },
-  "homepage": "https://github.com/ralaska/Bible-Passage-Reference-Parser",
+  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
   "dependencies": {
     "coffeescript": "^2.7.0",
     "pegjs": "^0.10.0",
