@@ -499,7 +499,7 @@ Most of these languages are in [Google Translate](https://translate.google.com/)
 	<tr><td>el</td><td>Greek (mostly ancient)</td></tr>
 	<tr><td>en</td><td>English</td></tr>
 	<tr><td>es</td><td>Spanish</td></tr>
-	<tr><td>fa</td><td>Farsi / Persian (but it is not part of `full` build)</td></tr>
+	<tr><td>fa</td><td>Farsi / Persian (but it is not part of `full` build yet)</td></tr>
 	<tr><td>fi</td><td>Finnish</td></tr>
 	<tr><td>fr</td><td>French</td></tr>
 	<tr><td>he</td><td>Hebrew</td></tr>
