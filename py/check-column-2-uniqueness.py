@@ -34,5 +34,5 @@ def check_unique_column(file_path):
             for dup in duplicates:
                 print(dup)
 
-file_path = "src/fa/book_names.txt"  # Replace with your file path
+file_path = "../src/fa/book_names.txt"  # Replace with your file path
 check_unique_column(file_path)

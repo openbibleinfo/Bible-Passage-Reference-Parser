@@ -38,5 +38,5 @@ def search_and_check_files(root_dir):
                     print(dup)
 
 
-root_dir = "src/"
+root_dir = "../src/"
 search_and_check_files(root_dir)

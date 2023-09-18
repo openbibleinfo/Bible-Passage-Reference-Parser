@@ -1,8 +1,8 @@
 from collections import defaultdict
 
 # Define the input and output file paths
-input_file_path = 'src/fa/book_names.txt'
-output_file_path = 'src/fa/data_out.txt'
+input_file_path = '../src/fa/book_names.txt'
+output_file_path = '../src/fa/data_out.txt'
 
 # Create a dictionary to store the flattened values
 data_dict = defaultdict(list)
