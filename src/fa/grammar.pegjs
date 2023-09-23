@@ -156,7 +156,7 @@ cv_sep_weak
 
 /* The opening regexp is overwritten during post-processing to allow flexibility on including the comma. */
 sequence_sep
-  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "،"i / abbrev? / "؛"i / space)+
+  = ([,;/:&\-\u2013\u2014~] / "." !(sp "." sp ".") / "،"i / "؛"i / "۔"i / space)+
     { return "" }
 
 range_sep

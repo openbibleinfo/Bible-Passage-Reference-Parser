@@ -1,57 +1,89 @@
-bcv_parser = require("../../js/fa_bcv_parser.js").bcv_parser
+(function() {
+  var bcv_parser;
 
-describe "Parsing", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.options.osis_compaction_strategy = "b"
-		p.options.sequence_combination_strategy = "combine"
+  bcv_parser = require("../../js/fa_bcv_parser.js").bcv_parser;
 
-	it "should round-trip OSIS references", ->
-		p.set_options osis_compaction_strategy: "bc"
-		books = ["Gen","Exod","Lev","Num","Deut","Josh","Judg","Ruth","1Sam","2Sam","1Kgs","2Kgs","1Chr","2Chr","Ezra","Neh","Esth","Job","Ps","Prov","Eccl","Song","Isa","Jer","Lam","Ezek","Dan","Hos","Joel","Amos","Obad","Jonah","Mic","Nah","Hab","Zeph","Hag","Zech","Mal","Matt","Mark","Luke","John","Acts","Rom","1Cor","2Cor","Gal","Eph","Phil","Col","1Thess","2Thess","1Tim","2Tim","Titus","Phlm","Heb","Jas","1Pet","2Pet","1John","2John","3John","Jude","Rev"]
-		for book in books
-			bc = book + ".1"
-			bcv = bc + ".1"
-			bcv_range = bcv + "-" + bc + ".2"
-			expect(p.parse(bc).osis()).toEqual bc
-			expect(p.parse(bcv).osis()).toEqual bcv
-			expect(p.parse(bcv_range).osis()).toEqual bcv_range
+  describe("Parsing", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.options.osis_compaction_strategy = "b";
+      return p.options.sequence_combination_strategy = "combine";
+    });
+    it("should round-trip OSIS references", function() {
+      var bc, bcv, bcv_range, book, books, i, len, results;
+      p.set_options({
+        osis_compaction_strategy: "bc"
+      });
+      books = ["Gen", "Exod", "Lev", "Num", "Deut", "Josh", "Judg", "Ruth", "1Sam", "2Sam", "1Kgs", "2Kgs", "1Chr", "2Chr", "Ezra", "Neh", "Esth", "Job", "Ps", "Prov", "Eccl", "Song", "Isa", "Jer", "Lam", "Ezek", "Dan", "Hos", "Joel", "Amos", "Obad", "Jonah", "Mic", "Nah", "Hab", "Zeph", "Hag", "Zech", "Mal", "Matt", "Mark", "Luke", "John", "Acts", "Rom", "1Cor", "2Cor", "Gal", "Eph", "Phil", "Col", "1Thess", "2Thess", "1Tim", "2Tim", "Titus", "Phlm", "Heb", "Jas", "1Pet", "2Pet", "1John", "2John", "3John", "Jude", "Rev"];
+      results = [];
+      for (i = 0, len = books.length; i < len; i++) {
+        book = books[i];
+        bc = book + ".1";
+        bcv = bc + ".1";
+        bcv_range = bcv + "-" + bc + ".2";
+        expect(p.parse(bc).osis()).toEqual(bc);
+        expect(p.parse(bcv).osis()).toEqual(bcv);
+        results.push(expect(p.parse(bcv_range).osis()).toEqual(bcv_range));
+      }
+      return results;
+    });
+    it("should round-trip OSIS Apocrypha references", function() {
+      var bc, bcv, bcv_range, book, books, i, j, len, len1, results;
+      p.set_options({
+        osis_compaction_strategy: "bc",
+        ps151_strategy: "b"
+      });
+      p.include_apocrypha(true);
+      books = ["Tob", "Jdt", "GkEsth", "Wis", "Sir", "Bar", "PrAzar", "Sus", "Bel", "SgThree", "EpJer", "1Macc", "2Macc", "3Macc", "4Macc", "1Esd", "2Esd", "PrMan", "Ps151"];
+      for (i = 0, len = books.length; i < len; i++) {
+        book = books[i];
+        bc = book + ".1";
+        bcv = bc + ".1";
+        bcv_range = bcv + "-" + bc + ".2";
+        expect(p.parse(bc).osis()).toEqual(bc);
+        expect(p.parse(bcv).osis()).toEqual(bcv);
+        expect(p.parse(bcv_range).osis()).toEqual(bcv_range);
+      }
+      p.set_options({
+        ps151_strategy: "bc"
+      });
+      expect(p.parse("Ps151.1").osis()).toEqual("Ps.151");
+      expect(p.parse("Ps151.1.1").osis()).toEqual("Ps.151.1");
+      expect(p.parse("Ps151.1-Ps151.2").osis()).toEqual("Ps.151.1-Ps.151.2");
+      p.include_apocrypha(false);
+      results = [];
+      for (j = 0, len1 = books.length; j < len1; j++) {
+        book = books[j];
+        bc = book + ".1";
+        results.push(expect(p.parse(bc).osis()).toEqual(""));
+      }
+      return results;
+    });
+    return it("should handle a preceding character", function() {
+      expect(p.parse(" Gen 1").osis()).toEqual("Gen.1");
+      expect(p.parse("Matt5John3").osis()).toEqual("Matt.5,John.3");
+      expect(p.parse("1Ps 1").osis()).toEqual("");
+      return expect(p.parse("11Sam 1").osis()).toEqual("");
+    });
+  });
 
-	it "should round-trip OSIS Apocrypha references", ->
-		p.set_options osis_compaction_strategy: "bc", ps151_strategy: "b"
-		p.include_apocrypha true
-		books = ["Tob","Jdt","GkEsth","Wis","Sir","Bar","PrAzar","Sus","Bel","SgThree","EpJer","1Macc","2Macc","3Macc","4Macc","1Esd","2Esd","PrMan","Ps151"]
-		for book in books
-			bc = book + ".1"
-			bcv = bc + ".1"
-			bcv_range = bcv + "-" + bc + ".2"
-			expect(p.parse(bc).osis()).toEqual bc
-			expect(p.parse(bcv).osis()).toEqual bcv
-			expect(p.parse(bcv_range).osis()).toEqual bcv_range
-		p.set_options ps151_strategy: "bc"
-		expect(p.parse("Ps151.1").osis()).toEqual "Ps.151"
-		expect(p.parse("Ps151.1.1").osis()).toEqual "Ps.151.1"
-		expect(p.parse("Ps151.1-Ps151.2").osis()).toEqual "Ps.151.1-Ps.151.2"
-		p.include_apocrypha false
-		for book in books
-			bc = book + ".1"
-			expect(p.parse(bc).osis()).toEqual ""
-
-	it "should handle a preceding character", ->
-		expect(p.parse(" Gen 1").osis()).toEqual "Gen.1"
-		expect(p.parse("Matt5John3").osis()).toEqual "Matt.5,John.3"
-		expect(p.parse("1Ps 1").osis()).toEqual ""
-		expect(p.parse("11Sam 1").osis()).toEqual ""
-
-describe "Localized book Gen (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Gen (fa)", ->
-		`
+  describe("Localized book Gen (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Gen (fa)", function() {
+      
 		expect(p.parse("Pedaiyeshh 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Pedaiyishe 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("Pidaayishe 1:1").osis()).toEqual("Gen.1.1")
@@ -123,16 +155,26 @@ describe "Localized book Gen (fa)", ->
 		expect(p.parse("پیدا 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("GEN 1:1").osis()).toEqual("Gen.1.1")
 		expect(p.parse("پید 1:1").osis()).toEqual("Gen.1.1")
-		`
-		true
-describe "Localized book Exod (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Exod (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Exod (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Exod (fa)", function() {
+      
 		expect(p.parse("Khorojeh 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("Khoroouj 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("Kharooj 1:1").osis()).toEqual("Exod.1.1")
@@ -204,28 +246,48 @@ describe "Localized book Exod (fa)", ->
 		expect(p.parse("خرج 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("خرو 1:1").osis()).toEqual("Exod.1.1")
 		expect(p.parse("خر 1:1").osis()).toEqual("Exod.1.1")
-		`
-		true
-describe "Localized book Bel (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Bel (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Bel (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Bel (fa)", function() {
+      
 		expect(p.parse("Bel and the Dragon 1:1").osis()).toEqual("Bel.1.1")
 		expect(p.parse("Bel 1:1").osis()).toEqual("Bel.1.1")
-		`
-		true
-describe "Localized book Lev (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Lev (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Lev (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Lev (fa)", function() {
+      
 		expect(p.parse("Lavvyian 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Laawian 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("Lavayan 1:1").osis()).toEqual("Lev.1.1")
@@ -291,16 +353,26 @@ describe "Localized book Lev (fa)", ->
 		expect(p.parse("LAW 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("لاو 1:1").osis()).toEqual("Lev.1.1")
 		expect(p.parse("لوی 1:1").osis()).toEqual("Lev.1.1")
-		`
-		true
-describe "Localized book Num (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Num (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Num (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Num (fa)", function() {
+      
 		expect(p.parse("A'edaad 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("A’edaad 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("E'edaad 1:1").osis()).toEqual("Num.1.1")
@@ -374,40 +446,70 @@ describe "Localized book Num (fa)", ->
 		expect(p.parse("عداد 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUM 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("اعد 1:1").osis()).toEqual("Num.1.1")
-		`
-		true
-describe "Localized book Sir (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Sir (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Sir (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Sir (fa)", function() {
+      
 		expect(p.parse("Sirach 1:1").osis()).toEqual("Sir.1.1")
 		expect(p.parse("Sir 1:1").osis()).toEqual("Sir.1.1")
-		`
-		true
-describe "Localized book Wis (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Wis (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Wis (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Wis (fa)", function() {
+      
 		expect(p.parse("Wisdom 1:1").osis()).toEqual("Wis.1.1")
 		expect(p.parse("Wis 1:1").osis()).toEqual("Wis.1.1")
-		`
-		true
-describe "Localized book Lam (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Lam (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Lam (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Lam (fa)", function() {
+      
 		expect(p.parse("Marathi Erm'yaah 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("Marathi Erm’yaah 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("Marathi Eryaiyah 1:1").osis()).toEqual("Lam.1.1")
@@ -687,29 +789,49 @@ describe "Localized book Lam (fa)", ->
 		expect(p.parse("LAM 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1")
 		expect(p.parse("ĀH 1:1").osis()).toEqual("Lam.1.1")
-		`
-		true
-describe "Localized book EpJer (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: EpJer (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book EpJer (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: EpJer (fa)", function() {
+      
 		expect(p.parse("Epistle of Jeremiah 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("Ep Jer 1:1").osis()).toEqual("EpJer.1.1")
 		expect(p.parse("EpJer 1:1").osis()).toEqual("EpJer.1.1")
-		`
-		true
-describe "Localized book Rev (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Rev (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Rev (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Rev (fa)", function() {
+      
 		expect(p.parse("makaashfehi 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("makaashfevo 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("makashefiah 1:1").osis()).toEqual("Rev.1.1")
@@ -919,29 +1041,49 @@ describe "Localized book Rev (fa)", ->
 		expect(p.parse("VĀH 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("مکا 1:1").osis()).toEqual("Rev.1.1")
 		expect(p.parse("مکش 1:1").osis()).toEqual("Rev.1.1")
-		`
-		true
-describe "Localized book PrMan (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: PrMan (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book PrMan (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: PrMan (fa)", function() {
+      
 		expect(p.parse("Prayer of Manasseh 1:1").osis()).toEqual("PrMan.1.1")
 		expect(p.parse("Pr Man 1:1").osis()).toEqual("PrMan.1.1")
 		expect(p.parse("PrMan 1:1").osis()).toEqual("PrMan.1.1")
-		`
-		true
-describe "Localized book Deut (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Deut (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Deut (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Deut (fa)", function() {
+      
 		expect(p.parse("Tessniyeh 1:1").osis()).toEqual("Deut.1.1")
 		expect(p.parse("Tesniyeh 1:1").osis()).toEqual("Deut.1.1")
 		expect(p.parse("Tasnieh 1:1").osis()).toEqual("Deut.1.1")
@@ -993,16 +1135,26 @@ describe "Localized book Deut (fa)", ->
 		expect(p.parse("تثن 1:1").osis()).toEqual("Deut.1.1")
 		expect(p.parse("TS 1:1").osis()).toEqual("Deut.1.1")
 		expect(p.parse("تث 1:1").osis()).toEqual("Deut.1.1")
-		`
-		true
-describe "Localized book Josh (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Josh (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Josh (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Josh (fa)", function() {
+      
 		expect(p.parse("Yosh'ua 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Yoshu'a 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("Yoshuah 1:1").osis()).toEqual("Josh.1.1")
@@ -1064,16 +1216,26 @@ describe "Localized book Josh (fa)", ->
 		expect(p.parse("یوشا 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("یوشع 1:1").osis()).toEqual("Josh.1.1")
 		expect(p.parse("یوش 1:1").osis()).toEqual("Josh.1.1")
-		`
-		true
-describe "Localized book Judg (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Judg (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Judg (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Judg (fa)", function() {
+      
 		expect(p.parse("Davaranan 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("Davarane 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("Davooran 1:1").osis()).toEqual("Judg.1.1")
@@ -1119,16 +1281,26 @@ describe "Localized book Judg (fa)", ->
 		expect(p.parse("JUDG 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("داور 1:1").osis()).toEqual("Judg.1.1")
 		expect(p.parse("داو 1:1").osis()).toEqual("Judg.1.1")
-		`
-		true
-describe "Localized book Ruth (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Ruth (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Ruth (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Ruth (fa)", function() {
+      
 		expect(p.parse("Roote 1:1").osis()).toEqual("Ruth.1.1")
 		expect(p.parse("Rooth 1:1").osis()).toEqual("Ruth.1.1")
 		expect(p.parse("rūthī 1:1").osis()).toEqual("Ruth.1.1")
@@ -1164,42 +1336,72 @@ describe "Localized book Ruth (fa)", ->
 		expect(p.parse("روث 1:1").osis()).toEqual("Ruth.1.1")
 		expect(p.parse("روط 1:1").osis()).toEqual("Ruth.1.1")
 		expect(p.parse("رۆت 1:1").osis()).toEqual("Ruth.1.1")
-		`
-		true
-describe "Localized book 1Esd (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Esd (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Esd (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: 1Esd (fa)", function() {
+      
 		expect(p.parse("1 Esdras 1:1").osis()).toEqual("1Esd.1.1")
 		expect(p.parse("1 Esd 1:1").osis()).toEqual("1Esd.1.1")
 		expect(p.parse("1Esd 1:1").osis()).toEqual("1Esd.1.1")
-		`
-		true
-describe "Localized book 2Esd (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Esd (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Esd (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: 2Esd (fa)", function() {
+      
 		expect(p.parse("2 Esdras 1:1").osis()).toEqual("2Esd.1.1")
 		expect(p.parse("2 Esd 1:1").osis()).toEqual("2Esd.1.1")
 		expect(p.parse("2Esd 1:1").osis()).toEqual("2Esd.1.1")
-		`
-		true
-describe "Localized book Isa (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Isa (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Isa (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Isa (fa)", function() {
+      
 		expect(p.parse("Eysha'iya 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Eysha'yaa 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Eyshaiyah 1:1").osis()).toEqual("Isa.1.1")
@@ -1395,16 +1597,26 @@ describe "Localized book Isa (fa)", ->
 		expect(p.parse("ĪSH 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("اشع 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("ایش 1:1").osis()).toEqual("Isa.1.1")
-		`
-		true
-describe "Localized book 2Sam (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Sam (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Sam (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Sam (fa)", function() {
+      
 		expect(p.parse("Dovom Samoweyl 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("Dovom samoweyl 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("dovvom samu'īl 1:1").osis()).toEqual("2Sam.1.1")
@@ -1623,11 +1835,14 @@ describe "Localized book 2Sam (fa)", ->
 		expect(p.parse("2سم 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("۲sm 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("۲سم 1:1").osis()).toEqual("2Sam.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Sam (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Sam (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Dovom Samoweyl 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("Dovom samoweyl 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("dovvom samu'īl 1:1").osis()).toEqual("2Sam.1.1")
@@ -2065,16 +2280,26 @@ describe "Localized book 2Sam (fa)", ->
 		expect(p.parse("2سم 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("۲SM 1:1").osis()).toEqual("2Sam.1.1")
 		expect(p.parse("۲سم 1:1").osis()).toEqual("2Sam.1.1")
-		`
-		true
-describe "Localized book 1Sam (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Sam (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Sam (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Sam (fa)", function() {
+      
 		expect(p.parse("Avval Samoweyl 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("Avval samoweyl 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("Avval Samoeil 1:1").osis()).toEqual("1Sam.1.1")
@@ -2293,11 +2518,14 @@ describe "Localized book 1Sam (fa)", ->
 		expect(p.parse("1سم 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("۱sm 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("۱سم 1:1").osis()).toEqual("1Sam.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Sam (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Sam (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Samoweyl 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("Avval samoweyl 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("Avval Samoeil 1:1").osis()).toEqual("1Sam.1.1")
@@ -2735,16 +2963,26 @@ describe "Localized book 1Sam (fa)", ->
 		expect(p.parse("1سم 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("۱SM 1:1").osis()).toEqual("1Sam.1.1")
 		expect(p.parse("۱سم 1:1").osis()).toEqual("1Sam.1.1")
-		`
-		true
-describe "Localized book 2Kgs (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Kgs (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Kgs (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Kgs (fa)", function() {
+      
 		expect(p.parse("Dovom Padeshahnan 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("Dovom padeshahnan 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("Dovom Padeshahan 1:1").osis()).toEqual("2Kgs.1.1")
@@ -2848,11 +3086,14 @@ describe "Localized book 2Kgs (fa)", ->
 		expect(p.parse("2پا 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("۲pā 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("۲پا 1:1").osis()).toEqual("2Kgs.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Kgs (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Kgs (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Dovom Padeshahnan 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("Dovom padeshahnan 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("Dovom Padeshahan 1:1").osis()).toEqual("2Kgs.1.1")
@@ -3060,16 +3301,26 @@ describe "Localized book 2Kgs (fa)", ->
 		expect(p.parse("2پا 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("۲PĀ 1:1").osis()).toEqual("2Kgs.1.1")
 		expect(p.parse("۲پا 1:1").osis()).toEqual("2Kgs.1.1")
-		`
-		true
-describe "Localized book 1Kgs (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Kgs (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Kgs (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Kgs (fa)", function() {
+      
 		expect(p.parse("Avval Padeshahnan 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("Avval padeshahnan 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("Avval Padeshahan 1:1").osis()).toEqual("1Kgs.1.1")
@@ -3173,11 +3424,14 @@ describe "Localized book 1Kgs (fa)", ->
 		expect(p.parse("1پا 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("۱pā 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("۱پا 1:1").osis()).toEqual("1Kgs.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Kgs (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Kgs (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Padeshahnan 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("Avval padeshahnan 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("Avval Padeshahan 1:1").osis()).toEqual("1Kgs.1.1")
@@ -3385,16 +3639,26 @@ describe "Localized book 1Kgs (fa)", ->
 		expect(p.parse("1پا 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("۱PĀ 1:1").osis()).toEqual("1Kgs.1.1")
 		expect(p.parse("۱پا 1:1").osis()).toEqual("1Kgs.1.1")
-		`
-		true
-describe "Localized book 2Chr (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Chr (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Chr (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Chr (fa)", function() {
+      
 		expect(p.parse("dovvom tawārikh 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("Dovom Tawarikh 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("Dovom Towarikh 1:1").osis()).toEqual("2Chr.1.1")
@@ -3489,11 +3753,14 @@ describe "Localized book 2Chr (fa)", ->
 		expect(p.parse("۲tow 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2تو 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("۲تو 1:1").osis()).toEqual("2Chr.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Chr (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Chr (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("dovvom tawārikh 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("Dovom Tawarikh 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("Dovom Towarikh 1:1").osis()).toEqual("2Chr.1.1")
@@ -3683,16 +3950,26 @@ describe "Localized book 2Chr (fa)", ->
 		expect(p.parse("۲TOW 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2تو 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("۲تو 1:1").osis()).toEqual("2Chr.1.1")
-		`
-		true
-describe "Localized book 1Chr (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Chr (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Chr (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Chr (fa)", function() {
+      
 		expect(p.parse("Avval Tawarikh 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("Avval Towarikh 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("Avval Towarykh 1:1").osis()).toEqual("1Chr.1.1")
@@ -3792,11 +4069,14 @@ describe "Localized book 1Chr (fa)", ->
 		expect(p.parse("۱tow 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1تو 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("۱تو 1:1").osis()).toEqual("1Chr.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Chr (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Chr (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Tawarikh 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("Avval Towarikh 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("Avval Towarykh 1:1").osis()).toEqual("1Chr.1.1")
@@ -3996,16 +4276,26 @@ describe "Localized book 1Chr (fa)", ->
 		expect(p.parse("۱TOW 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1تو 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("۱تو 1:1").osis()).toEqual("1Chr.1.1")
-		`
-		true
-describe "Localized book Ezra (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Ezra (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Ezra (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Ezra (fa)", function() {
+      
 		expect(p.parse("عِ زراء 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ezra a 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("Ezra h 1:1").osis()).toEqual("Ezra.1.1")
@@ -4069,16 +4359,26 @@ describe "Localized book Ezra (fa)", ->
 		expect(p.parse("عزره 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("EZR 1:1").osis()).toEqual("Ezra.1.1")
 		expect(p.parse("عزر 1:1").osis()).toEqual("Ezra.1.1")
-		`
-		true
-describe "Localized book Neh (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Neh (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Neh (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Neh (fa)", function() {
+      
 		expect(p.parse("Neheemia 1:1").osis()).toEqual("Neh.1.1")
 		expect(p.parse("Neheemya 1:1").osis()).toEqual("Neh.1.1")
 		expect(p.parse("نِ حِمیا 1:1").osis()).toEqual("Neh.1.1")
@@ -4132,30 +4432,50 @@ describe "Localized book Neh (fa)", ->
 		expect(p.parse("نحمی 1:1").osis()).toEqual("Neh.1.1")
 		expect(p.parse("NEH 1:1").osis()).toEqual("Neh.1.1")
 		expect(p.parse("نحم 1:1").osis()).toEqual("Neh.1.1")
-		`
-		true
-describe "Localized book GkEsth (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: GkEsth (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book GkEsth (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: GkEsth (fa)", function() {
+      
 		expect(p.parse("Greek Esther 1:1").osis()).toEqual("GkEsth.1.1")
 		expect(p.parse("Gk Esth 1:1").osis()).toEqual("GkEsth.1.1")
 		expect(p.parse("Gk Est 1:1").osis()).toEqual("GkEsth.1.1")
 		expect(p.parse("GkEsth 1:1").osis()).toEqual("GkEsth.1.1")
-		`
-		true
-describe "Localized book Esth (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Esth (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Esth (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Esth (fa)", function() {
+      
 		expect(p.parse("Estehr 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("Esther 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("esterh 1:1").osis()).toEqual("Esth.1.1")
@@ -4197,16 +4517,26 @@ describe "Localized book Esth (fa)", ->
 		expect(p.parse("استر 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("AST 1:1").osis()).toEqual("Esth.1.1")
 		expect(p.parse("است 1:1").osis()).toEqual("Esth.1.1")
-		`
-		true
-describe "Localized book Job (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Job (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Job (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Job (fa)", function() {
+      
 		expect(p.parse("Aiyoob 1:1").osis()).toEqual("Job.1.1")
 		expect(p.parse("Ayyoob 1:1").osis()).toEqual("Job.1.1")
 		expect(p.parse("Ayyoub 1:1").osis()).toEqual("Job.1.1")
@@ -4288,16 +4618,26 @@ describe "Localized book Job (fa)", ->
 		expect(p.parse("AYŪ 1:1").osis()).toEqual("Job.1.1")
 		expect(p.parse("ایو 1:1").osis()).toEqual("Job.1.1")
 		expect(p.parse("ایّ 1:1").osis()).toEqual("Job.1.1")
-		`
-		true
-describe "Localized book Ps (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Ps (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Ps (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Ps (fa)", function() {
+      
 		expect(p.parse("Mazamoure 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Mazamurah 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Maz moor 1:1").osis()).toEqual("Ps.1.1")
@@ -4435,29 +4775,49 @@ describe "Localized book Ps (fa)", ->
 		expect(p.parse("مزا 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("مزم 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("PS 1:1").osis()).toEqual("Ps.1.1")
-		`
-		true
-describe "Localized book PrAzar (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: PrAzar (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book PrAzar (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: PrAzar (fa)", function() {
+      
 		expect(p.parse("Prayer of Azariah 1:1").osis()).toEqual("PrAzar.1.1")
 		expect(p.parse("Pr Azar 1:1").osis()).toEqual("PrAzar.1.1")
 		expect(p.parse("PrAzar 1:1").osis()).toEqual("PrAzar.1.1")
-		`
-		true
-describe "Localized book Prov (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Prov (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Prov (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Prov (fa)", function() {
+      
 		expect(p.parse("Am thale 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("Am thals 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("Amthaleh 1:1").osis()).toEqual("Prov.1.1")
@@ -4545,16 +4905,26 @@ describe "Localized book Prov (fa)", ->
 		expect(p.parse("امثل 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("امصل 1:1").osis()).toEqual("Prov.1.1")
 		expect(p.parse("امث 1:1").osis()).toEqual("Prov.1.1")
-		`
-		true
-describe "Localized book Eccl (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Eccl (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Eccl (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Eccl (fa)", function() {
+      
 		expect(p.parse("kolliyāt 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("Jam aeh 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("Jama'ah 1:1").osis()).toEqual("Eccl.1.1")
@@ -4640,28 +5010,48 @@ describe "Localized book Eccl (fa)", ->
 		expect(p.parse("جامع 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("JĀM 1:1").osis()).toEqual("Eccl.1.1")
 		expect(p.parse("جام 1:1").osis()).toEqual("Eccl.1.1")
-		`
-		true
-describe "Localized book SgThree (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: SgThree (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book SgThree (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: SgThree (fa)", function() {
+      
 		expect(p.parse("Song of the Three Young Men 1:1").osis()).toEqual("SgThree.1.1")
 		expect(p.parse("SgThree 1:1").osis()).toEqual("SgThree.1.1")
-		`
-		true
-describe "Localized book Song (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Song (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Song (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Song (fa)", function() {
+      
 		expect(p.parse("Ghazal Ghazal_haa 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Ghazal Ghazalhaaa 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("Ghazal_Ghazal_haa 1:1").osis()).toEqual("Song.1.1")
@@ -4775,16 +5165,26 @@ describe "Localized book Song (fa)", ->
 		expect(p.parse("غزلغ 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("غزلی 1:1").osis()).toEqual("Song.1.1")
 		expect(p.parse("SOL 1:1").osis()).toEqual("Song.1.1")
-		`
-		true
-describe "Localized book Jer (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Jer (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Jer (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Jer (fa)", function() {
+      
 		expect(p.parse("Erm'yaaha 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("Erm’yaaha 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("Irm'yaaha 1:1").osis()).toEqual("Jer.1.1")
@@ -5018,16 +5418,26 @@ describe "Localized book Jer (fa)", ->
 		expect(p.parse("ارمی 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("JER 1:1").osis()).toEqual("Jer.1.1")
 		expect(p.parse("ارم 1:1").osis()).toEqual("Jer.1.1")
-		`
-		true
-describe "Localized book Ezek (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Ezek (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Ezek (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Ezek (fa)", function() {
+      
 		expect(p.parse("Hizkiyaelh 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("Hizkiyailh 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("Hizqiy'aal 1:1").osis()).toEqual("Ezek.1.1")
@@ -5185,16 +5595,26 @@ describe "Localized book Ezek (fa)", ->
 		expect(p.parse("HAZQ 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("حزقی 1:1").osis()).toEqual("Ezek.1.1")
 		expect(p.parse("حزق 1:1").osis()).toEqual("Ezek.1.1")
-		`
-		true
-describe "Localized book Dan (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Dan (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Dan (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Dan (fa)", function() {
+      
 		expect(p.parse("Daniyaelh 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("Daniyailh 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("دانيائلله 1:1").osis()).toEqual("Dan.1.1")
@@ -5298,16 +5718,26 @@ describe "Localized book Dan (fa)", ->
 		expect(p.parse("DAN 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("DĀN 1:1").osis()).toEqual("Dan.1.1")
 		expect(p.parse("دان 1:1").osis()).toEqual("Dan.1.1")
-		`
-		true
-describe "Localized book Hos (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Hos (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Hos (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Hos (fa)", function() {
+      
 		expect(p.parse("Hoshaeah 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("Hosheah 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("Hushaeh 1:1").osis()).toEqual("Hos.1.1")
@@ -5377,16 +5807,26 @@ describe "Localized book Hos (fa)", ->
 		expect(p.parse("هوشع 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("HOS 1:1").osis()).toEqual("Hos.1.1")
 		expect(p.parse("هوش 1:1").osis()).toEqual("Hos.1.1")
-		`
-		true
-describe "Localized book Joel (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Joel (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Joel (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Joel (fa)", function() {
+      
 		expect(p.parse("یوئئییلـ 1:1").osis()).toEqual("Joel.1.1")
 		expect(p.parse("یوئییلیہ 1:1").osis()).toEqual("Joel.1.1")
 		expect(p.parse("Yoo'eil 1:1").osis()).toEqual("Joel.1.1")
@@ -5502,16 +5942,26 @@ describe "Localized book Joel (fa)", ->
 		expect(p.parse("یوئل 1:1").osis()).toEqual("Joel.1.1")
 		expect(p.parse("یویل 1:1").osis()).toEqual("Joel.1.1")
 		expect(p.parse("یوئ 1:1").osis()).toEqual("Joel.1.1")
-		`
-		true
-describe "Localized book Amos (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Amos (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Amos (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Amos (fa)", function() {
+      
 		expect(p.parse("عامووسسیی 1:1").osis()).toEqual("Amos.1.1")
 		expect(p.parse("عاموووسسس 1:1").osis()).toEqual("Amos.1.1")
 		expect(p.parse("عاموووسیی 1:1").osis()).toEqual("Amos.1.1")
@@ -5613,16 +6063,26 @@ describe "Localized book Amos (fa)", ->
 		expect(p.parse("عامس 1:1").osis()).toEqual("Amos.1.1")
 		expect(p.parse("عام 1:1").osis()).toEqual("Amos.1.1")
 		expect(p.parse("ĀM 1:1").osis()).toEqual("Amos.1.1")
-		`
-		true
-describe "Localized book Obad (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Obad (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Obad (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Obad (fa)", function() {
+      
 		expect(p.parse("عوبَدِیاء 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("عُوبَدیاء 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("Obadeyah 1:1").osis()).toEqual("Obad.1.1")
@@ -5712,16 +6172,26 @@ describe "Localized book Obad (fa)", ->
 		expect(p.parse("عوبد 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("OBD 1:1").osis()).toEqual("Obad.1.1")
 		expect(p.parse("عوب 1:1").osis()).toEqual("Obad.1.1")
-		`
-		true
-describe "Localized book Jonah (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Jonah (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Jonah (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Jonah (fa)", function() {
+      
 		expect(p.parse("Yooness 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("یوونییس 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("Jonahs 1:1").osis()).toEqual("Jonah.1.1")
@@ -5807,16 +6277,26 @@ describe "Localized book Jonah (fa)", ->
 		expect(p.parse("یونش 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("یونص 1:1").osis()).toEqual("Jonah.1.1")
 		expect(p.parse("یون 1:1").osis()).toEqual("Jonah.1.1")
-		`
-		true
-describe "Localized book Mic (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Mic (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Mic (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Mic (fa)", function() {
+      
 		expect(p.parse("Mikaaha 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("Mikahah 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("mīkhāyā 1:1").osis()).toEqual("Mic.1.1")
@@ -5906,16 +6386,26 @@ describe "Localized book Mic (fa)", ->
 		expect(p.parse("میکه 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("MIC 1:1").osis()).toEqual("Mic.1.1")
 		expect(p.parse("میک 1:1").osis()).toEqual("Mic.1.1")
-		`
-		true
-describe "Localized book Nah (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Nah (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Nah (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Nah (fa)", function() {
+      
 		expect(p.parse("ناحومیائه 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("ناحومیائہ 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("ناحومیییه 1:1").osis()).toEqual("Nah.1.1")
@@ -6021,16 +6511,26 @@ describe "Localized book Nah (fa)", ->
 		expect(p.parse("نحوم 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("NAH 1:1").osis()).toEqual("Nah.1.1")
 		expect(p.parse("ناح 1:1").osis()).toEqual("Nah.1.1")
-		`
-		true
-describe "Localized book Hab (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Hab (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Hab (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Hab (fa)", function() {
+      
 		expect(p.parse("حَبَقوقیائه 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("حَبَقوقیائہ 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("حَبَقوقیییه 1:1").osis()).toEqual("Hab.1.1")
@@ -6152,16 +6652,26 @@ describe "Localized book Hab (fa)", ->
 		expect(p.parse("حبقو 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("HAB 1:1").osis()).toEqual("Hab.1.1")
 		expect(p.parse("حبق 1:1").osis()).toEqual("Hab.1.1")
-		`
-		true
-describe "Localized book Zeph (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Zeph (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Zeph (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Zeph (fa)", function() {
+      
 		expect(p.parse("Zephanaya 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("Zephaniah 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("صَفَنیاءء 1:1").osis()).toEqual("Zeph.1.1")
@@ -6241,16 +6751,26 @@ describe "Localized book Zeph (fa)", ->
 		expect(p.parse("صفنی 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("ZOF 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("صفن 1:1").osis()).toEqual("Zeph.1.1")
-		`
-		true
-describe "Localized book Hag (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Hag (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Hag (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Hag (fa)", function() {
+      
 		expect(p.parse("حَجَّیہئة 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حَجَّیہئۀ 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حَجَّیہئہ 1:1").osis()).toEqual("Hag.1.1")
@@ -6322,16 +6842,26 @@ describe "Localized book Hag (fa)", ->
 		expect(p.parse("HAG 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حجا 1:1").osis()).toEqual("Hag.1.1")
 		expect(p.parse("حجی 1:1").osis()).toEqual("Hag.1.1")
-		`
-		true
-describe "Localized book Zech (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Zech (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Zech (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Zech (fa)", function() {
+      
 		expect(p.parse("Zakariyya 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("Zechariah 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("زکریائۀئہ 1:1").osis()).toEqual("Zech.1.1")
@@ -6417,16 +6947,26 @@ describe "Localized book Zech (fa)", ->
 		expect(p.parse("ZECH 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("زکری 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("زکر 1:1").osis()).toEqual("Zech.1.1")
-		`
-		true
-describe "Localized book Mal (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Mal (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Mal (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Mal (fa)", function() {
+      
 		expect(p.parse("Maalakie 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("Maalakii 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("Mal'aaki 1:1").osis()).toEqual("Mal.1.1")
@@ -6504,16 +7044,26 @@ describe "Localized book Mal (fa)", ->
 		expect(p.parse("مَلك 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("MAL 1:1").osis()).toEqual("Mal.1.1")
 		expect(p.parse("ملا 1:1").osis()).toEqual("Mal.1.1")
-		`
-		true
-describe "Localized book Matt (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Matt (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Matt (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Matt (fa)", function() {
+      
 		expect(p.parse("Mat'thiya 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("Mat’thiya 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("mattā'ūsi 1:1").osis()).toEqual("Matt.1.1")
@@ -6627,16 +7177,26 @@ describe "Localized book Matt (fa)", ->
 		expect(p.parse("متى 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("متي 1:1").osis()).toEqual("Matt.1.1")
 		expect(p.parse("متی 1:1").osis()).toEqual("Matt.1.1")
-		`
-		true
-describe "Localized book Mark (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Mark (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Mark (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Mark (fa)", function() {
+      
 		expect(p.parse("Marcoosee 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Marqoosee 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("Marcoose 1:1").osis()).toEqual("Mark.1.1")
@@ -6728,16 +7288,26 @@ describe "Localized book Mark (fa)", ->
 		expect(p.parse("مرکس 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("مرق 1:1").osis()).toEqual("Mark.1.1")
 		expect(p.parse("مرک 1:1").osis()).toEqual("Mark.1.1")
-		`
-		true
-describe "Localized book Luke (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Luke (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Luke (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Luke (fa)", function() {
+      
 		expect(p.parse("Looqaat 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Lokaah 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("Lokaat 1:1").osis()).toEqual("Luke.1.1")
@@ -6819,16 +7389,26 @@ describe "Localized book Luke (fa)", ->
 		expect(p.parse("لوکة 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("LŪQ 1:1").osis()).toEqual("Luke.1.1")
 		expect(p.parse("لوق 1:1").osis()).toEqual("Luke.1.1")
-		`
-		true
-describe "Localized book 1John (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1John (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1John (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1John (fa)", function() {
+      
 		expect(p.parse("Avval Yoohanaah 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("Avval Yohanaah 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("Avval Yohannah 1:1").osis()).toEqual("1John.1.1")
@@ -7156,11 +7736,14 @@ describe "Localized book 1John (fa)", ->
 		expect(p.parse("1یو 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("۱yo 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("۱یو 1:1").osis()).toEqual("1John.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1John (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1John (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Yoohanaah 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("Avval Yohanaah 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("Avval Yohannah 1:1").osis()).toEqual("1John.1.1")
@@ -7816,16 +8399,26 @@ describe "Localized book 1John (fa)", ->
 		expect(p.parse("1یو 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("۱YO 1:1").osis()).toEqual("1John.1.1")
 		expect(p.parse("۱یو 1:1").osis()).toEqual("1John.1.1")
-		`
-		true
-describe "Localized book 2John (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2John (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2John (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2John (fa)", function() {
+      
 		expect(p.parse("Dovom Yoohanaah 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("Dovom Yohanaah 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("Dovom Yohannah 1:1").osis()).toEqual("2John.1.1")
@@ -8153,11 +8746,14 @@ describe "Localized book 2John (fa)", ->
 		expect(p.parse("2یو 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("۲yo 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("۲یو 1:1").osis()).toEqual("2John.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2John (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2John (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Dovom Yoohanaah 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("Dovom Yohanaah 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("Dovom Yohannah 1:1").osis()).toEqual("2John.1.1")
@@ -8813,16 +9409,26 @@ describe "Localized book 2John (fa)", ->
 		expect(p.parse("2یو 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("۲YO 1:1").osis()).toEqual("2John.1.1")
 		expect(p.parse("۲یو 1:1").osis()).toEqual("2John.1.1")
-		`
-		true
-describe "Localized book 3John (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 3John (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 3John (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 3John (fa)", function() {
+      
 		expect(p.parse("Sevom Yoohanaah 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("Sevom Yohanaah 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("Sevom Yohannah 1:1").osis()).toEqual("3John.1.1")
@@ -9109,11 +9715,14 @@ describe "Localized book 3John (fa)", ->
 		expect(p.parse("3یو 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("۳yo 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("۳یو 1:1").osis()).toEqual("3John.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 3John (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 3John (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Sevom Yoohanaah 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("Sevom Yohanaah 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("Sevom Yohannah 1:1").osis()).toEqual("3John.1.1")
@@ -9687,16 +10296,26 @@ describe "Localized book 3John (fa)", ->
 		expect(p.parse("3یو 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("۳YO 1:1").osis()).toEqual("3John.1.1")
 		expect(p.parse("۳یو 1:1").osis()).toEqual("3John.1.1")
-		`
-		true
-describe "Localized book John (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: John (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book John (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: John (fa)", function() {
+      
 		expect(p.parse("Yoohanaah 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("Yohanaah 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("Yohannah 1:1").osis()).toEqual("John.1.1")
@@ -9774,16 +10393,26 @@ describe "Localized book John (fa)", ->
 		expect(p.parse("یوحن 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("یوح 1:1").osis()).toEqual("John.1.1")
 		expect(p.parse("YO 1:1").osis()).toEqual("John.1.1")
-		`
-		true
-describe "Localized book Acts (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Acts (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Acts (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Acts (fa)", function() {
+      
 		expect(p.parse("A'mal e Rusuleen 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("A'mal-e-Rusuleen 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("Amaal e Rusuleen 1:1").osis()).toEqual("Acts.1.1")
@@ -9915,16 +10544,26 @@ describe "Localized book Acts (fa)", ->
 		expect(p.parse("A’M 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("اعم 1:1").osis()).toEqual("Acts.1.1")
 		expect(p.parse("عمل 1:1").osis()).toEqual("Acts.1.1")
-		`
-		true
-describe "Localized book Rom (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Rom (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Rom (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Rom (fa)", function() {
+      
 		expect(p.parse("رومیانیان 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("رومیونیان 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("Roomiyan 1:1").osis()).toEqual("Rom.1.1")
@@ -9998,16 +10637,26 @@ describe "Localized book Rom (fa)", ->
 		expect(p.parse("ROM 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("RŪM 1:1").osis()).toEqual("Rom.1.1")
 		expect(p.parse("روم 1:1").osis()).toEqual("Rom.1.1")
-		`
-		true
-describe "Localized book 2Cor (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Cor (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Cor (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Cor (fa)", function() {
+      
 		expect(p.parse("Dovom Corinthians 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("Dovom Qorinthiyan 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("Dovom Corinthian 1:1").osis()).toEqual("2Cor.1.1")
@@ -10215,11 +10864,14 @@ describe "Localized book 2Cor (fa)", ->
 		expect(p.parse("2قر 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("۲qr 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("۲قر 1:1").osis()).toEqual("2Cor.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Cor (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Cor (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Dovom Corinthians 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("Dovom Qorinthiyan 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("Dovom Corinthian 1:1").osis()).toEqual("2Cor.1.1")
@@ -10635,16 +11287,26 @@ describe "Localized book 2Cor (fa)", ->
 		expect(p.parse("2قر 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("۲QR 1:1").osis()).toEqual("2Cor.1.1")
 		expect(p.parse("۲قر 1:1").osis()).toEqual("2Cor.1.1")
-		`
-		true
-describe "Localized book 1Cor (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Cor (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Cor (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Cor (fa)", function() {
+      
 		expect(p.parse("Avval Corinthians 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("Avval Qorinthiyan 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("Avval Corinthian 1:1").osis()).toEqual("1Cor.1.1")
@@ -10852,11 +11514,14 @@ describe "Localized book 1Cor (fa)", ->
 		expect(p.parse("1قر 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("۱qr 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("۱قر 1:1").osis()).toEqual("1Cor.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Cor (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Cor (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Corinthians 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("Avval Qorinthiyan 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("Avval Corinthian 1:1").osis()).toEqual("1Cor.1.1")
@@ -11272,16 +11937,26 @@ describe "Localized book 1Cor (fa)", ->
 		expect(p.parse("1قر 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("۱QR 1:1").osis()).toEqual("1Cor.1.1")
 		expect(p.parse("۱قر 1:1").osis()).toEqual("1Cor.1.1")
-		`
-		true
-describe "Localized book Gal (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Gal (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Gal (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Gal (fa)", function() {
+      
 		expect(p.parse("Galatiyanians 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Galatiyunians 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("Galatiyans 1:1").osis()).toEqual("Gal.1.1")
@@ -11365,16 +12040,26 @@ describe "Localized book Gal (fa)", ->
 		expect(p.parse("غلاط 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("GAL 1:1").osis()).toEqual("Gal.1.1")
 		expect(p.parse("غلا 1:1").osis()).toEqual("Gal.1.1")
-		`
-		true
-describe "Localized book Eph (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Eph (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Eph (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Eph (fa)", function() {
+      
 		expect(p.parse("Afisisiyanians 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Afissiyunians 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("Afisiyunians 1:1").osis()).toEqual("Eph.1.1")
@@ -11482,16 +12167,26 @@ describe "Localized book Eph (fa)", ->
 		expect(p.parse("EPH 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("AFS 1:1").osis()).toEqual("Eph.1.1")
 		expect(p.parse("افس 1:1").osis()).toEqual("Eph.1.1")
-		`
-		true
-describe "Localized book Phil (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Phil (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Phil (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Phil (fa)", function() {
+      
 		expect(p.parse("Filipiyanians 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Filipyunians 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Philippians 1:1").osis()).toEqual("Phil.1.1")
@@ -11553,16 +12248,26 @@ describe "Localized book Phil (fa)", ->
 		expect(p.parse("فلیپ 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("فیلپ 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("فیل 1:1").osis()).toEqual("Phil.1.1")
-		`
-		true
-describe "Localized book Col (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Col (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Col (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Col (fa)", function() {
+      
 		expect(p.parse("Kolusiyanians 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Kolusiyunians 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("Colossiyans 1:1").osis()).toEqual("Col.1.1")
@@ -11630,16 +12335,26 @@ describe "Localized book Col (fa)", ->
 		expect(p.parse("COL 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("KŪL 1:1").osis()).toEqual("Col.1.1")
 		expect(p.parse("کول 1:1").osis()).toEqual("Col.1.1")
-		`
-		true
-describe "Localized book 2Thess (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Thess (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Thess (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Thess (fa)", function() {
+      
 		expect(p.parse("Dovom Thessalonicians 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("Dovom Thessalonikeans 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("Dovom Thessalonikians 1:1").osis()).toEqual("2Thess.1.1")
@@ -11861,11 +12576,14 @@ describe "Localized book 2Thess (fa)", ->
 		expect(p.parse("2تس 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("۲ts 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("۲تس 1:1").osis()).toEqual("2Thess.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Thess (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Thess (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Dovom Thessalonicians 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("Dovom Thessalonikeans 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("Dovom Thessalonikians 1:1").osis()).toEqual("2Thess.1.1")
@@ -12309,16 +13027,26 @@ describe "Localized book 2Thess (fa)", ->
 		expect(p.parse("2تس 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("۲TS 1:1").osis()).toEqual("2Thess.1.1")
 		expect(p.parse("۲تس 1:1").osis()).toEqual("2Thess.1.1")
-		`
-		true
-describe "Localized book 1Thess (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Thess (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Thess (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Thess (fa)", function() {
+      
 		expect(p.parse("Avval Thessalonicians 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("Avval Thessalonikeans 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("Avval Thessalonikians 1:1").osis()).toEqual("1Thess.1.1")
@@ -12543,11 +13271,14 @@ describe "Localized book 1Thess (fa)", ->
 		expect(p.parse("1تس 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("۱ts 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("۱تس 1:1").osis()).toEqual("1Thess.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Thess (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Thess (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Thessalonicians 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("Avval Thessalonikeans 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("Avval Thessalonikians 1:1").osis()).toEqual("1Thess.1.1")
@@ -12997,16 +13728,26 @@ describe "Localized book 1Thess (fa)", ->
 		expect(p.parse("1تس 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("۱TS 1:1").osis()).toEqual("1Thess.1.1")
 		expect(p.parse("۱تس 1:1").osis()).toEqual("1Thess.1.1")
-		`
-		true
-describe "Localized book 2Tim (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Tim (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Tim (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Tim (fa)", function() {
+      
 		expect(p.parse("dovvom tīmutā'ūs 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("dovvom tīmutā’ūs 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("DovomTimothaeus 1:1").osis()).toEqual("2Tim.1.1")
@@ -13102,11 +13843,14 @@ describe "Localized book 2Tim (fa)", ->
 		expect(p.parse("2تی 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("۲tī 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("۲تی 1:1").osis()).toEqual("2Tim.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Tim (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Tim (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("dovvom tīmutā'ūs 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("dovvom tīmutā’ūs 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("DovomTimothaeus 1:1").osis()).toEqual("2Tim.1.1")
@@ -13298,16 +14042,26 @@ describe "Localized book 2Tim (fa)", ->
 		expect(p.parse("2تی 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("۲TĪ 1:1").osis()).toEqual("2Tim.1.1")
 		expect(p.parse("۲تی 1:1").osis()).toEqual("2Tim.1.1")
-		`
-		true
-describe "Localized book 1Tim (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Tim (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Tim (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Tim (fa)", function() {
+      
 		expect(p.parse("AvvalTimothaeus 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("AvvalTimothaios 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("avval tīmutā'ūs 1:1").osis()).toEqual("1Tim.1.1")
@@ -13405,11 +14159,14 @@ describe "Localized book 1Tim (fa)", ->
 		expect(p.parse("1تی 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("۱tī 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("۱تی 1:1").osis()).toEqual("1Tim.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Tim (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Tim (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("AvvalTimothaeus 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("AvvalTimothaios 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("avval tīmutā'ūs 1:1").osis()).toEqual("1Tim.1.1")
@@ -13605,16 +14362,26 @@ describe "Localized book 1Tim (fa)", ->
 		expect(p.parse("1تی 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("۱TĪ 1:1").osis()).toEqual("1Tim.1.1")
 		expect(p.parse("۱تی 1:1").osis()).toEqual("1Tim.1.1")
-		`
-		true
-describe "Localized book Titus (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Titus (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Titus (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Titus (fa)", function() {
+      
 		expect(p.parse("Taitoos 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Taitous 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("Taytoos 1:1").osis()).toEqual("Titus.1.1")
@@ -13672,16 +14439,26 @@ describe "Localized book Titus (fa)", ->
 		expect(p.parse("تیتو 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("تیطس 1:1").osis()).toEqual("Titus.1.1")
 		expect(p.parse("تیت 1:1").osis()).toEqual("Titus.1.1")
-		`
-		true
-describe "Localized book Phlm (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Phlm (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Phlm (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Phlm (fa)", function() {
+      
 		expect(p.parse("Filimoonn 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Filimount 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("Philemona 1:1").osis()).toEqual("Phlm.1.1")
@@ -13775,16 +14552,26 @@ describe "Localized book Phlm (fa)", ->
 		expect(p.parse("فلیم 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("فلم 1:1").osis()).toEqual("Phlm.1.1")
 		expect(p.parse("فلی 1:1").osis()).toEqual("Phlm.1.1")
-		`
-		true
-describe "Localized book Heb (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Heb (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Heb (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Heb (fa)", function() {
+      
 		expect(p.parse("Abraaniyaan 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Ebraaniyaan 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Ibraaniyaan 1:1").osis()).toEqual("Heb.1.1")
@@ -13910,16 +14697,26 @@ describe "Localized book Heb (fa)", ->
 		expect(p.parse("HEB 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("EBR 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("عبر 1:1").osis()).toEqual("Heb.1.1")
-		`
-		true
-describe "Localized book Jas (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Jas (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Jas (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Jas (fa)", function() {
+      
 		expect(p.parse("Yaaqoobey 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Yaaqoobi 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Yaqoobee 1:1").osis()).toEqual("Jas.1.1")
@@ -13995,16 +14792,26 @@ describe "Localized book Jas (fa)", ->
 		expect(p.parse("یعقو 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAS 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("یعق 1:1").osis()).toEqual("Jas.1.1")
-		`
-		true
-describe "Localized book 2Pet (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Pet (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Pet (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 2Pet (fa)", function() {
+      
 		expect(p.parse("Dovom Patrissi 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("Dovom patrissi 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("Dovom Pataris 1:1").osis()).toEqual("2Pet.1.1")
@@ -14253,11 +15060,14 @@ describe "Localized book 2Pet (fa)", ->
 		expect(p.parse("2پط 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("۲pt 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("۲پت 1:1").osis()).toEqual("2Pet.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 2Pet (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 2Pet (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Dovom Patrissi 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("Dovom patrissi 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("Dovom Pataris 1:1").osis()).toEqual("2Pet.1.1")
@@ -14755,16 +15565,26 @@ describe "Localized book 2Pet (fa)", ->
 		expect(p.parse("2پط 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("۲PT 1:1").osis()).toEqual("2Pet.1.1")
 		expect(p.parse("۲پت 1:1").osis()).toEqual("2Pet.1.1")
-		`
-		true
-describe "Localized book 1Pet (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Pet (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Pet (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should handle book: 1Pet (fa)", function() {
+      
 		expect(p.parse("Avval Patrissi 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("Avval patrissi 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("Avval Pataris 1:1").osis()).toEqual("1Pet.1.1")
@@ -15013,11 +15833,14 @@ describe "Localized book 1Pet (fa)", ->
 		expect(p.parse("1پط 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("۱pt 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("۱پت 1:1").osis()).toEqual("1Pet.1.1")
-		`
-		true
-	it "should handle non-Latin digits in book: 1Pet (fa)", ->
-		p.set_options non_latin_digits_strategy: "replace"
-		`
+		;
+      return true;
+    });
+    return it("should handle non-Latin digits in book: 1Pet (fa)", function() {
+      p.set_options({
+        non_latin_digits_strategy: "replace"
+      });
+      
 		expect(p.parse("Avval Patrissi 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("Avval patrissi 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("Avval Pataris 1:1").osis()).toEqual("1Pet.1.1")
@@ -15515,16 +16338,26 @@ describe "Localized book 1Pet (fa)", ->
 		expect(p.parse("1پط 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("۱PT 1:1").osis()).toEqual("1Pet.1.1")
 		expect(p.parse("۱پت 1:1").osis()).toEqual("1Pet.1.1")
-		`
-		true
-describe "Localized book Jude (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Jude (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Jude (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Jude (fa)", function() {
+      
 		expect(p.parse("Yahoodah 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Yahudaah 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("Yehoodaa 1:1").osis()).toEqual("Jude.1.1")
@@ -15606,162 +16439,263 @@ describe "Localized book Jude (fa)", ->
 		expect(p.parse("یهوذ 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("YŪD 1:1").osis()).toEqual("Jude.1.1")
 		expect(p.parse("یهو 1:1").osis()).toEqual("Jude.1.1")
-		`
-		true
-describe "Localized book Tob (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Tob (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Tob (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Tob (fa)", function() {
+      
 		expect(p.parse("Tobit 1:1").osis()).toEqual("Tob.1.1")
 		expect(p.parse("Tob 1:1").osis()).toEqual("Tob.1.1")
-		`
-		true
-describe "Localized book Jdt (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Jdt (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Jdt (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Jdt (fa)", function() {
+      
 		expect(p.parse("Judith 1:1").osis()).toEqual("Jdt.1.1")
 		expect(p.parse("Jdt 1:1").osis()).toEqual("Jdt.1.1")
-		`
-		true
-describe "Localized book Bar (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Bar (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Bar (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Bar (fa)", function() {
+      
 		expect(p.parse("Baruch 1:1").osis()).toEqual("Bar.1.1")
 		expect(p.parse("Bar 1:1").osis()).toEqual("Bar.1.1")
-		`
-		true
-describe "Localized book Sus (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: Sus (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book Sus (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: Sus (fa)", function() {
+      
 		expect(p.parse("Susannah 1:1").osis()).toEqual("Sus.1.1")
 		expect(p.parse("Sus 1:1").osis()).toEqual("Sus.1.1")
-		`
-		true
-describe "Localized book 2Macc (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 2Macc (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 2Macc (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: 2Macc (fa)", function() {
+      
 		expect(p.parse("2 Maccabees 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2 Macc 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2Macc 1:1").osis()).toEqual("2Macc.1.1")
 		expect(p.parse("2 Mc 1:1").osis()).toEqual("2Macc.1.1")
-		`
-		true
-describe "Localized book 3Macc (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 3Macc (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 3Macc (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: 3Macc (fa)", function() {
+      
 		expect(p.parse("3 Maccabees 1:1").osis()).toEqual("3Macc.1.1")
 		expect(p.parse("3 Macc 1:1").osis()).toEqual("3Macc.1.1")
 		expect(p.parse("3Macc 1:1").osis()).toEqual("3Macc.1.1")
 		expect(p.parse("3 Mc 1:1").osis()).toEqual("3Macc.1.1")
-		`
-		true
-describe "Localized book 4Macc (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 4Macc (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 4Macc (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: 4Macc (fa)", function() {
+      
 		expect(p.parse("4 Maccabees 1:1").osis()).toEqual("4Macc.1.1")
 		expect(p.parse("4 Macc 1:1").osis()).toEqual("4Macc.1.1")
 		expect(p.parse("4Macc 1:1").osis()).toEqual("4Macc.1.1")
 		expect(p.parse("4 Mc 1:1").osis()).toEqual("4Macc.1.1")
-		`
-		true
-describe "Localized book 1Macc (fa)", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore",book_sequence_strategy: "ignore",osis_compaction_strategy: "bc",captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
-	it "should handle book: 1Macc (fa)", ->
-		`
+		;
+      return true;
+    });
+  });
+
+  describe("Localized book 1Macc (fa)", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    return it("should handle book: 1Macc (fa)", function() {
+      
 		expect(p.parse("1 Maccabees 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1 Macc 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1Macc 1:1").osis()).toEqual("1Macc.1.1")
 		expect(p.parse("1 Mc 1:1").osis()).toEqual("1Macc.1.1")
-		`
-		true
+		;
+      return true;
+    });
+  });
 
-describe "Miscellaneous tests", ->
-	p = {}
-	beforeEach ->
-		p = new bcv_parser
-		p.set_options book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete"
-		p.include_apocrypha true
+  describe("Miscellaneous tests", function() {
+    var p;
+    p = {};
+    beforeEach(function() {
+      p = new bcv_parser();
+      p.set_options({
+        book_alone_strategy: "ignore",
+        book_sequence_strategy: "ignore",
+        osis_compaction_strategy: "bc",
+        captive_end_digits_strategy: "delete"
+      });
+      return p.include_apocrypha(true);
+    });
+    it("should return the expected language", function() {
+      return expect(p.languages).toEqual(["fa"]);
+    });
+    it("should handle ranges (fa)", function() {
+      expect(p.parse("Titus 1:1 تا 2").osis()).toEqual("Titus.1.1-Titus.1.2");
+      expect(p.parse("Matt 1تا2").osis()).toEqual("Matt.1-Matt.2");
+      return expect(p.parse("Phlm 2 تا 3").osis()).toEqual("Phlm.1.2-Phlm.1.3");
+    });
+    it("should handle chapters (fa)", function() {
+      expect(p.parse("Titus 1:1, باب 2").osis()).toEqual("Titus.1.1,Titus.2");
+      expect(p.parse("Matt 3:4 باب 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, ابواب 2").osis()).toEqual("Titus.1.1,Titus.2");
+      expect(p.parse("Matt 3:4 ابواب 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, فصل 2").osis()).toEqual("Titus.1.1,Titus.2");
+      expect(p.parse("Matt 3:4 فصل 6").osis()).toEqual("Matt.3.4,Matt.6");
+      expect(p.parse("Titus 1:1, فصول 2").osis()).toEqual("Titus.1.1,Titus.2");
+      return expect(p.parse("Matt 3:4 فصول 6").osis()).toEqual("Matt.3.4,Matt.6");
+    });
+    it("should handle verses (fa)", function() {
+      expect(p.parse("Exod 1:1 آیت 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm آیت 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 آیات 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm آیات 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 آیه 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm آیه 6").osis()).toEqual("Phlm.1.6");
+      expect(p.parse("Exod 1:1 آیات 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      return expect(p.parse("Phlm آیات 6").osis()).toEqual("Phlm.1.6");
+    });
+    it("should handle 'and' (fa)", function() {
+      expect(p.parse("Exod 1:1 ، 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm 2 ، 6").osis()).toEqual("Phlm.1.2,Phlm.1.6");
+      expect(p.parse("Exod 1:1 ؛ 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      expect(p.parse("Phlm 2 ؛ 6").osis()).toEqual("Phlm.1.2,Phlm.1.6");
+      expect(p.parse("Exod 1:1 ۔ 3").osis()).toEqual("Exod.1.1,Exod.1.3");
+      return expect(p.parse("Phlm 2 ۔ 6").osis()).toEqual("Phlm.1.2,Phlm.1.6");
+    });
+    it("should handle titles (fa)", function() {
+      expect(p.parse("Ps 3 title, 4:2, 5:title").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
+      return expect(p.parse("PS 3 TITLE, 4:2, 5:TITLE").osis()).toEqual("Ps.3.1,Ps.4.2,Ps.5.1");
+    });
+    it("should handle 'ff' (fa)", function() {
+      expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
+      return expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual("Rev.3-Rev.22,Rev.4.2-Rev.4.11");
+    });
+    it("should handle translations (fa)", function() {
+      expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
+      return expect(p.parse("lev 1 erv").osis_and_translations()).toEqual([["Lev.1", "ERV"]]);
+    });
+    return it("should handle boundaries (fa)", function() {
+      p.set_options({
+        book_alone_strategy: "full"
+      });
+      expect(p.parse("\u2014Matt\u2014").osis()).toEqual("Matt.1-Matt.28");
+      return expect(p.parse("\u201cMatt 1:1\u201d").osis()).toEqual("Matt.1.1");
+    });
+  });
 
-	it "should return the expected language", ->
-		expect(p.languages).toEqual ["fa"]
-
-	it "should handle ranges (fa)", ->
-		expect(p.parse("Titus 1:1 تا 2").osis()).toEqual "Titus.1.1-Titus.1.2"
-		expect(p.parse("Matt 1تا2").osis()).toEqual "Matt.1-Matt.2"
-		expect(p.parse("Phlm 2 تا 3").osis()).toEqual "Phlm.1.2-Phlm.1.3"
-	it "should handle chapters (fa)", ->
-		expect(p.parse("Titus 1:1, باب 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 باب 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, ابواب 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 ابواب 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, فصل 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 فصل 6").osis()).toEqual "Matt.3.4,Matt.6"
-		expect(p.parse("Titus 1:1, فصول 2").osis()).toEqual "Titus.1.1,Titus.2"
-		expect(p.parse("Matt 3:4 فصول 6").osis()).toEqual "Matt.3.4,Matt.6"
-	it "should handle verses (fa)", ->
-		expect(p.parse("Exod 1:1 آیت 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm آیت 6").osis()).toEqual "Phlm.1.6"
-		expect(p.parse("Exod 1:1 آیات 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm آیات 6").osis()).toEqual "Phlm.1.6"
-		expect(p.parse("Exod 1:1 آیه 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm آیه 6").osis()).toEqual "Phlm.1.6"
-		expect(p.parse("Exod 1:1 آیات 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm آیات 6").osis()).toEqual "Phlm.1.6"
-	it "should handle 'and' (fa)", ->
-		expect(p.parse("Exod 1:1 ، 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 ، 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
-		expect(p.parse("Exod 1:1 ؛ 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 ؛ 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
-		expect(p.parse("Exod 1:1 ۔ 3").osis()).toEqual "Exod.1.1,Exod.1.3"
-		expect(p.parse("Phlm 2 ۔ 6").osis()).toEqual "Phlm.1.2,Phlm.1.6"
-	it "should handle titles (fa)", ->
-		expect(p.parse("Ps 3 title, 4:2, 5:title").osis()).toEqual "Ps.3.1,Ps.4.2,Ps.5.1"
-		expect(p.parse("PS 3 TITLE, 4:2, 5:TITLE").osis()).toEqual "Ps.3.1,Ps.4.2,Ps.5.1"
-	it "should handle 'ff' (fa)", ->
-		expect(p.parse("Rev 3ff, 4:2ff").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
-		expect(p.parse("REV 3 FF, 4:2 FF").osis()).toEqual "Rev.3-Rev.22,Rev.4.2-Rev.4.11"
-	it "should handle translations (fa)", ->
-		expect(p.parse("Lev 1 (ERV)").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
-		expect(p.parse("lev 1 erv").osis_and_translations()).toEqual [["Lev.1", "ERV"]]
-	it "should handle boundaries (fa)", ->
-		p.set_options {book_alone_strategy: "full"}
-		expect(p.parse("\u2014Matt\u2014").osis()).toEqual "Matt.1-Matt.28"
-		expect(p.parse("\u201cMatt 1:1\u201d").osis()).toEqual "Matt.1.1"
+}).call(this);
