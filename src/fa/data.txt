@@ -4,7 +4,7 @@ $THIRD	III	سه	سوم	۳	3	Seh	Sevom
 $FOURTH	IV	چهار	چهارم	۴	4	Chahar	Chaharom
 $GOSPEL	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل از	انجیل بر اساس	انجیل از	انجیل بر اساس	انجیل	سنت
 $AB	[a-e]
-$AND	،	.	؛
+$AND	،	؛	۔
 # Google Translate
 $CHAPTER	باب	ابواب	فصل	فصول
 $FF	ff
@@ -15,7 +15,7 @@ $TO	تا
 # Google Translate
 $VERSE	آیت	آیات	آیه	آیات
 $COLLAPSE_COMBINING_CHARACTERS	false
-$BOUNDARY_CHARACTERS	،	.	؛	,	;	۔
+$BOUNDARY_CHARACTERS	،	؛	۔
 $UNICODE_BLOCK	Arabic	Latin
 
 Gen	Gen	Pedaayesh	Pedaish	Pedaiyesh	Pedaiyeshh	Pedaiyishe	Pedyesh	Pidaayesh	Pidaayishe	Pidaish	Pidaiyesh	Pidaiyish	Pidayesh	pedā	pedāy	pedāyesh	پيدايش	پيدايشه	پيدايیش	پيدایش	پید	پیدا	پیداش	پیداىش	پیداىیش	پیدايش	پیدايشه	پیدايیش	پیدای	پیدایث	پیدایس	پیدایش	پیدایىش	پیدایچ	پیدایژ
