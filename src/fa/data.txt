@@ -1,0 +1,279 @@
+$FIRST	I	یکم	یک	اول	۱	1	Yekom	Yek	Avval
+$SECOND	II	دو	دوم	۲	2	Do	Dovvom
+$THIRD	III	سه	سوم	۳	3	Seh	Sevom
+$FOURTH	IV	چهار	چهارم	۴	4	Chahar	Chaharom
+$GOSPEL	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل از	انجیل بر اساس	انجیل از	انجیل بر اساس	انجیل	سنت
+$AB	[a-e]
+$AND	،	؛	۔
+# Google Translate
+$CHAPTER	باب	ابواب	فصل	فصول
+$FF	ff
+$TITLE	title
+$TRANS	ERV
+# Google: "آیات 1" bible
+$TO	تا
+# Google Translate
+$VERSE	آیت	آیات	آیه	آیات
+$COLLAPSE_COMBINING_CHARACTERS	false
+$BOUNDARY_CHARACTERS	،	؛	۔
+$UNICODE_BLOCK	Arabic	Latin
+
+Gen	Gen	Pedaayesh	Pedaish	Pedaiyesh	Pedaiyeshh	Pedaiyishe	Pedyesh	Pidaayesh	Pidaayishe	Pidaish	Pidaiyesh	Pidaiyish	Pidayesh	pedā	pedāy	pedāyesh	پيدايش	پيدايشه	پيدايیش	پيدایش	پید	پیدا	پیداش	پیداىش	پیداىیش	پیدايش	پیدايشه	پیدايیش	پیدای	پیدایث	پیدایس	پیدایش	پیدایىش	پیدایچ	پیدایژ
+Exod	Exod	Kharooj	Khoroj	Khoroje	Khorojeh	Khorojy	Khorooj	Khoroouj	Khoruj	Khrawj	Khrooj	Khrouj	khorj	khoroj	khorojī	khorr	khorro	خر	خراج	خراوج	خراوچ	خراوژ	خرج	خرو	خروج	خروجه	خروجی	خرود	خرووج	خرووچ	خرووژ	خروُج	خروچ	خروژ	خرُج
+Lev	Laawian	Lavayan	Lavian	Lavvyian	Lavyyan	Lawayan	Laweyan	Lawian	Lawyaan	Lev	law	lawi	lawiy	lawiān	leviy	لاءویان	لاؤیان	لائویان	لاو	لاوئیان	لاوویان	لاويان	لاویاان	لاویان	لاویانن	لاویانه	لاویانی	لاویت	لاوییان	لاویین	لوی	لویان
+Num	A'daad	A'dad	A'edaad	Adad	Aedaad	Aedada	Aedadd	E'daad	E'edaad	Eadad	Num	adad	adadi	adadiān	adadī	اعاد	اعتاد	اعد	اعدا	اعدااد	اعدات	اعداد	اعدادد	اعداده	اعدادی	اعداذ	اعداز	اعداود	اعدد	اعدداد	عداد
+Deut	Deut	Tasnieh	Tesnah	Tesniah	Tesnieh	Tesniye	Tesniyeh	Tesnyeh	Tessniyeh	ts	tsn	tsniyeh	تث	تثن	تثنئه	تثنه	تثنی	تثنیا	تثنیه	تثنیها	تثنیهه	تثنیهی	تثنیو	تسنیه	تصنیه
+Josh	Josh	Yosh'ua	Yosha	Yoshu'a	Yoshua	Yoshuah	Yowshua	Yusha	Yushua	yūsh'a	yūsh'ai	yūsh'ā	یوش	یوشئع	یوشا	یوشع	یوشعع	یوشعه	یوشعو	یوشعی	یوشهع	یوشوع	یوشیع	یووشا	یووشع
+Judg	Davaran	Davaranan	Davarane	Davooran	Davran	Dawaran	Dawooran	Judg	داو	داواران	داوارانه	داوارن	داور	داوراان	داوران	داورانن	داورانه	داورران	داورن	داووران	داوورانه	داوورن
+Ruth	Root	Roote	Rooth	Rut	Ruth	Ruti	rūth	rūthī	rūtī	روت	روتت	روتـ	روته	روتی	روث	روط	رۆت
+1Sam	1 Samoeil	1 Samouel	1 Samoweyl	1 Samowil	1 Samu'il	1 Samuel	1 Samuil	1 Samuwil	1 Samweil	1 Samwiil	1Sam	1Samoeil	1Samouel	1Samoweyl	1Samowil	1Samu'il	1Samuel	1Samuil	1Samuwil	1Samweil	1Samwiil	1sm	1سم	Avval Samoeil	Avval Samouel	Avval Samoweyl	Avval Samowil	Avval Samu'il	Avval Samuel	Avval Samuil	Avval Samuwil	Avval Samweil	Avval Samwiil	Avval samoeil	Avval samouel	Avval samoweyl	Avval samowil	Avval samu'il	Avval samuel	Avval samuil	Avval samuwil	Avval samweil	Avval samwiil	AvvalSam	AvvalSamoeil	AvvalSamouel	AvvalSamoweyl	AvvalSamowil	AvvalSamu'il	AvvalSamuel	AvvalSamuil	AvvalSamuwil	AvvalSamweil	AvvalSamwiil	Avvalsamoeil	Avvalsamouel	Avvalsamoweyl	Avvalsamowil	Avvalsamu'il	Avvalsamuel	Avvalsamuil	Avvalsamuwil	Avvalsamweil	Avvalsamwiil	Yek samoeil	Yek samouel	Yek samoweyl	Yek samowil	Yek samu'il	Yek samuel	Yek samuil	Yek samuwil	Yek samweil	Yek samwiil	Yeksamoeil	Yeksamouel	Yeksamoweyl	Yeksamowil	Yeksamu'il	Yeksamuel	Yeksamuil	Yeksamuwil	Yeksamweil	Yeksamwiil	avval samu'īl	avvals	اول سمؤیل	اول سمئویل	اول سموءیل	اول سموئئیل	اول سموئل	اول سموئيل	اول سموئیل	اول سموئیلہ	اول سموئیلی	اول سموئییل	اول سموائیل	اول سموایل	اول سمویل	اول سموییل	اولس	اولسمؤیل	اولسمئویل	اولسموءیل	اولسموئئیل	اولسموئل	اولسموئيل	اولسموئیل	اولسموئیلہ	اولسموئیلی	اولسموئییل	اولسموائیل	اولسموایل	اولسمویل	اولسموییل	یک سمؤیل	یک سمئویل	یک سموءیل	یک سموئئیل	یک سموئل	یک سموئيل	یک سموئیل	یک سموئیلہ	یک سموئیلی	یک سموئییل	یک سموائیل	یک سموایل	یک سمویل	یک سموییل	یکسمؤیل	یکسمئویل	یکسموءیل	یکسموئئیل	یکسموئل	یکسموئيل	یکسموئیل	یکسموئیلہ	یکسموئیلی	یکسموئییل	یکسموائیل	یکسموایل	یکسمویل	یکسموییل	۱ سمؤیل	۱ سمئویل	۱ سموءیل	۱ سموئئیل	۱ سموئل	۱ سموئيل	۱ سموئیل	۱ سموئیلہ	۱ سموئیلی	۱ سموئییل	۱ سموائیل	۱ سموایل	۱ سمویل	۱ سموییل	۱sm	۱smu	۱sāmu	۱سامو	۱سم	۱سمؤیل	۱سمئویل	۱سمو	۱سموءیل	۱سموئئیل	۱سموئل	۱سموئيل	۱سموئیل	۱سموئیلہ	۱سموئیلی	۱سموئییل	۱سموائیل	۱سموایل	۱سمویل	۱سموییل
+2Sam	2 Samoeil	2 Samouel	2 Samoweyl	2 Samowil	2 Samu'il	2 Samuel	2 Samuil	2 Samuwil	2 Samweil	2 Samwiil	2Sam	2Samoeil	2Samouel	2Samoweyl	2Samowil	2Samu'il	2Samuel	2Samuil	2Samuwil	2Samweil	2Samwiil	2sm	2سم	Do samoeil	Do samouel	Do samoweyl	Do samowil	Do samu'il	Do samuel	Do samuil	Do samuwil	Do samweil	Do samwiil	Dosamoeil	Dosamouel	Dosamoweyl	Dosamowil	Dosamu'il	Dosamuel	Dosamuil	Dosamuwil	Dosamweil	Dosamwiil	Dovom Samoeil	Dovom Samouel	Dovom Samoweyl	Dovom Samowil	Dovom Samu'il	Dovom Samuel	Dovom Samuil	Dovom Samuwil	Dovom Samweil	Dovom Samwiil	Dovom samoeil	Dovom samouel	Dovom samoweyl	Dovom samowil	Dovom samu'il	Dovom samuel	Dovom samuil	Dovom samuwil	Dovom samweil	Dovom samwiil	DovomSam	DovomSamoeil	DovomSamouel	DovomSamoweyl	DovomSamowil	DovomSamu'il	DovomSamuel	DovomSamuil	DovomSamuwil	DovomSamweil	DovomSamwiil	Dovomsamoeil	Dovomsamouel	Dovomsamoweyl	Dovomsamowil	Dovomsamu'il	Dovomsamuel	Dovomsamuil	Dovomsamuwil	Dovomsamweil	Dovomsamwiil	dovvom samu'īl	dovvoms	دو سمؤیل	دو سمئویل	دو سموءیل	دو سموئئیل	دو سموئل	دو سموئيل	دو سموئیل	دو سموئیلہ	دو سموئیلی	دو سموئییل	دو سموائیل	دو سموایل	دو سمویل	دو سموییل	دوسمؤیل	دوسمئویل	دوسموءیل	دوسموئئیل	دوسموئل	دوسموئيل	دوسموئیل	دوسموئیلہ	دوسموئیلی	دوسموئییل	دوسموائیل	دوسموایل	دوسمویل	دوسموییل	دوم سمؤیل	دوم سمئویل	دوم سموءیل	دوم سموئئیل	دوم سموئل	دوم سموئيل	دوم سموئیل	دوم سموئیلہ	دوم سموئیلی	دوم سموئییل	دوم سموائیل	دوم سموایل	دوم سمویل	دوم سموییل	دومس	دومسمؤیل	دومسمئویل	دومسموءیل	دومسموئئیل	دومسموئل	دومسموئيل	دومسموئیل	دومسموئیلہ	دومسموئیلی	دومسموئییل	دومسموائیل	دومسموایل	دومسمویل	دومسموییل	۲ سمؤیل	۲ سمئویل	۲ سموءیل	۲ سموئئیل	۲ سموئل	۲ سموئيل	۲ سموئیل	۲ سموئیلہ	۲ سموئیلی	۲ سموئییل	۲ سموائیل	۲ سموایل	۲ سمویل	۲ سموییل	۲sm	۲smu	۲sāmu	۲سامو	۲سم	۲سمؤیل	۲سمئویل	۲سمو	۲سموءیل	۲سموئئیل	۲سموئل	۲سموئيل	۲سموئیل	۲سموئیلہ	۲سموئیلی	۲سموئییل	۲سموائیل	۲سموایل	۲سمویل	۲سموییل
+1Kgs	1 Padeshahan	1 Padeshahnan	1 Padeshahon	1 Padishahan	1 Padshahan	1 Padshahon	1Kgs	1Padeshahan	1Padeshahnan	1Padeshahon	1Padishahan	1Padshahan	1Padshahon	1pād	1پاد	Avval Padeshahan	Avval Padeshahnan	Avval Padeshahon	Avval Padishahan	Avval Padshahan	Avval Padshahon	Avval padeshahan	Avval padeshahnan	Avval padeshahon	Avval padishahan	Avval padshahan	Avval padshahon	AvvalKgs	AvvalPadeshahan	AvvalPadeshahnan	AvvalPadeshahon	AvvalPadishahan	AvvalPadshahan	AvvalPadshahon	Avvalpadeshahan	Avvalpadeshahnan	Avvalpadeshahon	Avvalpadishahan	Avvalpadshahan	Avvalpadshahon	Yek padeshahan	Yek padeshahnan	Yek padeshahon	Yek padishahan	Yek padshahan	Yek padshahon	Yekpadeshahan	Yekpadeshahnan	Yekpadeshahon	Yekpadishahan	Yekpadshahan	Yekpadshahon	اول پادشاها	اول پادشاهاان	اول پادشاهان	اول پادشاهن	اول پادشهان	اولپ	اولپادشاها	اولپادشاهاان	اولپادشاهان	اولپادشاهن	اولپادشهان	یک پادشاها	یک پادشاهاان	یک پادشاهان	یک پادشاهن	یک پادشهان	یکپادشاها	یکپادشاهاان	یکپادشاهان	یکپادشاهن	یکپادشهان	۱ پادشاها	۱ پادشاهاان	۱ پادشاهان	۱ پادشاهن	۱ پادشهان	۱pā	۱pād	۱pādsh	۱پا	۱پاد	۱پادش	۱پادشاها	۱پادشاهاان	۱پادشاهان	۱پادشاهن	۱پادشهان
+2Kgs	2 Padeshahan	2 Padeshahnan	2 Padeshahon	2 Padishahan	2 Padshahan	2 Padshahon	2Kgs	2Padeshahan	2Padeshahnan	2Padeshahon	2Padishahan	2Padshahan	2Padshahon	2pād	2پاد	Do padeshahan	Do padeshahnan	Do padeshahon	Do padishahan	Do padshahan	Do padshahon	Dopadeshahan	Dopadeshahnan	Dopadeshahon	Dopadishahan	Dopadshahan	Dopadshahon	Dovom Padeshahan	Dovom Padeshahnan	Dovom Padeshahon	Dovom Padishahan	Dovom Padshahan	Dovom Padshahon	Dovom padeshahan	Dovom padeshahnan	Dovom padeshahon	Dovom padishahan	Dovom padshahan	Dovom padshahon	DovomKgs	DovomPadeshahan	DovomPadeshahnan	DovomPadeshahon	DovomPadishahan	DovomPadshahan	DovomPadshahon	Dovompadeshahan	Dovompadeshahnan	Dovompadeshahon	Dovompadishahan	Dovompadshahan	Dovompadshahon	دو پادشاها	دو پادشاهاان	دو پادشاهان	دو پادشاهن	دو پادشهان	دوم پادشاها	دوم پادشاهاان	دوم پادشاهان	دوم پادشاهن	دوم پادشهان	دومپ	دومپادشاها	دومپادشاهاان	دومپادشاهان	دومپادشاهن	دومپادشهان	دوپادشاها	دوپادشاهاان	دوپادشاهان	دوپادشاهن	دوپادشهان	۲ پادشاها	۲ پادشاهاان	۲ پادشاهان	۲ پادشاهن	۲ پادشهان	۲pā	۲pād	۲pādsh	۲پا	۲پاد	۲پادش	۲پادشاها	۲پادشاهاان	۲پادشاهان	۲پادشاهن	۲پادشهان
+1Chr	1 Tawarikh	1 Toarikh	1 Towarikh	1 Towarykh	1 Towrikh	1Chr	1Tawarikh	1Toarikh	1Towarikh	1Towarykh	1Towrikh	1tawā	1توا	Avval Tawarikh	Avval Toarikh	Avval Towarikh	Avval Towarykh	Avval Towrikh	Avval tawarikh	Avval toarikh	Avval towarikh	Avval towarykh	Avval towrikh	AvvalChr	AvvalTawarikh	AvvalToarikh	AvvalTowarikh	AvvalTowarykh	AvvalTowrikh	Avvaltawarikh	Avvaltoarikh	Avvaltowarikh	Avvaltowarykh	Avvaltowrikh	Yek tawarikh	Yek toarikh	Yek towarikh	Yek towarykh	Yek towrikh	Yektawarikh	Yektoarikh	Yektowarikh	Yektowarykh	Yektowrikh	avval tawārikh	avvalt	اول توارخ	اول تواريخ	اول تواریخ	اول تواریک	اول تواریکه	اولت	اولتوارخ	اولتواريخ	اولتواریخ	اولتواریک	اولتواریکه	یک توارخ	یک تواريخ	یک تواریخ	یک تواریک	یک تواریکه	یکتوارخ	یکتواريخ	یکتواریخ	یکتواریک	یکتواریکه	۱ توارخ	۱ تواريخ	۱ تواریخ	۱ تواریک	۱ تواریکه	۱tow	۱towār	۱towāri	۱تو	۱توار	۱توارخ	۱تواريخ	۱تواری	۱تواریخ	۱تواریک	۱تواریکه
+2Chr	2 Tawarikh	2 Toarikh	2 Towarikh	2 Towarykh	2 Towrikh	2Chr	2Tawarikh	2Toarikh	2Towarikh	2Towarykh	2Towrikh	2tawā	2توا	Do tawarikh	Do toarikh	Do towarikh	Do towarykh	Do towrikh	DoTawarikh	DoToarikh	DoTowarikh	DoTowarykh	DoTowrikh	Dovom Tawarikh	Dovom Toarikh	Dovom Towarikh	Dovom Towarykh	Dovom Towrikh	Dovom tawarikh	Dovom toarikh	Dovom towarikh	Dovom towarykh	Dovom towrikh	DovomChr	DovomTawarikh	DovomToarikh	DovomTowarikh	DovomTowarykh	DovomTowrikh	dovvom tawārikh	dovvomt	دو توارخ	دو تواريخ	دو تواریخ	دو تواریک	دو تواریکه	دوتوارخ	دوتواريخ	دوتواریخ	دوتواریک	دوتواریکه	دوم توارخ	دوم تواريخ	دوم تواریخ	دوم تواریک	دوم تواریکه	دومت	دومتوارخ	دومتواريخ	دومتواریخ	دومتواریک	دومتواریکه	۲ توارخ	۲ تواريخ	۲ تواریخ	۲ تواریک	۲ تواریکه	۲tow	۲towār	۲towāri	۲تو	۲توار	۲توارخ	۲تواريخ	۲تواری	۲تواریخ	۲تواریک	۲تواریکه
+Ezra	Ezra	Ezra a	Ezra h	Ezraa	Ezrah	Izra	Izra a	Izra h	Izraa	Izrah	ezr	ezrā	ezrāy	ع ذرا	ع زرا	ع زراء	ع زره	عذرا	عزر	عزرا	عزراء	عزرای	عزره	عِ ذرا	عِ زرا	عِ زراء	عِ زره	عِذرا	عِزرا	عِزراء	عِزره
+Neh	Neh	Neheemia	Neheemya	Nehemia	Nehemya	Nehimia	Nehimya	Nihemia	nīmiā	nīmiān	nīmī	نحم	نحمی	نحمیا	نحمیه	نِ حِمیا	نِحمیا	نِحِم	نِحِم یا	نِحِمی	نِحِمیا	نِحِمیاء	نِحِمیاه	نِحِمیاً	نِحِمیّا	نِحِمیّه
+Esth	Estehr	Ester	Esth	Esther	Esthr	Estr	ast	ester	esterh	است	استر	استره	استِر	اِ ستر	اِستر	اِستره	اِستـر	اِستَر	اِسطر	اِسٹر
+Job	Aioub	Aiub	Aiyoob	Ayobe	Ayoub	Ayub	Ayuub	Ayyoob	Ayyoub	Ayyub	Eioub	Eiyoob	Eyub	Eyyub	Iyoub	Job	ayū	ayūb	ayūbi	آیوب	ئیوب	ا یوب	اِوب	اِیوب	اِیوُب	ای وب	ایـوب	ایو	ایوب	ایوبه	ایوبَ	ایوبی	ایووب	ایوُب	ایوُبی	ایوپ	ایُوب	ایُوُب	ایّ	ایّوب
+# These are based on actual misspellings
+Ps	Maz moor	Maz mor	Mazamoor	Mazamor	Mazamore	Mazamoure	Mazamu'r	Mazamuhr	Mazamuor	Mazamur	Mazamurah	Mazamure	Mazamuur	Mazmoor	Mazmor	Mazmore	Mazmoure	Mazmu'r	Mazmuhr	Mazmuor	Mazmur	Mazmurah	Mazmure	Mazmuur	Mez moor	Mezamur	Mezmur	Miz moor	Mizamoor	Mizamur	Mizmoor	Mizmur	Ps	mazm	mazmūr	mazmūrī	zabūr	زبور	مز مور	مزا	مزامیر	مززمور	مزم	مزممور	مزمو	مزمور	مزمورر	مزموره	مزموور	مزموَر	مزموُر	مزموُرر	مزموُور	مزمَور	مزمُ	مزمُر	مزمُور	مزمُورر	مزمُُر	مزمّور	مظمور	مَزمور	مَزموُر	مَزمُر	مِزمور	مِزموُر
+Prov	Am sal	Am sale	Am thal	Am thale	Am thals	Amsaal	Amsal	Amthaal	Amthael	Amthal	Amthale	Amthaleh	Amthall	Amthals	Amthel	Prov	a'mthā	a'mthāl	a'mthāli	amsāl	hikm	hikmā	hikmāt	امث	امثآل	امثا	امثاال	امثال	امثالل	امثـال	امثل	امثل ل	امثلا	امثلاء	امثلاءل	امثلال	امثلل	امثله	امصال	امصل
+Eccl	Eccl	Jam ae	Jam aeh	Jam'a	Jam'ah	Jam'at	Jam3a	Jam3ah	Jama'a	Jama'ah	Jama'at	Jamaa	Jamaah	Jamaih	jām	jāme'	jāme'eh	kolliyāt	جام	جامع	جامع ه	جامعا	جامعـه	جامعه	جامعهـ	جامعهه	جامعهی	جامعۀ	جامعہ	جامعیه	جامـعه	جامهع	جامہع	کلیات
+Song	Ghazal Ghazal ha	Ghazal Ghazal-ha	Ghazal Ghazal_ha	Ghazal Ghazal_haa	Ghazal Ghazalha	Ghazal Ghazalhaa	Ghazal Ghazalhaaa	Ghazal-Ghazal-ha	Ghazal-Ghazalha	GhazalGhazal ha	GhazalGhazal-ha	GhazalGhazal_ha	GhazalGhazalha	GhazalGhazalhaa	Ghazal_Ghazal-ha	Ghazal_Ghazal_haa	Ghazal_Ghazalha	Ghazal_Ghazalhaa	Ghazl Ghazal-ha	Ghazl Ghazal_ha	Ghazl Ghazal_haa	Ghazl Ghazalha	Ghazl Ghazalhaa	Ghazl Ghazalhaaa	Ghazl-Ghazal-ha	Ghazl-Ghazalha	GhazlGhazal-ha	GhazlGhazal_ha	GhazlGhazalha	GhazlGhazalhaa	Ghazl_Ghazal-ha	Ghazl_Ghazal_haa	Ghazl_Ghazalha	Ghazl_Ghazalhaa	Song	shīr	shīri	shīrā	shīrāy	sol	solomon	غزل غزل ها	غزل غزل هاا	غزل غزلها	غزل غزلهاا	غزل غزلۀ ها	غزل غزل‌ها	غزلغ	غزلغزل ها	غزلغزل هاا	غزلغزلها	غزلۀ غزلها	غزلۀ غزلۀ ها	غزلی	غزلیات	غزل‌غزل‌ها
+Isa	Ashaiya	Ashaya	Ayshaiya	Ayshaya	Esh'ya	Esha'iya	Esha'ya	Esha'yaa	Eshaaya	Eshaiya	Eshaiyah	Eshaya	Eshayaa	Eshayya	Eshayyah	Esheya'a	Esheyaa	Eysh'ya	Eysha'iya	Eysha'ya	Eysha'yaa	Eyshaaya	Eyshaiya	Eyshaiyah	Eyshaya	Eyshayaa	Eyshayya	Eyshayyah	Eysheya'a	Eysheyaa	Isa	Isha'ya	Ishaiyah	Ishaya	Ishayaa	Iysha'ya	Iyshaiyah	Iyshaya	Iyshayaa	esh'a	esh'ā	esh'āyā	īsh	īshiā	ا شعیا	اش 3یا	اش3یا	اشع	اشع یا	اشع یاه	اشعي	اشعي یا	اشعيا	اشعيا يا	اشعيا یا	اشعياء	اشعيائ	اشعياا	اشعياه	اشعيه	اشعيها	اشعيى	اشعيی	اشعيیا	اشعی	اشعی یا	اشعیآ	اشعیا	اشعیا يا	اشعیا یا	اشعیاء	اشعیائ	اشعیاا	اشعیاه	اشعیه	اشعیها	اشعیى	اشعیی	اشعییا	اِشعیا	ایش	ایشیا
+Jer	Erm'iah	Erm'ya	Erm'yaa	Erm'yaah	Erm'yaaha	Ermeia	Ermeiyah	Ermeya	Ermeyaa	Ermeyaah	Ermeyah	Ermeyahh	Ermia	Ermia'h	Ermiaa	Ermiaah	Ermiah	Ermiaha	Ermiya	Ermiyah	Irm'iah	Irm'ya	Irm'yaaha	Irmeia	Irmeiyah	Irmeya	Irmeyaa	Irmeyaah	Irmeyah	Irmeyahh	Irmia	Irmia'h	Irmiaa	Irmiaah	Irmiah	Irmiaha	Irmiya	Irmiyah	Jer	Yrm'iah	Yrm'ya	Yrm'yaa	Yrm'yaah	Yrm'yaaha	Yrmeia	Yrmeiyah	Yrmeya	Yrmeyaa	Yrmeyaah	Yrmeyah	Yrmeyahh	Yrmia	Yrmia'h	Yrmiaa	Yrmiaah	Yrmiah	Yrmiaha	Yrmiya	Yrmiyah	yirmiy	yirmī	yirmīy	yirmīyā	ا رمیا	ار میا	ارم	ارمی	ارمیا	ارمیاء	ارمیاا	ارمیاه	ارمیه	ارمیى	ارمییا	ارمییه	اِر 3ا	اِر میا	اِرم یا	اِرميا	اِرمياء	اِرمياا	اِرميیا	اِرمی یا	اِرمی یه	اِرمیا	اِرمیا يا	اِرمیا یا	اِرمیاء	اِرمیاءه	اِرمیاءى	اِرمیائه	اِرمیاا	اِرمیاه	اِرمیاها	اِرمیاى	اِرمیه	اِرمیها	اِرمیى	اِرمییا	اِرمییه
+Lam	Lam	Marath'iy	Marath'iya	Marathi	Marathi Erm'ya	Marathi Erm'yaah	Marathi Ermeia	Marathi Ermeya	Marathi Ermeyah	Marathi Ermia	Marathi Ermiaa	Marathi Ermiya	Marathi Ermiyah	Marathi Erya	Marathi Eryaa	Marathi Eryaah	Marathi Eryah	Marathi Eryaha	Marathi Eryaiya	Marathi Eryaiyah	Marathi Eryeia	Marathi Eryiaa	Marathi Eryiaah	Marathi Eryiaha	Marathi Irm'ya	Marathi Irm'yaah	Marathi Irmeia	Marathi Irmeya	Marathi Irmeyah	Marathi Irmia	Marathi Irmiaa	Marathi Irmiya	Marathi Irmiyah	Marathi'i	Marathi'ya	Marathia	Marathiah	Marathie	Marathieh	Marathiey	Marathieya	Marathieyah	Marathiy	Marathiy'a	Marathiya	Marathiyaah	Marathiyah	Marathiye	Marathiyeh	Marathiyy	Marathiyya	Marathiyyah	marzīyeh	āh	āheng	مرا	مراتهی	مراتی	مراث	مراثئ	مراثئی	مراثئیه	مراثى	مراثي	مراثيه	مراثيى	مراثی	مراثی ارم یا	مراثی ارمي یا	مراثی ارميا	مراثی ارمی یا	مراثی ارمیا	مراثی ارمیاءی	مراثی ارمیائه	مراثی ارمیاه	مراثی ارمیه	مراثی ارمیى	مراثی ارمییا	مراثی ارمییه	مراثی اِرم یا	مراثی اِرميا	مراثی اِرمياا	مراثی اِرميه	مراثی اِرمی یا	مراثی اِرمی یه	مراثی اِرمیا	مراثی اِرمیاء	مراثی اِرمیاءه	مراثی اِرمیاءى	مراثی اِرمیائه	مراثی اِرمیائی	مراثی اِرمیاا	مراثی اِرمیاه	مراثی اِرمیاى	مراثی اِرمیه	مراثی اِرمیى	مراثی اِرمییا	مراثی اِرمییه	مراثی یا	مراثی یه	مراثی یى	مراثی یی	مراثی ییئ	مراثی ییا	مراثی ییه	مراثیئ	مراثیئ یا	مراثیئ یه	مراثیئ یی	مراثیئه	مراثیا	مراثیاء	مراثیاءه	مراثیائه	مراثیائی	مراثیاه	مراثیه	مراثیها	مراثیهه	مراثیى	مراثیى یه	مراثیى یی	مراثیىه	مراثیی یا	مراثیی یه	مراثییئ	مراثییئ یی	مراثییئه	مراثییا	مراثییه
+Ezek	Ezek	Hizkiyael	Hizkiyaelh	Hizkiyail	Hizkiyailh	Hizkiyal	Hizkiyalh	Hizqeyael	Hizqeyail	Hizqeyal	Hizqiy'aal	Hizqiy'al	Hizqiya'l	Hizqiyaal	Hizqiyaalh	Hizqiyael	Hizqiyaelh	Hizqiyahal	Hizqiyahl	Hizqiyail	Hizqiyailh	Hizqiyal	Hizqiyalh	Hizqiyalha	hazq	hazqiāl	hazqī	hazqīl	حزق	حزقی	حزقیئال	حزقیئل	حزقیائل	حزقیال	حزقیايل	حزقیل	حزقییال	حزکیئل	حزکیائل	حزکیال	حزکیايل	حزکییال	حِزقال	حِزقیئال	حِزقیئل	حِزقیا	حِزقیا ل	حِزقیائل	حِزقیائله	حِزقیاال	حِزقیال	حِزقیالله	حِزقیاله	حِزقیالی	حِزقیايل	حِزقیل	حِزقیلی	حِزقییائل	حِزقییائله	حِزقییال	حِزقییاله	حِزقییل	حِزِقیال	حِزکال	حِزکیئال	حِزکیئل	حِزکیائل	حِزکیائله	حِزکیال	حِزکیالله	حِزکیالی	حِزکیايل	حِزکیل	حِزکیلی	حِزکییال
+Dan	Dan	Daniel	Daniyael	Daniyaelh	Daniyahl	Daniyail	Daniyailh	Daniyal	Daniyel	Danyael	Danyaelh	Danyahl	Danyail	Danyailh	Danyal	Danyel	dān	dāniāl	dānī	dānīl	دان	دانيئل	دانيئلله	دانيئلی	دانيائل	دانيائلله	دانيائله	دانيائلی	دانيال	دانيالله	دانيالی	دانيايل	دانيلی	دانيیال	دانيیل	دانی	دانیئل	دانیئلله	دانیئلی	دانیائل	دانیائلله	دانیائله	دانیائلی	دانیال	دانیالله	دانیالی	دانیايل	دانیل	دانیلی	دانییال	دانییل
+Hos	Hos	Hoshae	Hoshaeah	Hoshe	Hoshea	Hosheah	Husha	Hushae	Hushaeh	Hushe	Hushea	Husheah	hosh	hosh'a	hosh'ai	هوش	هوش؏	هوش؏ع	هوش؏عع	هوش؏ه	هوشئع	هوشئعع	هوشاع	هوشاعع	هوشع	هوشعع	هوشععه	هوشعل	هوشعلل	هوشعه	هوشعی	هوشعیی
+Joel	Jo'el	Joael	Joeal	Joeil	Joel	Yoeil	Yoo'eil	Yoo'el	Yoo'iel	Yoo'iil	Yooael	Yooeal	Yooeil	Yooel	Yooil	Yuoil	yū'īl	yū'īli	یوئ	یوئئیل	یوئئیلـ	یوئئیلل	یوئئیله	یوئئیلی	یوئئییل	یوئئییلـ	یوئل	یوئیئل	یوئیئلل	یوئیئلی	یوئیل	یوئیلـ	یوئیلل	یوئیله	یوئیلہ	یوئیلی	یوئیلیه	یوئیلیہ	یوئیلیی	یوئییل	یوئییلـ	یوئییلل	یوئییله	یوئییلہ	یوئییلی	یوئییلیہ	یووئیل	یووئیلل	یووئییل	یویل
+Amos	Aamoes	Aamooos	Aamooose	Aamoos	Aamoose	Aamos	Aamose	Aamoss	Aamouse	Amooos	Amoose	Amos	Amose	Amous	ām	āmūs	āmūsī	عام	عامس	عاموس	عاموسس	عاموسسس	عاموسسه	عاموسسی	عاموسسیی	عاموسـ	عاموسه	عاموسہ	عاموسی	عاموسیہ	عاموسییہ	عامووس	عامووسس	عامووسسه	عامووسسہ	عامووسسیی	عامووسـ	عامووسه	عامووسہ	عامووسی	عامووسیہ	عامووسیی	عاموووس	عاموووسس	عاموووسسس	عاموووسه	عاموووسہ	عاموووسی	عاموووسیی	عامووووسہ
+Obad	Obad	Obadeya	Obadeyah	Obadia	Obadiah	Obadiya	Obadiyah	Obadiyeh	Obadya	Obadyah	Obedia	Oobadia	Oobadya	Oubadia	Oubadya	obd	obdayyā	obdiyā	عوب	عوبادیا	عوبد	عوبدِیا	عوبدی	عوبدیا	عوبدیاه	عوبدیاى	عوبدیاي	عوبدیاہ	عوبدیای	عوبَديا	عوبَدِیا	عوبَدِیاء	عوبَدی	عوبَدیآ	عوبَدیا	عوبَدیاء	عوبَدیاى	عوبَدیاي	عوبَدیاہ	عوبَدیای	عوبَدیه	عُوبدیا	عُوبَدیا	عُوبَدیاء
+Jonah	Jonah	Jonahs	Jonas	Jonase	Jonass	Jonis	Joonas	Joonis	Jounas	Yonus	Yoonas	Yoones	Yooness	Yoonis	Younas	Younis	Yunas	Yunis	یون	یوناس	یوناسی	یونس	یونسس	یونسسی	یونسـ	یونسه	یونسہ	یونسی	یونش	یونص	یونوس	یونُس	یونیاس	یونیس	یونییس	یووناس	یوونس	یوونوس	یوونیس	یوونییس	یُوناس	یُونس
+Mic	Mic	Micah	Micaha	Mika	Mikaah	Mikaaha	Mikah	Mikahah	Mikha	Mycah	Mykah	Mykaha	mīkhā	mīkhāy	mīkhāyā	ميكاه	ميکاه	میكاه	میک	میکا	میکاءه	میکائه	میکائہ	میکااه	میکاة	میکاه	میکاهء	میکاهئی	میکاهة	میکاهـ	میکاهو	میکاهِ	میکاهہ	میکاهیه	میکاهیی	میکاِه	میکاہئ	میکاہا	میکاہه	میکاہو	میکاہی	میکاۂ	میکای	میکه
+Nah	Naahom	Naahoum	Naahum	Nah	Nahom	Nahoum	Nahum	Nahumme	Nahuum	nāhū	nāhūm	nāhūmi	ناح	ناحم	ناحو	ناحوم	ناحومء	ناحومئ	ناحومئی	ناحوما	ناحومائه	ناحومائہ	ناحومة	ناحومـ	ناحومه	ناحومو	ناحوموو	ناحومہ	ناحومہئ	ناحومہا	ناحومہه	ناحومۂ	ناحومی	ناحومیء	ناحومیئ	ناحومیئی	ناحومیائه	ناحومیائہ	ناحومیة	ناحومیه	ناحومیہ	ناحومیہئ	ناحومیہا	ناحومیہه	ناحومیۂ	ناحومیی	ناحومییء	ناحومییئ	ناحومییه	ناحومیییه	ناحووم	نحوم
+Hab	Hab	Habacook	Habacuc	Habakkook	Habakkuc	Habakkuk	Habakook	Habakuc	Habakuk	Habbacook	Habbacuc	Habbakkuc	Habbakook	Habbakuc	Habbakuk	habaq	habaqū	habaqūq	حبق	حبقو	حبقوق	حَبقوق	حَبَقق	حَبَقوق	حَبَقوقء	حَبَقوقئ	حَبَقوقئی	حَبَقوقا	حَبَقوقائه	حَبَقوقائہ	حَبَقوقة	حَبَقوقـ	حَبَقوقه	حَبَقوقو	حَبَقوقوو	حَبَقوقہ	حَبَقوقہئ	حَبَقوقہا	حَبَقوقہه	حَبَقوقۂ	حَبَقوقی	حَبَقوقیء	حَبَقوقیئ	حَبَقوقیئی	حَبَقوقیائه	حَبَقوقیائہ	حَبَقوقیة	حَبَقوقیه	حَبَقوقیہ	حَبَقوقیہئ	حَبَقوقیہا	حَبَقوقیہه	حَبَقوقیۂ	حَبَقوقیی	حَبَقوقییء	حَبَقوقییئ	حَبَقوقییه	حَبَقوقیییه	حَبَقووق	حَبَقوک
+Zeph	Zefanaya	Zefania	Zefaniah	Zefanya	Zeph	Zephanaya	Zephania	Zephaniah	zof	zofanjā	zofanjī	zofanjīy	صفن	صفنی	صفنیا	صَفانیا	صَفَنیا	صَفَنیاء	صَفَنیاءء	صَفَنیاءة	صَفَنیاءہ	صَفَنیاءۂ	صَفَنیاءی	صَفَنیائء	صَفَنیائة	صَفَنیائه	صَفَنیائہ	صَفَنیائۂ	صَفَنیائی	صَفَنیاة	صَفَنیاه	صَفَنیاہ	صَفَنیاۂ	صَفَنیہ	صَفَنیہء	صَفَنیہة	صَفَنیہہ	صَفَنیہۂ	صَفَنیۂ
+Hag	Hag	Hagai	Hagay	Haggai	Haggay	Haggi	Haggy	Hagi	hajjā	hajjī	hajjīy	hajjīyy	حجا	حجّی	حجی	حجیی	حجییی	حَجَّی	حَجَّی	حَجَّیء	حَجَّیئة	حَجَّیئۀ	حَجَّیئہ	حَجَّیئۂ	حَجَّیاء	حَجَّیة	حَجَّیہ	حَجَّیہء	حَجَّیہئة	حَجَّیہئۀ	حَجَّیہئہ	حَجَّیہئۂ	حَجَّیہة	حَجَّیہۀ	حَجَّیہۂ	حَجّی
+Zech	Zakaria	Zakariah	Zakariya	Zakariyya	Zech	Zecharia	Zechariah	Zekaria	Zekariah	Zekariya	zejarī	zejarīyā	zejār	زکر	زکری	زکریا	زکریاء	زکریائۀ	زکریائۀء	زکریائۀئہ	زکریائہ	زکریائہء	زکریائہئہ	زکریائۂ	زکریائۂء	زکریائۂئہ	زکریائۃ	زکریائۃء	زکریائۃئہ	زکریاه	زکریاۀ	زکریاۀء	زکریاۀئہ	زکریاہ	زکریاہء	زکریاہئہ	زکریاۂ	زکریاۂء	زکریاۂئہ	زکریاۃ	زکریاۃء	زکریاۃئہ
+Mal	Maalaki	Maalakie	Maalakii	Mal	Mal'aaki	Malaaki	Malaakie	Malaakii	Malachi	Malakee	Malakey	Malaki	Malakie	Malakii	Melaki	Milaki	mal'a	mal'ākhi	mal'ākhī	ملا	ملاک	ملاکی	ملاکیه	ملکى	ملکی	ملکے	مَلاکى	مَلاکي	مَلاکی	مَلاکیی	مَلاکے	مَلك	مَلكی	مَلکي
+Matt	Maathai	Maattey	Maatti	Mat'tee	Mat'thi	Mat'thiya	Mat'ti	Mat'ty	Mat'yi	Matai	Mathi	Mathy	Matt	Mattee	Mattey	Matthea	Matthee	Mattheei	Matthei	Matthi	Matthy	Matti	Mattie	Mattii	Matty	Mettie	Metty	Mitthy	Mitti	mattā	mattā'ūs	mattā'ūsi	متای	متایی	متت	متتی	متى	متي	متّی	متی	مَتتی	مَتي	مَتّتی	مَتّى	مَتّي	مَتّی	مَتیه	مَتیی
+Mark	Marcoos	Marcoose	Marcoosee	Marcos	Marcous	Marcus	Marcuse	Mark	Markoos	Markos	Markus	Markuss	Marqoos	Marqoosee	Marqos	Marqose	Marqous	Marquos	Marqus	Marquss	mārqū	mārqūs	mārqūsi	مرق	مرقس	مرقسی	مرقص	مرقو	مرقوس	مرقُس	مرقُوس	مرقّس	مركس	مرک	مرکس	مَرقس	مَرقسه	مَرقص	مَرقوس	مَرقوص	مَرقُس	مَرقُسه	مَرقُوس	مَركُس	مَرکُس
+Luke	Loka	Lokaah	Lokaat	Looqa	Looqaa	Looqaat	Looqah	Loqa	Loqaah	Loqaat	Luka	Lukaah	Luke	Luqa	Luqaa	Luqaat	Luqah	lūq	lūqā	lūqān	لوق	لوقآ	لوقا	لوقاء	لوقاءه	لوقات	لوقاه	لوقای	لوقة	لوقه	لوقى	لوقی	لوكا	لوكاء	لوكاه	لوكة	لوکا	لوکاء	لوکاه	لوکة
+John	John	Yohana	Yohanaah	Yohanna	Yohannah	Yoohana	Yoohanaah	Yoohanna	Yuhana	Yuhanaah	Yuhanna	Yuhannah	yo	yohannā	yohannān	یوح	یوحن	یوحنآ	یوحنا	یوحناء	یوحناءه	یوحنات	یوحناه	یوحنای	یوحنة	یوحنه	یوحنى	یوحنی	یوهنآ	یوهنا	یوهناء	یوهناءه	یوهنات	یوهناه	یوهنة	یوهنه	یوهنى	یوهنی
+Acts	A'maal	A'maal e Rusul	A'maal-e-Rusul	A'mal	A'mal e Rusul	A'mal e Rusulan	A'mal e Rusuleen	A'mal-e-Rusul	A'mal-e-Rusulan	A'mal-e-Rusuleen	A'male	Acts	Amaal	Amaal Rusulan	Amaal Rusuleen	Amaal e Rusulan	Amaal e Rusuleen	Amaal-e-Rusulan	Amaal-e-Rusuleen	Amaale	Amal	Amal e Rusul	Amal e Rusulan	Amal e Rusuleen	Amal-e-Rusul	Amal-e-Rusulan	Amal-e-Rusuleen	Amale	Amali	a'm	a'māl	a'mālī	اعم	اعمال	اعمال الرسول	اعمال الرسولین	اعمال رسولان	اعمال رسولین	اعمالها	اعمالی	اعمالی رسولان	اعمل	اعمل رسولان	اعملها	اعملی	عمال	عمالها	عمالی	عمل	عملها	عملی
+Rom	Rom	Romian	Romiun	Romyan	Roomean	Roomian	Roomiun	Roomiyan	Rumian	Rumiun	Rumiyan	rūm	rūmiān	rūmiānī	rūmī	روم	روميان	روميانه	روميانی	روميونه	روميونی	رومی	رومیان	رومیانان	رومیانن	رومیانه	رومیانها	رومیانی	رومیانیان	رومیون	رومیونان	رومیونن	رومیونه	رومیونها	رومیونی	رومیونیان
+1Cor	1 Corinth	1 Corinthian	1 Corinthians	1 Corintians	1 Korinthian	1 Korintian	1 Qorinthian	1 Qorinthiyan	1 Qorinthyun	1 Qorintian	1 Qorintiyan	1 Qorintyun	1Cor	1Corinth	1Corinthian	1Corinthians	1Corintians	1Korinthian	1Korintian	1Qorinthian	1Qorinthiyan	1Qorinthyun	1Qorintian	1Qorintiyan	1Qorintyun	1qr	1قر	Avval Corinth	Avval Corinthian	Avval Corinthians	Avval Corintians	Avval Korinthian	Avval Korintian	Avval Qorinthian	Avval Qorinthiyan	Avval Qorinthyun	Avval Qorintian	Avval Qorintiyan	Avval Qorintyun	AvvalCor	AvvalCorinth	AvvalCorinthian	AvvalCorinthians	AvvalCorintians	AvvalKorinthian	AvvalKorintian	AvvalQorinthian	AvvalQorinthiyan	AvvalQorinthyun	AvvalQorintian	AvvalQorintiyan	AvvalQorintyun	Yek Corinth	Yek Corinthian	Yek Corinthians	Yek Corintians	Yek Korinthian	Yek Korintian	Yek Qorinthian	Yek Qorinthiyan	Yek Qorinthyun	Yek Qorintian	Yek Qorintiyan	Yek Qorintyun	YekCorinth	YekCorinthian	YekCorinthians	YekCorintians	YekKorinthian	YekKorintian	YekQorinthian	YekQorinthiyan	YekQorinthyun	YekQorintian	YekQorintiyan	YekQorintyun	اول قرنتيان	اول قرنتیان	اول قرنتیانان	اول قرنتیانن	اول قرنتیانه	اول قرنتیانها	اول قرنتیانی	اول قرنتیانیان	اول قرنتیون	اول قرنتیونان	اول قرنتیونن	اول قرنتیونه	اول قرنتیونها	اول قرنتیونی	اول قرنتیونیان	اولق	اولقرنتيان	اولقرنتیان	اولقرنتیانان	اولقرنتیانن	اولقرنتیانه	اولقرنتیانها	اولقرنتیانی	اولقرنتیانیان	اولقرنتیون	اولقرنتیونان	اولقرنتیونن	اولقرنتیونه	اولقرنتیونها	اولقرنتیونی	اولقرنتیونیان	یک قرنتيان	یک قرنتیان	یک قرنتیانان	یک قرنتیانن	یک قرنتیانه	یک قرنتیانها	یک قرنتیانی	یک قرنتیانیان	یک قرنتیون	یک قرنتیونان	یک قرنتیونن	یک قرنتیونه	یک قرنتیونها	یک قرنتیونی	یک قرنتیونیان	یکقرنتيان	یکقرنتیان	یکقرنتیانان	یکقرنتیانن	یکقرنتیانه	یکقرنتیانها	یکقرنتیانی	یکقرنتیانیان	یکقرنتیون	یکقرنتیونان	یکقرنتیونن	یکقرنتیونه	یکقرنتیونها	یکقرنتیونی	یکقرنتیونیان	۱ قرنتيان	۱ قرنتیان	۱ قرنتیانان	۱ قرنتیانن	۱ قرنتیانه	۱ قرنتیانها	۱ قرنتیانی	۱ قرنتیانیان	۱ قرنتیون	۱ قرنتیونان	۱ قرنتیونن	۱ قرنتیونه	۱ قرنتیونها	۱ قرنتیونی	۱ قرنتیونیان	۱qr	۱qrn	۱qrnt	۱قر	۱قرن	۱قرنت	۱قرنتيان	۱قرنتیان	۱قرنتیانان	۱قرنتیانن	۱قرنتیانه	۱قرنتیانها	۱قرنتیانی	۱قرنتیانیان	۱قرنتیون	۱قرنتیونان	۱قرنتیونن	۱قرنتیونه	۱قرنتیونها	۱قرنتیونی	۱قرنتیونیان
+2Cor	2 Corinth	2 Corinthian	2 Corinthians	2 Corintians	2 Korinthian	2 Korintian	2 Qorinthian	2 Qorinthiyan	2 Qorinthyun	2 Qorintian	2 Qorintiyan	2 Qorintyun	2Cor	2Corinth	2Corinthian	2Corinthians	2Corintians	2Korinthian	2Korintian	2Qorinthian	2Qorinthiyan	2Qorinthyun	2Qorintian	2Qorintiyan	2Qorintyun	2qr	2قر	Do Corinth	Do Corinthian	Do Corinthians	Do Corintians	Do Korinthian	Do Korintian	Do Qorinthian	Do Qorinthiyan	Do Qorinthyun	Do Qorintian	Do Qorintiyan	Do Qorintyun	DoCorinth	DoCorinthian	DoCorinthians	DoCorintians	DoKorinthian	DoKorintian	DoQorinthian	DoQorinthiyan	DoQorinthyun	DoQorintian	DoQorintiyan	DoQorintyun	Dovom Corinth	Dovom Corinthian	Dovom Corinthians	Dovom Corintians	Dovom Korinthian	Dovom Korintian	Dovom Qorinthian	Dovom Qorinthiyan	Dovom Qorinthyun	Dovom Qorintian	Dovom Qorintiyan	Dovom Qorintyun	DovomCor	DovomCorinth	DovomCorinthian	DovomCorinthians	DovomCorintians	DovomKorinthian	DovomKorintian	DovomQorinthian	DovomQorinthiyan	DovomQorinthyun	DovomQorintian	DovomQorintiyan	DovomQorintyun	دو قرنتيان	دو قرنتیان	دو قرنتیانان	دو قرنتیانن	دو قرنتیانه	دو قرنتیانها	دو قرنتیانی	دو قرنتیانیان	دو قرنتیون	دو قرنتیونان	دو قرنتیونن	دو قرنتیونه	دو قرنتیونها	دو قرنتیونی	دو قرنتیونیان	دوقرنتيان	دوقرنتیان	دوقرنتیانان	دوقرنتیانن	دوقرنتیانه	دوقرنتیانها	دوقرنتیانی	دوقرنتیانیان	دوقرنتیون	دوقرنتیونان	دوقرنتیونن	دوقرنتیونه	دوقرنتیونها	دوقرنتیونی	دوقرنتیونیان	دوم قرنتيان	دوم قرنتیان	دوم قرنتیانان	دوم قرنتیانن	دوم قرنتیانه	دوم قرنتیانها	دوم قرنتیانی	دوم قرنتیانیان	دوم قرنتیون	دوم قرنتیونان	دوم قرنتیونن	دوم قرنتیونه	دوم قرنتیونها	دوم قرنتیونی	دوم قرنتیونیان	دومق	دومقرنتيان	دومقرنتیان	دومقرنتیانان	دومقرنتیانن	دومقرنتیانه	دومقرنتیانها	دومقرنتیانی	دومقرنتیانیان	دومقرنتیون	دومقرنتیونان	دومقرنتیونن	دومقرنتیونه	دومقرنتیونها	دومقرنتیونی	دومقرنتیونیان	۲ قرنتيان	۲ قرنتیان	۲ قرنتیانان	۲ قرنتیانن	۲ قرنتیانه	۲ قرنتیانها	۲ قرنتیانی	۲ قرنتیانیان	۲ قرنتیون	۲ قرنتیونان	۲ قرنتیونن	۲ قرنتیونه	۲ قرنتیونها	۲ قرنتیونی	۲ قرنتیونیان	۲qr	۲qrn	۲qrnt	۲قر	۲قرن	۲قرنت	۲قرنتيان	۲قرنتیان	۲قرنتیانان	۲قرنتیانن	۲قرنتیانه	۲قرنتیانها	۲قرنتیانی	۲قرنتیانیان	۲قرنتیون	۲قرنتیونان	۲قرنتیونن	۲قرنتیونه	۲قرنتیونها	۲قرنتیونی	۲قرنتیونیان
+Gal	Gal	Galatian	Galatians	Galatiyanians	Galatiyans	Galatiyun	Galatiyunians	Ghalatian	Ghalatiyan	Ghalatiyun	ghalā	ghalāt	ghalātiān	ghalātī	غلا	غلاط	غلاطی	غلاطیان	غلاطیانان	غلاطیانن	غلاطیانه	غلاطیانیان	غلاطیه	غلاطیها	غلاطیون	غلاطیونان	غلاطیونن	غلاطیونه	غلاطیونیان	غلطیان	غلطیانان	غلطیانن	غلطیانه	غلطیانیان	غلطیه	غلطیها	غلطیون	غلطیونان	غلطیونن	غلطیونه	غلطیونیان
+Eph	Afesian	Afesisiyan	Afesisyan	Afesisyani	Afesisyun	Afesiyoon	Afesiyyan	Afessisian	Afessiyon	Afessiyun	Afisian	Afisisian	Afisisiyanians	Afisisiyun	Afisisyani	Afisisyun	Afisiyani	Afisiyun	Afisiyunians	Afisiyyun	Afissiyan	Afissiyun	Afissiyunians	Afisyani	Afisyoon	Eph	Ephesian	Ephesians	afs	afsiyān	afso	afssiyān	افس	افسسیان	افسسیون	افسو	افسیان	افسیون	افِسسیان	افِسسیانن	افِسسیانه	افِسسیون	افِسسیونن	افِسسیونه	افِسیان	افِسیانن	افِسیانه	افِسیون	افِسیونن	افِسیونه	اَفِسسیان	اَفِسسیانه	اَفِسسیونه
+Phil	Filipian	Filipians	Filipiyanians	Filipyans	Filipyun	Filipyunians	Phil	Philipians	Philippians	fīlīp	fīlīppiān	fīlīppī	فلیپ	فلیپیان	فیل	فیلپ	فیلپی	فیلپیان	فیلیپیان	فیلیپیانان	فیلیپیانن	فیلیپیانه	فیلیپیانیان	فیلیپیه	فیلیپیها	فیلیپیون	فیلیپیونان	فیلیپیونن	فیلیپیونه	فیلیپیونیان
+Col	Col	Colossians	Colossiyans	Kolosian	Kolosiyun	Kolusian	Kolusians	Kolusiyanians	Kolusiyun	Kolusiyunians	Kolusyans	kūl	kūlow	kūlsiān	kūlsī	کلُسیان	کول	کولسی	کولسیان	کولو	کولُسسیان	کولُسیان	کولُسیانان	کولُسیانن	کولُسیانه	کولُسیانیان	کولُسیه	کولُسیها	کولُسیون	کولُسیونان	کولُسیونن	کولُسیونه	کولُسیونیان
+1Thess	1 Tesalonikian	1 Tessalonians	1 Tessalonici	1 Tessalonicyan	1 Tessalonika	1 Tessalonikan	1 Tessalonikeans	1 Tessalonikee	1 Tessalonikian	1 Tessalonikians	1 Tessalonikyan	1 Thesalonikian	1 Thessalonians	1 Thessalonici	1 Thessalonicians	1 Thessalonika	1 Thessalonikan	1 Thessalonikeans	1 Thessalonikians	1 Tsalonicians	1 Tsalonikee	1 Tsaloniki	1 Tsalonikian	1Tesalonikian	1Tessalonians	1Tessalonici	1Tessalonicyan	1Tessalonika	1Tessalonikan	1Tessalonikeans	1Tessalonikee	1Tessalonikian	1Tessalonikians	1Tessalonikyan	1Thesalonikian	1Thess	1Thessalonians	1Thessalonici	1Thessalonicians	1Thessalonika	1Thessalonikan	1Thessalonikeans	1Thessalonikians	1Tsalonicians	1Tsalonikee	1Tsaloniki	1Tsalonikian	1tsā	1تسا	Avval Tesalonikian	Avval Tessalonians	Avval Tessalonici	Avval Tessalonicyan	Avval Tessalonika	Avval Tessalonikan	Avval Tessalonikeans	Avval Tessalonikee	Avval Tessalonikian	Avval Tessalonikians	Avval Tessalonikyan	Avval Thesalonikian	Avval Thessalonians	Avval Thessalonici	Avval Thessalonicians	Avval Thessalonika	Avval Thessalonikan	Avval Thessalonikeans	Avval Thessalonikians	Avval Tsalonicians	Avval Tsalonikee	Avval Tsaloniki	Avval Tsalonikian	Avval tessalonikian	Avval tessalonikyan	AvvalTesalonikian	AvvalTessalonians	AvvalTessalonici	AvvalTessalonicyan	AvvalTessalonika	AvvalTessalonikan	AvvalTessalonikeans	AvvalTessalonikee	AvvalTessalonikian	AvvalTessalonikians	AvvalTessalonikyan	AvvalThesalonikian	AvvalThess	AvvalThessalonians	AvvalThessalonici	AvvalThessalonicians	AvvalThessalonika	AvvalThessalonikan	AvvalThessalonikeans	AvvalThessalonikians	AvvalTsalonicians	AvvalTsalonikee	AvvalTsaloniki	AvvalTsalonikian	Avvaltessalonikian	Avvaltessalonikyan	Yek Tesalonikian	Yek Tessalonians	Yek Tessalonici	Yek Tessalonika	Yek Tessalonikan	Yek Tessalonikeans	Yek Tessalonikee	Yek Tessalonikian	Yek Tessalonikians	Yek Thesalonikian	Yek Thessalonians	Yek Thessalonici	Yek Thessalonicians	Yek Thessalonika	Yek Thessalonikan	Yek Thessalonikeans	Yek Thessalonikians	Yek Tsalonicians	Yek Tsalonikee	Yek Tsaloniki	Yek Tsalonikian	Yek tessalonikian	Yek tessalonikyan	YekTesalonikian	YekTessalonians	YekTessalonici	YekTessalonika	YekTessalonikan	YekTessalonikeans	YekTessalonikee	YekTessalonikian	YekTessalonikians	YekThesalonikian	YekThessalonians	YekThessalonici	YekThessalonicians	YekThessalonika	YekThessalonikan	YekThessalonikeans	YekThessalonikians	YekTsalonicians	YekTsalonikee	YekTsaloniki	YekTsalonikian	Yektessalonikian	Yektessalonikyan	avval tsālūnīkān	avvalts	اول تسالونيکيان	اول تسالونيکيانه	اول تسالونيکیان	اول تسالونيکیانی	اول تسالونیکان	اول تسالونیکيان	اول تسالونیکیان	اول تسالونیکیانه	اول تسالونیکیانی	اولتس	اولتسالونيکيان	اولتسالونيکيانه	اولتسالونيکیان	اولتسالونيکیانی	اولتسالونیکيان	اولتسالونیکیان	اولتسالونیکیانه	اولتسالونیکیانی	یک تسالونيکيان	یک تسالونيکيانه	یک تسالونيکیان	یک تسالونیکيان	یک تسالونیکیان	یک تسالونیکیانه	یکتسالونيکيان	یکتسالونيکيانه	یکتسالونيکیان	یکتسالونیکيان	یکتسالونیکیان	یکتسالونیکیانه	۱ تسالونيکيان	۱ تسالونيکيانه	۱ تسالونيکیان	۱ تسالونيکیانی	۱ تسالونیکيان	۱ تسالونیکیان	۱ تسالونیکیانه	۱ تسالونیکیانی	۱ts	۱tsl	۱tsln	۱تس	۱تسالونيکيان	۱تسالونيکيانه	۱تسالونيکیان	۱تسالونيکیانی	۱تسالونیکان	۱تسالونیکيان	۱تسالونیکیان	۱تسالونیکیانه	۱تسالونیکیانی	۱تسل	۱تسلن
+2Thess	2 Tesalonikian	2 Tessalonians	2 Tessalonici	2 Tessalonicyan	2 Tessalonika	2 Tessalonikan	2 Tessalonikeans	2 Tessalonikee	2 Tessalonikian	2 Tessalonikians	2 Tessalonikyan	2 Thesalonikian	2 Thessalonians	2 Thessalonici	2 Thessalonicians	2 Thessalonika	2 Thessalonikan	2 Thessalonikeans	2 Thessalonikians	2 Tsalonicians	2 Tsalonikee	2 Tsaloniki	2 Tsalonikian	2Tesalonikian	2Tessalonians	2Tessalonici	2Tessalonicyan	2Tessalonika	2Tessalonikan	2Tessalonikeans	2Tessalonikee	2Tessalonikian	2Tessalonikians	2Tessalonikyan	2Thesalonikian	2Thess	2Thessalonians	2Thessalonici	2Thessalonicians	2Thessalonika	2Thessalonikan	2Thessalonikeans	2Thessalonikians	2Tsalonicians	2Tsalonikee	2Tsaloniki	2Tsalonikian	2tsā	2تسا	Do Tesalonikian	Do Tessalonians	Do Tessalonici	Do Tessalonika	Do Tessalonikan	Do Tessalonikeans	Do Tessalonikee	Do Tessalonikian	Do Tessalonikians	Do Thesalonikian	Do Thessalonians	Do Thessalonici	Do Thessalonicians	Do Thessalonika	Do Thessalonikan	Do Thessalonikeans	Do Thessalonikians	Do Tsalonicians	Do Tsalonikee	Do Tsaloniki	Do Tsalonikian	Do tessalonikian	Do tessalonikyan	DoTesalonikian	DoTessalonians	DoTessalonici	DoTessalonika	DoTessalonikan	DoTessalonikeans	DoTessalonikee	DoTessalonikian	DoTessalonikians	DoThesalonikian	DoThessalonians	DoThessalonici	DoThessalonicians	DoThessalonika	DoThessalonikan	DoThessalonikeans	DoThessalonikians	DoTsalonicians	DoTsalonikee	DoTsaloniki	DoTsalonikian	Dotessalonikian	Dotessalonikyan	Dovom Tesalonikian	Dovom Tessalonians	Dovom Tessalonici	Dovom Tessalonicyan	Dovom Tessalonika	Dovom Tessalonikan	Dovom Tessalonikeans	Dovom Tessalonikee	Dovom Tessalonikian	Dovom Tessalonikians	Dovom Tessalonikyan	Dovom Thesalonikian	Dovom Thessalonians	Dovom Thessalonici	Dovom Thessalonicians	Dovom Thessalonika	Dovom Thessalonikan	Dovom Thessalonikeans	Dovom Thessalonikians	Dovom Tsalonicians	Dovom Tsalonikee	Dovom Tsaloniki	Dovom Tsalonikian	Dovom tessalonikian	Dovom tessalonikyan	DovomTesalonikian	DovomTessalonians	DovomTessalonici	DovomTessalonicyan	DovomTessalonika	DovomTessalonikan	DovomTessalonikeans	DovomTessalonikee	DovomTessalonikian	DovomTessalonikians	DovomTessalonikyan	DovomThesalonikian	DovomThess	DovomThessalonians	DovomThessalonici	DovomThessalonicians	DovomThessalonika	DovomThessalonikan	DovomThessalonikeans	DovomThessalonikians	DovomTsalonicians	DovomTsalonikee	DovomTsaloniki	DovomTsalonikian	Dovomtessalonikian	Dovomtessalonikyan	dovvom tsālūnīkiān	dovvomts	دو تسالونيکيان	دو تسالونيکيانه	دو تسالونيکیان	دو تسالونیکيان	دو تسالونیکیان	دو تسالونیکیانه	دوتسالونيکيان	دوتسالونيکيانه	دوتسالونيکیان	دوتسالونیکيان	دوتسالونیکیان	دوتسالونیکیانه	دوم تسالونيکيان	دوم تسالونيکيانه	دوم تسالونيکیان	دوم تسالونيکیانی	دوم تسالونیکيان	دوم تسالونیکیان	دوم تسالونیکیانه	دوم تسالونیکیانی	دومتس	دومتسالونيکيان	دومتسالونيکيانه	دومتسالونيکیان	دومتسالونيکیانی	دومتسالونیکيان	دومتسالونیکیان	دومتسالونیکیانه	دومتسالونیکیانی	۲ تسالونيکيان	۲ تسالونيکيانه	۲ تسالونيکیان	۲ تسالونيکیانی	۲ تسالونیکيان	۲ تسالونیکیان	۲ تسالونیکیانه	۲ تسالونیکیانی	۲ts	۲tsl	۲tsln	۲تس	۲تسالونيکيان	۲تسالونيکيانه	۲تسالونيکیان	۲تسالونيکیانی	۲تسالونیکيان	۲تسالونیکیان	۲تسالونیکیانه	۲تسالونیکیانی	۲تسل	۲تسلن
+1Tim	1Tim	1Timotaios	1Timotaos	1Timoteo	1Timoteos	1Timoteous	1Timoteus	1Timothaeus	1Timothaios	1Timothaos	1Timotheus	1Timothy	1stTimothy	1tīm	1تیم	AvvalTim	AvvalTimotaios	AvvalTimotaos	AvvalTimoteo	AvvalTimoteos	AvvalTimoteous	AvvalTimoteus	AvvalTimothaeus	AvvalTimothaios	AvvalTimothaos	AvvalTimotheus	AvvalTimothy	AvvalstTimothy	YekTimoteos	YekTimoteus	YekTimothaeus	YekTimothaos	YekTimotheus	avval tīmutā'ūs	avvaltī	اول تیموتائوس	اولتی	اولتیموتئاؤس	اولتیموتئوس	اولتیموتئوسه	اولتیموتاؤس	اولتیموتاؤسی	اولتیموتائس	اولتیموتائوس	اولتیموتائوسه	اولتیموتائوسی	اولتیموتیؤس	اولتیموتیئوس	اولتیموتیوس	یکتیموتئاؤس	یکتیموتئوس	یکتیموتئوسه	یکتیموتاؤس	یکتیموتاؤسی	یکتیموتائس	یکتیموتائوس	یکتیموتائوسه	یکتیموتائوسی	یکتیموتیؤس	یکتیموتیئوس	یکتیموتیوس	۱tī	۱tīm	۱tīmt	۱تی	۱تیم	۱تیمت	۱تیموتئاؤس	۱تیموتئوس	۱تیموتئوسه	۱تیموتاؤس	۱تیموتاؤسی	۱تیموتائس	۱تیموتائوس	۱تیموتائوسه	۱تیموتائوسی	۱تیموتیؤس	۱تیموتیئوس	۱تیموتیوس
+2Tim	2Tim	2Timotaios	2Timotaos	2Timoteo	2Timoteos	2Timoteous	2Timoteus	2Timothaeus	2Timothaios	2Timothaos	2Timotheus	2Timothy	2tīm	2تیم	DoTimoteos	DoTimoteus	DoTimothaeus	DoTimothaos	DoTimotheus	DovomTim	DovomTimotaios	DovomTimotaos	DovomTimoteo	DovomTimoteos	DovomTimoteous	DovomTimoteus	DovomTimothaeus	DovomTimothaios	DovomTimothaos	DovomTimotheus	DovomTimothy	dovvom tīmutā'ūs	dovvomtī	دوتیموتئاؤس	دوتیموتئوس	دوتیموتئوسه	دوتیموتاؤس	دوتیموتاؤسی	دوتیموتائس	دوتیموتائوس	دوتیموتائوسه	دوتیموتائوسی	دوتیموتیؤس	دوتیموتیئوس	دوتیموتیوس	دوم تیموتائوس	دومتی	دومتیموتئاؤس	دومتیموتئوس	دومتیموتئوسه	دومتیموتاؤس	دومتیموتاؤسی	دومتیموتائس	دومتیموتائوس	دومتیموتائوسه	دومتیموتائوسی	دومتیموتیؤس	دومتیموتیئوس	دومتیموتیوس	۲tī	۲tīm	۲tīmt	۲تی	۲تیم	۲تیمت	۲تیموتئاؤس	۲تیموتئوس	۲تیموتئوسه	۲تیموتاؤس	۲تیموتاؤسی	۲تیموتائس	۲تیموتائوس	۲تیموتائوسه	۲تیموتائوسی	۲تیموتیؤس	۲تیموتیئوس	۲تیموتیوس
+Titus	Taitoos	Taitous	Taitus	Taytoos	Taytous	Taytus	Titoos	Titus	Tytous	Tytus	تيتوس	تيتوش	تيتوص	تیت	تیتو	تیتوث	تیتوثه	تیتوثی	تیتوس	تیتوسه	تیتوسی	تیتوش	تیتوشه	تیتوشی	تیتوص	تیتوصه	تیتوصی	تیطس
+Phlm	Filimon	Filimona	Filimoni	Filimonn	Filimoon	Filimoonn	Filimoun	Filimount	Filimun	Philemon	Philemona	Philemoni	Philemonn	Philemoon	Philemoun	Philimon	Philmoun	Philmun	Phlm	fīlīm	fīlīmon	fīlīmoni	فلم	فلی	فلیم	فلیمون	فیلمون	فیلمونئ	فیلمونا	فیلموناء	فیلمونت	فیلمونه	فیلمونى	فیلمونی	فیلمونیة	فیلمونیی	فیلیمون	فیلیمونئ	فیلیمونا	فیلیموناء	فیلیمونت	فیلیمونه	فیلیمونى	فیلیمونی	فیلیمونیة	فیلیمونیی
+Heb	Abraanian	Abraanion	Abraaniyaan	Abraanyan	Ebraan	Ebraanian	Ebraanians	Ebraanien	Ebraanion	Ebraaniyaan	Ebraaniyun	Ebraanyan	Ebran	Ebraneean	Ebraniaan	Ebranian	Ebraniean	Ebranion	Ebraniun	Ebraniya	Ebraniyaan	Ebraniyan	Ebraniyon	Ebraniyun	Ebraniyyan	Ebreean	Ebreeanian	Ebrianian	Heb	Hebraanian	Hebranian	Hebraniyan	Ibraanians	Ibraaniyaan	Ibraaniyan	Ibraanyan	Ibranian	ebr	ebri	ebrāniān	ebrānī	عبر	عبرانيان	عبرانی	عبرانیآن	عبرانیائن	عبرانیان	عبرانیانا	عبرانیانات	عبرانیانت	عبرانیاند	عبرانیانز	عبرانیانس	عبرانیانـ	عبرانیانه	عبرانیانڈ	عبرانیانی	عبرانیهن	عبرانیون	عبرانیونه	عبرانیین	عبری
+Jas	Jas	Yaaqoob	Yaaqoobey	Yaaqoobi	Yaaqub	Yaaqubi	Yaqoob	Yaqoobee	Yaqoobeh	Yaqoobey	Yaqoobi	Yaqoub	Yaqub	Yaqubee	Yaqubeh	Yaqubi	ya'qū	ya'qūb	ya'qūbi	یعق	یعقو	یعقوب	یعقوبئ	یعقوبا	یعقوباء	یعقوبات	یعقوبت	یعقوبته	یعقوبه	یعقوبى	یعقوبی	یعقوپ	یعقوپه	یعقوپی
+1Pet	1 Pataris	1 Patras	1 Patrasa	1 Patris	1 Patriss	1 Patrissi	1 Patrus	1 Peter	1 Peters	1Pataris	1Patras	1Patrasa	1Patris	1Patriss	1Patrissi	1Patrus	1Pet	1Peter	1Peters	1pt	1پط	Avval Pataris	Avval Patras	Avval Patrasa	Avval Patris	Avval Patriss	Avval Patrissi	Avval Patrus	Avval Peter	Avval Peters	Avval pataris	Avval patras	Avval patrasa	Avval patris	Avval patriss	Avval patrissi	Avval patrus	Avval peter	Avval peters	AvvalPataris	AvvalPatras	AvvalPatrasa	AvvalPatris	AvvalPatriss	AvvalPatrissi	AvvalPatrus	AvvalPet	AvvalPeter	AvvalPeters	Avvalpataris	Avvalpatras	Avvalpatrasa	Avvalpatris	Avvalpatriss	Avvalpatrissi	Avvalpatrus	Avvalpeter	Avvalpeters	Yek pataris	Yek patras	Yek patrasa	Yek patris	Yek patriss	Yek patrissi	Yek patrus	Yek peter	Yek peters	Yekpataris	Yekpatras	Yekpatrasa	Yekpatris	Yekpatriss	Yekpatrissi	Yekpatrus	Yekpeter	Yekpeters	avval petrus	avvalpt	اول پطرس	اول پطرسئ	اول پطرسا	اول پطرسس	اول پطرسسئ	اول پطرسسا	اول پطرسساه	اول پطرسسه	اول پطرسسى	اول پطرسسی	اول پطرسه	اول پطرسى	اول پطرسی	اول پطرص	اول پطرصئ	اول پطرصا	اول پطرصس	اول پطرصه	اول پطرصى	اول پطرصی	اولپط	اولپطرس	اولپطرسئ	اولپطرسا	اولپطرسس	اولپطرسسئ	اولپطرسسا	اولپطرسساه	اولپطرسسه	اولپطرسسى	اولپطرسسی	اولپطرسه	اولپطرسى	اولپطرسی	اولپطرص	اولپطرصئ	اولپطرصا	اولپطرصس	اولپطرصه	اولپطرصى	اولپطرصی	یک پطرس	یک پطرسئ	یک پطرسا	یک پطرسس	یک پطرسسئ	یک پطرسسا	یک پطرسساه	یک پطرسسه	یک پطرسسى	یک پطرسسی	یک پطرسه	یک پطرسى	یک پطرسی	یک پطرص	یک پطرصئ	یک پطرصا	یک پطرصس	یک پطرصه	یک پطرصى	یک پطرصی	یکپطرس	یکپطرسئ	یکپطرسا	یکپطرسس	یکپطرسسئ	یکپطرسسا	یکپطرسساه	یکپطرسسه	یکپطرسسى	یکپطرسسی	یکپطرسه	یکپطرسى	یکپطرسی	یکپطرص	یکپطرصئ	یکپطرصا	یکپطرصس	یکپطرصه	یکپطرصى	یکپطرصی	۱ پطرس	۱ پطرسئ	۱ پطرسا	۱ پطرسس	۱ پطرسسئ	۱ پطرسسا	۱ پطرسساه	۱ پطرسسه	۱ پطرسسى	۱ پطرسسی	۱ پطرسه	۱ پطرسى	۱ پطرسی	۱ پطرص	۱ پطرصئ	۱ پطرصا	۱ پطرصس	۱ پطرصه	۱ پطرصى	۱ پطرصی	۱pt	۱ptr	۱ptrus	۱پت	۱پطر	۱پطرس	۱پطرسئ	۱پطرسا	۱پطرسس	۱پطرسسئ	۱پطرسسا	۱پطرسساه	۱پطرسسه	۱پطرسسى	۱پطرسسی	۱پطرسه	۱پطرسى	۱پطرسی	۱پطرص	۱پطرصئ	۱پطرصا	۱پطرصس	۱پطرصه	۱پطرصى	۱پطرصی
+2Pet	2 Pataris	2 Patras	2 Patrasa	2 Patris	2 Patriss	2 Patrissi	2 Patrus	2 Peter	2 Peters	2Pataris	2Patras	2Patrasa	2Patris	2Patriss	2Patrissi	2Patrus	2Pet	2Peter	2Peters	2pt	2پط	Do pataris	Do patras	Do patrasa	Do patris	Do patriss	Do patrissi	Do patrus	Do peter	Do peters	Dopataris	Dopatras	Dopatrasa	Dopatris	Dopatriss	Dopatrissi	Dopatrus	Dopeter	Dopeters	Dovom Pataris	Dovom Patras	Dovom Patrasa	Dovom Patris	Dovom Patriss	Dovom Patrissi	Dovom Patrus	Dovom Peter	Dovom Peters	Dovom pataris	Dovom patras	Dovom patrasa	Dovom patris	Dovom patriss	Dovom patrissi	Dovom patrus	Dovom peter	Dovom peters	DovomPataris	DovomPatras	DovomPatrasa	DovomPatris	DovomPatriss	DovomPatrissi	DovomPatrus	DovomPet	DovomPeter	DovomPeters	Dovompataris	Dovompatras	Dovompatrasa	Dovompatris	Dovompatriss	Dovompatrissi	Dovompatrus	Dovompeter	Dovompeters	dovvom petrus	dovvompt	دو پطرس	دو پطرسئ	دو پطرسا	دو پطرسس	دو پطرسسئ	دو پطرسسا	دو پطرسساه	دو پطرسسه	دو پطرسسى	دو پطرسسی	دو پطرسه	دو پطرسى	دو پطرسی	دو پطرص	دو پطرصئ	دو پطرصا	دو پطرصس	دو پطرصه	دو پطرصى	دو پطرصی	دوم پطرس	دوم پطرسئ	دوم پطرسا	دوم پطرسس	دوم پطرسسئ	دوم پطرسسا	دوم پطرسساه	دوم پطرسسه	دوم پطرسسى	دوم پطرسسی	دوم پطرسه	دوم پطرسى	دوم پطرسی	دوم پطرص	دوم پطرصئ	دوم پطرصا	دوم پطرصس	دوم پطرصه	دوم پطرصى	دوم پطرصی	دومپط	دومپطرس	دومپطرسئ	دومپطرسا	دومپطرسس	دومپطرسسئ	دومپطرسسا	دومپطرسساه	دومپطرسسه	دومپطرسسى	دومپطرسسی	دومپطرسه	دومپطرسى	دومپطرسی	دومپطرص	دومپطرصئ	دومپطرصا	دومپطرصس	دومپطرصه	دومپطرصى	دومپطرصی	دوپطرس	دوپطرسئ	دوپطرسا	دوپطرسس	دوپطرسسئ	دوپطرسسا	دوپطرسساه	دوپطرسسه	دوپطرسسى	دوپطرسسی	دوپطرسه	دوپطرسى	دوپطرسی	دوپطرص	دوپطرصئ	دوپطرصا	دوپطرصس	دوپطرصه	دوپطرصى	دوپطرصی	۲ پطرس	۲ پطرسئ	۲ پطرسا	۲ پطرسس	۲ پطرسسئ	۲ پطرسسا	۲ پطرسساه	۲ پطرسسه	۲ پطرسسى	۲ پطرسسی	۲ پطرسه	۲ پطرسى	۲ پطرسی	۲ پطرص	۲ پطرصئ	۲ پطرصا	۲ پطرصس	۲ پطرصه	۲ پطرصى	۲ پطرصی	۲pt	۲ptr	۲ptrus	۲پت	۲پطر	۲پطرس	۲پطرسئ	۲پطرسا	۲پطرسس	۲پطرسسئ	۲پطرسسا	۲پطرسساه	۲پطرسسه	۲پطرسسى	۲پطرسسی	۲پطرسه	۲پطرسى	۲پطرسی	۲پطرص	۲پطرصئ	۲پطرصا	۲پطرصس	۲پطرصه	۲پطرصى	۲پطرصی
+1John	1 Yohana	1 Yohanaah	1 Yohanna	1 Yohannah	1 Yoohana	1 Yoohanaah	1 Yoohanna	1 Yuhana	1 Yuhanaah	1 Yuhanna	1 Yuhannah	1 یوحنآ	1 یوحنا	1 یوحناء	1 یوحناءه	1 یوحنات	1 یوحناه	1 یوحنة	1 یوحنه	1 یوحنى	1 یوحنی	1 یوهنآ	1 یوهنا	1 یوهناء	1 یوهناءه	1 یوهنات	1 یوهناه	1 یوهنة	1 یوهنه	1 یوهنى	1 یوهنی	1John	1Yohana	1Yohanaah	1Yohanna	1Yohannah	1Yoohana	1Yoohanaah	1Yoohanna	1Yuhana	1Yuhanaah	1Yuhanna	1Yuhannah	1yo	1یو	1یوحنآ	1یوحنا	1یوحناء	1یوحناءه	1یوحنات	1یوحناه	1یوحنة	1یوحنه	1یوحنى	1یوحنی	1یوهنآ	1یوهنا	1یوهناء	1یوهناءه	1یوهنات	1یوهناه	1یوهنة	1یوهنه	1یوهنى	1یوهنی	Avval Yohana	Avval Yohanaah	Avval Yohanna	Avval Yohannah	Avval Yoohana	Avval Yoohanaah	Avval Yoohanna	Avval Yuhana	Avval Yuhanaah	Avval Yuhanna	Avval Yuhannah	Avval یوحنآ	Avval یوحنا	Avval یوحناء	Avval یوحناءه	Avval یوحنات	Avval یوحناه	Avval یوحنة	Avval یوحنه	Avval یوحنى	Avval یوحنی	Avval یوهنآ	Avval یوهنا	Avval یوهناء	Avval یوهناءه	Avval یوهنات	Avval یوهناه	Avval یوهنة	Avval یوهنه	Avval یوهنى	Avval یوهنی	AvvalJohn	AvvalYohana	AvvalYohanaah	AvvalYohanna	AvvalYohannah	AvvalYoohana	AvvalYoohanaah	AvvalYoohanna	AvvalYuhana	AvvalYuhanaah	AvvalYuhanna	AvvalYuhannah	Avvalیوحنآ	Avvalیوحنا	Avvalیوحناء	Avvalیوحناءه	Avvalیوحنات	Avvalیوحناه	Avvalیوحنة	Avvalیوحنه	Avvalیوحنى	Avvalیوحنی	Avvalیوهنآ	Avvalیوهنا	Avvalیوهناء	Avvalیوهناءه	Avvalیوهنات	Avvalیوهناه	Avvalیوهنة	Avvalیوهنه	Avvalیوهنى	Avvalیوهنی	Yek Yohana	Yek Yohanaah	Yek Yohanna	Yek Yohannah	Yek Yoohana	Yek Yoohanaah	Yek Yoohanna	Yek Yuhana	Yek Yuhanaah	Yek Yuhanna	Yek Yuhannah	YekYohana	YekYohanaah	YekYohanna	YekYohannah	YekYoohana	YekYoohanaah	YekYoohanna	YekYuhana	YekYuhanaah	YekYuhanna	YekYuhannah	avval yohannā	avvlyo	اول Yohana	اول Yohanaah	اول Yohanna	اول Yohannah	اول Yoohana	اول Yoohanaah	اول Yoohanna	اول Yuhana	اول Yuhanaah	اول Yuhanna	اول Yuhannah	اول یوحنآ	اول یوحنا	اول یوحناء	اول یوحناءه	اول یوحنات	اول یوحناه	اول یوحنة	اول یوحنه	اول یوحنى	اول یوحنی	اول یوهنآ	اول یوهنا	اول یوهناء	اول یوهناءه	اول یوهنات	اول یوهناه	اول یوهنة	اول یوهنه	اول یوهنى	اول یوهنی	اولYohana	اولYohanaah	اولYohanna	اولYohannah	اولYoohana	اولYoohanaah	اولYoohanna	اولYuhana	اولYuhanaah	اولYuhanna	اولYuhannah	اولیو	اولیوحنآ	اولیوحنا	اولیوحناء	اولیوحناءه	اولیوحنات	اولیوحناه	اولیوحنة	اولیوحنه	اولیوحنى	اولیوحنی	اولیوهنآ	اولیوهنا	اولیوهناء	اولیوهناءه	اولیوهنات	اولیوهناه	اولیوهنة	اولیوهنه	اولیوهنى	اولیوهنی	یک یوحنآ	یک یوحنا	یک یوحناء	یک یوحناءه	یک یوحنات	یک یوحناه	یک یوحنة	یک یوحنه	یک یوحنى	یک یوحنی	یک یوهنآ	یک یوهنا	یک یوهناء	یک یوهناءه	یک یوهنات	یک یوهناه	یک یوهنة	یک یوهنه	یک یوهنى	یک یوهنی	یکیوحنآ	یکیوحنا	یکیوحناء	یکیوحناءه	یکیوحنات	یکیوحناه	یکیوحنة	یکیوحنه	یکیوحنى	یکیوحنی	یکیوهنآ	یکیوهنا	یکیوهناء	یکیوهناءه	یکیوهنات	یکیوهناه	یکیوهنة	یکیوهنه	یکیوهنى	یکیوهنی	۱ Yohana	۱ Yohanaah	۱ Yohanna	۱ Yohannah	۱ Yoohana	۱ Yoohanaah	۱ Yoohanna	۱ Yuhana	۱ Yuhanaah	۱ Yuhanna	۱ Yuhannah	۱ یوحنآ	۱ یوحنا	۱ یوحناء	۱ یوحناءه	۱ یوحنات	۱ یوحناه	۱ یوحنة	۱ یوحنه	۱ یوحنى	۱ یوحنی	۱ یوهنآ	۱ یوهنا	۱ یوهناء	۱ یوهناءه	۱ یوهنات	۱ یوهناه	۱ یوهنة	۱ یوهنه	۱ یوهنى	۱ یوهنی	۱Yohana	۱Yohanaah	۱Yohanna	۱Yohannah	۱Yoohana	۱Yoohanaah	۱Yoohanna	۱Yuhana	۱Yuhanaah	۱Yuhanna	۱Yuhannah	۱yo	۱yoh	۱yohn	۱یو	۱یوح	۱یوحن	۱یوحنآ	۱یوحنا	۱یوحناء	۱یوحناءه	۱یوحنات	۱یوحناه	۱یوحنة	۱یوحنه	۱یوحنى	۱یوحنی	۱یوهنآ	۱یوهنا	۱یوهناء	۱یوهناءه	۱یوهنات	۱یوهناه	۱یوهنة	۱یوهنه	۱یوهنى	۱یوهنی
+2John	2 Yohana	2 Yohanaah	2 Yohanna	2 Yohannah	2 Yoohana	2 Yoohanaah	2 Yoohanna	2 Yuhana	2 Yuhanaah	2 Yuhanna	2 Yuhannah	2 یوحنآ	2 یوحنا	2 یوحناء	2 یوحناءه	2 یوحنات	2 یوحناه	2 یوحنة	2 یوحنه	2 یوحنى	2 یوحنی	2 یوهنآ	2 یوهنا	2 یوهناء	2 یوهناءه	2 یوهنات	2 یوهناه	2 یوهنة	2 یوهنه	2 یوهنى	2 یوهنی	2John	2Yohana	2Yohanaah	2Yohanna	2Yohannah	2Yoohana	2Yoohanaah	2Yoohanna	2Yuhana	2Yuhanaah	2Yuhanna	2Yuhannah	2yo	2یو	2یوحنآ	2یوحنا	2یوحناء	2یوحناءه	2یوحنات	2یوحناه	2یوحنة	2یوحنه	2یوحنى	2یوحنی	2یوهنآ	2یوهنا	2یوهناء	2یوهناءه	2یوهنات	2یوهناه	2یوهنة	2یوهنه	2یوهنى	2یوهنی	Do Yohana	Do Yohanaah	Do Yohanna	Do Yohannah	Do Yoohana	Do Yoohanaah	Do Yoohanna	Do Yuhana	Do Yuhanaah	Do Yuhanna	Do Yuhannah	DoYohana	DoYohanaah	DoYohanna	DoYohannah	DoYoohana	DoYoohanaah	DoYoohanna	DoYuhana	DoYuhanaah	DoYuhanna	DoYuhannah	Dovom Yohana	Dovom Yohanaah	Dovom Yohanna	Dovom Yohannah	Dovom Yoohana	Dovom Yoohanaah	Dovom Yoohanna	Dovom Yuhana	Dovom Yuhanaah	Dovom Yuhanna	Dovom Yuhannah	Dovom یوحنآ	Dovom یوحنا	Dovom یوحناء	Dovom یوحناءه	Dovom یوحنات	Dovom یوحناه	Dovom یوحنة	Dovom یوحنه	Dovom یوحنى	Dovom یوحنی	Dovom یوهنآ	Dovom یوهنا	Dovom یوهناء	Dovom یوهناءه	Dovom یوهنات	Dovom یوهناه	Dovom یوهنة	Dovom یوهنه	Dovom یوهنى	Dovom یوهنی	DovomJohn	DovomYohana	DovomYohanaah	DovomYohanna	DovomYohannah	DovomYoohana	DovomYoohanaah	DovomYoohanna	DovomYuhana	DovomYuhanaah	DovomYuhanna	DovomYuhannah	Dovomیوحنآ	Dovomیوحنا	Dovomیوحناء	Dovomیوحناءه	Dovomیوحنات	Dovomیوحناه	Dovomیوحنة	Dovomیوحنه	Dovomیوحنى	Dovomیوحنی	Dovomیوهنآ	Dovomیوهنا	Dovomیوهناء	Dovomیوهناءه	Dovomیوهنات	Dovomیوهناه	Dovomیوهنة	Dovomیوهنه	Dovomیوهنى	Dovomیوهنی	dovvom yohannā	dovvomyo	دو یوحنآ	دو یوحنا	دو یوحناء	دو یوحناءه	دو یوحنات	دو یوحناه	دو یوحنة	دو یوحنه	دو یوحنى	دو یوحنی	دو یوهنآ	دو یوهنا	دو یوهناء	دو یوهناءه	دو یوهنات	دو یوهناه	دو یوهنة	دو یوهنه	دو یوهنى	دو یوهنی	دوم Yohana	دوم Yohanaah	دوم Yohanna	دوم Yohannah	دوم Yoohana	دوم Yoohanaah	دوم Yoohanna	دوم Yuhana	دوم Yuhanaah	دوم Yuhanna	دوم Yuhannah	دوم یوحنآ	دوم یوحنا	دوم یوحناء	دوم یوحناءه	دوم یوحنات	دوم یوحناه	دوم یوحنة	دوم یوحنه	دوم یوحنى	دوم یوحنی	دوم یوهنآ	دوم یوهنا	دوم یوهناء	دوم یوهناءه	دوم یوهنات	دوم یوهناه	دوم یوهنة	دوم یوهنه	دوم یوهنى	دوم یوهنی	دومYohana	دومYohanaah	دومYohanna	دومYohannah	دومYoohana	دومYoohanaah	دومYoohanna	دومYuhana	دومYuhanaah	دومYuhanna	دومYuhannah	دومیو	دومیوحنآ	دومیوحنا	دومیوحناء	دومیوحناءه	دومیوحنات	دومیوحناه	دومیوحنة	دومیوحنه	دومیوحنى	دومیوحنی	دومیوهنآ	دومیوهنا	دومیوهناء	دومیوهناءه	دومیوهنات	دومیوهناه	دومیوهنة	دومیوهنه	دومیوهنى	دومیوهنی	دویوحنآ	دویوحنا	دویوحناء	دویوحناءه	دویوحنات	دویوحناه	دویوحنة	دویوحنه	دویوحنى	دویوحنی	دویوهنآ	دویوهنا	دویوهناء	دویوهناءه	دویوهنات	دویوهناه	دویوهنة	دویوهنه	دویوهنى	دویوهنی	۲ Yohana	۲ Yohanaah	۲ Yohanna	۲ Yohannah	۲ Yoohana	۲ Yoohanaah	۲ Yoohanna	۲ Yuhana	۲ Yuhanaah	۲ Yuhanna	۲ Yuhannah	۲ یوحنآ	۲ یوحنا	۲ یوحناء	۲ یوحناءه	۲ یوحنات	۲ یوحناه	۲ یوحنة	۲ یوحنه	۲ یوحنى	۲ یوحنی	۲ یوهنآ	۲ یوهنا	۲ یوهناء	۲ یوهناءه	۲ یوهنات	۲ یوهناه	۲ یوهنة	۲ یوهنه	۲ یوهنى	۲ یوهنی	۲Yohana	۲Yohanaah	۲Yohanna	۲Yohannah	۲Yoohana	۲Yoohanaah	۲Yoohanna	۲Yuhana	۲Yuhanaah	۲Yuhanna	۲Yuhannah	۲yo	۲yoh	۲yohn	۲یو	۲یوح	۲یوحن	۲یوحنآ	۲یوحنا	۲یوحناء	۲یوحناءه	۲یوحنات	۲یوحناه	۲یوحنة	۲یوحنه	۲یوحنى	۲یوحنی	۲یوهنآ	۲یوهنا	۲یوهناء	۲یوهناءه	۲یوهنات	۲یوهناه	۲یوهنة	۲یوهنه	۲یوهنى	۲یوهنی
+3John	3 Yohana	3 Yohanaah	3 Yohanna	3 Yohannah	3 Yoohana	3 Yoohanaah	3 Yoohanna	3 Yuhana	3 Yuhanaah	3 Yuhanna	3 Yuhannah	3 یوحنآ	3 یوحنا	3 یوحناء	3 یوحناءه	3 یوحنات	3 یوحناه	3 یوحنة	3 یوحنه	3 یوحنى	3 یوحنی	3 یوهنآ	3 یوهنا	3 یوهناء	3 یوهناءه	3 یوهنات	3 یوهناه	3 یوهنة	3 یوهنه	3 یوهنى	3 یوهنی	3John	3Yohana	3Yohanaah	3Yohanna	3Yohannah	3Yoohana	3Yoohanaah	3Yoohanna	3Yuhana	3Yuhanaah	3Yuhanna	3Yuhannah	3yo	3یو	3یوحنآ	3یوحنا	3یوحناء	3یوحناءه	3یوحنات	3یوحناه	3یوحنة	3یوحنه	3یوحنى	3یوحنی	3یوهنآ	3یوهنا	3یوهناء	3یوهناءه	3یوهنات	3یوهناه	3یوهنة	3یوهنه	3یوهنى	3یوهنی	Se Yohana	Se Yohanaah	Se Yohanna	Se Yohannah	Se Yoohana	Se Yoohanaah	Se Yoohanna	Se Yuhana	Se Yuhanaah	Se Yuhanna	Se Yuhannah	SeYohana	SeYohanaah	SeYohanna	SeYohannah	SeYoohana	SeYoohanaah	SeYoohanna	SeYuhana	SeYuhanaah	SeYuhanna	SeYuhannah	Seh Yohana	Seh Yohanaah	Seh Yohanna	Seh Yohannah	Seh Yoohana	Seh Yoohanaah	Seh Yoohanna	Seh Yuhana	Seh Yuhanaah	Seh Yuhanna	Seh Yuhannah	SehYohana	SehYohanaah	SehYohanna	SehYohannah	SehYoohana	SehYoohanaah	SehYoohanna	SehYuhana	SehYuhanaah	SehYuhanna	SehYuhannah	Sevom Yohana	Sevom Yohanaah	Sevom Yohanna	Sevom Yohannah	Sevom Yoohana	Sevom Yoohanaah	Sevom Yoohanna	Sevom Yuhana	Sevom Yuhanaah	Sevom Yuhanna	Sevom Yuhannah	SevomYohana	SevomYohanaah	SevomYohanna	SevomYohannah	SevomYoohana	SevomYoohanaah	SevomYoohanna	SevomYuhana	SevomYuhanaah	SevomYuhanna	SevomYuhannah	sevvom yohannā	sevvomyo	سه یوحنآ	سه یوحنا	سه یوحناء	سه یوحناءه	سه یوحنات	سه یوحناه	سه یوحنة	سه یوحنه	سه یوحنى	سه یوحنی	سه یوهنآ	سه یوهنا	سه یوهناء	سه یوهناءه	سه یوهنات	سه یوهناه	سه یوهنة	سه یوهنه	سه یوهنى	سه یوهنی	سهیوحنآ	سهیوحنا	سهیوحناء	سهیوحناءه	سهیوحنات	سهیوحناه	سهیوحنة	سهیوحنه	سهیوحنى	سهیوحنی	سهیوهنآ	سهیوهنا	سهیوهناء	سهیوهناءه	سهیوهنات	سهیوهناه	سهیوهنة	سهیوهنه	سهیوهنى	سهیوهنی	سوم یوحنآ	سوم یوحنا	سوم یوحناء	سوم یوحناءه	سوم یوحنات	سوم یوحناه	سوم یوحنة	سوم یوحنه	سوم یوحنى	سوم یوحنی	سوم یوهنآ	سوم یوهنا	سوم یوهناء	سوم یوهناءه	سوم یوهنات	سوم یوهناه	سوم یوهنة	سوم یوهنه	سوم یوهنى	سوم یوهنی	سومیو	سومیوحنآ	سومیوحنا	سومیوحناء	سومیوحناءه	سومیوحنات	سومیوحناه	سومیوحنة	سومیوحنه	سومیوحنى	سومیوحنی	سومیوهنآ	سومیوهنا	سومیوهناء	سومیوهناءه	سومیوهنات	سومیوهناه	سومیوهنة	سومیوهنه	سومیوهنى	سومیوهنی	۳ Yohana	۳ Yohanaah	۳ Yohanna	۳ Yohannah	۳ Yoohana	۳ Yoohanaah	۳ Yoohanna	۳ Yuhana	۳ Yuhanaah	۳ Yuhanna	۳ Yuhannah	۳ یوحنآ	۳ یوحنا	۳ یوحناء	۳ یوحناءه	۳ یوحنات	۳ یوحناه	۳ یوحنة	۳ یوحنه	۳ یوحنى	۳ یوحنی	۳ یوهنآ	۳ یوهنا	۳ یوهناء	۳ یوهناءه	۳ یوهنات	۳ یوهناه	۳ یوهنة	۳ یوهنه	۳ یوهنى	۳ یوهنی	۳Yohana	۳Yohanaah	۳Yohanna	۳Yohannah	۳Yoohana	۳Yoohanaah	۳Yoohanna	۳Yuhana	۳Yuhanaah	۳Yuhanna	۳Yuhannah	۳yo	۳yoh	۳yohn	۳یو	۳یوح	۳یوحن	۳یوحنآ	۳یوحنا	۳یوحناء	۳یوحناءه	۳یوحنات	۳یوحناه	۳یوحنة	۳یوحنه	۳یوحنى	۳یوحنی	۳یوهنآ	۳یوهنا	۳یوهناء	۳یوهناءه	۳یوهنات	۳یوهناه	۳یوهنة	۳یوهنه	۳یوهنى	۳یوهنی
+Jude	Jude	Yahooda	Yahoodah	Yahuda	Yahudaa	Yahudaah	Yahudah	Yehooda	Yehoodaa	Yehoodeh	Yehuda	Yehudaah	Yehudah	yahū	yahūdā	yahūdān	yūd	yūdā	یهو	یهودآ	یهودا	یهوداء	یهوداءه	یهودات	یهوداه	یهودة	یهوده	یهودى	یهودی	یهوذ	یہودآ	یہودا	یہوداء	یہوداءه	یہودات	یہوداه	یہودة	یہوده	یہودى	یہودی
+Rev	Makaashf	Makaashfa	Makaashfaa	Makaashfah	Makaashfe	Makaashfey	Makaashfi	Makaashfiy	Makashef	Makashefa	Makashefaa	Makashefah	Makashefe	Makashefeh	Makashefei	Makashefey	Makashefi	Makashefiy	Makashefy	Makashephi	Mekaashfe	Mikashefe	Rev	makaaashfe	makaashefa	makaashfa	makaashfea	makaashfeh	makaashfehi	makaashfevo	makahshfe	makashaafi	makashafeh	makashafi	makashafo	makasheef	makashefa	makashefah	makashefe	makashefi	makashefia	makashefiah	makashefie	makashefii	makashefo	makashfe	makashfea	makashfeha	makashfei	makashhfe	makhsafe	makshaafe	makshafah	makshafe	mukaashefa	mukaashfa	mukaashfea	mukaashfeh	mukaashfehi	mukaashfevo	mukashaafi	mukashafeh	mukashafo	mukashefa	mukashefah	mukashefe	mukashefi	mukashefia	mukashefiah	mukashefie	mukashefii	mukashfe	mukashfea	mukashfeha	mukshafah	mukshafe	vāh	vāhy	vāhyū	vāhyūn	vāhyūnn	yūhannā	مكاشفه	مکا	مکاش	مکاشف	مکاشفا	مکاشفات	مکاشفة	مکاشفةٔ	مکاشفه	مکاشفها	مکاشفهه	مکاشفهو	مکاشفهٔ	مکاشفهی	مکاشفى	مکاشفيه	مکاشفہ	مکاشفی	مکاشفیه	مکش	مکشفاه	مکشفه
+Tob	Tob
+Jdt	Jdt
+GkEsth	GkEsth
+Wis	Wis
+Sir	Sir
+Bar	Bar
+PrAzar	PrAzar
+Sus	Sus
+Bel	Bel
+SgThree	SgThree
+EpJer	EpJer
+1Macc	1Macc
+2Macc	2Macc
+3Macc	3Macc
+4Macc	4Macc
+1Esd	1Esd
+2Esd	2Esd
+PrMan	PrMan
+
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Ezra
+=Neh
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	پیدایش
+*Exod	خروج
+*Lev	لاویان
+*Num	اعداد
+*Deut	تثنیه
+*Josh	یوشع
+*Judg	داوران
+*Ruth	روت
+*1Sam	۱ سموئیل
+*2Sam	۲ سموئیل
+*1Kgs	۱ پادشاهان
+*2Kgs	۲ پادشاهان
+*1Chr	۱ تواریخ
+*2Chr	۲ تواریخ
+*Ezra	عِزرا
+*Neh	نِحِمیا
+*Esth	اِستر
+*Job	ایوب
+*Ps	مزمور
+*Prov	امثال
+*Eccl	جامعه
+*Song	غزل غزل‌ها
+*Isa	اِشعیا
+*Jer	اِرمیا
+*Lam	مراثی اِرمیا
+*Ezek	حِزقیال
+*Dan	دانیال
+*Hos	هوشع
+*Joel	یوئیل
+*Amos	عاموس
+*Obad	عوبَدیا
+*Jonah	یونس
+*Mic	میکاه
+*Nah	ناحوم
+*Hab	حَبَقوق
+*Zeph	صَفَنیا
+*Hag	حَجَّی
+*Zech	زکریا
+*Mal	مَلاکی
+*Matt	مَتّی
+*Mark	مَرقُس
+*Luke	لوقا
+*John	یوحنا
+*Acts	اعمال
+*Rom	رومیان
+*1Cor	۱ قرنتیان
+*2Cor	۲ قرنتیان
+*Gal	غلاطیان
+*Eph	اَفِسسیان
+*Phil	فیلیپیان
+*Col	کولُسیان
+*1Thess	۱ تسالونیکیان
+*2Thess	۲ تسالونیکیان
+*1Tim	۱ تیموتائوس
+*2Tim	۲ تیموتائوس
+*Titus	تیتوس
+*Phlm	فلیمون
+*Heb	عبرانیان
+*Jas	یعقوب
+*1Pet	۱ پطرس
+*2Pet	۲ پطرس
+*1John	۱ یوحنا
+*2John	۲ یوحنا
+*3John	۳ یوحنا
+*Jude	یهودا
+*Rev	مکاشفه
+*Tob	Tobit	Tob	Tob
+*Jdt	Judith	Jdt	Jdt
+*GkEsth	Greek Esther	Gk Esth	Gk Est
+*Wis	Wisdom	Wis	Wis
+*Sir	Sirach	Sir	Sir
+*Bar	Baruch	Bar	Bar
+*PrAzar	Prayer of Azariah	Pr Azar	Pr Azar
+*Sus	Susannah	Sus	Sus
+*Bel	Bel and the Dragon	Bel	Bel
+*SgThree	Song of the Three Young Men	SgThree	SgThree
+*EpJer	Epistle of Jeremiah	Ep Jer	Ep Jer
+*1Macc	1 Maccabees	1 Macc	1 Mc
+*2Macc	2 Maccabees	2 Macc	2 Mc
+*3Macc	3 Maccabees	3 Macc	3 Mc
+*4Macc	4 Maccabees	4 Macc	4 Mc
+*1Esd	1 Esdras	1 Esd	1 Esd
+*2Esd	2 Esdras	2 Esd	2 Esd
+*PrMan	Prayer of Manasseh	Pr Man	Pr Man

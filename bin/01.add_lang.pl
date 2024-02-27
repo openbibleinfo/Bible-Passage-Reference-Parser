@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 use strict;
 use warnings;
 use Data::Dumper;
@@ -319,6 +320,7 @@ sub validate_node_regexp
 	my @not_oks = @{$not_oks};
 	return $pattern unless (@not_oks);
 	#print scalar(@not_oks) . " not oks\n";
+	print "RECURSE_LEVEL: $recurse_level\n";
 	if ($recurse_level > 10)
 	{
 		print "Splitting $osis by length...\n";

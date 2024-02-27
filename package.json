@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/openbibleinfo/Bible-Passage-Reference-Parser.git"
+    "url": "git://github.com/ralaska/Bible-Passage-Reference-Parser.git"
   },
   "keywords": [
     "bible",
@@ -24,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues"
   },
-  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser"
+  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
+  "dependencies": {
+    "coffeescript": "^2.7.0",
+    "pegjs": "^0.10.0",
+    "regexgen": "^1.3.0"
+  }
 }
