@@ -20,7 +20,7 @@ $UNICODE_BLOCK	Latin
 Gen	$FIRST Mojžíšova	Genesis	Ge?n	$FIRST kniha Mojžíšova
 Exod	$SECOND Mojžíšova	Exodus	Ex	$SECOND kniha Mojžíšova
 Lev	$THIRD Mojžíšova	Leviticus	Lv	$THIRD kniha Mojžíšova	Levitikus	Leviticusi
-Num	$FOURTH Mojžíšova	Numeri	Num	$FOURTH kniha Mojžíšova	Nu
+Num	$FOURTH Mojžíšova	Numeri	Num	$FOURTH kniha Mojžíšova	Nu	Nm
 Deut	$FIFTH Mojžíšova	Deuteronomium	Dt	$FIFTH kniha Mojžíšova
 Josh	Jozue	Joz	Jz
 Judg	Soudců	Sdc	Sd
@@ -29,17 +29,17 @@ Ruth	Rút	Rt
 2Sam	$SECOND Samuelova	$SECOND Samuel	$SECOND Sam	$SECOND kniha Samuelova	$SECOND S
 1Kgs	$FIRST Královská	$FIRST Král	$FIRST kniha královská	$FIRST Kr
 2Kgs	$SECOND Královská	$SECOND Král	$SECOND kniha královská	$SECOND Kr
-1Chr	$FIRST Letopisu	$FIRST Letopisů	$FIRST Paralipomenon	$FIRST kniha kronik	$FIRST Kronik	$FIRST Pa
-2Chr	$SECOND Letopisu	$SECOND Letopisů	$SECOND Paralipomenon	$SECOND kniha kronik	$SECOND Kronik	$SECOND Pa
+1Chr	$FIRST Letopisu	$FIRST Letopisů	$FIRST Paralipomenon	$FIRST kniha kronik	$FIRST Kronik	$FIRST Kron	$FIRST Pa
+2Chr	$SECOND Letopisu	$SECOND Letopisů	$SECOND Paralipomenon	$SECOND kniha kronik	$SECOND Kronik	$SECOND Kron	$SECOND Pa
 Ezra	Ezdráš	Ezd
 Neh	Nehemjáš	Nehemiáš	Neh
 Esth	Ester	Est
 Job	Jób	Job	Jb
-Ps	Žalmy	Žalm	Ž	Kniha žalmů
+Ps	Žalmy	Žalm	Ž	Žl	Kniha žalmů
 Prov	Přísloví	Přís	Přísloví Šalomounova	Př
 Eccl	Kazatel	Kohelet	Kaz
 Song	Píseň písní	Píseň	Píseň Šalamounova	Pís
-Isa	Izajáš	Izaiáš	Iz
+Isa	Izajáš	Izaiáš	Iz	Is
 Jer	Jeremjáš	Jeremiáš	Jer	Jr
 Lam	Pláč	Pláč Jeremjášův	Kniha nářků	Pláč Jeremiášův	Pl
 Ezek	Ezechiel	Ez
@@ -52,9 +52,9 @@ Jonah	Jonáš	Jon
 Mic	Micheáš	Mich	Mi	Michaáš
 Nah	Nahum	Na
 Hab	Abakuk	Abk
-Zeph	Sofonjáš	Sofoniáš	Sf
+Zeph	Sofonjáš	Sofoniáš	Sf	Sof
 Hag	Ageus	Aggeus	Ag
-Zech	Zacharjáš	Zachariáš	Za
+Zech	Zacharjáš	Zachariáš	Za	Zach
 Mal	Malachiáš	Mal
 Matt	Matouš	Mat	Mt	Matoušovo evangelium	Evangelium podle Matouše
 Mark	Marek	Mk	Markovo evangelium	Evangelium podle Marka
@@ -66,7 +66,7 @@ Rom	Římanům	Řím	Ř	List Římanům
 2Cor	$SECOND list Korintským	$SECOND Korintským	2Kor	$SECOND ?K	$SECOND list Korinským
 Gal	Galatským	Gal?	List Galatským
 Eph	Efezským	Efeským	Ef	List Efezským	List Efezanům	List Efézským
-Phil	Filipským	Fp	List Filipským	Filipenským
+Phil	Filipským	Fp	Flp	List Filipským	Filipenským
 Col	Koloským	Kol?	List Koloským	Kolosanům	Kolosenským	List Kolosanům	Kolossenským
 1Thess	$FIRST list Tesalonickým	$FIRST Tesalonickým	$FIRST Te	$FIRST Sol	$FIRST list Soluňským	$FIRST Soluňským	$FIRST Tessalonicenským
 2Thess	$SECOND list Tesalonickým	$SECOND Tesalonickým	$SECOND Te	$SECOND Sol	$SECOND list Soluňským	$SECOND Soluňským	$SECOND Tessalonicenským
@@ -74,7 +74,7 @@ Col	Koloským	Kol?	List Koloským	Kolosanům	Kolosenským	List Kolosanům	Koloss
 2Tim	$SECOND list Timoteovi	$SECOND Timoteus	$SECOND Timotej?ovi	$SECOND Ti?m	$SECOND list Timetejovi	$SECOND list Timotejovi
 Titus	Titovi	Titus	Ti?t	List Titovi
 Phlm	Filemonovi	Filemon	Flm	Fm	List Filemonovi
-Heb	Židům	Žd	List Židům	List Hebrejům	Hebrejům
+Heb	Židům	Žd	Žid	List Židům	List Hebrejům	Hebrejům
 Jas	List Jakubův	Jakubův	Jakub	Jak	Jk
 1Pet	$FIRST list Petrův	$FIRST Petr	$FIRST Pt?	$FIRST Petrův	$FIRST Petrova
 2Pet	$SECOND list Petrův	$SECOND Petr	$SECOND Pt?	$SECOND Petrův	$SECOND Petrova
