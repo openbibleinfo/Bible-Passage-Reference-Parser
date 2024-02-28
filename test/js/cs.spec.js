@@ -7,7 +7,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.options.osis_compaction_strategy = "b";
       return p.options.sequence_combination_strategy = "combine";
     });
@@ -73,7 +73,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -292,7 +292,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -575,7 +575,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -599,7 +599,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -886,7 +886,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1027,6 +1027,7 @@
 		expect(p.parse("4 Mojžíšova 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Numeri 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Num 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("Nm 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("Nu 1:1").osis()).toEqual("Num.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("CTVRTA KNIHA MOJZISOVA 1:1").osis()).toEqual("Num.1.1")
@@ -1159,6 +1160,7 @@
 		expect(p.parse("4 MOJŽÍŠOVA 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUMERI 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NUM 1:1").osis()).toEqual("Num.1.1")
+		expect(p.parse("NM 1:1").osis()).toEqual("Num.1.1")
 		expect(p.parse("NU 1:1").osis()).toEqual("Num.1.1")
 		;
       return true;
@@ -1169,7 +1171,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1196,7 +1198,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1224,7 +1226,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1401,7 +1403,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1430,7 +1432,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1473,7 +1475,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1495,7 +1497,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1778,7 +1780,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1807,7 +1809,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1838,7 +1840,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1867,7 +1869,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1912,7 +1914,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1965,7 +1967,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1985,6 +1987,7 @@
 		expect(p.parse("Izajás 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Izajáš 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Isa 1:1").osis()).toEqual("Isa.1.1")
+		expect(p.parse("Is 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("Iz 1:1").osis()).toEqual("Isa.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("IZAIAS 1:1").osis()).toEqual("Isa.1.1")
@@ -1996,6 +1999,7 @@
 		expect(p.parse("IZAJÁS 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("IZAJÁŠ 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("ISA 1:1").osis()).toEqual("Isa.1.1")
+		expect(p.parse("IS 1:1").osis()).toEqual("Isa.1.1")
 		expect(p.parse("IZ 1:1").osis()).toEqual("Isa.1.1")
 		;
       return true;
@@ -2006,7 +2010,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2109,7 +2113,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2192,7 +2196,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2391,7 +2395,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2546,7 +2550,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2593,6 +2597,10 @@
 		expect(p.parse("II Letopisů 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 Letopisu 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 Letopisů 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("Druha Kron 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("Druhy Kron 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("Druhá Kron 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("Druhý Kron 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II. Kronik 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2. Kronik 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II Kronik 1:1").osis()).toEqual("2Chr.1.1")
@@ -2601,6 +2609,10 @@
 		expect(p.parse("Druhy Pa 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("Druhá Pa 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("Druhý Pa 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("II. Kron 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2. Kron 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("II Kron 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2 Kron 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II. Pa 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2. Pa 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II Pa 1:1").osis()).toEqual("2Chr.1.1")
@@ -2643,6 +2655,10 @@
 		expect(p.parse("II LETOPISŮ 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 LETOPISU 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2 LETOPISŮ 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("DRUHA KRON 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("DRUHY KRON 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("DRUHÁ KRON 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("DRUHÝ KRON 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II. KRONIK 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2. KRONIK 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II KRONIK 1:1").osis()).toEqual("2Chr.1.1")
@@ -2651,6 +2667,10 @@
 		expect(p.parse("DRUHY PA 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("DRUHÁ PA 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("DRUHÝ PA 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("II. KRON 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2. KRON 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("II KRON 1:1").osis()).toEqual("2Chr.1.1")
+		expect(p.parse("2 KRON 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II. PA 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("2. PA 1:1").osis()).toEqual("2Chr.1.1")
 		expect(p.parse("II PA 1:1").osis()).toEqual("2Chr.1.1")
@@ -2665,7 +2685,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2702,12 +2722,18 @@
 		expect(p.parse("1 Letopisů 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I Letopisu 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I Letopisů 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("Prvni Kron 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("První Kron 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1. Kronik 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I. Kronik 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 Kronik 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I Kronik 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("Prvni Pa 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("První Pa 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1. Kron 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("I. Kron 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1 Kron 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("I Kron 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1. Pa 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I. Pa 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 Pa 1:1").osis()).toEqual("1Chr.1.1")
@@ -2740,12 +2766,18 @@
 		expect(p.parse("1 LETOPISŮ 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I LETOPISU 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I LETOPISŮ 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("PRVNI KRON 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("PRVNÍ KRON 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1. KRONIK 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I. KRONIK 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 KRONIK 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I KRONIK 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("PRVNI PA 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("PRVNÍ PA 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1. KRON 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("I. KRON 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("1 KRON 1:1").osis()).toEqual("1Chr.1.1")
+		expect(p.parse("I KRON 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1. PA 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("I. PA 1:1").osis()).toEqual("1Chr.1.1")
 		expect(p.parse("1 PA 1:1").osis()).toEqual("1Chr.1.1")
@@ -2760,7 +2792,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2793,7 +2825,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2832,7 +2864,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2875,7 +2907,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2902,7 +2934,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2929,7 +2961,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2949,6 +2981,8 @@
 		expect(p.parse("Zalm 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Žalm 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Ps 1:1").osis()).toEqual("Ps.1.1")
+		expect(p.parse("Zl 1:1").osis()).toEqual("Ps.1.1")
+		expect(p.parse("Žl 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Z 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Ž 1:1").osis()).toEqual("Ps.1.1")
 		p.include_apocrypha(false)
@@ -2961,6 +2995,8 @@
 		expect(p.parse("ZALM 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("ŽALM 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("PS 1:1").osis()).toEqual("Ps.1.1")
+		expect(p.parse("ZL 1:1").osis()).toEqual("Ps.1.1")
+		expect(p.parse("ŽL 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Z 1:1").osis()).toEqual("Ps.1.1")
 		expect(p.parse("Ž 1:1").osis()).toEqual("Ps.1.1")
 		;
@@ -2972,7 +3008,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2997,7 +3033,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3080,7 +3116,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3109,7 +3145,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3274,7 +3310,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3357,7 +3393,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3398,7 +3434,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3425,7 +3461,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3452,7 +3488,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3485,7 +3521,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3514,7 +3550,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3541,7 +3577,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3594,7 +3630,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3627,7 +3663,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3670,7 +3706,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3697,7 +3733,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3724,7 +3760,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3744,6 +3780,7 @@
 		expect(p.parse("Sofonjás 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("Sofonjáš 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("Zeph 1:1").osis()).toEqual("Zeph.1.1")
+		expect(p.parse("Sof 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("Sf 1:1").osis()).toEqual("Zeph.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("SOFONIAS 1:1").osis()).toEqual("Zeph.1.1")
@@ -3755,6 +3792,7 @@
 		expect(p.parse("SOFONJÁS 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("SOFONJÁŠ 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("ZEPH 1:1").osis()).toEqual("Zeph.1.1")
+		expect(p.parse("SOF 1:1").osis()).toEqual("Zeph.1.1")
 		expect(p.parse("SF 1:1").osis()).toEqual("Zeph.1.1")
 		;
       return true;
@@ -3765,7 +3803,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3794,7 +3832,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3813,6 +3851,7 @@
 		expect(p.parse("Zacharjaš 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("Zacharjás 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("Zacharjáš 1:1").osis()).toEqual("Zech.1.1")
+		expect(p.parse("Zach 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("Zech 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("Za 1:1").osis()).toEqual("Zech.1.1")
 		p.include_apocrypha(false)
@@ -3824,6 +3863,7 @@
 		expect(p.parse("ZACHARJAŠ 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("ZACHARJÁS 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("ZACHARJÁŠ 1:1").osis()).toEqual("Zech.1.1")
+		expect(p.parse("ZACH 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("ZECH 1:1").osis()).toEqual("Zech.1.1")
 		expect(p.parse("ZA 1:1").osis()).toEqual("Zech.1.1")
 		;
@@ -3835,7 +3875,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3866,7 +3906,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3905,7 +3945,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3936,7 +3976,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3987,7 +4027,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4094,7 +4134,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4229,7 +4269,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4364,7 +4404,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4395,7 +4435,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4442,7 +4482,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4509,7 +4549,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4664,7 +4704,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4795,7 +4835,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4828,7 +4868,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4873,7 +4913,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4891,6 +4931,7 @@
 		expect(p.parse("Filipskym 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Filipským 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("Flp 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("Fp 1:1").osis()).toEqual("Phil.1.1")
 		p.include_apocrypha(false)
 		expect(p.parse("LIST FILIPSKYM 1:1").osis()).toEqual("Phil.1.1")
@@ -4900,6 +4941,7 @@
 		expect(p.parse("FILIPSKYM 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("FILIPSKÝM 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1")
+		expect(p.parse("FLP 1:1").osis()).toEqual("Phil.1.1")
 		expect(p.parse("FP 1:1").osis()).toEqual("Phil.1.1")
 		;
       return true;
@@ -4910,7 +4952,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -4961,7 +5003,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5240,7 +5282,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5455,7 +5497,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5606,7 +5648,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5725,7 +5767,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5756,7 +5798,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5789,7 +5831,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5813,6 +5855,8 @@
 		expect(p.parse("Židum 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Židům 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Heb 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("Zid 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("Žid 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Zd 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("Žd 1:1").osis()).toEqual("Heb.1.1")
 		p.include_apocrypha(false)
@@ -5829,6 +5873,8 @@
 		expect(p.parse("ŽIDUM 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("ŽIDŮM 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("HEB 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("ZID 1:1").osis()).toEqual("Heb.1.1")
+		expect(p.parse("ŽID 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("ZD 1:1").osis()).toEqual("Heb.1.1")
 		expect(p.parse("ŽD 1:1").osis()).toEqual("Heb.1.1")
 		;
@@ -5840,7 +5886,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -5877,7 +5923,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6028,7 +6074,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6147,7 +6193,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6186,7 +6232,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6221,7 +6267,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6246,7 +6292,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6276,7 +6322,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6299,7 +6345,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6344,7 +6390,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6389,7 +6435,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6434,7 +6480,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -6473,7 +6519,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
