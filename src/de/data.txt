@@ -1,84 +1,90 @@
-$FIRST	Erste	1
-$SECOND	Zweite	2
-$THIRD	Dritte	3
-$FOURTH	Vierte	4
-$FIFTH	Fünfte	5
+# Constants used below & in the parser
+$FIRST	Erste[nrs]?	1
+$SECOND	Zweite[nrs]?	2
+$THIRD	Dritte[nrs]?	3
+
+# Constants used only below (TODO: Implement $FOURTH & $FIFTH there, too)
+$FOURTH	Vierte[ns]?	4
+$FIFTH	Fünftes	5
+$GOSPEL	(Das)? Evangelium nach
+
+# Constants used only in the parser
 $AB	[a-e]
-$AND	und	vgl.
-$CHAPTER	Kapitel	Kap.
-$FF	ff
+$AND	und siehe auch	und siehe	und auch	sowie auch	siehe auch	siehe	sowie	und	u.	&	vgl.
+$CHAPTER	Kapiteln	Kapiteln	Kapitel	Kap.
+$FF	ff![a-z0-9äöü]
+$NEXT	f![a-z0-9äöü]
 $TITLE	Titel
 $TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
 $TO	bis
-$VERSE	Verse	Vers.	Ver.	Vs.
+$VERSE	Versen	Verses	Verse	Vers.	Vers	Vs.
 $UNICODE_BLOCK	Latin
 
-# http://de.wikipedia.org/wiki/Bibel
-# http://de.wikipedia.org/wiki/Liste_biblischer_B%C3%BCcher
-Gen	$FIRST Mose	Genesis	$FIRST Buch Mose	1. Mos?	Gen
-Exod	$SECOND Mose	Exodus	$SECOND Buch Mose	2. Mos?	Ex
-Lev	$THIRD Mose	Levitikus	$THIRD Buch Mose	3. Mos?	Lev
-Num	$FOURTH Mose	Numeri	$FOURTH Buch Mose	4. Mos?	Num
-Deut	$FIFTH Mose	Deuteronomium	$FIFTH Buch Mose	5. Mos?	Dtn
+# Bible book abbreviations
+Gen	$FIRST Mose	$FIRST Buch Mose	1. Mos	1. Mo	Genesis	Gen	Gn
+Exod	$SECOND Mose	$SECOND Buch Mose	2. Mos	2. Mo	Exodus	Exod	Ex
+Lev	$THIRD Mose	$THIRD Buch Mose	3. Mos	3. Mo	Levitikus	Lev	Lv
+Num	$FOURTH Mose	$FOURTH Buch Mose	4. Mos	4. Mo	Numeri	Num	Nm
+Deut	$FIFTH Mose	$FIFTH Buch Mose	5. Mos	5. Mo	Deuteronomium	Deut	Dtn	Dt
 Josh	Josua	Jos
-Judg	Richter	Ri
-Ruth	Rut
-1Sam	$FIRST Samuel	1. Sam
-2Sam	$SECOND Samuel	2. Sam
-1Kgs	$FIRST Könige	$FIRST Koenige	1. Kön
-2Kgs	$SECOND Könige	$SECOND Koenige	2. Kön
-1Chr	$FIRST Chronik	1. Chr
-2Chr	$SECOND Chronik	2. Chr
+Judg	Richter	Rich	Ri
+Ruth	Rut	Ru
+1Sam	$FIRST Samuel	1. Sam	1. Sam	1. Sa
+2Sam	$SECOND Samuel	2. Sam	2. Sam	2. Sa
+1Kgs	$FIRST Könige	$FIRST Koenige	1. Kön	1. Koen	1. Kng	1. Kö	1. Koe
+2Kgs	$SECOND Könige	$SECOND Koenige	2. Kön	2. Koen	2. Kng	2. Kö	2. Koe
+1Chr	$FIRST Chronik	1. Chron	1. Chr
+2Chr	$SECOND Chronik	2. Chron	2. Chr
 Ezra	Esra	Esr
 Neh	Nehemia	Neh
-Esth	Esth?er	Est
+Esth	Esther	Ester	Est
 Job	Ijob	Hiob	Job	Hi
-Ps	Psalmen	Psalm	Ps
-Prov	Sprichwörter	Sprüche	Sprueche	Spr
+Ps	Psalmen	Psalm	Pslm	Ps
+Prov	Sprichwörter	Sprichwoerter	Sprüche	Sprueche	Spr
 Eccl	Prediger	Kohelet	Ekklesiastes	Ecclesiastes	Pred	Koh
-Song	Hoheslied	Hoheslied Salomos	Hohes Lied	Hohelied Salomonis	Hohelied	Hld
+Song	Hohes?lied Salomos	Hohes?lied Salomonis	Hohes?lied	Hohes Lied	Hld
 Isa	Jesaja	Isaias	Jes
 Jer	Jeremia	Jeremias	Jer
 Lam	Klagelieder Jeremias	Klagelieder	Klgl	Klag
-Ezek	Ezechiel	Hesekiel	Hes	Ez
+Ezek	Ezechiel	Hesekiel	Hesek	Hes	Ez
 Dan	Daniel	Dan
-Hos	Hosea	Osee	Hos
-Joel	Joel	Joel
+Hos	Hosea	Hos
+Joel	Joel
 Amos	Amos	Am
-Obad	Obadja	Abdias	Obd
-Jonah	Jona	Jonas
-Mic	Micha	Michäas	Mi
+Obad	Obadja	Abdias	Obad	Obd
+Jonah	Jonas	Jona
+Mic	Micha	Michäas	Michaeas	Mich	Mi
 Nah	Nahum	Nah
 Hab	Habakuk	Hab
-Zeph	Zefanja	Sophonias	Zephanja	Zef	Soph
-Hag	Haggai	Aggäus	Hag	Agg?
+Zeph	Zefanja	Zephanja	Zef
+Hag	Haggai	Hagg	Hag
 Zech	Sacharja	Zacharias	Sach
 Mal	Maleachi	Malachias	Mal
-Matt	Matthäus	Mt
-Mark	Markus	Mk
-Luke	Lukas	Lk
-John	Johannes	Joh
+Matt	$GOSPEL Matthäus	$GOSPEL Matthaeus	Matthäusevangelium	Matthaeusevangelium	Matthäus	Matthaeus	Matt	Mt
+Mark	$GOSPEL Markus	Markusevangelium	Markus	Mark	Mk
+Luke	$GOSPEL Lukas	Lukasevangelium	Lukas	Luk	Lk
+John	$GOSPEL Johannes	Johannesevangelium	Johannes	Joh
 Acts	Apostelgeschichte	Apg
-Rom	Römer	Roemer	Röm
+Rom	Römer	Roemer	Röm	Roem	Rm
 1Cor	$FIRST Korinther	1. Kor
 2Cor	$SECOND Korinther	2. Kor
 Gal	Galater	Gal
 Eph	Epheser	Eph
 Phil	Philipper	Phil
 Col	Kolosser	Kol
-1Thess	$FIRST Thessalonicher	1. Thess
-2Thess	$SECOND Thessalonicher	2. Thess
+1Thess	$FIRST Thessalonicher	1. Thess	1. Th
+2Thess	$SECOND Thessalonicher	2. Thess	2. Th
 1Tim	$FIRST Timotheus	1. Tim
 2Tim	$SECOND Timotheus	2. Tim
 Titus	Titus	Tit
 Phlm	Philemon	Phlm	Phm
-Heb	Hebräer	Hebraeer	Hebr
-Jas	Jakobusbrief	Jakobus	Jak
-1Pet	$FIRST Petrus	1. Petr
-2Pet	$SECOND Petrus	2. Petr
-1John	$FIRST Johannes	1. Joh
-2John	$SECOND Johannes	2. Joh
-3John	$THIRD Johannes	3. Joh
+Heb	Hebräer	Hebraeer	Hebr	Heb	Hb
+Jas	Jakobusbrief	Jakobus	Jk
+1Pet	$FIRST Petrus	1. Petr	1. Pet	1. Pt
+2Pet	$SECOND Petrus	2. Petr	2. Pet	2. Pt
+1John	$FIRST Johannes	1. Joh	1. Jo
+2John	$SECOND Johannes	2. Joh	2. Jo
+3John	$THIRD Johannes	3. Joh	3. Jo
 Jude	Judas	Jud
 Rev	Offenbarung	Offb
 Tob	Tobit	Tobias	Tob
@@ -87,22 +93,20 @@ GkEsth	Ester \(Griechisch\)	Gr Est
 Wis	Weisheit Salomos	Weisheit	Weish
 Sir	Jesus Sirach	Ecclesiasticus	Sir
 Bar	Baruch	Bar
-PrAzar	Gebet des Asarja	Geb As
-Sus	Susanna im Bade	Susanna und die Alten	Susanna	Sus
-Bel	Bel und Vom Drachen	Bel
-SgThree	Lobgesang der drei jungen Männer im Feuerofen	Lobgesang der drei jungen Männer	Lobgesang der 3 jungen Männer	Der Gesang der Drei Männer im feurigen Ofen	Gesang der Drei	Der Gesang der Drei	L3J
+PrAzar	(Das )?Gebet des Asarja	(Das )?Gebet Asarjas	Geb As
+Sus	Susanna	Sus
+Bel	Bel und (der? )Drache	Bel
+SgThree	Gesang der drei( Männer)?( im Feuerofen)?	Gesang der drei Maenner( im Feuerofen)?	L3J
 EpJer	Brief des Jeremia	Br Jer
-1Macc	$FIRST Makkabäer	1. Makk
-2Macc	$SECOND Makkabäer	2. Makk
-3Macc	$THIRD Makkabäer	3. Makk
-4Macc	$FOURTH Makkabäer	4. Makk
-1Esd	$FIRST Esra	1. Esr?
-2Esd	$SECOND Esra	2. Esr?
-PrMan	Gebet des Manasse	Gebet Manasses?	Geb Man	Or Man
-Phil,Phlm	Ph
-Ezra,Esth	Es
+1Macc	$FIRST Makkabäer	$FIRST Makkabaeer	1. Makk
+2Macc	$SECOND Makkabäer	$SECOND Makkabaeer	2. Makk
+3Macc	$THIRD Makkabäer	$THIRD Makkabaeer	3. Makk
+4Macc	$FOURTH Makkabäer	$FOURTH Makkabaeer	4. Makk
+1Esd	$FIRST Esd?ra	1. Esd?r	1. Es
+2Esd	$SECOND Esd?ra	2. Esd?r	2. Es
+PrMan	(Das )?Gebet des Manasse	(Das )?Gebet Manasses	Gebet Manasse	Geb Man	Or Man
 
-# Order
+# Parsing order
 =Gen
 =Exod
 =Bel

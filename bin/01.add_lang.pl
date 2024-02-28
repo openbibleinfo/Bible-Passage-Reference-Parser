@@ -604,7 +604,7 @@ sub make_tests
 			foreach my $expanded (expand_abbrev_vars($abbrev))
 			{
 				add_abbrev_to_all_abbrevs($osis, $expanded, \%all_abbrevs);
-				push @tests, "\t\texpect(p.parse(\"$expanded 1:1\").osis()).toEqual(\"$match\")";
+				push @tests, "\t\texpect(p.parse(\"$expanded 1:1\").osis()).toEqual(\"$match\", \"parsing: '$expanded 1:1'\")";
 			}
 			foreach my $alt_osis (@osises)
 			{
@@ -646,7 +646,7 @@ sub make_tests
 				foreach my $expanded (expand_abbrev_vars($abbrev))
 				{
 					$expanded = uc_normalize($expanded);
-					push @out, "\t\texpect(p.parse(\"$expanded 1:1\").osis()).toEqual(\"$match\")";
+					push @out, "\t\texpect(p.parse(\"$expanded 1:1\").osis()).toEqual(\"$match\", \"parsing: '$expanded 1:1'\")";
 				}
 			}
 		}
@@ -772,9 +772,9 @@ sub add_range_tests
 	{
 		foreach my $to (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Titus 1:1 $to 2\").osis()).toEqual \"Titus.1.1-Titus.1.2\"";
-			push @out, "		expect(p.parse(\"Matt 1${to}2\").osis()).toEqual \"Matt.1-Matt.2\"";
-			push @out, "		expect(p.parse(\"Phlm 2 " . uc_normalize($to) . " 3\").osis()).toEqual \"Phlm.1.2-Phlm.1.3\"";
+			push @out, "		expect(p.parse(\"Titus 1:1 $to 2\").osis()).toEqual(\"Titus.1.1-Titus.1.2\", \"parsing: 'Titus 1:1 $to 2'\")";
+			push @out, "		expect(p.parse(\"Matt 1${to}2\").osis()).toEqual(\"Matt.1-Matt.2\", \"parsing: 'Matt 1${to}2'\")";
+			push @out, "		expect(p.parse(\"Phlm 2 " . uc_normalize($to) . " 3\").osis()).toEqual(\"Phlm.1.2-Phlm.1.3\", \"parsing: 'Phlm 2 " . uc_normalize($to) . " 3'\")";
 		}
 	}
 	return @out;
@@ -788,8 +788,8 @@ sub add_chapter_tests
 	{
 		foreach my $chapter (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Titus 1:1, $chapter 2\").osis()).toEqual \"Titus.1.1,Titus.2\"";
-			push @out, "		expect(p.parse(\"Matt 3:4 " . uc_normalize($chapter) . " 6\").osis()).toEqual \"Matt.3.4,Matt.6\"";
+			push @out, "		expect(p.parse(\"Titus 1:1, $chapter 2\").osis()).toEqual(\"Titus.1.1,Titus.2\", \"parsing: 'Titus 1:1, $chapter 2'\")";
+			push @out, "		expect(p.parse(\"Matt 3:4 " . uc_normalize($chapter) . " 6\").osis()).toEqual(\"Matt.3.4,Matt.6\", \"parsing: 'Matt 3:4 " . uc_normalize($chapter) . " 6'\")";
 		}
 	}
 	return @out;
@@ -803,8 +803,8 @@ sub add_verse_tests
 	{
 		foreach my $verse (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Exod 1:1 $verse 3\").osis()).toEqual \"Exod.1.1,Exod.1.3\"";
-			push @out, "		expect(p.parse(\"Phlm " . uc_normalize($verse) . " 6\").osis()).toEqual \"Phlm.1.6\"";
+			push @out, "		expect(p.parse(\"Exod 1:1 $verse 3\").osis()).toEqual(\"Exod.1.1,Exod.1.3\", \"parsing: 'Exod 1:1 $verse 3'\")";
+			push @out, "		expect(p.parse(\"Phlm " . uc_normalize($verse) . " 6\").osis()).toEqual(\"Phlm.1.6\", \"parsing: 'Phlm " . uc_normalize($verse) . " 6'\")";
 		}
 	}
 	return @out;
@@ -818,8 +818,8 @@ sub add_sequence_tests
 	{
 		foreach my $and (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Exod 1:1 $and 3\").osis()).toEqual \"Exod.1.1,Exod.1.3\"";
-			push @out, "		expect(p.parse(\"Phlm 2 " . uc_normalize($and) . " 6\").osis()).toEqual \"Phlm.1.2,Phlm.1.6\"";
+			push @out, "		expect(p.parse(\"Exod 1:1 $and 3\").osis()).toEqual(\"Exod.1.1,Exod.1.3\", \"parsing: 'Exod 1:1 $and 3'\")";
+			push @out, "		expect(p.parse(\"Phlm 2 " . uc_normalize($and) . " 6\").osis()).toEqual(\"Phlm.1.2,Phlm.1.6\", \"parsing: 'Phlm 2 " . uc_normalize($and) . " 6'\")";
 		}
 	}
 	return @out;
@@ -833,8 +833,8 @@ sub add_title_tests
 	{
 		foreach my $title (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Ps 3 $title, 4:2, 5:$title\").osis()).toEqual \"Ps.3.1,Ps.4.2,Ps.5.1\"";
-			push @out, "		expect(p.parse(\"" . uc_normalize("Ps 3 $title, 4:2, 5:$title") . "\").osis()).toEqual \"Ps.3.1,Ps.4.2,Ps.5.1\"";
+			push @out, "		expect(p.parse(\"Ps 3 $title, 4:2, 5:$title\").osis()).toEqual(\"Ps.3.1,Ps.4.2,Ps.5.1\", \"parsing: 'Ps 3 $title, 4:2, 5:$title'\")";
+			push @out, "		expect(p.parse(\"" . uc_normalize("Ps 3 $title, 4:2, 5:$title") . "\").osis()).toEqual(\"Ps.3.1,Ps.4.2,Ps.5.1\", \"parsing: '" . uc_normalize("Ps 3 $title, 4:2, 5:$title") . "'\")";
 		}
 	}
 	return @out;
@@ -849,8 +849,8 @@ sub add_ff_tests
 	{
 		foreach my $ff (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Rev 3$ff, 4:2$ff\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"";
-			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $ff, 4:2 $ff") . "\").osis()).toEqual \"Rev.3-Rev.22,Rev.4.2-Rev.4.11\"" unless ($lang eq 'it');
+			push @out, "		expect(p.parse(\"Rev 3$ff, 4:2$ff\").osis()).toEqual(\"Rev.3-Rev.22,Rev.4.2-Rev.4.11\", \"parsing: 'Rev 3$ff, 4:2$ff'\")";
+			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $ff, 4:2 $ff") . "\").osis()).toEqual(\"Rev.3-Rev.22,Rev.4.2-Rev.4.11\", \"parsing: '" . uc_normalize("Rev 3 $ff, 4:2 $ff") . "'\")" unless ($lang eq 'it');
 		}
 	}
 	push @out, "\t\tp.set_options {case_sensitive: \"none\"}" if ($lang eq 'it');
@@ -867,14 +867,14 @@ sub add_next_tests
 	{
 		foreach my $next (expand_abbrev(remove_exclamations(handle_accents($abbrev))))
 		{
-			push @out, "		expect(p.parse(\"Rev 3:1$next, 4:2$next\").osis()).toEqual \"Rev.3.1-Rev.3.2,Rev.4.2-Rev.4.3\"";
-			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $next, 4:2 $next") . "\").osis()).toEqual \"Rev.3-Rev.4,Rev.4.2-Rev.4.3\"" unless ($lang eq 'it');
-			push @out, "		expect(p.parse(\"Jude 1$next, 2$next\").osis()).toEqual \"Jude.1.1-Jude.1.2,Jude.1.2-Jude.1.3\"";
-			push @out, "		expect(p.parse(\"Gen 1:31$next\").osis()).toEqual \"Gen.1.31-Gen.2.1\"";
-			push @out, "		expect(p.parse(\"Gen 1:2-31$next\").osis()).toEqual \"Gen.1.2-Gen.2.1\"";
-			push @out, "		expect(p.parse(\"Gen 1:2$next-30\").osis()).toEqual \"Gen.1.2-Gen.1.3,Gen.1.30\"";
-			push @out, "		expect(p.parse(\"Gen 50$next, Gen 50:26$next\").osis()).toEqual \"Gen.50,Gen.50.26\"";
-			push @out, "		expect(p.parse(\"Gen 1:32$next, Gen 51$next\").osis()).toEqual \"\"";
+			push @out, "		expect(p.parse(\"Rev 3:1$next, 4:2$next\").osis()).toEqual(\"Rev.3.1-Rev.3.2,Rev.4.2-Rev.4.3\", \"parsing: 'Rev 3:1$next, 4:2$next'\")";
+			push @out, "		expect(p.parse(\"" . uc_normalize("Rev 3 $next, 4:2 $next") . "\").osis()).toEqual(\"Rev.3-Rev.4,Rev.4.2-Rev.4.3\", \"parsing: '" . uc_normalize("Rev 3 $next, 4:2 $next") . "'\")" unless ($lang eq 'it');
+			push @out, "		expect(p.parse(\"Jude 1$next, 2$next\").osis()).toEqual(\"Jude.1.1-Jude.1.2,Jude.1.2-Jude.1.3\", \"parsing: 'Jude 1$next, 2$next'\")";
+			push @out, "		expect(p.parse(\"Gen 1:31$next\").osis()).toEqual(\"Gen.1.31-Gen.2.1\", \"parsing: 'Gen 1:31$next'\")";
+			push @out, "		expect(p.parse(\"Gen 1:2-31$next\").osis()).toEqual(\"Gen.1.2-Gen.2.1\", \"parsing: 'Gen 1:2-31$next'\")";
+			push @out, "		expect(p.parse(\"Gen 1:2$next-30\").osis()).toEqual(\"Gen.1.2-Gen.1.3,Gen.1.30\", \"parsing: 'Gen 1:2$next-30'\")";
+			push @out, "		expect(p.parse(\"Gen 50$next, Gen 50:26$next\").osis()).toEqual(\"Gen.50,Gen.50.26\", \"parsing: 'Gen 50$next, Gen 50:26$next'\")";
+			push @out, "		expect(p.parse(\"Gen 1:32$next, Gen 51$next\").osis()).toEqual(\"\", \"parsing: 'Gen 1:32$next, Gen 51$next'\")";
 		}
 	}
 	push @out, "\t\tp.set_options {case_sensitive: \"none\"}" if ($lang eq 'it');
@@ -929,7 +929,7 @@ sub add_book_range_tests
 			foreach my $to (expand_abbrev(remove_exclamations(handle_accents($to_regex))))
 			{
 				next if (exists $alreadys{"$first $to $third $abbrev"});
-				push @out, "		expect(p.parse(\"$first $to $third $abbrev\").osis()).toEqual \"1John.1-3John.1\"";
+				push @out, "		expect(p.parse(\"$first $to $third $abbrev\").osis()).toEqual(\"1John.1-3John.1\", \"parsing: '$first $to $third $abbrev'\")";
 				$alreadys{"$first $to $third $abbrev"} = 1;
 			}
 		}
@@ -942,8 +942,8 @@ sub add_boundary_tests
 	my @out;
 	push @out, "\tit \"should handle boundaries ($lang)\", ->";
 	push @out, "		p.set_options {book_alone_strategy: \"full\"}";
-	push @out, "		expect(p.parse(\"\\u2014Matt\\u2014\").osis()).toEqual \"Matt.1-Matt.28\"";
-	push @out, "		expect(p.parse(\"\\u201cMatt 1:1\\u201d\").osis()).toEqual \"Matt.1.1\"";
+	push @out, "		expect(p.parse(\"\\u2014Matt\\u2014\").osis()).toEqual(\"Matt.1-Matt.28\", \"parsing: '\\u2014Matt\\u2014'\")";
+	push @out, "		expect(p.parse(\"\\u201cMatt 1:1\\u201d\").osis()).toEqual(\"Matt.1.1\", \"parsing: '\\u201cMatt 1:1\\u201d'\")";
 	return @out;
 }
 
@@ -1087,7 +1087,7 @@ sub get_vars
 		$out{$key} = [@values];
 	}
 	close FILE;
-	
+
 	foreach my $char (@{$out{'$ALLOWED_CHARACTERS'}})
 	{
 		my $check = quotemeta $char;
@@ -1133,7 +1133,7 @@ sub get_pre_book_characters
 	foreach my $ref (@letters)
 	{
 		my ($start, $end) = @{$ref};
-		push @out, ($end eq $start) ? "$start" : 
+		push @out, ($end eq $start) ? "$start" :
 		"$start-$end";
 	}
 	my $out = join '', @out;

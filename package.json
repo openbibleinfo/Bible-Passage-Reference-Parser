@@ -1,5 +1,5 @@
 {
-  "name": "verse-parser",
+  "name": "bible-ref-parser",
   "version": "1.0.0",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
   "main": "js/",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/bibleutils/Bible-Passage-Reference-Parser.git"
+    "url": "git://github.com/bibleutils/bible-ref-parser.git"
   },
   "keywords": [
     "bible",
@@ -22,11 +22,19 @@
   "author": "Bible Utils",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bibleutils/Bible-Passage-Reference-Parser/issues"
+    "url": "https://github.com/bibleutils/bible-ref-parser/issues"
   },
-  "homepage": "https://github.com/bibleutils/Bible-Passage-Reference-Parser",
-  "dependencies": {
+  "homepage": "https://github.com/bibleutils/bible-ref-parser",
+  "scripts": {
+    "add-language": "cd bin && perl 01.add_lang.pl",
+    "compile-language": "cd bin && perl 02.compile.pl",
+    "build-language": "bash -c 'npm run add-language $0 && npm run compile-language $0'",
+    "test-language": "bash -c 'jasmine-node test/js/$0.spec.js'",
+    "test": "(find test/js -name *.spec.js | xargs -I % sh -c 'echo %; jasmine-node %';) || exit 1;"
+  },
+  "devDependencies": {
     "coffeescript": "^2.7.0",
+    "jasmine-node": "^1.15.0",
     "pegjs": "^0.10.0",
     "regexgen": "^1.3.0"
   }
