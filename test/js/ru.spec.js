@@ -7,7 +7,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.options.osis_compaction_strategy = "b";
       return p.options.sequence_combination_strategy = "combine";
     });
@@ -73,7 +73,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -106,7 +106,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -135,7 +135,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -160,7 +160,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -189,7 +189,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -218,7 +218,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -244,7 +244,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -267,7 +267,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -294,7 +294,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -316,7 +316,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -345,7 +345,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -367,7 +367,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -394,7 +394,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -431,7 +431,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -470,7 +470,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -501,7 +501,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -533,7 +533,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -565,7 +565,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -598,7 +598,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -683,7 +683,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -768,7 +768,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -873,7 +873,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -978,7 +978,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1085,7 +1085,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1192,7 +1192,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1231,7 +1231,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1262,7 +1262,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1284,7 +1284,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1313,7 +1313,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1344,7 +1344,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1381,7 +1381,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1403,7 +1403,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1440,7 +1440,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1473,7 +1473,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1498,7 +1498,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1541,7 +1541,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1572,7 +1572,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1607,7 +1607,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1646,7 +1646,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1677,7 +1677,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1708,7 +1708,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1739,7 +1739,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1772,7 +1772,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1803,7 +1803,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1836,7 +1836,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1865,7 +1865,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1896,7 +1896,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1927,7 +1927,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1960,7 +1960,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -1995,7 +1995,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2026,7 +2026,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2067,7 +2067,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2102,7 +2102,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2137,7 +2137,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2222,7 +2222,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2307,7 +2307,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2392,7 +2392,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2425,7 +2425,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2452,7 +2452,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2483,7 +2483,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2548,7 +2548,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2613,7 +2613,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2644,7 +2644,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2679,7 +2679,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2718,7 +2718,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2749,7 +2749,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2854,7 +2854,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -2959,7 +2959,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3044,7 +3044,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3129,7 +3129,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3160,7 +3160,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3191,7 +3191,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3222,7 +3222,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3253,7 +3253,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3358,7 +3358,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3463,7 +3463,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3494,7 +3494,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3517,7 +3517,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3540,7 +3540,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3566,7 +3566,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3590,7 +3590,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3624,7 +3624,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3658,7 +3658,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3690,7 +3690,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
@@ -3724,7 +3724,7 @@
     var p;
     p = {};
     beforeEach(function() {
-      p = new bcv_parser;
+      p = new bcv_parser();
       p.set_options({
         book_alone_strategy: "ignore",
         book_sequence_strategy: "ignore",
