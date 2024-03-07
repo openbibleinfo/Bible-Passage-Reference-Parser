@@ -32,23 +32,22 @@ These usage examples are in Javascript. You can also use Coffeescript, of course
 To install from the command line:
 
 ```shell
-npm i bible-passage-reference-parser
+npm i bible-ref-parse
 ```
 
-To run:
+### Importing the module
 
+ESM:
 ```javascript
-var bcv_parser = require("bible-passage-reference-parser/js/en_bcv_parser").bcv_parser;
-var bcv = new bcv_parser;
+import * as parserModule from 'bible-ref-parse/js/en_bcv_parser';
+const parser = new parserModule.bcv_parser();
 ```
 
-### Setup: Node.js (manual)
-
-After downloading the language file you want:
+CommonsJS:
 
 ```javascript
 var bcv_parser = require("/path/js/en_bcv_parser.js").bcv_parser;
-var bcv = new bcv_parser;
+var bcv = new bcv_parser();
 ```
 
 ### Parsing
@@ -361,11 +360,11 @@ The parser is quite aggressive in identifying text as Bible references; if you j
 
 The parser spends most of its time doing regular expressions and manipulating strings. If you give it a very long string full of Bible references, it could block your main event loop. Depending on your performance requirements, parsing large numbers of even short strings could saturate your CPU and lead to problems in the rest of your app.
 
-In addition, a number of the tests in the "real-world" section of [`src/core/spec.coffee`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/src/core/spec.coffee) have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases—one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
+In addition, a number of the tests in the "real-world" section of [`src/core/spec.coffee`](https://github.com/bibleutils/bible-ref-parse/blob/master/src/core/spec.coffee) have comments describing limitations of the parser. Unfortunately, it's hard to solve them without incorrectly parsing other cases—one person intends `Matt 1, 3` to mean `Matt.1,Matt.3`, while another intends it to mean `Matt.1.3`.
 
 ## Tests
 
-One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file [`src/core/spec.coffee`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/src/core/spec.coffee) has over 3,700 tests that illustrate the range of input that this parser can handle.
+One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The file [`src/core/spec.coffee`](https://github.com/bibleutils/bible-ref-parse/blob/master/src/core/spec.coffee) has over 3,700 tests that illustrate the range of input that this parser can handle.
 
 Separate from this repository are four data files that you can use to test your own parser. Derived from Twitter and Facebook mentions of Bible references, the dataset reflects how people really type references in English. It includes 4.7 million unique strings across 180 million total mentions. (For example, the most-popular string, "Philippians 4:13", is mentioned over 1.3 million times.)
 
@@ -481,7 +480,7 @@ The BCV parser supports several versification systems (described above). The app
 
 The Javascript files that don't start with `en` provide support for other languages.
 
-Using the files in [`src/template`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/src/template) as a base, you can add support for additional languages; just use the appropriate ISO 639 language prefix. I'm happy to accept pull requests for new languages.
+Using the files in [`src/template`](https://github.com/bibleutils/bible-ref-parse/tree/master/src/template) as a base, you can add support for additional languages; just use the appropriate ISO 639 language prefix. I'm happy to accept pull requests for new languages.
 
 ### Supported Languages
 
@@ -550,7 +549,7 @@ When using `<script>`s on the web, be sure to serve them with the `utf-8` charac
 
 ### Cross-Language Support
 
-Two files in [`/js`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/js) provide support for identifying translations in multiple languages at one time (e.g., "Matthew 2, Juan 1"). You can use this support if you don't know ahead of time what language someone might be using.
+Two files in [`/js`](https://github.com/bibleutils/bible-ref-parse/tree/master/js) provide support for identifying translations in multiple languages at one time (e.g., "Matthew 2, Juan 1"). You can use this support if you don't know ahead of time what language someone might be using.
 
 The files are:
 
@@ -615,11 +614,11 @@ May 4, 2017 (2.0.1). Fixed a bug in calculating positions for non-English Psalm 
 
 May 1, 2016 (2.0.0). Added additional Vulgate versification beyond Psalms. Because these changes are technically backwards-incompatible, the major version number is incrementing, but in practice the changes are minor.
 
-November 1, 2015 (1.0.0). Added `punctuation_strategy` option to replace the "eu"-style files that were previously necessary for this functionality. Added `single_chapter_1_strategy` option to allow parsing of "Jude 1" as `Jude.1.1` rather than `Jude.1`. Fixed crashing bug related to dissociated chapter/book ranges. Upgraded to the latest versions of pegjs and Coffeescript. Added npm compatibility. Added support for a "next verse" syntax, which is used in Polish ("n" for next verse, compared to "nn" for "and following"). The parsing grammar includes this support only when the $NEXT variable is set in the language's data.txt file (only Polish for now). Thanks to [nirski](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues/16) for identifying this limitation.
+November 1, 2015 (1.0.0). Added `punctuation_strategy` option to replace the "eu"-style files that were previously necessary for this functionality. Added `single_chapter_1_strategy` option to allow parsing of "Jude 1" as `Jude.1.1` rather than `Jude.1`. Fixed crashing bug related to dissociated chapter/book ranges. Upgraded to the latest versions of pegjs and Coffeescript. Added npm compatibility. Added support for a "next verse" syntax, which is used in Polish ("n" for next verse, compared to "nn" for "and following"). The parsing grammar includes this support only when the $NEXT variable is set in the language's data.txt file (only Polish for now). Thanks to [nirski](https://github.com/bibleutils/bible-ref-parse/issues/16) for identifying this limitation.
 
 May 4, 2015 (0.10.0). Hand-tuned some of the PEG.js output to improve overall performance by around 50% in most languages.
 
-March 16, 2015 (0.9.0). Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a [fuzz tester](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/bin/fuzz/fuzz_lang.coffee), which uncovered several crashing bugs.
+March 16, 2015 (0.9.0). Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a [fuzz tester](https://github.com/bibleutils/bible-ref-parse/blob/master/bin/fuzz/fuzz_lang.coffee), which uncovered several crashing bugs.
 
 November 3, 2014 (0.8.0). Fixed two bugs related to range rewriting. Updated frak to the latest development version. Added quite a few more languages, bringing the total to 46.
 

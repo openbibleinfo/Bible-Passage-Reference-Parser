@@ -1,6 +1,6 @@
 {
-  "name": "bible-reference-parser",
-  "version": "1.0.0",
+  "name": "bible-ref-parse",
+  "version": "1.0.1",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
   "main": "js/",
   "directories": {
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/bibleutils/bible-reference-parser.git"
+    "url": "git://github.com/bibleutils/bible-ref-parse.git"
   },
   "keywords": [
     "bible",
@@ -23,9 +23,9 @@
   "author": "Bible Utils",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bibleutils/bible-reference-parser/issues"
+    "url": "https://github.com/bibleutils/bible-ref-parse/issues"
   },
-  "homepage": "https://github.com/bibleutils/bible-reference-parser",
+  "homepage": "https://github.com/bibleutils/bible-ref-parse",
   "scripts": {
     "add-language": "cd bin && perl 01.add_lang.pl",
     "compile-language": "cd bin && perl 02.compile.pl",
