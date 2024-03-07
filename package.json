@@ -1,6 +1,6 @@
 {
-  "name": "bible-passage-reference-parser",
-  "version": "2.0.1",
+  "name": "bible-ref-parse",
+  "version": "2.1.0",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
   "main": "js/",
   "directories": {
@@ -17,12 +17,26 @@
   },
   "keywords": [
     "bible",
-    "verses"
+    "verses",
+    "passage"
   ],
   "author": "OpenBible.info <openbibleinfo@gmail.com> (http://www.openbible.info/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues"
   },
-  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser"
+  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
+  "scripts": {
+    "add-language": "cd bin && perl 01.add_lang.pl",
+    "compile-language": "cd bin && perl 02.compile.pl",
+    "build-language": "bash -c 'npm run add-language $0 && npm run compile-language $0'",
+    "test-language": "bash -c 'jasmine-node test/js/$0.spec.js'",
+    "test": "(find test/js -name *.spec.js | xargs -I % sh -c 'echo %; jasmine-node %';) || exit 1;"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.7.0",
+    "jasmine-node": "^1.15.0",
+    "pegjs": "^0.10.0",
+    "regexgen": "^1.3.0"
+  }
 }

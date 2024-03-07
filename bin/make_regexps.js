@@ -8,7 +8,7 @@ if (process.argv[2] === "<") {
 	arg = fs.readFileSync("./temp.txt").toString('utf8')
 }
 else {
-	arg = new Buffer(process.argv[2], 'base64').toString('utf8'
+	arg = Buffer.from(process.argv[2], 'base64').toString('utf8'
 		)
 }
 let strings = JSON.parse(arg)

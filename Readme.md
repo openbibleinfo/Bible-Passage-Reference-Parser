@@ -32,23 +32,22 @@ These usage examples are in Javascript. You can also use Coffeescript, of course
 To install from the command line:
 
 ```shell
-npm i bible-passage-reference-parser
+npm i bible-ref-parse
 ```
 
-To run:
+### Importing the module
 
+ESM:
 ```javascript
-var bcv_parser = require("bible-passage-reference-parser/js/en_bcv_parser").bcv_parser;
-var bcv = new bcv_parser;
+import * as parserModule from 'bible-ref-parse/js/en_bcv_parser';
+const parser = new parserModule.bcv_parser();
 ```
 
-### Setup: Node.js (manual)
-
-After downloading the language file you want:
+CommonsJS:
 
 ```javascript
 var bcv_parser = require("/path/js/en_bcv_parser.js").bcv_parser;
-var bcv = new bcv_parser;
+var bcv = new bcv_parser();
 ```
 
 ### Parsing
@@ -499,6 +498,7 @@ Most of these languages are in [Google Translate](https://translate.google.com/)
 	<tr><td>el</td><td>Greek (mostly ancient)</td></tr>
 	<tr><td>en</td><td>English</td></tr>
 	<tr><td>es</td><td>Spanish</td></tr>
+	<tr><td>fa</td><td>Farsi / Persian (but it is not part of `full` build yet)</td></tr>
 	<tr><td>fi</td><td>Finnish</td></tr>
 	<tr><td>fr</td><td>French</td></tr>
 	<tr><td>he</td><td>Hebrew</td></tr>
@@ -582,11 +582,19 @@ The language's grammar file is wrapped into the relevant `*_bcv_parser.js` file.
 
 ### Build Instructions
 
+In preparation, run `npm install` once.
+
+#### Adding a new language
+
 1. In `src`, create a folder named after the [ISO 639 code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`.
 2. Create a data.txt file inside that folder. Lines that start with `#` are comments. Lines that start with `$` are variables. Lines that start with an OSIS book name are a tab-separated series of regular expressions (a backtick following an accented character means not to allow the unaccented version of that character). Lines that start with `=` are the order in which to check the regular expressions (check for "3 John" before "John," for example). Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application).
-3. In `bin`, run `01.add_lang.pl [ISO code]` to create the `src` files. This file expects `node` to be available in your `$PATH`.For example, `01.add_lang.pl fr`.
-4. In `bin`, run `02.compile.pl [ISO code]` to create the output Javascript files and tests. This file expects `pegjs` and `coffee` to be available in your `$PATH`. For example: `02.compile.pl fr`.
-5. In `bin`, run `03.run_tests.sh` to run tests on all the available languages in `test/js`. It requires [jasmine-node](https://github.com/mhevery/jasmine-node). Alternately, visit the relevant `test/[ISO code].html` file in a browser (which expects [Jasmine](https://github.com/pivotal/jasmine) to be in `lib/jasmine`).
+5. Run `npm run add-language [ISO code]` to create the `src` files for this new language.
+
+#### Compiling and testing a language
+
+4. Run `npm run compile-language [ISO code]` to create the output Javascript files and tests.
+  (The command `npm run build-language [ISO code]` combines steps 3. and 4.: add & compile.)
+5. Run `npm run test-language [ISO code]` to run the tests for that particular language or `npm test` to run the tests for all languages. (Alternatively, visit the relevant `test/[ISO code].html` file in a browser, which expects [Jasmine](https://github.com/pivotal/jasmine) to be available in `lib/jasmine`.)
 
 ## Purpose
 
