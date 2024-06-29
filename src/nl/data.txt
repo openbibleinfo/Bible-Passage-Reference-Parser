@@ -78,7 +78,7 @@ Col	[CK]olossenzen	[CK]ol
 Titus	Titus	Tit
 Phlm	Filémon	File?m
 Heb	Hebreeën	Hebr?
-Jas	Jakobus	Jak
+Jas	Jakobus	Jacobus	Jak
 1Pet	$FIRST Petrus	$FIRST Petr?	1 Pe
 2Pet	$SECOND Petrus	$SECOND Petr?	2 Pe
 1John	$FIRST Johannes	$FIRST Joh
@@ -253,7 +253,7 @@ Ezek,Ezra	Ez
 *Titus	Titus	Tit
 *Phlm	Filemon	Filem	Film
 *Heb	Hebreeën	Hebr	Heb
-*Jas	Jakobus	Jak
+*Jas	Jakobus	Jacobus	Jak
 *1Pet	1 Petrus	1 Petr	1 Pe
 *2Pet	2 Petrus	2 Petr	2 Pe
 *1John	1 Johannes	1 Joh

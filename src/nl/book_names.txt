@@ -865,6 +865,7 @@ Isa	Jesaja
 Isa	Isa
 Isa	Jes
 Isa	Js
+Jas	Jacobus
 Jas	Jakobus
 Jas	Jak
 Jas	Jas

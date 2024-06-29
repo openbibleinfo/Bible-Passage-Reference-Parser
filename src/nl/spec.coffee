@@ -2540,10 +2540,12 @@ describe "Localized book Jas (nl)", ->
 		p.include_apocrypha true
 	it "should handle book: Jas (nl)", ->
 		`
+		expect(p.parse("Jacobus 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jakobus 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jak 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("Jas 1:1").osis()).toEqual("Jas.1.1")
 		p.include_apocrypha(false)
+		expect(p.parse("JACOBUS 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAKOBUS 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAK 1:1").osis()).toEqual("Jas.1.1")
 		expect(p.parse("JAS 1:1").osis()).toEqual("Jas.1.1")
