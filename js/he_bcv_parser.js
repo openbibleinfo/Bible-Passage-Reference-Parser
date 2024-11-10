@@ -2414,7 +2414,7 @@
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:המ(?:קהיל|רצה)|Eccl|קהלת))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)\\uff08\\uff09\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Song"],
-        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:שיר(?:[\\s\\xa0]*השירים|י[\\s\\xa0]*שלמה)|Song))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)\\uff08\\uff09\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
+        regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:שיר(?:[\\s\\xa0]*השירים|י[\\s\\xa0]*שלמה)|Song|Sos))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)\\uff08\\uff09\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
       }, {
         osis: ["Jer"],
         regexp: RegExp("(^|" + bcv_parser.prototype.regexps.pre_book + ")((?:ירמיהו?|Jer))(?:(?=[\\d\\s\\xa0.:,;\\x1e\\x1f&\\(\\)\\uff08\\uff09\\[\\]/\"'\\*=~\\-\\u2013\\u2014])|$)", "gi")
