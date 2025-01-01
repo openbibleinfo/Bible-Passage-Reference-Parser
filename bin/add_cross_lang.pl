@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Unicode::Normalize;
+use utf8;
 use Data::Dumper;
 
 my $src_dir = '../src';
@@ -8,33 +9,41 @@ my %ranges = (
 	full => {
 		chars => '.',
 		data => 'en',
-		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Judg Mark Jas Amos Tob Jdt Bar)],
-		exclude_langs => [qw(amf awa bba bqc bus chr dop dug fue fuh hil hwc leb mkl mqb mvc mwv nds pck ppl qu soy tmz tr twi udu wa wol yom zap)],
+		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel GkEsth Jonah Nah 1John 2John 3John John Josh 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Judg Mark Jas Amos Tob Jdt Bar)],
+		exclude_langs => [qw(amf awa bba bqc bus chr ckb dop dug fue fuh hil hne hwc leb lg mkl mqb mvc mwv nds ny pck ppl qu soy tmz tr twi udu wa wol yo yom zap)],
 		exclude_abbrevs => [
-			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK', 'I. Ki', 'I Ki',
-			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
+			'Im', #Lev
+			'И. Н', 'И.Н', #Josh
 			'Ri', 'Bir', #Judg
-			'Ca', 'En', 'Pi bel Chante a', #Song
-			'Ai', #Lam
+			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK', 'I. Ki', 'I Ki', '1 Цар', #1Kgs
+			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK', '2 Цар', #2Kgs
+			'Ca', 'En', 'Pi bel Chante a', 'Hoga', 'Sol', 'Ασ', 'பாடல்', 'Solomon', #Song
+			'Ai', 'La', #Lam
 			'Ad', #Obad
-			'J', 'Iv', 'In', #John
-			'Nas', #Acts
+			'Yun', #Jonah 
+			'J', 'Iv', 'In', 'ИН', 'И Н', 'yo', #John
+			'Nas', 'At', #Acts
+			'R', #Rom
+			'Ti', #Titus
 			],
 		post_abbrevs => {
-			Lev => ["\x{5229}"],
+			Lev => ["\x{5229}", 'Im'],
 			Josh => ["\x{66f8}"],
-			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re', 'I. Ki', 'I Ki'],
-			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
+			Judg => ['Bir'],
+			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re', 'I. Ki', 'I Ki', '1 Цар'],
+			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re', '2 Цар'],
 			Ezra => ["\x{62c9}"],
 			Job => ["\x{4f2f}"],
-			Song => ['Songs', "\x{6b4c}"],
+			Song => ['Songs', 'Hoga', "\x{6b4c}", 'Sol', 'Ασ', 'பாடல்'],
 			Lam => ['La'],
+			Jonah => ['Yun'],
 			Mic => ['Mi'],
 			Matt => ["\x{592a}"],
-			John => ['Jan', "\x{7d04}"],
-			Acts => ["\x{410}\x{43F}\x{43E}\x{441}\x{442}\x{43E}\x{43B}"],
+			John => ['Jan', "\x{7d04}", 'ИН', 'yo'],
+			Acts => ["\x{410}\x{43F}\x{43E}\x{441}\x{442}\x{43E}\x{43B}", 'At'],
+			Rom => ['R'],
+			Titus => ['Ti'],
 			Rev => ['Re'],
-			Judg => ['Bir'],
 			},
 		include_extra_abbrevs => 0,
 		},
@@ -42,93 +51,40 @@ my %ranges = (
 		chars => "[\x00-\x7f\x{2000}-\x{206F}]",
 		data => 'en',
 		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh Judg 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Mark Jas Amos Tob Jdt Bar)],
-		exclude_langs => [qw(amf awa bba bqc bus chr dop dug fue fuh hil hwc leb mkl mqb mvc mwv nds pck ppl qu soy tmz tr twi udu wa wol yom zap)],
+		exclude_langs => [qw(amf awa bba bqc bus chr ckb dop dug fue fuh hil hne hwc leb lg mkl mqb mvc mwv nds ny pck ppl qu soy tmz tr twi udu wa wol yo yom zap)],
 		exclude_abbrevs => [
-			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK', 'I. Ki', 'I Ki',
-			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
+			'Im', #Lev
 			'Ri', 'Bir', #Judg
-			'Ca', 'En', 'Pi bel Chante a', #Song
-			'Ai', #Lam
+			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK', 'I. Ki', 'I Ki', #1Kgs
+			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK', #2Kgs
+			'Ca', 'En', 'Pi bel Chante a', 'Sol', #Song
+			'Ai', 'La', #Lam
 			'Ad', #Obad
-			'J', 'Iv', 'In', #John
-			'Nas', #Acts
+			'Yun', #Jonah
+			'J', 'Iv', 'In', 'yo', #John
+			'Nas', 'At', #Acts
+			'R', #Rom
+			'Ti', #Titus
 			],
 		post_abbrevs => {
+			Lev => ['Im'],
 			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re', 'I. Ki', 'I Ki'],
 			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
-			Song => ['Songs'],
-			Lam => ['La'],
-			Mic => ['Mi'],
-			John => ['Jan'],
-			Rev => ['Re'],
 			Judg => ['Bir'],
+			Song => ['Songs', "\x{6b4c}", 'Sol'],
+			Lam => ['La'],
+			Jonah => ['Yun'],
+			Mic => ['Mi'],
+			John => ['Jan', 'yo'],
+			Acts => ['At'],
+			Rom => ['R'],
+			Titus => ['Ti'],
+			Rev => ['Re'],
 			},
 		include_extra_abbrevs => 0,
 		},
-	asciibg => {
-		chars => "[\x00-\x7f\x{2000}-\x{206F}]",
-		data => 'en',
-		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Judg Mark Jas Amos Tob Jdt Bar)],
-		exclude_langs => [],
-		exclude_abbrevs => [
-			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
-			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
-			'Ri', #Judg
-			'Ca', 'En', 'Pi bel Chante a', #Song
-			'Ai', #Lam
-			'Ad', #Obad
-			'J', 'Iv', 'In', #John
-			'Nas', #Acts
-			'Su', #Sus
-			'Mak', #Eccl
-			],
-		post_abbrevs => {
-			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re'],
-			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
-			Song => ['Songs'],
-			Lam => ['La'],
-			Mic => ['Mi'],
-			John => ['Jan'],
-			Rev => ['Re'],
-			Sus => ['Su'],
-			Eccl => ['Mak'],
-			},
-		include_extra_abbrevs => 1,
-		},
-	fullbg => {
-		chars => '.',
-		data => 'en',
-		order => [qw(Gen Exod Bel Phlm Lev 2Thess 1Thess 2Kgs 1Kgs EpJer Lam Num Sus Sir PrMan Acts Rev PrAzar SgThree 2Pet 1Pet Rom Song Prov Wis Joel Jonah Nah 1John 2John 3John John Josh 1Esd 2Esd Isa 2Sam 1Sam 2Chr 1Chr Ezra Ruth Neh GkEsth Esth Job Mal Matt Ps Eccl Ezek Hos Obad Hag Hab Mic Zech Zeph Luke Jer 2Cor 1Cor Gal Eph Col 2Tim 1Tim Deut Titus Heb Phil Dan Jude 2Macc 3Macc 4Macc 1Macc Judg Mark Jas Amos Tob Jdt Bar)],
-		exclude_langs => [],
-		exclude_abbrevs => [
-			'1 K', '1. K', '1.K', '1K', 'I. K', 'I.K', 'IK',
-			'2 K', '2. K', '2.K', '2K', 'II. K', 'II.K', 'IIK',
-			'Ri', #Judg
-			'Ca', 'En', 'Pi bel Chante a', #Song
-			'Ai', #Lam
-			'Ad', #Obad
-			'J', 'Iv', 'In', #John
-			'Nas', #Acts
-			],
-		post_abbrevs => {
-			Lev => ["\x{5229}"],
-			Josh => ["\x{66f8}"],
-			'1Kgs' => ['1 Ks', '1. Ks', 'I Ks', 'I. Ks', '1 Re', '1. Re'],
-			'2Kgs' => ['2 Ks', '2. Ks', 'II Ks', 'II. Ks', '2 Re', '2. Re'],
-			Ezra => ["\x{62c9}"],
-			Job => ["\x{4f2f}"],
-			Song => ['Songs', "\x{6b4c}"],
-			Lam => ['La'],
-			Mic => ['Mi'],
-			Matt => ["\x{592a}"],
-			John => ['Jan', "\x{7d04}"],
-			Acts => ["\x{410}\x{43F}\x{43E}\x{441}\x{442}\x{43E}\x{43B}"],
-			Rev => ['Re'],
-			},
-		include_extra_abbrevs => 1,
-		},
 	);
-my @lang_priorities = qw(en es de pt pl zh ru it hu cs uk tl hr sv sk amf tr);
+my @lang_priorities = qw(en es de pt pl zh ru it hu cs uk tl hr sv sk amf tr sr id nl ceb yo);
 
 unless ($ARGV[0] && exists $ranges{$ARGV[0]})
 {
@@ -233,6 +189,7 @@ sub make_valid_abbrevs
 	open FILE, '<:utf8', "$src_dir/$lang/data.txt" or die "$!";
 	while (<FILE>)
 	{
+		s/[\r\n]+$/\n/;
 		if (/^\w/)
 		{
 			$data_key = 'post';
@@ -433,6 +390,7 @@ sub get_abbrevs_from_file
 	{
 		next if (/^#/);
 		s/\s+$//;
+		#print "$lang: \\u200c\n" if (/\x{200c}/);
 		my ($osis, $abbrev, @langs) = split /\t/;
 		next unless ($osis);
 		if (@langs)

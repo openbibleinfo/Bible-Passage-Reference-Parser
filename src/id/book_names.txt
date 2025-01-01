@@ -1,0 +1,412 @@
+1Chr	Tawarikh Yang Pertama
+1Chr	1. Tawarikh
+1Chr	1 Tawarikh
+1Chr	1 Tawh
+1Chr	1 Taw
+1Chr	I Taw
+1Chr	1Chr
+1Chr	1Taw
+1Cor	1. Korintus
+1Cor	1 Korintus
+1Cor	1 Kor
+1Cor	I Kor
+1Cor	1 Ko
+1Cor	1Cor
+1Cor	1Kor
+1Esd	Esdras Yunani
+1Esd	Ezra Yunani
+1Esd	1. Esdras
+1Esd	1 Esdras
+1Esd	3 Esdras
+1Esd	1 Esd
+1Esd	I Esd
+1Esd	1Esd
+1John	1. Yohanes
+1John	1 Yohanes
+1John	1 Yahya
+1John	1 Yhn
+1John	1 Yoh
+1John	1John
+1John	I Yoh
+1John	1Yoh
+1Kgs	Raja-raja Yang Pertama
+1Kgs	1. Raja-raja
+1Kgs	1 Raja-raja
+1Kgs	1 Raj
+1Kgs	I Raj
+1Kgs	1Kgs
+1Kgs	1Raj
+1Kgs	1Rj
+1Macc	1. Makabe
+1Macc	1 Makabe
+1Macc	1 Mak
+1Macc	1Macc
+1Macc	I Mak
+1Pet	1. Petrus
+1Pet	1 Petrus
+1Pet	1 Pet
+1Pet	1 Ptr
+1Pet	I Pet
+1Pet	1Pet
+1Sam	Semuel Yang Pertama
+1Sam	1. Samuel
+1Sam	1 Samuel
+1Sam	1 Sam
+1Sam	I Sam
+1Sam	1Sam
+1Sam	1Sa
+1Thess	1. Tesalonika
+1Thess	1 Tesalonika
+1Thess	1 Tesl
+1Thess	1Thess
+1Thess	1 Tes
+1Thess	I Tes
+1Tim	1. Timotius
+1Tim	1 Timotius
+1Tim	1 Tim
+1Tim	I Tim
+1Tim	1 Tm
+1Tim	1Tim
+2Chr	Tawarikh Yang Kedua
+2Chr	2. Tawarikh
+2Chr	2 Tawarikh
+2Chr	2 Tawh
+2Chr	II Taw
+2Chr	2 Taw
+2Chr	2Chr
+2Chr	2Taw
+2Cor	2. Korintus
+2Cor	2 Korintus
+2Cor	II Kor
+2Cor	2 Kor
+2Cor	2 Ko
+2Cor	2Cor
+2Cor	2Kor
+2Esd	Esdras Latin
+2Esd	Ezra Latin
+2Esd	2 Esdras
+2Esd	4 Esdras
+2Esd	II Esd
+2Esd	2 Esd
+2Esd	2Esd
+2John	2. Yohanes
+2John	2 Yohanes
+2John	2 Yahya
+2John	II Yoh
+2John	2 Yhn
+2John	2 Yoh
+2John	2John
+2John	2Yoh
+2Kgs	Raja-raja Yang Kedua
+2Kgs	2. Raja-raja
+2Kgs	2 Raja-raja
+2Kgs	II Raj
+2Kgs	2 Raj
+2Kgs	2Kgs
+2Kgs	2Raj
+2Kgs	2Rj
+2Macc	2 Makabe
+2Macc	II Mak
+2Macc	2 Mak
+2Macc	2Macc
+2Pet	2. Petrus
+2Pet	2 Petrus
+2Pet	II Pet
+2Pet	2 Pet
+2Pet	2 Ptr
+2Pet	2Pet
+2Sam	Semuel Yang Kedua
+2Sam	2. Samuel
+2Sam	2 Samuel
+2Sam	II Sam
+2Sam	2 Sam
+2Sam	2Sam
+2Sam	2Sa
+2Thess	2. Tesalonika
+2Thess	2 Tesalonika
+2Thess	2 Tesl
+2Thess	2Thess
+2Thess	II Tes
+2Thess	2 Tes
+2Tim	2. Timotius
+2Tim	2 Timotius
+2Tim	II Tim
+2Tim	2 Tim
+2Tim	2 Tm
+2Tim	2Tim
+3John	3. Yohanes
+3John	3 Yohanes
+3John	3 Yahya
+3John	III Yoh
+3John	3 Yhn
+3John	3 Yoh
+3John	3John
+3John	3Yoh
+3Macc	3 Makabe
+3Macc	III Mak
+3Macc	3 Mak
+3Macc	3Macc
+4Macc	4 Makabe
+4Macc	IV Mak
+4Macc	4 Mak
+4Macc	4Macc
+Acts	Kisah Rasul-rasul
+Acts	Kisah Para Rasul
+Acts	Kis Para Rasul
+Acts	Kisah
+Acts	Acts
+Acts	KisR
+Acts	Kis
+Amos	Amos
+Amos	Amo
+Amos	Am
+Bar	Barukh
+Bar	Bar
+Bar	Br
+Bel	Dewa Bel dan Naga Babel
+Bel	Bel dan Naga
+Bel	Dewa Bel
+Bel	Bel
+Col	Kolose
+Col	Kolos
+Col	Col
+Col	Kol
+Dan	Daniel
+Dan	Dan
+Dan	Dn
+Deut	Ulangan
+Deut	Deut
+Deut	Ul
+Eccl	Pengkhotbah
+Eccl	Alkhatib
+Eccl	Pengkh
+Eccl	Pkhth
+Eccl	Eccl
+Eccl	Pkhb
+Eccl	Pkh
+EpJer	Surat Yeremia
+EpJer	Sur Yer
+EpJer	SurYer
+EpJer	EpJer
+Eph	Efesus
+Eph	Epesus
+Eph	Efs
+Eph	Eph
+Eph	Ef
+Esth	Ester
+Esth	Esth
+Esth	Est
+Exod	Keluaran
+Exod	Exod
+Exod	Kelr
+Exod	Kel
+Ezek	Yehezkiel
+Ezek	Ezek
+Ezek	Yeh
+Ezek	Yez
+Ezra	1 Ezra
+Ezra	Ezra
+Ezra	Ezr
+Gal	Galatia
+Gal	Gal
+Gen	Kejadian
+Gen	Kejd
+Gen	Gen
+Gen	Kej
+GkEsth	Ester Yunani
+GkEsth	Est. Yunani
+GkEsth	Est Yunani
+GkEsth	Ester Grik
+GkEsth	Est Yun
+GkEsth	EstYun
+GkEsth	GkEsth
+Hab	Habakuk
+Hab	Hab
+Hab	Hbk
+Hag	Hagai
+Hag	Hajai
+Hag	Hag
+Hag	Hg
+Heb	Ibrani
+Heb	Ibrn
+Heb	Heb
+Heb	Ibr
+Hos	Hosea
+Hos	Hos
+Hos	Ho
+Isa	Yesaya
+Isa	Isa
+Isa	Yes
+Isa	Ys
+Jas	Yakobus
+Jas	Yakub
+Jas	Jas
+Jas	Yak
+Jas	Yk
+Jdt	Yudit
+Jdt	Jdt
+Jdt	Ydt
+Jer	Yeremia
+Jer	Yermia
+Jer	Jer
+Jer	Yer
+Jer	Yr
+Job	Ayub
+Job	Ayb
+Job	Job
+Job	Ay
+Joel	Joel
+Joel	Yoel
+Joel	Yoël
+Joel	Yl
+John	Yohanes
+John	Yahya
+John	John
+John	Yohs
+John	Yoh
+Jonah	Jonah
+Jonah	Yunus
+Jonah	Yun
+Jonah	Yn
+Josh	Yosua
+Josh	Yusak
+Josh	Josh
+Josh	Yos
+Jude	Yehuda
+Jude	Yudas
+Jude	Jude
+Jude	Yds
+Jude	Yud
+Judg	Hakim-hakim
+Judg	Hak.-hak
+Judg	Hak-hak
+Judg	Judg
+Judg	Hak
+Judg	Hkm
+Lam	Nudub Yermia
+Lam	Ratapan
+Lam	Ratap
+Lam	Lam
+Lam	Rat
+Lev	Imamat Orang Lewi
+Lev	Imamat
+Lev	Imt
+Lev	Lev
+Lev	Im
+Luke	Lukas
+Luke	Luke
+Luke	Luk
+Luke	Lk
+Mal	Maleakhi
+Mal	Maleaki
+Mal	Mal
+Mal	Ml
+Mark	Markus
+Mark	Mark
+Mark	Mar
+Mark	Mrk
+Mark	Mk
+Mark	Mr
+Matt	Matius
+Matt	Matt
+Matt	Mat
+Matt	Mt
+Mic	Mikha
+Mic	Mic
+Mic	Mik
+Mic	Mkh
+Mic	Mi
+Nah	Nahum
+Nah	Nah
+Nah	Nh
+Neh	Nehemia
+Neh	Nehemya
+Neh	2 Ezra
+Neh	Nehm
+Neh	Neh
+Num	Bilangan
+Num	Bil
+Num	Num
+Obad	Obaja
+Obad	Obad
+Obad	Ob
+Phil	Filipi
+Phil	Pilipi
+Phil	Fili
+Phil	Phil
+Phil	Fil
+Phil	Flp
+Phlm	Filemon
+Phlm	Pilemon
+Phlm	Filem
+Phlm	Flmn
+Phlm	Phlm
+Phlm	Flm
+PrAzar	Doa Azarya
+PrAzar	Doa Azar
+PrAzar	Azarya
+PrAzar	Doa Az
+PrAzar	PrAzar
+PrAzar	DoaAz
+PrMan	Doa Manasye
+PrMan	Doa Man
+PrMan	Manasye
+PrMan	DoaMan
+PrMan	PrMan
+Prov	Surat Amsal Sulaiman
+Prov	Amsal
+Prov	Prov
+Prov	Ams
+Ps	Mazmur
+Ps	Mzm
+Ps	Ps
+Rev	Wahyu
+Rev	Wahy
+Rev	Rev
+Rev	Wah
+Rev	Why
+Rom	Roma
+Rom	Rom
+Rom	Rum
+Rom	Rm
+Ruth	Ruth
+Ruth	Rut
+Ruth	Rt
+SgThree	Lagu Pujian Ketiga Pemuda
+SgThree	Lagu 3 Pemuda
+SgThree	Lagu Pemuda
+SgThree	Tiga Pemuda
+SgThree	3 Pemuda
+SgThree	SgThree
+SgThree	LagPuj
+Sir	Eklesiastikus
+Sir	Sirakh
+Sir	Sir
+Song	Syirul-asyar Sulaiman
+Song	Kidung Agung
+Song	Kid Ag
+Song	Kidung
+Song	KidA
+Song	Song
+Song	Kid
+Sus	Susana
+Sus	Sus
+Titus	Titus
+Titus	Tit
+Titus	Ti
+Tob	Tobit
+Tob	Tob
+Wis	Kebijaksanaan Salomo
+Wis	Hikmat Salomo
+Wis	Kebijaksanaan
+Wis	Kebij Salomo
+Wis	Keb
+Wis	Wis
+Zech	Zakharia
+Zech	Zakaria
+Zech	Zech
+Zech	Zak
+Zech	Za
+Zeph	Zefanya
+Zeph	Zeph
+Zeph	Zef

@@ -1,28 +1,42 @@
 {
   "name": "bible-passage-reference-parser",
-  "version": "2.0.1",
+  "version": "3.0-alpha",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
-  "main": "js/",
+  "main": "es/",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "files": [
+    "cjs/",
     "js/",
+    "es/",
     "Readme.md"
   ],
   "repository": {
     "type": "git",
     "url": "git://github.com/openbibleinfo/Bible-Passage-Reference-Parser.git"
   },
+  "type": "module",
   "keywords": [
     "bible",
     "verses"
   ],
-  "author": "OpenBible.info <openbibleinfo@gmail.com> (http://www.openbible.info/)",
+  "author": "OpenBible.info <openbibleinfo@gmail.com> (https://www.openbible.info/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/issues"
   },
-  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser"
+  "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
+  "scripts": {
+    "build-language": "cd bin && sh build_lang.sh",
+    "test": "npx jasmine test/*.spec.* test/lang/*.spec.js"
+  },
+  "devDependencies": {
+    "@pemistahl/grex": "^1.0.2",
+    "esbuild": "^0.24.2",
+    "jasmine": "^5.5.0",
+    "peggy": "^4.2.0",
+    "typescript": "^5.7.2"
+  }
 }

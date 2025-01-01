@@ -1,0 +1,271 @@
+$FIRST	1
+$SECOND	2
+$THIRD	3
+$FOURTH	4
+$AB	[a-e]
+$AND	bandingkan	lih.	bdk.
+$CHAPTER	pasal
+$FF	dst
+$TITLE	judul
+$TRANS	AMD	TSI	TB
+$TO	sampai
+$VERSE	ayat
+$UNICODE_BLOCK	Latin
+
+Gen	Kejadian	Kej	Kejd
+Exod	Keluaran	Kel	Kelr
+Lev	Imamat	Im	Imamat Orang Lewi	Imt
+Num	Bilangan	Bil
+Deut	Ulangan	Ul
+Josh	Yosua	Yos	Yusak
+Judg	Hakim-hakim	Hak	Hkm	Hak.-hak.
+Ruth	Rut	Rt
+1Sam	$FIRST Samuel	1Sam	Semuel Yang Pertama	1 Sam	1Sa	I Sam
+2Sam	$SECOND Samuel	2Sam	Semuel Yang Kedua	2 Sam	2Sa	II Sam
+1Kgs	$FIRST Raja-raja	1Raj	Raja-raja Yang Pertama	1 Raj	1Rj	I Raj
+2Kgs	$SECOND Raja-raja	2Raj	Raja-raja Yang Kedua	2 Raj	2Rj	II Raj
+1Chr	$FIRST Tawarikh	1Taw	Tawarikh Yang Pertama	1 Tawh	1 Taw	I Taw
+2Chr	$SECOND Tawarikh	2Taw	Tawarikh Yang Kedua	2 Tawh	2 Taw	II Taw
+Ezra	Ezra	Ezr	1 Ezra
+Neh	Nehemia	Nehemya	2 Ezra	Neh	Nehm
+Esth	Ester	Est	Esth
+Job	Ayub	Ayb	Ay
+Ps	Mazmur	Mzm
+Prov	Amsal	Ams	Surat Amsal Sulaiman
+Eccl	Pengkhotbah	Alkhatib	Pkh	Pkhb	Pkhth	Pengkh
+Song	Kidung Agung	Syirul-asyar Sulaiman	Kid	KidA	Kidung	Kid Ag
+Isa	Yesaya	Yes	Ys
+Jer	Yeremia	Yer	Yermia	Yr
+Lam	Ratapan	Nudub Yermia	Rat	Ratap
+Ezek	Yehezkiel	Yeh	Yez
+Dan	Daniel	Dan	Dn
+Hos	Hosea	Hos	Ho
+Joel	Yoël	Yl	Yoel
+Amos	Amos	Am	Amo
+Obad	Obaja	Ob
+Jonah	Yunus	Yun	Yn
+Mic	Mikha	Mi	Mkh	Mik
+Nah	Nahum	Nah	Nh
+Hab	Habakuk	Hab	Hbk
+Zeph	Zefanya	Zef
+Hag	Hagai	Hag	Hajai	Hg
+Zech	Zakharia	Za	Zakaria	Zak
+Mal	Maleakhi	Mal	Maleaki	Ml
+Matt	Matius	Mat	Mt
+Mark	Markus	Mrk	Mr	Mk	Mar
+Luke	Lukas	Luk	Lk
+John	Yohanes	Yoh	Yahya	Yohs
+Acts	Kisah Para Rasul	Kis	Kisah Rasul-rasul	Kisah	KisR	Kis Para Rasul
+Rom	Roma	Rm	Rum	Rom
+1Cor	$FIRST Korintus	1Kor	1 Kor	1 Ko	I Kor
+2Cor	$SECOND Korintus	2Kor	2 Kor	2 Ko	II Kor
+Gal	Galatia	Gal
+Eph	Efesus	Epesus	Ef	Efs
+Phil	Filipi	Flp	Pilipi	Fil	Fili
+Col	Kolose	Kol	Kolos
+1Thess	$FIRST Tesalonika	1 Tes	1 Tesl	I Tes
+2Thess	$SECOND Tesalonika	2 Tes	2 Tesl	II Tes
+1Tim	$FIRST Timotius	1 Tim	1 Tm	I Tim
+2Tim	$SECOND Timotius	2 Tim	2 Tm	II Tim
+Titus	Titus	Tit	Ti
+Phlm	Filemon	Pilemon	Flm	Flmn	Filem
+Heb	Ibrani	Ibr	Ibrn
+Jas	Yakobus	Yakub	Yak	Yk
+1Pet	$FIRST Petrus	1 Ptr	1 Pet	I Pet
+2Pet	$SECOND Petrus	2 Ptr	2 Pet	II Pet
+1John	$FIRST Yohanes	1Yoh	1 Yahya	1 Yoh	1 Yhn	I Yoh
+2John	$SECOND Yohanes	2Yoh	2 Yahya	2 Yoh	2 Yhn	II Yoh
+3John	$THIRD Yohanes	3Yoh	3 Yahya	3 Yoh	3 Yhn	III Yoh
+Jude	Yudas	Yud	Yehuda	Yds
+Rev	Wahyu	Why	Wah	Wahy
+Tob	Tobit	Tob
+Jdt	Yudit	Ydt
+GkEsth	Ester Yunani	Est Yun	Est. Yunani	Ester Grik	EstYun
+Wis	Kebijaksanaan	Kebijaksanaan Salomo	Keb	Kebij Salomo	Hikmat Salomo
+Sir	Sirakh	Eklesiastikus	Sir
+Bar	Barukh	Bar	Br
+PrAzar	Doa Azarya	Doa Az	Doa Azar	Azarya	DoaAz
+Sus	Susana	Sus
+Bel	Dewa Bel dan Naga Babel	Bel	Bel dan Naga	Dewa Bel
+SgThree	Lagu Pujian Ketiga Pemuda	Lagu Pemuda	3 Pemuda	Lagu 3 Pemuda	Tiga Pemuda	LagPuj
+EpJer	Surat Yeremia	Sur Yer	SurYer
+1Macc	$FIRST Makabe	1 Mak	I Mak
+2Macc	2 Makabe	2 Mak	II Mak
+3Macc	3 Makabe	3 Mak	III Mak
+4Macc	4 Makabe	4 Mak	IV Mak
+1Esd	$FIRST Esdras	3 Esdras	Esdras Yunani	Ezra Yunani	1 Esd	I Esd
+2Esd	2 Esdras	4 Esdras	Esdras Latin	Ezra Latin	2 Esd	II Esd
+PrMan	Doa Manasye	Doa Man	Manasye	DoaMan
+
+# Order
+=Gen
+=Exod
+=Bel
+=Lev
+=Num
+=Sir
+=Wis
+=Lam
+=EpJer
+=Rev
+=PrMan
+=Deut
+=Josh
+=Judg
+=Ruth
+=1Esd
+=2Esd
+=Isa
+=2Sam
+=1Sam
+=2Kgs
+=1Kgs
+=2Chr
+=1Chr
+=Neh
+=Ezra
+=GkEsth
+=Esth
+=Job
+=Ps
+=PrAzar
+=Prov
+=Eccl
+=SgThree
+=Song
+=Jer
+=Ezek
+=Dan
+=Hos
+=Joel
+=Amos
+=Obad
+=Jonah
+=Mic
+=Nah
+=Hab
+=Zeph
+=Hag
+=Zech
+=Mal
+=Matt
+=Mark
+=Luke
+=1John
+=2John
+=3John
+=John
+=Acts
+=Rom
+=2Cor
+=1Cor
+=Gal
+=Eph
+=Phil
+=Col
+=2Thess
+=1Thess
+=2Tim
+=1Tim
+=Titus
+=Phlm
+=Heb
+=Jas
+=2Pet
+=1Pet
+=Jude
+=Tob
+=Jdt
+=Bar
+=Sus
+=2Macc
+=3Macc
+=4Macc
+=1Macc
+
+# Preferred names
+# OSIS	Long	Short	Shorter	Single (Ps)
+*Gen	Kejadian	Kej
+*Exod	Keluaran	Kel
+*Lev	Imamat	Im
+*Num	Bilangan	Bil
+*Deut	Ulangan	Ul
+*Josh	Yosua	Yos
+*Judg	Hakim-hakim	Hak
+*Ruth	Rut	Rut
+*1Sam	1 Samuel	1 Sam
+*2Sam	2 Samuel	2 Sam
+*1Kgs	1 Raja-raja	1 Raj
+*2Kgs	2 Raja-raja	2 Raj
+*1Chr	1 Tawarikh	1 Tawh
+*2Chr	2 Tawarikh	2 Tawh
+*Ezra	Ezra	Ezr
+*Neh	Nehemia	Neh
+*Esth	Ester	Est
+*Job	Ayub	Ayb
+*Ps	Mazmur	Mzm
+*Prov	Amsal	Ams
+*Eccl	Pengkhotbah	Pkh
+*Song	Kidung Agung	Kid
+*Isa	Yesaya	Yes
+*Jer	Yeremia	Yer
+*Lam	Ratapan	Rat
+*Ezek	Yehezkiel	Yeh
+*Dan	Daniel	Dan
+*Hos	Hosea	Hos
+*Joel	Yoël	Yl
+*Amos	Amos	Am
+*Obad	Obaja	Ob
+*Jonah	Yunus	Yun
+*Mic	Mikha	Mi
+*Nah	Nahum	Nah
+*Hab	Habakuk	Hab
+*Zeph	Zefanya	Zef
+*Hag	Hagai	Hag
+*Zech	Zakharia	Za
+*Mal	Maleakhi	Mal
+*Matt	Matius	Mat
+*Mark	Markus	Mrk
+*Luke	Lukas	Luk
+*John	Yohanes	Yoh
+*Acts	Kisah Para Rasul	Kis
+*Rom	Roma	Rm
+*1Cor	1 Korintus	1 Kor
+*2Cor	2 Korintus	2 Kor
+*Gal	Galatia	Gal
+*Eph	Efesus	Ef
+*Phil	Filipi	Flp
+*Col	Kolose	Kol
+*1Thess	1 Tesalonika	1 Tes
+*2Thess	2 Tesalonika	2 Tes
+*1Tim	1 Timotius	1 Tim
+*2Tim	2 Timotius	2 Tim
+*Titus	Titus	Tit
+*Phlm	Filemon	Flm
+*Heb	Ibrani	Ibr
+*Jas	Yakobus	Yak
+*1Pet	1 Petrus	1 Ptr
+*2Pet	2 Petrus	2 Ptr
+*1John	1 Yohanes	1 Yoh
+*2John	2 Yohanes	2 Yoh
+*3John	3 Yohanes	3 Yoh
+*Jude	Yudas	Yud
+*Rev	Wahyu	Why
+*Tob	Tobit	Tob
+*Jdt	Yudit	Ydt
+*GkEsth	Ester Yunani	Est Yun
+*Wis	Kebijaksanaan	Keb
+*Sir	Sirakh	Sir
+*Bar	Barukh	Bar
+*PrAzar	Doa Azarya	Doa Az
+*Sus	Susana	Sus
+*Bel	Dewa Bel dan Naga Babel	Bel
+*SgThree	Lagu Pujian Ketiga Pemuda	Lagu Pemuda
+*EpJer	Surat Yeremia	Sur Yer
+*1Macc	1 Makabe	1 Mak
+*2Macc	2 Makabe	2 Mak
+*3Macc	3 Makabe	3 Mak
+*4Macc	4 Makabe	4 Mak
+*1Esd	1 Esdras	1 Esd
+*2Esd	2 Esdras	2 Esd
+*PrMan	Doa Manasye	Doa Man
