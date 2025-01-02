@@ -1,6 +1,6 @@
 {
   "name": "bible-passage-reference-parser",
-  "version": "3.0-alpha",
+  "version": "3.0.0",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
   "main": "es/",
   "directories": {
