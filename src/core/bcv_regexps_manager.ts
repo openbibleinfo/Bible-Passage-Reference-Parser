@@ -1,4 +1,4 @@
-import { BCVParserInterface, BCVParserOptions, BCVRegExpsInterface, BCVRegExpsManagerInterface, BookRegExpInterface, PassagePattern } from "./types";
+import { BCVParserInterface, BCVParserOptions, BCVRegExpsInterface, BCVRegExpsManagerInterface, BookPattern, BookRegExpInterface } from "./types";
 
 interface BookData {
 	testament_books: { [key: string]: string };
@@ -12,6 +12,7 @@ filtered_books_flags = "";
 
 constructor(parent: BCVParserInterface) {
 	this.parent = parent;
+	// These are the default values for the parser: Old and New Testaments, and no case-sensitivity.
 	this.filter_books("on", "none");
 }
 
@@ -77,21 +78,21 @@ private get_testament_overlap(testaments: BCVParserOptions["testaments"], book: 
 }
 
 // Runtime pattern changes to allow adding books without regenerating the whole module.
-public add_passage_patterns(patterns: PassagePattern[]): void {
+public add_books(books): void {
 	// Make sure the input is the format we're looking for.
-	if (!Array.isArray(patterns)) {
-		throw "In `add_passage_patterns()`, the argument to `add_passage_patterns` should be an array.";
+	if (books == null || !Array.isArray(books.books)) {
+		throw new Error("add_books: The argument to `add_books` should be an object with an array in `books`");
 	}
 	// Go through each pattern in order. If all of them are set to appear at the start, the last one will end up first.
-	for (const pattern of patterns) {
+	for (const pattern of books.books) {
 		// It's up to the caller to provide a reasonably performant and valid RegExp.
 		if (pattern == null || !(pattern.regexp instanceof RegExp)) {
-			throw "In `add_passage_patterns()`, the `regexp` property of each pattern should be a RegExp.";
+			throw new Error("add_books: The `regexp` property of each pattern should be a RegExp");
 		}
 		// Get data about the books that we'll need to add them to the list of books.
-		const book_data = this.get_passage_book_testaments(pattern);
+		const book_data = this.get_book_testaments(pattern);
 		// Surround the pattern for consistency, or allow the caller to override them.
-		const regexps = this.get_passage_pattern_regexps(pattern, book_data);
+		const regexps = this.get_book_pattern_regexps(pattern, book_data);
 		// Always default to case-insensitive and let other settings override it later.
 		const regexp = new RegExp(regexps.pre_regexp.source + regexps.regexp.source + regexps.post_regexp.source, "giu");
 		// Default to the start since it's likely you want your pattern to take precedence over existing ones.
@@ -133,7 +134,7 @@ public add_passage_patterns(patterns: PassagePattern[]): void {
 }
 
 // Make the regexps that will be fed back to the pattern. Ultimately we want to know what will go before and after the provided pattern.
-private get_passage_pattern_regexps(pattern: PassagePattern, book_data: BookData) {
+private get_book_pattern_regexps(pattern: BookPattern, book_data: BookData) {
 	let regexps = {
 		pre_regexp: new RegExp(""),
 		regexp: pattern.regexp,
@@ -153,7 +154,7 @@ private get_passage_pattern_regexps(pattern: PassagePattern, book_data: BookData
 			if (pattern[regexp_type] instanceof RegExp) {
 				regexps[regexp_type] = pattern[regexp_type];
 			} else {
-				throw "In `add_passage_patterns()`, the `" + regexp_type + "` property of each pattern should be a RegExp.";
+				throw new Error("add_books: The `" + regexp_type + "` property of each pattern should be a RegExp");
 			}
 		}
 	}
@@ -161,11 +162,11 @@ private get_passage_pattern_regexps(pattern: PassagePattern, book_data: BookData
 }
 
 // Get data about the testaments the books are in to create RegExps for them.
-private get_passage_book_testaments(pattern: PassagePattern): BookData {
+private get_book_testaments(pattern: BookPattern): BookData {
 	const books = pattern.osis;
 	// Make sure it's the right format.
 	if (!Array.isArray(books)) {
-		throw "In `add_passage_patterns()`, the `osis` property of each pattern should be an array."
+		throw new Error("add_books: The `osis` property of each pattern should be an array");
 	}
 	const out = {
 		testament_books: {},
@@ -175,11 +176,11 @@ private get_passage_book_testaments(pattern: PassagePattern): BookData {
 	// This is a lot of logic just to capture what testaments the books are in.
 	const testaments = new Set();
 	for (const book of books) {
-		if (typeof book !== "string" || this.parent.translations.definitions.default.order[book] == null) {
-			throw "In `add_passage_patterns()`, unknown book in pattern: " + book;
+		if (typeof book !== "string" || this.parent.translations.systems.default.order[book] == null) {
+			throw new Error("add_books: Unknown book in pattern: " + book);
 		}
 		if (book in out.testament_books) {
-			throw "In `add_passage_patterns()`, every provided book should be unique. Duplicate: " + book;
+			throw new Error("add_books: Every provided book should be unique. Duplicate: " + book);
 		}
 		let testament = "o";
 		if (book === "Ps") {
@@ -188,7 +189,7 @@ private get_passage_book_testaments(pattern: PassagePattern): BookData {
 			testaments.add("a");
 		}
 		else {
-			const canonical_order = this.parent.translations.definitions.default.order[book];
+			const canonical_order = this.parent.translations.systems.default.order[book];
 			// 40 = Matt, 66 = Rev.
 			if (canonical_order >= 40) {
 				testament = (canonical_order <= 66) ? "n" : "a";

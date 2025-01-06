@@ -43,7 +43,7 @@ describe("Validate public API", () => {
 					valid: {valid: true, messages: {}},
 					translations: [{
 						translation: "niv",
-						alias: "kjv",
+						system: "kjv",
 						osis: "NIV"
 					}],
 					type: "bcv",

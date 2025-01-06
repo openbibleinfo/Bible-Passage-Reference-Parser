@@ -392,7 +392,7 @@ var bcv_regexps = class {
       {
         osis: ["Phil"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Poslannja\s*apostola\s*Pavla\s*do\s*fylyp['’]jan|P(?:avlova\s*poslanica\s*Filipljanima|oslanica\s*Filipljanima|h(?:il(?:ip(?:p(?:ibeliekhez|er)|iaid)|(?:ipppi|(?:ippe|pi))ans|l(?:(?:ip(?:pian|ai?n|ian)|(?:ipp?ea|pp?ia)n)|lipian)s|ip(?:pian|(?:(?:p[ai]n|ian)|ai?n))s|ppians|pan)|lpp|p)|iliphphisiyuusa|il(?:ip(?:piyarukku|i)|p))|(?:Paulus(?:'\s*Brev\s*til\s*Filippern|’\s*(?:Brev\s*til\s*F|brev\s*til\s*f)ilippern)|Kirje\s*filippilaisill|Filip(?:(?:p(?:ilaiskirj|ern)|ianev)|pensern)|Filippilaisill)e|B(?:ref\s*Pals\s*til\s*Filippimanna|arua\s*kwa\s*Wafilipi)|Bref\s*Pals\s*til\s*Filippimann|Epistula\s*ad\s*Philippenses|Sulat\s*sa\s*mga\s*(?:Filipense|Pilip(?:ense|yano))|(?:Lettera\s*ai\s*)?Filippesi|(?:Layang\s*Paulus\s*F|Waf)ilipi|Waraka\s*kwa\s*Wafilipi|(?:Mga\s*Taga(?:-?(?:\s*[FP]ilipo|Filipo)|\s*[FP]ilipo)|Filip(?:iya|yu)nian|P(?:h(?:il(?:l(?:ip(?:pi?ai|aia|i(?:a[ai]|ea))|p(?:ie|a))|ippia[ai]|ip(?:pai|e)a|ipp?ie|ipaia|pai)n|il(?:l(?:ip(?:(?:pi[ei]|ii)|ppi)|l(?:ip[ip]i|pp?i))|ipp?ii|ppii|pppi|pe)an|il(?:(?:ip(?:pai|e)|i?pi)n|lip(?:ie?n|p[ai]n))|lipp?ian)|ilipo)|Taga(?:-?(?:\s*[FP]ilipo|Filipo)|\s*[FP]ilipo)|Filip(?:(?:ense|o)|yan))s|List\s*(?:do\s*Filipian|Filip(?:ano|sky)m)|ad\s*Philippenses|F(?:(?:(?:(?:ili(?:p(?:perbrevet|en(?:sow|i)|ians)|boy)|l?p)|ilippiekhez)|lippiekhez)|ilipljanima)|Mga\s*Filipense|Mga\s*Pilip(?:ense|yano)|Philippenses|Ph(?:i(?:l(?:(?:ipppi|(?:ippe|pi))an|l(?:i(?:p(?:pian|ai?n|ian)|p?)|(?:ipp?ea|pp?ia)n|lipian)|ip(?:pian|(?:(?:p[ai]n|ian)|ai?n))|ppian|i(?:pp?)?|pp?)?)?|l(?:ipp?|p))|Filipenskym|Filip(?:p(?:enze|aiyo)|ye)n|Filipanom|Filipskym|F(?:(?:ili(?:p(?:i(?:an)?|pi)?)?|l)|ilipyun)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Poslannja\s*apostola\s*Pavla\s*do\s*fylyp['’]jan|P(?:avlova\s*poslanica\s*Filipljanima|oslanica\s*Filipljanima|h(?:il(?:ip(?:p(?:ibeliekhez|er)|iaid)|(?:ipppi|(?:ippe|pi))ans|l(?:(?:ip(?:pian|ai?n|ian)|(?:ipp?ea|pp?ia)n)|lipian)s|ip(?:pian|(?:(?:p[ai]n|ian)|ai?n))s|ppians|pan)|lpp|p)|iliphphisiyuusa|il(?:ip(?:piyarukku|i)|p))|(?:Paulus(?:'\s*Brev\s*til\s*Filippern|’\s*(?:Brev\s*til\s*F|brev\s*til\s*f)ilippern)|Kirje\s*filippilaisill|Filip(?:(?:p(?:ilaiskirj|ern)|ianev)|pensern)|Filippilaisill)e|B(?:ref\s*Pals\s*til\s*Filippimanna|arua\s*kwa\s*Wafilipi)|Bref\s*Pals\s*til\s*Filippimann|Epistula\s*ad\s*Philippenses|Sulat\s*sa\s*mga\s*(?:Filipense|Pilip(?:ense|yano))|(?:Lettera\s*ai\s*)?Filippesi|(?:Layang\s*Paulus\s*F|Waf)ilipi|Waraka\s*kwa\s*Wafilipi|(?:Mga\s*Taga(?:-?(?:\s*[FP]ilipo|Filipo)|\s*[FP]ilipo)|Filip(?:iya|yu)nian|P(?:h(?:il(?:l(?:ip(?:pi?ai|aia|i(?:a[ai]|ea))|p(?:ie|a))|ippia[ai]|ip(?:pai|e)a|ipp?ie|ipaia|pai)n|il(?:l(?:ip(?:(?:pi[ei]|ii)|ppi)|l(?:ip[ip]i|pp?i))|ipp?ii|ppii|pppi|pe)an|il(?:(?:ip(?:pai|e)|i?pi)n|lip(?:ie?n|p[ai]n))|lipp?ian)|ilipo)|Taga(?:-?(?:\s*[FP]ilipo|Filipo)|\s*[FP]ilipo)|Filip(?:(?:ense|o)|yan))s|List\s*(?:do\s*Filipian|Filip(?:ano|sky)m)|ad\s*Philippenses|F(?:(?:(?:(?:ili(?:p(?:perbrevet|en(?:sow|i)|ians)|boy)|l?p)|ilippiekhez)|lippiekhez)|ilipljanima)|Mga\s*Filipense|Mga\s*Pilip(?:ense|yano)|Philippenses|Ph(?:i(?:l(?:(?:ipppi|(?:ippe|pi))an|l(?:i(?:p(?:pian|ai?n|ian)|p?)|(?:ipp?ea|pp?ia)n|lipian)|ip(?:pian|(?:(?:p[ai]n|ian)|ai?n))|ppian|i(?:pp?)?|pp?)?)?|l(?:ipp?|p))|Filipenskym|Filip(?:p(?:enze|aiyo)|ye)n|Filipanom|Filipskym|F(?:(?:il(?:i(?:p(?:i(?:an)?|pi)?)?)?|l)|ilipyun)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Dan"],
@@ -541,7 +541,7 @@ var bcv_regexps = class {
       {
         osis: ["Phil", "Phlm"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Phl?|Fil))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Phl?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Rev"],
@@ -576,30 +576,30 @@ var bcv_regexps = class {
 var bcv_translations = class {
   constructor() {
     this.aliases = {
-      asv: { alias: "kjv" },
-      ceb: { alias: "ceb" },
-      csb: { alias: "csb" },
-      hcsb: { alias: "csb" },
-      kjv: { alias: "kjv" },
-      lxx: { alias: "nab" },
-      nab: { alias: "nab" },
-      nabre: { alias: "nab" },
-      nas: { alias: "default", osis: "NASB" },
-      net: { alias: "csb" },
-      nirv: { alias: "kjv" },
-      niv: { alias: "kjv" },
-      nkjv: { alias: "kjv" },
-      nlt: { alias: "nlt" },
-      nrsv: { alias: "nrsv" },
-      nrsvue: { alias: "nrsvue" },
-      tniv: { alias: "kjv" },
+      asv: { system: "kjv" },
+      ceb: { system: "ceb" },
+      csb: { system: "csb" },
+      hcsb: { system: "csb" },
+      kjv: { system: "kjv" },
+      lxx: { system: "nab" },
+      nab: { system: "nab" },
+      nabre: { system: "nab" },
+      nas: { system: "default", osis: "NASB" },
+      net: { system: "csb" },
+      nirv: { system: "kjv" },
+      niv: { system: "kjv" },
+      nkjv: { system: "kjv" },
+      nlt: { system: "nlt" },
+      nrsv: { system: "nrsv" },
+      nrsvue: { system: "nrsvue" },
+      tniv: { system: "kjv" },
       // `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-      current: { alias: "current", osis: "" },
+      current: { system: "current", osis: "" },
       // `default` is the fully specified default versification system (matching ESV).
-      default: { alias: "default", osis: "" }
+      default: { system: "default", osis: "" }
     };
     this.current_system = "default";
-    this.definitions = {
+    this.systems = {
       current: {},
       default: {
         order: {
@@ -985,7 +985,7 @@ var bcv_translations = class {
         }
       }
     };
-    this.definitions.current = structuredClone(this.definitions.default);
+    this.systems.current = structuredClone(this.systems.default);
   }
 };
 

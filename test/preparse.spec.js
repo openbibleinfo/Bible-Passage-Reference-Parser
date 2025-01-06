@@ -90,7 +90,7 @@ describe("Pre-parsing", () => {
 			versification_system: "vulgate"
 		});
 		expect(p.options.versification_system).toEqual("vulgate");
-		expect(p.translations.definitions["current"].chapters.Ps[118]).toEqual(7);
+		expect(p.translations.systems["current"].chapters.Ps[118]).toEqual(7);
 		expect(p.parse("Ps 118:176").osis()).toEqual("Ps.118.176");
 		expect(p.parse("Ps 119:176").osis()).toEqual("");
 		expect(p.parse("Ps 151:1").osis()).toEqual("");
@@ -98,7 +98,7 @@ describe("Pre-parsing", () => {
 			versification_system: "default"
 		});
 		expect(p.options.versification_system).toEqual("default");
-		expect(p.translations.definitions["current"].chapters.Ps[118]).toEqual(176);
+		expect(p.translations.systems["current"].chapters.Ps[118]).toEqual(176);
 		expect(p.parse("Ps 118:176").osis()).toEqual("");
 		expect(p.parse("Ps 119:176").osis()).toEqual("Ps.119.176");
 		expect(p.parse("Ps 151:1").osis()).toEqual("");
@@ -109,7 +109,7 @@ describe("Pre-parsing", () => {
 			include_apocrypha: true
 		});
 		expect(p.options.versification_system).toEqual("vulgate");
-		expect(p.translations.definitions["current"].chapters.Ps[118]).toEqual(7);
+		expect(p.translations.systems["current"].chapters.Ps[118]).toEqual(7);
 		expect(p.parse("Ps 118:176").osis()).toEqual("Ps.118.176");
 		expect(p.parse("Ps 119:176").osis()).toEqual("");
 		expect(p.parse("Ps 151:1").osis()).toEqual("Ps.151.1");
@@ -117,7 +117,7 @@ describe("Pre-parsing", () => {
 			versification_system: "default"
 		});
 		expect(p.options.versification_system).toEqual("default");
-		expect(p.translations.definitions["current"].chapters.Ps[118]).toEqual(176);
+		expect(p.translations.systems["current"].chapters.Ps[118]).toEqual(176);
 		expect(p.parse("Ps 118:176").osis()).toEqual("");
 		expect(p.parse("Ps 119:176").osis()).toEqual("Ps.119.176");
 		expect(p.parse("Ps 151:1").osis()).toEqual("Ps.151.1");
@@ -154,7 +154,7 @@ describe("Pre-parsing", () => {
 		expect(p.parse("3 John 15").osis()).toEqual("");
 	});
 	it("should allow adding a new versification system manually (but don't actually do it this way)", () => {
-		p.translations.definitions.new_system = {
+		p.translations.systems.new_system = {
 			order: {
 				Ps: 1,
 				Matt: 2
@@ -208,7 +208,7 @@ describe("Pre-parsing", () => {
 		p.set_options({
 			versification_system: "new_system"
 		});
-		expect(p.translations.definitions.new_system).not.toBeDefined();
+		expect(p.translations.systems.new_system).not.toBeDefined();
 	});
 	it("should handle control characters", () => {
 		expect(p.matcher.replace_control_characters(" hi ").length).toEqual(4);
@@ -367,29 +367,29 @@ describe("Pre-parsing", () => {
 	it("should turn on/off the Apocrypha using `include_apocrypha`", () => {
 		p.reset();
 		p.include_apocrypha(true);
-		expect(p.translations.definitions["current"].chapters["Ps"][150]).toEqual(7);
-		expect(p.translations.definitions["current"].order["Tob"]).toEqual(67);
+		expect(p.translations.systems["current"].chapters["Ps"][150]).toEqual(7);
+		expect(p.translations.systems["current"].order["Tob"]).toEqual(67);
 		expect(p.options.testaments).toEqual("ona");
 		p.include_apocrypha(false);
-		expect(p.translations.definitions["current"].chapters["Ps"][150]).not.toBeDefined();
+		expect(p.translations.systems["current"].chapters["Ps"][150]).not.toBeDefined();
 		expect(p.options.testaments).toEqual("on");
 	});
 	it("should turn on/off the Apocrypha using `testaments`", () => {
 		p.reset();
 		p.set_options({testaments: "ona"});
-		expect(p.translations.definitions["current"].chapters["Ps"][150]).toEqual(7);
-		expect(p.translations.definitions["current"].order["Tob"]).toEqual(67);
+		expect(p.translations.systems["current"].chapters["Ps"][150]).toEqual(7);
+		expect(p.translations.systems["current"].order["Tob"]).toEqual(67);
 		expect(p.options.testaments).toEqual("ona");
 		p.set_options({testaments: "oa"});
-		expect(p.translations.definitions["current"].chapters["Ps"][150]).toEqual(7);
-		expect(p.translations.definitions["current"].order["Tob"]).toEqual(67);
+		expect(p.translations.systems["current"].chapters["Ps"][150]).toEqual(7);
+		expect(p.translations.systems["current"].order["Tob"]).toEqual(67);
 		expect(p.options.testaments).toEqual("oa");
 		p.set_options({testaments: "a"});
-		expect(p.translations.definitions["current"].chapters["Ps"][150]).toEqual(7);
-		expect(p.translations.definitions["current"].order["Tob"]).toEqual(67);
+		expect(p.translations.systems["current"].chapters["Ps"][150]).toEqual(7);
+		expect(p.translations.systems["current"].order["Tob"]).toEqual(67);
 		expect(p.options.testaments).toEqual("a");
 		p.set_options({testaments: "o"});
-		expect(p.translations.definitions["current"].chapters["Ps"][150]).not.toBeDefined();
+		expect(p.translations.systems["current"].chapters["Ps"][150]).not.toBeDefined();
 		expect(p.options.testaments).toEqual("o");
 	});
 	it("should handle case-sensitivity", () => {
@@ -507,7 +507,7 @@ describe("Administrative behavior", () => {
 		expect(p.options.versification_system).toEqual("default");
 		expect(nab.alias).toEqual("nab");
 		nab.order["Gen"] = 15;
-		expect(p.translations.definitions.current.order["Gen"]).toEqual(1);
+		expect(p.translations.systems.current.order["Gen"]).toEqual(1);
 	});
 	it("should handle `translation_info` given unknown inputs", () => {
 		p.set_options({

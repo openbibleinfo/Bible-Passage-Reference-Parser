@@ -462,18 +462,18 @@ var bcv_regexps = class {
 var bcv_translations = class {
   constructor() {
     this.aliases = {
-      yc1998: { alias: "default", osis: "YC" },
-      yc2001: { alias: "default", osis: "YC" },
-      yc2008: { alias: "default", osis: "YC" },
-      yc2009: { alias: "default", osis: "YC" },
-      cos: { alias: "default", osis: "TC" },
+      yc1998: { system: "default", osis: "YC" },
+      yc2001: { system: "default", osis: "YC" },
+      yc2008: { system: "default", osis: "YC" },
+      yc2009: { system: "default", osis: "YC" },
+      cos: { system: "default", osis: "TC" },
       // `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-      current: { alias: "current", osis: "" },
+      current: { system: "current", osis: "" },
       // `default` is the fully specified default versification system (matching ESV).
-      default: { alias: "default", osis: "" }
+      default: { system: "default", osis: "" }
     };
     this.current_system = "default";
-    this.definitions = {
+    this.systems = {
       current: {},
       default: {
         order: {
@@ -859,7 +859,7 @@ var bcv_translations = class {
         }
       }
     };
-    this.definitions.current = structuredClone(this.definitions.default);
+    this.systems.current = structuredClone(this.systems.default);
   }
 };
 

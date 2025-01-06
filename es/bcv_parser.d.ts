@@ -4,11 +4,13 @@ export declare class bcv_parser {
 	parse_with_context(s: string, context: string);
 	set_options(options: {});
 	include_apocrypha(boolean);
-	translation_info(new_translation);
+	translation_info(translation);
 	osis(): string;
 	osis_and_translations(): string[][];
 	osis_and_indices(): OsisAndIndicesInterface[];
 	parsed_entities(): unknown[];
+	add_books(unknown): void;
+	add_translations(unknown): void;
 }
 
 interface BCVParserConstructor {

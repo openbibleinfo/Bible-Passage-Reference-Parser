@@ -272,13 +272,13 @@ var bcv_options = class {
   // Whether to use books and abbreviations from the Apocrypha. This function makes sure books from the Apocrypha are available as options and adjusts the Psalms to include Psalm 151. It takes a boolean argument: `true` to include the Apocrypha and `false` to not. Defaults to `false`.
   set_apocrypha(include_apocrypha) {
     this.parent.regexps_manager.filter_books(this.#testaments, this.case_sensitive);
-    for (const translation of Object.keys(this.parent.translations.definitions)) {
-      this.parent.translations.definitions[translation].chapters ??= {};
-      this.parent.translations.definitions[translation].chapters["Ps"] ??= [...this.parent.translations.definitions.current.chapters["Ps"]];
+    for (const translation of Object.keys(this.parent.translations.systems)) {
+      this.parent.translations.systems[translation].chapters ??= {};
+      this.parent.translations.systems[translation].chapters["Ps"] ??= [...this.parent.translations.systems.current.chapters["Ps"]];
       if (include_apocrypha === true) {
-        this.parent.translations.definitions[translation].chapters["Ps"][150] = this.parent.translations.definitions[translation].chapters["Ps151"]?.[0] ?? this.parent.translations.definitions.current.chapters["Ps151"][0];
-      } else if (this.parent.translations.definitions[translation].chapters?.["Ps"].length === 151) {
-        this.parent.translations.definitions[translation].chapters["Ps"].pop();
+        this.parent.translations.systems[translation].chapters["Ps"][150] = this.parent.translations.systems[translation].chapters["Ps151"]?.[0] ?? this.parent.translations.systems.current.chapters["Ps151"][0];
+      } else if (this.parent.translations.systems[translation].chapters?.["Ps"].length === 151) {
+        this.parent.translations.systems[translation].chapters["Ps"].pop();
       }
     }
   }
@@ -287,10 +287,10 @@ var bcv_options = class {
   }
   // Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use ESV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering. English offers several other versification systems; see the Readme for details.
   set versification_system(system) {
-    if (this.parent.translations.aliases[system]?.alias) {
-      system = this.parent.translations.aliases[system].alias;
+    if (this.parent.translations.aliases[system]?.system) {
+      system = this.parent.translations.aliases[system].system;
     }
-    if (!this.parent.translations.definitions[system]) {
+    if (!this.parent.translations.systems[system]) {
       if (this.warn_level === "warn") {
         console.warn(`Unknown versification system ("${system}"). Using default instead.`);
       }
@@ -300,17 +300,17 @@ var bcv_options = class {
       return;
     }
     if (this.parent.translations.current_system !== "default") {
-      this.parent.translations.definitions.current = structuredClone(this.parent.translations.definitions.default);
+      this.parent.translations.systems.current = structuredClone(this.parent.translations.systems.default);
     }
     this.parent.translations.current_system = system;
     if (system === "default") {
       return;
     }
-    if (this.parent.translations.definitions[system].order) {
-      this.parent.translations.definitions.current.order = { ...this.parent.translations.definitions[system].order };
+    if (this.parent.translations.systems[system].order) {
+      this.parent.translations.systems.current.order = { ...this.parent.translations.systems[system].order };
     }
-    if (this.parent.translations.definitions[system].chapters) {
-      this.parent.translations.definitions.current.chapters = { ...structuredClone(this.parent.translations.definitions.default.chapters), ...structuredClone(this.parent.translations.definitions[system].chapters) };
+    if (this.parent.translations.systems[system].chapters) {
+      this.parent.translations.systems.current.chapters = { ...structuredClone(this.parent.translations.systems.default.chapters), ...structuredClone(this.parent.translations.systems[system].chapters) };
     }
   }
   #case_sensitive;
@@ -329,11 +329,11 @@ var bcv_options = class {
 
 // build/bcv_passage.ts
 var bcv_passage = class {
-  constructor() {
+  constructor(options, translations) {
     this.books = [];
     this.indices = [];
-    // Initialized by `bcv_parser`.
-    this.translations = {};
+    this.options = options;
+    this.translations = translations;
   }
   // ## Public
   // Loop through the parsed passages.
@@ -1009,7 +1009,7 @@ var bcv_passage = class {
     const translations = [];
     translations.push({
       translation: this.books[passage.value[0].value].parsed,
-      alias: "default",
+      system: "default",
       osis: ""
     });
     for (const val of passage.value[1]) {
@@ -1017,14 +1017,14 @@ var bcv_passage = class {
       if (translation) {
         translations.push({
           translation,
-          alias: "default",
+          system: "default",
           osis: ""
         });
       }
     }
     for (const translation of translations) {
       if (this.translations.aliases[translation.translation]) {
-        translation.alias = this.translations.aliases[translation.translation].alias;
+        translation.system = this.translations.aliases[translation.translation].system;
         translation.osis = this.translations.aliases[translation.translation].osis || translation.translation.toUpperCase();
       } else {
         translation.osis = translation.translation.toUpperCase();
@@ -1204,27 +1204,27 @@ var bcv_passage = class {
   validate_ref(translations, start, end = null) {
     if (!translations || translations.length === 0 || !Array.isArray(translations)) {
       translations = [{
-        alias: "current",
         osis: "",
-        translation: "current"
+        translation: "current",
+        system: "current"
       }];
     }
     let valid = false;
     const messages = {};
     for (const translation of translations) {
-      if (!translation.alias) {
+      if (!translation.system) {
         messages.translation_invalid ??= [];
         messages.translation_invalid.push(translation);
         continue;
       }
-      if (!this.translations.aliases[translation.alias]) {
-        translation.alias = "current";
+      if (!this.translations.aliases[translation.system]) {
+        translation.system = "current";
         messages.translation_unknown ??= [];
         messages.translation_unknown.push(translation);
       }
-      let [temp_valid] = this.validate_start_ref(translation.alias, start, messages);
+      let [temp_valid] = this.validate_start_ref(translation.system, start, messages);
       if (end) {
-        [temp_valid] = this.validate_end_ref(translation.alias, start, end, temp_valid, messages);
+        [temp_valid] = this.validate_end_ref(translation.system, start, end, temp_valid, messages);
       }
       if (temp_valid === true) {
         valid = true;
@@ -1233,8 +1233,8 @@ var bcv_passage = class {
     return { valid, messages };
   }
   // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
-  validate_end_ref(translation, start, end, valid, messages) {
-    const translation_order = this.translations.definitions[translation]?.order ? translation : "current";
+  validate_end_ref(system, start, end, valid, messages) {
+    const order_system = this.translations.systems[system]?.order ? system : "current";
     if (end.c === 0) {
       messages.end_chapter_is_zero = 1;
       if (this.options.zero_chapter_strategy === "error") {
@@ -1251,8 +1251,8 @@ var bcv_passage = class {
         end.v = 1;
       }
     }
-    if (end.b && this.translations.definitions[translation_order].order[end.b]) {
-      valid = this.validate_known_end_book(translation, translation_order, start, end, valid, messages);
+    if (end.b && this.translations.systems[order_system].order[end.b]) {
+      valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
     } else {
       valid = false;
       messages.end_book_not_exist = true;
@@ -1260,12 +1260,12 @@ var bcv_passage = class {
     return [valid, messages];
   }
   // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
-  validate_known_end_book(translation, translation_order, start, end, valid, messages) {
-    const chapter_array = this.translations.definitions[translation]?.chapters?.[end.b] || this.translations.definitions.current.chapters[end.b];
+  validate_known_end_book(system, order_system, start, end, valid, messages) {
+    const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
     if (end.c == null && chapter_array.length === 1) {
       end.c = 1;
     }
-    if (this.translations.definitions[translation_order].order[start.b] != null && this.translations.definitions[translation_order].order[start.b] > this.translations.definitions[translation_order].order[end.b]) {
+    if (this.translations.systems[order_system].order[start.b] != null && this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]) {
       if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
         valid = false;
       }
@@ -1300,10 +1300,10 @@ var bcv_passage = class {
     return valid;
   }
   // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
-  validate_known_start_book(translation, start, messages) {
+  validate_known_start_book(system, start, messages) {
     let valid = true;
     start.c ??= 1;
-    const chapter_array = this.translations.definitions[translation]?.chapters?.[start.b] || this.translations.definitions.current.chapters[start.b];
+    const chapter_array = this.translations.systems[system]?.chapters?.[start.b] || this.translations.systems.current.chapters[start.b];
     if (start.c === 0) {
       messages.start_chapter_is_zero = 1;
       if (this.options.zero_chapter_strategy === "error") {
@@ -1342,14 +1342,14 @@ var bcv_passage = class {
     return valid;
   }
   // Make sure that the start ref exists in the given translation.
-  validate_start_ref(translation, start, messages) {
+  validate_start_ref(system, start, messages) {
     let valid = true;
-    const translation_order = this.translations.definitions[translation]?.order ? translation : "current";
+    const order_system = this.translations.systems[system]?.order ? system : "current";
     if (!start.b) {
       valid = false;
       messages.start_book_not_defined = true;
-    } else if (this.translations.definitions[translation_order].order[start.b]) {
-      valid = this.validate_known_start_book(translation, start, messages);
+    } else if (this.translations.systems[order_system].order[start.b]) {
+      valid = this.validate_known_start_book(system, start, messages);
     } else {
       if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
         valid = false;
@@ -1417,16 +1417,16 @@ var bcv_regexps_manager = class {
     return new_osis;
   }
   // Runtime pattern changes to allow adding books without regenerating the whole module.
-  add_passage_patterns(patterns) {
-    if (!Array.isArray(patterns)) {
-      throw "In `add_passage_patterns()`, the argument to `add_passage_patterns` should be an array.";
+  add_books(books) {
+    if (books == null || !Array.isArray(books.books)) {
+      throw new Error("add_books: The argument to `add_books` should be an object with an array in `books`");
     }
-    for (const pattern of patterns) {
+    for (const pattern of books.books) {
       if (pattern == null || !(pattern.regexp instanceof RegExp)) {
-        throw "In `add_passage_patterns()`, the `regexp` property of each pattern should be a RegExp.";
+        throw new Error("add_books: The `regexp` property of each pattern should be a RegExp");
       }
-      const book_data = this.get_passage_book_testaments(pattern);
-      const regexps = this.get_passage_pattern_regexps(pattern, book_data);
+      const book_data = this.get_book_testaments(pattern);
+      const regexps = this.get_book_pattern_regexps(pattern, book_data);
       const regexp = new RegExp(regexps.pre_regexp.source + regexps.regexp.source + regexps.post_regexp.source, "giu");
       const position = typeof pattern.insert_at === "string" ? pattern.insert_at : "start";
       const insert_object = {
@@ -1459,7 +1459,7 @@ var bcv_regexps_manager = class {
     this.filter_books(this.parent.options.testaments, this.parent.options.case_sensitive);
   }
   // Make the regexps that will be fed back to the pattern. Ultimately we want to know what will go before and after the provided pattern.
-  get_passage_pattern_regexps(pattern, book_data) {
+  get_book_pattern_regexps(pattern, book_data) {
     let regexps = {
       pre_regexp: new RegExp(""),
       regexp: pattern.regexp,
@@ -1476,17 +1476,17 @@ var bcv_regexps_manager = class {
         if (pattern[regexp_type] instanceof RegExp) {
           regexps[regexp_type] = pattern[regexp_type];
         } else {
-          throw "In `add_passage_patterns()`, the `" + regexp_type + "` property of each pattern should be a RegExp.";
+          throw new Error("add_books: The `" + regexp_type + "` property of each pattern should be a RegExp");
         }
       }
     }
     return regexps;
   }
   // Get data about the testaments the books are in to create RegExps for them.
-  get_passage_book_testaments(pattern) {
+  get_book_testaments(pattern) {
     const books = pattern.osis;
     if (!Array.isArray(books)) {
-      throw "In `add_passage_patterns()`, the `osis` property of each pattern should be an array.";
+      throw new Error("add_books: The `osis` property of each pattern should be an array");
     }
     const out = {
       testament_books: {},
@@ -1495,11 +1495,11 @@ var bcv_regexps_manager = class {
     };
     const testaments = /* @__PURE__ */ new Set();
     for (const book of books) {
-      if (typeof book !== "string" || this.parent.translations.definitions.default.order[book] == null) {
-        throw "In `add_passage_patterns()`, unknown book in pattern: " + book;
+      if (typeof book !== "string" || this.parent.translations.systems.default.order[book] == null) {
+        throw new Error("add_books: Unknown book in pattern: " + book);
       }
       if (book in out.testament_books) {
-        throw "In `add_passage_patterns()`, every provided book should be unique. Duplicate: " + book;
+        throw new Error("add_books: Every provided book should be unique. Duplicate: " + book);
       }
       let testament = "o";
       if (book === "Ps") {
@@ -1507,7 +1507,7 @@ var bcv_regexps_manager = class {
         testaments.add("o");
         testaments.add("a");
       } else {
-        const canonical_order = this.parent.translations.definitions.default.order[book];
+        const canonical_order = this.parent.translations.systems.default.order[book];
         if (canonical_order >= 40) {
           testament = canonical_order <= 66 ? "n" : "a";
         }
@@ -1528,6 +1528,166 @@ var bcv_regexps_manager = class {
       }
     }
     return out;
+  }
+};
+
+// build/bcv_translations_manager.ts
+var bcv_translations_manager = class {
+  constructor(parent) {
+    this.parent = parent;
+  }
+  translation_info(system = "default") {
+    if (typeof system !== "string" || !system) {
+      system = "default";
+    }
+    if (this.parent.translations.aliases[system]?.system) {
+      system = this.parent.translations.aliases[system].system;
+    }
+    if (this.parent.translations.systems[system] == null) {
+      if (this.parent.options.warn_level === "warn") {
+        console.warn("Unknown translation `" + new_translation + "` in translation_info(). Using default instead.");
+      }
+      system = "default";
+    }
+    const old_system = this.parent.options.versification_system;
+    this.parent.options.versification_system = system;
+    const out = {
+      alias: system,
+      books: [],
+      chapters: structuredClone(this.parent.translations.systems.current.chapters),
+      order: structuredClone(this.parent.translations.systems.current.order),
+      system
+    };
+    for (const [book, id] of Object.entries(out.order)) {
+      out.books[id - 1] = book;
+    }
+    if (system !== old_system) {
+      this.parent.options.versification_system = old_system;
+    }
+    return out;
+  }
+  add_translations(new_translations) {
+    if (new_translations?.translations == null || !Array.isArray(new_translations.translations) || new_translations.translations.length === 0) {
+      throw new Error("add_translations: A `translations array in the `translations` key should have at least one object");
+    }
+    const normalized_translations = {};
+    const texts_for_regexp = [];
+    for (const translation of new_translations.translations) {
+      const normalized_translation = this.normalize_sent_translation_data(translation);
+      const insert_key = translation.text.toLowerCase();
+      if (normalized_translations[insert_key] != null || this.parent.translations.aliases[insert_key] != null) {
+        if (this.parent.options.warn_level === "warn") {
+          console.warn("add_translations: Not redefining `" + translation.text + "` translation because it already exists");
+        }
+        continue;
+      }
+      const system = normalized_translation.system;
+      if (system !== "default" && this.parent.translations.systems[normalized_translation.system] == null) {
+        if (new_translations.systems != null && new_translations.systems[system] != null) {
+          this.add_system(normalized_translation.system, new_translations.systems[system]);
+        } else {
+          throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + Object.keys(this.parent.translations.systems).join("`, `") + "`. You may want to check that you included this system in `systems`");
+        }
+      }
+      texts_for_regexp.push(translation.text);
+      normalized_translations[insert_key] = normalized_translation;
+    }
+    if (texts_for_regexp.length > 0) {
+      this.add_new_translations_regexp(texts_for_regexp, new_translations);
+    }
+    this.parent.translations.aliases = { ...normalized_translations, ...this.parent.translations.aliases };
+  }
+  // Normalizes the translation data and ensures it's valid.
+  normalize_sent_translation_data(translation) {
+    const text = translation.text;
+    if (text == null || typeof text !== "string" || text.length === 0) {
+      throw new Error('add_translations: Each translation object should contain a string `text` key with a value like "KJV"');
+    }
+    if (text.match(/^\p{N}+$/u)) {
+      throw new Error("add_translations: A translation.text (`" + text + "`) can't be all numbers because then it would conflict with chapter and verse references.");
+    }
+    const osis = typeof translation.osis === "string" && translation.osis !== "" ? translation.osis : translation.text.toUpperCase();
+    const system = typeof translation.system === "string" && translation.system.length > 0 ? translation.system : "default";
+    return {
+      osis,
+      system
+    };
+  }
+  // Create the new translation definition.
+  add_system(system, new_system) {
+    if (system === "default" || system === "current") {
+      throw new Error("add_translations: Can't use `" + system + "` as a versification system. This built-in system can't be redefined");
+    }
+    if (new_system == null || new_system.books == null && new_system.chapters == null) {
+      throw new Error("add_translations: The system object should contain `books` key, a `chapters` key or both");
+    }
+    if (this.parent.translations.systems[system] != null) {
+      return;
+    }
+    const out = {};
+    if (new_system.books != null) {
+      if (!Array.isArray(new_system.books) || new_system.books.length === 0) {
+        throw new Error("add_translations: The `books` key in each `system` object should be an array with at least one string in it");
+      }
+      out.books = this.make_system_books(new_system.books);
+    }
+    if (new_system.chapters != null) {
+      if (typeof new_system.chapters !== "object" || Object.keys(new_system.chapters).length === 0) {
+        throw new Error("add_translations: The `chapters` key in the each `system` object should be an object with at least one key");
+      }
+      this.validate_system_chapters(new_system.chapters);
+      out.chapters = structuredClone(new_system.chapters);
+    }
+    this.parent.translations.systems[system] = out;
+  }
+  make_system_books(books) {
+    const all_books = structuredClone(this.parent.translations.systems.default.order);
+    const new_books = {};
+    let book_i = 1;
+    for (const book of books) {
+      if (typeof book !== "string" || all_books[book] == null) {
+        throw new Error("add_translations: Got an unexpected OSIS value in `books` (also check for any duplicates): " + book);
+      }
+      delete all_books[book];
+      new_books[book] = book_i;
+      book_i++;
+    }
+    const remaining_books = Object.keys(all_books).sort((a, b) => all_books[a] - all_books[b]);
+    for (const book of remaining_books) {
+      new_books[book] = book_i;
+      book_i++;
+    }
+    return new_books;
+  }
+  validate_system_chapters(chapters) {
+    const all_books = this.parent.translations.systems.default.order;
+    for (const [book, chapter_lengths] of Object.entries(chapters)) {
+      if (all_books[book] == null) {
+        throw new Error("add_translations: Unexpected book: " + book);
+      }
+      if (!Array.isArray(chapter_lengths) || chapter_lengths.length == 0) {
+        throw new Error("add_translations: Each value in `chapters` should be an array with at least one entry containing the number of verses in each chapter. Check `" + book + "`");
+      }
+      for (const verse_count of chapter_lengths) {
+        if (!(typeof verse_count === "number" && verse_count >= 1 && verse_count <= 200)) {
+          throw new Error("add_translations: Unexpected value in `chapters`: " + verse_count + "`. It should be a number between 1 and 200");
+        }
+      }
+    }
+  }
+  add_new_translations_regexp(texts_for_regexp, new_translations) {
+    if (texts_for_regexp.length > 1) {
+      texts_for_regexp = texts_for_regexp.sort((a, b) => b.length - a.length);
+    }
+    const insert_at = new_translations.insert_at === "end" ? "end" : "start";
+    const pre_regexp = new_translations?.pre_regexp instanceof RegExp ? new_translations?.pre_regexp : { source: "" };
+    const post_regexp = new_translations?.post_regexp instanceof RegExp ? new_translations?.post_regexp : /(?![\p{L}\p{N}])/u;
+    const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, "gi");
+    if (insert_at === "start") {
+      this.parent.regexps.translations.unshift(regexp);
+    } else {
+      this.parent.regexps.translations.push(regexp);
+    }
   }
 };
 
@@ -1994,12 +2154,12 @@ var bcv_translations = class {
   constructor() {
     this.aliases = {
       // `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-      current: { alias: "current", osis: "" },
+      current: { system: "current", osis: "" },
       // `default` is the fully specified default versification system (matching ESV).
-      default: { alias: "default", osis: "" }
+      default: { system: "default", osis: "" }
     };
     this.current_system = "default";
-    this.definitions = {
+    this.systems = {
       current: {},
       default: {
         order: {
@@ -2385,7 +2545,7 @@ var bcv_translations = class {
         }
       }
     };
-    this.definitions.current = structuredClone(this.definitions.default);
+    this.systems.current = structuredClone(this.systems.default);
   }
 };
 function peg$subclass(child, parent) {
@@ -6601,9 +6761,9 @@ const bcv = new bcv_parser(lang);`;
       this.regexps = new lang.regexps();
       this.translations = new lang.translations();
     }
-    this.passage.translations = this.translations;
-    this.passage.options = this.options;
+    this.passage = new bcv_passage(this.options, this.translations);
     this.regexps_manager = new bcv_regexps_manager(this);
+    this.translations_manager = new bcv_translations_manager(this);
   }
   // ## Parse-Related Functions
   // Parse a string and prepare the object for further interrogation, depending on what's needed.
@@ -6669,34 +6829,8 @@ const bcv = new bcv_parser(lang);`;
   }
   // ## Administrative Functions
   // Return translation information so that we don't have to reach into semi-private objects to grab the data we need.
-  translation_info(new_translation = "default") {
-    if (typeof new_translation !== "string" || !new_translation) {
-      new_translation = "default";
-    }
-    if (this.translations.aliases[new_translation]?.alias) {
-      new_translation = this.translations.aliases[new_translation].alias;
-    }
-    if (this.translations.definitions[new_translation] == null) {
-      if (this.options.warn_level === "warn") {
-        console.warn(`Unknown translation "new_translation" in translation_info(). Using default instead.`);
-      }
-      new_translation = "default";
-    }
-    const old_translation = this.options.versification_system;
-    this.options.versification_system = new_translation;
-    const out = {
-      alias: new_translation,
-      books: [],
-      chapters: structuredClone(this.translations.definitions.current.chapters),
-      order: structuredClone(this.translations.definitions.current.order)
-    };
-    for (const [book, id] of Object.entries(out.order)) {
-      out.books[id - 1] = book;
-    }
-    if (new_translation !== old_translation) {
-      this.options.versification_system = old_translation;
-    }
-    return out;
+  translation_info(translation = "default") {
+    return this.translations_manager.translation_info(translation);
   }
   // ## Output-Related Functions
   // Return a single OSIS string (comma-separated) for all the references in the whole input string.
@@ -6747,25 +6881,25 @@ const bcv = new bcv_parser(lang);`;
         return;
       }
       let translations = [];
-      let translation_alias = "";
+      let system = "";
       if (entity.passages[0].translations) {
         for (const translation of entity.passages[0].translations) {
           const translation_osis = translation.osis && translation.osis.length > 0 ? translation.osis : "";
-          if (translation_alias === "") {
-            translation_alias = translation.alias;
+          if (system === "") {
+            system = translation.system;
           }
           translations.push(translation_osis);
         }
       } else {
         translations = [""];
-        translation_alias = "current";
+        system = "current";
       }
-      let osises = this.parse_entity_passages(entity, entity_id, translations, translation_alias);
+      let osises = this.parse_entity_passages(entity, entity_id, translations, system);
       if (osises.length === 0) {
         return;
       }
       if (osises.length > 1 && this.options.consecutive_combination_strategy === "combine") {
-        osises = this.combine_consecutive_passages(osises, translation_alias);
+        osises = this.combine_consecutive_passages(osises, system);
       }
       if (this.options.sequence_combination_strategy === "separate") {
         out = out.concat(osises);
@@ -6791,7 +6925,7 @@ const bcv = new bcv_parser(lang);`;
     });
     return out;
   }
-  parse_entity_passages(entity, entity_id, translations, translation_alias) {
+  parse_entity_passages(entity, entity_id, translations, system) {
     const osises = [];
     const length = entity.passages.length;
     const include_old_testament = this.options.testaments.indexOf("o") >= 0;
@@ -6821,7 +6955,7 @@ const bcv = new bcv_parser(lang);`;
         passage.absolute_indices = [...entity.absolute_indices];
       }
       osises.push({
-        osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, translation_alias) : "",
+        osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, system) : "",
         type: passage.type,
         indices: passage.absolute_indices,
         translations,
@@ -6849,7 +6983,7 @@ const bcv = new bcv_parser(lang);`;
     if (this.options.versification_system.indexOf("a") >= 0 && this.options.ps151_strategy === "b" && (start.c === 151 && start.b === "Ps" || end.c === 151 && end.b === "Ps")) {
       this.fix_ps151(start, end, translation);
     }
-    const chapter_array = this.passage.translations.definitions[translation]?.chapters[end.b] || this.passage.translations.definitions.current.chapters[end.b];
+    const chapter_array = this.passage.translations.systems[translation]?.chapters[end.b] || this.passage.translations.systems.current.chapters[end.b];
     if (end.c == null) {
       if (this.options.passage_existence_strategy.indexOf("c") >= 0 || chapter_array && chapter_array.length === 1) {
         end.c = chapter_array.length;
@@ -6890,9 +7024,9 @@ const bcv = new bcv_parser(lang);`;
   }
   // If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it returns properly.
   fix_ps151(start, end, translation) {
-    const old_versification_system = this.options.versification_system;
+    const old_system = this.options.versification_system;
     this.options.versification_system = translation;
-    const new_versification_system = this.options.versification_system;
+    const new_system = this.options.versification_system;
     if (start.c === 151 && start.b === "Ps") {
       if (end.c === 151 && end.b === "Ps") {
         start.b = "Ps151";
@@ -6902,7 +7036,7 @@ const bcv = new bcv_parser(lang);`;
       } else {
         start.extra = this.to_osis(
           { b: "Ps151", c: 1, v: start.v },
-          { b: "Ps151", c: 1, v: this.translations.definitions.current.chapters["Ps151"][0] },
+          { b: "Ps151", c: 1, v: this.translations.systems.current.chapters["Ps151"][0] },
           translation
         );
         start.b = "Prov";
@@ -6916,10 +7050,10 @@ const bcv = new bcv_parser(lang);`;
         translation
       );
       end.c = 150;
-      end.v = this.translations.definitions.current.chapters["Ps"][149];
+      end.v = this.translations.systems.current.chapters["Ps"][149];
     }
-    if (old_versification_system !== new_versification_system) {
-      this.options.versification_system = old_versification_system;
+    if (old_system !== new_system) {
+      this.options.versification_system = old_system;
     }
   }
   // If we have the correct `option` set (checked before calling this function), merge passages that refer to sequential verses: Gen 1, 2 -> Gen 1-2. It works for any combination of books, chapters, and verses.
@@ -6981,8 +7115,8 @@ const bcv = new bcv_parser(lang);`;
     if (!prev.b) {
       return false;
     }
-    const translation_order = this.passage.translations.definitions[translation]?.order || this.passage.translations.definitions.current.order;
-    const chapter_array = this.passage.translations.definitions[translation]?.chapters?.[prev.b] || this.passage.translations.definitions.current.chapters[prev.b];
+    const translation_order = this.passage.translations.systems[translation]?.order || this.passage.translations.systems.current.order;
+    const chapter_array = this.passage.translations.systems[translation]?.chapters?.[prev.b] || this.passage.translations.systems.current.chapters[prev.b];
     if (prev.b === check.b) {
       if (prev.c === check.c) {
         return prev.v === check.v - 1;
@@ -7091,8 +7225,11 @@ const bcv = new bcv_parser(lang);`;
       }
     }
   }
-  add_passage_patterns(patterns) {
-    return this.regexps_manager.add_passage_patterns(patterns);
+  add_books(books) {
+    return this.regexps_manager.add_books(books);
+  }
+  add_translations(translations) {
+    return this.translations_manager.add_translations(translations);
   }
 };
 var grammar = { parse: peg$parse };

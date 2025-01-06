@@ -622,7 +622,7 @@ describe("Basic passage parsing", () => {
 	const translation_obj = {
 		translation: "default",
 		osis: "",
-		alias: "default"
+		system: "default"
 	};
 	beforeEach(() => {
 		p = new bcv_parser(lang);
@@ -1212,10 +1212,10 @@ describe("Basic passage parsing", () => {
 			{
 				translation: "default",
 				osis: "",
-				alias: "default"
+				system: "default"
 			}, {
 				translation: "niv",
-				alias: "default"
+				system: "default"
 			}
 		], {
 			b: "1Pet",
@@ -1461,11 +1461,11 @@ describe("Basic passage parsing", () => {
 				{
 					translation: "niv",
 					osis: "NIV",
-					alias: "default"
+					system: "default"
 				}, {
 					translation: "kjv",
 					osis: "KJV",
-					alias: "default"
+					system: "default"
 				}
 			]
 		})).toEqual([
@@ -1491,11 +1491,11 @@ describe("Basic passage parsing", () => {
 							{
 								translation: "niv",
 								osis: "NIV",
-								alias: "default"
+								system: "default"
 							}, {
 								translation: "kjv",
 								osis: "KJV",
-								alias: "default"
+								system: "default"
 							}
 						]
 					},
@@ -1537,11 +1537,11 @@ describe("Basic passage parsing", () => {
 								{
 									translation: "niv",
 									osis: "NIV",
-									alias: "default"
+									system: "default"
 								}, {
 									translation: "kjv",
 									osis: "KJV",
-									alias: "default"
+									system: "default"
 								}
 							]
 						}
@@ -1555,11 +1555,11 @@ describe("Basic passage parsing", () => {
 					{
 						translation: "niv",
 						osis: "NIV",
-						alias: "default"
+						system: "default"
 					}, {
 						translation: "kjv",
 						osis: "KJV",
-						alias: "default"
+						system: "default"
 					}
 				]
 			}
@@ -1585,11 +1585,11 @@ describe("Basic passage parsing", () => {
 				{
 					translation: "niv",
 					osis: "NIV",
-					alias: "default"
+					system: "default"
 				}, {
 					translation: "kjv",
 					osis: "KJV",
-					alias: "default"
+					system: "default"
 				}
 			]
 		})).toEqual([
@@ -1615,11 +1615,11 @@ describe("Basic passage parsing", () => {
 							{
 								translation: "niv",
 								osis: "NIV",
-								alias: "default"
+								system: "default"
 							}, {
 								translation: "kjv",
 								osis: "KJV",
-								alias: "default"
+								system: "default"
 							}
 						]
 					},
@@ -1663,11 +1663,11 @@ describe("Basic passage parsing", () => {
 								{
 									translation: "niv",
 									osis: "NIV",
-									alias: "default"
+									system: "default"
 								}, {
 									translation: "kjv",
 									osis: "KJV",
-									alias: "default"
+									system: "default"
 								}
 							]
 						}
@@ -1681,11 +1681,11 @@ describe("Basic passage parsing", () => {
 					{
 						translation: "niv",
 						osis: "NIV",
-						alias: "default"
+						system: "default"
 					}, {
 						translation: "kjv",
 						osis: "KJV",
-						alias: "default"
+						system: "default"
 					}
 				]
 			}
@@ -3239,7 +3239,7 @@ describe("Parsing", () => {
 								translations: [
 									{
 										translation: "amp",
-										alias: "default",
+										system: "default",
 										osis: "AMP"
 									}
 								],

@@ -5,12 +5,12 @@ export default class bcv_translations implements BCVTranslationsInterface {
 aliases = {
 	//$TRANS_ALIAS
 	// `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-	current: { alias: "current", osis: "" },
+	current: { system: "current", osis: "" },
 	// `default` is the fully specified default versification system (matching ESV).
-	default: { alias: "default", osis: "" }
+	default: { system: "default", osis: "" }
 };
 current_system = "default";
-definitions = {
+systems = {
 	current: {},
 	default: {
 		order: {
@@ -146,6 +146,6 @@ definitions = {
 }
 
 constructor() {
-	this.definitions.current = structuredClone(this.definitions.default);
+	this.systems.current = structuredClone(this.systems.default);
 }
 };

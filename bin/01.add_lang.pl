@@ -37,7 +37,7 @@ sub make_translations
 		my $lc = lc $trans;
 		$lc = '"' . $lc . '"' if ($lc =~ /\W/);
 		my $string = "$lc: {";
-		$string .= " alias: \"$alias\"";
+		$string .= " system: \"$alias\"";
 		$string .= ", osis: \"$osis\"" if ($osis);
 		# The comma is OK because `current` and `default` are always at the end.
 		push @aliases, "$string },";

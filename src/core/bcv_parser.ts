@@ -24,11 +24,12 @@ interface BCVParserConstructor {
 	translations: BCVTranslationsInterface;
 }
 
-import { BCVParserOptions, PartialOptions, EntityCollection, BCVParserInterface, PublicTranslationInterface, OsisEntityInterface, StartEndInterface, Entity, GrammarMatchInterface, BCVRegExpsInterface, BCVPassageInterface, BCVTranslationsInterface, PassagePattern } from "./types";
+import { BCVParserOptions, PartialOptions, EntityCollection, BCVParserInterface, PublicTranslationInterface, OsisEntityInterface, StartEndInterface, Entity, GrammarMatchInterface, BCVRegExpsInterface, BCVPassageInterface, BCVTranslationsInterface, BCVRegExpsManagerInterface, BCVTranslationsManagerInterface, AddBooksInterface } from "./types";
 import bcv_matcher from "./bcv_matcher";
 import bcv_options from "./bcv_options";
 import bcv_passage from "./bcv_passage";
 import bcv_regexps_manager from "./bcv_regexps_manager";
+import bcv_translations_manager from "./bcv_translations_manager";
 
 export class bcv_parser implements BCVParserInterface {
 
@@ -39,6 +40,7 @@ private entities: EntityCollection[] = [];
 public translations: BCVTranslationsInterface;
 private matcher;
 private regexps_manager: BCVRegExpsManagerInterface;
+private translations_manager: BCVTranslationsManagerInterface;
 
 constructor(lang: BCVParserConstructor | null = null) {
 	// Make sure everything is kept in sync between these objects.
@@ -56,9 +58,9 @@ constructor(lang: BCVParserConstructor | null = null) {
 		this.regexps = new lang.regexps();
 		this.translations = new lang.translations();
 	}
-	this.passage.translations = this.translations;
-	this.passage.options = this.options;
+	this.passage = new bcv_passage(this.options, this.translations);
 	this.regexps_manager = new bcv_regexps_manager(this);
+	this.translations_manager = new bcv_translations_manager(this);
 }
 
 // ## Parse-Related Functions
@@ -119,7 +121,7 @@ public set_options(options: PartialOptions): this {
 		delete options.include_apocrypha;
 	}
 	for (const [key, value] of Object.entries(options)) {
-		// The drawback with this approach is that setting `testaments`, `versification_system`, and `case_sensitive` could regenerate `this.regexps.books` three times.
+		// The drawback with this approach is that setting `testaments`, `system`, and `case_sensitive` could regenerate `this.regexps.books` three times.
 		if (typeof this.options[key as keyof BCVParserOptions] === "string") {
 			// TODO: I'm not sure how to fix this Typescript error.
 			this.options[key] = value;
@@ -149,39 +151,8 @@ public include_apocrypha(arg: boolean): this {
 
 // ## Administrative Functions
 // Return translation information so that we don't have to reach into semi-private objects to grab the data we need.
-public translation_info(new_translation: VersificationSystem = "default"): PublicTranslationInterface {
-	if (typeof new_translation !== "string" || !new_translation) {
-		new_translation = "default";
-	}
-	// Resolve alias if applicable
-	if (this.translations.aliases[new_translation]?.alias) {
-		new_translation = this.translations.aliases[new_translation].alias!;
-	}
-	// Use "default" if there's no other fallback.
-	if (this.translations.definitions[new_translation] == null) {
-		if (this.options.warn_level === "warn") {
-			console.warn(`Unknown translation "new_translation" in translation_info(). Using default instead.`);
-		}
-		new_translation = "default";
-	}
-	const old_translation = this.options.versification_system;
-	// Switch to the new versification system if necessary. By doing it this way, we can iterate through the `current` key and ensure we always have all the data for the translation.
-	this.options.versification_system = new_translation;
-	const out: PublicTranslationInterface = {
-		alias: new_translation,
-		books: [],
-		chapters: structuredClone(this.translations.definitions.current!.chapters!),
-		order: structuredClone(this.translations.definitions.current!.order!)
-	};
-	// Populate books array based on the order defined in `order`.
-	for (const [book, id] of Object.entries(out.order)) {
-		out.books[id - 1] = book;
-	}
-	// Revert to the old versification system if it was changed to get this info.
-	if (new_translation !== old_translation) {
-		this.options.versification_system = old_translation;
-	}
-	return out;
+public translation_info(translation: VersificationSystem = "default"): PublicTranslationInterface {
+	return this.translations_manager.translation_info(translation);
 }
 
 // ## Output-Related Functions
@@ -249,27 +220,27 @@ public parsed_entities(): ParsedEntityInterface[] {
 		}
 		// A given entity, even if part of a sequence, always only has one set of translations associated with it.
 		let translations: string[] = [];
-		let translation_alias = "";
+		let system = "";
 		if (entity.passages[0].translations) {
 			for (const translation of entity.passages[0].translations) {
 				const translation_osis = (translation.osis && translation.osis.length > 0) ? translation.osis : "";
-				if (translation_alias === "") {
-					translation_alias = translation.alias;
+				if (system === "") {
+					system = translation.system;
 				}
 				translations.push(translation_osis);
 			}
 		} else {
 			translations = [""];
-			translation_alias = "current";
+			system = "current";
 		}
-		let osises = this.parse_entity_passages(entity, entity_id, translations, translation_alias);
+		let osises = this.parse_entity_passages(entity, entity_id, translations, system);
 		// Don't return an empty object if no passages are left. Skip to the next forEach iteration.
 		if (osises.length === 0) {
 			return;
 		}
 		// Combine consecutive passages if configured.
 		if (osises.length > 1 && this.options.consecutive_combination_strategy === "combine") {
-			osises = this.combine_consecutive_passages(osises, translation_alias);
+			osises = this.combine_consecutive_passages(osises, system);
 		}
 		// If sequence combination strategy is set to "separate", return each osis separately.
 		if (this.options.sequence_combination_strategy === "separate") {
@@ -299,7 +270,7 @@ public parsed_entities(): ParsedEntityInterface[] {
 	return out;
 }
 
-private parse_entity_passages(entity: EntityCollection, entity_id: number, translations: string[], translation_alias: string): OsisEntityInterface[] {
+private parse_entity_passages(entity: EntityCollection, entity_id: number, translations: string[], system: string): OsisEntityInterface[] {
 	const osises: OsisEntityInterface[] = [];
 	const length = entity.passages!.length;
 	const include_old_testament = (this.options.testaments.indexOf("o") >= 0);
@@ -350,7 +321,7 @@ private parse_entity_passages(entity: EntityCollection, entity_id: number, trans
 			passage.absolute_indices = [...entity.absolute_indices];
 		}
 		osises.push({
-			osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, translation_alias) : "",
+			osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, system) : "",
 			type: passage.type,
 			indices: passage.absolute_indices,
 			translations,
@@ -391,7 +362,7 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 	) {
 		this.fix_ps151(start, end, translation);
 	}
-	const chapter_array = this.passage.translations.definitions[translation]?.chapters[end.b] || this.passage.translations.definitions.current.chapters[end.b];
+	const chapter_array = this.passage.translations.systems[translation]?.chapters[end.b] || this.passage.translations.systems.current.chapters[end.b];
 	// If no end chapter or verse, assume the last possible. If it's a single-chapter book, always use the first chapter for consistency with other `passage_existence_strategy` results (which do respect the single-chapter length).
 	if (end.c == null) {
 		if (
@@ -475,9 +446,9 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 // If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it returns properly.
 private fix_ps151(start: StartEndInterface, end: StartEndInterface, translation: string): void {
 	// First set up the versification so that we know we have all the data we need.
-	const old_versification_system = this.options.versification_system;
+	const old_system = this.options.versification_system;
 	this.options.versification_system = translation;
-	const new_versification_system = this.options.versification_system;
+	const new_system = this.options.versification_system;
 	if (start.c === 151 && start.b === "Ps") {
 		// If the whole range is in Ps151, we can just reset both sets of books and chapters; we don't have to worry about odd ranges.
 		if (end.c === 151 && end.b === "Ps") {
@@ -487,10 +458,10 @@ private fix_ps151(start: StartEndInterface, end: StartEndInterface, translation:
 			end.c = 1;
 			// Otherwise, we generate the OSIS for Ps151 and then set the beginning of the range to the next book. We assume that the next book is Prov, which isn't necessarily the case. I'm not aware of a canon that doesn't place Prov after Ps, however.
 		} else {
-			// This is the string we're going to prepend to the final output. We made sure it's defined in `this.translation.definitions` earlier in this function.
+			// This is the string we're going to prepend to the final output. We made sure it's defined in `this.translation.systems` earlier in this function.
 			start.extra = this.to_osis(
 				{ b: "Ps151", c: 1, v: start.v },
-				{ b: "Ps151", c: 1, v: this.translations.definitions.current.chapters!["Ps151"][0] },
+				{ b: "Ps151", c: 1, v: this.translations.systems.current.chapters!["Ps151"][0] },
 				translation
 			);
 			// Assume the next book is Proverbs.
@@ -508,10 +479,10 @@ private fix_ps151(start: StartEndInterface, end: StartEndInterface, translation:
 		);
 		// Set the end of the range to be the end of Ps.150, which immediately precedes Ps151.
 		end.c = 150;
-		end.v = this.translations.definitions.current.chapters!["Ps"][149];
+		end.v = this.translations.systems.current.chapters!["Ps"][149];
 	}
-	if (old_versification_system !== new_versification_system) {
-		this.options.versification_system = old_versification_system;
+	if (old_system !== new_system) {
+		this.options.versification_system = old_system;
 	}
 }
 
@@ -587,9 +558,9 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 		return false;
 	}
 	// A translation doesn't always have an `order` set. If it doesn't, then use the current order.
-	const translation_order = this.passage.translations.definitions[translation]?.order 
-		|| this.passage.translations.definitions.current.order;
-	const chapter_array = this.passage.translations.definitions[translation]?.chapters?.[prev.b] || this.passage.translations.definitions.current.chapters[prev.b];
+	const translation_order = this.passage.translations.systems[translation]?.order 
+		|| this.passage.translations.systems.current.order;
+	const chapter_array = this.passage.translations.systems[translation]?.chapters?.[prev.b] || this.passage.translations.systems.current.chapters[prev.b];
 	// Same book.
 	if (prev.b === check.b) {
 		// Same chapter, consecutive verse.
@@ -753,8 +724,12 @@ private remove_absolute_indices(passages: Entity[], passage_i: number): void {
 	}
 }
 
-public add_passage_patterns(patterns: PassagePattern[]) {
-	return this.regexps_manager.add_passage_patterns(patterns);
+public add_books(books: AddBooksInterface) {
+	return this.regexps_manager.add_books(books);
+}
+
+public add_translations(translations: AddTranslationsInterface) {
+	return this.translations_manager.add_translations(translations);
 }
 
 }

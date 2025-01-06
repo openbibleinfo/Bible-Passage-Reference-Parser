@@ -515,30 +515,30 @@ var bcv_regexps = class {
 var bcv_translations = class {
   constructor() {
     this.aliases = {
-      asv: { alias: "kjv" },
-      ceb: { alias: "ceb" },
-      csb: { alias: "csb" },
-      hcsb: { alias: "csb" },
-      kjv: { alias: "kjv" },
-      lxx: { alias: "nab" },
-      nab: { alias: "nab" },
-      nabre: { alias: "nab" },
-      nas: { alias: "default", osis: "NASB" },
-      net: { alias: "csb" },
-      nirv: { alias: "kjv" },
-      niv: { alias: "kjv" },
-      nkjv: { alias: "kjv" },
-      nlt: { alias: "nlt" },
-      nrsv: { alias: "nrsv" },
-      nrsvue: { alias: "nrsvue" },
-      tniv: { alias: "kjv" },
+      asv: { system: "kjv" },
+      ceb: { system: "ceb" },
+      csb: { system: "csb" },
+      hcsb: { system: "csb" },
+      kjv: { system: "kjv" },
+      lxx: { system: "nab" },
+      nab: { system: "nab" },
+      nabre: { system: "nab" },
+      nas: { system: "default", osis: "NASB" },
+      net: { system: "csb" },
+      nirv: { system: "kjv" },
+      niv: { system: "kjv" },
+      nkjv: { system: "kjv" },
+      nlt: { system: "nlt" },
+      nrsv: { system: "nrsv" },
+      nrsvue: { system: "nrsvue" },
+      tniv: { system: "kjv" },
       // `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-      current: { alias: "current", osis: "" },
+      current: { system: "current", osis: "" },
       // `default` is the fully specified default versification system (matching ESV).
-      default: { alias: "default", osis: "" }
+      default: { system: "default", osis: "" }
     };
     this.current_system = "default";
-    this.definitions = {
+    this.systems = {
       current: {},
       default: {
         order: {
@@ -924,7 +924,7 @@ var bcv_translations = class {
         }
       }
     };
-    this.definitions.current = structuredClone(this.definitions.default);
+    this.systems.current = structuredClone(this.systems.default);
   }
 };
 

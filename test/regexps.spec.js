@@ -157,7 +157,7 @@ describe("Adjusting books", () => {
 	let p = {};
 	beforeEach(() => {
 		p = new bcv_parser(lang);
-		p.translations.definitions.current.chapters["Ps151"] = [10]; // Increase the number of verses so we can disambiguate these tests for reporting.
+		p.translations.systems.current.chapters["Ps151"] = [10]; // Increase the number of verses so we can disambiguate these tests for reporting.
 	});
 	it("should change what's parseable (`passage_existence_strategy = bcv`)", () => {
 		const tests = {
@@ -361,56 +361,57 @@ describe("Adding books at runtime", () => {
 		p = new bcv_parser(lang);
 	});
 	it("should reject bad array arguments", () => {
-		expect(() => p.add_passage_patterns(null)).toThrow();
-		expect(() => p.add_passage_patterns("")).toThrow();
-		expect(() => p.add_passage_patterns()).toThrow();
+		expect(() => p.add_books(null)).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books("")).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books()).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books({})).toThrowMatching(add_books_throw_matcher);
 	});
 	it("should reject bad regexp arguments", () => {
-		expect(() => p.add_passage_patterns([{ regexp: "" }])).toThrow();
-		expect(() => p.add_passage_patterns([null])).toThrow();
+		expect(() => p.add_books({books: [{ regexp: "" }]})).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books({books: [null]})).toThrowMatching(add_books_throw_matcher);
 	});
 	it("should reject bad pre/post arguments", () => {
-		expect(() => p.add_passage_patterns([{ pre_regexp: "" }])).toThrow();
-		expect(() => p.add_passage_patterns([{ post_regexp: null }])).toThrow();
+		expect(() => p.add_books({books: [{ pre_regexp: "" }]})).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books({books: [{ post_regexp: null }]})).toThrowMatching(add_books_throw_matcher);
 	});
 	it("should reject bad book arguments", () => {
-		expect(() => p.add_passage_patterns([{ regexp: /Q/, osis: ["Q"] }])).toThrow();
-		expect(() => p.add_passage_patterns([{ regexp: /Q/, osis: null }])).toThrow();
-		expect(() => p.add_passage_patterns([{ regexp: /Q/, osis: [null] }])).toThrow();
+		expect(() => p.add_books({books: [{ regexp: /Q/, osis: ["Q"] }]})).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books({books: [{ regexp: /Q/, osis: null }]})).toThrowMatching(add_books_throw_matcher);
+		expect(() => p.add_books({books: [{ regexp: /Q/, osis: [null] }]})).toThrowMatching(add_books_throw_matcher);
 	});
 	it("should process a non-number book", () => {
-		expect(p.add_passage_patterns([{ regexp: /Q/, osis: ["Gen", "Matt"] }])).toBeUndefined();
+		expect(p.add_books({books: [{ regexp: /Q/, osis: ["Gen", "Matt"] }]})).toBeUndefined();
 	});
 	it("should get the right testaments", () => {
-		expect(p.regexps_manager.get_passage_book_testaments({osis:["Matt", "Gen"], regexp: /Q1/})).toEqual({ testament_books: {"Gen": "o", "Matt": "n"}, has_number_book: false, testament: "on" });
-		expect(p.regexps_manager.get_passage_book_testaments({osis: ["Matt", "Ps"], regexp: /Q1/})).toEqual({ testament_books: {"Ps": "oa", "Matt": "n"}, has_number_book: false, testament: "ona" });
-		expect(p.regexps_manager.get_passage_book_testaments({osis: ["2Cor"], regexp: /Q1/})).toEqual({ testament_books: {"2Cor": "n"}, has_number_book: true, testament: "n" });
-		expect(p.regexps_manager.get_passage_book_testaments({osis: ["2Cor"], regexp: /Q/})).toEqual({ testament_books: {"2Cor": "n"}, has_number_book: false, testament: "n" });
+		expect(p.regexps_manager.get_book_testaments({osis:["Matt", "Gen"], regexp: /Q1/})).toEqual({ testament_books: {"Gen": "o", "Matt": "n"}, has_number_book: false, testament: "on" });
+		expect(p.regexps_manager.get_book_testaments({osis: ["Matt", "Ps"], regexp: /Q1/})).toEqual({ testament_books: {"Ps": "oa", "Matt": "n"}, has_number_book: false, testament: "ona" });
+		expect(p.regexps_manager.get_book_testaments({osis: ["2Cor"], regexp: /Q1/})).toEqual({ testament_books: {"2Cor": "n"}, has_number_book: true, testament: "n" });
+		expect(p.regexps_manager.get_book_testaments({osis: ["2Cor"], regexp: /Q/})).toEqual({ testament_books: {"2Cor": "n"}, has_number_book: false, testament: "n" });
 	});
 	it("should get the right regexps", () => {
-		expect(p.regexps_manager.get_passage_pattern_regexps({ regexp: /Q/ }, { has_number_book: false})).toEqual({ pre_regexp: /(?:^|(?<=[^\p{L}]))/gu, regexp: /Q/, post_regexp: /(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/gu });
-		expect(p.regexps_manager.get_passage_pattern_regexps({ regexp: /Q/ }, { has_number_book: true})).toEqual({ pre_regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))/gu, regexp: /Q/, post_regexp: /(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/gu });
+		expect(p.regexps_manager.get_book_pattern_regexps({ regexp: /Q/ }, { has_number_book: false})).toEqual({ pre_regexp: /(?:^|(?<=[^\p{L}]))/gu, regexp: /Q/, post_regexp: /(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/gu });
+		expect(p.regexps_manager.get_book_pattern_regexps({ regexp: /Q/ }, { has_number_book: true})).toEqual({ pre_regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))/gu, regexp: /Q/, post_regexp: /(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/gu });
 	});
 	it("should add it to the right position", () => {
 		p.set_options({ testaments: "o" });
 		const original_length = p.regexps.all_books.length;
 		const original_books_length = p.regexps.books.length;
 
-		p.add_passage_patterns([{ regexp: /Q1/, osis: ["Matt"] }]);
+		p.add_books({ books: [{ regexp: /Q1/, osis: ["Matt"] }] });
 		expect(p.regexps.all_books.length).toEqual(original_length + 1);
 		expect(/Q1/.test(p.regexps.all_books[0].regexp.source)).toBeTrue();
 		expect(p.regexps.books.length).toEqual(original_books_length);
 
-		p.add_passage_patterns([
+		p.add_books({ books: [
 			{ regexp: /Q2/, osis: ["1Esd"], insert_at: "end" },
 			{ regexp: /Q3/, osis: ["Ps"], insert_at: "end" }
-		]);
+		]});
 		expect(p.regexps.all_books.length).toEqual(original_length + 3);
 		expect(p.regexps.books.length).toEqual(original_books_length + 1);
 		expect(/Q2/.test(p.regexps.all_books[original_length + 1].regexp.source)).toBeTrue();
 		expect(/Q3/.test(p.regexps.all_books[original_length + 2].regexp.source)).toBeTrue();
 
-		p.add_passage_patterns([{ regexp: /1Cor/, osis: ["Mal"], insert_at: "Mal" }]);
+		p.add_books({ books: [{ regexp: /1Cor/, osis: ["Mal"], insert_at: "Mal" }] });
 		expect(p.regexps.all_books.length).toEqual(original_length + 4);
 		for (const [i, book] of p.regexps.all_books.entries()) {
 			if (book.osis.join(",") !== "Mal") {
@@ -422,7 +423,7 @@ describe("Adding books at runtime", () => {
 		}
 
 		// This one's tricky. Because the regular `1Esd` pattern appears before this new one, if the Aprocrypha is active, it will be parsed as `1Esd`. If the Apocrypha isn't active, it'll be parsed as `Mal`.
-		p.add_passage_patterns([{ regexp: /1Esd/, osis: ["Mal"], insert_at: "end" }]);
+		p.add_books({ books: [{ regexp: /1Esd/, osis: ["Mal"], insert_at: "end" }] });
 
 		expect(p.parse("Q1 1:6").osis()).toEqual("");
 		expect(p.parse("Q2 1:6").osis()).toEqual("");
@@ -438,7 +439,14 @@ describe("Adding books at runtime", () => {
 		expect(p.parse("1Esd 1:6").osis()).toEqual("1Esd.1.6");
 	});
 	it("should handle Psalm 151", () => {
-		p.add_passage_patterns([{ regexp: /Ps151\.1/, osis: ["Matt"] }]);
+		p.add_books({ books: [{ regexp: /Ps151\.1/, osis: ["Matt"] }] });
 		expect(p.parse("Ps151.1.1").osis()).toEqual("Matt.1");
 	});
 });
+
+function add_books_throw_matcher(e) {
+	if (e.message?.match && e.message.match(/^add_books: /)) {
+		return true;
+	}
+	return false;
+}

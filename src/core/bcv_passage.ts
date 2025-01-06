@@ -1,13 +1,18 @@
 // This class takes the output from the grammar and turns it into simpler objects for additional processing or for output.
 
-import { BCVParserOptions, GrammarMatchInterface, BookMatchInterface, PassageEntityInterface, MessageInterface, StartEndInterface, PublicTranslationInterface, ValidInterface, TranslationInterface, PassageReturn, Entity, EntityCollection, TranslationSequenceInterface, IndicesInterface, ContextInterface } from "./types";
+import { BCVParserOptions, BCVTranslationsInterface, GrammarMatchInterface, BookMatchInterface, PassageEntityInterface, MessageInterface, StartEndInterface, PublicTranslationInterface, ValidInterface, TranslationInterface, PassageReturn, Entity, EntityCollection, TranslationSequenceInterface, IndicesInterface, ContextInterface } from "./types";
 
 export default class bcv_passage {
 
 books: BookMatchInterface[] = [];
 indices: IndicesInterface[] = [];
-options!: BCVParserOptions; // Initialized by `bcv_parser`.
-translations: any = {};
+options: BCVParserOptions;
+translations: BCVTranslationsInterface;
+
+constructor(options: BCVParserOptions, translations: BCVTranslationsInterface) {
+	this.options = options;
+	this.translations = translations;
+}
 
 // ## Public
 // Loop through the parsed passages.
@@ -913,7 +918,7 @@ private translation_sequence(passage: PassageEntityInterface, accum: PassageEnti
 	// First get all the translations in the sequence; the first one is separate from the others (which may not exist).
 	translations.push({
         translation: this.books[passage.value[0].value].parsed as string,
-        alias: "default",
+        system: "default",
         osis: ""
     });
 	// Then get the rest (if they exist).
@@ -924,7 +929,7 @@ private translation_sequence(passage: PassageEntityInterface, accum: PassageEnti
 		if (translation) {
 			translations.push({
 				translation,
-				alias: "default",
+				system: "default",
 				osis: ""
 			});
 		}
@@ -933,12 +938,12 @@ private translation_sequence(passage: PassageEntityInterface, accum: PassageEnti
 	for (const translation of translations) {
 		// Do we know anything about this translation? If so, use that. If not, use the default.
 		if (this.translations.aliases[translation.translation]) {
-			// `alias` is what we use internally to get bcv data for the translation.
-			translation.alias = this.translations.aliases[translation.translation].alias;
+			// `system` is what we use internally to get bcv data for the translation.
+			translation.system = this.translations.aliases[translation.translation].system;
 			// `osis` is what we'll eventually use in output.
 			translation.osis = this.translations.aliases[translation.translation].osis || translation.translation.toUpperCase();
 		} else {
-			// `translation.alias` is set to `default` earlier. If we don't know what the correct abbreviation should be, then just upper-case what we have.
+			// If we don't know what the correct abbreviation should be, then just upper-case what we have.
 			translation.osis = translation.translation.toUpperCase();
 		}
 	}
@@ -1161,9 +1166,9 @@ private validate_ref(translations: TranslationSequenceInterface[] | null, start:
 	// If no translations are provided, assume a single translation that uses the current versification system.
 	if (!translations || translations.length === 0 || !Array.isArray(translations)) {
 		translations = [{
-			alias: "current",
 			osis: "",
-			translation: "current"
+			translation: "current",
+			system: "current"
 		}];
 	}
 	let valid = false;
@@ -1171,20 +1176,20 @@ private validate_ref(translations: TranslationSequenceInterface[] | null, start:
 	// `translation` is a translation object, but all we care about is the string.
 	for (const translation of translations) {
 		// Only true if `translation` isn't the right type.
-		if (!translation.alias) {
+		if (!translation.system) {
 			messages.translation_invalid ??= [];
 			messages.translation_invalid.push(translation);
 			continue;
 		}
 		// Not a fatal error because we assume that translations match the default unless we know differently. But we still record it because we may want to know about it later. Translations in `alternates` get generated on-demand.
-		if (!this.translations.aliases[translation.alias]) {
-			translation.alias = "current";
+		if (!this.translations.aliases[translation.system]) {
+			translation.system = "current";
 			messages.translation_unknown ??= [];
 			messages.translation_unknown.push(translation);
 		}
-		let [temp_valid] = this.validate_start_ref(translation.alias, start, messages);
+		let [temp_valid] = this.validate_start_ref(translation.system, start, messages);
 		if (end) {
-			[temp_valid] = this.validate_end_ref(translation.alias, start, end, temp_valid, messages);
+			[temp_valid] = this.validate_end_ref(translation.system, start, end, temp_valid, messages);
 		}
 		if (temp_valid === true) {
 			valid = true;
@@ -1194,9 +1199,9 @@ private validate_ref(translations: TranslationSequenceInterface[] | null, start:
 }
 
 // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
-private validate_end_ref(translation: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface): [boolean, MessageInterface] {
+private validate_end_ref(system: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface): [boolean, MessageInterface] {
 	// All keys always exist in `current`.
-	const translation_order = (this.translations.definitions[translation]?.order) ? translation : "current";
+	const order_system = (this.translations.systems[system]?.order) ? system : "current";
 	// Matt 0
 	if (end.c === 0) {
 		messages.end_chapter_is_zero = 1;
@@ -1216,8 +1221,8 @@ private validate_end_ref(translation: string, start: StartEndInterface, end: Sta
 		}
 	}
 	// Matt-Mark
-	if (end.b && this.translations.definitions[translation_order].order[end.b]) {
-		valid = this.validate_known_end_book(translation, translation_order, start, end, valid, messages);
+	if (end.b && this.translations.systems[order_system].order[end.b]) {
+		valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
 	// Matt 5:1-None 6
 	} else {
 		valid = false;
@@ -1227,17 +1232,17 @@ private validate_end_ref(translation: string, start: StartEndInterface, end: Sta
 }
 
 // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
-private validate_known_end_book(translation: string, translation_order: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface) {
+private validate_known_end_book(system: string, order_system: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface) {
 	// Use the translation-specific number of chapters if it exists; otherwise, use the current versification system.
-	const chapter_array = this.translations.definitions[translation]?.chapters?.[end.b] || this.translations.definitions.current.chapters[end.b];
+	const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
 	// Even if the `passage_existence_strategy` doesn't include `c`, make sure to treat single-chapter books as single-chapter books.
 	if (end.c == null && chapter_array.length === 1) {
 		end.c = 1;
 	}
 	// Mark 4-Matt 5, None 4-Matt 5
 	if (
-		this.translations.definitions[translation_order].order[start.b] != null &&
-		this.translations.definitions[translation_order].order[start.b] > this.translations.definitions[translation_order].order[end.b]
+		this.translations.systems[order_system].order[start.b] != null &&
+		this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]
 		) {
 			if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
 				valid = false;
@@ -1288,13 +1293,13 @@ private validate_known_end_book(translation: string, translation_order: string, 
 }
 
 // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
-private validate_known_start_book(translation: string, start: StartEndInterface, messages: MessageInterface): boolean {
+private validate_known_start_book(system: string, start: StartEndInterface, messages: MessageInterface): boolean {
 	// Start by assuming `valid` is `true`.
 	let valid = true;
 	// If no chapter is specified, assume 1.
 	start.c ??= 1;
 	// Use the translation-specific number of chapters if it exists; otherwise, use the current versification system.
-	const chapter_array = this.translations.definitions[translation]?.chapters?.[start.b] || this.translations.definitions.current.chapters[start.b];
+	const chapter_array = this.translations.systems[system]?.chapters?.[start.b] || this.translations.systems.current.chapters[start.b];
 	// Matt 0
 	if (start.c === 0) {
 		messages.start_chapter_is_zero = 1;
@@ -1355,18 +1360,18 @@ private validate_known_start_book(translation: string, start: StartEndInterface,
 }
 
 // Make sure that the start ref exists in the given translation.
-private validate_start_ref(translation: string, start: StartEndInterface, messages: MessageInterface): [boolean, MessageInterface] {
+private validate_start_ref(system: string, start: StartEndInterface, messages: MessageInterface): [boolean, MessageInterface] {
 	let valid = true;
 	// If `order` exists, it's always fully specified; there are no gaps. `chapters` is different--it isn't always fully specified for every book, outside of `current`.
-	const translation_order = (this.translations.definitions[translation]?.order) ? translation : "current";
+	const order_system = (this.translations.systems[system]?.order) ? system : "current";
 	// An unusual situation in which there's no defined start book. This only happens when a `c` becomes dissociated from its `b`.
 	if (!start.b) {
 		// No book defined
 		valid = false;
 		messages.start_book_not_defined = true;
 	// Matt. The book is a known book.
-	} else if (this.translations.definitions[translation_order].order[start.b]) {
-		valid = this.validate_known_start_book(translation, start, messages);
+	} else if (this.translations.systems[order_system].order[start.b]) {
+		valid = this.validate_known_start_book(system, start, messages);
 	// None 2:1 (book doesn't exist)
 	} else {
 		if (this.options.passage_existence_strategy.indexOf("b") >= 0) {

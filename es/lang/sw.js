@@ -469,12 +469,12 @@ var bcv_translations = class {
   constructor() {
     this.aliases = {
       // `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-      current: { alias: "current", osis: "" },
+      current: { system: "current", osis: "" },
       // `default` is the fully specified default versification system (matching ESV).
-      default: { alias: "default", osis: "" }
+      default: { system: "default", osis: "" }
     };
     this.current_system = "default";
-    this.definitions = {
+    this.systems = {
       current: {},
       default: {
         order: {
@@ -860,7 +860,7 @@ var bcv_translations = class {
         }
       }
     };
-    this.definitions.current = structuredClone(this.definitions.default);
+    this.systems.current = structuredClone(this.systems.default);
   }
 };
 

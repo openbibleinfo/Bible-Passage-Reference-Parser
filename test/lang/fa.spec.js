@@ -264,6 +264,7 @@ describe("Localized book Lev (fa)", () => {
 		expect(p.parse("lawiy 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("leviy 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("لاویت 1:1").osis()).toEqual("Lev.1.1");
+		expect(p.parse("لويان 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("لویان 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("lawi 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("Lev 1:1").osis()).toEqual("Lev.1.1");
@@ -296,6 +297,7 @@ describe("Localized book Lev (fa)", () => {
 		expect(p.parse("LAWIY 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("LEVIY 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("لاویت 1:1").osis()).toEqual("Lev.1.1");
+		expect(p.parse("لويان 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("لویان 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("LAWI 1:1").osis()).toEqual("Lev.1.1");
 		expect(p.parse("LEV 1:1").osis()).toEqual("Lev.1.1");
@@ -550,6 +552,7 @@ describe("Localized book Lam (fa)", () => {
 		expect(p.parse("مراثي 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("مراثی 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("مراث 1:1").osis()).toEqual("Lam.1.1");
+		expect(p.parse("نوحه 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("Lam 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("āh 1:1").osis()).toEqual("Lam.1.1");
@@ -689,6 +692,7 @@ describe("Localized book Lam (fa)", () => {
 		expect(p.parse("مراثي 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("مراثی 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("مراث 1:1").osis()).toEqual("Lam.1.1");
+		expect(p.parse("نوحه 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("LAM 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("مرا 1:1").osis()).toEqual("Lam.1.1");
 		expect(p.parse("ĀH 1:1").osis()).toEqual("Lam.1.1");
@@ -2306,6 +2310,7 @@ describe("Localized book Deut (fa)", () => {
 		expect(p.parse("Tesnyeh 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("tsniyeh 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("Tesnah 1:1").osis()).toEqual("Deut.1.1");
+		expect(p.parse("تثنييه 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("تثنیها 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("تثنیهه 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("تثنیهی 1:1").osis()).toEqual("Deut.1.1");
@@ -2331,6 +2336,7 @@ describe("Localized book Deut (fa)", () => {
 		expect(p.parse("TESNYEH 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("TSNIYEH 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("TESNAH 1:1").osis()).toEqual("Deut.1.1");
+		expect(p.parse("تثنييه 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("تثنیها 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("تثنیهه 1:1").osis()).toEqual("Deut.1.1");
 		expect(p.parse("تثنیهی 1:1").osis()).toEqual("Deut.1.1");
@@ -5400,6 +5406,7 @@ describe("Localized book Neh (fa)", () => {
 		expect(p.parse("Nihemia 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("نِحِمیا 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("nīmiān 1:1").osis()).toEqual("Neh.1.1");
+		expect(p.parse("نحيميا 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("نِحمیا 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("نِحِمی 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("nīmiā 1:1").osis()).toEqual("Neh.1.1");
@@ -5426,6 +5433,7 @@ describe("Localized book Neh (fa)", () => {
 		expect(p.parse("NIHEMIA 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("نِحِمیا 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("NĪMIĀN 1:1").osis()).toEqual("Neh.1.1");
+		expect(p.parse("نحيميا 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("نِحمیا 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("نِحِمی 1:1").osis()).toEqual("Neh.1.1");
 		expect(p.parse("NĪMIĀ 1:1").osis()).toEqual("Neh.1.1");
@@ -5540,6 +5548,7 @@ describe("Localized book Job (fa)", () => {
 		expect(p.parse("ayūb 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("آیوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("ئیوب 1:1").osis()).toEqual("Job.1.1");
+		expect(p.parse("ايوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("اِوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("ایوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("ایوپ 1:1").osis()).toEqual("Job.1.1");
@@ -5580,6 +5589,7 @@ describe("Localized book Job (fa)", () => {
 		expect(p.parse("AYŪB 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("آیوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("ئیوب 1:1").osis()).toEqual("Job.1.1");
+		expect(p.parse("ايوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("اِوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("ایوب 1:1").osis()).toEqual("Job.1.1");
 		expect(p.parse("ایوپ 1:1").osis()).toEqual("Job.1.1");
@@ -5638,6 +5648,7 @@ describe("Localized book Ps (fa)", () => {
 		expect(p.parse("Mizmur 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("mazmūr 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مز مور 1:1").osis()).toEqual("Ps.1.1");
+		expect(p.parse("مزامير 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مزامیر 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مززمور 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مزممور 1:1").osis()).toEqual("Ps.1.1");
@@ -5706,6 +5717,7 @@ describe("Localized book Ps (fa)", () => {
 		expect(p.parse("MIZMUR 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("MAZMŪR 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مز مور 1:1").osis()).toEqual("Ps.1.1");
+		expect(p.parse("مزامير 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مزامیر 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مززمور 1:1").osis()).toEqual("Ps.1.1");
 		expect(p.parse("مزممور 1:1").osis()).toEqual("Ps.1.1");
@@ -5776,6 +5788,7 @@ describe("Localized book Prov (fa)", () => {
 		expect(p.parse("a’mthā 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("hikmāt 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثاال 1:1").osis()).toEqual("Prov.1.1");
+		expect(p.parse("امثالا 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثالل 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثـال 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثل ل 1:1").osis()).toEqual("Prov.1.1");
@@ -5819,6 +5832,7 @@ describe("Localized book Prov (fa)", () => {
 		expect(p.parse("A’MTHĀ 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("HIKMĀT 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثاال 1:1").osis()).toEqual("Prov.1.1");
+		expect(p.parse("امثالا 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثالل 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثـال 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("امثل ل 1:1").osis()).toEqual("Prov.1.1");
@@ -6165,6 +6179,7 @@ describe("Localized book Jer (fa)", () => {
 		expect(p.parse("yirmīy 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ا رمیا 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ار میا 1:1").osis()).toEqual("Jer.1.1");
+		expect(p.parse("ارمييا 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ارمیاء 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ارمیاا 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ارمیاه 1:1").osis()).toEqual("Jer.1.1");
@@ -6281,6 +6296,7 @@ describe("Localized book Jer (fa)", () => {
 		expect(p.parse("YIRMĪY 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ا رمیا 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ار میا 1:1").osis()).toEqual("Jer.1.1");
+		expect(p.parse("ارمييا 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ارمیاء 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ارمیاا 1:1").osis()).toEqual("Jer.1.1");
 		expect(p.parse("ارمیاه 1:1").osis()).toEqual("Jer.1.1");
@@ -6607,6 +6623,7 @@ describe("Localized book Hos (fa)", () => {
 		expect(p.parse("Hoshe 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("Husha 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("Hushe 1:1").osis()).toEqual("Hos.1.1");
+		expect(p.parse("هوزيا 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("هوش؏ع 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("هوش؏ه 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("هوشئع 1:1").osis()).toEqual("Hos.1.1");
@@ -6641,6 +6658,7 @@ describe("Localized book Hos (fa)", () => {
 		expect(p.parse("HOSHE 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("HUSHA 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("HUSHE 1:1").osis()).toEqual("Hos.1.1");
+		expect(p.parse("هوزيا 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("هوش؏ع 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("هوش؏ه 1:1").osis()).toEqual("Hos.1.1");
 		expect(p.parse("هوشئع 1:1").osis()).toEqual("Hos.1.1");
@@ -6923,6 +6941,7 @@ describe("Localized book Obad (fa)", () => {
 		expect(p.parse("عوبدیاي 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبدیاہ 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبدیای 1:1").osis()).toEqual("Obad.1.1");
+		expect(p.parse("عوبيديا 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبَديا 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبَدیآ 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبَدیا 1:1").osis()).toEqual("Obad.1.1");
@@ -6967,6 +6986,7 @@ describe("Localized book Obad (fa)", () => {
 		expect(p.parse("عوبدیاي 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبدیاہ 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبدیای 1:1").osis()).toEqual("Obad.1.1");
+		expect(p.parse("عوبيديا 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبَديا 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبَدیآ 1:1").osis()).toEqual("Obad.1.1");
 		expect(p.parse("عوبَدیا 1:1").osis()).toEqual("Obad.1.1");
@@ -7030,6 +7050,7 @@ describe("Localized book Jonah (fa)", () => {
 		expect(p.parse("یونیس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یوونس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یُونس 1:1").osis()).toEqual("Jonah.1.1");
+		expect(p.parse("يونس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یونس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یونش 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یونص 1:1").osis()).toEqual("Jonah.1.1");
@@ -7072,6 +7093,7 @@ describe("Localized book Jonah (fa)", () => {
 		expect(p.parse("یونیس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یوونس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یُونس 1:1").osis()).toEqual("Jonah.1.1");
+		expect(p.parse("يونس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یونس 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یونش 1:1").osis()).toEqual("Jonah.1.1");
 		expect(p.parse("یونص 1:1").osis()).toEqual("Jonah.1.1");
@@ -7458,6 +7480,7 @@ describe("Localized book Zeph (fa)", () => {
 		expect(p.parse("صَفَنیا 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صَفَنیہ 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صَفَنیۂ 1:1").osis()).toEqual("Zeph.1.1");
+		expect(p.parse("ضفينيا 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صفنیا 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("Zeph 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صفنی 1:1").osis()).toEqual("Zeph.1.1");
@@ -7497,6 +7520,7 @@ describe("Localized book Zeph (fa)", () => {
 		expect(p.parse("صَفَنیا 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صَفَنیہ 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صَفَنیۂ 1:1").osis()).toEqual("Zeph.1.1");
+		expect(p.parse("ضفينيا 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صفنیا 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("ZEPH 1:1").osis()).toEqual("Zeph.1.1");
 		expect(p.parse("صفنی 1:1").osis()).toEqual("Zeph.1.1");
@@ -7628,6 +7652,7 @@ describe("Localized book Zech (fa)", () => {
 		expect(p.parse("زکریاۂ 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("زکریاۃ 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("zejār 1:1").osis()).toEqual("Zech.1.1");
+		expect(p.parse("زکريا 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("زکریا 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("Zech 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("زکری 1:1").osis()).toEqual("Zech.1.1");
@@ -7670,6 +7695,7 @@ describe("Localized book Zech (fa)", () => {
 		expect(p.parse("زکریاۂ 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("زکریاۃ 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("ZEJĀR 1:1").osis()).toEqual("Zech.1.1");
+		expect(p.parse("زکريا 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("زکریا 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("ZECH 1:1").osis()).toEqual("Zech.1.1");
 		expect(p.parse("زکری 1:1").osis()).toEqual("Zech.1.1");
@@ -12526,6 +12552,7 @@ describe("Localized book Gal (fa)", () => {
 		expect(p.parse("غلطیونه 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("ghalāt 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلاطیه 1:1").osis()).toEqual("Gal.1.1");
+		expect(p.parse("غلطيان 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلطیان 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلطیها 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلطیون 1:1").osis()).toEqual("Gal.1.1");
@@ -12567,6 +12594,7 @@ describe("Localized book Gal (fa)", () => {
 		expect(p.parse("غلطیونه 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("GHALĀT 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلاطیه 1:1").osis()).toEqual("Gal.1.1");
+		expect(p.parse("غلطيان 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلطیان 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلطیها 1:1").osis()).toEqual("Gal.1.1");
 		expect(p.parse("غلطیون 1:1").osis()).toEqual("Gal.1.1");
@@ -12627,6 +12655,7 @@ describe("Localized book Eph (fa)", () => {
 		expect(p.parse("Afesian 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("Afisian 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("afsiyān 1:1").osis()).toEqual("Eph.1.1");
+		expect(p.parse("افسسيان 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("افسسیان 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("افسسیون 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("افِسیان 1:1").osis()).toEqual("Eph.1.1");
@@ -12680,6 +12709,7 @@ describe("Localized book Eph (fa)", () => {
 		expect(p.parse("AFESIAN 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("AFISIAN 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("AFSIYĀN 1:1").osis()).toEqual("Eph.1.1");
+		expect(p.parse("افسسيان 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("افسسیان 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("افسسیون 1:1").osis()).toEqual("Eph.1.1");
 		expect(p.parse("افِسیان 1:1").osis()).toEqual("Eph.1.1");
@@ -12717,6 +12747,7 @@ describe("Localized book Phil (fa)", () => {
 		expect(p.parse("فیلیپیونه 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Filipian 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Filipyun 1:1").osis()).toEqual("Phil.1.1");
+		expect(p.parse("فيليپيان 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("فیلیپیان 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("فیلیپیها 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("فیلیپیون 1:1").osis()).toEqual("Phil.1.1");
@@ -12747,6 +12778,7 @@ describe("Localized book Phil (fa)", () => {
 		expect(p.parse("فیلیپیونه 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("FILIPIAN 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("FILIPYUN 1:1").osis()).toEqual("Phil.1.1");
+		expect(p.parse("فيليپيان 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("فیلیپیان 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("فیلیپیها 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("فیلیپیون 1:1").osis()).toEqual("Phil.1.1");
@@ -12788,6 +12820,7 @@ describe("Localized book Col (fa)", () => {
 		expect(p.parse("کولُسیونه 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("Kolosian 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("Kolusian 1:1").osis()).toEqual("Col.1.1");
+		expect(p.parse("کولوسيان 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("کولُسیان 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("کولُسیها 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("کولُسیون 1:1").osis()).toEqual("Col.1.1");
@@ -12821,6 +12854,7 @@ describe("Localized book Col (fa)", () => {
 		expect(p.parse("کولُسیونه 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("KOLOSIAN 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("KOLUSIAN 1:1").osis()).toEqual("Col.1.1");
+		expect(p.parse("کولوسيان 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("کولُسیان 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("کولُسیها 1:1").osis()).toEqual("Col.1.1");
 		expect(p.parse("کولُسیون 1:1").osis()).toEqual("Col.1.1");
@@ -12863,6 +12897,7 @@ describe("Localized book 2Tim (fa)", () => {
 		expect(p.parse("DovomTimothy 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دوتیموتائوسه 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دوتیموتائوسی 1:1").osis()).toEqual("2Tim.1.1");
+		expect(p.parse("دوم تيموتيوس 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتئاؤس 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتئوسه 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتاؤسی 1:1").osis()).toEqual("2Tim.1.1");
@@ -12960,6 +12995,7 @@ describe("Localized book 2Tim (fa)", () => {
 		expect(p.parse("DovomTimothy 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دوتیموتائوسه 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دوتیموتائوسی 1:1").osis()).toEqual("2Tim.1.1");
+		expect(p.parse("دوم تيموتيوس 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتئاؤس 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتئوسه 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتاؤسی 1:1").osis()).toEqual("2Tim.1.1");
@@ -13056,6 +13092,7 @@ describe("Localized book 2Tim (fa)", () => {
 		expect(p.parse("DOVOMTIMOTHY 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دوتیموتائوسه 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دوتیموتائوسی 1:1").osis()).toEqual("2Tim.1.1");
+		expect(p.parse("دوم تيموتيوس 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتئاؤس 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتئوسه 1:1").osis()).toEqual("2Tim.1.1");
 		expect(p.parse("دومتیموتاؤسی 1:1").osis()).toEqual("2Tim.1.1");
@@ -13162,6 +13199,7 @@ describe("Localized book 1Tim (fa)", () => {
 		expect(p.parse("AvvalTimothy 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("YekTimothaos 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("YekTimotheus 1:1").osis()).toEqual("1Tim.1.1");
+		expect(p.parse("اول تيموتيوس 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتئاؤس 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتئوسه 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتاؤسی 1:1").osis()).toEqual("1Tim.1.1");
@@ -13261,6 +13299,7 @@ describe("Localized book 1Tim (fa)", () => {
 		expect(p.parse("AvvalTimothy 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("YekTimothaos 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("YekTimotheus 1:1").osis()).toEqual("1Tim.1.1");
+		expect(p.parse("اول تيموتيوس 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتئاؤس 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتئوسه 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتاؤسی 1:1").osis()).toEqual("1Tim.1.1");
@@ -13359,6 +13398,7 @@ describe("Localized book 1Tim (fa)", () => {
 		expect(p.parse("AVVALTIMOTHY 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("YEKTIMOTHAOS 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("YEKTIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
+		expect(p.parse("اول تيموتيوس 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتئاؤس 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتئوسه 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("اولتیموتاؤسی 1:1").osis()).toEqual("1Tim.1.1");
@@ -13454,6 +13494,7 @@ describe("Localized book Titus (fa)", () => {
 		expect(p.parse("Taytus 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("Titoos 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("Tytous 1:1").osis()).toEqual("Titus.1.1");
+		expect(p.parse("تايتوس 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("تیتوثه 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("تیتوثی 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("تیتوسه 1:1").osis()).toEqual("Titus.1.1");
@@ -13482,6 +13523,7 @@ describe("Localized book Titus (fa)", () => {
 		expect(p.parse("TAYTUS 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("TITOOS 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("TYTOUS 1:1").osis()).toEqual("Titus.1.1");
+		expect(p.parse("تايتوس 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("تیتوثه 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("تیتوثی 1:1").osis()).toEqual("Titus.1.1");
 		expect(p.parse("تیتوسه 1:1").osis()).toEqual("Titus.1.1");
@@ -13551,6 +13593,7 @@ describe("Localized book Phlm (fa)", () => {
 		expect(p.parse("فیلمونی 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("فیلیمون 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("فلیمون 1:1").osis()).toEqual("Phlm.1.1");
+		expect(p.parse("فيلمان 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("فیلمون 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("fīlīm 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("Phlm 1:1").osis()).toEqual("Phlm.1.1");
@@ -13597,6 +13640,7 @@ describe("Localized book Phlm (fa)", () => {
 		expect(p.parse("فیلمونی 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("فیلیمون 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("فلیمون 1:1").osis()).toEqual("Phlm.1.1");
+		expect(p.parse("فيلمان 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("فیلمون 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("FĪLĪM 1:1").osis()).toEqual("Phlm.1.1");
 		expect(p.parse("PHLM 1:1").osis()).toEqual("Phlm.1.1");
@@ -13947,6 +13991,7 @@ describe("Localized book 2Pet (fa)", () => {
 		expect(p.parse("دو پطرصه 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دو پطرصى 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دو پطرصی 1:1").osis()).toEqual("2Pet.1.1");
+		expect(p.parse("دوم پترس 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دوم پطرس 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دوم پطرص 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دومپطرسئ 1:1").osis()).toEqual("2Pet.1.1");
@@ -14196,6 +14241,7 @@ describe("Localized book 2Pet (fa)", () => {
 		expect(p.parse("دو پطرصه 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دو پطرصى 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دو پطرصی 1:1").osis()).toEqual("2Pet.1.1");
+		expect(p.parse("دوم پترس 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دوم پطرس 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دوم پطرص 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دومپطرسئ 1:1").osis()).toEqual("2Pet.1.1");
@@ -14444,6 +14490,7 @@ describe("Localized book 2Pet (fa)", () => {
 		expect(p.parse("دو پطرصه 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دو پطرصى 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دو پطرصی 1:1").osis()).toEqual("2Pet.1.1");
+		expect(p.parse("دوم پترس 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دوم پطرس 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دوم پطرص 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("دومپطرسئ 1:1").osis()).toEqual("2Pet.1.1");
@@ -14689,6 +14736,7 @@ describe("Localized book 1Pet (fa)", () => {
 		expect(p.parse("1پطرسساه 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("AvvalPet 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("Yekpeter 1:1").osis()).toEqual("1Pet.1.1");
+		expect(p.parse("اول پترس 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اول پطرس 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اول پطرص 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اولپطرسئ 1:1").osis()).toEqual("1Pet.1.1");
@@ -14938,6 +14986,7 @@ describe("Localized book 1Pet (fa)", () => {
 		expect(p.parse("1پطرسساه 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("AvvalPet 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("Yekpeter 1:1").osis()).toEqual("1Pet.1.1");
+		expect(p.parse("اول پترس 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اول پطرس 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اول پطرص 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اولپطرسئ 1:1").osis()).toEqual("1Pet.1.1");
@@ -15186,6 +15235,7 @@ describe("Localized book 1Pet (fa)", () => {
 		expect(p.parse("1پطرسساه 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("AVVALPET 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("YEKPETER 1:1").osis()).toEqual("1Pet.1.1");
+		expect(p.parse("اول پترس 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اول پطرس 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اول پطرص 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("اولپطرسئ 1:1").osis()).toEqual("1Pet.1.1");
@@ -15358,6 +15408,7 @@ describe("Localized book Jude (fa)", () => {
 		expect(p.parse("یہوداء 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یہودات 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یہوداه 1:1").osis()).toEqual("Jude.1.1");
+		expect(p.parse("يهودا 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یهودآ 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یهودا 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یهودة 1:1").osis()).toEqual("Jude.1.1");
@@ -15398,6 +15449,7 @@ describe("Localized book Jude (fa)", () => {
 		expect(p.parse("یہوداء 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یہودات 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یہوداه 1:1").osis()).toEqual("Jude.1.1");
+		expect(p.parse("يهودا 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یهودآ 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یهودا 1:1").osis()).toEqual("Jude.1.1");
 		expect(p.parse("یهودة 1:1").osis()).toEqual("Jude.1.1");

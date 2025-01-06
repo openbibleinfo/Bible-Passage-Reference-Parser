@@ -220,7 +220,6 @@ interface BCVRegExpsInterface {
 	books: BookRegExpInterface[];
 	control: RegExp;
 	escaped_passage: RegExp;
-	filtered_books_flags: string;
 	first: string;
 	match_end_split: RegExp;
 	range_and: string;
@@ -244,21 +243,28 @@ interface BookRegExpInterface {
 }
 
 interface BCVTranslationsInterface {
-	aliases: {};
+	aliases: {
+		[key: "string"]: TranslationAliasInterface;
+	};
 	current_system: string;
-	definitions: {};
+	systems: {};
 }
 
 type PassageReturn = [PassageEntityInterface[], ContextInterface];
 
 export interface TranslationSequenceInterface {
-	alias: string;
 	osis: string;
 	translation: string;
+	system: string;
+}
+
+export interface TranslationAliasInterface {
+	osis?: string;
+	system?: string;
 }
 
 export interface TranslationInterface {
-	alias?: string;
+	system?: string;
 	chapters?: { [key: string]: number[] };
 	order?: { [key: string]: number };
 	translation?: string;
@@ -267,8 +273,9 @@ export interface TranslationInterface {
 export interface PublicTranslationInterface {
 	alias: string;
 	books: string[];
-	order: { [key: string]: number };
 	chapters: { [key: string]: number[] };
+	order: { [key: string]: number };
+	system: string;
 }
 
 type MatchInterface = BookMatchInterface | PassageMatchInterface;
@@ -326,7 +333,11 @@ interface ContextInterface {
 	translations?: TranslationSequenceInterface[];
 }
 
-interface PassagePattern {
+interface AddBooksInterface {
+	books: BookPattern[];
+}
+
+interface BookPattern {
 	insert_at?: string;
 	osis: string[];
 	regexp: regexp;
@@ -335,5 +346,35 @@ interface PassagePattern {
 }
 
 interface BCVRegExpsManagerInterface {
+	filtered_books_flags: string;
+}
 
+interface BCVTranslationsManagerInterface {
+
+}
+
+interface AddTranslationsInterface {
+	translations: AddTranslationInterface[];
+	insert_at?: "start" | "end"; // "start" is the default
+	pre_regexp?: RegExp; // "" is the default
+	post_regexp?: RegExp; // "(?![\p{L}\p{N}]" is the default}
+	systems?: {
+		[key: string]: AddTranslationVersificationInterface;
+	}
+}
+
+interface AddTranslationInterface {
+	osis?: string;
+	system?: string;
+	text: string;
+}
+
+interface AddTranslationVersificationInterface {
+	books?: string[];
+	chapters?: { [key: string]: number[] };
+}
+
+interface TranslationDefinition {
+	books?: { [key: string]: number };
+	chapters?: { [key: string]: number[] };
 }

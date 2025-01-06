@@ -183,14 +183,35 @@ describe("Documentation compatibility", () => {
 	it("shouldn't handle multiple languages", () =>{
 		expect(bcv.parse("Matthew 2, Juan 1").osis()).toEqual("Matt.2");
 	});
-	it("should handle `add_passage_patterns", () => {
+	it("should handle `add_books", () => {
 		expect(bcv.parse("Marco 1").osis()).toEqual("");
-		bcv.add_passage_patterns([{
+		bcv.add_books({books: [{
 			osis: ["Mark"],
 			regexp: /Marco|Mrc/
-		}]);
+		}]});
 		bcv.parse("Marco 1").osis(); // Mark.1
 		bcv.parse("Mrc 1").osis(); // Mark.1
+	});
+	it("should handle add_translations", () => {
+		expect(bcv.parse("Mark 1 (NIV1984)").osis_and_translations()).toEqual([["Mark.1", ""]]);
+		bcv.add_translations({
+			translations: [{ text: "NIV1984", system: "kjv" }]
+		})
+		expect(bcv.parse("Mark 1 (NIV1984)").osis_and_translations()).toEqual([["Mark.1", "NIV1984"]]);
+		expect(bcv.parse("3 John 15 (NIV1984)").osis_and_translations()).toEqual([]);
+		bcv.add_translations({
+			translations: [{ text: "ONLYMATT", osis: "MATTHEWTRANSLATION", system: "custom1" }],
+			systems: {
+				custom1: {
+					books: ["Matt"],
+					chapters: {
+						"Matt": [10]
+					}
+				}
+			}
+		});
+		expect(bcv.parse("Matt 1:2 ONLYMATT").osis_and_translations()).toEqual([["Matt.1.2", "MATTHEWTRANSLATION"]]);
+
 	});
 	it("should handle `warn_level`", () => {
 		const oldWarn = console.warn;
@@ -206,14 +227,14 @@ describe("Documentation compatibility", () => {
 
 describe("Full BCV parser", () => {
 	it("should handle multiple languages", () =>{
-		const bcv = new bcv_parser(ascii);
+		const bcv = new bcv_parser(full);
 		expect(bcv.parse("Matthew 2, Juan 1").osis()).toEqual("Matt.2,John.1");
 	});
 });
 
 describe("ASCII BCV parser", () => {
 	it("should handle multiple languages", () =>{
-		const bcv = new bcv_parser(full);
+		const bcv = new bcv_parser(ascii);
 		expect(bcv.parse("Matthew 2, Juan 1").osis()).toEqual("Matt.2,John.1");
 	});
 });

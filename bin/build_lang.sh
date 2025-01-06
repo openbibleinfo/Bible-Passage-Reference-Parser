@@ -14,6 +14,7 @@ cp ../src/core/bcv_options.ts ./build/
 cp ../src/core/bcv_parser.ts ./build/
 cp ../src/core/bcv_passage.ts ./build/
 cp ../src/core/bcv_regexps_manager.ts ./build/
+cp ../src/core/bcv_translations_manager.ts ./build/
 cp ../src/core/lang_bundle.ts ./build/
 cp ../src/core/types.d.ts ./build/
 
@@ -25,6 +26,9 @@ mv ../src/$1/grammar.js ./build/bcv_grammar.js
 # Create the ES build files.
 npx esbuild ./build/bcv_parser.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../es/bcv_parser.js
 npx esbuild ./build/lang_bundle.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../es/lang/$1.js
+# Also create the typescript definitions, which are the same for every language.
+cp ../src/core/lang.d.ts ../es/lang/$1.d.ts
+
 
 # Now onto commonjs...
 
