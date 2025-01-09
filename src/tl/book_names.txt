@@ -754,6 +754,7 @@ Lam	Panaghoy
 Lam	Panag
 Lam	Lam
 Lev	Lebitikus
+Lev	Leviticus
 Lev	Lebitico
 Lev	Levitico
 Lev	Leb
@@ -806,6 +807,7 @@ Mic	Mikieas
 Mic	Miqueas
 Mic	Mikeas
 Mic	Micah
+Mic	Micas
 Mic	Mikah
 Mic	Mikas
 Mic	Mica
@@ -823,6 +825,7 @@ Neh	Neh
 Num	Mga Bilang
 Num	Bamidbar
 Num	Bemidbar
+Num	Bilang
 Num	Bil
 Num	Blg
 Num	Num
@@ -870,6 +873,7 @@ Prov	Prov
 Prov	Kaw
 Ps	Mga Salmo
 Ps	Mga Awit
+Ps	Salmo
 Ps	Awit
 Ps	Ps
 Rev	Apocalipsis ni Juan

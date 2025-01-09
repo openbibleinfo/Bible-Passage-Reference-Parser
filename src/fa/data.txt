@@ -1,8 +1,8 @@
 # These come from https://github.com/ralaska via https://github.com/bibleutils/bible-ref-parse/blob/join-fork/src/fa/data.txt
-$FIRST	I	یکم	یک	اول	۱	1	Yekom	Yek	Avval
-$SECOND	II	دو	دوم	۲	2	Do	Dovvom
-$THIRD	III	سه	سوم	۳	3	Seh	Sevom
-$FOURTH	IV	چهار	چهارم	۴	4	Chahar	Chaharom
+$FIRST	I	یکم	یک	اول	۱	1	Yekom	Yek	Avval	Aval	Yak	Awal	١	یکمین	Yekmin
+$SECOND	II	دو	دوم	۲	2	Do	Dovvom	Dovom	Do	Domai	٢	دومین	Domin
+$THIRD	III	سه	سوم	۳	3	Seh	Sevvom	Sevom	Seh	Somai	٣	سومین	Somin
+$FOURTH	IV	چهار	چهارم	۴	4	Chahar	Chaharom	Char	Chormi	٤	چهارمین	Chaharmin
 $GOSPEL	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل قدیس	انجیل به روایت قدیس	انجیل سنت	انجیل به روایت قدیس	انجیل از	انجیل بر اساس	انجیل از	انجیل بر اساس	انجیل	سنت
 $AB	[a-e]
 $AND	،	؛	۔
@@ -56,7 +56,7 @@ Mic	Mic	Micah	Micaha	Mika	Mikaah	Mikaaha	Mikah	Mikahah	Mikha	Mycah	Mykah	Mykaha	
 Nah	Naahom	Naahoum	Naahum	Nah	Nahom	Nahoum	Nahum	Nahumme	Nahuum	nāhū	nāhūm	nāhūmi	ناح	ناحم	ناحو	ناحوم	ناحومء	ناحومئ	ناحومئی	ناحوما	ناحومائه	ناحومائہ	ناحومة	ناحومـ	ناحومه	ناحومو	ناحوموو	ناحومہ	ناحومہئ	ناحومہا	ناحومہه	ناحومۂ	ناحومی	ناحومیء	ناحومیئ	ناحومیئی	ناحومیائه	ناحومیائہ	ناحومیة	ناحومیه	ناحومیہ	ناحومیہئ	ناحومیہا	ناحومیہه	ناحومیۂ	ناحومیی	ناحومییء	ناحومییئ	ناحومییه	ناحومیییه	ناحووم	نحوم
 Hab	Hab	Habacook	Habacuc	Habakkook	Habakkuc	Habakkuk	Habakook	Habakuc	Habakuk	Habbacook	Habbacuc	Habbakkuc	Habbakook	Habbakuc	Habbakuk	habaq	habaqū	habaqūq	حبق	حبقو	حبقوق	حَبقوق	حَبَقق	حَبَقوق	حَبَقوقء	حَبَقوقئ	حَبَقوقئی	حَبَقوقا	حَبَقوقائه	حَبَقوقائہ	حَبَقوقة	حَبَقوقـ	حَبَقوقه	حَبَقوقو	حَبَقوقوو	حَبَقوقہ	حَبَقوقہئ	حَبَقوقہا	حَبَقوقہه	حَبَقوقۂ	حَبَقوقی	حَبَقوقیء	حَبَقوقیئ	حَبَقوقیئی	حَبَقوقیائه	حَبَقوقیائہ	حَبَقوقیة	حَبَقوقیه	حَبَقوقیہ	حَبَقوقیہئ	حَبَقوقیہا	حَبَقوقیہه	حَبَقوقیۂ	حَبَقوقیی	حَبَقوقییء	حَبَقوقییئ	حَبَقوقییه	حَبَقوقیییه	حَبَقووق	حَبَقوک
 Zeph	Zefanaya	Zefania	Zefaniah	Zefanya	Zeph	Zephanaya	Zephania	Zephaniah	zof	zofanjā	zofanjī	zofanjīy	صفن	صفنی	صفنیا	صَفانیا	صَفَنیا	صَفَنیاء	صَفَنیاءء	صَفَنیاءة	صَفَنیاءہ	صَفَنیاءۂ	صَفَنیاءی	صَفَنیائء	صَفَنیائة	صَفَنیائه	صَفَنیائہ	صَفَنیائۂ	صَفَنیائی	صَفَنیاة	صَفَنیاه	صَفَنیاہ	صَفَنیاۂ	صَفَنیہ	صَفَنیہء	صَفَنیہة	صَفَنیہہ	صَفَنیہۂ	صَفَنیۂ
-Hag	Hag	Hagai	Hagay	Haggai	Haggay	Haggi	Haggy	Hagi	hajjā	hajjī	hajjīy	hajjīyy	حجا	حجّی	حجی	حجیی	حجییی	حَجَّی	حَجَّی	حَجَّیء	حَجَّیئة	حَجَّیئۀ	حَجَّیئہ	حَجَّیئۂ	حَجَّیاء	حَجَّیة	حَجَّیہ	حَجَّیہء	حَجَّیہئة	حَجَّیہئۀ	حَجَّیہئہ	حَجَّیہئۂ	حَجَّیہة	حَجَّیہۀ	حَجَّیہۂ	حَجّی
+Hag	Hag	Hagai	Hagay	Haggai	Haggay	Haggi	Haggy	Hagi	hajjā	hajjī	hajjīy	hajjīyy	حجا	حجّی	حجی	حجیی	حجییی	حَجَّی	حَجَّی	حَجَّیء	حَجَّیئة	حَجَّیئۀ	حَجَّیئہ	حَجَّیئۂ	حَجَّیاء	حَجَّیة	حَجَّیہ	حَجَّیہء	حَجَّیہئة	حَجَّیہئۀ	حَجَّیہئہ	حَجَّیہئۂ	حَجَّیہة	حَجَّیہۀ	حَجَّیہۂ	حَجّی	حَجَّی
 Zech	Zakaria	Zakariah	Zakariya	Zakariyya	Zech	Zecharia	Zechariah	Zekaria	Zekariah	Zekariya	zejarī	zejarīyā	zejār	زکر	زکری	زکریا	زکریاء	زکریائۀ	زکریائۀء	زکریائۀئہ	زکریائہ	زکریائہء	زکریائہئہ	زکریائۂ	زکریائۂء	زکریائۂئہ	زکریائۃ	زکریائۃء	زکریائۃئہ	زکریاه	زکریاۀ	زکریاۀء	زکریاۀئہ	زکریاہ	زکریاہء	زکریاہئہ	زکریاۂ	زکریاۂء	زکریاۂئہ	زکریاۃ	زکریاۃء	زکریاۃئہ
 Mal	Maalaki	Maalakie	Maalakii	Mal	Mal'aaki	Malaaki	Malaakie	Malaakii	Malachi	Malakee	Malakey	Malaki	Malakie	Malakii	Melaki	Milaki	mal'a	mal'ākhi	mal'ākhī	ملا	ملاک	ملاکی	ملاکیه	ملکى	ملکی	ملکے	مَلاکى	مَلاکي	مَلاکی	مَلاکیی	مَلاکے	مَلك	مَلكی	مَلکي
 Matt	Maathai	Maattey	Maatti	Mat'tee	Mat'thi	Mat'thiya	Mat'ti	Mat'ty	Mat'yi	Matai	Mathi	Mathy	Matt	Mattee	Mattey	Matthea	Matthee	Mattheei	Matthei	Matthi	Matthy	Matti	Mattie	Mattii	Matty	Mettie	Metty	Mitthy	Mitti	mattā	mattā'ūs	mattā'ūsi	متای	متایی	متت	متتی	متى	متي	متّی	متی	مَتتی	مَتي	مَتّتی	مَتّى	مَتّي	مَتّی	مَتیه	مَتیی
@@ -193,72 +193,72 @@ PrMan	PrMan
 
 # Preferred names
 # OSIS	Long	Short	Shorter	Single (Ps)
-*Gen	پیدایش
-*Exod	خروج
-*Lev	لاویان
-*Num	اعداد
-*Deut	تثنیه
-*Josh	یوشع
-*Judg	داوران
-*Ruth	روت
-*1Sam	۱ سموئیل
-*2Sam	۲ سموئیل
-*1Kgs	۱ پادشاهان
-*2Kgs	۲ پادشاهان
-*1Chr	۱ تواریخ
-*2Chr	۲ تواریخ
-*Ezra	عِزرا
-*Neh	نِحِمیا
-*Esth	اِستر
-*Job	ایوب
-*Ps	مزمور
-*Prov	امثال
-*Eccl	جامعه
-*Song	غزل غزلها
-*Isa	اِشعیا
-*Jer	اِرمیا
-*Lam	مراثی اِرمیا
-*Ezek	حِزقیال
-*Dan	دانیال
-*Hos	هوشع
-*Joel	یوئیل
-*Amos	عاموس
-*Obad	عوبَدیا
-*Jonah	یونس
-*Mic	میکاه
-*Nah	ناحوم
-*Hab	حَبَقوق
-*Zeph	صَفَنیا
-*Hag	حَجَّی
-*Zech	زکریا
-*Mal	مَلاکی
-*Matt	مَتّی
-*Mark	مَرقُس
-*Luke	لوقا
-*John	یوحنا
-*Acts	اعمال
-*Rom	رومیان
-*1Cor	۱ قرنتیان
-*2Cor	۲ قرنتیان
-*Gal	غلاطیان
-*Eph	اَفِسسیان
-*Phil	فیلیپیان
-*Col	کولُسیان
-*1Thess	۱ تسالونیکیان
-*2Thess	۲ تسالونیکیان
-*1Tim	۱ تیموتائوس
-*2Tim	۲ تیموتائوس
-*Titus	تیتوس
-*Phlm	فلیمون
-*Heb	عبرانیان
-*Jas	یعقوب
-*1Pet	۱ پطرس
-*2Pet	۲ پطرس
-*1John	۱ یوحنا
-*2John	۲ یوحنا
-*3John	۳ یوحنا
-*Jude	یهودا
-*Rev	مکاشفه
+*Gen	پیدایش	پیدا	پید
+*Exod	خروج	خروج	خرو
+*Lev	لاویان	لاوی	لاو
+*Num	اعداد	اعدا	اعد
+*Deut	تثنیه	تثنی	تثن
+*Josh	یوشع	یوشع	یوش
+*Judg	داوران	داور	داو
+*Ruth	روت	روتا	روت
+*1Sam	۱ سموئیل	۱سموی	۱سمو
+*2Sam	۲ سموئیل	۲سموی	۲سمو
+*1Kgs	۱ پادشاهان	۱پادش	۱پاد
+*2Kgs	۲ پادشاهان	۲پادش	۲پاد
+*1Chr	۱ تواریخ	۱توار	۱توا
+*2Chr	۲ تواریخ	۲توار	۲توا
+*Ezra	عِزرا	عزرا	عزر
+*Neh	نِحِمیا	نحمی	نحم
+*Esth	اِستر	استر	است
+*Job	ایوب	ایوب	ایو
+*Ps	مزمور	مزمو	مزم
+*Prov	امثال	امثا	امت
+*Eccl	جامعه	جامع	جام
+*Song	غزل غزلها	غزله	غزل
+*Isa	اِشعیا	اشعی	اشع
+*Jer	اِرمیا	ارمی	ارم
+*Lam	مراثی اِرمیا	مراث	مرا
+*Ezek	حِزقیال	حزقی	حزق
+*Dan	دانیال	دانیا	دان
+*Hos	هوشع	هوشا	هوش
+*Joel	یوئیل	یوئی	یوئ
+*Amos	عاموس	عامو	عام
+*Obad	عوبَدیا	عوبد	عوب
+*Jonah	یونس	یونس	یون
+*Mic	میکاه	میکا	میک
+*Nah	ناحوم	ناحو	ناح
+*Hab	حَبَقوق	حبقا	حبق
+*Zeph	صَفَنیا	صفنی	صفن
+*Hag	حَجَّی	حجـی	حجـ
+*Zech	زکریا	زکری	زکر
+*Mal	مَلاکی	ملاک	ملا
+*Matt	مَتّی	متی	مت
+*Mark	مَرقُس	مرقس	مرق
+*Luke	لوقا	لوقا	لوق
+*John	یوحنا	یوحن	یوح
+*Acts	اعمال	اعما	اعم
+*Rom	رومیان	رومیا	رومی
+*1Cor	۱ قرنتیان	۱قرن	۱قر
+*2Cor	۲ قرنتیان	۲قرن	۲قر
+*Gal	غلاطیان	غلاط	غلا
+*Eph	اَفِسسیان	افسـ	افس
+*Phil	فیلیپیان	فیلی	فیل
+*Col	کولُسیان	کولس	کول
+*1Thess	۱ تسالونیکیان	۱تسال	۱تسا
+*2Thess	۲ تسالونیکیان	۲تسال	۲تسا
+*1Tim	۱ تیموتائوس	۱تیمو	۱تیم
+*2Tim	۲ تیموتائوس	۲تیمو	۲تیم
+*Titus	تیتوس	تیتو	تیت
+*Phlm	فلیمون	فلیمو	فلیم
+*Heb	عبرانیان	عبران	عبرا
+*Jas	یعقوب	یعقو	یعق
+*1Pet	۱ پطرس	۱پطرس	۱پطر
+*2Pet	۲ پطرس	۲پطرس	۲پطر
+*1John	۱ یوحنا	۱یوحن	۱یوح
+*2John	۲ یوحنا	۲یوحن	۲یوح
+*3John	۳ یوحنا	۳یوحن	۳یوح
+*Jude	یهودا	یهود	یهو
+*Rev	مکاشفه	مکاش	مکا
 *Tob	Tobit	Tob	Tob
 *Jdt	Judith	Jdt	Jdt
 *GkEsth	Greek Esther	Gk Esth	Gk Est

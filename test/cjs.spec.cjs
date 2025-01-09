@@ -1,4 +1,4 @@
-const bcv_parser = require("../cjs/en_bcv_parser.min.cjs").bcv_parser;
+const bcv_parser = require("../cjs/en_bcv_parser.min.js").bcv_parser;
 
 describe("Validate public API", () => {
 	let p = {};

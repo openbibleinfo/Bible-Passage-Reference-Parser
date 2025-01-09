@@ -1,6 +1,6 @@
 "use strict";
-import { bcv_parser } from "../../es/bcv_parser.js";
-import * as lang from "../../es/lang/ascii.js";
+import { bcv_parser } from "../../esm/bcv_parser.js";
+import * as lang from "../../esm/lang/ascii.js";
 
 describe("Parsing", () => {
 	let p = {};
@@ -2367,14 +2367,11 @@ describe("Localized book 2Thess (ascii)", () => {
 		expect(p.parse("2 Ths 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2. Te 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2. Th 1:1").osis()).toEqual("2Thess.1.1");
-		expect(p.parse("2tsln 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("II Te 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("II Th 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2 Te 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2 Th 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2 Ts 1:1").osis()).toEqual("2Thess.1.1");
-		expect(p.parse("2tsl 1:1").osis()).toEqual("2Thess.1.1");
-		expect(p.parse("2ts 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("DRUHE POSLANNJA APOSTOLA PAVLA DO SOLUNJAN 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("PAULUS' ANDET BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("PAULUS’ ANDET BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("2Thess.1.1");
@@ -3237,14 +3234,11 @@ describe("Localized book 2Thess (ascii)", () => {
 		expect(p.parse("2 THS 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2. TE 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2. TH 1:1").osis()).toEqual("2Thess.1.1");
-		expect(p.parse("2TSLN 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("II TE 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("II TH 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2 TE 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2 TH 1:1").osis()).toEqual("2Thess.1.1");
 		expect(p.parse("2 TS 1:1").osis()).toEqual("2Thess.1.1");
-		expect(p.parse("2TSL 1:1").osis()).toEqual("2Thess.1.1");
-		expect(p.parse("2TS 1:1").osis()).toEqual("2Thess.1.1");
 	});
 });
 describe("Localized book 1Thess (ascii)", () => {
@@ -4157,7 +4151,6 @@ describe("Localized book 1Thess (ascii)", () => {
 		expect(p.parse("1 Ths 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1. Te 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1. Th 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("1tsln 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I Sol 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I Tes 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I The 1:1").osis()).toEqual("1Thess.1.1");
@@ -4167,10 +4160,8 @@ describe("Localized book 1Thess (ascii)", () => {
 		expect(p.parse("1 Te 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1 Th 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1 Ts 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("1tsl 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I Te 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I Th 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("1ts 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("PERSE POSLANNJA APOSTOLA PAVLA DO SOLUNJAN 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("ENSIMMAINEN KIRJE TESSALONIKALAISILLE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("PAULUS' 1. BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
@@ -5074,7 +5065,6 @@ describe("Localized book 1Thess (ascii)", () => {
 		expect(p.parse("1 THS 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1. TE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1. TH 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("1TSLN 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I SOL 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I TES 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I THE 1:1").osis()).toEqual("1Thess.1.1");
@@ -5084,10 +5074,8 @@ describe("Localized book 1Thess (ascii)", () => {
 		expect(p.parse("1 TE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1 TH 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1 TS 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("1TSL 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I TE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("I TH 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("1TS 1:1").osis()).toEqual("1Thess.1.1");
 	});
 });
 describe("Localized book 2Kgs (ascii)", () => {
@@ -9614,7 +9602,6 @@ describe("Localized book 2Pet (ascii)", () => {
 		expect(p.parse("2nd Pe 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2nd Pt 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2nd. P 1:1").osis()).toEqual("2Pet.1.1");
-		expect(p.parse("2ptrus 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II But 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II Per 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II Pet 1:1").osis()).toEqual("2Pet.1.1");
@@ -9645,7 +9632,6 @@ describe("Localized book 2Pet (ascii)", () => {
 		expect(p.parse("2 Pt 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2. P 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2Pet 1:1").osis()).toEqual("2Pet.1.1");
-		expect(p.parse("2ptr 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II P 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2 P 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2pt 1:1").osis()).toEqual("2Pet.1.1");
@@ -9986,7 +9972,6 @@ describe("Localized book 2Pet (ascii)", () => {
 		expect(p.parse("2ND PE 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2ND PT 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2ND. P 1:1").osis()).toEqual("2Pet.1.1");
-		expect(p.parse("2PTRUS 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II BUT 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II PER 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II PET 1:1").osis()).toEqual("2Pet.1.1");
@@ -10017,7 +10002,6 @@ describe("Localized book 2Pet (ascii)", () => {
 		expect(p.parse("2 PT 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2. P 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2PET 1:1").osis()).toEqual("2Pet.1.1");
-		expect(p.parse("2PTR 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("II P 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2 P 1:1").osis()).toEqual("2Pet.1.1");
 		expect(p.parse("2PT 1:1").osis()).toEqual("2Pet.1.1");
@@ -10351,7 +10335,6 @@ describe("Localized book 1Pet (ascii)", () => {
 		expect(p.parse("1. Pye 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1Peter 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1e Pet 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("1ptrus 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1st Pe 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1st Pt 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1st. P 1:1").osis()).toEqual("1Pet.1.1");
@@ -10393,7 +10376,6 @@ describe("Localized book 1Pet (ascii)", () => {
 		expect(p.parse("1 Pt 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1. P 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1Pet 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("1ptr 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("I Pe 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("I Pt 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("I. P 1:1").osis()).toEqual("1Pet.1.1");
@@ -10721,7 +10703,6 @@ describe("Localized book 1Pet (ascii)", () => {
 		expect(p.parse("1. PYE 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1PETER 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1E PET 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("1PTRUS 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1ST PE 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1ST PT 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1ST. P 1:1").osis()).toEqual("1Pet.1.1");
@@ -10763,7 +10744,6 @@ describe("Localized book 1Pet (ascii)", () => {
 		expect(p.parse("1 PT 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1. P 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1PET 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("1PTR 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("I PE 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("I PT 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("I. P 1:1").osis()).toEqual("1Pet.1.1");
@@ -12467,7 +12447,6 @@ describe("Localized book 1John (ascii)", () => {
 		expect(p.parse("1. Jn 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. Jo 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1John 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("1yohn 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I Jan 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I Jhn 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I Joh 1:1").osis()).toEqual("1John.1.1");
@@ -12487,7 +12466,6 @@ describe("Localized book 1John (ascii)", () => {
 		expect(p.parse("1 Jo 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. J 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1Yoh 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("1yoh 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I Gi 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I In 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I Jh 1:1").osis()).toEqual("1John.1.1");
@@ -12943,7 +12921,6 @@ describe("Localized book 1John (ascii)", () => {
 		expect(p.parse("1. JN 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. JO 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1JOHN 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("1YOHN 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I JAN 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I JHN 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I JOH 1:1").osis()).toEqual("1John.1.1");
@@ -12962,7 +12939,6 @@ describe("Localized book 1John (ascii)", () => {
 		expect(p.parse("1 JN 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 JO 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. J 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("1YOH 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1YOH 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I GI 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("I IN 1:1").osis()).toEqual("1John.1.1");
@@ -13435,7 +13411,6 @@ describe("Localized book 2John (ascii)", () => {
 		expect(p.parse("2. Jn 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2. Jo 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2John 1:1").osis()).toEqual("2John.1.1");
-		expect(p.parse("2yohn 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II Gi 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II In 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II Jh 1:1").osis()).toEqual("2John.1.1");
@@ -13452,7 +13427,6 @@ describe("Localized book 2John (ascii)", () => {
 		expect(p.parse("2 Jo 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2. J 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2Yoh 1:1").osis()).toEqual("2John.1.1");
-		expect(p.parse("2yoh 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II J 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2 J 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2yo 1:1").osis()).toEqual("2John.1.1");
@@ -13909,7 +13883,6 @@ describe("Localized book 2John (ascii)", () => {
 		expect(p.parse("2. JN 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2. JO 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2JOHN 1:1").osis()).toEqual("2John.1.1");
-		expect(p.parse("2YOHN 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II GI 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II IN 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II JH 1:1").osis()).toEqual("2John.1.1");
@@ -13925,7 +13898,6 @@ describe("Localized book 2John (ascii)", () => {
 		expect(p.parse("2 JN 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2 JO 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2. J 1:1").osis()).toEqual("2John.1.1");
-		expect(p.parse("2YOH 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2YOH 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("II J 1:1").osis()).toEqual("2John.1.1");
 		expect(p.parse("2 J 1:1").osis()).toEqual("2John.1.1");
@@ -14418,7 +14390,6 @@ describe("Localized book 3John (ascii)", () => {
 		expect(p.parse("3. Jn 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. Jo 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3John 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("3yohn 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("III J 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 Gi 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 Gj 1:1").osis()).toEqual("3John.1.1");
@@ -14430,7 +14401,6 @@ describe("Localized book 3John (ascii)", () => {
 		expect(p.parse("3 Jo 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. J 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3Yoh 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("3yoh 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 J 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3yo 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("TRETJE POSLANNJA APOSTOLA IVANA 1:1").osis()).toEqual("3John.1.1");
@@ -14912,7 +14882,6 @@ describe("Localized book 3John (ascii)", () => {
 		expect(p.parse("3. JN 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. JO 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3JOHN 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("3YOHN 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("III J 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 GI 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 GJ 1:1").osis()).toEqual("3John.1.1");
@@ -14923,7 +14892,6 @@ describe("Localized book 3John (ascii)", () => {
 		expect(p.parse("3 JN 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 JO 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. J 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("3YOH 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3YOH 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 J 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3YO 1:1").osis()).toEqual("3John.1.1");
@@ -17038,7 +17006,6 @@ describe("Localized book 2Sam (ascii)", () => {
 		expect(p.parse("2 Sm 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2. S 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2Sam 1:1").osis()).toEqual("2Sam.1.1");
-		expect(p.parse("2smu 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("II S 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2 S 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2Sa 1:1").osis()).toEqual("2Sam.1.1");
@@ -17424,7 +17391,6 @@ describe("Localized book 2Sam (ascii)", () => {
 		expect(p.parse("2 SM 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2. S 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2SAM 1:1").osis()).toEqual("2Sam.1.1");
-		expect(p.parse("2SMU 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("II S 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2 S 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2SA 1:1").osis()).toEqual("2Sam.1.1");
@@ -17828,7 +17794,6 @@ describe("Localized book 1Sam (ascii)", () => {
 		expect(p.parse("1 Sm 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1. S 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1Sam 1:1").osis()).toEqual("1Sam.1.1");
-		expect(p.parse("1smu 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("I Sa 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("I Sm 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("I. S 1:1").osis()).toEqual("1Sam.1.1");
@@ -18226,7 +18191,6 @@ describe("Localized book 1Sam (ascii)", () => {
 		expect(p.parse("1 SM 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1. S 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1SAM 1:1").osis()).toEqual("1Sam.1.1");
-		expect(p.parse("1SMU 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("I SA 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("I SM 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("I. S 1:1").osis()).toEqual("1Sam.1.1");
@@ -18720,7 +18684,6 @@ describe("Localized book 2Chr (ascii)", () => {
 		expect(p.parse("2 Pa 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2Chr 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2Taw 1:1").osis()).toEqual("2Chr.1.1");
-		expect(p.parse("2tow 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("HANIDABAA ODIYA NAA77ANTTO MAXAAFAA 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("CARTEA A DOUA PARALIPOMENA 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("DRUHA KNIHA PARALIPOMENON 1:1").osis()).toEqual("2Chr.1.1");
@@ -19198,7 +19161,6 @@ describe("Localized book 2Chr (ascii)", () => {
 		expect(p.parse("2 PA 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2CHR 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2TAW 1:1").osis()).toEqual("2Chr.1.1");
-		expect(p.parse("2TOW 1:1").osis()).toEqual("2Chr.1.1");
 	});
 });
 describe("Localized book 1Chr (ascii)", () => {
@@ -19713,7 +19675,6 @@ describe("Localized book 1Chr (ascii)", () => {
 		expect(p.parse("1 Pa 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1Taw 1:1").osis()).toEqual("1Chr.1.1");
-		expect(p.parse("1tow 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("I Pa 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("HANIDABAA ODIYAA KOIRO MAXAAFAA 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("CARTEA INTAI PARALIPOMENA 1:1").osis()).toEqual("1Chr.1.1");
@@ -20220,7 +20181,6 @@ describe("Localized book 1Chr (ascii)", () => {
 		expect(p.parse("1 PA 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1CHR 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1TAW 1:1").osis()).toEqual("1Chr.1.1");
-		expect(p.parse("1TOW 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("I PA 1:1").osis()).toEqual("1Chr.1.1");
 	});
 });
@@ -25927,12 +25887,10 @@ describe("Localized book 2Cor (ascii)", () => {
 		expect(p.parse("2 Kor 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2 Qor 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2. Co 1:1").osis()).toEqual("2Cor.1.1");
-		expect(p.parse("2qrnt 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("II Co 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2 Co 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2Cor 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2Kor 1:1").osis()).toEqual("2Cor.1.1");
-		expect(p.parse("2qrn 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2qr 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("DRUHE POSLANNJA APOSTOLA PAVLA DO KORYNFJAN 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("PAVLOVA DRUGA POSLANICA KORINCANIMA 1:1").osis()).toEqual("2Cor.1.1");
@@ -26794,12 +26752,10 @@ describe("Localized book 2Cor (ascii)", () => {
 		expect(p.parse("2 KOR 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2 QOR 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2. CO 1:1").osis()).toEqual("2Cor.1.1");
-		expect(p.parse("2QRNT 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("II CO 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2 CO 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2COR 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2KOR 1:1").osis()).toEqual("2Cor.1.1");
-		expect(p.parse("2QRN 1:1").osis()).toEqual("2Cor.1.1");
 		expect(p.parse("2QR 1:1").osis()).toEqual("2Cor.1.1");
 	});
 });
@@ -27734,14 +27690,12 @@ describe("Localized book 1Cor (ascii)", () => {
 		expect(p.parse("1 Kor 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1 Qor 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1. Co 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("1qrnt 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I Cor 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I Kor 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I. Co 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1 Co 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1Cor 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1Kor 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("1qrn 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I Co 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1qr 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("PERSE POSLANNJA APOSTOLA PAVLA DO KORYNFJAN 1:1").osis()).toEqual("1Cor.1.1");
@@ -28668,14 +28622,12 @@ describe("Localized book 1Cor (ascii)", () => {
 		expect(p.parse("1 KOR 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1 QOR 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1. CO 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("1QRNT 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I COR 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I KOR 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I. CO 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1 CO 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1COR 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1KOR 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("1QRN 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("I CO 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("1QR 1:1").osis()).toEqual("1Cor.1.1");
 	});
@@ -31775,7 +31727,6 @@ describe("Localized book Phil (ascii)", () => {
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Phlp 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Pilp 1:1").osis()).toEqual("Phil.1.1");
-		expect(p.parse("Fil 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Flp 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Phi 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Php 1:1").osis()).toEqual("Phil.1.1");
@@ -31947,7 +31898,6 @@ describe("Localized book Phil (ascii)", () => {
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHLP 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PILP 1:1").osis()).toEqual("Phil.1.1");
-		expect(p.parse("FIL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("FLP 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHI 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHP 1:1").osis()).toEqual("Phil.1.1");
@@ -35667,8 +35617,10 @@ describe("Localized book Phil,Phlm (ascii)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: Phil,Phlm (ascii)", () => {
+		expect(p.parse("Fil 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Phl 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Ph 1:1").osis()).toEqual("Phil.1.1");
+		expect(p.parse("FIL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PH 1:1").osis()).toEqual("Phil.1.1");
 	});

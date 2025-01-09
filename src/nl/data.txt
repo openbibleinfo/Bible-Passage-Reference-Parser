@@ -78,7 +78,8 @@ Col	[CK]olossenzen	[CK]ol
 Titus	Titus	Tit
 Phlm	Filémon	File?m
 Heb	Hebreeën	Hebr?
-Jas	Jakobus	Jak
+# `Jacobus` is per https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/pull/58
+Jas	Jakobus	Jacobus	Jak
 1Pet	$FIRST Petrus	$FIRST Petr?	1 Pe
 2Pet	$SECOND Petrus	$SECOND Petr?	2 Pe
 1John	$FIRST Johannes	$FIRST Joh

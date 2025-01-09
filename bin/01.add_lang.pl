@@ -1508,24 +1508,14 @@ sub remove_exclamations
 sub handle_accent
 {
 	my ($char) = @_;
+	return $char if (exists $vars{'$COLLAPSE_COMBINING_CHARACTERS'} && $vars{'$COLLAPSE_COMBINING_CHARACTERS'}->[0] eq 'false');
 	my $alt = NFD($char);
-	$alt =~ s/\pM//g unless (exists $vars{'$COLLAPSE_COMBINING_CHARACTERS'} && $vars{'$COLLAPSE_COMBINING_CHARACTERS'}->[0] eq 'false'); # remove combining characters
+	$alt =~ s/\pM//g; # remove combining characters
 	$alt = NFC($alt);
 	if ($char ne $alt && length $alt > 0 && $alt =~ /[^\s\d]/)
 	{
 		return "[$char$alt]";
 	}
-	#return $char if (exists $vars{'$COLLAPSE_COMBINING_CHARACTERS'} && $vars{'$COLLAPSE_COMBINING_CHARACTERS'}->[0] eq 'false');
-	$char =~ s/[\x{0660}\x{06f0}\x{07c0}\x{0966}\x{09e6}\x{0a66}\x{0ae6}\x{0b66}\x{0be6}\x{0c66}\x{0ce6}\x{0d66}\x{0e50}\x{0ed0}\x{0f20}\x{1040}\x{1090}\x{17e0}\x{1810}\x{1946}\x{19d0}\x{1a80}\x{1a90}\x{1b50}\x{1bb0}\x{1c40}\x{1c50}\x{a620}\x{a8d0}\x{a900}\x{a9d0}\x{aa50}\x{abf0}\x{ff10}]/[${char}0]/g;
-	$char =~ s/[\x{0661}\x{06f1}\x{07c1}\x{0967}\x{09e7}\x{0a67}\x{0ae7}\x{0b67}\x{0be7}\x{0c67}\x{0ce7}\x{0d67}\x{0e51}\x{0ed1}\x{0f21}\x{1041}\x{1091}\x{17e1}\x{1811}\x{1947}\x{19d1}\x{1a81}\x{1a91}\x{1b51}\x{1bb1}\x{1c41}\x{1c51}\x{a621}\x{a8d1}\x{a901}\x{a9d1}\x{aa51}\x{abf1}\x{ff11}]/[${char}1]/g;
-	$char =~ s/[\x{0662}\x{06f2}\x{07c2}\x{0968}\x{09e8}\x{0a68}\x{0ae8}\x{0b68}\x{0be8}\x{0c68}\x{0ce8}\x{0d68}\x{0e52}\x{0ed2}\x{0f22}\x{1042}\x{1092}\x{17e2}\x{1812}\x{1948}\x{19d2}\x{1a82}\x{1a92}\x{1b52}\x{1bb2}\x{1c42}\x{1c52}\x{a622}\x{a8d2}\x{a902}\x{a9d2}\x{aa52}\x{abf2}\x{ff12}]/[${char}2]/g;
-	$char =~ s/[\x{0663}\x{06f3}\x{07c3}\x{0969}\x{09e9}\x{0a69}\x{0ae9}\x{0b69}\x{0be9}\x{0c69}\x{0ce9}\x{0d69}\x{0e53}\x{0ed3}\x{0f23}\x{1043}\x{1093}\x{17e3}\x{1813}\x{1949}\x{19d3}\x{1a83}\x{1a93}\x{1b53}\x{1bb3}\x{1c43}\x{1c53}\x{a623}\x{a8d3}\x{a903}\x{a9d3}\x{aa53}\x{abf3}\x{ff13}]/[${char}3]/g;
-	$char =~ s/[\x{0664}\x{06f4}\x{07c4}\x{096a}\x{09ea}\x{0a6a}\x{0aea}\x{0b6a}\x{0bea}\x{0c6a}\x{0cea}\x{0d6a}\x{0e54}\x{0ed4}\x{0f24}\x{1044}\x{1094}\x{17e4}\x{1814}\x{194a}\x{19d4}\x{1a84}\x{1a94}\x{1b54}\x{1bb4}\x{1c44}\x{1c54}\x{a624}\x{a8d4}\x{a904}\x{a9d4}\x{aa54}\x{abf4}\x{ff14}]/[${char}4]/g;
-	$char =~ s/[\x{0665}\x{06f5}\x{07c5}\x{096b}\x{09eb}\x{0a6b}\x{0aeb}\x{0b6b}\x{0beb}\x{0c6b}\x{0ceb}\x{0d6b}\x{0e55}\x{0ed5}\x{0f25}\x{1045}\x{1095}\x{17e5}\x{1815}\x{194b}\x{19d5}\x{1a85}\x{1a95}\x{1b55}\x{1bb5}\x{1c45}\x{1c55}\x{a625}\x{a8d5}\x{a905}\x{a9d5}\x{aa55}\x{abf5}\x{ff15}]/[${char}5]/g;
-	$char =~ s/[\x{0666}\x{06f6}\x{07c6}\x{096c}\x{09ec}\x{0a6c}\x{0aec}\x{0b6c}\x{0bec}\x{0c6c}\x{0cec}\x{0d6c}\x{0e56}\x{0ed6}\x{0f26}\x{1046}\x{1096}\x{17e6}\x{1816}\x{194c}\x{19d6}\x{1a86}\x{1a96}\x{1b56}\x{1bb6}\x{1c46}\x{1c56}\x{a626}\x{a8d6}\x{a906}\x{a9d6}\x{aa56}\x{abf6}\x{ff16}]/[${char}6]/g;
-	$char =~ s/[\x{0667}\x{06f7}\x{07c7}\x{096d}\x{09ed}\x{0a6d}\x{0aed}\x{0b6d}\x{0bed}\x{0c6d}\x{0ced}\x{0d6d}\x{0e57}\x{0ed7}\x{0f27}\x{1047}\x{1097}\x{17e7}\x{1817}\x{194d}\x{19d7}\x{1a87}\x{1a97}\x{1b57}\x{1bb7}\x{1c47}\x{1c57}\x{a627}\x{a8d7}\x{a907}\x{a9d7}\x{aa57}\x{abf7}\x{ff17}]/[${char}7]/g;
-	$char =~ s/[\x{0668}\x{06f8}\x{07c8}\x{096e}\x{09ee}\x{0a6e}\x{0aee}\x{0b6e}\x{0bee}\x{0c6e}\x{0cee}\x{0d6e}\x{0e58}\x{0ed8}\x{0f28}\x{1048}\x{1098}\x{17e8}\x{1818}\x{194e}\x{19d8}\x{1a88}\x{1a98}\x{1b58}\x{1bb8}\x{1c48}\x{1c58}\x{a628}\x{a8d8}\x{a908}\x{a9d8}\x{aa58}\x{abf8}\x{ff18}]/[${char}8]/g;
-	$char =~ s/[\x{0669}\x{06f9}\x{07c9}\x{096f}\x{09ef}\x{0a6f}\x{0aef}\x{0b6f}\x{0bef}\x{0c6f}\x{0cef}\x{0d6f}\x{0e59}\x{0ed9}\x{0f29}\x{1049}\x{1099}\x{17e9}\x{1819}\x{194f}\x{19d9}\x{1a89}\x{1a99}\x{1b59}\x{1bb9}\x{1c49}\x{1c59}\x{a629}\x{a8d9}\x{a909}\x{a9d9}\x{aa59}\x{abf9}\x{ff19}]/[${char}9]/g;
 	return $char;
 }
 

@@ -1,6 +1,6 @@
 "use strict";
-import { bcv_parser } from "../../es/bcv_parser.js";
-import * as lang from "../../es/lang/is.js";
+import { bcv_parser } from "../../esm/bcv_parser.js";
+import * as lang from "../../esm/lang/is.js";
 
 describe("Parsing", () => {
 	let p = {};

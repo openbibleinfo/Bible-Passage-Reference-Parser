@@ -14,7 +14,11 @@ constructor(parent: BCVParserInterface, grammar: any) {
 // ## Parsing-Related Functions
 // Replace control characters and spaces since we replace books with a specific character pattern. The string changes, but the length stays the same so that indices remain valid. If we want to use Latin numbers rather than non-Latin ones, replace them here.
 public replace_control_characters(s: string): string {
-	s = s.replace(this.parent.regexps.control, " ");
+	return s.replace(this.parent.regexps.control, " ");
+}
+
+// Replace any /[^0-9]/ digits if requested so that the parser can find chapter and verse references. This replacement happens after removing books.
+public replace_non_ascii_numbers(s: string): string {
 	if (this.parent.options.non_latin_digits_strategy === "replace") {
 		s = s.replace(/[٠۰߀०০੦૦୦0౦೦൦๐໐༠၀႐០᠐᥆᧐᪀᪐᭐᮰᱀᱐꘠꣐꤀꧐꩐꯰０]/g, "0");
 		s = s.replace(/[١۱߁१১੧૧୧௧౧೧൧๑໑༡၁႑១᠑᥇᧑᪁᪑᭑᮱᱁᱑꘡꣑꤁꧑꩑꯱１]/g, "1");
@@ -197,7 +201,8 @@ private create_book_range(s: string, passage: GrammarMatchInterface, book_id: nu
 		const range_regexp = (i === limit - 1)
 			? this.parent.regexps.range_and
 			: this.parent.regexps.range_only;
-		const match_regexp = new RegExp(String.raw`(?:^|[^\p{L}\p{N}])(${cases[i - 1]}\s*${range_regexp}\s*)\x1f${book_id}\x1f`, "iu");
+		// TODO: In a future where `range_and` and `range_only` are user-configurable, remove the `\s*` and make sure they're incorporated directly into the appropriate range regexp.
+		const match_regexp = new RegExp(String.raw`${this.parent.regexps.pre_number_book.source}(${cases[i - 1].source}\s*${range_regexp.source}\s*)\x1f${book_id}\x1f`, "iu");
 		const prev = s.match(match_regexp);
 		// If we found a preceding pattern (like "1-2 Sam"), transform the passage into a range.
 		if (prev) {
@@ -236,7 +241,7 @@ private add_book_range_object(passage: GrammarMatchInterface, prev: RegExpMatchA
 		if (!passage.value[i].value) {
 			continue;
 		}
-		// f it's an `integer` type, `passage.value[i].value` is a scalar rather than an object, so we only need to adjust the indices for the top-level object.
+		// If it's an `integer` type, `passage.value[i].value` is a scalar rather than an object, so we only need to adjust the indices for the top-level object.
 		if (passage.value[i].value[0]?.indices) {
 			this.add_offset_to_indices(passage.value[i].value[0].indices, length);
 		}

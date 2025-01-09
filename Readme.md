@@ -17,7 +17,7 @@ Try a [demo of the Bible passage reference parser](https://www.openbible.info/la
 ### Setup: In a Browser (regular `<script>` tag)
 
 ```html
-<script src="/path/cjs/en_bcv_parser.cjs" charset="utf-8"></script>
+<script src="/path/cjs/en_bcv_parser.js" charset="utf-8"></script>
 <script>
 	const bcv = new bcv_parser();
 	console.log( bcv.parse("John 1").osis() ); // John.1
@@ -27,8 +27,8 @@ Try a [demo of the Bible passage reference parser](https://www.openbible.info/la
 ### Setup: In a Browser (`<script>` module)
 ```html
 <script type="module">
-  import { bcv_parser } from "es/bcv_parser.js";
-  import * as lang from "../es/lang/en.js";
+  import { bcv_parser } from "esm/bcv_parser.js";
+  import * as lang from "esm/lang/en.js";
   const bcv = new bcv_parser(lang);
   console.log( bcv.parse("John 1").osis() ); // John.1
 </script>
@@ -38,8 +38,8 @@ Note that no variables are accessible from outside the `<script>` tag. If that p
 
 ```html
 <script type="module">
-  import { bcv_parser } from "es/bcv_parser.js";
-  import * as lang from "/es/lang/en.js";
+  import { bcv_parser } from "esm/bcv_parser.js";
+  import * as lang from "esm/lang/en.js";
   window.bcv = new bcv_parser(lang);
   window.dispatchEvent(new Event("bcv_loaded"));
 </script>
@@ -67,8 +67,8 @@ npm i bible-passage-reference-parser
 To run using ES modules (newer style). This style requires using a language object when you create a `new` instance of the parser object.
 
 ```javascript
-import { bcv_parser } from "bible-passage-reference-parser/es/en_bcv_parser.js";
-import * as lang from "bible-passage-reference-parser/es/lang/en.js";
+import { bcv_parser } from "bible-passage-reference-parser/esm/en_bcv_parser.js";
+import * as lang from "bible-passage-reference-parser/esm/lang/en.js";
 const bcv = new bcv_parser(lang);
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
@@ -88,7 +88,7 @@ console.log( bcv.parse("John 1").osis() ); // John.1
 After downloading the parser and the language file you want (assuming you put the language file in a `lang` subfolder). This example uses English.
 
 ```javascript
-import { bcv_parser } from "./en_bcv_parser.js"; // Adjust paths as needed
+import { bcv_parser } from "./bcv_parser.js"; // Adjust paths as needed
 import * as lang from "./lang/en.js";
 const bcv = new bcv_parser(lang);
 console.log( bcv.parse("John 1").osis() ); // John.1
@@ -270,7 +270,7 @@ The returned object has the following structure:
 }
 ```
 
-The `alias` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification. Objects with identical `alias` values are identical. `system` is a synonym for `alias`; these two keys are always identical; it exists because it's a newer way to refer to versification systems.
+The `system` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification. Objects with identical `alias` values are identical. `system` is a synonym for `alias`; these two keys are always identical; `alias` is an older way to refer to versification systems.
 
 The `books` key lists the books in order, which you can use to find surrounding books. For example, if you know from `order` that `"Exod": 2`, you know that you can find it at `books[1]` (because the array is zero-based). Similarly, the book before `Exod` is at `books[0]`, and the book after it is at `books[2]`.
 
@@ -410,7 +410,7 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 #### Translation Objects
 
 * `translation_invalid`: `[]` if an invalid translation sequence appears. Each item in the array is a `translation` object.
-* `translation_unknown`: `[]` if the translation is unknown. If you see this message, a translation exists in `bcv_parser::regexps.translations` but not in `bcv_parser::translations`. Each item in the array is a `translation` object.
+* `translation_unknown`: `[]` if the translation is unknown. If you see this message, a translation exists in `bcv_parser.regexps.translations` but not in `bcv_parser.translations`. Each item in the array is a `translation` object.
 
 ### Adding New Book Patterns
 
@@ -429,15 +429,20 @@ bcv.parse("Mrc 1").osis(); // Mark.1
 
 Unlike other functions, this one will throw an error if anything's not quite right with the input.
 
+You probably want to [NFC-normalize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) any patterns before adding them.
+
 The available books are governed by the `testaments` setting. If you have it set to `o` (so you only find books in the Old Testament) but create pattern for a New Testament book, your pattern won't match until `testaments` contains an `n`.
 
 Here are the keys you can set in each object in the array:
 
 * `osis`: This is an array of OSIS book names that you want your pattern to match. Typically you only want to match one, but some abbreviations, like "Ma" in English, can match multiple books. The parser will prefer the first valid one. If you try to parse `Ma 28` with the osis `["Mal", "Matt"]`, it will pick `Matt` because `Mal` doesn't have 28 chapters (assuming you have a `bc` or `bcv` `passage_existence_strategy`).
 * `regexp`: This is the RegExp that will be used to match. Any flags you set are ignored; ultimately, it'll end up with `giu` flags set. It's possible to write non-performant regular expressions; it's up to you to ensure they meet your needs.
-* `insert_at`: A string to indicate the order you want your pattern parsed in compared to other books. It defaults to `start`, meaning that your patterns will be parsed before any others. Note that your patterns are inserted in the order you provide them in the array, so if all of them are set to `start`, the last one you provide will end up being parsed first. Other options are `end` (to parse it after everything else; for example, Maybe you want to be sure that your new `/Corinthians/` pattern is always parsed after 1 and 2 Corinthians so that it doesn't eat up valid longer patterns). You can also provide it an OSIS string, like `Matt`. That will ensure that your pattern is inserted just before the first pattern that matches Matthew. Note that the order of the regular expressions isn't necessarily predictable: generally patterns for `2Cor` are parsed before `1Cor`, for example. You can also specify a pattern that matches multiple books by comma separating them: `Matt,Mal` will match only a pattern that matches both books. In practice, you probably don't want to do that.
-* `pre_regexp`: Normally, the book patterns you provide are bounded by other RegExps to ensure that we don't lift out potential book matches in the middle of words. You can use this key to assign your own RegExp. Importantly, it shouldn't use any capturing groups (`(...)`. It also should only consist of zero-width assertions (like negative lookbehinds or `^` anchors). If your pattern gobbles text, it will throw off the parser.
-* `post_regexp`. Similarly, you can provide a pattern for after the book. Here it's especially important not to gobble any characters, so you should only use zero-width assertions. If you set either `pre_regexp` or `post_regexp`, you probably want to test extensively. Because the RegExps have the `u` flag, you can use `\p` classes for bounding. For example, `(?=[^\p{L}])` asserts that the next character isn't a letter.
+* `insert_at`: A string to indicate the order you want your pattern parsed in compared to other books.
+  * It defaults to `start`, meaning that your patterns will be parsed before any others.
+  * You can also set it to `end` (to parse it after everything else). For example, maybe you want to be sure that your new `/Corinthians/` pattern is always parsed after 1 and 2 Corinthians so that it doesn't eat up valid longer patterns).
+  * You can also provide it an OSIS string, like `Matt`. That will ensure that your pattern is inserted just before the first pattern that matches Matthew. Note that the order of the regular expressions isn't necessarily predictable: generally patterns for `2Cor` are parsed before `1Cor`, for example. You can also specify a pattern that matches multiple books by comma-separating them: `Matt,Mal` will match only a pattern that matches both books. In practice, you probably don't want to do that.
+* `pre_regexp`: Normally, the book patterns you provide are bounded by other RegExps to ensure that we don't lift out potential book matches in the middle of words. You can use this key to assign your own RegExp. Importantly, it shouldn't use any capturing groups (`(...)`). It also should only consist of zero-width assertions (like negative lookbehinds, `\b`, or `^` anchors). If your pattern gobbles text, it will throw off the parser.
+* `post_regexp`. Similarly, you can provide a pattern for after the book. Here it's also important not to gobble any characters, so you should only use zero-width assertions. If you set either `pre_regexp` or `post_regexp`, you probably want to test extensively. Because the RegExps have the `u` flag, you can use `\p` classes for bounding. For example, `(?=[^\p{L}])` asserts that the next character isn't a letter.
 
 ### Adding New Translations
 
@@ -470,6 +475,11 @@ bcv.add_translations({
 });
 bcv.parse("Matt 1:2 ONLYMATT").osis_and_translations(); // [["Matt.1.2", "MATTHEWTRANSLATION"]]
 ```
+
+## Unicode
+
+If you're dealing with non-ASCII characters, you probably want to [NFC-normalize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) your input before sending it to the parser. All the built-in patterns are normalized with the NFC algorithm. The parser doesn't perform this normalization for you because it can affect the length of your input, which in turn would affect the offsets.
+
 
 ## Caveats
 
@@ -667,8 +677,8 @@ Two files in [`/es/lang`](https://github.com/openbibleinfo/Bible-Passage-Referen
 
 The files are:
 
-1. `ascii.js`. Only supports characters in the set `[\x00-\x7f\u2000-\u206F]` (ASCII characters and certain punctuation marks like em-dashes). It doesn't run noticeably slower than the `en` file in my tests, parsing around 160KB per second in the fuzz tester.
-1. `full.js`. Parse book names across all languages. It doesn't run noticeably slower than the `en` file, parsing around 160KB per second in the fuzz tester.
+1. `ascii.js`. Only supports characters in the set `[\x00-\x7f\u2000-\u206F]` (ASCII characters and certain punctuation marks like em-dashes). It runs about 12% slower than `en.js`, parsing around 140KB per second in the fuzz tester.
+2. `full.js`. Parse book names across all languages. It runs about 30% slower than `en.js`, parsing around 110KB per second in the fuzz tester.
 
 Some features, such as psalm titles, are still English-only, even in these cross-language files.
 
@@ -684,7 +694,7 @@ These files work in any environment that supports ES2022; any browsers released 
 * Firefox 90+
 * Node 16+
 
-The `js` folder contains an older version of this code and supports much older browsers, back to IE8, Firefox 12, Chrome 19, and Node 0.10. The code in this folder is no longer maintained.
+The `js` folder contains an older version of this code (2.0.1) and supports much older browsers, back to IE8, Firefox 12, Chrome 19, and Node 0.10. The code in this folder is no longer maintained.
 
 ## Building
 
@@ -728,7 +738,7 @@ Points to know:
 	3. A character class works like a simple RegExp character class: `[az]` means the characters `a` and `z` are allowed. Character ranges probably don't work.
 	2. You can use the variables you defined earlier in the file in definitions. If you'd like the build process to create tests for book ranges like `1-3 John`, then be sure to define `$FIRST`, `$SECOND`, and `$THIRD` as variables in at least one definition for `1John`, `2John`, and `3John`.
 4. Lines that start with `=` are the order in which to check the regular expressions for books (check for `3 John` before `John`, for example, so that the string `3 John 2` doesn't get parsed as `John 2`).
-5. Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application). The third column represents the form to use when a single Psalm is being looked at. In English, we'd say "Psalms 1-2" but "Psalm 1."
+5. Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application). The third column represents a still-shorter form, and the fourth column represents the form to use when a single Psalm is being looked at. In English, we'd say "Psalms 1-2" but "Psalm 1."
 
 You can also create three other files:
 
@@ -752,7 +762,7 @@ There are also html files in `test/html` for browser testing. Because they use E
 
 ## Purpose
 
-This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which [saw production usage](https://web.archive.org/web/20100616201608/http://www.gnpcb.org/esv/share/about/) on the ESV Bible website from 2002-2011; the second in Perl (2007), which saw production usage on openbible.info starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This parser (at least on V8) is faster than the Perl one and 100 times faster than the Ruby one.
+This is the fourth complete Bible reference parser that I've written. It's how I try out new programming languages: the first one was in PHP (2002), which [saw production usage](https://web.archive.org/web/20100616201608/http://www.gnpcb.org/esv/share/about/) on the ESV Bible website from 2002-2011; the second in Perl (2007), which saw production usage on openbible.info starting in 2007; and the third in Ruby (2009), which never saw production usage because it was way too slow. This parser (at least on Node) is faster than the Perl one and 100 times faster than the Ruby one.
 
 I originally chose Coffeescript out of curiosity—does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript—the tests, in particular, are much easier to follow without all the Javascript punctuation.
 
@@ -764,15 +774,20 @@ The code in this project is licensed under the standard MIT License.
 
 ## Backlog Items
 
-Here are potential improvements I have in mind for this parser. I don't have a timeline for any of them.
+Here are potential improvements I have in mind for this parser.
 
-1. Are there any packaging improvements for npm? I'm not overly familiar with best practices. In particular, I'm not sure how best to expose public types in the npm package.
-2. Is the current solution with the CommonJS files really the best one? Are there other ways to solve this problem without having three sets of files, one of which is out of date (`js`)? I didn't see a way to have `.js` files using CommonJS in the same package as ES Modules.
-3. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
-4. Change the build process to be less finicky. The Perl scripts are brittle and hard to debug. Simplifying them into Typescript is a better choice. `bin/02.compile.pl` presents a much easier entry point than `bin/01.add_lang.pl`.
-5. Make setting an explicit chapter a runtime variable ("; " could effectively become "; chapter "). Making this happen in a flexible way would involve editing the Peggy parser output at runtime, which I'm not sure is possible or desirable.
+1. Make setting an explicit chapter a runtime variable ("; " could effectively become "; chapter "). Making this happen in a flexible way involves editing the Peggy parser output. Target release: 3.1.
+2. Allow setting translations to be case-insensitive, not just books. Target release: 3.1.
+3. Change the build process to be less finicky. The Perl scripts are brittle and hard to debug. I'd like to remove nearly all the compile-time logic. Target release: 3.2.
+4. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
 
 ## Changelog
+
+January 8, 2025 (3.0.0-beta2).
+
+* Renamed `/es` to `/esm` to avoid confusion with "es" language.
+* Renamed `.cjs` files in `/cjs` to `.js` and added package.json in relevant subfolders to default to treating them as CommonJS files.
+* Changed the logic for `non_latin_digits_strategy: "replace"`. It now runs after book parsing instead of before. This change reduces the number of book names created in certain languages, avoids unexpected behavior while reading strings, and makes upcoming changes to the build process easier to implement. Because it's technically a backwards-incompatible change (although in reality there probably aren't practical implications to it), I wanted to get it in as part of the 3.0 release.
 
 January 5, 2025 (3.0-beta). Renamed `add_passage_patterns()` to `add_books()` to better reflect what it does and to match `add_translations()`. The function signature also changed. It's a breaking change from 3.0-alpha. Added `add_translations()` to allow adding new translations at runtime.
 
@@ -782,8 +797,8 @@ The existing `js` folder wasn't touched, and the public API (as described above)
 
 * Replaced Coffeescript with Typescript. Notably, ES2022 (Node 16 and circa-2021 web browsers) is now the minimum supported version for new files (though the `js` folder still contains files generated for 2.0.1). It should be possible to use `esbuild --target=es2018` if you need something older, but this target isn't explicitly supported. Any older targets won't work. Backwards compatibility for older targets isn't a design goal for this release.
 * Added an `es` folder to support `import`-style modules usage rather than CommonJS `require` modules. This change also separates the language data from the core parser; you now send language data to the parser object when you construct it.
-* Added a `cjs` folder with `.cjs` files to support browsers and legacy `require` usage.
-* Added an `add_passage_patterns()` (later renamed to `add_books()`) function to let you add new book patterns at run time instead of at compile time.
+* Added a `cjs` folder with `.cjs` files (changed to `.js` in 3.0-beta2) to support browsers and legacy `require` usage.
+* Added an `add_passage_patterns()` (renamed to `add_books()` in 3.0-beta) function to let you add new book patterns at run time instead of at compile time.
 * Added the `testaments` option.
 * Added a `warn_level` option to show warnings in some cases.
 * Added support for newer English translations like CSB and NRSVUE. Thanks to [dwo0](https://github.com/dwo0) for one correction here.

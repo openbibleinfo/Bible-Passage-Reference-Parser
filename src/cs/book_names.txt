@@ -24,12 +24,18 @@
 1Chr	1 Letopisů
 1Chr	I Letopisu
 1Chr	I Letopisů
+1Chr	Prvni Kron
+1Chr	První Kron
 1Chr	1. Kronik
 1Chr	I. Kronik
 1Chr	1 Kronik
 1Chr	I Kronik
 1Chr	Prvni Pa
 1Chr	První Pa
+1Chr	1. Kron
+1Chr	I. Kron
+1Chr	1 Kron
+1Chr	I Kron
 1Chr	1. Pa
 1Chr	I. Pa
 1Chr	1 Pa
@@ -506,6 +512,10 @@
 2Chr	II Letopisů
 2Chr	2 Letopisu
 2Chr	2 Letopisů
+2Chr	Druha Kron
+2Chr	Druhy Kron
+2Chr	Druhá Kron
+2Chr	Druhý Kron
 2Chr	II. Kronik
 2Chr	2. Kronik
 2Chr	II Kronik
@@ -514,6 +524,10 @@
 2Chr	Druhy Pa
 2Chr	Druhá Pa
 2Chr	Druhý Pa
+2Chr	II. Kron
+2Chr	2. Kron
+2Chr	II Kron
+2Chr	2 Kron
 2Chr	II. Pa
 2Chr	2. Pa
 2Chr	II Pa
@@ -1692,6 +1706,8 @@ Heb	Zidům
 Heb	Židum
 Heb	Židům
 Heb	Heb
+Heb	Zid
+Heb	Žid
 Heb	Zd
 Heb	Žd
 Hos	Ozeas
@@ -1709,6 +1725,7 @@ Isa	Izajaš
 Isa	Izajás
 Isa	Izajáš
 Isa	Isa
+Isa	Is
 Isa	Iz
 Jas	List Jakubuv
 Jas	List Jakubův
@@ -2167,6 +2184,7 @@ Num	4 Mojžísova
 Num	4 Mojžíšova
 Num	Numeri
 Num	Num
+Num	Nm
 Num	Nu
 Obad	Abdijas
 Obad	Abdijaš
@@ -2191,6 +2209,7 @@ Phil	Filipenským
 Phil	Filipskym
 Phil	Filipským
 Phil	Phil
+Phil	Flp
 Phil	Fp
 Phlm	List Filemonovi
 Phlm	Filemonovi
@@ -2245,6 +2264,8 @@ Ps	Žalmy
 Ps	Zalm
 Ps	Žalm
 Ps	Ps
+Ps	Zl
+Ps	Žl
 Ps	Z
 Ps	Ž
 Rev	Zjeveni svateho Jana
@@ -2507,6 +2528,7 @@ Zech	Zacharjas
 Zech	Zacharjaš
 Zech	Zacharjás
 Zech	Zacharjáš
+Zech	Zach
 Zech	Zech
 Zech	Za
 Zeph	Sofonias
@@ -2518,4 +2540,5 @@ Zeph	Sofonjaš
 Zeph	Sofonjás
 Zeph	Sofonjáš
 Zeph	Zeph
+Zeph	Sof
 Zeph	Sf

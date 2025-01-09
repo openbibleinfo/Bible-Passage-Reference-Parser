@@ -6,6 +6,8 @@
 1Chr	1 Mga Cronika
 1Chr	1 Mga Kronica
 1Chr	1 Mga Kronika
+1Chr	1. Cronicas
+1Chr	1 Cronicas
 1Chr	1. Cronica
 1Chr	1. Cronika
 1Chr	1. Kronica
@@ -36,9 +38,13 @@
 1Kgs	1. Hari
 1Kgs	1 Hari
 1Kgs	1Kgs
+1Macc	1. Macabeo
+1Macc	1 Macabeo
+1Macc	1 Mac
 1Macc	1Macc
 1Pet	1. Pedro
 1Pet	1 Pedro
+1Pet	1 Ped
 1Pet	1Pet
 1Sam	1. Samuel
 1Sam	1 Samuel
@@ -69,10 +75,12 @@
 1Thess	1 Tesalónica
 1Thess	1 Tesalónika
 1Thess	1Thess
+1Thess	1 Tes
 1Tim	1. Kang Timoteo
 1Tim	1 Kang Timoteo
 1Tim	1. Timoteo
 1Tim	1 Timoteo
+1Tim	1 Tim
 1Tim	1Tim
 2Chr	2. Mga Cronica
 2Chr	2. Mga Cronika
@@ -82,6 +90,8 @@
 2Chr	2 Mga Cronika
 2Chr	2 Mga Kronica
 2Chr	2 Mga Kronika
+2Chr	2. Cronicas
+2Chr	2 Cronicas
 2Chr	2. Cronica
 2Chr	2. Cronika
 2Chr	2. Kronica
@@ -112,9 +122,13 @@
 2Kgs	2. Hari
 2Kgs	2 Hari
 2Kgs	2Kgs
+2Macc	2. Macabeo
+2Macc	2 Macabeo
+2Macc	2 Mac
 2Macc	2Macc
 2Pet	2. Pedro
 2Pet	2 Pedro
+2Pet	2 Ped
 2Pet	2Pet
 2Sam	2. Samuel
 2Sam	2 Samuel
@@ -145,25 +159,37 @@
 2Thess	2 Tesalónica
 2Thess	2 Tesalónika
 2Thess	2Thess
+2Thess	2 Tes
 2Tim	2. Kang Timoteo
 2Tim	2 Kang Timoteo
 2Tim	2. Timoteo
 2Tim	2 Timoteo
+2Tim	2 Tim
 2Tim	2Tim
 3John	3. Juan
 3John	3 Juan
 3John	3John
 3John	3 Jn
+3Macc	3. Macabeo
+3Macc	3 Macabeo
+3Macc	3 Mac
 3Macc	3Macc
+4Macc	4. Macabeo
+4Macc	4 Macabeo
+4Macc	4 Mac
 4Macc	4Macc
 Acts	Buhat sa mga Apostoles
 Acts	Ang Mga Binuhatan
 Acts	Binuhatan
+Acts	Mga Buhat
 Acts	Acts
 Acts	Bin
+Acts	Buh
 Amos	Amos
 Amos	Amós
+Bar	Baruc
 Bar	Bar
+Bel	Si Bel ug ang Dragon
 Bel	Bel
 Col	Mga Taga-Colosas
 Col	Taga-Colosas
@@ -175,10 +201,14 @@ Deut	Deuteronomio
 Deut	Dyuteronomyo
 Deut	Deut
 Deut	Deu
+Eccl	Ecclesiastes
 Eccl	Eklesyastes
 Eccl	Magwawali
 Eccl	Kaalam
 Eccl	Eccl
+Eccl	Ecc
+EpJer	Sulat ni Jeremias
+EpJer	Sul Jer
 EpJer	EpJer
 Eph	Mga Taga-Efeso
 Eph	Mga Taga-Éfeso
@@ -187,17 +217,23 @@ Eph	Taga-Éfeso
 Eph	Efeso
 Eph	Éfeso
 Eph	Eph
+Eph	Ef
 Esth	Ester
 Esth	Esth
+Esth	Est
 Exod	Eksodo
 Exod	Exodus
+Exod	Exodo
+Exod	Ekso
 Exod	Exod
 Exod	Exo
 Ezek	Ezequiel
 Ezek	Ezekiel
 Ezek	Ezek
+Ezek	Ezeq
 Ezra	Esdras
 Ezra	Ezra
+Ezra	Esd
 Ezra	Ezr
 Gal	Mga Taga-Galacia
 Gal	Taga-Galacia
@@ -206,6 +242,9 @@ Gal	Gal
 Gen	Genesis
 Gen	Henesis
 Gen	Gen
+Gen	Hen
+GkEsth	Ester (Grego)
+GkEsth	Est Gr
 GkEsth	GkEsth
 Hab	Habacuc
 Hab	Habakuk
@@ -213,19 +252,25 @@ Hab	Hab
 Hag	Hageo
 Hag	Ageo
 Hag	Hag
+Hag	Ag
 Heb	Mga Hebrohanon
 Heb	Hebreohanon
+Heb	Mga Hebreo
 Heb	Mga Ebreo
 Heb	Heb
 Hos	Hosea
 Hos	Oseas
 Hos	Hos
+Hos	Os
 Isa	Isaias
 Isa	Isaías
 Isa	Isa
+Isa	Is
 Jas	Santiago
 Jas	Jacobo
 Jas	Jas
+Jas	San
+Jdt	Judit
 Jdt	Jdt
 Jer	Jeremias
 Jer	Jeremías
@@ -239,24 +284,31 @@ John	Jn
 Jonah	Jonah
 Jonah	Jonas
 Jonah	Jonás
+Jonah	Jon
 Josh	Josue
 Josh	Josué
 Josh	Josh
 Josh	Jos
 Jude	Judas
 Jude	Jude
+Jude	Jud
 Judg	Mga Maghuhukom
 Judg	Maghuhukom
 Judg	Judg
+Judg	Mag
 Lam	Mga Pagbangotan
 Lam	Pagbangotan
 Lam	Lam
+Lam	Pag
 Lev	Leviticus
 Lev	Lebitiko
+Lev	Levitico
+Lev	Leb
 Lev	Lev
 Luke	Sulat ni San Lucas
 Luke	Lucas
 Luke	Luke
+Luke	Luc
 Luke	Lu
 Mal	Malaquias
 Mal	Malaquías
@@ -265,16 +317,19 @@ Mal	Mal
 Mark	Sulat ni San Marcos
 Mark	Marcos
 Mark	Mark
+Mark	Mar
 Mark	Mc
 Mark	Mk
 Matt	Sulat ni San Mateo
 Matt	Mateo
 Matt	Matt
+Matt	Mat
 Matt	Mt
 Mic	Miqueas
 Mic	Mika
 Mic	Mic
 Mic	Mik
+Mic	Miq
 Nah	Nahum
 Nah	Nah
 Neh	Nehemias
@@ -289,47 +344,63 @@ Obad	Abdias
 Obad	Abdías
 Obad	Obadia
 Obad	Obad
+Obad	Abd
 Phil	Mga Taga-Filipos
 Phil	Taga-Filipos
 Phil	Filipos
 Phil	Phil
+Phil	Fil
 Phlm	Kang Filemon
 Phlm	Kang Filemón
 Phlm	Filemon
 Phlm	Filemón
+Phlm	Filem
 Phlm	Phlm
 PrAzar	PrAzar
 PrMan	PrMan
 Prov	Mga Panultihon
 Prov	Panultihon
 Prov	Prov
+Prov	Pan
 Ps	Mga Salmo
 Ps	Salmo
 Ps	Sal
 Ps	Ps
 Rev	Gipadayag
+Rev	Gipa
 Rev	Rev
 Rom	Mga Taga-Roma
 Rom	Roma
 Rom	Rom
 Ruth	Ruth
 Ruth	Rut
+SgThree	Awit sa Tulo ka Batan-ong Lalaki
+SgThree	Awit sa 3
 SgThree	SgThree
+Sir	Sirac
 Sir	Sir
 Song	Awit sa mga Awit
 Song	Awit ni Solomon
 Song	Awit
 Song	Song
+Sus	Susana
 Sus	Sus
+Sus	Su
 Titus	Kang Tito
 Titus	Titus
 Titus	Tito
+Titus	Tit
+Tob	Tobit
 Tob	Tob
+Wis	Kaalam ni Solomon
+Wis	Klm Sol
 Wis	Wis
 Zech	Zacarias
 Zech	Zacarías
 Zech	Zech
+Zech	Zac
 Zeph	Sofonias
 Zeph	Sofonías
 Zeph	Zefania
 Zeph	Zeph
+Zeph	Sof

@@ -202,16 +202,18 @@ interface MessageInterface {
 }
 
 interface BCVParserInterface {
-	passage: BCVPassageInterface;
 	options: BCVParserOptions;
+	passage: BCVPassageInterface;
 	regexps: BCVRegExpsInterface;
 	translations: BCVTranslationsInterface;
 }
 
 interface BCVPassageInterface {
 	books: any[];
+	indices: IndicesInterface;
 	options: BCVParserOptions;
 	translations: BCVTranslationsInterface;
+
 	handle_obj(passage: GrammarMatchInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn;
 }
 
@@ -220,12 +222,15 @@ interface BCVRegExpsInterface {
 	books: BookRegExpInterface[];
 	control: RegExp;
 	escaped_passage: RegExp;
-	first: string;
+	first: RegExp;
 	match_end_split: RegExp;
-	range_and: string;
-	range_only: string;
-	second: string;
-	third: string;
+	post_book: RegExp;
+	pre_book: RegExp;
+	pre_number_book: RegExp;
+	range_and: RegExp;
+	range_only: RegExp;
+	second: RegExp;
+	third: RegExp;
 	translations: RegExp[]
 	filter_books(testaments: BCVParserOptions["testaments"], case_sensitive: BCVParserOptions["case_sensitive"]): void;
 	/* These are private functions.

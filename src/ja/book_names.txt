@@ -15,6 +15,7 @@
 1Cor	Ⅰ コリント人へ
 1Cor	コリント 1
 1Cor	コリント前書
+1Cor	1コリント
 1Cor	1Cor
 1Esd	エストラ第一巻
 1Esd	エスドラ第一巻
@@ -29,6 +30,7 @@
 1John	ヨハネの手紙一
 1John	1John
 1John	Ⅰ ヨハネ
+1John	1ヨハネ
 1John	一ヨハネ
 1Kgs	列王記第三巻
 1Kgs	列王紀略上
@@ -65,6 +67,8 @@
 1Pet	ヘトロ 1
 1Pet	ペトロ 1
 1Pet	1Pet
+1Pet	1ヘテロ
+1Pet	1ペテロ
 1Pet	一ヘトロ
 1Pet	一ペトロ
 1Sam	サムエル 1
@@ -84,6 +88,7 @@
 1Thess	テサロニケ 1
 1Thess	テサロニケ前書
 1Thess	1Thess
+1Thess	1テサロニケ
 1Tim	テモテヘの第一の手紙
 1Tim	テモテへの前の書
 1Tim	テモテへの手紙Ⅰ
@@ -92,6 +97,7 @@
 1Tim	テモテ 1
 1Tim	テモテ前書
 1Tim	1Tim
+1Tim	1テモテ
 1Tim	一テモテ
 2Chr	歴代志略下
 2Chr	歴代誌 2
@@ -110,6 +116,7 @@
 2Cor	Ⅱ コリント人へ
 2Cor	コリント 2
 2Cor	コリント後書
+2Cor	2コリント
 2Cor	2Cor
 2Esd	エストラ第二巻
 2Esd	エスドラ第二巻
@@ -124,6 +131,7 @@
 2John	ヨハネの手紙二
 2John	2John
 2John	Ⅱ ヨハネ
+2John	2ヨハネ
 2John	二ヨハネ
 2Kgs	列王記第四巻
 2Kgs	列王紀略下
@@ -160,6 +168,8 @@
 2Pet	ヘトロ 2
 2Pet	ペトロ 2
 2Pet	2Pet
+2Pet	2ヘテロ
+2Pet	2ペテロ
 2Pet	二ヘトロ
 2Pet	二ペトロ
 2Sam	サムエル 2
@@ -179,6 +189,7 @@
 2Thess	テサロニケ 2
 2Thess	テサロニケ後書
 2Thess	2Thess
+2Thess	2テサロニケ
 2Tim	テモテヘの第二の手紙
 2Tim	テモテへの後の書
 2Tim	テモテへの手紙Ⅱ
@@ -187,6 +198,7 @@
 2Tim	テモテ 2
 2Tim	テモテ後書
 2Tim	2Tim
+2Tim	2テモテ
 2Tim	二テモテ
 3John	ヨハネの第三の手紙
 3John	ヨハネの第三の書
@@ -194,6 +206,7 @@
 3John	ヨハネの手紙三
 3John	3John
 3John	Ⅲ ヨハネ
+3John	3ヨハネ
 3John	三ヨハネ
 3Macc	マカヒー第三書
 3Macc	マカビー第三書
@@ -209,6 +222,7 @@
 4Macc	マカバイ 4
 4Macc	マカバイ記4
 4Macc	4Macc
+Acts	使徒の活動記録
 Acts	使徒の働き
 Acts	使徒言行録
 Acts	Acts
@@ -275,6 +289,8 @@ Eph	エフェソ
 Eph	エヘソ書
 Eph	エペソ書
 Eph	Eph
+Eph	エヘソ
+Eph	エペソ
 Esth	エステル 記
 Esth	エステル書
 Esth	エステル記
@@ -353,6 +369,8 @@ Heb	ヘフル書
 Heb	ヘブライ
 Heb	ヘブル書
 Heb	Heb
+Heb	へフル
+Heb	へブル
 Hos	ホセアしょ
 Hos	ホセア書
 Hos	Hos
@@ -519,6 +537,10 @@ Phil	ピリヒ書
 Phil	ピリピ書
 Phil	フィリヒ
 Phil	フィリピ
+Phil	ヒリヒ
+Phil	ヒリピ
+Phil	ピリヒ
+Phil	ピリピ
 Phlm	フィレモンへの手紙
 Phlm	ヒレモンへの手紙
 Phlm	ヒレモンヘの手紙
@@ -533,6 +555,8 @@ Phlm	ピレモンへ
 Phlm	ピレモン書
 Phlm	フィレモン
 Phlm	Phlm
+Phlm	ヒレモン
+Phlm	ピレモン
 PrAzar	アサルヤの祈り
 PrAzar	アザルヤの祈り
 PrAzar	PrAzar

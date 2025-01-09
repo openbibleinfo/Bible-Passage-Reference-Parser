@@ -8,7 +8,7 @@ $AND	and
 $CHAPTER	פרקים	פרק
 $FF	ff
 $TITLE	title
-$TRANS	WLC
+$TRANS	WLC	MASORAH,,masorah
 $TO	-
 $VERSE	verse
 $UNICODE_BLOCK	Hebrew	Latin

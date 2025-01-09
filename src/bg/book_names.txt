@@ -793,7 +793,8 @@ John	От Иоана
 John	John
 John	Иоан
 John	Йоан
-John	Ин
+John	`Ин
+John	`Йн
 John	Йн
 Jonah	Книга на пророк Иона
 Jonah	Jonah

@@ -1,6 +1,6 @@
 "use strict";
-import { bcv_parser } from "../es/bcv_parser.js";
-import * as lang from "../es/lang/en.js";
+import { bcv_parser } from "../esm/bcv_parser.js";
+import * as lang from "../esm/lang/en.js";
 
 describe("OSIS parsing strategies", () => {
 	let p = {};
@@ -4156,6 +4156,13 @@ describe("Parsing", () => {
 				osis: "1Sam-2Sam",
 				translations: [""],
 				indices: [0, 7]
+			}
+		]);
+		expect(p.parse("Here's 2-3 John").osis_and_indices()).toEqual([
+			{
+				osis: "2John-3John",
+				translations: [""],
+				indices: [7, 15]
 			}
 		]);
 		expect(p.parse("2-3 John").osis_and_indices()).toEqual([

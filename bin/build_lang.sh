@@ -24,10 +24,10 @@ mv ../src/$1/translations.ts ./build/bcv_translations.ts
 mv ../src/$1/grammar.js ./build/bcv_grammar.js
 
 # Create the ES build files.
-npx esbuild ./build/bcv_parser.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../es/bcv_parser.js
-npx esbuild ./build/lang_bundle.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../es/lang/$1.js
+npx esbuild ./build/bcv_parser.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../esm/bcv_parser.js
+npx esbuild ./build/lang_bundle.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../esm/lang/$1.js
 # Also create the typescript definitions, which are the same for every language.
-cp ../src/core/lang.d.ts ../es/lang/$1.d.ts
+cp ../src/core/lang.d.ts ../esm/lang/$1.d.ts
 
 
 # Now onto commonjs...
@@ -42,18 +42,18 @@ sed "s/export default //g" ./build/temp_cjs_bundle.ts > ./build/cjs_bundle.ts
 # Make sure the grammar object is available inside the module.
 echo "var grammar = { parse: peg\$parse };" >> ./build/cjs_bundle.ts
 # Now build the cjs module. It also works as a browser module thanks to the banner line.
-npx esbuild ./build/cjs_bundle.ts --bundle --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile=../cjs/$1_bcv_parser.cjs
+npx esbuild ./build/cjs_bundle.ts --bundle --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile=../cjs/$1_bcv_parser.js
 
 if [ "$1" = "en" ]; then
   # Create a minified file for historical compatibility with pre-v3.
-  npx esbuild ./build/cjs_bundle.ts --bundle --minify --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile=../cjs/$1_bcv_parser.min.cjs
+  npx esbuild ./build/cjs_bundle.ts --bundle --minify --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile=../cjs/$1_bcv_parser.min.js
 fi
 
-# Uncomment this line to build a minified file in `es`.
-#npx esbuild ./build/bcv_parser.ts --bundle --minify --target=es2022 --charset=utf8 --format=esm --outfile=../es/$1_bcv_parser.min.js
+# Uncomment this line to build a minified file in `esm`.
+#npx esbuild ./build/bcv_parser.ts --bundle --minify --target=es2022 --charset=utf8 --format=esm --outfile=../esm/$1_bcv_parser.min.js
 
 # Clean up build files.
 rm ./build/*
 
 # Run tests.
-npx jasmine ../test/lang/$1.spec.js
+npx jasmine ../test/lang/$1.spec.js --random=false

@@ -65,42 +65,44 @@ constructor(lang: BCVParserConstructor | null = null) {
 
 // ## Parse-Related Functions
 // Parse a string and prepare the object for further interrogation, depending on what's needed.
-public parse(s: string): this {
+public parse(string_to_parse: string): this {
 	this.reset();
 	// Replace any control characters already in the string.
-	s = this.matcher.replace_control_characters(s);
+	string_to_parse = this.matcher.replace_control_characters(string_to_parse);
 	// Get a string representation suitable for passing to the parser.
-	[s, this.passage.books] = this.matcher.match_books(s);
+	[string_to_parse, this.passage.books] = this.matcher.match_books(string_to_parse);
+	// Convert non-ascii numbers to ascii numbers if desired.
+	string_to_parse = this.matcher.replace_non_ascii_numbers(string_to_parse);
 	// Replace potential BCVs one at a time to reduce processing time on long strings.
-	[this.entities] = this.matcher.match_passages(s);
+	[this.entities] = this.matcher.match_passages(string_to_parse);
 	// Allow chaining.
 	return this;
 }
 
 // Parse a string and prepare the object for further interrogation, depending on what's needed. The second argument is a string that serves as the context for the first argument. If there's a valid partial match at the beginning of the first argument, then it will parse it using the supplied `context`. For example, `parse_string_with_context("verse 2", "Genesis 3").osis()` = `Gen.3.2`. You'd use this when you have some text that looks like it's a partial reference, and you already know the context.
-public parse_with_context(s: string, context: string): this {
+public parse_with_context(string_to_parse: string, context_string: string): this {
 	// First parse the context.
 	this.reset();
-	[context, this.passage.books] = this.matcher.match_books(this.matcher.replace_control_characters(context));
-	let entities;
-	[entities, context] = this.matcher.match_passages(context);
+	[context_string, this.passage.books] = this.matcher.match_books(this.matcher.replace_control_characters(context_string));
+	context_string = this.matcher.replace_non_ascii_numbers(context_string);
+	let [entities, context] = this.matcher.match_passages(context_string);
 	// Then parse the desired string.
 	this.reset();
 	// Replace any control characters already in the string.
-	s = this.matcher.replace_control_characters(s);
+	string_to_parse = this.matcher.replace_control_characters(string_to_parse);
 	// Get a string representation suitable for passing to the parser.
-	[s, this.passage.books] = this.matcher.match_books(s);
+	[string_to_parse, this.passage.books] = this.matcher.match_books(string_to_parse);
 	this.passage.books.push({
 		value: "",
 		parsed: "",
 		start_index: 0,
 		type: "context",
-		context: context
+		context
 	});
 	// Reconstruct the string, adding in the context. Because we've already called `match_books`, the resulting offsets will reflect the original string and not the new string.
-	s = "\x1f" + (this.passage.books.length - 1) + "/9\x1f" + s;
+	string_to_parse = "\x1f" + (this.passage.books.length - 1) + "/9\x1f" + string_to_parse;
 	// Replace potential BCVs one at a time to reduce processing time on long strings.
-	[this.entities] = this.matcher.match_passages(s);
+	[this.entities] = this.matcher.match_passages(string_to_parse);
 	// Allow chaining.
 	return this;
 }

@@ -12,87 +12,87 @@ $TO	-
 $VERSE	verse
 $UNICODE_BLOCK	Latin
 
-Gen	[GH]enesis
-Exod	Eksodo	Exodus	Exo
-Lev	Lebitiko	Leviticus
+Gen	[GH]enesis	Hen
+Exod	Eksodo	Ekso	Exodo	Exodus	Exo
+Lev	Lebitiko	Leb	Levitico	Leviticus
 Num	Mga Numeros?	Numeros?
 Deut	Dyuteronomyo	Deuteronomio	Deu
-Josh	Josué	Jos
-Judg	Mga Maghuhukom	Maghuhukom
+Josh	Josué	Josue	Jos
+Judg	Mga Maghuhukom	Maghuhukom	Mag
 Ruth	Rut	Ruth
 1Sam	$FIRST Samuel	1 Sam
 2Sam	$SECOND Samuel	2 Sam
 1Kgs	$FIRST Mga Hari	$FIRST Hari
 2Kgs	$SECOND Mga Hari	$SECOND Hari
-1Chr	$FIRST Mga [CK]roni[ck]a	$FIRST [CK]roni[ck]a	1 Cron?
-2Chr	$SECOND Mga [CK]roni[ck]a	$SECOND [CK]roni[ck]a	2 Cron?
-Ezra	Esdras	Ezra	Ezr
-Neh	Nehemías
-Esth	Ester
+1Chr	$FIRST Mga [CK]roni[ck]a	$FIRST [CK]roni[ck]a	$FIRST Cronicas	1 Cron?
+2Chr	$SECOND Mga [CK]roni[ck]a	$SECOND [CK]roni[ck]a	$SECOND Cronicas	2 Cron?
+Ezra	Esdras	Esd	Ezra	Ezr
+Neh	Nehemías	Nehemias	Neh
+Esth	Ester	Est
 Job	Job
 Ps	Mga Salmo	Salmo	Sal
-Prov	Mga Panultihon	Panultihon
-Eccl	Kaalam	Eklesyastes	Magwawali
-Song	Awit sa mga Awit	Awit ni Solomon	Awit
-Isa	Isaías
-Jer	Jeremías
-Lam	Mga Pagbangotan	Pagbangotan
-Ezek	Ezequiel	Ezekiel
-Dan	Daniel
-Hos	Oseas	Hosea
+Prov	Mga Panultihon	Panultihon	Pan
+Eccl	Kaalam	Eklesyastes	Magwawali	Ecclesiastes	Ecc
+Song	Awit sa mga Awit	Awit ni Solomon	Awit	Awit
+Isa	Isaías	Isaias	Is
+Jer	Jeremías	Jeremias	Jer
+Lam	Mga Pagbangotan	Pagbangotan	Pag
+Ezek	Ezequiel	Ezekiel	Ezeq
+Dan	Daniel	Dan
+Hos	Oseas	Hosea	Os
 Joel	Joel
 Amos	Amós	Amos
-Obad	Abdías	Obadia
-Jonah	Jonás
-Mic	Miqueas	Mika	Mik
-Nah	Nahum
+Obad	Abdías	Abdias	Obadia	Abd
+Jonah	Jonás	Jonas	Jon
+Mic	Miqueas	Mika	Mik	Miq
+Nah	Nahum	Nah
 Hab	Habacuc	Habakuk
-Zeph	Sofonías	Zefania
+Zeph	Sofonías	Sofonias	Zefania	Sof
 Hag	Ageo	Hageo
-Zech	Zacarías
+Zech	Zacarías	Zacarias	Zac
 Mal	Malaquías	Malakias
-Matt	Mateo	Sulat ni San Mateo	Mt
-Mark	Marcos	Sulat ni San Marcos	M[ck]
-Luke	Lucas	Sulat ni San Lucas	Lu
+Matt	Mateo	Sulat ni San Mateo	Mat	Mt
+Mark	Marcos	Sulat ni San Marcos	Mar	M[ck]
+Luke	Lucas	Sulat ni San Lucas	Luc?
 John	Juan	Sulat ni San Juan	Jn
-Acts	Buhat sa mga Apostoles	Ang Mga Binuhatan	Binuhatan	Bin
-Rom	Mga Taga-Roma	Roma
+Acts	Buhat sa mga Apostoles	Ang Mga Binuhatan	Mga Buhat	Binuhatan	Bin	Buh
+Rom	Mga Taga-Roma	Roma?
 1Cor	$FIRST Mga Taga-Corinto	$FIRST Taga-Corinto	$FIRST Corinto	1 Cor?
 2Cor	$SECOND Mga Taga-Corinto	$SECOND Taga-Corinto	$SECOND Corinto	2 Cor?
 Gal	Taga-Galacia	Mga Taga-Galacia	Galacia
-Eph	Taga-Éfeso	Mga Taga-Éfeso	Éfeso
-Phil	Taga-Filipos	Mga Taga-Filipos	Filipos
+Eph	Taga-Éfeso	Mga Taga-Éfeso	Mga Taga-Efeso	Éfeso	Ef
+Phil	Taga-Filipos	Mga Taga-Filipos	Filipos	Fil
 Col	Taga-Colosas	Mga Taga-Colosas	Colosas
-1Thess	$FIRST Mga Taga-Tesalóni[ck]a	$FIRST Taga-Tesalóni[ck]a	$FIRST Tesalóni[ck]a
-2Thess	$SECOND Mga Taga-Tesalóni[ck]a	$SECOND Taga-Tesalóni[ck]a	$SECOND Tesalóni[ck]a
-1Tim	$FIRST Kang Timoteo	$FIRST Timoteo
-2Tim	$SECOND Kang Timoteo	$SECOND Timoteo
-Titus	Kang Tito	Tito
-Phlm	Kang Filemón	Filemón
-Heb	Mga Ebreo	Mga Hebrohanon	Hebreohanon
-Jas	Jacobo	Santiago
-1Pet	$FIRST Pedro
-2Pet	$SECOND Pedro
+1Thess	$FIRST Mga Taga-Tesalóni[ck]a	$FIRST Mga Taga-Tesaloni[ck]a	$FIRST Taga-Tesalóni[ck]a	$FIRST Tesalóni[ck]a	1 Tes
+2Thess	$SECOND Mga Taga-Tesalóni[ck]a	$SECOND Mga Taga-Tesaloni[ck]a	$SECOND Taga-Tesalóni[ck]a	$SECOND Tesalóni[ck]a	2 Tes
+1Tim	$FIRST Kang Timoteo	$FIRST Timoteo	1 Tim
+2Tim	$SECOND Kang Timoteo	$SECOND Timoteo	2 Tim
+Titus	Kang Tito	Tito?
+Phlm	Kang Filemón	Filemón	Filemon	Filem
+Heb	Mga Ebreo	Mga Hebrohanon	Hebreohanon	Mga Hebreo
+Jas	Jacobo	Santiago	San
+1Pet	$FIRST Pedro	1 Ped
+2Pet	$SECOND Pedro	2 Ped
 1John	$FIRST Juan	1 Jn
 2John	$SECOND Juan	2 Jn
 3John	$THIRD Juan	3 Jn
-Jude	Judas
-Rev	Gipadayag
-Tob	Tob
-Jdt	Jdt
-GkEsth	GkEsth
-Wis	Wis
-Sir	Sir
-Bar	Bar
+Jude	Judas	Jud
+Rev	Gipadayag	Gipa
+Tob	Tobit	Tob
+Jdt	Judit	Jdt
+GkEsth	Ester (Grego)	Est Gr
+Wis	Kaalam ni Solomon	Klm Sol
+Sir	Sirac	Sir
+Bar	Baruc	Bar
 PrAzar	PrAzar
-Sus	Sus
-Bel	Bel
-SgThree	SgThree
-EpJer	EpJer
-1Macc	1Macc
-2Macc	2Macc
-3Macc	3Macc
-4Macc	4Macc
+Sus	Susana	Su
+Bel	Si Bel ug ang Dragon	Bel
+SgThree	Awit sa Tulo ka Batan-ong Lalaki	Awit sa 3
+EpJer	Sulat ni Jeremias	Sul Jer
+1Macc	$FIRST Macabeo	1 Mac
+2Macc	$SECOND Macabeo	2 Mac
+3Macc	$THIRD Macabeo	3 Mac
+4Macc	$FOURTH Macabeo	4 Mac
 1Esd	1Esd
 2Esd	2Esd
 PrMan	PrMan
@@ -185,87 +185,87 @@ PrMan	PrMan
 
 # Preferred names
 # OSIS	Long	Short	Shorter	Single (Ps)
-*Gen	Henesis
-*Exod	Eksodo
-*Lev	Lebitiko
-*Num	Numeros
+*Gen	Genesis	Gen
+*Exod	Exodo	Exo
+*Lev	Lebitiko	Leb
+*Num	Numeros	Num
 *Deut	Dyuteronomyo
-*Josh	Josué
-*Judg	Maghuhukom
+*Josh	Josué	Jos
+*Judg	Maghuhukom	Mag
 *Ruth	Rut
-*1Sam	1 Samuel
-*2Sam	2 Samuel
+*1Sam	1 Samuel	1 Sam
+*2Sam	2 Samuel	2 Sam
 *1Kgs	1 Hari
 *2Kgs	2 Hari
 *1Chr	1 Kronika
 *2Chr	2 Kronika
-*Ezra	Esdras
-*Neh	Nehemías
-*Esth	Ester
+*Ezra	Esdras	Esd
+*Neh	Nehemías	Neh
+*Esth	Ester	Est
 *Job	Job
-*Ps	Salmo
-*Prov	Panultihon
+*Ps	Salmo	Sal
+*Prov	Panultihon	Pan
 *Eccl	Kaalam
 *Song	Awit sa mga Awit	Awit
-*Isa	Isaías
-*Jer	Jeremías
-*Lam	Pagbangotan
-*Ezek	Ezequiel
-*Dan	Daniel
-*Hos	Oseas
+*Isa	Isaías	Is
+*Jer	Jeremías	Jer
+*Lam	Pagbangotan	Pag
+*Ezek	Ezequiel	Ezeq
+*Dan	Daniel	Dan
+*Hos	Oseas	Os
 *Joel	Joel
 *Amos	Amós
-*Obad	Abdías
-*Jonah	Jonás
-*Mic	Miqueas
-*Nah	Nahum
-*Hab	Habacuc
-*Zeph	Sofonías
-*Hag	Ageo
-*Zech	Zacarías
-*Mal	Malaquías
-*Matt	Mateo
-*Mark	Marcos
-*Luke	Lucas
+*Obad	Abdías	Abd
+*Jonah	Jonás	Jon
+*Mic	Miqueas	Miq
+*Nah	Nahum	Nah
+*Hab	Habacuc	Hab
+*Zeph	Sofonías	Sof
+*Hag	Ageo	Ag
+*Zech	Zacarías	Zac
+*Mal	Malaquías	Mal
+*Matt	Mateo	Mat
+*Mark	Marcos	Mar
+*Luke	Lucas	Luc
 *John	Juan
 *Acts	Binuhatan
-*Rom	Roma
-*1Cor	1 Corinto
-*2Cor	2 Corinto
-*Gal	Galacia
-*Eph	Éfeso
-*Phil	Filipos
-*Col	Colosas
-*1Thess	1 Tesalónica
-*2Thess	2 Tesalónica
-*1Tim	1 Timoteo
-*2Tim	2 Timoteo
-*Titus	Tito
-*Phlm	Filemón
-*Heb	Hebreohanon
+*Rom	Roma	Rom
+*1Cor	1 Corinto	1 Cor
+*2Cor	2 Corinto	2 Cor
+*Gal	Galacia	Gal
+*Eph	Éfeso	Ef
+*Phil	Filipos	Fil
+*Col	Colosas	Col
+*1Thess	1 Tesalónica	1 Tes
+*2Thess	2 Tesalónica	2 Tes
+*1Tim	1 Timoteo	1 Tim
+*2Tim	2 Timoteo	2 Tim
+*Titus	Tito	Tit
+*Phlm	Filemón	Filem
+*Heb	Hebreohanon	Heb
 *Jas	Jacobo
-*1Pet	1 Pedro
-*2Pet	2 Pedro
+*1Pet	1 Pedro	1 Ped
+*2Pet	2 Pedro	2 Ped
 *1John	1 Juan
 *2John	2 Juan
 *3John	3 Juan
-*Jude	Judas
-*Rev	Gipadayag
-*Tob	Tob
-*Jdt	Jdt
-*GkEsth	GkEsth
-*Wis	Wis
-*Sir	Sir
-*Bar	Bar
+*Jude	Judas	Jud
+*Rev	Gipadayag	Gipa
+*Tob	Tobit	Tob
+*Jdt	Judit	Jdt
+*GkEsth	Ester (Grego)	Est Gr
+*Wis	Kaalam ni Solomon	Klm Sol
+*Sir	Sirac	Sir
+*Bar	Baruc	Bar
 *PrAzar	PrAzar
-*Sus	Sus
-*Bel	Bel
-*SgThree	SgThree
-*EpJer	EpJer
-*1Macc	1Macc
-*2Macc	2Macc
-*3Macc	3Macc
-*4Macc	4Macc
+*Sus	Susana	Su
+*Bel	Si Bel ug ang Dragon	Bel
+*SgThree	Awit sa Tulo ka Batan-ong Lalaki	Awit sa 3
+*EpJer	Sulat ni Jeremias	Sul Jer
+*1Macc	1 Macabeo	1 Mac
+*2Macc	2 Macabeo	2 Mac
+*3Macc	3 Macabeo	3 Mac
+*4Macc	4 Macabeo	4 Mac
 *1Esd	1Esd
 *2Esd	2Esd
 *PrMan	PrMan

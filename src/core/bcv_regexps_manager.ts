@@ -1,9 +1,9 @@
 import { BCVParserInterface, BCVParserOptions, BCVRegExpsInterface, BCVRegExpsManagerInterface, BookPattern, BookRegExpInterface } from "./types";
 
 interface BookData {
-	testament_books: { [key: string]: string };
-	testament: string;
 	has_number_book: boolean;
+	testament: BookRegExpInterface["testament"];
+	testament_books: { [key: string]: BookRegExpInterface["testament_books"] };
 };
 
 export default class bcv_regexps_manager implements BCVRegExpsManagerInterface {
@@ -83,6 +83,9 @@ public add_books(books): void {
 	if (books == null || !Array.isArray(books.books)) {
 		throw new Error("add_books: The argument to `add_books` should be an object with an array in `books`");
 	}
+	// Create arrays to merge at the end. Do it this way so all "start" `position`s are added in the order they appear in `books.books`, rather than the reverse order that would happen if we added them as we went along.
+	const starts: BookRegExpInterface[] = [];
+	const ends: BookRegExpInterface[] = [];
 	// Go through each pattern in order. If all of them are set to appear at the start, the last one will end up first.
 	for (const pattern of books.books) {
 		// It's up to the caller to provide a reasonably performant and valid RegExp.
@@ -109,14 +112,15 @@ public add_books(books): void {
 		}
 		// Short-circuit expensive logic if possible.
 		if (position === "start") {
-			this.parent.regexps.all_books.unshift(insert_object);
+			starts.push(insert_object);
 		} else if (position === "end") {
-			this.parent.regexps.all_books.push(insert_object);
+			ends.push(insert_object);
 		} else {
 			// Go through each book and find the first one that matches the desired pattern. We don't mind if we don't find one since it just goes at the end.
 			let has_inserted = false;
 			for (const [i, book] of this.parent.regexps.all_books.entries()) {
 				if (book.osis.join(',') === position) {
+					// Unlike "start" or "end", is added incrementally as we go along.
 					this.parent.regexps.all_books.splice(i, 0, insert_object);
 					has_inserted = true;
 					break;
@@ -124,9 +128,13 @@ public add_books(books): void {
 			}
 			// If there's no matching book pattern, then put it at the end to try last.
 			if (has_inserted === false) {
-				this.parent.regexps.all_books.push(insert_object);
+				ends.push(insert_object);
 			}
 		}
+	}
+	// Put any at the start or end.
+	if (starts.length > 0 || ends.length > 0) {
+		this.parent.regexps.all_books = [...starts, ...this.parent.regexps.all_books, ...ends];
 	}
 	// Make sure the set of active books reflects these additions if they're relevant. Clear out the `filtered_book_flags`; since no flags have changed, `this.parent.regexps.books` otherwise wouldn't be regenerated.`
 	this.filtered_books_flags = "";

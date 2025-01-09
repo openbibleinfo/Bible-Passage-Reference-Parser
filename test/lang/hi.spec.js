@@ -1,6 +1,6 @@
 "use strict";
-import { bcv_parser } from "../../es/bcv_parser.js";
-import * as lang from "../../es/lang/hi.js";
+import { bcv_parser } from "../../esm/bcv_parser.js";
+import * as lang from "../../esm/lang/hi.js";
 
 describe("Parsing", () => {
 	let p = {};
@@ -346,7 +346,6 @@ describe("Localized book 2Sam (hi)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: 2Sam (hi)", () => {
-		expect(p.parse("शमुऐयल की 2री पुस्तक 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("शमुऐयल की २री पुस्तक 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2. Shamooael 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2 Shamooael 1:1").osis()).toEqual("2Sam.1.1");
@@ -356,7 +355,6 @@ describe("Localized book 2Sam (hi)", () => {
 		expect(p.parse("2 शमू 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2Sam 1:1").osis()).toEqual("2Sam.1.1");
 		p.set_options({ non_latin_digits_strategy: "replace" });
-		expect(p.parse("शमुऐयल की 2री पुस्तक 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("शमुऐयल की २री पुस्तक 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2. Shamooael 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2 Shamooael 1:1").osis()).toEqual("2Sam.1.1");
@@ -365,7 +363,6 @@ describe("Localized book 2Sam (hi)", () => {
 		expect(p.parse("2. शमू 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2 शमू 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2Sam 1:1").osis()).toEqual("2Sam.1.1");
-		expect(p.parse("शमुऐयल की 2री पुस्तक 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("शमुऐयल की २री पुस्तक 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2. SHAMOOAEL 1:1").osis()).toEqual("2Sam.1.1");
 		expect(p.parse("2 SHAMOOAEL 1:1").osis()).toEqual("2Sam.1.1");
@@ -383,7 +380,6 @@ describe("Localized book 1Sam (hi)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: 1Sam (hi)", () => {
-		expect(p.parse("शमुऐल की 1ली पुस्तक 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("शमुऐल की १ली पुस्तक 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1. Shamooael 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1 Shamooael 1:1").osis()).toEqual("1Sam.1.1");
@@ -393,7 +389,6 @@ describe("Localized book 1Sam (hi)", () => {
 		expect(p.parse("1 शमू 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1Sam 1:1").osis()).toEqual("1Sam.1.1");
 		p.set_options({ non_latin_digits_strategy: "replace" });
-		expect(p.parse("शमुऐल की 1ली पुस्तक 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("शमुऐल की १ली पुस्तक 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1. Shamooael 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1 Shamooael 1:1").osis()).toEqual("1Sam.1.1");
@@ -402,7 +397,6 @@ describe("Localized book 1Sam (hi)", () => {
 		expect(p.parse("1. शमू 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1 शमू 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1Sam 1:1").osis()).toEqual("1Sam.1.1");
-		expect(p.parse("शमुऐल की 1ली पुस्तक 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("शमुऐल की १ली पुस्तक 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1. SHAMOOAEL 1:1").osis()).toEqual("1Sam.1.1");
 		expect(p.parse("1 SHAMOOAEL 1:1").osis()).toEqual("1Sam.1.1");
@@ -420,7 +414,6 @@ describe("Localized book 2Kgs (hi)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: 2Kgs (hi)", () => {
-		expect(p.parse("राजाओ का विर्तान्त 2रा भाग 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("राजाओ का विर्तान्त २रा भाग 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2. राजाओं 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2 राजाओं 1:1").osis()).toEqual("2Kgs.1.1");
@@ -430,7 +423,6 @@ describe("Localized book 2Kgs (hi)", () => {
 		expect(p.parse("2 राजा 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2Kgs 1:1").osis()).toEqual("2Kgs.1.1");
 		p.set_options({ non_latin_digits_strategy: "replace" });
-		expect(p.parse("राजाओ का विर्तान्त 2रा भाग 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("राजाओ का विर्तान्त २रा भाग 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2. राजाओं 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2 राजाओं 1:1").osis()).toEqual("2Kgs.1.1");
@@ -439,7 +431,6 @@ describe("Localized book 2Kgs (hi)", () => {
 		expect(p.parse("2 Raja 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2 राजा 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2Kgs 1:1").osis()).toEqual("2Kgs.1.1");
-		expect(p.parse("राजाओ का विर्तान्त 2रा भाग 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("राजाओ का विर्तान्त २रा भाग 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2. राजाओं 1:1").osis()).toEqual("2Kgs.1.1");
 		expect(p.parse("2 राजाओं 1:1").osis()).toEqual("2Kgs.1.1");
@@ -457,7 +448,6 @@ describe("Localized book 1Kgs (hi)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: 1Kgs (hi)", () => {
-		expect(p.parse("राजाओ का विर्तान्त 1ला भाग् 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("राजाओ का विर्तान्त १ला भाग् 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1. राजाओं 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1 राजाओं 1:1").osis()).toEqual("1Kgs.1.1");
@@ -467,7 +457,6 @@ describe("Localized book 1Kgs (hi)", () => {
 		expect(p.parse("1 राजा 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1Kgs 1:1").osis()).toEqual("1Kgs.1.1");
 		p.set_options({ non_latin_digits_strategy: "replace" });
-		expect(p.parse("राजाओ का विर्तान्त 1ला भाग् 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("राजाओ का विर्तान्त १ला भाग् 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1. राजाओं 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1 राजाओं 1:1").osis()).toEqual("1Kgs.1.1");
@@ -476,7 +465,6 @@ describe("Localized book 1Kgs (hi)", () => {
 		expect(p.parse("1 Raja 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1 राजा 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1Kgs 1:1").osis()).toEqual("1Kgs.1.1");
-		expect(p.parse("राजाओ का विर्तान्त 1ला भाग् 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("राजाओ का विर्तान्त १ला भाग् 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1. राजाओं 1:1").osis()).toEqual("1Kgs.1.1");
 		expect(p.parse("1 राजाओं 1:1").osis()).toEqual("1Kgs.1.1");
@@ -494,7 +482,6 @@ describe("Localized book 2Chr (hi)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: 2Chr (hi)", () => {
-		expect(p.parse("इतिहास 2रा भाग 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("इतिहास २रा भाग 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2. Itihas 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2. इतिहास 1:1").osis()).toEqual("2Chr.1.1");
@@ -504,7 +491,6 @@ describe("Localized book 2Chr (hi)", () => {
 		expect(p.parse("2 इति 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2Chr 1:1").osis()).toEqual("2Chr.1.1");
 		p.set_options({ non_latin_digits_strategy: "replace" });
-		expect(p.parse("इतिहास 2रा भाग 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("इतिहास २रा भाग 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2. Itihas 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2. इतिहास 1:1").osis()).toEqual("2Chr.1.1");
@@ -513,7 +499,6 @@ describe("Localized book 2Chr (hi)", () => {
 		expect(p.parse("2. इति 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2 इति 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2Chr 1:1").osis()).toEqual("2Chr.1.1");
-		expect(p.parse("इतिहास 2रा भाग 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("इतिहास २रा भाग 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2. ITIHAS 1:1").osis()).toEqual("2Chr.1.1");
 		expect(p.parse("2. इतिहास 1:1").osis()).toEqual("2Chr.1.1");
@@ -531,7 +516,6 @@ describe("Localized book 1Chr (hi)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: 1Chr (hi)", () => {
-		expect(p.parse("इतिहास 1ला भाग 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("इतिहास १ला भाग 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1. Itihas 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1. इतिहास 1:1").osis()).toEqual("1Chr.1.1");
@@ -541,7 +525,6 @@ describe("Localized book 1Chr (hi)", () => {
 		expect(p.parse("1 इति 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1");
 		p.set_options({ non_latin_digits_strategy: "replace" });
-		expect(p.parse("इतिहास 1ला भाग 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("इतिहास १ला भाग 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1. Itihas 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1. इतिहास 1:1").osis()).toEqual("1Chr.1.1");
@@ -550,7 +533,6 @@ describe("Localized book 1Chr (hi)", () => {
 		expect(p.parse("1. इति 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1 इति 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1Chr 1:1").osis()).toEqual("1Chr.1.1");
-		expect(p.parse("इतिहास 1ला भाग 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("इतिहास १ला भाग 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1. ITIHAS 1:1").osis()).toEqual("1Chr.1.1");
 		expect(p.parse("1. इतिहास 1:1").osis()).toEqual("1Chr.1.1");

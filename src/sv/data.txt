@@ -76,15 +76,15 @@ Col	Kolosserbrevet	Kol
 1Tim	$FIRST Timotheosbrevet	$FIRST Timoteusbrevet	1 Tim
 2Tim	$SECOND Timotheosbrevet	$SECOND Timoteusbrevet	2 Tim
 Titus	Titusbrevet	Brevet till Titus	Tit
-Phlm	Filemonbrevet	Brevet till Filemon	Filem
+Phlm	Filemonbrevet	Brevet till Filemon	Till Filemon	Filem
 Heb	Hebreerbrevet	Hebr	Hebréerbrevet	Ebr	Heb
-Jas	Jakobsbrevet	Jakobs brev	Jak	Jakobs epistel
+Jas	Jakobsbrevet	Jakobs brev	Jakob	Jak	Jakobs epistel
 1Pet	$FIRST Petrusbrevet	Petrus första brev	1 Petr?
 2Pet	$SECOND Petrusbrevet	Petrus andra brev	2 Petr?
 1John	$FIRST Johannesbrevet	Johannes första brev	1 Joh
 2John	$SECOND Johannesbrevet	Johannes andra brev	2 Joh
 3John	$THIRD Johannesbrevet	Johannes tredje brev	3 Joh
-Jude	Judasbrevet	Judas brev	Jud	Judas epistel
+Jude	Judasbrevet	Judas brev	Judas	Jud	Judas epistel
 Rev	Uppenbarelseboken	Johannes Uppenbarelse	Upp	Johannes apokalyps
 Tob	Tobit	Tobits bok	Tob
 Jdt	Judit

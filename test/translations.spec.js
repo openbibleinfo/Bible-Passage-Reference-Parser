@@ -1,6 +1,6 @@
 "use strict";
-import { bcv_parser } from "../es/bcv_parser.js";
-import * as lang from "../es/lang/en.js";
+import { bcv_parser } from "../esm/bcv_parser.js";
+import * as lang from "../esm/lang/en.js";
 
 describe("Setting translations", () => {
 	let p = {};
@@ -185,7 +185,7 @@ describe("Adding new translations (programmatically)", () => {
 		// The `E` doesn't throw because the second one defines it.
 		p.add_translations({
 			translations: [
-				{"text": "F", system: "E"},
+				{"text": "F", system: "default"},
 				{"text": "F", system: "E"}
 			],
 			systems: {
@@ -216,10 +216,10 @@ describe("Adding new translations (programmatically)", () => {
 		// Also no `F`.
 		expect(/^\(G\)/.test(p.regexps.translations[0].source)).toEqual(true);
 		expect(p.regexps.translations.length).toEqual(3);
-		// OK because G has already been defined; the system is ignored.
+		// Overwrite G with known system "default"
 		p.add_translations({
 			translations: [
-				{"text": "g", system: "K"}
+				{"text": "g", system: "default"}
 			]});
 		// Unknown versification system K.
 		expect(() => {
@@ -228,6 +228,14 @@ describe("Adding new translations (programmatically)", () => {
 					{"text": "M", system: "K"}
 				]});
 		}).toThrowMatching(add_translations_throw_matcher);
+	});
+	it("shouldn't let you set the system to `current`", () => {
+		expect(() => p.add_translations({
+			translations: [
+				{"text": "R", system: "current"}
+			]
+		})
+		).toThrowMatching(add_translations_throw_matcher);
 	});
 	it("should find the added translations", () => {
 		expect(p.parse("Luke 2 (RVR60)").osis_and_translations()).toEqual([["Luke.2", ""]]);

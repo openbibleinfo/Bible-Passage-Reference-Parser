@@ -1,4 +1,3 @@
-1Chr	इतिहास 1ला भाग
 1Chr	इतिहास १ला भाग
 1Chr	1. Itihas
 1Chr	1. इतिहास
@@ -17,7 +16,9 @@
 1Cor	1. कुरिन्थियो
 1Cor	1 कुरन्थियों
 1Cor	1 कुरिन्थियो
+1Cor	1. कोरिन्थॉस
 1Cor	1. कोरिन्‍थी
+1Cor	1 कोरिन्थॉस
 1Cor	1 कोरिन्‍थी
 1Cor	1. कुरिन्थ
 1Cor	1 कुरिन्थ
@@ -29,8 +30,9 @@
 1John	1. यूहन्ना
 1John	1 युहत्रा
 1John	1 यूहन्ना
+1John	1. योहन
+1John	1 योहन
 1John	1John
-1Kgs	राजाओ का विर्तान्त 1ला भाग्
 1Kgs	राजाओ का विर्तान्त १ला भाग्
 1Kgs	1. राजाओं
 1Kgs	1 राजाओं
@@ -43,13 +45,14 @@
 1Pet	1. Pataras
 1Pet	1 Pataras
 1Pet	1. पत्रुस
+1Pet	1. पेतरॉस
 1Pet	1 पत्रुस
+1Pet	1 पेतरॉस
 1Pet	1. पतरस
 1Pet	1 पतरस
 1Pet	1. पतर
 1Pet	1 पतर
 1Pet	1Pet
-1Sam	शमुऐल की 1ली पुस्तक
 1Sam	शमुऐल की १ली पुस्तक
 1Sam	1. Shamooael
 1Sam	1 Shamooael
@@ -63,22 +66,29 @@
 1Thess	1. थिस्सलुनीकियों
 1Thess	1 थिस्सलुनीकियों
 1Thess	1. थिसलुनिकी
+1Thess	1. थेस्सलोनि
 1Thess	1 थिसलुनिकी
+1Thess	1 थेस्सलोनि
 1Thess	1. थिस्स
+1Thess	1. थेस्स
 1Thess	1 थिस्स
+1Thess	1 थेस्स
 1Thess	1Thess
 1Tim	1. Teemuathaiyus
 1Tim	1 Teemuathaiyus
 1Tim	1. तीमुाथैयुस
 1Tim	1 तीमुाथैयुस
 1Tim	1. तिमुथियुस
+1Tim	1. तिमोथियॉस
 1Tim	1. तीमुथियुस
 1Tim	1 तिमुथियुस
+1Tim	1 तिमोथियॉस
 1Tim	1 तीमुथियुस
+1Tim	1. तिमो
+1Tim	1 तिमो
 1Tim	1. तीम
 1Tim	1 तीम
 1Tim	1Tim
-2Chr	इतिहास 2रा भाग
 2Chr	इतिहास २रा भाग
 2Chr	2. Itihas
 2Chr	2. इतिहास
@@ -97,10 +107,14 @@
 2Cor	2. कुरिन्थियो
 2Cor	2 कुरन्थियों
 2Cor	2 कुरिन्थियो
+2Cor	2. कोरिन्थॉस
 2Cor	2. कोरिन्‍थी
+2Cor	2 कोरिन्थॉस
 2Cor	2 कोरिन्‍थी
 2Cor	2. कुरिन्थ
 2Cor	2 कुरिन्थ
+2Cor	2. कोरि
+2Cor	2 कोरि
 2Cor	2Cor
 2Esd	2Esd
 2John	2. Yoohanna
@@ -109,8 +123,9 @@
 2John	2. यूहन्ना
 2John	2 युहत्रा
 2John	2 यूहन्ना
+2John	2. योहन
+2John	2 योहन
 2John	2John
-2Kgs	राजाओ का विर्तान्त 2रा भाग
 2Kgs	राजाओ का विर्तान्त २रा भाग
 2Kgs	2. राजाओं
 2Kgs	2 राजाओं
@@ -123,13 +138,14 @@
 2Pet	2. Pataras
 2Pet	2 Pataras
 2Pet	2. पत्रुस
+2Pet	2. पेतरॉस
 2Pet	2 पत्रुस
+2Pet	2 पेतरॉस
 2Pet	2. पतरस
 2Pet	2 पतरस
 2Pet	2. पतर
 2Pet	2 पतर
 2Pet	2Pet
-2Sam	शमुऐयल की 2री पुस्तक
 2Sam	शमुऐयल की २री पुस्तक
 2Sam	2. Shamooael
 2Sam	2 Shamooael
@@ -141,7 +157,9 @@
 2Thess	2. Thaissaluneekiyon
 2Thess	2 Thaissaluneekiyon
 2Thess	2. थिस्सलुनीकियों
+2Thess	2. थेस्सलोनिकेयुस
 2Thess	2 थिस्सलुनीकियों
+2Thess	2 थेस्सलोनिकेयुस
 2Thess	2. थिसलुनिकी
 2Thess	2 थिसलुनिकी
 2Thess	2. थिस्स
@@ -152,8 +170,10 @@
 2Tim	2. तीमुाथैयुस
 2Tim	2 तीमुाथैयुस
 2Tim	2. तिमुथियुस
+2Tim	2. तिमोथियॉस
 2Tim	2. तीमुथियुस
 2Tim	2 तिमुथियुस
+2Tim	2 तिमोथियॉस
 2Tim	2 तीमुथियुस
 2Tim	2. तीम
 2Tim	2 तीम
@@ -164,6 +184,8 @@
 3John	3. यूहन्ना
 3John	3 युहत्रा
 3John	3 यूहन्ना
+3John	3. योहन
+3John	3 योहन
 3John	3John
 3Macc	3Macc
 4Macc	4Macc
@@ -171,7 +193,9 @@ Acts	प्रेरितों के कामों
 Acts	Praeriton Ke Kam
 Acts	प्रेरितों के काम
 Acts	मसीह-दूत
+Acts	प्रेरित
 Acts	प्र. क
+Acts	प्रेरि
 Acts	प्र क
 Acts	प्र.क
 Acts	Acts
@@ -183,7 +207,9 @@ Bel	Bel
 Col	Kulussaiyon
 Col	कुलुस्सियों
 Col	कुलुस्‍सी
+Col	कोलोस्सॉय
 Col	कुलुस्सि
+Col	कोलो
 Col	Col
 Dan	Daaniyyel
 Dan	दानिय्येल
@@ -203,6 +229,7 @@ Eccl	सभो
 EpJer	EpJer
 Eph	Iafisiyon
 Eph	इफिसियों
+Eph	इफ़ेसॉस
 Eph	इफिसि
 Eph	इफिसी
 Eph	Eph
@@ -223,6 +250,7 @@ Ezra	Ezra
 Gal	Galatiyon
 Gal	गलातियों
 Gal	गलतियों
+Gal	गलातिया
 Gal	गलाति
 Gal	गलाती
 Gal	Gal
@@ -243,6 +271,7 @@ Heb	Ibraaaniyon
 Heb	इब्रानियों
 Heb	इब्रानि
 Heb	इब्रानी
+Heb	इब्री
 Heb	Heb
 Hos	Hosho
 Hos	होशे
@@ -253,6 +282,7 @@ Isa	यशाया
 Isa	Isa
 Isa	यशा
 Jas	Yakoob
+Jas	याक़ोब
 Jas	याकूब
 Jas	Jas
 Jdt	Jdt
@@ -271,6 +301,7 @@ John	Yuhanna
 John	युहत्रा
 John	यूहन्ना
 John	John
+John	योहन
 Jonah	Jonah
 Jonah	Yona
 Jonah	योना
@@ -279,6 +310,7 @@ Josh	यहोशु
 Josh	यहोशू
 Josh	Josh
 Jude	Yahooda
+Jude	यहूदाह
 Jude	यहूदा
 Jude	Jude
 Judg	न्यायिय का विर्तान्त
@@ -300,13 +332,17 @@ Lev	Lev
 Luke	Looka
 Luke	Luke
 Luke	लूका
+Luke	लूकॉ
 Mal	Malakee
 Mal	मलाकी
 Mal	Mal
 Mark	Marakus
 Mark	मरकुस
 Mark	Mark
+Mark	मारक
+Matt	मत्तियाह
 Matt	Mattee
+Matt	मत्ति
 Matt	मत्ती
 Matt	Matt
 Mic	Meeka
@@ -333,9 +369,11 @@ Obad	Obad
 Obad	ओब
 Phil	Filippaiyon
 Phil	फिलिप्पियों
+Phil	फ़िलिप्पॉय
 Phil	फिलिप्‍पी
 Phil	फिलिप्पि
 Phil	Phil
+Phlm	फ़िलेमोन
 Phlm	Filemon
 Phlm	फिलेमोन
 Phlm	Phlm
@@ -357,14 +395,17 @@ Rev	Prakashaitavakya
 Rev	प्रकाशित-वाक्‍य
 Rev	प्रकाशित वाक्य
 Rev	प्रकाशितवाक्य
+Rev	प्रकाशन
 Rev	प्र. व
 Rev	प्र व
+Rev	प्रका
 Rev	Rev
 Rom	Romiyon
 Rom	रोमियों
 Rom	रोमियो
 Rom	रोमी
 Rom	Rom
+Rom	रोम
 Ruth	Root
 Ruth	Ruth
 Ruth	रुत
@@ -380,6 +421,7 @@ Sus	Sus
 Titus	Teetus
 Titus	Titus
 Titus	तीतुस
+Titus	तीतॉस
 Tob	Tob
 Wis	Wis
 Zech	Jakaryah

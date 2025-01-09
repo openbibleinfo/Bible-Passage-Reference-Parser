@@ -51,33 +51,33 @@ Zeph	सपन्याह	सपन	Sapanyah
 Hag	हाग्गै	हाग्गे	Haggaai
 Zech	जकर्याह	जकयार्ह	Jakaryah
 Mal	मलाकी	Malakee
-Matt	मत्ती	Mattee
-Mark	मरकुस	Marakus
-Luke	लूका	Looka
-John	यूहन्ना	Yuhanna	युहत्रा
-Acts	प्रेरितों के काम	प्र. क	मसीह-दूत	Praeriton Ke Kam	प्रेरितों के कामों
-Rom	रोमियों	रोमी	रोमियो	Romiyon
-1Cor	$FIRST कुरिन्थियों?	$FIRST कुरिन्यि़यों	$FIRST कुरिन्थ	$FIRST कुरन्थियों	$FIRST कोरिन्‍थी	$FIRST Kurinthiayon
-2Cor	$SECOND कुरिन्थियों?	$SECOND कुरिन्यि़यों	$SECOND कुरिन्थ	$SECOND कुरन्थियों	$SECOND कोरिन्‍थी	$SECOND Kurinthiayon
-Gal	गलातियों	गलाति	गलाती	Galatiyon	गलतियों
-Eph	इफिसियों	इफिसि	इफिसी	Iafisiyon
-Phil	फिलिप्पियों	फिलिप्पि	फिलिप्‍पी	Filippaiyon
-Col	कुलुस्सियों	कुलुस्सि	कुलुस्‍सी	Kulussaiyon
-1Thess	$FIRST थिस्सलुनीकियों	$FIRST थिस्स	$FIRST थिसलुनिकी	$FIRST Thaissaluneekiyon
-2Thess	$SECOND थिस्सलुनीकियों	$SECOND थिस्स	$SECOND थिसलुनिकी	$SECOND Thaissaluneekiyon
-1Tim	$FIRST तीमुथियुस	$FIRST तीम	$FIRST तिमुथियुस	$FIRST Teemuathaiyus	$FIRST तीमुाथैयुस
-2Tim	$SECOND तीमुथियुस	$SECOND तीम	$SECOND तिमुथियुस	$SECOND Teemuathaiyus	$SECOND तीमुाथैयुस
-Titus	तीतुस	Teetus
-Phlm	फिलेमोन	फले	Filemon
-Heb	इब्रानियों	इब्रानि	इब्रानी	Ibraaaniyon
-Jas	याकूब	Yakoob
-1Pet	$FIRST पतरस	$FIRST पतर	$FIRST पत्रुस	$FIRST Pataras
-2Pet	$SECOND पतरस	$SECOND पतर	$SECOND पत्रुस	$SECOND Pataras
-1John	$FIRST यूहन्ना	$FIRST Yoohanna	$FIRST युहत्रा
-2John	$SECOND यूहन्ना	$SECOND Yoohanna	$SECOND युहत्रा
-3John	$THIRD यूहन्ना	$THIRD Yoohanna	$THIRD युहत्रा
-Jude	यहूदा	Yahooda
-Rev	प्रकाशित वाक्य	प्र. व	प्रकाशित-वाक्‍य	Prakashaitavakya	प्रकाशितवाक्य
+Matt	मत्ती	Mattee	मत्तियाह	मत्ति
+Mark	मरकुस	Marakus	मारक
+Luke	लूका	Looka	लूकॉ
+John	यूहन्ना	Yuhanna	युहत्रा	योहन
+Acts	प्रेरितों के काम	प्र. क	मसीह-दूत	Praeriton Ke Kam	प्रेरितों के कामों	प्रेरित	प्रेरि
+Rom	रोमियों	रोमी	रोमियो	Romiyon	रोम
+1Cor	$FIRST कुरिन्थियों?	$FIRST कुरिन्यि़यों	$FIRST कुरिन्थ	$FIRST कुरन्थियों	$FIRST कोरिन्‍थी	$FIRST Kurinthiayon	$FIRST कोरिन्थॉस
+2Cor	$SECOND कुरिन्थियों?	$SECOND कुरिन्यि़यों	$SECOND कुरिन्थ	$SECOND कुरन्थियों	$SECOND कोरिन्‍थी	$SECOND Kurinthiayon	$SECOND कोरिन्थॉस	$SECOND कोरि
+Gal	गलातियों	गलाति	गलाती	Galatiyon	गलतियों	गलातिया
+Eph	इफिसियों	इफिसि	इफिसी	Iafisiyon	इफ़ेसॉस
+Phil	फिलिप्पियों	फिलिप्पि	फिलिप्‍पी	Filippaiyon	फ़िलिप्पॉय
+Col	कुलुस्सियों	कुलुस्सि	कुलुस्‍सी	Kulussaiyon	कोलोस्सॉय	कोलो
+1Thess	$FIRST थिस्सलुनीकियों	$FIRST थिस्स	$FIRST थिसलुनिकी	$FIRST Thaissaluneekiyon	$FIRST थेस्सलोनि	$FIRST थेस्स
+2Thess	$SECOND थिस्सलुनीकियों	$SECOND थिस्स	$SECOND थिसलुनिकी	$SECOND Thaissaluneekiyon	$SECOND थेस्सलोनिकेयुस
+1Tim	$FIRST तीमुथियुस	$FIRST तीम	$FIRST तिमुथियुस	$FIRST Teemuathaiyus	$FIRST तीमुाथैयुस	$FIRST तिमोथियॉस	$FIRST तिमो
+2Tim	$SECOND तीमुथियुस	$SECOND तीम	$SECOND तिमुथियुस	$SECOND Teemuathaiyus	$SECOND तीमुाथैयुस	$SECOND तिमोथियॉस
+Titus	तीतुस	Teetus	तीतॉस
+Phlm	फिलेमोन	फले	Filemon	फ़िलेमोन
+Heb	इब्रानियों	इब्रानि	इब्रानी	Ibraaaniyon	इब्री
+Jas	याकूब	Yakoob	याक़ोब
+1Pet	$FIRST पतरस	$FIRST पतर	$FIRST पत्रुस	$FIRST Pataras	$FIRST पेतरॉस
+2Pet	$SECOND पतरस	$SECOND पतर	$SECOND पत्रुस	$SECOND Pataras	$SECOND पेतरॉस
+1John	$FIRST यूहन्ना	$FIRST Yoohanna	$FIRST युहत्रा	$FIRST योहन
+2John	$SECOND यूहन्ना	$SECOND Yoohanna	$SECOND युहत्रा	$SECOND योहन
+3John	$THIRD यूहन्ना	$THIRD Yoohanna	$THIRD युहत्रा	$THIRD योहन
+Jude	यहूदा	Yahooda	यहूदाह
+Rev	प्रकाशित वाक्य	प्र. व	प्रकाशित-वाक्‍य	Prakashaitavakya	प्रकाशितवाक्य	प्रकाशन	प्रका
 Tob	Tob
 Jdt	Jdt
 GkEsth	GkEsth

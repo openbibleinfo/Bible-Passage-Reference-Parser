@@ -312,6 +312,7 @@ Isa	Jes
 Jas	Jakobs epistel
 Jas	Jakobsbrevet
 Jas	Jakobs brev
+Jas	Jakob
 Jas	Jak
 Jas	Jas
 Jdt	Judit
@@ -340,6 +341,7 @@ Josh	Jos
 Jude	Judas epistel
 Jude	Judasbrevet
 Jude	Judas brev
+Jude	Judas
 Jude	Jude
 Jude	Jud
 Judg	Domarboken
@@ -409,6 +411,7 @@ Phil	Phil
 Phil	Fil
 Phlm	Brevet till Filemon
 Phlm	Filemonbrevet
+Phlm	Till Filemon
 Phlm	Filem
 Phlm	Phlm
 PrAzar	Asarias’ bon

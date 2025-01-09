@@ -16,8 +16,8 @@ $UNICODE_BLOCK	Latin
 
 Gen	[GH]enesis	Gen
 Exod	Exodo	Exodus	Exo	Ex
-Lev	Le[bv]itico	Lebitikus	Le[bv]
-Num	Mga Bilang	B[ae]midbar	Bil	Blg
+Lev	Le[bv]itico	Lebitikus	Le[bv]	Leviticus
+Num	Mga Bilang	B[ae]midbar	Bil	Blg	Bilang
 Deut	Deuteronomiy?o	D[ei]?yuteronomyo	Deuteronomi?y?a	Deuteronomio?	Dt	Deut
 Josh	Josué	Joshua	Jos
 Judg	Mga Hukom	Huk	Hukom
@@ -32,7 +32,7 @@ Ezra	Esdras	Ezra
 Neh	Nehemía[hs]	Neh
 Esth	Esth?er	Est
 Job	Job
-Ps	Mga Salmo	Mga Awit	Awit
+Ps	Mga Salmo	Mga Awit	Awit	Salmo
 Prov	Mga Kawikaan	Kaw	Kawikaan
 Eccl	Ecclesiastes	Mangangaral	E[ck]les[iy]astés	E[ck]lis[iy]astes	Kohelet	Manga	Ang Mangangaral	Ec
 Song	Awit ng mga Awit	Awit ni S[ao]lomón	Ang Awit ni S[ao]lomón	Kantiko	Kantikulo	Aw ni S	Ang Awit ng mga Awit	A. ng A.	A ng A
@@ -46,7 +46,7 @@ Joel	Joel	Yole
 Amos	Amós
 Obad	Obadia[hs]	Abdías	Oba
 Jonah	Joná[hs]?	Jon
-Mic	Mikas	Miqueas	Mi[ck]ah?	Mikey?as	Mikieas	Mik
+Mic	Mi[ck]as	Miqueas	Mi[ck]ah?	Mikey?as	Mikieas	Mik
 Nah	Nahúm	Nah
 Hab	Habacuc	Habakk?uk	Hab
 Zeph	Sofonías	Zephania[hs]	Se[fp]anias?	Ze[fp]anias	Zef

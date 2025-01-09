@@ -53,13 +53,9 @@ public add_translations(new_translations: AddTranslationsInterface) {
 	for (const translation of new_translations.translations) {
 		const normalized_translation = this.normalize_sent_translation_data(translation);
 		const insert_key = translation.text.toLowerCase();
-		// If it already exists, either earlier in this loop or globally, don't redefine it. Warn if desired, since it's probably an error.
-		if (normalized_translations[insert_key] != null || this.parent.translations.aliases[insert_key] != null) {
-			if (this.parent.options.warn_level === "warn") {
-				console.warn("add_translations: Not redefining `" + translation.text + "` translation because it already exists");
-			}
-			// No need to create a new RegExp entry or add a system.
-			continue;
+		// Don't replace built-in systems.
+		if (insert_key === "default" || insert_key === "current") {
+			throw new Error("add_translations: Can't redefine `" + insert_key + "` as a translation. This built-in translation can't be redefined");
 		}
 		const system = normalized_translation.system;
 		// If we need to add a new system, ...
@@ -69,14 +65,26 @@ public add_translations(new_translations: AddTranslationsInterface) {
 			) {
 				// ... and the system exists in what was submitted, then add it.
 				if (new_translations.systems != null && new_translations.systems[system] != null) {
+					// Will throw on `default` or `current`.
 					this.add_system(normalized_translation.system, new_translations.systems[system]);
 				// Otherwise, throw an error
 				} else {
-					throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + Object.keys(this.parent.translations.systems).join("`, `") + "`. You may want to check that you included this system in `systems`");
+					let valid_systems = Object.keys(this.parent.translations.systems);
+					valid_systems = valid_systems.filter(system => system !== "current");
+					throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + Object.keys(valid_systems).join("`, `") + "`. You may want to check that you included this system in `systems`");
 				}
+		} else if (system === "current") {
+			throw new Error("add_translations: Can't use `" + system + "` as a versification system for a new translation");
 		}
-		// Only create a new RegExp entry if it's not redefining an existing one.
-		texts_for_regexp.push(translation.text);
+		// If it already exists, either earlier in this loop or globally, redefine it but throw a warning, since it's probably not what's desired.
+		if (normalized_translations[insert_key] != null || this.parent.translations.aliases[insert_key] != null) {
+			if (this.parent.options.warn_level === "warn") {
+				console.warn("add_translations: `" + translation.text + "` already exists. You probably only want to do this if the old definition was wrong");
+			}
+		} else {
+			// Only create a new RegExp entry if it's not redefining an existing one.
+			texts_for_regexp.push(translation.text);
+		}
 		normalized_translations[insert_key] = normalized_translation;
 	}
 	if (texts_for_regexp.length > 0) {

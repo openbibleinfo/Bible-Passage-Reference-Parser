@@ -174,6 +174,7 @@ Eph	엡
 Esth	에스테르기
 Esth	Esth
 Esth	에스더기
+Esth	에스더서
 Esth	에스더
 Esth	에스텔
 Esth	에스
@@ -335,6 +336,7 @@ Nah	나훔서
 Nah	나훔
 Nah	나
 Neh	느헤미야기
+Neh	느헤미야서
 Neh	느헤미아
 Neh	느헤미야
 Neh	Neh
@@ -396,6 +398,7 @@ Sir	벤시라 지혜
 Sir	Sir
 Sir	집회서
 Sir	집회
+Song	솔로몬의 노래
 Song	Song
 Song	아가
 Song	아

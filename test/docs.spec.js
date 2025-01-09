@@ -1,8 +1,8 @@
 "use strict";
-import { bcv_parser } from "../es/bcv_parser.js";
-import * as en from "../es/lang/en.js";
-import * as ascii from "../es/lang/ascii.js";
-import * as full from "../es/lang/full.js";
+import { bcv_parser } from "../esm/bcv_parser.js";
+import * as en from "../esm/lang/en.js";
+import * as ascii from "../esm/lang/ascii.js";
+import * as full from "../esm/lang/full.js";
 
 describe("Documentation compatibility", () => {
 	// The documentation uses the `bcv` variable name instead of the `p` object used in other specs.

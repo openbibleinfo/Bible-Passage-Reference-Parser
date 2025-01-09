@@ -3,7 +3,8 @@
 const lang = "en";
 
 import * as fs from "fs";
-const { bcv_parser } = await import(`../es/${lang}_bcv_parser.js`);
+import { bcv_parser } from "../esm/bcv_parser.js";
+const lang_data = await import(`../esm/lang/${lang}.js`);
 const max_length = 100;
 
 function get_abbrevs(lang) {
@@ -102,7 +103,7 @@ function build_nested_string(text) {
 	return text;
 };
 
-const bcv = new bcv_parser();
+const bcv = new bcv_parser(lang_data);
 const possibles = {
 	book: get_abbrevs(lang),
 	translation: get_translations(lang),

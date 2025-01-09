@@ -47,11 +47,11 @@ match_end_split = new RegExp(String.raw`
 control = /[\x1e\x1f]/g;
 
 // These are needed for ranges outside of this class.
-first = String.raw`$FIRST\.?\s*`;
-second = String.raw`$SECOND\.?\s*`;
-third = String.raw`$THIRD\.?\s*`;
-range_and = String.raw`(?:[&\u2013\u2014-]|$AND|$TO)`;
-range_only = String.raw`(?:[\u2013\u2014-]|$TO)`;
+first = /$FIRST\.?\s*/;
+second = /$SECOND\.?\s*/;
+third = /$THIRD\.?\s*/;
+range_and = /(?:[&\u2013\u2014-]|$AND|$TO)/;
+range_only = /(?:[\u2013\u2014-]|$TO)/;
 
 pre_book = /$FULL_PRE_BOOK_ALLOWED_CHARACTERS/gu;
 pre_number_book = /$FULL_PRE_NUMBER_BOOK_ALLOWED_CHARACTERS/gu;
