@@ -503,6 +503,7 @@
 1Chr	1 Pa
 1Chr	1Chr
 1Chr	1Taw
+1Chr	1tow
 1Chr	I Pa
 1Cor	Perse poslannja apostola Pavla do korynfjan
 1Cor	Ensimmainen Kirje korinttilaisille
@@ -1428,12 +1429,14 @@
 1Cor	1 Kor
 1Cor	1 Qor
 1Cor	1. Co
+1Cor	1qrnt
 1Cor	I Cor
 1Cor	I Kor
 1Cor	I. Co
 1Cor	1 Co
 1Cor	1Cor
 1Cor	1Kor
+1Cor	1qrn
 1Cor	I Co
 1Cor	1qr
 1Esd	Kitabu cha Kwanza cha Ezra
@@ -2076,6 +2079,7 @@
 1John	1. Jn
 1John	1. Jo
 1John	1John
+1John	1yohn
 1John	I Jan
 1John	I Jhn
 1John	I Joh
@@ -2095,6 +2099,7 @@
 1John	1 Jo
 1John	1. J
 1John	1Yoh
+1John	1yoh
 1John	I Gi
 1John	I In
 1John	I Jh
@@ -3406,6 +3411,8 @@
 1Pet	AvvalPataris
 1Pet	AvvalPatrasa
 1Pet	AvvalPatriss
+1Pet	AvvalPetrasi
+1Pet	AvvalPetrosi
 1Pet	Avvalpataris
 1Pet	Avvalpatrasa
 1Pet	Avvalpatriss
@@ -3432,8 +3439,12 @@
 1Pet	Avval peter
 1Pet	AvvalPatras
 1Pet	AvvalPatris
+1Pet	AvvalPatros
 1Pet	AvvalPatrus
 1Pet	AvvalPeters
+1Pet	AvvalPetras
+1Pet	AvvalPetros
+1Pet	AvvalPetrus
 1Pet	Avvalpatras
 1Pet	Avvalpatris
 1Pet	Avvalpatrus
@@ -3478,6 +3489,7 @@
 1Pet	Yek patris
 1Pet	Yek patrus
 1Pet	Yek peters
+1Pet	YekPetrasi
 1Pet	Yekpataris
 1Pet	Yekpatrasa
 1Pet	Yekpatriss
@@ -3503,6 +3515,7 @@
 1Pet	1st Peter
 1Pet	1st. Pete
 1Pet	1st. Petr
+1Pet	1stPetros
 1Pet	First Per
 1Pet	First Pet
 1Pet	First Ptr
@@ -3516,6 +3529,10 @@
 1Pet	I. Piotra
 1Pet	Una Pedro
 1Pet	Yek peter
+1Pet	YekPeters
+1Pet	YekPetras
+1Pet	YekPetros
+1Pet	YekPetrus
 1Pet	Yekpatras
 1Pet	Yekpatris
 1Pet	Yekpatrus
@@ -3549,7 +3566,9 @@
 1Pet	1st. Per
 1Pet	1st. Pet
 1Pet	1st. Ptr
+1Pet	1stPeter
 1Pet	AvvalPet
+1Pet	AvvalPtr
 1Pet	Elso Pet
 1Pet	First Pe
 1Pet	First Pt
@@ -3567,6 +3586,7 @@
 1Pet	I. Petru
 1Pet	I. Piotr
 1Pet	Prvni Pt
+1Pet	YekPeter
 1Pet	Yekpeter
 1Pet	1 Pedro
 1Pet	1 Peter
@@ -3617,6 +3637,7 @@
 1Pet	1. Pye
 1Pet	1Peter
 1Pet	1e Pet
+1Pet	1ptrus
 1Pet	1st Pe
 1Pet	1st Pt
 1Pet	1st. P
@@ -3630,6 +3651,8 @@
 1Pet	I. Pie
 1Pet	I. Ptr
 1Pet	I. Pye
+1Pet	YekPet
+1Pet	YekPtr
 1Pet	1 But
 1Pet	1 PHe
 1Pet	1 Ped
@@ -3658,6 +3681,7 @@
 1Pet	1 Pt
 1Pet	1. P
 1Pet	1Pet
+1Pet	1ptr
 1Pet	I Pe
 1Pet	I Pt
 1Pet	I. P
@@ -4054,6 +4078,7 @@
 1Sam	1 Sm
 1Sam	1. S
 1Sam	1Sam
+1Sam	1smu
 1Sam	I Sa
 1Sam	I Sm
 1Sam	I. S
@@ -4964,6 +4989,7 @@
 1Thess	1 Ths
 1Thess	1. Te
 1Thess	1. Th
+1Thess	1tsln
 1Thess	I Sol
 1Thess	I Tes
 1Thess	I The
@@ -4973,8 +4999,10 @@
 1Thess	1 Te
 1Thess	1 Th
 1Thess	1 Ts
+1Thess	1tsl
 1Thess	I Te
 1Thess	I Th
+1Thess	1ts
 1Tim	Perse poslannja apostola Pavla do Tymofija
 1Tim	Ensimmainen Kirje Timoteukselle
 1Tim	Pavlova prva poslanica Timoteju
@@ -5090,6 +5118,7 @@
 1Tim	AvvalTimotaios
 1Tim	AvvalTimoteous
 1Tim	AvvalTimothaos
+1Tim	AvvalTimotheos
 1Tim	AvvalTimotheus
 1Tim	AvvalstTimothy
 1Tim	First Thimothy
@@ -5166,7 +5195,9 @@
 1Tim	Pierwsza Tym
 1Tim	Pierwsze Tym
 1Tim	Pierwszy Tym
+1Tim	YekTimoteous
 1Tim	YekTimothaos
+1Tim	YekTimotheos
 1Tim	YekTimotheus
 1Tim	1 Timoteovi
 1Tim	1 Timoteyos
@@ -5202,6 +5233,7 @@
 1Tim	I. Timotius
 1Tim	Timotheum I
 1Tim	Una Timoteo
+1Tim	YekTimotaos
 1Tim	YekTimoteos
 1Tim	YekTimoteus
 1Tim	1 Thimothy
@@ -5239,6 +5271,7 @@
 1Tim	I. Tomothy
 1Tim	Kwanza Tim
 1Tim	Timotheo I
+1Tim	YekTimothy
 1Tim	1 Thimoty
 1Tim	1 Timotei
 1Tim	1 Timoteo
@@ -5260,6 +5293,9 @@
 1Tim	I. Timoth
 1Tim	I. Timoty
 1Tim	Prvni Tim
+1Tim	Timoteous
+1Tim	Timotheos
+1Tim	Timotheus
 1Tim	1 Timote
 1Tim	1 Timoth
 1Tim	1 Timoty
@@ -5287,6 +5323,7 @@
 1Tim	I. Tim
 1Tim	I. Tym
 1Tim	Timoth
+1Tim	YekTim
 1Tim	1 Tim
 1Tim	1 Tym
 1Tim	1 Xim
@@ -5778,6 +5815,7 @@
 2Chr	2 Pa
 2Chr	2Chr
 2Chr	2Taw
+2Chr	2tow
 2Cor	Druhe poslannja apostola Pavla do korynfjan
 2Cor	Pavlova druga poslanica Korincanima
 2Cor	Paulus' Andet Brev til Korintherne
@@ -6638,10 +6676,12 @@
 2Cor	2 Kor
 2Cor	2 Qor
 2Cor	2. Co
+2Cor	2qrnt
 2Cor	II Co
 2Cor	2 Co
 2Cor	2Cor
 2Cor	2Kor
+2Cor	2qrn
 2Cor	2qr
 2Esd	Kitabu cha Pili cha Ezra
 2Esd	Druga Ksiega Ezdrasza
@@ -7275,6 +7315,7 @@
 2John	2. Jn
 2John	2. Jo
 2John	2John
+2John	2yohn
 2John	II Gi
 2John	II In
 2John	II Jh
@@ -7291,6 +7332,7 @@
 2John	2 Jo
 2John	2. J
 2John	2Yoh
+2John	2yoh
 2John	II J
 2John	2 J
 2John	2yo
@@ -8589,6 +8631,7 @@
 2Pet	II San Pedro
 2Pet	II. Pietarin
 2Pet	Second Peter
+2Pet	SecondPetros
 2Pet	2 San Pedro
 2Pet	2 e Pjetrit
 2Pet	2 i Pjetrit
@@ -8604,8 +8647,12 @@
 2Pet	Dovom peter
 2Pet	DovomPatras
 2Pet	DovomPatris
+2Pet	DovomPatros
 2Pet	DovomPatrus
 2Pet	DovomPeters
+2Pet	DovomPetras
+2Pet	DovomPetros
+2Pet	DovomPetrus
 2Pet	Dovompatras
 2Pet	Dovompatris
 2Pet	Dovompatrus
@@ -8617,6 +8664,7 @@
 2Pet	Masodik Pet
 2Pet	Second Pete
 2Pet	Second Petr
+2Pet	SecondPeter
 2Pet	Tweede Petr
 2Pet	2 Patrissi
 2Pet	2 Pietarin
@@ -8678,6 +8726,7 @@
 2Pet	2nd Peter
 2Pet	2nd. Pete
 2Pet	2nd. Petr
+2Pet	2ndPetros
 2Pet	2o. Pedro
 2Pet	Anden Pet
 2Pet	Andre Pet
@@ -8731,13 +8780,21 @@
 2Pet	2nd. Per
 2Pet	2nd. Pet
 2Pet	2nd. Ptr
+2Pet	2ndPeter
 2Pet	2o Pedro
 2Pet	Do peter
+2Pet	DoPatras
+2Pet	DoPatros
+2Pet	DoPeters
+2Pet	DoPetras
+2Pet	DoPetros
+2Pet	DoPetrus
 2Pet	Dopatras
 2Pet	Dopatris
 2Pet	Dopatrus
 2Pet	Dopeters
 2Pet	DovomPet
+2Pet	DovomPtr
 2Pet	Druha Pt
 2Pet	Druhy Pt
 2Pet	II Pedro
@@ -8776,6 +8833,8 @@
 2Pet	2nd Ptr
 2Pet	2nd. Pe
 2Pet	2nd. Pt
+2Pet	DoPeter
+2Pet	DoPtrus
 2Pet	Dopeter
 2Pet	Druha P
 2Pet	Druhy P
@@ -8805,6 +8864,7 @@
 2Pet	2nd Pe
 2Pet	2nd Pt
 2Pet	2nd. P
+2Pet	2ptrus
 2Pet	II But
 2Pet	II Per
 2Pet	II Pet
@@ -8825,6 +8885,8 @@
 2Pet	2. Pe
 2Pet	2. Pt
 2Pet	2nd P
+2Pet	DoPet
+2Pet	DoPtr
 2Pet	II Pe
 2Pet	II Pt
 2Pet	II. P
@@ -8835,6 +8897,7 @@
 2Pet	2 Pt
 2Pet	2. P
 2Pet	2Pet
+2Pet	2ptr
 2Pet	II P
 2Pet	2 P
 2Pet	2pt
@@ -9219,6 +9282,7 @@
 2Sam	2 Sm
 2Sam	2. S
 2Sam	2Sam
+2Sam	2smu
 2Sam	II S
 2Sam	2 S
 2Sam	2Sa
@@ -10085,11 +10149,14 @@
 2Thess	2 Ths
 2Thess	2. Te
 2Thess	2. Th
+2Thess	2tsln
 2Thess	II Te
 2Thess	II Th
 2Thess	2 Te
 2Thess	2 Th
 2Thess	2 Ts
+2Thess	2tsl
+2Thess	2ts
 2Tim	Druhe poslannja apostola Pavla do Tymofija
 2Tim	Paulus' Andet Brev til Timotheus
 2Tim	Paulus’ Andet Brev til Timotheus
@@ -10185,6 +10252,7 @@
 2Tim	2. Timoteusbrev
 2Tim	DovomTimothaeus
 2Tim	DovomTimothaios
+2Tim	DovvomTimotheos
 2Tim	Druha Timoteovi
 2Tim	Druhy Timoteovi
 2Tim	II. Kay Timoteo
@@ -10210,6 +10278,7 @@
 2Tim	DovomTimotaios
 2Tim	DovomTimoteous
 2Tim	DovomTimothaos
+2Tim	DovomTimotheos
 2Tim	DovomTimotheus
 2Tim	Druga Timoteju
 2Tim	Druha Timoteus
@@ -10240,6 +10309,7 @@
 2Tim	DovomTimotaos
 2Tim	DovomTimoteos
 2Tim	DovomTimoteus
+2Tim	DovvomTimothy
 2Tim	II Timotejovi
 2Tim	II Timotheosz
 2Tim	II Tymoteusza
@@ -10341,6 +10411,7 @@
 2Tim	2a Timoteo
 2Tim	2nd Timoth
 2Tim	2nd Timoty
+2Tim	2ndTimothy
 2Tim	2o Timoteo
 2Tim	DoTimoteos
 2Tim	DoTimoteus
@@ -10367,6 +10438,7 @@
 2Tim	2Timoteus
 2Tim	Anden Tim
 2Tim	Andre Tim
+2Tim	DoTimothy
 2Tim	Druha Tim
 2Tim	Druhy Tim
 2Tim	II Timote
@@ -10885,6 +10957,7 @@
 3John	3. Jn
 3John	3. Jo
 3John	3John
+3John	3yohn
 3John	III J
 3John	3 Gi
 3John	3 Gj
@@ -10896,6 +10969,7 @@
 3John	3 Jo
 3John	3. J
 3John	3Yoh
+3John	3yoh
 3John	3 J
 3John	3yo
 3Macc	Treca knjiga o Makabejcima
@@ -12140,6 +12214,7 @@ Acts	Apostelgjerningene
 Acts	Apostlagarningarna
 Acts	Atos dos Apostolos
 Acts	Dzieje Apostolskie
+Acts	Karhay Rasulan-haa
 Acts	Veprat e Apostujve
 Acts	Veprat e apostujve
 Acts	Actes des Apotres
@@ -12148,6 +12223,9 @@ Acts	Ang Mga Binuhatan
 Acts	Apostelgeschichte
 Acts	Fapte Apostolilor
 Acts	Gawa ng Apostoles
+Acts	Karhay e Rasoolan
+Acts	Karhay-e-Rasoolan
+Acts	Karhaye Rasulanha
 Acts	Kisah Rasul-rasul
 Acts	Matendo ya Mitume
 Acts	Skutky apostolske
@@ -12158,6 +12236,13 @@ Acts	Amaal-e-Rusuleen
 Acts	A’mal e Rusuleen
 Acts	A’mal-e-Rusuleen
 Acts	Djela apostolska
+Acts	Karhay Rasulanha
+Acts	Karhay e Rasulan
+Acts	Karhay e Rusulan
+Acts	Karhay-e-Rasulan
+Acts	Karhay-e-Rusulan
+Acts	Karhaye Rasoolan
+Acts	Karhaye Rasoolha
 Acts	Kisah Para Rasul
 Acts	Praeriton Ke Kam
 Acts	Skutky apostolov
@@ -12171,6 +12256,10 @@ Acts	Amal-e-Rusuleen
 Acts	Apostolien teot
 Acts	A’mal e Rusulan
 Acts	A’mal-e-Rusulan
+Acts	Karha e Rasulan
+Acts	Karha-e-Rasulan
+Acts	Karhaye Rasulan
+Acts	Karhaye Rusulan
 Acts	Skutky apostolu
 Acts	A'maal e Rusul
 Acts	A'maal-e-Rusul
@@ -12180,6 +12269,10 @@ Acts	Amal e Rusulan
 Acts	Amal-e-Rusulan
 Acts	A’maal e Rusul
 Acts	A’maal-e-Rusul
+Acts	Karha e Rasool
+Acts	Karha-e-Rasool
+Acts	Karhay Rasulan
+Acts	Karhay Rusulha
 Acts	Kis Para Rasul
 Acts	Travay apot yo
 Acts	A'mal e Rusul
@@ -12187,10 +12280,15 @@ Acts	A'mal-e-Rusul
 Acts	Amaal Rusulan
 Acts	A’mal e Rusul
 Acts	A’mal-e-Rusul
+Acts	Karhay Rasool
+Acts	Karhay Rusool
+Acts	Karhaye Rasul
+Acts	Karhaye Rusul
 Acts	Amal e Rusul
 Acts	Amal-e-Rusul
 Acts	Cselekedetek
 Acts	Dzieje Apost
+Acts	Karhay Rusul
 Acts	Postulasagan
 Acts	Handelingen
 Acts	Los Hechos
@@ -12437,8 +12535,10 @@ Col	List Koloskym
 Col	Mga Colosense
 Col	Mga Kolosense
 Col	Taga- Colosas
+Col	Kolosiyanian
 Col	Kolossensern
 Col	Kolossenskym
+Col	Kolossianian
 Col	Taga Colosas
 Col	Taga-Colosas
 Col	Callossians
@@ -12447,7 +12547,9 @@ Col	Colossenzen
 Col	Colossiyans
 Col	Kolosenskym
 Col	Kolosianeve
+Col	Kolosiyanun
 Col	Kolossenzen
+Col	Kolusiyanun
 Col	Kulussaiyon
 Col	Qolasiyaasa
 Col	Calassians
@@ -12469,9 +12571,14 @@ Col	Colossiaid
 Col	Colossians
 Col	Colossiens
 Col	Colossions
+Col	Colossiyun
+Col	Kalossiyan
 Col	Kolosanima
 Col	Kolosensow
+Col	Kolosiyoon
 Col	Kolosserne
+Col	Kolusiyans
+Col	Kolussiyan
 Col	Calasians
 Col	Calasions
 Col	Calosians
@@ -12484,24 +12591,32 @@ Col	Colosions
 Col	Colossans
 Col	Colossesi
 Col	Colossian
+Col	Colusiyan
 Col	Kolosanom
 Col	Kolosanum
+Col	Kolosiyan
 Col	Kolosiyun
 Col	Kolusians
+Col	Kolusiyan
 Col	Kolusiyun
 Col	Kolusyans
 Col	Wakolosai
 Col	Coloseni
+Col	Colusian
 Col	Kolosian
 Col	Koloskym
 Col	Kolosser
+Col	Kolossiy
 Col	Kolosyen
 Col	Kolusian
 Col	Colosas
 Col	Kolosan
 Col	Kolosas
 Col	Kolosay
+Col	Kolosia
+Col	Kolosiy
 Col	Kolosse
+Col	Kulusiy
 Col	Coloss
 Col	Kolose
 Col	Colos
@@ -12696,6 +12811,7 @@ Deut	Femte Mos
 Deut	Tessniyeh
 Deut	V Mosebok
 Deut	5. Mozes
+Deut	Deut-ieh
 Deut	Dewariem
 Deut	Tesniyeh
 Deut	V. Mozes
@@ -12704,9 +12820,16 @@ Deut	5. Mojz
 Deut	5. Mose
 Deut	Mozes V
 Deut	Tasnieh
+Deut	Tesn-ha
+Deut	Tesn-ie
 Deut	Tesniah
 Deut	Tesnieh
 Deut	Tesnyeh
+Deut	Tessieh
+Deut	Tessiyh
+Deut	Tessnie
+Deut	Tessnyh
+Deut	Tsn-ieh
 Deut	Ulangan
 Deut	V Mozes
 Deut	V. Mojz
@@ -12715,8 +12838,10 @@ Deut	5 Mojz
 Deut	5 Moos
 Deut	5 Mose
 Deut	5. Mos
+Deut	Dtrnmy
 Deut	Sharci
 Deut	Tesnah
+Deut	Tsn-ha
 Deut	V Mojz
 Deut	V. Mos
 Deut	anuwad
@@ -12724,7 +12849,9 @@ Deut	5 Moj
 Deut	5 Mos
 Deut	5 Moz
 Deut	5. Mo
+Deut	Dt-ie
 Deut	MTorv
+Deut	Tessn
 Deut	V Moj
 Deut	V Mos
 Deut	5 Mo
@@ -12732,6 +12859,8 @@ Deut	5 Mz
 Deut	Deut
 Deut	Duet
 Deut	Kumb
+Deut	Tesn
+Deut	Tess
 Deut	ZarW
 Deut	5 M
 Deut	Det
@@ -12741,6 +12870,7 @@ Deut	Kum
 Deut	LiP
 Deut	Pnz
 Deut	Pwt
+Deut	Tsn
 Deut	tsn
 Deut	De
 Deut	Dt
@@ -13048,6 +13178,7 @@ Eph	Efeserbrevet
 Eph	Efezusiakhoz
 Eph	Taga- Efesio
 Eph	Taga- Epesio
+Eph	Afesiyanian
 Eph	Taga Efesio
 Eph	Taga Epesio
 Eph	Taga- Efeso
@@ -13070,6 +13201,7 @@ Eph	Afesisyan
 Eph	Afesisyun
 Eph	Afesiyoon
 Eph	Afesiyyan
+Eph	Afessiyan
 Eph	Afessiyon
 Eph	Afessiyun
 Eph	Afisisian
@@ -13092,9 +13224,15 @@ Eph	Ephisians
 Eph	Iafisiyon
 Eph	Mga Efeso
 Eph	Mga Epeso
+Eph	Afesiyan
+Eph	Afesiyun
+Eph	Afisiyan
 Eph	Afisiyun
+Eph	Afissian
 Eph	Afisyani
 Eph	Afisyoon
+Eph	Afsiyoon
+Eph	Afssiyan
 Eph	Efeserne
 Eph	Efezanom
 Eph	Efeziers
@@ -13107,7 +13245,9 @@ Eph	Ephesios
 Eph	Ephisian
 Eph	Ephsians
 Eph	Afesian
+Eph	Afesyan
 Eph	Afisian
+Eph	Afsiyan
 Eph	Efeseni
 Eph	Efesini
 Eph	Efesios
@@ -13128,6 +13268,7 @@ Eph	Efese
 Eph	Efeso
 Eph	Epeso
 Eph	Ephes
+Eph	Afso
 Eph	Efes
 Eph	Efez
 Eph	Efis
@@ -13555,9 +13696,11 @@ Gal	Galatiyunians
 Gal	Taga- Galacia
 Gal	galatiharulai
 Gal	Galatenbrief
+Gal	Galatianians
 Gal	Taga Galacia
 Gal	Taga-Galacia
 Gal	galatikarams
+Gal	Galatianian
 Gal	Galaatiyaa
 Gal	Galacanima
 Gal	Galataians
@@ -13567,6 +13710,7 @@ Gal	Galatiaans
 Gal	Galatiains
 Gal	Galatianas
 Gal	Galatianis
+Gal	Galatianun
 Gal	Galatiians
 Gal	Galatiions
 Gal	Galatinans
@@ -13576,6 +13720,7 @@ Gal	Galationns
 Gal	Galatiyans
 Gal	Gallatians
 Gal	Gallations
+Gal	Ghalatians
 Gal	Ghalatiyan
 Gal	Ghalatiyun
 Gal	ad Galatas
@@ -13591,12 +13736,16 @@ Gal	Galatians
 Gal	Galatiins
 Gal	Galatinas
 Gal	Galations
+Gal	Galatiyan
 Gal	Galatiyon
 Gal	Galatiyun
 Gal	Galatoans
 Gal	Galatskym
 Gal	Gallatins
 Gal	Ghalatian
+Gal	Ghalatiun
+Gal	Ghalatyan
+Gal	Ghalatyon
 Gal	Wagalatia
 Gal	Ga-la-ti
 Gal	Galacjan
@@ -13607,8 +13756,11 @@ Gal	Galatian
 Gal	Galatias
 Gal	Galatins
 Gal	Galatios
+Gal	Galatiun
 Gal	Galatiya
 Gal	Galatons
+Gal	Galatyan
+Gal	Galatyon
 Gal	Galacia
 Gal	Galasia
 Gal	Galatas
@@ -14015,20 +14167,37 @@ Hag	Ks. Aggeusza
 Hag	Haggais bok
 Hag	Haggajs Bog
 Hag	Ks Aggeusza
+Hag	Haggai-ya
+Hag	Haggay-ya
+Hag	Hajjay-ya
 Hag	Liv Aje a
 Hag	Aggeusza
+Hag	Haggai-i
+Hag	Haggaiya
+Hag	Haggai’y
+Hag	Hajjay-i
 Hag	Aggaeus
 Hag	Haggaai
+Hag	Haggaii
 Hag	Haggain
 Hag	Haggeus
+Hag	Haggi-i
 Hag	Haggiah
 Hag	Haggiai
+Hag	Haggiya
+Hag	Hajiyah
+Hag	Hajiyay
 Hag	Aggeus
 Hag	Ha-gai
+Hag	Hag-ya
 Hag	Haggai
 Hag	Haggaj
 Hag	Haggay
 Hag	Haggeo
+Hag	Hag’ya
+Hag	Hajjai
+Hag	Hajjay
+Hag	Hajjiy
 Hag	Xaggay
 Hag	haggay
 Hag	A-gai
@@ -14036,6 +14205,7 @@ Hag	Ageus
 Hag	Aggee
 Hag	Aggeo
 Hag	Agheu
+Hag	Hag-i
 Hag	Hagai
 Hag	Hagaj
 Hag	Hagay
@@ -14044,6 +14214,7 @@ Hag	Hageo
 Hag	Hagga
 Hag	Haggi
 Hag	Haggy
+Hag	Hagya
 Hag	Hajai
 Hag	Agai
 Hag	Agej
@@ -14051,6 +14222,7 @@ Hag	Ageo
 Hag	Ageu
 Hag	Hagg
 Hag	Hagi
+Hag	Hagy
 Hag	Ohij
 Hag	Xagg
 Hag	Agg
@@ -14243,42 +14415,95 @@ Hos	Hoosean kirja
 Hos	Hoseas’ Bog
 Hos	Ks. Ozeasza
 Hos	Hoseas bok
+Hos	Hosha-i-ya
+Hos	Hosha-y-ya
+Hos	Hoziah-haa
+Hos	Hoziyah-ha
+Hos	Husha-i-ya
+Hos	Husha-y-ya
 Hos	Ks Ozeasza
 Hos	Hoosheeca
+Hos	Hoseya-ha
+Hos	Hoshay-ya
+Hos	Hoziah-ha
 Hos	Liv Oze a
+Hos	Hosee-ya
 Hos	Hoshaeah
+Hos	Hoshiyah
+Hos	Hosia-ya
+Hos	Hos’iyaa
+Hos	Hozaiyah
+Hos	Hozia-ya
+Hos	Husaiyah
+Hos	Hushia-y
+Hos	Hushiyah
+Hos	hushaiya
 Hos	Hoose7a
 Hos	Hoosean
+Hos	Hosea’y
+Hos	Hoseiah
 Hos	Hoseias
+Hos	Hosha-i
+Hos	Hosha’y
 Hos	Hosheah
+Hos	Hosia’y
+Hos	Hosiyah
+Hos	Hozaiah
+Hos	Hozayah
+Hos	Hozia-y
+Hos	Hozia’y
+Hos	Hoziyah
+Hos	Husha-i
 Hos	Hushaeh
+Hos	Husha’y
 Hos	Husheah
+Hos	Hushiya
+Hos	Huzayah
 Hos	Ozeasza
 Hos	hosh'ai
 Hos	hosh’ai
+Hos	hushaia
+Hos	Hosaya
 Hos	Hoseas
 Hos	Hoseia
+Hos	Hoseya
 Hos	Hoshae
 Hos	Hoshea
+Hos	Hoshia
+Hos	Hosiya
 Hos	Hozeas
+Hos	Hoziaa
+Hos	Hoziah
+Hos	Hoziya
 Hos	Hushae
 Hos	Hushea
+Hos	Hushia
 Hos	Oseiah
 Hos	Oseias
 Hos	hosh'a
 Hos	hosh’a
+Hos	huzaiy
+Hos	huziaa
+Hos	huziah
 Hos	Hoosh
 Hos	Hosea
+Hos	Hosha
 Hos	Hoshe
 Hos	Hosho
+Hos	Hoshu
+Hos	Hozia
 Hos	Husha
 Hos	Hushe
+Hos	Hushi
+Hos	Huzia
 Hos	Oseah
 Hos	Oseas
 Hos	Oseia
 Hos	Osija
 Hos	Ozeas
 Hos	hosey
+Hos	huzai
+Hos	huzia
 Hos	Hoos
 Hos	Osea
 Hos	Osee
@@ -14591,28 +14816,55 @@ Jer	Ksiega Jeremiasza
 Jer	Ksiegi Jeremiasza
 Jer	Sulat ni Jeremias
 Jer	yarmiyako pustak
+Jer	Irmeiyaah-ha-ha
+Jer	Yirmeiaah-ha-ha
+Jer	yirmiyaah-ha-ha
 Jer	Jeremian kirja
 Jer	Ks. Jeremiasza
 Jer	Liber Ieremiae
+Jer	Armiaah-ha-ha
 Jer	Jeremias' Bog
 Jer	Jeremias’ Bog
 Jer	Ks Jeremiasza
 Jer	Liv Jeremi an
+Jer	Irmeiyaah-ha
 Jer	Jeremias bok
+Jer	Yirmeiaah-ha
+Jer	yirmiyaah-ha
+Jer	Ermeyiah-ha
+Jer	Armiaah-ha
 Jer	Jeremiasza
+Jer	yirmiiyaah
+Jer	Aarmiiaah
+Jer	Aarmiiyah
+Jer	Aermiiaah
+Jer	Aermiiyah
 Jer	Erm'yaaha
+Jer	Ermeyiaah
+Jer	Ermeyiaha
+Jer	Ermiiyaah
 Jer	Erm’yaaha
 Jer	Irm'yaaha
+Jer	Irmeiyaah
 Jer	Irm’yaaha
 Jer	Jeremaiah
 Jer	Yeremyaah
+Jer	Yirmeiaah
 Jer	Yrm'yaaha
+Jer	Yrmiiyaah
 Jer	Yrm’yaaha
 Jer	yarmiyako
+Jer	yirmiiyaa
+Jer	yirmiyaah
+Jer	Aarmiyaa
+Jer	Aermiyaa
+Jer	Armiiyah
 Jer	Erm'yaah
 Jer	Ermeiyah
 Jer	Ermeyaah
 Jer	Ermeyahh
+Jer	Ermiiyah
+Jer	Ermiyaah
 Jer	Ermmaasa
 Jer	Erm’yaah
 Jer	Heremias
@@ -14627,6 +14879,9 @@ Jer	Ieremias
 Jer	Irmeiyah
 Jer	Irmeyaah
 Jer	Irmeyahh
+Jer	Irmiiyaa
+Jer	Irmiiyah
+Jer	Irmiyaah
 Jer	Jeramaih
 Jer	Jeramiah
 Jer	Jeramiha
@@ -14647,7 +14902,14 @@ Jer	Yrm'yaah
 Jer	Yrmeiyah
 Jer	Yrmeyaah
 Jer	Yrmeyahh
+Jer	Yrmiiyaa
+Jer	Yrmiiyah
 Jer	Yrm’yaah
+Jer	yirmiiya
+Jer	Armeyaa
+Jer	Armeyah
+Jer	Armiaah
+Jer	Armiyaa
 Jer	Erm'iah
 Jer	Erm'yaa
 Jer	Ermeyaa
@@ -14656,6 +14918,7 @@ Jer	Ermia'h
 Jer	Ermiaah
 Jer	Ermiaha
 Jer	Ermia’h
+Jer	Ermiyaa
 Jer	Ermiyah
 Jer	Erm’iah
 Jer	Erm’yaa
@@ -15184,24 +15447,75 @@ Jonah	Liv Jonas la
 Jonah	Ks. Jonasza
 Jonah	Jonas' Bog
 Jonah	Jonas’ Bog
+Jonah	Joonasse-i
+Jonah	Joonasse-y
 Jonah	Ks Jonasza
 Jonah	Jonas bok
+Jonah	Jonasse-i
+Jonah	Jonasse-y
+Jonah	Joonassah
 Jonah	Jona bok
+Jonah	Jonasseh
+Jonah	Jounisse
 Jonah	Yoonaasa
+Jonah	Yoonus-i
+Jonah	Yoonus-y
+Jonah	Younas-i
+Jonah	Younas-y
+Jonah	Younasse
+Jonah	Jonasah
+Jonah	Jonasse
+Jonah	Jonassi
 Jonah	Jonasza
+Jonah	Joonase
+Jonah	Joonass
+Jonah	Jounasi
+Jonah	Yonas-i
+Jonah	Yonas-y
+Jonah	Yonasah
+Jonah	Yoonass
 Jonah	Yooness
+Jonah	Yoonisi
+Jonah	Yoonoss
+Jonah	Yoonusi
+Jonah	Yoonuss
+Jonah	Younass
+Jonah	Younesi
+Jonah	Younisi
+Jonah	Younusi
+Jonah	Younuss
+Jonah	Yunasah
+Jonah	Yunus-i
+Jonah	Yunus-y
 Jonah	Jonahs
 Jonah	Jonase
+Jonah	Jonasi
 Jonah	Jonass
+Jonah	Joniss
 Jonah	Joonan
 Jonah	Joonas
 Jonah	Joonis
 Jonah	Jounas
+Jonah	Jounis
+Jonah	Yonass
+Jonah	Yonese
+Jonah	Yonisi
+Jonah	Yonusi
+Jonah	Yonuss
 Jonah	Yoonas
 Jonah	Yoones
 Jonah	Yoonis
+Jonah	Yoonus
 Jonah	Younas
+Jonah	Younes
 Jonah	Younis
+Jonah	Younus
+Jonah	Yunass
+Jonah	Yunese
+Jonah	Yunisi
+Jonah	Yunuse
+Jonah	Yunusi
+Jonah	Yunuss
 Jonah	Giona
 Jonah	Ionas
 Jonah	Jonah
@@ -15307,6 +15621,7 @@ Jude	Judasarbref
 Jude	Judasbrevet
 Jude	Judas’ Brev
 Jude	Judas’ brev
+Jude	Yahoodaa-ye
 Jude	Judas brev
 Jude	Judov List
 Jude	List Juduv
@@ -15314,16 +15629,24 @@ Jude	Juudaksen
 Jude	List Judy
 Jude	San Judas
 Jude	yahudacem
+Jude	Yaahudah
+Jude	Yahoodaa
 Jude	Yahoodah
 Jude	Yahudaah
 Jude	Yehoodaa
+Jude	Yehoodah
+Jude	Yehoodai
 Jude	Yehoodeh
+Jude	Yehoozda
 Jude	Yehudaah
 Jude	yahudako
+Jude	Yaahuda
 Jude	Yahooda
 Jude	Yahudaa
 Jude	Yahudah
+Jude	Yahudai
 Jude	Yehooda
+Jude	Yehudaa
 Jude	Yehudah
 Jude	Yihudaa
 Jude	Judina
@@ -15511,6 +15834,8 @@ Lam	Marathi Irmeya
 Lam	Marathi Irmiaa
 Lam	Marathi Irmiya
 Lam	Marathi Irm’ya
+Lam	Soug-nameh-haa
+Lam	Soug-nameha-ha
 Lam	Baroorashadii
 Lam	Klaagliederen
 Lam	Kniha narekov
@@ -15522,6 +15847,8 @@ Lam	Marathi Ermia
 Lam	Marathi Eryaa
 Lam	Marathi Eryah
 Lam	Marathi Irmia
+Lam	Soug-nameh-ha
+Lam	Sougnaameh-ha
 Lam	Valitusvirret
 Lam	Jeremias sir
 Lam	Klagesangene
@@ -15535,6 +15862,12 @@ Lam	Marathi Erya
 Lam	Mga Panaghoy
 Lam	Nudub Yermia
 Lam	Plac Jeremii
+Lam	Soug-naameha
+Lam	Soug-name-ee
+Lam	Soug-name-ha
+Lam	Soug-nameh-y
+Lam	Sougnaame-ee
+Lam	Sougnaameh-y
 Lam	Klagelieder
 Lam	Kniha narku
 Lam	Lamantasyon
@@ -15546,6 +15879,10 @@ Lam	Marathieyah
 Lam	Marathiyaah
 Lam	Marathiyyah
 Lam	Pagbangotan
+Lam	Sogh-naameh
+Lam	Soug-name-y
+Lam	Soug-nameha
+Lam	Sougnaameha
 Lam	K. narekov
 Lam	Lamentacje
 Lam	Maombolezo
@@ -15559,6 +15896,10 @@ Lam	Marathiyya
 Lam	Marathiy’a
 Lam	Marathi’ya
 Lam	Marath’iya
+Lam	Soug-naame
+Lam	Soug-namee
+Lam	Soug-nameh
+Lam	Sougnaameh
 Lam	Vilapageet
 Lam	K narekov
 Lam	Marath'iy
@@ -15571,15 +15912,19 @@ Lam	Marathiye
 Lam	Marathiyy
 Lam	Marathi’i
 Lam	Marath’iy
+Lam	Sogh-name
+Lam	Soug-name
 Lam	Zalospevy
 Lam	Galarnad
 Lam	Marathia
 Lam	Marathie
 Lam	Marathiy
+Lam	Nooha-ha
 Lam	Panaghoy
 Lam	Plangeri
 Lam	Pulampal
 Lam	Siralmak
+Lam	Soghnama
 Lam	Tuzaljke
 Lam	Vajtimet
 Lam	wilapgit
@@ -15593,6 +15938,8 @@ Lam	Siralm
 Lam	Zalosp
 Lam	Ai Ca
 Lam	Galar
+Lam	Nooha
+Lam	Nouhe
 Lam	Panag
 Lam	Plang
 Lam	Plenn
@@ -15704,6 +16051,8 @@ Lev	3e. Mosebok
 Lev	Derde Mozes
 Lev	Dritte Mose
 Lev	III Mosebok
+Lev	Laviyan-haa
+Lev	Lawiyan-haa
 Lev	Trzeci Mojz
 Lev	3. Mosebog
 Lev	3. Mosebok
@@ -15738,6 +16087,7 @@ Lev	3e Mozes
 Lev	III Mojz
 Lev	III. Mos
 Lev	Kaimaman
+Lev	Laawiyan
 Lev	Lavvyian
 Lev	Lebitico
 Lev	Lebitiko
@@ -15755,21 +16105,25 @@ Lev	III Moj
 Lev	III Mos
 Lev	Laawian
 Lev	Lavayan
+Lev	Lavvian
 Lev	Lavyyan
 Lev	Lawayan
 Lev	Laweyan
+Lev	Lawiyan
 Lev	Lawyaan
 Lev	Levitak
 Lev	Levitic
 Lev	Levitik
 Lev	Vajikra
 Lev	Wajikra
+Lev	laviyan
 Lev	3 Mojz
 Lev	3 Moos
 Lev	3 Mose
 Lev	3. Mos
 Lev	Imamat
 Lev	Lavian
+Lev	Lavyan
 Lev	Lawian
 Lev	Walawi
 Lev	3 Moj
@@ -15784,6 +16138,8 @@ Lev	3 Mo
 Lev	3 Mz
 Lev	Kapl
 Lev	Laaw
+Lev	Lavi
+Lev	Lavy
 Lev	Levi
 Lev	lawi
 Lev	Imt
@@ -16970,11 +17326,13 @@ Nah	Nahums bok
 Nah	Ks Nahuma
 Nah	Naahooma
 Nah	Naahoum
+Nah	Nah-oum
 Nah	Nahumin
 Nah	Nahumme
 Nah	Na-hum
 Nah	Naahom
 Nah	Naahum
+Nah	Nah-um
 Nah	Nahoom
 Nah	Nahoum
 Nah	Nahuma
@@ -17007,10 +17365,13 @@ Neh	Ks Nehemiasza
 Neh	Liv Neyemi an
 Neh	Nehemias’ Bog
 Neh	Nehemjas bok
+Neh	Nehemiah-ya
+Neh	Nehemia-ya
 Neh	Nehemiabok
 Neh	Nehemiasza
 Neh	nahemyahko
 Neh	Nahimiyaa
+Neh	Nehem-yah
 Neh	Nehemaaah
 Neh	Nehemaaih
 Neh	Nehemaiah
@@ -17042,6 +17403,7 @@ Neh	Nehemias
 Neh	Nehemiih
 Neh	Nehemija
 Neh	Nehemjas
+Neh	Nehemyah
 Neh	Nehimaah
 Neh	Nehimaih
 Neh	Nehimiah
@@ -17062,6 +17424,7 @@ Neh	Nehimya
 Neh	Nihemia
 Neh	nahemya
 Neh	Neemia
+Neh	Nehmya
 Neh	Neyemi
 Neh	Neemi
 Neh	Nahi
@@ -17245,13 +17608,42 @@ Obad	Obadias' Bog
 Obad	Obadias’ Bog
 Obad	Ks Abdiasza
 Obad	Obadjas bok
+Obad	Ouba-diyah
+Obad	Ubad-diyah
+Obad	Ubad-iya-i
+Obad	obad-ya-ha
+Obad	obad-ya-ye
 Obad	Cobadyaah
+Obad	Obadiya’i
+Obad	Ouba-diya
+Obad	Oubadiyah
+Obad	Oubadiyeh
+Obad	Ubad-diya
+Obad	Ubad-iyeh
+Obad	Uubadiyah
+Obad	obad-ya-y
 Obad	Abddiyyu
 Obad	Abdiasza
+Obad	Obad-iya
+Obad	Obad-yah
 Obad	Obadeyah
+Obad	Obadeyeh
 Obad	Obadiyah
 Obad	Obadiyeh
+Obad	Obadya’i
+Obad	Ouba-dia
+Obad	Ouba-dya
+Obad	Oubadiya
+Obad	Oubadyah
+Obad	Ubad-iya
+Obad	Ubad-yah
+Obad	Ubadiyah
+Obad	Ubadiyeh
+Obad	Uubadiya
+Obad	obad-iya
+Obad	obadiyah
 Obad	Abdijas
+Obad	Obad-ya
 Obad	Obadeia
 Obad	Obadeya
 Obad	Obadhah
@@ -17265,8 +17657,14 @@ Obad	Obadyah
 Obad	Obedias
 Obad	Oobadia
 Obad	Oobadya
+Obad	Ouba-di
 Obad	Oubadia
 Obad	Oubadya
+Obad	Oubedia
+Obad	Ubad-ya
+Obad	Ubadiya
+Obad	Ubadyah
+Obad	obad-ya
 Obad	obadiya
 Obad	Abdias
 Obad	Abdyas
@@ -17275,7 +17673,11 @@ Obad	Obadja
 Obad	Obadya
 Obad	Obedia
 Obad	Obidah
+Obad	Oubadi
 Obad	Ovadia
+Obad	Ubadia
+Obad	Ubadya
+Obad	Ubedia
 Obad	Abdia
 Obad	Avdie
 Obad	Cobad
@@ -17408,7 +17810,11 @@ Phil	Philppians
 Phil	Phlippians
 Phil	Filipanom
 Phil	Filipians
+Phil	Filipiyan
+Phil	Filipiyon
+Phil	Filipiyun
 Phil	Filippesi
+Phil	Filippian
 Phil	Filipskym
 Phil	Filipyans
 Phil	Philipain
@@ -17416,6 +17822,7 @@ Phil	Philipans
 Phil	Philipens
 Phil	Philipian
 Phil	Philipins
+Phil	Philipiun
 Phil	Philippan
 Phil	Philipper
 Phil	Philippin
@@ -17430,14 +17837,17 @@ Phil	Phlipians
 Phil	Filipeni
 Phil	Filipian
 Phil	Filipyen
+Phil	Filipyon
 Phil	Filipyun
 Phil	Philipan
+Phil	Philipes
 Phil	Philpian
 Phil	Philpins
 Phil	Wafilipi
 Phil	Filiboy
 Phil	Filipos
 Phil	Filippi
+Phil	Philipi
 Phil	Philipp
 Phil	Phillip
 Phil	Philpan
@@ -17493,8 +17903,10 @@ Phlm	Filemonhoz
 Phlm	Filemonovi
 Phlm	Philemonem
 Phlm	Filemonit
+Phlm	Filimaani
 Phlm	Filimoonn
 Phlm	Filimount
+Phlm	Philemaan
 Phlm	Philemona
 Phlm	Philemoni
 Phlm	Philemonn
@@ -17505,6 +17917,7 @@ Phlm	Filemona
 Phlm	Filemone
 Phlm	Filemoni
 Phlm	Filemonu
+Phlm	Filimani
 Phlm	Filimona
 Phlm	Filimoni
 Phlm	Filimonn
@@ -17520,6 +17933,7 @@ Phlm	Filimun
 Phlm	Philmun
 Phlm	Phlemon
 Phlm	Phlimon
+Phlm	Phlmoun
 Phlm	Pilemon
 Phlm	Philem
 Phlm	Filem
@@ -17686,6 +18100,8 @@ Prov	Sprichwoerter
 Prov	Mga Kawikaan
 Prov	Mudre izreke
 Prov	Sprichworter
+Prov	Amthala-haa
+Prov	Amthale-haa
 Prov	K. prislovi
 Prov	Neetivachan
 Prov	Ordsprakene
@@ -17693,6 +18109,7 @@ Prov	Ordsprogene
 Prov	Probverbios
 Prov	Sananlaskut
 Prov	hitopadesko
+Prov	Amsale-haa
 Prov	Diarhebion
 Prov	K prislovi
 Prov	Panultihon
@@ -17702,6 +18119,8 @@ Prov	Proberbios
 Prov	Proverbele
 Prov	Proverbios
 Prov	Prypovisti
+Prov	hikmata-ha
+Prov	Amthal-ha
 Prov	Diarebion
 Prov	Poslovice
 Prov	Poverbios
@@ -17716,7 +18135,9 @@ Prov	Prverbios
 Prov	nitisutre
 Prov	Am thale
 Prov	Am thals
+Prov	Amthalah
 Prov	Amthaleh
+Prov	Hikmatah
 Prov	Kawikaan
 Prov	Oroverbs
 Prov	Porverbs
@@ -17798,15 +18219,29 @@ Ps	Ks. Psalmow
 Ps	Sabuurradii
 Ps	Ks Psalmow
 Ps	Liv Som yo
+Ps	Mazamoorah
+Ps	Mizamoorah
 Ps	K. zalmov
+Ps	Mazamirah
+Ps	Mazamireh
+Ps	Mazamoo’r
 Ps	Mazamoure
 Ps	Mazamurah
+Ps	Mazmoorah
+Ps	Mazmooreh
+Ps	Mezamireh
+Ps	Mezmoorah
 Ps	Mga Salmo
+Ps	Mizamireh
+Ps	Mizamoo’r
 Ps	Psaltaren
 Ps	Salmarnir
 Ps	Zsoltarok
 Ps	K zalmov
 Ps	Maz moor
+Ps	Mazami'r
+Ps	Mazamihr
+Ps	Mazami’r
 Ps	Mazamoor
 Ps	Mazamore
 Ps	Mazamu'r
@@ -17818,13 +18253,19 @@ Ps	Mazamu’r
 Ps	Mazmoure
 Ps	Mazmurah
 Ps	Mez moor
+Ps	Mezamihr
+Ps	Mezami’r
+Ps	Mezmoo’r
 Ps	Mga Awit
 Ps	Miz moor
+Ps	Mizamihr
+Ps	Mizami’r
 Ps	Mizamoor
 Ps	Psalmien
 Ps	Salmenes
 Ps	Salmerne
 Ps	Maz mor
+Ps	Mazamir
 Ps	Mazamor
 Ps	Mazamur
 Ps	Mazmoor
@@ -17899,6 +18340,7 @@ Ps	Salmau
 Ps	Salmos
 Ps	Zaburi
 Ps	Zaltar
+Ps	zaboor
 Ps	Bhjan
 Ps	Jabur
 Ps	Palls
@@ -18576,6 +19018,7 @@ Song	The Songs of Solomons
 Song	Ang Awit ng mga Awit
 Song	Cantarea lui Solomon
 Song	Cantico dos Canticos
+Song	Ghazal Ghazal-Ha-Haa
 Song	The Song of Salomans
 Song	The Song of Salomons
 Song	The Song of Solomans
@@ -18628,7 +19071,9 @@ Song	Ghazal Ghazal ha
 Song	Ghazal Ghazal-ha
 Song	Ghazal Ghazal_ha
 Song	Ghazal Ghazalhaa
+Song	Ghazal Ghazal’ha
 Song	Ghazal-Ghazal-ha
+Song	Ghazal-Ghazal’ha
 Song	Ghazal_Ghazal-ha
 Song	Ghazal_Ghazalhaa
 Song	Ghazl Ghazal_haa
@@ -18651,6 +19096,7 @@ Song	Ghazal Ghazalha
 Song	Ghazal-Ghazalha
 Song	GhazalGhazal ha
 Song	GhazalGhazal-ha
+Song	GhazalGhazalHaa
 Song	GhazalGhazal_ha
 Song	GhazalGhazalhaa
 Song	Ghazal_Ghazalha
@@ -18670,6 +19116,7 @@ Song	Chante Salomon
 Song	GhazalGhazalha
 Song	Ghazl Ghazalha
 Song	Ghazl-Ghazalha
+Song	GhazlGhazal-Ha
 Song	GhazlGhazal-ha
 Song	GhazlGhazal_ha
 Song	GhazlGhazalhaa
@@ -18819,6 +19266,7 @@ Titus	Kang Tito
 Titus	Tituszhoz
 Titus	Kay Tito
 Titus	Titushoz
+Titus	Titusian
 Titus	ad Titum
 Titus	titaslai
 Titus	Taitoos
@@ -19002,7 +19450,11 @@ Zech	Zacheraah
 Zech	Zacheraih
 Zech	Zacheriah
 Zech	Zacheriih
+Zech	Zakaraiya
+Zech	Zakarayah
 Zech	Zakariyya
+Zech	Zakhariah
+Zech	Zakhariya
 Zech	Zecharaah
 Zech	Zecharaih
 Zech	Zechariah
@@ -19011,6 +19463,7 @@ Zech	Zecheraah
 Zech	Zecheraih
 Zech	Zecheriah
 Zech	Zecheriih
+Zech	Zekhariah
 Zech	Jakaryah
 Zech	Sacarias
 Zech	Sacharja
@@ -19026,6 +19479,7 @@ Zech	Zacherah
 Zech	Zacheria
 Zech	Zacherih
 Zech	Zaharija
+Zech	Zakaraya
 Zech	Zakariah
 Zech	Zakarias
 Zech	Zakariya
@@ -19077,8 +19531,11 @@ Zeph	Sefanias' Bog
 Zeph	Sefanias’ Bog
 Zeph	Zefanias’ Bog
 Zeph	Sefanjas bok
+Zeph	Dhofaniyah
+Zeph	Dhofeniyah
 Zeph	Sofoniasza
 Zeph	Zephanaiah
+Zeph	Dhofeniya
 Zeph	Sefanyaah
 Zeph	Seffaneia
 Zeph	Sofonaasa
@@ -19086,10 +19543,19 @@ Zeph	Sophonias
 Zeph	Szefanias
 Zeph	Szofonias
 Zeph	Zaphaniah
+Zeph	Zefaniyah
+Zeph	Zefeniyah
 Zeph	Zephanaia
 Zeph	Zephanaya
 Zeph	Zephaniah
 Zeph	Zephanias
+Zeph	Zofaniyah
+Zeph	Zofeniyah
+Zeph	Dhof-nia
+Zeph	Dhofania
+Zeph	Dhofenya
+Zeph	Dhofinia
+Zeph	Dhofinya
 Zeph	Sapanyah
 Zeph	Sefanias
 Zeph	Sefanija
@@ -19105,9 +19571,11 @@ Zeph	Zaphania
 Zeph	Zefanaya
 Zeph	Zefaniah
 Zeph	Zefanias
+Zeph	Zefeniya
 Zeph	Zepanias
 Zeph	Zephania
 Zeph	Zephanja
+Zeph	Zofeniya
 Zeph	Zofonias
 Zeph	sapanyah
 Zeph	Sefania
@@ -19117,9 +19585,17 @@ Zeph	Sofonia
 Zeph	Sofonie
 Zeph	Tefania
 Zeph	Zafania
+Zeph	Zef-nia
 Zeph	Zefania
 Zeph	Zefanja
 Zeph	Zefanya
+Zeph	Zefenya
+Zeph	Zefinya
+Zeph	Zof-nia
+Zeph	Zofania
+Zeph	Zofenya
+Zeph	Zofinia
+Zeph	Zofinya
 Zeph	Sofoni
 Zeph	Zephan
 Zeph	Seff

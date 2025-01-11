@@ -783,6 +783,7 @@
 1Chr	1 Хроніка
 1Chr	1 хроника
 1Chr	1 хроніки
+1Chr	1 تواریکه
 1Chr	1 ବଂଶାବଳୀ
 1Chr	1-توارِیخ
 1Chr	1. Itihas
@@ -853,7 +854,9 @@
 1Chr	1 itihās
 1Chr	1 Хроник
 1Chr	1 Хронік
+1Chr	1 تواريخ
 1Chr	1 تواریخ
+1Chr	1 تواریک
 1Chr	1 इतिहास
 1Chr	1. Babad
 1Chr	1. Chron
@@ -868,6 +871,7 @@
 1Chr	1st Chro
 1Chr	1st Cron
 1Chr	1st. Chr
+1Chr	1تواریکه
 1Chr	1۔تواریخ
 1Chr	AvvalChr
 1Chr	Cronicle
@@ -902,6 +906,7 @@
 1Chr	1 Sử Ký
 1Chr	1 Sử ký
 1Chr	1 Парал
+1Chr	1 توارخ
 1Chr	1 ਇਤਹਾਸ
 1Chr	1. Chrn
 1Chr	1. Chro
@@ -912,6 +917,10 @@
 1Chr	1. Taar
 1Chr	1e Kron
 1Chr	1st Chr
+1Chr	1towāri
+1Chr	1تواريخ
+1Chr	1تواریخ
+1Chr	1تواریک
 1Chr	I Babad
 1Chr	I Chron
 1Chr	I Istwa
@@ -961,6 +970,9 @@
 1Chr	1. Лет
 1Chr	1. इति
 1Chr	1. พศด
+1Chr	1towār
+1Chr	1توارخ
+1Chr	1تواری
 1Chr	I Chrn
 1Chr	I Chro
 1Chr	I Cron
@@ -1007,6 +1019,7 @@
 1Chr	1. Sử
 1Chr	1. Дн
 1Chr	1tawā
+1Chr	1توار
 1Chr	I Chr
 1Chr	I Kro
 1Chr	I Nya
@@ -1046,6 +1059,7 @@
 1Chr	1 أخ
 1Chr	1Chr
 1Chr	1Taw
+1Chr	1tow
 1Chr	1توا
 1Chr	I Pa
 1Chr	I Sử
@@ -1063,6 +1077,7 @@
 1Chr	歷代志上
 1Chr	編年紀上
 1Chr	역대지상
+1Chr	1تو
 1Chr	1역대
 1Chr	۱تو
 1Chr	Ⅰ歴代
@@ -2177,6 +2192,8 @@
 1Cor	1 Wakorintho
 1Cor	1 Коринтјани
 1Cor	1 Коринфянам
+1Cor	1 قرنتیانیان
+1Cor	1 قرنتیونیان
 1Cor	1 کرنتھِیُوں
 1Cor	1 کُرنتھِیوں
 1Cor	1 करिंथकरांस
@@ -2343,6 +2360,10 @@
 1Cor	1 Wakorinto
 1Cor	1 kurĩtʰīāṃ
 1Cor	1 Коринтяни
+1Cor	1 قرنتیانان
+1Cor	1 قرنتیانها
+1Cor	1 قرنتیونان
+1Cor	1 قرنتیونها
 1Cor	1 कोरिन्थॉस
 1Cor	1 कोरिन्‍थी
 1Cor	1 ਕੁਰਿੰਥੀਆਂ
@@ -2372,6 +2393,8 @@
 1Cor	1st Corinth
 1Cor	1st. Corint
 1Cor	1°. Corinzi
+1Cor	1قرنتیانیان
+1Cor	1قرنتیونیان
 1Cor	Chorinthins
 1Cor	Chorithians
 1Cor	Chornthians
@@ -2459,6 +2482,12 @@
 1Cor	1 Koryntów
 1Cor	1 Коринфян
 1Cor	1 коринтян
+1Cor	1 قرنتیانن
+1Cor	1 قرنتیانه
+1Cor	1 قرنتیانی
+1Cor	1 قرنتیونن
+1Cor	1 قرنتیونه
+1Cor	1 قرنتیونی
 1Cor	1 कोरिन्थी
 1Cor	1 କରିନ୍ଥୀୟ
 1Cor	1. Corinth
@@ -2477,6 +2506,10 @@
 1Cor	1st. Corin
 1Cor	1st. Corth
 1Cor	1° Corinzi
+1Cor	1قرنتیانان
+1Cor	1قرنتیانها
+1Cor	1قرنتیونان
+1Cor	1قرنتیونها
 1Cor	1۔کرنتھیوں
 1Cor	Corinthans
 1Cor	Corinthian
@@ -2545,12 +2578,21 @@
 1Cor	1 Côrintô
 1Cor	1 Korinta
 1Cor	1 Korinto
+1Cor	1 قرنتيان
+1Cor	1 قرنتیان
+1Cor	1 قرنتیون
 1Cor	1 कुरिन्थ
 1Cor	1 โครินธ์
 1Cor	1. Corint
 1Cor	1. Korint
 1Cor	1st Corin
 1Cor	1st Corth
+1Cor	1قرنتیانن
+1Cor	1قرنتیانه
+1Cor	1قرنتیانی
+1Cor	1قرنتیونن
+1Cor	1قرنتیونه
+1Cor	1قرنتیونی
 1Cor	Corithans
 1Cor	Corithins
 1Cor	Cornthins
@@ -2587,6 +2629,9 @@
 1Cor	1. Corth
 1Cor	1Corinth
 1Cor	1st. Cor
+1Cor	1قرنتيان
+1Cor	1قرنتیان
+1Cor	1قرنتیون
 1Cor	AvvalCor
 1Cor	Elso Kor
 1Cor	Első Kor
@@ -2649,6 +2694,8 @@
 1Cor	1 قور
 1Cor	1. Co
 1Cor	1. Cô
+1Cor	1qrnt
+1Cor	1قرنت
 1Cor	1コリント
 1Cor	I Cor
 1Cor	I Kor
@@ -2677,6 +2724,8 @@
 1Cor	1 คร
 1Cor	1Cor
 1Cor	1Kor
+1Cor	1qrn
+1Cor	1قرن
 1Cor	I Co
 1Cor	I Cô
 1Cor	اولق
@@ -4301,6 +4350,8 @@
 1John	1. Jo
 1John	1. Јн
 1John	1John
+1John	1yohn
+1John	1یوحن
 1John	I Jan
 1John	I Jhn
 1John	I Joh
@@ -4350,6 +4401,8 @@
 1John	1 ยน
 1John	1. J
 1John	1Yoh
+1John	1yoh
+1John	1یوح
 1John	1ヨハネ
 1John	I Gi
 1John	I In
@@ -5112,6 +5165,7 @@
 1Kgs	1 k. Kraľov
 1Kgs	1 k. Králov
 1Kgs	1 k. Kráľov
+1Kgs	1 پادشاهاان
 1Kgs	1 राजाहरूको
 1Kgs	1-ше. Cariv
 1Kgs	1-ше. царів
@@ -5241,6 +5295,7 @@
 1Kgs	1 Împaraţi
 1Kgs	1 Împărati
 1Kgs	1 Împăraţi
+1Kgs	1 پادشاهان
 1Kgs	1 ରାଜାବଳୀର
 1Kgs	1 அரசர்கள்
 1Kgs	1-а. Cariv
@@ -5266,6 +5321,7 @@
 1Kgs	1ere. Rois
 1Kgs	1st. Kings
 1Kgs	1ère. Rois
+1Kgs	1پادشاهاان
 1Kgs	3 Kingdoms
 1Kgs	3 Mga Hari
 1Kgs	3 Regnorum
@@ -5337,6 +5393,9 @@
 1Kgs	1 Wafalme
 1Kgs	1 salāṭīn
 1Kgs	1 краљева
+1Kgs	1 پادشاها
+1Kgs	1 پادشاهن
+1Kgs	1 پادشهان
 1Kgs	1 ରାଜାବଳୀ
 1Kgs	1-а Cariv
 1Kgs	1-а царів
@@ -5375,6 +5434,7 @@
 1Kgs	1е. Царей
 1Kgs	1я. Цареи
 1Kgs	1я. Царей
+1Kgs	1پادشاهان
 1Kgs	3 Царства
 1Kgs	3 அரசுகள்
 1Kgs	3-а Царів
@@ -5460,6 +5520,9 @@
 1Kgs	1е Царей
 1Kgs	1я Цареи
 1Kgs	1я Царей
+1Kgs	1پادشاها
+1Kgs	1پادشاهن
+1Kgs	1پادشهان
 1Kgs	1۔سلاطین
 1Kgs	3 Kralov
 1Kgs	3 Kraľov
@@ -5602,6 +5665,7 @@
 1Kgs	1. พกษ
 1Kgs	1e Kon
 1Kgs	1e. Ko
+1Kgs	1pādsh
 1Kgs	1st Kg
 1Kgs	1st Ki
 1Kgs	1st Kn
@@ -5684,6 +5748,7 @@
 1Kgs	1e Ko
 1Kgs	1st K
 1Kgs	1° Re
+1Kgs	1پادش
 1Kgs	3 Цар
 1Kgs	I Boq
 1Kgs	I Fal
@@ -5758,6 +5823,8 @@
 1Kgs	열왕기상
 1Kgs	1 R
 1Kgs	1Rj
+1Kgs	1pā
+1Kgs	1پا
 1Kgs	1열왕
 1Kgs	3 Ц
 1Kgs	I K
@@ -6842,6 +6909,8 @@
 1Pet	I Petrova Poslanica
 1Pet	I посланица Петрова
 1Pet	איגרת פטרוס הראשונה
+1Pet	اول پترس‌نامه‌هاتان
+1Pet	اول پطرس‌نامه‌گی‌ها
 1Pet	پطرس کا پہلا عام خط
 1Pet	पत्रुसको पहिलो पत्र
 1Pet	पेत्राचे पहिले पत्र
@@ -6859,6 +6928,9 @@
 1Pet	Peters første brev
 1Pet	Petrus forsta brev
 1Pet	Petrus första brev
+1Pet	اول پترس‌نامه‌ی‌ها
+1Pet	اول پطرس‌نامه‌ی‌ها
+1Pet	اولین نامه به پترس
 1Pet	ପିତରଙ୍କ ପ୍ରଥମ ପତ୍ର
 1Pet	1 List sw. Piotra
 1Pet	1 List św. Piotra
@@ -6885,6 +6957,12 @@
 1Pet	První list Petrův
 1Pet	Prvá kniha Petrov
 1Pet	Πετρου Επιστολη Α
+1Pet	اول پترس‌نامه‌شان
+1Pet	اول پترس‌نامه‌هات
+1Pet	اول پترس‌نامه‌گان
+1Pet	اول پطرس‌نامه‌شان
+1Pet	اول پطرس‌نامه‌هات
+1Pet	اول پطرس‌نامه‌گان
 1Pet	رسالة بطرس الأولى
 1Pet	1 List sw Piotra
 1Pet	1 List św Piotra
@@ -6908,6 +6986,14 @@
 1Pet	Prvy list Petrov
 1Pet	Prvý Petrov list
 1Pet	Prvý list Petrov
+1Pet	اول پترس‌نامه‌اش
+1Pet	اول پترس‌نامه‌ای
+1Pet	اول پترس‌نامه‌ها
+1Pet	اول پطرس‌نامه‌اش
+1Pet	اول پطرس‌نامه‌ای
+1Pet	اول پطرس‌نامه‌ها
+1Pet	درس‌های پترس اول
+1Pet	درس‌های پطرس اول
 1Pet	1. Petrusbrevet
 1Pet	Pierwsza Piotra
 1Pet	Pierwsze Piotra
@@ -6915,6 +7001,9 @@
 1Pet	Premiere Pierre
 1Pet	Premiers Pierre
 1Pet	Première Pierre
+1Pet	اول پترس‌نامه‌ی
+1Pet	اول پطرس‌نامه‌ی
+1Pet	پندهای پترس اول
 1Pet	1 Petrusbrevet
 1Pet	1. List Piotra
 1Pet	1. list Petruv
@@ -6933,6 +7022,10 @@
 1Pet	Premier Pierre
 1Pet	Primeira Pedro
 1Pet	Primeiro Pedro
+1Pet	رساله اول پترس
+1Pet	رساله اول پطرس
+1Pet	فرمان اول پترس
+1Pet	موعظه پترس اول
 1Pet	1 List Piotra
 1Pet	1 list Petruv
 1Pet	1 list Petrův
@@ -6968,6 +7061,17 @@
 1Pet	Първа Петрово
 1Pet	Първо Петрово
 1Pet	הראשונה פטרוס
+1Pet	اول پترس رسول
+1Pet	اول پترس مقدس
+1Pet	اول پترس‌نامه
+1Pet	اول پطرس مقدس
+1Pet	اول پطرس‌نامه
+1Pet	نامه اول پترس
+1Pet	نامه اول پطرس
+1Pet	پیام اول پطرس
+1Pet	پیام پترس اول
+1Pet	کتاب اول پترس
+1Pet	کتاب اول پطرس
 1Pet	1 Petersbrev
 1Pet	1 e. Pjetrit
 1Pet	1 i. Pjetrit
@@ -6992,6 +7096,8 @@
 1Pet	AvvalPataris
 1Pet	AvvalPatrasa
 1Pet	AvvalPatriss
+1Pet	AvvalPetrasi
+1Pet	AvvalPetrosi
 1Pet	Avvalpataris
 1Pet	Avvalpatrasa
 1Pet	Avvalpatriss
@@ -7012,6 +7118,10 @@
 1Pet	Прва Петрова
 1Pet	Прва Петрово
 1Pet	Прво Петрово
+1Pet	اول پترسی-ها
+1Pet	اول پترسی‌ها
+1Pet	اول پطرسی-ها
+1Pet	اول پطرسی‌ها
 1Pet	رسالة بطرس 1
 1Pet	1 San Pedro
 1Pet	1 e Pjetrit
@@ -7040,8 +7150,12 @@
 1Pet	Avval peter
 1Pet	AvvalPatras
 1Pet	AvvalPatris
+1Pet	AvvalPatros
 1Pet	AvvalPatrus
 1Pet	AvvalPeters
+1Pet	AvvalPetras
+1Pet	AvvalPetros
+1Pet	AvvalPetrus
 1Pet	Avvalpatras
 1Pet	Avvalpatris
 1Pet	Avvalpatrus
@@ -7064,7 +7178,11 @@
 1Pet	Перше Петра
 1Pet	Първа Петър
 1Pet	Първо Петър
+1Pet	اول پترس-ها
+1Pet	اول پترس‌ها
+1Pet	اول پطرس-ها
 1Pet	اول پطرسساه
+1Pet	اول پطرس‌ها
 1Pet	بطرس الأولى
 1Pet	ପ୍ରଥମ ପିତରଙ
 1Pet	1 Patrissi
@@ -7128,6 +7246,7 @@
 1Pet	Yek patris
 1Pet	Yek patrus
 1Pet	Yek peters
+1Pet	YekPetrasi
 1Pet	Yekpataris
 1Pet	Yekpatrasa
 1Pet	Yekpatriss
@@ -7140,7 +7259,9 @@
 1Pet	اول پطرسسه
 1Pet	اول پطرسسى
 1Pet	اول پطرسسی
+1Pet	اول پِطرُس
 1Pet	اولپطرسساه
+1Pet	اولین پترس
 1Pet	اوّل پطر س
 1Pet	یک پطرسساه
 1Pet	베드로의 첫째 서간
@@ -7154,6 +7275,7 @@
 1Pet	1 Петрова
 1Pet	1 Петрово
 1Pet	1 Петруса
+1Pet	1 پطرسساه
 1Pet	1-а Петра
 1Pet	1-е Петра
 1Pet	1-я Петра
@@ -7181,6 +7303,7 @@
 1Pet	1st Peter
 1Pet	1st. Pete
 1Pet	1st. Petr
+1Pet	1stPetros
 1Pet	1° Pietro
 1Pet	1º. Pedro
 1Pet	1е Петира
@@ -7207,6 +7330,10 @@
 1Pet	I. Pétrus
 1Pet	Una Pedro
 1Pet	Yek peter
+1Pet	YekPeters
+1Pet	YekPetras
+1Pet	YekPetros
+1Pet	YekPetrus
 1Pet	Yekpatras
 1Pet	Yekpatris
 1Pet	Yekpatrus
@@ -7234,6 +7361,7 @@
 1Pet	Прва Петр
 1Pet	Първа Пет
 1Pet	Първо Пет
+1Pet	اول پترسی
 1Pet	اول پطرسئ
 1Pet	اول پطرسا
 1Pet	اول پطرسس
@@ -7283,6 +7411,11 @@
 1Pet	1 Pēturu
 1Pet	1 patras
 1Pet	1 Петира
+1Pet	1 پطرسسئ
+1Pet	1 پطرسسا
+1Pet	1 پطرسسه
+1Pet	1 پطرسسى
+1Pet	1 پطرسسی
 1Pet	1 पत्रुस
 1Pet	1 पेतरॉस
 1Pet	1 பேதுரு
@@ -7311,10 +7444,13 @@
 1Pet	1st. Per
 1Pet	1st. Pet
 1Pet	1st. Ptr
+1Pet	1stPeter
 1Pet	1º Pedro
 1Pet	1е Петра
 1Pet	1я Петра
+1Pet	1پطرسساه
 1Pet	AvvalPet
+1Pet	AvvalPtr
 1Pet	Elso Pet
 1Pet	Elso Pét
 1Pet	Első Pet
@@ -7345,9 +7481,11 @@
 1Pet	I. Петър
 1Pet	Prvni Pt
 1Pet	První Pt
+1Pet	YekPeter
 1Pet	Yekpeter
 1Pet	Πετρου Α
 1Pet	Прва Пет
+1Pet	اول پترس
 1Pet	اول پطرس
 1Pet	اول پطرص
 1Pet	اولپطرسئ
@@ -7398,6 +7536,18 @@
 1Pet	1 Петра
 1Pet	1 Петър
 1Pet	1 پطر س
+1Pet	1 پطرسئ
+1Pet	1 پطرسا
+1Pet	1 پطرسس
+1Pet	1 پطرسه
+1Pet	1 پطرسى
+1Pet	1 پطرسی
+1Pet	1 پطرصئ
+1Pet	1 پطرصا
+1Pet	1 پطرصس
+1Pet	1 پطرصه
+1Pet	1 پطرصى
+1Pet	1 پطرصی
 1Pet	1 पेत्र
 1Pet	1 ପିତରଙ
 1Pet	1 เปโตร
@@ -7421,6 +7571,11 @@
 1Pet	1st Ptr
 1Pet	1st. Pe
 1Pet	1st. Pt
+1Pet	1پطرسسئ
+1Pet	1پطرسسا
+1Pet	1پطرسسه
+1Pet	1پطرسسى
+1Pet	1پطرسسی
 1Pet	First P
 1Pet	I Pedro
 1Pet	I Peter
@@ -7504,6 +7659,7 @@
 1Pet	1 Piet
 1Pet	1 Петр
 1Pet	1 پطرس
+1Pet	1 پطرص
 1Pet	1 पतरस
 1Pet	1 ਪਤਰਸ
 1Pet	1 பேது
@@ -7521,9 +7677,22 @@
 1Pet	1. पतर
 1Pet	1Peter
 1Pet	1e Pet
+1Pet	1ptrus
 1Pet	1st Pe
 1Pet	1st Pt
 1Pet	1st. P
+1Pet	1پطرسئ
+1Pet	1پطرسا
+1Pet	1پطرسس
+1Pet	1پطرسه
+1Pet	1پطرسى
+1Pet	1پطرسی
+1Pet	1پطرصئ
+1Pet	1پطرصا
+1Pet	1پطرصس
+1Pet	1پطرصه
+1Pet	1پطرصى
+1Pet	1پطرصی
 1Pet	1۔پطرس
 1Pet	I Pedr
 1Pet	I Pete
@@ -7540,6 +7709,8 @@
 1Pet	I. Pyè
 1Pet	I. Pét
 1Pet	I. Пет
+1Pet	YekPet
+1Pet	YekPtr
 1Pet	Α' Πέτ
 1Pet	Α' Πετ
 1Pet	Αʹ Πέτ
@@ -7550,6 +7721,8 @@
 1Pet	Α΄ Πετ
 1Pet	Α’ Πέτ
 1Pet	Α’ Πετ
+1Pet	اولپتر
+1Pet	اولپطر
 1Pet	یکپطرس
 1Pet	یکپطرص
 1Pet	۱ پطرس
@@ -7591,6 +7764,8 @@
 1Pet	1. Pe
 1Pet	1. Pt
 1Pet	1st P
+1Pet	1پطرس
+1Pet	1پطرص
 1Pet	I But
 1Pet	I Per
 1Pet	I Pet
@@ -7614,6 +7789,7 @@
 1Pet	Α΄ Πε
 1Pet	Α’ Πέ
 1Pet	Α’ Πε
+1Pet	اولپت
 1Pet	اولپط
 1Pet	۱پطرس
 1Pet	۱پطرص
@@ -7639,12 +7815,15 @@
 1Pet	1 ปต
 1Pet	1. P
 1Pet	1Pet
+1Pet	1ptr
+1Pet	1پطر
 1Pet	1ヘテロ
 1Pet	1ペテロ
 1Pet	I Pe
 1Pet	I Pt
 1Pet	I. P
 1Pet	۱ptr
+1Pet	۱پتر
 1Pet	۱پطر
 1Pet	《彼前》
 1Pet	一ヘトロ
@@ -7655,13 +7834,16 @@
 1Pet	1 P
 1Pet	1pt
 1Pet	1بط
+1Pet	1پت
 1Pet	1پط
 1Pet	1베드
 1Pet	I P
 1Pet	۱pt
 1Pet	۱پت
+1Pet	۱پط
 1Pet	《彼前
 1Pet	彼前》
+1Pet	۱پ
 1Pet	彼前
 1Pet	벧전
 1Sam	Kitabu cha Kwanza cha Samueli
@@ -8305,6 +8487,11 @@
 1Sam	1 ŝamuwel
 1Sam	1 Самуила
 1Sam	1 Царства
+1Sam	1 سموئئیل
+1Sam	1 سموئیلہ
+1Sam	1 سموئیلی
+1Sam	1 سموئییل
+1Sam	1 سموائیل
 1Sam	1 शमूएलको
 1Sam	1 ଶାମୁୟେଲ
 1Sam	1 அரசுகள்
@@ -8411,8 +8598,12 @@
 1Sam	1 Самуіл
 1Sam	1 Самуїл
 1Sam	1 Царств
+1Sam	1 سمئویل
+1Sam	1 سموءیل
 1Sam	1 سموئيل
 1Sam	1 سموئیل
+1Sam	1 سموایل
+1Sam	1 سموییل
 1Sam	1 صموئيل
 1Sam	1 शमुवेल
 1Sam	1 शामुएल
@@ -8428,6 +8619,11 @@
 1Sam	1Samwiil
 1Sam	1st. Sam
 1Sam	1st. Sma
+1Sam	1سموئئیل
+1Sam	1سموئیلہ
+1Sam	1سموئیلی
+1Sam	1سموئییل
+1Sam	1سموائیل
 1Sam	1۔سموایل
 1Sam	AvvalSam
 1Sam	Elso Sam
@@ -8479,6 +8675,9 @@
 1Sam	۱سموئییل
 1Sam	۱سموائیل
 1Sam	۱۔سموایل
+1Sam	1 سمؤیل
+1Sam	1 سموئل
+1Sam	1 سمویل
 1Sam	1 शमूएल
 1Sam	1 ਸਮੂਏਲ
 1Sam	1. Царе
@@ -8489,6 +8688,12 @@
 1Sam	1st Sma
 1Sam	1st. Sa
 1Sam	1st. Sm
+1Sam	1سمئویل
+1Sam	1سموءیل
+1Sam	1سموئيل
+1Sam	1سموئیل
+1Sam	1سموایل
+1Sam	1سموییل
 1Sam	I. Царе
 1Sam	Prvni S
 1Sam	První S
@@ -8524,6 +8729,9 @@
 1Sam	1e Sam
 1Sam	1st Sa
 1Sam	1st Sm
+1Sam	1سمؤیل
+1Sam	1سموئل
+1Sam	1سمویل
 1Sam	I Царе
 1Sam	I. Sam
 1Sam	I. Sma
@@ -8559,6 +8767,8 @@
 1Sam	1 ซมอ
 1Sam	1. Sa
 1Sam	1. Sm
+1Sam	1sāmu
+1Sam	1سامو
 1Sam	I Sam
 1Sam	I Sma
 1Sam	I Sám
@@ -8580,6 +8790,8 @@
 1Sam	1 صم
 1Sam	1. S
 1Sam	1Sam
+1Sam	1smu
+1Sam	1سمو
 1Sam	I Sa
 1Sam	I Sm
 1Sam	I. S
@@ -9853,6 +10065,10 @@
 1Thess	1 k Solúnčanom
 1Thess	1 k. Solunskym
 1Thess	1 k. Solúnskym
+1Thess	1 تسالونيکيانه
+1Thess	1 تسالونيکیانی
+1Thess	1 تسالونیکیانه
+1Thess	1 تسالونیکیانی
 1Thess	1 تھِسلُنیکیوں
 1Thess	1 தெசலோனிக்கர்
 1Thess	1-а до солунян
@@ -9963,6 +10179,10 @@
 1Thess	1 Tsalonikian
 1Thess	1 k Solunskym
 1Thess	1 k Solúnskym
+1Thess	1 تسالونيکيان
+1Thess	1 تسالونيکیان
+1Thess	1 تسالونیکيان
+1Thess	1 تسالونیکیان
 1Thess	1 تھسّلنیکیوں
 1Thess	1 थिस्सलोनिकी
 1Thess	1-а. Солуньці
@@ -9991,6 +10211,10 @@
 1Thess	1Thessalonici
 1Thess	1Thessalonika
 1Thess	1Tsalonicians
+1Thess	1تسالونيکيانه
+1Thess	1تسالونيکیانی
+1Thess	1تسالونیکیانه
+1Thess	1تسالونیکیانی
 1Thess	I Solunjanima
 1Thess	I Tesaloniika
 1Thess	I Thesalonian
@@ -10073,6 +10297,10 @@
 1Thess	1Tessalonici
 1Thess	1Tessalonika
 1Thess	1Tsalonikian
+1Thess	1تسالونيکيان
+1Thess	1تسالونيکیان
+1Thess	1تسالونیکيان
+1Thess	1تسالونیکیان
 1Thess	1۔تھسلنیکیوں
 1Thess	Eerste Thess
 1Thess	First Thesss
@@ -10130,6 +10358,7 @@
 1Thess	1. Солуняни
 1Thess	1Tsalonikee
 1Thess	1st. Thesss
+1Thess	1تسالونیکان
 1Thess	Eerste Tess
 1Thess	Elso Thessz
 1Thess	Első Thessz
@@ -10293,6 +10522,8 @@
 1Thess	1. Te
 1Thess	1. Th
 1Thess	1. Tê
+1Thess	1tsln
+1Thess	1تسلن
 1Thess	I Sol
 1Thess	I Tes
 1Thess	I The
@@ -10317,8 +10548,10 @@
 1Thess	1 Tê
 1Thess	1 تس
 1Thess	1 ธส
+1Thess	1tsl
 1Thess	1tsā
 1Thess	1تسا
+1Thess	1تسل
 1Thess	I Te
 1Thess	I Th
 1Thess	I Tê
@@ -10328,6 +10561,8 @@
 1Thess	《帖前》
 1Thess	《莎倫前
 1Thess	莎倫前》
+1Thess	1ts
+1Thess	1تس
 1Thess	1테살
 1Thess	۱ts
 1Thess	۱تس
@@ -10457,10 +10692,12 @@
 1Tim	timotʰius nū̃ pahilī pattrī
 1Tim	אגרת פולוס הראשונה אל-טימות
 1Tim	الرسالة الأولى إلى تيموثاوس
+1Tim	رساله اول پولُس به تیموتاؤس
 1Tim	पौलाचे तीमथ्याला पहिले पत्र
 1Tim	Първо послание към Тимотеи
 1Tim	Първо послание към Тимотей
 1Tim	האיגרת הראשונה אל טימותיוס
+1Tim	نامه الهام‌شده به تیموتاؤس
 1Tim	1-ше. послання до Тимотея
 1Tim	1-ше. послання до Тимофія
 1Tim	Ensimmainen Timoteukselle
@@ -10522,6 +10759,8 @@
 1Tim	timotʰīlāi pahilo patra
 1Tim	timotʰīlāī pahilo patra
 1Tim	Прва посланица Тимотеју
+1Tim	اول تیموتاؤس‌نامه‌هاتان
+1Tim	اول تیموتاؤس‌نامه‌گی‌ها
 1Tim	1-ше. послання Тимофію
 1Tim	1. Kirje Timoteukselle
 1Tim	1. послання до Тимотея
@@ -10533,6 +10772,11 @@
 1Tim	I. послання до Тимофія
 1Tim	Перша послання Тимофію
 1Tim	Перше послання Тимофію
+1Tim	اول تیموتاؤس‌نامه‌ی‌ها
+1Tim	اولين نامه به تيموتيوس
+1Tim	اولین نامه به تیموتاؤس
+1Tim	نامه پولُس به تیموتاؤس
+1Tim	کتاب مقدس تيموتيوس اول
 1Tim	1 Kirje Timoteukselle
 1Tim	1 послання до Тимотея
 1Tim	1 послання до Тимофія
@@ -10554,6 +10798,13 @@
 1Tim	Prvni list Timotejovi
 1Tim	První list Timotejovi
 1Tim	Prvá kniha Timotejovi
+1Tim	اول تیموتاؤسی‌نامه‌ای
+1Tim	اول تیموتاؤسی‌نامه‌ها
+1Tim	اول تیموتاؤسی‌های‌شان
+1Tim	اول تیموتاؤس‌نامه‌شان
+1Tim	اول تیموتاؤس‌نامه‌هات
+1Tim	پولُس به تيموتيوس اول
+1Tim	پولُس به تیموتاؤس اول
 1Tim	1 List do Tymoteusza
 1Tim	1 Timoteju Poslanica
 1Tim	1 посланица Тимотеју
@@ -10580,6 +10831,14 @@
 1Tim	Prvá kniha Timoteovi
 1Tim	Prvý list Timotejovi
 1Tim	הראשונה אל טימותיאוס
+1Tim	اول تيموتيوس‌نامه‌ای
+1Tim	اول تيموتيوس‌نامه‌ها
+1Tim	اول تیموتاؤسی‌نامه‌ی
+1Tim	اول تیموتاؤس‌نامه‌ها
+1Tim	اول تیموتاؤس‌های‌شان
+1Tim	درس‌های تيموتيوس اول
+1Tim	درس‌های تیموتاؤس اول
+1Tim	یادداشت تیموتاؤس اول
 1Tim	तिमोथीलाई पहिलो पत्र
 1Tim	तीमथ्थाला पहिले पत्र
 1Tim	1. послання Тимофію
@@ -10591,6 +10850,7 @@
 1Tim	Prvy list Timoteovi
 1Tim	Prvý list Timoteovi
 1Tim	הראשונה אל טימותיוס
+1Tim	اول تيموتيوس‌نامه‌ی
 1Tim	1 послання Тимофію
 1Tim	1. Timotheosbrevet
 1Tim	1. list Timotejovi
@@ -10601,6 +10861,14 @@
 1Tim	Premieres Timothée
 1Tim	Premières Timothee
 1Tim	Premières Timothée
+1Tim	اول تیموتاؤسی‌نامه
+1Tim	رساله اول تيموتيوس
+1Tim	رساله اول تیموتاؤس
+1Tim	فرمان اول تيموتيوس
+1Tim	فرمان اول تیموتاؤس
+1Tim	موعظه اول تيموتيوس
+1Tim	موعظه اول تیموتاؤس
+1Tim	کتاب مقدس تیموتاؤس
 1Tim	1 Timotheosbrevet
 1Tim	1 list Timotejovi
 1Tim	1. Timoteusbrevet
@@ -10616,6 +10884,22 @@
 1Tim	Première Timothee
 1Tim	Première Timothée
 1Tim	Unang Kay Timoteo
+1Tim	آیات تیموتاؤس اول
+1Tim	اول تيموتيوس رسول
+1Tim	اول تيموتيوس مقدس
+1Tim	اول تيموتيوس‌نامه
+1Tim	اول تیموتاؤس رسول
+1Tim	اول تیموتاؤس مقدس
+1Tim	اوَل تیموتاؤسی‌ها
+1Tim	اوُل تیموتاؤسی‌ها
+1Tim	نامه اول تيموتيوس
+1Tim	نامه اول تیموتاؤس
+1Tim	پیام اول تیموتاؤس
+1Tim	پیام تيموتيوس اول
+1Tim	پیام تیموتاؤس اول
+1Tim	کتاب اول تيموتيوس
+1Tim	کتاب اول تیموتاؤس
+1Tim	کتاب تیموتاؤس اول
 1Tim	1 Timoteusbrevet
 1Tim	1 Tīmōttēyuvukku
 1Tim	1 list Timeteovi
@@ -10660,6 +10944,12 @@
 1Tim	Προς Τιμόθεον Αʹ
 1Tim	Προς Τιμόθεον Α΄
 1Tim	Προς Τιμόθεον Α’
+1Tim	اول تيموتيوسی-ها
+1Tim	اول تيموتيوسی‌ها
+1Tim	اول تیموتاؤس نبی
+1Tim	اول تیموتاؤسی-ها
+1Tim	اول تیموتاؤسی‌ها
+1Tim	اوَل تیموتاؤس-ها
 1Tim	اوّل تِیمُتھِیُس
 1Tim	اوّل-تِیمُتھِیُس
 1Tim	1 Teemuathaiyus
@@ -10693,7 +10983,13 @@
 1Tim	avval tīmutā'ūs
 1Tim	avval tīmutā’ūs
 1Tim	Προς Τιμοθεον Α
+1Tim	اول تيموتيوس-ها
+1Tim	اول تيموتيوس‌ها
+1Tim	اول تیموتاؤس-ها
+1Tim	اول تیموتاؤسیان
+1Tim	اول تیموتاؤس‌ها
 1Tim	تيموثاوس الأولى
+1Tim	پندهای تیموتاؤس
 1Tim	티모테오에게 보낸 첫째 서간
 1Tim	1 Kang Timoteo
 1Tim	1 Timoteusbrev
@@ -10716,6 +11012,7 @@
 1Tim	AvvalTimotaios
 1Tim	AvvalTimoteous
 1Tim	AvvalTimothaos
+1Tim	AvvalTimotheos
 1Tim	AvvalTimotheus
 1Tim	AvvalstTimothy
 1Tim	First Thimothy
@@ -10732,6 +11029,11 @@
 1Tim	Prvá Timoteovi
 1Tim	Prvý Timoteovi
 1Tim	ad Timotheum I
+1Tim	اولين تيموتيوس
+1Tim	اوَل تيموتيوسی
+1Tim	اوَل تیموتاؤسی
+1Tim	اوُل تيموتيوسی
+1Tim	اوّل تيموتيوسی
 1Tim	اوّل تیمِتھُیس
 1Tim	۱. تِیمُتھِیُس
 1Tim	۱.-تِیمُتھِیُس
@@ -10789,6 +11091,7 @@
 1Tim	AvvalTimotaos
 1Tim	AvvalTimoteos
 1Tim	AvvalTimoteus
+1Tim	AvvalTīmutāus
 1Tim	Elso Timoteus
 1Tim	Elso Timóteus
 1Tim	Első Timoteus
@@ -10824,9 +11127,19 @@
 1Tim	Първа Тимотей
 1Tim	Първо Тимотеи
 1Tim	Първо Тимотей
+1Tim	اول تيموتيوسی
+1Tim	اول تیموتاؤسی
 1Tim	اول تیموتائوس
+1Tim	اول تیموتاووس
+1Tim	اول تیمُوتاوس
 1Tim	اولتیموتائوسه
 1Tim	اولتیموتائوسی
+1Tim	اوَل تيموتيوس
+1Tim	اوَل تیموتاؤس
+1Tim	اوُل تيموتيوس
+1Tim	اوُل تیموتاؤس
+1Tim	اوّل تيموتيوس
+1Tim	اوّل تیموتاؤس
 1Tim	۱ تِیمُتھِیُس
 1Tim	۱-تِیمُتھِیُس
 1Tim	ﺍﻻﻭﻝ ﺗﻴﻤﻮﺛﺎﻭﺱ
@@ -10908,15 +11221,21 @@
 1Tim	Pierwsza Tym
 1Tim	Pierwsze Tym
 1Tim	Pierwszy Tym
+1Tim	YekTimoteous
 1Tim	YekTimothaos
+1Tim	YekTimotheos
 1Tim	YekTimotheus
 1Tim	Прва Тимотеј
 1Tim	Прво Тимотеј
+1Tim	اول تيموتيوس
+1Tim	اول تیموتاؤس
+1Tim	اول تیمُتاؤس
 1Tim	اولتیموتئاؤس
 1Tim	اولتیموتئوسه
 1Tim	اولتیموتاؤسی
 1Tim	اولتیموتائوس
 1Tim	اولتیموتیئوس
+1Tim	اوَل تيموتيو
 1Tim	اوّل۔تیمتھیس
 1Tim	یکتیموتائوسه
 1Tim	یکتیموتائوسی
@@ -10982,6 +11301,8 @@
 1Tim	1е. Тимофею
 1Tim	1я. Тиметею
 1Tim	1я. Тимофею
+1Tim	1تیموتائوسه
+1Tim	1تیموتائوسی
 1Tim	I Ti-mô-thê
 1Tim	I Timoteovi
 1Tim	I Timoteyos
@@ -11000,8 +11321,11 @@
 1Tim	I. Тимотеју
 1Tim	Timotheum I
 1Tim	Una Timoteo
+1Tim	YekTimotaos
 1Tim	YekTimoteos
 1Tim	YekTimoteus
+1Tim	اول تيموتيو
+1Tim	اول تیموتاؤ
 1Tim	اولتیموتئوس
 1Tim	اولتیموتاؤس
 1Tim	اولتیموتائس
@@ -11060,6 +11384,11 @@
 1Tim	1е Тимофею
 1Tim	1я Тиметею
 1Tim	1я Тимофею
+1Tim	1تیموتئاؤس
+1Tim	1تیموتئوسه
+1Tim	1تیموتاؤسی
+1Tim	1تیموتائوس
+1Tim	1تیموتیئوس
 1Tim	Eerste Tim
 1Tim	Første Tim
 1Tim	I Thimothy
@@ -11086,6 +11415,7 @@
 1Tim	I. Тимофія
 1Tim	Kwanza Tim
 1Tim	Timotheo I
+1Tim	YekTimothy
 1Tim	Α' Τιμοθεο
 1Tim	Α' Τιμόθεο
 1Tim	Αʹ Τιμοθεο
@@ -11096,6 +11426,7 @@
 1Tim	Α΄ Τιμόθεο
 1Tim	Α’ Τιμοθεο
 1Tim	Α’ Τιμόθεο
+1Tim	اول تیموتا
 1Tim	یکتیموتئوس
 1Tim	یکتیموتاؤس
 1Tim	یکتیموتائس
@@ -11130,6 +11461,11 @@
 1Tim	1Timotaos
 1Tim	1Timoteos
 1Tim	1Timoteus
+1Tim	1تیموتئوس
+1Tim	1تیموتاؤس
+1Tim	1تیموتائس
+1Tim	1تیموتیؤس
+1Tim	1تیموتیوس
 1Tim	1۔تیمتھیس
 1Tim	First Tim
 1Tim	I Thimoty
@@ -11149,8 +11485,12 @@
 1Tim	I. Timoty
 1Tim	Prvni Tim
 1Tim	První Tim
+1Tim	Timoteous
+1Tim	Timotheos
+1Tim	Timotheus
 1Tim	Първа Тим
 1Tim	Първо Тим
+1Tim	اول تیموت
 1Tim	۱تیموتئوس
 1Tim	۱تیموتاؤس
 1Tim	۱تیموتائس
@@ -11167,6 +11507,7 @@
 1Tim	1Timothy
 1Tim	1st. Tim
 1Tim	AvvalTim
+1Tim	AvvalTīm
 1Tim	Elso Tim
 1Tim	Első Tim
 1Tim	First Ti
@@ -11177,6 +11518,8 @@
 1Tim	Prvni Tm
 1Tim	První Tm
 1Tim	Прва Тим
+1Tim	اول تیمو
+1Tim	۱تیموتاؤ
 1Tim	テモテへの前の書
 1Tim	テモテへの手紙Ⅰ
 1Tim	テモテへの手紙一
@@ -11187,6 +11530,7 @@
 1Tim	1st. Tm
 1Tim	Timothy
 1Tim	avvaltī
+1Tim	اول تیم
 1Tim	《弟茂德前書》
 1Tim	《提摩太前书》
 1Tim	《提摩太前書》
@@ -11205,11 +11549,13 @@
 1Tim	I. Tím
 1Tim	I. Тим
 1Tim	Timoth
+1Tim	YekTim
 1Tim	Α' Τιμ
 1Tim	Αʹ Τιμ
 1Tim	Αʹ Τιμ
 1Tim	Α΄ Τιμ
 1Tim	Α’ Τιμ
+1Tim	۱تیموت
 1Tim	Ⅰ テモテへ
 1Tim	《弟茂德前書
 1Tim	《提摩太前书
@@ -11228,6 +11574,8 @@
 1Tim	1 तीम
 1Tim	1. Ti
 1Tim	1. Tm
+1Tim	1tīmt
+1Tim	1تیمت
 1Tim	I Tim
 1Tim	I Tym
 1Tim	I Tím
@@ -11261,11 +11609,14 @@
 1Tim	1テモテ
 1Tim	I Ti
 1Tim	I Tm
+1Tim	اوّل
 1Tim	۱tīm
 1Tim	۱تیم
 1Tim	《提前》
 1Tim	一テモテ
 1Tim	提摩斐前
+1Tim	1tī
+1Tim	1تی
 1Tim	1티모
 1Tim	۱tī
 1Tim	۱تی
@@ -12057,6 +12408,7 @@
 2Chr	2 хроника
 2Chr	2 хроніки
 2Chr	2 تو اریخ
+2Chr	2 تواریکه
 2Chr	2 ବଂଶାବଳୀ
 2Chr	2.  Sử Ký
 2Chr	2. Itihas
@@ -12114,6 +12466,9 @@
 2Chr	2 itihās
 2Chr	2 Хроник
 2Chr	2 Хронік
+2Chr	2 تواريخ
+2Chr	2 تواریخ
+2Chr	2 تواریک
 2Chr	2 इतिहास
 2Chr	2. Babad
 2Chr	2. Chron
@@ -12127,6 +12482,7 @@
 2Chr	2nd Chro
 2Chr	2nd Cron
 2Chr	2nd. Chr
+2Chr	2تواریکه
 2Chr	2۔تواریخ
 2Chr	DovomChr
 2Chr	Druha Pa
@@ -12162,6 +12518,7 @@
 2Chr	2 Istwa
 2Chr	2 Sử ký
 2Chr	2 Парал
+2Chr	2 توارخ
 2Chr	2 ਇਤਹਾਸ
 2Chr	2. Chrn
 2Chr	2. Chro
@@ -12172,6 +12529,10 @@
 2Chr	2. Taar
 2Chr	2e Kron
 2Chr	2nd Chr
+2Chr	2towāri
+2Chr	2تواريخ
+2Chr	2تواریخ
+2Chr	2تواریک
 2Chr	II Chrn
 2Chr	II Chro
 2Chr	II Cron
@@ -12221,6 +12582,9 @@
 2Chr	2. Лет
 2Chr	2. इति
 2Chr	2. พศด
+2Chr	2towār
+2Chr	2توارخ
+2Chr	2تواری
 2Chr	II Chr
 2Chr	II Kro
 2Chr	II Nya
@@ -12264,6 +12628,7 @@
 2Chr	2. Sử
 2Chr	2. Дн
 2Chr	2tawā
+2Chr	2توار
 2Chr	II Pa
 2Chr	II Sử
 2Chr	II Дн
@@ -12296,6 +12661,7 @@
 2Chr	2 أخ
 2Chr	2Chr
 2Chr	2Taw
+2Chr	2tow
 2Chr	2توا
 2Chr	دومت
 2Chr	۲tow
@@ -12310,6 +12676,7 @@
 2Chr	歷代志下
 2Chr	編年紀下
 2Chr	역대지하
+2Chr	2تو
 2Chr	2역대
 2Chr	۲تو
 2Chr	Ⅱ歴代
@@ -13443,6 +13810,8 @@
 2Cor	2 Wakorintho
 2Cor	2 Коринтјани
 2Cor	2 Коринфянам
+2Cor	2 قرنتیانیان
+2Cor	2 قرنتیونیان
 2Cor	2 کرنتھِیُوں
 2Cor	2 کُرنتھِیوں
 2Cor	2 करिंथकरांस
@@ -13575,6 +13944,10 @@
 2Cor	2 Wakorinto
 2Cor	2 kurĩtʰīāṃ
 2Cor	2 Коринтяни
+2Cor	2 قرنتیانان
+2Cor	2 قرنتیانها
+2Cor	2 قرنتیونان
+2Cor	2 قرنتیونها
 2Cor	2 कोरिन्थॉस
 2Cor	2 कोरिन्‍थी
 2Cor	2 ਕੁਰਿੰਥੀਆਂ
@@ -13605,6 +13978,8 @@
 2Cor	2nd Corinth
 2Cor	2nd. Corint
 2Cor	2°. Corinzi
+2Cor	2قرنتیانیان
+2Cor	2قرنتیونیان
 2Cor	DoKorintian
 2Cor	DoQorintian
 2Cor	DoQorintyun
@@ -13667,6 +14042,12 @@
 2Cor	2 Koryntów
 2Cor	2 Коринфян
 2Cor	2 коринтян
+2Cor	2 قرنتیانن
+2Cor	2 قرنتیانه
+2Cor	2 قرنتیانی
+2Cor	2 قرنتیونن
+2Cor	2 قرنتیونه
+2Cor	2 قرنتیونی
 2Cor	2 کرنتھیوں
 2Cor	2 कोरिन्थी
 2Cor	2 କରିନ୍ଥୀୟ
@@ -13686,6 +14067,10 @@
 2Cor	2nd. Corin
 2Cor	2nd. Corth
 2Cor	2° Corinzi
+2Cor	2قرنتیانان
+2Cor	2قرنتیانها
+2Cor	2قرنتیونان
+2Cor	2قرنتیونها
 2Cor	2۔کرنتھیوں
 2Cor	Do Corinth
 2Cor	II Corinth
@@ -13734,12 +14119,21 @@
 2Cor	2 Côrintô
 2Cor	2 Korinta
 2Cor	2 Korinto
+2Cor	2 قرنتيان
+2Cor	2 قرنتیان
+2Cor	2 قرنتیون
 2Cor	2 कुरिन्थ
 2Cor	2 โครินธ์
 2Cor	2. Corint
 2Cor	2. Korint
 2Cor	2nd Corin
 2Cor	2nd Corth
+2Cor	2قرنتیانن
+2Cor	2قرنتیانه
+2Cor	2قرنتیانی
+2Cor	2قرنتیونن
+2Cor	2قرنتیونه
+2Cor	2قرنتیونی
 2Cor	Anden Kor
 2Cor	Andre Kor
 2Cor	DoCorinth
@@ -13770,6 +14164,9 @@
 2Cor	2. Corth
 2Cor	2Corinth
 2Cor	2nd. Cor
+2Cor	2قرنتيان
+2Cor	2قرنتیان
+2Cor	2قرنتیون
 2Cor	DovomCor
 2Cor	II Corin
 2Cor	II Corth
@@ -13836,6 +14233,8 @@
 2Cor	2 قور
 2Cor	2. Co
 2Cor	2. Cô
+2Cor	2qrnt
+2Cor	2قرنت
 2Cor	2コリント
 2Cor	II Co
 2Cor	II Cô
@@ -13861,6 +14260,8 @@
 2Cor	2 คร
 2Cor	2Cor
 2Cor	2Kor
+2Cor	2qrn
+2Cor	2قرن
 2Cor	دومق
 2Cor	۲qrn
 2Cor	۲قرن
@@ -15477,6 +15878,8 @@
 2John	2. Jo
 2John	2. Јн
 2John	2John
+2John	2yohn
+2John	2یوحن
 2John	II Gi
 2John	II In
 2John	II Jh
@@ -15522,6 +15925,8 @@
 2John	2 ยน
 2John	2. J
 2John	2Yoh
+2John	2yoh
+2John	2یوح
 2John	2ヨハネ
 2John	II J
 2John	۲yoh
@@ -16292,6 +16697,7 @@
 2Kgs	2 k. Kraľov
 2Kgs	2 k. Králov
 2Kgs	2 k. Kráľov
+2Kgs	2 پادشاهاان
 2Kgs	2 राजाहरूको
 2Kgs	2-ге. Cariv
 2Kgs	2-ге. царів
@@ -16395,6 +16801,7 @@
 2Kgs	2 Împaraţi
 2Kgs	2 Împărati
 2Kgs	2 Împăraţi
+2Kgs	2 پادشاهان
 2Kgs	2 ରାଜାବଳୀର
 2Kgs	2 அரசர்கள்
 2Kgs	2-а. Cariv
@@ -16420,6 +16827,7 @@
 2Kgs	2eme. Rois
 2Kgs	2nd. Kings
 2Kgs	2ème. Rois
+2Kgs	2پادشاهاان
 2Kgs	4 Kingdoms
 2Kgs	4 Mga Hari
 2Kgs	4 Regnorum
@@ -16488,6 +16896,9 @@
 2Kgs	2 Wafalme
 2Kgs	2 salāṭīn
 2Kgs	2 краљева
+2Kgs	2 پادشاها
+2Kgs	2 پادشاهن
+2Kgs	2 پادشهان
 2Kgs	2 ରାଜାବଳୀ
 2Kgs	2-а Cariv
 2Kgs	2-а царів
@@ -16525,6 +16936,7 @@
 2Kgs	2е. Царей
 2Kgs	2я. Цареи
 2Kgs	2я. Царей
+2Kgs	2پادشاهان
 2Kgs	4 Царства
 2Kgs	4 அரசுகள்
 2Kgs	4. Kralov
@@ -16614,6 +17026,9 @@
 2Kgs	2е Царей
 2Kgs	2я Цареи
 2Kgs	2я Царей
+2Kgs	2پادشاها
+2Kgs	2پادشاهن
+2Kgs	2پادشهان
 2Kgs	2۔سلاطین
 2Kgs	4 Kralov
 2Kgs	4 Kraľov
@@ -16774,6 +17189,7 @@
 2Kgs	2nd Kn
 2Kgs	2nd Ks
 2Kgs	2nd. K
+2Kgs	2pādsh
 2Kgs	2°. Re
 2Kgs	4 Regi
 2Kgs	4 Царе
@@ -16852,6 +17268,7 @@
 2Kgs	2e Ko
 2Kgs	2nd K
 2Kgs	2° Re
+2Kgs	2پادش
 2Kgs	4 Цар
 2Kgs	II Kg
 2Kgs	II Ki
@@ -16905,6 +17322,8 @@
 2Kgs	열왕기하
 2Kgs	2 R
 2Kgs	2Rj
+2Kgs	2pā
+2Kgs	2پا
 2Kgs	2열왕
 2Kgs	4 Ц
 2Kgs	۲pā
@@ -17970,6 +18389,8 @@
 2Pet	2-я. послание Петра
 2Pet	II. List sw. Piotra
 2Pet	II. List św. Piotra
+2Pet	دوم پترس‌نامه‌هاتان
+2Pet	دوم پطرس‌نامه‌گی‌ها
 2Pet	ਪਤਰਸ ਦੀ ਦੂਜੀ ਪੱਤ੍ਰੀ
 2Pet	2-а послання Петра
 2Pet	2-е послание Петра
@@ -17989,6 +18410,9 @@
 2Pet	II. Pietarin kirje
 2Pet	II. послання Петра
 2Pet	איגרת פטרוס השנייה
+2Pet	دوم پترس‌نامه‌ی‌ها
+2Pet	دوم پطرس‌نامه‌ی‌ها
+2Pet	دومین نامه به پترس
 2Pet	رسالة بطرس الثانية
 2Pet	पौलाचें दुसरे पत्र
 2Pet	2 List sw. Piotra
@@ -18033,6 +18457,12 @@
 2Pet	Síðara Pétursbref
 2Pet	Síðara Pétursbréf
 2Pet	Πετρου Επιστολη Β
+2Pet	دوم پترس‌نامه‌شان
+2Pet	دوم پترس‌نامه‌هات
+2Pet	دوم پترس‌نامه‌گان
+2Pet	دوم پطرس‌نامه‌شان
+2Pet	دوم پطرس‌نامه‌هات
+2Pet	دوم پطرس‌نامه‌گان
 2Pet	2 List sw Piotra
 2Pet	2 List św Piotra
 2Pet	2 Pietarin kirje
@@ -18043,6 +18473,14 @@
 2Pet	Andre Petersbrev
 2Pet	Deuxiemes Pierre
 2Pet	Deuxièmes Pierre
+2Pet	درس‌های پترس دوم
+2Pet	درس‌های پطرس دوم
+2Pet	دوم پترس‌نامه‌اش
+2Pet	دوم پترس‌نامه‌ای
+2Pet	دوم پترس‌نامه‌ها
+2Pet	دوم پطرس‌نامه‌اش
+2Pet	دوم پطرس‌نامه‌ای
+2Pet	دوم پطرس‌نامه‌ها
 2Pet	2. Petrusbrevet
 2Pet	Deuxieme Pierre
 2Pet	Deuxième Pierre
@@ -18051,6 +18489,9 @@
 2Pet	II. list Petrův
 2Pet	Ikalawang Pedro
 2Pet	Toinen Pietarin
+2Pet	دوم پترس‌نامه‌ی
+2Pet	دوم پطرس‌نامه‌ی
+2Pet	پندهای پترس دوم
 2Pet	2 Petrusbrevet
 2Pet	2. List Piotra
 2Pet	2. list Petruv
@@ -18067,6 +18508,10 @@
 2Pet	Zweiten Petrus
 2Pet	Zweiter Petrus
 2Pet	Zweites Petrus
+2Pet	رساله دوم پترس
+2Pet	رساله دوم پطرس
+2Pet	فرمان دوم پترس
+2Pet	موعظه پترس دوم
 2Pet	2 List Piotra
 2Pet	2 list Petruv
 2Pet	2 list Petrův
@@ -18105,6 +18550,17 @@
 2Pet	Друга Петрова
 2Pet	Друга Петрово
 2Pet	Друге Петрово
+2Pet	دوم پترس رسول
+2Pet	دوم پترس مقدس
+2Pet	دوم پترس‌نامه
+2Pet	دوم پطرس مقدس
+2Pet	دوم پطرس‌نامه
+2Pet	نامه دوم پترس
+2Pet	نامه دوم پطرس
+2Pet	پیام دوم پطرس
+2Pet	پیام پترس دوم
+2Pet	کتاب دوم پترس
+2Pet	کتاب دوم پطرس
 2Pet	ଦ୍ୱିତୀୟ ପିତରଙ
 2Pet	2 Petersbrev
 2Pet	2 e. Pjetrit
@@ -18152,8 +18608,13 @@
 2Pet	II. Phi-e-rơ
 2Pet	II. Pietarin
 2Pet	Second Peter
+2Pet	SecondPetros
 2Pet	השנייה פטרוס
 2Pet	بطرس الثانية
+2Pet	دوم پترسی-ها
+2Pet	دوم پترسی‌ها
+2Pet	دوم پطرسی-ها
+2Pet	دوم پطرسی‌ها
 2Pet	رسالة بطرس 2
 2Pet	2 San Pedro
 2Pet	2 e Pjetrit
@@ -18184,8 +18645,12 @@
 2Pet	Dovom peter
 2Pet	DovomPatras
 2Pet	DovomPatris
+2Pet	DovomPatros
 2Pet	DovomPatrus
 2Pet	DovomPeters
+2Pet	DovomPetras
+2Pet	DovomPetros
+2Pet	DovomPetrus
 2Pet	Dovompatras
 2Pet	Dovompatris
 2Pet	Dovompatrus
@@ -18204,6 +18669,7 @@
 2Pet	Második Pét
 2Pet	Second Pete
 2Pet	Second Petr
+2Pet	SecondPeter
 2Pet	Tweede Petr
 2Pet	Втора Петар
 2Pet	Втора Петър
@@ -18211,7 +18677,11 @@
 2Pet	Второ Петър
 2Pet	Друга Петра
 2Pet	Друге Петра
+2Pet	دوم پترس-ها
+2Pet	دوم پترس‌ها
+2Pet	دوم پطرس-ها
 2Pet	دوم پطرسساه
+2Pet	دوم پطرس‌ها
 2Pet	2 Patrissi
 2Pet	2 Phi-e-rơ
 2Pet	2 Pietarin
@@ -18294,7 +18764,9 @@
 2Pet	دوم پطرسسه
 2Pet	دوم پطرسسى
 2Pet	دوم پطرسسی
+2Pet	دوم پِطرُس
 2Pet	دومپطرسساه
+2Pet	دومین پترس
 2Pet	베드로의 둘째 서간
 2Pet	2 Pataras
 2Pet	2 Pataris
@@ -18306,6 +18778,7 @@
 2Pet	2 Петрова
 2Pet	2 Петрово
 2Pet	2 Петруса
+2Pet	2 پطرسساه
 2Pet	2-а Петра
 2Pet	2-е Петра
 2Pet	2-я Петра
@@ -18334,6 +18807,7 @@
 2Pet	2nd Peter
 2Pet	2nd. Pete
 2Pet	2nd. Petr
+2Pet	2ndPetros
 2Pet	2o. Pedro
 2Pet	2° Pietro
 2Pet	2º. Pedro
@@ -18402,6 +18876,7 @@
 2Pet	دو پطرسسه
 2Pet	دو پطرسسى
 2Pet	دو پطرسسی
+2Pet	دوم پترسی
 2Pet	دوم پطر س
 2Pet	دوم پطرسئ
 2Pet	دوم پطرسا
@@ -18444,6 +18919,11 @@
 2Pet	2 Pēturu
 2Pet	2 patras
 2Pet	2 Петира
+2Pet	2 پطرسسئ
+2Pet	2 پطرسسا
+2Pet	2 پطرسسه
+2Pet	2 پطرسسى
+2Pet	2 پطرسسی
 2Pet	2 पत्रुस
 2Pet	2 पेतरॉस
 2Pet	2 பேதுரு
@@ -18471,16 +18951,25 @@
 2Pet	2nd. Per
 2Pet	2nd. Pet
 2Pet	2nd. Ptr
+2Pet	2ndPeter
 2Pet	2o Pedro
 2Pet	2º Pedro
 2Pet	2е Петра
 2Pet	2я Петра
+2Pet	2پطرسساه
 2Pet	Do peter
+2Pet	DoPatras
+2Pet	DoPatros
+2Pet	DoPeters
+2Pet	DoPetras
+2Pet	DoPetros
+2Pet	DoPetrus
 2Pet	Dopatras
 2Pet	Dopatris
 2Pet	Dopatrus
 2Pet	Dopeters
 2Pet	DovomPet
+2Pet	DovomPtr
 2Pet	Druha Pt
 2Pet	Druhy Pt
 2Pet	Druhá Pt
@@ -18519,6 +19008,7 @@
 2Pet	دو پطرصه
 2Pet	دو پطرصى
 2Pet	دو پطرصی
+2Pet	دوم پترس
 2Pet	دوم پطرس
 2Pet	دوم پطرص
 2Pet	دوم-پطرس
@@ -18559,6 +19049,18 @@
 2Pet	2 Петра
 2Pet	2 Петър
 2Pet	2 پطر س
+2Pet	2 پطرسئ
+2Pet	2 پطرسا
+2Pet	2 پطرسس
+2Pet	2 پطرسه
+2Pet	2 پطرسى
+2Pet	2 پطرسی
+2Pet	2 پطرصئ
+2Pet	2 پطرصا
+2Pet	2 پطرصس
+2Pet	2 پطرصه
+2Pet	2 پطرصى
+2Pet	2 پطرصی
 2Pet	2 पेत्र
 2Pet	2 ପିତରଙ
 2Pet	2 เปโตร
@@ -18582,6 +19084,13 @@
 2Pet	2nd Ptr
 2Pet	2nd. Pe
 2Pet	2nd. Pt
+2Pet	2پطرسسئ
+2Pet	2پطرسسا
+2Pet	2پطرسسه
+2Pet	2پطرسسى
+2Pet	2پطرسسی
+2Pet	DoPeter
+2Pet	DoPtrus
 2Pet	Dopeter
 2Pet	Druha P
 2Pet	Druhy P
@@ -18663,6 +19172,7 @@
 2Pet	2 Piet
 2Pet	2 Петр
 2Pet	2 پطرس
+2Pet	2 پطرص
 2Pet	2 पतरस
 2Pet	2 ਪਤਰਸ
 2Pet	2 பேது
@@ -18683,6 +19193,19 @@
 2Pet	2nd Pe
 2Pet	2nd Pt
 2Pet	2nd. P
+2Pet	2ptrus
+2Pet	2پطرسئ
+2Pet	2پطرسا
+2Pet	2پطرسس
+2Pet	2پطرسه
+2Pet	2پطرسى
+2Pet	2پطرسی
+2Pet	2پطرصئ
+2Pet	2پطرصا
+2Pet	2پطرصس
+2Pet	2پطرصه
+2Pet	2پطرصى
+2Pet	2پطرصی
 2Pet	2۔پطرس
 2Pet	II But
 2Pet	II Per
@@ -18706,6 +19229,8 @@
 2Pet	Β΄ Πετ
 2Pet	Β’ Πέτ
 2Pet	Β’ Πετ
+2Pet	دومپتر
+2Pet	دومپطر
 2Pet	دوپطرس
 2Pet	دوپطرص
 2Pet	۲ پطرس
@@ -18747,6 +19272,10 @@
 2Pet	2. Pe
 2Pet	2. Pt
 2Pet	2nd P
+2Pet	2پطرس
+2Pet	2پطرص
+2Pet	DoPet
+2Pet	DoPtr
 2Pet	II Pe
 2Pet	II Pt
 2Pet	II. P
@@ -18760,6 +19289,7 @@
 2Pet	Β΄ Πε
 2Pet	Β’ Πέ
 2Pet	Β’ Πε
+2Pet	دومپت
 2Pet	دومپط
 2Pet	۲پطرس
 2Pet	۲پطرص
@@ -18785,10 +19315,13 @@
 2Pet	2 ปต
 2Pet	2. P
 2Pet	2Pet
+2Pet	2ptr
+2Pet	2پطر
 2Pet	2ヘテロ
 2Pet	2ペテロ
 2Pet	II P
 2Pet	۲ptr
+2Pet	۲پتر
 2Pet	۲پطر
 2Pet	《彼后》
 2Pet	《彼後》
@@ -18800,14 +19333,17 @@
 2Pet	2 P
 2Pet	2pt
 2Pet	2بط
+2Pet	2پت
 2Pet	2پط
 2Pet	2베드
 2Pet	۲pt
 2Pet	۲پت
+2Pet	۲پط
 2Pet	《彼后
 2Pet	《彼後
 2Pet	彼后》
 2Pet	彼後》
+2Pet	۲پ
 2Pet	彼后
 2Pet	彼後
 2Pet	벧후
@@ -19445,6 +19981,11 @@
 2Sam	2 ŝamuwel
 2Sam	2 Самуила
 2Sam	2 Царства
+2Sam	2 سموئئیل
+2Sam	2 سموئیلہ
+2Sam	2 سموئیلی
+2Sam	2 سموئییل
+2Sam	2 سموائیل
 2Sam	2 शमूएलको
 2Sam	2 ଶାମୁୟେଲ
 2Sam	2 அரசுகள்
@@ -19555,7 +20096,12 @@
 2Sam	2 Самуіл
 2Sam	2 Самуїл
 2Sam	2 Царств
+2Sam	2 سمئویل
+2Sam	2 سموءیل
+2Sam	2 سموئيل
 2Sam	2 سموئیل
+2Sam	2 سموایل
+2Sam	2 سموییل
 2Sam	2 صموئيل
 2Sam	2 शमुवेल
 2Sam	2 शामुएल
@@ -19571,6 +20117,11 @@
 2Sam	2Samwiil
 2Sam	2nd. Sam
 2Sam	2nd. Sma
+2Sam	2سموئئیل
+2Sam	2سموئیلہ
+2Sam	2سموئیلی
+2Sam	2سموئییل
+2Sam	2سموائیل
 2Sam	2۔سموایل
 2Sam	Dosamuel
 2Sam	Dosamuil
@@ -19604,6 +20155,9 @@
 2Sam	۲سموئییل
 2Sam	۲سموائیل
 2Sam	۲۔سموایل
+2Sam	2 سمؤیل
+2Sam	2 سموئل
+2Sam	2 سمویل
 2Sam	2 शमूएल
 2Sam	2 ਸਮੂਏਲ
 2Sam	2. Царе
@@ -19614,6 +20168,12 @@
 2Sam	2nd Sma
 2Sam	2nd. Sa
 2Sam	2nd. Sm
+2Sam	2سمئویل
+2Sam	2سموءیل
+2Sam	2سموئيل
+2Sam	2سموئیل
+2Sam	2سموایل
+2Sam	2سموییل
 2Sam	Druha S
 2Sam	Druhy S
 2Sam	Druhá S
@@ -19652,6 +20212,9 @@
 2Sam	2e Sam
 2Sam	2nd Sa
 2Sam	2nd Sm
+2Sam	2سمؤیل
+2Sam	2سموئل
+2Sam	2سمویل
 2Sam	II Sam
 2Sam	II Sma
 2Sam	II Sám
@@ -19685,6 +20248,8 @@
 2Sam	2 ซมอ
 2Sam	2. Sa
 2Sam	2. Sm
+2Sam	2sāmu
+2Sam	2سامو
 2Sam	II Sa
 2Sam	II Sm
 2Sam	II. S
@@ -19703,6 +20268,8 @@
 2Sam	2 صم
 2Sam	2. S
 2Sam	2Sam
+2Sam	2smu
+2Sam	2سمو
 2Sam	II S
 2Sam	دومس
 2Sam	۲smu
@@ -21001,6 +21568,10 @@
 2Thess	2 k Solúnčanom
 2Thess	2 k. Solunskym
 2Thess	2 k. Solúnskym
+2Thess	2 تسالونيکيانه
+2Thess	2 تسالونيکیانی
+2Thess	2 تسالونیکیانه
+2Thess	2 تسالونیکیانی
 2Thess	2 تھِسلُنیکیوں
 2Thess	2 தெசலோனிக்கர்
 2Thess	2-а до солунян
@@ -21085,6 +21656,10 @@
 2Thess	2 Tsalonikian
 2Thess	2 k Solunskym
 2Thess	2 k Solúnskym
+2Thess	2 تسالونيکيان
+2Thess	2 تسالونيکیان
+2Thess	2 تسالونیکيان
+2Thess	2 تسالونیکیان
 2Thess	2 تھسّلنیکیوں
 2Thess	2 थिस्सलोनिकी
 2Thess	2-а. Солуньці
@@ -21113,6 +21688,10 @@
 2Thess	2Thessalonici
 2Thess	2Thessalonika
 2Thess	2Tsalonicians
+2Thess	2تسالونيکيانه
+2Thess	2تسالونيکیانی
+2Thess	2تسالونیکیانه
+2Thess	2تسالونیکیانی
 2Thess	Do Tsalonikee
 2Thess	DoTessalonici
 2Thess	DoTessalonika
@@ -21191,6 +21770,10 @@
 2Thess	2Tessalonici
 2Thess	2Tessalonika
 2Thess	2Tsalonikian
+2Thess	2تسالونيکيان
+2Thess	2تسالونيکیان
+2Thess	2تسالونیکيان
+2Thess	2تسالونیکیان
 2Thess	2۔تھسلنیکیوں
 2Thess	Do Tsaloniki
 2Thess	DoTsalonikee
@@ -21386,6 +21969,8 @@
 2Thess	2. Te
 2Thess	2. Th
 2Thess	2. Tê
+2Thess	2tsln
+2Thess	2تسلن
 2Thess	II Te
 2Thess	II Th
 2Thess	II Tê
@@ -21405,8 +21990,10 @@
 2Thess	2 Tê
 2Thess	2 تس
 2Thess	2 ธส
+2Thess	2tsl
 2Thess	2tsā
 2Thess	2تسا
+2Thess	2تسل
 2Thess	۲tsl
 2Thess	۲تسا
 2Thess	۲تسل
@@ -21414,6 +22001,8 @@
 2Thess	《帖後》
 2Thess	《莎倫後
 2Thess	莎倫後》
+2Thess	2ts
+2Thess	2تس
 2Thess	2테살
 2Thess	۲ts
 2Thess	۲تس
@@ -21647,6 +22236,8 @@
 2Tim	II. посланица Тимотеју
 2Tim	Друга послання Тимофію
 2Tim	Друге послання Тимофію
+2Tim	دومين نامه به تيموتيوس
+2Tim	کتاب مقدس تيموتيوس دوم
 2Tim	2 Kirje Timoteukselle
 2Tim	2 послання до Тимотея
 2Tim	2 послання до Тимофія
@@ -21687,6 +22278,7 @@
 2Tim	Síðara Tímoteusarbréf
 2Tim	Síðara Tímóteusarbref
 2Tim	Síðara Tímóteusarbréf
+2Tim	پولُس به تيموتيوس دوم
 2Tim	2 List do Tymoteusza
 2Tim	2 Timoteju Poslanica
 2Tim	2 посланица Тимотеју
@@ -21700,6 +22292,9 @@
 2Tim	II. послання Тимофію
 2Tim	Toinen Timoteukselle
 2Tim	Toinen Timoteuskirje
+2Tim	درس‌های تيموتيوس دوم
+2Tim	دوم تيموتيوس‌نامه‌ای
+2Tim	دوم تيموتيوس‌نامه‌ها
 2Tim	तीमथ्थाला दुसरे पत्र
 2Tim	2. послання Тимофію
 2Tim	Anden Timotheusbrev
@@ -21716,6 +22311,7 @@
 2Tim	Második Timóteushoz
 2Tim	Második Timóteusnak
 2Tim	השנייה אל טימותיאוס
+2Tim	دوم تيموتيوس‌نامه‌ی
 2Tim	2 послання Тимофію
 2Tim	2. Timotheosbrevet
 2Tim	2. list Timetejovi
@@ -21734,6 +22330,9 @@
 2Tim	Második Timotheosz
 2Tim	Második Timótheosz
 2Tim	השנייה אל טימותיוס
+2Tim	رساله دوم تيموتيوس
+2Tim	فرمان دوم تيموتيوس
+2Tim	موعظه دوم تيموتيوس
 2Tim	2 Timotheosbrevet
 2Tim	2 list Timetejovi
 2Tim	2 list Timotejovi
@@ -21750,6 +22349,12 @@
 2Tim	Zweiten Timotheus
 2Tim	Zweiter Timotheus
 2Tim	Zweites Timotheus
+2Tim	دوم تيموتيوس رسول
+2Tim	دوم تيموتيوس مقدس
+2Tim	دوم تيموتيوس‌نامه
+2Tim	نامه دوم تيموتيوس
+2Tim	پیام تيموتيوس دوم
+2Tim	کتاب دوم تيموتيوس
 2Tim	2 Timoteusbrevet
 2Tim	2 Tīmōttēyuvukku
 2Tim	2 list Timoteovi
@@ -21786,6 +22391,8 @@
 2Tim	Προς Τιμόθεον Β΄
 2Tim	Προς Τιμόθεον Β’
 2Tim	تيموثاوس الثانية
+2Tim	دوم تيموتيوسی-ها
+2Tim	دوم تيموتيوسی‌ها
 2Tim	ଦ୍ୱିତୀୟ ତୀମଥିଙ୍କ
 2Tim	ﺍﻟﺜﺎﻧﻴﺔ ﺗﻴﻤﻮﺛﺎﻭﺱ
 2Tim	2 Teemuathaiyus
@@ -21797,6 +22404,7 @@
 2Tim	2. Timoteusbrev
 2Tim	DovomTimothaeus
 2Tim	DovomTimothaios
+2Tim	DovvomTimotheos
 2Tim	Druha Timoteovi
 2Tim	Druhy Timoteovi
 2Tim	Druhá Timoteovi
@@ -21817,6 +22425,8 @@
 2Tim	Tweede Timoteüs
 2Tim	ad Timotheum II
 2Tim	Προς Τιμοθεον Β
+2Tim	دوم تيموتيوس-ها
+2Tim	دوم تيموتيوس‌ها
 2Tim	دوم تِیمُتھِیُس
 2Tim	دوم تیِمُتھِیُس
 2Tim	دوم-تِیمُتھِیُس
@@ -21845,6 +22455,7 @@
 2Tim	DovomTimotaios
 2Tim	DovomTimoteous
 2Tim	DovomTimothaos
+2Tim	DovomTimotheos
 2Tim	DovomTimotheus
 2Tim	Druga Timoteju
 2Tim	Druha Timoteus
@@ -21864,6 +22475,10 @@
 2Tim	Second Timothy
 2Tim	Second Tomothy
 2Tim	Друга Тимотеју
+2Tim	دومين تيموتيوس
+2Tim	دوَم تيموتيوسی
+2Tim	دوُم تيموتيوسی
+2Tim	دوّم تيموتيوسی
 2Tim	۲. تِیمُتھِیُس
 2Tim	۲. تیِمُتھِیُس
 2Tim	۲.-تِیمُتھِیُس
@@ -21921,6 +22536,8 @@
 2Tim	DovomTimotaos
 2Tim	DovomTimoteos
 2Tim	DovomTimoteus
+2Tim	DovomTīmutāus
+2Tim	DovvomTimothy
 2Tim	II Timotejovi
 2Tim	II Timotheosz
 2Tim	II Timótheosz
@@ -21948,10 +22565,15 @@
 2Tim	Друге Тимотей
 2Tim	Друге Тимофію
 2Tim	Друге Тимофія
+2Tim	دوم تيموتيوسی
 2Tim	دوم تیموتائوس
+2Tim	دوم تیموتاووس
 2Tim	دوم تیمِتھُیس
 2Tim	دومتیموتائوسه
 2Tim	دومتیموتائوسی
+2Tim	دوَم تيموتيوس
+2Tim	دوُم تيموتيوس
+2Tim	دوّم تيموتيوس
 2Tim	۲ تِیمُتھِیُس
 2Tim	۲ تیِمُتھِیُس
 2Tim	۲-تِیمُتھِیُس
@@ -22040,11 +22662,14 @@
 2Tim	Timotheum II
 2Tim	دوتیموتائوسه
 2Tim	دوتیموتائوسی
+2Tim	دوم تيموتيوس
+2Tim	دوم تیموتاؤس
 2Tim	دومتیموتئاؤس
 2Tim	دومتیموتئوسه
 2Tim	دومتیموتاؤسی
 2Tim	دومتیموتائوس
 2Tim	دومتیموتیئوس
+2Tim	دوَم تيموتيو
 2Tim	۲. تیمِتھُیس
 2Tim	2 Ti-mô-thê
 2Tim	2 Timoteovi
@@ -22110,6 +22735,8 @@
 2Tim	2е. Тимофею
 2Tim	2я. Тиметею
 2Tim	2я. Тимофею
+2Tim	2تیموتائوسه
+2Tim	2تیموتائوسی
 2Tim	DoTimothaos
 2Tim	DoTimotheus
 2Tim	II Thimothy
@@ -22142,6 +22769,8 @@
 2Tim	دوتیموتاؤسی
 2Tim	دوتیموتائوس
 2Tim	دوتیموتیئوس
+2Tim	دوم تيموتيو
+2Tim	دوم تیموتاؤ
 2Tim	دومتیموتئوس
 2Tim	دومتیموتاؤس
 2Tim	دومتیموتائس
@@ -22187,6 +22816,7 @@
 2Tim	2a Timóteo
 2Tim	2nd Timoth
 2Tim	2nd Timoty
+2Tim	2ndTimothy
 2Tim	2o Timoteo
 2Tim	2o Timóteo
 2Tim	2° Timoteo
@@ -22195,6 +22825,11 @@
 2Tim	2е Тимофею
 2Tim	2я Тиметею
 2Tim	2я Тимофею
+2Tim	2تیموتئاؤس
+2Tim	2تیموتئوسه
+2Tim	2تیموتاؤسی
+2Tim	2تیموتائوس
+2Tim	2تیموتیئوس
 2Tim	DoTimoteos
 2Tim	DoTimoteus
 2Tim	II Thimoty
@@ -22258,9 +22893,15 @@
 2Tim	2Timotaos
 2Tim	2Timoteos
 2Tim	2Timoteus
+2Tim	2تیموتئوس
+2Tim	2تیموتاؤس
+2Tim	2تیموتائس
+2Tim	2تیموتیؤس
+2Tim	2تیموتیوس
 2Tim	2۔تیمتھیس
 2Tim	Anden Tim
 2Tim	Andre Tim
+2Tim	DoTimothy
 2Tim	Druha Tim
 2Tim	Druhy Tim
 2Tim	Druhá Tim
@@ -22273,6 +22914,8 @@
 2Tim	Втора Тим
 2Tim	Второ Тим
 2Tim	Друга Тим
+2Tim	دوم تیموت
+2Tim	۲ تیموتاؤ
 2Tim	۲تیموتئوس
 2Tim	۲تیموتاؤس
 2Tim	۲تیموتائس
@@ -22289,12 +22932,15 @@
 2Tim	2Timothy
 2Tim	2nd. Tim
 2Tim	DovomTim
+2Tim	DovomTīm
 2Tim	Druha Tm
 2Tim	Druhy Tm
 2Tim	Druhá Tm
 2Tim	Druhý Tm
 2Tim	Pili Tim
 2Tim	dovvomtī
+2Tim	دوم تیمو
+2Tim	۲تیموتاؤ
 2Tim	テモテへの後の書
 2Tim	テモテへの手紙Ⅱ
 2Tim	テモテへの手紙二
@@ -22305,6 +22951,8 @@
 2Tim	II. Tim
 2Tim	II. Tím
 2Tim	II. Тим
+2Tim	دوم تیم
+2Tim	۲ تیموت
 2Tim	《弟茂德後書》
 2Tim	《提摩太后书》
 2Tim	《提摩太後書》
@@ -22326,6 +22974,8 @@
 2Tim	Βʹ Τιμ
 2Tim	Β΄ Τιμ
 2Tim	Β’ Τιμ
+2Tim	۲ تیمو
+2Tim	۲تیموت
 2Tim	Ⅱ テモテへ
 2Tim	《弟茂德後書
 2Tim	《提摩太后书
@@ -22344,6 +22994,8 @@
 2Tim	2 तीम
 2Tim	2. Ti
 2Tim	2. Tm
+2Tim	2tīmt
+2Tim	2تیمت
 2Tim	II Ti
 2Tim	II Tm
 2Tim	Β' Τι
@@ -22352,6 +23004,7 @@
 2Tim	Β΄ Τι
 2Tim	Β’ Τι
 2Tim	دومتی
+2Tim	۲ تیم
 2Tim	۲tīmt
 2Tim	۲تیمت
 2Tim	۲تیمو
@@ -22371,12 +23024,15 @@
 2Tim	2tīm
 2Tim	2تیم
 2Tim	2テモテ
+2Tim	دوّم
 2Tim	۲tīm
 2Tim	۲تیم
 2Tim	《提后》
 2Tim	《提後》
 2Tim	二テモテ
 2Tim	提摩斐後
+2Tim	2tī
+2Tim	2تی
 2Tim	2티모
 2Tim	۲tī
 2Tim	۲تی
@@ -22384,6 +23040,7 @@
 2Tim	《提後
 2Tim	提后》
 2Tim	提後》
+2Tim	۲ت
 2Tim	提后
 2Tim	提後
 2Tim	딤후
@@ -23528,6 +24185,8 @@
 3John	3. Jo
 3John	3. Јн
 3John	3John
+3John	3yohn
+3John	3یوحن
 3John	III J
 3John	Γ' Ιω
 3John	Γʹ Ιω
@@ -23567,6 +24226,8 @@
 3John	3 ยน
 3John	3. J
 3John	3Yoh
+3John	3yoh
+3John	3یوح
 3John	3ヨハネ
 3John	۳yoh
 3John	۳یوح
@@ -25335,29 +25996,42 @@ Acts	Деяния на светите Апостоли
 Acts	Az apostolok cselekedetei
 Acts	Handelingen der apostelen
 Acts	Mga Gawa ng mga Apostoles
+Acts	اعمال رسولان در کتاب مقدس
 Acts	The Acts of the Apostles
 Acts	Дела на светите апостоли
+Acts	کارهای رسولان‌نامه‌هاتان
+Acts	کارهای رسولان‌نامه‌گی‌ها
 Acts	Hechos de los Apostoles
 Acts	Hechos de los Apóstoles
 Acts	Mga Gawa ng mga Apostol
 Acts	Діяння Святих Апостолів
+Acts	رساله اعمال رسولان مقدس
+Acts	کارهای رسولان‌نامه‌ی‌ها
 Acts	அப்போஸ்தலருடைய நடபடிகள்
 Acts	Apostolok cselekedetei
 Acts	Buhat sa mga Apostoles
 Acts	Mga Gawa ng mga Alagad
 Acts	Деянията на апостолите
+Acts	کارهای رسولان‌نامه‌شان
+Acts	کارهای رسولان‌نامه‌هات
+Acts	کارهای رسولان‌نامه‌گان
 Acts	Apostlenes gjerninger
 Acts	Dziejach Apostolskich
 Acts	Πράξεις των Αποστολων
 Acts	Πράξεις των Αποστόλων
 Acts	Πραξεις των Αποστολων
 Acts	Πραξεις των Αποστόλων
+Acts	کارهای رسولان‌نامه‌اش
+Acts	کارهای رسولان‌نامه‌ها
+Acts	کارهای رسولان‌های‌شان
 Acts	Acts of the Apostles
 Acts	Apostlenes Gerninger
 Acts	Apostlenes-gjerninge
 Acts	Деяния на апостолите
 Acts	Діі святих апостолів
 Acts	Дії святих апостолів
+Acts	کارهای رسولان‌هات‌ها
+Acts	کتاب پیام‌های رسولان
 Acts	प्रेषितांचीं कृत्यें
 Acts	Atti degli Apostoli
 Acts	Falimaha Rasuullada
@@ -25428,6 +26102,9 @@ Acts	prešitāṃcīm kr̥tyem
 Acts	prešitāṃcīm kr̥tyeṃ
 Acts	prešitāṃcīṃ kr̥tyem
 Acts	prešitāṃcīṃ kr̥tyeṃ
+Acts	کارهای رسول‌نامه‌ای
+Acts	کارهای رسول‌نامه‌ها
+Acts	کارهای رَسولان‌نامه
 Acts	प्रेषितांची कृत्यें
 Acts	प्रेषितांचीं कृत्ये
 Acts	Actau'r Apostolion
@@ -25438,10 +26115,19 @@ Acts	Apostlagärningarna
 Acts	Atos dos Apostolos
 Acts	Atos dos Apóstolos
 Acts	Dzieje Apostolskie
+Acts	Karhay Rasulan-haa
 Acts	Veprat e Apostujve
 Acts	Veprat e apostujve
 Acts	rasūlāṃ de kartabb
 Acts	Дела на апостолите
+Acts	داستان رسولان مقدس
+Acts	رساله اعمال رسولان
+Acts	کارنامه‌های رسولان
+Acts	کارهای الهی رسولان
+Acts	کارهای رسولان الهی
+Acts	کارهای رسول‌نامه‌ی
+Acts	کتاب کارهای رسولان
+Acts	کتاب کارهای رسولین
 Acts	प्रेरितों के कामों
 Acts	திருத்தூதர் பணிகள்
 Acts	กิจการ​ของ​อัครทูต
@@ -25453,6 +26139,9 @@ Acts	Apostelgeschichte
 Acts	Công vụ các Sứ đồ
 Acts	Fapte Apostolilor
 Acts	Gawa ng Apostoles
+Acts	Karhay e Rasoolan
+Acts	Karhay-e-Rasoolan
+Acts	Karhaye Rasulanha
 Acts	Kisah Rasul-rasul
 Acts	Matendo ya Mitume
 Acts	Skutky apostolske
@@ -25460,6 +26149,11 @@ Acts	Skutky apostolské
 Acts	Skutky apoštolske
 Acts	Skutky apoštolské
 Acts	Πραξεις Αποστολων
+Acts	اعمال رسولان مقدس
+Acts	اعمال مقدس رسولان
+Acts	کارهای رسولان‌هات
+Acts	کتاب اعمال رسولان
+Acts	کتاب اعمال رسولین
 Acts	A'mal e Rusuleen
 Acts	A'mal-e-Rusuleen
 Acts	Amaal e Rusuleen
@@ -25467,6 +26161,13 @@ Acts	Amaal-e-Rusuleen
 Acts	A’mal e Rusuleen
 Acts	A’mal-e-Rusuleen
 Acts	Djela apostolska
+Acts	Karhay Rasulanha
+Acts	Karhay e Rasulan
+Acts	Karhay e Rusulan
+Acts	Karhay-e-Rasulan
+Acts	Karhay-e-Rusulan
+Acts	Karhaye Rasoolan
+Acts	Karhaye Rasoolha
 Acts	Kisah Para Rasul
 Acts	Praeriton Ke Kam
 Acts	Skutky apostolov
@@ -25480,7 +26181,12 @@ Acts	preritharūka kām
 Acts	preritharūkā kam
 Acts	preritharūkā kām
 Acts	rasūlōṅ ke aʿmāl
+Acts	اعمال پیام‌آوران
 Acts	رسُولوں کے اعمال
+Acts	کارهای رسولان‌ها
+Acts	کارهای رسول‌نامه
+Acts	کارهای رَسولا‌ها
+Acts	کتاب مقدس رسولان
 Acts	प्रेरितहरूका काम
 Acts	प्रेरितों के काम
 Acts	กิจการของอัครทูต
@@ -25495,6 +26201,10 @@ Acts	Appōstalar Paṇi
 Acts	A’mal e Rusulan
 Acts	A’mal-e-Rusulan
 Acts	Công vụ Tông đồ
+Acts	Karha e Rasulan
+Acts	Karha-e-Rasulan
+Acts	Karhaye Rasulan
+Acts	Karhaye Rusulan
 Acts	Skutky apostolu
 Acts	Skutky apostolü
 Acts	Skutky apostolů
@@ -25504,6 +26214,11 @@ Acts	Skutky apoštolů
 Acts	Дела Апостолска
 Acts	رسولوں کے اعمال
 Acts	سفر أعمال الرسل
+Acts	کارنامه رسول‌ها
+Acts	کارهای رسولا-ها
+Acts	کارهای رسولا‌ها
+Acts	کارهای رسولی‌ها
+Acts	کارهای رَسول‌ها
 Acts	ਰਸੂਲਾਂ ਦੇ ਕਰਤੱਬ
 Acts	அப்போஸ்தலர் பணி
 Acts	A'maal e Rusul
@@ -25515,36 +26230,63 @@ Acts	Amal e Rusulan
 Acts	Amal-e-Rusulan
 Acts	A’maal e Rusul
 Acts	A’maal-e-Rusul
+Acts	Karha e Rasool
+Acts	Karha-e-Rasool
+Acts	Karhay Rasulan
+Acts	Karhay Rusulha
 Acts	Kis Para Rasul
 Acts	Travay apot yo
 Acts	Travay apòt yo
 Acts	اعمال الرسولین
+Acts	کارنامه رسولان
+Acts	کارهای رسولیان
+Acts	کارهای رسول‌ها
+Acts	کارهای رَسولان
+Acts	کارهای رُسولان
 Acts	یوحنا کے اعمال
 Acts	A'mal e Rusul
 Acts	A'mal-e-Rusul
 Acts	Amaal Rusulan
 Acts	A’mal e Rusul
 Acts	A’mal-e-Rusul
+Acts	Karhay Rasool
+Acts	Karhay Rusool
+Acts	Karhaye Rasul
+Acts	Karhaye Rusul
 Acts	Діі Апостолів
 Acts	Дії Апостолів
+Acts	اعمال رَسولان
+Acts	اعمال رَسولین
 Acts	اعمالی رسولان
+Acts	حکایات رسولان
+Acts	کارهای رسولان
+Acts	کارهای رسولین
+Acts	کارهای رَسولا
+Acts	کارهای رَسولی
 Acts	Amal e Rusul
 Acts	Amal-e-Rusul
 Acts	Cselekedetek
 Acts	Dzieje Apost
+Acts	Karhay Rusul
 Acts	Postulasagan
 Acts	מעשי השליחים
 Acts	اعمال الرسول
 Acts	اعمال رسولان
 Acts	اعمال رسولین
+Acts	کارنامه رسول
+Acts	کارهای رسولا
+Acts	کارهای رسولی
 Acts	Handelingen
 Acts	أعمال الرسل
 Acts	اعمل رسولان
+Acts	کارهای رسول
 Acts	அப்போஸ்தலர்
 Acts	ﺍﻋﻤﺎﻝ ﺍﻟﺮﺳﻞ
 Acts	Los Hechos
 Acts	Mga Gawain
 Acts	Para Rasul
+Acts	اعمال رسول
+Acts	کار رسولان
 Acts	Akdezapot
 Acts	Akdèzapot
 Acts	Apostolok
@@ -25552,8 +26294,11 @@ Acts	Az ApCsel
 Acts	Binuhatan
 Acts	Gerninger
 Acts	Mga Buhat
+Acts	کارنامه ر
 Acts	Ap. Csel
 Acts	Mga Gawa
+Acts	کار رسول
+Acts	کارهای ر
 Acts	मसीह-दूत
 Acts	Ap Csel
 Acts	Công Vụ
@@ -25562,6 +26307,7 @@ Acts	Matendo
 Acts	Πράξεις
 Acts	Πραξεις
 Acts	Дела Ап
+Acts	اعمال ر
 Acts	اعمالها
 Acts	प्रेरित
 Acts	ପ୍ରେରିତ
@@ -25617,6 +26363,7 @@ Acts	اعمال
 Acts	اعملی
 Acts	عمالی
 Acts	عملها
+Acts	کار ر
 Acts	प्र क
 Acts	प्र.क
 Acts	அப்போ
@@ -25687,6 +26434,7 @@ Acts	Діі
 Acts	Дії
 Acts	اعم
 Acts	عمل
+Acts	ک ر
 Acts	அப்
 Acts	திப
 Acts	《徒》
@@ -26121,6 +26869,8 @@ Col	पौलाचे कलस्सैकरांस पत्र
 Col	Sulat sa mga Colosense
 Col	Sulat sa mga Kolosense
 Col	الرسالة إلى أهل كولوسي
+Col	کتاب پیام‌های کولوسيان
+Col	کتاب پیام‌های کولُسیان
 Col	Kirje kolossalaisille
 Col	Послание к Колоссянам
 Col	Layang Paulus Kolose
@@ -26155,24 +26905,48 @@ Col	ਕੁਲੁੱਸੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
 Col	Barua kwa Wakolosai
 Col	Послання до Колосян
 Col	کلسیوں کے نام کا خط
+Col	کولوسيان‌نامه‌هاتان
+Col	کولوسيان‌نامه‌گی‌ها
+Col	کولُسیان‌نامه‌گی‌ها
 Col	କଲସୀୟଙ୍କ ପ୍ରତି ପତ୍ର
 Col	האיגרת אל הקולוסים
+Col	کولوسيان‌نامه‌ی‌ها
+Col	کولُسیان‌نامه‌ی‌ها
 Col	Kolossenserbrevet
 Col	Kolosszebeliekhez
 Col	Kolosszébeliekhez
 Col	Mga Taga- Colosas
 Col	Mga Taga- Kolosas
+Col	کولوسيان‌نامه‌شان
+Col	کولوسيان‌نامه‌هات
+Col	کولوسيان‌نامه‌گان
+Col	کولُسیان‌نامه‌شان
+Col	کولُسیان‌نامه‌هات
+Col	کولُسیان‌نامه‌گان
 Col	कलस्सीहरूलाई पत्र
 Col	Kolossalaiskirje
 Col	Mga Taga Colosas
 Col	Mga Taga Kolosas
 Col	Mga Taga-Colosas
+Col	کولوسيان‌نامه‌ای
+Col	کولوسيان‌نامه‌ها
+Col	کولوسيون‌نامه‌ها
+Col	کولُسیان‌نامه‌ای
+Col	کولُسیان‌نامه‌ها
+Col	کُلوسيان‌نامه‌ها
+Col	کُلوسيون‌نامه‌ها
 Col	कलस्सैकरांस पत्र
 Col	Kolossalaisille
 Col	List do Kolosan
 Col	Προς Κολασσαεις
 Col	Προς Κολοσσαείς
 Col	Προς Κολοσσαεις
+Col	کلوسيان‌نامه‌ای
+Col	کلوسيان‌نامه‌ها
+Col	کولسيون‌نامه‌ای
+Col	کولسيون‌نامه‌ها
+Col	کولوسيان‌نامه‌ی
+Col	کولُسیان‌نامه‌ی
 Col	콜로새 신자들에게 보낸 서간
 Col	Kolosserbrevet
 Col	Kolosszeieknek
@@ -26202,6 +26976,13 @@ Col	kalassīharūlai
 Col	kalassīharūlaī
 Col	kalassīharūlāi
 Col	kalassīharūlāī
+Col	حکایت کولوسيان
+Col	رساله کولوسيان
+Col	رساله کولُسیان
+Col	سخنان کولوسيان
+Col	سخنان کولُسیان
+Col	کلوسيان‌نامه‌ی
+Col	کولسيون‌نامه‌ی
 Col	Kolosseiakhoz
 Col	Kolossenserne
 Col	Kolossubrefið
@@ -26221,14 +27002,33 @@ Col	List Koloským
 Col	Mga Colosense
 Col	Mga Kolosense
 Col	Taga- Colosas
+Col	نامه کولوسيان
+Col	نامه کولُسیان
+Col	پیام کولوسيان
+Col	پیام کولُسیان
+Col	کتاب کولوسيان
+Col	کتاب کولُسیان
+Col	کولوسيان‌نامه
+Col	کولوسيون‌نامه
+Col	کولُسیان‌نامه
+Col	کُلوسيان‌نامه
+Col	کُلوسيون‌نامه
 Col	ਕੁਲੁੱਸੀਆਂ ਨੂੰ
+Col	Kolosiyanian
 Col	Kolossensern
 Col	Kolossenskym
 Col	Kolossenským
+Col	Kolossianian
 Col	Taga Colosas
 Col	Taga-Colosas
 Col	К Колоссянам
 Col	رسالة كولوسي
+Col	کلوسيان‌نامه
+Col	کولسيون‌نامه
+Col	کولوسيانی-ها
+Col	کولوسيانی‌ها
+Col	کولُسیانی-ها
+Col	کولُسیانی‌ها
 Col	कलस्सीहरूलाई
 Col	Callossians
 Col	Colossenses
@@ -26238,13 +27038,25 @@ Col	Kolosenskym
 Col	Kolosenským
 Col	Kolosianeve
 Col	Kolosianëve
+Col	Kolosiyanun
 Col	Kolossenzen
+Col	Kolusiyanun
 Col	Kulussaiyon
 Col	Qolasiyaasa
 Col	До колоссян
 Col	אל הקולוסים
+Col	کلوسيانی-ها
+Col	کلوسيانی‌ها
+Col	کولوسيان-ها
+Col	کولوسيان‌ها
+Col	کولوسيون-ها
+Col	کولوسيون‌ها
+Col	کولُسیان-ها
 Col	کولُسیانیان
+Col	کولُسیان‌ها
 Col	کولُسیونیان
+Col	کُلوسيون-ها
+Col	کُلوسيون‌ها
 Col	कलस्सैकरांस
 Col	कुलुस्सियों
 Col	コロサイの信徒への手紙
@@ -26267,17 +27079,26 @@ Col	Colossiaid
 Col	Colossians
 Col	Colossiens
 Col	Colossions
+Col	Colossiyun
+Col	Kalossiyan
 Col	Kolosanima
 Col	Kolosensow
 Col	Kolosensów
+Col	Kolosiyoon
 Col	Kolosserne
 Col	Kološanima
+Col	Kolusiyans
+Col	Kolussiyan
 Col	Κολοσσαείς
 Col	Κολοσσαεις
 Col	Колоссянам
 Col	Колосяните
 Col	Колошанима
 Col	Колошаните
+Col	کلوسيان-ها
+Col	کلوسيان‌ها
+Col	کولسيون-ها
+Col	کولسيون‌ها
 Col	کولُسیانان
 Col	کولُسیونان
 Col	Calasians
@@ -26292,19 +27113,27 @@ Col	Colosions
 Col	Colossans
 Col	Colossesi
 Col	Colossian
+Col	Colusiyan
+Col	Colūsiyān
 Col	Kolosanom
 Col	Kolosanum
 Col	Kolosanům
+Col	Kolosiyan
 Col	Kolosiyun
 Col	Kolusians
+Col	Kolusiyan
 Col	Kolusiyun
 Col	Kolusyans
+Col	Kūlosiyan
+Col	Kūlusiyān
 Col	Wakolosai
 Col	kulussīāṃ
 Col	Колосјани
+Col	کولوسيانی
 Col	کولُسسیان
 Col	کولُسیانن
 Col	کولُسیانه
+Col	کولُسیانی
 Col	کولُسیونن
 Col	کولُسیونه
 Col	کُلِسّیوں
@@ -26315,20 +27144,33 @@ Col	கொலோசெயர்
 Col	கொலோசையர்
 Col	コロサイ人への手紙
 Col	Coloseni
+Col	Colusian
 Col	Cô-lô-se
 Col	Kolosian
 Col	Koloskym
 Col	Koloským
 Col	Kolosser
+Col	Kolossiy
 Col	Kolosyen
 Col	Kolusian
+Col	Kūlosian
+Col	Kūlūsiān
 Col	Колоссян
 Col	Колосяни
+Col	کلوسيانی
+Col	کولسيانی
+Col	کولسيونی
+Col	کولوسيان
+Col	کولوسيون
+Col	کولُسيون
 Col	کولُسیان
 Col	کولُسیها
 Col	کولُسیون
 Col	کُلسِیوں
 Col	کُلسّیوں
+Col	کُلوسيان
+Col	کُلوسيون
+Col	کُل‌نامه
 Col	कुलुस्सि
 Col	କଲସୀୟଙ୍କ
 Col	コロサイ人への書
@@ -26336,11 +27178,17 @@ Col	Colosas
 Col	Kolosan
 Col	Kolosas
 Col	Kolosay
+Col	Kolosia
+Col	Kolosiy
 Col	Kolosse
 Col	Kolossé
+Col	Kulusiy
 Col	kūlsiān
 Col	Колосян
+Col	کلوسيان
 Col	کلُسیان
+Col	کل‌نامه
+Col	کولسيون
 Col	کولسیان
 Col	کولُسیه
 Col	Coloss
@@ -26369,6 +27217,7 @@ Col	コロサイ書
 Col	哥羅森書》
 Col	歌罗西书》
 Col	歌羅西書》
+Col	کلوس
 Col	کولس
 Col	کولو
 Col	कोलो
@@ -26391,6 +27240,7 @@ Col	Κολ
 Col	Кол
 Col	قول
 Col	کول
+Col	کُل
 Col	《西》
 Col	适羅斯
 Col	Cl
@@ -26398,6 +27248,8 @@ Col	Co
 Col	Ko
 Col	Κλ
 Col	كو
+Col	کل
+Col	کو
 Col	คส
 Col	《西
 Col	西》
@@ -27008,6 +27860,7 @@ Deut	V. Mosebok
 Deut	V. Mosebók
 Deut	V. Mósebok
 Deut	V. Mósebók
+Deut	تثني-ها-ها
 Deut	व्यवस्थाको
 Deut	ਬਿਵਸਥਾ ਸਾਰ
 Deut	5 Mosebog
@@ -27031,8 +27884,10 @@ Deut	V Mósebok
 Deut	V Mósebók
 Deut	Пета Мојс
 Deut	משנה תורה
+Deut	تثنيها-ها
 Deut	व्यावस्था
 Deut	5. Mozes
+Deut	Deut-ieh
 Deut	Dewariem
 Deut	Tesniyeh
 Deut	Upākamam
@@ -27041,6 +27896,10 @@ Deut	istis̱nā
 Deut	Второзак
 Deut	Пета Мој
 Deut	اِستِثنا
+Deut	تثني--ها
+Deut	تثنيه‌ها
+Deut	تسنیه‌ها
+Deut	تصنیه-ها
 Deut	تَثنِيَة
 Deut	व्यवस्था
 Deut	5 Mozes
@@ -27052,9 +27911,16 @@ Deut	5. Мојс
 Deut	Mozes V
 Deut	Mózes V
 Deut	Tasnieh
+Deut	Tesn-ha
+Deut	Tesn-ie
 Deut	Tesniah
 Deut	Tesnieh
 Deut	Tesnyeh
+Deut	Tessieh
+Deut	Tessiyh
+Deut	Tessnie
+Deut	Tessnyh
+Deut	Tsn-ieh
 Deut	Ulangan
 Deut	V Mozes
 Deut	V. Mojz
@@ -27063,6 +27929,17 @@ Deut	V. Мојс
 Deut	tsniyeh
 Deut	استثناء
 Deut	التثنية
+Deut	تثنـييه
+Deut	تثني-ها
+Deut	تثني-یه
+Deut	تثنيـها
+Deut	تثنيـیه
+Deut	تثنيي-ه
+Deut	تثنی-یه
+Deut	تثنی‌ها
+Deut	تثنی‌یه
+Deut	تسنیـیه
+Deut	تصنیـیه
 Deut	உபாகமம்
 Deut	5 Mojz
 Deut	5 Mojż
@@ -27072,8 +27949,10 @@ Deut	5 Мојс
 Deut	5. Mos
 Deut	5. Mós
 Deut	5. Мој
+Deut	Dtrnmy
 Deut	Sharci
 Deut	Tesnah
+Deut	Tsn-ha
 Deut	V Mojz
 Deut	V Mojż
 Deut	V Мојс
@@ -27084,9 +27963,15 @@ Deut	anuwad
 Deut	anuwād
 Deut	Δευτερ
 Deut	استثنا
+Deut	تثنـها
+Deut	تثنـیه
+Deut	تثنييه
+Deut	تثنيیه
 Deut	تثنیها
 Deut	تثنیهه
 Deut	تثنیهی
+Deut	تثنییه
+Deut	تسنييه
 Deut	अनुवाद
 Deut	ਬਿਵਸਥਾ
 Deut	ବିବରଣି
@@ -27097,8 +27982,10 @@ Deut	5 Mós
 Deut	5 Móz
 Deut	5 Мој
 Deut	5. Mo
+Deut	Dt-ie
 Deut	MTorv
 Deut	MTörv
+Deut	Tessn
 Deut	V Moj
 Deut	V Mos
 Deut	V Mós
@@ -27108,6 +27995,7 @@ Deut	تثنئه
 Deut	تثنیا
 Deut	تثنیه
 Deut	تثنیو
+Deut	تسنئه
 Deut	تسنیه
 Deut	تصنیه
 Deut	《申命紀》
@@ -27120,12 +28008,15 @@ Deut	Deut
 Deut	Duet
 Deut	Kumb
 Deut	Phục
+Deut	Tesn
+Deut	Tess
 Deut	ZarW
 Deut	Δευτ
 Deut	Втор
 Deut	Повт
 Deut	Понз
 Deut	تثنه
+Deut	تثني
 Deut	تثنی
 Deut	《申命紀
 Deut	《申命記
@@ -27142,7 +28033,9 @@ Deut	Kum
 Deut	LiP
 Deut	Pnz
 Deut	Pwt
+Deut	Tsn
 Deut	tsn
+Deut	تثـ
 Deut	تثن
 Deut	உபா
 Deut	ฉธบ
@@ -27767,6 +28660,8 @@ Eph	एफिसीहरूलाई पावलको पत्र
 Eph	ifisiyōṅ ke nām kā ḫaṭ
 Eph	Послание към ефесяните
 Eph	اِفِسِیوں کے نام کا خط
+Eph	کتاب پیام‌های افِسسيان
+Eph	کتاب پیام‌های افسسيان
 Eph	पौलाचे इफिसकरांस पत्र
 Eph	Epistula ad Ephesios
 Eph	Layang Paulus Efesus
@@ -27803,16 +28698,27 @@ Eph	Waraka kwa Waefeso
 Eph	afasīāṃ nū̃ pattrī
 Eph	Посланица Ефесцима
 Eph	Послання до ефесян
+Eph	افسسيان‌نامه‌هاتان
+Eph	افسسيان‌نامه‌گی‌ها
+Eph	افِسسيان‌نامه‌ی‌ها
 Eph	ਅਫ਼ਸੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
 Eph	Barua kwa Waefeso
 Eph	ipʰiskarams patra
 Eph	ipʰiskaraṃs patra
 Eph	ipʰiskarāms patra
 Eph	ipʰiskarāṃs patra
+Eph	افسسيان‌نامه‌ی‌ها
+Eph	افِسسيان‌نامه‌شان
+Eph	افِسسيان‌نامه‌هات
+Eph	افِسسيان‌نامه‌گان
 Eph	Mga Taga- Efesio
 Eph	Mga Taga- Epesio
 Eph	האיגרת אל האפסים
 Eph	השליח אל האפסיים
+Eph	افسسيان‌نامه‌شان
+Eph	افسسيان‌نامه‌هات
+Eph	افسسيان‌نامه‌گان
+Eph	افِسسيان‌نامه‌ها
 Eph	एफिसीहरूलाई पत्र
 Eph	Epheszosziakhoz
 Eph	List do Efezjan
@@ -27820,6 +28726,11 @@ Eph	Mga Taga Efesio
 Eph	Mga Taga Epesio
 Eph	Mga Taga- Efeso
 Eph	Mga Taga- Epeso
+Eph	افسسيان‌نامه‌ای
+Eph	افسسيان‌نامه‌ها
+Eph	افسسيون‌نامه‌ها
+Eph	افِسيان‌نامه‌ای
+Eph	افِسيان‌نامه‌ها
 Eph	에페소 신자들에게 보낸 서간
 Eph	Afisisiyanians
 Eph	Efesolaiskirje
@@ -27827,6 +28738,11 @@ Eph	Mga Taga Efeso
 Eph	Mga Taga Epeso
 Eph	Mga Taga-Efeso
 Eph	Mga Taga-Éfeso
+Eph	افسسيان‌نامه‌ی
+Eph	افِسيان‌نامه‌ی
+Eph	اَفِسسيان‌نامه
+Eph	رساله افِسسيان
+Eph	سخنان افِسسيان
 Eph	इफिसकरांस पत्र
 Eph	Afissiyunians
 Eph	Efesierbrevet
@@ -27856,6 +28772,14 @@ Eph	epʰisīharūlāi
 Eph	epʰisīharūlāī
 Eph	Προς Εφεσίους
 Eph	Προς Εφεσιους
+Eph	افسسي‌نامه‌ای
+Eph	افسسي‌نامه‌ها
+Eph	حکایت افسسيان
+Eph	رساله افسسيان
+Eph	سخنان افسسيان
+Eph	نامه افِسسيان
+Eph	پیام افِسسيان
+Eph	کتاب افِسسيان
 Eph	Afisiyunians
 Eph	Efeserbrevet
 Eph	Efesusbrefið
@@ -27865,6 +28789,18 @@ Eph	Efézusiakhoz
 Eph	Epēciyarukku
 Eph	Taga- Efesio
 Eph	Taga- Epesio
+Eph	افسسيان‌نامه
+Eph	افسسيون‌نامه
+Eph	افسسي‌نامه‌ی
+Eph	افِسسياني-ها
+Eph	افِسسياني‌ها
+Eph	افِسيان‌نامه
+Eph	اَفِسسيان-ها
+Eph	اَفِسسيان‌ها
+Eph	نامه افسسيان
+Eph	پیام افسسيان
+Eph	کتاب افسسيان
+Eph	Afesiyanian
 Eph	Taga Efesio
 Eph	Taga Epesio
 Eph	Taga- Efeso
@@ -27874,6 +28810,10 @@ Eph	ipʰiskarams
 Eph	ipʰiskaraṃs
 Eph	ipʰiskarāms
 Eph	ipʰiskarāṃs
+Eph	افسسياني-ها
+Eph	افسسياني‌ها
+Eph	افِسسيان-ها
+Eph	افِسسيان‌ها
 Eph	एफिसीहरूलाई
 Eph	ਅਫ਼ਸੀਆਂ ਨੂੰ
 Eph	エフェソの信徒への手紙
@@ -27893,13 +28833,25 @@ Eph	Taga Epeso
 Eph	Taga-Efeso
 Eph	Taga-Éfeso
 Eph	К Ефесянам
+Eph	افسسيان-ها
+Eph	افسسيان‌ها
+Eph	افسسيون-ها
+Eph	افسسيون‌ها
+Eph	افسسي‌نامه
+Eph	افِسيان-ها
+Eph	افِسيان‌ها
+Eph	اَفِسسياني
+Eph	اَفِسسيوني
 Eph	اَفِسسیانه
 Eph	اَفِسسیونه
+Eph	اَفِسُسیان
+Eph	اِفِسُسیان
 Eph	رسالة أفسس
 Eph	Afesisyan
 Eph	Afesisyun
 Eph	Afesiyoon
 Eph	Afesiyyan
+Eph	Afessiyan
 Eph	Afessiyon
 Eph	Afessiyun
 Eph	Afisisian
@@ -27930,17 +28882,26 @@ Eph	До ефесян
 Eph	Ефесяните
 Eph	Ефешаните
 Eph	אל האפסים
+Eph	افِسسياني
 Eph	افِسسیانن
 Eph	افِسسیانه
 Eph	افِسسیونن
 Eph	افِسسیونه
+Eph	اَفِسسيان
+Eph	اَفِسسيون
 Eph	اَفِسسیان
 Eph	इफिसकरांस
 Eph	ଏଫିସୀୟଙ୍କ
 Eph	エフェソ人への手紙
+Eph	Afesiyan
+Eph	Afesiyun
+Eph	Afisiyan
 Eph	Afisiyun
+Eph	Afissian
 Eph	Afisyani
 Eph	Afisyoon
+Eph	Afsiyoon
+Eph	Afssiyan
 Eph	Efeserne
 Eph	Efezanom
 Eph	Efeziers
@@ -27962,8 +28923,15 @@ Eph	Ефесцима
 Eph	Ефесянам
 Eph	Ефесјани
 Eph	Эфесянам
+Eph	افسسياني
+Eph	افسسيوني
+Eph	افسسي‌ها
+Eph	افس‌نامه
+Eph	افِسسيان
 Eph	افِسسیان
 Eph	افِسسیون
+Eph	افِسياني
+Eph	افِسيوني
 Eph	افِسیانن
 Eph	افِسیانه
 Eph	افِسیونن
@@ -27974,7 +28942,10 @@ Eph	எபேசியர்
 Eph	エヘソ人への手紙
 Eph	エペソ人への手紙
 Eph	Afesian
+Eph	Afesiān
+Eph	Afesyan
 Eph	Afisian
+Eph	Afsiyan
 Eph	Efeseni
 Eph	Efesini
 Eph	Efesios
@@ -27989,10 +28960,14 @@ Eph	Waefeso
 Eph	afasīāṃ
 Eph	afsiyān
 Eph	Ефесяни
+Eph	افسسيان
+Eph	افسسيون
 Eph	افسسیان
 Eph	افسسیون
+Eph	افِسيان
 Eph	افِسیان
 Eph	افِسیون
+Eph	اَفِسسي
 Eph	اِفسیوں
 Eph	इफ़ेसॉस
 Eph	เอเฟซัส
@@ -28023,6 +28998,8 @@ Eph	Ephés
 Eph	Éfeso
 Eph	Éphes
 Eph	Éphés
+Eph	افسسي
+Eph	افس‌ن
 Eph	इफिसि
 Eph	इफिसी
 Eph	एफिसी
@@ -28037,6 +29014,7 @@ Eph	エペソ人へ
 Eph	以弗所书》
 Eph	以弗所書》
 Eph	厄弗所書》
+Eph	Afso
 Eph	Efes
 Eph	Efez
 Eph	Efis
@@ -28049,6 +29027,7 @@ Eph	Éphe
 Eph	Éphé
 Eph	افسـ
 Eph	افسو
+Eph	افسی
 Eph	《耶斐斯
 Eph	エフェソ
 Eph	エヘソ書
@@ -28083,6 +29062,7 @@ Eph	Єф
 Eph	Еф
 Eph	Эф
 Eph	أف
+Eph	اف
 Eph	อฟ
 Eph	《弗
 Eph	弗》
@@ -28205,6 +29185,7 @@ Esth	에스텔
 Esth	Es
 Esth	Et
 Esth	أس
+Esth	اس
 Esth	《斯
 Esth	斯》
 Esth	에스
@@ -29228,6 +30209,7 @@ Ezra	에스라
 Ezra	에즈라
 Ezra	Ed
 Ezra	Εσ
+Ezra	عز
 Ezra	Ἔσ
 Ezra	《拉
 Ezra	拉》
@@ -29269,6 +30251,7 @@ Gal	Послание към галатяните
 Gal	गलातीहरूलाई पावलको पत्र
 Gal	الرسالة إلى أهل غلاطية
 Gal	Layang Paulus Galatia
+Gal	کتاب پیام‌های غلاطيان
 Gal	पौलाचे गलतीकरांस पत्र
 Gal	ଗାଲାତୀୟଙ୍କ ପ୍ରତି ପତ୍ର
 Gal	Brevet til Galaterne
@@ -29279,6 +30262,7 @@ Gal	Poslanica Galaćanima
 Gal	Sulat sa mga Galacia
 Gal	По слання до Галатів
 Gal	Посланица Галаћанима
+Gal	کتاب پیام‌های غلطيان
 Gal	گلتِیوں کے نام کا خط
 Gal	Barua kwa Wagalatia
 Gal	Epistula ad Galatas
@@ -29331,15 +30315,23 @@ Gal	ਗਲਾਤੀਆਂ ਨੂੰ ਪੱਤ੍ਰੀ
 Gal	Lettera ai Galati
 Gal	Mga Taga- Galacia
 Gal	Mga Taga- Galasya
+Gal	غلطيان‌نامه‌هاتان
+Gal	غلطيان‌نامه‌گی‌ها
 Gal	List do Galacjan
 Gal	Mga Taga Galacia
 Gal	Mga Taga Galasya
 Gal	Mga Taga-Galacia
 Gal	האיגרת אל הגלטים
+Gal	غلطيان‌نامه‌ی‌ها
 Gal	गलातीहरूलाई पत्र
 Gal	갈라티아 신자들에게 보낸 서간
 Gal	List do Galatow
 Gal	List do Galatów
+Gal	غلطيانی‌نامه‌ها
+Gal	غلطيان‌نامه‌شان
+Gal	غلطيان‌نامه‌هات
+Gal	غلطيان‌نامه‌گان
+Gal	غَلطيون‌نامه‌ها
 Gal	Galatalaisille
 Gal	Galatalaiskirj
 Gal	Galaterbrefvet
@@ -29348,6 +30340,10 @@ Gal	List Galatanom
 Gal	List Galatskym
 Gal	List Galatským
 Gal	List Galaťanom
+Gal	غلطيانی‌نامه‌ی
+Gal	غلطيان‌نامه‌ای
+Gal	غلطيان‌نامه‌ها
+Gal	غَلطيه‌نامه‌ها
 Gal	गलतीकरांस पत्र
 Gal	Galaterbrevet
 Gal	Galatiyanians
@@ -29385,9 +30381,13 @@ Gal	galātīharūlai
 Gal	galātīharūlaī
 Gal	galātīharūlāi
 Gal	galātīharūlāī
+Gal	رساله غلاطيان
+Gal	سخنان غلاطيان
+Gal	غلطيان‌نامه‌ی
 Gal	Galatabrefið
 Gal	Galatabréfið
 Gal	Galatenbrief
+Gal	Galatianians
 Gal	Taga Galacia
 Gal	Taga-Galacia
 Gal	galatikarams
@@ -29400,7 +30400,23 @@ Gal	galatīkarāms
 Gal	galatīkarāṃs
 Gal	Προς Γαλάτας
 Gal	Προς Γαλατας
+Gal	حکایت غلطيان
 Gal	رسالة غلاطية
+Gal	رساله غلطيان
+Gal	سخنان غلطيان
+Gal	غلطيانی‌نامه
+Gal	غَلطيون‌نامه
+Gal	نامه غلاطيان
+Gal	پیام غلاطيان
+Gal	کتاب غلاطيان
+Gal	Galatianian
+Gal	غلاطيانی-ها
+Gal	غلاطيانی‌ها
+Gal	غلطيان‌نامه
+Gal	غَلطيه‌نامه
+Gal	نامه غلطيان
+Gal	پیام غلطيان
+Gal	کتاب غلطيان
 Gal	गलातीहरूलाई
 Gal	ਗਲਾਤੀਆਂ ਨੂੰ
 Gal	カラテヤの信徒への手紙
@@ -29414,6 +30430,7 @@ Gal	Galatiaans
 Gal	Galatiains
 Gal	Galatianas
 Gal	Galatianis
+Gal	Galatianun
 Gal	Galatiians
 Gal	Galatiions
 Gal	Galatinans
@@ -29425,14 +30442,21 @@ Gal	Galatákhoz
 Gal	Galaćanima
 Gal	Gallatians
 Gal	Gallations
+Gal	Ghalatians
 Gal	Ghalatiyan
 Gal	Ghalatiyun
 Gal	ad Galatas
 Gal	Галатяните
 Gal	Галаћанима
 Gal	До галатів
+Gal	غلاطيان-ها
+Gal	غلاطيان‌ها
 Gal	غلاطیانیان
 Gal	غلاطیونیان
+Gal	غلطيانی-ها
+Gal	غلطيانی‌ها
+Gal	غَلطيون-ها
+Gal	غَلطيون‌ها
 Gal	ଗାଲାତୀୟଙ୍କ
 Gal	கலாத்தியர்
 Gal	Galasyano
@@ -29447,6 +30471,7 @@ Gal	Galatians
 Gal	Galatiins
 Gal	Galatinas
 Gal	Galations
+Gal	Galatiyan
 Gal	Galatiyon
 Gal	Galatiyun
 Gal	Galatoans
@@ -29455,15 +30480,30 @@ Gal	Galatským
 Gal	Galaťanom
 Gal	Gallatins
 Gal	Ghalatian
+Gal	Ghalatiun
+Gal	Ghalatyan
+Gal	Ghalatyon
+Gal	Ghalātīān
 Gal	Wagalatia
 Gal	ghalātiān
 Gal	Галатјани
 Gal	К Галатам
 Gal	אל הגלטים
+Gal	غلاطيه-ها
+Gal	غلاطيه‌ها
 Gal	غلاطیانان
 Gal	غلاطیونان
+Gal	غلاط‌نامه
+Gal	غلطيان-ها
+Gal	غلطيان‌ها
+Gal	غلطيون-ها
+Gal	غلطيون‌ها
+Gal	غلطیان-ها
 Gal	غلطیانیان
+Gal	غلطیان‌ها
 Gal	غلطیونیان
+Gal	غَلطيه-ها
+Gal	غَلطيه‌ها
 Gal	गलतीकरांस
 Gal	カラテヤ人への手紙
 Gal	ガラテヤ人への手紙
@@ -29476,18 +30516,26 @@ Gal	Galatian
 Gal	Galatias
 Gal	Galatins
 Gal	Galatios
+Gal	Galatiun
 Gal	Galatiya
 Gal	Galatons
+Gal	Galatyan
+Gal	Galatyon
 Gal	galātīāṃ
 Gal	Галатима
 Gal	Галатите
 Gal	Галатяни
+Gal	غلاطيانی
 Gal	غلاطیانن
 Gal	غلاطیانه
 Gal	غلاطیونن
 Gal	غلاطیونه
+Gal	غلطيه-ها
+Gal	غلطيه‌ها
 Gal	غلطیانان
 Gal	غلطیونان
+Gal	غلط‌نامه
+Gal	غَلطيه‌ی
 Gal	गलातियों
 Gal	กาลาเทีย
 Gal	カラテヤ人への書
@@ -29503,18 +30551,24 @@ Gal	Galatns
 Gal	Galatow
 Gal	Galatów
 Gal	Gálatas
+Gal	ghalāti
 Gal	ghalātī
 Gal	Γαλάτες
 Gal	Γαλατες
 Gal	Галатам
 Gal	Галатів
+Gal	غلاطيان
 Gal	غلاطیان
 Gal	غلاطیها
 Gal	غلاطیون
+Gal	غلطيانی
 Gal	غلطیانن
 Gal	غلطیانه
 Gal	غلطیونن
 Gal	غلطیونه
+Gal	غل‌نامه
+Gal	غَلطيان
+Gal	غَلطيون
 Gal	گلتِیوں
 Gal	गलतियों
 Gal	गलातिया
@@ -29523,10 +30577,14 @@ Gal	Galata
 Gal	Galati
 Gal	Gàlati
 Gal	ghalāt
+Gal	غلاطيه
 Gal	غلاطیه
+Gal	غلطيان
+Gal	غلطيون
 Gal	غلطیان
 Gal	غلطیها
 Gal	غلطیون
+Gal	غَلطيه
 Gal	گلتیوں
 Gal	《加拉太书》
 Gal	《加拉太書》
@@ -29539,6 +30597,7 @@ Gal	Galát
 Gal	Gálat
 Gal	ghalā
 Gal	غلاطی
+Gal	غلطيه
 Gal	غلطیه
 Gal	गलाति
 Gal	गलाती
@@ -29568,6 +30627,8 @@ Gal	Gál
 Gal	Γαλ
 Gal	Гал
 Gal	غلا
+Gal	غلط
+Gal	غلظ
 Gal	கலா
 Gal	《加》
 Gal	Ga
@@ -30260,6 +31321,7 @@ Gen	Gn
 Gen	Gé
 Gen	Γε
 Gen	تك
+Gen	پی
 Gen	《创
 Gen	《創
 Gen	创》
@@ -30544,6 +31606,7 @@ Hab	habaqū
 Hab	Āpakūk
 Hab	Авакум
 Hab	حبقّوق
+Hab	حبَقوق
 Hab	حَبقوق
 Hab	حَبَقق
 Hab	हबक्कू
@@ -30617,62 +31680,155 @@ Hag	Книга на пророк Агей
 Hag	Книга пророка Аггея
 Hag	Књига пророка Агеја
 Hag	Книга пророка Огія
+Hag	حَجّی‌نامه‌نامه‌ها
 Hag	Prophetia Aggaei
 Hag	Ksiega Aggeusza
 Hag	Ksiegi Aggeusza
 Hag	Księga Aggeusza
 Hag	Księgi Aggeusza
+Hag	حَجّیان‌نامه‌ها
+Hag	حَجّی‌نامه‌نامه
 Hag	हाग्गैको पुस्तक
+Hag	حَجّیان‌نامه‌ی
+Hag	حَجّی‌نامه‌های
 Hag	Haggain kirja
+Hag	حَجّای‌نامه‌ی
+Hag	حَجّی‌نامه-ها
+Hag	حَجّی‌نامه‌ای
+Hag	حَجّی‌نامه‌ها
 Hag	Ks. Aggeusza
+Hag	حجای‌نامه‌ها
+Hag	حَجّیان‌نامه
+Hag	حَجّی‌نامه‌ی
 Hag	Haggais bok
 Hag	Haggajs Bog
 Hag	Ks Aggeusza
+Hag	حَجَّی‌نامه
+Hag	حَجَّی‌ها‌ی
+Hag	حَجّای‌نامه
+Hag	حَجّای‌ها‌ی
 Hag	Книга Огія
+Hag	حَجّیان‌ها
+Hag	حَجّی‌نامه
+Hag	Haggai-ya
+Hag	Haggay-ya
+Hag	Haggāy-ya
+Hag	Haggāī-ya
+Hag	Haggāī’ya
+Hag	Hajjay-ya
+Hag	Hajjāī-ya
 Hag	Liv Aje a
+Hag	حجای‌نامه
+Hag	حجای‌ها‌ی
+Hag	حَجَّی-ها
+Hag	حَجَّیانه
 Hag	حَجَّیہئة
 Hag	حَجَّیہئۀ
 Hag	حَجَّیہئہ
 Hag	حَجَّیہئۂ
+Hag	حَجَّی‌ای
+Hag	حَجَّی‌ها
+Hag	حَجّای-ها
+Hag	حَجّایانه
+Hag	حَجّاییان
+Hag	حَجّای‌ای
+Hag	حَجّای‌ها
+Hag	حَجّیی‌ها
+Hag	حَجّی‌های
 Hag	Aggeusza
+Hag	Haggai-i
+Hag	Haggaiya
+Hag	Haggai’y
+Hag	Haggāy-i
+Hag	Haggāy-y
+Hag	Haggā’ya
+Hag	Hajjay-i
+Hag	Hajjā-ya
+Hag	Hajjī-ya
+Hag	Hajjī’ya
+Hag	haggāī’y
+Hag	haggā’ya
+Hag	hajjī-ya
+Hag	hajjī’ya
+Hag	حجایه‌ها
 Hag	حَجَّیئة
 Hag	حَجَّیئۀ
 Hag	حَجَّیئہ
 Hag	حَجَّیئۂ
 Hag	حَجَّیاء
+Hag	حَجَّیات
+Hag	حَجَّیان
 Hag	حَجَّیہء
 Hag	حَجَّیہة
 Hag	حَجَّیہۀ
 Hag	حَجَّیہۂ
+Hag	حَجَّی‌ی
+Hag	حَجّایان
+Hag	حَجّاییه
+Hag	حَجّای‌ی
+Hag	حَجّی‌ای
+Hag	حَجّی‌ها
 Hag	Aggaeus
 Hag	Haggaai
+Hag	Haggaii
 Hag	Haggain
 Hag	Haggeus
+Hag	Haggi-i
 Hag	Haggiah
 Hag	Haggiai
+Hag	Haggiya
+Hag	Haggā-y
+Hag	Haggā’i
+Hag	Hajiyah
+Hag	Hajiyay
+Hag	hajjāīy
 Hag	hajjīyy
 Hag	Αγγαίος
 Hag	Αγγαιος
+Hag	حجای-ها
+Hag	حجایانه
+Hag	حجای‌ای
+Hag	حجای‌ها
 Hag	حَجَّیء
 Hag	حَجَّیة
+Hag	حَجَّیه
 Hag	حَجَّیہ
+Hag	حَجَّیی
+Hag	حَجّایی
+Hag	حَجّیان
+Hag	حَجّی‌ی
 Hag	سفر حجي
 Hag	Aggeus
 Hag	Ha-gai
+Hag	Hag-ya
 Hag	Haggai
 Hag	Haggaj
 Hag	Haggay
 Hag	Haggaí
 Hag	Haggaï
 Hag	Haggeo
+Hag	Haggāi
+Hag	Haggāy
+Hag	Hag’ya
+Hag	Hag’āi
+Hag	Hag’āy
+Hag	Hajjai
+Hag	Hajjay
+Hag	Hajjiy
+Hag	Hajjāy
+Hag	Hajjāī
 Hag	Xaggay
 Hag	haggay
 Hag	haggəi
 Hag	hajjaī
+Hag	hajjāī
 Hag	hajjīy
 Hag	hāggay
 Hag	hāggəi
+Hag	حجایان
+Hag	حجای‌ی
 Hag	حَجَّی
+Hag	حَجّای
 Hag	हाग्गय
 Hag	हाग्गे
 Hag	हाग्गै
@@ -30685,6 +31841,7 @@ Hag	Aggee
 Hag	Aggeo
 Hag	Aggée
 Hag	Agheu
+Hag	Hag-i
 Hag	Hagai
 Hag	Hagaj
 Hag	Hagay
@@ -30693,13 +31850,16 @@ Hag	Hageo
 Hag	Hagga
 Hag	Haggi
 Hag	Haggy
+Hag	Hagya
 Hag	Hajai
+Hag	haggā
 Hag	hajjā
 Hag	hajjī
 Hag	Аггеи
 Hag	Аггей
 Hag	Аггея
 Hag	Хагај
+Hag	حجایه
 Hag	حجَّي
 Hag	حجَّی
 Hag	حجییی
@@ -30716,6 +31876,7 @@ Hag	Ageo
 Hag	Ageu
 Hag	Hagg
 Hag	Hagi
+Hag	Hagy
 Hag	Ohij
 Hag	Xagg
 Hag	Ākāy
@@ -30727,6 +31888,7 @@ Hag	Огій
 Hag	Огія
 Hag	Оґія
 Hag	حجاي
+Hag	حجای
 Hag	حجـی
 Hag	حجيّ
 Hag	حجّی
@@ -31186,35 +32348,106 @@ Hos	होशेको पुस्तक
 Hos	Hoseas’ Bog
 Hos	Ks. Ozeasza
 Hos	Hoseas bok
+Hos	Hosha-i-ya
+Hos	Hosha-y-ya
+Hos	Hoziah-haa
+Hos	Hoziyah-ha
+Hos	Husha-i-ya
+Hos	Husha-y-ya
 Hos	Ks Ozeasza
+Hos	هوزيائي-ها
+Hos	هوزيائي‌ها
+Hos	هوزيايي-ها
+Hos	هوزيايي‌ها
+Hos	هوشيايي-ها
+Hos	هوشيايي‌ها
 Hos	Hoosheeca
+Hos	Hoseya-ha
+Hos	Hoshay-ya
+Hos	Hoziah-ha
 Hos	Liv Oze a
+Hos	هوزيات-ها
+Hos	هوزيات‌ها
+Hos	هوزياي-ها
+Hos	هوزيايانه
+Hos	هوزياي‌ها
+Hos	هوشيات-ها
+Hos	هوشيات‌ها
+Hos	هوشيايانه
+Hos	Hosee-ya
 Hos	Hoshaeah
+Hos	Hoshiyah
+Hos	Hosia-ya
+Hos	Hos’iyaa
+Hos	Hozaiyah
+Hos	Hozia-ya
+Hos	Husaiyah
+Hos	Hushia-y
+Hos	Hushiyah
+Hos	hushaiya
 Hos	سفر هوشع
+Hos	هوزيا-ها
+Hos	هوزيايان
+Hos	هوزيا‌ها
+Hos	هوشعي-ها
+Hos	هوشعي‌ها
+Hos	هوشيا-ها
+Hos	هوشيايان
 Hos	ہو سیعاہ
 Hos	โฮเชยาห์
 Hos	Hoose7a
 Hos	Hoosean
+Hos	Hosea’y
+Hos	Hoseiah
 Hos	Hoseias
+Hos	Hosha-i
+Hos	Hosha’y
 Hos	Hosheah
+Hos	Hosia’y
+Hos	Hosiyah
+Hos	Hozaiah
+Hos	Hozayah
+Hos	Hozia-y
+Hos	Hozia’y
+Hos	Hoziyah
+Hos	Husha-i
 Hos	Hushaeh
+Hos	Husha’y
 Hos	Husheah
+Hos	Hushiya
+Hos	Huzayah
 Hos	Hô-sê-a
 Hos	Ozeasza
 Hos	hosh'ai
 Hos	hosh’ai
+Hos	hushaia
+Hos	هوزيائي
+Hos	هوزياها
+Hos	هوزيايي
+Hos	هوزيایی
+Hos	هوشياها
+Hos	هوشيايي
+Hos	هُوْزيا
 Hos	ہوسیعَِ
+Hos	Hosaya
 Hos	Hoseas
 Hos	Hoseia
+Hos	Hoseya
 Hos	Hoseás
 Hos	Hoshae
 Hos	Hoshea
+Hos	Hoshia
+Hos	Hosiya
 Hos	Hozeas
 Hos	Hozeaš
 Hos	Hozeás
 Hos	Hozeáš
+Hos	Hoziaa
+Hos	Hoziah
+Hos	Hoziya
 Hos	Hushae
 Hos	Hushea
+Hos	Hushia
 Hos	Hóseas
 Hos	Hóseás
 Hos	Oseiah
@@ -31222,23 +32455,38 @@ Hos	Oseias
 Hos	Oséias
 Hos	hosh'a
 Hos	hosh’a
+Hos	huzaiy
+Hos	huziaa
+Hos	huziah
+Hos	هوزيات
+Hos	هوزياه
+Hos	هوزياي
 Hos	هوش؏عع
 Hos	هوشئعع
 Hos	هوشاعع
 Hos	هوشععه
 Hos	هوشعلل
 Hos	هوشعیی
+Hos	هوشيات
+Hos	هوشياي
+Hos	هُوزيا
+Hos	هُوشيا
 Hos	ਹੋਸ਼ੇਆ
 Hos	โฮเชยา
 Hos	《何西阿书》
 Hos	《何西阿書》
 Hos	Hoosh
 Hos	Hosea
+Hos	Hosha
 Hos	Hoshe
 Hos	Hosho
+Hos	Hoshu
+Hos	Hozia
 Hos	Hošea
 Hos	Husha
 Hos	Hushe
+Hos	Hushi
+Hos	Huzia
 Hos	Hósea
 Hos	Oseah
 Hos	Oseas
@@ -31251,10 +32499,14 @@ Hos	Ozeáš
 Hos	hosey
 Hos	hoŝey
 Hos	hošeā
+Hos	huzai
+Hos	huzia
 Hos	hūsīʿ
 Hos	Ōciyā
 Hos	Осија
 Hos	Хошеа
+Hos	هوزيا
+Hos	هوزيه
 Hos	هوش؏ع
 Hos	هوش؏ه
 Hos	هوشئع
@@ -31262,7 +32514,10 @@ Hos	هوشاع
 Hos	هوشعع
 Hos	هوشعل
 Hos	هوشعه
+Hos	هوشعي
 Hos	هوشعی
+Hos	هوشيا
+Hos	هُوزي
 Hos	ہوسیع
 Hos	होशेय
 Hos	ହୋଶହେ
@@ -31292,9 +32547,11 @@ Hos	Осія
 Hos	Осіі
 Hos	Осії
 Hos	הושע
+Hos	هوزي
 Hos	هوش؏
 Hos	هوشا
 Hos	هوشع
+Hos	هوشي
 Hos	होशे
 Hos	《歐瑟亞
 Hos	ホセア書
@@ -31306,6 +32563,7 @@ Hos	Hos
 Hos	Hoš
 Hos	Hós
 Hos	Oze
+Hos	هوز
 Hos	هوش
 Hos	ஓசி
 Hos	ஓசே
@@ -31912,6 +33170,7 @@ Jas	Tg
 Jas	Yk
 Jas	Як
 Jas	يع
+Jas	یع
 Jas	ยก
 Jas	ยบ
 Jas	《雅
@@ -32017,36 +33276,100 @@ Jer	Sulat ni Jeremias
 Jer	yarmiyako pustak
 Jer	yarmiyāko pustak
 Jer	यर्मियाको पुस्तक
+Jer	Irmeiyaah-ha-ha
+Jer	Yirmeiaah-ha-ha
+Jer	yirmiyaah-ha-ha
 Jer	Jeremian kirja
 Jer	Ks. Jeremiasza
 Jer	Liber Ieremiae
+Jer	ارميياتُ-ها-ها
+Jer	Armiaah-ha-ha
 Jer	Jeremias' Bog
 Jer	Jeremias’ Bog
 Jer	Ks Jeremiasza
 Jer	Liv Jeremi an
+Jer	ارمييات-ها-ها
+Jer	اِرمييا-ها-ها
+Jer	اِرمييا-ها‌ها
+Jer	Irmeiyaah-ha
 Jer	Jeremias bok
+Jer	Yirmeiaah-ha
+Jer	yirmiyaah-ha
+Jer	ارمييا-ها-ها
+Jer	ارمييا-ها‌ها
+Jer	ارميياتها-ها
+Jer	اِرمييايي-ها
+Jer	اِرمييايي‌ها
+Jer	Ermeyiah-ha
 Jer	Giê-rê-mi-a
+Jer	ارميياتَ-ها
+Jer	ارميياتُ-ها
+Jer	ارميياتِ-ها
+Jer	ارميياها-ها
+Jer	ارمييايي-ها
+Jer	ارمييايي‌ها
+Jer	اِرمييات-ها
+Jer	اِرمييات-يا
+Jer	اِرميياي-ها
+Jer	اِرميياي‌ها
+Jer	Armiaah-ha
 Jer	Jeremiasza
+Jer	yirmiiyaah
+Jer	ارمييات-ها
+Jer	ارمييات-يا
+Jer	ارميياه-ها
+Jer	ارميياه‌ها
+Jer	ارميياي-ها
+Jer	ارميياي‌ها
+Jer	اِرمييا-ها
+Jer	اِرمييا-يا
+Jer	اِرمييا‌ها
 Jer	เยเรมียาห์
+Jer	Aarmiiaah
+Jer	Aarmiiyah
+Jer	Aermiiaah
+Jer	Aermiiyah
 Jer	Erm'yaaha
+Jer	Ermeyiaah
+Jer	Ermeyiaha
+Jer	Ermiiyaah
 Jer	Erm’yaaha
 Jer	Giê-rê-mi
 Jer	Irm'yaaha
+Jer	Irmeiyaah
 Jer	Irm’yaaha
 Jer	Jeremaiah
 Jer	Yeremyaah
+Jer	Yirmeiaah
 Jer	Yrm'yaaha
+Jer	Yrmiiyaah
 Jer	Yrm’yaaha
 Jer	yarmiyako
 Jer	yarmiyāko
+Jer	yirmiiyaa
+Jer	yirmiyaah
+Jer	ارمييا-ها
+Jer	ارمييا-يا
+Jer	ارميياتـه
+Jer	ارميياتها
+Jer	ارميياتُه
+Jer	ارميياتِه
+Jer	ارمييا‌ها
+Jer	اِرميياءِ
+Jer	اِرمييايي
 Jer	اِرمیا يا
 Jer	اِرمیا یا
 Jer	سفر إرميا
 Jer	यर्मियाको
+Jer	Aarmiyaa
+Jer	Aermiyaa
+Jer	Armiiyah
 Jer	Erm'yaah
 Jer	Ermeiyah
 Jer	Ermeyaah
 Jer	Ermeyahh
+Jer	Ermiiyah
+Jer	Ermiyaah
 Jer	Ermmaasa
 Jer	Erm’yaah
 Jer	Heremias
@@ -32061,6 +33384,9 @@ Jer	Ieremias
 Jer	Irmeiyah
 Jer	Irmeyaah
 Jer	Irmeyahh
+Jer	Irmiiyaa
+Jer	Irmiiyah
+Jer	Irmiyaah
 Jer	Jeramaih
 Jer	Jeramiah
 Jer	Jeramiha
@@ -32088,21 +33414,39 @@ Jer	Yrm'yaah
 Jer	Yrmeiyah
 Jer	Yrmeyaah
 Jer	Yrmeyahh
+Jer	Yrmiiyaa
+Jer	Yrmiiyah
 Jer	Yrm’yaah
 Jer	yirmayāh
+Jer	yirmiiya
 Jer	yirmiyāh
 Jer	Ιερεμίας
 Jer	Ιερεμιας
 Jer	Јеремија
+Jer	ارميياءِ
+Jer	ارميياتَ
+Jer	ارميياتُ
+Jer	ارميياتِ
+Jer	ارميياها
+Jer	ارمييايي
+Jer	اِرمييات
+Jer	اِرميياه
+Jer	اِرميياي
 Jer	اِرمی یا
 Jer	اِرمی یه
+Jer	اِرمی-ها
 Jer	اِرمیاءه
 Jer	اِرمیاءى
 Jer	اِرمیائه
 Jer	اِرمیاها
+Jer	اِرمی‌ها
 Jer	यिर्मयाह
 Jer	ਯਿਰਮਿਯਾਹ
 Jer	เยเรมีย์
+Jer	Armeyaa
+Jer	Armeyah
+Jer	Armiaah
+Jer	Armiyaa
 Jer	Erm'iah
 Jer	Erm'yaa
 Jer	Ermeyaa
@@ -32111,6 +33455,7 @@ Jer	Ermia'h
 Jer	Ermiaah
 Jer	Ermiaha
 Jer	Ermia’h
+Jer	Ermiyaa
 Jer	Ermiyah
 Jer	Erm’iah
 Jer	Erm’yaa
@@ -32164,10 +33509,17 @@ Jer	Еремија
 Jer	Иеремии
 Jer	Иеремия
 Jer	Йеремия
+Jer	ارمييات
+Jer	ارميياه
+Jer	ارميياي
+Jer	ارميیاه
+Jer	ارمی-ها
+Jer	ارمی‌ها
 Jer	اِر میا
 Jer	اِرم یا
 Jer	اِرمياء
 Jer	اِرمياا
+Jer	اِرمييا
 Jer	اِرميیا
 Jer	اِرمیاء
 Jer	اِرمیاا
@@ -32214,6 +33566,7 @@ Jer	Еремия
 Jer	ירמיהו
 Jer	ا رمیا
 Jer	ار میا
+Jer	ارمييا
 Jer	ارمیاء
 Jer	ارمیاا
 Jer	ارمیاه
@@ -32243,6 +33596,7 @@ Jer	إرميا
 Jer	ارمیا
 Jer	ارمیه
 Jer	ارمیى
+Jer	اِرمی
 Jer	यिर्म
 Jer	《耶利米书
 Jer	《耶利米書
@@ -32405,6 +33759,7 @@ Job	איוב
 Job	آیوب
 Job	أيوب
 Job	ئیوب
+Job	ايوب
 Job	اِوب
 Job	ایوب
 Job	ایوپ
@@ -33155,6 +34510,7 @@ John	Јн
 John	Ин
 John	Йн
 John	يو
+John	یو
 John	ยน
 John	ยฮ
 John	Ἰω
@@ -33173,46 +34529,177 @@ John	約
 John,Jonah,Job,Josh,Joel	Jo
 John,Josh,Joel,Jonah	யோ
 Jonah	ଯୂନସ ଭବିଷ୍ୟଦ୍ବକ୍ତାଙ୍କ ପୁସ୍ତକ
+Jonah	حضرت یونس علیه السلام
 Jonah	Книга на пророк Иона
 Jonah	Proroctwo Ionaszowe
 Jonah	Книга пророка Иони
 Jonah	Книга пророка Ионы
 Jonah	Книга пророка Йони
 Jonah	Књига пророка Јоне
+Jonah	داستان پیامبر یونس
+Jonah	ماجرای حضرت یونس
+Jonah	یونس در شکم ماهی
 Jonah	Prophetia Ionae
+Jonah	یونس‌نامه‌گی‌ها
 Jonah	Ksiega Jonasza
 Jonah	Ksiegi Jonasza
 Jonah	Księga Jonasza
 Jonah	Księgi Jonasza
+Jonah	یونس‌نامه‌ها‌ی
+Jonah	یونس‌نامه‌ی‌ها
+Jonah	یُونوس‌نامه‌ای
+Jonah	یُونوس‌نامه‌ها
+Jonah	یُونَس‌نامه‌ها
+Jonah	یُونُس‌نامه‌ای
+Jonah	یُونُس‌نامه‌ها
+Jonah	یونس در نینوا
+Jonah	یونسی‌نامه‌ای
+Jonah	یونسی‌نامه‌ها
+Jonah	یونسی‌های‌شان
+Jonah	یونس‌نامه‌شان
+Jonah	یونس‌نامه‌هات
+Jonah	یونس‌نامه‌گان
+Jonah	یونس‌های‌نامه
 Jonah	योनाको पुस्तक
 Jonah	Joonan kirja
 Jonah	Liv Jonas la
+Jonah	یونسی‌نامه‌ی
+Jonah	یونس‌نامه-ها
+Jonah	یونس‌نامه‌اش
+Jonah	یونس‌نامه‌ای
+Jonah	یونس‌نامه‌ها
+Jonah	یونس‌نامه‌گی
+Jonah	یونس‌های‌شان
 Jonah	Ks. Jonasza
+Jonah	حکایات یونس
+Jonah	داستان یونس
+Jonah	ماجرای یونس
+Jonah	یونس و ماهی
+Jonah	یونس پیامبر
+Jonah	یونسی-ها-ها
+Jonah	یونسیه-نامه
+Jonah	یونسی‌ای‌ها
+Jonah	یونسی‌ها‌ها
+Jonah	یونس‌نامه‌ی
+Jonah	یُونوس‌نامه
+Jonah	یُونَس‌نامه
+Jonah	یُونُس‌نامه
 Jonah	Jonas' Bog
 Jonah	Jonas’ Bog
+Jonah	Joonasse-i
+Jonah	Joonasse-y
 Jonah	Ks Jonasza
+Jonah	حکایت یونس
+Jonah	يونس-ها-ها
+Jonah	يونس‌ها‌ها
+Jonah	یونس-ها-ها
+Jonah	یونسی-نامه
+Jonah	یونسی‌نامه
+Jonah	یونس‌ای‌ها
+Jonah	یونس‌ها‌ها
 Jonah	Jonas bok
+Jonah	Jonasse-i
+Jonah	Jonasse-y
+Jonah	Joonassah
+Jonah	حضرت یونس
+Jonah	دعای یونس
 Jonah	سفر يونان
+Jonah	سوره یونس
+Jonah	نجات یونس
+Jonah	يونس-نامه
+Jonah	يونسيه-ها
+Jonah	پیام یونس
+Jonah	کتاب یونس
+Jonah	یونس‌نامه
+Jonah	یونس‌ها‌ی
+Jonah	یُونوس-ها
+Jonah	یُونوس‌ها
+Jonah	یُونَس-ها
+Jonah	یُونَس‌ها
+Jonah	یُونُس-ها
+Jonah	یُونُس‌ها
 Jonah	Jona bok
+Jonah	Jonasseh
+Jonah	Jounisse
 Jonah	Yoonaasa
+Jonah	Yoonus-i
+Jonah	Yoonus-y
+Jonah	Younas-i
+Jonah	Younas-y
+Jonah	Younasse
+Jonah	قصه یونس
+Jonah	يونسي‌ها
+Jonah	یونسی-ها
+Jonah	یونسی‌ها
+Jonah	یونس‌های
+Jonah	یونوس‌ها
+Jonah	Jonasah
+Jonah	Jonasse
+Jonah	Jonassi
 Jonah	Jonasza
+Jonah	Joonase
+Jonah	Joonass
+Jonah	Jounasi
+Jonah	Yonas-i
+Jonah	Yonas-y
+Jonah	Yonasah
+Jonah	Yoonass
 Jonah	Yooness
+Jonah	Yoonisi
+Jonah	Yoonoss
+Jonah	Yoonusi
+Jonah	Yoonuss
+Jonah	Younass
+Jonah	Younesi
+Jonah	Younisi
+Jonah	Younusi
+Jonah	Younuss
+Jonah	Yunasah
+Jonah	Yunus-i
+Jonah	Yunus-y
+Jonah	يونس-ها
+Jonah	يونس‌ها
+Jonah	یونس-ها
+Jonah	یونسیان
+Jonah	یونس‌ات
+Jonah	یونس‌ای
+Jonah	یونس‌ها
+Jonah	یونس‌یه
 Jonah	یوونییس
 Jonah	Giô-na
 Jonah	Jonahs
 Jonah	Jonase
+Jonah	Jonasi
 Jonah	Jonass
+Jonah	Joniss
 Jonah	Joonan
 Jonah	Joonas
 Jonah	Joonis
 Jonah	Jounas
+Jonah	Jounis
+Jonah	Yonass
+Jonah	Yonese
+Jonah	Yonisi
+Jonah	Yonusi
+Jonah	Yonuss
 Jonah	Yoonas
 Jonah	Yoones
 Jonah	Yoonis
+Jonah	Yoonus
 Jonah	Younas
+Jonah	Younes
 Jonah	Younis
+Jonah	Younus
+Jonah	Yunass
+Jonah	Yunese
+Jonah	Yunisi
+Jonah	Yunuse
+Jonah	Yunusi
+Jonah	Yunuss
+Jonah	يونسيه
 Jonah	یوناسی
 Jonah	یونسسی
+Jonah	یونس‌ی
 Jonah	یونیاس
 Jonah	یونییس
 Jonah	یووناس
@@ -33220,6 +34707,9 @@ Jonah	یوونوس
 Jonah	یوونیس
 Jonah	یُوناس
 Jonah	یُوناہ
+Jonah	یُونوس
+Jonah	یُونَس
+Jonah	یُونُس
 Jonah	โยนาห์
 Jonah	Giona
 Jonah	Ionas
@@ -33242,6 +34732,8 @@ Jonah	yūnāh
 Jonah	Ιωνάς
 Jonah	Ιωνας
 Jonah	يونان
+Jonah	يونسي
+Jonah	يونسّ
 Jonah	یوناس
 Jonah	یونسس
 Jonah	یونسـ
@@ -33272,6 +34764,7 @@ Jonah	Йона
 Jonah	Йони
 Jonah	Юнус
 Jonah	יונה
+Jonah	يونس
 Jonah	یونس
 Jonah	یونش
 Jonah	یونص
@@ -33305,6 +34798,7 @@ Jonah	约拿书
 Jonah	요나서
 Jonah	Yn
 Jonah	Ιν
+Jonah	ین
 Jonah	Ἰν
 Jonah	《拿
 Jonah	ヨナ
@@ -33512,6 +35006,7 @@ Josh	Jš
 Josh	Ιη
 Josh	Єг
 Josh	يش
+Josh	یش
 Josh	Ἰη
 Josh	《书
 Josh	《書
@@ -33551,6 +35046,8 @@ Jude	یہُوداہ کا عام خط
 Jude	Judina poslanica
 Jude	Lettera di Giuda
 Jude	Посланица Јудина
+Jude	یهودا‌نامه‌گی‌ها
+Jude	یهوذا‌نامه‌گی‌ها
 Jude	یہوداہ کا عام خط
 Jude	ਯਹੂਦਾਹ ਦੀ ਪੱਤ੍ਰੀ
 Jude	Juudaksen kirje
@@ -33563,12 +35060,20 @@ Jude	yahūdaceṃ patra
 Jude	yahūdācem patra
 Jude	yahūdāceṃ patra
 Jude	Послание на Юда
+Jude	يهودا‌نامه‌ی‌ها
+Jude	یهوذا‌نامه‌ی‌ها
 Jude	Epistula Iudae
 Jude	yahudako patra
 Jude	yahudāko patra
 Jude	yahūdako patra
 Jude	yahūdāko patra
 Jude	Ιουδα Επιστολη
+Jude	يهودا‌نامه‌شان
+Jude	يهودا‌نامه‌هات
+Jude	يهودا‌نامه‌گان
+Jude	یهوذا‌نامه‌شان
+Jude	یهوذا‌نامه‌هات
+Jude	یهوذا‌نامه‌گان
 Jude	ଯିହୂଦାଙ୍କ ପତ୍ର
 Jude	யூதா திருமுகம்
 Jude	Barua ya Yuda
@@ -33581,11 +35086,21 @@ Jude	List sw. Judy
 Jude	List św. Judy
 Jude	Послание Иуды
 Jude	Послання Іуди
+Jude	درس‌های یهودا
+Jude	درس‌های یهوذا
+Jude	يهودا‌نامه‌ای
+Jude	يهودا‌نامه‌ها
+Jude	یهوذا‌نامه‌ای
+Jude	یهوذا‌نامه‌ها
 Jude	यहूदाचें पत्र
 Jude	Layang Yudas
 Jude	List sw Judy
 Jude	List św Judy
 Jude	Послання Юди
+Jude	يهودا‌نامه‌ی
+Jude	پندهای یهودا
+Jude	پندهای یهوذا
+Jude	یهوذا‌نامه‌ی
 Jude	यहूदाको पत्र
 Jude	Judas' Brev
 Jude	Judasarbref
@@ -33595,8 +35110,16 @@ Jude	Judas’ Brev
 Jude	Judas’ brev
 Jude	Júdasarbref
 Jude	Júdasarbréf
+Jude	Yahoodaa-ye
 Jude	איגרת יהודה
 Jude	رسالة يهوذا
+Jude	رساله یهودا
+Jude	رساله یهوذا
+Jude	فرمان یهودا
+Jude	موعظه یهودا
+Jude	موعظه یهوذا
+Jude	يهودای مقدس
+Jude	يهوذای مقدس
 Jude	Judas brev
 Jude	Judov List
 Jude	Júdov List
@@ -33604,6 +35127,16 @@ Jude	List Juduv
 Jude	List Judův
 Jude	Јаковљевог
 Jude	אגרת יהודה
+Jude	نامه یهودا
+Jude	نامه یهوذا
+Jude	يهودا رسول
+Jude	يهودا مقدس
+Jude	يهودا‌نامه
+Jude	پیام یهودا
+Jude	پیام یهوذا
+Jude	کتاب یهودا
+Jude	کتاب یهوذا
+Jude	یهوذا‌نامه
 Jude	Juudaksen
 Jude	List Judy
 Jude	San Judas
@@ -33615,26 +35148,48 @@ Jude	yahūdacem
 Jude	yahūdaceṃ
 Jude	yahūdācem
 Jude	yahūdāceṃ
+Jude	يهودای-ها
+Jude	يهودای‌ها
+Jude	یهود‌نامه
+Jude	یهوذای-ها
+Jude	یهوذای‌ها
 Jude	ଯିହୂଦାଙ୍କ
+Jude	Yaahudah
+Jude	Yahoodaa
 Jude	Yahoodah
 Jude	Yahudaah
 Jude	Yehoodaa
+Jude	Yehoodah
+Jude	Yehoodai
 Jude	Yehoodeh
+Jude	Yehoozda
 Jude	Yehudaah
 Jude	yahudako
 Jude	yahudāko
 Jude	yahūdako
 Jude	yahūdāko
+Jude	يهودا-ها
+Jude	يهودا‌ها
+Jude	یهود‌نام
+Jude	یهوذا-ها
+Jude	یهوذا‌ها
+Jude	یهو‌نامه
 Jude	यहूदाचें
+Jude	Yaahuda
 Jude	Yahooda
 Jude	Yahudaa
 Jude	Yahudah
+Jude	Yahudai
 Jude	Yehooda
+Jude	Yehudaa
 Jude	Yehudah
 Jude	Yihudaa
 Jude	yahūdāh
 Jude	yahūdān
+Jude	يهوداها
 Jude	یهوداءه
+Jude	یهوذاها
+Jude	یهو‌نام
 Jude	یہوداءه
 Jude	یہُوداہ
 Jude	यहूदाको
@@ -33648,9 +35203,11 @@ Jude	Yehuda
 Jude	Yuudas
 Jude	yahūdā
 Jude	Јудина
+Jude	يهودای
 Jude	یهوداء
 Jude	یهودات
 Jude	یهوداه
+Jude	یهوذای
 Jude	یہوداء
 Jude	یہودات
 Jude	یہوداه
@@ -33674,13 +35231,16 @@ Jude	Yudas
 Jude	Ιουδα
 Jude	Ιούδα
 Jude	יהודה
+Jude	يهودا
 Jude	يهوذا
 Jude	یهودآ
 Jude	یهودا
 Jude	یهودة
+Jude	یهودن
 Jude	یهوده
 Jude	یهودى
 Jude	یهودی
+Jude	یهوذا
 Jude	یہودآ
 Jude	یہودا
 Jude	یہودة
@@ -33737,6 +35297,7 @@ Jude	Јуд
 Jude	Иуд
 Jude	Юда
 Jude	يهو
+Jude	یهذ
 Jude	یهو
 Jude	᾿Ιδ
 Jude	《犹》
@@ -34166,6 +35727,8 @@ Lam	Θρηνοι Ιερεμίου
 Lam	Θρηνοι Ιερεμιου
 Lam	Плач на Еремиин
 Lam	سفر مراثي إرميا
+Lam	نوحه‌نامه-ها-ها
+Lam	نوحه‌نامه‌ها‌ها
 Lam	यर्मियाको विलाप
 Lam	Ks. Lamentacji
 Lam	Marathi Erm'ya
@@ -34184,7 +35747,10 @@ Lam	Marathi Irmeya
 Lam	Marathi Irmiaa
 Lam	Marathi Irmiya
 Lam	Marathi Irm’ya
+Lam	Soug-nameh-haa
+Lam	Soug-nameha-ha
 Lam	Плач Јеремијин
+Lam	سوگ‌نامه‌سرایی
 Lam	مراثی اِرمی یا
 Lam	مراثی اِرمی یه
 Lam	مراثی اِرمیاءه
@@ -34204,8 +35770,15 @@ Lam	Marathi Ermia
 Lam	Marathi Eryaa
 Lam	Marathi Eryah
 Lam	Marathi Irmia
+Lam	Soug-nameh-ha
+Lam	Sougnaameh-ha
 Lam	Valitusvirret
 Lam	Плач Иеремиев
+Lam	سوگنامه-ها-ها
+Lam	سوگنامه‌سرایی
+Lam	سوگنامه‌نگاری
+Lam	سوگنامه‌ها‌ها
+Lam	سوگ‌نامه‌نگار
 Lam	مراثی ارمي یا
 Lam	مراثی ارمی یا
 Lam	مراثی ارمیاءی
@@ -34218,6 +35791,8 @@ Lam	مراثی اِرمیاه
 Lam	مراثی اِرمیاى
 Lam	مراثی اِرمییا
 Lam	مراثی اِرمییه
+Lam	نوحه-نامه‌های
+Lam	نوحه‌سرایی‌ها
 Lam	Jeremias sir
 Lam	Jeremiás sir
 Lam	Klagesangene
@@ -34234,9 +35809,19 @@ Lam	Plac Jeremii
 Lam	Plac Jeremiï
 Lam	Plač Jeremii
 Lam	Plač Jeremiï
+Lam	Soug-naameha
+Lam	Soug-name-ee
+Lam	Soug-name-ha
+Lam	Soug-nameh-y
+Lam	Sougnaame-ee
+Lam	Sougnaameh-y
 Lam	Плач Еремиев
 Lam	Плач Еремиин
 Lam	Плач Иеремии
+Lam	سوگنامه‌خوان
+Lam	سوگنامه‌نویس
+Lam	سوگنامه‌نگار
+Lam	سوگ‌نامه‌های
 Lam	مراثی ارم یا
 Lam	مراثی ارمیاه
 Lam	مراثی ارمییا
@@ -34246,6 +35831,11 @@ Lam	مراثی اِرميه
 Lam	مراثی اِرمیا
 Lam	مراثی اِرمیه
 Lam	مراثی اِرمیى
+Lam	نوحه-نامه‌ای
+Lam	نوحه-نامه‌ها
+Lam	نوحه‌نامه-ها
+Lam	نوحه‌نامه‌ای
+Lam	نوحه‌نامه‌ها
 Lam	เพลงคร่ำครวญ
 Lam	Klagelieder
 Lam	Kniha narku
@@ -34268,13 +35858,29 @@ Lam	Marathieyah
 Lam	Marathiyaah
 Lam	Marathiyyah
 Lam	Pagbangotan
+Lam	Sogh-naameh
+Lam	Soug-name-y
+Lam	Soug-nameha
+Lam	Sougnaameha
 Lam	Плач Єреміі
 Lam	Плач Єремії
+Lam	سوگ نامه-ها
+Lam	سوگ نامه‌ای
+Lam	سوگ نامه‌ها
+Lam	سوگنامه‌های
+Lam	سوگنامه‌گری
+Lam	سوگ‌نامه-ها
+Lam	سوگ‌نامه‌ای
+Lam	سوگ‌نامه‌ها
+Lam	سوگ‌نامه‌گو
 Lam	مراثي إرميا
 Lam	مراثی ارميا
 Lam	مراثی ارمیا
 Lam	مراثی ارمیه
 Lam	مراثی ارمیى
+Lam	نوحه-گری‌ها
+Lam	نوحه‌نامه‌ی
+Lam	نوحه‌گو‌یان
 Lam	Harmljoðin
 Lam	Harmljóðin
 Lam	K. narekov
@@ -34291,8 +35897,26 @@ Lam	Marathiyya
 Lam	Marathiy’a
 Lam	Marathi’ya
 Lam	Marath’iya
+Lam	Soug-naame
+Lam	Soug-namee
+Lam	Soug-nameh
+Lam	Sougnaameh
 Lam	Vilapageet
+Lam	سوگنامه-ها
+Lam	سوگنامه‌ات
+Lam	سوگنامه‌ای
+Lam	سوگنامه‌ها
+Lam	سوگنامه‌گو
+Lam	سوگ‌نامه‌ی
 Lam	مراثییئ یی
+Lam	نوحه-ها-ای
+Lam	نوحه-ها-ها
+Lam	نوحه‌ای-ها
+Lam	نوحه‌خوانی
+Lam	نوحه‌سرایی
+Lam	نوحه‌نویسی
+Lam	نوحه‌ها‌ها
+Lam	نوحه‌گرایی
 Lam	Ca thương
 Lam	K narekov
 Lam	K nárekov
@@ -34306,8 +35930,13 @@ Lam	Marathiye
 Lam	Marathiyy
 Lam	Marathi’i
 Lam	Marath’iy
+Lam	Sogh-name
+Lam	Soug-name
 Lam	Zalospevy
 Lam	Žalospevy
+Lam	سوگنامه‌ی
+Lam	سوگ‌سرایی
+Lam	سوگ‌نویسی
 Lam	مراثی ییئ
 Lam	مراثی ییا
 Lam	مراثی ییه
@@ -34318,15 +35947,23 @@ Lam	مراثیى یه
 Lam	مراثیى یی
 Lam	مراثیی یا
 Lam	مراثیی یه
+Lam	نوحه نامه
+Lam	نوحه-نامه
+Lam	نوحه‌خوان
+Lam	نوحه‌سرای
+Lam	نوحه‌نامه
+Lam	نوحه‌نویس
 Lam	Galarnad
 Lam	Marathia
 Lam	Marathie
 Lam	Marathiy
+Lam	Nooha-ha
 Lam	Panaghoy
 Lam	Plangeri
 Lam	Plângeri
 Lam	Pulampal
 Lam	Siralmak
+Lam	Soghnama
 Lam	Tuzaljke
 Lam	Tužaljke
 Lam	Vajtimet
@@ -34336,6 +35973,8 @@ Lam	wilapgīt
 Lam	wilāpgit
 Lam	wilāpgīt
 Lam	Плач Иер
+Lam	سوگ نامه
+Lam	سوگ‌نامه
 Lam	مراثی یا
 Lam	مراثی یه
 Lam	مراثی یى
@@ -34344,12 +35983,16 @@ Lam	مراثیاءه
 Lam	مراثیائه
 Lam	مراثیائی
 Lam	مراثییئه
+Lam	نوحه‌های
+Lam	نوحه‌گری
 Lam	विलापगीत
 Lam	विलापगेत
 Lam	புலம்பல்
 Lam	Marathi
 Lam	Ratapan
 Lam	المراثي
+Lam	سوگنامه
+Lam	سوگ‌گری
 Lam	مراثئیه
 Lam	مراثیئه
 Lam	مراثیاء
@@ -34360,6 +36003,12 @@ Lam	مراثیىه
 Lam	مراثییئ
 Lam	مراثییا
 Lam	مراثییه
+Lam	نوحه-ها
+Lam	نوحه‌ات
+Lam	نوحه‌ای
+Lam	نوحه‌ها
+Lam	نوحه‌گر
+Lam	نوحه‌گو
 Lam	《耶利米哀歌》
 Lam	エレミヤの哀歌
 Lam	예레미야 애가
@@ -34392,6 +36041,8 @@ Lam	예레미아애가
 Lam	예레미야애가
 Lam	Ai Ca
 Lam	Galar
+Lam	Nooha
+Lam	Nouhe
 Lam	Panag
 Lam	Plang
 Lam	Plenn
@@ -34426,6 +36077,7 @@ Lam	nūḥâ
 Lam	Плач
 Lam	איכה
 Lam	مراث
+Lam	نوحه
 Lam	نوحہ
 Lam	連同哀歌
 Lam	Hlj
@@ -34440,6 +36092,7 @@ Lam	Tuz
 Lam	Tuž
 Lam	Vaj
 Lam	مرا
+Lam	نوح
 Lam	புல
 Lam	พคค
 Lam	《哀》
@@ -34449,6 +36102,7 @@ Lam	Pl
 Lam	Tr
 Lam	āh
 Lam	Θρ
+Lam	نو
 Lam	《哀
 Lam	哀》
 Lam	哀歌
@@ -34782,6 +36436,7 @@ Lev	Laawiyiintii
 Lev	Trzecia Mojz
 Lev	Trzecia Mojż
 Lev	سفر اللاويين
+Lev	لاویان‌ها‌ها
 Lev	लैव्यव्यवस्थ
 Lev	ଲେବୀୟ ପୁସ୍ତକ
 Lev	3 Buch Mose
@@ -34804,6 +36459,8 @@ Lev	III Mosebok
 Lev	III Mosebók
 Lev	III Mósebok
 Lev	III Mósebók
+Lev	Laviyan-haa
+Lev	Lawiyan-haa
 Lev	Trzeci Mojz
 Lev	Trzeci Mojż
 Lev	Книга Левит
@@ -34827,6 +36484,10 @@ Lev	levīharuko
 Lev	levīharūko
 Lev	Трећа Мојс
 Lev	Трећом Мој
+Lev	لاءویان-ها
+Lev	لاءویان‌ها
+Lev	لائویان-ها
+Lev	لاوویان‌ها
 Lev	लैव्यवस्था
 Lev	3 Mosebog
 Lev	3 Mosebok
@@ -34864,6 +36525,9 @@ Lev	Λευιτικόν
 Lev	Λευϊτικον
 Lev	Λευϊτικόν
 Lev	Трећа Мој
+Lev	لاءوی-یان
+Lev	لاؤیان-ها
+Lev	لاویان‌ها
 Lev	लेवीहरूको
 Lev	3. Mozes
 Lev	3. Mózes
@@ -34875,6 +36539,7 @@ Lev	III. Mos
 Lev	III. Mós
 Lev	III. Мој
 Lev	Kaimaman
+Lev	Laawiyan
 Lev	Lavvyian
 Lev	Lebitico
 Lev	Lebitiko
@@ -34893,6 +36558,12 @@ Lev	Λευϊτικο
 Lev	Λευϊτικό
 Lev	Левитска
 Lev	اللاويين
+Lev	لاؤی-یان
+Lev	لاو-ویان
+Lev	لاوي-یان
+Lev	لاوی-یان
+Lev	لويان‌ها
+Lev	لویان-ها
 Lev	เลวีนิติ
 Lev	3 Mozes
 Lev	3 Mózes
@@ -34906,9 +36577,12 @@ Lev	III Mós
 Lev	III Мој
 Lev	Laawian
 Lev	Lavayan
+Lev	Lavvian
 Lev	Lavyyan
 Lev	Lawayan
 Lev	Laweyan
+Lev	Lawiyan
+Lev	Lawiyān
 Lev	Lawyaan
 Lev	Levitak
 Lev	Levitic
@@ -34916,7 +36590,11 @@ Lev	Levitik
 Lev	Leviták
 Lev	Vajikra
 Lev	Wajikra
+Lev	laviyan
+Lev	lawiyān
+Lev	lōviyān
 Lev	الأحبار
+Lev	لا-ویان
 Lev	لاءویان
 Lev	لائویان
 Lev	لاوئیان
@@ -34926,6 +36604,13 @@ Lev	لاویانن
 Lev	لاویانه
 Lev	لاویانی
 Lev	لاوییان
+Lev	لوي-یان
+Lev	لوی-یان
+Lev	لَوييان
+Lev	لَوَیان
+Lev	لَوِیان
+Lev	لَوْیان
+Lev	لَویَان
 Lev	லேவியர்
 Lev	3 Mojz
 Lev	3 Mojż
@@ -34937,14 +36622,21 @@ Lev	3. Mós
 Lev	3. Мој
 Lev	Imamat
 Lev	Lavian
+Lev	Lavyan
+Lev	Lavyān
 Lev	Lawian
 Lev	Walawi
 Lev	lawiān
 Lev	levīāṃ
+Lev	لآویان
 Lev	لاؤیان
 Lev	لاويان
+Lev	لاوی-ن
 Lev	لاویان
 Lev	لاویین
+Lev	لوویان
+Lev	لَویان
+Lev	لُویان
 Lev	ਲੇਵੀਆਂ
 Lev	ﺍﻟﻼﻭﻳﻲ
 Lev	3 Moj
@@ -34968,6 +36660,9 @@ Lev	Левит
 Lev	ויקרא
 Lev	احبار
 Lev	لاویت
+Lev	لاوین
+Lev	لوئین
+Lev	لويان
 Lev	لویان
 Lev	लेवीय
 Lev	लैव्य
@@ -34982,6 +36677,8 @@ Lev	3Mós
 Lev	Kapl
 Lev	Kapł
 Lev	Laaw
+Lev	Lavi
+Lev	Lavy
 Lev	Levi
 Lev	lawi
 Lev	لاوی
@@ -35011,6 +36708,7 @@ Lev	law
 Lev	Λευ
 Lev	Лев
 Lev	لاو
+Lev	لوي
 Lev	لوی
 Lev	ลนต
 Lev	《利》
@@ -36975,6 +38673,7 @@ Mic	미카서
 Mic	Mq
 Mic	Μχ
 Mic	مي
+Mic	می
 Mic	《弥
 Mic	《彌
 Mic	ミカ
@@ -37000,11 +38699,13 @@ Nah	Księga Nahuma
 Nah	Księgi Nahuma
 Nah	Nahumin kirja
 Nah	नहूमको पुस्तक
+Nah	ناحوم‌ها‌ها
 Nah	Ks. Nahuma
 Nah	Nahums Bog
 Nah	Nahums bok
 Nah	Ks Nahuma
 Nah	سفر ناحوم
+Nah	ناحوما-ها
 Nah	ناحومیائه
 Nah	ناحومیائہ
 Nah	ناحومیییه
@@ -37018,7 +38719,9 @@ Nah	ناحومیہه
 Nah	ناحومییء
 Nah	ناحومییئ
 Nah	ناحومییه
+Nah	ناحوم‌ها
 Nah	Naahoum
+Nah	Nah-oum
 Nah	Nahumin
 Nah	Nahumme
 Nah	نا حُوم
@@ -37038,6 +38741,7 @@ Nah	Na-hum
 Nah	Na-hâm
 Nah	Naahom
 Nah	Naahum
+Nah	Nah-um
 Nah	Nahoom
 Nah	Nahoum
 Nah	Nahuma
@@ -37048,6 +38752,7 @@ Nah	Nawoum
 Nah	Nawoun
 Nah	Naxuum
 Nah	nāhūmi
+Nah	ناحو-م
 Nah	ناحومء
 Nah	ناحومئ
 Nah	ناحوما
@@ -37154,7 +38859,12 @@ Neh	Nehemjas bok
 Neh	Книга Неемии
 Neh	Книга Нееміі
 Neh	Книга Неемії
+Neh	نحيميا-ها‌ها
+Neh	نحيميا-یه‌ها
 Neh	ନିହିମିୟାଙ୍କର
+Neh	Nehemiah-ya
+Neh	نِحِمیاه-ها
+Neh	Nehemia-ya
 Neh	Nehemiabok
 Neh	Nehemiabók
 Neh	Nehemiasza
@@ -37163,8 +38873,12 @@ Neh	Nehemíabók
 Neh	Nê-hê-mi-a
 Neh	nahemyahko
 Neh	nahemyāhko
+Neh	نحيم-يا-ها
+Neh	نِحِمیا-ها
+Neh	نِحِمیه-ها
 Neh	नहेम्याहको
 Neh	Nahimiyaa
+Neh	Nehem-yah
 Neh	Nehemaaah
 Neh	Nehemaaih
 Neh	Nehemaiah
@@ -37183,6 +38897,15 @@ Neh	Nehimiiah
 Neh	Nehimiiih
 Neh	Nexemyaah
 Neh	سفر نحميا
+Neh	نحيم-ياها
+Neh	نحيميا-ها
+Neh	نحيميا-يا
+Neh	نحيميا-يه
+Neh	نحيميا-یه
+Neh	نحيميه-ها
+Neh	نحيميه-يا
+Neh	نحيميه‌ها
+Neh	نحيمیه-ها
 Neh	न्हेम्याह
 Neh	Nahemyah
 Neh	Nehamiah
@@ -37204,6 +38927,7 @@ Neh	Nehemjas
 Neh	Nehemjaš
 Neh	Nehemjás
 Neh	Nehemjáš
+Neh	Nehemyah
 Neh	Nehemíah
 Neh	Nehemías
 Neh	Nehimaah
@@ -37216,6 +38940,9 @@ Neh	Nơkhemia
 Neh	nahamyāh
 Neh	niḥimyāh
 Neh	Нехемија
+Neh	نحمیه-ها
+Neh	نحيمياها
+Neh	نحیمیاها
 Neh	نِ حِمیا
 Neh	نِحِم یا
 Neh	نِحِمیاء
@@ -37249,10 +38976,18 @@ Neh	nahemyā
 Neh	Νεεμίας
 Neh	Νεεμιας
 Neh	Неемија
+Neh	نحيم-يا
+Neh	نحيم-يه
+Neh	نحيم-یا
+Neh	نحيم-یه
+Neh	نحيمياً
+Neh	نحيمیّه
+Neh	نحیم-یا
 Neh	نِحِمیا
 Neh	नहेम्या
 Neh	《厄斯德拉下》
 Neh	Neemia
+Neh	Nehmya
 Neh	Neyemi
 Neh	nīmiān
 Neh	Неемии
@@ -37264,6 +38999,11 @@ Neh	Немија
 Neh	Неєміі
 Neh	Неємії
 Neh	نحمیاہ
+Neh	نحيميا
+Neh	نحيميه
+Neh	نحيمیا
+Neh	نحيمیه
+Neh	نحیمیا
 Neh	نِحمیا
 Neh	نِحِمی
 Neh	ਨਹਮਯਾਹ
@@ -37313,6 +39053,7 @@ Neh	Né
 Neh	Nê
 Neh	Νε
 Neh	نح
+Neh	نه
 Neh	《尼
 Neh	尼》
 Neh	느헤
@@ -37863,42 +39604,173 @@ Obad	Книга пророка Авдия
 Obad	Книга пророка Авдія
 Obad	Книга пророка Овдія
 Obad	Prophetia Abdiae
+Obad	عُوبدیات‌نامه-ها
+Obad	عُوبدیات‌نامه‌ها
 Obad	Ksiega Abdiasza
 Obad	Ksiegi Abdiasza
 Obad	Księga Abdiasza
 Obad	Księgi Abdiasza
+Obad	عوبدیات‌نامه-ها
+Obad	عوبدیات‌نامه‌ها
 Obad	ओबदियाको पुस्तक
+Obad	عُوبدیائیان‌ها
 Obad	Liv Abdyas la
 Obad	Obadjan kirja
+Obad	عوبدیائیان‌ها
+Obad	عُوبدیات‌نامه
+Obad	عُوبدیای‌نامه
+Obad	عُوبيديائي-ها
+Obad	عُوبيديائي‌ها
+Obad	عُوبيديايي-ها
+Obad	عُوبيديايي‌ها
+Obad	عُوبیدیائی-ها
+Obad	عُوبیدیائی‌ها
+Obad	عُوبیدیايي-ها
+Obad	عُوبیدیايي‌ها
 Obad	Ks. Abdiasza
 Obad	Obadias' Bog
 Obad	Obadias’ Bog
+Obad	عوبدیات‌نامه
+Obad	عوبدیای‌نامه
+Obad	عوبيديائي-ها
+Obad	عوبيديائيانه
+Obad	عوبيديائي‌ها
+Obad	عوبيديايي-ها
+Obad	عوبيديايي‌ها
+Obad	عوبیدیائی-ها
+Obad	عوبیدیائی‌ها
+Obad	عوبیدیايي-ها
+Obad	عوبیدیايي‌ها
+Obad	عُوبدیائی-ها
+Obad	عُوبدیائی‌ها
+Obad	عُوبدیايی-ها
+Obad	عُوبدیايی‌ها
+Obad	عُوبيديات-ها
+Obad	عُوبيديات‌ها
+Obad	عُوبیدیائیان
+Obad	عُوبیدیات-ها
+Obad	عُوبیدیات‌ها
+Obad	عُوبیدیاي-ها
 Obad	Ks Abdiasza
 Obad	Obadjas bok
+Obad	عوبدیائی-ها
+Obad	عوبدیائی‌ها
+Obad	عوبدیايی-ها
+Obad	عوبدیايی‌ها
+Obad	عوبيديائيان
+Obad	عوبيديات-ها
+Obad	عوبيديات‌ها
+Obad	عوبيدياي-ها
+Obad	عوبيدياي‌ها
+Obad	عوبیدیائیان
+Obad	عوبیدیات-ها
+Obad	عوبیدیات‌ها
+Obad	عوبیدیاي-ها
+Obad	عُوبدیائیان
+Obad	عُوبدیات-ها
+Obad	عُوبدیات‌ها
+Obad	عُوبدیاه‌ها
+Obad	عُوبدیايانه
+Obad	عُوبدیای-ها
+Obad	عُوبيديا-ها
+Obad	عُوبیدیا-ها
+Obad	Ouba-diyah
+Obad	Ubad-diyah
+Obad	Ubad-iya-i
+Obad	obad-ya-ha
+Obad	obad-ya-ye
 Obad	سفر عوبديا
+Obad	عوبدیائیان
+Obad	عوبدیات-ها
+Obad	عوبدیات‌ها
+Obad	عوبدیايانه
+Obad	عوبدیای-ها
+Obad	عوبيديا-ها
+Obad	عوبيديا‌ها
+Obad	عوبیدیا-ها
+Obad	عُوبدیا-ها
+Obad	عُوبدیا-یی
+Obad	عُوبدیا‌ها
+Obad	عُوبيديائي
+Obad	عُوبيدياها
+Obad	عُوبيديايي
+Obad	عُوبیدیائی
+Obad	عُوبیدیاها
+Obad	عُوبیدیايي
 Obad	Cobadyaah
+Obad	Obadiya’i
+Obad	Ouba-diya
+Obad	Oubadiyah
+Obad	Oubadiyeh
+Obad	Ubad-diya
+Obad	Ubad-iyeh
+Obad	Uubadiyah
+Obad	obad-ya-y
 Obad	Ô-ba-đi-a
 Obad	ʿabadiyāh
+Obad	عوبدیا-ها
+Obad	عوبدیا-یی
+Obad	عوبدیا‌ها
+Obad	عوبيديائي
+Obad	عوبيدياها
+Obad	عوبيديايي
 Obad	عوبَدِیاء
+Obad	عوبیدیائی
+Obad	عوبیدیاها
+Obad	عوبیدیايي
+Obad	عُوبدیائی
+Obad	عُوبدیاها
+Obad	عُوبدیايی
+Obad	عُوبيديات
 Obad	عُوبَدیاء
+Obad	عُوبیدیات
+Obad	عُوبیدیاي
 Obad	Abddiyyu
 Obad	Abdiasza
+Obad	Obad-iya
+Obad	Obad-yah
 Obad	Obadeyah
+Obad	Obadeyeh
 Obad	Obadiyah
 Obad	Obadiyeh
+Obad	Obadya’i
+Obad	Ouba-dia
+Obad	Ouba-dya
+Obad	Oubadiya
+Obad	Oubadyah
+Obad	Ubad-iya
+Obad	Ubad-yah
+Obad	Ubadiyah
+Obad	Ubadiyeh
+Obad	Uubadiya
+Obad	obad-iya
+Obad	obadiyah
+Obad	عوبدیائی
+Obad	عوبدیايی
+Obad	عوبيديات
+Obad	عوبيدياي
 Obad	عوبَدِیا
 Obad	عوبَدیاء
 Obad	عوبَدیاى
 Obad	عوبَدیاي
 Obad	عوبَدیاہ
 Obad	عوبَدیای
+Obad	عوبیدیات
+Obad	عوبیدیاي
+Obad	عُوبدیات
+Obad	عُوبدیاه
+Obad	عُوبدیاي
+Obad	عُوبدیای
+Obad	عُوبيديا
 Obad	عُوبَدیا
+Obad	عُوبیدیا
 Obad	โอบาดีย์
 Obad	โอบาดีห์
 Obad	Abdijas
 Obad	Abdijaš
 Obad	Abdijás
 Obad	Abdijáš
+Obad	Obad-ya
 Obad	Obadeia
 Obad	Obadeya
 Obad	Obadhah
@@ -37922,8 +39794,14 @@ Obad	Obediáš
 Obad	Oobadia
 Obad	Oobadya
 Obad	Opatiyā
+Obad	Ouba-di
 Obad	Oubadia
 Obad	Oubadya
+Obad	Oubedia
+Obad	Ubad-ya
+Obad	Ubadiya
+Obad	Ubadyah
+Obad	obad-ya
 Obad	obadiya
 Obad	obadiyā
 Obad	obadyāh
@@ -37931,15 +39809,18 @@ Obad	obdayyā
 Obad	Овадија
 Obad	عوبادیا
 Obad	عوبدِیا
+Obad	عوبدیات
 Obad	عوبدیاه
 Obad	عوبدیاى
 Obad	عوبدیاي
 Obad	عوبدیاہ
 Obad	عوبدیای
+Obad	عوبيديا
 Obad	عوبَديا
 Obad	عوبَدیآ
 Obad	عوبَدیا
 Obad	عوبَدیه
+Obad	عوبیدیا
 Obad	عُوبدیا
 Obad	ओबद्दाह
 Obad	ओबद्याह
@@ -37958,7 +39839,11 @@ Obad	Obadya
 Obad	Obadía
 Obad	Obedia
 Obad	Obidah
+Obad	Oubadi
 Obad	Ovadia
+Obad	Ubadia
+Obad	Ubadya
+Obad	Ubedia
 Obad	obadʰa
 Obad	obadʰā
 Obad	obdiyā
@@ -38119,6 +40004,8 @@ Phil	Sulat sa mga Pilipense
 Phil	Sulat sa mga Pilipyano
 Phil	Послание к Филиппиицам
 Phil	Послание к Филиппийцам
+Phil	کتاب پیام‌های فيليپيان
+Phil	کتاب پیام‌های فیلیپيان
 Phil	Kirje filippilaisille
 Phil	Kirje filippiläisille
 Phil	pʰilippaikarams patra
@@ -38153,15 +40040,26 @@ Phil	Послання до филип'ян
 Phil	Послання до филип’ян
 Phil	Waraka kwa Wafilipi
 Phil	فلپیوں کے نام کا خط
+Phil	فيليپيان‌نامه‌هاتان
+Phil	فيليپيان‌نامه‌گی‌ها
+Phil	فیلیپيان‌نامه‌گی‌ها
 Phil	फिलिप्पीहरूलाई पत्र
 Phil	Barua kwa Wafilipi
 Phil	האיגרת אל הפיליפים
+Phil	فيليپيان‌نامه‌ی‌ها
+Phil	فیلیپيان‌نامه‌ی‌ها
 Phil	फिलिप्पैकरांस पत्र
 Phil	Mga Taga- Filipos
 Phil	Mga Taga- Pilipos
 Phil	Philippibeliekhez
 Phil	Προς Φιλιππησίους
 Phil	Προς Φιλιππησιους
+Phil	فيليپيان‌نامه‌شان
+Phil	فيليپيان‌نامه‌هات
+Phil	فيليپيان‌نامه‌گان
+Phil	فیلیپيان‌نامه‌شان
+Phil	فیلیپيان‌نامه‌هات
+Phil	فیلیپيان‌نامه‌گان
 Phil	Filippilaiskirje
 Phil	Filippiläiskirje
 Phil	List do Filipian
@@ -38169,6 +40067,11 @@ Phil	Mga Taga Filipos
 Phil	Mga Taga Pilipos
 Phil	Mga Taga-Filipos
 Phil	Piliphphisiyuusa
+Phil	فيليپيان‌نامه‌ای
+Phil	فيليپيان‌نامه‌ها
+Phil	فيلیپيون‌نامه‌ها
+Phil	فیلیپيان‌نامه‌ای
+Phil	فیلیپيان‌نامه‌ها
 Phil	Filippilaisille
 Phil	Filippiläisille
 Phil	ad Philippenses
@@ -38192,12 +40095,22 @@ Phil	pʰilippīharūlai
 Phil	pʰilippīharūlaī
 Phil	pʰilippīharūlāi
 Phil	pʰilippīharūlāī
+Phil	فيليپيان‌نامه‌ی
+Phil	فيلیپيه‌نامه‌ای
+Phil	فيلیپيه‌نامه‌ها
+Phil	فیلیپيان‌نامه‌ی
 Phil	필리피 신자들에게 보낸 서간
 Phil	Filipperbrevet
 Phil	List Filipanom
 Phil	List Filipskym
 Phil	List Filipským
 Phil	Pilippiyarukku
+Phil	حکایت فيليپيان
+Phil	رساله فيليپيان
+Phil	رساله فیلیپيان
+Phil	سخنان فيليپيان
+Phil	سخنان فیلیپيان
+Phil	فيلیپيه‌نامه‌ی
 Phil	फिलिप्पीहरूलाई
 Phil	ਫ਼ਿਲਿੱਪੀਆਂ ਨੂੰ
 Phil	Filipiyanians
@@ -38219,6 +40132,16 @@ Phil	Taga- Filipos
 Phil	Taga- Pilipos
 Phil	К Филиппиицам
 Phil	К Филиппийцам
+Phil	فيليپيان‌نامه
+Phil	فيلیپيان‌نامه
+Phil	فيلیپيون‌نامه
+Phil	فیلیپيان‌نامه
+Phil	نامه فيليپيان
+Phil	نامه فیلیپيان
+Phil	پیام فيليپيان
+Phil	پیام فیلیپيان
+Phil	کتاب فيليپيان
+Phil	کتاب فیلیپيان
 Phil	फिलिप्पैकरांस
 Phil	Filipljanima
 Phil	Filippiekhez
@@ -38245,6 +40168,13 @@ Phil	Taga-Filipos
 Phil	Φιλιππησίους
 Phil	Φιλιππησιους
 Phil	אל הפיליפיים
+Phil	فيليپياني-ها
+Phil	فيليپياني‌ها
+Phil	فيلیپياني-ها
+Phil	فيلیپياني‌ها
+Phil	فيلیپيه‌نامه
+Phil	فیلیپياني-ها
+Phil	فیلیپياني‌ها
 Phil	ଫିଲିପ୍ପୀୟଙ୍କ
 Phil	Filipenskym
 Phil	Filipenským
@@ -38281,6 +40211,18 @@ Phil	Филипјаните
 Phil	Филипљанима
 Phil	אל הפיליפים
 Phil	رسالة فيلبي
+Phil	فيليپيان-ها
+Phil	فيليپيان‌ها
+Phil	فيليپيون-ها
+Phil	فيليپيون‌ها
+Phil	فيلیپيان-ها
+Phil	فيلیپيان‌ها
+Phil	فيلیپيون-ها
+Phil	فيلیپيون‌ها
+Phil	فیلیپيان-ها
+Phil	فیلیپيان‌ها
+Phil	فیلیپيون-ها
+Phil	فیلیپيون‌ها
 Phil	فیلیپیانیان
 Phil	فیلیپیونیان
 Phil	फिलिप्पियों
@@ -38311,21 +40253,33 @@ Phil	Phillppian
 Phil	Philppians
 Phil	Phlippians
 Phil	Филипяните
+Phil	فيلیپيه-ها
+Phil	فيلیپيه‌ها
 Phil	فِلِپّیُوں
+Phil	فیلیپيه-ها
+Phil	فیلیپيه‌ها
 Phil	فیلیپیانان
 Phil	فیلیپیونان
 Phil	फ़िलिप्पॉय
 Phil	Filipanom
 Phil	Filipians
+Phil	Filipiyan
+Phil	Filipiyon
+Phil	Filipiyun
 Phil	Filippesi
+Phil	Filippian
 Phil	Filipskym
 Phil	Filipským
 Phil	Filipyans
+Phil	Fīlīppiān
+Phil	Fīlīppīān
+Phil	Fīlīpīyon
 Phil	Philipain
 Phil	Philipans
 Phil	Philipens
 Phil	Philipian
 Phil	Philipins
+Phil	Philipiun
 Phil	Philippan
 Phil	Philipper
 Phil	Philippin
@@ -38343,6 +40297,11 @@ Phil	fīlīppiān
 Phil	Филип'яни
 Phil	Филипјани
 Phil	Филип’яни
+Phil	فيليپياني
+Phil	فيلیپياني
+Phil	فيلیپيوني
+Phil	فیلپ‌نامه
+Phil	فیلیپيانی
 Phil	فیلیپیانن
 Phil	فیلیپیانه
 Phil	فیلیپیونن
@@ -38353,18 +40312,29 @@ Phil	フィリピ人への手紙
 Phil	Filipeni
 Phil	Filipian
 Phil	Filipyen
+Phil	Filipyon
 Phil	Filipyun
+Phil	Fīlīpian
+Phil	Fīlīpīān
 Phil	Philipan
+Phil	Philipes
 Phil	Philpian
 Phil	Philpins
 Phil	Wafilipi
 Phil	Филип'ян
 Phil	Филипяни
 Phil	Филип’ян
+Phil	فيليپيان
+Phil	فيليپيون
+Phil	فيلیپيان
+Phil	فيلیپيون
 Phil	فِلپّیوں
+Phil	فیلیپيان
+Phil	فیلیپيون
 Phil	فیلیپیان
 Phil	فیلیپیها
 Phil	فیلیپیون
+Phil	فیل‌نامه
 Phil	फिलिप्पि
 Phil	फिलिप्पी
 Phil	ヒリヒ人への手紙
@@ -38375,13 +40345,17 @@ Phil	Filiboy
 Phil	Filipos
 Phil	Filippi
 Phil	Phi-líp
+Phil	Philipi
 Phil	Philipp
 Phil	Phillip
 Phil	Philpan
 Phil	Pilipos
 Phil	fīlīppī
 Phil	فلیپیان
+Phil	فل‌نامه
+Phil	فيلیپيه
 Phil	فیلپیان
+Phil	فیلیپيه
 Phil	فیلیپیه
 Phil	ฟีลิปปี
 Phil	ヒリヒ人への書
@@ -38425,6 +40399,7 @@ Phil	Phil
 Phil	Phlp
 Phil	Pilp
 Phil	فلیپ
+Phil	فل‌ن
 Phil	فیلپ
 Phil	فیلی
 Phil	பிலி
@@ -38441,7 +40416,6 @@ Phil	腓立比书
 Phil	腓立比書
 Phil	빌립보서
 Phil	필리피서
-Phil	Fil
 Phil	Flp
 Phil	Phi
 Phil	Php
@@ -38459,12 +40433,14 @@ Phil	Fp
 Phil	Φι
 Phil	فل
 Phil	في
+Phil	فی
 Phil	ฟป
 Phil	《腓
 Phil	腓》
 Phil	필리
 Phil	腓
 Phil	빌
+Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Послання св. апостола Павла до Филимона
@@ -38510,6 +40486,8 @@ Phlm	ଫିଲୀମୋନଙ୍କ ପ୍ରତି ପତ୍ର
 Phlm	Послание към Филимон
 Phlm	Послання до Филимона
 Phlm	فِلیمون کے نام کا خط
+Phlm	کتاب پیام‌های فيلمان
+Phlm	کتاب پیام‌های فيلمون
 Phlm	Brevet till Filemon
 Phlm	Waraka kwa Filemoni
 Phlm	pʰilemon nū̃ pattrī
@@ -38533,22 +40511,51 @@ Phlm	pʰilemonlāī patra
 Phlm	pʰilemonāla patra
 Phlm	pʰilemonālā patra
 Phlm	האיגרת אל פילימון
+Phlm	فيلمان‌نامه‌هاتان
+Phlm	فيلمان‌نامه‌گی‌ها
+Phlm	فيلمون‌نامه‌گی‌ها
 Phlm	List do Filemona
+Phlm	فيلمان‌نامه‌ی‌ها
+Phlm	فيلمون‌نامه‌ی‌ها
 Phlm	List Filemonovi
 Phlm	List Filemónovi
+Phlm	فيلمان‌نامه‌شان
+Phlm	فيلمان‌نامه‌هات
+Phlm	فيلمان‌نامه‌گان
+Phlm	فيلمون‌نامه‌شان
+Phlm	فيلمون‌نامه‌هات
+Phlm	فيلمون‌نامه‌گان
 Phlm	फिलेमोनलाई पत्र
 Phlm	फिलेमोनाला पत्र
 Phlm	Filemonsbrefið
 Phlm	Filemonsbréfið
 Phlm	Fílemonsbrefið
 Phlm	Fílemonsbréfið
+Phlm	فيلمان‌نامه‌اش
+Phlm	فيلمان‌نامه‌ها
+Phlm	فيلمون‌نامه‌اش
+Phlm	فيلمون‌نامه‌ای
+Phlm	فيلمون‌نامه‌ها
+Phlm	فیلمان‌نامه‌ای
+Phlm	فیلمان‌نامه‌ها
+Phlm	فیلمون‌نامه‌ای
+Phlm	فیلمون‌نامه‌ها
 Phlm	Filemonbrevet
 Phlm	ad Philemonem
 Phlm	Προς Φιλήμονα
 Phlm	Προς Φιλημονα
+Phlm	فيلمون‌نامه‌ی
+Phlm	فیلمان‌نامه‌ی
+Phlm	فیلمون‌نامه‌ی
 Phlm	Kang Filemon
 Phlm	Kang Filemón
 Phlm	Till Filemon
+Phlm	حکایت فيلمان
+Phlm	رساله فيلمان
+Phlm	رساله فيلمون
+Phlm	سخنان فيلمان
+Phlm	سخنان فيلمون
+Phlm	فيلمونی‌نامه
 Phlm	ਫ਼ਿਲੇਮੋਨ ਨੂੰ
 Phlm	Filemonille
 Phlm	Kay Filemon
@@ -38563,6 +40570,15 @@ Phlm	pʰilemonlāī
 Phlm	pʰilemonāla
 Phlm	pʰilemonālā
 Phlm	До Филимона
+Phlm	فيلمون‌نامه
+Phlm	فیلمان‌نامه
+Phlm	فیلمون‌نامه
+Phlm	نامه فيلمان
+Phlm	نامه فيلمون
+Phlm	پیام فيلمان
+Phlm	پیام فيلمون
+Phlm	کتاب فيلمان
+Phlm	کتاب فيلمون
 Phlm	필레몬에게 보낸 서간
 Phlm	Filemonhoz
 Phlm	Filemonovi
@@ -38570,18 +40586,30 @@ Phlm	Phi-lê-môn
 Phlm	Philemonem
 Phlm	К Филимону
 Phlm	אל פילימון
+Phlm	فيلمونی-ها
+Phlm	فيلمونی‌ها
+Phlm	فیلمونی-ها
+Phlm	فیلمونی‌ها
 Phlm	फिलेमोनलाई
 Phlm	फिलेमोनाला
 Phlm	ଫିଲୀମୋନଙ୍କ
 Phlm	Filemonit
+Phlm	Filimaani
 Phlm	Filimoonn
 Phlm	Filimount
+Phlm	Philemaan
 Phlm	Philemona
 Phlm	Philemoni
 Phlm	Philemonn
 Phlm	Philemoon
 Phlm	Philemoun
 Phlm	Pilimoona
+Phlm	فيلمان-ها
+Phlm	فيلمان‌ها
+Phlm	فيلمون-ها
+Phlm	فيلمون‌ها
+Phlm	فیلمان-ها
+Phlm	فیلمان‌ها
 Phlm	فیلیموناء
 Phlm	فیلیمونیة
 Phlm	فیلیمونیی
@@ -38590,12 +40618,14 @@ Phlm	Filemona
 Phlm	Filemone
 Phlm	Filemoni
 Phlm	Filemonu
+Phlm	Filimani
 Phlm	Filimona
 Phlm	Filimoni
 Phlm	Filimonn
 Phlm	Filimoon
 Phlm	Filimoun
 Phlm	Filèmone
+Phlm	Fīlimoun
 Phlm	Philemon
 Phlm	Philimon
 Phlm	Philmoun
@@ -38607,6 +40637,9 @@ Phlm	Φιλήμονα
 Phlm	Φιλημονα
 Phlm	Филимона
 Phlm	Филимону
+Phlm	فلم‌نامه
+Phlm	فيلمونیی
+Phlm	فِلیمُون
 Phlm	فیلموناء
 Phlm	فیلمونیة
 Phlm	فیلمونیی
@@ -38628,15 +40661,25 @@ Phlm	Filemon
 Phlm	Filemón
 Phlm	Filimon
 Phlm	Filimun
+Phlm	Filimūn
 Phlm	Filémon
+Phlm	Fīlimun
+Phlm	Fīlīmon
+Phlm	Fīlīmun
 Phlm	Philmun
 Phlm	Phlemon
 Phlm	Phlimon
+Phlm	Phlmoun
 Phlm	Pilemon
 Phlm	fīlīmon
 Phlm	Филемон
 Phlm	Филимон
+Phlm	فيلمونت
+Phlm	فيلمونه
+Phlm	فيلمونی
 Phlm	فِلیمون
+Phlm	فیلمانت
+Phlm	فیلمانه
 Phlm	فیلمونئ
 Phlm	فیلمونا
 Phlm	فیلمونت
@@ -38653,6 +40696,9 @@ Phlm	Phi-lê
 Phlm	Philem
 Phlm	فليمون
 Phlm	فلیمون
+Phlm	فيلمان
+Phlm	فيلمون
+Phlm	فیلمان
 Phlm	فیلمون
 Phlm	《腓利門書》
 Phlm	《腓利门书》
@@ -38684,6 +40730,7 @@ Phlm	Phlm
 Phlm	Phmn
 Phlm	Pilm
 Phlm	فلیم
+Phlm	فیلم
 Phlm	பிலே
 Phlm	《肥利孟
 Phlm	ヒレモン
@@ -39054,7 +41101,15 @@ Prov	Mga Kawikaan
 Prov	Mudre izreke
 Prov	Sprichworter
 Prov	Sprichwörter
+Prov	امثالا-ها-ها
+Prov	امثالا-ها‌ها
+Prov	امثال‌تان-ها
+Prov	امثال‌مان-ها
+Prov	امثلات-ها-ها
+Prov	امثلات-ها‌ها
 Prov	பழமொழி ஆகமம்
+Prov	Amthala-haa
+Prov	Amthale-haa
 Prov	K. prislovi
 Prov	K. prisloví
 Prov	K. príslovi
@@ -39068,13 +41123,20 @@ Prov	Ordsprogene
 Prov	Ordspråkene
 Prov	Probverbios
 Prov	Sananlaskut
+Prov	hikmā-la-ha
 Prov	hitopadesko
 Prov	hitopadeško
 Prov	Приповістеи
 Prov	Приповістей
+Prov	امثالشان-ها
+Prov	امثاليات-ها
+Prov	امثلاتيه-ها
+Prov	امثلاتيه‌ها
 Prov	سفر الأمثال
 Prov	नीतिसूत्रें
 Prov	நீதிமொழிகள்
+Prov	Amsale-haa
+Prov	Amthāle-ha
 Prov	Diarhebion
 Prov	K prislovi
 Prov	K prisloví
@@ -39088,10 +41150,18 @@ Prov	Proverbele
 Prov	Proverbios
 Prov	Provérbios
 Prov	Prypovisti
+Prov	hikmata-ha
+Prov	hikmāha-ha
 Prov	Приповідок
 Prov	Приповісті
+Prov	امثال‌هایی
+Prov	امثلاتی‌ها
+Prov	امثلات‌تان
+Prov	امثلايي-ها
+Prov	امثلايي‌ها
 Prov	नीतिसूत्रे
 Prov	हितोपदेशको
+Prov	Amthal-ha
 Prov	Châm ngôn
 Prov	Diarebion
 Prov	Poslovice
@@ -39105,6 +41175,8 @@ Prov	Proverbia
 Prov	Proverbio
 Prov	Prverbios
 Prov	Príslovia
+Prov	hikmāt-ha
+Prov	hikmāy-ha
 Prov	nitisutre
 Prov	nitisūtre
 Prov	nītisutre
@@ -39114,9 +41186,29 @@ Prov	Παροιμίες
 Prov	Παροιμιαι
 Prov	Παροιμιες
 Prov	Пословици
+Prov	امثالا-ها
+Prov	امثالهاها
+Prov	امثالياتي
+Prov	امثالی-ها
+Prov	امثالی‌ها
+Prov	امثال‌تان
+Prov	امثال‌مان
+Prov	امثال‌های
+Prov	امثـال-ها
+Prov	امثـالاها
+Prov	امثـال‌ها
+Prov	امثلات-ها
+Prov	امثلاتشان
+Prov	امثلات‌ها
+Prov	امثیات-ها
 Prov	Am thale
 Prov	Am thals
+Prov	Amthalah
 Prov	Amthaleh
+Prov	Am’sālah
+Prov	Am’thāla
+Prov	Am’thāli
+Prov	Hikmatah
 Prov	Kawikaan
 Prov	Oroverbs
 Prov	Porverbs
@@ -39138,19 +41230,42 @@ Prov	Spreuken
 Prov	Sprueche
 Prov	a'mthāli
 Prov	a’mthāli
+Prov	hikmā-la
 Prov	kahāutāṃ
 Prov	Приказки
 Prov	Приказок
+Prov	امثال-ها
+Prov	امثالاءِ
+Prov	امثالاها
+Prov	امثالشان
+Prov	امثالـيت
+Prov	امثالمان
+Prov	امثاليات
+Prov	امثال‌ها
+Prov	امثـالها
+Prov	امثلا-ها
+Prov	امثلاتها
+Prov	امثلاتيه
+Prov	امثلی‌ها
+Prov	امثیه‌ها
 Prov	नीति वचन
 Prov	हितोपदेश
 Prov	ହିତୋପଦେଶ
 Prov	Am sale
 Prov	Am thal
+Prov	Amsālah
 Prov	Amthaal
 Prov	Amthael
 Prov	Amthale
 Prov	Amthall
 Prov	Amthals
+Prov	Amthalā
+Prov	Amthāla
+Prov	Amthāli
+Prov	Amthālī
+Prov	Am’sāla
+Prov	Hikmatā
+Prov	Hikmālā
 Prov	Leemiso
 Prov	Methali
 Prov	Mithali
@@ -39163,8 +41278,25 @@ Prov	Spruche
 Prov	Sprüche
 Prov	a'mthāl
 Prov	a’mthāl
+Prov	hikmāha
+Prov	hikmāya
 Prov	الأمثال
+Prov	امثالات
+Prov	امثالاً
+Prov	امثالها
+Prov	امثالهم
+Prov	امثاليت
+Prov	امثـالا
+Prov	امثـلات
 Prov	امثلاءل
+Prov	امثلاءِ
+Prov	امثلاتي
+Prov	امثلاتی
+Prov	امثلاها
+Prov	امثلايي
+Prov	امثلهما
+Prov	امثَالا
+Prov	امثیاها
 Prov	नीतिबचन
 Prov	नीतिवचन
 Prov	ਕਹਾਉਂਤਾ
@@ -39173,6 +41305,9 @@ Prov	สุภาษิต
 Prov	箴言 知恵の泉
 Prov	Am sal
 Prov	Amsaal
+Prov	Amsāla
+Prov	Amsāli
+Prov	Amsālī
 Prov	Amthal
 Prov	Amthel
 Prov	Prvbos
@@ -39190,11 +41325,20 @@ Prov	Притчи
 Prov	Притчі
 Prov	פתגמים
 Prov	امثاال
+Prov	امثالا
 Prov	امثالل
+Prov	امثالي
+Prov	امثالی
 Prov	امثـال
 Prov	امثل ل
 Prov	امثلاء
+Prov	امثلات
 Prov	امثلال
+Prov	امثليت
+Prov	امثيلا
+Prov	امثيلي
+Prov	امثَلي
+Prov	امثیات
 Prov	اَمثال
 Prov	Amsal
 Prov	Ordsp
@@ -39211,6 +41355,11 @@ Prov	امثال
 Prov	امثلا
 Prov	امثلل
 Prov	امثله
+Prov	امثلي
+Prov	امثلی
+Prov	امثیا
+Prov	امثیت
+Prov	امثیه
 Prov	امصال
 Prov	ﺃﻣﺜﺎﻝ
 Prov	Châm
@@ -39306,6 +41455,7 @@ Ps	Kniha zalmov
 Ps	Kniha žalmov
 Ps	Salmenes bok
 Ps	سفر المزامير
+Ps	مزموُر-ها-ها
 Ps	Kniha zalmu
 Ps	Kniha zalmů
 Ps	Kniha žalmu
@@ -39313,6 +41463,7 @@ Ps	Kniha žalmů
 Ps	Ks. Psalmow
 Ps	Ks. Psalmów
 Ps	Sabuurradii
+Ps	مزموُرها-ها
 Ps	भजन-सहिन्ता
 Ps	சங்கீதங்கள்
 Ps	திருப்பாடல்
@@ -39320,14 +41471,34 @@ Ps	Ks Psalmow
 Ps	Ks Psalmów
 Ps	Liv Som yo
 Ps	Liv Sòm yo
+Ps	Mazamoorah
+Ps	Mizamoorah
+Ps	Māzamoorah
 Ps	Thánh vịnh
+Ps	زمير-ها-ها
+Ps	مزموُرهاها
+Ps	مَزموُر-ها
 Ps	भजन संहिता
 Ps	ଗୀତିସଂହିତା
 Ps	K. zalmov
 Ps	K. žalmov
+Ps	Mazamirah
+Ps	Mazamireh
+Ps	Mazamoo’r
 Ps	Mazamoure
 Ps	Mazamurah
+Ps	Mazamīrah
+Ps	Mazamīreh
+Ps	Mazmoorah
+Ps	Mazmooreh
+Ps	Mezamireh
+Ps	Mezmoorah
 Ps	Mga Salmo
+Ps	Mizamireh
+Ps	Mizamoo’r
+Ps	Māzamīrah
+Ps	Māzmooreh
+Ps	Māzāmīrah
 Ps	Psaltaren
 Ps	Salmarnir
 Ps	Sálmarnir
@@ -39336,6 +41507,14 @@ Ps	Thánh Thi
 Ps	Zsoltarok
 Ps	Zsoltárok
 Ps	المَزمُور
+Ps	زَبُور-ها
+Ps	زَبُور‌ها
+Ps	مزامیر-ها
+Ps	مزموُر-ها
+Ps	مَزمور-ها
+Ps	مَزمُورها
+Ps	مِزمور-ها
+Ps	مِزمُورها
 Ps	भजनसंग्रह
 Ps	ଗାତସଂହିତା
 Ps	ଗୀତସଂହିତା
@@ -39344,6 +41523,9 @@ Ps	Caṅkītam
 Ps	K zalmov
 Ps	K žalmov
 Ps	Maz moor
+Ps	Mazami'r
+Ps	Mazamihr
+Ps	Mazami’r
 Ps	Mazamoor
 Ps	Mazamore
 Ps	Mazamu'r
@@ -39355,20 +41537,42 @@ Ps	Mazamu’r
 Ps	Mazmoure
 Ps	Mazmurah
 Ps	Mez moor
+Ps	Mezamihr
+Ps	Mezami’r
+Ps	Mezmoo’r
 Ps	Mga Awit
 Ps	Miz moor
+Ps	Mizamihr
+Ps	Mizami’r
 Ps	Mizamoor
+Ps	Māzāmī’r
+Ps	Māzāmūre
 Ps	Psalmien
 Ps	Salmenes
 Ps	Salmerne
+Ps	mazamīrī
+Ps	mazāmūrī
 Ps	Псалти́р
 Ps	Псалтирь
 Ps	المزامير
+Ps	زبيرهاها
+Ps	زبيري-ها
+Ps	زبُور‌ها
+Ps	زَبور‌ها
+Ps	زُبور‌ها
+Ps	مزامیرها
+Ps	مزمور-ها
+Ps	مزمورهای
+Ps	مزموورها
+Ps	مزموَرها
+Ps	مزموُرها
 Ps	भजनसग्रह
 Ps	சங்கீதம்
 Ps	Maz mor
+Ps	Mazamir
 Ps	Mazamor
 Ps	Mazamur
+Ps	Mazamīr
 Ps	Mazmoor
 Ps	Mazmore
 Ps	Mazmu'r
@@ -39378,8 +41582,12 @@ Ps	Mazmure
 Ps	Mazmuur
 Ps	Mazmu’r
 Ps	Mezamur
+Ps	Mezamīr
 Ps	Mizamur
 Ps	Mizmoor
+Ps	Mizāmīr
+Ps	Māzāmīr
+Ps	Māzāmūr
 Ps	Plasmas
 Ps	Plsssss
 Ps	Psaalms
@@ -39405,11 +41613,31 @@ Ps	Псалмів
 Ps	Псалтир
 Ps	מזמורים
 Ps	المزمور
+Ps	زبور‌ها
+Ps	زبير-ها
+Ps	زمير-ها
+Ps	مزاميره
+Ps	مزاميري
+Ps	مزاميری
+Ps	مزاميَر
+Ps	مزاميِر
+Ps	مزامیرا
+Ps	مزامیره
+Ps	مزامیَر
 Ps	مزموُرر
+Ps	مزموُره
 Ps	مزموُور
 Ps	مزمُورر
+Ps	مَزامير
 Ps	مَزموُر
+Ps	مَزميَر
+Ps	مَزميِر
+Ps	مَزمیرا
+Ps	مِزامير
 Ps	مِزموُر
+Ps	مِزميَر
+Ps	مِزميِر
+Ps	مِزمیرا
 Ps	स्तोत्र
 Ps	சஙகீதம்
 Ps	Masmur
@@ -39455,6 +41683,7 @@ Ps	Zaburi
 Ps	Zaltar
 Ps	Zaltár
 Ps	mazmūr
+Ps	zaboor
 Ps	Žaltar
 Ps	Žaltár
 Ps	Ψαλμοί
@@ -39466,7 +41695,11 @@ Ps	Псалми
 Ps	Псалмы
 Ps	Псалом
 Ps	תהילים
+Ps	زميرها
+Ps	زَبُور
+Ps	زُبُور
 Ps	مز مور
+Ps	مزامير
 Ps	مزامیر
 Ps	مززمور
 Ps	مزممور
@@ -39475,10 +41708,13 @@ Ps	مزموره
 Ps	مزموور
 Ps	مزموَر
 Ps	مزموُر
+Ps	مزميِر
 Ps	مزمَور
 Ps	مزمُور
 Ps	مزمُُر
 Ps	مزمّور
+Ps	مزمیرا
+Ps	مزمیری
 Ps	مَزمور
 Ps	مَزمُر
 Ps	مِزمور
@@ -39519,12 +41755,18 @@ Ps	Zabur
 Ps	Zalmy
 Ps	Zsolt
 Ps	zabūr
+Ps	zamīr
 Ps	Žalmy
 Ps	Забур
+Ps	زبيري
 Ps	زبُور
+Ps	مزامي
+Ps	مزامی
 Ps	مزمور
 Ps	مزمُر
 Ps	مظمور
+Ps	مَزمي
+Ps	مِزمي
 Ps	ਜ਼ਬੂਰ
 Ps	சங்கீ
 Ps	สดุดี
@@ -39554,7 +41796,9 @@ Ps	Žalm
 Ps	Псал
 Ps	زبور
 Ps	زبُو
+Ps	زمير
 Ps	مزمو
+Ps	مزمي
 Ps	مزمُ
 Ps	ਜਬੂਰ
 Ps	திபா
@@ -40219,6 +42463,7 @@ Rev	Åp
 Rev	Απ
 Rev	Об
 Rev	رؤ
+Rev	مک
 Rev	วว
 Rev	《启
 Rev	《啟
@@ -40569,6 +42814,13 @@ Ruth	Ruthu
 Ruth	Uruto
 Ruth	rūthī
 Ruth	راعوث
+Ruth	روتهـ
+Ruth	روُتی
+Ruth	روٗتی
+Ruth	رُوته
+Ruth	رُوتی
+Ruth	رُوُت
+Ruth	رُوٹی
 Ruth	रूथको
 Ruth	《盧德傳》
 Ruth	《路得記》
@@ -40588,12 +42840,24 @@ Ruth	rūtʰ
 Ruth	Ρουθ
 Ruth	Рута
 Ruth	Руфь
+Ruth	روتؒ
+Ruth	روتؓ
 Ruth	روتا
 Ruth	روتت
 Ruth	روتـ
 Ruth	روته
+Ruth	روتہ
+Ruth	روتۃ
 Ruth	روتی
+Ruth	روطت
+Ruth	روطہ
+Ruth	روُت
+Ruth	روُث
+Ruth	روٖت
+Ruth	روٗت
 Ruth	رُوت
+Ruth	رُوط
+Ruth	رُوٿ
 Ruth	ரூத்
 Ruth	《盧德傳
 Ruth	《路得記
@@ -40614,6 +42878,10 @@ Ruth	רות
 Ruth	روت
 Ruth	روث
 Ruth	روط
+Ruth	روٹ
+Ruth	روټ
+Ruth	روٿ
+Ruth	روۃ
 Ruth	رۆت
 Ruth	रुत
 Ruth	रूत
@@ -41278,6 +43546,7 @@ Song	Cantico dos Cânticos
 Song	Cântarea lui Solomon
 Song	Cântico dos Canticos
 Song	Cântico dos Cânticos
+Song	Ghazal Ghazal-Ha-Haa
 Song	The Song of Salomans
 Song	The Song of Salomons
 Song	The Song of Solomans
@@ -41376,6 +43645,7 @@ Song	The Song of Salomon
 Song	The Song of Soloman
 Song	The Song of Solomon
 Song	Песната над песните
+Song	غزل غزل‌ها‌ها‌ها‌ها
 Song	Cantico de Salomao
 Song	Cantico de Salomão
 Song	Cântico de Salomao
@@ -41419,7 +43689,9 @@ Song	Ghazal Ghazal ha
 Song	Ghazal Ghazal-ha
 Song	Ghazal Ghazal_ha
 Song	Ghazal Ghazalhaa
+Song	Ghazal Ghazal’ha
 Song	Ghazal-Ghazal-ha
+Song	Ghazal-Ghazal’ha
 Song	Ghazal_Ghazal-ha
 Song	Ghazal_Ghazalhaa
 Song	Ghazl Ghazal_haa
@@ -41441,6 +43713,8 @@ Song	ġazalu l-ġazalāt
 Song	Песен на песните
 Song	Песма Соломонова
 Song	سفر نشيد الأنشاد
+Song	غزل غزل‌ها‌ها-ها
+Song	غزل غزل‌ها‌ها‌ها
 Song	Awit ni Salomon
 Song	Awit ni Salomón
 Song	Awit ni Solomon
@@ -41449,6 +43723,7 @@ Song	Ghazal Ghazalha
 Song	Ghazal-Ghazalha
 Song	GhazalGhazal ha
 Song	GhazalGhazal-ha
+Song	GhazalGhazalHaa
 Song	GhazalGhazal_ha
 Song	GhazalGhazalhaa
 Song	Ghazal_Ghazalha
@@ -41476,6 +43751,7 @@ Song	Chante Salomon
 Song	GhazalGhazalha
 Song	Ghazl Ghazalha
 Song	Ghazl-Ghazalha
+Song	GhazlGhazal-Ha
 Song	GhazlGhazal-ha
 Song	GhazlGhazal_ha
 Song	GhazlGhazalhaa
@@ -41499,6 +43775,10 @@ Song	Salamon éneke
 Song	Song of Songs
 Song	Songs of Song
 Song	Црковни химни
+Song	غزل غزل ها-ها
+Song	غزل غزل ها‌ها
+Song	غزل غزل‌ها-ها
+Song	غزل غزل‌ها‌ها
 Song	نشيد الأناشيد
 Song	ਸਲੇਮਾਨ ਦਾ ਗੀਤ
 Song	உன்னதப்பாட்டு
@@ -41521,8 +43801,15 @@ Song	Песни Песней
 Song	Пісня Піснеи
 Song	Пісня Пісней
 Song	Пісні Пісень
+Song	غزل غزلــهاا
+Song	غزل غزل‌هاها
+Song	غزلغزل-ها‌ها
+Song	غزلغزل‌ها‌ها
 Song	غزلُ الغزلات
 Song	غزلۀ غزلۀ ها
+Song	غزلۀ غزلۀ-ها
+Song	غزلۀ غزلۀ‌ها
+Song	غزل‌ها‌ها‌ها
 Song	உன்னத பாட்டு
 Song	Cant Cantic
 Song	Ljoðaljoðin
@@ -41549,7 +43836,13 @@ Song	Reshthageet
 Song	Пес на песн
 Song	غزل الغزلات
 Song	غزل غزل هاا
+Song	غزل غزلــها
+Song	غزل غزلـهاا
 Song	غزل غزلۀ ها
+Song	غزل غزل‌هاا
+Song	غزلغ غزل-ها
+Song	غزلغ غزل‌ها
+Song	غزلغزلــهاا
 Song	स्रेस्ट गीत
 Song	เพลงซาโลมอน
 Song	เพลงโซโลมอน
@@ -41559,9 +43852,19 @@ Song	Höga Visan
 Song	Höga visan
 Song	Wimbo Bora
 Song	שיר השירים
+Song	غزل سلیمان
 Song	غزل غزل ها
+Song	غزل غزل-ها
+Song	غزل غزلـها
 Song	غزل غزلهاا
+Song	غزل غزل‌ها
+Song	غزل-غزل‌ها
+Song	غزلغ غزلها
 Song	غزلغزل هاا
+Song	غزلغزل-هاا
+Song	غزلغزلــها
+Song	غزلـغزلـها
+Song	غزلـغزل‌ها
 Song	غزلۀ غزلها
 Song	غزل‌غزل‌ها
 Song	श्रेष्ठगीत
@@ -41578,6 +43881,9 @@ Song	Veľpieseň
 Song	שירי שלמה
 Song	غزل غزلها
 Song	غزلغزل ها
+Song	غزلغزل-ها
+Song	غزل‌ها-ها
+Song	غزل‌ها‌ها
 Song	Caniadau
 Song	Cantares
 Song	Canticos
@@ -41589,6 +43895,8 @@ Song	Hooglied
 Song	gitratna
 Song	gītratna
 Song	غزلغزلها
+Song	غزلها‌ها
+Song	غزل‌هاها
 Song	A. ng A
 Song	Aw ni S
 Song	Cantari
@@ -41600,6 +43908,8 @@ Song	Diễm ca
 Song	Kantiko
 Song	Laul. l
 Song	Tình ca
+Song	غزل سلی
+Song	غزله‌ها
 Song	गीतरत्न
 Song	श्रेष्ठ
 Song	솔로몬의 노래
@@ -41616,7 +43926,10 @@ Song	Piesen
 Song	Pieseň
 Song	S of S
 Song	shīrāy
+Song	غزل-ها
+Song	غزلغزل
 Song	غزلیات
+Song	غزل‌ها
 Song	ପରମଗୀତ
 Song	Hogav
 Song	Hoogl
@@ -41628,6 +43941,8 @@ Song	Píseň
 Song	shīri
 Song	shīrā
 Song	Песнь
+Song	غزل س
+Song	غزلها
 Song	Cant
 Song	Cânt
 Song	Hojs
@@ -41646,6 +43961,7 @@ Song	shīr
 Song	П. П
 Song	Песн
 Song	Пісн
+Song	غ-ها
 Song	غزلغ
 Song	غزله
 Song	غزلی
@@ -41687,6 +44003,7 @@ Song	SS
 Song	Sg
 Song	So
 Song	Én
+Song	غز
 Song	نش
 Song	Ἆσ
 Song	《歌
@@ -41795,7 +44112,9 @@ Titus	Bréf Pals til Titusar
 Titus	Bréf Pals til Títusar
 Titus	Bréf Páls til Titusar
 Titus	Bréf Páls til Títusar
+Titus	کتاب پیام‌های تايتوس
 Titus	אגרת פולוס אל-טיטוס
+Titus	کتاب پیام‌های تيتوس
 Titus	तीतसलाई पावलको पत्र
 Titus	ṭiṭus ke nām kā ḫaṭ
 Titus	طِطُس کے نام کا خط
@@ -41804,16 +44123,24 @@ Titus	ତୀତସଙ୍କ ପ୍ରତି ପତ୍ର
 Titus	Brevet till Titus
 Titus	Epistula ad Titum
 Titus	Послан ня до Тита
+Titus	تايتوس‌نامه‌هاتان
+Titus	تايتوس‌نامه‌گی‌ها
 Titus	Brevet til Titus
 Titus	Kirje Titukselle
 Titus	tītus nū̃ pattrī
 Titus	Послание към Тит
 Titus	الرسالة إلى تيطس
+Titus	تايتوس‌نامه‌ی‌ها
+Titus	تيتوس‌نامه‌گی‌ها
 Titus	ططس کے نام کا خط
 Titus	ਤੀਤੁਸ ਨੂੰ ਪੱਤ੍ਰੀ
 Titus	Waraka kwa Tito
 Titus	Послание к Титу
 Titus	האיגרת אל טיטוס
+Titus	تايتوس‌نامه‌شان
+Titus	تايتوس‌نامه‌هات
+Titus	تايتوس‌نامه‌گان
+Titus	تيتوس‌نامه‌ی‌ها
 Titus	Barua kwa Tito
 Titus	Lettera a Tito
 Titus	List do Tytusa
@@ -41827,10 +44154,18 @@ Titus	tītaslaī patra
 Titus	tītaslāi patra
 Titus	tītaslāī patra
 Titus	Посланица Титу
+Titus	تايتوس‌نامه‌ای
+Titus	تايتوس‌نامه‌ها
+Titus	تيتوس‌نامه‌شان
+Titus	تيتوس‌نامه‌هات
+Titus	تيتوس‌نامه‌گان
 Titus	Titusarbrefið
 Titus	Titusarbréfið
 Titus	Títusarbrefið
 Titus	Títusarbréfið
+Titus	تايتوس‌نامه‌ی
+Titus	تيتوس‌نامه‌ای
+Titus	تيتوس‌نامه‌ها
 Titus	titala patra
 Titus	titalā patra
 Titus	titāla patra
@@ -41839,6 +44174,11 @@ Titus	tītala patra
 Titus	tītalā patra
 Titus	tītāla patra
 Titus	tītālā patra
+Titus	تای‌توس‌نامه
+Titus	تيتوس‌نامه‌ی
+Titus	حکایت تايتوس
+Titus	رساله تايتوس
+Titus	سخنان تايتوس
 Titus	तीतसलाई पत्र
 Titus	List Titovi
 Titus	List Títovi
@@ -41847,17 +44187,42 @@ Titus	Titusarbréf
 Titus	Titusbrevet
 Titus	Títusarbref
 Titus	Títusarbréf
+Titus	تايتوس‌نامه
+Titus	تایتوس‌نامه
+Titus	رساله تيتوس
+Titus	سخنان تيتوس
+Titus	نامه تايتوس
+Titus	پیام تايتوس
+Titus	کتاب تايتوس
 Titus	तीताला पत्र
 Titus	Titukselle
 Titus	Tīttuvukku
 Titus	Προς Τίτον
 Titus	Προς Τιτον
+Titus	تايتوسي-ها
+Titus	تايتوسي‌ها
+Titus	تایتوسی-ها
+Titus	تایتوسی‌ها
+Titus	تای‌توس-ها
+Titus	تای‌توس‌ها
+Titus	تيتوس‌نامه
+Titus	نامه تيتوس
+Titus	پیام تيتوس
+Titus	کتاب تيتوس
 Titus	티토에게 보낸 서간
 Titus	Kang Tito
+Titus	Taytūsian
+Titus	Tayṭusian
 Titus	Tituszhoz
+Titus	تايتوس-ها
+Titus	تايتوس‌ها
+Titus	تایتوس‌ها
+Titus	تيتوسي-ها
+Titus	تيتوسي‌ها
 Titus	ਤੀਤੁਸ ਨੂੰ
 Titus	Kay Tito
 Titus	Titushoz
+Titus	Titusian
 Titus	ad Titum
 Titus	titaslai
 Titus	titaslaī
@@ -41868,6 +44233,15 @@ Titus	tītaslaī
 Titus	tītaslāi
 Titus	tītaslāī
 Titus	אל טיטוס
+Titus	تای‌توسی
+Titus	تيتوس-ها
+Titus	تيتوس‌ها
+Titus	تیتوث-ها
+Titus	تیتوث‌ها
+Titus	تیتوش-ها
+Titus	تیتوش‌ها
+Titus	تیتوص-ها
+Titus	تیتوص‌ها
 Titus	ティトに達する書
 Titus	テトスへのてかみ
 Titus	テトスへのてがみ
@@ -41876,12 +44250,17 @@ Titus	Taitous
 Titus	Taytoos
 Titus	Taytous
 Titus	До Тита
+Titus	تايتوسي
+Titus	تایتوسی
+Titus	تای‌توس
 Titus	तीतसलाई
 Titus	ତୀତସଙ୍କ
 Titus	テトスへの手紙
 Titus	テトスヘの手紙
 Titus	Taitus
+Titus	Taitūṣ
 Titus	Taytus
+Titus	Tayṭus
 Titus	Teetus
 Titus	Tiitos
 Titus	Titoos
@@ -41890,6 +44269,7 @@ Titus	Titusz
 Titus	Tytous
 Titus	Tytusa
 Titus	Títovi
+Titus	Tāitus
 Titus	titala
 Titus	titalā
 Titus	titāla
@@ -41899,6 +44279,9 @@ Titus	tītalā
 Titus	tītāla
 Titus	tītālā
 Titus	К Титу
+Titus	تايتوس
+Titus	تایتوس
+Titus	تيتوسي
 Titus	تیتوثه
 Titus	تیتوثی
 Titus	تیتوسه
@@ -41914,7 +44297,10 @@ Titus	Tiitu
 Titus	Titit
 Titus	Titum
 Titus	Titus
+Titus	Titūs
 Titus	Tytus
+Titus	Tītūs
+Titus	Tīṭus
 Titus	tītus
 Titus	تيتوس
 Titus	تيتوش
@@ -41923,6 +44309,8 @@ Titus	تیتوث
 Titus	تیتوس
 Titus	تیتوش
 Titus	تیتوص
+Titus	تیطوس
+Titus	تیطُس
 Titus	طِطُس
 Titus	तीतुस
 Titus	तीतॉस
@@ -41965,6 +44353,8 @@ Titus	Tít
 Titus	Τίτ
 Titus	Τιτ
 Titus	Тит
+Titus	تاي
+Titus	تيت
 Titus	تیت
 Titus	ططس
 Titus	《多》
@@ -41978,6 +44368,7 @@ Titus	티토서
 Titus	Tt
 Titus	Ττ
 Titus	تي
+Titus	تی
 Titus	طي
 Titus	ทต
 Titus	《多
@@ -42287,25 +44678,65 @@ Zech	Књига пророка Захарије
 Zech	Книга пророка Захарии
 Zech	Книга пророка Захарія
 Zech	Prophetia Zachariae
+Zech	کتاب پیام‌های زکريا
+Zech	کتاب پیام‌های زکریا
 Zech	Ksiega Zachariasza
 Zech	Ksiegi Zachariasza
 Zech	Księga Zachariasza
 Zech	Księgi Zachariasza
+Zech	زکريا‌نامه‌هاتان
+Zech	زکريا‌نامه‌گی‌ها
+Zech	زکریا‌نامه‌هاتان
+Zech	زکریا‌نامه‌گی‌ها
 Zech	Ks. Zachariasza
+Zech	زکريا‌نامه‌ی‌ها
+Zech	زکریا‌نامه‌ی‌ها
 Zech	जकरियाको पुस्तक
 Zech	Ks Zachariasza
 Zech	Sakarjan kirja
+Zech	زَکريا‌نامه‌ها
+Zech	زَکریا‌نامه‌ها
+Zech	زکريا‌نامه‌شان
+Zech	زکريا‌نامه‌هات
+Zech	زکريا‌نامه‌گان
+Zech	زکریا‌نامه‌شان
+Zech	زکریا‌نامه‌هات
+Zech	زکریا‌نامه‌گان
 Zech	Zakarias' Bog
 Zech	Zakarias’ Bog
 Zech	Zakkaariyaasa
 Zech	Книга Захаріі
 Zech	Книга Захарії
+Zech	زَکريا‌نامه‌ی
+Zech	زَکریا‌نامه‌ی
+Zech	زکريا‌نامه‌ای
+Zech	زکريا‌نامه‌ها
+Zech	زکریا‌نامه‌ای
+Zech	زکریا‌نامه‌ها
 Zech	Liv Zakari a
 Zech	Sakarjaboken
 Zech	Sakarjas bok
+Zech	زکريا‌نامه‌ی
+Zech	زکریا‌نامه‌ی
 Zech	Xa-cha-ri-a
 Zech	Zachariasza
+Zech	حکایت زکريا
+Zech	حکایت زکریا
+Zech	رساله زکريا
+Zech	رساله زکریا
+Zech	زَکريا‌نامه
+Zech	زَکریا‌نامه
+Zech	سخنان زکريا
+Zech	سخنان زکریا
 Zech	Xê-ca-ri-a
+Zech	زکريا‌نامه
+Zech	زکریا‌نامه
+Zech	نامه زکريا
+Zech	نامه زکریا
+Zech	پیام زکريا
+Zech	پیام زکریا
+Zech	کتاب زکريا
+Zech	کتاب زکریا
 Zech	เศคาริยาห์
 Zech	Sechareia
 Zech	Sekaryaah
@@ -42327,7 +44758,11 @@ Zech	Zacheraah
 Zech	Zacheraih
 Zech	Zacheriah
 Zech	Zacheriih
+Zech	Zakaraiya
+Zech	Zakarayah
 Zech	Zakariyya
+Zech	Zakhariah
+Zech	Zakhariya
 Zech	Zecharaah
 Zech	Zecharaih
 Zech	Zechariah
@@ -42336,8 +44771,11 @@ Zech	Zecheraah
 Zech	Zecheraih
 Zech	Zecheriah
 Zech	Zecheriih
+Zech	Zekhariah
 Zech	zakariyāh
 Zech	زَكَرِيّا
+Zech	زَکريا-ها
+Zech	زَکریا-ها
 Zech	زکریائۀئہ
 Zech	زکریائہئہ
 Zech	زکریائۂئہ
@@ -42362,6 +44800,7 @@ Zech	Zacherah
 Zech	Zacheria
 Zech	Zacherih
 Zech	Zaharija
+Zech	Zakaraya
 Zech	Zakariah
 Zech	Zakarias
 Zech	Zakariya
@@ -42373,6 +44812,7 @@ Zech	Zecharih
 Zech	Zecherah
 Zech	Zecheria
 Zech	Zecherih
+Zech	Zejarīyā
 Zech	Zekariah
 Zech	Zekariya
 Zech	jakariya
@@ -42384,6 +44824,11 @@ Zech	zejarīyā
 Zech	Ζαχαρίας
 Zech	Ζαχαριας
 Zech	Захарија
+Zech	زَکرياها
+Zech	زَکریاها
+Zech	زکريا-ها
+Zech	زکريا‌ای
+Zech	زکریا-ها
 Zech	زکریائۀء
 Zech	زکریائہء
 Zech	زکریائۂء
@@ -42392,6 +44837,7 @@ Zech	زکریاۀئہ
 Zech	زکریاہئہ
 Zech	زکریاۂئہ
 Zech	زکریاۃئہ
+Zech	زکریا‌ای
 Zech	Sakaria
 Zech	Sakarja
 Zech	Sakaría
@@ -42399,6 +44845,7 @@ Zech	Zaharia
 Zech	Zaharij
 Zech	Zakaria
 Zech	Zaȟarij
+Zech	Zejarīy
 Zech	Zekaria
 Zech	Закария
 Zech	Захарии
@@ -42408,14 +44855,20 @@ Zech	Захарій
 Zech	Захарія
 Zech	Захаріі
 Zech	Захарії
+Zech	زِکَریا
+Zech	زکرياها
+Zech	زکريا‌ی
 Zech	زکریائۀ
 Zech	زکریائہ
 Zech	زکریائۂ
 Zech	زکریائۃ
+Zech	زکریاها
 Zech	زکریاۀء
 Zech	زکریاہء
 Zech	زکریاۂء
 Zech	زکریاۃء
+Zech	زکریا‌ی
+Zech	زک‌نامه
 Zech	जकयार्ह
 Zech	जकर्याह
 Zech	ਜ਼ਕਰਜਾਹ
@@ -42424,7 +44877,10 @@ Zech	《撒加利亞書》
 Zech	《撒迦利亚书》
 Zech	《撒迦利亞書》
 Zech	Zakari
+Zech	Zejarī
 Zech	zejarī
+Zech	زَکريا
+Zech	زَکریا
 Zech	زکریاء
 Zech	زکریاه
 Zech	زکریاۀ
@@ -42452,6 +44908,7 @@ Zech	Zacch
 Zech	zejār
 Zech	זכריה
 Zech	زكريا
+Zech	زکريا
 Zech	زکریا
 Zech	《匝加利亞
 Zech	《撒迦利亞
@@ -42500,6 +44957,7 @@ Zech	Zc
 Zech	Ζα
 Zech	Ζχ
 Zech	زك
+Zech	زک
 Zech	《亚
 Zech	《亞
 Zech	亚》
@@ -42515,25 +44973,63 @@ Zeph	Књига пророка Софоније
 Zeph	Книга пророка Софонии
 Zeph	Книга пророка Софоніі
 Zeph	Книга пророка Софонії
+Zeph	کتاب پیام‌های ضفينيا
 Zeph	Prophetia Sophoniae
 Zeph	Ksiega Sofoniasza
 Zeph	Ksiegi Sofoniasza
 Zeph	Księga Sofoniasza
 Zeph	Księgi Sofoniasza
+Zeph	ضفينيا‌نامه‌هاتان
+Zeph	ضفينيا‌نامه‌گی‌ها
+Zeph	صفینيا‌نامه‌ی‌ها
+Zeph	ضفينيا‌نامه‌ها‌ی
+Zeph	ضفينيا‌نامه‌ی‌ها
 Zeph	सपन्याहको पुस्तक
+Zeph	صفینيا‌نامه‌شان
+Zeph	ضفينيا‌نامه‌شان
+Zeph	ضفينيا‌نامه‌هات
 Zeph	Ks. Sofoniasza
 Zeph	Sefanjan kirja
+Zeph	صفینيا‌نامه‌ای
+Zeph	صفینيا‌نامه‌ها
+Zeph	ضفينيا‌نامه‌ای
+Zeph	ضفينيا‌نامه‌ها
+Zeph	ضفينيا‌های‌شان
 Zeph	Ks Sofoniasza
 Zeph	Liv Sofoni an
 Zeph	Sefanias' Bog
 Zeph	Sefanias’ Bog
 Zeph	Zefanias’ Bog
+Zeph	صفینيا‌نامه‌ی
+Zeph	ضفينيا‌نامه‌ی
 Zeph	Sefanjas bok
+Zeph	حکایت ضفينيا
+Zeph	رساله ضفينيا
+Zeph	سخنان ضفينيا
+Zeph	صَفینيا‌ی‌ها
+Zeph	ضفينيا‌ای‌ها
 Zeph	Sô-phô-ni-a
 Zeph	Xê-pha-ni-a
+Zeph	دعای ضفينيا
+Zeph	صفینيا‌نامه
+Zeph	صف‌نامه‌گان
+Zeph	ضفينيا‌نامه
+Zeph	نامه ضفينيا
+Zeph	پیام صفینيا
+Zeph	پیام ضفينيا
+Zeph	کتاب صفینیا
+Zeph	کتاب ضفينيا
+Zeph	Dhofaniyah
+Zeph	Dhofeniyah
 Zeph	Sofoniasza
 Zeph	Zephanaiah
+Zeph	صفینيا نبی
+Zeph	صف‌نامه‌ها
+Zeph	صَفینيا‌یی
+Zeph	ضفينيا نبی
+Zeph	ضف‌نامه‌ها
 Zeph	Ceppaṉiyā
+Zeph	Dhofeniya
 Zeph	Sefanyaah
 Zeph	Seffaneia
 Zeph	Sofonaasa
@@ -42545,11 +45041,20 @@ Zeph	Szofoniás
 Zeph	Sô-phô-ni
 Zeph	Xô-phô-ni
 Zeph	Zaphaniah
+Zeph	Zefaniyah
+Zeph	Zefeniyah
 Zeph	Zephanaia
 Zeph	Zephanaya
 Zeph	Zephaniah
 Zeph	Zephanias
+Zeph	Zofaniyah
+Zeph	Zofeniyah
 Zeph	سفر صفنيا
+Zeph	صفینيا‌ها
+Zeph	صفینيا‌یی
+Zeph	صفینیا-ها
+Zeph	صفینیا‌ای
+Zeph	صف‌نامه‌ی
 Zeph	صَفَنیاءء
 Zeph	صَفَنیاءة
 Zeph	صَفَنیاءہ
@@ -42561,9 +45066,18 @@ Zeph	صَفَنیائه
 Zeph	صَفَنیائہ
 Zeph	صَفَنیائۂ
 Zeph	صَفَنیائی
+Zeph	صَفینياها
+Zeph	ضفينيا-ها
+Zeph	ضفينيا‌ای
+Zeph	ضفينيا‌یی
 Zeph	செப்பனியா
 Zeph	เศฟันยาห์
 Zeph	ṣafaniyāh
+Zeph	Dhof-nia
+Zeph	Dhofania
+Zeph	Dhofenya
+Zeph	Dhofinia
+Zeph	Dhofinya
 Zeph	Sapanyah
 Zeph	Sefanias
 Zeph	Sefanija
@@ -42586,9 +45100,11 @@ Zeph	Zaphania
 Zeph	Zefanaya
 Zeph	Zefaniah
 Zeph	Zefanias
+Zeph	Zefeniya
 Zeph	Zepanias
 Zeph	Zephania
 Zeph	Zephanja
+Zeph	Zofeniya
 Zeph	Zofonias
 Zeph	Zofoniás
 Zeph	Zofónias
@@ -42604,6 +45120,9 @@ Zeph	Σοφονιας
 Zeph	Сефанија
 Zeph	Софонија
 Zeph	Софоније
+Zeph	صفن‌نامه
+Zeph	صفینیاها
+Zeph	صفینیا‌ی
 Zeph	صَفَنیاء
 Zeph	صَفَنیاة
 Zeph	صَفَنیاه
@@ -42613,6 +45132,8 @@ Zeph	صَفَنیہء
 Zeph	صَفَنیہة
 Zeph	صَفَنیہہ
 Zeph	صَفَنیہۂ
+Zeph	ضفينياها
+Zeph	ضفينيا‌ی
 Zeph	Sefania
 Zeph	Sefanja
 Zeph	Sefanía
@@ -42621,9 +45142,17 @@ Zeph	Sofonia
 Zeph	Sofonie
 Zeph	Tefania
 Zeph	Zafania
+Zeph	Zef-nia
 Zeph	Zefania
 Zeph	Zefanja
 Zeph	Zefanya
+Zeph	Zefenya
+Zeph	Zefinya
+Zeph	Zof-nia
+Zeph	Zofania
+Zeph	Zofenya
+Zeph	Zofinia
+Zeph	Zofinya
 Zeph	zofanjā
 Zeph	zofanjī
 Zeph	Ţefania
@@ -42634,10 +45163,16 @@ Zeph	Софония
 Zeph	Софонія
 Zeph	Софоніі
 Zeph	Софонії
+Zeph	سِفَنیا
+Zeph	صف‌نامه
 Zeph	صَفانیا
 Zeph	صَفَنیا
 Zeph	صَفَنیہ
 Zeph	صَفَنیۂ
+Zeph	صَفینيا
+Zeph	صَفینیا
+Zeph	ضفينيای
+Zeph	ضف‌نامه
 Zeph	सपन्याह
 Zeph	ਸਫ਼ਨਯਾਹ
 Zeph	セファニヤしょ
@@ -42645,6 +45180,10 @@ Zeph	ゼファニヤしょ
 Zeph	Sofoni
 Zeph	Zephan
 Zeph	صفنیاہ
+Zeph	صفينيا
+Zeph	صفینیا
+Zeph	ضفينيا
+Zeph	ضف‌نیا
 Zeph	सफन्या
 Zeph	ସିଫନିୟ
 Zeph	《索福尼亞》
@@ -42677,6 +45216,9 @@ Zeph	Soph
 Zeph	Szof
 Zeph	Zeph
 Zeph	صفنی
+Zeph	صف‌ن
+Zeph	ضفیا
+Zeph	ضف‌ن
 Zeph	செப்
 Zeph	セハニヤ
 Zeph	セパニヤ
@@ -42709,6 +45251,7 @@ Zeph	Sf
 Zeph	Xô
 Zeph	Zp
 Zeph	صف
+Zeph	ضف
 Zeph	《番
 Zeph	番》
 Zeph	스바

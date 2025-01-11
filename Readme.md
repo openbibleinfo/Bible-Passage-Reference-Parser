@@ -12,19 +12,19 @@ This project also provides extensively commented code and 4.7 million real-world
 
 Try a [demo of the Bible passage reference parser](https://www.openbible.info/labs/reference-parser/).
 
-## Usage
+## Upgrade Guide from v2 to v3
 
-### Setup: In a Browser (regular `<script>` tag)
+First, you don't need to update any of your code. The `/js` folder contains a copy of the v2.0.1 code. It hasn't changed at all and works exactly the same.
 
-```html
-<script src="/path/cjs/en_bcv_parser.js" charset="utf-8"></script>
-<script>
-	const bcv = new bcv_parser();
-	console.log( bcv.parse("John 1").osis() ); // John.1
-</script>
-```
+But if you do want access to new features, I recommend using the code in `/esm` version of the code, which uses `import`-style modules and takes an argument to indicate the language you want to support.
 
-### Setup: In a Browser (`<script>` module)
+CommonJS files (`require`-style) are available in the `/cjs` folder.
+
+Note that the files in `/esm` and `/cjs` require ESM2022, which means they'll work in Node 16 and later and browsers released after mid-2021.
+
+## Setup
+
+### In a Browser (`<script>` module)
 ```html
 <script type="module">
   import { bcv_parser } from "esm/bcv_parser.js";
@@ -51,10 +51,17 @@ Note that no variables are accessible from outside the `<script>` tag. If that p
 </script>
 ```
 
+### In a Browser (regular `<script>` tag)
 
-### Setup: Node.js (npm)
+```html
+<script src="/path/cjs/en_bcv_parser.js" charset="utf-8"></script>
+<script>
+  const bcv = new bcv_parser();
+  console.log( bcv.parse("John 1").osis() ); // John.1
+</script>
+```
 
-Note that version 3.0-alpha isn't yet—as of December 31, 2024—on npm, so this command won't get you the latest code, which is only available from this repository. Since version 3 is a major change, I want to make sure it's stable before uploading it to npm.
+### Node.js (npm)
 
 To install from the command line:
 
@@ -73,19 +80,19 @@ const bcv = new bcv_parser(lang);
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
 
-### Node Usage (Earlier than v16)
+### Node Usage (Before v16)
 
 To run using CommonJS:
 
 ```javascript
-var bcv_parser = require("bible-passage-reference-parser/js/en_bcv_parser").bcv_parser;
+var bcv_parser = require("bible-passage-reference-parser/cjs/en_bcv_parser").bcv_parser;
 var bcv = new bcv_parser();
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
 
-### Setup: Node.js (Manual, v16 and Later)
+### Node.js (Manual, v16 and Later)
 
-After downloading the parser and the language file you want (assuming you put the language file in a `lang` subfolder). This example uses English.
+This example uses English. After downloading the parser and the language file you want (assuming you put the language file in a `lang` subfolder):
 
 ```javascript
 import { bcv_parser } from "./bcv_parser.js"; // Adjust paths as needed
@@ -94,11 +101,11 @@ const bcv = new bcv_parser(lang);
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
 
-### Parsing
+## Parsing
 
 Assuming you have an object named `bcv`:
 
-#### `.parse("[string to parse]")`
+### `.parse("[string to parse]")`
 
 This function does the parsing. It returns the `bcv` object and is suitable for chaining.
 
@@ -106,7 +113,7 @@ This function does the parsing. It returns the `bcv` object and is suitable for 
 bcv.parse("John 3:16"); // Returns the `bcv` object.
 ```
 
-#### `.parse_with_context("[string to parse]", "[string context]")`
+### `.parse_with_context("[string to parse]", "[string context]")`
 
 This function parses a string with a string context as the second argument. As with `.parse()`, it returns the `bcv` object and is suitable for chaining. Use this function if you have a string that starts with what you suspect is a reference and you already know the context. For example, maybe you're parsing a footnote that refers to "verse 16," and you know that the footnote is attached to John 3:
 
@@ -121,7 +128,7 @@ Without this function, you could manually prepend the context to the string, but
 
 Passing a translation as part of the context—`bcv.parse_with_context("verse 16", "John 3 NIV")`—doesn't apply the translation to the first argument. Translations always propagate backward, not forward (`Matt 5:6 (NIV)` rather than `NIV: Matt 5:6`). You can set the `versification_system` option to change the default translation.
 
-#### `.osis()`
+### `.osis()`
 
 This function returns a single OSIS for the entire input, providing no information about any translations included in the input.
 
@@ -136,7 +143,7 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis();
 // "John.3.16,John.3.18,Matt.1"
 ```
 
-#### `.osis_and_translations()`
+### `.osis_and_translations()`
 
 This function returns an array. Each element in the array is an `[OSIS, Translation]` tuple (both are strings).
 
@@ -151,7 +158,7 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_translations();
 // [["John.3.16,John.3.18", ""], ["Matt.1", "NIV,ESV"]]
 ```
 
-#### `.osis_and_indices()`
+### `.osis_and_indices()`
 
 This function returns an array. Each element in the array is an object with `osis` (a string), `translations` (an array of translation identifiers—an empty string unless a translation is specified), and `indices` (the start and end position in the string). The `indices` key is designed to be consistent with Twitter's implementation (the first character in a string has indices `[0, 1]`). If you're looking to tag references in text, this function is probably the one you want.
 
@@ -166,9 +173,11 @@ bcv.parse("John 3:16,18. ### Matthew 1 (NIV, ESV)").osis_and_indices();
 // [{"osis": "John.3.16,John.3.18", "translations": [""], "indices":[0, 12]}, {"osis": "Matt.1", "translations": ["NIV","ESV"], "indices": [18, 38]}]
 ```
 
-#### `.parsed_entities()`
+### `.parsed_entities()`
 
 If you want to know a lot about how the parser handled the input string, use this function. It can include messages if it adjusted the input or had trouble parsing it (e.g., if given an invalid reference).
+
+You probably do not need to use this function.
 
 This function returns an array with a fairly complicated structure. The `entities` key can contain nested entities if you're parsing a sequence of references.
 
@@ -225,7 +234,7 @@ Returns:
 
 You may also see an `alternates` object if you provide an ambiguous book abbreviation (`Ph 2` could mean "Phil.2" or "Phlm.1.2"; "Phil.2" appears as the main entity, while "Phlm.1.2" appears in `[0].entities[0].entities[0].alternates` in this case).
 
-#### `.include_apocrypha([Boolean])`
+### `.include_apocrypha([Boolean])`
 
 This function takes a single Boolean value (`true` or `false`). If `true`, it tries to find the following books in the Apocrypha (or Deuterocanonicals): Tob, Jdt, GkEsth, Wis, Sir, Bar, PrAzar, Sus, Bel, SgThree, EpJer, 1Macc, 2Macc, 3Macc, 4Macc, 1Esd, 2Esd, PrMan, Ps151. Your canon may vary in the number of books, their order, or the number of verses in each chapter. If you set the value to `false` (the default behavior), it ignores books in the Apocrypha.
 
@@ -239,7 +248,7 @@ You shouldn't call `include_apocrypha()` between calling `parse()` and one of th
 
 You might find it easier to use the `testaments` option to specify which testaments (Old, New, and Apocrypha) you want to identify.
 
-#### `.set_options({})`
+### `.set_options({})`
 
 This function takes an object that sets parsing and output options. See [Options](#options) for available keys and values. This function doesn't enforce valid values, but using values other than the ones described in [Options](#options) will lead to unexpected behavior.
 
@@ -248,15 +257,15 @@ bcv.set_options({"osis_compaction_strategy": "bcv"});
 bcv.parse("Genesis 1").osis(); // "Gen.1.1-Gen.1.31"
 ```
 
-### Administrative Functions
+## Administrative Functions
 
 This function is separate from the parsing sequence and provides data that may be useful for other applications.
 
-#### `.translation_info("[translation]")`
+### `.translation_info("[translation]")`
 
 This function returns an object of data about the requested translation. You can use this data to determine, for example, the previous and next chapters for a given chapter, even when the given chapter is at the beginning or end of a book.
 
-It takes an optional string argument that identifies the translation—if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, and `nrsv`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
+It takes an optional string argument that identifies the translation—if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, `nrsv`, and `nrsvue`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
 
 The returned object has the following structure:
 
@@ -270,7 +279,7 @@ The returned object has the following structure:
 }
 ```
 
-The `system` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification. Objects with identical `alias` values are identical. `system` is a synonym for `alias`; these two keys are always identical; `alias` is an older way to refer to versification systems.
+The `system` key identifies which versification is used. For example, `.translation_info("niv")` returns `kjv` for this key because the NIV uses KJV versification. Objects with identical `system` values are identical. `system` is a synonym for `alias`; these two keys are always identical; `alias` is an older way to refer to versification systems.
 
 The `books` key lists the books in order, which you can use to find surrounding books. For example, if you know from `order` that `"Exod": 2`, you know that you can find it at `books[1]` (because the array is zero-based). Similarly, the book before `Exod` is at `books[0]`, and the book after it is at `books[2]`.
 
@@ -278,9 +287,9 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 
 The `order` key returns the order in which the books appear in the translation, starting at 1.
 
-### Options
+## Options
 
-#### OSIS Output
+### OSIS Output
 
 * `consecutive_combination_strategy: "combine"`
 	* `combine`: "Matt 5, 6, 7" → "Matt.5-Matt.7".
@@ -290,7 +299,7 @@ The `order` key returns the order in which the books appear in the translation, 
 	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" → "Gen.1-Gen.50".
 	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" → "Gen.1.1-Gen.1.31".
 
-#### Sequence
+### Sequence
 
 * `book_sequence_strategy: "ignore"`
 	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" → "Isa.1").
@@ -305,7 +314,7 @@ The `order` key returns the order in which the books appear in the translation, 
 	* `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
 	* `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
 
-#### Potentially Invalid Input
+### Potentially Invalid Input
 
 * `invalid_passage_strategy: "ignore"`
 	* `ignore`: Include only valid passages in `parsed_entities()`.
@@ -330,7 +339,7 @@ The `order` key returns the order in which the books appear in the translation, 
 	* `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
 	* `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
 
-#### Context
+### Context
 
 * `book_alone_strategy: "ignore"`
 	* `ignore`: any books that appear on their own don't get parsed as books ("Gen saw" doesn't trigger a match, but "Gen 1" does).
@@ -346,7 +355,7 @@ The `order` key returns the order in which the books appear in the translation, 
 	* `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
 	* `sequence`: treat them as sequences ("Jer 33-11" → "Jer.33,Jer.11", "Heb 13-15" → "Heb.13").
 
-#### Testaments
+### Testaments
 * `testaments: "on"`
 	* `o`: include `o` in the value to look for Old Testament books (Genesis to Malachi in the Protestant canon).
 	* `n`: include `n` in the value to look for New Testament books (Matthew to Revelation in the Protestant canon).
@@ -359,7 +368,7 @@ The `order` key returns the order in which the books appear in the translation, 
 	* `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" → "Ps.151.1"
 	* `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" → "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" → "Ps.149-Ps.150,Ps151.1". Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
 
-#### Versification
+### Versification
 * `versification_system: "default"`
 	* `default`: the default ESV-style versification. Also used in AMP and NASB.
 	* `ceb`: use CEB versification, which varies mostly in the Apocrypha.
@@ -371,21 +380,21 @@ The `order` key returns the order in which the books appear in the translation, 
 	* `nrsvue`: use NRSVUE versification.
 	* `vulgate`: use Vulgate numbering for the Psalms.
 
-#### Case Sensitivity
+### Case Sensitivity
 * `case_sensitive: "none"`
 	* `none`: All matches are case-insensitive.
 	* `books`: Book names are case-sensitive. Everything else is still case-insensitive.
 
-#### Warnings
+### Warnings
 * `warning_level: "none"`
 	* `none`: Don't use `console.warn`.
-	* `warn`: Send `console.warn` messages when setting an unknown `versification_system` or getting unknown `translation_info()`.
+	* `warn`: Send `console.warn` messages when setting an unknown `versification_system`, getting unknown `translation_info()`, or redefining an existing translation in `add_translations()`.
 
-### Messages
+## Messages
 
 If you're calling `parsed_entities()` directly, the following keys can appear in `messages`; they don't always indicate an invalid reference; they may just indicate the chosen parsing strategy.
 
-#### Start Objects
+### Start Objects
 
 * `start_book_not_defined`: `true` if a `c` or similar non-book object is lacking a book context. This message only occurs when the object becomes dissociated from the related book, as in `Chapters 11-1040 of II Kings`. It's highly unusual.
 * `start_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to be omitted from the translation's definition to generate this message.
@@ -395,7 +404,7 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 * `start_verse_is_zero`: `1` if the requested start verse is 0.
 * `start_verse_not_exist`: The value is the last valid verse in the chapter.
 
-#### End Objects
+### End Objects
 
 * `end_book_before_start`: `true` if the end book is before the start book (the order depends on the translation being used). E.g., `Exodus-Genesis`.
 * `end_book_not_exist`: `true` if the given book doesn't exist in the translation. A book has to be omitted from the translation's definition to generate this message.
@@ -407,19 +416,19 @@ If you're calling `parsed_entities()` directly, the following keys can appear in
 * `end_verse_is_zero`: `1` if the requested end verse is `0`. The `1` indicates the first valid verse.
 * `end_verse_not_exist`: The value is the last valid verse in the chapter.
 
-#### Translation Objects
+### Translation Objects
 
 * `translation_invalid`: `[]` if an invalid translation sequence appears. Each item in the array is a `translation` object.
 * `translation_unknown`: `[]` if the translation is unknown. If you see this message, a translation exists in `bcv_parser.regexps.translations` but not in `bcv_parser.translations`. Each item in the array is a `translation` object.
 
-### Adding New Book Patterns
+## Adding New Book Patterns
 
 The `.add_books` function lets you add new patterns to find books in text. Here's an example; let's say you want to allow "Marco" and "Mrc" to be parsed by the English parser:
 
 ```javascript
 const bcv = new bcv_parser(lang);
 bcv.parse("Marco 1").osis(); // No result.
-bcv.add_books({books: [{ // `books` is always takes an array of objects.
+bcv.add_books({books: [{ // `books` is always an array of objects.
 	osis: ["Mark"], // An array of OSIS book names that you want the pattern to match.
 	regexp: /Marco|Mrc/ // The regular expression. You don't need to provide bounding characters.
 }]});
@@ -429,13 +438,13 @@ bcv.parse("Mrc 1").osis(); // Mark.1
 
 Unlike other functions, this one will throw an error if anything's not quite right with the input.
 
-You probably want to [NFC-normalize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) any patterns before adding them.
+You probably want to [NFC-normalize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) any patterns before adding them so that they're consistent with built-in patterns.
 
-The available books are governed by the `testaments` setting. If you have it set to `o` (so you only find books in the Old Testament) but create pattern for a New Testament book, your pattern won't match until `testaments` contains an `n`.
+The books that the parser will find are governed by the `testaments` setting. If you have it set to `o` (so you only find books in the Old Testament) but create pattern for a New Testament book, your pattern won't match until you set `testaments` to contain an `n`.
 
 Here are the keys you can set in each object in the array:
 
-* `osis`: This is an array of OSIS book names that you want your pattern to match. Typically you only want to match one, but some abbreviations, like "Ma" in English, can match multiple books. The parser will prefer the first valid one. If you try to parse `Ma 28` with the osis `["Mal", "Matt"]`, it will pick `Matt` because `Mal` doesn't have 28 chapters (assuming you have a `bc` or `bcv` `passage_existence_strategy`).
+* `osis`: This is an array of OSIS book names that you want your pattern to match. Typically you only want to match one, but some abbreviations, like "Ma" in English, can match multiple books. The parser will prefer the first valid one. If you try to parse `Ma 28` with the `osis: ["Mal", "Matt"]`, it will pick `Matt` because `Mal` doesn't have 28 chapters (assuming you have a `bc` or `bcv` `passage_existence_strategy`).
 * `regexp`: This is the RegExp that will be used to match. Any flags you set are ignored; ultimately, it'll end up with `giu` flags set. It's possible to write non-performant regular expressions; it's up to you to ensure they meet your needs.
 * `insert_at`: A string to indicate the order you want your pattern parsed in compared to other books.
   * It defaults to `start`, meaning that your patterns will be parsed before any others.
@@ -444,7 +453,7 @@ Here are the keys you can set in each object in the array:
 * `pre_regexp`: Normally, the book patterns you provide are bounded by other RegExps to ensure that we don't lift out potential book matches in the middle of words. You can use this key to assign your own RegExp. Importantly, it shouldn't use any capturing groups (`(...)`). It also should only consist of zero-width assertions (like negative lookbehinds, `\b`, or `^` anchors). If your pattern gobbles text, it will throw off the parser.
 * `post_regexp`. Similarly, you can provide a pattern for after the book. Here it's also important not to gobble any characters, so you should only use zero-width assertions. If you set either `pre_regexp` or `post_regexp`, you probably want to test extensively. Because the RegExps have the `u` flag, you can use `\p` classes for bounding. For example, `(?=[^\p{L}])` asserts that the next character isn't a letter.
 
-### Adding New Translations
+## Adding New Translations
 
 The `.add_translations` function lets you define new translations. Let's say you want to define an "NIV1984" translation for the parser to find in the text you provide. The NIV1984 uses the same versification system as the NIV (2011), which is "kjv" (since the KJV and the NIV have the same number of chapters and verses in each book):
 
@@ -476,6 +485,10 @@ bcv.add_translations({
 bcv.parse("Matt 1:2 ONLYMATT").osis_and_translations(); // [["Matt.1.2", "MATTHEWTRANSLATION"]]
 ```
 
+As with `add_books()`, you can define `pre_regexp` and `post_regexp` at the top level of the object (not for individual translations). As in `add_books()`, the patterns you use should not consume any characters.
+
+This function will also throw errors if something isn't right.
+
 ## Unicode
 
 If you're dealing with non-ASCII characters, you probably want to [NFC-normalize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) your input before sending it to the parser. All the built-in patterns are normalized with the NFC algorithm. The parser doesn't perform this normalization for you because it can affect the length of your input, which in turn would affect the offsets.
@@ -483,7 +496,7 @@ If you're dealing with non-ASCII characters, you probably want to [NFC-normalize
 
 ## Caveats
 
-The parser is quite aggressive in identifying text as Bible references; if you just hand it raw text, you will probably encounter false positives, where the parser identifies text as Bible references even when it isn't. For example, in the string `she is 2 cool`, the `is 2` becomes `Isa.2`.
+The parser is quite aggressive in identifying text as Bible references; if you just hand it raw text, you will probably encounter false positives, where the parser identifies text as Bible references even when it isn't. For example, in the string `she is 2 cool`, the `is 2` is parsed as `Isa.2`.
 
 The parser spends most of its time doing regular expressions and manipulating strings. If you give it a very long string full of Bible references, it could block your main event loop. Depending on your performance requirements, parsing large numbers of even short strings could saturate your CPU and lead to problems in the rest of your app.
 
@@ -491,7 +504,7 @@ In addition, a number of the tests in the "real-world" section of [`test/realwor
 
 ## Tests
 
-One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The [`test`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/test) has over 3,700 tests that illustrate the range of input that this parser can handle.
+One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The [`test`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/test) folder has over 3,700 tests that illustrate the range of input that this parser can handle.
 
 Separate from this repository are four data files that you can use to test your own parser. Derived from Twitter and Facebook mentions of Bible references, the dataset reflects how people really type references in English. It includes 4.7 million unique strings across 180 million total mentions. (For example, the most-popular string, "Philippians 4:13", is mentioned over 1.3 million times.)
 
@@ -549,7 +562,7 @@ Then it runs through all the regexps for Bible books (`match_books()`). In this 
 
 Once it has matched all the possible books in the string, we call `match_passages()` to identify complete passages—we want to be sure to treat strings like `John 3:16, 17` as a single sequence. The `regexps.escaped_passage` used for these matches is fairly complicated. It looks for some unusual cases (`chapter 23 of Matthew`) first, but it pivots around the escaped book sequence from `match_books()`: it tries to find numbers and other characters that can comprise a valid sequence after a book (including other books). We know that we'll probably have to trim some of what it finds later; at this point, we want to be as comprehensive as possible.
 
-For each match, we trim some unnecessary parts from the end of it and then run it through the grammar file that identifies the components of the string (in this case, `John 3:16` fits the pattern of a `bcv`, or book-chapter-verse). The grammar uses [PEG.js](https://pegjs.org/), a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) with a DSL that compiles to Javascript. A PEG provides predictable performance, especially for shorter strings like Bible references. The grammar identifies components in the match and, importantly, records the indices of where each component starts and ends in the string. PEG.js's built-in extension mechanism provides an easy way to output the necessary data. The tradeoff of using a PEG arrives in the form of increased code size: more than half the code in the minified file comes from the auto-generated grammar.
+For each match, we trim some unnecessary parts from the end of it and then run it through the grammar file that identifies the components of the string (in this case, `John 3:16` fits the pattern of a `bcv`, or book-chapter-verse). The grammar uses [Peggy](https://peggyjs.org/), a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) with a DSL that compiles to Javascript. A PEG provides predictable performance, especially for shorter strings like Bible references. The grammar identifies components in the match and, importantly, records the indices of where each component starts and ends in the string. Peggy's built-in extension mechanism provides an easy way to output the necessary data. The tradeoff of using a PEG arrives in the form of increased code size: around half the code in the minified file comes from the auto-generated grammar.
 
 We also look here for a corner case of the format `1-2 Samuel`, where the book range precedes the book name. If it exists, we construct an object to use later.
 
@@ -600,6 +613,8 @@ Performance degrades with the number of passages found in a string. You can gene
 ## Alternate Versification Systems
 
 The BCV parser supports several versification systems (described above). The appropriate versification system kicks in if the parsed text explicitly mentions a translation with an alternate versification system, or you can use `set_options({"versification_system":"..."})`. You can extend the relevant `translation_additions.js` to add additional ones (though the build process overwrites this file; you may be better off adding them in the `data.txt` for your language of interest.
+
+You can also add new versification systems and translations at runtime using `.add_translations()`.
 
 ## Non-English Support
 
@@ -673,7 +688,7 @@ When using `<script>`s on the web, be sure to serve them with the `utf-8` charac
 
 ### Cross-Language Support
 
-Two files in [`/es/lang`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/es) provide support for identifying translations in multiple languages at one time (e.g., "Matthew 2, Juan 1"). You can use this support if you don't know ahead of time what language someone might be using.
+Two files in `esm/lang` provide support for identifying translations in multiple languages at one time (e.g., "Matthew 2, Juan 1"). You can use this support if you don't know ahead of time what language someone might be using.
 
 The files are:
 
@@ -752,6 +767,8 @@ Run either `npm run build-language fr` (where `fr` is the ISO code of your langu
 
 To build a language, you'll need Perl with the JSON package and the dev dependencies. It uses `npx` to execute some functions.
 
+Improving the build process is a key improvement area for the future.
+
 #### Running Tests
 
 If you have dev dependencies installed, the easiest way to run all tests is to use `npm run test`, which takes about a minute. You can also use `npx jasmine test/*.spec.* test/lang/*.spec.js`.
@@ -766,7 +783,7 @@ This is the fourth complete Bible reference parser that I've written. It's how I
 
 I originally chose Coffeescript out of curiosity—does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript—the tests, in particular, are much easier to follow without all the Javascript punctuation.
 
-However, the world has moved on since 2011, and Typescript is now standard in many workflows. Javascript has also adopted easier loops, array comprehensions, and coalescing operators, which makes development nicer. I used ChatGPT to take a first pass at rewriting each Coffeescript function into Typescript.
+However, the world has moved on since 2011, and Typescript is now standard in many workflows. Javascript has also adopted the easier loops, array comprehensions, and coalescing operators that made Coffeescript attractive. I used ChatGPT to take a first pass at rewriting each Coffeescript function into Typescript.
 
 ## License
 
@@ -783,7 +800,9 @@ Here are potential improvements I have in mind for this parser.
 
 ## Changelog
 
-January 8, 2025 (3.0.0-beta2).
+January 11, 2025 (3.0.0). Full release here and on npm.
+
+January 9, 2025 (3.0.0-beta2).
 
 * Renamed `/es` to `/esm` to avoid confusion with "es" language.
 * Renamed `.cjs` files in `/cjs` to `.js` and added package.json in relevant subfolders to default to treating them as CommonJS files.
@@ -793,18 +812,18 @@ January 5, 2025 (3.0-beta). Renamed `add_passage_patterns()` to `add_books()` to
 
 January 1, 2025 (3.0-alpha). This release represents a major refactoring from Coffeescript into Typescript, so I want it to settle a bit before publishing it to npm.
 
-The existing `js` folder wasn't touched, and the public API (as described above) hasn't changed in any backwards-incompatible way for CommonJS files. ES modules require a language argument to be passed to the constructor (see [usage](#usage) above.
+The existing `js` folder wasn't touched, and the public API (as described above) hasn't changed in any backwards-incompatible way for CommonJS files. ES modules require a language argument to be passed to the constructor (see [usage](#usage) above).
 
 * Replaced Coffeescript with Typescript. Notably, ES2022 (Node 16 and circa-2021 web browsers) is now the minimum supported version for new files (though the `js` folder still contains files generated for 2.0.1). It should be possible to use `esbuild --target=es2018` if you need something older, but this target isn't explicitly supported. Any older targets won't work. Backwards compatibility for older targets isn't a design goal for this release.
-* Added an `es` folder to support `import`-style modules usage rather than CommonJS `require` modules. This change also separates the language data from the core parser; you now send language data to the parser object when you construct it.
-* Added a `cjs` folder with `.cjs` files (changed to `.js` in 3.0-beta2) to support browsers and legacy `require` usage.
+* Added an `es` folder (changed to `esm` in 3.0.0-beta2) to support `import`-style modules usage rather than CommonJS `require` modules. This change also separates the language data from the core parser; you now send language data to the parser object when you construct it.
+* Added a `cjs` folder with `.cjs` files (changed to `.js` in 3.0.0-beta2) to support browsers and legacy `require` usage.
 * Added an `add_passage_patterns()` (renamed to `add_books()` in 3.0-beta) function to let you add new book patterns at run time instead of at compile time.
 * Added the `testaments` option.
 * Added a `warn_level` option to show warnings in some cases.
 * Added support for newer English translations like CSB and NRSVUE. Thanks to [dwo0](https://github.com/dwo0) for one correction here.
 * Added support for Farsi (thanks to [ralaska](https://github.com/ralaska)) and Indonesian.
 * Fixed a crashing bug when calling `.parsed_entities()` multiple times consecutively in specific cases.
-* Switched from PEG.js to [Peggy](https://github.com/peggyjs/peggy) and from regxgen to [grex](https://github.com/pemistahl/grex) since both are maintained.
+* Switched from PEG.js to [Peggy](https://github.com/peggyjs/peggy) and from regexgen to [grex](https://github.com/pemistahl/grex) since both are maintained.
 * Updated Jasmine to the latest version (5.5.0).
 * Added [esbuild](https://esbuild.github.io/) to build different module styles.
 
