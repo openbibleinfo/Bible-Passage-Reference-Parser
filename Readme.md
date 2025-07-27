@@ -74,7 +74,7 @@ npm i bible-passage-reference-parser
 To run using ES modules (newer style). This style requires using a language object when you create a `new` instance of the parser object.
 
 ```javascript
-import { bcv_parser } from "bible-passage-reference-parser/esm/en_bcv_parser.js";
+import { bcv_parser } from "bible-passage-reference-parser/esm/bcv_parser.js";
 import * as lang from "bible-passage-reference-parser/esm/lang/en.js";
 const bcv = new bcv_parser(lang);
 console.log( bcv.parse("John 1").osis() ); // John.1
