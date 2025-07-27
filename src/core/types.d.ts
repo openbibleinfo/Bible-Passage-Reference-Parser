@@ -10,7 +10,7 @@ export interface BCVParserOptions {
 	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" -> "Gen.1-Gen.50".
 	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" -> "Gen.1.1-Gen.1.31".
 	*/
-	osis_compaction_strategy: "b" | "bc" | "bcv";
+	osis_compaction_strategy: "b" | "bc" | "bcv" | "bcvp";
 	// ### Sequence
 	/*
 	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" -> "Isa.1").
@@ -93,8 +93,10 @@ export interface BCVParserOptions {
 	# Don't use this value directly; use the `set_options` function. Changing this option repeatedly will slow down execution.
 	# * `none`: All matches are case-insensitive.
 	# * `books`: Book names are case-sensitive. Everything else is still case-insensitive.
+	# * `translations`: Translation identifiers (such as "KJV") are case-sensitive. Everything else is still case-insensitive.
+	# * `books,translations`: Books and translation identifiers are case-sensitive. Everything else (such as the word "verse") is still case-insensitive.
 	*/
-	case_sensitive: "none" | "books";
+	case_sensitive: "none" | "books" | "translations" | "books,translations";
 	/* # Passage options
 	* `error`: zero chapters ("Matthew 0") are invalid.
 	* `upgrade`: zero chapters are upgraded to 1: "Matthew 0" -> "Matt.1".
@@ -122,6 +124,32 @@ export interface BCVParserOptions {
 	* `warn`: Issue a `console.warn()` message when trying to set a versification system that doesn't exist or when getting `translation_info()` that doesn't exist.
 	*/
 	warn_level: "none" | "warn";
+
+	/* Grammar */
+	grammar: {
+		ab: RegExp,
+		and: RegExp,
+		c_explicit: RegExp,
+		c_sep_eu: RegExp,
+		c_sep_us: RegExp,
+		cv_sep_weak: RegExp,
+		cv_sep_eu: RegExp,
+		cv_sep_us: RegExp,
+		ff: RegExp,
+		in_book_of: RegExp,
+		next: RegExp,
+		ordinal: RegExp,
+		range: RegExp,
+		sequence_eu: RegExp,
+		sequence_us: RegExp,
+		space: RegExp,
+		title: RegExp,
+		v_explicit: RegExp,
+		// Don't set these directly; use the `punctuation_strategy` option to enable either the `us` or `eu` versions.
+		c_sep: RegExp,
+		cv_sep: RegExp,
+		sequence: RegExp
+	}
 }
 
 type PassageExistenceStrategy = "b" | "bc" | "bcv" | "bv" | "c" | "cv" | "v" | "none";
@@ -165,9 +193,11 @@ interface StartEndInterface {
 	b: string;
 	c?: number;
 	extra?: string;
+	original_object?: StartEndInterface;
+	p?: string;
+	p_if_verse?: string;
 	v?: number;
 	type?: EntityType;
-	original_object?: StartEndInterface;
 }
 
 export interface ValidInterface {
@@ -304,6 +334,7 @@ interface GrammarMatchInterface {
 	absolute_indices?: number[];
 	indices?: number[];
 	match?: string;
+	partial?: string[];
 	start_index?: number;
 	type: EntityType;
 	value: GrammarMatchInterface[] | string | number;

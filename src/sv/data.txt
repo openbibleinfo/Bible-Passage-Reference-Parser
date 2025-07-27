@@ -39,7 +39,7 @@ Neh	Nehem[ij]a	Neh
 Esth	Ester	Esters bok	Est
 Job	Job	Jobs bok
 Ps	Psaltaren	Psalm	Psalmen	Ps
-Prov	Ordspråksboken	Ords
+Prov	Ordspråksboken	Ords?
 Eccl	Predikaren	Predikarboken	Predikarens bok	Pred
 Song	Höga visan	Höga V	Högav	Hoga v	Höga
 Isa	Jesaja	Jesajas bok	Jes

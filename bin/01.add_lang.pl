@@ -20,9 +20,9 @@ my %abbrevs = get_abbrevs();
 my @order = get_order();
 my %all_abbrevs = make_tests();
 my $default_alternates_file = "$dir/en/translation_additions.js";
+make_grammar_options();
 my @translation_regexps = make_translations();
 make_regexps(\@translation_regexps);
-make_grammar();
 
 sub make_translations
 {
@@ -66,31 +66,23 @@ sub make_translations
 	return @regexps;
 }
 
-sub make_grammar
+sub make_grammar_options
 {
-	my $out = get_file_contents("$dir/core/lang_grammar.pegjs");
-	unless (defined $vars{'$NEXT'})
-	{
-		$out =~ s/\nnext_v\s+=.+\s+\{ [^;]+?; return[^\}]+\}\s+\}\s+/\n/;
-		$out =~ s/\bnext_v \/ //g;
-		$out =~ s/\$NEXT \/ //g;
-		die "Grammar: next_v" if ($out =~ /\bnext_v\b|\$NEXT/);
-	}
-
+	my $out = get_file_contents("$dir/core/lang_grammar_options.ts");
 	foreach my $key (sort keys %vars)
 	{
 		my $safe_key = $key;
 		$safe_key =~ s/^\$/\\\$/;
-		$out =~ s/$safe_key\b/format_var('pegjs', $key)/ge;
+		$out =~ s/$safe_key(?!\w)/format_var('grammar_options', $key)/ge;
 	}
-
-	open OUT, ">:utf8", "$dir/$lang/grammar.pegjs";
-	print OUT $out;
-	close OUT;
+	$out =~ s/\$NEXT/\\x1f\\x1f\\x1f/g;
 	if ($out =~ /(\$[A-Z_]+)/)
 	{
-		die "$1\nGrammar: Capital variable";
+		die "$1\nGrammar regexps: Capital variable";
 	}
+	open OUT, ">:utf8", "$dir/$lang/grammar_options.ts";
+	print OUT $out;
+	close OUT;
 }
 
 sub make_regexps
@@ -557,10 +549,10 @@ sub format_var
 {
 	my ($type, $var_name) = @_;
 	my @values = @{$vars{$var_name}};
-	if ($type eq 'regexp' || $type eq 'quote' || $type eq 'string_raw')
+	if ($type eq 'regexp' || $type eq 'quote' || $type eq 'string_raw' || $type eq 'grammar_options')
 	{
 		map {
-			s/\.$//;
+			s/\.$// unless ($type eq 'grammar_options');
 			s/!(.+)$/(?!$1)/;
 			s/`/\\`/g if ($type eq 'string_raw');
 			s/\\/\\\\/g if ($type eq 'quote');
@@ -571,106 +563,10 @@ sub format_var
 		$out =~ s/ +/\\s+/g;
 		return (scalar @values > 1) ? '(?:' . $out . ')' : $out;
 	}
-	elsif ($type eq 'pegjs')
-	{
-		map {
-			s/\.(?!`)/" abbrev? "/;
-			s/\.`/" abbrev "/;
-			s/([A-Z])/lc $1/ge;
-			$_ = handle_accents($_);
-			s/\[/" [/g;
-			s/\]/\] "/g;
-			$_ = "\"$_\"";
-			s/\s*!\[/" ![/;
-			s/\s*!([^\[])/" !"$1/;
-			s/"{2,}//g;
-			s/^\s+|\s+$//g;
-			$_ .= ' ';
-			my @out;
-			my @parts = split /"/;
-			my $is_outside_quote = 1;
-			while (@parts)
-			{
-				my $part = shift @parts;
-				if ($is_outside_quote == 0)
-				{
-					$part =~ s/^ /$out[-1] .= 'space '; ''/e;
-					$part =~ s/ /" space "/g;
-					$part =~ s!((?:^|")[^"]+?")( space )!
-						my ($quote, $space) = ($1, $2);
-						$quote .= 'i' if ($quote =~ /[\x80-\x{ffff}]/);
-						"$quote$space";
-						!ge;
-					push @out, $part;
-					$parts[0] = 'i' . $parts[0] if ($part =~ /[\x80-\x{ffff}]/);
-					$is_outside_quote = 1;
-				}
-				else
-				{
-					push @out, $part;
-					$is_outside_quote = 0;
-				}
-			}
-			$_ = join '"', @out;
-			s/\[([^\]]*?[\x80-\x{ffff}][^\]]*?)\]/[$1]i/g;
-			s/!(space ".+)/!($1)/;
-			s/\s+$//;
-			$_ .= ' sp' if ($var_name eq '$TO')
-			} @values;
-		my $out = join(' / ', @values);
-		if (($var_name eq '$TITLE' || $var_name eq '$NEXT' || $var_name eq '$FF') && scalar @values > 1)
-		{
-			$out = "( $out )";
-		}
-		elsif (scalar @values >= 2 && ($var_name eq '$CHAPTER' || $var_name eq '$VERSE' || $var_name eq '$NEXT' || $var_name eq '$FF'))
-		{
-			$out = handle_pegjs_prepends($out, @values);
-			#print Dumper(\@values);
-		}
-		return $out;
-	}
 	else
 	{
 		die "Unknown var type: $type / $var_name";
 	}
-}
-
-sub handle_pegjs_prepends
-{
-	my $out = shift;
-	my $count = scalar @_;
-	my %lcs;
-	foreach my $c (@_)
-	{
-		next unless ($c =~ /^"/);
-		for my $length (2 .. length $c)
-		{
-			push @{$lcs{substr($c, 0, $length)}}, $c;
-		}
-	}
-	my $longest = '';
-	foreach my $lc (keys %lcs)
-	{
-		$longest = $lc if (scalar @{$lcs{$lc}} == $count && length $lc > length $longest);
-	}
-	return $out unless ($longest);
-	my $length = length $longest;
-	my @out;
-	foreach my $c (@_)
-	{
-		$c = substr($c, $length);
-		$c = '"' . $c unless ($c =~ /^\s*\[|^\s*abbrev\?/);
-		return $out if ($c eq '"');
-		$c =~ s!^"" !!;
-		next unless (length $c);
-		push @out, $c;
-	}
-	unless ($longest =~ /"i?\s*$/)
-	{
-		$longest .= '"';
-		$longest .= 'i' if ($longest =~ /[\x80-\x{ffff}]/);
-	}
-	return "$longest ( " . join(' / ', @out) . " )";
 }
 
 sub make_tests

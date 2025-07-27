@@ -11684,6 +11684,7 @@ describe("Localized book Prov (ascii)", () => {
 		expect(p.parse("Lem 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Mit 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Okv 1:1").osis()).toEqual("Prov.1.1");
+		expect(p.parse("Ord 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Pan 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Pro 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Prv 1:1").osis()).toEqual("Prov.1.1");
@@ -11816,6 +11817,7 @@ describe("Localized book Prov (ascii)", () => {
 		expect(p.parse("LEM 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("MIT 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("OKV 1:1").osis()).toEqual("Prov.1.1");
+		expect(p.parse("ORD 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("PAN 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("PRO 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("PRV 1:1").osis()).toEqual("Prov.1.1");
@@ -32653,6 +32655,7 @@ describe("Localized book Phil (ascii)", () => {
 		expect(p.parse("Phil 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Phlp 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Pilp 1:1").osis()).toEqual("Phil.1.1");
+		expect(p.parse("Fil 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Flp 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Phi 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Php 1:1").osis()).toEqual("Phil.1.1");
@@ -32832,6 +32835,7 @@ describe("Localized book Phil (ascii)", () => {
 		expect(p.parse("PHIL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHLP 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PILP 1:1").osis()).toEqual("Phil.1.1");
+		expect(p.parse("FIL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("FLP 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHI 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHP 1:1").osis()).toEqual("Phil.1.1");
@@ -36569,10 +36573,8 @@ describe("Localized book Phil,Phlm (ascii)", () => {
 		p.set_options({ book_alone_strategy: "ignore", book_sequence_strategy: "ignore", osis_compaction_strategy: "bc", captive_end_digits_strategy: "delete", testaments: "ona" });
 	});
 	it("should handle book: Phil,Phlm (ascii)", () => {
-		expect(p.parse("Fil 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Phl 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("Ph 1:1").osis()).toEqual("Phil.1.1");
-		expect(p.parse("FIL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PHL 1:1").osis()).toEqual("Phil.1.1");
 		expect(p.parse("PH 1:1").osis()).toEqual("Phil.1.1");
 	});

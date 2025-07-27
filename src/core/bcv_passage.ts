@@ -130,7 +130,10 @@ private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 	// Reset the context since we have a book.
 	this.reset_context(context, ["b", "c", "v"]);
 	// Extract the chapter number from the passage.
-	const c = this.pluck("c", passage.value).value;
+	const chapter_integer = this.pluck_integer("c", passage.value);
+	const c = chapter_integer.value;
+	const partial = this.get_partial_verse(chapter_integer);
+	let adjust_end_index_by = 0;
 	const alternates: Entity[] = [];
 	// Get the book value and iterate over all parsed versions of that book name.
 	for (const b of this.books[this.pluck("b", passage.value).value].parsed) {
@@ -141,12 +144,13 @@ private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 		const obj: Entity = {
 			start: { b },
 			end: { b },
-			valid: valid
+			valid
 		};
-		// If the validation suggests that this isn't really a chapter reference (e.g., single-chapter book, try interpreting `c` as a verse reference instead--i.e., as a `bv`. `start_chapter_1` is only used for internal processing; it's never exposed outside of this function.
+		// If the validation suggests that this isn't really a chapter reference (e.g., single-chapter book), try interpreting `c` as a verse reference instead--i.e., as a `bv`. `start_verse_1` is only used for internal processing; it's never exposed outside of this function. A `partial` also indicates that it should be treated as a verse ("Jude 1a") even if it wouldn't normally be parsed that way.
 		if (
 			valid.messages?.start_chapter_not_exist_in_single_chapter_book ||
-			valid.messages?.start_chapter_1
+			valid.messages?.start_verse_1 ||
+			(partial != null && valid.messages?.start_chapter_1)
 		) {
 			// Re-validate, treating `c` as a verse.
 			obj.valid = this.validate_ref(passage.start_context.translations, { b, v: c });
@@ -170,15 +174,24 @@ private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 		}
 		// Mirror the start chapter/verse to the end, since it's a single-chapter or single-verse reference.
 		obj.end[context_key] = obj.start[context_key];
+		// Define any partials for future processing.
+		if (partial != null) {
+			const key = (context_key === "v") ? "p" : "p_if_verse";
+			obj.start[key] = partial;
+			obj.end[key] = partial;
+		}
 		// If we haven't chosen a valid passage yet and this one is valid, choose it.
 		if (passage.passages.length === 0 && obj.valid.valid) {
+			if (context_key === "c" && partial != null) {
+				adjust_end_index_by = partial.length * -1;
+			}
 			passage.passages.push(obj);
 		} else {
 			// Otherwise, store it as an alternate.
 			alternates.push(obj);
 		}
 	}
-	this.normalize_passage_and_alternates(passage, alternates);
+	this.normalize_passage_and_alternates(passage, alternates, adjust_end_index_by);
 	// Update the context to reflect the identified book/chapter/verse.
 	this.set_context_from_object(context, ["b", "c", "v"], passage.passages[0].start);
 	// Add this processed passage to the accumulator.
@@ -215,7 +228,7 @@ private bc_title(passage: PassageEntityInterface, accum: PassageEntityInterface[
 	let title = this.pluck("title", passage.value);
 	// The `title` will be null if it's being reparsed from a future translation. In that case, we use a `v` object.
 	if (!title) {
-		title = this.pluck("v", passage.value);
+		title = this.pluck_integer("v", passage.value);
 	}
 	// Replace the second element with a `v` object representing verse 1, using the title's indices.
 	passage.value[1] = {
@@ -239,8 +252,10 @@ private bcv(passage: PassageEntityInterface, accum: PassageEntityInterface[], co
 	// Reset the full context since there's a book.
 	this.reset_context(context, ["b", "c", "v"]);
 	const bc = this.pluck("bc", passage.value);
-	let c = this.pluck("c", bc.value).value;
-	let v = this.pluck("v", passage.value).value;
+	let c = this.pluck_integer("c", bc.value).value;
+	const verse_integer = this.pluck_integer("v", passage.value);
+	let v = verse_integer.value;
+	const partial = this.get_partial_verse(verse_integer);
 	const alternates: Entity[] = [];
 	// Iterate over all parsed variations of the book name.
 	for (const b of this.books[this.pluck("b", bc.value).value].parsed) {
@@ -251,6 +266,11 @@ private bcv(passage: PassageEntityInterface, accum: PassageEntityInterface[], co
 			end: { b, c, v },
 			valid
 		};
+		// Set partial verses if they exist ("Matt 5:1a").
+		if (partial != null) {
+			obj.start.p = partial;
+			obj.end.p = partial;
+		}
 		// Use the first valid option. Store the others as alternates.
 		if (passage.passages.length === 0 && valid.valid) {
 			passage.passages.push(obj);
@@ -291,10 +311,11 @@ private bv(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 
 // Handle a chapter.
 private c(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
-	// This can happen in places like `chapt. 11-1040 of II Kings`, where the invalid range separates the `b` and the `c`.
 	passage.start_context = structuredClone(context);
 	// If it's an integer, we want the value directly. If it's an actual chapter object, we want the value from the integer object inside it.
-	let c = (passage.type === "integer") ? passage.value : this.pluck("integer", passage.value).value;
+	const chapter_integer = (passage.type === "integer") ? passage : this.pluck("integer", passage.value);
+	let c = chapter_integer.value;
+	const partial = this.get_partial_verse(chapter_integer);
 	const valid = this.validate_ref(passage.start_context.translations, { b: context.b!, c });
 	// If it's a single-chapter book, then treat it as a verse even if it looks like a chapter (unless its value is `1`).
 	if (!valid.valid && valid.messages?.start_chapter_not_exist_in_single_chapter_book) {
@@ -304,18 +325,24 @@ private c(passage: PassageEntityInterface, accum: PassageEntityInterface[], cont
 	[c] = this.fix_start_zeroes(valid, c);
 	// Create a passage object representing this chapter.
 	passage.passages = [{
-			start: { b: context.b, c },
-			end: { b: context.b, c },
-			valid
-		}];
+		start: { b: context.b, c },
+		end: { b: context.b, c },
+		valid
+	}];
 	if (passage.start_context.translations) {
 		passage.passages[0].translations = passage.start_context.translations;
+	}
+	if (partial != null) {
+		passage.passages[0].start.p_if_verse = partial;
+		passage.passages[0].end.p_if_verse = partial;
 	}
 	accum.push(passage);
 	context.c = c;
 	// Don't persist any verse context since the chapter resets any verse context.
 	this.reset_context(context, ["v"]);
-	passage.absolute_indices ??= this.get_absolute_indices(passage.indices);
+	if (passage.absolute_indices == null) {
+		passage.absolute_indices = this.get_absolute_indices(passage.indices);
+	}
 	return [accum, context];
 }
 
@@ -390,8 +417,10 @@ private context(passage: PassageEntityInterface, accum: PassageEntityInterface[]
 private cv(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// Pull out the individual values.
-	let c = this.pluck("c", passage.value).value;
-	let v = this.pluck("v", passage.value).value;
+	let c = this.pluck_integer("c", passage.value).value;
+	const verse_integer = this.pluck_integer("v", passage.value);
+	let v = verse_integer.value;
+	const partial = this.get_partial_verse(verse_integer);
 	const valid = this.validate_ref(passage.start_context.translations, { b: context.b!, c, v });
 	[c, v] = this.fix_start_zeroes(valid, c, v);
 	// Construct the passage object.
@@ -400,6 +429,11 @@ private cv(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 		end: { b: context.b, c, v },
 		valid: valid
 	}];
+	// Set partial verses if they exist ("Matt 5:1a").
+	if (partial != null) {
+		passage.passages[0].start.p = partial;
+		passage.passages[0].end.p = partial;
+	}
 	// Do basic setup as needed.
 	if (passage.start_context.translations) {
 		passage.passages[0].translations = passage.start_context.translations;
@@ -593,7 +627,9 @@ private sequence_post_enclosed(passage: PassageEntityInterface, accum: PassageEn
 // Handle a verse, either as part of a sequence or because someone explicitly wrote "verse".
 private v(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
-	const v = (passage.type === "integer") ? passage.value : this.pluck("integer", passage.value).value;
+	const verse_integer = (passage.type === "integer") ? passage : this.pluck("integer", passage.value);
+	let v = verse_integer.value;
+	const partial = this.get_partial_verse(verse_integer);
 	// The chapter context might not be set if it follows a book in a sequence.
 	const c = (context.c != null) ? context.c : 1;
 	const valid = this.validate_ref(passage.start_context.translations, { b: context.b!, c, v });
@@ -605,6 +641,10 @@ private v(passage: PassageEntityInterface, accum: PassageEntityInterface[], cont
 	}];
 	if (passage.start_context.translations) {
 		passage.passages[0].translations = structuredClone(passage.start_context.translations);
+	}
+	if (partial != null) {
+		passage.passages[0].start.p = partial;
+		passage.passages[0].end.p = partial;
 	}
 	passage.absolute_indices ??= this.get_absolute_indices(passage.indices);
 	accum.push(passage);
@@ -646,12 +686,27 @@ private range(passage: PassageEntityInterface, accum: PassageEntityInterface[], 
 		v: start.passages[0].start.v,
 		type: start.type
 	};
+	if (start.passages[0].start.p != null) {
+		start_obj.p = start.passages[0].start.p;
+	}
+	if (start.passages[0].start.p_if_verse != null) {
+		start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+	}
 	const end_obj: StartEndInterface = {
 		b: end.passages[0].end.b,
 		c: end.passages[0].end.c,
 		v: end.passages[0].end.v,
 		type: end.type
 	};
+	if (end.passages[0].end.p != null) {
+		end_obj.p = end.passages[0].end.p;
+	}
+	if (end.passages[0].end.p_if_verse != null) {
+		end_obj.p = end.passages[0].end.p_if_verse;
+	}
+	if (start.passages[0].start.p_if_verse != null) {
+		start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+	}
 	// Make sure references like `Ps 20:1-0:4` don't change to `Ps 20:1-1:4`. In other words, don't upgrade zero end ranges.
 	if (end.passages[0].valid.messages.start_chapter_is_zero) {
 		end_obj.c = 0;
@@ -703,7 +758,7 @@ private range_change_end(passage: PassageEntityInterface, accum: PassageEntityIn
 		new_obj.value = new_end;
 	} else if (end.type === "cv") {
 		// Get the chapter object and assign it (in place) the new value.
-		const new_obj = this.pluck("c", end.value);
+		const new_obj = this.pluck_integer("c", end.value);
 		new_obj.original_value = new_obj.value;
 		new_obj.value = new_end;
 	}
@@ -890,6 +945,8 @@ private range_validate(valid: ValidInterface, start_obj: StartEndInterface, end_
 	} else if (valid.messages?.end_verse_not_exist) {
 		// If the end verse doesn't exist, snap to the maximum verse. Originally, `end_obj.v` was preserved `end_obj.original_v` was preserved here, but it's not necessary. If it were prserved, it would need to be deleted in `this.next_v`.
 		end_obj.v = valid.messages.end_verse_not_exist;
+		// Don't preserve partial verses if it's snapped back.
+		delete end_obj.p;
 	}
 	// If a zero verse or chapter is present and not allowed, snap it to `1`. These values are always `1`.
 	if (valid.messages?.end_verse_is_zero && this.options.zero_verse_strategy !== "allow") {
@@ -1004,13 +1061,14 @@ private word(passage: PassageEntityInterface, accum: PassageEntityInterface[], c
 public pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | GrammarMatchInterface | null {
 	for (const passage of passages) {
 		if (passage && passage.type && passage.type === type) {
-			if (type === "c" || type === "v") {
-				return this.pluck("integer", passage.value);
-			}
 			return passage;
 		}
 	}
 	return null;
+}
+
+private pluck_integer(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | GrammarMatchInterface | null {
+	return this.pluck("integer", this.pluck(type, passages).value);
 }
 
 // Pluck the last object or value matching a type, descending as needed into objects.
@@ -1049,6 +1107,16 @@ private reset_context(context: ContextInterface, keys: string[]): void {
 	for (const key of keys) {
 		delete context[key];
 	}
+}
+
+private get_partial_verse(object_with_partial: GrammarMatchInterface): string | null {
+	if (object_with_partial.type !== "integer") {
+		object_with_partial = this.pluck("integer", object_with_partial.value);
+	}
+	if (typeof object_with_partial.partial === "string") {
+		return object_with_partial.partial;
+	}
+	return null;
 }
 
 // If the start chapter or verse is 0 and the appropriate option is set to `upgrade`, convert it to a 1.
@@ -1143,7 +1211,7 @@ private get_absolute_indices([start, end]: number[]): number[] {
 }
 
 // Apply common transformations at the end of handling a passage object with a book.
-private normalize_passage_and_alternates(passage: PassageEntityInterface, alternates: Entity[]): void {
+private normalize_passage_and_alternates(passage: PassageEntityInterface, alternates: Entity[], adjust_end_index_by: number=0): void {
 	// If no valid variations were found, use the first one anyway.
 	if (passage.passages.length === 0) {
 		passage.passages.push(alternates.shift());
@@ -1156,8 +1224,13 @@ private normalize_passage_and_alternates(passage: PassageEntityInterface, altern
 	if (passage.start_context.translations) {
 		passage.passages[0].translations = passage.start_context.translations;
 	}
-	// Compute absolute indices if not already set.
-	passage.absolute_indices ??= this.get_absolute_indices(passage.indices);
+	// Compute absolute indices if not already set or if they may need adjusting.
+	if (passage.absolute_indices == null || adjust_end_index_by !== 0) {
+		passage.absolute_indices = this.get_absolute_indices(passage.indices);
+		if (adjust_end_index_by !== 0) {
+			passage.absolute_indices[1] += adjust_end_index_by;
+		}
+	}
 }
 
 // ## Validators
@@ -1333,14 +1406,17 @@ private validate_known_start_book(system: string, start: StartEndInterface, mess
 		// Jude 1 when wanting to treat the `1` as a verse rather than a chapter.
 		} else if (
 			start.c === 1 &&
-			this.options.single_chapter_1_strategy === "verse" &&
 			chapter_array.length === 1
 			) {
-				messages.start_chapter_1 = 1;
+				if (this.options.single_chapter_1_strategy === "verse") {
+					messages.start_verse_1 = 1;
+				} else {
+					messages.start_chapter_1 = 1;
+				}
 		}
 	// Matt 50
 	} else {
-		// If the book is single-chapter and we're referencing a different chapter
+		// If the book is single-chapter and we're referencing a different chapter.
 		const chapter_array_length = chapter_array.length
 		if (
 			start.c !== 1 &&

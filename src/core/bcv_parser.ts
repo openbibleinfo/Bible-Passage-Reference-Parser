@@ -50,11 +50,11 @@ constructor(lang: BCVParserConstructor | null = null) {
 			throw(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:\nimport * as lang from "es/lang/en.js";\nconst bcv = new bcv_parser(lang);`)
 		}
 		this.translations = new bcv_translations();
-		this.matcher = new bcv_matcher(this, grammar);
+		this.matcher = new bcv_matcher(this, grammar_options);
 		this.regexps = new bcv_regexps();
 		this.translations = new bcv_translations();
 	} else {
-		this.matcher = new bcv_matcher(this, lang.grammar);
+		this.matcher = new bcv_matcher(this, lang.grammar_options);
 		this.regexps = new lang.regexps();
 		this.translations = new lang.translations();
 	}
@@ -123,9 +123,8 @@ public set_options(options: PartialOptions): this {
 		delete options.include_apocrypha;
 	}
 	for (const [key, value] of Object.entries(options)) {
-		// The drawback with this approach is that setting `testaments`, `system`, and `case_sensitive` could regenerate `this.regexps.books` three times.
-		if (typeof this.options[key as keyof BCVParserOptions] === "string") {
-			// TODO: I'm not sure how to fix this Typescript error.
+		// The drawback with this approach is that setting `testaments`, `system`, and `case_sensitive` could regenerate `this.regexps.books` three times. There's also no guard here to enforce the correct type.
+		if (key in this.options) {
 			this.options[key] = value;
 		}
 	}
@@ -199,7 +198,7 @@ public osis_and_indices(): OsisAndIndicesInterface[] {
 public parsed_entities(): ParsedEntityInterface[] {
 	let out: OsisEntityInterface[] = [];
 	this.entities.forEach((entity, entity_id) => {
-		// Be sure to include any translation identifiers in the indices we report back, but only if the translation immediately follows the previous entity.
+			// Be sure to include any translation identifiers in the indices we report back, but only if the translation immediately follows the previous entity.
 		if (
 			entity.type &&
 			entity.type === "translation_sequence" &&
@@ -407,7 +406,7 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 		osis.start = start.b;
 		osis.end = end.b;
 	}
-	// If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters. We only care when `osis_compaction_strategy` isn't `bcv` (i.e., length 3) because `bcv` is always fully specified.
+	// If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters. We only care when `osis_compaction_strategy` is `b` or `bc` because `bcv` and `bcvp` always include verses.
 	else if (
 		this.options.osis_compaction_strategy.length <= 2 &&
 		start.v === 1 &&
@@ -423,10 +422,18 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 		osis.start = start.b + "." + start.c;
 		osis.end = end.b + "." + end.c;
 	}
-	// Otherwise, return the full BCV reference.
+	// Otherwise use the full BCV reference.
 	else {
 		osis.start = start.b + "." + start.c + "." + start.v;
 		osis.end = end.b + "." + end.c + "." + end.v;
+		if (this.options.osis_compaction_strategy === "bcvp") {
+			if (start.p != null) {
+				osis.start += "!" + start.p;
+			}
+			if (end.p != null) {
+				osis.end += "!" + end.p;
+			}
+		}
 	}
 	// If it's the same verse ("Gen.1.1-Gen.1.1"), chapter ("Gen.1-Gen.1") or book ("Gen-Gen"), return just the start so we don't end up with an empty range.
 	let out = "";

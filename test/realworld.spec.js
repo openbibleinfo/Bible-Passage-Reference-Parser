@@ -140,6 +140,7 @@ describe("Real-world parsing", () => {
 		expect(p.parse("Ezekiel - 25-17.mp3").osis()).toEqual("Ezek.25.17");
 		expect(p.parse("2 CORITHIANS VERSE 3-11 EPHESIANS 6 -10").osis()).toEqual("2Cor.1.3-2Cor.1.11,Eph.6.10");
 		expect(p.parse("1Samuel 16:13 e 16:7! :)").osis()).toEqual("1Sam.16.13,1Sam.16.7");
+		expect(p.parse("1Samuel 16:13 f 16:7! :)").osis()).toEqual("1Sam.16.13-1Sam.16.23,1Sam.16.7");
 		expect(p.parse("proverbs 5/18-23").osis()).toEqual("Prov.5.1-Prov.5.23,Prov.18.1-Prov.23.35");
 		expect(p.parse("1 Corinthians 4-7 and 8.").osis()).toEqual("1Cor.4.1-1Cor.8.13");
 		expect(p.parse("1 Corinthians 12:28,Ephesians 4:7-8, 11-Revelation 18:20").osis()).toEqual("1Cor.12.28,Eph.4.7-Eph.4.8,Eph.4.11-Rev.18.20");
@@ -168,7 +169,7 @@ describe("Real-world parsing", () => {
 		expect(p.parse("We lost a few judges... 5:01Pm").osis()).toEqual("");
 		expect(p.parse("We lost a few judges. 5:01Pm").osis()).toEqual("Judg.5.1");
 		expect(p.parse("Memorizing 2Cor 3:4.-6 this week. Quiz me!").osis()).toEqual("2Cor.3.4,2Cor.3.6");
-		expect(p.parse("Isaiah 5;20b.").osis()).toEqual("Isa.5.1-Isa.5.30,Isa.5.20");
+		expect(p.parse("Isaiah 5;20b.").osis()).toEqual("Isa.5.1-Isa.5.30,Isa.20.1-Isa.20.6");
 		expect(p.parse("1 Tim 2:2:11-15").osis()).toEqual("1Tim.2.2,1Tim.2.11-1Tim.2.15");
 		expect(p.parse("in Ezek 34. Love how the Lectionary pulled together Ps 23, Ez, and John 10 on one day.").osis()).toEqual("Ezek.34.1-Ezek.34.31,Ps.23.1-Ps.23.6,John.10.1-John.10.42");
 		expect(p.parse("Rom12?11").osis()).toEqual("Rom.12.1-Rom.12.21");
@@ -406,6 +407,7 @@ describe("Real-world parsing", () => {
 		expect(p.parse("EX34 9PH to CO7").osis()).toEqual("Exod.34.9,Col.4.1-Col.4.18");
 		expect(p.parse("Rom amp A 2 amp 3").parsed_entities()).toEqual([]);
 		expect(p.parse("chapt. 11-1040 of II Kings").osis()).toEqual("");
+		expect(p.parse("Matt 1, 3, 4,2, 5, chapter 6-8").osis()).toEqual("Matt.1.1-Matt.1.25,Matt.3.1-Matt.4.25,Matt.2.1-Matt.2.23,Matt.5.1-Matt.8.34");
 	});
 	it("shouldn't crash in this scenario", () => {
 		p.set_options({

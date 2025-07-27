@@ -2,7 +2,7 @@
 import { bcv_parser } from "../esm/bcv_parser.js";
 import * as lang from "../esm/lang/en.js";
 
-describe("OSIS parsing strategies", () => {
+describe("OSIS compaction strategies", () => {
 	let p = {};
 	let translation = "default";
 	beforeEach(() => {
@@ -11,7 +11,7 @@ describe("OSIS parsing strategies", () => {
 		translation = "default";
 		p.options.book_alone_strategy = "ignore";
 	});
-	it("should return OSIS for b-b with various parsing strategies", () => {
+	it("should return OSIS for b-b with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen"
@@ -34,7 +34,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen-Rev");
-		p.options.book_alone_strategy = "full";
+	});
+	it("should return OSIS for b-b with a `bc` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bc";
 		expect(p.to_osis({
 			b: "Gen"
@@ -57,6 +58,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen.1-Rev.22");
+	});
+	it("should return OSIS for b-b with a `bcv` compaction strategy", () => {
 		p.options.book_alone_strategy = "full";
 		p.options.osis_compaction_strategy = "bcv";
 		expect(p.to_osis({
@@ -81,7 +84,28 @@ describe("OSIS parsing strategies", () => {
 			b: "Rev"
 		}, translation)).toEqual("Gen.1.1-Rev.22.21");
 	});
-	it("should return OSIS for bc-b with various parsing strategies", () => {
+	it("should return OSIS for b-b with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		p.options.book_alone_strategy = "first_chapter";
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen"
+		}, translation)).toEqual("Gen.1.1-Gen.1.31");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Rev"
+		}, translation)).toEqual("Gen.1.1-Rev.22.21");
+		expect(p.to_osis({
+			b: "Gen",
+			p: "a"
+		}, {
+			b: "Rev",
+			p: "a"
+		}, translation)).toEqual("Gen.1.1!a-Rev.22.21!a");
+	});
+	it("should return OSIS for bc-b with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen",
@@ -108,7 +132,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen-Rev");
-		p.options.book_alone_strategy = "full";
+	});
+	it("should return OSIS for bc-b with a `bc` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bc";
 		expect(p.to_osis({
 			b: "Gen",
@@ -135,7 +160,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen.1-Rev.22");
-		p.options.book_alone_strategy = "full";
+	});
+	it("should return OSIS for bc-b with a `bcv` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bcv";
 		expect(p.to_osis({
 			b: "Gen",
@@ -163,12 +189,49 @@ describe("OSIS parsing strategies", () => {
 			b: "Rev"
 		}, translation)).toEqual("Gen.1.1-Rev.22.21");
 	});
-	it("should return OSIS for bcv-b with various parsing strategies", () => {
+	it("should return OSIS for bc-b with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Gen"
+		}, translation)).toEqual("Gen.1.1-Gen.50.26");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Rev"
+		}, translation)).toEqual("Gen.1.1-Rev.22.21");
+		p.options.book_alone_strategy = "first_chapter";
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Gen"
+		}, translation)).toEqual("Gen.1.1-Gen.50.26");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Rev"
+		}, translation)).toEqual("Gen.1.1-Rev.22.21");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			p: "b"
+		}, {
+			b: "Rev",
+			p: "b"
+		}, translation)).toEqual("Gen.1.1!b-Rev.22.21!b");
+	});
+	it("should return OSIS for bcv-b with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen",
 			c: 1,
-			v: 1
+			v: 1,
+			p: "b"
 		}, {
 			b: "Gen"
 		}, translation)).toEqual("Gen");
@@ -179,6 +242,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen-Rev");
+	});
+	it("should return OSIS for bcv-b with a `bc` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bc";
 		expect(p.to_osis({
 			b: "Gen",
@@ -194,6 +259,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen.1-Rev.22");
+	});
+	it("should return OSIS for bcv-b with a `bcv` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bcv";
 		expect(p.to_osis({
 			b: "Gen",
@@ -205,12 +272,48 @@ describe("OSIS parsing strategies", () => {
 		expect(p.to_osis({
 			b: "Gen",
 			c: 1,
+			v: 1,
+			p: "a"
+		}, {
+			b: "Rev",
+			p: "a"
+		}, translation)).toEqual("Gen.1.1-Rev.22.21");
+	});
+	it("should return OSIS for bcv-b with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, {
+			b: "Gen"
+		}, translation)).toEqual("Gen.1.1-Gen.50.26");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1,
+			p: "a"
+		}, {
+			b: "Gen"
+		}, translation)).toEqual("Gen.1.1!a-Gen.50.26");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
 			v: 1
 		}, {
 			b: "Rev"
 		}, translation)).toEqual("Gen.1.1-Rev.22.21");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1,
+			p: "abcd"
+		}, {
+			b: "Rev",
+			p: "c"
+		}, translation)).toEqual("Gen.1.1!abcd-Rev.22.21!c");
 	});
-	it("should return OSIS for b-bc with various parsing strategies", () => {
+	it("should return OSIS for b-bc with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen"
@@ -236,6 +339,8 @@ describe("OSIS parsing strategies", () => {
 			b: "Rev",
 			c: 22
 		}, translation)).toEqual("Gen-Rev");
+	});
+	it("should return OSIS for b-bc with a `bc` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bc";
 		expect(p.to_osis({
 			b: "Gen"
@@ -261,6 +366,8 @@ describe("OSIS parsing strategies", () => {
 			b: "Rev",
 			c: 22
 		}, translation)).toEqual("Gen.1-Rev.22");
+	});
+	it("should return OSIS for b-bc with a `bcv` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bcv";
 		expect(p.to_osis({
 			b: "Gen"
@@ -281,13 +388,44 @@ describe("OSIS parsing strategies", () => {
 			c: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.20");
 		expect(p.to_osis({
-			b: "Gen"
+			b: "Gen",
+			p: "a"
 		}, {
 			b: "Rev",
-			c: 22
+			c: 22,
+			p: "a"
 		}, translation)).toEqual("Gen.1.1-Rev.22.21");
 	});
-	it("should return OSIS for b-bcv with various parsing strategies", () => {
+	it("should return OSIS for b-bc with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1
+		}, translation)).toEqual("Gen.1.1-Gen.1.31");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 2
+		}, translation)).toEqual("Gen.1.1-Gen.2.25");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Rev",
+			c: 1
+		}, translation)).toEqual("Gen.1.1-Rev.1.20");
+		expect(p.to_osis({
+			b: "Gen",
+			p: "a"
+		}, {
+			b: "Rev",
+			c: 22,
+			p: "a"
+		}, translation)).toEqual("Gen.1.1!a-Rev.22.21!a");
+	});
+	it("should return OSIS for b-bcv with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen"
@@ -317,64 +455,6 @@ describe("OSIS parsing strategies", () => {
 			c: 2,
 			v: 25
 		}, translation)).toEqual("Gen.1-Gen.2");
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Rev",
-			c: 1,
-			v: 1
-		}, translation)).toEqual("Gen.1.1-Rev.1.1");
-		p.options.osis_compaction_strategy = "bc";
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Gen",
-			c: 1,
-			v: 1
-		}, translation)).toEqual("Gen.1.1");
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Gen",
-			c: 1,
-			v: 31
-		}, translation)).toEqual("Gen.1");
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Gen",
-			c: 2,
-			v: 25
-		}, translation)).toEqual("Gen.1-Gen.2");
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Rev",
-			c: 1,
-			v: 1
-		}, translation)).toEqual("Gen.1.1-Rev.1.1");
-		p.options.osis_compaction_strategy = "bcv";
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Gen",
-			c: 1,
-			v: 1
-		}, translation)).toEqual("Gen.1.1");
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Gen",
-			c: 1,
-			v: 31
-		}, translation)).toEqual("Gen.1.1-Gen.1.31");
-		expect(p.to_osis({
-			b: "Gen"
-		}, {
-			b: "Gen",
-			c: 2,
-			v: 25
-		}, translation)).toEqual("Gen.1.1-Gen.2.25");
 		expect(p.to_osis({
 			b: "Gen"
 		}, {
@@ -383,7 +463,110 @@ describe("OSIS parsing strategies", () => {
 			v: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
 	});
-	it("should return OSIS for bcs", () => {
+	it("should return OSIS for b-bcv with a `bc` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bc";
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 31
+		}, translation)).toEqual("Gen.1");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 2,
+			v: 25
+		}, translation)).toEqual("Gen.1-Gen.2");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Rev",
+			c: 1,
+			v: 1,
+			p: "a"
+		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for b-bcv with a `bcv` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcv";
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 31
+		}, translation)).toEqual("Gen.1.1-Gen.1.31");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 2,
+			v: 25
+		}, translation)).toEqual("Gen.1.1-Gen.2.25");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Rev",
+			c: 1,
+			v: 1,
+			p: "b"
+		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for b-bcv with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 31
+		}, translation)).toEqual("Gen.1.1-Gen.1.31");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Gen",
+			c: 2,
+			v: 25
+		}, translation)).toEqual("Gen.1.1-Gen.2.25");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Rev",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+		expect(p.to_osis({
+			b: "Gen"
+		}, {
+			b: "Rev",
+			c: 1,
+			v: 1,
+			p: "a"
+		}, translation)).toEqual("Gen.1.1-Rev.1.1!a");
+	});
+	it("should return OSIS for bcs with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen",
@@ -425,6 +608,8 @@ describe("OSIS parsing strategies", () => {
 			c: 1,
 			v: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for bcs with a `bc` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bc";
 		expect(p.to_osis({
 			b: "Gen",
@@ -458,6 +643,8 @@ describe("OSIS parsing strategies", () => {
 			c: 1,
 			v: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for bcs with a `bcv` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bcv";
 		expect(p.to_osis({
 			b: "Gen",
@@ -473,7 +660,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Gen",
 			c: 1,
-			v: 31
+			v: 31,
+			p: "a"
 		}, translation)).toEqual("Gen.1.1-Gen.1.31");
 		expect(p.to_osis({
 			b: "Gen",
@@ -492,7 +680,43 @@ describe("OSIS parsing strategies", () => {
 			v: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
 	});
-	it("should return OSIS for bcvs", () => {
+	it("should return OSIS for bcs with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 31,
+			p: "a"
+		}, translation)).toEqual("Gen.1.1-Gen.1.31!a");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Gen",
+			c: 2,
+			v: 25
+		}, translation)).toEqual("Gen.1.1-Gen.2.25");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1
+		}, {
+			b: "Rev",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for bcvs with a `b` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "b";
 		expect(p.to_osis({
 			b: "Gen",
@@ -537,8 +761,11 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Rev",
 			c: 1,
-			v: 1
+			v: 1,
+			p: "a"
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for bcvs with a `bc` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bc";
 		expect(p.to_osis({
 			b: "Gen",
@@ -565,7 +792,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Gen",
 			c: 2,
-			v: 25
+			v: 25,
+			p: "a"
 		}, translation)).toEqual("Gen.1-Gen.2");
 		expect(p.to_osis({
 			b: "Gen",
@@ -576,6 +804,8 @@ describe("OSIS parsing strategies", () => {
 			c: 1,
 			v: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for bcvs with a `bcv` compaction strategy", () => {
 		p.options.osis_compaction_strategy = "bcv";
 		expect(p.to_osis({
 			b: "Gen",
@@ -602,7 +832,8 @@ describe("OSIS parsing strategies", () => {
 		}, {
 			b: "Gen",
 			c: 2,
-			v: 25
+			v: 25,
+			p: "a"
 		}, translation)).toEqual("Gen.1.1-Gen.2.25");
 		expect(p.to_osis({
 			b: "Gen",
@@ -613,6 +844,74 @@ describe("OSIS parsing strategies", () => {
 			c: 1,
 			v: 1
 		}, translation)).toEqual("Gen.1.1-Rev.1.1");
+	});
+	it("should return OSIS for bcvs with a `bcvp` compaction strategy", () => {
+		p.options.osis_compaction_strategy = "bcvp";
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, {
+			b: "Gen",
+			c: 1,
+			v: 31
+		}, translation)).toEqual("Gen.1.1-Gen.1.31");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1
+		}, {
+			b: "Gen",
+			c: 2,
+			v: 25,
+			p: "a"
+		}, translation)).toEqual("Gen.1.1-Gen.2.25!a");
+		expect(p.to_osis({
+			b: "Gen",
+			c: 1,
+			v: 1,
+			p: "A"
+		}, {
+			b: "Rev",
+			c: 1,
+			v: 1
+		}, translation)).toEqual("Gen.1.1!A-Rev.1.1");
+	});
+});
+
+describe("bcvp osis compaction strategies", () => {
+	let p = {};
+	beforeEach(() => {
+		p = new bcv_parser(lang);
+		p.set_options({osis_compaction_strategy: "bcvp"});
+	});
+	it("should handle standalones", () => {
+		expect(p.parse("Jeremiah 31:31a").osis_and_indices()).toEqual([{osis: "Jer.31.31!a", translations: [""], indices: [0, 15]}]);
+		expect(p.parse("Obadiah 3b").osis_and_indices()).toEqual([{osis: "Obad.1.3!b", translations: [""], indices: [0, 10]}]);
+		expect(p.parse("Phm verse 2a NIV").osis_and_indices()).toEqual([{osis: "Phlm.1.2!a", translations: ["NIV"], indices: [0, 16]}]);
+		expect(p.parse("Psalm 23a:6").osis_and_indices()).toEqual([{osis: "Ps.23.6", translations: [""], indices: [0, 11]}]);
+		expect(p.parse("Jude 1a:6").osis_and_indices()).toEqual([{osis: "Jude.1.6", translations: [""], indices: [0, 9]}]);
+		expect(p.parse("Jude 10a:6").osis_and_indices()).toEqual([]);
+	});
+	it("should handle ranges", () => {
+		expect(p.parse("Jude 1:1b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.1!b-Jude.1.3!a", translations: [""], indices: [0, 12]}])
+		expect(p.parse("Jude 1b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.1!b-Jude.1.3!a", translations: [""], indices: [0, 10]}])
+		expect(p.parse("Jude 2b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.2!b-Jude.1.3!a", translations: [""], indices: [0, 10]}])
+		expect(p.parse("Jude 2b-1a").osis_and_indices()).toEqual([{osis: "Jude.1.2!b,Jude.1.1!a", translations: [""], indices: [0, 10]}])
+	});
+	it("should handle sequences", () => {
+		expect(p.parse("Jer 33a, 22b").osis_and_indices()).toEqual([{osis: "Jer.33.1-Jer.33.26,Jer.22.1-Jer.22.30", translations: [""], indices: [0, 12]}])
+		expect(p.parse("Psalm 23a:6").osis_and_indices()).toEqual([{osis: "Ps.23.6", translations: [""], indices: [0, 11]}]);
+		expect(p.parse("1 Kings 21:2b-33a, 12c, ch. 14a, 15c, 22:9a").osis_and_indices()).toEqual([{osis: "1Kgs.21.2!b-1Kgs.21.29,1Kgs.21.12!c,1Kgs.14.1-1Kgs.15.34,1Kgs.22.9!a", translations: [""], indices: [0, 43]}]);
 	});
 });
 
@@ -1241,21 +1540,21 @@ describe("Basic passage parsing", () => {
 			"translations": null
 		})).toEqual({
 			valid: true,
-			messages: {}
+			messages: {start_chapter_1: 1}
 		});
 		expect(psg.validate_ref("12", {
 			b: "Obad",
 			c: 1
 		})).toEqual({
 			valid: true,
-			messages: {}
+			messages: {start_chapter_1: 1}
 		});
 		expect(psg.validate_ref(12, {
 			b: "Obad",
 			c: 1
 		})).toEqual({
 			valid: true,
-			messages: {}
+			messages: {start_chapter_1: 1}
 		});
 		expect(psg.validate_ref([12], {
 			b: "Obad",
@@ -1271,7 +1570,7 @@ describe("Basic passage parsing", () => {
 			c: 1
 		})).toEqual({
 			valid: true,
-			messages: {}
+			messages: {start_chapter_1: 1}
 		});
 		expect(() => {
 			psg.validate_ref([null], {
@@ -2170,11 +2469,11 @@ describe("Parsing with context", () => {
 				indices: [0, 3]
 			}
 		]);
-		expect(p.parse_with_context("verse 16", "John 3").osis_and_indices()).toEqual([
+		expect(p.parse_with_context("verse 16a", "John 3").osis_and_indices()).toEqual([
 			{
 				osis: "John.3.16",
 				translations: [""],
-				indices: [0, 8]
+				indices: [0, 9]
 			}
 		]);
 		expect(p.parse_with_context("ch. 2-10", "Gen 8").osis_and_indices()).toEqual([
@@ -3634,7 +3933,7 @@ describe("Parsing", () => {
 		p.options.captive_end_digits_strategy = "delete";
 		expect(p.parse("Rev 2").osis()).toEqual("Rev.2");
 		expect(p.parse("Rev 2a").osis()).toEqual("Rev.2");
-		expect(p.parse("Rev 2, 3a").osis()).toEqual("Rev.2,Rev.2.3");
+		expect(p.parse("Rev 2, 3a").osis()).toEqual("Rev.2-Rev.3");
 		expect(p.parse("Rev 2- 3ab").osis()).toEqual("Rev.2");
 		expect(p.parse("Rev 2:1 - 3a").osis()).toEqual("Rev.2.1-Rev.2.3");
 		expect(p.parse("Rev 2:1 - 3 * a").osis_and_indices()).toEqual([
@@ -3659,8 +3958,9 @@ describe("Parsing", () => {
 		p.options.captive_end_digits_strategy = "include";
 		expect(p.parse("Rev 2").osis()).toEqual("Rev.2");
 		expect(p.parse("Rev 2a").osis()).toEqual("Rev.2");
-		expect(p.parse("Rev 2, 3a").osis()).toEqual("Rev.2,Rev.2.3");
+		expect(p.parse("Rev 2, 3a").osis()).toEqual("Rev.2-Rev.3");
 		expect(p.parse("Rev 2- 3ab").osis()).toEqual("Rev.2-Rev.3");
+		expect(p.parse("Rev 2- 3abn").osis()).toEqual("Rev.2-Rev.3");
 		expect(p.parse("Rev 2:1 - 3a").osis()).toEqual("Rev.2.1-Rev.2.3");
 		expect(p.parse("Rev 2:1 - 3 * a").osis_and_indices()).toEqual([
 			{
@@ -3695,9 +3995,9 @@ describe("Parsing", () => {
 		p.options.end_range_digits_strategy = "sequence";
 		expect(p.parse("Jer 33-11").osis()).toEqual("Jer.33,Jer.11");
 		expect(p.parse("Heb 13-15").osis()).toEqual("Heb.13");
-		expect(p.parse("Jer 33-11a").osis()).toEqual("Jer.33.1-Jer.33.11");
-		expect(p.parse("Heb 13-15a").osis()).toEqual("Heb.13.1-Heb.13.15");
-		expect(p.parse("Gal 5-22a").osis()).toEqual("Gal.5.1-Gal.5.22");
+		expect(p.parse("Jer 33-11a").osis()).toEqual("Jer.33,Jer.11");
+		expect(p.parse("Heb 13-15a").osis()).toEqual("Heb.13");
+		expect(p.parse("Gal 5-22a").osis()).toEqual("Gal.5-Gal.6");
 		expect(p.parse("Matt 5- verse 6").osis()).toEqual("Matt.5.6");
 		expect(p.parse("Phm 8-7").osis()).toEqual("Phlm.1.8,Phlm.1.7");
 		expect(p.parse("Phm 7 to verse 6").osis()).toEqual("Phlm.1.7,Phlm.1.6");
@@ -4985,17 +5285,20 @@ describe("Parsing", () => {
 		p.set_options({
 			punctuation_strategy: "unknown"
 		});
-		expect(p.options.punctuation_strategy).toEqual("unknown");
-		expect(p.parse("Matt 3, 4. 5").osis()).toEqual("Matt.3,Matt.4.5");
+		expect(p.options.punctuation_strategy).toEqual("eu");
+		expect(p.parse("Matt 2, 3. 4").osis()).toEqual("Matt.2.3-Matt.2.4");
 		p.set_options({
 			punctuation_strategy: "us"
 		});
 		expect(p.options.punctuation_strategy).toEqual("us");
 		expect(p.parse("Matt 4, 5. 6 NIV, 7").osis()).toEqual("Matt.4,Matt.5.6,Matt.5.7");
 		p.set_options({
-			punctuation_strategy: "unknown"
+			punctuation_strategy: "eua"
 		});
-		expect(p.options.punctuation_strategy).toEqual("unknown");
-		expect(p.parse("Matt 5, 6. 7").osis()).toEqual("Matt.5,Matt.6.7");
+		expect(p.options.punctuation_strategy).toEqual("us");
+		expect(p.parse("Matt 4, 5. 6 NIV, 7").osis()).toEqual("Matt.4,Matt.5.6,Matt.5.7");
 	});
+	it("should allow setting grammar options", () => {
+
+	})
 });

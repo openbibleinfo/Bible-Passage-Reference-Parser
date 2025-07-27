@@ -435,6 +435,7 @@ Prov	Ordspraksboken
 Prov	Ordspråksboken
 Prov	Ords
 Prov	Prov
+Prov	Ord
 Ps	Psaltaren
 Ps	Psalmen
 Ps	Psalm

@@ -223,6 +223,22 @@ describe("Documentation compatibility", () => {
 		expect(() => bcv.translation_info("unknown")).toThrow();
 		console.warn = oldWarn;
 	});
+	it("should handle `grammar`", () => {
+		expect(bcv.parse("John 3.16").osis()).toEqual("John.3.16");
+		bcv.set_options({
+			"grammar": {
+				"cv_sep_us": /^:/
+			}
+		});
+		expect(bcv.parse("John 3.16").osis()).toEqual("John.3,John.16");
+		bcv.set_options({
+			"grammar": {
+				"cv_sep_us": /^:/,
+				"sequence_us": /^(?:[,;]|\s*and\s*)+/
+			}
+		});
+		expect(bcv.parse("John 3.16").osis()).toEqual("John.3");
+	});
 });
 
 describe("Full BCV parser", () => {

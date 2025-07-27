@@ -10,7 +10,6 @@ public osis_compaction_strategy: BCVParserOptions["osis_compaction_strategy"] = 
 public book_sequence_strategy: BCVParserOptions["book_sequence_strategy"] = "ignore";
 public invalid_sequence_strategy: BCVParserOptions["invalid_sequence_strategy"] = "ignore";
 public sequence_combination_strategy: BCVParserOptions["sequence_combination_strategy"] = "combine";
-public punctuation_strategy: BCVParserOptions["punctuation_strategy"] = "us";
 public invalid_passage_strategy: BCVParserOptions["invalid_passage_strategy"] = "ignore";
 public non_latin_digits_strategy: BCVParserOptions["non_latin_digits_strategy"] = "ignore";
 // This one is shared between `this` and `bcv_passage`.
@@ -27,6 +26,8 @@ public warn_level: BCVParserOptions["warn_level"] = "none";
 
 constructor(parent) {
 	this.parent = parent;
+	this.#grammar.cv_sep = this.#grammar.cv_sep_us;
+	this.#grammar.sequence = this.#grammar.sequence_us;
 }
 
 #testaments: BCVParserOptions["testaments"] = "on";
@@ -128,11 +129,63 @@ public get case_sensitive() {
 }
 // Whether to treat books as case-sensitive. Valid values are `none` and `books`.
 public set case_sensitive(arg: BCVParserOptions["case_sensitive"]) {
-	if (arg === this.#case_sensitive || (arg !== "none" && arg !== "books")) {
+	if (arg === this.#case_sensitive || (arg !== "none" && arg !== "books" && arg !== "translations" && arg !== "books,translations")) {
 		return;
 	}
 	this.#case_sensitive = arg;
 	this.parent.regexps_manager.filter_books(this.testaments, arg);
+	this.parent.translations_manager.apply_case_sensitive(arg);
 }
+
+#grammar: BCVParserOptions["grammar"] = {
+	// No leading space. This content is returned as-is with a `bcvp` `osis_compaction_strategy`.
+	ab: /^[a-e](?!\p{L})/iu,
+	and: /^&/,
+	c_explicit: /^[\s*]*(?:chapters?|cha?pts?\.?|chaps?\.?|ch[aps]?\.?)[\s*]*/i,
+	c_sep: /^\x1f\x1f\x1f/,
+	cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/,
+	cv_sep_eu: /^[\s*]*,+[\s*]*/,
+	cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
+	ff: /^\x1f\x1f\x1f/,
+	in_book_of: /^\x1f\x1f\x1f/,
+	next: /^\x1f\x1f\x1f/,
+	ordinal: /^\x1f\x1f\x1f/,
+	range: /^[\s*]*[\-\u2013\u2014][\s*]*/,
+	sequence_eu: /^(?:[;/:&\-\u2013\u2014~\s*]|\.(?!\s*\.\s*\.))+/,
+	sequence_us: /^(?:[,;/:&\-\u2013\u2014~\s*]|\.(?!\s*\.\s*\.))+/,
+	space: /^[\s*]+/,
+	title: /^[\s*]*title[\s*]*/i,
+	v_explicit: /^[\s*]*(?:verses?|ver\.?|vss?\.?|vv?\.?)[\s*]*(?!\p{L})/iu,
+	// Don't set these directly; we overwrite them with the `us` or `eu` equivalents based on the `punctuation_strategy` option.
+	cv_sep: /^\x1f\x1f\x1f/,
+	sequence: /^\x1f\x1f\x1f/,
+};
+public get grammar(): BCVParserOptions["grammar"] {
+	return this.#grammar;
+}
+// Merges existing grammar options with new ones.
+public set grammar(arg: Partial<BCVParserOptions["grammar"]>) {
+	this.#grammar = { ...this.#grammar, ...arg };
+	// Reset the `cv_sep` and `sequence` keys in case they were set in `arg`.
+	this.punctuation_strategy = this.punctuation_strategy;
+}
+
+#punctuation_strategy: BCVParserOptions["punctuation_strategy"] = "us";
+public get punctuation_strategy(): BCVParserOptions["punctuation_strategy"] {
+	return this.#punctuation_strategy;
+}
+public set punctuation_strategy(arg: BCVParserOptions["punctuation_strategy"]) {
+	if (arg !== "us" && arg !== "eu") {
+		if (this.warn_level === "warn") {
+			console.warn(`punctuation_strategy should be set to "us" or "eu", not: ${arg}`);
+		}
+		return;
+	}
+	this.#punctuation_strategy = arg;
+	this.#grammar.c_sep = this.#grammar[`c_sep_${arg}`];
+	this.#grammar.cv_sep = this.#grammar[`cv_sep_${arg}`];
+	this.#grammar.sequence = this.#grammar[`sequence_${arg}`];
+}
+
 
 }

@@ -2,13 +2,14 @@
 
 import { BCVParserInterface, BookMatchInterface, PassageEntityInterface, ContextInterface, GrammarMatchInterface } from "./types";
 
+import * as grammar from "./bcv_grammar";
+
 export default class bcv_matcher {
 parent;
-grammar;
 
-constructor(parent: BCVParserInterface, grammar: any) {
+constructor(parent: BCVParserInterface, grammar_options) {
 	this.parent = parent;
-	this.grammar = grammar;
+	this.parent.options.grammar = structuredClone(grammar_options);
 }
 
 // ## Parsing-Related Functions
@@ -100,16 +101,12 @@ public match_passages(s: string): [PassageEntityInterface[], ContextInterface] {
 		match.index += full.length - original_part_length;
 		// Clean up the end of the match to avoid unnecessary characters.
 		part = this.clean_end_match(s, match, part);
-		// Though Peggy doesn't have to be case-sensitive, using the case-insensitive feature involves some repeated processing. By lower-casing here, we only pay the cost once. The grammar for words like "also" is case-sensitive; we can safely lowercase ascii letters without changing indices. We don't just call .toLowerCase() because it could affect the length of the string if it contains certain characters; maintaining the indices is the most important thing.
-		part = part.replace(/[A-Z]+/g, (capitals) => capitals.toLowerCase());
 		// If we're in a chapter-book situation, the first character won't be a book control character, which would throw off the `start_index`.
 		const start_index_adjust = part.startsWith("\x1f") ? 0 : part.split("\x1f")[0].length;
 		// * `match` is important for the length and whether it contains control characters, neither of which we've changed inconsistently with the original string. The `part` may be shorter than originally matched, but that's only to remove unneeded characters at the end.
-		// * `grammar` is the external PEG parser. The `this.parent.options.punctuation_strategy` determines which punctuation is used for sequences and `cv` separators.
+		// * `grammar` is the external PEG parser. The `this.parent.options.grammar` defines regexps used in the parser.
 		const passage: GrammarMatchInterface = {
-			value: this.grammar.parse(part, {
-				punctuation_strategy: this.parent.options.punctuation_strategy,
-			}),
+			value: grammar.parse(part, this.parent.options.grammar),
 			type: "base",
 			// The `start_index` in `this.parent.passage` always exists after being set in `match_books`.
 			start_index: this.parent.passage.books[book_id_number].start_index! - start_index_adjust,

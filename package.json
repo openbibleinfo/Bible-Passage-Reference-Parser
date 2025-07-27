@@ -1,6 +1,6 @@
 {
   "name": "bible-passage-reference-parser",
-  "version": "3.0.0",
+  "version": "3.1.0-alpha",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
   "main": "esm/",
   "directories": {
@@ -34,9 +34,9 @@
   },
   "devDependencies": {
     "@pemistahl/grex": "^1.0.2",
-    "esbuild": "^0.24.2",
-    "jasmine": "^5.5.0",
-    "peggy": "^4.2.0",
-    "typescript": "^5.7.2"
+    "esbuild": "^0.25.8",
+    "jasmine": "^5.9.0",
+    "peggy": "^5.0.5",
+    "typescript": "^5.8.3"
   }
 }

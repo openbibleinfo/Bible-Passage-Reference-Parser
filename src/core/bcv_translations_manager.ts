@@ -1,4 +1,4 @@
-import { AddTranslationInterface, AddTranslationsInterface, AddTranslationVersificationInterface, BCVParserInterface, BCVTranslationsInterface, PublicTranslationInterface, TranslationDefinition, TranslationSequenceInterface } from "./types";
+import { AddTranslationInterface, AddTranslationsInterface, AddTranslationVersificationInterface, BCVParserInterface, BCVParserOptions, BCVTranslationsInterface, PublicTranslationInterface, TranslationDefinition, TranslationSequenceInterface } from "./types";
 
 export default class bcv_translations_manager {
 parent;
@@ -91,6 +91,13 @@ public add_translations(new_translations: AddTranslationsInterface) {
 		this.add_new_translations_regexp(texts_for_regexp, new_translations);
 	}
 	this.parent.translations.aliases = {...normalized_translations, ...this.parent.translations.aliases};
+}
+
+public apply_case_sensitive(case_sensitive: BCVParserOptions["case_sensitive"]) {
+	const flags = (case_sensitive.includes("translations")) ? "g" : "gi";
+	for (const [i, translation] of this.parent.regexps.translations.entries()) {
+		this.parent.regexps.translations[i] = new RegExp(translation.source, flags);
+	}
 }
 
 // Normalizes the translation data and ensures it's valid.

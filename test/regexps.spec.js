@@ -444,6 +444,55 @@ describe("Adding books at runtime", () => {
 	});
 });
 
+describe("Grammar options", () => {
+	let p = {};
+	beforeEach(() => {
+		p = new bcv_parser(lang);
+	});
+	it("should handle explicit chapters", () => {
+		expect(p.parse("Genesis 2:5; 15").osis()).toEqual("Gen.2.5,Gen.2.15");
+		expect(p.parse("Genesis 2:5, 15").osis()).toEqual("Gen.2.5,Gen.2.15");
+		p.set_options({
+			grammar: {
+				c_sep_us: /^; /
+			}
+		});
+		expect(p.parse("Genesis 2:5; 15").osis()).toEqual("Gen.2.5,Gen.15");
+		expect(p.parse("Genesis 2:5, 15").osis()).toEqual("Gen.2.5,Gen.2.15");
+	});
+	it("should allow space-sensitive commas", () => {
+		p.set_options({punctuation_strategy: "eu"});
+		expect(p.parse("Matt 1, 3").osis()).toEqual("Matt.1.3");
+		expect(p.parse("Matt 1,3").osis()).toEqual("Matt.1.3");
+		expect(p.parse("Matt 1, 3-4, 6").osis()).toEqual("Matt.1.3-Matt.4.6");
+		p.set_options({
+			grammar: {
+				cv_sep_eu: /^,(?!\s)/,
+				c_sep_eu: /^,\s+/
+			}
+		});
+		expect(p.parse("Matt 1, 3").osis()).toEqual("Matt.1,Matt.3");
+		expect(p.parse("Matt 1,1, 3").osis()).toEqual("Matt.1.1,Matt.3");
+		expect(p.parse("Matt 1,3").osis()).toEqual("Matt.1.3");
+		expect(p.parse("Matt 1,1,3").osis()).toEqual("Matt.1.1");
+		expect(p.parse("Matt 1, 3-4, 6").osis()).toEqual("Matt.1,Matt.3-Matt.4,Matt.6");
+		p.set_options({punctuation_strategy: "us"});
+		expect(p.parse("Matt 1, 3").osis()).toEqual("Matt.1,Matt.3");
+		expect(p.parse("Matt 1,1, 3").osis()).toEqual("Matt.1,Matt.1,Matt.3");
+		expect(p.parse("Matt 1,3").osis()).toEqual("Matt.1,Matt.3");
+		expect(p.parse("Matt 1,1,3").osis()).toEqual("Matt.1,Matt.1,Matt.3");
+		p.set_options({punctuation_strategy: "eu"});
+		expect(p.parse("Matt 1, 3, 4,2, 5, 6-8, 10,2-11, 12,3-14,2, 15").osis()).toEqual("Matt.1,Matt.3,Matt.4.2,Matt.5-Matt.8,Matt.10.2-Matt.10.11,Matt.12.3-Matt.14.2,Matt.15");
+		expect(p.parse("Matt 1,3-6,8").osis()).toEqual("Matt.1.3-Matt.6.8");
+		expect(p.parse("Matt 1, 3-6,8").osis()).toEqual("Matt.1,Matt.3.1-Matt.6.8");
+		expect(p.parse("Matt 1,3").osis()).toEqual("Matt.1.3");
+		expect(p.parse("Matt 1, 3-4, 6").osis()).toEqual("Matt.1,Matt.3-Matt.4,Matt.6");
+	});
+	it("should handle setting keys", () => {
+
+	});
+});
+
 function add_books_throw_matcher(e) {
 	if (e.message?.match && e.message.match(/^add_books: /)) {
 		return true;

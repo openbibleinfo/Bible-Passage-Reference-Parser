@@ -48,8 +48,8 @@ public filter_books(testaments: BCVParserOptions["testaments"], case_sensitive: 
 				}
 			}
 		}
-		// If we only want case sensitivity for books, recreate the RegExp to omit the `i` flag. Not every RegExp in the array necessarily uses the same flags. (Some don't need the `u` flag, for example.)
-		if (case_sensitive === "books") {
+		// If we want case sensitivity for books, recreate the RegExp to omit the `i` flag. Not every RegExp in the array necessarily uses the same flags. (Some don't need the `u` flag, for example.)
+		if (case_sensitive.includes("books")) {
 			cloned_book ??= structuredClone(book);
 			const flags = cloned_book.regexp.flags.replace("i", "");
 			cloned_book.regexp = new RegExp(book.regexp.source, flags);

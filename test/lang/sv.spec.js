@@ -688,10 +688,12 @@ describe("Localized book Prov (sv)", () => {
 		expect(p.parse("Ordspråksboken 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Ords 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("Prov 1:1").osis()).toEqual("Prov.1.1");
+		expect(p.parse("Ord 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("ORDSPRAKSBOKEN 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("ORDSPRÅKSBOKEN 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("ORDS 1:1").osis()).toEqual("Prov.1.1");
 		expect(p.parse("PROV 1:1").osis()).toEqual("Prov.1.1");
+		expect(p.parse("ORD 1:1").osis()).toEqual("Prov.1.1");
 	});
 });
 describe("Localized book Eccl (sv)", () => {
