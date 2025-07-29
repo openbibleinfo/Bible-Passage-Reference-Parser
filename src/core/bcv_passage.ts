@@ -587,6 +587,10 @@ private sequence(passage: PassageEntityInterface, accum: PassageEntityInterface[
 	passage.passages = [];
 	for (const obj of passage.value) {
 		let psg: PassageEntityInterface;
+		// If chapter context is set explicitly, then adjust the context accordingly.
+		if (typeof obj[0].explicit_context === "string" && obj[0].explicit_context === "c") {
+			delete context.v;
+		} 
 		[[psg], context] = this.handle_array(obj, [], context);
 		// There's only more than one `sub_psg` if there was a range error.
 		for (const sub_psg of psg.passages) {

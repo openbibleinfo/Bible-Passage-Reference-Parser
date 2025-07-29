@@ -860,24 +860,24 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[b-e](?!\p{L})/iu,
-  and: /^(?:(?:porov|pozri|alebo|a)|&)/i,
+  ab: /^(?:[b-e])(?!\p{L})/iu,
+  and: /^(?:porov|pozri|alebo|a|&)/i,
   c_explicit: /^[\s*]*(?:kapitoly|kapitole|kapitolu|kapitol|hlavy|kap\.?)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
   c_sep_us: /^\x1f\x1f\x1f/i,
   cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/i,
   cv_sep_eu: /^[\s*]*,+[\s*]*/i,
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
-  ff: /^[\s*]*ff(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
+  ff: /^[\s*]*(?:ff)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
-  range: /^[\s*]*(?:[\-–—]|(?:a[žz]|-))+[\s*]*/i,
-  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:porov|pozri|alebo|a))+/i,
-  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:porov|pozri|alebo|a))+/i,
+  range: /^[\s*]*(?:[\-–—]|a[žz]|-)+[\s*]*/i,
+  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|porov|pozri|alebo|a)+/i,
+  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|porov|pozri|alebo|a)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*title(?!\p{L})[\s*]*/iu,
-  v_explicit: /^[\s*]*ver[šs]ov[\s*]*(?!\p{L})/iu
+  title: /^[\s*]*(?:title)(?!\p{L})[\s*]*/iu,
+  v_explicit: /^[\s*]*(?:ver[šs]ov)[\s*]*(?!\p{L})/iu
 };
 
 // build/lang_bundle.ts

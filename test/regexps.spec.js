@@ -458,6 +458,10 @@ describe("Grammar options", () => {
 			}
 		});
 		expect(p.parse("Genesis 2:5; 15").osis()).toEqual("Gen.2.5,Gen.15");
+		expect(p.parse("Genesis 2:5-6; 15-16").osis()).toEqual("Gen.2.5-Gen.2.6,Gen.15-Gen.16");
+		expect(p.parse("Genesis 2:5-6; (15-16)").osis()).toEqual("Gen.2.5-Gen.2.6,Gen.15-Gen.16");
+		expect(p.parse("Genesis 2:5-6, (15-16; 19-20)").osis()).toEqual("Gen.2.5-Gen.2.6,Gen.2.15-Gen.2.16,Gen.19-Gen.20");
+		expect(p.parse("Genesis 2:5-6, (; 15-16; 19-20)").osis()).toEqual("Gen.2.5-Gen.2.6,Gen.15-Gen.16,Gen.19-Gen.20");
 		expect(p.parse("Genesis 2:5, 15").osis()).toEqual("Gen.2.5,Gen.2.15");
 	});
 	it("should allow space-sensitive commas", () => {

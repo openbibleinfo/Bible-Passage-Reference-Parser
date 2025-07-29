@@ -860,7 +860,7 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[a-e](?!\p{L})/iu,
+  ab: /^(?:[a-e])(?!\p{L})/iu,
   and: /^(?:et|&)/i,
   c_explicit: /^[\s*]*(?:caput|cap\.?)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
@@ -870,13 +870,13 @@ var bcv_grammar_options_default = {
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
   ff: /^[\s*]*(?:et\s+sequentes|et\s+seq\.?)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
   range: /^[\s*]*(?:[\-–—]|ad)+[\s*]*/i,
   sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|et)+/i,
   sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|et)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*titulus(?!\p{L})[\s*]*/iu,
+  title: /^[\s*]*(?:titulus)(?!\p{L})[\s*]*/iu,
   v_explicit: /^[\s*]*(?:versus|vers\.?|ver\.?|v\.?)[\s*]*(?!\p{L})/iu
 };
 

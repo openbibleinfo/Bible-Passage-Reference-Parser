@@ -860,8 +860,8 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[a-d](?!\p{L})/iu,
-  and: /^(?:(?:vedi\s+anche|vedi|cfr|e)|&)/i,
+  ab: /^(?:[a-d])(?!\p{L})/iu,
+  and: /^(?:vedi\s+anche|vedi|cfr|e|&)/i,
   c_explicit: /^[\s*]*(?:capitoli|capitolo|capp\.?|cap\.?|cc\.?)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
   c_sep_us: /^\x1f\x1f\x1f/i,
@@ -870,13 +870,13 @@ var bcv_grammar_options_default = {
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
   ff: /^[\s*]*(?:ss|,\s+ecc|ecc)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
   range: /^[\s*]*(?:[\-–—]|al)+[\s*]*/i,
-  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:vedi\s+anche|vedi|cfr|e))+/i,
-  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:vedi\s+anche|vedi|cfr|e))+/i,
+  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|vedi\s+anche|vedi|cfr|e)+/i,
+  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|vedi\s+anche|vedi|cfr|e)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*titolo(?!\p{L})[\s*]*/iu,
+  title: /^[\s*]*(?:titolo)(?!\p{L})[\s*]*/iu,
   v_explicit: /^[\s*]*(?:versetto|versetti|versi|vv\.?|v\.?)[\s*]*(?!\p{L})/iu
 };
 

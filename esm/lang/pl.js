@@ -860,23 +860,23 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[a-e](?!\p{L})/iu,
-  and: /^(?:(?:oraz|por|i)|&)/i,
+  ab: /^(?:[a-e])(?!\p{L})/iu,
+  and: /^(?:oraz|por|i|&)/i,
   c_explicit: /^[\s*]*(?:rozdziały|rozdział[óo]w|rozdział|rozdz|rr\.?|r\.?)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
   c_sep_us: /^\x1f\x1f\x1f/i,
   cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/i,
   cv_sep_eu: /^[\s*]*,+[\s*]*/i,
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
-  ff: /^[\s*]*nn(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
+  ff: /^[\s*]*(?:nn)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^n(?!n)/i,
+  next: /^(?:n(?!n))/i,
   ordinal: /^(?:th|st|nd|rd)/i,
   range: /^[\s*]*(?:[\-–—]|do)+[\s*]*/i,
-  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:oraz|por|i))+/i,
-  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:oraz|por|i))+/i,
+  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|oraz|por|i)+/i,
+  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|oraz|por|i)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*tytuł(?!\p{L})[\s*]*/iu,
+  title: /^[\s*]*(?:tytuł)(?!\p{L})[\s*]*/iu,
   v_explicit: /^[\s*]*(?:werset[óo]w|wersety|werset|wers\.?|w\.?)[\s*]*(?!\p{L})/iu
 };
 

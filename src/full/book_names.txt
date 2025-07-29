@@ -40416,7 +40416,6 @@ Phil	腓立比书
 Phil	腓立比書
 Phil	빌립보서
 Phil	필리피서
-Phil	Fil
 Phil	Flp
 Phil	Phi
 Phil	Php
@@ -40441,6 +40440,7 @@ Phil	腓》
 Phil	필리
 Phil	腓
 Phil	빌
+Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Послання св. апостола Павла до Филимона

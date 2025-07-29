@@ -860,23 +860,23 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[a-e](?!\p{L})/iu,
-  and: /^(?:(?:ja(?![a-z])|vrt)|&)/i,
+  ab: /^(?:[a-e])(?!\p{L})/iu,
+  and: /^(?:ja(?![a-z])|vrt|&)/i,
   c_explicit: /^[\s*]*(?:luku|luvut|luvun)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
   c_sep_us: /^\x1f\x1f\x1f/i,
   cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/i,
   cv_sep_eu: /^[\s*]*,+[\s*]*/i,
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
-  ff: /^[\s*]*ss(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
+  ff: /^[\s*]*(?:ss)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
   range: /^[\s*]*(?:[\-–—]|–)+[\s*]*/i,
-  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:ja(?![a-z])|vrt))+/i,
-  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:ja(?![a-z])|vrt))+/i,
+  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|ja(?![a-z])|vrt)+/i,
+  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|ja(?![a-z])|vrt)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*johdannolla(?!\p{L})[\s*]*/iu,
+  title: /^[\s*]*(?:johdannolla)(?!\p{L})[\s*]*/iu,
   v_explicit: /^[\s*]*(?:jakeet|jakeissa)[\s*]*(?!\p{L})/iu
 };
 

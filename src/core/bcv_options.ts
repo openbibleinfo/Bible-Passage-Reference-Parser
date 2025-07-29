@@ -138,11 +138,12 @@ public set case_sensitive(arg: BCVParserOptions["case_sensitive"]) {
 }
 
 #grammar: BCVParserOptions["grammar"] = {
-	// No leading space. This content is returned as-is with a `bcvp` `osis_compaction_strategy`.
+	// No leading space. This content is returned as-is with an `osis_compaction_strategy` that includes a `p`.
 	ab: /^[a-e](?!\p{L})/iu,
 	and: /^&/,
 	c_explicit: /^[\s*]*(?:chapters?|cha?pts?\.?|chaps?\.?|ch[aps]?\.?)[\s*]*/i,
-	c_sep: /^\x1f\x1f\x1f/,
+	c_sep_eu: /^\x1f\x1f\x1f/,
+	c_sep_us: /^\x1f\x1f\x1f/,
 	cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/,
 	cv_sep_eu: /^[\s*]*,+[\s*]*/,
 	cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
@@ -157,6 +158,7 @@ public set case_sensitive(arg: BCVParserOptions["case_sensitive"]) {
 	title: /^[\s*]*title[\s*]*/i,
 	v_explicit: /^[\s*]*(?:verses?|ver\.?|vss?\.?|vv?\.?)[\s*]*(?!\p{L})/iu,
 	// Don't set these directly; we overwrite them with the `us` or `eu` equivalents based on the `punctuation_strategy` option.
+	c_sep: /^\x1f\x1f\x1f/,
 	cv_sep: /^\x1f\x1f\x1f/,
 	sequence: /^\x1f\x1f\x1f/,
 };

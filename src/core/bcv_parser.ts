@@ -357,17 +357,20 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 	}
 	// Handle Psalm 151 if the Apocrypha is included and it should be treated as a book. I.e., change the book from `Ps` to `Ps151`.
 	if (
-		this.options.versification_system.indexOf("a") >= 0 &&
+		this.options.versification_system.includes("a") &&
 		this.options.ps151_strategy === "b" &&
 		((start.c === 151 && start.b === "Ps") || (end.c === 151 && end.b === "Ps"))
 	) {
 		this.fix_ps151(start, end, translation);
 	}
 	const chapter_array = this.passage.translations.systems[translation]?.chapters[end.b] || this.passage.translations.systems.current.chapters[end.b];
+	// Shortcuts for future access.
+	const compaction_strategy = this.options.osis_compaction_strategy;
+	const existence_strategy = this.options.passage_existence_strategy;
 	// If no end chapter or verse, assume the last possible. If it's a single-chapter book, always use the first chapter for consistency with other `passage_existence_strategy` results (which do respect the single-chapter length).
 	if (end.c == null) {
 		if (
-			this.options.passage_existence_strategy.indexOf("c") >= 0 ||
+			existence_strategy.includes("c") ||
 			(chapter_array && chapter_array.length === 1)
 		) {
 			end.c = chapter_array.length;
@@ -376,27 +379,31 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 		}
 	}
 	if (end.v == null) {
-		if (chapter_array && chapter_array[end.c! - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+		if (chapter_array && chapter_array[end.c! - 1] && existence_strategy.includes("v")) {
 			end.v = chapter_array[end.c! - 1];
 		} else {
 			end.v = 999;
 		}
 	}
+
+	// Determine whether we need to care about partial verses--only if the `compaction_strategy` indicates it and there's actually a partial verse.
+	const get_partial = compaction_strategy.includes("p") && (start.p != null || end.p != null);
 	// If it's a complete book or range of complete books and we want the shortest possible OSIS, return just the book names. The `end.c` and `end.v` equaling 999 is for when the `passage_existence_strategy` sets them to 999, indicating that we should treat it as a complete book or chapter.
 	if (
-		this.options.osis_compaction_strategy === "b" &&
+		(compaction_strategy === "b" || compaction_strategy === "bp") &&
 		start.c === 1 &&
 		start.v === 1 &&
+		get_partial === false &&
 		(
 			(end.c === 999 && end.v === 999) ||
 			(
 				end.c === chapter_array.length &&
-				this.options.passage_existence_strategy.indexOf("c") >= 0 &&
+				existence_strategy.includes("c") &&
 				(
 					end.v === 999 ||
 					(
 						end.v === chapter_array[end.c! - 1] &&
-						this.options.passage_existence_strategy.indexOf("v") >= 0
+						existence_strategy.includes("v")
 					)
 				)
 			)
@@ -406,15 +413,16 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 		osis.start = start.b;
 		osis.end = end.b;
 	}
-	// If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters. We only care when `osis_compaction_strategy` is `b` or `bc` because `bcv` and `bcvp` always include verses.
+	// If it's a complete chapter or range of complete chapters and we want a short OSIS, return just the books and chapters. We only care when `osis_compaction_strategy` is `b`, or `bc` because `bcv` and anything with `p` always include verses.
 	else if (
-		this.options.osis_compaction_strategy.length <= 2 &&
 		start.v === 1 &&
+		get_partial === false &&
+		compaction_strategy.includes("v") === false &&
 		(
 			end.v === 999 ||
 			(
 				end.v === chapter_array[end.c! - 1] &&
-				this.options.passage_existence_strategy.indexOf("v") >= 0
+				existence_strategy.includes("v")
 			)
 		)
 	) {
@@ -426,7 +434,7 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 	else {
 		osis.start = start.b + "." + start.c + "." + start.v;
 		osis.end = end.b + "." + end.c + "." + end.v;
-		if (this.options.osis_compaction_strategy === "bcvp") {
+		if (get_partial) {
 			if (start.p != null) {
 				osis.start += "!" + start.p;
 			}

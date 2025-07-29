@@ -561,6 +561,7 @@ sub format_var
 		my $out = join('|', @values);
 		$out = handle_accents($out);
 		$out =~ s/ +/\\s+/g;
+		return $out if ($type eq 'grammar_options');
 		return (scalar @values > 1) ? '(?:' . $out . ')' : $out;
 	}
 	else

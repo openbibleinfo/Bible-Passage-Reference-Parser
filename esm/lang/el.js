@@ -860,7 +860,7 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[α-ε](?!\p{L})/iu,
+  ab: /^(?:[α-ε])(?!\p{L})/iu,
   and: /^(?:και|&)/i,
   c_explicit: /^[\s*]*(?:κεφ[άα]λαια|κεφ[άα]λαιον|κεφ[άα]λαιο|κεφ\.?)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
@@ -868,9 +868,9 @@ var bcv_grammar_options_default = {
   cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/i,
   cv_sep_eu: /^[\s*]*,+[\s*]*/i,
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
-  ff: /^[\s*]*και\s+μετ[άα](?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
+  ff: /^[\s*]*(?:και\s+μετ[άα])(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
   range: /^[\s*]*(?:[\-–—]|-)+[\s*]*/i,
   sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|και)+/i,

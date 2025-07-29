@@ -930,8 +930,8 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[a-e](?!\p{L})/iu,
-  and: /^(?:(?:and|compare|cf\.?|see\s+also|also|see)|&)/i,
+  ab: /^(?:[a-e])(?!\p{L})/iu,
+  and: /^(?:and|compare|cf\.?|see\s+also|also|see|&)/i,
   c_explicit: /^[\s*]*(?:chapters|chapter|chapts\.?|chpts\.?|chapt\.?|chaps\.?|chap\.?|chp\.?|chs\.?|cha\.?|ch\.?)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
   c_sep_us: /^\x1f\x1f\x1f/i,
@@ -940,13 +940,13 @@ var bcv_grammar_options_default = {
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
   ff: /^[\s*]*(?:ff(?![a-z0-9])|f(?![a-z0-9]))(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
-  range: /^[\s*]*(?:[\-–—]|(?:through|thru|to))+[\s*]*/i,
-  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:and|compare|cf\.?|see\s+also|also|see))+/i,
-  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:and|compare|cf\.?|see\s+also|also|see))+/i,
+  range: /^[\s*]*(?:[\-–—]|through|thru|to)+[\s*]*/i,
+  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|and|compare|cf\.?|see\s+also|also|see)+/i,
+  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|and|compare|cf\.?|see\s+also|also|see)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*title(?!\p{L})[\s*]*/iu,
+  title: /^[\s*]*(?:title)(?!\p{L})[\s*]*/iu,
   v_explicit: /^[\s*]*(?:verses|verse|ver\.?|vss\.?|vs\.?|vv\.?|v\.?)[\s*]*(?!\p{L})/iu
 };
 

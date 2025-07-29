@@ -292,106 +292,108 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 ### OSIS Output
 
 * `consecutive_combination_strategy: "combine"`
-	* `combine`: "Matt 5, 6, 7" → "Matt.5-Matt.7".
-	* `separate`: "Matt 5, 6, 7" → "Matt.5,Matt.6,Matt.7".
+  * `combine`: "Matt 5, 6, 7" → "Matt.5-Matt.7".
+  * `separate`: "Matt 5, 6, 7" → "Matt.5,Matt.6,Matt.7".
 * `osis_compaction_strategy: "b"`
-	* `b`: OSIS refs get reduced to the shortest possible. "Gen.1.1-Gen.50.26" and "Gen.1-Gen.50" → "Gen", while "Gen.1.1-Gen.2.25" → "Gen.1-Gen.2".
-	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" → "Gen.1-Gen.50".
-	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" → "Gen.1.1-Gen.1.31".
-  * `bcvp`: OSIS refs include partial verse references: "Gen 1:1a" → "Gen.1.1!a". The "partial" indicator is returned exactly as it appears in the text, so non-Latin languages may have non-Latin characters. When no partial verse reference appears in the next, no OSIS indicator appears: "Gen 1:1" → "Gen.1.1".
+  * `b`: OSIS refs get reduced to the shortest possible. "Gen.1.1-Gen.50.26" and "Gen.1-Gen.50" → "Gen", while "Gen.1.1-Gen.2.25" → "Gen.1-Gen.2".
+  * `bp`: Same as `b` but preserves partial verses when they appear. "Genesis 1:1a-50:26" parses as "Gen.1.1!a-Gen.50.26", while "Genesis 1:1-50:26" still parses as "Gen".
+  * `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" → "Gen.1-Gen.50".
+  * `bcp`: Same as `bc` but preserves partial verses when they appear. "Genesis 1:1a-50:26" parses as "Gen.1.1!a-Gen.50.26", while "Genesis 1:1-50:25" still parses as "Gen.1-Gen.50".
+  * `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" → "Gen.1.1-Gen.1.31".
+  * `bcvp`: Same as `bc` but preserves partial verses when they appear. "Gen 1:1a" parses as "Gen.1.1!a", while "Genesis 1:1" still parses as "Gen.1.1". In all these `p` cases, the "partial" indicator is returned exactly as it appears in the text, so non-Latin languages may have non-Latin characters after the `!` character in the OSIS ref.
 
 ### Sequence
 
 * `book_sequence_strategy: "ignore"`
-	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" → "Isa.1").
-	* `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" → "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
+  * `ignore`: ignore any books on their own in sequences ("Gen Is 1" → "Isa.1").
+  * `include`: any books that appear on their own get parsed according to `book_alone_strategy` ("Gen Is 1" → "Gen.1-Gen.50,Isa.1" if `book_alone_strategy` is `full` or `ignore`, or "Gen.1,Isa.1" if it's `first_chapter`).
 * `invalid_sequence_strategy: "ignore"`
-	* `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
-	* `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
+  * `ignore`: "Matt 99, Gen 1" sequence index starts at the valid `Gen 1`.
+  * `include`: "Matt 99, Gen 1" sequence index starts at the invalid `Matt 99`.
 * `sequence_combination_strategy: "combine"`
-	* `combine`: sequential references in the text are combined into a single comma-separated OSIS string: "Gen 1, 3" → `"Gen.1,Gen.3"`.
-	* `separate`: sequential references in the text are separated into an array of their component parts: "Gen 1, 3" → `["Gen.1", "Gen.3"]`.
+  * `combine`: sequential references in the text are combined into a single comma-separated OSIS string: "Gen 1, 3" → `"Gen.1,Gen.3"`.
+  * `separate`: sequential references in the text are separated into an array of their component parts: "Gen 1, 3" → `["Gen.1", "Gen.3"]`.
 * `punctuation_strategy: "us"`
-	* `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
-	* `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
+  * `us`: commas separate sequences, periods separate chapters and verses. "Matt 1, 2. 4" → "Matt.1,Matt.2.4".
+  * `eu`: periods separate sequences, commas separate chapters and verses. "Matt 1, 2. 4" → "Matt.1.2,Matt.1.4".
 
 ### Potentially Invalid Input
 
 * `invalid_passage_strategy: "ignore"`
-	* `ignore`: Include only valid passages in `parsed_entities()`.
-	* `include`: Include invalid passages in `parsed_entities()` (they still don't have OSIS values).
+  * `ignore`: Include only valid passages in `parsed_entities()`.
+  * `include`: Include invalid passages in `parsed_entities()` (they still don't have OSIS values).
 * `non_latin_digits_strategy: "ignore"`
-	* `ignore`: treat non-Latin digits the same as any other character.
-	* `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
+  * `ignore`: treat non-Latin digits the same as any other character.
+  * `replace`: replace non-Latin (0-9) numeric digits with Latin digits. This replacement occurs before any book substitution.
 * `passage_existence_strategy: "bcv"`
-	* Include `b` in the string to validate book order ("Revelation to Genesis" is invalid).
-	* Include `c` in the string to validate chapter existence. If omitted, strings like "Genesis 51" (which doesn't exist) return as valid. Omitting `c` means that looking up full books will return `999` as the end chapter: "Genesis to Exodus" → "Gen.1-Exod.999".
-	* Include `v` in the string to validate verse existence. If omitted, strings like `Genesis 1:100` (which doesn't exist) return as valid. Omitting `v` means that looking up full chapters will return `999` as the end verse: "Genesis 1:2 to chapter 3" → "Gen.1.2-Gen.3.999".
-	* Tested values are `b`, `bc`, `bcv`, `bv`, `c`, `cv`, `v`, and `none`. In all cases, single-chapter books still respond as single-chapter books to allow treating strings like `Obadiah 2` as `Obad.1.2`.
+  * Include `b` in the string to validate book order ("Revelation to Genesis" is invalid).
+  * Include `c` in the string to validate chapter existence. If omitted, strings like "Genesis 51" (which doesn't exist) return as valid. Omitting `c` means that looking up full books will return `999` as the end chapter: "Genesis to Exodus" → "Gen.1-Exod.999".
+  * Include `v` in the string to validate verse existence. If omitted, strings like `Genesis 1:100` (which doesn't exist) return as valid. Omitting `v` means that looking up full chapters will return `999` as the end verse: "Genesis 1:2 to chapter 3" → "Gen.1.2-Gen.3.999".
+  * Tested values are `b`, `bc`, `bcv`, `bv`, `c`, `cv`, `v`, and `none`. In all cases, single-chapter books still respond as single-chapter books to allow treating strings like `Obadiah 2` as `Obad.1.2`.
 * `zero_chapter_strategy: "error"`
-	* `error`: zero chapters ("Matthew 0") are invalid.
-	* `upgrade`: zero chapters are upgraded to 1: "Matthew 0" → "Matt.1".
-	* Unlike `zero_verse_strategy`, chapter 0 isn't allowed.
+  * `error`: zero chapters ("Matthew 0") are invalid.
+  * `upgrade`: zero chapters are upgraded to 1: "Matthew 0" → "Matt.1".
+  * Unlike `zero_verse_strategy`, chapter 0 isn't allowed.
 * `zero_verse_strategy: "error"`
-	* `error`: zero verses ("Matthew 5:0") are invalid.
-	* `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" → "Matt.5.1".
-	* `allow`: zero verses are kept as-is: "Matthew 5:0" → "Matt.5.0". Some traditions use 0 for Psalm titles.
+  * `error`: zero verses ("Matthew 5:0") are invalid.
+  * `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" → "Matt.5.1".
+  * `allow`: zero verses are kept as-is: "Matthew 5:0" → "Matt.5.0". Some traditions use 0 for Psalm titles.
 * `single_chapter_1_strategy: "chapter"`
-	* `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
-	* `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
+  * `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
+  * `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
 
 ### Context
 
 * `book_alone_strategy: "ignore"`
-	* `ignore`: any books that appear on their own don't get parsed as books ("Gen saw" doesn't trigger a match, but "Gen 1" does).
-	* `full`: any books that appear on their own get parsed as the complete book ("Gen" → "Gen.1-Gen.50").
-	* `first_chapter`: any books that appear on their own get parsed as the first chapter ("Gen" → "Gen.1").
+  * `ignore`: any books that appear on their own don't get parsed as books ("Gen saw" doesn't trigger a match, but "Gen 1" does).
+  * `full`: any books that appear on their own get parsed as the complete book ("Gen" → "Gen.1-Gen.50").
+  * `first_chapter`: any books that appear on their own get parsed as the first chapter ("Gen" → "Gen.1").
 * `book_range_strategy: "ignore"`
-	* `ignore`: any books that appear on their own in a range are ignored ("Matt-Mark 2" → "Mark.2").
-	* `include`: any books that appear on their own in a range are included as part of the range ("Matt-Mark 2" → "Matt.1-Mark.2", while "Matt 2-Mark" → "Matt.2-Mark.16").
+  * `ignore`: any books that appear on their own in a range are ignored ("Matt-Mark 2" → "Mark.2").
+  * `include`: any books that appear on their own in a range are included as part of the range ("Matt-Mark 2" → "Matt.1-Mark.2", while "Matt 2-Mark" → "Matt.2-Mark.16").
 * `captive_end_digits_strategy: "delete"`
-	* `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5". This is better for text extraction.
-	* `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5.1". This is better for query parsing.
+  * `delete`: remove any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5". This is better for text extraction.
+  * `include`: keep any digits at the end of a sequence that are preceded by spaces and immediately followed by a `\w`: "Matt 5 1Hi" → "Matt.5.1". This is better for query parsing.
 * `end_range_digits_strategy: "verse"`
-	* `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
-	* `sequence`: treat them as sequences ("Jer 33-11" → "Jer.33,Jer.11", "Heb 13-15" → "Heb.13").
+  * `verse`: treat "Jer 33-11" as "Jer.33.11" (end before start) and "Heb 13-15" as "Heb.13.15" (end range too high).
+  * `sequence`: treat them as sequences ("Jer 33-11" → "Jer.33,Jer.11", "Heb 13-15" → "Heb.13").
 
 ### Testaments
 * `testaments: "on"`
-	* `o`: include `o` in the value to look for Old Testament books (Genesis to Malachi in the Protestant canon).
-	* `n`: include `n` in the value to look for New Testament books (Matthew to Revelation in the Protestant canon).
-	* `a`: include `a` in the value to look for books in the Apocrypha. Calling `include_apocrypha(true)` simply adds an `a` to this value, while calling `include_apocrypha(false)` removes it. The next values are all combinations of these three primitives.
-	* `on` includes the Old and New Testaments.
-	* `ona` includes the Old and New Testaments and the Apocrypha.
-	* `oa` includes the Old Testament and the Apocrypha.
-	* `na` includes the New Testament and the Apocrypha.
+  * `o`: include `o` in the value to look for Old Testament books (Genesis to Malachi in the Protestant canon).
+  * `n`: include `n` in the value to look for New Testament books (Matthew to Revelation in the Protestant canon).
+  * `a`: include `a` in the value to look for books in the Apocrypha. Calling `include_apocrypha(true)` simply adds an `a` to this value, while calling `include_apocrypha(false)` removes it. The next values are all combinations of these three primitives.
+  * `on` includes the Old and New Testaments.
+  * `ona` includes the Old and New Testaments and the Apocrypha.
+  * `oa` includes the Old Testament and the Apocrypha.
+  * `na` includes the New Testament and the Apocrypha.
 * `ps151_strategy: "c"`
-	* `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" → "Ps.151.1"
-	* `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" → "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" → "Ps.149-Ps.150,Ps151.1". Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
+  * `c`: treat references to Psalm 151 (if using the Apocrypha) as a chapter: "Psalm 151:1" → "Ps.151.1"
+  * `b`: treat references to Psalm 151 (if using the Apocrypha) as a book: "Psalm 151:1" → "Ps151.1.1". Be aware that for ranges starting or ending in Psalm 151, you'll get two OSISes, regardless of the `sequence_combination_strategy`: "Psalms 149-151" → "Ps.149-Ps.150,Ps151.1". Setting this option to `b` is the only way to correctly parse OSISes that treat `Ps151` as a book.
 
 ### Versification
 * `versification_system: "default"`
-	* `default`: the default ESV-style versification. Also used in AMP and NASB.
-	* `ceb`: use CEB versification, which varies mostly in the Apocrypha.
-	* `csb`: use CSB versification, which differs in two New Testament books.
-	* `kjv`: use KJV versification, with one fewer verse in 3John. Also used in NIV and NKJV.
-	* `nab`: use NABRE versification, which generally follows the Septuagint.
-	* `nlt`: use NLT versification, with one extra verse in Rev. Also used in NCV.
-	* `nrsv`: use NRSV versification.
-	* `nrsvue`: use NRSVUE versification.
-	* `vulgate`: use Vulgate numbering for the Psalms.
+  * `default`: the default ESV-style versification. Also used in AMP and NASB.
+  * `ceb`: use CEB versification, which varies mostly in the Apocrypha.
+  * `csb`: use CSB versification, which differs in two New Testament books.
+  * `kjv`: use KJV versification, with one fewer verse in 3John. Also used in NIV and NKJV.
+  * `nab`: use NABRE versification, which generally follows the Septuagint.
+  * `nlt`: use NLT versification, with one extra verse in Rev. Also used in NCV.
+  * `nrsv`: use NRSV versification.
+  * `nrsvue`: use NRSVUE versification.
+  * `vulgate`: use Vulgate numbering for the Psalms.
 
 ### Case Sensitivity
 * `case_sensitive: "none"`
-	* `none`: All matches are case-insensitive.
-	* `books`: Book names are case-sensitive. Everything else is still case-insensitive.
+  * `none`: All matches are case-insensitive.
+  * `books`: Book names are case-sensitive. Everything else is still case-insensitive.
   * `translations`: Translation identifiers (such as "KJV") are case-sensitive. Everything else is still case-insensitive.
   * `books,translations`: Books and translation identifiers are case-sensitive. Everything else (such as the word "verse" if it occurs in the text) is still matched case-insensitively.
 
 ### Warnings
 * `warning_level: "none"`
-	* `none`: Don't use `console.warn`.
-	* `warn`: Send `console.warn` messages when setting an unknown `versification_system` or `punctuation_strategy`, getting unknown `translation_info()`, or redefining an existing translation in `add_translations()`.
+  * `none`: Don't use `console.warn`.
+  * `warn`: Send `console.warn` messages when setting an unknown `versification_system` or `punctuation_strategy`, getting unknown `translation_info()`, or redefining an existing translation in `add_translations()`.
 
 ### Grammar
 You can set `grammar` with the below keys.
@@ -399,26 +401,25 @@ You can set `grammar` with the below keys.
 This object controls runtime behavior of the grammar so that you can override certain patterns with a custom regular expression. For example, maybe you never want to use `.` as a chapter-verse separator because your style requires a `:` instead. Here's how you'd do that:
 
 ```javascript
-bcv.parse("John 3.16").osis(); // "John.3.16"
+bcv.parse("John 3.16").osis(); // John.3.16
 bcv.set_options({
-  "grammar": {
-    "cv_sep_us": /^:/
+  grammar: {
+    cv_sep_us: /^:/
   }
 });
-bcv.parse("John 3.16").osis(); // "John.3,John.16"
+bcv.parse("John 3.16").osis(); // John.3,John.16
 ```
 
-Here the "16" gets parsed as a chapter because `.` is a valid sequence separator. To fully get what you're (probably) looking for, try this:
+Here the "16" gets parsed as a chapter because `.` is a valid sequence separator. To fully get what you're (probably) looking for, try the following. Here the parsing stops after the "3" because "." is no longer a valid character to parse.
 
 ```javascript
-bcv.parse("John 3.16").osis(); // "John.3.16"
 bcv.set_options({
-  "grammar": {
-    "cv_sep_us": /^:/,
-    "sequence_us": /^(?:[,;]|\s*and\s*)+/
+  grammar: {
+    cv_sep_us: /^:/,
+    sequence_us: /^(?:[,;]|\s*and\s*)+/
   }
 });
-bcv.parse("John 3.16").osis(); // "John.3,John.16"
+bcv.parse("John 3.16").osis(); // John.3
 ```
 
 Here are the valid keys for this object:
@@ -596,13 +597,13 @@ This dataset has a few limitations:
 The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can include `Ps151` as part of the Psalms (`Ps.151.1`)—the default—or as its own book (`Ps151.1.1`), depending on the `ps151_strategy` option.
 
 <table>
-	<tr><th>Input</th><th>OSIS</th></tr>
-	<tr><td><code>John</code></td><td><code>John</code> or <code>John.1-John.21</code> or <code>John.1.1-John.21.25</code></td></tr>
-	<tr><td><code>John-Acts</code></td><td><code>John-Acts</code> or <code>John.1-Acts.28</code> or <code>John.1.1-Acts.28.31</code></td></tr>
-	<tr><td><code>John 3</code></td><td><code>John.3</code> or <code>John.3.1-John.3.36</code></td></tr>
-	<tr><td><code>John 3:16</code></td><td><code>John.3.16</code></td></tr>
-	<tr><td><code>John 3:16-17</code></td><td><code>John.3.16-John.3.17</code></td></tr>
-	<tr><td><code>John 3:16-4:1 and 4:2-5a</code></td><td><code>John.3.16-John.4.1,John.4.2-John.4.5</code></td></tr>
+  <tr><th>Input</th><th>OSIS</th></tr>
+  <tr><td><code>John</code></td><td><code>John</code> or <code>John.1-John.21</code> or <code>John.1.1-John.21.25</code></td></tr>
+  <tr><td><code>John-Acts</code></td><td><code>John-Acts</code> or <code>John.1-Acts.28</code> or <code>John.1.1-Acts.28.31</code></td></tr>
+  <tr><td><code>John 3</code></td><td><code>John.3</code> or <code>John.3.1-John.3.36</code></td></tr>
+  <tr><td><code>John 3:16</code></td><td><code>John.3.16</code></td></tr>
+  <tr><td><code>John 3:16-17</code></td><td><code>John.3.16-John.3.17</code></td></tr>
+  <tr><td><code>John 3:16-4:1 and 4:2-5a</code></td><td><code>John.3.16-John.4.1,John.4.2-John.4.5</code></td></tr>
 </table>
 
 ## Program Flow
@@ -686,57 +687,57 @@ Each file in `esm/lang` provides support for additional languages.
 Most of these languages are in [Google Translate](https://translate.google.com/). 
 
 <table>
-	<tr><th>Prefix</th><th>Language</th>
-	<tr><td>ar</td><td>Arabic</td></tr>
-	<tr><td>bg</td><td>Bulgarian</td></tr>
-	<tr><td>ceb</td><td>Cebuano</td></tr>
-	<tr><td>cs</td><td>Czech</td></tr>
-	<tr><td>cy</td><td>Welsh</td></tr>
-	<tr><td>da</td><td>Danish</td></tr>
-	<tr><td>de</td><td>German</td></tr>
-	<tr><td>el</td><td>Greek (mostly ancient)</td></tr>
-	<tr><td>en</td><td>English</td></tr>
-	<tr><td>es</td><td>Spanish</td></tr>
-	<tr><td>fa</td><td>Farsi</td></tr>
-	<tr><td>fi</td><td>Finnish</td></tr>
-	<tr><td>fr</td><td>French</td></tr>
-	<tr><td>he</td><td>Hebrew</td></tr>
-	<tr><td>hi</td><td>Hindi</td></tr>
-	<tr><td>hr</td><td>Croatian</td></tr>
-	<tr><td>ht</td><td>Haitian Creole</td></tr>
-	<tr><td>hu</td><td>Hungarian</td></tr>
-	<tr><td>id</td><td>Indonesian</td></tr>
-	<tr><td>is</td><td>Icelandic</td></tr>
-	<tr><td>it</td><td>Italian</td></tr>
-	<tr><td>ja</td><td>Japanese</td></tr>
-	<tr><td>jv</td><td>Javanese</td></tr>
-	<tr><td>ko</td><td>Korean</td></tr>
-	<tr><td>la</td><td>Latin</td></tr>
-	<tr><td>mk</td><td>Macedonian</td></tr>
-	<tr><td>mr</td><td>Marathi</td></tr>
-	<tr><td>ne</td><td>Nepali</td></tr>
-	<tr><td>nl</td><td>Dutch</td></tr>
-	<tr><td>no</td><td>Norwegian</td></tr>
-	<tr><td>or</td><td>Oriya</td></tr>
-	<tr><td>pa</td><td>Punjabi</td></tr>
-	<tr><td>pl</td><td>Polish</td></tr>
-	<tr><td>pt</td><td>Portuguese</td></tr>
-	<tr><td>ro</td><td>Romanian</td></tr>
-	<tr><td>ru</td><td>Russian</td></tr>
-	<tr><td>sk</td><td>Slovak</td></tr>
-	<tr><td>so</td><td>Somali</td></tr>
-	<tr><td>sq</td><td>Albanian</td></tr>
-	<tr><td>sr</td><td>Serbian</td></tr>
-	<tr><td>sv</td><td>Swedish</td></tr>
-	<tr><td>sw</td><td>Swahili</td></tr>
-	<tr><td>ta</td><td>Tamil</td></tr>
-	<tr><td>th</td><td>Thai</td></tr>
-	<tr><td>tl</td><td>Tagalog</td></tr>
-	<tr><td>tr</td><td>Turkish</td></tr>
-	<tr><td>uk</td><td>Ukrainian</td></tr>
-	<tr><td>ur</td><td>Urdu</td></tr>
-	<tr><td>vi</td><td>Vietnamese</td></tr>
-	<tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
+  <tr><th>Prefix</th><th>Language</th>
+  <tr><td>ar</td><td>Arabic</td></tr>
+  <tr><td>bg</td><td>Bulgarian</td></tr>
+  <tr><td>ceb</td><td>Cebuano</td></tr>
+  <tr><td>cs</td><td>Czech</td></tr>
+  <tr><td>cy</td><td>Welsh</td></tr>
+  <tr><td>da</td><td>Danish</td></tr>
+  <tr><td>de</td><td>German</td></tr>
+  <tr><td>el</td><td>Greek (mostly ancient)</td></tr>
+  <tr><td>en</td><td>English</td></tr>
+  <tr><td>es</td><td>Spanish</td></tr>
+  <tr><td>fa</td><td>Farsi</td></tr>
+  <tr><td>fi</td><td>Finnish</td></tr>
+  <tr><td>fr</td><td>French</td></tr>
+  <tr><td>he</td><td>Hebrew</td></tr>
+  <tr><td>hi</td><td>Hindi</td></tr>
+  <tr><td>hr</td><td>Croatian</td></tr>
+  <tr><td>ht</td><td>Haitian Creole</td></tr>
+  <tr><td>hu</td><td>Hungarian</td></tr>
+  <tr><td>id</td><td>Indonesian</td></tr>
+  <tr><td>is</td><td>Icelandic</td></tr>
+  <tr><td>it</td><td>Italian</td></tr>
+  <tr><td>ja</td><td>Japanese</td></tr>
+  <tr><td>jv</td><td>Javanese</td></tr>
+  <tr><td>ko</td><td>Korean</td></tr>
+  <tr><td>la</td><td>Latin</td></tr>
+  <tr><td>mk</td><td>Macedonian</td></tr>
+  <tr><td>mr</td><td>Marathi</td></tr>
+  <tr><td>ne</td><td>Nepali</td></tr>
+  <tr><td>nl</td><td>Dutch</td></tr>
+  <tr><td>no</td><td>Norwegian</td></tr>
+  <tr><td>or</td><td>Oriya</td></tr>
+  <tr><td>pa</td><td>Punjabi</td></tr>
+  <tr><td>pl</td><td>Polish</td></tr>
+  <tr><td>pt</td><td>Portuguese</td></tr>
+  <tr><td>ro</td><td>Romanian</td></tr>
+  <tr><td>ru</td><td>Russian</td></tr>
+  <tr><td>sk</td><td>Slovak</td></tr>
+  <tr><td>so</td><td>Somali</td></tr>
+  <tr><td>sq</td><td>Albanian</td></tr>
+  <tr><td>sr</td><td>Serbian</td></tr>
+  <tr><td>sv</td><td>Swedish</td></tr>
+  <tr><td>sw</td><td>Swahili</td></tr>
+  <tr><td>ta</td><td>Tamil</td></tr>
+  <tr><td>th</td><td>Thai</td></tr>
+  <tr><td>tl</td><td>Tagalog</td></tr>
+  <tr><td>tr</td><td>Turkish</td></tr>
+  <tr><td>uk</td><td>Ukrainian</td></tr>
+  <tr><td>ur</td><td>Urdu</td></tr>
+  <tr><td>vi</td><td>Vietnamese</td></tr>
+  <tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
 </table>
 
 When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `replace`.
@@ -794,25 +795,25 @@ Points to know:
 
 1. Lines that start with `#` are comments.
 2. Lines that start with `$` are variables.
-	1. `$FIRST`, `$SECOND`, `$THIRD`, and `$FOURTH` are helpful for reducing redundancy in book names. For example, if you define `1` and `I` as values for `$FIRST`, then you can just write `$FIRST Samuel` and `$FIRST Corinthians` instead of repeating yourself for each book.
-	2. $GOSPEL is helpful to reduce verbosity for names like "The Gospel according to Matthew".
-	3. `$AB` is used by the parser to determine partial verses (like "Genesis 1:1a"). You probably want to avoid overlap with `$FF`. It's required.
-	4. `$AND` is used by the parser for sequences. For example, in English, you'd define `and` here, while in Spanish, you'd define `y`. It's also useful for common expressions like `see also`. If you don't have a value for this, you can just use `&`. It's required.
-	5. `$CHAPTER` is used by the parser to explicitly indicate chapters: `Genesis 1:1, 5` vs. `Genesis 1:1, chapter 5`. If you don't have a value for this, I'd just use the English `chapter`. It's required.
-	6. `$FF` is used by the parser to indicate "and following", which it interprets as "to the end of the chapter" or "to the end of the book," depending on context. An exclamation mark (`!`) negates the following character or character class. `f![a-z]`) means an "f" not followed by the characters `a-z`. This syntax is passed onto the Peggy parser. If you don't have a value for this, I'd use the English `ff`. It's required.
-	7. `$NEXT` is used in languages where one pattern indicates the immediate next verse (or chapter). In Polish, for example the `n![n]` pattern indicates a single `n`, not followed by another `n`; the `nn` is used for `$FF` to indicate an unknown number of following verses. It's optional.
-	8. `$TITLE` is used by the parser for psalm titles (like `Psalm 3 title`). It's required.
-	9. `$TRANS` defines custom translation names for your language. Each value has up to three components, separated by commas. Let's break down the (fictional) definition `NAS,NASB,kjv`. The `NAS` means to track `NAS` in what you're parsing, and to treat it as a known translation. The `NASB` means that when you get the value back to your script from the parser, you'll receive `NASB` instead of `NAS`. The `kjv` means to use the KJV versification system for this translation rather than the default. Often you'll omit parts: `NAS,,kjv` and `NAS,NASB` (this last one is the actual definition) both work. You should specify at least one translation for your language.
-	10. `$TO` is used by the parser to identify ranges. Typically you want to use words here, but you can also use characters. If you don't have a value, I recommend using `-` (which treats the hyphen as a range). It's required.
-	11. `$VERSE` is used by the parser to identify the words for `verse`. For example, `Philemon verse 2`. It's required.
-	12. `$COLLAPSE_COMBINING_CHARACTERS` is used by the language generator to determine whether to unbundle accents. For example, `á` gets separated out into `[áa]`. If you don't want this behavior for your language, set this value to `false`. You can also handle this scenario on a case-by-case basis using backticks, as described below.
-	13. `$PRE_BOOK_ALLOWED_CHARACTERS` is used by the language generator to identify allowed characters before books. See `zh` for an example (`[^\x1f]`, which means anything except another book character). In general, you don't need to set this variable.
-	14. `$UNICODE_BLOCK` is used by the language generator to identify appropriate boundary characters. It's required. If you're not sure, I recommend setting it to `Latin`.
+  1. `$FIRST`, `$SECOND`, `$THIRD`, and `$FOURTH` are helpful for reducing redundancy in book names. For example, if you define `1` and `I` as values for `$FIRST`, then you can just write `$FIRST Samuel` and `$FIRST Corinthians` instead of repeating yourself for each book.
+  2. $GOSPEL is helpful to reduce verbosity for names like "The Gospel according to Matthew".
+  3. `$AB` is used by the parser to determine partial verses (like "Genesis 1:1a"). You probably want to avoid overlap with `$FF`. It's required.
+  4. `$AND` is used by the parser for sequences. For example, in English, you'd define `and` here, while in Spanish, you'd define `y`. It's also useful for common expressions like `see also`. If you don't have a value for this, you can just use `&`. It's required.
+  5. `$CHAPTER` is used by the parser to explicitly indicate chapters: `Genesis 1:1, 5` vs. `Genesis 1:1, chapter 5`. If you don't have a value for this, I'd just use the English `chapter`. It's required.
+  6. `$FF` is used by the parser to indicate "and following", which it interprets as "to the end of the chapter" or "to the end of the book," depending on context. An exclamation mark (`!`) negates the following character or character class. `f![a-z]`) means an "f" not followed by the characters `a-z`. This syntax is passed onto the Peggy parser. If you don't have a value for this, I'd use the English `ff`. It's required.
+  7. `$NEXT` is used in languages where one pattern indicates the immediate next verse (or chapter). In Polish, for example the `n![n]` pattern indicates a single `n`, not followed by another `n`; the `nn` is used for `$FF` to indicate an unknown number of following verses. It's optional.
+  8. `$TITLE` is used by the parser for psalm titles (like `Psalm 3 title`). It's required.
+  9. `$TRANS` defines custom translation names for your language. Each value has up to three components, separated by commas. Let's break down the (fictional) definition `NAS,NASB,kjv`. The `NAS` means to track `NAS` in what you're parsing, and to treat it as a known translation. The `NASB` means that when you get the value back to your script from the parser, you'll receive `NASB` instead of `NAS`. The `kjv` means to use the KJV versification system for this translation rather than the default. Often you'll omit parts: `NAS,,kjv` and `NAS,NASB` (this last one is the actual definition) both work. You should specify at least one translation for your language.
+  10. `$TO` is used by the parser to identify ranges. Typically you want to use words here, but you can also use characters. If you don't have a value, I recommend using `-` (which treats the hyphen as a range). It's required.
+  11. `$VERSE` is used by the parser to identify the words for `verse`. For example, `Philemon verse 2`. It's required.
+  12. `$COLLAPSE_COMBINING_CHARACTERS` is used by the language generator to determine whether to unbundle accents. For example, `á` gets separated out into `[áa]`. If you don't want this behavior for your language, set this value to `false`. You can also handle this scenario on a case-by-case basis using backticks, as described below.
+  13. `$PRE_BOOK_ALLOWED_CHARACTERS` is used by the language generator to identify allowed characters before books. See `zh` for an example (`[^\x1f]`, which means anything except another book character). In general, you don't need to set this variable.
+  14. `$UNICODE_BLOCK` is used by the language generator to identify appropriate boundary characters. It's required. If you're not sure, I recommend setting it to `Latin`.
 3. Lines that start with an OSIS book name are a tab-separated series of regular expression subsets.
-	1. A backtick (`\``) following an accented character means not to allow the unaccented version of that character.
-	2. A `?` makes the preceding character optional.
-	3. A character class works like a simple RegExp character class: `[az]` means the characters `a` and `z` are allowed. Character ranges probably don't work.
-	2. You can use the variables you defined earlier in the file in definitions. If you'd like the build process to create tests for book ranges like `1-3 John`, then be sure to define `$FIRST`, `$SECOND`, and `$THIRD` as variables in at least one definition for `1John`, `2John`, and `3John`.
+  1. A backtick (`\``) following an accented character means not to allow the unaccented version of that character.
+  2. A `?` makes the preceding character optional.
+  3. A character class works like a simple RegExp character class: `[az]` means the characters `a` and `z` are allowed. Character ranges probably don't work.
+  2. You can use the variables you defined earlier in the file in definitions. If you'd like the build process to create tests for book ranges like `1-3 John`, then be sure to define `$FIRST`, `$SECOND`, and `$THIRD` as variables in at least one definition for `1John`, `2John`, and `3John`.
 4. Lines that start with `=` are the order in which to check the regular expressions for books (check for `3 John` before `John`, for example, so that the string `3 John 2` doesn't get parsed as `John 2`).
 5. Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application). The third column represents a still-shorter form, and the fourth column represents the form to use when a single Psalm is being looked at. In English, we'd say "Psalms 1-2" but "Psalm 1."
 
@@ -857,6 +858,8 @@ Here are improvements I have in mind for this parser.
 3. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
 
 ## Changelog
+
+July 29, 2025 (3.1.0-beta). Allowed `bp` and `bcp` for `osis_compaction_strategy` so that you can work at the level of precision that's right for your application. Fixed a bug in `grammar` options that wouldn't always respect `c_sep` values.
 
 July 27, 2025 (3.1.0-alpha). Added `bcvp` as an `osis_compaction_strategy` to allow parsing output for "John 3:17a" to be structured as "John.3.17!a", following the OSIS spec. (Thanks to [hennessyevan](https://github.com/hennessyevan) for the suggestion.) Added a runtime `grammar` key in `options` to override language-specific parsing features. (Thanks to [renehamburger](https://github.com/renehamburger) for the suggestion.) Added `translations`and `books,translations` as values for `case_sensitive`. Updated dev dependencies to their latest versions.
 

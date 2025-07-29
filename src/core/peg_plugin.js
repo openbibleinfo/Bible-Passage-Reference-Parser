@@ -4,7 +4,7 @@
 const function_matches = {
 	"ab": "ab",
 	"c_explicit_value": "c_explicit",
-	"c_sep": "c_sep",
+	"c_sep_value": "c_sep",
 	"cv_sep": "cv_sep",
 	"cv_sep_weak": "cv_sep_weak",
 	"ff_value": "ff",

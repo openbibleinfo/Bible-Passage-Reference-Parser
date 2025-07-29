@@ -871,7 +871,7 @@ var bcv_translations = class {
 
 // build/bcv_grammar_options.ts
 var bcv_grammar_options_default = {
-  ab: /^[a-e](?!\p{L})/iu,
+  ab: /^(?:[a-e])(?!\p{L})/iu,
   and: /^(?:மற்றும்|&)/i,
   c_explicit: /^[\s*]*(?:அதிகாரம்|அதி)[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
@@ -879,16 +879,16 @@ var bcv_grammar_options_default = {
   cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/i,
   cv_sep_eu: /^[\s*]*,+[\s*]*/i,
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
-  ff: /^[\s*]*ff(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
+  ff: /^[\s*]*(?:ff)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
-  next: /^\x1f\x1f\x1f/i,
+  next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
   range: /^[\s*]*(?:[\-–—]|to)+[\s*]*/i,
   sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|மற்றும்)+/i,
   sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|மற்றும்)+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*title(?!\p{L})[\s*]*/iu,
-  v_explicit: /^[\s*]*verse[\s*]*(?!\p{L})/iu
+  title: /^[\s*]*(?:title)(?!\p{L})[\s*]*/iu,
+  v_explicit: /^[\s*]*(?:verse)[\s*]*(?!\p{L})/iu
 };
 
 // build/lang_bundle.ts

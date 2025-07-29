@@ -6,11 +6,14 @@ export interface BCVParserOptions {
 	*/
 	consecutive_combination_strategy: "combine" | "separate";
 	/*
-	* `b`: OSIS refs get reduced to the shortest possible. "Gen.1.1-Gen.50.26" and "Gen.1-Gen.50" -> "Gen", while "Gen.1.1-Gen.2.25" -> "Gen.1-Gen.2".
-	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" -> "Gen.1-Gen.50".
-	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" -> "Gen.1.1-Gen.1.31".
+	* `b`: OSIS refs get reduced to the shortest possible. "Gen.1.1-Gen.50.26" and "Gen.1-Gen.50" → "Gen", while "Gen.1.1-Gen.2.25" → "Gen.1-Gen.2".
+	* `bp`: Same as `b` but preserves partial verses when they appear. "Genesis 1:1a-50:26" parses as "Gen.1.1!a-Gen.50.26", while "Genesis 1:1-50:26" still parses as "Gen".
+	* `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" → "Gen.1-Gen.50".
+	* `bcp`: Same as `bc` but preserves partial verses when they appear. "Genesis 1:1a-50:26" parses as "Gen.1.1!a-Gen.50.26", while "Genesis 1:1-50:25" still parses as "Gen.1-Gen.50".
+	* `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" → "Gen.1.1-Gen.1.31".
+	* `bcvp`: Same as `bc` but preserves partial verses when they appear. "Gen 1:1a" parses as "Gen.1.1!a", while "Genesis 1:1" still parses as "Gen.1.1". In all these `p` cases, the "partial" indicator is returned exactly as it appears in the text, so non-Latin languages may have non-Latin characters after the `!` character in the OSIS ref.
 	*/
-	osis_compaction_strategy: "b" | "bc" | "bcv" | "bcvp";
+	osis_compaction_strategy: "b" | "bp" | "bc" | "bcp" | "bcv" | "bcvp";
 	// ### Sequence
 	/*
 	* `ignore`: ignore any books on their own in sequences ("Gen Is 1" -> "Isa.1").
@@ -354,6 +357,7 @@ type OsisEntityInterface = {
 	type?: string;
 }
 
+// Remember to include `explicit_context`: "c" as a possible key.
 type PassageEntityInterface = any;
 
 interface IndicesInterface {
