@@ -26,7 +26,6 @@ mv ../src/$1/translations.ts ./build/bcv_translations.ts
 mv ../src/$1/grammar_options.ts ./build/bcv_grammar_options.ts
 mv ../src/$1/spec.js ../test/lang/$1.spec.js
 
-
 # Create the ES build files.
 npx esbuild ./build/bcv_parser.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../esm/bcv_parser.js
 npx esbuild ./build/lang_bundle.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../esm/lang/$1.js

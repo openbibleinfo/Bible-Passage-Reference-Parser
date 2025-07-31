@@ -201,8 +201,10 @@ private add_new_translations_regexp(texts_for_regexp: string[], new_translations
 	const insert_at = (new_translations.insert_at === "end") ? "end" : "start";
 	const pre_regexp = (new_translations?.pre_regexp instanceof RegExp) ? new_translations?.pre_regexp : {source: ""}; // Make a pretend empty RegExp; otherwise, it's `(?:)`.
 	const post_regexp = (new_translations?.post_regexp instanceof RegExp) ? new_translations?.post_regexp : /(?![\p{L}\p{N}])/u;
+	// Match the `case_sensitive` option.
+	const flags = (this.parent.options.case_sensitive.includes("translations")) ? "g" : "gi";
 	// RegExp.escape() would be better here, but it's not supported in ES2022. Prevent any RegExp-specific characters (with parentheses the most likely) from breaking the RegExp.
-	const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, "gi");
+	const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, flags);
 	if (insert_at === "start") {
 		this.parent.regexps.translations.unshift(regexp);
 	} else {

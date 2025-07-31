@@ -336,7 +336,7 @@ private parse_entity_passages(entity: EntityCollection, entity_id: number, trans
 	return osises;
 }
 
-// Takes OSIS objects and converts them to OSIS strings based on compaction preferences.
+// Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It maniplates the original `start` and `end` objects.
 private to_osis(start: StartEndInterface, end: StartEndInterface, translation: string): string {
 	// If it's just a book on its own, how we deal with it depends on whether we want to return just the first chapter or the complete book.
 	if (
@@ -451,6 +451,7 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 		// Otherwise return a range.
 		out = osis.start + "-" + osis.end;
 	}
+	// `extra` appears in some Ps151 range cases.
 	if (start.extra) {
 		out = start.extra + "," + out;
 	}

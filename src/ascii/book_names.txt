@@ -17867,12 +17867,12 @@ Phil	Fili
 Phil	Phil
 Phil	Phlp
 Phil	Pilp
-Phil	Fil
 Phil	Flp
 Phil	Phi
 Phil	Php
 Phil	Fl
 Phil	Fp
+Phil,Phlm	Fil
 Phil,Phlm	Phl
 Phil,Phlm	Ph
 Phlm	Poslannja apostola Pavla do Fylymona

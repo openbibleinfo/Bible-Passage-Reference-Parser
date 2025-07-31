@@ -334,32 +334,44 @@ describe("Translation case-sensitivity", () => {
 	beforeEach(() => {
 		p = new bcv_parser(lang);
 	});
-	it("should handle case-sensitivity", () => {
+	it("should handle the default case", () => {
 		expect(p.parse("Hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("Hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
+	});
+	it("should handle `translations`", () => {
 		p.set_options({"case_sensitive": "translations"});
+		p.add_translations({ translations: [{text: "T1"}]});
+		expect(p.parse("Hosea 6 T1").osis_and_translations()).toEqual([["Hos.6", "T1"]]);
+		expect(p.parse("Hosea 6 t1").osis_and_translations()).toEqual([["Hos.6", ""]]);
 		expect(p.parse("Hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("Hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", ""]]);
 		expect(p.parse("hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", ""]]);
+	});
+	it("should handle `books`", () => {
 		p.set_options({"case_sensitive": "books"});
+		p.add_translations({ translations: [{text: "T1"}]});
+		expect(p.parse("Hosea 6 T1").osis_and_translations()).toEqual([["Hos.6", "T1"]]);
+		expect(p.parse("Hosea 6 t1").osis_and_translations()).toEqual([["Hos.6", "T1"]]);
 		expect(p.parse("Hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("Hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("hosea 6 ESV").osis_and_translations()).toEqual([]);
 		expect(p.parse("hosea 6 esv").osis_and_translations()).toEqual([]);
+	});
+	it("should handle `books,translations`", () => {
 		p.set_options({"case_sensitive": "books,translations"});
+		p.add_translations({ translations: [{text: "T1"}]});
+		expect(p.parse("Hosea 6 T1").osis_and_translations()).toEqual([["Hos.6", "T1"]]);
+		expect(p.parse("Hosea 6 t1").osis_and_translations()).toEqual([["Hos.6", ""]]);
 		expect(p.parse("Hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
 		expect(p.parse("Hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", ""]]);
 		expect(p.parse("hosea 6 ESV").osis_and_translations()).toEqual([]);
 		expect(p.parse("hosea 6 esv").osis_and_translations()).toEqual([]);
 		// Should keep the last value.
 		p.set_options({"case_sensitive": "unknown"});
-		expect(p.parse("Hosea 6 ESV").osis_and_translations()).toEqual([["Hos.6", "ESV"]]);
-		expect(p.parse("Hosea 6 esv").osis_and_translations()).toEqual([["Hos.6", ""]]);
-		expect(p.parse("hosea 6 ESV").osis_and_translations()).toEqual([]);
-		expect(p.parse("hosea 6 esv").osis_and_translations()).toEqual([]);
+		expect(p.options.case_sensitive).toEqual("books,translations");
 	});
 });
 

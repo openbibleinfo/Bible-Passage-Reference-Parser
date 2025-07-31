@@ -387,8 +387,8 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
 * `case_sensitive: "none"`
   * `none`: All matches are case-insensitive.
   * `books`: Book names are case-sensitive. Everything else is still case-insensitive.
-  * `translations`: Translation identifiers (such as "KJV") are case-sensitive. Everything else is still case-insensitive.
-  * `books,translations`: Books and translation identifiers are case-sensitive. Everything else (such as the word "verse" if it occurs in the text) is still matched case-insensitively.
+  * `translations`: Translation identifiers (such as "KJV") are case-sensitive.
+  * `books,translations`: Book names and translation identifiers are case-sensitive. Everything else (such as the word "verse" if it occurs in the text) is still matched case-insensitively.
 
 ### Warnings
 * `warning_level: "none"`
@@ -603,7 +603,7 @@ The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can inclu
   <tr><td><code>John 3</code></td><td><code>John.3</code> or <code>John.3.1-John.3.36</code></td></tr>
   <tr><td><code>John 3:16</code></td><td><code>John.3.16</code></td></tr>
   <tr><td><code>John 3:16-17</code></td><td><code>John.3.16-John.3.17</code></td></tr>
-  <tr><td><code>John 3:16-4:1 and 4:2-5a</code></td><td><code>John.3.16-John.4.1,John.4.2-John.4.5</code></td></tr>
+  <tr><td><code>John 3:16-4:1 and 4:2-5a</code></td><td><code>John.3.16-John.4.1,John.4.2-John.4.5!a</code></td></tr>
 </table>
 
 ## Program Flow
@@ -795,25 +795,25 @@ Points to know:
 
 1. Lines that start with `#` are comments.
 2. Lines that start with `$` are variables.
-  1. `$FIRST`, `$SECOND`, `$THIRD`, and `$FOURTH` are helpful for reducing redundancy in book names. For example, if you define `1` and `I` as values for `$FIRST`, then you can just write `$FIRST Samuel` and `$FIRST Corinthians` instead of repeating yourself for each book.
-  2. $GOSPEL is helpful to reduce verbosity for names like "The Gospel according to Matthew".
-  3. `$AB` is used by the parser to determine partial verses (like "Genesis 1:1a"). You probably want to avoid overlap with `$FF`. It's required.
-  4. `$AND` is used by the parser for sequences. For example, in English, you'd define `and` here, while in Spanish, you'd define `y`. It's also useful for common expressions like `see also`. If you don't have a value for this, you can just use `&`. It's required.
-  5. `$CHAPTER` is used by the parser to explicitly indicate chapters: `Genesis 1:1, 5` vs. `Genesis 1:1, chapter 5`. If you don't have a value for this, I'd just use the English `chapter`. It's required.
-  6. `$FF` is used by the parser to indicate "and following", which it interprets as "to the end of the chapter" or "to the end of the book," depending on context. An exclamation mark (`!`) negates the following character or character class. `f![a-z]`) means an "f" not followed by the characters `a-z`. This syntax is passed onto the Peggy parser. If you don't have a value for this, I'd use the English `ff`. It's required.
-  7. `$NEXT` is used in languages where one pattern indicates the immediate next verse (or chapter). In Polish, for example the `n![n]` pattern indicates a single `n`, not followed by another `n`; the `nn` is used for `$FF` to indicate an unknown number of following verses. It's optional.
-  8. `$TITLE` is used by the parser for psalm titles (like `Psalm 3 title`). It's required.
-  9. `$TRANS` defines custom translation names for your language. Each value has up to three components, separated by commas. Let's break down the (fictional) definition `NAS,NASB,kjv`. The `NAS` means to track `NAS` in what you're parsing, and to treat it as a known translation. The `NASB` means that when you get the value back to your script from the parser, you'll receive `NASB` instead of `NAS`. The `kjv` means to use the KJV versification system for this translation rather than the default. Often you'll omit parts: `NAS,,kjv` and `NAS,NASB` (this last one is the actual definition) both work. You should specify at least one translation for your language.
-  10. `$TO` is used by the parser to identify ranges. Typically you want to use words here, but you can also use characters. If you don't have a value, I recommend using `-` (which treats the hyphen as a range). It's required.
-  11. `$VERSE` is used by the parser to identify the words for `verse`. For example, `Philemon verse 2`. It's required.
-  12. `$COLLAPSE_COMBINING_CHARACTERS` is used by the language generator to determine whether to unbundle accents. For example, `á` gets separated out into `[áa]`. If you don't want this behavior for your language, set this value to `false`. You can also handle this scenario on a case-by-case basis using backticks, as described below.
-  13. `$PRE_BOOK_ALLOWED_CHARACTERS` is used by the language generator to identify allowed characters before books. See `zh` for an example (`[^\x1f]`, which means anything except another book character). In general, you don't need to set this variable.
-  14. `$UNICODE_BLOCK` is used by the language generator to identify appropriate boundary characters. It's required. If you're not sure, I recommend setting it to `Latin`.
+    1. `$FIRST`, `$SECOND`, `$THIRD`, and `$FOURTH` are helpful for reducing redundancy in book names. For example, if you define `1` and `I` as values for `$FIRST`, then you can just write `$FIRST Samuel` and `$FIRST Corinthians` instead of repeating yourself for each book.
+    2. `$GOSPEL` is helpful to reduce verbosity for names like "The Gospel according to Matthew".
+    3. `$AB` is used by the parser to determine partial verses (like "Genesis 1:1a"). You probably want to avoid overlap with `$FF`. It's required.
+    4. `$AND` is used by the parser for sequences. For example, in English, you'd define `and` here, while in Spanish, you'd define `y`. It's also useful for common expressions like `see also`. If you don't have a value for this, you can just use `&`. It's required.
+    5. `$CHAPTER` is used by the parser to explicitly indicate chapters: `Genesis 1:1, 5` vs. `Genesis 1:1, chapter 5`. If you don't have a value for this, I'd just use the English `chapter`. It's required.
+    6. `$FF` is used by the parser to indicate "and following", which it interprets as "to the end of the chapter" or "to the end of the book," depending on context. An exclamation mark (`!`) negates the following character or character class. `f![a-z]`) means an "f" not followed by the characters `a-z`. This syntax is passed onto the Peggy parser. If you don't have a value for this, I'd use the English `ff`. It's required.
+    7. `$NEXT` is used in languages where one pattern indicates the immediate next verse (or chapter). In Polish, for example the `n![n]` pattern indicates a single `n`, not followed by another `n`; the `nn` is used for `$FF` to indicate an unknown number of following verses. It's optional.
+    8. `$TITLE` is used by the parser for psalm titles (like `Psalm 3 title`). It's required.
+    9. `$TRANS` defines custom translation names for your language. Each value has up to three components, separated by commas. Let's break down the (fictional) definition `NAS,NASB,kjv`. The `NAS` means to track `NAS` in what you're parsing, and to treat it as a known translation. The `NASB` means that when you get the value back to your script from the parser, you'll receive `NASB` instead of `NAS`. The `kjv` means to use the KJV versification system for this translation rather than the default. Often you'll omit parts: `NAS,,kjv` and `NAS,NASB` (this last one is the actual definition) both work. You should specify at least one translation for your language.
+    10. `$TO` is used by the parser to identify ranges. Typically you want to use words here, but you can also use characters. If you don't have a value, I recommend using `-` (which treats the hyphen as a range). It's required.
+    11. `$VERSE` is used by the parser to identify the words for `verse`. For example, `Philemon verse 2`. It's required.
+    12. `$COLLAPSE_COMBINING_CHARACTERS` is used by the language generator to determine whether to unbundle accents. For example, `á` gets separated out into `[áa]`. If you don't want this behavior for your language, set this value to `false`. You can also handle this scenario on a case-by-case basis using backticks, as described below.
+    13. `$PRE_BOOK_ALLOWED_CHARACTERS` is used by the language generator to identify allowed characters before books. See `zh` for an example (`[^\x1f]`, which means anything except another book character). In general, you don't need to set this variable.
+    14. `$UNICODE_BLOCK` is used by the language generator to identify appropriate boundary characters. It's required. If you're not sure, I recommend setting it to `Latin`.
 3. Lines that start with an OSIS book name are a tab-separated series of regular expression subsets.
-  1. A backtick (`\``) following an accented character means not to allow the unaccented version of that character.
-  2. A `?` makes the preceding character optional.
-  3. A character class works like a simple RegExp character class: `[az]` means the characters `a` and `z` are allowed. Character ranges probably don't work.
-  2. You can use the variables you defined earlier in the file in definitions. If you'd like the build process to create tests for book ranges like `1-3 John`, then be sure to define `$FIRST`, `$SECOND`, and `$THIRD` as variables in at least one definition for `1John`, `2John`, and `3John`.
+    1. A backtick (`\``) following an accented character means not to allow the unaccented version of that character.
+    2. A `?` makes the preceding character optional.
+    3. A character class works like a simple RegExp character class: `[az]` means the characters `a` and `z` are allowed. Character ranges probably don't work.
+    2. You can use the variables you defined earlier in the file in definitions. If you'd like the build process to create tests for book ranges like `1-3 John`, then be sure to define `$FIRST`, `$SECOND`, and `$THIRD` as variables in at least one definition for `1John`, `2John`, and `3John`.
 4. Lines that start with `=` are the order in which to check the regular expressions for books (check for `3 John` before `John`, for example, so that the string `3 John 2` doesn't get parsed as `John 2`).
 5. Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application). The third column represents a still-shorter form, and the fourth column represents the form to use when a single Psalm is being looked at. In English, we'd say "Psalms 1-2" but "Psalm 1."
 
@@ -854,16 +854,18 @@ The code in this project is licensed under the standard MIT License.
 Here are improvements I have in mind for this parser.
 
 1. Change the build process to be less finicky. The Perl is brittle and hard to debug. I'd like to remove nearly all the compile-time logic. Target release: 4.0.0 (January 2026).
-2. Move language-definition files to a new repo to decouple the core parser logic from the language data, now that (as of 3.0.0) each language no longer requires its own grammar. This change will also allow adding significantly more languages but will require using ES Modules to take advantage of them. Existing language support will remain in the current repo so that there are no new dependencies for existing languages, but all the raw language data will likely move elsewhere. Target release: 4.0.0.
+2. Move language-definition files to a new repo to decouple the core parser logic from the language data, now that (as of 3.1.0) each language no longer requires its own grammar. This change will also allow adding significantly more languages but will require using ES Modules to take advantage of them, so the CommonJS interface will likely be deprecated in 4.0.0 (though current files will remain for backwards compatibility). Existing language support will stay in the current repo so that there are no new dependencies for existing languages, but all the raw language data will likely move elsewhere. Target release: 4.0.0.
 3. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
 
 ## Changelog
 
-July 29, 2025 (3.1.0-beta). Allowed `bp` and `bcp` for `osis_compaction_strategy` so that you can work at the level of precision that's right for your application. Fixed a bug in `grammar` options that wouldn't always respect `c_sep` values.
+July 31, 2025 (3.1.0). Full release on Github and npm. Ensured `add_translations()` reflects the current `case_sensitive` option.
 
-July 27, 2025 (3.1.0-alpha). Added `bcvp` as an `osis_compaction_strategy` to allow parsing output for "John 3:17a" to be structured as "John.3.17!a", following the OSIS spec. (Thanks to [hennessyevan](https://github.com/hennessyevan) for the suggestion.) Added a runtime `grammar` key in `options` to override language-specific parsing features. (Thanks to [renehamburger](https://github.com/renehamburger) for the suggestion.) Added `translations`and `books,translations` as values for `case_sensitive`. Updated dev dependencies to their latest versions.
+July 29, 2025 (3.1.0-beta). Added `bp` and `bcp` for `osis_compaction_strategy` so that you can work at the level of precision that's right for your application. Fixed a bug in `grammar` options that wouldn't always respect `c_sep` values.
 
-January 11, 2025 (3.0.0). Full release here and on npm.
+July 27, 2025 (3.1.0-alpha). A single peggy grammar now works for all languages, significantly reducing duplicate code. (Consequently, individual languages now export a `grammar_options` variable instead of a `grammar` variable, though that's an implementation detail you shouldn't need to care about.) Added `bcvp` as an `osis_compaction_strategy` to allow parsing output for "John 3:17a" to be structured as "John.3.17!a", following the OSIS spec. (Thanks to [hennessyevan](https://github.com/hennessyevan) for the suggestion.) Added a runtime `grammar` key in `options` to override language-specific parsing features. (Thanks to [renehamburger](https://github.com/renehamburger) for the suggestion.) Added `translations` and `books,translations` as values for `case_sensitive`. Updated dev dependencies to their latest versions.
+
+January 11, 2025 (3.0.0). Full release on Github and npm.
 
 January 9, 2025 (3.0.0-beta2).
 

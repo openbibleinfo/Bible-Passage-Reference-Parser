@@ -5038,7 +5038,8 @@ var bcv_translations_manager = class {
     const insert_at = new_translations.insert_at === "end" ? "end" : "start";
     const pre_regexp = new_translations?.pre_regexp instanceof RegExp ? new_translations?.pre_regexp : { source: "" };
     const post_regexp = new_translations?.post_regexp instanceof RegExp ? new_translations?.post_regexp : /(?![\p{L}\p{N}])/u;
-    const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, "gi");
+    const flags = this.parent.options.case_sensitive.includes("translations") ? "g" : "gi";
+    const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, flags);
     if (insert_at === "start") {
       this.parent.regexps.translations.unshift(regexp);
     } else {
@@ -9347,7 +9348,7 @@ const bcv = new bcv_parser(lang);`;
     });
     return osises;
   }
-  // Takes OSIS objects and converts them to OSIS strings based on compaction preferences.
+  // Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It maniplates the original `start` and `end` objects.
   to_osis(start, end, translation) {
     if (end.c == null && end.v == null && start.c == null && start.v == null && start.b === end.b && this.options.book_alone_strategy === "first_chapter") {
       end.c = 1;
