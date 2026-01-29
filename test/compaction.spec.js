@@ -150,7 +150,7 @@ describe("OSIS compaction strategies", () => {
 			]);
 		}
 	});
-	it("should return OSIS for bc-bcv with various compaction strategies", () => {
+	it("should return OSIS for bcv-bcv with various compaction strategies", () => {
 		for (const book_alone_strategy of ["full", "first_chapter"]) {
 			run_tests([
 				[book_alone_strategy, ogen11, ogen11, {b: gen11, bp: gen11, bc: gen11, bcp: gen11, bcv: gen11, bcvp: gen11}],

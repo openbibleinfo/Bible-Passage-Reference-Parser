@@ -14,6 +14,17 @@ describe("Real-world parsing", () => {
 			captive_end_digits_strategy: "delete"
 		});
 	});
+	it("should handle add_books without capture groups for indices", () => {
+		p.add_books({ books: [{
+			osis: ["Mark"],
+			regexp: /Marco|Mrc/
+		}]});
+		expect(p.parse("Marco 1").osis_and_indices()).toEqual([{
+			osis: "Mark.1.1-Mark.1.45",
+			translations: [""],
+			indices: [0, 7]
+		}]);
+	});
 	it("should handle sample tweets", () => {
 		expect(p.parse("Deut 28:21-65 lists sicknesses that are part of the curse").osis()).toEqual("Deut.28.21-Deut.28.65");
 		expect(p.parse("The Bible is awesome! Great noticing the commonalities between Revelation 4 and Isaiah 6! Done work for now.").osis()).toEqual("Rev.4.1-Rev.4.11,Isa.6.1-Isa.6.13");

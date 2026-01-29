@@ -300,7 +300,7 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
   * `bc`: OSIS refs get reduced to complete chapters if possible, but not whole books. "Gen.1.1-Gen.50.26" → "Gen.1-Gen.50".
   * `bcp`: Same as `bc` but preserves partial verses when they appear. "Genesis 1:1a-50:26" parses as "Gen.1.1!a-Gen.50.26", while "Genesis 1:1-50:25" still parses as "Gen.1-Gen.50".
   * `bcv`: OSIS refs always include the full book, chapter, and verse. "Gen.1" → "Gen.1.1-Gen.1.31".
-  * `bcvp`: Same as `bc` but preserves partial verses when they appear. "Gen 1:1a" parses as "Gen.1.1!a", while "Genesis 1:1" still parses as "Gen.1.1". In all these `p` cases, the "partial" indicator is returned exactly as it appears in the text, so non-Latin languages may have non-Latin characters after the `!` character in the OSIS ref.
+  * `bcvp`: Same as `bcv` but preserves partial verses when they appear. "Gen 1:1a" parses as "Gen.1.1!a", while "Genesis 1:1" still parses as "Gen.1.1". In all these `p` cases, the "partial" indicator is returned exactly as it appears in the text, so non-Latin languages may have non-Latin characters after the `!` character in the OSIS ref.
 
 ### Sequence
 
@@ -592,7 +592,7 @@ This dataset has a few limitations:
 
 ## OSIS
 
-[OSIS](https://crosswire.org/osis/) is a system for marking up Bibles in XML. The BCV parser only borrows the OSIS system for [book abbreviations](http://www.crosswire.org/wiki/OSIS_Book_Abbreviations) and references. You can control the OSIS specificity using the `osis_compaction_strategy` option. I like OSIS references because, programmatically, they're easy to handle.
+[OSIS](https://crosswire.org/osis/) is a system for marking up Bibles in XML. The BCV parser only borrows the OSIS system for [book abbreviations](http://www.crosswire.org/wiki/OSIS_Book_Abbreviations) and references. You can control the OSIS specificity using the `osis_compaction_strategy` option. I like OSIS references because, programmatically, they're easy to handle: they always include a book name along with optional chapters, verses, and partial verses, depending on the level of specificity you need.
 
 The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can include `Ps151` as part of the Psalms (`Ps.151.1`)—the default—or as its own book (`Ps151.1.1`), depending on the `ps151_strategy` option.
 
@@ -650,7 +650,7 @@ The third tricky case stems from strings like `Psalm 123-24`. The grammar output
 
 The fourth tricky case resembles the first one: `Jeremiah 33-11` isn't the invalid range `Jer.33-Jer.11` but rather the `bcv` `Jer.33.11`.
 
-If we still couldn't make sense of the range, then we treat is as a sequence of verses instead of a range: `Psalm 120-119` becomes `Ps.120,Ps.119`.
+If we still couldn't make sense of the range, then we treat it as a sequence of verses instead of a range: `Psalm 120-119` becomes `Ps.120,Ps.119`.
 
 ### Translations
 
@@ -853,11 +853,16 @@ The code in this project is licensed under the standard MIT License.
 
 Here are improvements I have in mind for this parser.
 
-1. Change the build process to be less finicky. The Perl is brittle and hard to debug. I'd like to remove nearly all the compile-time logic. Target release: 4.0.0 (January 2026).
-2. Move language-definition files to a new repo to decouple the core parser logic from the language data, now that (as of 3.1.0) each language no longer requires its own grammar. This change will also allow adding significantly more languages but will require using ES Modules to take advantage of them, so the CommonJS interface will likely be deprecated in 4.0.0 (though current files will remain for backwards compatibility). Existing language support will stay in the current repo so that there are no new dependencies for existing languages, but all the raw language data will likely move elsewhere. Target release: 4.0.0.
-3. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
+1. Fully migrate language source files (but not the existing language files in `esm` so that you don't need to change any existing code) out of this repo. Target release: 4.0.0 (July 2026).
+2. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
 
 ## Changelog
+
+January 28, 2026 (3.2.0-beta).
+
+* This release deprecates the language data files in `src/`. They're rebuilt in (hopefully) more-understandable yaml files in a [new repo](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages). This change allows the core parser and language files to evolve independently and provides a sounder, less "magical" technical foundation for the languages. The 4.0.0 release will remove the source language files and related build code. To preserve backwards compatibility, there will be no changes to the languages in `esm/` or `js/`. But the language files in `esm/` will be replaced by newly built langeuage files from the new repo. Most importantly, you don't need to change any existing code. If you want to try the new repo, you can clone it and `import` the language file that you want from there.
+* Fixed `add_books()` custom patterns so `osis_and_indices()` works without requiring capture groups. (Thanks to [emmaus-zam](https://github.com/emmaus-zam) for reporting this. Closes #70.)
+
 
 July 31, 2025 (3.1.0). Full release on Github and npm. Ensured `add_translations()` reflects the current `case_sensitive` option.
 

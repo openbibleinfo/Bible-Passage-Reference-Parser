@@ -189,8 +189,19 @@ describe("Documentation compatibility", () => {
 			osis: ["Mark"],
 			regexp: /Marco|Mrc/
 		}]});
-		bcv.parse("Marco 1").osis(); // Mark.1
-		bcv.parse("Mrc 1").osis(); // Mark.1
+		expect(bcv.parse("Marco 1").osis()).toEqual("Mark.1");
+		expect(bcv.parse("Mrc 1").osis()).toEqual("Mark.1");
+		expect(bcv.parse("Marco 1").osis_and_indices()).toEqual([{
+			osis: "Mark.1",
+			translations: [""],
+			indices: [0, 7]
+		}]);
+		expect(bcv.parse("Marco 1").osis_and_translations()).toEqual([["Mark.1", ""]]);
+		expect(bcv.parse("Marco 1, Mrc 3:2-3, Marco 8").osis_and_indices()).toEqual([{
+			osis: "Mark.1,Mark.3.2-Mark.3.3,Mark.8",
+			translations: [""],
+			indices: [0, 27]
+		}]);
 	});
 	it("should handle add_translations", () => {
 		expect(bcv.parse("Mark 1 (NIV1984)").osis_and_translations()).toEqual([["Mark.1", ""]]);

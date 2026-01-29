@@ -97,7 +97,7 @@ public add_books(books): void {
 		// Surround the pattern for consistency, or allow the caller to override them.
 		const regexps = this.get_book_pattern_regexps(pattern, book_data);
 		// Always default to case-insensitive and let other settings override it later.
-		const regexp = new RegExp(regexps.pre_regexp.source + regexps.regexp.source + regexps.post_regexp.source, "giu");
+		const regexp = new RegExp(regexps.pre_regexp.source + "(" + regexps.regexp.source + ")" + regexps.post_regexp.source, "giu");
 		// Default to the start since it's likely you want your pattern to take precedence over existing ones.
 		const position = (typeof pattern.insert_at === "string") ? pattern.insert_at : "start";
 		// Make the required fields.

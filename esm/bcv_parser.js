@@ -4740,7 +4740,7 @@ var bcv_regexps_manager = class {
       }
       const book_data = this.get_book_testaments(pattern);
       const regexps = this.get_book_pattern_regexps(pattern, book_data);
-      const regexp = new RegExp(regexps.pre_regexp.source + regexps.regexp.source + regexps.post_regexp.source, "giu");
+      const regexp = new RegExp(regexps.pre_regexp.source + "(" + regexps.regexp.source + ")" + regexps.post_regexp.source, "giu");
       const position = typeof pattern.insert_at === "string" ? pattern.insert_at : "start";
       const insert_object = {
         osis: pattern.osis,
@@ -5030,7 +5030,7 @@ var bcv_parser = class {
     if (lang == null) {
       if (typeof grammar === "undefined") {
         throw `When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:
-import * as lang from "es/lang/en.js";
+import * as lang from "esm/lang/en.js";
 const bcv = new bcv_parser(lang);`;
       }
       this.translations = new bcv_translations();

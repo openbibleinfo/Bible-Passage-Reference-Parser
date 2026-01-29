@@ -47,7 +47,7 @@ constructor(lang: BCVParserConstructor | null = null) {
 	this.options = new bcv_options(this);
 	if (lang == null) {
 		if (typeof grammar === "undefined") {
-			throw(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:\nimport * as lang from "es/lang/en.js";\nconst bcv = new bcv_parser(lang);`)
+			throw(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:\nimport * as lang from "esm/lang/en.js";\nconst bcv = new bcv_parser(lang);`)
 		}
 		this.translations = new bcv_translations();
 		this.matcher = new bcv_matcher(this, grammar_options);
