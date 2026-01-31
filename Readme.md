@@ -858,10 +858,12 @@ Here are improvements I have in mind for this parser.
 
 ## Changelog
 
+January 31, 2026 (3.2.0). Full release on Github and npm.
+
 January 28, 2026 (3.2.0-beta).
 
-* This release deprecates the language data files in `src/`. They're rebuilt in (hopefully) more-understandable yaml files in a [new repo](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages). This change allows the core parser and language files to evolve independently and provides a sounder, less "magical" technical foundation for the languages. The 4.0.0 release will remove the source language files and related build code. To preserve backwards compatibility, there will be no changes to the languages in `esm/` or `js/`. But the language files in `esm/` will be replaced by newly built langeuage files from the new repo. Most importantly, you don't need to change any existing code. If you want to try the new repo, you can clone it and `import` the language file that you want from there.
-* Fixed `add_books()` custom patterns so `osis_and_indices()` works without requiring capture groups. (Thanks to [emmaus-zam](https://github.com/emmaus-zam) for reporting this. Closes #70.)
+* This release deprecates the language data files in `src/`. They're rebuilt in (hopefully) more-understandable yaml files in a [new repo](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages). This change allows the core parser and language files to evolve independently and provides a sounder, less "magical" technical foundation for the languages. The 4.0.0 release will remove the source language files and related build code. To preserve backwards compatibility, there will be no changes to the languages in `esm/` or `js/`. But the language files in `esm/` will be replaced by newly built language files from the new repo. Most importantly, you don't need to change any existing code. If you want to try the new repo, you can clone it and `import` the language file that you want from there.
+* Fixed `add_books()` custom patterns so that `osis_and_indices()` works without requiring capture groups. (Thanks to [emmaus-zam](https://github.com/emmaus-zam) for reporting this. Closes #70.)
 
 
 July 31, 2025 (3.1.0). Full release on Github and npm. Ensured `add_translations()` reflects the current `case_sensitive` option.
