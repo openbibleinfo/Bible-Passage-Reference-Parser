@@ -4767,7 +4767,7 @@ var bcv_regexps_manager = class {
       }
       const book_data = this.get_book_testaments(pattern);
       const regexps = this.get_book_pattern_regexps(pattern, book_data);
-      const regexp = new RegExp(regexps.pre_regexp.source + regexps.regexp.source + regexps.post_regexp.source, "giu");
+      const regexp = new RegExp(regexps.pre_regexp.source + "(" + regexps.regexp.source + ")" + regexps.post_regexp.source, "giu");
       const position = typeof pattern.insert_at === "string" ? pattern.insert_at : "start";
       const insert_object = {
         osis: pattern.osis,

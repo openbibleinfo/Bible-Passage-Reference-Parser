@@ -4767,7 +4767,7 @@ var bcv_regexps_manager = class {
       }
       const book_data = this.get_book_testaments(pattern);
       const regexps = this.get_book_pattern_regexps(pattern, book_data);
-      const regexp = new RegExp(regexps.pre_regexp.source + regexps.regexp.source + regexps.post_regexp.source, "giu");
+      const regexp = new RegExp(regexps.pre_regexp.source + "(" + regexps.regexp.source + ")" + regexps.post_regexp.source, "giu");
       const position = typeof pattern.insert_at === "string" ? pattern.insert_at : "start";
       const insert_object = {
         osis: pattern.osis,
@@ -5357,7 +5357,7 @@ var bcv_regexps = class {
       {
         osis: ["3John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:yūḥannā\s*kā\s*tīsrā\s*ʿām\s*ḫaṭ|ی(?:ُوحنّا\s*کا\s*تیسرا\s*عام\s*|(?:وحنا\s*کا\s*تیسرا\s*عام\s*|(?:وحنّا\s*کا\s*(?:تیسرا|[3۳]\.)\s*|وحنّا\s*کا\s*[3۳]\s*)))خط|تیسرا(?:(?:\s*یُوحنّ|(?:\s*یوحنّ|۔یوحن))|-?یُوحنّ)ا|[3۳]\.(?:(?:\s*یُوحنّ|(?:\s*یوحنّ|۔یوحن))|-?یُوحنّ)ا|[3۳]\s*یُوحنّا|[3۳]-?یُوحنّا|[3۳]\s*یوحنّا|[3۳]۔یوحنا|3John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:yūḥannā\s*kā\s*tīsrā\s*ʿām\s*ḫaṭ|ی(?:ُوحنّا\s*کا\s*تیسرا\s*عام|(?:وحنا\s*کا\s*تیسرا\s*عام|وحنّا\s*کا\s*(?:تیسرا|3)))\s*خط|تیسرا(?:(?:\s*یُوحنّ|(?:\s*یوحنّ|۔یوحن))|-?یُوحنّ)ا|[3۳]\.(?:(?:\s*یُوحنّ|(?:\s*یوحنّ|۔یوحن))|-?یُوحنّ)ا|[3۳]\s*یُوحنّا|[3۳]-?یُوحنّا|[3۳]\s*یوحنّا|[3۳]۔یوحنا|3John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1John"],
