@@ -4,12 +4,12 @@ $SECOND	Zweite[nrs]?	2
 $THIRD	Dritte[nrs]?	3
 $FOURTH	Vierte[ns]?	4
 $FIFTH	Fünftes	5
-$GOSPEL	(Das )?Evangelium nach
+$GOSPEL	Das Evangelium nach	Evangelium nach
 $AB	[a-e]
 $AND	und siehe auch	und siehe	und auch	sowie auch	siehe auch	siehe	sowie	und	u.	&	vgl.
 $CHAPTER	Kapiteln	Kapiteln	Kapitel	Kap.
 $FF	ff![a-z0-9äöü]
-$NEXT	f![a-z0-9äöü]
+$NEXT	f!\p{L}
 $TITLE	Titel
 $TRANS	ELB	HFA	LUTHER	LUTH1545	SCH1950	SCH2000
 $TO	bis
@@ -89,10 +89,10 @@ GkEsth	Ester \(Griechisch\)	Gr Est
 Wis	Weisheit Salomos	Weisheit	Weish
 Sir	Jesus Sirach	Ecclesiasticus	Sir
 Bar	Baruch	Bar
-PrAzar	(Das )?Gebet des Asarja	(Das )?Gebet Asarjas	Geb As
+PrAzar	Das Gebet des Asarja	Gebet des Asarja	Das Gebet Asarjas	Gebet Asarjas	Geb As
 Sus	Susanna	Sus
-Bel	Bel und (der? )Drache	Bel
-SgThree	Gesang der drei( Männer)?( im Feuerofen)?	Gesang der drei Maenner( im Feuerofen)?	L3J
+Bel	Bel und der Drache	Bel und Drache	Bel
+SgThree	Gesang der drei Männer im Feuerofen	Gesang der drei Männer	Gesang der drei im Feuerofen	Gesang der drei	Gesang der drei Maenner im Feuerofen	Gesang der drei Maenner	L3J
 EpJer	Brief des Jeremia	Br Jer
 1Macc	$FIRST Makkabäer	$FIRST Makkabaeer	1. Makk
 2Macc	$SECOND Makkabäer	$SECOND Makkabaeer	2. Makk
@@ -100,7 +100,7 @@ EpJer	Brief des Jeremia	Br Jer
 4Macc	$FOURTH Makkabäer	$FOURTH Makkabaeer	4. Makk
 1Esd	$FIRST Esd?ra	1. Esd?r	1. Es
 2Esd	$SECOND Esd?ra	2. Esd?r	2. Es
-PrMan	(Das )?Gebet des Manasse	(Das )?Gebet Manasses	Gebet Manasse	Geb Man	Or Man
+PrMan	Das Gebet des Manasse	Gebet des Manasse	Das Gebet Manasses	Gebet Manasses	Gebet Manasse	Geb Man	Or Man
 
 # Order
 =Gen

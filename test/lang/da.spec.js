@@ -1087,12 +1087,8 @@ describe("Localized book 1John (da)", () => {
 		expect(p.parse("Første Johannesbrev 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. Johannes' Brev 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. Johannes’ Brev 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("Johannes' 1. Brev 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("Johannes’ 1. Brev 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 Johannes' Brev 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 Johannes’ Brev 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("Johannes' 1 Brev 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("Johannes’ 1 Brev 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. Johannesbrev 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("Første Johannes 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 Johannesbrev 1:1").osis()).toEqual("1John.1.1");
@@ -1109,12 +1105,8 @@ describe("Localized book 1John (da)", () => {
 		expect(p.parse("FØRSTE JOHANNESBREV 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. JOHANNES' BREV 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. JOHANNES’ BREV 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("JOHANNES' 1. BREV 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("JOHANNES’ 1. BREV 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 JOHANNES' BREV 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 JOHANNES’ BREV 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("JOHANNES' 1 BREV 1:1").osis()).toEqual("1John.1.1");
-		expect(p.parse("JOHANNES’ 1 BREV 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1. JOHANNESBREV 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("FØRSTE JOHANNES 1:1").osis()).toEqual("1John.1.1");
 		expect(p.parse("1 JOHANNESBREV 1:1").osis()).toEqual("1John.1.1");
@@ -1187,12 +1179,8 @@ describe("Localized book 3John (da)", () => {
 		expect(p.parse("Tredje Johannesbrev 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. Johannes' Brev 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. Johannes’ Brev 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("Johannes' 3. Brev 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("Johannes’ 3. Brev 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 Johannes' Brev 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 Johannes’ Brev 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("Johannes' 3 Brev 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("Johannes’ 3 Brev 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. Johannesbrev 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("Tredje Johannes 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 Johannesbrev 1:1").osis()).toEqual("3John.1.1");
@@ -1209,12 +1197,8 @@ describe("Localized book 3John (da)", () => {
 		expect(p.parse("TREDJE JOHANNESBREV 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. JOHANNES' BREV 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. JOHANNES’ BREV 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("JOHANNES' 3. BREV 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("JOHANNES’ 3. BREV 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 JOHANNES' BREV 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 JOHANNES’ BREV 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("JOHANNES' 3 BREV 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("JOHANNES’ 3 BREV 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3. JOHANNESBREV 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("TREDJE JOHANNES 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("3 JOHANNESBREV 1:1").osis()).toEqual("3John.1.1");
@@ -1333,10 +1317,6 @@ describe("Localized book 1Cor (da)", () => {
 	it("should handle book: 1Cor (da)", () => {
 		expect(p.parse("Paulus' Første Brev til Korintherne 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("Paulus’ Første Brev til Korintherne 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("Paulus' 1. Brev til Korintherne 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("Paulus’ 1. Brev til Korintherne 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("Paulus' 1 Brev til Korintherne 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("Paulus’ 1 Brev til Korintherne 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("Første Korintherbrev 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("Første Korinterbrev 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("Første Korinterne 1:1").osis()).toEqual("1Cor.1.1");
@@ -1352,10 +1332,6 @@ describe("Localized book 1Cor (da)", () => {
 		expect(p.parse("1Cor 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("PAULUS' FØRSTE BREV TIL KORINTHERNE 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("PAULUS’ FØRSTE BREV TIL KORINTHERNE 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("PAULUS' 1. BREV TIL KORINTHERNE 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("PAULUS’ 1. BREV TIL KORINTHERNE 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("PAULUS' 1 BREV TIL KORINTHERNE 1:1").osis()).toEqual("1Cor.1.1");
-		expect(p.parse("PAULUS’ 1 BREV TIL KORINTHERNE 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("FØRSTE KORINTHERBREV 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("FØRSTE KORINTERBREV 1:1").osis()).toEqual("1Cor.1.1");
 		expect(p.parse("FØRSTE KORINTERNE 1:1").osis()).toEqual("1Cor.1.1");
@@ -1499,10 +1475,6 @@ describe("Localized book 1Thess (da)", () => {
 	it("should handle book: 1Thess (da)", () => {
 		expect(p.parse("Paulus' Første Brev til Thessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("Paulus’ Første Brev til Thessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("Paulus' 1. Brev til Thessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("Paulus’ 1. Brev til Thessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("Paulus' 1 Brev til Thessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("Paulus’ 1 Brev til Thessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("Første Thessalonikerbrev 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("Første Tessalonikerne 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1. Thessalonikerbrev 1:1").osis()).toEqual("1Thess.1.1");
@@ -1515,10 +1487,6 @@ describe("Localized book 1Thess (da)", () => {
 		expect(p.parse("1Thess 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("PAULUS' FØRSTE BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("PAULUS’ FØRSTE BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("PAULUS' 1. BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("PAULUS’ 1. BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("PAULUS' 1 BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
-		expect(p.parse("PAULUS’ 1 BREV TIL THESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("FØRSTE THESSALONIKERBREV 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("FØRSTE TESSALONIKERNE 1:1").osis()).toEqual("1Thess.1.1");
 		expect(p.parse("1. THESSALONIKERBREV 1:1").osis()).toEqual("1Thess.1.1");
@@ -1581,10 +1549,6 @@ describe("Localized book 1Tim (da)", () => {
 	it("should handle book: 1Tim (da)", () => {
 		expect(p.parse("Paulus' Første Brev til Timotheus 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("Paulus’ Første Brev til Timotheus 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("Paulus' 1. Brev til Timotheus 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("Paulus’ 1. Brev til Timotheus 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("Paulus' 1 Brev til Timotheus 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("Paulus’ 1 Brev til Timotheus 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("Første Timotheusbrev 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("Første Timoteusbrev 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("1. Timotheusbrev 1:1").osis()).toEqual("1Tim.1.1");
@@ -1600,10 +1564,6 @@ describe("Localized book 1Tim (da)", () => {
 		expect(p.parse("1Tim 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("PAULUS' FØRSTE BREV TIL TIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("PAULUS’ FØRSTE BREV TIL TIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("PAULUS' 1. BREV TIL TIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("PAULUS’ 1. BREV TIL TIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("PAULUS' 1 BREV TIL TIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
-		expect(p.parse("PAULUS’ 1 BREV TIL TIMOTHEUS 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("FØRSTE TIMOTHEUSBREV 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("FØRSTE TIMOTEUSBREV 1:1").osis()).toEqual("1Tim.1.1");
 		expect(p.parse("1. TIMOTHEUSBREV 1:1").osis()).toEqual("1Tim.1.1");
@@ -1741,9 +1701,7 @@ describe("Localized book 1Pet (da)", () => {
 	it("should handle book: 1Pet (da)", () => {
 		expect(p.parse("Peters Første Brev 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("Første Petersbrev 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("Peters 1. Brev 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1. Petersbrev 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("Peters 1 Brev 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1 Petersbrev 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("Første Peter 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("Første Pet 1:1").osis()).toEqual("1Pet.1.1");
@@ -1754,9 +1712,7 @@ describe("Localized book 1Pet (da)", () => {
 		expect(p.parse("1Pet 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("PETERS FØRSTE BREV 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("FØRSTE PETERSBREV 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("PETERS 1. BREV 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1. PETERSBREV 1:1").osis()).toEqual("1Pet.1.1");
-		expect(p.parse("PETERS 1 BREV 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("1 PETERSBREV 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("FØRSTE PETER 1:1").osis()).toEqual("1Pet.1.1");
 		expect(p.parse("FØRSTE PET 1:1").osis()).toEqual("1Pet.1.1");

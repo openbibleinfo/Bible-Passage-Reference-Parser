@@ -88,7 +88,7 @@ Wis	B[İiı]lgelik
 Sir	S[İiı]rak
 Bar	Baruk
 PrAzar	Azarya'?n[İiı]n Duas[İiı]
-Sus	Suzanna
+Sus	Suzanna	Suz
 Bel	Bel ve Ejderha
 SgThree	Üç Genç Adam[İiı]n Ezg[İiı]s[İiı]
 EpJer	Yeremya'?n[İiı]n Mektubu
@@ -261,7 +261,7 @@ PrMan	Manaşşe'?n[İiı]n Duas[İiı]
 *Sir	Sirak
 *Bar	Baruk
 *PrAzar	Azarya’nın Duası
-*Sus	Suzanna
+*Sus	Suzanna	Suz
 *Bel	Bel ve Ejderha
 *SgThree	Üç Genç Adamın Ezgisi
 *EpJer	Yeremya’nın Mektubu

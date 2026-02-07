@@ -3,9 +3,8 @@ $SECOND	2.[ºo]	2	II	Segundo
 $THIRD	3.[ºo]	3	III	Tercero?
 $FOURTH	4.[ºo]	4	IV	Cuarto
 $AB	[a-e]
-$AND	y! sig
+$AND	y! sig	compara el	compara los
 $CHAPTER	capítulos	capítulo	caps.	cap.
-$COMPARE	compara el	compara los
 $FF	y siguientes	y sig
 $TITLE	subtítulo	título	tí`t
 $TRANS	DHH	LBLA	NBLH	NTV	NVI	RVR1960	RVR	TLA

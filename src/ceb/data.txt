@@ -80,7 +80,7 @@ Jude	Judas	Jud
 Rev	Gipadayag	Gipa
 Tob	Tobit	Tob
 Jdt	Judit	Jdt
-GkEsth	Ester (Grego)	Est Gr
+GkEsth	Ester \(Grego\)	Est Gr
 Wis	Kaalam ni Solomon	Klm Sol
 Sir	Sirac	Sir
 Bar	Baruc	Bar

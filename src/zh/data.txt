@@ -306,7 +306,7 @@ PrMan	PrMan
 *Neh	尼希米记	尼
 *Esth	以斯帖记	斯
 *Job	约伯记	伯
-*Ps	诗篇	诗			诗篇
+*Ps	诗篇	诗		诗篇
 *Prov	箴言	箴
 *Eccl	传道书	传
 *Song	雅歌	歌

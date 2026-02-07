@@ -2,7 +2,7 @@
 import { bcv_parser } from "../../esm/bcv_parser.js";
 import * as lang from "../../esm/lang/$LANG.js";
 
-describe("Parsing", () => {
+describe("Parsing ($LANG)", () => {
 	let p = {};
 	beforeEach(() => {
 		p = new bcv_parser(lang);
@@ -64,7 +64,7 @@ describe("Parsing", () => {
 
 //$BOOK_TESTS
 
-describe("Miscellaneous tests", () => {
+describe("Miscellaneous tests ($LANG)", () => {
 	let p = {};
 	beforeEach(() => {
 		p = new bcv_parser(lang);

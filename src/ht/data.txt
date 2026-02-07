@@ -75,7 +75,7 @@ Jas	Jak
 2Pet	$SECOND P[iy]è
 1John	$FIRST Jan	1 Jn
 2John	$SECOND Jan	2 Jn
-3John	III Jan	3 Jan	3 Jn
+3John	$THIRD Jan	3 Jn
 Jude	Jid
 Rev	Revelasyon	Apokalips	Rev
 Tob	Tob

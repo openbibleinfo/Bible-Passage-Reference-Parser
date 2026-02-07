@@ -10,10 +10,6 @@
 1Chr	1Chr
 1Cor	Paulus' Første Brev til Korintherne
 1Cor	Paulus’ Første Brev til Korintherne
-1Cor	Paulus' 1. Brev til Korintherne
-1Cor	Paulus’ 1. Brev til Korintherne
-1Cor	Paulus' 1 Brev til Korintherne
-1Cor	Paulus’ 1 Brev til Korintherne
 1Cor	Første Korintherbrev
 1Cor	Første Korinterbrev
 1Cor	Første Korinterne
@@ -41,12 +37,8 @@
 1John	Første Johannesbrev
 1John	1. Johannes' Brev
 1John	1. Johannes’ Brev
-1John	Johannes' 1. Brev
-1John	Johannes’ 1. Brev
 1John	1 Johannes' Brev
 1John	1 Johannes’ Brev
-1John	Johannes' 1 Brev
-1John	Johannes’ 1 Brev
 1John	1. Johannesbrev
 1John	Første Johannes
 1John	1 Johannesbrev
@@ -75,9 +67,7 @@
 1Macc	1Macc
 1Pet	Peters Første Brev
 1Pet	Første Petersbrev
-1Pet	Peters 1. Brev
 1Pet	1. Petersbrev
-1Pet	Peters 1 Brev
 1Pet	1 Petersbrev
 1Pet	Første Peter
 1Pet	Første Pet
@@ -101,10 +91,6 @@
 1Sam	1Sam
 1Thess	Paulus' Første Brev til Thessalonikerne
 1Thess	Paulus’ Første Brev til Thessalonikerne
-1Thess	Paulus' 1. Brev til Thessalonikerne
-1Thess	Paulus’ 1. Brev til Thessalonikerne
-1Thess	Paulus' 1 Brev til Thessalonikerne
-1Thess	Paulus’ 1 Brev til Thessalonikerne
 1Thess	Første Thessalonikerbrev
 1Thess	Første Tessalonikerne
 1Thess	1. Thessalonikerbrev
@@ -117,10 +103,6 @@
 1Thess	1Thess
 1Tim	Paulus' Første Brev til Timotheus
 1Tim	Paulus’ Første Brev til Timotheus
-1Tim	Paulus' 1. Brev til Timotheus
-1Tim	Paulus’ 1. Brev til Timotheus
-1Tim	Paulus' 1 Brev til Timotheus
-1Tim	Paulus’ 1 Brev til Timotheus
 1Tim	Første Timotheusbrev
 1Tim	Første Timoteusbrev
 1Tim	1. Timotheusbrev
@@ -264,12 +246,8 @@
 3John	Tredje Johannesbrev
 3John	3. Johannes' Brev
 3John	3. Johannes’ Brev
-3John	Johannes' 3. Brev
-3John	Johannes’ 3. Brev
 3John	3 Johannes' Brev
 3John	3 Johannes’ Brev
-3John	Johannes' 3 Brev
-3John	Johannes’ 3 Brev
 3John	3. Johannesbrev
 3John	Tredje Johannes
 3John	3 Johannesbrev

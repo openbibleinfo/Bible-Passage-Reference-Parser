@@ -107,6 +107,7 @@ PrMan	PrMan
 =Wis
 =Lam
 =EpJer
+=Acts
 =Rev
 =PrMan
 =Deut
@@ -155,7 +156,6 @@ PrMan	PrMan
 =2John
 =3John
 =John
-=Acts
 =Rom
 =2Cor
 =1Cor
@@ -185,7 +185,7 @@ PrMan	PrMan
 
 # Preferred names
 # OSIS	Long	Short	Shorter	Single (Ps)
-Gen	उत्पत्ति
+*Gen	उत्पत्ति
 *Exod	निर्गमन
 *Lev	लैव्यव्यवस्था	लैव्य
 *Num	गिनती

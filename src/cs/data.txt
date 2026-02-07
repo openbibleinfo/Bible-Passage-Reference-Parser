@@ -10,7 +10,7 @@ $AND	a	srv.
 # http://cs.wikipedia.org/wiki/Evangelium_podle_Matou%C5%A1e and http://cs.wikipedia.org/wiki/Skutky_apo%C5%A1tol%C5%AF and http://cs.wikipedia.org/wiki/Zjeven%C3%AD_Janovo (kap.)
 $CHAPTER	kapitola	kapitoly	kapitol	kap.
 $FF	nn
-$NEXT	n!n
+$NEXT	n!\p{L}
 # http://cs.wikipedia.org/wiki/Kniha_%C5%BEalm%C5%AF
 $TITLE	titul
 $TRANS	B21
@@ -64,8 +64,8 @@ Luke	Lukáš	Lk	L	Lukášovo evangelium	Evangelium podle Lukáše
 John	Jan	J	Janovo evangelium	Evangelium podle Jana
 Acts	Skutky apoštolské	Skutky	Skutky apoštolů	Skutky apoštolü	Sk
 Rom	Římanům	Řím	Ř	List Římanům
-1Cor	$FIRST list Korintským	$FIRST Korintským	$FIRST Kor	$FIRST ?K	$FIRST list Korinským
-2Cor	$SECOND list Korintským	$SECOND Korintským	2Kor	$SECOND ?K	$SECOND list Korinským
+1Cor	$FIRST list Korintským	$FIRST Korintským	$FIRST Kor	$FIRST K	$FIRST list Korinským
+2Cor	$SECOND list Korintským	$SECOND Korintským	2Kor	$SECOND K	$SECOND list Korinským
 Gal	Galatským	Gal?	List Galatským
 Eph	Efezským	Efeským	Ef	List Efezským	List Efezanům	List Efézským
 Phil	Filipským	Fp	Flp	List Filipským	Filipenským
@@ -87,7 +87,7 @@ Jude	List Judův	Judův	Juda	J[ud]	Judova
 Rev	Zjevení Janovo	Zjevení	Zj	Zjeveni svatého Jana	Apokalypsa	Kniha Zjevení
 Tob	Tóbijáš	Tobiáš	Tóbit	Tob
 Jdt	Júdit	Jdt	Júd
-GkEsth	Ester (řecké dodatky)	Ester (řecké části)
+GkEsth	Ester \(řecké dodatky\)	Ester \(řecké části\)
 Wis	Moudrost	Mdr	Kniha Moudrosti	Moudrost Šalomounova	Kniha moudrostí
 Sir	Sírachovec	Sír	Kniha Sírachovcova	Ecclesiasticus	Sir
 Bar	Báruch	Bar	Báruk	Kniha Báruchova	Kniha Bárukova	Bár

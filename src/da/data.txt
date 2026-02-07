@@ -62,25 +62,25 @@ Luke	Lukas	Lukasevangeliet	Lu?k
 John	Johannes	Johannesevangeliet	Joh
 Acts	Gerninger	Apostlenes Gerninger	Ap.G
 Rom	Romerne	Romerbrevet	Paulus' Brev til Romerne	Rom
-1Cor	$FIRST Korinterne	$FIRST Korinth?erbrev	Paulus' $FIRST Brev til Korintherne	$FIRST Kor
+1Cor	$FIRST Korinterne	$FIRST Korinth?erbrev	Paulus' Første Brev til Korintherne	$FIRST Kor
 2Cor	$SECOND Korinterne	$SECOND Korinth?erbrev	Andet Korintherbrev	Paulus' Andet Brev til Korintherne	$SECOND Kor
 Gal	Galaterne	Galaterbrevet	Brevet til Galaterne	Paulus' Brev til Galaterne	Gal
 Eph	Efeserne	Efeserbrevet	Paulus' Brev til Efeserne	Ef
 Phil	Filipperne	Filipperbrevet	Paulus' Brev til Filipperne	Fil
 Col	Kolossensern	Kolossenserbrevet	Paulus' Brev til Kolossenserne	Kol
-1Thess	$FIRST Tessalonikerne	$FIRST Thessalonikerbrev	Paulus' $FIRST Brev til Thessalonikerne	$FIRST Thess
+1Thess	$FIRST Tessalonikerne	$FIRST Thessalonikerbrev	Paulus' Første Brev til Thessalonikerne	$FIRST Thess
 2Thess	$SECOND Tessalonikerne	$SECOND Thessalonikerbrev	Paulus' Andet Brev til Thessalonikerne	$SECOND Thess	Andet Thessalonikerbrev
-1Tim	$FIRST Timoteus	$FIRST Timoth?eusbrev	Paulus' $FIRST Brev til Timotheus	$FIRST Tim
+1Tim	$FIRST Timoteus	$FIRST Timoth?eusbrev	Paulus' Første Brev til Timotheus	$FIRST Tim
 2Tim	$SECOND Timoteus	$SECOND Timoth?eusbrev	Paulus' Andet Brev til Timotheus	$SECOND Tim	Andet Timotheusbrev
 Titus	Titus	Titusbrevet	Paulus' Brev til Titus	Tit
 Phlm	Filemon	Filemonbrevet	Paulus' Brev til Filemon	Filem	Flm
 Heb	Hebræerne	Hebræerbrevet	Brevet til Hebræerne	Hebr
 Jas	Jakob	Jakobsbrevet	Jakobs Brev	Jak
-1Pet	$FIRST Peter	$FIRST Petersbrev	Peters $FIRST Brev	$FIRST Pet
+1Pet	$FIRST Peter	$FIRST Petersbrev	Peters Første Brev	$FIRST Pet
 2Pet	$SECOND Peter	$SECOND Petersbrev	Peters Andet Brev	$SECOND Pet	Andet Petersbrev
-1John	$FIRST Johannes	$FIRST Johannesbrev	Johannes' $FIRST Brev	$FIRST Joh	$FIRST Johannes' Brev
+1John	$FIRST Johannes	$FIRST Johannesbrev	Johannes' Første Brev	$FIRST Joh	$FIRST Johannes' Brev
 2John	$SECOND Johannes	$SECOND Johannesbrev	Johannes' Andet Brev	$SECOND Joh	Andet Johannesbrev	$SECOND Johannes' Brev
-3John	$THIRD Johannes	$THIRD Johannesbrev	Johannes' $THIRD Brev	$THIRD Joh	$THIRD Johannes' Brev
+3John	$THIRD Johannes	$THIRD Johannesbrev	Johannes' Tredje Brev	$THIRD Joh	$THIRD Johannes' Brev
 Jude	Judas	Judasbrevet	Judas' Brev	Jud
 Rev	Aabenbaringen	Johs. Åbenbaring	Åbenbaringen	Åbenbaringsbogen	Johannesapokalypsen	Apokalypsen	Åb	Johannes' Åbenbaring
 Tob	Tobits Bog	Tob	Tobit

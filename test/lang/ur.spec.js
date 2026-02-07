@@ -1300,10 +1300,7 @@ describe("Localized book 3John (ur)", () => {
 		expect(p.parse("یُوحنّا کا تیسرا عام خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنا کا تیسرا عام خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنّا کا تیسرا خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا 3. خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا ۳. خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنّا کا 3 خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا ۳ خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا یُوحنّا 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا-یُوحنّا 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا یوحنّا 1:1").osis()).toEqual("3John.1.1");
@@ -1330,10 +1327,7 @@ describe("Localized book 3John (ur)", () => {
 		expect(p.parse("یُوحنّا کا تیسرا عام خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنا کا تیسرا عام خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنّا کا تیسرا خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا 3. خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا ۳. خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنّا کا 3 خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا ۳ خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا یُوحنّا 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا-یُوحنّا 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا یوحنّا 1:1").osis()).toEqual("3John.1.1");
@@ -1359,10 +1353,7 @@ describe("Localized book 3John (ur)", () => {
 		expect(p.parse("یُوحنّا کا تیسرا عام خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنا کا تیسرا عام خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنّا کا تیسرا خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا 3. خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا ۳. خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("یوحنّا کا 3 خط 1:1").osis()).toEqual("3John.1.1");
-		expect(p.parse("یوحنّا کا ۳ خط 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا یُوحنّا 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا-یُوحنّا 1:1").osis()).toEqual("3John.1.1");
 		expect(p.parse("تیسرا یوحنّا 1:1").osis()).toEqual("3John.1.1");

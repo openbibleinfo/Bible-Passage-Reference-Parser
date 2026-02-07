@@ -221,7 +221,7 @@ Phil,Phlm	Phl	Ph
 *Neh	Néhémie	Ne
 *Esth	Esther	Est
 *Job	Job	Jb
-*Ps	Psaumes	Ps	Psaume
+*Ps	Psaumes	Ps		Psaume
 *Prov	Proverbes	Pr
 *Eccl	Ecclésiaste	Ec
 *Song	Cantique des Cantiques	Ct

@@ -302,7 +302,7 @@ var bcv_regexps = class {
       {
         osis: ["1John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Første\s*Johannes['’]|1(?:\.\s*Johannes['’]|\s*Johannes['’]))\s*Brev|Johannes['’]\s*(?:Første|1\.?)\s*Brev|(?:Første|1\.?)\s*Johannesbrev|Første\s*Joh(?:annes)?|1(?:\.\s*Joh(?:annes)?|\s*Joh(?:annes)?)|1John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Første\s*Johannes['’]|1(?:\.\s*Johannes['’]|\s*Johannes['’]))\s*Brev|Johannes['’]\s*Første\s*Brev|(?:Første|1\.?)\s*Johannesbrev|Første\s*Joh(?:annes)?|1(?:\.\s*Joh(?:annes)?|\s*Joh(?:annes)?)|1John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2John"],
@@ -312,7 +312,7 @@ var bcv_regexps = class {
       {
         osis: ["3John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Tredje\s*Johannes['’]|3(?:\.\s*Johannes['’]|\s*Johannes['’]))\s*Brev|Johannes['’]\s*(?:Tredje|3\.?)\s*Brev|(?:Tredje|3\.?)\s*Johannesbrev|Tredje\s*Joh(?:annes)?|3(?:\.\s*Joh(?:annes)?|\s*Joh(?:annes)?)|3John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Tredje\s*Johannes['’]|3(?:\.\s*Johannes['’]|\s*Johannes['’]))\s*Brev|Johannes['’]\s*Tredje\s*Brev|(?:Tredje|3\.?)\s*Johannesbrev|Tredje\s*Joh(?:annes)?|3(?:\.\s*Joh(?:annes)?|\s*Joh(?:annes)?)|3John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["John"],
@@ -337,7 +337,7 @@ var bcv_regexps = class {
       {
         osis: ["1Cor"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Paulus['’]\s*(?:Første|1\.?)\s*Brev\s*til\s*Korintherne|Første\s*Korinth?erbrev|(?:Første|1\.?)\s*Korinterne|1(?:\.\s*Korinth?erbrev|(?:\s*Korinth?erbrev|Cor))|(?:Første|1\.?)\s*Kor))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Paulus['’]\s*Første\s*Brev\s*til\s*Korintherne|Første\s*Korinth?erbrev|(?:Første|1\.?)\s*Korinterne|1(?:\.\s*Korinth?erbrev|(?:\s*Korinth?erbrev|Cor))|(?:Første|1\.?)\s*Kor))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Gal"],
@@ -367,7 +367,7 @@ var bcv_regexps = class {
       {
         osis: ["1Thess"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Paulus['’]\s*(?:Første|1\.?)\s*Brev\s*til\s*Thessalonikerne|Første\s*Thessalonikerbrev|(?:Første|1\.?)\s*Tessalonikerne|1(?:\.\s*Thessalonikerbrev|(?:\s*Thessalonikerbrev|Thess))|(?:Første|1\.?)\s*Thess))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Paulus['’]\s*Første\s*Brev\s*til\s*Thessalonikerne|Første\s*Thessalonikerbrev|(?:Første|1\.?)\s*Tessalonikerne|1(?:\.\s*Thessalonikerbrev|(?:\s*Thessalonikerbrev|Thess))|(?:Første|1\.?)\s*Thess))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Tim"],
@@ -377,7 +377,7 @@ var bcv_regexps = class {
       {
         osis: ["1Tim"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Paulus['’]\s*(?:Første|1\.?)\s*Brev\s*til\s*Timotheus|Første\s*Timoth?eusbrev|1(?:\.\s*Timoth?eusbrev|(?:\s*Timoth?eusbrev|Tim))|Første\s*Tim(?:oteus)?|1(?:\.\s*Tim(?:oteus)?|\s*Tim(?:oteus)?)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Paulus['’]\s*Første\s*Brev\s*til\s*Timotheus|Første\s*Timoth?eusbrev|1(?:\.\s*Timoth?eusbrev|(?:\s*Timoth?eusbrev|Tim))|Første\s*Tim(?:oteus)?|1(?:\.\s*Tim(?:oteus)?|\s*Tim(?:oteus)?)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Titus"],
@@ -407,7 +407,7 @@ var bcv_regexps = class {
       {
         osis: ["1Pet"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Peters\s*(?:Første|1\.?)\s*Brev|(?:Første|1\.?)\s*Petersbrev|Første\s*Pet(?:er)?|1(?:\.\s*Pet(?:er)?|\s*Pet(?:er)?)|1Pet))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Peters\s*Første\s*Brev|(?:Første|1\.?)\s*Petersbrev|Første\s*Pet(?:er)?|1(?:\.\s*Pet(?:er)?|\s*Pet(?:er)?)|1Pet))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Jude"],

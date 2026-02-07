@@ -6,7 +6,7 @@ $FOURTH	Vierde	IV	4
 $FIFTH	Vijfde	V	5
 $AB	[a-e]
 # http://nl.wikipedia.org/wiki/Toevoegingen_op_Ester (en) and http://nl.wikipedia.org/wiki/1_en_2_Koningen (vgl = cf) and http://nl.wikipedia.org/wiki/Openbaring_van_Johannes (zie ook = see also)
-$AND	en	vgl	zie ook
+$AND	en! volgende verzen	vgl	zie ook
 # http://nl.wikisource.org/wiki/Apocriefe_boeken/Judith and http://nl.wikipedia.org/wiki/Leviticus
 $CHAPTER	hoofdstukken	hoofdstuk
 # http://www.frissewateren.nl/archief/83%20september%202010/Mijn%20gemeente%20-%20welke%20gemeente%3F%20%281%29.html
@@ -17,7 +17,7 @@ $TITLE	opschrift
 $TRANS	GNB96	NBG51	NBV	SV	SV77	WV95	NB
 $TO	-
 # http://nl.wikipedia.org/wiki/Bijbelboek (verzen) and http://nl.wikisource.org/wiki/Apocriefe_boeken/Het_gebed_van_Azarja (vs) and http://nl.wikipedia.org/wiki/Rechters (vers) and http://nl.wikipedia.org/wiki/Brief_van_Judas (v)
-$VERSE	verzen	vers	vs.	v.
+$VERSE	verzen	vers	vs.	v.!\p{L}
 $UNICODE_BLOCK	Latin
 
 Gen	Genesis	Ge?n	$FIRST Mozes	Beresjiet

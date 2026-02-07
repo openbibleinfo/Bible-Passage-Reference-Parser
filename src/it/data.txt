@@ -2,8 +2,7 @@ $FIRST	Primo	Prima	1°	1	I
 $SECOND	Secondo	Seconda	2°	2	II
 $THIRD	Terzo	Terza	3°	3	III
 $FOURTH	Quarto	Quarta	4°	4	IV
-$GOSPEL	Vangelo
-$OFSAINT	di San	di
+$GOSPEL	Vangelo di San	Vangelo di
 $AB	[a-d]
 # http://www.bibbiaedu.it/bibbia_edu/bibbia_cei_2008/00022335_Lettere_Paoline.html (vedi anche = see also) and http://it.wikipedia.org/wiki/Libro_di_Gioele (ed = and with vowel) vedi = see; cfr. = cf.; e = and
 $AND	vedi anche	vedi	cfr	e
@@ -17,7 +16,7 @@ $TRANS	CEI	NR2006	NR1994	LND	NR	ND
 # http://it.wikipedia.org/wiki/Libro_di_Ester
 $TO	al
 # http://it.wikipedia.org/wiki/Libro_di_Ester (versetto and versetti) and http://it.wikipedia.org/wiki/Qoelet (versi) and http://it.wikipedia.org/wiki/Libro_di_Abdia (vv) and http://it.wikipedia.org/wiki/Genesi (v)
-$VERSE	versetto	versetti	versi	vv.	v.
+$VERSE	versetto	versetti	versi	vv.	v!\p{L}
 $UNICODE_BLOCK	Latin
 
 Gen	Genesi	Ge	Gen
@@ -59,10 +58,10 @@ Zeph	Sofonia	So	Sof
 Hag	Aggeo	Ag
 Zech	Zaccaria	Za	Zc	Zac
 Mal	Malachia	Ml	Mal
-Matt	Matteo	Mt	$GOSPEL $OFSAINT Matteo
-Mark	Marco	Mr	Mc	$GOSPEL $OFSAINT Marco
-Luke	Luca	Lu	Lc	$GOSPEL $OFSAINT Luca
-John	Giovanni	Gv	$GOSPEL $OFSAINT Giovanni
+Matt	Matteo	Mt	$GOSPEL Matteo
+Mark	Marco	Mr	Mc	$GOSPEL Marco
+Luke	Luca	Lu	Lc	$GOSPEL Luca
+John	Giovanni	Gv	$GOSPEL Giovanni
 Acts	Atti	At	Atti degli Apostoli
 Rom	Romani	Ro	Rm	Lettera ai Romani
 1Cor	$FIRST Corinzi	1 Co	1 Cor	Prima lettera ai Corinzi

@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
 fi
 
 # Prepare the language files.
-perl 01.add_lang.pl $1
+#perl 01.add_lang.pl $1
 
 # Copy the main files.
 cp ../src/core/bcv_matcher.ts ./build/
@@ -21,7 +21,7 @@ cp ../src/core/types.d.ts ./build/
 npx peggy --format es --plugin "../src/core/peg_plugin.js" -o "./build/bcv_grammar.js" "../src/core/bcv_grammar.pegjs"
 
 # The perl script generated these language files.
-mv ../src/$1/regexps.ts ./build/bcv_regexps.ts
+cp ../src/$1/regexps.ts ./build/bcv_regexps.ts
 mv ../src/$1/translations.ts ./build/bcv_translations.ts
 mv ../src/$1/grammar_options.ts ./build/bcv_grammar_options.ts
 mv ../src/$1/spec.js ../test/lang/$1.spec.js

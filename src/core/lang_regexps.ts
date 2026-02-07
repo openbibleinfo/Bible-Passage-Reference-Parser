@@ -30,7 +30,7 @@ escaped_passage = new RegExp(String.raw`
 				  | $VALID_CHARACTERS
 				  | $TITLE (?![a-z])
 				  | $PASSAGE_COMPONENTS
-				  | $AB(?!\w)
+				  | $AB (?!\w)
 				  | $
 				 )+
 		)
