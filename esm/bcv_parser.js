@@ -1,4 +1,4 @@
-// build/bcv_grammar.js
+// bin/build/bcv_grammar.js
 var peg$SyntaxError = class extends SyntaxError {
   constructor(message, expected, found, location) {
     super(message);
@@ -3209,7 +3209,7 @@ function peg$parse(input, options) {
   }
 }
 
-// build/bcv_matcher.ts
+// bin/build/bcv_matcher.ts
 var bcv_matcher = class {
   constructor(parent, grammar_options2) {
     this.parent = parent;
@@ -3288,15 +3288,19 @@ var bcv_matcher = class {
       match.index += full.length - original_part_length;
       part = this.clean_end_match(s, match, part);
       const start_index_adjust = part.startsWith("") ? 0 : part.split("")[0].length;
+      const start_index = this.parent.passage.books[book_id_number].start_index;
+      if (start_index == null) {
+        continue;
+      }
       const passage = {
         value: peg$parse(part, this.parent.options.grammar),
         type: "base",
         // The `start_index` in `this.parent.passage` always exists after being set in `match_books`.
-        start_index: this.parent.passage.books[book_id_number].start_index - start_index_adjust,
+        start_index: start_index - start_index_adjust,
         match: part
       };
-      const book_parsed = this.parent.passage.books[book_id_number].parsed;
-      if (start_index_adjust === 0 && this.parent.options.book_alone_strategy === "full" && this.parent.options.book_range_strategy === "include" && passage.value[0].type === "b" && Array.isArray(passage.value) && (passage.value.length === 1 || passage.value.length > 1 && passage.value[1].type === "translation_sequence") && /^[234]/.test(book_parsed)) {
+      const book_parsed = this.parent.passage.books[book_id_number].parsed[0];
+      if (start_index_adjust === 0 && this.parent.options.book_alone_strategy === "full" && this.parent.options.book_range_strategy === "include" && Array.isArray(passage.value) && passage.value[0].type === "b" && (passage.value.length === 1 || passage.value.length > 1 && passage.value[1].type === "translation_sequence") && /^[234]/.test(book_parsed)) {
         this.create_book_range(s, passage, book_id_number);
       }
       let accum = [];
@@ -3322,7 +3326,7 @@ var bcv_matcher = class {
       }
     }
     if (this.parent.options.captive_end_digits_strategy === "delete") {
-      const next_char_index = match.index + part.length;
+      const next_char_index = (match.index ?? 0) + part.length;
       if (s.length > next_char_index && /^\w/.test(s.charAt(next_char_index))) {
         part = part.replace(/[\s*]+\d+$/, "");
       }
@@ -3360,20 +3364,23 @@ var bcv_matcher = class {
   // Create a synthetic object that can be parsed to show the correct result.
   add_book_range_object(passage, prev, start_book_number) {
     const length = prev[1].length;
+    const prev_index = prev.index ?? 0;
     passage.value[0] = {
       type: "b_range_pre",
       value: [
         {
           type: "b_pre",
           value: start_book_number.toString(),
-          indices: [prev.index, prev.index + length]
+          indices: [prev_index, prev_index + length]
         },
         passage.value[0]
       ],
       indices: [0, passage.value[0].indices[1] + length]
     };
     this.add_offset_to_indices(passage.value[0].value[1].indices, length);
-    passage.start_index -= length;
+    if (passage.start_index != null) {
+      passage.start_index -= length;
+    }
     passage.match = prev[1] + passage.match;
     if (!Array.isArray(passage.value)) {
       return passage;
@@ -3385,7 +3392,9 @@ var bcv_matcher = class {
       if (passage.value[i].value[0]?.indices) {
         this.add_offset_to_indices(passage.value[i].value[0].indices, length);
       }
-      this.add_offset_to_indices(passage.value[i].indices, length);
+      if (passage.value[i].indices != null) {
+        this.add_offset_to_indices(passage.value[i].indices, length);
+      }
     }
     return passage;
   }
@@ -3395,7 +3404,7 @@ var bcv_matcher = class {
   }
 };
 
-// build/bcv_options.ts
+// bin/build/bcv_options.ts
 var bcv_options = class {
   constructor(parent) {
     this.consecutive_combination_strategy = "combine";
@@ -3483,9 +3492,13 @@ var bcv_options = class {
   // Whether to use books and abbreviations from the Apocrypha. This function makes sure books from the Apocrypha are available as options and adjusts the Psalms to include Psalm 151. It takes a boolean argument: `true` to include the Apocrypha and `false` to not. Defaults to `false`.
   set_apocrypha(include_apocrypha) {
     this.parent.regexps_manager.filter_books(this.#testaments, this.case_sensitive);
+    const current_ps_chapters = this.parent.translations.systems.current.chapters?.["Ps"];
+    if (current_ps_chapters == null) {
+      return;
+    }
     for (const translation of Object.keys(this.parent.translations.systems)) {
       this.parent.translations.systems[translation].chapters ??= {};
-      this.parent.translations.systems[translation].chapters["Ps"] ??= [...this.parent.translations.systems.current.chapters["Ps"]];
+      this.parent.translations.systems[translation].chapters["Ps"] ??= [...current_ps_chapters];
       if (include_apocrypha === true) {
         this.parent.translations.systems[translation].chapters["Ps"][150] = this.parent.translations.systems[translation].chapters["Ps151"]?.[0] ?? this.parent.translations.systems.current.chapters["Ps151"][0];
       } else if (this.parent.translations.systems[translation].chapters?.["Ps"].length === 151) {
@@ -3558,19 +3571,193 @@ var bcv_options = class {
       return;
     }
     this.#punctuation_strategy = arg;
-    this.#grammar.c_sep = this.#grammar[`c_sep_${arg}`];
-    this.#grammar.cv_sep = this.#grammar[`cv_sep_${arg}`];
-    this.#grammar.sequence = this.#grammar[`sequence_${arg}`];
+    const c_sep_key = `c_sep_${arg}`;
+    const cv_sep_key = `cv_sep_${arg}`;
+    const sequence_key = `sequence_${arg}`;
+    this.#grammar.c_sep = this.#grammar[c_sep_key];
+    this.#grammar.cv_sep = this.#grammar[cv_sep_key];
+    this.#grammar.sequence = this.#grammar[sequence_key];
   }
 };
 
-// build/bcv_passage.ts
+// bin/build/bcv_validators.ts
+var bcv_validators = class {
+  constructor(options, translations) {
+    this.options = options;
+    this.translations = translations;
+  }
+  // Given a start and optional end bcv object, validate that the verse exists and is valid. It returns a `true` value for `valid` if any of the translations is valid.
+  validate_ref(translations, start, end = null) {
+    if (!translations || translations.length === 0 || !Array.isArray(translations)) {
+      translations = [{
+        osis: "",
+        translation: "current",
+        system: "current"
+      }];
+    }
+    let valid = false;
+    const messages = {};
+    for (const translation of translations) {
+      if (!translation.system) {
+        messages.translation_invalid ??= [];
+        messages.translation_invalid.push(translation);
+        continue;
+      }
+      if (!this.translations.aliases[translation.system]) {
+        translation.system = "current";
+        messages.translation_unknown ??= [];
+        messages.translation_unknown.push(translation);
+      }
+      let [temp_valid] = this.validate_start_ref(translation.system, start, messages);
+      if (end) {
+        [temp_valid] = this.validate_end_ref(translation.system, start, end, temp_valid, messages);
+      }
+      if (temp_valid === true) {
+        valid = true;
+      }
+    }
+    return { valid, messages };
+  }
+  // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
+  validate_end_ref(system, start, end, valid, messages) {
+    const order_system = this.translations.systems[system]?.order ? system : "current";
+    if (end.c === 0) {
+      messages.end_chapter_is_zero = 1;
+      if (this.options.zero_chapter_strategy === "error") {
+        valid = false;
+      } else {
+        end.c = 1;
+      }
+    }
+    if (end.v === 0) {
+      messages.end_verse_is_zero = 1;
+      if (this.options.zero_verse_strategy === "error") {
+        valid = false;
+      } else if (this.options.zero_verse_strategy === "upgrade") {
+        end.v = 1;
+      }
+    }
+    if (end.b && this.translations.systems[order_system].order[end.b]) {
+      valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
+    } else {
+      valid = false;
+      messages.end_book_not_exist = true;
+    }
+    return [valid, messages];
+  }
+  // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
+  validate_known_end_book(system, order_system, start, end, valid, messages) {
+    const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
+    if (end.c == null && chapter_array.length === 1) {
+      end.c = 1;
+    }
+    if (this.translations.systems[order_system].order[start.b] != null && this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]) {
+      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
+        valid = false;
+      }
+      messages.end_book_before_start = true;
+    }
+    if (start.b === end.b && end.c != null) {
+      start.c ??= 1;
+      if (start.c > end.c) {
+        valid = false;
+        messages.end_chapter_before_start = true;
+      } else if (start.c === end.c && end.v != null) {
+        start.v ??= 1;
+        if (start.v > end.v) {
+          valid = false;
+          messages.end_verse_before_start = true;
+        }
+      }
+    }
+    if (end.c != null && chapter_array[end.c - 1] == null) {
+      if (chapter_array.length === 1) {
+        messages.end_chapter_not_exist_in_single_chapter_book = 1;
+      } else if (end.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
+        messages.end_chapter_not_exist = chapter_array.length;
+      }
+    }
+    if (end.v != null) {
+      end.c ??= chapter_array.length;
+      if (end.v > chapter_array[end.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+        messages.end_verse_not_exist = chapter_array[end.c - 1];
+      }
+    }
+    return valid;
+  }
+  // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
+  validate_known_start_book(system, start, messages) {
+    let valid = true;
+    start.c ??= 1;
+    const chapter_array = this.translations.systems[system]?.chapters?.[start.b] || this.translations.systems.current.chapters[start.b];
+    if (start.c === 0) {
+      messages.start_chapter_is_zero = 1;
+      if (this.options.zero_chapter_strategy === "error") {
+        valid = false;
+      } else {
+        start.c = 1;
+      }
+    }
+    if (start.v === 0) {
+      messages.start_verse_is_zero = 1;
+      if (this.options.zero_verse_strategy === "error") {
+        valid = false;
+      } else if (this.options.zero_verse_strategy === "upgrade") {
+        start.v = 1;
+      }
+    }
+    if (start.c > 0 && chapter_array[start.c - 1] != null) {
+      if (start.v != null) {
+        if (start.v > chapter_array[start.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+          valid = false;
+          messages.start_verse_not_exist = chapter_array[start.c - 1];
+        }
+      } else if (start.c === 1 && chapter_array.length === 1) {
+        if (this.options.single_chapter_1_strategy === "verse") {
+          messages.start_verse_1 = 1;
+        } else {
+          messages.start_chapter_1 = 1;
+        }
+      }
+    } else {
+      const chapter_array_length = chapter_array.length;
+      if (start.c !== 1 && chapter_array_length === 1) {
+        valid = false;
+        messages.start_chapter_not_exist_in_single_chapter_book = 1;
+      } else if (start.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
+        valid = false;
+        messages.start_chapter_not_exist = chapter_array_length;
+      }
+    }
+    return valid;
+  }
+  // Make sure that the start ref exists in the given translation.
+  validate_start_ref(system, start, messages) {
+    let valid = true;
+    const order_system = this.translations.systems[system]?.order ? system : "current";
+    if (!start.b) {
+      valid = false;
+      messages.start_book_not_defined = true;
+    } else if (this.translations.systems[order_system].order[start.b]) {
+      valid = this.validate_known_start_book(system, start, messages);
+    } else {
+      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
+        valid = false;
+      }
+      messages.start_book_not_exist = true;
+    }
+    return [valid, messages];
+  }
+};
+
+// bin/build/bcv_passage.ts
 var bcv_passage = class {
   constructor(options, translations) {
     this.books = [];
     this.indices = [];
     this.options = options;
     this.translations = translations;
+    this.validators = new bcv_validators(options, translations);
   }
   // ## Public
   // Loop through the parsed passages.
@@ -3584,8 +3771,10 @@ var bcv_passage = class {
     return [accum, context];
   }
   handle_obj(passage, accum, context) {
-    if (passage.type && typeof this[passage.type] === "function") {
-      return this[passage.type](passage, accum, context);
+    const type = passage.type;
+    const handler = this[type];
+    if (typeof handler === "function") {
+      return handler.call(this, passage, accum, context);
     }
     return [accum, context];
   }
@@ -3677,6 +3866,7 @@ var bcv_passage = class {
       if (valid.messages?.start_chapter_not_exist_in_single_chapter_book || valid.messages?.start_verse_1 || partial != null && valid.messages?.start_chapter_1) {
         obj.valid = this.validate_ref(passage.start_context.translations, { b, v: c });
         if (valid.messages?.start_chapter_not_exist_in_single_chapter_book) {
+          obj.valid.messages ??= {};
           obj.valid.messages.start_chapter_not_exist_in_single_chapter_book = 1;
         }
         obj.start.c = 1;
@@ -4121,7 +4311,10 @@ var bcv_passage = class {
     if (valid.valid) {
       const [return_now, return_value] = this.range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum);
       if (return_now) {
-        return return_value;
+        if (return_value != null) {
+          return return_value;
+        }
+        return [accum, context];
       }
     } else {
       return this.range_handle_invalid(valid, passage, start, start_obj, end, end_obj, accum);
@@ -4300,14 +4493,29 @@ var bcv_passage = class {
   translation_sequence(passage, accum, context) {
     passage.start_context = structuredClone(context);
     const translations = [];
-    translations.push({
-      translation: this.books[passage.value[0].value].parsed,
-      system: "default",
-      osis: ""
-    });
+    if (!Array.isArray(passage.value) || passage.value.length < 2) {
+      accum.push(passage);
+      this.reset_context(context, ["translations"]);
+      return [accum, context];
+    }
+    const first_book_index = passage.value[0]?.value;
+    if (typeof first_book_index === "number") {
+      const first_parsed = this.books[first_book_index]?.parsed;
+      if (typeof first_parsed === "string" && first_parsed.length > 0) {
+        translations.push({
+          translation: first_parsed,
+          system: "default",
+          osis: ""
+        });
+      }
+    }
     for (const val of passage.value[1]) {
-      const translation = this.books[this.pluck("translation", val).value].parsed;
-      if (translation) {
+      const translation_obj = this.pluck("translation", val);
+      if (translation_obj == null || typeof translation_obj.value !== "number") {
+        continue;
+      }
+      const translation = this.books[translation_obj.value]?.parsed;
+      if (typeof translation === "string" && translation.length > 0) {
         translations.push({
           translation,
           system: "default",
@@ -4371,7 +4579,11 @@ var bcv_passage = class {
     return null;
   }
   pluck_integer(type, passages) {
-    return this.pluck("integer", this.pluck(type, passages).value);
+    const outer = this.pluck(type, passages);
+    if (outer == null || !Array.isArray(outer.value)) {
+      return null;
+    }
+    return this.pluck("integer", outer.value);
   }
   // Pluck the last object or value matching a type, descending as needed into objects.
   pluck_last_recursively(type, passages) {
@@ -4451,7 +4663,11 @@ var bcv_passage = class {
           });
         }
         match_index += part_length + 2;
-        adjust = this.books[part_i].start_index + this.books[part_i].value.length - match_index;
+        const book = this.books[part_i];
+        if (book?.start_index == null) {
+          continue;
+        }
+        adjust = book.start_index + book.value.length - match_index;
         indices.push({
           start: end_index + 1,
           end: end_index + 1,
@@ -4488,6 +4704,17 @@ var bcv_passage = class {
     }
     return [start_out, end_out];
   }
+  // ## Validators
+  // Delegate to the validators object for validation. These methods are public for testing.
+  validate_ref(...args) {
+    return this.validators.validate_ref(...args);
+  }
+  validate_start_ref(...args) {
+    return this.validators.validate_start_ref(...args);
+  }
+  validate_end_ref(...args) {
+    return this.validators.validate_end_ref(...args);
+  }
   // Apply common transformations at the end of handling a passage object with a book.
   normalize_passage_and_alternates(passage, alternates, adjust_end_index_by = 0) {
     if (passage.passages.length === 0) {
@@ -4506,172 +4733,10 @@ var bcv_passage = class {
       }
     }
   }
-  // ## Validators
-  // Given a start and optional end bcv object, validate that the verse exists and is valid. It returns a `true` value for `valid` if any of the translations is valid.
-  validate_ref(translations, start, end = null) {
-    if (!translations || translations.length === 0 || !Array.isArray(translations)) {
-      translations = [{
-        osis: "",
-        translation: "current",
-        system: "current"
-      }];
-    }
-    let valid = false;
-    const messages = {};
-    for (const translation of translations) {
-      if (!translation.system) {
-        messages.translation_invalid ??= [];
-        messages.translation_invalid.push(translation);
-        continue;
-      }
-      if (!this.translations.aliases[translation.system]) {
-        translation.system = "current";
-        messages.translation_unknown ??= [];
-        messages.translation_unknown.push(translation);
-      }
-      let [temp_valid] = this.validate_start_ref(translation.system, start, messages);
-      if (end) {
-        [temp_valid] = this.validate_end_ref(translation.system, start, end, temp_valid, messages);
-      }
-      if (temp_valid === true) {
-        valid = true;
-      }
-    }
-    return { valid, messages };
-  }
-  // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
-  validate_end_ref(system, start, end, valid, messages) {
-    const order_system = this.translations.systems[system]?.order ? system : "current";
-    if (end.c === 0) {
-      messages.end_chapter_is_zero = 1;
-      if (this.options.zero_chapter_strategy === "error") {
-        valid = false;
-      } else {
-        end.c = 1;
-      }
-    }
-    if (end.v === 0) {
-      messages.end_verse_is_zero = 1;
-      if (this.options.zero_verse_strategy === "error") {
-        valid = false;
-      } else if (this.options.zero_verse_strategy === "upgrade") {
-        end.v = 1;
-      }
-    }
-    if (end.b && this.translations.systems[order_system].order[end.b]) {
-      valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
-    } else {
-      valid = false;
-      messages.end_book_not_exist = true;
-    }
-    return [valid, messages];
-  }
-  // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
-  validate_known_end_book(system, order_system, start, end, valid, messages) {
-    const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
-    if (end.c == null && chapter_array.length === 1) {
-      end.c = 1;
-    }
-    if (this.translations.systems[order_system].order[start.b] != null && this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]) {
-      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
-        valid = false;
-      }
-      messages.end_book_before_start = true;
-    }
-    if (start.b === end.b && end.c != null) {
-      start.c ??= 1;
-      if (start.c > end.c) {
-        valid = false;
-        messages.end_chapter_before_start = true;
-      } else if (start.c === end.c && end.v != null) {
-        start.v ??= 1;
-        if (start.v > end.v) {
-          valid = false;
-          messages.end_verse_before_start = true;
-        }
-      }
-    }
-    if (end.c != null && chapter_array[end.c - 1] == null) {
-      if (chapter_array.length === 1) {
-        messages.end_chapter_not_exist_in_single_chapter_book = 1;
-      } else if (end.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
-        messages.end_chapter_not_exist = chapter_array.length;
-      }
-    }
-    if (end.v != null) {
-      end.c ??= chapter_array.length;
-      if (end.v > chapter_array[end.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-        messages.end_verse_not_exist = chapter_array[end.c - 1];
-      }
-    }
-    return valid;
-  }
-  // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
-  validate_known_start_book(system, start, messages) {
-    let valid = true;
-    start.c ??= 1;
-    const chapter_array = this.translations.systems[system]?.chapters?.[start.b] || this.translations.systems.current.chapters[start.b];
-    if (start.c === 0) {
-      messages.start_chapter_is_zero = 1;
-      if (this.options.zero_chapter_strategy === "error") {
-        valid = false;
-      } else {
-        start.c = 1;
-      }
-    }
-    if (start.v === 0) {
-      messages.start_verse_is_zero = 1;
-      if (this.options.zero_verse_strategy === "error") {
-        valid = false;
-      } else if (this.options.zero_verse_strategy === "upgrade") {
-        start.v = 1;
-      }
-    }
-    if (start.c > 0 && chapter_array[start.c - 1] != null) {
-      if (start.v != null) {
-        if (start.v > chapter_array[start.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-          valid = false;
-          messages.start_verse_not_exist = chapter_array[start.c - 1];
-        }
-      } else if (start.c === 1 && chapter_array.length === 1) {
-        if (this.options.single_chapter_1_strategy === "verse") {
-          messages.start_verse_1 = 1;
-        } else {
-          messages.start_chapter_1 = 1;
-        }
-      }
-    } else {
-      const chapter_array_length = chapter_array.length;
-      if (start.c !== 1 && chapter_array_length === 1) {
-        valid = false;
-        messages.start_chapter_not_exist_in_single_chapter_book = 1;
-      } else if (start.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
-        valid = false;
-        messages.start_chapter_not_exist = chapter_array_length;
-      }
-    }
-    return valid;
-  }
-  // Make sure that the start ref exists in the given translation.
-  validate_start_ref(system, start, messages) {
-    let valid = true;
-    const order_system = this.translations.systems[system]?.order ? system : "current";
-    if (!start.b) {
-      valid = false;
-      messages.start_book_not_defined = true;
-    } else if (this.translations.systems[order_system].order[start.b]) {
-      valid = this.validate_known_start_book(system, start, messages);
-    } else {
-      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
-        valid = false;
-      }
-      messages.start_book_not_exist = true;
-    }
-    return [valid, messages];
-  }
 };
 
-// build/bcv_regexps_manager.ts
+// bin/build/bcv_regexps_manager.ts
+var TESTAMENT_ORDER = ["o", "n", "a"];
 var bcv_regexps_manager = class {
   constructor(parent) {
     this.filtered_books_flags = "";
@@ -4686,6 +4751,7 @@ var bcv_regexps_manager = class {
     this.filtered_books_flags = filtered_books_flags;
     if (testaments === "ona" && case_sensitive === "none") {
       this.parent.regexps.books = this.parent.regexps.all_books;
+      return;
     }
     this.parent.regexps.books = this.parent.regexps.all_books.reduce((accum, book) => {
       let cloned_book;
@@ -4801,13 +4867,14 @@ var bcv_regexps_manager = class {
   // Get data about the testaments the books are in to create RegExps for them.
   get_book_testaments(pattern) {
     const books = pattern.osis;
-    if (!Array.isArray(books)) {
-      throw new Error("add_books: The `osis` property of each pattern should be an array");
+    if (!Array.isArray(books) || books.length === 0) {
+      throw new Error("add_books: The `osis` property of each pattern should be a non-empty array");
     }
     const out = {
       testament_books: {},
       has_number_book: false,
-      testament: ""
+      // Always overwritten below.
+      testament: "ona"
     };
     const testaments = /* @__PURE__ */ new Set();
     for (const book of books) {
@@ -4837,33 +4904,31 @@ var bcv_regexps_manager = class {
     if (testaments.size === 1) {
       out.testament = testaments.values().next().value;
     } else {
-      for (const key of ["o", "n", "a"]) {
-        if (testaments.has(key)) {
-          out.testament += key;
-        }
-      }
+      out.testament = TESTAMENT_ORDER.filter((testament) => testaments.has(testament)).join("");
     }
     return out;
   }
 };
 
-// build/bcv_translations_manager.ts
+// bin/build/bcv_translations_manager.ts
+var DEFAULT_SYSTEM = "default";
+var CURRENT_SYSTEM = "current";
 var bcv_translations_manager = class {
   constructor(parent) {
     this.parent = parent;
   }
-  translation_info(system = "default") {
+  translation_info(system = DEFAULT_SYSTEM) {
     if (typeof system !== "string" || !system) {
-      system = "default";
+      system = DEFAULT_SYSTEM;
     }
     if (this.parent.translations.aliases[system]?.system) {
       system = this.parent.translations.aliases[system].system;
     }
     if (this.parent.translations.systems[system] == null) {
       if (this.parent.options.warn_level === "warn") {
-        console.warn("Unknown translation `" + new_translation + "` in translation_info(). Using default instead.");
+        console.warn("Unknown translation `" + system + "` in translation_info(). Using default instead.");
       }
-      system = "default";
+      system = DEFAULT_SYSTEM;
     }
     const old_system = this.parent.options.versification_system;
     this.parent.options.versification_system = system;
@@ -4891,19 +4956,19 @@ var bcv_translations_manager = class {
     for (const translation of new_translations.translations) {
       const normalized_translation = this.normalize_sent_translation_data(translation);
       const insert_key = translation.text.toLowerCase();
-      if (insert_key === "default" || insert_key === "current") {
+      if (insert_key === DEFAULT_SYSTEM || insert_key === CURRENT_SYSTEM) {
         throw new Error("add_translations: Can't redefine `" + insert_key + "` as a translation. This built-in translation can't be redefined");
       }
       const system = normalized_translation.system;
-      if (system !== "default" && this.parent.translations.systems[normalized_translation.system] == null) {
+      if (system !== DEFAULT_SYSTEM && this.parent.translations.systems[normalized_translation.system] == null) {
         if (new_translations.systems != null && new_translations.systems[system] != null) {
           this.add_system(normalized_translation.system, new_translations.systems[system]);
         } else {
           let valid_systems = Object.keys(this.parent.translations.systems);
-          valid_systems = valid_systems.filter((system2) => system2 !== "current");
-          throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + Object.keys(valid_systems).join("`, `") + "`. You may want to check that you included this system in `systems`");
+          valid_systems = valid_systems.filter((system2) => system2 !== CURRENT_SYSTEM);
+          throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + valid_systems.join("`, `") + "`. You may want to check that you included this system in `systems`");
         }
-      } else if (system === "current") {
+      } else if (system === CURRENT_SYSTEM) {
         throw new Error("add_translations: Can't use `" + system + "` as a versification system for a new translation");
       }
       if (normalized_translations[insert_key] != null || this.parent.translations.aliases[insert_key] != null) {
@@ -4921,7 +4986,7 @@ var bcv_translations_manager = class {
     this.parent.translations.aliases = { ...normalized_translations, ...this.parent.translations.aliases };
   }
   apply_case_sensitive(case_sensitive) {
-    const flags = case_sensitive.includes("translations") ? "g" : "gi";
+    const flags = this.get_translation_regexp_flags(case_sensitive);
     for (const [i, translation] of this.parent.regexps.translations.entries()) {
       this.parent.regexps.translations[i] = new RegExp(translation.source, flags);
     }
@@ -4936,7 +5001,7 @@ var bcv_translations_manager = class {
       throw new Error("add_translations: A translation.text (`" + text + "`) can't be all numbers because then it would conflict with chapter and verse references.");
     }
     const osis = typeof translation.osis === "string" && translation.osis !== "" ? translation.osis : translation.text.toUpperCase();
-    const system = typeof translation.system === "string" && translation.system.length > 0 ? translation.system : "default";
+    const system = typeof translation.system === "string" && translation.system.length > 0 ? translation.system : DEFAULT_SYSTEM;
     return {
       osis,
       system
@@ -4944,7 +5009,7 @@ var bcv_translations_manager = class {
   }
   // Create the new translation definition.
   add_system(system, new_system) {
-    if (system === "default" || system === "current") {
+    if (system === DEFAULT_SYSTEM || system === CURRENT_SYSTEM) {
       throw new Error("add_translations: Can't use `" + system + "` as a versification system. This built-in system can't be redefined");
     }
     if (new_system == null || new_system.books == null && new_system.chapters == null) {
@@ -5011,7 +5076,7 @@ var bcv_translations_manager = class {
     const insert_at = new_translations.insert_at === "end" ? "end" : "start";
     const pre_regexp = new_translations?.pre_regexp instanceof RegExp ? new_translations?.pre_regexp : { source: "" };
     const post_regexp = new_translations?.post_regexp instanceof RegExp ? new_translations?.post_regexp : /(?![\p{L}\p{N}])/u;
-    const flags = this.parent.options.case_sensitive.includes("translations") ? "g" : "gi";
+    const flags = this.get_translation_regexp_flags();
     const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, flags);
     if (insert_at === "start") {
       this.parent.regexps.translations.unshift(regexp);
@@ -5019,9 +5084,13 @@ var bcv_translations_manager = class {
       this.parent.regexps.translations.push(regexp);
     }
   }
+  // Keep translation regexp flag behavior consistent in one place.
+  get_translation_regexp_flags(case_sensitive = this.parent.options.case_sensitive) {
+    return case_sensitive.includes("translations") ? "g" : "gi";
+  }
 };
 
-// build/bcv_parser.ts
+// bin/build/bcv_parser.ts
 var bcv_parser = class {
   constructor(lang = null) {
     this.passage = new bcv_passage();
@@ -5209,9 +5278,13 @@ const bcv = new bcv_parser(lang);`;
   }
   parse_entity_passages(entity, entity_id, translations, system) {
     const osises = [];
-    const length = entity.passages.length;
+    const passages = entity.passages;
+    if (passages == null || passages.length === 0) {
+      return osises;
+    }
+    const length = passages.length;
     const include_old_testament = this.options.testaments.indexOf("o") >= 0;
-    entity.passages.forEach((passage, i) => {
+    passages.forEach((passage, i) => {
       if (!passage.type) {
         passage.type = entity.type;
       }
@@ -5276,17 +5349,20 @@ const bcv = new bcv_parser(lang);`;
       }
     }
     if (end.v == null) {
-      if (chapter_array && chapter_array[end.c - 1] && existence_strategy.includes("v")) {
-        end.v = chapter_array[end.c - 1];
+      const end_chapter2 = end.c ?? 1;
+      if (chapter_array && chapter_array[end_chapter2 - 1] && existence_strategy.includes("v")) {
+        end.v = chapter_array[end_chapter2 - 1];
       } else {
         end.v = 999;
       }
     }
+    const end_chapter = end.c ?? 1;
+    const end_chapter_verse_count = chapter_array?.[end_chapter - 1];
     const get_partial = compaction_strategy.includes("p") && (start.p != null || end.p != null);
-    if ((compaction_strategy === "b" || compaction_strategy === "bp") && start.c === 1 && start.v === 1 && get_partial === false && (end.c === 999 && end.v === 999 || end.c === chapter_array.length && existence_strategy.includes("c") && (end.v === 999 || end.v === chapter_array[end.c - 1] && existence_strategy.includes("v")))) {
+    if ((compaction_strategy === "b" || compaction_strategy === "bp") && start.c === 1 && start.v === 1 && get_partial === false && (end.c === 999 && end.v === 999 || end.c === chapter_array?.length && existence_strategy.includes("c") && (end.v === 999 || end.v === end_chapter_verse_count && existence_strategy.includes("v")))) {
       osis.start = start.b;
       osis.end = end.b;
-    } else if (start.v === 1 && get_partial === false && compaction_strategy.includes("v") === false && (end.v === 999 || end.v === chapter_array[end.c - 1] && existence_strategy.includes("v"))) {
+    } else if (start.v === 1 && get_partial === false && compaction_strategy.includes("v") === false && (end.v === 999 || end.v === end_chapter_verse_count && existence_strategy.includes("v"))) {
       osis.start = start.b + "." + start.c;
       osis.end = end.b + "." + end.c;
     } else {
@@ -5368,6 +5444,12 @@ const bcv = new bcv_parser(lang);`;
           has_enclosed = true;
         }
         if (this.is_verse_consecutive(prev, osis.start, translation)) {
+          const previous_osis = out[prev_i];
+          if (previous_osis == null || previous_osis.start == null || previous_osis.enclosed_indices == null) {
+            out.push(osis);
+            prev = { b: osis.end.b, c: osis.end.c, v: osis.end.v };
+            return;
+          }
           out[prev_i].end = osis.end;
           out[prev_i].is_enclosed_last = is_enclosed_last;
           out[prev_i].indices[1] = osis.indices[1];
@@ -5390,7 +5472,7 @@ const bcv = new bcv_parser(lang);`;
   // If there's an enclosed reference--e.g., Ps 1 (2)--and we've combined consecutive passages in such a way that the enclosed reference is fully inside the sequence (i.e., if it starts before the enclosed sequence), then make sure the end index for the passage includes the necessary closing punctuation.
   snap_enclosed_indices(osises) {
     for (const osis of osises) {
-      if (osis.is_enclosed_last != null) {
+      if (osis.is_enclosed_last != null && osis.enclosed_indices != null) {
         if (osis.enclosed_indices[0] < 0 && osis.is_enclosed_last) {
           osis.indices[1] = osis.enclosed_indices[1];
         }
@@ -5405,7 +5487,7 @@ const bcv = new bcv_parser(lang);`;
   * Next book, first chapter, and first verse if the previous book ended properly (e.g., Mal.4.6 followed by Matt.1.1)
   */
   is_verse_consecutive(prev, check, translation) {
-    if (!prev.b) {
+    if (!prev.b || prev.c == null || prev.v == null || check.c == null || check.v == null) {
       return false;
     }
     const translation_order = this.passage.translations.systems[translation]?.order || this.passage.translations.systems.current.order;
@@ -5424,6 +5506,10 @@ const bcv = new bcv_parser(lang);`;
   }
   // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.
   snap_range(entity, passage_i) {
+    const passages = entity.passages;
+    if (passages == null || passages.length === 0) {
+      return entity;
+    }
     let entity_i = 0;
     let source_entity = "start";
     let type = "range_end_b";
@@ -5431,21 +5517,21 @@ const bcv = new bcv_parser(lang);`;
       entity.type = entity.original_type;
       delete entity.original_type;
     }
-    if (entity.type === "b_range_start" || entity.type === "sequence" && entity.passages[passage_i].type === "b_range_start") {
+    if (entity.type === "b_range_start" || entity.type === "sequence" && passages[passage_i].type === "b_range_start") {
       entity_i = 1;
       source_entity = "end";
       type = "b_range_start";
     }
     const target_entity = source_entity === "end" ? "start" : "end";
     for (const obj_type of [source_entity, target_entity]) {
-      if (entity.passages[passage_i][obj_type].original_object != null) {
-        entity.passages[passage_i][obj_type] = entity.passages[passage_i][obj_type].original_object;
+      if (passages[passage_i][obj_type].original_object != null) {
+        passages[passage_i][obj_type] = passages[passage_i][obj_type].original_object;
       }
     }
-    const original_target = structuredClone(entity.passages[passage_i][target_entity]);
-    entity.passages[passage_i][target_entity] = structuredClone(entity.passages[passage_i][source_entity]);
-    entity.passages[passage_i][target_entity].original_object = original_target;
-    entity.passages[passage_i][source_entity].original_object = structuredClone(entity.passages[passage_i][source_entity]);
+    const original_target = structuredClone(passages[passage_i][target_entity]);
+    passages[passage_i][target_entity] = structuredClone(passages[passage_i][source_entity]);
+    passages[passage_i][target_entity].original_object = original_target;
+    passages[passage_i][source_entity].original_object = structuredClone(passages[passage_i][source_entity]);
     if (entity.type === "sequence") {
       if (passage_i >= entity.value.length) {
         passage_i = entity.value.length - 1;
@@ -5460,25 +5546,42 @@ const bcv = new bcv_parser(lang);`;
         }
       }
     } else {
+      const target_value = entity.value[entity_i];
+      const absolute_indices = target_value.absolute_indices ?? entity.absolute_indices;
       entity.original_type = entity.type;
-      entity.type = entity.value[entity_i].type;
+      entity.type = target_value.type;
       entity.absolute_indices = [
-        entity.value[entity_i].absolute_indices[0],
-        entity.value[entity_i].absolute_indices[1]
+        absolute_indices[0],
+        absolute_indices[1]
       ];
     }
     return entity;
   }
   // Snap the start/end index of the entity or surrounding passages when there's a lone book or invalid item in a sequence.
   snap_sequence(type, entity, osises, i, length) {
-    const passage = entity.passages[i];
-    if (passage.absolute_indices[0] === entity.absolute_indices[0] && i < length - 1 && this.get_snap_sequence_i(entity.passages, i, length) !== i) {
-      entity.absolute_indices[0] = entity.passages[i + 1].absolute_indices[0];
-      this.remove_absolute_indices(entity.passages, i + 1);
+    const passages = entity.passages;
+    if (passages == null || passages.length === 0) {
+      return;
+    }
+    const passage = passages[i];
+    if (passage == null || passage.absolute_indices == null) {
+      return;
+    }
+    if (passage.absolute_indices[0] === entity.absolute_indices[0] && i < length - 1 && this.get_snap_sequence_i(passages, i, length) !== i) {
+      const next_absolute_indices = passages[i + 1]?.absolute_indices;
+      if (next_absolute_indices == null) {
+        return;
+      }
+      entity.absolute_indices[0] = next_absolute_indices[0];
+      this.remove_absolute_indices(passages, i + 1);
     } else if (passage.absolute_indices[1] === entity.absolute_indices[1] && i > 0) {
-      entity.absolute_indices[1] = osises.length > 0 ? osises[osises.length - 1].indices[1] : entity.passages[i - 1].absolute_indices[1];
-    } else if (type === "book" && i < length - 1 && !this.starts_with_book(entity.passages[i + 1])) {
-      entity.passages[i + 1].absolute_indices[0] = passage.absolute_indices[0];
+      const previous_absolute_indices = passages[i - 1]?.absolute_indices;
+      entity.absolute_indices[1] = osises.length > 0 ? osises[osises.length - 1].indices[1] : previous_absolute_indices?.[1] ?? entity.absolute_indices[1];
+    } else if (type === "book" && i < length - 1 && !this.starts_with_book(passages[i + 1])) {
+      const next_absolute_indices = passages[i + 1].absolute_indices;
+      if (next_absolute_indices != null) {
+        next_absolute_indices[0] = passage.absolute_indices[0];
+      }
     }
   }
   // Identify whether there are any valid items between the current item and the next book.
@@ -5495,7 +5598,7 @@ const bcv = new bcv_parser(lang);`;
   }
   // Given a passage, does it start with a book? It never takes a sequence as an argument.
   starts_with_book(passage) {
-    if (passage.type.substring(0, 1) === "b") {
+    if (passage.type?.substring(0, 1) === "b") {
       return true;
     }
     if ((passage.type === "range" || passage.type === "ff") && passage.start && passage.start.type && passage.start.type.substring(0, 1) === "b") {
@@ -5505,13 +5608,14 @@ const bcv = new bcv_parser(lang);`;
   }
   // Remove absolute indices from the given passage to the end of the sequence. We do this when we don't want to include the end of a sequence in the sequence (most likely because it's invalid or a book on its own).
   remove_absolute_indices(passages, passage_i) {
-    if (passages[passage_i].enclosed_absolute_indices[0] < 0) {
+    const enclosed_indices = passages[passage_i]?.enclosed_absolute_indices;
+    if (enclosed_indices == null || enclosed_indices[0] < 0) {
       return;
     }
-    const [start, end] = passages[passage_i].enclosed_absolute_indices;
-    const passages_length = passages.length;
+    const [start, end] = enclosed_indices;
     for (const passage of passages.slice(passage_i)) {
-      if (passage.enclosed_absolute_indices[0] === start && passage.enclosed_absolute_indices[1] === end) {
+      const passage_enclosed = passage.enclosed_absolute_indices;
+      if (passage_enclosed != null && passage_enclosed[0] === start && passage_enclosed[1] === end) {
         passage.enclosed_absolute_indices = [-1, -1];
       } else {
         break;
@@ -5519,10 +5623,10 @@ const bcv = new bcv_parser(lang);`;
     }
   }
   add_books(books) {
-    return this.regexps_manager.add_books(books);
+    this.regexps_manager.add_books(books);
   }
   add_translations(translations) {
-    return this.translations_manager.add_translations(translations);
+    this.translations_manager.add_translations(translations);
   }
 };
 export {

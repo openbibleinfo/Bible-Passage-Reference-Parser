@@ -12,15 +12,13 @@ This project also provides extensively commented code and 4.7 million real-world
 
 Try a [demo of the Bible passage reference parser](https://www.openbible.info/labs/reference-parser/).
 
-## Upgrade Guide from v2 to v3
+## Upgrade Guide from v3 to v4
 
-First, you don't need to update any of your code. The `/js` folder contains a copy of the v2.0.1 code. It hasn't changed at all and works exactly the same.
+If you're just running the parser with existing languages, you don't need to update any of your code.
 
-But if you do want access to new features, I recommend using the code in `/esm` version of the code, which uses `import`-style modules and takes an argument to indicate the language you want to support.
+To take advantage of all features, you may want to consider migrating to the esm version of the code.
 
-CommonJS files (`require`-style) are available in the `/cjs` folder.
-
-Note that the files in `/esm` and `/cjs` require ESM2022, which means they'll work in Node 16 and later and browsers released after mid-2021.
+If you're building a language or want to use data from over 2,000 additional languages, check out the [Bible Passage Reference Parser Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) repo, which cleans up the language build process and adds many more languages.
 
 ## Setup
 
@@ -85,7 +83,7 @@ console.log( bcv.parse("John 1").osis() ); // John.1
 To run using CommonJS:
 
 ```javascript
-const bcv_parser = require("bible-passage-reference-parser/cjs/en_bcv_parser").bcv_parser;
+const bcv_parser = require("bible-passage-reference-parser/cjs/en_bcv_parser.js").bcv_parser;
 const bcv = new bcv_parser();
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
@@ -596,15 +594,14 @@ This dataset has a few limitations:
 
 The parser emits `GkEsth` for Greek Esther rather than just `Esth`. It can include `Ps151` as part of the Psalms (`Ps.151.1`)—the default—or as its own book (`Ps151.1.1`), depending on the `ps151_strategy` option.
 
-<table>
-  <tr><th>Input</th><th>OSIS</th></tr>
-  <tr><td><code>John</code></td><td><code>John</code> or <code>John.1-John.21</code> or <code>John.1.1-John.21.25</code></td></tr>
-  <tr><td><code>John-Acts</code></td><td><code>John-Acts</code> or <code>John.1-Acts.28</code> or <code>John.1.1-Acts.28.31</code></td></tr>
-  <tr><td><code>John 3</code></td><td><code>John.3</code> or <code>John.3.1-John.3.36</code></td></tr>
-  <tr><td><code>John 3:16</code></td><td><code>John.3.16</code></td></tr>
-  <tr><td><code>John 3:16-17</code></td><td><code>John.3.16-John.3.17</code></td></tr>
-  <tr><td><code>John 3:16-4:1 and 4:2-5a</code></td><td><code>John.3.16-John.4.1,John.4.2-John.4.5!a</code></td></tr>
-</table>
+| Input | OSIS |
+| --- | --- |
+| `John` | `John` or `John.1-John.21` or `John.1.1-John.21.25` |
+| `John-Acts` | `John-Acts` or `John.1-Acts.28` or `John.1.1-Acts.28.31` |
+| `John 3` | `John.3` or `John.3.1-John.3.36` |
+| `John 3:16` | `John.3.16` |
+| `John 3:16-17` | `John.3.16-John.3.17` |
+| `John 3:16-4:1 and 4:2-5a` | `John.3.16-John.4.1,John.4.2-John.4.5!a` |
 
 ## Program Flow
 
@@ -674,71 +671,72 @@ Performance degrades with the number of passages found in a string. You can gene
 
 ## Alternate Versification Systems
 
-The BCV parser supports several versification systems (described above). The appropriate versification system kicks in if the parsed text explicitly mentions a translation with an alternate versification system, or you can use `set_options({"versification_system":"..."})`. You can extend the relevant `translation_additions.js` to add additional ones (though the build process overwrites this file; you may be better off adding them in the `data.txt` for your language of interest.
+The BCV parser supports several versification systems (described above). The appropriate versification system kicks in if the parsed text explicitly mentions a translation with an alternate versification system, or you can use `set_options({"versification_system":"..."})`.
 
 You can also add new versification systems and translations at runtime using `.add_translations()`.
 
-## Non-English Support
+## Supported Languages
 
-Each file in `esm/lang` provides support for additional languages.
+The related [Bible Passage Reference Parser Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) provides book-name data for over 2,000 languages. You can use this data directly in this parser.
 
-### Supported Languages
+### Compatibility
 
-Most of these languages are in [Google Translate](https://translate.google.com/). 
+For backwards compatibility (which I don't intend to change), `esm/lang` supports over 40 languages (below).
 
-<table>
-  <tr><th>Prefix</th><th>Language</th>
-  <tr><td>ar</td><td>Arabic</td></tr>
-  <tr><td>bg</td><td>Bulgarian</td></tr>
-  <tr><td>ceb</td><td>Cebuano</td></tr>
-  <tr><td>cs</td><td>Czech</td></tr>
-  <tr><td>cy</td><td>Welsh</td></tr>
-  <tr><td>da</td><td>Danish</td></tr>
-  <tr><td>de</td><td>German</td></tr>
-  <tr><td>el</td><td>Greek (mostly ancient)</td></tr>
-  <tr><td>en</td><td>English</td></tr>
-  <tr><td>es</td><td>Spanish</td></tr>
-  <tr><td>fa</td><td>Farsi</td></tr>
-  <tr><td>fi</td><td>Finnish</td></tr>
-  <tr><td>fr</td><td>French</td></tr>
-  <tr><td>he</td><td>Hebrew</td></tr>
-  <tr><td>hi</td><td>Hindi</td></tr>
-  <tr><td>hr</td><td>Croatian</td></tr>
-  <tr><td>ht</td><td>Haitian Creole</td></tr>
-  <tr><td>hu</td><td>Hungarian</td></tr>
-  <tr><td>id</td><td>Indonesian</td></tr>
-  <tr><td>is</td><td>Icelandic</td></tr>
-  <tr><td>it</td><td>Italian</td></tr>
-  <tr><td>ja</td><td>Japanese</td></tr>
-  <tr><td>jv</td><td>Javanese</td></tr>
-  <tr><td>ko</td><td>Korean</td></tr>
-  <tr><td>la</td><td>Latin</td></tr>
-  <tr><td>mk</td><td>Macedonian</td></tr>
-  <tr><td>mr</td><td>Marathi</td></tr>
-  <tr><td>ne</td><td>Nepali</td></tr>
-  <tr><td>nl</td><td>Dutch</td></tr>
-  <tr><td>no</td><td>Norwegian</td></tr>
-  <tr><td>or</td><td>Oriya</td></tr>
-  <tr><td>pa</td><td>Punjabi</td></tr>
-  <tr><td>pl</td><td>Polish</td></tr>
-  <tr><td>pt</td><td>Portuguese</td></tr>
-  <tr><td>ro</td><td>Romanian</td></tr>
-  <tr><td>ru</td><td>Russian</td></tr>
-  <tr><td>sk</td><td>Slovak</td></tr>
-  <tr><td>so</td><td>Somali</td></tr>
-  <tr><td>sq</td><td>Albanian</td></tr>
-  <tr><td>sr</td><td>Serbian</td></tr>
-  <tr><td>sv</td><td>Swedish</td></tr>
-  <tr><td>sw</td><td>Swahili</td></tr>
-  <tr><td>ta</td><td>Tamil</td></tr>
-  <tr><td>th</td><td>Thai</td></tr>
-  <tr><td>tl</td><td>Tagalog</td></tr>
-  <tr><td>tr</td><td>Turkish</td></tr>
-  <tr><td>uk</td><td>Ukrainian</td></tr>
-  <tr><td>ur</td><td>Urdu</td></tr>
-  <tr><td>vi</td><td>Vietnamese</td></tr>
-  <tr><td>zh</td><td>Chinese (both traditional and simplified)</td></tr>
-</table>
+I would recommend that you use the corresponding language file in the [Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) repo.
+
+| Prefix | ISO 639-3 | Language |
+| --- | --- | --- |
+| ar | ara | Arabic |
+| bg | bul | Bulgarian |
+| ceb | ceb | Cebuano |
+| cs | ces | Czech |
+| cy | cym | Welsh |
+| da | dan | Danish |
+| de | deu | German |
+| el | grc | Greek (mostly ancient) |
+| en | eng | English |
+| es | spa | Spanish |
+| fa | fas | Farsi |
+| fi | fin | Finnish |
+| fr | fra | French |
+| he | heb | Hebrew |
+| hi | hin | Hindi |
+| hr | hrv | Croatian |
+| ht | hat | Haitian Creole |
+| hu | hun | Hungarian |
+| id | ind | Indonesian |
+| is | isl | Icelandic |
+| it | ita | Italian |
+| ja | jpn | Japanese |
+| jv | jav | Javanese |
+| ko | kor | Korean |
+| la | lat | Latin |
+| mk | mkd | Macedonian |
+| mr | mar | Marathi |
+| ne | nep | Nepali |
+| nl | nld | Dutch |
+| no | nor | Norwegian |
+| or | ori | Oriya |
+| pa | pan | Punjabi |
+| pl | pol | Polish |
+| pt | por | Portuguese |
+| ro | ron | Romanian |
+| ru | rus | Russian |
+| sk | slk | Slovak |
+| so | som | Somali |
+| sq | sqi | Albanian |
+| sr | srp | Serbian |
+| sv | swe | Swedish |
+| sw | swa | Swahili |
+| ta | tam | Tamil |
+| th | tha | Thai |
+| tl | tgl | Tagalog |
+| tr | tur | Turkish |
+| uk | ukr | Ukrainian |
+| ur | urd | Urdu |
+| vi | vie | Vietnamese |
+| zh | zho | Chinese (both traditional and simplified) |
 
 When parsing a language that doesn't use Latin-based numbers (0-9), you probably want to set the `non_latin_digits_strategy` option to `replace`.
 
@@ -758,8 +756,6 @@ The files are:
 2. `full.js`. Parse book names across all languages. It runs about 30% slower than `en.js`, parsing around 110KB per second in the fuzz tester.
 
 Some features, such as psalm titles, are still English-only, even in these cross-language files.
-
-Executing `bin/add_cross_lang.pl full` or `bin/add_cross_lang.pl ascii` will recompile the needed source files. You can then compile the files as usual using the [build instructions](#building).
 
 ## Compatibility
 
@@ -782,60 +778,35 @@ The BCV Parser uses the following projects (none of them is necessary unless you
 * [Peggy](https://github.com/peggyjs/peggy) for the parsing grammar.
 * [Grex](https://github.com/pemistahl/grex) for optimizing generated regular expressions.
 
-### Adding a Language
+### Language Data
 
-#### Create a Folder
-In `src`, create a folder named after the [ISO 639 code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the desired language. For example: `fr`.
-
-#### Create Data Files
-
-Create a data.txt file inside that folder. I recommend copying the existing `data.txt` from `src/template`. The `research.xlsx` file in that folder can help you organize your work; you can copy/paste from that spreadsheet into the `data.txt` file.
-
-Points to know:
-
-1. Lines that start with `#` are comments.
-2. Lines that start with `$` are variables.
-    1. `$FIRST`, `$SECOND`, `$THIRD`, and `$FOURTH` are helpful for reducing redundancy in book names. For example, if you define `1` and `I` as values for `$FIRST`, then you can just write `$FIRST Samuel` and `$FIRST Corinthians` instead of repeating yourself for each book.
-    2. `$GOSPEL` is helpful to reduce verbosity for names like "The Gospel according to Matthew".
-    3. `$AB` is used by the parser to determine partial verses (like "Genesis 1:1a"). You probably want to avoid overlap with `$FF`. It's required.
-    4. `$AND` is used by the parser for sequences. For example, in English, you'd define `and` here, while in Spanish, you'd define `y`. It's also useful for common expressions like `see also`. If you don't have a value for this, you can just use `&`. It's required.
-    5. `$CHAPTER` is used by the parser to explicitly indicate chapters: `Genesis 1:1, 5` vs. `Genesis 1:1, chapter 5`. If you don't have a value for this, I'd just use the English `chapter`. It's required.
-    6. `$FF` is used by the parser to indicate "and following", which it interprets as "to the end of the chapter" or "to the end of the book," depending on context. An exclamation mark (`!`) negates the following character or character class. `f![a-z]`) means an "f" not followed by the characters `a-z`. This syntax is passed onto the Peggy parser. If you don't have a value for this, I'd use the English `ff`. It's required.
-    7. `$NEXT` is used in languages where one pattern indicates the immediate next verse (or chapter). In Polish, for example the `n![n]` pattern indicates a single `n`, not followed by another `n`; the `nn` is used for `$FF` to indicate an unknown number of following verses. It's optional.
-    8. `$TITLE` is used by the parser for psalm titles (like `Psalm 3 title`). It's required.
-    9. `$TRANS` defines custom translation names for your language. Each value has up to three components, separated by commas. Let's break down the (fictional) definition `NAS,NASB,kjv`. The `NAS` means to track `NAS` in what you're parsing, and to treat it as a known translation. The `NASB` means that when you get the value back to your script from the parser, you'll receive `NASB` instead of `NAS`. The `kjv` means to use the KJV versification system for this translation rather than the default. Often you'll omit parts: `NAS,,kjv` and `NAS,NASB` (this last one is the actual definition) both work. You should specify at least one translation for your language.
-    10. `$TO` is used by the parser to identify ranges. Typically you want to use words here, but you can also use characters. If you don't have a value, I recommend using `-` (which treats the hyphen as a range). It's required.
-    11. `$VERSE` is used by the parser to identify the words for `verse`. For example, `Philemon verse 2`. It's required.
-    12. `$COLLAPSE_COMBINING_CHARACTERS` is used by the language generator to determine whether to unbundle accents. For example, `á` gets separated out into `[áa]`. If you don't want this behavior for your language, set this value to `false`. You can also handle this scenario on a case-by-case basis using backticks, as described below.
-    13. `$PRE_BOOK_ALLOWED_CHARACTERS` is used by the language generator to identify allowed characters before books. See `zh` for an example (`[^\x1f]`, which means anything except another book character). In general, you don't need to set this variable.
-    14. `$UNICODE_BLOCK` is used by the language generator to identify appropriate boundary characters. It's required. If you're not sure, I recommend setting it to `Latin`.
-3. Lines that start with an OSIS book name are a tab-separated series of regular expression subsets.
-    1. A backtick (`\``) following an accented character means not to allow the unaccented version of that character.
-    2. A `?` makes the preceding character optional.
-    3. A character class works like a simple RegExp character class: `[az]` means the characters `a` and `z` are allowed. Character ranges probably don't work.
-    2. You can use the variables you defined earlier in the file in definitions. If you'd like the build process to create tests for book ranges like `1-3 John`, then be sure to define `$FIRST`, `$SECOND`, and `$THIRD` as variables in at least one definition for `1John`, `2John`, and `3John`.
-4. Lines that start with `=` are the order in which to check the regular expressions for books (check for `3 John` before `John`, for example, so that the string `3 John 2` doesn't get parsed as `John 2`).
-5. Lines that start with `*` are the preferred long and short names for each OSIS (not used here, but potentially used in a Bible application). The third column represents a still-shorter form, and the fourth column represents the form to use when a single Psalm is being looked at. In English, we'd say "Psalms 1-2" but "Psalm 1."
-
-You can also create three other files:
-
-1. `translation_additions.js` (see `en` for an example). This file lets you define translations with different book orders or numbers of verses in each chapter. The top-level keys are the versification system (the third component of your `$TRANS` definition). Each object can have an `order` object, a `chapters` object, or both. `order` is a fully specified canon. It must include all 84 books that this parser understands, or else the parser could break. If your canon doesn't include all 84 books, you can put the unused ones at the end. `chapters` is an object where each key is the OSIS book identifier, and the value is an array of numbers that represent the number of verses in each chapter. For example, `"Gen": [31, 25, ...]` indicates that Genesis 1 has 31 verses, and Genesis 2 has 25 verses. You must specify values for all chapters in a book, though the number of chapters can vary depending on the translation. For `Ps151`, use a `Ps151` key; don't create a `Ps` array with 151 items; the parser will eat the last item.
-2. `spec_additions.js` (see `he` for an example). This file consists of Jasmine tests that you'd like to run for your language in addition to the standard parsing tests.
-3. `psalm_cb.js` (see `en` for an example). This file lets you specify how to handle inverted Psalm queries, like `23rd Psalm`. If you use the English file as a model, I'd only edit the `regexp` key; the other keys should remain as they are.
+Language data lives in https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages. This repo consumes built language modules from there.
 
 #### Building the Language
 
-Run either `npm run build-language fr` (where `fr` is the ISO code of your language, matching the folder name in `src`) or `sh bin/build_lang.sh fr`. It also run tests for that language.
+To build one language in this repo, copy/rename a language module from the external repo into `esm/lang`, then build CJS:
 
-To build a language, you'll need Perl with the JSON package and the dev dependencies. It uses `npx` to execute some functions.
+```shell
+cd bin
+sh build_lang.sh <repo_lang_code> <external_repo_path> <external_lang_code>
+```
+
+Example:
+
+```shell
+sh build_lang.sh en /path/to/Bible-Passage-Reference-Parser-Languages eng
+```
+
+To build all configured languages:
+
+```shell
+cd bin
+sh build_all.sh /path/to/Bible-Passage-Reference-Parser-Languages
+```
 
 #### Running Tests
 
-If you have dev dependencies installed, the easiest way to run all tests is to use `npm run test`, which takes about a minute. You can also use `npx jasmine test/*.spec.* test/lang/*.spec.js`.
-
-To run tests just for your language: `npx jasmine test/lang/de.spec.js` (replacing `de` with your language, unless your language is German, in which case `de` will work just fine for you).
-
-There are also html files in `test/html` for browser testing. Because they use ES Modules, they won't run locally. ESBuild's [Serve functionality](https://esbuild.github.io/api/#serve) is your friend here.
+If you have dev dependencies installed, the easiest way to run all tests is to use `npm run test`, which takes about a minute. You can also use `npx jasmine test/*.spec.*`.
 
 ## Purpose
 
@@ -851,12 +822,13 @@ The code in this project is licensed under the standard MIT License.
 
 ## Backlog Items
 
-Here are improvements I have in mind for this parser.
+This repo is feature-complete at its core job since language data now lives (mostly) separately. At this time, I don't anticipate major changes.
 
-1. Fully migrate language source files (but not the existing language files in `esm` so that you don't need to change any existing code) out of this repo. Target release: 4.0.0 (July 2026).
-2. Improve type usage. This is my first experience with Typescript, and I'm confident a lot can be improved.
+For content-extraction tasks, perhaps it could be integrated into an LLM workflow that uses contextual intelligence to identify ambiguous references. This code could then act as a skill or tool for an LLM to provide grounding.
 
 ## Changelog
+
+July 1, 2026 (4.0.0-alpha). Removed language source files. They now live [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages).
 
 January 31, 2026 (3.2.0). Full release on Github and npm.
 

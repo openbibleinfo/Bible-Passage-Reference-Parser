@@ -1,18 +1,44 @@
 {
   "name": "bible-passage-reference-parser",
-  "version": "3.2.0",
+  "version": "4.0.0-alpha",
   "description": "Identifies and parses Bible references (like John 3:16) in over 40 languages.",
-  "main": "esm/",
+  "main": "./esm/bcv_parser.js",
+  "types": "./types/bcv_parser.d.ts",
   "directories": {
-    "lib": "lib",
     "test": "test"
   },
   "files": [
     "cjs/",
     "js/",
     "esm/",
-    "Readme.md"
+    "types/",
+    "README.md"
   ],
+  "exports": {
+    ".": {
+      "types": "./types/bcv_parser.d.ts",
+      "default": "./esm/bcv_parser.js"
+    },
+    "./esm/bcv_parser.js": {
+      "types": "./types/bcv_parser.d.ts",
+      "default": "./esm/bcv_parser.js"
+    },
+    "./esm/lang/*.js": {
+      "types": "./types/lang.d.ts",
+      "default": "./esm/lang/*.js"
+    },
+    "./cjs/*.js": "./cjs/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "esm/bcv_parser.js": [
+        "types/bcv_parser.d.ts"
+      ],
+      "esm/lang/*.js": [
+        "types/lang.d.ts"
+      ]
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/openbibleinfo/Bible-Passage-Reference-Parser.git"
@@ -30,7 +56,7 @@
   "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
   "scripts": {
     "build-language": "cd bin && sh build_lang.sh",
-    "test": "npx jasmine test/*.spec.* test/lang/*.spec.js"
+    "test": "npx jasmine test/*.spec.*"
   },
   "devDependencies": {
     "@pemistahl/grex": "^1.0.2",

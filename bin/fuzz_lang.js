@@ -1,193 +1,273 @@
-"use strict";
-
-const lang = "en";
-
-import * as fs from "fs";
+#!/usr/bin/env node
 import { bcv_parser } from "../esm/bcv_parser.js";
-const lang_data = await import(`../esm/lang/${lang}.js`);
-const max_length = 100;
 
-function get_abbrevs(lang) {
-	const lines = fs.readFileSync(`../src/${lang}/book_names.txt`).toString().split("\n");
-	const out = [];
-	for (const line of lines) {
-		const [osis, abbrev] = line.split("\t");
-		if (abbrev != null) {
-			out.push(abbrev);
-		}
-	}
-	return out;
-};
+function parseArgs(argv) {
+  const out = {
+    lang: "en",
+    count: 10000,
+    seed: Date.now() >>> 0,
+    minLength: 8,
+    maxLength: 120,
+    verbose: false
+  };
 
-function get_translations(lang) {
-	return ["AMP", "ASV", "CEB", "CEV", "ERV", "ESV", "HCSB", "KJV", "MSG", "NAB", "NABRE", "NAS", "NASB", "NIRV", "NIV", "NKJV", "NLT", "NRSV", "RSV", "TNIV"];
-};
+  const positional = [];
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === "--help" || arg === "-h") {
+      out.help = true;
+      continue;
+    }
+    if (arg === "--verbose" || arg === "-v") {
+      out.verbose = true;
+      continue;
+    }
+    if (arg.startsWith("--lang=")) {
+      out.lang = arg.slice("--lang=".length);
+      continue;
+    }
+    if (arg === "--lang") {
+      out.lang = argv[++i];
+      continue;
+    }
+    if (arg.startsWith("--count=")) {
+      out.count = Number.parseInt(arg.slice("--count=".length), 10);
+      continue;
+    }
+    if (arg === "--count") {
+      out.count = Number.parseInt(argv[++i], 10);
+      continue;
+    }
+    if (arg.startsWith("--seed=")) {
+      out.seed = Number.parseInt(arg.slice("--seed=".length), 10) >>> 0;
+      continue;
+    }
+    if (arg === "--seed") {
+      out.seed = Number.parseInt(argv[++i], 10) >>> 0;
+      continue;
+    }
+    if (arg.startsWith("--min-length=")) {
+      out.minLength = Number.parseInt(arg.slice("--min-length=".length), 10);
+      continue;
+    }
+    if (arg === "--min-length") {
+      out.minLength = Number.parseInt(argv[++i], 10);
+      continue;
+    }
+    if (arg.startsWith("--max-length=")) {
+      out.maxLength = Number.parseInt(arg.slice("--max-length=".length), 10);
+      continue;
+    }
+    if (arg === "--max-length") {
+      out.maxLength = Number.parseInt(argv[++i], 10);
+      continue;
+    }
+    positional.push(arg);
+  }
 
-function get_options() {
-	const lines = fs.readFileSync("../Readme.md").toString().split("\n");
-	const out = {};
-	let option = "";
-	let go = false;
-	for (const line of lines) {
-		if (go && line.match(/^### /)) {
-			break;
-		}
-		if (line.match(/^### Options/)) {
-			go = true;
-		}
-		if (!go) {
-			continue;
-		}
-		let result;
-		if (result = line.match(/^\* `(\w+):/)) {
-			option = result[1];
-			out[option] = [];
-		} else if (result = line.match(/^\t\* `(\w+)`/)) {
-			out[option].push(result[1]);
-		}
-	}
-	out.passage_existence_strategy = ["b", "bc", "bcv", "bv", "c", "cv", "v", "none"];
-	out.include_apocrypha = [true, false];
-	return out;
-};
+  if (positional[0] != null) {
+    out.lang = positional[0];
+  }
+  if (positional[1] != null) {
+    out.count = Number.parseInt(positional[1], 10);
+  }
+  if (positional[2] != null) {
+    out.seed = Number.parseInt(positional[2], 10) >>> 0;
+  }
 
-function create_options(keys) {
-	const out = {};
-	for (const option of keys) {
-		out[option] = get_random_item_from_array(options[option]);
-	}
-	return out;
-};
+  if (!Number.isInteger(out.count) || out.count <= 0) {
+    throw new Error("count must be a positive integer");
+  }
+  if (!Number.isInteger(out.minLength) || !Number.isInteger(out.maxLength) || out.minLength <= 0 || out.maxLength < out.minLength) {
+    throw new Error("min-length and max-length must be positive integers with max >= min");
+  }
 
-function get_random_item_from_array(items) {
-	return items[Math.floor(Math.random() * items.length)];
-};
-
-function build_text(keys) {
-	const out = [];
-	const length = Math.ceil(Math.random() * max_length);
-	for (let i = 1; i <= length; i++) {
-		let token = make_token(get_random_item_from_array(keys));
-		if (Math.random() >= 0.5) {
-			token += get_random_item_from_array(possibles.space);
-		}
-		out.push(token);
-	}
-	return out.join("");
-};
-
-function make_token(type) {
-	const possible = possibles[type];
-	let token;
-	if (typeof possible === "string") {
-		token = build_nested_string(possible);
-	} else if (type.substr(0, 5) === "char_") {
-		token = String.fromCharCode(get_random_item_from_array(possible));
-	} else {
-		token = get_random_item_from_array(possible);
-	}
-	if (Math.random() >= 0.5 && type.match(/^translation/)) {
-		token = `(${token})`;
-	}
-	return token;
-};
-
-function build_nested_string(text) {
-	text = text.replace(/\$(\w+)/g, function(matches, type) {
-		let match = make_token(type);
-		if (Math.random() >= 0.5) {
-			match += get_random_item_from_array(possibles.space);
-		}
-		return match;
-	});
-	return text;
-};
-
-const bcv = new bcv_parser(lang_data);
-const possibles = {
-	book: get_abbrevs(lang),
-	translation: get_translations(lang),
-	number: (function() {
-		const out = [];
-		for (let j = 0; j <= 1100; j++){ out.push(j); }
-		return out;
-	}).apply(this),
-	chapter: (function() {
-		var out = [];
-		for (let j = 0; j <= 152; j++){ out.push(j); }
-		return out;
-	}).apply(this),
-	verse: (function() {
-		const out = [];
-		for (let j = 0; j <= 177; j++){ out.push(j); }
-		return out;
-	}).apply(this),
-	cv_sep: [":", ".", "\"", "'", " "],
-	range_sep: ["-", "\u2013", "\u2014", "through", "thru", "to"],
-	sequence_sep: [",", ";", "/", ":", "&", "-", "\u2013", "\u2014", "~", "and", "compare", "cf", "cf.", "see also", "also", "see", " "],
-	title: ["title"],
-	in_book_of: ["from the book of", "of the book of", "in the book of"],
-	c_explicit: ["chapters", "chapter", "chapts", "chapts.", "chpts", "chpts.", "chapt", "chapt.", "chaps", "chaps.", "chap", "chap.", "chp", "chp.", "chs", "chs.", "cha", "cha.", "ch", "ch."],
-	v_explicit: ["verses", "verse", "ver", "ver.", "vss", "vss.", "vs", "vs.", "vv", "vv.", "v", "v."],
-	v_letter: ["a", "b", "c", "d", "e"],
-	ff: ["ff", "ff."],
-	ordinal: ["th", "nd", "st"],
-	space: [" ", "\t", "\n", "\u00a0"],
-	punctuation: [",", ".", "!", "?", "-", "'", "\"", "\u2019"],
-	parentheses: ["(", ")", "[", "]", "{", "}"],
-	letter: ["f", "g", "h", "n"],
-	char_ascii: (function() {
-		const out = [];
-		for (var j = 0; j <= 127; j++){ out.push(j); }
-		return out;
-	}).apply(this),
-	char_unicode: (function() {
-		const out = [];
-		for (var j = 128; j <= 32000; j++){ out.push(j); }
-		return out;
-	}).apply(this),
-	bcv: "$book$chapter$cv_sep$verse",
-	b_range: "$book$range_sep$book",
-	translation_sequence: "$translation$sequence_sep$translation",
-	bc: "$book$chapter",
-	bc_range: "$book$chapter$range_sep$book",
-	cb: "$c_explicit$chapter$in_book_of$book",
-	c_psalm: "$chapter$ordinal$book",
-	cv_psalm: "$chapter$ordinal$book$v_explicit$verse"
-};
-
-const options = get_options();
-const possible_keys = Object.keys(possibles);
-const option_keys = Object.keys(options);
-let total_length = 0;
-const start_time = new Date();
-
-for (let i = 1; i <= 5000; i++) {
-	const my_options = create_options(option_keys);
-	bcv.set_options(my_options);
-	const text = build_text(possible_keys);
-	total_length += text.length;
-	if (i % 1000 === 0) {
-		const elapsed_time = Math.round((new Date() - start_time) / 1000);
-		const bytes_per_second = Math.round(total_length / elapsed_time);
-		console.log(i, elapsed_time, "sec", Math.round(total_length / 1000), "kb", bytes_per_second, "bps");
-	}
-	try {
-		const results = bcv.parse(text).osis_and_indices();
-		for (const result of results) {
-			if (result.indices[0] >= result.indices[1]) {
-				throw result;
-			}
-		}
-		const entities = JSON.stringify(bcv.parsed_entities());
-		if (entities.match(/"current/)) {
-			throw entities;
-		}
-	} catch (error) {
-		const e = error;
-		console.log(e);
-		console.log(my_options);
-		console.log(text);
-		process.exit();
-	}
+  return out;
 }
+
+function usage() {
+  return [
+    "Usage:",
+    "  node bin/fuzz_lang.js [lang] [count] [seed]",
+    "  node bin/fuzz_lang.js --lang en --count 50000 --seed 42",
+    "",
+    "Options:",
+    "  --lang <code>         Language code in esm/lang (default: en)",
+    "  --count <n>           Number of random strings to parse (default: 10000)",
+    "  --seed <n>            Deterministic PRNG seed (default: current time)",
+    "  --min-length <n>      Minimum generated string length (default: 8)",
+    "  --max-length <n>      Maximum generated string length (default: 120)",
+    "  --verbose, -v         Print occasional sample strings",
+    "  --help, -h            Show this help"
+  ].join("\n");
+}
+
+function mulberry32(seed) {
+  let t = seed >>> 0;
+  return function rand() {
+    t += 0x6d2b79f5;
+    let x = Math.imul(t ^ t >>> 15, 1 | t);
+    x ^= x + Math.imul(x ^ x >>> 7, 61 | x);
+    return ((x ^ x >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function randInt(rand, min, maxInclusive) {
+  return min + Math.floor(rand() * (maxInclusive - min + 1));
+}
+
+function pick(rand, arr, fallback = "") {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return fallback;
+  }
+  return arr[randInt(rand, 0, arr.length - 1)];
+}
+
+function randomNoise(rand, targetLength) {
+  const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,.;:!?()-_/[]{}\\\"'\t";
+  let out = "";
+  for (let i = 0; i < targetLength; i++) {
+    out += chars[randInt(rand, 0, chars.length - 1)];
+  }
+  return out;
+}
+
+function buildKnownBooks(parser) {
+  const books = new Set();
+  for (const entry of parser.regexps.all_books) {
+    if (!entry || !Array.isArray(entry.osis)) {
+      continue;
+    }
+    for (const osis of entry.osis) {
+      if (typeof osis === "string" && osis.length > 0) {
+        books.add(osis);
+      }
+    }
+  }
+  return [...books];
+}
+
+function buildKnownTranslations(parser) {
+  const aliases = Object.keys(parser.translations.aliases || {});
+  return aliases.filter((a) => typeof a === "string" && a.length > 0);
+}
+
+function referenceFragment(rand, parser, books, translations) {
+  const book = pick(rand, books, "Gen");
+  const chapters = parser.translations.systems.current?.chapters?.[book];
+  const maxChapter = Array.isArray(chapters) && chapters.length > 0 ? chapters.length : 150;
+  const c1 = randInt(rand, 1, Math.max(1, Math.min(maxChapter, 150)));
+  const maxVerse = Array.isArray(chapters) && chapters[c1 - 1] ? chapters[c1 - 1] : 176;
+  const v1 = randInt(rand, 1, Math.max(1, Math.min(maxVerse, 200)));
+  const c2 = randInt(rand, c1, Math.max(c1, Math.min(maxChapter, c1 + 5)));
+  const maxVerse2 = Array.isArray(chapters) && chapters[c2 - 1] ? chapters[c2 - 1] : 176;
+  const v2 = randInt(rand, 1, Math.max(1, Math.min(maxVerse2, 200)));
+  const t = pick(rand, translations, "");
+
+  const forms = [
+    `${book} ${c1}`,
+    `${book} ${c1}:${v1}`,
+    `${book} ${c1}-${c2}`,
+    `${book} ${c1}:${v1}-${c2}:${v2}`,
+    `${book} ${c1}:${v1}, ${v2}`
+  ];
+  const base = pick(rand, forms, `${book} ${c1}`);
+  if (t.length > 0 && rand() < 0.35) {
+    return `${base} ${t.toUpperCase()}`;
+  }
+  return base;
+}
+
+function fuzzString(rand, parser, books, translations, minLength, maxLength) {
+  const target = randInt(rand, minLength, maxLength);
+  let out = "";
+  while (out.length < target) {
+    if (rand() < 0.55) {
+      out += referenceFragment(rand, parser, books, translations);
+    } else {
+      out += randomNoise(rand, randInt(rand, 3, 24));
+    }
+    if (out.length < target) {
+      out += pick(rand, [" ", " ", ", ", "; ", " - ", " / "]);
+    }
+  }
+  return out.slice(0, target);
+}
+
+async function main() {
+  const opts = parseArgs(process.argv.slice(2));
+  if (opts.help) {
+    console.log(usage());
+    return;
+  }
+
+  const langPath = `../esm/lang/${opts.lang}.js`;
+  let lang;
+  try {
+    lang = await import(langPath);
+  } catch (error) {
+    throw new Error(`Could not import language module at ${langPath}: ${error.message}`);
+  }
+
+  const parser = new bcv_parser(lang);
+  const books = buildKnownBooks(parser);
+  const translations = buildKnownTranslations(parser);
+  const rand = mulberry32(opts.seed);
+
+  let failures = 0;
+  let totalChars = 0;
+  let totalNs = 0n;
+  const failureSamples = [];
+
+  console.log(`Fuzzing language=${opts.lang} count=${opts.count} seed=${opts.seed} min_length=${opts.minLength} max_length=${opts.maxLength}`);
+  for (let i = 0; i < opts.count; i++) {
+    const input = fuzzString(rand, parser, books, translations, opts.minLength, opts.maxLength);
+    totalChars += input.length;
+
+    const start = process.hrtime.bigint();
+    try {
+      parser.parse(input);
+      parser.osis();
+      parser.osis_and_indices();
+    } catch (error) {
+      failures++;
+      if (failureSamples.length < 10) {
+        failureSamples.push({
+          index: i,
+          input,
+          error: error instanceof Error ? `${error.name}: ${error.message}` : String(error)
+        });
+      }
+    }
+    totalNs += process.hrtime.bigint() - start;
+
+    if (opts.verbose && i > 0 && i % 1000 === 0) {
+      console.log(`  progress ${i}/${opts.count}`);
+    }
+  }
+
+  const seconds = Number(totalNs) / 1e9;
+  const perSecond = opts.count / Math.max(seconds, 1e-9);
+  const charsPerSecond = totalChars / Math.max(seconds, 1e-9);
+
+  console.log("---");
+  console.log(`Total strings: ${opts.count}`);
+  console.log(`Failures: ${failures}`);
+  console.log(`Elapsed: ${seconds.toFixed(3)}s`);
+  console.log(`Parses/sec: ${perSecond.toFixed(2)}`);
+  console.log(`Chars/sec: ${charsPerSecond.toFixed(2)}`);
+
+  if (failures > 0) {
+    console.log("Failure samples:");
+    for (const sample of failureSamples) {
+      console.log(`  [${sample.index}] ${sample.error}`);
+      console.log(`    ${JSON.stringify(sample.input)}`);
+    }
+    process.exitCode = 1;
+  }
+}
+
+main().catch((error) => {
+  console.error(error.message);
+  process.exit(1);
+});

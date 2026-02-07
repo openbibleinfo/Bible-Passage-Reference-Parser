@@ -1,62 +1,84 @@
-#!/usr/bin/bash
-if [ -z "$1" ]; then
-  echo "Please specify an ISO language code to continue, such as: sh build_lang.sh \"fr\""
+#!/usr/bin/env sh
+set -eu
+
+if [ -z "${1:-}" ]; then
+  echo "Usage: sh build_lang.sh <repo_lang_code> [external_repo_path] [external_lang_code]"
+  echo "Example (rename eng -> en): sh build_lang.sh en /path/to/language-repo eng"
   exit 1
 fi
 
-# Prepare the language files.
-#perl 01.add_lang.pl $1
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+BUILD_DIR="$SCRIPT_DIR/build"
 
-# Copy the main files.
-cp ../src/core/bcv_matcher.ts ./build/
-cp ../src/core/bcv_options.ts ./build/
-cp ../src/core/bcv_parser.ts ./build/
-cp ../src/core/bcv_passage.ts ./build/
-cp ../src/core/bcv_regexps_manager.ts ./build/
-cp ../src/core/bcv_translations_manager.ts ./build/
-cp ../src/core/lang_bundle.ts ./build/
-cp ../src/core/types.d.ts ./build/
+TARGET_CODE="$1"
+EXTERNAL_REPO_PATH="${2:-${BCV_LANG_REPO:-}}"
+EXTERNAL_CODE="${3:-$TARGET_CODE}"
 
-# Generate the language-independent grammar file.
-npx peggy --format es --plugin "../src/core/peg_plugin.js" -o "./build/bcv_grammar.js" "../src/core/bcv_grammar.pegjs"
+copy_external_language() {
+  repo_path="$1"
+  source_code="$2"
+  source_file=""
+  for candidate in \
+    "$repo_path/esm/lang/$source_code.js" \
+    "$repo_path/lang/$source_code.js" \
+    "$repo_path/$source_code.js"
+  do
+    if [ -f "$candidate" ]; then
+      source_file="$candidate"
+      break
+    fi
+  done
+  if [ -z "$source_file" ]; then
+    echo "Could not find $source_code.js in external repo: $repo_path"
+    echo "Checked:"
+    printf '  %s\n' \
+      "$repo_path/esm/lang/$source_code.js" \
+      "$repo_path/lang/$source_code.js" \
+      "$repo_path/$source_code.js"
+    exit 1
+  fi
+  target_file="$ROOT_DIR/esm/lang/$TARGET_CODE.js"
+  if [ "$(realpath "$source_file")" = "$(realpath "$target_file" 2>/dev/null || true)" ]; then
+    echo "Language file already in place: esm/lang/$TARGET_CODE.js"
+  else
+    cp "$source_file" "$target_file"
+    echo "Copied language file: $source_file -> esm/lang/$TARGET_CODE.js"
+  fi
+}
 
-# The perl script generated these language files.
-cp ../src/$1/regexps.ts ./build/bcv_regexps.ts
-mv ../src/$1/translations.ts ./build/bcv_translations.ts
-mv ../src/$1/grammar_options.ts ./build/bcv_grammar_options.ts
-mv ../src/$1/spec.js ../test/lang/$1.spec.js
-
-# Create the ES build files.
-npx esbuild ./build/bcv_parser.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../esm/bcv_parser.js
-npx esbuild ./build/lang_bundle.ts --bundle --target=es2022 --charset=utf8 --format=esm --outfile=../esm/lang/$1.js
-# Also create the typescript definitions, which are the same for every language.
-cp ../src/core/lang.d.ts ../esm/lang/$1.d.ts
-
-# Now onto commonjs...
-
-# Remove these exports so that we don't export them from inside the module. `export default` is removed later.
-sed '/^export {$/,$d' ./build/bcv_grammar.js > ./build/temp_grammar.js
-sed 's/^export default/const grammar_options =/' ./build/bcv_grammar_options.ts > ./build/temp_grammar_options.ts
-
-# Concatenate all the non-imported files together.
-cat ./build/bcv_regexps.ts ./build/bcv_translations.ts ./build/temp_grammar.js ./build/bcv_parser.ts ./build/temp_grammar_options.ts > ./build/temp_cjs_bundle.ts
-# Remove the unnecessary exported classes from the `ts` modules.
-sed "s/export default //g" ./build/temp_cjs_bundle.ts > ./build/cjs_bundle.ts
-# Make sure the grammar object is available inside the module.
-echo "var grammar = { parse: peg\$parse };" >> ./build/cjs_bundle.ts
-# Now build the cjs module. It also works as a browser module thanks to the banner line.
-npx esbuild ./build/cjs_bundle.ts --bundle --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile=../cjs/$1_bcv_parser.js
-
-if [ "$1" = "en" ]; then
-  # Create a minified file for historical compatibility with pre-v3.
-  npx esbuild ./build/cjs_bundle.ts --bundle --minify --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile=../cjs/$1_bcv_parser.min.js
+if [ -n "$EXTERNAL_REPO_PATH" ]; then
+  copy_external_language "$EXTERNAL_REPO_PATH" "$EXTERNAL_CODE"
+elif [ ! -f "$ROOT_DIR/esm/lang/$TARGET_CODE.js" ]; then
+  echo "Missing esm/lang/$TARGET_CODE.js."
+  echo "Provide external repo path/code: sh build_lang.sh $TARGET_CODE <external_repo_path> <external_lang_code>"
+  exit 1
 fi
 
-# Uncomment this line to build a minified file in `esm`.
-#npx esbuild ./build/bcv_parser.ts --bundle --minify --target=es2022 --charset=utf8 --format=esm --outfile=../esm/$1_bcv_parser.min.js
+# Build core parser if it's not available yet.
+if [ ! -f "$ROOT_DIR/esm/bcv_parser.js" ]; then
+  sh "$SCRIPT_DIR/build_core.sh"
+fi
+sh "$SCRIPT_DIR/build_types.sh"
 
-# Clean up build files.
-rm ./build/*
+ENTRY_FILE="$BUILD_DIR/cjs_entry_${TARGET_CODE}.ts"
+cat > "$ENTRY_FILE" <<EOF
+import { bcv_parser as base_bcv_parser } from "../../esm/bcv_parser.js";
+import * as lang from "../../esm/lang/${TARGET_CODE}.js";
 
-# Run tests.
-npx jasmine ../test/lang/$1.spec.js --random=false
+class bcv_parser extends base_bcv_parser {
+  constructor() {
+    super(lang);
+  }
+}
+
+export { bcv_parser };
+EOF
+
+npx esbuild "$ENTRY_FILE" --bundle --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile="$ROOT_DIR/cjs/$TARGET_CODE"_bcv_parser.js
+
+if [ "$TARGET_CODE" = "en" ]; then
+  npx esbuild "$ENTRY_FILE" --bundle --minify --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile="$ROOT_DIR/cjs/$TARGET_CODE"_bcv_parser.min.js
+fi
+
+rm -f "$ENTRY_FILE"
