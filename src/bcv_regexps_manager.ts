@@ -6,6 +6,8 @@ interface BookData {
 	testament_books: NonNullable<BookRegExpInterface["testament_books"]>;
 };
 
+type BookRegExpWithTestamentBooks = BookRegExpInterface & Required<Pick<BookRegExpInterface, "testament_books">>;
+
 const TESTAMENT_ORDER: Testament[] = ["o", "n", "a"];
 
 export default class bcv_regexps_manager implements BCVRegExpsManagerInterface {
@@ -25,15 +27,15 @@ public filter_books(testaments: BCVParserOptions["testaments"], case_sensitive: 
 		return;
 	}
 	this.filtered_books_flags = filtered_books_flags;
-	// Short-circuit the logic if we know we want all the books with default case-senitivity.
+	// Short-circuit the logic if we know we want all the books with default case-sensitivity.
 	if (testaments === "ona" && case_sensitive === "none") {
- 		 this.parent.regexps.books = this.parent.regexps.all_books;
+			this.parent.regexps.books = this.parent.regexps.all_books;
 		return;
 	}
 	this.parent.regexps.books = this.parent.regexps.all_books.reduce((accum, book) => {
 		// Only end up cloning it if we're altering a data structure; otherwise, use the original.
 		let cloned_book: BookRegExpInterface | undefined;
-		// Exclude any testments we don't want. If `testaments` is `ona`, we don't need to do any checks since we know everything will match.`
+		// Exclude any testaments we don't want. If `testaments` is `ona`, we don't need to do any checks since we know everything will match.
 		if (testaments !== "ona" && testaments.indexOf(book.testament) === -1) {
 			// This is far and away the most-likely case. It's only not 1 when there are multiple books from different testaments--for example, if you want "Jeremiah" to work for both `Jer` (Old Testament) and `EpJer` (Apocrypha).
 			if (book.testament.length === 1 || book.testament_books == null) {
@@ -41,7 +43,7 @@ public filter_books(testaments: BCVParserOptions["testaments"], case_sensitive: 
 			} else if (!this.has_testament_overlap(testaments, book.testament)) {
 				return accum;
 			} else {
-				const new_osis = this.get_testament_overlap(testaments, book);
+				const new_osis = this.get_testament_overlap(testaments, book as BookRegExpWithTestamentBooks);
 				// An empty array should never happen since this `else` condition should only happen if there's some overlap.
 				if (new_osis.length > 0) {
 					cloned_book = structuredClone(book);
@@ -73,10 +75,10 @@ private has_testament_overlap(testaments: BCVParserOptions["testaments"], book_t
 }
 
 // Filter the `osis` array on the `book` object to include only the books that are in the relevant testaments.
-private get_testament_overlap(testaments: BCVParserOptions["testaments"], book: BookRegExpInterface): string[] {
+private get_testament_overlap(testaments: BCVParserOptions["testaments"], book: BookRegExpWithTestamentBooks): string[] {
 	const new_osis = book.osis.filter(osis => {
 		return this.has_testament_overlap(testaments, book.testament_books[osis]);
-	})
+	});
 	return new_osis;
 }
 
@@ -122,7 +124,7 @@ public add_books(books: AddBooksInterface): void {
 			// Go through each book and find the first one that matches the desired pattern. We don't mind if we don't find one since it just goes at the end.
 			let has_inserted = false;
 			for (const [i, book] of this.parent.regexps.all_books.entries()) {
-				if (book.osis.join(',') === position) {
+				if (book.osis.join(",") === position) {
 					// Unlike "start" or "end", is added incrementally as we go along.
 					this.parent.regexps.all_books.splice(i, 0, insert_object);
 					has_inserted = true;
@@ -154,7 +156,7 @@ private get_book_pattern_regexps(pattern: BookPattern, book_data: BookData): {
 		pre_regexp: new RegExp(""),
 		regexp: pattern.regexp,
 		post_regexp: new RegExp("")
-	}
+	};
 	for (const regexp_type of ["pre_regexp", "post_regexp"] as const) {
 		// If the caller didn't provide a pattern...
 		if (pattern[regexp_type] == null) {
@@ -203,8 +205,7 @@ private get_book_testaments(pattern: BookPattern): BookData {
 			out.testament_books[book] = "oa";
 			testaments.add("o");
 			testaments.add("a");
-		}
-		else {
+		} else {
 			const canonical_order = this.parent.translations.systems.default.order[book];
 			// 40 = Matt, 66 = Rev.
 			if (canonical_order >= 40) {

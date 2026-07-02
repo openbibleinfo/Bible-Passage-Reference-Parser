@@ -1,6 +1,6 @@
 // This class handles all the interactions with the grammar and producing the matches.
 
-import { BCVParserInterface, BCVParserOptions, BookMatchInterface, PassageEntityInterface, ContextInterface, GrammarMatchInterface } from "./types";
+import { BCVParserInterface, BCVParserOptions, BookMatchInterface, GrammarBaseInterface, PassageEntityInterface, PassageEntityArrayValue, ContextInterface, EntityCollection, GrammarMatchInterface } from "./types";
 
 import * as grammar from "./bcv_grammar";
 
@@ -87,7 +87,7 @@ private get_book_indices(books: BookMatchInterface[], s: string): BookMatchInter
 }
 
 // Create an array of all the potential passage references in the string.
-public match_passages(s: string): [PassageEntityInterface[], ContextInterface] {
+public match_passages(s: string): [EntityCollection[], ContextInterface] {
 	let entities: PassageEntityInterface[] = [];
 	let post_context: ContextInterface = {};
 	for (const match of s.matchAll(this.parent.regexps.escaped_passage)) {
@@ -110,8 +110,8 @@ public match_passages(s: string): [PassageEntityInterface[], ContextInterface] {
 		}
 		// * `match` is important for the length and whether it contains control characters, neither of which we've changed inconsistently with the original string. The `part` may be shorter than originally matched, but that's only to remove unneeded characters at the end.
 		// * `grammar` is the external PEG parser. The `this.parent.options.grammar` defines regexps used in the parser.
-		const passage: GrammarMatchInterface = {
-			value: grammar.parse(part, this.parent.options.grammar),
+		const passage: GrammarBaseInterface = {
+			value: grammar.parse(part, this.parent.options.grammar) as PassageEntityInterface[],
 			type: "base",
 			// The `start_index` in `this.parent.passage` always exists after being set in `match_books`.
 			start_index: start_index - start_index_adjust,
@@ -142,7 +142,7 @@ public match_passages(s: string): [PassageEntityInterface[], ContextInterface] {
 			this.parent.regexps.escaped_passage.lastIndex -= regexp_index_adjust;
 		}
 	}
-	return [entities, post_context];
+	return [entities as EntityCollection[], post_context];
 }
 
 // Clean up the end of a match by removing unnecessary characters.
@@ -180,7 +180,8 @@ private adjust_regexp_end(accum: PassageEntityInterface[], old_length: number, n
 	if (accum.length > 0) {
 		// If we have parsed entities, use the last one's end index to figure out how much of the matched text wasn't actually part of the final usage.
 		// `accum` uses an off-by-one end index compared to the RegExp object. "and Psa3" means `lastIndex` = 8, `old_length` and `new_length` are both 4 (omitting "and " and leaving "Psa3"), and the `accum` end index is 3. We end up with 4 - 3 - 1 = 0, or no adjustment. Compare "and Psa3 and", where the last " and" is originally considered part of the regexp. In this case, `regexp_index_adjust` is 4: 8 ("Psa3 and") - 3 ("Psa3") - 1.
-		return old_length - accum[accum.length - 1].indices[1] - 1;
+		const last = accum[accum.length - 1] as GrammarMatchInterface;
+		return old_length - last.indices[1] - 1;
 	} else if (old_length !== new_length) {
 		// If there's no `accum` but we still shortened the match, then the entire difference between old and new length was removed.
 		return old_length - new_length;
@@ -189,7 +190,7 @@ private adjust_regexp_end(accum: PassageEntityInterface[], old_length: number, n
 }
 
 // If a book is on its own, check whether it's preceded by something that indicates it's a book range like "1-2 Samuel".
-private create_book_range(s: string, passage: GrammarMatchInterface, book_id: number): GrammarMatchInterface | false {
+private create_book_range(s: string, passage: PassageEntityArrayValue, book_id: number): PassageEntityArrayValue | false {
 	// We don't need a fourth here because these cases are for the starting book.
 	const cases: [RegExp, RegExp, RegExp] = [
 		this.parent.regexps.first,
@@ -216,10 +217,12 @@ private create_book_range(s: string, passage: GrammarMatchInterface, book_id: nu
 }
 
 // Create a synthetic object that can be parsed to show the correct result.
-private add_book_range_object(passage: GrammarMatchInterface, prev: RegExpMatchArray, start_book_number: number): GrammarMatchInterface {
+private add_book_range_object(passage: PassageEntityArrayValue, prev: RegExpMatchArray, start_book_number: number): PassageEntityArrayValue {
 	const length = prev[1].length;
 	// `String.match()` should include `index`; default to 0 for malformed custom input.
 	const prev_index = prev.index ?? 0;
+	// `create_book_range()` only calls this function when the first value is a grammar-produced `b` node.
+	const original_book = passage.value[0] as GrammarMatchInterface;
 	// Insert a `b_range_pre` object in front of the current book to simulate something like "1-" before "2 Samuel".
 	passage.value[0] = {
 		type: "b_range_pre",
@@ -229,12 +232,12 @@ private add_book_range_object(passage: GrammarMatchInterface, prev: RegExpMatchA
 				value: start_book_number.toString(),
 				indices: [prev_index, prev_index + length]
 			},
-			passage.value[0]
+			original_book
 		],
-		indices: [0, passage.value[0].indices[1] + length]
+		indices: [0, original_book.indices[1] + length]
 	};
 	// Adjust indices of the original book object so that they reflect the new content.
-	this.add_offset_to_indices(passage.value[0].value[1].indices, length);
+	this.add_offset_to_indices(original_book.indices, length);
 	// These two are the most important ones; the `absolute_indices` function uses them. Because this is a `book` object, it's always defined.
 	// Keep this resilient if a crafted synthetic object omits `start_index`.
 	if (passage.start_index != null) {
@@ -246,17 +249,20 @@ private add_book_range_object(passage: GrammarMatchInterface, prev: RegExpMatchA
 		return passage;
 	}
 	for (let i = 1; i < passage.value.length; i++) {
-		if (!passage.value[i].value) {
+		const entity = passage.value[i];
+		const value = entity.value;
+		if (!value) {
 			continue;
 		}
 		// If it's an `integer` type, `passage.value[i].value` is a scalar rather than an object, so we only need to adjust the indices for the top-level object.
-		if (passage.value[i].value[0]?.indices) {
-			this.add_offset_to_indices(passage.value[i].value[0].indices, length);
+		const first_value = Array.isArray(value) ? value[0] : null;
+		if (first_value != null && !Array.isArray(first_value) && first_value.indices != null) {
+			this.add_offset_to_indices(first_value.indices, length);
 		}
 		// Adjust this object's own indices.
 		// Some grammar objects (e.g., integers) can omit `indices`.
-		if (passage.value[i].indices != null) {
-			this.add_offset_to_indices(passage.value[i].indices, length);
+		if (entity.indices != null) {
+			this.add_offset_to_indices(entity.indices, length);
 		}
 	}
 	return passage;

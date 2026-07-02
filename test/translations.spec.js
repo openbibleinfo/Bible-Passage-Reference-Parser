@@ -16,7 +16,7 @@ describe("Setting translations", () => {
 		expect(p.translations.current_system).toEqual("default");
 	});
 	it("should set and then revert a translation when setting a translation", () => {
-		p.set_options( { versification_system: "kjv" });
+		p.set_options({ versification_system: "kjv" });
 		expect(p.parse("3 John 15").osis_and_translations()).toEqual([]);
 		expect(p.parse("3 John 15 ESV, NIV").osis_and_translations()).toEqual([["3John.1.15", "ESV,NIV"]]);
 		expect(p.parse("3 John 15 ESV, 3 John 14, 3 John 15").osis_and_translations()).toEqual([["3John.1.15", "ESV"], ["3John.1.14", ""]]);
@@ -140,18 +140,18 @@ describe("Adding new translations (programmatically)", () => {
 		expect(p.translations.systems["G"].books["Lam"]).toEqual(1);
 		expect(p.translations.systems["G"].order).not.toBeDefined();
 		// Duplicate versification. Don't redefine the system; accept the earlier one.
-		p.add_translations({translations: [{"text": "M", system: "G", versification: {books: ["Jer","Lam"]}}]})
+		p.add_translations({translations: [{"text": "M", system: "G", versification: {books: ["Jer", "Lam"]}}]});
 		expect(p.translations.systems["G"].books["Lam"]).toEqual(1);
 		expect(p.translations.systems["G"].order).not.toBeDefined();
 		// Duplicate translation `D`.
 		p.add_translations({translations: [
 			{"text": "D", system: "G"},
 			{"text": "F", system: "E"}
-			],
-			systems: {
-				E: {chapters: {"Lam":[8,3]}},
-				G: {books: ["Jer","Lam"]}
-			}
+		],
+		systems: {
+			E: {chapters: {"Lam":[8, 3]}},
+			G: {books: ["Jer", "Lam"]}
+		}
 		});
 		expect(p.translations.systems["G"].books["Lam"]).toEqual(1);
 		expect(p.translations.systems["E"].chapters["Lam"].length).toEqual(2);
@@ -163,7 +163,7 @@ describe("Adding new translations (programmatically)", () => {
 				{"text": "F"}
 			],
 			systems: {
-				E: { chapters: {"Lam":[8,3]} }
+				E: { chapters: {"Lam":[8, 3]} }
 			}
 		});
 		expect(p.parse("Micah 2 F").osis_and_translations()).toEqual([["Mic.2", "F"]]);
@@ -171,11 +171,11 @@ describe("Adding new translations (programmatically)", () => {
 	});
 	it("shouldn't add systems without translations", () => {
 		expect(() =>
-		p.add_translations({
-			systems: {
-				F: { chapters: {"Lam":[8,3]} }
-			}
-		})
+			p.add_translations({
+				systems: {
+					F: { chapters: {"Lam":[8, 3]} }
+				}
+			})
 		).toThrowMatching(add_translations_throw_matcher);
 		expect(p.parse("Micah 2 F").osis_and_translations()).toEqual([["Mic.2-Mic.7", ""]]);
 		expect(p.translations.systems["F"]).not.toBeDefined();
@@ -189,7 +189,7 @@ describe("Adding new translations (programmatically)", () => {
 				{"text": "F", system: "E"}
 			],
 			systems: {
-				E: { chapters: {"Lam":[8,3]} }
+				E: { chapters: {"Lam":[8, 3]} }
 			}
 		});
 		expect(p.translations.aliases["f"].system).toEqual("E");
@@ -198,18 +198,17 @@ describe("Adding new translations (programmatically)", () => {
 
 		// Here the `K` throws because it's not defined anywhere.
 		expect(() => {
-		p.add_translations({
-			translations: [
-				{"text": "H", system: "N", versification: {chapters: {"Lam":[8,3]}}},
-				{"text": "I", system: "K"}
-			]})
+			p.add_translations({
+				translations: [
+					{"text": "H", system: "N", versification: {chapters: {"Lam":[8, 3]}}},
+					{"text": "I", system: "K"}
+				]});
 		}).toThrowMatching(add_translations_throw_matcher);
-
 
 		p.add_translations(
 			{translations: [
 				{"text": "G", system: "E"},
-				{"text": "F", system: "E", versification: {chapters: {"Lam":[8,3]}}}
+				{"text": "F", system: "E", versification: {chapters: {"Lam":[8, 3]}}}
 			]});
 		expect(p.translations.aliases["g"]).toEqual({ osis: "G", system: "E" });
 		expect(p.translations.aliases["f"]).toEqual({ osis: "F", system: "E" });

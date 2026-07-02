@@ -47,7 +47,6 @@ const ogen225a = { b: "Gen", c: 2, v: 25, p: "a" };
 const orev2221 = { b: "Rev", c: 22, v: 21 };
 const orev2221a = { b: "Rev", c: 22, v: 21, p: "a" };
 
-
 describe("OSIS compaction strategies", () => {
 	let p = {};
 	let translation = "default";
@@ -96,27 +95,27 @@ describe("OSIS compaction strategies", () => {
 		}
 	});
 	it("should return OSIS for b-bc with various compaction strategies", () => {
-			run_tests([
-				["full", ogen, ogen1, {b: gen1c, bp: gen1c, bc: gen1c, bcp: gen1c, bcv: gen1v, bcvp: gen1v}],
-				["full", ogen, ogen2, {b: gen12c, bp: gen12c, bc: gen12c, bcp: gen12c, bcv: gen12v, bcvp: gen12v}],
-				["full", ogen, ogen50, {b: genb, bp: genb, bc: genc, bcp: genc, bcv: genv, bcvp: genv}],
-				["full", ogen, orev, {b: genrb, bp: genrb, bc: genrc, bcp: genrc, bcv: genrv, bcvp: genrv}],
+		run_tests([
+			["full", ogen, ogen1, {b: gen1c, bp: gen1c, bc: gen1c, bcp: gen1c, bcv: gen1v, bcvp: gen1v}],
+			["full", ogen, ogen2, {b: gen12c, bp: gen12c, bc: gen12c, bcp: gen12c, bcv: gen12v, bcvp: gen12v}],
+			["full", ogen, ogen50, {b: genb, bp: genb, bc: genc, bcp: genc, bcv: genv, bcvp: genv}],
+			["full", ogen, orev, {b: genrb, bp: genrb, bc: genrc, bcp: genrc, bcv: genrv, bcvp: genrv}],
 
-				["first_chapter", ogen, ogen, {b: gen1c, bp: gen1c, bc: gen1c, bcp: gen1c, bcv: gen1v, bcvp: gen1v}],
-				["first_chapter", ogen, ogen2, {b: gen12c, bp: gen12c, bc: gen12c, bcp: gen12c, bcv: gen12v, bcvp: gen12v}],
-				["first_chapter", ogen, ogen50, {b: genb, bp: genb, bc: genc, bcp: genc, bcv: genv, bcvp: genv}],
-				["first_chapter", ogen, orev, {b: genrb, bp: genrb, bc: genrc, bcp: genrc, bcv: genrv, bcvp: genrv}],
+			["first_chapter", ogen, ogen, {b: gen1c, bp: gen1c, bc: gen1c, bcp: gen1c, bcv: gen1v, bcvp: gen1v}],
+			["first_chapter", ogen, ogen2, {b: gen12c, bp: gen12c, bc: gen12c, bcp: gen12c, bcv: gen12v, bcvp: gen12v}],
+			["first_chapter", ogen, ogen50, {b: genb, bp: genb, bc: genc, bcp: genc, bcv: genv, bcvp: genv}],
+			["first_chapter", ogen, orev, {b: genrb, bp: genrb, bc: genrc, bcp: genrc, bcv: genrv, bcvp: genrv}],
 
-				["full", ogena, ogena, {b: genb, bp: gena, bc: genc, bcp: gena, bcv: genv, bcvp: gena}],
-				["full", ogena, ogen2a, {b: gen12c, bp: gen12a, bc: gen12c, bcp: gen12a, bcv: gen12v, bcvp: gen12a}],
-				["full", ogena, ogen50a, {b: genb, bp: gena, bc: genc, bcp: gena, bcv: genv, bcvp: gena}],
-				["full", ogena, oreva, {b: genrb, bp: genra, bc: genrc, bcp: genra, bcv: genrv, bcvp: genra}],
+			["full", ogena, ogena, {b: genb, bp: gena, bc: genc, bcp: gena, bcv: genv, bcvp: gena}],
+			["full", ogena, ogen2a, {b: gen12c, bp: gen12a, bc: gen12c, bcp: gen12a, bcv: gen12v, bcvp: gen12a}],
+			["full", ogena, ogen50a, {b: genb, bp: gena, bc: genc, bcp: gena, bcv: genv, bcvp: gena}],
+			["full", ogena, oreva, {b: genrb, bp: genra, bc: genrc, bcp: genra, bcv: genrv, bcvp: genra}],
 
-				["first_chapter", ogena, ogena, {b: gen1c, bp: gen1a, bc: gen1c, bcp: gen1a, bcv: gen1v, bcvp: gen1a}],
-				["first_chapter", ogena, ogen2a, {b: gen12c, bp: gen12a, bc: gen12c, bcp: gen12a, bcv: gen12v, bcvp: gen12a}],
-				["first_chapter", ogena, ogen50a, {b: genb, bp: gena, bc: genc, bcp: gena, bcv: genv, bcvp: gena}],
-				["first_chapter", ogena, oreva, {b: genrb, bp: genra, bc: genrc, bcp: genra, bcv: genrv, bcvp: genra}],
-			]);
+			["first_chapter", ogena, ogena, {b: gen1c, bp: gen1a, bc: gen1c, bcp: gen1a, bcv: gen1v, bcvp: gen1a}],
+			["first_chapter", ogena, ogen2a, {b: gen12c, bp: gen12a, bc: gen12c, bcp: gen12a, bcv: gen12v, bcvp: gen12a}],
+			["first_chapter", ogena, ogen50a, {b: genb, bp: gena, bc: genc, bcp: gena, bcv: genv, bcvp: gena}],
+			["first_chapter", ogena, oreva, {b: genrb, bp: genra, bc: genrc, bcp: genra, bcv: genrv, bcvp: genra}],
+		]);
 	});
 	it("should return OSIS for b-bcv with various compaction strategies", () => {
 		for (const book_alone_strategy of ["full", "first_chapter"]) {
@@ -183,13 +182,17 @@ describe("bcvp osis compaction strategies", () => {
 		expect(p.parse("Jude 10a:6").osis_and_indices()).toEqual([]);
 	});
 	it("should handle ranges", () => {
-		expect(p.parse("Jude 1:1b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.1!b-Jude.1.3!a", translations: [""], indices: [0, 12]}])
-		expect(p.parse("Jude 1b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.1!b-Jude.1.3!a", translations: [""], indices: [0, 10]}])
-		expect(p.parse("Jude 2b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.2!b-Jude.1.3!a", translations: [""], indices: [0, 10]}])
-		expect(p.parse("Jude 2b-1a").osis_and_indices()).toEqual([{osis: "Jude.1.2!b,Jude.1.1!a", translations: [""], indices: [0, 10]}])
+		expect(p.parse("Jude 1:1b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.1!b-Jude.1.3!a", translations: [""], indices: [0, 12]}]);
+		expect(p.parse("Jude 1b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.1!b-Jude.1.3!a", translations: [""], indices: [0, 10]}]);
+		expect(p.parse("Jude 2b-3a").osis_and_indices()).toEqual([{osis: "Jude.1.2!b-Jude.1.3!a", translations: [""], indices: [0, 10]}]);
+		expect(p.parse("Jude 2b-1a").osis_and_indices()).toEqual([{osis: "Jude.1.2!b,Jude.1.1!a", translations: [""], indices: [0, 10]}]);
+	});
+	it("should not apply partials to chapters at either end of a range", () => {
+		expect(p.parse("Ps 3a-4").osis_and_indices()).toEqual([{osis: "Ps.3.1-Ps.4.8", translations: [""], indices: [0, 7]}]);
+		expect(p.parse("Ps 3-4a").osis_and_indices()).toEqual([{osis: "Ps.3.1-Ps.4.8", translations: [""], indices: [0, 7]}]);
 	});
 	it("should handle sequences", () => {
-		expect(p.parse("Jer 33a, 22b").osis_and_indices()).toEqual([{osis: "Jer.33.1-Jer.33.26,Jer.22.1-Jer.22.30", translations: [""], indices: [0, 12]}])
+		expect(p.parse("Jer 33a, 22b").osis_and_indices()).toEqual([{osis: "Jer.33.1-Jer.33.26,Jer.22.1-Jer.22.30", translations: [""], indices: [0, 12]}]);
 		expect(p.parse("Psalm 23a:6").osis_and_indices()).toEqual([{osis: "Ps.23.6", translations: [""], indices: [0, 11]}]);
 		expect(p.parse("1 Kings 21:2b-33a, 12c, ch. 14a, 15c, 22:9a").osis_and_indices()).toEqual([{osis: "1Kgs.21.2!b-1Kgs.21.29,1Kgs.21.12!c,1Kgs.14.1-1Kgs.15.34,1Kgs.22.9!a", translations: [""], indices: [0, 43]}]);
 	});

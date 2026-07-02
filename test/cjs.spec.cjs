@@ -25,7 +25,7 @@ describe("Validate public API", () => {
 	it("should match `parsed_entities()`", () => {
 		expect(p.parse("John 3:16 NIV").parsed_entities()).toEqual([{
 			osis: "John.3.16",
-			indices: [0,13],
+			indices: [0, 13],
 			translations: ["NIV"],
 			entity_id: 0,
 			entities: [{
@@ -63,4 +63,28 @@ describe("Validate public API", () => {
 		});
 		expect(p.parse("Genesis 1").osis()).toEqual("Gen.1.1-Gen.1.31");
 	});
+});
+
+describe("Browser `<script>` tag global", () => {
+	const fs = require("node:fs");
+	const path = require("node:path");
+	const vm = require("node:vm");
+	// Simulate loading the bundle in a classic (non-module) script: `module` is undefined, and the global object carries the host globals a browser or worker provides (`structuredClone`, `console`, `self`; pages also have `window`).
+	function runBundle(file, globals) {
+		const context = vm.createContext({ structuredClone, console });
+		for (const key of globals) {
+			context[key] = context;
+		}
+		vm.runInContext(fs.readFileSync(path.join(__dirname, file), "utf8"), context);
+		// `new bcv_parser()` with no language object is the usage the README documents.
+		return vm.runInContext("new bcv_parser()", context);
+	}
+	for (const file of ["../cjs/en_bcv_parser.js", "../cjs/en_bcv_parser.min.js"]) {
+		it(`should expose a language-bound \`bcv_parser\` global in a page loading ${path.basename(file)}`, () => {
+			expect(runBundle(file, ["window", "self"]).parse("John 1").osis()).toEqual("John.1");
+		});
+		it(`should expose a language-bound \`bcv_parser\` global in a web worker loading ${path.basename(file)}`, () => {
+			expect(runBundle(file, ["self"]).parse("John 1").osis()).toEqual("John.1");
+		});
+	}
 });

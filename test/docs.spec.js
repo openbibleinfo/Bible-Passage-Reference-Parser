@@ -207,7 +207,7 @@ describe("Documentation compatibility", () => {
 		expect(bcv.parse("Mark 1 (NIV1984)").osis_and_translations()).toEqual([["Mark.1", ""]]);
 		bcv.add_translations({
 			translations: [{ text: "NIV1984", system: "kjv" }]
-		})
+		});
 		expect(bcv.parse("Mark 1 (NIV1984)").osis_and_translations()).toEqual([["Mark.1", "NIV1984"]]);
 		expect(bcv.parse("3 John 15 (NIV1984)").osis_and_translations()).toEqual([]);
 		bcv.add_translations({
@@ -226,7 +226,7 @@ describe("Documentation compatibility", () => {
 	});
 	it("should handle `warn_level`", () => {
 		const oldWarn = console.warn;
-		console.warn = (msg) => { throw msg };
+		console.warn = (msg) => { throw msg; };
 		bcv.set_options({ warn_level: "warn" });
 		expect(() => bcv.set_options({ versification_system: "kjv"})).not.toThrow();
 		expect(() => bcv.set_options({ versification_system: "unknown"})).toThrow();

@@ -43,7 +43,7 @@ function set_generate_options(accum, node, level=0, current_node="") {
 				level === 1 &&
 				current_node &&
 				start_splice === -1) {
-					start_splice = i;
+				start_splice = i;
 			} else {
 				// nothing
 			}
@@ -64,7 +64,7 @@ function set_generate_options(accum, node, level=0, current_node="") {
 function apply_accum(accum) {
 	for (const { parent, start, end, name } of accum) {
 		let regexp_code = function_matches[name];
-			// If it's a string, we want to use the value in `options`.
+		// If it's a string, we want to use the value in `options`.
 		if (typeof regexp_code === "string") {
 			regexp_code = "options." + regexp_code;
 		} else if (regexp_code == null) {
@@ -79,7 +79,7 @@ function apply_accum(accum) {
 			`    if (res = ${regexp_code}.exec(input.substring(peg$currPos))) {\n`,
 			"      peg$savedPos = peg$currPos;\n",
 			"      peg$currPos += res[0].length;\n",
-			`      return [res[0]];\n`,
+			"      return [res[0]];\n",
 			"    } else {\n",
 			"      return peg$FAILED;\n",
 			"    }\n"

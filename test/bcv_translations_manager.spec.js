@@ -21,4 +21,10 @@ describe("bcv_translations_manager auto coverage", () => {
 		const first_warning = warn_spy.calls.first().args[0];
 		expect(first_warning).toContain("already exists");
 	});
+
+	it("applies redefined translation aliases", () => {
+		const p = new bcv_parser(lang);
+		p.add_translations({ translations: [{ text: "NIV", osis: "MYNIV" }] });
+		expect(p.parse("Matt 5:5 NIV").osis_and_translations()).toEqual([["Matt.5.5", "MYNIV"]]);
+	});
 });

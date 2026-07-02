@@ -4,7 +4,7 @@ This class takes a string and identifies Bible passage references in that string
 The aggressiveness is tunable, to a certain extent, using the below `options`. It's probably too aggressive for general text parsing (the "is 2" in "There is 2 much" becomes "Isa.2", for example).
 */
 
-import { BCVParserOptions, PartialOptions, EntityCollection, BCVParserInterface, PublicTranslationInterface, OsisEntityInterface, OsisAndIndicesInterface, StartEndInterface, Entity, GrammarMatchInterface, BCVRegExpsInterface, BCVPassageInterface, BCVTranslationsInterface, BCVRegExpsManagerInterface, BCVTranslationsManagerInterface, BCVParserConstructor, AddBooksInterface, AddTranslationsInterface } from "./types";
+import { BCVParserOptions, PartialOptions, EntityCollection, EntityCollectionArrayValue, BCVParserInterface, PublicTranslationInterface, OsisEntityInterface, OsisPassageEntityInterface, OsisSequenceEntityInterface, OsisAndIndicesInterface, StartEndInterface, StartEndWithBookInterface, Entity, GrammarMatchInterface, BCVRegExpsInterface, BCVPassageInterface, BCVTranslationsInterface, BCVRegExpsManagerInterface, BCVTranslationsManagerInterface, BCVParserConstructor, AddBooksInterface, AddTranslationsInterface } from "./types";
 import bcv_matcher from "./bcv_matcher";
 import bcv_options from "./bcv_options";
 import bcv_passage from "./bcv_passage";
@@ -13,7 +13,7 @@ import bcv_translations_manager from "./bcv_translations_manager";
 
 export class bcv_parser implements BCVParserInterface {
 
-public passage: BCVPassageInterface = new bcv_passage();
+public passage: BCVPassageInterface;
 public regexps: BCVRegExpsInterface;
 public options: BCVParserOptions;
 private entities: EntityCollection[] = [];
@@ -22,22 +22,16 @@ private matcher: bcv_matcher;
 public regexps_manager: BCVRegExpsManagerInterface;
 public translations_manager: BCVTranslationsManagerInterface;
 
-constructor(lang: BCVParserConstructor | null = null) {
+constructor(lang: BCVParserConstructor) {
+	// The CJS build wraps this class in a subclass that always provides a language object, so this guard is for ESM users calling the constructor directly.
+	if (lang == null) {
+		throw new Error(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:\nimport * as lang from "esm/lang/en.js";\nconst bcv = new bcv_parser(lang);`);
+	}
 	// Make sure everything is kept in sync between these objects.
 	this.options = new bcv_options(this);
-	if (lang == null) {
-		if (typeof grammar === "undefined") {
-			throw(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:\nimport * as lang from "esm/lang/en.js";\nconst bcv = new bcv_parser(lang);`)
-		}
-		this.translations = new bcv_translations();
-		this.matcher = new bcv_matcher(this, grammar_options);
-		this.regexps = new bcv_regexps();
-		this.translations = new bcv_translations();
-	} else {
-		this.matcher = new bcv_matcher(this, lang.grammar_options);
-		this.regexps = new lang.regexps();
-		this.translations = new lang.translations();
-	}
+	this.matcher = new bcv_matcher(this, lang.grammar_options);
+	this.regexps = new lang.regexps();
+	this.translations = new lang.translations();
 	this.passage = new bcv_passage(this.options, this.translations);
 	this.regexps_manager = new bcv_regexps_manager(this);
 	this.translations_manager = new bcv_translations_manager(this);
@@ -90,7 +84,7 @@ public parse_with_context(string_to_parse: string, context_string: string): this
 private reset(): void {
 	this.entities = [];
 	this.passage.books = [];
-	this.passage.indices = {};
+	this.passage.indices = [];
 }
 
 // ## Options-Related Functions
@@ -105,7 +99,7 @@ public set_options(options: PartialOptions): this {
 	for (const [key, value] of Object.entries(options)) {
 		// The drawback with this approach is that setting `testaments`, `system`, and `case_sensitive` could regenerate `this.regexps.books` three times. There's also no guard here to enforce the correct type.
 		if (key in this.options) {
-			this.options[key] = value;
+			Reflect.set(this.options, key, value);
 		}
 	}
 	// Allow chaining.
@@ -177,7 +171,9 @@ public osis_and_indices(): OsisAndIndicesInterface[] {
 // Return all objects, probably for additional processing.
 public parsed_entities(): OsisEntityInterface[] {
 	let out: OsisEntityInterface[] = [];
-	this.entities.forEach((entity, entity_id) => {
+	// Producing output rewrites entity state along the way: `to_osis` fills in and rewrites `start`/`end` objects, and `snap_range` rewrites entity types and indices. Work on a copy of the parse state so that repeated calls (including ones after an options change) always start from the original parse and return the same results.
+	const entities = structuredClone(this.entities);
+	entities.forEach((entity, entity_id) => {
 			// Be sure to include any translation identifiers in the indices we report back, but only if the translation immediately follows the previous entity.
 		if (
 			entity.type &&
@@ -221,7 +217,7 @@ public parsed_entities(): OsisEntityInterface[] {
 		}
 		// Combine consecutive passages if configured.
 		if (osises.length > 1 && this.options.consecutive_combination_strategy === "combine") {
-			osises = this.combine_consecutive_passages(osises, system);
+			osises = this.combine_consecutive_passages(osises as OsisSequenceEntityInterface[], system);
 		}
 		// If sequence combination strategy is set to "separate", return each osis separately.
 		if (this.options.sequence_combination_strategy === "separate") {
@@ -251,8 +247,8 @@ public parsed_entities(): OsisEntityInterface[] {
 	return out;
 }
 
-private parse_entity_passages(entity: EntityCollection, entity_id: number, translations: string[], system: string): OsisEntityInterface[] {
-	const osises: OsisEntityInterface[] = [];
+private parse_entity_passages(entity: EntityCollection, entity_id: number, translations: string[], system: string): OsisPassageEntityInterface[] {
+	const osises: OsisPassageEntityInterface[] = [];
 	const passages = entity.passages;
 	// Some entity types (for example `stop`) don't carry passages.
 	if (passages == null || passages.length === 0) {
@@ -287,7 +283,13 @@ private parse_entity_passages(entity: EntityCollection, entity_id: number, trans
 			// Skip the rest of this forEach loop.
 			return;
 		}
-		// If we want to exclude the Old Testament, then make sure to only include psalms if the range includes Psalm 151. These entities aren't excluded earlier because we do want to match Psalm 151 (just not the rest of the Psalms). This case only happens if `this.options.testaments` is `na`, `n`, or `a`.
+		if (
+			(passage.type === "b_range_start" || passage.type === "range_end_b") &&
+			this.options.book_range_strategy === "ignore"
+		) {
+			this.snap_range(entity as EntityCollectionArrayValue, i);
+		}
+		// If we want to exclude the Old Testament, then make sure to only include psalms if the range includes Psalm 151. These entities aren't excluded earlier because we do want to match Psalm 151 (just not the rest of the Psalms). This case only happens if `this.options.testaments` is `na`, `n`, or `a`. This check runs after `snap_range` because snapping can reduce a range that reached past Psalm 151 (and so would have been included) to just its Psalms end.
 		if (
 				include_old_testament === false &&
 				(passage.start.b === "Ps" &&
@@ -297,17 +299,11 @@ private parse_entity_passages(entity: EntityCollection, entity_id: number, trans
 			) {
 				return;
 			}
-		if (
-			(passage.type === "b_range_start" || passage.type === "range_end_b") &&
-			this.options.book_range_strategy === "ignore"
-		) {
-			this.snap_range(entity, i);
-		}
 		if (!passage.absolute_indices) {
 			passage.absolute_indices = [...entity.absolute_indices];
 		}
 		osises.push({
-			osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, system) : "",
+			osis: passage.valid.valid ? this.to_osis(passage.start as StartEndWithBookInterface, passage.end as StartEndWithBookInterface, system) : "",
 			type: passage.type,
 			indices: passage.absolute_indices,
 			translations,
@@ -321,8 +317,8 @@ private parse_entity_passages(entity: EntityCollection, entity_id: number, trans
 	return osises;
 }
 
-// Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It maniplates the original `start` and `end` objects.
-private to_osis(start: StartEndInterface, end: StartEndInterface, translation: string): string {
+// Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It manipulates the original `start` and `end` objects. Only valid passages get here (via the `passage.valid.valid` gate or the consecutive-combination logic), so the books are always defined.
+private to_osis(start: StartEndWithBookInterface, end: StartEndWithBookInterface, translation: string): string {
 	// If it's just a book on its own, how we deal with it depends on whether we want to return just the first chapter or the complete book.
 	if (
 		end.c == null && end.v == null &&
@@ -348,7 +344,7 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 	) {
 		this.fix_ps151(start, end, translation);
 	}
-	const chapter_array = this.passage.translations.systems[translation]?.chapters[end.b] || this.passage.translations.systems.current.chapters[end.b];
+	const chapter_array = this.passage.translations.systems[translation]?.chapters?.[end.b] || this.passage.translations.systems.current.chapters[end.b];
 	// Shortcuts for future access.
 	const compaction_strategy = this.options.osis_compaction_strategy;
 	const existence_strategy = this.options.passage_existence_strategy;
@@ -450,7 +446,7 @@ private to_osis(start: StartEndInterface, end: StartEndInterface, translation: s
 }
 
 // If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it returns properly.
-private fix_ps151(start: StartEndInterface, end: StartEndInterface, translation: string): void {
+private fix_ps151(start: StartEndWithBookInterface, end: StartEndWithBookInterface, translation: string): void {
 	// First set up the versification so that we know we have all the data we need.
 	const old_system = this.options.versification_system;
 	this.options.versification_system = translation;
@@ -493,8 +489,8 @@ private fix_ps151(start: StartEndInterface, end: StartEndInterface, translation:
 }
 
 // If we have the correct `option` set (checked before calling this function), merge passages that refer to sequential verses: Gen 1, 2 -> Gen 1-2. It works for any combination of books, chapters, and verses.
-private combine_consecutive_passages(osises: OsisEntityInterface[], translation: string): OsisEntityInterface[] {
-	const out: OsisEntityInterface[] = [];
+private combine_consecutive_passages(osises: OsisSequenceEntityInterface[], translation: string): OsisSequenceEntityInterface[] {
+	const out: OsisSequenceEntityInterface[] = [];
 	let prev: Partial<StartEndInterface> = {};
 	const last_i = osises.length - 1;
 	let enclosed_sequence_start = -1;
@@ -530,7 +526,7 @@ private combine_consecutive_passages(osises: OsisEntityInterface[], translation:
 				out[prev_i].is_enclosed_last = is_enclosed_last;
 				out[prev_i].indices[1] = osis.indices[1];
 				out[prev_i].enclosed_indices[1] = osis.enclosed_indices[1];
-				out[prev_i].osis = this.to_osis(out[prev_i].start, osis.end, translation);
+				out[prev_i].osis = this.to_osis(out[prev_i].start as StartEndWithBookInterface, osis.end as StartEndWithBookInterface, translation);
 			} else {
 				out.push(osis);
 			}
@@ -549,7 +545,7 @@ private combine_consecutive_passages(osises: OsisEntityInterface[], translation:
 }
 
 // If there's an enclosed reference--e.g., Ps 1 (2)--and we've combined consecutive passages in such a way that the enclosed reference is fully inside the sequence (i.e., if it starts before the enclosed sequence), then make sure the end index for the passage includes the necessary closing punctuation.
-private snap_enclosed_indices(osises: OsisEntityInterface[]): OsisEntityInterface[] {
+private snap_enclosed_indices(osises: OsisPassageEntityInterface[]): OsisPassageEntityInterface[] {
 	for (const osis of osises) {
 		if (osis.is_enclosed_last != null && osis.enclosed_indices != null) {
 			if (osis.enclosed_indices[0] < 0 && osis.is_enclosed_last) {
@@ -571,7 +567,7 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 		return false;
 	}
 	// A translation doesn't always have an `order` set. If it doesn't, then use the current order.
-	const translation_order = this.passage.translations.systems[translation]?.order 
+	const translation_order = this.passage.translations.systems[translation]?.order
 		|| this.passage.translations.systems.current.order;
 	const chapter_array = this.passage.translations.systems[translation]?.chapters?.[prev.b] || this.passage.translations.systems.current.chapters[prev.b];
 	// Same book.
@@ -588,7 +584,8 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 	} else if (
 		check.c === 1 &&
 		check.v === 1 &&
-		translation_order[prev.b] === translation_order[check.b] - 1
+		// `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
+		translation_order[prev.b] === translation_order[check.b as string] - 1
 	) {
 		// Check if prev ended at the last verse of the last chapter of its book.
 		return (
@@ -600,7 +597,7 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 }
 
 // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.
-private snap_range(entity: EntityCollection, passage_i: number): EntityCollection {
+private snap_range(entity: EntityCollectionArrayValue, passage_i: number): EntityCollectionArrayValue {
 	const passages = entity.passages;
 	// Defensive guard for malformed entities from custom callers.
 	if (passages == null || passages.length === 0) {
@@ -608,13 +605,8 @@ private snap_range(entity: EntityCollection, passage_i: number): EntityCollectio
 	}
 	// Default: if the book is at the end of the range, we want to ignore the end of the range.
 	let entity_i = 0;
-	let source_entity = "start";
+	let source_entity: "start" | "end" = "start";
 	let type = "range_end_b";
-	// If we previously went through this process (i.e., `this.parsed_entities()` was called multiple times), then restore the original type. Otherwise, the `b_range_start` logic below doesn't necessarily hold, leading to a crash.
-	if (entity.original_type === "b_range_start") {
-		entity.type = entity.original_type;
-		delete entity.original_type;
-	}
 	// If the book is at the start of the range, we want to ignore the first part of the range.
 	if (
 		entity.type === "b_range_start" ||
@@ -624,11 +616,12 @@ private snap_range(entity: EntityCollection, passage_i: number): EntityCollectio
 			source_entity = "end";
 			type = "b_range_start";
 	}
-	const target_entity = (source_entity === "end") ? "start" : "end";
+	const target_entity: "start" | "end" = (source_entity === "end") ? "start" : "end";
 	// Restore the original objects if they're available. We're potentially changing the main object's values in a way that would affect the outcome if we parse this same object multiple times.
 	for (const obj_type of [source_entity, target_entity]) {
-		if (passages[passage_i][obj_type].original_object != null) {
-			passages[passage_i][obj_type] = passages[passage_i][obj_type].original_object;
+		const original_object = passages[passage_i][obj_type].original_object;
+		if (original_object != null) {
+			passages[passage_i][obj_type] = original_object;
 		}
 	}
 	// Get ready to preserve the original target object.
@@ -648,7 +641,7 @@ private snap_range(entity: EntityCollection, passage_i: number): EntityCollectio
 		const pluck = this.passage.pluck(type, entity.value[passage_i] as GrammarMatchInterface[]);
 		// `pluck` can be null if we've already overwritten its `type` in a previous recursion. This process is unusual, but can happen in something like "Proverbs 31:2. Vs 10 to dan".
 		if (pluck != null) {
-			const temp = this.snap_range(pluck, 0);
+			const temp = this.snap_range(pluck as EntityCollectionArrayValue, 0);
 			// Move the indices to exclude what we've omitted. We want to move it even if it isn't the last one in case there are multiple books at the end--this way it'll use the correct indices.
 			if (passage_i === 0) {
 				entity.absolute_indices[0] = temp.absolute_indices[0];
@@ -671,7 +664,7 @@ private snap_range(entity: EntityCollection, passage_i: number): EntityCollectio
 }
 
 // Snap the start/end index of the entity or surrounding passages when there's a lone book or invalid item in a sequence.
-private snap_sequence(type: string, entity: EntityCollection, osises: OsisEntityInterface[], i: number, length: number): void {
+private snap_sequence(type: string, entity: EntityCollection, osises: OsisPassageEntityInterface[], i: number, length: number): void {
 	const passages = entity.passages;
 	// Defensive guard for malformed entities from custom callers.
 	if (passages == null || passages.length === 0) {

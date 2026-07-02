@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>bcv_parser browser loading tests</title>
+<style>
+	body { font-family: system-ui, sans-serif; max-width: 48rem; margin: 2rem auto; padding: 0 1rem; }
+	table { border-collapse: collapse; width: 100%; }
+	th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; }
+	.pass { background: #d4edd4; }
+	.fail { background: #f8d3d3; }
+	.pending { background: #fdf6d3; }
+	code { background: #f0f0f0; padding: 0 0.2rem; }
+	#summary { font-weight: bold; }
+	#file-warning { background: #f8d3d3; padding: 0.6rem; display: none; }
+</style>
+</head>
+<body>
+<h1>bcv_parser browser loading tests</h1>
+<p>Tests every load pattern the README documents, against the real built files. Every row should say <strong>PASS</strong>.</p>
+<p id="file-warning">This page is loaded from <code>file://</code>. Workers and ES modules need HTTP. From the repo root, run <code>npm run serve</code> and open <code>http://localhost:8765/test/browser.html</code>.</p>
+<p id="summary">Running&hellip;</p>
+<table>
+	<thead><tr><th>Load pattern</th><th>Expected</th><th>Got</th><th>Result</th></tr></thead>
+	<tbody id="results"></tbody>
+</table>
+
+<script>
+if (location.protocol === "file:") {
+	document.getElementById("file-warning").style.display = "block";
+}
+const TIMEOUT_MS = 8000;
+const rows = new Map();
+
+// Register a row up front so the table order is stable, then resolve it when the test reports.
+function start(name, expected) {
+	const tr = document.createElement("tr");
+	tr.className = "pending";
+	tr.innerHTML = `<td>${name}</td><td><code>${expected}</code></td><td>pending&hellip;</td><td>PENDING</td>`;
+	document.getElementById("results").appendChild(tr);
+	rows.set(name, { tr, expected, done: false });
+	setTimeout(() => {
+		if (!rows.get(name).done) {
+			finish(name, "(timed out)");
+		}
+	}, TIMEOUT_MS);
+}
+
+function finish(name, got) {
+	const row = rows.get(name);
+	if (row.done) {
+		return;
+	}
+	row.done = true;
+	const ok = got === row.expected;
+	row.tr.className = ok ? "pass" : "fail";
+	row.tr.cells[2].textContent = got;
+	row.tr.cells[3].textContent = ok ? "PASS" : "FAIL";
+	updateSummary();
+}
+
+function updateSummary() {
+	const all = [...rows.values()];
+	if (all.some((r) => !r.done)) {
+		return;
+	}
+	const failures = all.filter((r) => r.tr.className === "fail").length;
+	const text = failures === 0 ? `All ${all.length} tests passed.` : `${failures} of ${all.length} tests FAILED.`;
+	document.getElementById("summary").textContent = text;
+	document.title = (failures === 0 ? "PASS - " : "FAIL - ") + "bcv_parser browser loading tests";
+}
+
+function run(name, expected, fn) {
+	start(name, expected);
+	try {
+		finish(name, fn());
+	} catch (e) {
+		finish(name, `threw: ${e.message || e}`);
+	}
+}
+
+// Register every test now so the timeout covers scripts that fail to load at all.
+start("Web worker: importScripts(cjs/en_bcv_parser.js)", "John.1");
+start("Web worker: importScripts(cjs/en_bcv_parser.min.js)", "John.1");
+start("ESM: dynamic import of esm/bcv_parser.js + esm/lang/en.js", "John.1");
+start("ESM: README window-handoff pattern (bcv_loaded event)", "John.15");
+
+function workerTest(name, bundlePath) {
+	const url = new URL(bundlePath, location.href).href;
+	const code = `importScripts(${JSON.stringify(url)}); postMessage(new bcv_parser().parse("John 1").osis());`;
+	try {
+		const worker = new Worker(URL.createObjectURL(new Blob([code], { type: "text/javascript" })));
+		worker.onmessage = (e) => { finish(name, e.data); worker.terminate(); };
+		worker.onerror = (e) => finish(name, `worker error: ${e.message}`);
+	} catch (e) {
+		finish(name, `threw: ${e.message}`);
+	}
+}
+workerTest("Web worker: importScripts(cjs/en_bcv_parser.js)", "../cjs/en_bcv_parser.js");
+workerTest("Web worker: importScripts(cjs/en_bcv_parser.min.js)", "../cjs/en_bcv_parser.min.js");
+</script>
+
+<!-- README "In a Browser (regular script tag)": classic script, then bare `new bcv_parser()`. -->
+<script src="../cjs/en_bcv_parser.js" charset="utf-8"></script>
+<script>
+run("Classic &lt;script&gt;: cjs/en_bcv_parser.js, bare new bcv_parser()", "John.1", () => new bcv_parser().parse("John 1").osis());
+</script>
+
+<!-- Same, minified. Loading it second also confirms the global cleanly re-binds. -->
+<script src="../cjs/en_bcv_parser.min.js" charset="utf-8"></script>
+<script>
+run("Classic &lt;script&gt;: cjs/en_bcv_parser.min.js, bare new bcv_parser()", "John.1", () => new bcv_parser().parse("John 1").osis());
+run("Classic &lt;script&gt;: window.bcv_parser after both loads", "John.1", () => new window.bcv_parser().parse("John 1").osis());
+</script>
+
+<!-- README "In a Browser (script module)": ES module imports. Dynamic so a load failure reports instead of dying silently. -->
+<script type="module">
+	const name = "ESM: dynamic import of esm/bcv_parser.js + esm/lang/en.js";
+	try {
+		const { bcv_parser } = await import("../esm/bcv_parser.js");
+		const lang = await import("../esm/lang/en.js");
+		finish(name, new bcv_parser(lang).parse("John 1").osis());
+	} catch (e) {
+		finish(name, `threw: ${e.message}`);
+	}
+</script>
+
+<!-- README window-handoff pattern, verbatim: a module sets window.bcv and dispatches an event a classic script listens for. -->
+<script>
+	window.addEventListener("bcv_loaded", () => {
+		const name = "ESM: README window-handoff pattern (bcv_loaded event)";
+		try {
+			finish(name, window.bcv.parse("John 15").osis());
+		} catch (e) {
+			finish(name, `threw: ${e.message}`);
+		}
+	});
+</script>
+<script type="module">
+	import { bcv_parser } from "../esm/bcv_parser.js";
+	import * as lang from "../esm/lang/en.js";
+	window.bcv = new bcv_parser(lang);
+	window.dispatchEvent(new Event("bcv_loaded"));
+</script>
+</body>
+</html>

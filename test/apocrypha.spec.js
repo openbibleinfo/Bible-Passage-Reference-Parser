@@ -419,6 +419,20 @@ describe("Apocrypha parsing", () => {
 			}
 		]);
 	});
+	it("should keep Psalm 151 available after switching to a system added after enabling the Apocrypha", () => {
+		p.include_apocrypha(true);
+		p.add_translations({ translations: [{ text: "XX", system: "mysys" }], systems: { mysys: { chapters: { Ps: Array(150).fill(20) } } } });
+		p.set_options({ versification_system: "mysys" });
+		expect(p.parse("Ps 151").osis()).toEqual("Ps.151");
+	});
+	it("should not leak the current system's Psalm verse counts into other systems when toggling the Apocrypha", () => {
+		p.set_options({ versification_system: "vulgate" });
+		p.include_apocrypha(true);
+		p.set_options({ versification_system: "kjv" });
+		// Vulgate Ps 9 has 39 verses; the default (and KJV) Ps 9 has 20.
+		expect(p.parse("Ps 9:20").osis()).toEqual("Ps.9.20");
+		expect(p.parse("Ps 9:21").osis()).toEqual("");
+	});
 	it("should let the `testaments` option take precedence over `include_apocrypha()`", () => {
 		p.set_options({
 			testaments: "ona",
@@ -459,5 +473,25 @@ describe("Apocrypha parsing", () => {
 		expect(p.parse("Psalm 151").osis()).toEqual("");
 		p.set_options({ ps151_strategy: "b"});
 		expect(p.parse("Psalm 151").osis()).toEqual("");
+	});
+	it("should return the same results from repeated output calls on the same parse", () => {
+		// `parsed_entities()` used to mutate entity state (filled-in `start`/`end` objects, `snap_range` type rewrites), so a second call could return something different. Found by `bin/fuzz_lang.js`.
+		p.set_options({
+			testaments: "na",
+			ps151_strategy: "b",
+			book_sequence_strategy: "include"
+		});
+		p.parse("Ps and1");
+		const first = p.osis();
+		expect(first).toEqual("Ps");
+		expect(p.osis()).toEqual(first);
+		expect(p.osis_and_indices()).toEqual(p.osis_and_indices());
+	});
+	it("should exclude a book range snapped down to plain Psalms when the Old Testament is filtered out", () => {
+		// The range reaches 4Macc, so the testament filter would keep it, but `book_range_strategy: "ignore"` (the default) reduces it to Ps.7, which is entirely in the excluded Old Testament.
+		p.set_options({ testaments: "a" });
+		p.parse("Ps7title to 4Mc");
+		expect(p.osis()).toEqual("");
+		expect(p.osis()).toEqual("");
 	});
 });

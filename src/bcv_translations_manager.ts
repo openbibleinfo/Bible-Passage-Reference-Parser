@@ -15,8 +15,9 @@ public translation_info(system: string = DEFAULT_SYSTEM): PublicTranslationInter
 		system = DEFAULT_SYSTEM;
 	}
 	// Resolve versification system if applicable
-	if (this.parent.translations.aliases[system]?.system) {
-		system = this.parent.translations.aliases[system].system;
+	const alias_system = this.parent.translations.aliases[system]?.system;
+	if (alias_system) {
+		system = alias_system;
 	}
 	// Use "default" if there's no other fallback.
 	if (this.parent.translations.systems[system] == null) {
@@ -48,7 +49,7 @@ public translation_info(system: string = DEFAULT_SYSTEM): PublicTranslationInter
 
 public add_translations(new_translations: AddTranslationsInterface): void {
 	if (new_translations?.translations == null || !Array.isArray(new_translations.translations) || new_translations.translations.length === 0) {
-		throw new Error("add_translations: A `translations array in the `translations` key should have at least one object");
+		throw new Error("add_translations: The `translations` key should be an array with at least one object");
 	}
 	const normalized_translations: BCVTranslationsInterface["aliases"] = {};
 	const texts_for_regexp: string[] = [];
@@ -93,7 +94,8 @@ public add_translations(new_translations: AddTranslationsInterface): void {
 	if (texts_for_regexp.length > 0) {
 		this.add_new_translations_regexp(texts_for_regexp, new_translations);
 	}
-	this.parent.translations.aliases = {...normalized_translations, ...this.parent.translations.aliases};
+	// New definitions take precedence over existing ones so that redefining an alias works as the warning above implies.
+	this.parent.translations.aliases = { ...this.parent.translations.aliases, ...normalized_translations };
 }
 
 public apply_case_sensitive(case_sensitive: BCVParserOptions["case_sensitive"]): void {
@@ -185,15 +187,15 @@ private validate_system_chapters(chapters: Record<string, number[]>): void {
 		if (all_books[book] == null) {
 			throw new Error("add_translations: Unexpected book: " + book);
 		}
-		if (!Array.isArray(chapter_lengths) || chapter_lengths.length == 0) {
+		if (!Array.isArray(chapter_lengths) || chapter_lengths.length === 0) {
 			throw new Error("add_translations: Each value in `chapters` should be an array with at least one entry containing the number of verses in each chapter. Check `" + book + "`");
 		}
 		// Valid verse counts fall within these limits.
 		for (const verse_count of chapter_lengths) {
 			if (!(typeof verse_count === "number" && verse_count >= 1 && verse_count <= 200)) {
-				throw new Error("add_translations: Unexpected value in `chapters`: " + verse_count + "`. It should be a number between 1 and 200");
+				throw new Error("add_translations: Unexpected value in `chapters`: `" + verse_count + "`. It should be a number between 1 and 200");
 			}
-		} 
+		}
 	}
 }
 
@@ -202,7 +204,7 @@ private add_new_translations_regexp(texts_for_regexp: string[], new_translations
 		texts_for_regexp = texts_for_regexp.sort((a, b) => b.length - a.length);
 	}
 	const insert_at = (new_translations.insert_at === "end") ? "end" : "start";
-	const pre_regexp = (new_translations?.pre_regexp instanceof RegExp) ? new_translations?.pre_regexp : {source: ""}; // Make a pretend empty RegExp; otherwise, it's `(?:)`.
+	const pre_regexp = (new_translations?.pre_regexp instanceof RegExp) ? new_translations?.pre_regexp : { source: "" }; // Make a pretend empty RegExp; otherwise, it's `(?:)`.
 	const post_regexp = (new_translations?.post_regexp instanceof RegExp) ? new_translations?.post_regexp : /(?![\p{L}\p{N}])/u;
 	// Match the `case_sensitive` option.
 	const flags = this.get_translation_regexp_flags();

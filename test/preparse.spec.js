@@ -11,7 +11,7 @@ describe("Instantiation", () => {
 		expect(() => new bcv_parser("")).toThrow();
 		expect(() => new bcv_parser({"grammar": {}, "regexps": {}, "translations": {}})).toThrowMatching((err) => /TypeError/.test(err));
 	});
-})
+});
 
 describe("Pre-parsing", () => {
 	let p = {};
@@ -33,7 +33,7 @@ describe("Pre-parsing", () => {
 		expect(p.unknown_property).toEqual("string");
 		expect(p.entities).toEqual([]);
 		expect(p.passage.books).toEqual([]);
-		expect(p.passage.indices).toEqual({});
+		expect(p.passage.indices).toEqual([]);
 		expect(p.options.book_alone_strategy).toEqual("hi");
 	});
 	it("should reset itself when creating a new object", () => {
@@ -429,7 +429,7 @@ describe("Pre-parsing", () => {
 			["\x1f0\x1f 8 ", "\x1f0\x1f 8"],
 			["(\x1e0\x1e)", "(\x1e0\x1e)"],
 			["[\x1e0\x1e]", "[\x1e0\x1e]"],
-		]
+		];
 		for (const [input, output] of tests) {
 			expect(p.matcher.clean_end_match(input + "w", match, input)).toEqual(output);
 		}
@@ -447,7 +447,7 @@ describe("Pre-parsing", () => {
 			["\x1f0\x1f 8 ", "\x1f0\x1f 8"],
 			["(\x1e0\x1e)", "(\x1e0\x1e)"],
 			["[\x1e0\x1e]", "[\x1e0\x1e]"],
-		]
+		];
 		for (const [input, output] of tests) {
 			expect(p.matcher.clean_end_match(input, match, input)).toEqual(output);
 		}

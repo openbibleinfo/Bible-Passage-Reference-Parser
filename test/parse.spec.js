@@ -619,7 +619,7 @@ describe("Basic passage parsing", () => {
 			c: 1
 		})).toEqual({
 			valid: false,
-			messages: { translation_invalid: [ { no_key: "none"} ] }
+			messages: { translation_invalid: [{ no_key: "none"}] }
 		});
 		expect(psg.validate_ref(null, {
 			b: "Obad",
@@ -1533,6 +1533,13 @@ describe("Parsing with context", () => {
 				indices: [4, 9]
 			}
 		]);
+	});
+	it("should handle a bookless context string", () => {
+		// The context string never matches a book, so the match is a verse with no book: invalid, with no output.
+		const p_bookless = p.parse_with_context("verse 5", "chapter 3");
+		expect(p_bookless.osis()).toEqual("");
+		expect(p_bookless.entities[0].passages[0].valid).toEqual({ valid: false, messages: { start_book_not_defined: true } });
+		expect(p_bookless.entities[0].passages[0].start.b).toBeUndefined();
 	});
 	it("should handle chapter context", () => {
 		expect(p.parse_with_context("2", "Gen 1").osis_and_indices()).toEqual([
@@ -2637,7 +2644,7 @@ describe("Parsing", () => {
 				]
 			}
 		]);
-/*		expect(p.parse("Matthew 3:1 NIV 12 7:1").osis_and_indices()).toEqual([
+		/*		expect(p.parse("Matthew 3:1 NIV 12 7:1").osis_and_indices()).toEqual([
 			{
 				osis: "Matt.3.1",
 				translations: ["NIV"],
@@ -4387,5 +4394,5 @@ describe("Parsing", () => {
 	});
 	it("should allow setting grammar options", () => {
 
-	})
+	});
 });

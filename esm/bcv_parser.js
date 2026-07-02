@@ -3211,9 +3211,9 @@ function peg$parse(input, options) {
 
 // bin/build/bcv_matcher.ts
 var bcv_matcher = class {
-  constructor(parent, grammar_options2) {
+  constructor(parent, grammar_options) {
     this.parent = parent;
-    this.parent.options.grammar = structuredClone(grammar_options2);
+    this.parent.options.grammar = structuredClone(grammar_options);
   }
   // ## Parsing-Related Functions
   // Replace control characters and spaces since we replace books with a specific character pattern. The string changes, but the length stays the same so that indices remain valid. If we want to use Latin numbers rather than non-Latin ones, replace them here.
@@ -3337,7 +3337,8 @@ var bcv_matcher = class {
   // Handle the objects returned from the grammar to produce entities for further processing. We may need to adjust the `RegExp.lastIndex` if we discarded characters from the end of the match or if, after parsing, we're ignoring some of them--especially with ending parenthetical statements like "Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)".
   adjust_regexp_end(accum, old_length, new_length) {
     if (accum.length > 0) {
-      return old_length - accum[accum.length - 1].indices[1] - 1;
+      const last = accum[accum.length - 1];
+      return old_length - last.indices[1] - 1;
     } else if (old_length !== new_length) {
       return old_length - new_length;
     }
@@ -3365,6 +3366,7 @@ var bcv_matcher = class {
   add_book_range_object(passage, prev, start_book_number) {
     const length = prev[1].length;
     const prev_index = prev.index ?? 0;
+    const original_book = passage.value[0];
     passage.value[0] = {
       type: "b_range_pre",
       value: [
@@ -3373,11 +3375,11 @@ var bcv_matcher = class {
           value: start_book_number.toString(),
           indices: [prev_index, prev_index + length]
         },
-        passage.value[0]
+        original_book
       ],
-      indices: [0, passage.value[0].indices[1] + length]
+      indices: [0, original_book.indices[1] + length]
     };
-    this.add_offset_to_indices(passage.value[0].value[1].indices, length);
+    this.add_offset_to_indices(original_book.indices, length);
     if (passage.start_index != null) {
       passage.start_index -= length;
     }
@@ -3386,14 +3388,17 @@ var bcv_matcher = class {
       return passage;
     }
     for (let i = 1; i < passage.value.length; i++) {
-      if (!passage.value[i].value) {
+      const entity = passage.value[i];
+      const value = entity.value;
+      if (!value) {
         continue;
       }
-      if (passage.value[i].value[0]?.indices) {
-        this.add_offset_to_indices(passage.value[i].value[0].indices, length);
+      const first_value = Array.isArray(value) ? value[0] : null;
+      if (first_value != null && !Array.isArray(first_value) && first_value.indices != null) {
+        this.add_offset_to_indices(first_value.indices, length);
       }
-      if (passage.value[i].indices != null) {
-        this.add_offset_to_indices(passage.value[i].indices, length);
+      if (entity.indices != null) {
+        this.add_offset_to_indices(entity.indices, length);
       }
     }
     return passage;
@@ -3462,7 +3467,7 @@ var bcv_options = class {
     return this.#testaments;
   }
   set testaments(filter) {
-    if (filter === this.#testaments || filter.length === 0) {
+    if (filter === this.#testaments) {
       return;
     }
     const filters = filter.split("");
@@ -3478,6 +3483,9 @@ var bcv_options = class {
     if (filters.length > 0 && filters[0] === "a") {
       out += "a";
     }
+    if ((out !== filter || filter.length === 0) && this.warn_level === "warn") {
+      console.warn(`testaments should be some combination of "o", "n", and "a" (in that order), not: "${filter}". Using "${out.length > 0 ? out : this.#testaments}" instead.`);
+    }
     if (out.length > 0 && out !== this.#testaments) {
       const new_apocrypha = out.indexOf("a") >= 0;
       const old_apocrypha = this.#testaments.indexOf("a") >= 0;
@@ -3492,13 +3500,13 @@ var bcv_options = class {
   // Whether to use books and abbreviations from the Apocrypha. This function makes sure books from the Apocrypha are available as options and adjusts the Psalms to include Psalm 151. It takes a boolean argument: `true` to include the Apocrypha and `false` to not. Defaults to `false`.
   set_apocrypha(include_apocrypha) {
     this.parent.regexps_manager.filter_books(this.#testaments, this.case_sensitive);
-    const current_ps_chapters = this.parent.translations.systems.current.chapters?.["Ps"];
-    if (current_ps_chapters == null) {
+    const default_ps_chapters = this.parent.translations.systems.default.chapters?.["Ps"];
+    if (default_ps_chapters == null) {
       return;
     }
     for (const translation of Object.keys(this.parent.translations.systems)) {
       this.parent.translations.systems[translation].chapters ??= {};
-      this.parent.translations.systems[translation].chapters["Ps"] ??= [...current_ps_chapters];
+      this.parent.translations.systems[translation].chapters["Ps"] ??= [...default_ps_chapters];
       if (include_apocrypha === true) {
         this.parent.translations.systems[translation].chapters["Ps"][150] = this.parent.translations.systems[translation].chapters["Ps151"]?.[0] ?? this.parent.translations.systems.current.chapters["Ps151"][0];
       } else if (this.parent.translations.systems[translation].chapters?.["Ps"].length === 151) {
@@ -3511,8 +3519,9 @@ var bcv_options = class {
   }
   // Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use ESV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering. English offers several other versification systems; see the Readme for details.
   set versification_system(system) {
-    if (this.parent.translations.aliases[system]?.system) {
-      system = this.parent.translations.aliases[system].system;
+    const alias_system = this.parent.translations.aliases[system]?.system;
+    if (alias_system) {
+      system = alias_system;
     }
     if (!this.parent.translations.systems[system]) {
       if (this.warn_level === "warn") {
@@ -3520,7 +3529,7 @@ var bcv_options = class {
       }
       system = "default";
     }
-    if (!system || system === this.parent.translations.current_system) {
+    if (system === this.parent.translations.current_system) {
       return;
     }
     if (this.parent.translations.current_system !== "default") {
@@ -3535,6 +3544,9 @@ var bcv_options = class {
     }
     if (this.parent.translations.systems[system].chapters) {
       this.parent.translations.systems.current.chapters = { ...structuredClone(this.parent.translations.systems.default.chapters), ...structuredClone(this.parent.translations.systems[system].chapters) };
+    }
+    if (this.#testaments.includes("a")) {
+      this.set_apocrypha(true);
     }
   }
   #case_sensitive;
@@ -3620,7 +3632,7 @@ var bcv_validators = class {
   }
   // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
   validate_end_ref(system, start, end, valid, messages) {
-    const order_system = this.translations.systems[system]?.order ? system : "current";
+    const order = this.translations.systems[system]?.order || this.translations.systems.current.order;
     if (end.c === 0) {
       messages.end_chapter_is_zero = 1;
       if (this.options.zero_chapter_strategy === "error") {
@@ -3637,8 +3649,8 @@ var bcv_validators = class {
         end.v = 1;
       }
     }
-    if (end.b && this.translations.systems[order_system].order[end.b]) {
-      valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
+    if (end.b && order[end.b] != null) {
+      valid = this.validate_known_end_book(system, order, start, end, valid, messages);
     } else {
       valid = false;
       messages.end_book_not_exist = true;
@@ -3646,12 +3658,12 @@ var bcv_validators = class {
     return [valid, messages];
   }
   // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
-  validate_known_end_book(system, order_system, start, end, valid, messages) {
+  validate_known_end_book(system, order, start, end, valid, messages) {
     const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
     if (end.c == null && chapter_array.length === 1) {
       end.c = 1;
     }
-    if (this.translations.systems[order_system].order[start.b] != null && this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]) {
+    if (order[start.b] != null && order[start.b] > order[end.b]) {
       if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
         valid = false;
       }
@@ -3734,11 +3746,11 @@ var bcv_validators = class {
   // Make sure that the start ref exists in the given translation.
   validate_start_ref(system, start, messages) {
     let valid = true;
-    const order_system = this.translations.systems[system]?.order ? system : "current";
+    const order = this.translations.systems[system]?.order || this.translations.systems.current.order;
     if (!start.b) {
       valid = false;
       messages.start_book_not_defined = true;
-    } else if (this.translations.systems[order_system].order[start.b]) {
+    } else if (order[start.b] != null) {
       valid = this.validate_known_start_book(system, start, messages);
     } else {
       if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
@@ -4019,11 +4031,12 @@ var bcv_passage = class {
   // Handle "23rd Psalm" by recasting it as a `bc`.
   c_psalm(passage, accum, context) {
     passage.type = "bc";
-    const c = parseInt(this.books[passage.value].value.match(/^\d+/)[0], 10);
+    const book_index = passage.value;
+    const c = parseInt(this.books[book_index].value.match(/^\d+/)[0], 10);
     passage.value = [
       {
         type: "b",
-        value: passage.value,
+        value: book_index,
         indices: passage.indices
       },
       {
@@ -4144,7 +4157,7 @@ var bcv_passage = class {
     passage.value[1].value = [{
       type: "integer",
       value: 1,
-      indices: structuredClone(passage.value[1].value.indices)
+      indices: structuredClone(passage.value[1].indices)
     }];
     passage.type = "cv";
     return this.cv(passage, accum, passage.start_context);
@@ -4296,10 +4309,7 @@ var bcv_passage = class {
       end_obj.p = end.passages[0].end.p;
     }
     if (end.passages[0].end.p_if_verse != null) {
-      end_obj.p = end.passages[0].end.p_if_verse;
-    }
-    if (start.passages[0].start.p_if_verse != null) {
-      start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+      end_obj.p_if_verse = end.passages[0].end.p_if_verse;
     }
     if (end.passages[0].valid.messages.start_chapter_is_zero) {
       end_obj.c = 0;
@@ -4358,7 +4368,7 @@ var bcv_passage = class {
     const [start, end] = passage.value;
     passage.original_type ??= passage.type;
     passage.original_value ??= [start, end];
-    passage.type = start.type === "integer" ? "cv" : start.type + "v";
+    passage.type = start.type === "bc" ? "bcv" : "cv";
     if (start.type === "integer") {
       passage.value[0] = {
         type: "c",
@@ -4404,16 +4414,18 @@ var bcv_passage = class {
   range_end_b(passage, accum, context) {
     return this.range(passage, accum, context);
   }
-  // If a sequence has an end chapter/verse that's before the the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
+  // If a sequence has an end chapter/verse that's before the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
   range_get_new_end_value(start_obj, end_obj, valid, key) {
     let new_end = 0;
     if (key === "c" && valid.messages?.end_chapter_is_zero || key === "v" && valid.messages?.end_verse_is_zero) {
       return new_end;
     }
-    if (start_obj[key] >= 10 && end_obj[key] < 10 && start_obj[key] - 10 * Math.floor(start_obj[key] / 10) < end_obj[key]) {
-      new_end = end_obj[key] + 10 * Math.floor(start_obj[key] / 10);
-    } else if (start_obj[key] >= 100 && end_obj[key] < 100 && start_obj[key] - 100 < end_obj[key]) {
-      new_end = end_obj[key] + 100;
+    const start_value = start_obj[key];
+    const end_value = end_obj[key];
+    if (start_value >= 10 && end_value < 10 && start_value - 10 * Math.floor(start_value / 10) < end_value) {
+      new_end = end_value + 10 * Math.floor(start_value / 10);
+    } else if (start_value >= 100 && end_value < 100 && start_value - 100 < end_value) {
+      new_end = end_value + 100;
     }
     return new_end;
   }
@@ -4438,8 +4450,10 @@ var bcv_passage = class {
     }
     passage.original_type ??= passage.type;
     passage.type = "sequence";
-    [passage.original_value, passage.value] = [[start, end], [[start], [end]]];
-    return this.sequence(passage, accum, structuredClone(passage.start_context));
+    const sequence_passage = passage;
+    sequence_passage.original_value = [start, end];
+    sequence_passage.value = [[start], [end]];
+    return this.sequence(sequence_passage, accum, structuredClone(passage.start_context));
   }
   // The range looks valid, but we should check for some special cases.
   range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum) {
@@ -4498,7 +4512,8 @@ var bcv_passage = class {
       this.reset_context(context, ["translations"]);
       return [accum, context];
     }
-    const first_book_index = passage.value[0]?.value;
+    const value = passage.value;
+    const first_book_index = value[0].value;
     if (typeof first_book_index === "number") {
       const first_parsed = this.books[first_book_index]?.parsed;
       if (typeof first_parsed === "string" && first_parsed.length > 0) {
@@ -4509,7 +4524,7 @@ var bcv_passage = class {
         });
       }
     }
-    for (const val of passage.value[1]) {
+    for (const val of value[1]) {
       const translation_obj = this.pluck("translation", val);
       if (translation_obj == null || typeof translation_obj.value !== "number") {
         continue;
@@ -4568,8 +4583,6 @@ var bcv_passage = class {
   word(passage, accum, context) {
     return [accum, context];
   }
-  // ## Utilities
-  // Pluck the object or value matching a type from an array.
   pluck(type, passages) {
     for (const passage of passages) {
       if (passage && passage.type && passage.type === type) {
@@ -4608,7 +4621,7 @@ var bcv_passage = class {
       if (obj[key] == null) {
         continue;
       }
-      context[key] = obj[key];
+      Reflect.set(context, key, obj[key]);
     }
   }
   // Delete existing context keys if, for example, starting with a new book. Which keys are deleted depends on the caller.
@@ -4690,7 +4703,8 @@ var bcv_passage = class {
     return indices;
   }
   // Find the absolute string indices of start and end points.
-  get_absolute_indices([start, end]) {
+  get_absolute_indices(indices) {
+    const [start, end] = indices;
     let start_out = null;
     let end_out = null;
     for (const index of this.indices) {
@@ -4921,8 +4935,9 @@ var bcv_translations_manager = class {
     if (typeof system !== "string" || !system) {
       system = DEFAULT_SYSTEM;
     }
-    if (this.parent.translations.aliases[system]?.system) {
-      system = this.parent.translations.aliases[system].system;
+    const alias_system = this.parent.translations.aliases[system]?.system;
+    if (alias_system) {
+      system = alias_system;
     }
     if (this.parent.translations.systems[system] == null) {
       if (this.parent.options.warn_level === "warn") {
@@ -4949,7 +4964,7 @@ var bcv_translations_manager = class {
   }
   add_translations(new_translations) {
     if (new_translations?.translations == null || !Array.isArray(new_translations.translations) || new_translations.translations.length === 0) {
-      throw new Error("add_translations: A `translations array in the `translations` key should have at least one object");
+      throw new Error("add_translations: The `translations` key should be an array with at least one object");
     }
     const normalized_translations = {};
     const texts_for_regexp = [];
@@ -4983,7 +4998,7 @@ var bcv_translations_manager = class {
     if (texts_for_regexp.length > 0) {
       this.add_new_translations_regexp(texts_for_regexp, new_translations);
     }
-    this.parent.translations.aliases = { ...normalized_translations, ...this.parent.translations.aliases };
+    this.parent.translations.aliases = { ...this.parent.translations.aliases, ...normalized_translations };
   }
   apply_case_sensitive(case_sensitive) {
     const flags = this.get_translation_regexp_flags(case_sensitive);
@@ -5059,12 +5074,12 @@ var bcv_translations_manager = class {
       if (all_books[book] == null) {
         throw new Error("add_translations: Unexpected book: " + book);
       }
-      if (!Array.isArray(chapter_lengths) || chapter_lengths.length == 0) {
+      if (!Array.isArray(chapter_lengths) || chapter_lengths.length === 0) {
         throw new Error("add_translations: Each value in `chapters` should be an array with at least one entry containing the number of verses in each chapter. Check `" + book + "`");
       }
       for (const verse_count of chapter_lengths) {
         if (!(typeof verse_count === "number" && verse_count >= 1 && verse_count <= 200)) {
-          throw new Error("add_translations: Unexpected value in `chapters`: " + verse_count + "`. It should be a number between 1 and 200");
+          throw new Error("add_translations: Unexpected value in `chapters`: `" + verse_count + "`. It should be a number between 1 and 200");
         }
       }
     }
@@ -5092,25 +5107,17 @@ var bcv_translations_manager = class {
 
 // bin/build/bcv_parser.ts
 var bcv_parser = class {
-  constructor(lang = null) {
-    this.passage = new bcv_passage();
+  constructor(lang) {
     this.entities = [];
-    this.options = new bcv_options(this);
     if (lang == null) {
-      if (typeof grammar === "undefined") {
-        throw `When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:
+      throw new Error(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:
 import * as lang from "esm/lang/en.js";
-const bcv = new bcv_parser(lang);`;
-      }
-      this.translations = new bcv_translations();
-      this.matcher = new bcv_matcher(this, grammar_options);
-      this.regexps = new bcv_regexps();
-      this.translations = new bcv_translations();
-    } else {
-      this.matcher = new bcv_matcher(this, lang.grammar_options);
-      this.regexps = new lang.regexps();
-      this.translations = new lang.translations();
+const bcv = new bcv_parser(lang);`);
     }
+    this.options = new bcv_options(this);
+    this.matcher = new bcv_matcher(this, lang.grammar_options);
+    this.regexps = new lang.regexps();
+    this.translations = new lang.translations();
     this.passage = new bcv_passage(this.options, this.translations);
     this.regexps_manager = new bcv_regexps_manager(this);
     this.translations_manager = new bcv_translations_manager(this);
@@ -5148,7 +5155,7 @@ const bcv = new bcv_parser(lang);`;
   reset() {
     this.entities = [];
     this.passage.books = [];
-    this.passage.indices = {};
+    this.passage.indices = [];
   }
   // ## Options-Related Functions
   // Override default options.
@@ -5159,7 +5166,7 @@ const bcv = new bcv_parser(lang);`;
     }
     for (const [key, value] of Object.entries(options)) {
       if (key in this.options) {
-        this.options[key] = value;
+        Reflect.set(this.options, key, value);
       }
     }
     return this;
@@ -5221,7 +5228,8 @@ const bcv = new bcv_parser(lang);`;
   // Return all objects, probably for additional processing.
   parsed_entities() {
     let out = [];
-    this.entities.forEach((entity, entity_id) => {
+    const entities = structuredClone(this.entities);
+    entities.forEach((entity, entity_id) => {
       if (entity.type && entity.type === "translation_sequence" && out.length > 0 && entity_id === out[out.length - 1].entity_id + 1) {
         out[out.length - 1].indices[1] = entity.absolute_indices[1];
       }
@@ -5300,11 +5308,11 @@ const bcv = new bcv_parser(lang);`;
         this.snap_sequence("book", entity, osises, i, length);
         return;
       }
-      if (include_old_testament === false && (passage.start.b === "Ps" && (passage.start.c != null && passage.start.c < 151) && passage.end.b === "Ps" && (passage.end.c != null && passage.end.c < 151))) {
-        return;
-      }
       if ((passage.type === "b_range_start" || passage.type === "range_end_b") && this.options.book_range_strategy === "ignore") {
         this.snap_range(entity, i);
+      }
+      if (include_old_testament === false && (passage.start.b === "Ps" && (passage.start.c != null && passage.start.c < 151) && passage.end.b === "Ps" && (passage.end.c != null && passage.end.c < 151))) {
+        return;
       }
       if (!passage.absolute_indices) {
         passage.absolute_indices = [...entity.absolute_indices];
@@ -5323,7 +5331,7 @@ const bcv = new bcv_parser(lang);`;
     });
     return osises;
   }
-  // Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It maniplates the original `start` and `end` objects.
+  // Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It manipulates the original `start` and `end` objects. Only valid passages get here (via the `passage.valid.valid` gate or the consecutive-combination logic), so the books are always defined.
   to_osis(start, end, translation) {
     if (end.c == null && end.v == null && start.c == null && start.v == null && start.b === end.b && this.options.book_alone_strategy === "first_chapter") {
       end.c = 1;
@@ -5338,7 +5346,7 @@ const bcv = new bcv_parser(lang);`;
     if (this.options.versification_system.includes("a") && this.options.ps151_strategy === "b" && (start.c === 151 && start.b === "Ps" || end.c === 151 && end.b === "Ps")) {
       this.fix_ps151(start, end, translation);
     }
-    const chapter_array = this.passage.translations.systems[translation]?.chapters[end.b] || this.passage.translations.systems.current.chapters[end.b];
+    const chapter_array = this.passage.translations.systems[translation]?.chapters?.[end.b] || this.passage.translations.systems.current.chapters[end.b];
     const compaction_strategy = this.options.osis_compaction_strategy;
     const existence_strategy = this.options.passage_existence_strategy;
     if (end.c == null) {
@@ -5499,7 +5507,8 @@ const bcv = new bcv_parser(lang);`;
         const prev_chapter_verse_count = chapter_array[prev.c - 1];
         return prev.v === prev_chapter_verse_count;
       }
-    } else if (check.c === 1 && check.v === 1 && translation_order[prev.b] === translation_order[check.b] - 1) {
+    } else if (check.c === 1 && check.v === 1 && // `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
+    translation_order[prev.b] === translation_order[check.b] - 1) {
       return prev.c === chapter_array.length && prev.v === chapter_array[prev.c - 1];
     }
     return false;
@@ -5513,10 +5522,6 @@ const bcv = new bcv_parser(lang);`;
     let entity_i = 0;
     let source_entity = "start";
     let type = "range_end_b";
-    if (entity.original_type === "b_range_start") {
-      entity.type = entity.original_type;
-      delete entity.original_type;
-    }
     if (entity.type === "b_range_start" || entity.type === "sequence" && passages[passage_i].type === "b_range_start") {
       entity_i = 1;
       source_entity = "end";
@@ -5524,8 +5529,9 @@ const bcv = new bcv_parser(lang);`;
     }
     const target_entity = source_entity === "end" ? "start" : "end";
     for (const obj_type of [source_entity, target_entity]) {
-      if (passages[passage_i][obj_type].original_object != null) {
-        passages[passage_i][obj_type] = passages[passage_i][obj_type].original_object;
+      const original_object = passages[passage_i][obj_type].original_object;
+      if (original_object != null) {
+        passages[passage_i][obj_type] = original_object;
       }
     }
     const original_target = structuredClone(passages[passage_i][target_entity]);

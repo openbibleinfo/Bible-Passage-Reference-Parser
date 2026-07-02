@@ -56,13 +56,20 @@
   "homepage": "https://github.com/openbibleinfo/Bible-Passage-Reference-Parser",
   "scripts": {
     "build-language": "cd bin && sh build_lang.sh",
+    "fuzz": "node bin/fuzz_lang.js",
+    "fuzz:smoke": "node bin/fuzz_lang.js --count 2000 --seed 42",
+    "lint:format": "eslint src/*.ts src/*.js test/*.js test/*.cjs bin/*.js",
+    "serve": "esbuild --servedir=. --serve=127.0.0.1:8765",
     "test": "npx jasmine test/*.spec.*"
   },
   "devDependencies": {
     "@pemistahl/grex": "^1.0.2",
     "esbuild": "^0.25.8",
+    "eslint": "^10.6.0",
+    "globals": "^17.7.0",
     "jasmine": "^5.9.0",
     "peggy": "^5.0.5",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.62.1"
   }
 }

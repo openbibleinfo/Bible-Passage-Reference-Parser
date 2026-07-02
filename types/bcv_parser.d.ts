@@ -1,7 +1,7 @@
 import type { AddBooksInterface, AddTranslationsInterface, BCVParserConstructor, OsisAndIndicesInterface, OsisEntityInterface, PartialOptions, PublicTranslationInterface } from "./types";
 
 export declare class bcv_parser {
-	constructor(lang?: BCVParserConstructor | null);
+	constructor(lang: BCVParserConstructor);
 	parse(string_to_parse: string);
 	parse_with_context(string_to_parse: string, context: string);
 	set_options(options: PartialOptions): this;

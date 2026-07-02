@@ -75,10 +75,14 @@ class bcv_parser extends base_bcv_parser {
 export { bcv_parser };
 EOF
 
-npx esbuild "$ENTRY_FILE" --bundle --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile="$ROOT_DIR/cjs/$TARGET_CODE"_bcv_parser.js
+# The footer exposes the language-bound class as a browser global for plain `<script>` usage. Without it, the global `bcv_parser` resolves to the bundled base class (esbuild renames the subclass to avoid the collision), which throws when constructed without a language object. Keying on `self` rather than `window` also covers web workers; `self` is undefined in Node, so `require()` stays unaffected.
+BANNER='if (typeof module === "undefined") { var module = {}; }'
+FOOTER='if (typeof self !== "undefined") { self.bcv_parser = module.exports.bcv_parser; }'
+
+npx esbuild "$ENTRY_FILE" --bundle --target=es2022 --charset=utf8 --format=cjs --banner:js="$BANNER" --footer:js="$FOOTER" --outfile="$ROOT_DIR/cjs/$TARGET_CODE"_bcv_parser.js
 
 if [ "$TARGET_CODE" = "en" ]; then
-  npx esbuild "$ENTRY_FILE" --bundle --minify --target=es2022 --charset=utf8 --format=cjs --banner:js='if (typeof module === "undefined") { var module = {}; }' --outfile="$ROOT_DIR/cjs/$TARGET_CODE"_bcv_parser.min.js
+  npx esbuild "$ENTRY_FILE" --bundle --minify --target=es2022 --charset=utf8 --format=cjs --banner:js="$BANNER" --footer:js="$FOOTER" --outfile="$ROOT_DIR/cjs/$TARGET_CODE"_bcv_parser.min.js
 fi
 
 rm -f "$ENTRY_FILE"

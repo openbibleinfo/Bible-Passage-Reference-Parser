@@ -18,14 +18,14 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// build/cjs_bundle.ts
-var cjs_bundle_exports = {};
-__export(cjs_bundle_exports, {
-  bcv_parser: () => bcv_parser
+// bin/build/cjs_entry_ur.ts
+var cjs_entry_ur_exports = {};
+__export(cjs_entry_ur_exports, {
+  bcv_parser: () => bcv_parser2
 });
-module.exports = __toCommonJS(cjs_bundle_exports);
+module.exports = __toCommonJS(cjs_entry_ur_exports);
 
-// build/bcv_grammar.js
+// esm/bcv_parser.js
 var peg$SyntaxError = class extends SyntaxError {
   constructor(message, expected, found, location) {
     super(message);
@@ -3235,8 +3235,6 @@ function peg$parse(input, options) {
     peg$throw();
   }
 }
-
-// build/bcv_matcher.ts
 var bcv_matcher = class {
   constructor(parent, grammar_options2) {
     this.parent = parent;
@@ -3315,15 +3313,19 @@ var bcv_matcher = class {
       match.index += full.length - original_part_length;
       part = this.clean_end_match(s, match, part);
       const start_index_adjust = part.startsWith("") ? 0 : part.split("")[0].length;
+      const start_index = this.parent.passage.books[book_id_number].start_index;
+      if (start_index == null) {
+        continue;
+      }
       const passage = {
         value: peg$parse(part, this.parent.options.grammar),
         type: "base",
         // The `start_index` in `this.parent.passage` always exists after being set in `match_books`.
-        start_index: this.parent.passage.books[book_id_number].start_index - start_index_adjust,
+        start_index: start_index - start_index_adjust,
         match: part
       };
-      const book_parsed = this.parent.passage.books[book_id_number].parsed;
-      if (start_index_adjust === 0 && this.parent.options.book_alone_strategy === "full" && this.parent.options.book_range_strategy === "include" && passage.value[0].type === "b" && Array.isArray(passage.value) && (passage.value.length === 1 || passage.value.length > 1 && passage.value[1].type === "translation_sequence") && /^[234]/.test(book_parsed)) {
+      const book_parsed = this.parent.passage.books[book_id_number].parsed[0];
+      if (start_index_adjust === 0 && this.parent.options.book_alone_strategy === "full" && this.parent.options.book_range_strategy === "include" && Array.isArray(passage.value) && passage.value[0].type === "b" && (passage.value.length === 1 || passage.value.length > 1 && passage.value[1].type === "translation_sequence") && /^[234]/.test(book_parsed)) {
         this.create_book_range(s, passage, book_id_number);
       }
       let accum = [];
@@ -3349,7 +3351,7 @@ var bcv_matcher = class {
       }
     }
     if (this.parent.options.captive_end_digits_strategy === "delete") {
-      const next_char_index = match.index + part.length;
+      const next_char_index = (match.index ?? 0) + part.length;
       if (s.length > next_char_index && /^\w/.test(s.charAt(next_char_index))) {
         part = part.replace(/[\s*]+\d+$/, "");
       }
@@ -3360,7 +3362,8 @@ var bcv_matcher = class {
   // Handle the objects returned from the grammar to produce entities for further processing. We may need to adjust the `RegExp.lastIndex` if we discarded characters from the end of the match or if, after parsing, we're ignoring some of them--especially with ending parenthetical statements like "Luke 8:1-3; 24:10 (and Matthew 14:1-12 and Luke 23:7-12 for background)".
   adjust_regexp_end(accum, old_length, new_length) {
     if (accum.length > 0) {
-      return old_length - accum[accum.length - 1].indices[1] - 1;
+      const last = accum[accum.length - 1];
+      return old_length - last.indices[1] - 1;
     } else if (old_length !== new_length) {
       return old_length - new_length;
     }
@@ -3387,32 +3390,41 @@ var bcv_matcher = class {
   // Create a synthetic object that can be parsed to show the correct result.
   add_book_range_object(passage, prev, start_book_number) {
     const length = prev[1].length;
+    const prev_index = prev.index ?? 0;
+    const original_book = passage.value[0];
     passage.value[0] = {
       type: "b_range_pre",
       value: [
         {
           type: "b_pre",
           value: start_book_number.toString(),
-          indices: [prev.index, prev.index + length]
+          indices: [prev_index, prev_index + length]
         },
-        passage.value[0]
+        original_book
       ],
-      indices: [0, passage.value[0].indices[1] + length]
+      indices: [0, original_book.indices[1] + length]
     };
-    this.add_offset_to_indices(passage.value[0].value[1].indices, length);
-    passage.start_index -= length;
+    this.add_offset_to_indices(original_book.indices, length);
+    if (passage.start_index != null) {
+      passage.start_index -= length;
+    }
     passage.match = prev[1] + passage.match;
     if (!Array.isArray(passage.value)) {
       return passage;
     }
     for (let i = 1; i < passage.value.length; i++) {
-      if (!passage.value[i].value) {
+      const entity = passage.value[i];
+      const value = entity.value;
+      if (!value) {
         continue;
       }
-      if (passage.value[i].value[0]?.indices) {
-        this.add_offset_to_indices(passage.value[i].value[0].indices, length);
+      const first_value = Array.isArray(value) ? value[0] : null;
+      if (first_value != null && !Array.isArray(first_value) && first_value.indices != null) {
+        this.add_offset_to_indices(first_value.indices, length);
       }
-      this.add_offset_to_indices(passage.value[i].indices, length);
+      if (entity.indices != null) {
+        this.add_offset_to_indices(entity.indices, length);
+      }
     }
     return passage;
   }
@@ -3421,8 +3433,6 @@ var bcv_matcher = class {
     indices[1] += value_to_add;
   }
 };
-
-// build/bcv_options.ts
 var bcv_options = class {
   constructor(parent) {
     this.consecutive_combination_strategy = "combine";
@@ -3432,7 +3442,6 @@ var bcv_options = class {
     this.sequence_combination_strategy = "combine";
     this.invalid_passage_strategy = "ignore";
     this.non_latin_digits_strategy = "ignore";
-    // This one is shared between `this` and `bcv_passage`.
     this.passage_existence_strategy = "bcv";
     this.book_alone_strategy = "ignore";
     this.book_range_strategy = "ignore";
@@ -3480,7 +3489,7 @@ var bcv_options = class {
     return this.#testaments;
   }
   set testaments(filter) {
-    if (filter === this.#testaments || filter.length === 0) {
+    if (filter === this.#testaments) {
       return;
     }
     const filters = filter.split("");
@@ -3496,6 +3505,9 @@ var bcv_options = class {
     if (filters.length > 0 && filters[0] === "a") {
       out += "a";
     }
+    if ((out !== filter || filter.length === 0) && this.warn_level === "warn") {
+      console.warn(`testaments should be some combination of "o", "n", and "a" (in that order), not: "${filter}". Using "${out.length > 0 ? out : this.#testaments}" instead.`);
+    }
     if (out.length > 0 && out !== this.#testaments) {
       const new_apocrypha = out.indexOf("a") >= 0;
       const old_apocrypha = this.#testaments.indexOf("a") >= 0;
@@ -3510,9 +3522,13 @@ var bcv_options = class {
   // Whether to use books and abbreviations from the Apocrypha. This function makes sure books from the Apocrypha are available as options and adjusts the Psalms to include Psalm 151. It takes a boolean argument: `true` to include the Apocrypha and `false` to not. Defaults to `false`.
   set_apocrypha(include_apocrypha) {
     this.parent.regexps_manager.filter_books(this.#testaments, this.case_sensitive);
+    const default_ps_chapters = this.parent.translations.systems.default.chapters?.["Ps"];
+    if (default_ps_chapters == null) {
+      return;
+    }
     for (const translation of Object.keys(this.parent.translations.systems)) {
       this.parent.translations.systems[translation].chapters ??= {};
-      this.parent.translations.systems[translation].chapters["Ps"] ??= [...this.parent.translations.systems.current.chapters["Ps"]];
+      this.parent.translations.systems[translation].chapters["Ps"] ??= [...default_ps_chapters];
       if (include_apocrypha === true) {
         this.parent.translations.systems[translation].chapters["Ps"][150] = this.parent.translations.systems[translation].chapters["Ps151"]?.[0] ?? this.parent.translations.systems.current.chapters["Ps151"][0];
       } else if (this.parent.translations.systems[translation].chapters?.["Ps"].length === 151) {
@@ -3525,8 +3541,9 @@ var bcv_options = class {
   }
   // Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use ESV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering. English offers several other versification systems; see the Readme for details.
   set versification_system(system) {
-    if (this.parent.translations.aliases[system]?.system) {
-      system = this.parent.translations.aliases[system].system;
+    const alias_system = this.parent.translations.aliases[system]?.system;
+    if (alias_system) {
+      system = alias_system;
     }
     if (!this.parent.translations.systems[system]) {
       if (this.warn_level === "warn") {
@@ -3534,7 +3551,7 @@ var bcv_options = class {
       }
       system = "default";
     }
-    if (!system || system === this.parent.translations.current_system) {
+    if (system === this.parent.translations.current_system) {
       return;
     }
     if (this.parent.translations.current_system !== "default") {
@@ -3549,6 +3566,9 @@ var bcv_options = class {
     }
     if (this.parent.translations.systems[system].chapters) {
       this.parent.translations.systems.current.chapters = { ...structuredClone(this.parent.translations.systems.default.chapters), ...structuredClone(this.parent.translations.systems[system].chapters) };
+    }
+    if (this.#testaments.includes("a")) {
+      this.set_apocrypha(true);
     }
   }
   #case_sensitive;
@@ -3585,19 +3605,189 @@ var bcv_options = class {
       return;
     }
     this.#punctuation_strategy = arg;
-    this.#grammar.c_sep = this.#grammar[`c_sep_${arg}`];
-    this.#grammar.cv_sep = this.#grammar[`cv_sep_${arg}`];
-    this.#grammar.sequence = this.#grammar[`sequence_${arg}`];
+    const c_sep_key = `c_sep_${arg}`;
+    const cv_sep_key = `cv_sep_${arg}`;
+    const sequence_key = `sequence_${arg}`;
+    this.#grammar.c_sep = this.#grammar[c_sep_key];
+    this.#grammar.cv_sep = this.#grammar[cv_sep_key];
+    this.#grammar.sequence = this.#grammar[sequence_key];
   }
 };
-
-// build/bcv_passage.ts
+var bcv_validators = class {
+  constructor(options, translations2) {
+    this.options = options;
+    this.translations = translations2;
+  }
+  // Given a start and optional end bcv object, validate that the verse exists and is valid. It returns a `true` value for `valid` if any of the translations is valid.
+  validate_ref(translations2, start, end = null) {
+    if (!translations2 || translations2.length === 0 || !Array.isArray(translations2)) {
+      translations2 = [{
+        osis: "",
+        translation: "current",
+        system: "current"
+      }];
+    }
+    let valid = false;
+    const messages = {};
+    for (const translation of translations2) {
+      if (!translation.system) {
+        messages.translation_invalid ??= [];
+        messages.translation_invalid.push(translation);
+        continue;
+      }
+      if (!this.translations.aliases[translation.system]) {
+        translation.system = "current";
+        messages.translation_unknown ??= [];
+        messages.translation_unknown.push(translation);
+      }
+      let [temp_valid] = this.validate_start_ref(translation.system, start, messages);
+      if (end) {
+        [temp_valid] = this.validate_end_ref(translation.system, start, end, temp_valid, messages);
+      }
+      if (temp_valid === true) {
+        valid = true;
+      }
+    }
+    return { valid, messages };
+  }
+  // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
+  validate_end_ref(system, start, end, valid, messages) {
+    const order = this.translations.systems[system]?.order || this.translations.systems.current.order;
+    if (end.c === 0) {
+      messages.end_chapter_is_zero = 1;
+      if (this.options.zero_chapter_strategy === "error") {
+        valid = false;
+      } else {
+        end.c = 1;
+      }
+    }
+    if (end.v === 0) {
+      messages.end_verse_is_zero = 1;
+      if (this.options.zero_verse_strategy === "error") {
+        valid = false;
+      } else if (this.options.zero_verse_strategy === "upgrade") {
+        end.v = 1;
+      }
+    }
+    if (end.b && order[end.b] != null) {
+      valid = this.validate_known_end_book(system, order, start, end, valid, messages);
+    } else {
+      valid = false;
+      messages.end_book_not_exist = true;
+    }
+    return [valid, messages];
+  }
+  // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
+  validate_known_end_book(system, order, start, end, valid, messages) {
+    const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
+    if (end.c == null && chapter_array.length === 1) {
+      end.c = 1;
+    }
+    if (order[start.b] != null && order[start.b] > order[end.b]) {
+      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
+        valid = false;
+      }
+      messages.end_book_before_start = true;
+    }
+    if (start.b === end.b && end.c != null) {
+      start.c ??= 1;
+      if (start.c > end.c) {
+        valid = false;
+        messages.end_chapter_before_start = true;
+      } else if (start.c === end.c && end.v != null) {
+        start.v ??= 1;
+        if (start.v > end.v) {
+          valid = false;
+          messages.end_verse_before_start = true;
+        }
+      }
+    }
+    if (end.c != null && chapter_array[end.c - 1] == null) {
+      if (chapter_array.length === 1) {
+        messages.end_chapter_not_exist_in_single_chapter_book = 1;
+      } else if (end.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
+        messages.end_chapter_not_exist = chapter_array.length;
+      }
+    }
+    if (end.v != null) {
+      end.c ??= chapter_array.length;
+      if (end.v > chapter_array[end.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+        messages.end_verse_not_exist = chapter_array[end.c - 1];
+      }
+    }
+    return valid;
+  }
+  // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
+  validate_known_start_book(system, start, messages) {
+    let valid = true;
+    start.c ??= 1;
+    const chapter_array = this.translations.systems[system]?.chapters?.[start.b] || this.translations.systems.current.chapters[start.b];
+    if (start.c === 0) {
+      messages.start_chapter_is_zero = 1;
+      if (this.options.zero_chapter_strategy === "error") {
+        valid = false;
+      } else {
+        start.c = 1;
+      }
+    }
+    if (start.v === 0) {
+      messages.start_verse_is_zero = 1;
+      if (this.options.zero_verse_strategy === "error") {
+        valid = false;
+      } else if (this.options.zero_verse_strategy === "upgrade") {
+        start.v = 1;
+      }
+    }
+    if (start.c > 0 && chapter_array[start.c - 1] != null) {
+      if (start.v != null) {
+        if (start.v > chapter_array[start.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+          valid = false;
+          messages.start_verse_not_exist = chapter_array[start.c - 1];
+        }
+      } else if (start.c === 1 && chapter_array.length === 1) {
+        if (this.options.single_chapter_1_strategy === "verse") {
+          messages.start_verse_1 = 1;
+        } else {
+          messages.start_chapter_1 = 1;
+        }
+      }
+    } else {
+      const chapter_array_length = chapter_array.length;
+      if (start.c !== 1 && chapter_array_length === 1) {
+        valid = false;
+        messages.start_chapter_not_exist_in_single_chapter_book = 1;
+      } else if (start.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
+        valid = false;
+        messages.start_chapter_not_exist = chapter_array_length;
+      }
+    }
+    return valid;
+  }
+  // Make sure that the start ref exists in the given translation.
+  validate_start_ref(system, start, messages) {
+    let valid = true;
+    const order = this.translations.systems[system]?.order || this.translations.systems.current.order;
+    if (!start.b) {
+      valid = false;
+      messages.start_book_not_defined = true;
+    } else if (order[start.b] != null) {
+      valid = this.validate_known_start_book(system, start, messages);
+    } else {
+      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
+        valid = false;
+      }
+      messages.start_book_not_exist = true;
+    }
+    return [valid, messages];
+  }
+};
 var bcv_passage = class {
-  constructor(options, translations) {
+  constructor(options, translations2) {
     this.books = [];
     this.indices = [];
     this.options = options;
-    this.translations = translations;
+    this.translations = translations2;
+    this.validators = new bcv_validators(options, translations2);
   }
   // ## Public
   // Loop through the parsed passages.
@@ -3611,8 +3801,10 @@ var bcv_passage = class {
     return [accum, context];
   }
   handle_obj(passage, accum, context) {
-    if (passage.type && typeof this[passage.type] === "function") {
-      return this[passage.type](passage, accum, context);
+    const type = passage.type;
+    const handler = this[type];
+    if (typeof handler === "function") {
+      return handler.call(this, passage, accum, context);
     }
     return [accum, context];
   }
@@ -3704,6 +3896,7 @@ var bcv_passage = class {
       if (valid.messages?.start_chapter_not_exist_in_single_chapter_book || valid.messages?.start_verse_1 || partial != null && valid.messages?.start_chapter_1) {
         obj.valid = this.validate_ref(passage.start_context.translations, { b, v: c });
         if (valid.messages?.start_chapter_not_exist_in_single_chapter_book) {
+          obj.valid.messages ??= {};
           obj.valid.messages.start_chapter_not_exist_in_single_chapter_book = 1;
         }
         obj.start.c = 1;
@@ -3856,11 +4049,12 @@ var bcv_passage = class {
   // Handle "23rd Psalm" by recasting it as a `bc`.
   c_psalm(passage, accum, context) {
     passage.type = "bc";
-    const c = parseInt(this.books[passage.value].value.match(/^\d+/)[0], 10);
+    const book_index = passage.value;
+    const c = parseInt(this.books[book_index].value.match(/^\d+/)[0], 10);
     passage.value = [
       {
         type: "b",
-        value: passage.value,
+        value: book_index,
         indices: passage.indices
       },
       {
@@ -3981,7 +4175,7 @@ var bcv_passage = class {
     passage.value[1].value = [{
       type: "integer",
       value: 1,
-      indices: structuredClone(passage.value[1].value.indices)
+      indices: structuredClone(passage.value[1].indices)
     }];
     passage.type = "cv";
     return this.cv(passage, accum, passage.start_context);
@@ -4133,10 +4327,7 @@ var bcv_passage = class {
       end_obj.p = end.passages[0].end.p;
     }
     if (end.passages[0].end.p_if_verse != null) {
-      end_obj.p = end.passages[0].end.p_if_verse;
-    }
-    if (start.passages[0].start.p_if_verse != null) {
-      start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+      end_obj.p_if_verse = end.passages[0].end.p_if_verse;
     }
     if (end.passages[0].valid.messages.start_chapter_is_zero) {
       end_obj.c = 0;
@@ -4148,7 +4339,10 @@ var bcv_passage = class {
     if (valid.valid) {
       const [return_now, return_value] = this.range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum);
       if (return_now) {
-        return return_value;
+        if (return_value != null) {
+          return return_value;
+        }
+        return [accum, context];
       }
     } else {
       return this.range_handle_invalid(valid, passage, start, start_obj, end, end_obj, accum);
@@ -4192,7 +4386,7 @@ var bcv_passage = class {
     const [start, end] = passage.value;
     passage.original_type ??= passage.type;
     passage.original_value ??= [start, end];
-    passage.type = start.type === "integer" ? "cv" : start.type + "v";
+    passage.type = start.type === "bc" ? "bcv" : "cv";
     if (start.type === "integer") {
       passage.value[0] = {
         type: "c",
@@ -4210,7 +4404,7 @@ var bcv_passage = class {
     return this.handle_obj(passage, accum, passage.start_context);
   }
   // If a new end chapter/verse in a range may be necessary, calculate it.
-  range_check_new_end(translations, start_obj, end_obj, valid) {
+  range_check_new_end(translations2, start_obj, end_obj, valid) {
     let new_end = 0;
     let type;
     if (valid.messages?.end_chapter_before_start) {
@@ -4228,7 +4422,7 @@ var bcv_passage = class {
         v: end_obj.v
       };
       obj_to_validate[type] = new_end;
-      if (!this.validate_ref(translations, obj_to_validate).valid) {
+      if (!this.validate_ref(translations2, obj_to_validate).valid) {
         new_end = 0;
       }
     }
@@ -4238,16 +4432,18 @@ var bcv_passage = class {
   range_end_b(passage, accum, context) {
     return this.range(passage, accum, context);
   }
-  // If a sequence has an end chapter/verse that's before the the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
+  // If a sequence has an end chapter/verse that's before the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
   range_get_new_end_value(start_obj, end_obj, valid, key) {
     let new_end = 0;
     if (key === "c" && valid.messages?.end_chapter_is_zero || key === "v" && valid.messages?.end_verse_is_zero) {
       return new_end;
     }
-    if (start_obj[key] >= 10 && end_obj[key] < 10 && start_obj[key] - 10 * Math.floor(start_obj[key] / 10) < end_obj[key]) {
-      new_end = end_obj[key] + 10 * Math.floor(start_obj[key] / 10);
-    } else if (start_obj[key] >= 100 && end_obj[key] < 100 && start_obj[key] - 100 < end_obj[key]) {
-      new_end = end_obj[key] + 100;
+    const start_value = start_obj[key];
+    const end_value = end_obj[key];
+    if (start_value >= 10 && end_value < 10 && start_value - 10 * Math.floor(start_value / 10) < end_value) {
+      new_end = end_value + 10 * Math.floor(start_value / 10);
+    } else if (start_value >= 100 && end_value < 100 && start_value - 100 < end_value) {
+      new_end = end_value + 100;
     }
     return new_end;
   }
@@ -4272,8 +4468,10 @@ var bcv_passage = class {
     }
     passage.original_type ??= passage.type;
     passage.type = "sequence";
-    [passage.original_value, passage.value] = [[start, end], [[start], [end]]];
-    return this.sequence(passage, accum, structuredClone(passage.start_context));
+    const sequence_passage = passage;
+    sequence_passage.original_value = [start, end];
+    sequence_passage.value = [[start], [end]];
+    return this.sequence(sequence_passage, accum, structuredClone(passage.start_context));
   }
   // The range looks valid, but we should check for some special cases.
   range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum) {
@@ -4326,23 +4524,39 @@ var bcv_passage = class {
   // Even a single translation ("NIV") appears as part of a translation sequence. Here we handle the sequence and apply the translations to any previous passages lacking an explicit translation: in "Matt 1, 5 ESV," both `Matt 1` and `5` get applied, but in "Matt 1 NIV, 5 ESV," NIV only applies to Matt 1, and ESV only applies to Matt 5.
   translation_sequence(passage, accum, context) {
     passage.start_context = structuredClone(context);
-    const translations = [];
-    translations.push({
-      translation: this.books[passage.value[0].value].parsed,
-      system: "default",
-      osis: ""
-    });
-    for (const val of passage.value[1]) {
-      const translation = this.books[this.pluck("translation", val).value].parsed;
-      if (translation) {
-        translations.push({
+    const translations2 = [];
+    if (!Array.isArray(passage.value) || passage.value.length < 2) {
+      accum.push(passage);
+      this.reset_context(context, ["translations"]);
+      return [accum, context];
+    }
+    const value = passage.value;
+    const first_book_index = value[0].value;
+    if (typeof first_book_index === "number") {
+      const first_parsed = this.books[first_book_index]?.parsed;
+      if (typeof first_parsed === "string" && first_parsed.length > 0) {
+        translations2.push({
+          translation: first_parsed,
+          system: "default",
+          osis: ""
+        });
+      }
+    }
+    for (const val of value[1]) {
+      const translation_obj = this.pluck("translation", val);
+      if (translation_obj == null || typeof translation_obj.value !== "number") {
+        continue;
+      }
+      const translation = this.books[translation_obj.value]?.parsed;
+      if (typeof translation === "string" && translation.length > 0) {
+        translations2.push({
           translation,
           system: "default",
           osis: ""
         });
       }
     }
-    for (const translation of translations) {
+    for (const translation of translations2) {
       if (this.translations.aliases[translation.translation]) {
         translation.system = this.translations.aliases[translation.translation].system;
         translation.osis = this.translations.aliases[translation.translation].osis || translation.translation.toUpperCase();
@@ -4351,7 +4565,7 @@ var bcv_passage = class {
       }
     }
     if (accum.length > 0) {
-      context = this.translation_sequence_apply(accum, translations);
+      context = this.translation_sequence_apply(accum, translations2);
     }
     passage.absolute_indices = this.get_absolute_indices(passage.indices);
     accum.push(passage);
@@ -4359,7 +4573,7 @@ var bcv_passage = class {
     return [accum, context];
   }
   // Go back and find the earliest already-parsed passage without a translation. We start with 0 because the below loop will never yield a 0.
-  translation_sequence_apply(accum, translations) {
+  translation_sequence_apply(accum, translations2) {
     let use_i = 0;
     for (let i = accum.length - 1; i >= 0; i--) {
       if (accum[i].original_type) {
@@ -4375,7 +4589,7 @@ var bcv_passage = class {
     }
     let context;
     if (use_i < accum.length) {
-      accum[use_i].start_context.translations = translations;
+      accum[use_i].start_context.translations = translations2;
       [, context] = this.handle_array(accum.slice(use_i), [], accum[use_i].start_context);
     } else {
       context = structuredClone(accum[accum.length - 1].start_context);
@@ -4387,8 +4601,6 @@ var bcv_passage = class {
   word(passage, accum, context) {
     return [accum, context];
   }
-  // ## Utilities
-  // Pluck the object or value matching a type from an array.
   pluck(type, passages) {
     for (const passage of passages) {
       if (passage && passage.type && passage.type === type) {
@@ -4398,7 +4610,11 @@ var bcv_passage = class {
     return null;
   }
   pluck_integer(type, passages) {
-    return this.pluck("integer", this.pluck(type, passages).value);
+    const outer = this.pluck(type, passages);
+    if (outer == null || !Array.isArray(outer.value)) {
+      return null;
+    }
+    return this.pluck("integer", outer.value);
   }
   // Pluck the last object or value matching a type, descending as needed into objects.
   pluck_last_recursively(type, passages) {
@@ -4423,7 +4639,7 @@ var bcv_passage = class {
       if (obj[key] == null) {
         continue;
       }
-      context[key] = obj[key];
+      Reflect.set(context, key, obj[key]);
     }
   }
   // Delete existing context keys if, for example, starting with a new book. Which keys are deleted depends on the caller.
@@ -4478,7 +4694,11 @@ var bcv_passage = class {
           });
         }
         match_index += part_length + 2;
-        adjust = this.books[part_i].start_index + this.books[part_i].value.length - match_index;
+        const book = this.books[part_i];
+        if (book?.start_index == null) {
+          continue;
+        }
+        adjust = book.start_index + book.value.length - match_index;
         indices.push({
           start: end_index + 1,
           end: end_index + 1,
@@ -4501,7 +4721,8 @@ var bcv_passage = class {
     return indices;
   }
   // Find the absolute string indices of start and end points.
-  get_absolute_indices([start, end]) {
+  get_absolute_indices(indices) {
+    const [start, end] = indices;
     let start_out = null;
     let end_out = null;
     for (const index of this.indices) {
@@ -4514,6 +4735,17 @@ var bcv_passage = class {
       }
     }
     return [start_out, end_out];
+  }
+  // ## Validators
+  // Delegate to the validators object for validation. These methods are public for testing.
+  validate_ref(...args) {
+    return this.validators.validate_ref(...args);
+  }
+  validate_start_ref(...args) {
+    return this.validators.validate_start_ref(...args);
+  }
+  validate_end_ref(...args) {
+    return this.validators.validate_end_ref(...args);
   }
   // Apply common transformations at the end of handling a passage object with a book.
   normalize_passage_and_alternates(passage, alternates, adjust_end_index_by = 0) {
@@ -4533,172 +4765,8 @@ var bcv_passage = class {
       }
     }
   }
-  // ## Validators
-  // Given a start and optional end bcv object, validate that the verse exists and is valid. It returns a `true` value for `valid` if any of the translations is valid.
-  validate_ref(translations, start, end = null) {
-    if (!translations || translations.length === 0 || !Array.isArray(translations)) {
-      translations = [{
-        osis: "",
-        translation: "current",
-        system: "current"
-      }];
-    }
-    let valid = false;
-    const messages = {};
-    for (const translation of translations) {
-      if (!translation.system) {
-        messages.translation_invalid ??= [];
-        messages.translation_invalid.push(translation);
-        continue;
-      }
-      if (!this.translations.aliases[translation.system]) {
-        translation.system = "current";
-        messages.translation_unknown ??= [];
-        messages.translation_unknown.push(translation);
-      }
-      let [temp_valid] = this.validate_start_ref(translation.system, start, messages);
-      if (end) {
-        [temp_valid] = this.validate_end_ref(translation.system, start, end, temp_valid, messages);
-      }
-      if (temp_valid === true) {
-        valid = true;
-      }
-    }
-    return { valid, messages };
-  }
-  // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
-  validate_end_ref(system, start, end, valid, messages) {
-    const order_system = this.translations.systems[system]?.order ? system : "current";
-    if (end.c === 0) {
-      messages.end_chapter_is_zero = 1;
-      if (this.options.zero_chapter_strategy === "error") {
-        valid = false;
-      } else {
-        end.c = 1;
-      }
-    }
-    if (end.v === 0) {
-      messages.end_verse_is_zero = 1;
-      if (this.options.zero_verse_strategy === "error") {
-        valid = false;
-      } else if (this.options.zero_verse_strategy === "upgrade") {
-        end.v = 1;
-      }
-    }
-    if (end.b && this.translations.systems[order_system].order[end.b]) {
-      valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
-    } else {
-      valid = false;
-      messages.end_book_not_exist = true;
-    }
-    return [valid, messages];
-  }
-  // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
-  validate_known_end_book(system, order_system, start, end, valid, messages) {
-    const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
-    if (end.c == null && chapter_array.length === 1) {
-      end.c = 1;
-    }
-    if (this.translations.systems[order_system].order[start.b] != null && this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]) {
-      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
-        valid = false;
-      }
-      messages.end_book_before_start = true;
-    }
-    if (start.b === end.b && end.c != null) {
-      start.c ??= 1;
-      if (start.c > end.c) {
-        valid = false;
-        messages.end_chapter_before_start = true;
-      } else if (start.c === end.c && end.v != null) {
-        start.v ??= 1;
-        if (start.v > end.v) {
-          valid = false;
-          messages.end_verse_before_start = true;
-        }
-      }
-    }
-    if (end.c != null && chapter_array[end.c - 1] == null) {
-      if (chapter_array.length === 1) {
-        messages.end_chapter_not_exist_in_single_chapter_book = 1;
-      } else if (end.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
-        messages.end_chapter_not_exist = chapter_array.length;
-      }
-    }
-    if (end.v != null) {
-      end.c ??= chapter_array.length;
-      if (end.v > chapter_array[end.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-        messages.end_verse_not_exist = chapter_array[end.c - 1];
-      }
-    }
-    return valid;
-  }
-  // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
-  validate_known_start_book(system, start, messages) {
-    let valid = true;
-    start.c ??= 1;
-    const chapter_array = this.translations.systems[system]?.chapters?.[start.b] || this.translations.systems.current.chapters[start.b];
-    if (start.c === 0) {
-      messages.start_chapter_is_zero = 1;
-      if (this.options.zero_chapter_strategy === "error") {
-        valid = false;
-      } else {
-        start.c = 1;
-      }
-    }
-    if (start.v === 0) {
-      messages.start_verse_is_zero = 1;
-      if (this.options.zero_verse_strategy === "error") {
-        valid = false;
-      } else if (this.options.zero_verse_strategy === "upgrade") {
-        start.v = 1;
-      }
-    }
-    if (start.c > 0 && chapter_array[start.c - 1] != null) {
-      if (start.v != null) {
-        if (start.v > chapter_array[start.c - 1] && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-          valid = false;
-          messages.start_verse_not_exist = chapter_array[start.c - 1];
-        }
-      } else if (start.c === 1 && chapter_array.length === 1) {
-        if (this.options.single_chapter_1_strategy === "verse") {
-          messages.start_verse_1 = 1;
-        } else {
-          messages.start_chapter_1 = 1;
-        }
-      }
-    } else {
-      const chapter_array_length = chapter_array.length;
-      if (start.c !== 1 && chapter_array_length === 1) {
-        valid = false;
-        messages.start_chapter_not_exist_in_single_chapter_book = 1;
-      } else if (start.c > 0 && this.options.passage_existence_strategy.indexOf("c") >= 0) {
-        valid = false;
-        messages.start_chapter_not_exist = chapter_array_length;
-      }
-    }
-    return valid;
-  }
-  // Make sure that the start ref exists in the given translation.
-  validate_start_ref(system, start, messages) {
-    let valid = true;
-    const order_system = this.translations.systems[system]?.order ? system : "current";
-    if (!start.b) {
-      valid = false;
-      messages.start_book_not_defined = true;
-    } else if (this.translations.systems[order_system].order[start.b]) {
-      valid = this.validate_known_start_book(system, start, messages);
-    } else {
-      if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
-        valid = false;
-      }
-      messages.start_book_not_exist = true;
-    }
-    return [valid, messages];
-  }
 };
-
-// build/bcv_regexps_manager.ts
+var TESTAMENT_ORDER = ["o", "n", "a"];
 var bcv_regexps_manager = class {
   constructor(parent) {
     this.filtered_books_flags = "";
@@ -4713,6 +4781,7 @@ var bcv_regexps_manager = class {
     this.filtered_books_flags = filtered_books_flags;
     if (testaments === "ona" && case_sensitive === "none") {
       this.parent.regexps.books = this.parent.regexps.all_books;
+      return;
     }
     this.parent.regexps.books = this.parent.regexps.all_books.reduce((accum, book) => {
       let cloned_book;
@@ -4766,8 +4835,8 @@ var bcv_regexps_manager = class {
         throw new Error("add_books: The `regexp` property of each pattern should be a RegExp");
       }
       const book_data = this.get_book_testaments(pattern);
-      const regexps = this.get_book_pattern_regexps(pattern, book_data);
-      const regexp = new RegExp(regexps.pre_regexp.source + "(" + regexps.regexp.source + ")" + regexps.post_regexp.source, "giu");
+      const regexps2 = this.get_book_pattern_regexps(pattern, book_data);
+      const regexp = new RegExp(regexps2.pre_regexp.source + "(" + regexps2.regexp.source + ")" + regexps2.post_regexp.source, "giu");
       const position = typeof pattern.insert_at === "string" ? pattern.insert_at : "start";
       const insert_object = {
         osis: pattern.osis,
@@ -4803,7 +4872,7 @@ var bcv_regexps_manager = class {
   }
   // Make the regexps that will be fed back to the pattern. Ultimately we want to know what will go before and after the provided pattern.
   get_book_pattern_regexps(pattern, book_data) {
-    let regexps = {
+    let regexps2 = {
       pre_regexp: new RegExp(""),
       regexp: pattern.regexp,
       post_regexp: new RegExp("")
@@ -4814,27 +4883,28 @@ var bcv_regexps_manager = class {
         if (book_data.has_number_book && regexp_key === "pre_book") {
           regexp_key = "pre_number_book";
         }
-        regexps[regexp_type] = this.parent.regexps[regexp_key];
+        regexps2[regexp_type] = this.parent.regexps[regexp_key];
       } else {
         if (pattern[regexp_type] instanceof RegExp) {
-          regexps[regexp_type] = pattern[regexp_type];
+          regexps2[regexp_type] = pattern[regexp_type];
         } else {
           throw new Error("add_books: The `" + regexp_type + "` property of each pattern should be a RegExp");
         }
       }
     }
-    return regexps;
+    return regexps2;
   }
   // Get data about the testaments the books are in to create RegExps for them.
   get_book_testaments(pattern) {
     const books = pattern.osis;
-    if (!Array.isArray(books)) {
-      throw new Error("add_books: The `osis` property of each pattern should be an array");
+    if (!Array.isArray(books) || books.length === 0) {
+      throw new Error("add_books: The `osis` property of each pattern should be a non-empty array");
     }
     const out = {
       testament_books: {},
       has_number_book: false,
-      testament: ""
+      // Always overwritten below.
+      testament: "ona"
     };
     const testaments = /* @__PURE__ */ new Set();
     for (const book of books) {
@@ -4864,33 +4934,30 @@ var bcv_regexps_manager = class {
     if (testaments.size === 1) {
       out.testament = testaments.values().next().value;
     } else {
-      for (const key of ["o", "n", "a"]) {
-        if (testaments.has(key)) {
-          out.testament += key;
-        }
-      }
+      out.testament = TESTAMENT_ORDER.filter((testament) => testaments.has(testament)).join("");
     }
     return out;
   }
 };
-
-// build/bcv_translations_manager.ts
+var DEFAULT_SYSTEM = "default";
+var CURRENT_SYSTEM = "current";
 var bcv_translations_manager = class {
   constructor(parent) {
     this.parent = parent;
   }
-  translation_info(system = "default") {
+  translation_info(system = DEFAULT_SYSTEM) {
     if (typeof system !== "string" || !system) {
-      system = "default";
+      system = DEFAULT_SYSTEM;
     }
-    if (this.parent.translations.aliases[system]?.system) {
-      system = this.parent.translations.aliases[system].system;
+    const alias_system = this.parent.translations.aliases[system]?.system;
+    if (alias_system) {
+      system = alias_system;
     }
     if (this.parent.translations.systems[system] == null) {
       if (this.parent.options.warn_level === "warn") {
-        console.warn("Unknown translation `" + new_translation + "` in translation_info(). Using default instead.");
+        console.warn("Unknown translation `" + system + "` in translation_info(). Using default instead.");
       }
-      system = "default";
+      system = DEFAULT_SYSTEM;
     }
     const old_system = this.parent.options.versification_system;
     this.parent.options.versification_system = system;
@@ -4911,26 +4978,26 @@ var bcv_translations_manager = class {
   }
   add_translations(new_translations) {
     if (new_translations?.translations == null || !Array.isArray(new_translations.translations) || new_translations.translations.length === 0) {
-      throw new Error("add_translations: A `translations array in the `translations` key should have at least one object");
+      throw new Error("add_translations: The `translations` key should be an array with at least one object");
     }
     const normalized_translations = {};
     const texts_for_regexp = [];
     for (const translation of new_translations.translations) {
       const normalized_translation = this.normalize_sent_translation_data(translation);
       const insert_key = translation.text.toLowerCase();
-      if (insert_key === "default" || insert_key === "current") {
+      if (insert_key === DEFAULT_SYSTEM || insert_key === CURRENT_SYSTEM) {
         throw new Error("add_translations: Can't redefine `" + insert_key + "` as a translation. This built-in translation can't be redefined");
       }
       const system = normalized_translation.system;
-      if (system !== "default" && this.parent.translations.systems[normalized_translation.system] == null) {
+      if (system !== DEFAULT_SYSTEM && this.parent.translations.systems[normalized_translation.system] == null) {
         if (new_translations.systems != null && new_translations.systems[system] != null) {
           this.add_system(normalized_translation.system, new_translations.systems[system]);
         } else {
           let valid_systems = Object.keys(this.parent.translations.systems);
-          valid_systems = valid_systems.filter((system2) => system2 !== "current");
-          throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + Object.keys(valid_systems).join("`, `") + "`. You may want to check that you included this system in `systems`");
+          valid_systems = valid_systems.filter((system2) => system2 !== CURRENT_SYSTEM);
+          throw new Error("add_translations: Unknown translation `system`: `" + system + "`. Valid `system`s are: `" + valid_systems.join("`, `") + "`. You may want to check that you included this system in `systems`");
         }
-      } else if (system === "current") {
+      } else if (system === CURRENT_SYSTEM) {
         throw new Error("add_translations: Can't use `" + system + "` as a versification system for a new translation");
       }
       if (normalized_translations[insert_key] != null || this.parent.translations.aliases[insert_key] != null) {
@@ -4945,10 +5012,10 @@ var bcv_translations_manager = class {
     if (texts_for_regexp.length > 0) {
       this.add_new_translations_regexp(texts_for_regexp, new_translations);
     }
-    this.parent.translations.aliases = { ...normalized_translations, ...this.parent.translations.aliases };
+    this.parent.translations.aliases = { ...this.parent.translations.aliases, ...normalized_translations };
   }
   apply_case_sensitive(case_sensitive) {
-    const flags = case_sensitive.includes("translations") ? "g" : "gi";
+    const flags = this.get_translation_regexp_flags(case_sensitive);
     for (const [i, translation] of this.parent.regexps.translations.entries()) {
       this.parent.regexps.translations[i] = new RegExp(translation.source, flags);
     }
@@ -4963,7 +5030,7 @@ var bcv_translations_manager = class {
       throw new Error("add_translations: A translation.text (`" + text + "`) can't be all numbers because then it would conflict with chapter and verse references.");
     }
     const osis = typeof translation.osis === "string" && translation.osis !== "" ? translation.osis : translation.text.toUpperCase();
-    const system = typeof translation.system === "string" && translation.system.length > 0 ? translation.system : "default";
+    const system = typeof translation.system === "string" && translation.system.length > 0 ? translation.system : DEFAULT_SYSTEM;
     return {
       osis,
       system
@@ -4971,7 +5038,7 @@ var bcv_translations_manager = class {
   }
   // Create the new translation definition.
   add_system(system, new_system) {
-    if (system === "default" || system === "current") {
+    if (system === DEFAULT_SYSTEM || system === CURRENT_SYSTEM) {
       throw new Error("add_translations: Can't use `" + system + "` as a versification system. This built-in system can't be redefined");
     }
     if (new_system == null || new_system.books == null && new_system.chapters == null) {
@@ -5021,12 +5088,12 @@ var bcv_translations_manager = class {
       if (all_books[book] == null) {
         throw new Error("add_translations: Unexpected book: " + book);
       }
-      if (!Array.isArray(chapter_lengths) || chapter_lengths.length == 0) {
+      if (!Array.isArray(chapter_lengths) || chapter_lengths.length === 0) {
         throw new Error("add_translations: Each value in `chapters` should be an array with at least one entry containing the number of verses in each chapter. Check `" + book + "`");
       }
       for (const verse_count of chapter_lengths) {
         if (!(typeof verse_count === "number" && verse_count >= 1 && verse_count <= 200)) {
-          throw new Error("add_translations: Unexpected value in `chapters`: " + verse_count + "`. It should be a number between 1 and 200");
+          throw new Error("add_translations: Unexpected value in `chapters`: `" + verse_count + "`. It should be a number between 1 and 200");
         }
       }
     }
@@ -5038,7 +5105,7 @@ var bcv_translations_manager = class {
     const insert_at = new_translations.insert_at === "end" ? "end" : "start";
     const pre_regexp = new_translations?.pre_regexp instanceof RegExp ? new_translations?.pre_regexp : { source: "" };
     const post_regexp = new_translations?.post_regexp instanceof RegExp ? new_translations?.post_regexp : /(?![\p{L}\p{N}])/u;
-    const flags = this.parent.options.case_sensitive.includes("translations") ? "g" : "gi";
+    const flags = this.get_translation_regexp_flags();
     const regexp = new RegExp(pre_regexp.source + "(" + texts_for_regexp.map((translation) => translation.replace(/([$\\.*+?()\[\]{}|^])/g, "\\$1")).join("|") + ")" + post_regexp.source, flags);
     if (insert_at === "start") {
       this.parent.regexps.translations.unshift(regexp);
@@ -5046,25 +5113,556 @@ var bcv_translations_manager = class {
       this.parent.regexps.translations.push(regexp);
     }
   }
+  // Keep translation regexp flag behavior consistent in one place.
+  get_translation_regexp_flags(case_sensitive = this.parent.options.case_sensitive) {
+    return case_sensitive.includes("translations") ? "g" : "gi";
+  }
+};
+var bcv_parser = class {
+  constructor(lang) {
+    this.entities = [];
+    if (lang == null) {
+      throw new Error(`When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:
+import * as lang from "esm/lang/en.js";
+const bcv = new bcv_parser(lang);`);
+    }
+    this.options = new bcv_options(this);
+    this.matcher = new bcv_matcher(this, lang.grammar_options);
+    this.regexps = new lang.regexps();
+    this.translations = new lang.translations();
+    this.passage = new bcv_passage(this.options, this.translations);
+    this.regexps_manager = new bcv_regexps_manager(this);
+    this.translations_manager = new bcv_translations_manager(this);
+  }
+  // ## Parse-Related Functions
+  // Parse a string and prepare the object for further interrogation, depending on what's needed.
+  parse(string_to_parse) {
+    this.reset();
+    string_to_parse = this.matcher.replace_control_characters(string_to_parse);
+    [string_to_parse, this.passage.books] = this.matcher.match_books(string_to_parse);
+    string_to_parse = this.matcher.replace_non_ascii_numbers(string_to_parse);
+    [this.entities] = this.matcher.match_passages(string_to_parse);
+    return this;
+  }
+  // Parse a string and prepare the object for further interrogation, depending on what's needed. The second argument is a string that serves as the context for the first argument. If there's a valid partial match at the beginning of the first argument, then it will parse it using the supplied `context`. For example, `parse_string_with_context("verse 2", "Genesis 3").osis()` = `Gen.3.2`. You'd use this when you have some text that looks like it's a partial reference, and you already know the context.
+  parse_with_context(string_to_parse, context_string) {
+    this.reset();
+    [context_string, this.passage.books] = this.matcher.match_books(this.matcher.replace_control_characters(context_string));
+    context_string = this.matcher.replace_non_ascii_numbers(context_string);
+    let [entities, context] = this.matcher.match_passages(context_string);
+    this.reset();
+    string_to_parse = this.matcher.replace_control_characters(string_to_parse);
+    [string_to_parse, this.passage.books] = this.matcher.match_books(string_to_parse);
+    this.passage.books.push({
+      value: "",
+      parsed: "",
+      start_index: 0,
+      type: "context",
+      context
+    });
+    string_to_parse = "" + (this.passage.books.length - 1) + "/9" + string_to_parse;
+    [this.entities] = this.matcher.match_passages(string_to_parse);
+    return this;
+  }
+  reset() {
+    this.entities = [];
+    this.passage.books = [];
+    this.passage.indices = [];
+  }
+  // ## Options-Related Functions
+  // Override default options.
+  set_options(options) {
+    if (options.include_apocrypha != null) {
+      this.include_apocrypha(options.include_apocrypha);
+      delete options.include_apocrypha;
+    }
+    for (const [key, value] of Object.entries(options)) {
+      if (key in this.options) {
+        Reflect.set(this.options, key, value);
+      }
+    }
+    return this;
+  }
+  // Legacy way to indicate that the Apocrypha should be included in the list of books.
+  include_apocrypha(arg) {
+    const old_value = this.options.testaments;
+    let new_value = old_value;
+    if (arg === true && old_value.indexOf("a") === -1) {
+      new_value = new_value + "a";
+    } else if (arg === false && old_value.indexOf("a") >= 1) {
+      new_value = new_value.slice(0, -1);
+    }
+    if (new_value !== old_value) {
+      this.options.testaments = new_value;
+    }
+    return this;
+  }
+  // ## Administrative Functions
+  // Return translation information so that we don't have to reach into semi-private objects to grab the data we need.
+  translation_info(translation = "default") {
+    return this.translations_manager.translation_info(translation);
+  }
+  // ## Output-Related Functions
+  // Return a single OSIS string (comma-separated) for all the references in the whole input string.
+  osis() {
+    const out = [];
+    for (const osis of this.parsed_entities()) {
+      if (osis.osis.length > 0) {
+        out.push(osis.osis);
+      }
+    }
+    return out.join(",");
+  }
+  // Return an array of `[OSIS, TRANSLATIONS]` for each reference (combined according to various options).
+  osis_and_translations() {
+    const out = [];
+    for (const osis of this.parsed_entities()) {
+      if (osis.osis.length > 0) {
+        out.push([osis.osis, osis.translations.join(",")]);
+      }
+    }
+    return out;
+  }
+  // Return an array of `{osis: OSIS, indices:[START, END], translations: [TRANSLATIONS]}` objects for each reference (combined according to `options`).
+  osis_and_indices() {
+    const out = [];
+    for (const osis of this.parsed_entities()) {
+      if (osis.osis.length > 0) {
+        out.push({
+          osis: osis.osis,
+          translations: osis.translations,
+          indices: osis.indices
+        });
+      }
+    }
+    return out;
+  }
+  // Return all objects, probably for additional processing.
+  parsed_entities() {
+    let out = [];
+    const entities = structuredClone(this.entities);
+    entities.forEach((entity, entity_id) => {
+      if (entity.type && entity.type === "translation_sequence" && out.length > 0 && entity_id === out[out.length - 1].entity_id + 1) {
+        out[out.length - 1].indices[1] = entity.absolute_indices[1];
+      }
+      if (entity.passages == null) {
+        return;
+      }
+      if (entity.type === "b" && this.options.book_alone_strategy === "ignore" || entity.type === "b_range" && this.options.book_range_strategy === "ignore" || entity.type === "context") {
+        return;
+      }
+      let translations2 = [];
+      let system = "";
+      if (entity.passages[0].translations) {
+        for (const translation of entity.passages[0].translations) {
+          const translation_osis = translation.osis && translation.osis.length > 0 ? translation.osis : "";
+          if (system === "") {
+            system = translation.system;
+          }
+          translations2.push(translation_osis);
+        }
+      } else {
+        translations2 = [""];
+        system = "current";
+      }
+      let osises = this.parse_entity_passages(entity, entity_id, translations2, system);
+      if (osises.length === 0) {
+        return;
+      }
+      if (osises.length > 1 && this.options.consecutive_combination_strategy === "combine") {
+        osises = this.combine_consecutive_passages(osises, system);
+      }
+      if (this.options.sequence_combination_strategy === "separate") {
+        out = out.concat(osises);
+      } else {
+        const strings = [];
+        const last_i = osises.length - 1;
+        if (osises[last_i].enclosed_indices && osises[last_i].enclosed_indices[1] >= 0) {
+          entity.absolute_indices[1] = osises[last_i].enclosed_indices[1];
+        }
+        for (const osis of osises) {
+          if (osis.osis.length > 0) {
+            strings.push(osis.osis);
+          }
+        }
+        out.push({
+          osis: strings.join(","),
+          indices: entity.absolute_indices,
+          translations: translations2,
+          entity_id,
+          entities: osises
+        });
+      }
+    });
+    return out;
+  }
+  parse_entity_passages(entity, entity_id, translations2, system) {
+    const osises = [];
+    const passages = entity.passages;
+    if (passages == null || passages.length === 0) {
+      return osises;
+    }
+    const length = passages.length;
+    const include_old_testament = this.options.testaments.indexOf("o") >= 0;
+    passages.forEach((passage, i) => {
+      if (!passage.type) {
+        passage.type = entity.type;
+      }
+      if (passage.valid.valid === false) {
+        if (this.options.invalid_sequence_strategy === "ignore" && entity.type === "sequence") {
+          this.snap_sequence("ignore", entity, osises, i, length);
+        }
+        if (this.options.invalid_passage_strategy === "ignore") {
+          return;
+        }
+      }
+      if ((passage.type === "b" || passage.type === "b_range") && this.options.book_sequence_strategy === "ignore" && entity.type === "sequence") {
+        this.snap_sequence("book", entity, osises, i, length);
+        return;
+      }
+      if ((passage.type === "b_range_start" || passage.type === "range_end_b") && this.options.book_range_strategy === "ignore") {
+        this.snap_range(entity, i);
+      }
+      if (include_old_testament === false && (passage.start.b === "Ps" && (passage.start.c != null && passage.start.c < 151) && passage.end.b === "Ps" && (passage.end.c != null && passage.end.c < 151))) {
+        return;
+      }
+      if (!passage.absolute_indices) {
+        passage.absolute_indices = [...entity.absolute_indices];
+      }
+      osises.push({
+        osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, system) : "",
+        type: passage.type,
+        indices: passage.absolute_indices,
+        translations: translations2,
+        start: passage.start,
+        end: passage.end,
+        enclosed_indices: passage.enclosed_absolute_indices,
+        entity_id,
+        entities: [passage]
+      });
+    });
+    return osises;
+  }
+  // Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It manipulates the original `start` and `end` objects. Only valid passages get here (via the `passage.valid.valid` gate or the consecutive-combination logic), so the books are always defined.
+  to_osis(start, end, translation) {
+    if (end.c == null && end.v == null && start.c == null && start.v == null && start.b === end.b && this.options.book_alone_strategy === "first_chapter") {
+      end.c = 1;
+    }
+    const osis = { start: "", end: "" };
+    if (start.c == null) {
+      start.c = 1;
+    }
+    if (start.v == null) {
+      start.v = 1;
+    }
+    if (this.options.versification_system.includes("a") && this.options.ps151_strategy === "b" && (start.c === 151 && start.b === "Ps" || end.c === 151 && end.b === "Ps")) {
+      this.fix_ps151(start, end, translation);
+    }
+    const chapter_array = this.passage.translations.systems[translation]?.chapters?.[end.b] || this.passage.translations.systems.current.chapters[end.b];
+    const compaction_strategy = this.options.osis_compaction_strategy;
+    const existence_strategy = this.options.passage_existence_strategy;
+    if (end.c == null) {
+      if (existence_strategy.includes("c") || chapter_array && chapter_array.length === 1) {
+        end.c = chapter_array.length;
+      } else {
+        end.c = 999;
+      }
+    }
+    if (end.v == null) {
+      const end_chapter2 = end.c ?? 1;
+      if (chapter_array && chapter_array[end_chapter2 - 1] && existence_strategy.includes("v")) {
+        end.v = chapter_array[end_chapter2 - 1];
+      } else {
+        end.v = 999;
+      }
+    }
+    const end_chapter = end.c ?? 1;
+    const end_chapter_verse_count = chapter_array?.[end_chapter - 1];
+    const get_partial = compaction_strategy.includes("p") && (start.p != null || end.p != null);
+    if ((compaction_strategy === "b" || compaction_strategy === "bp") && start.c === 1 && start.v === 1 && get_partial === false && (end.c === 999 && end.v === 999 || end.c === chapter_array?.length && existence_strategy.includes("c") && (end.v === 999 || end.v === end_chapter_verse_count && existence_strategy.includes("v")))) {
+      osis.start = start.b;
+      osis.end = end.b;
+    } else if (start.v === 1 && get_partial === false && compaction_strategy.includes("v") === false && (end.v === 999 || end.v === end_chapter_verse_count && existence_strategy.includes("v"))) {
+      osis.start = start.b + "." + start.c;
+      osis.end = end.b + "." + end.c;
+    } else {
+      osis.start = start.b + "." + start.c + "." + start.v;
+      osis.end = end.b + "." + end.c + "." + end.v;
+      if (get_partial) {
+        if (start.p != null) {
+          osis.start += "!" + start.p;
+        }
+        if (end.p != null) {
+          osis.end += "!" + end.p;
+        }
+      }
+    }
+    let out = "";
+    if (osis.start === osis.end) {
+      out = osis.start;
+    } else {
+      out = osis.start + "-" + osis.end;
+    }
+    if (start.extra) {
+      out = start.extra + "," + out;
+    }
+    if (end.extra) {
+      out += "," + end.extra;
+    }
+    return out;
+  }
+  // If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it returns properly.
+  fix_ps151(start, end, translation) {
+    const old_system = this.options.versification_system;
+    this.options.versification_system = translation;
+    const new_system = this.options.versification_system;
+    if (start.c === 151 && start.b === "Ps") {
+      if (end.c === 151 && end.b === "Ps") {
+        start.b = "Ps151";
+        start.c = 1;
+        end.b = "Ps151";
+        end.c = 1;
+      } else {
+        start.extra = this.to_osis(
+          { b: "Ps151", c: 1, v: start.v },
+          { b: "Ps151", c: 1, v: this.translations.systems.current.chapters["Ps151"][0] },
+          translation
+        );
+        start.b = "Prov";
+        start.c = 1;
+        start.v = 1;
+      }
+    } else {
+      end.extra = this.to_osis(
+        { b: "Ps151", c: 1, v: 1 },
+        { b: "Ps151", c: 1, v: end.v },
+        translation
+      );
+      end.c = 150;
+      end.v = this.translations.systems.current.chapters["Ps"][149];
+    }
+    if (old_system !== new_system) {
+      this.options.versification_system = old_system;
+    }
+  }
+  // If we have the correct `option` set (checked before calling this function), merge passages that refer to sequential verses: Gen 1, 2 -> Gen 1-2. It works for any combination of books, chapters, and verses.
+  combine_consecutive_passages(osises, translation) {
+    const out = [];
+    let prev = {};
+    const last_i = osises.length - 1;
+    let enclosed_sequence_start = -1;
+    let has_enclosed = false;
+    osises.forEach((osis, i) => {
+      if (osis.osis.length > 0) {
+        const prev_i = out.length - 1;
+        let is_enclosed_last = false;
+        if (osis.enclosed_indices[0] !== enclosed_sequence_start) {
+          enclosed_sequence_start = osis.enclosed_indices[0];
+        }
+        if (enclosed_sequence_start >= 0 && (i === last_i || osises[i + 1].enclosed_indices[0] !== osis.enclosed_indices[0])) {
+          is_enclosed_last = true;
+          has_enclosed = true;
+        }
+        if (this.is_verse_consecutive(prev, osis.start, translation)) {
+          const previous_osis = out[prev_i];
+          if (previous_osis == null || previous_osis.start == null || previous_osis.enclosed_indices == null) {
+            out.push(osis);
+            prev = { b: osis.end.b, c: osis.end.c, v: osis.end.v };
+            return;
+          }
+          out[prev_i].end = osis.end;
+          out[prev_i].is_enclosed_last = is_enclosed_last;
+          out[prev_i].indices[1] = osis.indices[1];
+          out[prev_i].enclosed_indices[1] = osis.enclosed_indices[1];
+          out[prev_i].osis = this.to_osis(out[prev_i].start, osis.end, translation);
+        } else {
+          out.push(osis);
+        }
+        prev = { b: osis.end.b, c: osis.end.c, v: osis.end.v };
+      } else {
+        out.push(osis);
+        prev = {};
+      }
+    });
+    if (has_enclosed) {
+      this.snap_enclosed_indices(out);
+    }
+    return out;
+  }
+  // If there's an enclosed reference--e.g., Ps 1 (2)--and we've combined consecutive passages in such a way that the enclosed reference is fully inside the sequence (i.e., if it starts before the enclosed sequence), then make sure the end index for the passage includes the necessary closing punctuation.
+  snap_enclosed_indices(osises) {
+    for (const osis of osises) {
+      if (osis.is_enclosed_last != null && osis.enclosed_indices != null) {
+        if (osis.enclosed_indices[0] < 0 && osis.is_enclosed_last) {
+          osis.indices[1] = osis.enclosed_indices[1];
+        }
+        delete osis.is_enclosed_last;
+      }
+    }
+    return osises;
+  }
+  /* Given two fully specified objects (complete bcvs), find whether they're sequential.
+  * Same book, same chapter, and next verse (e.g., Gen.1.1 followed by Gen.1.2)
+  * Same book, next chapter, and first verse if the previous chapter ended properly (e.g., Gen.1.31 followed by Gen.2.1)
+  * Next book, first chapter, and first verse if the previous book ended properly (e.g., Mal.4.6 followed by Matt.1.1)
+  */
+  is_verse_consecutive(prev, check, translation) {
+    if (!prev.b || prev.c == null || prev.v == null || check.c == null || check.v == null) {
+      return false;
+    }
+    const translation_order = this.passage.translations.systems[translation]?.order || this.passage.translations.systems.current.order;
+    const chapter_array = this.passage.translations.systems[translation]?.chapters?.[prev.b] || this.passage.translations.systems.current.chapters[prev.b];
+    if (prev.b === check.b) {
+      if (prev.c === check.c) {
+        return prev.v === check.v - 1;
+      } else if (check.v === 1 && prev.c === check.c - 1) {
+        const prev_chapter_verse_count = chapter_array[prev.c - 1];
+        return prev.v === prev_chapter_verse_count;
+      }
+    } else if (check.c === 1 && check.v === 1 && // `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
+    translation_order[prev.b] === translation_order[check.b] - 1) {
+      return prev.c === chapter_array.length && prev.v === chapter_array[prev.c - 1];
+    }
+    return false;
+  }
+  // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.
+  snap_range(entity, passage_i) {
+    const passages = entity.passages;
+    if (passages == null || passages.length === 0) {
+      return entity;
+    }
+    let entity_i = 0;
+    let source_entity = "start";
+    let type = "range_end_b";
+    if (entity.type === "b_range_start" || entity.type === "sequence" && passages[passage_i].type === "b_range_start") {
+      entity_i = 1;
+      source_entity = "end";
+      type = "b_range_start";
+    }
+    const target_entity = source_entity === "end" ? "start" : "end";
+    for (const obj_type of [source_entity, target_entity]) {
+      const original_object = passages[passage_i][obj_type].original_object;
+      if (original_object != null) {
+        passages[passage_i][obj_type] = original_object;
+      }
+    }
+    const original_target = structuredClone(passages[passage_i][target_entity]);
+    passages[passage_i][target_entity] = structuredClone(passages[passage_i][source_entity]);
+    passages[passage_i][target_entity].original_object = original_target;
+    passages[passage_i][source_entity].original_object = structuredClone(passages[passage_i][source_entity]);
+    if (entity.type === "sequence") {
+      if (passage_i >= entity.value.length) {
+        passage_i = entity.value.length - 1;
+      }
+      const pluck = this.passage.pluck(type, entity.value[passage_i]);
+      if (pluck != null) {
+        const temp = this.snap_range(pluck, 0);
+        if (passage_i === 0) {
+          entity.absolute_indices[0] = temp.absolute_indices[0];
+        } else {
+          entity.absolute_indices[1] = temp.absolute_indices[1];
+        }
+      }
+    } else {
+      const target_value = entity.value[entity_i];
+      const absolute_indices = target_value.absolute_indices ?? entity.absolute_indices;
+      entity.original_type = entity.type;
+      entity.type = target_value.type;
+      entity.absolute_indices = [
+        absolute_indices[0],
+        absolute_indices[1]
+      ];
+    }
+    return entity;
+  }
+  // Snap the start/end index of the entity or surrounding passages when there's a lone book or invalid item in a sequence.
+  snap_sequence(type, entity, osises, i, length) {
+    const passages = entity.passages;
+    if (passages == null || passages.length === 0) {
+      return;
+    }
+    const passage = passages[i];
+    if (passage == null || passage.absolute_indices == null) {
+      return;
+    }
+    if (passage.absolute_indices[0] === entity.absolute_indices[0] && i < length - 1 && this.get_snap_sequence_i(passages, i, length) !== i) {
+      const next_absolute_indices = passages[i + 1]?.absolute_indices;
+      if (next_absolute_indices == null) {
+        return;
+      }
+      entity.absolute_indices[0] = next_absolute_indices[0];
+      this.remove_absolute_indices(passages, i + 1);
+    } else if (passage.absolute_indices[1] === entity.absolute_indices[1] && i > 0) {
+      const previous_absolute_indices = passages[i - 1]?.absolute_indices;
+      entity.absolute_indices[1] = osises.length > 0 ? osises[osises.length - 1].indices[1] : previous_absolute_indices?.[1] ?? entity.absolute_indices[1];
+    } else if (type === "book" && i < length - 1 && !this.starts_with_book(passages[i + 1])) {
+      const next_absolute_indices = passages[i + 1].absolute_indices;
+      if (next_absolute_indices != null) {
+        next_absolute_indices[0] = passage.absolute_indices[0];
+      }
+    }
+  }
+  // Identify whether there are any valid items between the current item and the next book.
+  get_snap_sequence_i(passages, passage_i, length) {
+    for (let i = passage_i + 1; i < length; i++) {
+      if (this.starts_with_book(passages[i])) {
+        return i;
+      }
+      if (passages[i].valid.valid) {
+        return passage_i;
+      }
+    }
+    return passage_i;
+  }
+  // Given a passage, does it start with a book? It never takes a sequence as an argument.
+  starts_with_book(passage) {
+    if (passage.type?.substring(0, 1) === "b") {
+      return true;
+    }
+    if ((passage.type === "range" || passage.type === "ff") && passage.start && passage.start.type && passage.start.type.substring(0, 1) === "b") {
+      return true;
+    }
+    return false;
+  }
+  // Remove absolute indices from the given passage to the end of the sequence. We do this when we don't want to include the end of a sequence in the sequence (most likely because it's invalid or a book on its own).
+  remove_absolute_indices(passages, passage_i) {
+    const enclosed_indices = passages[passage_i]?.enclosed_absolute_indices;
+    if (enclosed_indices == null || enclosed_indices[0] < 0) {
+      return;
+    }
+    const [start, end] = enclosed_indices;
+    for (const passage of passages.slice(passage_i)) {
+      const passage_enclosed = passage.enclosed_absolute_indices;
+      if (passage_enclosed != null && passage_enclosed[0] === start && passage_enclosed[1] === end) {
+        passage.enclosed_absolute_indices = [-1, -1];
+      } else {
+        break;
+      }
+    }
+  }
+  add_books(books) {
+    this.regexps_manager.add_books(books);
+  }
+  add_translations(translations2) {
+    this.translations_manager.add_translations(translations2);
+  }
 };
 
-// build/cjs_bundle.ts
+// esm/lang/ur.js
+var ur_exports = {};
+__export(ur_exports, {
+  grammar_options: () => grammar_options,
+  regexps: () => regexps,
+  translations: () => translations
+});
 var bcv_regexps = class {
   constructor() {
     this.books = [];
     this.languages = ["ur"];
     this.translations = [/ERV\b/gi];
-    // Beginning of string or not in the middle of a word or immediately following another book. Only count a book if it's part of a sequence: `Matt5John3` is OK, but not `1Matt5John3`.
-    // Start with an inverted book/chapter (cb). The last one doesn't allow plural since it's a single chapter.
-    // Then move onto a book, which is the anchor for everything.
-    // The `/\d+\x1f` is for special Psalm chapters.
-    // The `title` has `[a-z]` instead of `\w` because it could be followed by a number.
-    // [a-e] allows `1:1a`.
     this.escaped_passage = /(?:^|[^\x1e\x1f\p{L}\p{N}])((?:(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:[\u2013\u2014\-]|through|thru|to)\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:\d+(?:th|nd|st)\s*ch(?:apter|a?pt\.?|a?p?\.?)?\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*))?\x1f(\d+)(?:\/\d+)?\x1f(?:\/\d+\x1f|[\d\s.:,;\x1e\x1f&\(\)（）\[\]\\/"'\*=~\-–—]|title(?![a-z])|ابواب|آیات|باب|آیت|ff|تا|،|؛|۔|[a-e](?!\w)|$)+)/giu;
-    // These are the only valid ways to end a potential passage match. The closing parenthesis allows for fully capturing parentheses surrounding translations (ESV**)**. The last one, `[\d\x1f]` needs not to be +; otherwise `Gen5ff` becomes `\x1f0\x1f5ff`, and `adjust_regexp_end` matches the `\x1f5` and incorrectly dangles the ff. \uff09 is a full-width closing parenthesis.
     this.match_end_split = /\d\W*title|\d\W*ff(?:[\s*]*\.)?|\d[\s*]*[a-e](?!\w)|\x1e(?:[\s*]*[)\]\uff09])?|[\d\x1f]/gi;
     this.control = /[\x1e\x1f]/g;
-    // These are needed for ranges outside of this class.
     this.first = /(?:اوّل|۱|1)\.?\s*/;
     this.second = /(?:دوم|۲|2)\.?\s*/;
     this.third = /(?:تیسرا|۳|3)\.?\s*/;
@@ -5073,7 +5671,6 @@ var bcv_regexps = class {
     this.pre_book = /(?:^|(?<=[^\p{L}]))/gu;
     this.pre_number_book = /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))/gu;
     this.post_book = /(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/gu;
-    // Each book regexp should return one parenthesized object: the book string.
     this.all_books = [
       {
         osis: ["Ps"],
@@ -5905,3719 +6502,7 @@ var bcv_translations = class {
     this.systems.current = structuredClone(this.systems.default);
   }
 };
-var peg$SyntaxError2 = class extends SyntaxError {
-  constructor(message, expected, found, location) {
-    super(message);
-    this.expected = expected;
-    this.found = found;
-    this.location = location;
-    this.name = "SyntaxError";
-  }
-  format(sources) {
-    let str = "Error: " + this.message;
-    if (this.location) {
-      let src = null;
-      const st = sources.find((s2) => s2.source === this.location.source);
-      if (st) {
-        src = st.text.split(/\r\n|\n|\r/g);
-      }
-      const s = this.location.start;
-      const offset_s = this.location.source && typeof this.location.source.offset === "function" ? this.location.source.offset(s) : s;
-      const loc = this.location.source + ":" + offset_s.line + ":" + offset_s.column;
-      if (src) {
-        const e = this.location.end;
-        const filler = "".padEnd(offset_s.line.toString().length, " ");
-        const line = src[s.line - 1];
-        const last = s.line === e.line ? e.column : line.length + 1;
-        const hatLen = last - s.column || 1;
-        str += "\n --> " + loc + "\n" + filler + " |\n" + offset_s.line + " | " + line + "\n" + filler + " | " + "".padEnd(s.column - 1, " ") + "".padEnd(hatLen, "^");
-      } else {
-        str += "\n at " + loc;
-      }
-    }
-    return str;
-  }
-  static buildMessage(expected, found) {
-    function hex(ch) {
-      return ch.codePointAt(0).toString(16).toUpperCase();
-    }
-    const nonPrintable = Object.prototype.hasOwnProperty.call(RegExp.prototype, "unicode") ? new RegExp("[\\p{C}\\p{Mn}\\p{Mc}]", "gu") : null;
-    function unicodeEscape(s) {
-      if (nonPrintable) {
-        return s.replace(nonPrintable, (ch) => "\\u{" + hex(ch) + "}");
-      }
-      return s;
-    }
-    function literalEscape(s) {
-      return unicodeEscape(s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\0/g, "\\0").replace(/\t/g, "\\t").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/[\x00-\x0F]/g, (ch) => "\\x0" + hex(ch)).replace(/[\x10-\x1F\x7F-\x9F]/g, (ch) => "\\x" + hex(ch)));
-    }
-    function classEscape(s) {
-      return unicodeEscape(s.replace(/\\/g, "\\\\").replace(/\]/g, "\\]").replace(/\^/g, "\\^").replace(/-/g, "\\-").replace(/\0/g, "\\0").replace(/\t/g, "\\t").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/[\x00-\x0F]/g, (ch) => "\\x0" + hex(ch)).replace(/[\x10-\x1F\x7F-\x9F]/g, (ch) => "\\x" + hex(ch)));
-    }
-    const DESCRIBE_EXPECTATION_FNS = {
-      literal(expectation) {
-        return '"' + literalEscape(expectation.text) + '"';
-      },
-      class(expectation) {
-        const escapedParts = expectation.parts.map(
-          (part) => Array.isArray(part) ? classEscape(part[0]) + "-" + classEscape(part[1]) : classEscape(part)
-        );
-        return "[" + (expectation.inverted ? "^" : "") + escapedParts.join("") + "]" + (expectation.unicode ? "u" : "");
-      },
-      any() {
-        return "any character";
-      },
-      end() {
-        return "end of input";
-      },
-      other(expectation) {
-        return expectation.description;
-      }
-    };
-    function describeExpectation(expectation) {
-      return DESCRIBE_EXPECTATION_FNS[expectation.type](expectation);
-    }
-    function describeExpected(expected2) {
-      const descriptions = expected2.map(describeExpectation);
-      descriptions.sort();
-      if (descriptions.length > 0) {
-        let j = 1;
-        for (let i = 1; i < descriptions.length; i++) {
-          if (descriptions[i - 1] !== descriptions[i]) {
-            descriptions[j] = descriptions[i];
-            j++;
-          }
-        }
-        descriptions.length = j;
-      }
-      switch (descriptions.length) {
-        case 1:
-          return descriptions[0];
-        case 2:
-          return descriptions[0] + " or " + descriptions[1];
-        default:
-          return descriptions.slice(0, -1).join(", ") + ", or " + descriptions[descriptions.length - 1];
-      }
-    }
-    function describeFound(found2) {
-      return found2 ? '"' + literalEscape(found2) + '"' : "end of input";
-    }
-    return "Expected " + describeExpected(expected) + " but " + describeFound(found) + " found.";
-  }
-};
-function peg$parse2(input, options) {
-  options = options !== void 0 ? options : {};
-  const peg$FAILED = {};
-  const peg$source = options.grammarSource;
-  const peg$startRuleFunctions = {
-    start: peg$parsestart
-  };
-  let peg$startRuleFunction = peg$parsestart;
-  const peg$c0 = "(";
-  const peg$c1 = ")";
-  const peg$c2 = "";
-  const peg$c3 = "/";
-  const peg$c4 = ",";
-  const peg$c5 = ".";
-  const peg$c6 = "-";
-  const peg$c7 = "$ordinal";
-  const peg$c8 = "/1";
-  const peg$c9 = "$ff_value";
-  const peg$c10 = "$next_value";
-  const peg$c11 = "/9";
-  const peg$c12 = "/2";
-  const peg$c13 = ".1";
-  const peg$c14 = "$ab";
-  const peg$c15 = "$c_explicit_value";
-  const peg$c16 = "$c_sep_value";
-  const peg$c17 = "$v_explicit_value";
-  const peg$c18 = "$cv_sep";
-  const peg$c19 = "$cv_sep_weak";
-  const peg$c20 = "$sequence_sep_value";
-  const peg$c21 = "$range_sep";
-  const peg$c22 = "$title_value";
-  const peg$c23 = "$in_book_of";
-  const peg$c24 = "";
-  const peg$c25 = "$integer_value";
-  const peg$c26 = "$space";
-  const peg$r0 = /^[1-8]/;
-  const peg$r1 = /^[0-9]/;
-  const peg$r2 = /^[([]/;
-  const peg$r3 = /^[)\]]/;
-  const peg$r4 = /^[^\x1F\x1E([]/;
-  const peg$e0 = peg$literalExpectation("(", false);
-  const peg$e1 = peg$literalExpectation(")", false);
-  const peg$e2 = peg$literalExpectation("", false);
-  const peg$e3 = peg$literalExpectation("/", false);
-  const peg$e4 = peg$classExpectation([["1", "8"]], false, false, false);
-  const peg$e5 = peg$literalExpectation(",", false);
-  const peg$e6 = peg$literalExpectation(".", false);
-  const peg$e7 = peg$literalExpectation("-", false);
-  const peg$e8 = peg$literalExpectation("$ordinal", false);
-  const peg$e9 = peg$literalExpectation("/1", false);
-  const peg$e10 = peg$literalExpectation("$ff_value", false);
-  const peg$e11 = peg$literalExpectation("$next_value", false);
-  const peg$e12 = peg$literalExpectation("/9", false);
-  const peg$e13 = peg$literalExpectation("/2", false);
-  const peg$e14 = peg$literalExpectation(".1", false);
-  const peg$e15 = peg$classExpectation([["0", "9"]], false, false, false);
-  const peg$e16 = peg$literalExpectation("$ab", false);
-  const peg$e17 = peg$literalExpectation("$c_explicit_value", false);
-  const peg$e18 = peg$literalExpectation("$c_sep_value", false);
-  const peg$e19 = peg$literalExpectation("$v_explicit_value", false);
-  const peg$e20 = peg$literalExpectation("$cv_sep", false);
-  const peg$e21 = peg$literalExpectation("$cv_sep_weak", false);
-  const peg$e22 = peg$literalExpectation("$sequence_sep_value", false);
-  const peg$e23 = peg$literalExpectation("$range_sep", false);
-  const peg$e24 = peg$literalExpectation("$title_value", false);
-  const peg$e25 = peg$literalExpectation("$in_book_of", false);
-  const peg$e26 = peg$classExpectation(["(", "["], false, false, false);
-  const peg$e27 = peg$classExpectation([")", "]"], false, false, false);
-  const peg$e28 = peg$literalExpectation("", false);
-  const peg$e29 = peg$literalExpectation("$integer_value", false);
-  const peg$e30 = peg$classExpectation(["", "", "(", "["], true, false, false);
-  const peg$e31 = peg$literalExpectation("$space", false);
-  function peg$f0(val_1, sep_val, seq_post) {
-    if (sep_val && sep_val.type && sep_val.type === "c_explicit") seq_post.explicit_context = "c";
-    return [seq_post];
-  }
-  function peg$f1(val_1, val_2) {
-    val_2.unshift([val_1]);
-    const r = range();
-    return { type: "sequence", value: val_2, indices: [r.start, r.end - 1] };
-  }
-  function peg$f2(sep_val_1, val_1, sep_val, seq_post) {
-    if (sep_val && sep_val.type && sep_val.type === "c_explicit") seq_post.explicit_context = "c";
-    return [seq_post];
-  }
-  function peg$f3(sep_val_1, val_1, val_2) {
-    if (typeof val_2 === "undefined") val_2 = [];
-    if (sep_val_1 && sep_val_1.type && sep_val_1.type === "c_explicit") val_1.explicit_context = "c";
-    val_2.unshift([val_1]);
-    const r = range();
-    return { type: "sequence_post_enclosed", value: val_2, indices: [r.start, r.end - 1] };
-  }
-  function peg$f4(val_1, val_2) {
-    if (val_1.length && val_1.length === 2) val_1 = val_1[0];
-    const r = range();
-    return { type: "range", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f5(val) {
-    const r = range();
-    return { type: "b", value: val.value, indices: [r.start, r.end - 1] };
-  }
-  function peg$f6(val_1, val_2) {
-    const r = range();
-    return { type: "bc", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f7(val_1, val_2) {
-    const r = range();
-    return { type: "bc", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f8(val_1) {
-    return val_1.value[1].value[0].partial == null;
-  }
-  function peg$f9(val_1, val_2) {
-    const r = range();
-    return { type: "bc_title", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f10(val_1, val_2) {
-    const r = range();
-    return { type: "bcv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f11(val_1) {
-    return val_1.value[1].value[0].partial == null;
-  }
-  function peg$f12(val_1, val_2) {
-    const r = range();
-    return { type: "bcv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f13(val_1) {
-    return val_1.value[1].value[0].partial == null;
-  }
-  function peg$f14(val_1, val_2) {
-    const r = range();
-    return { type: "bcv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f15(val_1, val_2) {
-    return val_2.value[0].partial == null;
-  }
-  function peg$f16(val_1, val_2, val_3, val_4) {
-    const r = range();
-    return { type: "range", value: [{ type: "bcv", value: [{ type: "bc", value: [val_1, val_2], indices: [val_1.indices[0], val_2.indices[1]] }, val_3], indices: [val_1.indices[0], val_3.indices[1]] }, val_4], indices: [r.start, r.end - 1] };
-  }
-  function peg$f17(val_1, val_2) {
-    const r = range();
-    return { type: "bv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f18(val) {
-    const r = range();
-    return { type: "c", value: [val], indices: [r.start, r.end - 1] };
-  }
-  function peg$f19(val_1) {
-    return val_1.value[0].partial == null;
-  }
-  function peg$f20(val_1, val_2) {
-    const r = range();
-    return { type: "bc", value: [val_2, val_1], indices: [r.start, r.end - 1] };
-  }
-  function peg$f21(val_1) {
-    return val_1.value[0].partial == null;
-  }
-  function peg$f22(val_1, val_2, val_3) {
-    const r = range();
-    return { type: "cb_range", value: [val_3, val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f23(val_1, val_2) {
-    const r = range();
-    return { type: "bcv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f24(val_1, val_2) {
-    const r = range();
-    return { type: "bc", value: [val_2, val_1], indices: [r.start, r.end - 1] };
-  }
-  function peg$f25(val_1, val_2) {
-    const r = range();
-    return { type: "bcv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f26(val) {
-    const r = range();
-    return { type: "c_psalm", value: val.value, indices: [r.start, r.end - 1] };
-  }
-  function peg$f27(val_1, val_2) {
-    const r = range();
-    return { type: "cv_psalm", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f28(val_1) {
-    return val_1.value[0].partial == null;
-  }
-  function peg$f29(val_1, val_2) {
-    const r = range();
-    return { type: "c_title", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f30(val_1) {
-    return val_1.value[0].partial == null;
-  }
-  function peg$f31(val_1, val_2) {
-    const r = range();
-    return { type: "cv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f32(val_1) {
-    return val_1.value[0].partial == null;
-  }
-  function peg$f33(val_1, val_2) {
-    const r = range();
-    return { type: "cv", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f34(val_1) {
-    const r = range();
-    return { type: "ff", value: [val_1], indices: [r.start, r.end - 1] };
-  }
-  function peg$f35(val_1) {
-    const r = range();
-    return { type: "next_v", value: [val_1], indices: [r.start, r.end - 1] };
-  }
-  function peg$f36(val_1, val_2) {
-    const r = range();
-    return { type: "integer_title", value: [val_1, val_2], indices: [r.start, r.end - 1] };
-  }
-  function peg$f37(val) {
-    const r = range();
-    return { type: "context", value: val.value, indices: [r.start, r.end - 1] };
-  }
-  function peg$f38(val) {
-    const r = range();
-    return { type: "b", value: val.value, indices: [r.start, r.end - 1] };
-  }
-  function peg$f39(val) {
-    const r = range();
-    return { type: "bc", value: [val, { type: "c", value: [{ type: "integer", value: 151, indices: [r.end - 2, r.end - 1] }], indices: [r.end - 2, r.end - 1] }], indices: [r.start, r.end - 1] };
-  }
-  function peg$f40(val_1, val_2) {
-    const r = range();
-    return { type: "bcv", value: [val_1, { type: "v", value: [val_2], indices: [val_2.indices[0], val_2.indices[1]] }], indices: [r.start, r.end - 1] };
-  }
-  function peg$f41(val) {
-    const r = range();
-    return { type: "v", value: [val], indices: [r.start, r.end - 1] };
-  }
-  function peg$f42() {
-    return { type: "c_explicit" };
-  }
-  function peg$f43() {
-    return { type: "c_explicit" };
-  }
-  function peg$f44() {
-    return { type: "v_explicit" };
-  }
-  function peg$f45() {
-    return "";
-  }
-  function peg$f46(val) {
-    const r = range();
-    return { type: "title", value: [val], indices: [r.start, r.end - 1] };
-  }
-  function peg$f47(val) {
-    const r = range();
-    return { type: "translation_sequence", value: val, indices: [r.start, r.end - 1] };
-  }
-  function peg$f48(val) {
-    const r = range();
-    return { type: "translation_sequence", value: val, indices: [r.start, r.end - 1] };
-  }
-  function peg$f49(val) {
-    const r = range();
-    return { type: "translation", value: val.value, indices: [r.start, r.end - 1] };
-  }
-  function peg$f50(val_1, val_2) {
-    const r = range();
-    return { type: "integer", value: parseInt(val_1.join(""), 10), partial: val_2 != null ? val_2[1].join("") : null, indices: [r.start, r.end - 1] };
-  }
-  function peg$f51(val) {
-    const r = range();
-    return { type: "integer", value: parseInt(val.join(""), 10), indices: [r.start, r.end - 1] };
-  }
-  function peg$f52(val) {
-    const r = range();
-    return { type: "word", value: val.join(""), indices: [r.start, r.end - 1] };
-  }
-  function peg$f53(val) {
-    const r = range();
-    return { type: "stop", value: val, indices: [r.start, r.end - 1] };
-  }
-  let peg$currPos = options.peg$currPos | 0;
-  let peg$savedPos = peg$currPos;
-  const peg$posDetailsCache = [{ line: 1, column: 1 }];
-  let peg$maxFailPos = peg$currPos;
-  let peg$maxFailExpected = options.peg$maxFailExpected || [];
-  let peg$silentFails = options.peg$silentFails | 0;
-  let peg$result;
-  if (options.startRule) {
-    if (!(options.startRule in peg$startRuleFunctions)) {
-      throw new Error(`Can't start parsing from rule "` + options.startRule + '".');
-    }
-    peg$startRuleFunction = peg$startRuleFunctions[options.startRule];
-  }
-  function text() {
-    return input.substring(peg$savedPos, peg$currPos);
-  }
-  function offset() {
-    return peg$savedPos;
-  }
-  function range() {
-    return {
-      source: peg$source,
-      start: peg$savedPos,
-      end: peg$currPos
-    };
-  }
-  function location() {
-    return peg$computeLocation(peg$savedPos, peg$currPos);
-  }
-  function expected(description, location2) {
-    location2 = location2 !== void 0 ? location2 : peg$computeLocation(peg$savedPos, peg$currPos);
-    throw peg$buildStructuredError(
-      [peg$otherExpectation(description)],
-      input.substring(peg$savedPos, peg$currPos),
-      location2
-    );
-  }
-  function error(message, location2) {
-    location2 = location2 !== void 0 ? location2 : peg$computeLocation(peg$savedPos, peg$currPos);
-    throw peg$buildSimpleError(message, location2);
-  }
-  function peg$getUnicode(pos = peg$currPos) {
-    const cp = input.codePointAt(pos);
-    if (cp === void 0) {
-      return "";
-    }
-    return String.fromCodePoint(cp);
-  }
-  function peg$literalExpectation(text2, ignoreCase) {
-    return { type: "literal", text: text2, ignoreCase };
-  }
-  function peg$classExpectation(parts, inverted, ignoreCase, unicode) {
-    return { type: "class", parts, inverted, ignoreCase, unicode };
-  }
-  function peg$anyExpectation() {
-    return { type: "any" };
-  }
-  function peg$endExpectation() {
-    return { type: "end" };
-  }
-  function peg$otherExpectation(description) {
-    return { type: "other", description };
-  }
-  function peg$computePosDetails(pos) {
-    let details = peg$posDetailsCache[pos];
-    let p;
-    if (details) {
-      return details;
-    } else {
-      if (pos >= peg$posDetailsCache.length) {
-        p = peg$posDetailsCache.length - 1;
-      } else {
-        p = pos;
-        while (!peg$posDetailsCache[--p]) {
-        }
-      }
-      details = peg$posDetailsCache[p];
-      details = {
-        line: details.line,
-        column: details.column
-      };
-      while (p < pos) {
-        if (input.charCodeAt(p) === 10) {
-          details.line++;
-          details.column = 1;
-        } else {
-          details.column++;
-        }
-        p++;
-      }
-      peg$posDetailsCache[pos] = details;
-      return details;
-    }
-  }
-  function peg$computeLocation(startPos, endPos, offset2) {
-    const startPosDetails = peg$computePosDetails(startPos);
-    const endPosDetails = peg$computePosDetails(endPos);
-    const res = {
-      source: peg$source,
-      start: {
-        offset: startPos,
-        line: startPosDetails.line,
-        column: startPosDetails.column
-      },
-      end: {
-        offset: endPos,
-        line: endPosDetails.line,
-        column: endPosDetails.column
-      }
-    };
-    if (offset2 && peg$source && typeof peg$source.offset === "function") {
-      res.start = peg$source.offset(res.start);
-      res.end = peg$source.offset(res.end);
-    }
-    return res;
-  }
-  function peg$fail(expected2) {
-    if (peg$currPos < peg$maxFailPos) {
-      return;
-    }
-    if (peg$currPos > peg$maxFailPos) {
-      peg$maxFailPos = peg$currPos;
-      peg$maxFailExpected = [];
-    }
-    peg$maxFailExpected.push(expected2);
-  }
-  function peg$buildSimpleError(message, location2) {
-    return new peg$SyntaxError2(message, null, null, location2);
-  }
-  function peg$buildStructuredError(expected2, found, location2) {
-    return new peg$SyntaxError2(
-      peg$SyntaxError2.buildMessage(expected2, found),
-      expected2,
-      found,
-      location2
-    );
-  }
-  function peg$parsestart() {
-    let s0, s1;
-    s0 = [];
-    s1 = peg$parsebcv_hyphen_range();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsesequence();
-      if (s1 === peg$FAILED) {
-        s1 = peg$parsecb_range();
-        if (s1 === peg$FAILED) {
-          s1 = peg$parserange();
-          if (s1 === peg$FAILED) {
-            s1 = peg$parsenext_v();
-            if (s1 === peg$FAILED) {
-              s1 = peg$parseff();
-              if (s1 === peg$FAILED) {
-                s1 = peg$parsebcv_comma();
-                if (s1 === peg$FAILED) {
-                  s1 = peg$parsebc_title();
-                  if (s1 === peg$FAILED) {
-                    s1 = peg$parseps151_bcv();
-                    if (s1 === peg$FAILED) {
-                      s1 = peg$parsebcv();
-                      if (s1 === peg$FAILED) {
-                        s1 = peg$parsebcv_weak();
-                        if (s1 === peg$FAILED) {
-                          s1 = peg$parseps151_bc();
-                          if (s1 === peg$FAILED) {
-                            s1 = peg$parsebc();
-                            if (s1 === peg$FAILED) {
-                              s1 = peg$parsecv_psalm();
-                              if (s1 === peg$FAILED) {
-                                s1 = peg$parsebv();
-                                if (s1 === peg$FAILED) {
-                                  s1 = peg$parsec_psalm();
-                                  if (s1 === peg$FAILED) {
-                                    s1 = peg$parseb();
-                                    if (s1 === peg$FAILED) {
-                                      s1 = peg$parsecbv();
-                                      if (s1 === peg$FAILED) {
-                                        s1 = peg$parsecbv_ordinal();
-                                        if (s1 === peg$FAILED) {
-                                          s1 = peg$parsecb();
-                                          if (s1 === peg$FAILED) {
-                                            s1 = peg$parsecb_ordinal();
-                                            if (s1 === peg$FAILED) {
-                                              s1 = peg$parsetranslation_sequence_enclosed();
-                                              if (s1 === peg$FAILED) {
-                                                s1 = peg$parsetranslation_sequence();
-                                                if (s1 === peg$FAILED) {
-                                                  s1 = peg$parsesequence_sep();
-                                                  if (s1 === peg$FAILED) {
-                                                    s1 = peg$parsec_title();
-                                                    if (s1 === peg$FAILED) {
-                                                      s1 = peg$parseinteger_title();
-                                                      if (s1 === peg$FAILED) {
-                                                        s1 = peg$parsecv();
-                                                        if (s1 === peg$FAILED) {
-                                                          s1 = peg$parsecv_weak();
-                                                          if (s1 === peg$FAILED) {
-                                                            s1 = peg$parseinteger();
-                                                            if (s1 === peg$FAILED) {
-                                                              s1 = peg$parsec();
-                                                              if (s1 === peg$FAILED) {
-                                                                s1 = peg$parsev();
-                                                                if (s1 === peg$FAILED) {
-                                                                  s1 = peg$parseword();
-                                                                  if (s1 === peg$FAILED) {
-                                                                    s1 = peg$parseword_parenthesis();
-                                                                    if (s1 === peg$FAILED) {
-                                                                      s1 = peg$parsecontext();
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      while (s1 !== peg$FAILED) {
-        s0.push(s1);
-        s1 = peg$parsebcv_hyphen_range();
-        if (s1 === peg$FAILED) {
-          s1 = peg$parsesequence();
-          if (s1 === peg$FAILED) {
-            s1 = peg$parsecb_range();
-            if (s1 === peg$FAILED) {
-              s1 = peg$parserange();
-              if (s1 === peg$FAILED) {
-                s1 = peg$parsenext_v();
-                if (s1 === peg$FAILED) {
-                  s1 = peg$parseff();
-                  if (s1 === peg$FAILED) {
-                    s1 = peg$parsebcv_comma();
-                    if (s1 === peg$FAILED) {
-                      s1 = peg$parsebc_title();
-                      if (s1 === peg$FAILED) {
-                        s1 = peg$parseps151_bcv();
-                        if (s1 === peg$FAILED) {
-                          s1 = peg$parsebcv();
-                          if (s1 === peg$FAILED) {
-                            s1 = peg$parsebcv_weak();
-                            if (s1 === peg$FAILED) {
-                              s1 = peg$parseps151_bc();
-                              if (s1 === peg$FAILED) {
-                                s1 = peg$parsebc();
-                                if (s1 === peg$FAILED) {
-                                  s1 = peg$parsecv_psalm();
-                                  if (s1 === peg$FAILED) {
-                                    s1 = peg$parsebv();
-                                    if (s1 === peg$FAILED) {
-                                      s1 = peg$parsec_psalm();
-                                      if (s1 === peg$FAILED) {
-                                        s1 = peg$parseb();
-                                        if (s1 === peg$FAILED) {
-                                          s1 = peg$parsecbv();
-                                          if (s1 === peg$FAILED) {
-                                            s1 = peg$parsecbv_ordinal();
-                                            if (s1 === peg$FAILED) {
-                                              s1 = peg$parsecb();
-                                              if (s1 === peg$FAILED) {
-                                                s1 = peg$parsecb_ordinal();
-                                                if (s1 === peg$FAILED) {
-                                                  s1 = peg$parsetranslation_sequence_enclosed();
-                                                  if (s1 === peg$FAILED) {
-                                                    s1 = peg$parsetranslation_sequence();
-                                                    if (s1 === peg$FAILED) {
-                                                      s1 = peg$parsesequence_sep();
-                                                      if (s1 === peg$FAILED) {
-                                                        s1 = peg$parsec_title();
-                                                        if (s1 === peg$FAILED) {
-                                                          s1 = peg$parseinteger_title();
-                                                          if (s1 === peg$FAILED) {
-                                                            s1 = peg$parsecv();
-                                                            if (s1 === peg$FAILED) {
-                                                              s1 = peg$parsecv_weak();
-                                                              if (s1 === peg$FAILED) {
-                                                                s1 = peg$parseinteger();
-                                                                if (s1 === peg$FAILED) {
-                                                                  s1 = peg$parsec();
-                                                                  if (s1 === peg$FAILED) {
-                                                                    s1 = peg$parsev();
-                                                                    if (s1 === peg$FAILED) {
-                                                                      s1 = peg$parseword();
-                                                                      if (s1 === peg$FAILED) {
-                                                                        s1 = peg$parseword_parenthesis();
-                                                                        if (s1 === peg$FAILED) {
-                                                                          s1 = peg$parsecontext();
-                                                                        }
-                                                                      }
-                                                                    }
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    } else {
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsesequence() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    s1 = peg$parsecb_range();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebcv_hyphen_range();
-      if (s1 === peg$FAILED) {
-        s1 = peg$parserange();
-        if (s1 === peg$FAILED) {
-          s1 = peg$parsenext_v();
-          if (s1 === peg$FAILED) {
-            s1 = peg$parseff();
-            if (s1 === peg$FAILED) {
-              s1 = peg$parsebcv_comma();
-              if (s1 === peg$FAILED) {
-                s1 = peg$parsebc_title();
-                if (s1 === peg$FAILED) {
-                  s1 = peg$parseps151_bcv();
-                  if (s1 === peg$FAILED) {
-                    s1 = peg$parsebcv();
-                    if (s1 === peg$FAILED) {
-                      s1 = peg$parsebcv_weak();
-                      if (s1 === peg$FAILED) {
-                        s1 = peg$parseps151_bc();
-                        if (s1 === peg$FAILED) {
-                          s1 = peg$parsebc();
-                          if (s1 === peg$FAILED) {
-                            s1 = peg$parsecv_psalm();
-                            if (s1 === peg$FAILED) {
-                              s1 = peg$parsebv();
-                              if (s1 === peg$FAILED) {
-                                s1 = peg$parsec_psalm();
-                                if (s1 === peg$FAILED) {
-                                  s1 = peg$parseb();
-                                  if (s1 === peg$FAILED) {
-                                    s1 = peg$parsecbv();
-                                    if (s1 === peg$FAILED) {
-                                      s1 = peg$parsecbv_ordinal();
-                                      if (s1 === peg$FAILED) {
-                                        s1 = peg$parsecb();
-                                        if (s1 === peg$FAILED) {
-                                          s1 = peg$parsecb_ordinal();
-                                          if (s1 === peg$FAILED) {
-                                            s1 = peg$parsecontext();
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = [];
-      s3 = peg$currPos;
-      s4 = peg$parsec_sep();
-      if (s4 === peg$FAILED) {
-        s4 = peg$parsesequence_sep();
-        if (s4 === peg$FAILED) {
-          s4 = null;
-        }
-      }
-      if (s4 !== peg$FAILED) {
-        s5 = peg$parsesequence_post();
-        if (s5 !== peg$FAILED) {
-          peg$savedPos = s3;
-          s3 = peg$f0(s1, s4, s5);
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s3;
-        s3 = peg$FAILED;
-      }
-      if (s3 !== peg$FAILED) {
-        while (s3 !== peg$FAILED) {
-          s2.push(s3);
-          s3 = peg$currPos;
-          s4 = peg$parsec_sep();
-          if (s4 === peg$FAILED) {
-            s4 = peg$parsesequence_sep();
-            if (s4 === peg$FAILED) {
-              s4 = null;
-            }
-          }
-          if (s4 !== peg$FAILED) {
-            s5 = peg$parsesequence_post();
-            if (s5 !== peg$FAILED) {
-              peg$savedPos = s3;
-              s3 = peg$f0(s1, s4, s5);
-            } else {
-              peg$currPos = s3;
-              s3 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s3;
-            s3 = peg$FAILED;
-          }
-        }
-      } else {
-        s2 = peg$FAILED;
-      }
-      if (s2 !== peg$FAILED) {
-        peg$savedPos = s0;
-        s0 = peg$f1(s1, s2);
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsesequence_post_enclosed() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8;
-    s0 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 40) {
-      s1 = peg$c0;
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e0);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesp();
-      s3 = peg$parsec_sep();
-      if (s3 === peg$FAILED) {
-        s3 = peg$parsesequence_sep();
-        if (s3 === peg$FAILED) {
-          s3 = null;
-        }
-      }
-      if (s3 !== peg$FAILED) {
-        s4 = peg$parsesequence_post();
-        if (s4 !== peg$FAILED) {
-          s5 = [];
-          s6 = peg$currPos;
-          s7 = peg$parsec_sep();
-          if (s7 === peg$FAILED) {
-            s7 = peg$parsesequence_sep();
-            if (s7 === peg$FAILED) {
-              s7 = null;
-            }
-          }
-          if (s7 !== peg$FAILED) {
-            s8 = peg$parsesequence_post();
-            if (s8 !== peg$FAILED) {
-              peg$savedPos = s6;
-              s6 = peg$f2(s3, s4, s7, s8);
-            } else {
-              peg$currPos = s6;
-              s6 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s6;
-            s6 = peg$FAILED;
-          }
-          while (s6 !== peg$FAILED) {
-            s5.push(s6);
-            s6 = peg$currPos;
-            s7 = peg$parsec_sep();
-            if (s7 === peg$FAILED) {
-              s7 = peg$parsesequence_sep();
-              if (s7 === peg$FAILED) {
-                s7 = null;
-              }
-            }
-            if (s7 !== peg$FAILED) {
-              s8 = peg$parsesequence_post();
-              if (s8 !== peg$FAILED) {
-                peg$savedPos = s6;
-                s6 = peg$f2(s3, s4, s7, s8);
-              } else {
-                peg$currPos = s6;
-                s6 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s6;
-              s6 = peg$FAILED;
-            }
-          }
-          s6 = peg$parsesp();
-          if (input.charCodeAt(peg$currPos) === 41) {
-            s7 = peg$c1;
-            peg$currPos++;
-          } else {
-            s7 = peg$FAILED;
-            if (peg$silentFails === 0) {
-              peg$fail(peg$e1);
-            }
-          }
-          if (s7 !== peg$FAILED) {
-            peg$savedPos = s0;
-            s0 = peg$f3(s3, s4, s5);
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsesequence_post() {
-    let s0;
-    s0 = peg$parsesequence_post_enclosed();
-    if (s0 === peg$FAILED) {
-      s0 = peg$parsecb_range();
-      if (s0 === peg$FAILED) {
-        s0 = peg$parsebcv_hyphen_range();
-        if (s0 === peg$FAILED) {
-          s0 = peg$parserange();
-          if (s0 === peg$FAILED) {
-            s0 = peg$parsenext_v();
-            if (s0 === peg$FAILED) {
-              s0 = peg$parseff();
-              if (s0 === peg$FAILED) {
-                s0 = peg$parsebcv_comma();
-                if (s0 === peg$FAILED) {
-                  s0 = peg$parsebc_title();
-                  if (s0 === peg$FAILED) {
-                    s0 = peg$parseps151_bcv();
-                    if (s0 === peg$FAILED) {
-                      s0 = peg$parsebcv();
-                      if (s0 === peg$FAILED) {
-                        s0 = peg$parsebcv_weak();
-                        if (s0 === peg$FAILED) {
-                          s0 = peg$parseps151_bc();
-                          if (s0 === peg$FAILED) {
-                            s0 = peg$parsebc();
-                            if (s0 === peg$FAILED) {
-                              s0 = peg$parsecv_psalm();
-                              if (s0 === peg$FAILED) {
-                                s0 = peg$parsebv();
-                                if (s0 === peg$FAILED) {
-                                  s0 = peg$parsec_psalm();
-                                  if (s0 === peg$FAILED) {
-                                    s0 = peg$parseb();
-                                    if (s0 === peg$FAILED) {
-                                      s0 = peg$parsecbv();
-                                      if (s0 === peg$FAILED) {
-                                        s0 = peg$parsecbv_ordinal();
-                                        if (s0 === peg$FAILED) {
-                                          s0 = peg$parsecb();
-                                          if (s0 === peg$FAILED) {
-                                            s0 = peg$parsecb_ordinal();
-                                            if (s0 === peg$FAILED) {
-                                              s0 = peg$parsec_title();
-                                              if (s0 === peg$FAILED) {
-                                                s0 = peg$parseinteger_title();
-                                                if (s0 === peg$FAILED) {
-                                                  s0 = peg$parsecv();
-                                                  if (s0 === peg$FAILED) {
-                                                    s0 = peg$parsecv_weak();
-                                                    if (s0 === peg$FAILED) {
-                                                      s0 = peg$parseinteger();
-                                                      if (s0 === peg$FAILED) {
-                                                        s0 = peg$parsec();
-                                                        if (s0 === peg$FAILED) {
-                                                          s0 = peg$parsev();
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return s0;
-  }
-  function peg$parserange() {
-    let s0, s1, s2, s3, s4, s5, s6;
-    s0 = peg$currPos;
-    s1 = peg$parsebcv_comma();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebc_title();
-      if (s1 === peg$FAILED) {
-        s1 = peg$parseps151_bcv();
-        if (s1 === peg$FAILED) {
-          s1 = peg$parsebcv();
-          if (s1 === peg$FAILED) {
-            s1 = peg$parsebcv_weak();
-            if (s1 === peg$FAILED) {
-              s1 = peg$parseps151_bc();
-              if (s1 === peg$FAILED) {
-                s1 = peg$parsebc();
-                if (s1 === peg$FAILED) {
-                  s1 = peg$parsecv_psalm();
-                  if (s1 === peg$FAILED) {
-                    s1 = peg$parsebv();
-                    if (s1 === peg$FAILED) {
-                      s1 = peg$currPos;
-                      s2 = peg$parseb();
-                      if (s2 !== peg$FAILED) {
-                        s3 = peg$currPos;
-                        peg$silentFails++;
-                        s4 = peg$currPos;
-                        s5 = peg$parserange_sep();
-                        if (s5 !== peg$FAILED) {
-                          s6 = peg$parsebcv_comma();
-                          if (s6 === peg$FAILED) {
-                            s6 = peg$parsebc_title();
-                            if (s6 === peg$FAILED) {
-                              s6 = peg$parseps151_bcv();
-                              if (s6 === peg$FAILED) {
-                                s6 = peg$parsebcv();
-                                if (s6 === peg$FAILED) {
-                                  s6 = peg$parsebcv_weak();
-                                  if (s6 === peg$FAILED) {
-                                    s6 = peg$parseps151_bc();
-                                    if (s6 === peg$FAILED) {
-                                      s6 = peg$parsebc();
-                                      if (s6 === peg$FAILED) {
-                                        s6 = peg$parsebv();
-                                        if (s6 === peg$FAILED) {
-                                          s6 = peg$parseb();
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                          if (s6 !== peg$FAILED) {
-                            s5 = [s5, s6];
-                            s4 = s5;
-                          } else {
-                            peg$currPos = s4;
-                            s4 = peg$FAILED;
-                          }
-                        } else {
-                          peg$currPos = s4;
-                          s4 = peg$FAILED;
-                        }
-                        peg$silentFails--;
-                        if (s4 !== peg$FAILED) {
-                          peg$currPos = s3;
-                          s3 = void 0;
-                        } else {
-                          s3 = peg$FAILED;
-                        }
-                        if (s3 !== peg$FAILED) {
-                          s2 = [s2, s3];
-                          s1 = s2;
-                        } else {
-                          peg$currPos = s1;
-                          s1 = peg$FAILED;
-                        }
-                      } else {
-                        peg$currPos = s1;
-                        s1 = peg$FAILED;
-                      }
-                      if (s1 === peg$FAILED) {
-                        s1 = peg$parsecbv();
-                        if (s1 === peg$FAILED) {
-                          s1 = peg$parsecbv_ordinal();
-                          if (s1 === peg$FAILED) {
-                            s1 = peg$parsec_psalm();
-                            if (s1 === peg$FAILED) {
-                              s1 = peg$parsecb();
-                              if (s1 === peg$FAILED) {
-                                s1 = peg$parsecb_ordinal();
-                                if (s1 === peg$FAILED) {
-                                  s1 = peg$parsec_title();
-                                  if (s1 === peg$FAILED) {
-                                    s1 = peg$parseinteger_title();
-                                    if (s1 === peg$FAILED) {
-                                      s1 = peg$parsecv();
-                                      if (s1 === peg$FAILED) {
-                                        s1 = peg$parsecv_weak();
-                                        if (s1 === peg$FAILED) {
-                                          s1 = peg$parseinteger();
-                                          if (s1 === peg$FAILED) {
-                                            s1 = peg$parsec();
-                                            if (s1 === peg$FAILED) {
-                                              s1 = peg$parsev();
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parserange_sep();
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsenext_v();
-        if (s3 === peg$FAILED) {
-          s3 = peg$parseff();
-          if (s3 === peg$FAILED) {
-            s3 = peg$parsebcv_comma();
-            if (s3 === peg$FAILED) {
-              s3 = peg$parsebc_title();
-              if (s3 === peg$FAILED) {
-                s3 = peg$parseps151_bcv();
-                if (s3 === peg$FAILED) {
-                  s3 = peg$parsebcv();
-                  if (s3 === peg$FAILED) {
-                    s3 = peg$parsebcv_weak();
-                    if (s3 === peg$FAILED) {
-                      s3 = peg$parseps151_bc();
-                      if (s3 === peg$FAILED) {
-                        s3 = peg$parsebc();
-                        if (s3 === peg$FAILED) {
-                          s3 = peg$parsecv_psalm();
-                          if (s3 === peg$FAILED) {
-                            s3 = peg$parsebv();
-                            if (s3 === peg$FAILED) {
-                              s3 = peg$parseb();
-                              if (s3 === peg$FAILED) {
-                                s3 = peg$parsecbv();
-                                if (s3 === peg$FAILED) {
-                                  s3 = peg$parsecbv_ordinal();
-                                  if (s3 === peg$FAILED) {
-                                    s3 = peg$parsec_psalm();
-                                    if (s3 === peg$FAILED) {
-                                      s3 = peg$parsecb();
-                                      if (s3 === peg$FAILED) {
-                                        s3 = peg$parsecb_ordinal();
-                                        if (s3 === peg$FAILED) {
-                                          s3 = peg$parsec_title();
-                                          if (s3 === peg$FAILED) {
-                                            s3 = peg$parseinteger_title();
-                                            if (s3 === peg$FAILED) {
-                                              s3 = peg$parsecv();
-                                              if (s3 === peg$FAILED) {
-                                                s3 = peg$parseinteger();
-                                                if (s3 === peg$FAILED) {
-                                                  s3 = peg$parsecv_weak();
-                                                  if (s3 === peg$FAILED) {
-                                                    s3 = peg$parsec();
-                                                    if (s3 === peg$FAILED) {
-                                                      s3 = peg$parsev();
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f4(s1, s3);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseb() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 31) {
-      s1 = peg$c2;
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e2);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parseany_integer();
-      if (s2 !== peg$FAILED) {
-        s3 = peg$currPos;
-        if (input.charCodeAt(peg$currPos) === 47) {
-          s4 = peg$c3;
-          peg$currPos++;
-        } else {
-          s4 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e3);
-          }
-        }
-        if (s4 !== peg$FAILED) {
-          s5 = input.charAt(peg$currPos);
-          if (peg$r0.test(s5)) {
-            peg$currPos++;
-          } else {
-            s5 = peg$FAILED;
-            if (peg$silentFails === 0) {
-              peg$fail(peg$e4);
-            }
-          }
-          if (s5 !== peg$FAILED) {
-            s4 = [s4, s5];
-            s3 = s4;
-          } else {
-            peg$currPos = s3;
-            s3 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
-        }
-        if (s3 === peg$FAILED) {
-          s3 = null;
-        }
-        if (input.charCodeAt(peg$currPos) === 31) {
-          s4 = peg$c2;
-          peg$currPos++;
-        } else {
-          s4 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e2);
-          }
-        }
-        if (s4 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f5(s2);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebc() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    s1 = peg$parseb();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$currPos;
-      s3 = peg$parsev_explicit();
-      if (s3 !== peg$FAILED) {
-        s4 = peg$currPos;
-        peg$silentFails++;
-        s5 = peg$parsecv();
-        peg$silentFails--;
-        if (s5 !== peg$FAILED) {
-          peg$currPos = s4;
-          s4 = void 0;
-        } else {
-          s4 = peg$FAILED;
-        }
-        if (s4 !== peg$FAILED) {
-          s3 = [s3, s4];
-          s2 = s3;
-        } else {
-          peg$currPos = s2;
-          s2 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s2;
-        s2 = peg$FAILED;
-      }
-      if (s2 === peg$FAILED) {
-        s2 = peg$parsecv_sep();
-        if (s2 === peg$FAILED) {
-          s2 = peg$parsecv_sep_weak();
-          if (s2 === peg$FAILED) {
-            s2 = peg$parserange_sep();
-            if (s2 === peg$FAILED) {
-              s2 = peg$parsesp();
-            }
-          }
-        }
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsec();
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f6(s1, s3);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebc_comma() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    s1 = peg$parseb();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesp();
-      if (input.charCodeAt(peg$currPos) === 44) {
-        s3 = peg$c4;
-        peg$currPos++;
-      } else {
-        s3 = peg$FAILED;
-        if (peg$silentFails === 0) {
-          peg$fail(peg$e5);
-        }
-      }
-      if (s3 !== peg$FAILED) {
-        s4 = peg$parsesp();
-        s5 = peg$parsec();
-        if (s5 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f7(s1, s5);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebc_title() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    s1 = peg$parseps151_bc();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebc();
-    }
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = peg$currPos;
-      s2 = peg$f8(s1);
-      if (s2) {
-        s2 = void 0;
-      } else {
-        s2 = peg$FAILED;
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsetitle();
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f9(s1, s3);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebcv() {
-    let s0, s1, s2, s3, s4, s5, s6;
-    s0 = peg$currPos;
-    s1 = peg$parseps151_bc();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebc();
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$currPos;
-      peg$silentFails++;
-      s3 = peg$currPos;
-      if (input.charCodeAt(peg$currPos) === 46) {
-        s4 = peg$c5;
-        peg$currPos++;
-      } else {
-        s4 = peg$FAILED;
-        if (peg$silentFails === 0) {
-          peg$fail(peg$e6);
-        }
-      }
-      if (s4 !== peg$FAILED) {
-        s5 = peg$parsev_explicit();
-        if (s5 !== peg$FAILED) {
-          s6 = peg$parsev();
-          if (s6 !== peg$FAILED) {
-            s4 = [s4, s5, s6];
-            s3 = s4;
-          } else {
-            peg$currPos = s3;
-            s3 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s3;
-        s3 = peg$FAILED;
-      }
-      if (s3 === peg$FAILED) {
-        s3 = peg$currPos;
-        s4 = peg$parsesequence_sep();
-        if (s4 === peg$FAILED) {
-          s4 = null;
-        }
-        s5 = peg$parsev_explicit();
-        if (s5 !== peg$FAILED) {
-          s6 = peg$parsecv();
-          if (s6 !== peg$FAILED) {
-            s4 = [s4, s5, s6];
-            s3 = s4;
-          } else {
-            peg$currPos = s3;
-            s3 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
-        }
-      }
-      peg$silentFails--;
-      if (s3 === peg$FAILED) {
-        s2 = void 0;
-      } else {
-        peg$currPos = s2;
-        s2 = peg$FAILED;
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$currPos;
-        s4 = peg$parsecv_sep();
-        if (s4 === peg$FAILED) {
-          s4 = peg$parsesequence_sep();
-        }
-        if (s4 === peg$FAILED) {
-          s4 = null;
-        }
-        s5 = peg$parsev_explicit();
-        if (s5 !== peg$FAILED) {
-          s4 = [s4, s5];
-          s3 = s4;
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
-        }
-        if (s3 === peg$FAILED) {
-          s3 = peg$parsecv_sep();
-        }
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parsev();
-          if (s4 !== peg$FAILED) {
-            peg$savedPos = s0;
-            s0 = peg$f10(s1, s4);
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebcv_weak() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8;
-    s0 = peg$currPos;
-    s1 = peg$parseps151_bc();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebc();
-    }
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = peg$currPos;
-      s2 = peg$f11(s1);
-      if (s2) {
-        s2 = void 0;
-      } else {
-        s2 = peg$FAILED;
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsecv_sep_weak();
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parsev();
-          if (s4 !== peg$FAILED) {
-            s5 = peg$currPos;
-            peg$silentFails++;
-            s6 = peg$currPos;
-            s7 = peg$parsecv_sep();
-            if (s7 !== peg$FAILED) {
-              s8 = peg$parsev();
-              if (s8 !== peg$FAILED) {
-                s7 = [s7, s8];
-                s6 = s7;
-              } else {
-                peg$currPos = s6;
-                s6 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s6;
-              s6 = peg$FAILED;
-            }
-            peg$silentFails--;
-            if (s6 === peg$FAILED) {
-              s5 = void 0;
-            } else {
-              peg$currPos = s5;
-              s5 = peg$FAILED;
-            }
-            if (s5 !== peg$FAILED) {
-              peg$savedPos = s0;
-              s0 = peg$f12(s1, s4);
-            } else {
-              peg$currPos = s0;
-              s0 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebcv_comma() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10;
-    s0 = peg$currPos;
-    s1 = peg$parsebc_comma();
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = peg$currPos;
-      s2 = peg$f13(s1);
-      if (s2) {
-        s2 = void 0;
-      } else {
-        s2 = peg$FAILED;
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsesp();
-        if (input.charCodeAt(peg$currPos) === 44) {
-          s4 = peg$c4;
-          peg$currPos++;
-        } else {
-          s4 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e5);
-          }
-        }
-        if (s4 !== peg$FAILED) {
-          s5 = peg$parsesp();
-          s6 = peg$parsev();
-          if (s6 !== peg$FAILED) {
-            s7 = peg$currPos;
-            peg$silentFails++;
-            s8 = peg$currPos;
-            s9 = peg$parsecv_sep();
-            if (s9 !== peg$FAILED) {
-              s10 = peg$parsev();
-              if (s10 !== peg$FAILED) {
-                s9 = [s9, s10];
-                s8 = s9;
-              } else {
-                peg$currPos = s8;
-                s8 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s8;
-              s8 = peg$FAILED;
-            }
-            peg$silentFails--;
-            if (s8 === peg$FAILED) {
-              s7 = void 0;
-            } else {
-              peg$currPos = s7;
-              s7 = peg$FAILED;
-            }
-            if (s7 !== peg$FAILED) {
-              peg$savedPos = s0;
-              s0 = peg$f14(s1, s6);
-            } else {
-              peg$currPos = s0;
-              s0 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebcv_hyphen_range() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8;
-    s0 = peg$currPos;
-    s1 = peg$parseb();
-    if (s1 !== peg$FAILED) {
-      if (input.charCodeAt(peg$currPos) === 45) {
-        s2 = peg$c6;
-        peg$currPos++;
-      } else {
-        s2 = peg$FAILED;
-        if (peg$silentFails === 0) {
-          peg$fail(peg$e7);
-        }
-      }
-      if (s2 === peg$FAILED) {
-        s2 = peg$parsespace();
-      }
-      if (s2 === peg$FAILED) {
-        s2 = null;
-      }
-      s3 = peg$parsec();
-      if (s3 !== peg$FAILED) {
-        peg$savedPos = peg$currPos;
-        s4 = peg$f15(s1, s3);
-        if (s4) {
-          s4 = void 0;
-        } else {
-          s4 = peg$FAILED;
-        }
-        if (s4 !== peg$FAILED) {
-          if (input.charCodeAt(peg$currPos) === 45) {
-            s5 = peg$c6;
-            peg$currPos++;
-          } else {
-            s5 = peg$FAILED;
-            if (peg$silentFails === 0) {
-              peg$fail(peg$e7);
-            }
-          }
-          if (s5 !== peg$FAILED) {
-            s6 = peg$parsev();
-            if (s6 !== peg$FAILED) {
-              if (input.charCodeAt(peg$currPos) === 45) {
-                s7 = peg$c6;
-                peg$currPos++;
-              } else {
-                s7 = peg$FAILED;
-                if (peg$silentFails === 0) {
-                  peg$fail(peg$e7);
-                }
-              }
-              if (s7 !== peg$FAILED) {
-                s8 = peg$parsev();
-                if (s8 !== peg$FAILED) {
-                  peg$savedPos = s0;
-                  s0 = peg$f16(s1, s3, s6, s8);
-                } else {
-                  peg$currPos = s0;
-                  s0 = peg$FAILED;
-                }
-              } else {
-                peg$currPos = s0;
-                s0 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s0;
-              s0 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsebv() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    s1 = peg$parseb();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsecv_sep();
-      if (s2 === peg$FAILED) {
-        s2 = peg$parsecv_sep_weak();
-        if (s2 === peg$FAILED) {
-          s2 = peg$parserange_sep();
-          if (s2 === peg$FAILED) {
-            s2 = peg$currPos;
-            s3 = peg$parsesequence_sep();
-            if (s3 !== peg$FAILED) {
-              s4 = peg$currPos;
-              peg$silentFails++;
-              s5 = peg$parsev_explicit();
-              peg$silentFails--;
-              if (s5 !== peg$FAILED) {
-                peg$currPos = s4;
-                s4 = void 0;
-              } else {
-                s4 = peg$FAILED;
-              }
-              if (s4 !== peg$FAILED) {
-                s3 = [s3, s4];
-                s2 = s3;
-              } else {
-                peg$currPos = s2;
-                s2 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s2;
-              s2 = peg$FAILED;
-            }
-            if (s2 === peg$FAILED) {
-              s2 = peg$parsesp();
-            }
-          }
-        }
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsev();
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f17(s1, s3);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsec() {
-    let s0, s1, s2;
-    s0 = peg$currPos;
-    s1 = peg$parsec_explicit();
-    if (s1 === peg$FAILED) {
-      s1 = null;
-    }
-    s2 = peg$parseinteger();
-    if (s2 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s0 = peg$f18(s2);
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecb() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    s1 = peg$parsec_explicit();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsec();
-      if (s2 !== peg$FAILED) {
-        peg$savedPos = peg$currPos;
-        s3 = peg$f19(s2);
-        if (s3) {
-          s3 = void 0;
-        } else {
-          s3 = peg$FAILED;
-        }
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parsein_book_of();
-          if (s4 === peg$FAILED) {
-            s4 = null;
-          }
-          s5 = peg$parseb();
-          if (s5 !== peg$FAILED) {
-            peg$savedPos = s0;
-            s0 = peg$f20(s2, s5);
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecb_range() {
-    let s0, s1, s2, s3, s4, s5, s6, s7;
-    s0 = peg$currPos;
-    s1 = peg$parsec_explicit();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsec();
-      if (s2 !== peg$FAILED) {
-        peg$savedPos = peg$currPos;
-        s3 = peg$f21(s2);
-        if (s3) {
-          s3 = void 0;
-        } else {
-          s3 = peg$FAILED;
-        }
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parserange_sep();
-          if (s4 !== peg$FAILED) {
-            s5 = peg$parsec();
-            if (s5 !== peg$FAILED) {
-              s6 = peg$parsein_book_of();
-              if (s6 === peg$FAILED) {
-                s6 = null;
-              }
-              s7 = peg$parseb();
-              if (s7 !== peg$FAILED) {
-                peg$savedPos = s0;
-                s0 = peg$f22(s2, s5, s7);
-              } else {
-                peg$currPos = s0;
-                s0 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s0;
-              s0 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecbv() {
-    let s0, s1, s2, s3, s4;
-    s0 = peg$currPos;
-    s1 = peg$parsecb();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesequence_sep();
-      if (s2 === peg$FAILED) {
-        s2 = null;
-      }
-      s3 = peg$parsev_explicit();
-      if (s3 !== peg$FAILED) {
-        s4 = peg$parsev();
-        if (s4 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f23(s1, s4);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecb_ordinal() {
-    let s0, s1, s2, s3, s4, s5;
-    s0 = peg$currPos;
-    s1 = peg$parsec();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parseordinal();
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsec_explicit();
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parsein_book_of();
-          if (s4 === peg$FAILED) {
-            s4 = null;
-          }
-          s5 = peg$parseb();
-          if (s5 !== peg$FAILED) {
-            peg$savedPos = s0;
-            s0 = peg$f24(s1, s5);
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseordinal() {
-    let res;
-    if (res = options.ordinal.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsecbv_ordinal() {
-    let s0, s1, s2, s3, s4;
-    s0 = peg$currPos;
-    s1 = peg$parsecb_ordinal();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesequence_sep();
-      if (s2 === peg$FAILED) {
-        s2 = null;
-      }
-      s3 = peg$parsev_explicit();
-      if (s3 !== peg$FAILED) {
-        s4 = peg$parsev();
-        if (s4 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f25(s1, s4);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsec_psalm() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 31) {
-      s1 = peg$c2;
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e2);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parseany_integer();
-      if (s2 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 3) === peg$c8) {
-          s3 = peg$c8;
-          peg$currPos += 3;
-        } else {
-          s3 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e9);
-          }
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f26(s2);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecv_psalm() {
-    let s0, s1, s2, s3, s4;
-    s0 = peg$currPos;
-    s1 = peg$parsec_psalm();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesequence_sep();
-      if (s2 === peg$FAILED) {
-        s2 = null;
-      }
-      s3 = peg$parsev_explicit();
-      if (s3 !== peg$FAILED) {
-        s4 = peg$parsev();
-        if (s4 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f27(s1, s4);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsec_title() {
-    let s0, s1, s2, s3, s4;
-    s0 = peg$currPos;
-    s1 = peg$parsec_explicit();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsec();
-      if (s2 !== peg$FAILED) {
-        peg$savedPos = peg$currPos;
-        s3 = peg$f28(s2);
-        if (s3) {
-          s3 = void 0;
-        } else {
-          s3 = peg$FAILED;
-        }
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parsetitle();
-          if (s4 !== peg$FAILED) {
-            peg$savedPos = s0;
-            s0 = peg$f29(s2, s4);
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecv() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8;
-    s0 = peg$currPos;
-    s1 = peg$parsev_explicit();
-    if (s1 === peg$FAILED) {
-      s1 = null;
-    }
-    s2 = peg$parsec();
-    if (s2 !== peg$FAILED) {
-      peg$savedPos = peg$currPos;
-      s3 = peg$f30(s2);
-      if (s3) {
-        s3 = void 0;
-      } else {
-        s3 = peg$FAILED;
-      }
-      if (s3 !== peg$FAILED) {
-        s4 = peg$currPos;
-        peg$silentFails++;
-        s5 = peg$currPos;
-        if (input.charCodeAt(peg$currPos) === 46) {
-          s6 = peg$c5;
-          peg$currPos++;
-        } else {
-          s6 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e6);
-          }
-        }
-        if (s6 !== peg$FAILED) {
-          s7 = peg$parsev_explicit();
-          if (s7 !== peg$FAILED) {
-            s8 = peg$parsev();
-            if (s8 !== peg$FAILED) {
-              s6 = [s6, s7, s8];
-              s5 = s6;
-            } else {
-              peg$currPos = s5;
-              s5 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s5;
-            s5 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s5;
-          s5 = peg$FAILED;
-        }
-        peg$silentFails--;
-        if (s5 === peg$FAILED) {
-          s4 = void 0;
-        } else {
-          peg$currPos = s4;
-          s4 = peg$FAILED;
-        }
-        if (s4 !== peg$FAILED) {
-          s5 = peg$currPos;
-          s6 = peg$parsecv_sep();
-          if (s6 === peg$FAILED) {
-            s6 = null;
-          }
-          s7 = peg$parsev_explicit();
-          if (s7 !== peg$FAILED) {
-            s6 = [s6, s7];
-            s5 = s6;
-          } else {
-            peg$currPos = s5;
-            s5 = peg$FAILED;
-          }
-          if (s5 === peg$FAILED) {
-            s5 = peg$parsecv_sep();
-          }
-          if (s5 !== peg$FAILED) {
-            s6 = peg$parsev();
-            if (s6 !== peg$FAILED) {
-              peg$savedPos = s0;
-              s0 = peg$f31(s2, s6);
-            } else {
-              peg$currPos = s0;
-              s0 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecv_weak() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8;
-    s0 = peg$currPos;
-    s1 = peg$parsec();
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = peg$currPos;
-      s2 = peg$f32(s1);
-      if (s2) {
-        s2 = void 0;
-      } else {
-        s2 = peg$FAILED;
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parsecv_sep_weak();
-        if (s3 !== peg$FAILED) {
-          s4 = peg$parsev();
-          if (s4 !== peg$FAILED) {
-            s5 = peg$currPos;
-            peg$silentFails++;
-            s6 = peg$currPos;
-            s7 = peg$parsecv_sep();
-            if (s7 !== peg$FAILED) {
-              s8 = peg$parsev();
-              if (s8 !== peg$FAILED) {
-                s7 = [s7, s8];
-                s6 = s7;
-              } else {
-                peg$currPos = s6;
-                s6 = peg$FAILED;
-              }
-            } else {
-              peg$currPos = s6;
-              s6 = peg$FAILED;
-            }
-            peg$silentFails--;
-            if (s6 === peg$FAILED) {
-              s5 = void 0;
-            } else {
-              peg$currPos = s5;
-              s5 = peg$FAILED;
-            }
-            if (s5 !== peg$FAILED) {
-              peg$savedPos = s0;
-              s0 = peg$f33(s1, s4);
-            } else {
-              peg$currPos = s0;
-              s0 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s0;
-            s0 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseff() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    s1 = peg$parsebcv();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebcv_weak();
-      if (s1 === peg$FAILED) {
-        s1 = peg$parsebc();
-        if (s1 === peg$FAILED) {
-          s1 = peg$parsebv();
-          if (s1 === peg$FAILED) {
-            s1 = peg$parsecv();
-            if (s1 === peg$FAILED) {
-              s1 = peg$parsecv_weak();
-              if (s1 === peg$FAILED) {
-                s1 = peg$parseinteger();
-                if (s1 === peg$FAILED) {
-                  s1 = peg$parsec();
-                  if (s1 === peg$FAILED) {
-                    s1 = peg$parsev();
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesp();
-      s3 = peg$parseff_value();
-      if (s3 !== peg$FAILED) {
-        peg$savedPos = s0;
-        s0 = peg$f34(s1);
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseff_value() {
-    let res;
-    if (res = options.ff.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsenext_v() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    s1 = peg$parsebcv();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsebcv_weak();
-      if (s1 === peg$FAILED) {
-        s1 = peg$parsebc();
-        if (s1 === peg$FAILED) {
-          s1 = peg$parsebv();
-          if (s1 === peg$FAILED) {
-            s1 = peg$parsecv();
-            if (s1 === peg$FAILED) {
-              s1 = peg$parsecv_weak();
-              if (s1 === peg$FAILED) {
-                s1 = peg$parseinteger();
-                if (s1 === peg$FAILED) {
-                  s1 = peg$parsec();
-                  if (s1 === peg$FAILED) {
-                    s1 = peg$parsev();
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsesp();
-      s3 = peg$parsenext_value();
-      if (s3 !== peg$FAILED) {
-        peg$savedPos = s0;
-        s0 = peg$f35(s1);
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsenext_value() {
-    let res;
-    if (res = options.next.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parseinteger_title() {
-    let s0, s1, s2;
-    s0 = peg$currPos;
-    s1 = peg$parseinteger();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parsetitle();
-      if (s2 !== peg$FAILED) {
-        peg$savedPos = s0;
-        s0 = peg$f36(s1, s2);
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsecontext() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 31) {
-      s1 = peg$c2;
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e2);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parseany_integer();
-      if (s2 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 3) === peg$c11) {
-          s3 = peg$c11;
-          peg$currPos += 3;
-        } else {
-          s3 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e12);
-          }
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f37(s2);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseps151_b() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 31) {
-      s1 = peg$c2;
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e2);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parseany_integer();
-      if (s2 !== peg$FAILED) {
-        if (input.substr(peg$currPos, 3) === peg$c12) {
-          s3 = peg$c12;
-          peg$currPos += 3;
-        } else {
-          s3 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e13);
-          }
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f38(s2);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseps151_bc() {
-    let s0, s1, s2, s3, s4;
-    s0 = peg$currPos;
-    s1 = peg$parseps151_b();
-    if (s1 !== peg$FAILED) {
-      if (input.substr(peg$currPos, 2) === peg$c13) {
-        s2 = peg$c13;
-        peg$currPos += 2;
-      } else {
-        s2 = peg$FAILED;
-        if (peg$silentFails === 0) {
-          peg$fail(peg$e14);
-        }
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$currPos;
-        peg$silentFails++;
-        s4 = input.charAt(peg$currPos);
-        if (peg$r1.test(s4)) {
-          peg$currPos++;
-        } else {
-          s4 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e15);
-          }
-        }
-        peg$silentFails--;
-        if (s4 === peg$FAILED) {
-          s3 = void 0;
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f39(s1);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseps151_bcv() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    s1 = peg$parseps151_bc();
-    if (s1 !== peg$FAILED) {
-      if (input.charCodeAt(peg$currPos) === 46) {
-        s2 = peg$c5;
-        peg$currPos++;
-      } else {
-        s2 = peg$FAILED;
-        if (peg$silentFails === 0) {
-          peg$fail(peg$e6);
-        }
-      }
-      if (s2 !== peg$FAILED) {
-        s3 = peg$parseinteger();
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f40(s1, s3);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseab() {
-    let res;
-    if (res = options.ab.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsev() {
-    let s0, s1, s2;
-    s0 = peg$currPos;
-    s1 = peg$parsev_explicit();
-    if (s1 === peg$FAILED) {
-      s1 = null;
-    }
-    s2 = peg$parseinteger();
-    if (s2 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s0 = peg$f41(s2);
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsec_explicit() {
-    let s0, s1;
-    s0 = peg$currPos;
-    s1 = peg$parsec_explicit_value();
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s1 = peg$f42();
-    }
-    s0 = s1;
-    return s0;
-  }
-  function peg$parsec_explicit_value() {
-    let res;
-    if (res = options.c_explicit.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsec_sep() {
-    let s0, s1;
-    s0 = peg$currPos;
-    s1 = peg$parsec_sep_value();
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s1 = peg$f43();
-    }
-    s0 = s1;
-    return s0;
-  }
-  function peg$parsec_sep_value() {
-    let res;
-    if (res = options.c_sep.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsev_explicit() {
-    let s0, s1;
-    s0 = peg$currPos;
-    s1 = peg$parsev_explicit_value();
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s1 = peg$f44();
-    }
-    s0 = s1;
-    return s0;
-  }
-  function peg$parsev_explicit_value() {
-    let res;
-    if (res = options.v_explicit.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsecv_sep() {
-    let res;
-    if (res = options.cv_sep.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsecv_sep_weak() {
-    let res;
-    if (res = options.cv_sep_weak.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsesequence_sep() {
-    let res;
-    if (res = options.sequence.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsesequence_sep_value() {
-    let s0;
-    if (input.substr(peg$currPos, 19) === peg$c20) {
-      s0 = peg$c20;
-      peg$currPos += 19;
-    } else {
-      s0 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e22);
-      }
-    }
-    return s0;
-  }
-  function peg$parserange_sep() {
-    let res;
-    if (res = options.range.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsetitle() {
-    let s0, s1, s2;
-    s0 = peg$currPos;
-    s1 = peg$parsecv_sep();
-    if (s1 === peg$FAILED) {
-      s1 = peg$parsesequence_sep();
-    }
-    if (s1 === peg$FAILED) {
-      s1 = null;
-    }
-    s2 = peg$parsetitle_value();
-    if (s2 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s0 = peg$f46(s2);
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsetitle_value() {
-    let res;
-    if (res = options.title.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsein_book_of() {
-    let res;
-    if (res = options.in_book_of.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parsetranslation_sequence_enclosed() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8, s9;
-    s0 = peg$currPos;
-    s1 = peg$parsesp();
-    s2 = input.charAt(peg$currPos);
-    if (peg$r2.test(s2)) {
-      peg$currPos++;
-    } else {
-      s2 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e26);
-      }
-    }
-    if (s2 !== peg$FAILED) {
-      s3 = peg$parsesp();
-      s4 = peg$currPos;
-      s5 = peg$parsetranslation();
-      if (s5 !== peg$FAILED) {
-        s6 = [];
-        s7 = peg$currPos;
-        s8 = peg$parsesequence_sep();
-        if (s8 !== peg$FAILED) {
-          s9 = peg$parsetranslation();
-          if (s9 !== peg$FAILED) {
-            s8 = [s8, s9];
-            s7 = s8;
-          } else {
-            peg$currPos = s7;
-            s7 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s7;
-          s7 = peg$FAILED;
-        }
-        while (s7 !== peg$FAILED) {
-          s6.push(s7);
-          s7 = peg$currPos;
-          s8 = peg$parsesequence_sep();
-          if (s8 !== peg$FAILED) {
-            s9 = peg$parsetranslation();
-            if (s9 !== peg$FAILED) {
-              s8 = [s8, s9];
-              s7 = s8;
-            } else {
-              peg$currPos = s7;
-              s7 = peg$FAILED;
-            }
-          } else {
-            peg$currPos = s7;
-            s7 = peg$FAILED;
-          }
-        }
-        s5 = [s5, s6];
-        s4 = s5;
-      } else {
-        peg$currPos = s4;
-        s4 = peg$FAILED;
-      }
-      if (s4 !== peg$FAILED) {
-        s5 = peg$parsesp();
-        s6 = input.charAt(peg$currPos);
-        if (peg$r3.test(s6)) {
-          peg$currPos++;
-        } else {
-          s6 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e27);
-          }
-        }
-        if (s6 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f47(s4);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsetranslation_sequence() {
-    let s0, s1, s2, s3, s4, s5, s6, s7, s8;
-    s0 = peg$currPos;
-    s1 = peg$parsesp();
-    s2 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 44) {
-      s3 = peg$c4;
-      peg$currPos++;
-    } else {
-      s3 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e5);
-      }
-    }
-    if (s3 !== peg$FAILED) {
-      s4 = peg$parsesp();
-      s3 = [s3, s4];
-      s2 = s3;
-    } else {
-      peg$currPos = s2;
-      s2 = peg$FAILED;
-    }
-    if (s2 === peg$FAILED) {
-      s2 = null;
-    }
-    s3 = peg$currPos;
-    s4 = peg$parsetranslation();
-    if (s4 !== peg$FAILED) {
-      s5 = [];
-      s6 = peg$currPos;
-      s7 = peg$parsesequence_sep();
-      if (s7 !== peg$FAILED) {
-        s8 = peg$parsetranslation();
-        if (s8 !== peg$FAILED) {
-          s7 = [s7, s8];
-          s6 = s7;
-        } else {
-          peg$currPos = s6;
-          s6 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s6;
-        s6 = peg$FAILED;
-      }
-      while (s6 !== peg$FAILED) {
-        s5.push(s6);
-        s6 = peg$currPos;
-        s7 = peg$parsesequence_sep();
-        if (s7 !== peg$FAILED) {
-          s8 = peg$parsetranslation();
-          if (s8 !== peg$FAILED) {
-            s7 = [s7, s8];
-            s6 = s7;
-          } else {
-            peg$currPos = s6;
-            s6 = peg$FAILED;
-          }
-        } else {
-          peg$currPos = s6;
-          s6 = peg$FAILED;
-        }
-      }
-      s4 = [s4, s5];
-      s3 = s4;
-    } else {
-      peg$currPos = s3;
-      s3 = peg$FAILED;
-    }
-    if (s3 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s0 = peg$f48(s3);
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parsetranslation() {
-    let s0, s1, s2, s3;
-    s0 = peg$currPos;
-    if (input.charCodeAt(peg$currPos) === 30) {
-      s1 = peg$c24;
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e28);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      s2 = peg$parseany_integer();
-      if (s2 !== peg$FAILED) {
-        if (input.charCodeAt(peg$currPos) === 30) {
-          s3 = peg$c24;
-          peg$currPos++;
-        } else {
-          s3 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e28);
-          }
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s0 = peg$f49(s2);
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
-      } else {
-        peg$currPos = s0;
-        s0 = peg$FAILED;
-      }
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseinteger() {
-    let s0, s1, s2, s3, s4;
-    s0 = peg$currPos;
-    s1 = peg$parseinteger_value();
-    if (s1 !== peg$FAILED) {
-      s2 = peg$currPos;
-      s3 = peg$parsesp();
-      s4 = peg$parseab();
-      if (s4 !== peg$FAILED) {
-        s3 = [s3, s4];
-        s2 = s3;
-      } else {
-        peg$currPos = s2;
-        s2 = peg$FAILED;
-      }
-      if (s2 === peg$FAILED) {
-        s2 = null;
-      }
-      peg$savedPos = s0;
-      s0 = peg$f50(s1, s2);
-    } else {
-      peg$currPos = s0;
-      s0 = peg$FAILED;
-    }
-    return s0;
-  }
-  function peg$parseinteger_value() {
-    let res;
-    if (res = /^[0-9]{1,3}(?![0-9]|,000)/.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  function peg$parseany_integer() {
-    let s0, s1, s2;
-    s0 = peg$currPos;
-    s1 = [];
-    s2 = input.charAt(peg$currPos);
-    if (peg$r1.test(s2)) {
-      peg$currPos++;
-    } else {
-      s2 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e15);
-      }
-    }
-    if (s2 !== peg$FAILED) {
-      while (s2 !== peg$FAILED) {
-        s1.push(s2);
-        s2 = input.charAt(peg$currPos);
-        if (peg$r1.test(s2)) {
-          peg$currPos++;
-        } else {
-          s2 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e15);
-          }
-        }
-      }
-    } else {
-      s1 = peg$FAILED;
-    }
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s1 = peg$f51(s1);
-    }
-    s0 = s1;
-    return s0;
-  }
-  function peg$parseword() {
-    let s0, s1, s2;
-    s0 = peg$currPos;
-    s1 = [];
-    s2 = input.charAt(peg$currPos);
-    if (peg$r4.test(s2)) {
-      peg$currPos++;
-    } else {
-      s2 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e30);
-      }
-    }
-    if (s2 !== peg$FAILED) {
-      while (s2 !== peg$FAILED) {
-        s1.push(s2);
-        s2 = input.charAt(peg$currPos);
-        if (peg$r4.test(s2)) {
-          peg$currPos++;
-        } else {
-          s2 = peg$FAILED;
-          if (peg$silentFails === 0) {
-            peg$fail(peg$e30);
-          }
-        }
-      }
-    } else {
-      s1 = peg$FAILED;
-    }
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s1 = peg$f52(s1);
-    }
-    s0 = s1;
-    return s0;
-  }
-  function peg$parseword_parenthesis() {
-    let s0, s1;
-    s0 = peg$currPos;
-    s1 = input.charAt(peg$currPos);
-    if (peg$r2.test(s1)) {
-      peg$currPos++;
-    } else {
-      s1 = peg$FAILED;
-      if (peg$silentFails === 0) {
-        peg$fail(peg$e26);
-      }
-    }
-    if (s1 !== peg$FAILED) {
-      peg$savedPos = s0;
-      s1 = peg$f53(s1);
-    }
-    s0 = s1;
-    return s0;
-  }
-  function peg$parsesp() {
-    let s0;
-    s0 = peg$parsespace();
-    if (s0 === peg$FAILED) {
-      s0 = null;
-    }
-    return s0;
-  }
-  function peg$parsespace() {
-    let res;
-    if (res = options.space.exec(input.substring(peg$currPos))) {
-      peg$savedPos = peg$currPos;
-      peg$currPos += res[0].length;
-      return [res[0]];
-    } else {
-      return peg$FAILED;
-    }
-  }
-  peg$result = peg$startRuleFunction();
-  const peg$success = peg$result !== peg$FAILED && peg$currPos === input.length;
-  function peg$throw() {
-    if (peg$result !== peg$FAILED && peg$currPos < input.length) {
-      peg$fail(peg$endExpectation());
-    }
-    throw peg$buildStructuredError(
-      peg$maxFailExpected,
-      peg$maxFailPos < input.length ? peg$getUnicode(peg$maxFailPos) : null,
-      peg$maxFailPos < input.length ? peg$computeLocation(peg$maxFailPos, peg$maxFailPos + 1) : peg$computeLocation(peg$maxFailPos, peg$maxFailPos)
-    );
-  }
-  if (options.peg$library) {
-    return (
-      /** @type {any} */
-      {
-        peg$result,
-        peg$currPos,
-        peg$FAILED,
-        peg$maxFailExpected,
-        peg$maxFailPos,
-        peg$success,
-        peg$throw: peg$success ? void 0 : peg$throw
-      }
-    );
-  }
-  if (peg$success) {
-    return peg$result;
-  } else {
-    peg$throw();
-  }
-}
-var bcv_parser = class {
-  constructor(lang = null) {
-    this.passage = new bcv_passage();
-    this.entities = [];
-    this.options = new bcv_options(this);
-    if (lang == null) {
-      if (typeof grammar === "undefined") {
-        throw `When creating a new bcv_parser object using ES Modules, please provide a language object. For example, here's how to provide English:
-import * as lang from "es/lang/en.js";
-const bcv = new bcv_parser(lang);`;
-      }
-      this.translations = new bcv_translations();
-      this.matcher = new bcv_matcher(this, grammar_options);
-      this.regexps = new bcv_regexps();
-      this.translations = new bcv_translations();
-    } else {
-      this.matcher = new bcv_matcher(this, lang.grammar_options);
-      this.regexps = new lang.regexps();
-      this.translations = new lang.translations();
-    }
-    this.passage = new bcv_passage(this.options, this.translations);
-    this.regexps_manager = new bcv_regexps_manager(this);
-    this.translations_manager = new bcv_translations_manager(this);
-  }
-  // ## Parse-Related Functions
-  // Parse a string and prepare the object for further interrogation, depending on what's needed.
-  parse(string_to_parse) {
-    this.reset();
-    string_to_parse = this.matcher.replace_control_characters(string_to_parse);
-    [string_to_parse, this.passage.books] = this.matcher.match_books(string_to_parse);
-    string_to_parse = this.matcher.replace_non_ascii_numbers(string_to_parse);
-    [this.entities] = this.matcher.match_passages(string_to_parse);
-    return this;
-  }
-  // Parse a string and prepare the object for further interrogation, depending on what's needed. The second argument is a string that serves as the context for the first argument. If there's a valid partial match at the beginning of the first argument, then it will parse it using the supplied `context`. For example, `parse_string_with_context("verse 2", "Genesis 3").osis()` = `Gen.3.2`. You'd use this when you have some text that looks like it's a partial reference, and you already know the context.
-  parse_with_context(string_to_parse, context_string) {
-    this.reset();
-    [context_string, this.passage.books] = this.matcher.match_books(this.matcher.replace_control_characters(context_string));
-    context_string = this.matcher.replace_non_ascii_numbers(context_string);
-    let [entities, context] = this.matcher.match_passages(context_string);
-    this.reset();
-    string_to_parse = this.matcher.replace_control_characters(string_to_parse);
-    [string_to_parse, this.passage.books] = this.matcher.match_books(string_to_parse);
-    this.passage.books.push({
-      value: "",
-      parsed: "",
-      start_index: 0,
-      type: "context",
-      context
-    });
-    string_to_parse = "" + (this.passage.books.length - 1) + "/9" + string_to_parse;
-    [this.entities] = this.matcher.match_passages(string_to_parse);
-    return this;
-  }
-  reset() {
-    this.entities = [];
-    this.passage.books = [];
-    this.passage.indices = {};
-  }
-  // ## Options-Related Functions
-  // Override default options.
-  set_options(options) {
-    if (options.include_apocrypha != null) {
-      this.include_apocrypha(options.include_apocrypha);
-      delete options.include_apocrypha;
-    }
-    for (const [key, value] of Object.entries(options)) {
-      if (key in this.options) {
-        this.options[key] = value;
-      }
-    }
-    return this;
-  }
-  // Legacy way to indicate that the Apocrypha should be included in the list of books.
-  include_apocrypha(arg) {
-    const old_value = this.options.testaments;
-    let new_value = old_value;
-    if (arg === true && old_value.indexOf("a") === -1) {
-      new_value = new_value + "a";
-    } else if (arg === false && old_value.indexOf("a") >= 1) {
-      new_value = new_value.slice(0, -1);
-    }
-    if (new_value !== old_value) {
-      this.options.testaments = new_value;
-    }
-    return this;
-  }
-  // ## Administrative Functions
-  // Return translation information so that we don't have to reach into semi-private objects to grab the data we need.
-  translation_info(translation = "default") {
-    return this.translations_manager.translation_info(translation);
-  }
-  // ## Output-Related Functions
-  // Return a single OSIS string (comma-separated) for all the references in the whole input string.
-  osis() {
-    const out = [];
-    for (const osis of this.parsed_entities()) {
-      if (osis.osis.length > 0) {
-        out.push(osis.osis);
-      }
-    }
-    return out.join(",");
-  }
-  // Return an array of `[OSIS, TRANSLATIONS]` for each reference (combined according to various options).
-  osis_and_translations() {
-    const out = [];
-    for (const osis of this.parsed_entities()) {
-      if (osis.osis.length > 0) {
-        out.push([osis.osis, osis.translations.join(",")]);
-      }
-    }
-    return out;
-  }
-  // Return an array of `{osis: OSIS, indices:[START, END], translations: [TRANSLATIONS]}` objects for each reference (combined according to `options`).
-  osis_and_indices() {
-    const out = [];
-    for (const osis of this.parsed_entities()) {
-      if (osis.osis.length > 0) {
-        out.push({
-          osis: osis.osis,
-          translations: osis.translations,
-          indices: osis.indices
-        });
-      }
-    }
-    return out;
-  }
-  // Return all objects, probably for additional processing.
-  parsed_entities() {
-    let out = [];
-    this.entities.forEach((entity, entity_id) => {
-      if (entity.type && entity.type === "translation_sequence" && out.length > 0 && entity_id === out[out.length - 1].entity_id + 1) {
-        out[out.length - 1].indices[1] = entity.absolute_indices[1];
-      }
-      if (entity.passages == null) {
-        return;
-      }
-      if (entity.type === "b" && this.options.book_alone_strategy === "ignore" || entity.type === "b_range" && this.options.book_range_strategy === "ignore" || entity.type === "context") {
-        return;
-      }
-      let translations = [];
-      let system = "";
-      if (entity.passages[0].translations) {
-        for (const translation of entity.passages[0].translations) {
-          const translation_osis = translation.osis && translation.osis.length > 0 ? translation.osis : "";
-          if (system === "") {
-            system = translation.system;
-          }
-          translations.push(translation_osis);
-        }
-      } else {
-        translations = [""];
-        system = "current";
-      }
-      let osises = this.parse_entity_passages(entity, entity_id, translations, system);
-      if (osises.length === 0) {
-        return;
-      }
-      if (osises.length > 1 && this.options.consecutive_combination_strategy === "combine") {
-        osises = this.combine_consecutive_passages(osises, system);
-      }
-      if (this.options.sequence_combination_strategy === "separate") {
-        out = out.concat(osises);
-      } else {
-        const strings = [];
-        const last_i = osises.length - 1;
-        if (osises[last_i].enclosed_indices && osises[last_i].enclosed_indices[1] >= 0) {
-          entity.absolute_indices[1] = osises[last_i].enclosed_indices[1];
-        }
-        for (const osis of osises) {
-          if (osis.osis.length > 0) {
-            strings.push(osis.osis);
-          }
-        }
-        out.push({
-          osis: strings.join(","),
-          indices: entity.absolute_indices,
-          translations,
-          entity_id,
-          entities: osises
-        });
-      }
-    });
-    return out;
-  }
-  parse_entity_passages(entity, entity_id, translations, system) {
-    const osises = [];
-    const length = entity.passages.length;
-    const include_old_testament = this.options.testaments.indexOf("o") >= 0;
-    entity.passages.forEach((passage, i) => {
-      if (!passage.type) {
-        passage.type = entity.type;
-      }
-      if (passage.valid.valid === false) {
-        if (this.options.invalid_sequence_strategy === "ignore" && entity.type === "sequence") {
-          this.snap_sequence("ignore", entity, osises, i, length);
-        }
-        if (this.options.invalid_passage_strategy === "ignore") {
-          return;
-        }
-      }
-      if ((passage.type === "b" || passage.type === "b_range") && this.options.book_sequence_strategy === "ignore" && entity.type === "sequence") {
-        this.snap_sequence("book", entity, osises, i, length);
-        return;
-      }
-      if (include_old_testament === false && (passage.start.b === "Ps" && (passage.start.c != null && passage.start.c < 151) && passage.end.b === "Ps" && (passage.end.c != null && passage.end.c < 151))) {
-        return;
-      }
-      if ((passage.type === "b_range_start" || passage.type === "range_end_b") && this.options.book_range_strategy === "ignore") {
-        this.snap_range(entity, i);
-      }
-      if (!passage.absolute_indices) {
-        passage.absolute_indices = [...entity.absolute_indices];
-      }
-      osises.push({
-        osis: passage.valid.valid ? this.to_osis(passage.start, passage.end, system) : "",
-        type: passage.type,
-        indices: passage.absolute_indices,
-        translations,
-        start: passage.start,
-        end: passage.end,
-        enclosed_indices: passage.enclosed_absolute_indices,
-        entity_id,
-        entities: [passage]
-      });
-    });
-    return osises;
-  }
-  // Takes OSIS objects and converts them to OSIS strings based on compaction preferences. It maniplates the original `start` and `end` objects.
-  to_osis(start, end, translation) {
-    if (end.c == null && end.v == null && start.c == null && start.v == null && start.b === end.b && this.options.book_alone_strategy === "first_chapter") {
-      end.c = 1;
-    }
-    const osis = { start: "", end: "" };
-    if (start.c == null) {
-      start.c = 1;
-    }
-    if (start.v == null) {
-      start.v = 1;
-    }
-    if (this.options.versification_system.includes("a") && this.options.ps151_strategy === "b" && (start.c === 151 && start.b === "Ps" || end.c === 151 && end.b === "Ps")) {
-      this.fix_ps151(start, end, translation);
-    }
-    const chapter_array = this.passage.translations.systems[translation]?.chapters[end.b] || this.passage.translations.systems.current.chapters[end.b];
-    const compaction_strategy = this.options.osis_compaction_strategy;
-    const existence_strategy = this.options.passage_existence_strategy;
-    if (end.c == null) {
-      if (existence_strategy.includes("c") || chapter_array && chapter_array.length === 1) {
-        end.c = chapter_array.length;
-      } else {
-        end.c = 999;
-      }
-    }
-    if (end.v == null) {
-      if (chapter_array && chapter_array[end.c - 1] && existence_strategy.includes("v")) {
-        end.v = chapter_array[end.c - 1];
-      } else {
-        end.v = 999;
-      }
-    }
-    const get_partial = compaction_strategy.includes("p") && (start.p != null || end.p != null);
-    if ((compaction_strategy === "b" || compaction_strategy === "bp") && start.c === 1 && start.v === 1 && get_partial === false && (end.c === 999 && end.v === 999 || end.c === chapter_array.length && existence_strategy.includes("c") && (end.v === 999 || end.v === chapter_array[end.c - 1] && existence_strategy.includes("v")))) {
-      osis.start = start.b;
-      osis.end = end.b;
-    } else if (start.v === 1 && get_partial === false && compaction_strategy.includes("v") === false && (end.v === 999 || end.v === chapter_array[end.c - 1] && existence_strategy.includes("v"))) {
-      osis.start = start.b + "." + start.c;
-      osis.end = end.b + "." + end.c;
-    } else {
-      osis.start = start.b + "." + start.c + "." + start.v;
-      osis.end = end.b + "." + end.c + "." + end.v;
-      if (get_partial) {
-        if (start.p != null) {
-          osis.start += "!" + start.p;
-        }
-        if (end.p != null) {
-          osis.end += "!" + end.p;
-        }
-      }
-    }
-    let out = "";
-    if (osis.start === osis.end) {
-      out = osis.start;
-    } else {
-      out = osis.start + "-" + osis.end;
-    }
-    if (start.extra) {
-      out = start.extra + "," + out;
-    }
-    if (end.extra) {
-      out += "," + end.extra;
-    }
-    return out;
-  }
-  // If we want to treat Ps151 as a book rather than a chapter, we have to do some gymnastics to make sure it returns properly.
-  fix_ps151(start, end, translation) {
-    const old_system = this.options.versification_system;
-    this.options.versification_system = translation;
-    const new_system = this.options.versification_system;
-    if (start.c === 151 && start.b === "Ps") {
-      if (end.c === 151 && end.b === "Ps") {
-        start.b = "Ps151";
-        start.c = 1;
-        end.b = "Ps151";
-        end.c = 1;
-      } else {
-        start.extra = this.to_osis(
-          { b: "Ps151", c: 1, v: start.v },
-          { b: "Ps151", c: 1, v: this.translations.systems.current.chapters["Ps151"][0] },
-          translation
-        );
-        start.b = "Prov";
-        start.c = 1;
-        start.v = 1;
-      }
-    } else {
-      end.extra = this.to_osis(
-        { b: "Ps151", c: 1, v: 1 },
-        { b: "Ps151", c: 1, v: end.v },
-        translation
-      );
-      end.c = 150;
-      end.v = this.translations.systems.current.chapters["Ps"][149];
-    }
-    if (old_system !== new_system) {
-      this.options.versification_system = old_system;
-    }
-  }
-  // If we have the correct `option` set (checked before calling this function), merge passages that refer to sequential verses: Gen 1, 2 -> Gen 1-2. It works for any combination of books, chapters, and verses.
-  combine_consecutive_passages(osises, translation) {
-    const out = [];
-    let prev = {};
-    const last_i = osises.length - 1;
-    let enclosed_sequence_start = -1;
-    let has_enclosed = false;
-    osises.forEach((osis, i) => {
-      if (osis.osis.length > 0) {
-        const prev_i = out.length - 1;
-        let is_enclosed_last = false;
-        if (osis.enclosed_indices[0] !== enclosed_sequence_start) {
-          enclosed_sequence_start = osis.enclosed_indices[0];
-        }
-        if (enclosed_sequence_start >= 0 && (i === last_i || osises[i + 1].enclosed_indices[0] !== osis.enclosed_indices[0])) {
-          is_enclosed_last = true;
-          has_enclosed = true;
-        }
-        if (this.is_verse_consecutive(prev, osis.start, translation)) {
-          out[prev_i].end = osis.end;
-          out[prev_i].is_enclosed_last = is_enclosed_last;
-          out[prev_i].indices[1] = osis.indices[1];
-          out[prev_i].enclosed_indices[1] = osis.enclosed_indices[1];
-          out[prev_i].osis = this.to_osis(out[prev_i].start, osis.end, translation);
-        } else {
-          out.push(osis);
-        }
-        prev = { b: osis.end.b, c: osis.end.c, v: osis.end.v };
-      } else {
-        out.push(osis);
-        prev = {};
-      }
-    });
-    if (has_enclosed) {
-      this.snap_enclosed_indices(out);
-    }
-    return out;
-  }
-  // If there's an enclosed reference--e.g., Ps 1 (2)--and we've combined consecutive passages in such a way that the enclosed reference is fully inside the sequence (i.e., if it starts before the enclosed sequence), then make sure the end index for the passage includes the necessary closing punctuation.
-  snap_enclosed_indices(osises) {
-    for (const osis of osises) {
-      if (osis.is_enclosed_last != null) {
-        if (osis.enclosed_indices[0] < 0 && osis.is_enclosed_last) {
-          osis.indices[1] = osis.enclosed_indices[1];
-        }
-        delete osis.is_enclosed_last;
-      }
-    }
-    return osises;
-  }
-  /* Given two fully specified objects (complete bcvs), find whether they're sequential.
-  * Same book, same chapter, and next verse (e.g., Gen.1.1 followed by Gen.1.2)
-  * Same book, next chapter, and first verse if the previous chapter ended properly (e.g., Gen.1.31 followed by Gen.2.1)
-  * Next book, first chapter, and first verse if the previous book ended properly (e.g., Mal.4.6 followed by Matt.1.1)
-  */
-  is_verse_consecutive(prev, check, translation) {
-    if (!prev.b) {
-      return false;
-    }
-    const translation_order = this.passage.translations.systems[translation]?.order || this.passage.translations.systems.current.order;
-    const chapter_array = this.passage.translations.systems[translation]?.chapters?.[prev.b] || this.passage.translations.systems.current.chapters[prev.b];
-    if (prev.b === check.b) {
-      if (prev.c === check.c) {
-        return prev.v === check.v - 1;
-      } else if (check.v === 1 && prev.c === check.c - 1) {
-        const prev_chapter_verse_count = chapter_array[prev.c - 1];
-        return prev.v === prev_chapter_verse_count;
-      }
-    } else if (check.c === 1 && check.v === 1 && translation_order[prev.b] === translation_order[check.b] - 1) {
-      return prev.c === chapter_array.length && prev.v === chapter_array[prev.c - 1];
-    }
-    return false;
-  }
-  // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.
-  snap_range(entity, passage_i) {
-    let entity_i = 0;
-    let source_entity = "start";
-    let type = "range_end_b";
-    if (entity.original_type === "b_range_start") {
-      entity.type = entity.original_type;
-      delete entity.original_type;
-    }
-    if (entity.type === "b_range_start" || entity.type === "sequence" && entity.passages[passage_i].type === "b_range_start") {
-      entity_i = 1;
-      source_entity = "end";
-      type = "b_range_start";
-    }
-    const target_entity = source_entity === "end" ? "start" : "end";
-    for (const obj_type of [source_entity, target_entity]) {
-      if (entity.passages[passage_i][obj_type].original_object != null) {
-        entity.passages[passage_i][obj_type] = entity.passages[passage_i][obj_type].original_object;
-      }
-    }
-    const original_target = structuredClone(entity.passages[passage_i][target_entity]);
-    entity.passages[passage_i][target_entity] = structuredClone(entity.passages[passage_i][source_entity]);
-    entity.passages[passage_i][target_entity].original_object = original_target;
-    entity.passages[passage_i][source_entity].original_object = structuredClone(entity.passages[passage_i][source_entity]);
-    if (entity.type === "sequence") {
-      if (passage_i >= entity.value.length) {
-        passage_i = entity.value.length - 1;
-      }
-      const pluck = this.passage.pluck(type, entity.value[passage_i]);
-      if (pluck != null) {
-        const temp = this.snap_range(pluck, 0);
-        if (passage_i === 0) {
-          entity.absolute_indices[0] = temp.absolute_indices[0];
-        } else {
-          entity.absolute_indices[1] = temp.absolute_indices[1];
-        }
-      }
-    } else {
-      entity.original_type = entity.type;
-      entity.type = entity.value[entity_i].type;
-      entity.absolute_indices = [
-        entity.value[entity_i].absolute_indices[0],
-        entity.value[entity_i].absolute_indices[1]
-      ];
-    }
-    return entity;
-  }
-  // Snap the start/end index of the entity or surrounding passages when there's a lone book or invalid item in a sequence.
-  snap_sequence(type, entity, osises, i, length) {
-    const passage = entity.passages[i];
-    if (passage.absolute_indices[0] === entity.absolute_indices[0] && i < length - 1 && this.get_snap_sequence_i(entity.passages, i, length) !== i) {
-      entity.absolute_indices[0] = entity.passages[i + 1].absolute_indices[0];
-      this.remove_absolute_indices(entity.passages, i + 1);
-    } else if (passage.absolute_indices[1] === entity.absolute_indices[1] && i > 0) {
-      entity.absolute_indices[1] = osises.length > 0 ? osises[osises.length - 1].indices[1] : entity.passages[i - 1].absolute_indices[1];
-    } else if (type === "book" && i < length - 1 && !this.starts_with_book(entity.passages[i + 1])) {
-      entity.passages[i + 1].absolute_indices[0] = passage.absolute_indices[0];
-    }
-  }
-  // Identify whether there are any valid items between the current item and the next book.
-  get_snap_sequence_i(passages, passage_i, length) {
-    for (let i = passage_i + 1; i < length; i++) {
-      if (this.starts_with_book(passages[i])) {
-        return i;
-      }
-      if (passages[i].valid.valid) {
-        return passage_i;
-      }
-    }
-    return passage_i;
-  }
-  // Given a passage, does it start with a book? It never takes a sequence as an argument.
-  starts_with_book(passage) {
-    if (passage.type.substring(0, 1) === "b") {
-      return true;
-    }
-    if ((passage.type === "range" || passage.type === "ff") && passage.start && passage.start.type && passage.start.type.substring(0, 1) === "b") {
-      return true;
-    }
-    return false;
-  }
-  // Remove absolute indices from the given passage to the end of the sequence. We do this when we don't want to include the end of a sequence in the sequence (most likely because it's invalid or a book on its own).
-  remove_absolute_indices(passages, passage_i) {
-    if (passages[passage_i].enclosed_absolute_indices[0] < 0) {
-      return;
-    }
-    const [start, end] = passages[passage_i].enclosed_absolute_indices;
-    const passages_length = passages.length;
-    for (const passage of passages.slice(passage_i)) {
-      if (passage.enclosed_absolute_indices[0] === start && passage.enclosed_absolute_indices[1] === end) {
-        passage.enclosed_absolute_indices = [-1, -1];
-      } else {
-        break;
-      }
-    }
-  }
-  add_books(books) {
-    return this.regexps_manager.add_books(books);
-  }
-  add_translations(translations) {
-    return this.translations_manager.add_translations(translations);
-  }
-};
-var grammar_options = {
+var bcv_grammar_options_default = {
   ab: /^(?:[a-e])(?!\p{L})/iu,
   and: /^(?:،|؛|۔|&)/i,
   c_explicit: /^[\s*]*(?:باب|ابواب)[\s*]*/i,
@@ -9637,4 +6522,14 @@ var grammar_options = {
   title: /^[\s*]*(?:title)(?!\p{L})[\s*]*/iu,
   v_explicit: /^[\s*]*(?:آیت|آیات)[\s*]*(?!\p{L})/iu
 };
-var grammar = { parse: peg$parse2 };
+var regexps = bcv_regexps;
+var translations = bcv_translations;
+var grammar_options = bcv_grammar_options_default;
+
+// bin/build/cjs_entry_ur.ts
+var bcv_parser2 = class extends bcv_parser {
+  constructor() {
+    super(ur_exports);
+  }
+};
+if (typeof self !== "undefined") { self.bcv_parser = module.exports.bcv_parser; }

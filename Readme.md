@@ -6,7 +6,7 @@ Its primary use is to interpret query strings for use in a Bible application. As
 
 It should be fairly speedy for most applications, taking under a millisecond to parse a short string and able to parse about 175KB of reference-heavy text per second on a single core.
 
-The code for a single language occupies about 147KB minified and 30KB gzipped.
+The code for a single language occupies about 125KB minified and 30KB gzipped.
 
 This project also provides extensively commented code and 4.7 million real-world strings that you can use as a starting point to build your own BCV parser.
 
@@ -14,7 +14,7 @@ Try a [demo of the Bible passage reference parser](https://www.openbible.info/la
 
 ## Upgrade Guide from v3 to v4
 
-If you're just running the parser with existing languages, you don't need to update any of your code.
+If you're just running the parser with existing languages, you don't need to update any of your code. However, the minimum supported environment is now Node 17 or early-2022 browsers because the parser relies on `structuredClone` (see "Compatibility" below).
 
 To take advantage of all features, you may want to consider migrating to the esm version of the code.
 
@@ -67,7 +67,7 @@ To install from the command line:
 npm i bible-passage-reference-parser
 ```
 
-### Node Usage (v16 and Later)
+### Node Usage (v17 and Later)
 
 To run using ES modules (newer style). This style requires using a language object when you create a `new` instance of the parser object.
 
@@ -78,7 +78,7 @@ const bcv = new bcv_parser(lang);
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
 
-### Node Usage (Before v16)
+### Node Usage (CommonJS)
 
 To run using CommonJS:
 
@@ -88,7 +88,7 @@ const bcv = new bcv_parser();
 console.log( bcv.parse("John 1").osis() ); // John.1
 ```
 
-### Node.js (Manual, v16 and Later)
+### Node.js (Manual, v17 and Later)
 
 This example uses English. After downloading the parser and the language file you want (assuming you put the language file in a `lang` subfolder):
 
@@ -263,7 +263,7 @@ This function is separate from the parsing sequence and provides data that may b
 
 This function returns an object of data about the requested translation. You can use this data to determine, for example, the previous and next chapters for a given chapter, even when the given chapter is at the beginning or end of a book.
 
-It takes an optional string argument that identifies the translation—if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `kjv`, `nab` (or `nabre`), `nlt`, `nrsv`, and `nrsvue`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
+It takes an optional string argument that identifies the translation—if the translation is unknown, it returns data about the default translation. For English, abbreviations that will change the output are: `default`, `vulgate`, `ceb`, `csb`, `kjv`, `nab` (or `nabre`), `nlt`, `nrsv`, and `nrsvue`. Sending this function the lower-cased translation output from `osis_and_translations()` or `osis_and_indices()` will return the correct translation information.
 
 The returned object has the following structure:
 
@@ -389,7 +389,7 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
   * `books,translations`: Book names and translation identifiers are case-sensitive. Everything else (such as the word "verse" if it occurs in the text) is still matched case-insensitively.
 
 ### Warnings
-* `warning_level: "none"`
+* `warn_level: "none"`
   * `none`: Don't use `console.warn`.
   * `warn`: Send `console.warn` messages when setting an unknown `versification_system` or `punctuation_strategy`, getting unknown `translation_info()`, or redefining an existing translation in `add_translations()`.
 
@@ -443,7 +443,7 @@ Here are the valid keys for this object:
 
 The RegExp you provide must always start with a `^` to match the beginning of a string. If you have multiple alternates, each one should be anchored with a `^` (or, better, do something like `/^(?:pattern1|pattern2)/`. You can use any valid regular expression, though it's possible to significantly degrade performance with complex ones.
 
-If you use a pattern that includes a character that wasn't included at compile time, it probably won't match your pattern. This limitation is a known issue for version 3.1.0; it may change in the future.
+If you use a pattern that includes a character that wasn't included at compile time, it probably won't match your pattern. This limitation is a known issue starting with version 3.1.0; it may change in the future.
 
 You're overriding the existing patterns entirely. For example, if you set `sequence_us` to `/^,/`, and someone enters "John 3:16 and 17", the "and 17" won't match.
 
@@ -564,7 +564,7 @@ In addition, a number of the tests in the "real-world" section of [`test/realwor
 
 ## Tests
 
-One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The [`test`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/test) folder has over 3,700 tests that illustrate the range of input that this parser can handle.
+One of the hardest parts of building a BCV parser is finding data to test it on to tease out corner cases. The [`test`](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/test) folder has about 1,500 tests that illustrate the range of input that this parser can handle. Language-specific tests live in the [Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) repo.
 
 Separate from this repository are four data files that you can use to test your own parser. Derived from Twitter and Facebook mentions of Bible references, the dataset reflects how people really type references in English. It includes 4.7 million unique strings across 180 million total mentions. (For example, the most-popular string, "Philippians 4:13", is mentioned over 1.3 million times.)
 
@@ -759,13 +759,13 @@ Some features, such as psalm titles, are still English-only, even in these cross
 
 ## Compatibility
 
-These files work in any environment that supports ES2022; any browsers released since mid-2021 should support ES2022:
+These files work in any environment that supports ES2022 and `structuredClone`.
 
-* Chrome 74+
-* Safari 14.1+ (14.5+ on iOS)
-* Edge 79+
-* Firefox 90+
-* Node 16+
+* Chrome 98+
+* Safari 15.4+
+* Edge 98+
+* Firefox 94+
+* Node 17+
 
 The `js` folder contains an older version of this code (2.0.1) and supports much older browsers, back to IE8, Firefox 12, Chrome 19, and Node 0.10. The code in this folder is no longer maintained.
 
@@ -780,9 +780,9 @@ The BCV Parser uses the following projects (none of them is necessary unless you
 
 ### Language Data
 
-Language data lives in https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages. This repo consumes built language modules from there.
+Language data lives in [Bible Passage Reference Parser Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages). The current repo consumes built language modules from there.
 
-#### Building the Language
+#### Building a Language
 
 To build one language in this repo, copy/rename a language module from the external repo into `esm/lang`, then build CJS:
 
@@ -806,7 +806,7 @@ sh build_all.sh /path/to/Bible-Passage-Reference-Parser-Languages
 
 #### Running Tests
 
-If you have dev dependencies installed, the easiest way to run all tests is to use `npm run test`, which takes about a minute. You can also use `npx jasmine test/*.spec.*`.
+If you have dev dependencies installed, the easiest way to run all tests is to use `npm run test`, which takes a few seconds. You can also use `npx jasmine test/*.spec.*`.
 
 ## Purpose
 
@@ -828,7 +828,13 @@ For content-extraction tasks, perhaps it could be integrated into an LLM workflo
 
 ## Changelog
 
-July 1, 2026 (4.0.0-alpha). Removed language source files. They now live [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages).
+July 2, 2026 (4.0.0-beta).
+
+* Removed language source files. They now live [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages). Existing languages will remain available in `esm/lang/` and `cjs/` for backwards compatibility.
+* Updated TypeScript usage (via Claude Fable) to be more consistent and thorough.
+* Rewrote `bin/fuzz_lang.js` to provide much more robust fuzzing, which uncovered an obscure bug. Fable wrote this file.
+* Fixed documentation to say that Node 17 is required, not Node 16. Version 3.0.0 had this requirement; the documentation was wrong.
+* Fixed two additional bugs (found by Fable).
 
 January 31, 2026 (3.2.0). Full release on Github and npm.
 
@@ -879,7 +885,7 @@ November 1, 2015 (1.0.0). Added `punctuation_strategy` option to replace the "eu
 
 May 4, 2015 (0.10.0). Hand-tuned some of the PEG.js output to improve overall performance by around 50% in most languages.
 
-March 16, 2015 (0.9.0). Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a [fuzz tester](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/bin/fuzz/fuzz_lang.coffee), which uncovered several crashing bugs.
+March 16, 2015 (0.9.0). Added [`parse_with_context()`](#parse_with_context) to let you supply a context for a given string. Added Welsh. Fixed some Somali book names. Added missing punctuation from abbreviations in some languages. Reduced size of "eu" files by omitting needless duplicate code. Improved testing code coverage and added a fuzz tester, which uncovered several crashing bugs.
 
 November 3, 2014 (0.8.0). Fixed two bugs related to range rewriting. Updated frak to the latest development version. Added quite a few more languages, bringing the total to 46.
 

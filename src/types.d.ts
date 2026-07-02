@@ -165,22 +165,21 @@ export interface PublicBCVParserOptions extends BCVParserOptions {
 
 export type PartialOptions = Partial<PublicBCVParserOptions>;
 
-type IndicesPair = [number, number];
+export type IndicesPair = [number, number];
 
+// A top-level entity after `bcv_passage` has processed a grammar match. Most
+// entities carry `passages`; `stop` and `translation_sequence` intentionally do
+// not.
 export interface EntityCollection {
 	absolute_indices: IndicesPair;
-	alternates?: Entity[];
-	enclosed_indices: IndicesPair;
-	end: StartEndInterface;
-	entity_id: number;
-	indices: IndicesPair;
 	original_type?: EntityType;
-	osis: string;
 	passages?: Entity[];
-	start: StartEndInterface;
-	translations: string[];
 	type: EntityType;
-	value: GrammarMatchInterface[] | GrammarMatchInterface[][];
+	value: PassageEntityInterface[] | PassageEntityInterface[][] | string | number;
+}
+
+export interface EntityCollectionArrayValue extends EntityCollection {
+	value: PassageEntityInterface[] | PassageEntityInterface[][];
 }
 
 export interface Entity {
@@ -194,10 +193,16 @@ export interface Entity {
 	valid: ValidInterface;
 }
 
-export type EntityType = "b" | "b_pre" | "b_range" | "b_range_pre" | "b_range_start" | "base" | "bc" | "bcv" | "context" | "ff" | "integer" | "range" | "range_end_b" | "sequence" | "translation_sequence";
+// Every node type the grammar or the passage processor can produce: the passage-handler names plus the few types that never get their own handler.
+export type EntityType = PassageHandlerKey | "title" | "translation" | "c_explicit" | "v_explicit";
+
+// A start or end object whose book is known to exist: past the `valid` gate on the way to OSIS output, or inside the `validate_known_*_book` validators. The base interface leaves `b` optional because invalid references (`start_book_not_defined`) genuinely lack it.
+export interface StartEndWithBookInterface extends StartEndInterface {
+	b: string;
+}
 
 export interface StartEndInterface {
-	b: string;
+	b?: string;
 	c?: number;
 	extra?: string;
 	original_object?: StartEndInterface;
@@ -255,12 +260,12 @@ export interface BCVPassageInterface {
 	translations: BCVTranslationsInterface;
 	validators: BCVValidatorsInterface;
 
-	handle_obj(passage: GrammarMatchInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn;
-	pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | GrammarMatchInterface | null;
+	handle_obj(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn;
+	pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | null;
 }
 
 export interface BCVValidatorsInterface {
-	validate_ref(translations: TranslationSequenceInterface[] | null, start: StartEndInterface, end?: StartEndInterface | null): ValidInterface;
+	validate_ref(translations: TranslationSequenceInterface[] | null | undefined, start: StartEndInterface, end?: StartEndInterface | null): ValidInterface;
 	validate_start_ref(system: string, start: StartEndInterface, messages: MessageInterface): [boolean, MessageInterface];
 	validate_end_ref(system: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface): [boolean, MessageInterface];
 }
@@ -302,6 +307,8 @@ export interface BCVTranslationsInterface {
 	current_system: string;
 	systems: {
 		[key: string]: TranslationInterface;
+		current: CompleteTranslationInterface;
+		default: CompleteTranslationInterface;
 	};
 }
 
@@ -325,6 +332,11 @@ export interface TranslationInterface {
 	translation?: string;
 }
 
+export interface CompleteTranslationInterface extends TranslationInterface {
+	chapters: { [key: string]: number[] };
+	order: { [key: string]: number };
+}
+
 export interface PublicTranslationInterface {
 	alias: string;
 	books: string[];
@@ -334,7 +346,7 @@ export interface PublicTranslationInterface {
 }
 
 export interface BookMatchInterface {
-	context?: string;
+	context?: ContextInterface;
 	match?: string;
 	parsed: string[] | string;
 	start_index?: number;
@@ -342,15 +354,12 @@ export interface BookMatchInterface {
 	value: string;
 }
 
-export interface GrammarMatchInterface {
+// The objects the grammar emits are the same objects that `bcv_passage` later decorates with `passages`, `start_context`, and so on--`PassageEntityInterface` describes the decorated stage. The grammar always sets `type`, `value`, and `indices`, so this view of the same objects makes them required.
+export interface GrammarMatchInterface extends PassageEntityInterface {
 	absolute_indices?: IndicesPair;
-	explicit_context?: "c";
-	indices?: IndicesPair;
-	match?: string;
-	partial?: string[];
-	start_index?: number;
+	indices: IndicesPair;
 	type: EntityType;
-	value: GrammarMatchInterface[] | string | number;
+	value: PassageEntityInterface[] | PassageEntityInterface[][] | string | number;
 }
 
 export type PassageHandlerKey =
@@ -384,33 +393,69 @@ export type PassageHandlerKey =
 	| "v"
 	| "word";
 
-export type OsisEntityInterface = {
-	enclosed_indices?: IndicesPair;
-	end?: StartEndInterface;
-	entities: OsisEntityInterface[] | Entity[];
+interface OsisEntityBase {
 	entity_id: number;
 	indices: IndicesPair;
-	is_enclosed_last?: boolean;
 	osis: string;
-	start?: StartEndInterface;
 	translations: string[];
+}
+
+// A single parsed passage. `enclosed_indices` is always present as a property,
+// but is undefined when the passage wasn't enclosed.
+export interface OsisPassageEntityInterface extends OsisEntityBase {
+	enclosed_indices: IndicesPair | undefined;
+	end: StartEndInterface;
+	entities: Entity[];
+	is_enclosed_last?: boolean;
+	start: StartEndInterface;
 	type?: EntityType;
 }
+
+export interface OsisSequenceEntityInterface extends OsisPassageEntityInterface {
+	enclosed_indices: IndicesPair;
+}
+
+// The combined public object returned when sequence combination is enabled.
+export interface OsisEntityCollectionInterface extends OsisEntityBase {
+	entities: OsisPassageEntityInterface[];
+}
+
+export type OsisEntityInterface = OsisPassageEntityInterface | OsisEntityCollectionInterface;
 
 export interface PassageEntityInterface {
 	absolute_indices?: [number | null, number | null];
 	alternates?: Entity[];
 	enclosed_absolute_indices?: IndicesPair;
+	explicit_context?: "c";
 	indices?: IndicesPair;
 	match?: string;
-	original_type?: PassageHandlerKey;
-	original_value?: PassageEntityInterface[] | GrammarMatchInterface[] | string | number;
+	original_type?: EntityType;
+	original_value?: PassageEntityInterface[] | PassageEntityInterface[][] | string | number;
 	passages?: Entity[];
-	partial?: string | string[];
+	partial?: string | string[] | null;
 	start_context?: ContextInterface;
 	start_index?: number;
-	type?: PassageHandlerKey;
-	value?: PassageEntityInterface[] | GrammarMatchInterface[] | string | number;
+	type?: EntityType;
+	value?: PassageEntityInterface[] | PassageEntityInterface[][] | string | number;
+}
+
+/* The grammar guarantees the shape of `value` for each node `type`: container types like `bc` or `range` carry an array of child entities; `b`-like types carry a number (an index into the matched books, or the number itself for `integer`); `sequence` types carry one array of entities per item in the sequence. Passage handlers are dispatched by `type`, so each handler can rely on the shape for its type. */
+export interface PassageEntityArrayValue extends PassageEntityInterface {
+	value: PassageEntityInterface[];
+}
+
+export interface PassageEntityNumberValue extends PassageEntityInterface {
+	value: number;
+}
+
+export interface PassageEntitySequenceValue extends PassageEntityInterface {
+	value: PassageEntityInterface[][];
+}
+
+// The synthetic root node that `bcv_matcher` wraps around grammar output. It has no `indices` of its own; `base()` uses `match` and `start_index` to calculate the base indices for all the nodes inside it.
+export interface GrammarBaseInterface extends PassageEntityArrayValue {
+	match: string;
+	start_index: number;
 }
 
 export interface IndicesInterface {

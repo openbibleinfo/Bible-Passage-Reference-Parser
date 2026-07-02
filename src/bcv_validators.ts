@@ -1,6 +1,6 @@
 // This class validates Bible references against versification systems.
 
-import { BCVParserOptions, BCVTranslationsInterface, BCVValidatorsInterface, MessageInterface, StartEndInterface, TranslationSequenceInterface, ValidInterface } from "./types";
+import { BCVParserOptions, BCVTranslationsInterface, BCVValidatorsInterface, MessageInterface, StartEndInterface, StartEndWithBookInterface, TranslationSequenceInterface, ValidInterface } from "./types";
 
 export default class bcv_validators implements BCVValidatorsInterface {
 private options: BCVParserOptions;
@@ -12,7 +12,7 @@ constructor(options: BCVParserOptions, translations: BCVTranslationsInterface) {
 }
 
 // Given a start and optional end bcv object, validate that the verse exists and is valid. It returns a `true` value for `valid` if any of the translations is valid.
-public validate_ref(translations: TranslationSequenceInterface[] | null, start: StartEndInterface, end: StartEndInterface | null = null): ValidInterface {
+public validate_ref(translations: TranslationSequenceInterface[] | null | undefined, start: StartEndInterface, end: StartEndInterface | null = null): ValidInterface {
 	// If no translations are provided, assume a single translation that uses the current versification system.
 	if (!translations || translations.length === 0 || !Array.isArray(translations)) {
 		translations = [{
@@ -51,7 +51,7 @@ public validate_ref(translations: TranslationSequenceInterface[] | null, start: 
 // The end ref pretty much just has to be after the start ref; beyond the book, we don't require the chapter or verse to exist. This approach is useful when people get end verses wrong.
 public validate_end_ref(system: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface): [boolean, MessageInterface] {
 	// All keys always exist in `current`.
-	const order_system = (this.translations.systems[system]?.order) ? system : "current";
+	const order = this.translations.systems[system]?.order || this.translations.systems.current.order;
 	// Matt 0
 	if (end.c === 0) {
 		messages.end_chapter_is_zero = 1;
@@ -71,8 +71,8 @@ public validate_end_ref(system: string, start: StartEndInterface, end: StartEndI
 		}
 	}
 	// Matt-Mark
-	if (end.b && this.translations.systems[order_system].order[end.b]) {
-		valid = this.validate_known_end_book(system, order_system, start, end, valid, messages);
+	if (end.b && order[end.b] != null) {
+		valid = this.validate_known_end_book(system, order, start, end as StartEndWithBookInterface, valid, messages);
 	// Matt 5:1-None 6
 	} else {
 		valid = false;
@@ -82,17 +82,17 @@ public validate_end_ref(system: string, start: StartEndInterface, end: StartEndI
 }
 
 // Validate when the end book is known to exist. This function makes `validate_end_ref` easier to follow.
-private validate_known_end_book(system: string, order_system: string, start: StartEndInterface, end: StartEndInterface, valid: boolean, messages: MessageInterface): boolean {
+private validate_known_end_book(system: string, order: Record<string, number>, start: StartEndInterface, end: StartEndWithBookInterface, valid: boolean, messages: MessageInterface): boolean {
 	// Use the translation-specific number of chapters if it exists; otherwise, use the current versification system.
 	const chapter_array = this.translations.systems[system]?.chapters?.[end.b] || this.translations.systems.current.chapters[end.b];
 	// Even if the `passage_existence_strategy` doesn't include `c`, make sure to treat single-chapter books as single-chapter books.
 	if (end.c == null && chapter_array.length === 1) {
 		end.c = 1;
 	}
-	// Mark 4-Matt 5, None 4-Matt 5
+	// Mark 4-Matt 5, None 4-Matt 5. The start book may be undefined; an undefined key reads as a missing entry, which the `!= null` check handles.
 	if (
-		this.translations.systems[order_system].order[start.b] != null &&
-		this.translations.systems[order_system].order[start.b] > this.translations.systems[order_system].order[end.b]
+		order[start.b as string] != null &&
+		order[start.b as string] > order[end.b]
 		) {
 			if (this.options.passage_existence_strategy.indexOf("b") >= 0) {
 				valid = false;
@@ -143,7 +143,7 @@ private validate_known_end_book(system: string, order_system: string, start: Sta
 }
 
 // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
-private validate_known_start_book(system: string, start: StartEndInterface, messages: MessageInterface): boolean {
+private validate_known_start_book(system: string, start: StartEndWithBookInterface, messages: MessageInterface): boolean {
 	// Start by assuming `valid` is `true`.
 	let valid = true;
 	// If no chapter is specified, assume 1.
@@ -194,7 +194,7 @@ private validate_known_start_book(system: string, start: StartEndInterface, mess
 	// Matt 50
 	} else {
 		// If the book is single-chapter and we're referencing a different chapter.
-		const chapter_array_length = chapter_array.length
+		const chapter_array_length = chapter_array.length;
 		if (
 			start.c !== 1 &&
 			chapter_array_length === 1
@@ -216,15 +216,15 @@ private validate_known_start_book(system: string, start: StartEndInterface, mess
 public validate_start_ref(system: string, start: StartEndInterface, messages: MessageInterface): [boolean, MessageInterface] {
 	let valid = true;
 	// If `order` exists, it's always fully specified; there are no gaps. `chapters` is different--it isn't always fully specified for every book, outside of `current`.
-	const order_system = (this.translations.systems[system]?.order) ? system : "current";
+	const order = this.translations.systems[system]?.order || this.translations.systems.current.order;
 	// An unusual situation in which there's no defined start book. This only happens when a `c` becomes dissociated from its `b`.
 	if (!start.b) {
 		// No book defined
 		valid = false;
 		messages.start_book_not_defined = true;
 	// Matt. The book is a known book.
-	} else if (this.translations.systems[order_system].order[start.b]) {
-		valid = this.validate_known_start_book(system, start, messages);
+	} else if (order[start.b] != null) {
+		valid = this.validate_known_start_book(system, start as StartEndWithBookInterface, messages);
 	// None 2:1 (book doesn't exist)
 	} else {
 		if (this.options.passage_existence_strategy.indexOf("b") >= 0) {

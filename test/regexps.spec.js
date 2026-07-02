@@ -147,7 +147,7 @@ describe("Testament overlap", () => {
 			["a", "a", ["1Macc"]]
 		];
 		for (const [testaments, book_type, result] of conditions) {
-			let book_object = book_objects[book_type]
+			let book_object = book_objects[book_type];
 			expect(p.regexps_manager.get_testament_overlap(testaments, book_object)).toEqual(result);
 		}
 	});

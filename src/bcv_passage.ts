@@ -1,9 +1,9 @@
 // This class takes the output from the grammar and turns it into simpler objects for additional processing or for output.
 
-import { BCVParserOptions, BCVTranslationsInterface, GrammarMatchInterface, BookMatchInterface, PassageEntityInterface, StartEndInterface, ValidInterface, PassageReturn, Entity, EntityCollection, TranslationSequenceInterface, IndicesInterface, ContextInterface, ContextKey, PassageHandlerKey } from "./types";
+import { BCVParserOptions, BCVTranslationsInterface, BookMatchInterface, GrammarBaseInterface, IndicesPair, PassageEntityInterface, PassageEntityArrayValue, PassageEntityNumberValue, PassageEntitySequenceValue, StartEndInterface, ValidInterface, PassageReturn, Entity, TranslationSequenceInterface, IndicesInterface, ContextInterface, ContextKey, PassageHandlerKey } from "./types";
 import bcv_validators from "./bcv_validators";
 
-type RangeBoundary = PassageEntityInterface | GrammarMatchInterface;
+type RangeBoundary = PassageEntityInterface;
 type PassageHandler = (passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface) => PassageReturn;
 
 export default class bcv_passage {
@@ -34,11 +34,11 @@ public handle_array(passages: PassageEntityInterface[], accum: PassageEntityInte
 	return [accum, context];
 }
 
-public handle_obj(passage: GrammarMatchInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+public handle_obj(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	const type = passage.type as PassageHandlerKey;
 	const handler = this[type];
 	if (typeof handler === "function") {
-		return (handler as PassageHandler).call(this, passage as PassageEntityInterface, accum, context);
+		return (handler as PassageHandler).call(this, passage, accum, context);
 	}
 	return [accum, context];
 }
@@ -47,7 +47,7 @@ public handle_obj(passage: GrammarMatchInterface, accum: PassageEntityInterface[
 // These functions correspond to `type` attributes returned from the grammar. They're designed to be called multiple times if necessary.
 
 // Handle a book on its own ("Gen").
-private b(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private b(passage: PassageEntityNumberValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	// Clone the current context so that changes to this passage do not affect other passages.
 	passage.start_context = structuredClone(context);
 	// Prepare the passage object.
@@ -87,16 +87,16 @@ private b_pre(passage: PassageEntityInterface, accum: PassageEntityInterface[], 
 }
 
 // Handle book-only ranges ("Gen-Exod").
-private b_range(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private b_range(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	return this.range(passage, accum, context);
 }
 
 // Handle book-only ranges like "1-2 Samuel". It doesn't support multiple ambiguous ranges (like "1-2C"), which it probably shouldn't, anyway.
-private b_range_pre(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private b_range_pre(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	passage.passages = [];
 	// Extract the book portion.
-	const book = this.pluck("b", passage.value);
+	const book = this.pluck("b", passage.value)!;
 	// Call the `b` function with the extracted book. This returns a tuple: [accum, context]. The first element has the book information we're looking for.
 	let end: PassageEntityInterface;
 	[[end], context] = this.b(book, [], context);
@@ -105,7 +105,7 @@ private b_range_pre(passage: PassageEntityInterface, accum: PassageEntityInterfa
 	// `passage.value[0].value` is the number at the beginning of the range: `1` in `1-3 John`. In this case, the end book is 3John, so we replace the `3` in `3John` with a `1` in `start.b`. This works because this type of range only works with the same suffix, like "1-2 Sam".
 	passage.passages = [{
 		start: {
-			b: passage.value[0].value + end.passages[0].start.b.substring(1),
+			b: passage.value[0].value + end.passages[0].start.b!.substring(1),
 			type: "b"
 		},
 		end: end.passages[0].end,
@@ -120,18 +120,18 @@ private b_range_pre(passage: PassageEntityInterface, accum: PassageEntityInterfa
 }
 
 // Handle ranges with a book as the start of the range ("Gen-Exod 2").
-private b_range_start(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private b_range_start(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	return this.range(passage, accum, context);
 }
 
 // The base (root) object in the grammar controls the base indices.
-private base(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private base(passage: GrammarBaseInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	this.indices = this.calculate_indices(passage.match, passage.start_index);
 	return this.handle_array(passage.value, accum, context);
 }
 
 // Handle book-chapter ("Gen 1").
-private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private bc(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	// Clone the current context so that changes to this passage don't affect others.
 	passage.start_context = structuredClone(context);
 	passage.passages = [];
@@ -144,9 +144,9 @@ private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 	let adjust_end_index_by = 0;
 	const alternates: Entity[] = [];
 	// Get the book value and iterate over all parsed versions of that book name.
-	for (const b of this.books[this.pluck("b", passage.value).value].parsed) {
+	for (const b of this.books[this.pluck("b", passage.value)!.value].parsed) {
 		// By default, we assume we're validating a chapter reference.
-		let context_key = "c";
+		let context_key: "c" | "v" = "c";
 		// Validate the reference for the given book and chapter.
 		const valid = this.validate_ref(passage.start_context.translations, { b, c });
 		const obj: Entity = {
@@ -185,7 +185,7 @@ private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 		obj.end[context_key] = obj.start[context_key];
 		// Define any partials for future processing.
 		if (partial != null) {
-			const key = (context_key === "v") ? "p" : "p_if_verse";
+			const key: "p" | "p_if_verse" = (context_key === "v") ? "p" : "p_if_verse";
 			obj.start[key] = partial;
 			obj.end[key] = partial;
 		}
@@ -209,30 +209,30 @@ private bc(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 }
 
 // Handle "Ps 3 title".
-private bc_title(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private bc_title(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	// Clone the current context so that changes to this passage don't affect others.
 	passage.start_context = structuredClone(context);
 	// First, check to see whether we're dealing with Psalms. If not, treat it as a straight `bc`.
-	const bc_pluck = this.pluck("bc", passage.value);
-	let bc: EntityCollection;
-	[[bc], context] = this.bc(bc_pluck, [], context);
-	// Check the first two characters to handle both `Ps` and `Ps151`.
-	if (bc.passages![0].start.b.substring(0, 2) !== "Ps" && bc.passages![0].alternates) {
+	const bc_pluck = this.pluck("bc", passage.value)!;
+	let bc: PassageEntityArrayValue;
+	[[bc], context] = this.bc(bc_pluck, [], context) as [PassageEntityArrayValue[], ContextInterface];
+	// Check the first two characters to handle both `Ps` and `Ps151`. The `bc` handler always sets `start.b` from a parsed book name.
+	if (bc.passages![0].start.b!.substring(0, 2) !== "Ps" && bc.passages![0].alternates) {
 		for (const alternate of bc.passages![0].alternates) {
 			// If Psalms is one of the alternates, promote it to the primary passage and skip checking anything else--we know it's right.
-			if (alternate.start.b.substring(0, 2) === "Ps") {
+			if (alternate.start.b!.substring(0, 2) === "Ps") {
 				bc.passages![0] = structuredClone(alternate);
 				break;
 			}
 		}
 	}
 	// If it's still not Psalms, just return what we got from treating it as a `bc`.
-	if (bc.passages![0].start.b.substring(0, 2) !== "Ps") {
+	if (bc.passages![0].start.b!.substring(0, 2) !== "Ps") {
 		accum.push(bc);
 		return [accum, context];
 	}
 	// Overwrite all other book possibilities; the presence of "title" indicates a Psalm. If the previous possibilities were `["Song", "Ps"]`, they're now just `["Ps"]`. Even if it's really `Ps151`, we want `Ps` here because other functions expect it.
-	this.books[this.pluck("b", bc.value).value].parsed = ["Ps"];
+	this.books[this.pluck("b", bc.value)!.value].parsed = ["Ps"];
 	// Set the `indices` of the new `v` object to the indices of the `title`. We won't actually use these indices anywhere.
 	let title = this.pluck("title", passage.value);
 	// The `title` will be null if it's being reparsed from a future translation. In that case, we use a `v` object.
@@ -254,20 +254,20 @@ private bc_title(passage: PassageEntityInterface, accum: PassageEntityInterface[
 }
 
 // Handle book chapter:verse ("Gen 1:1").
-private bcv(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private bcv(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	// Clone the current context so that changes to this passage don't affect others.
 	passage.start_context = structuredClone(context);
 	passage.passages = [];
 	// Reset the full context since there's a book.
 	this.reset_context(context, ["b", "c", "v"]);
-	const bc = this.pluck("bc", passage.value);
+	const bc = this.pluck("bc", passage.value)!;
 	let c = this.pluck_integer("c", bc.value).value;
 	const verse_integer = this.pluck_integer("v", passage.value);
 	let v = verse_integer.value;
 	const partial = this.get_partial_verse(verse_integer);
 	const alternates: Entity[] = [];
 	// Iterate over all parsed variations of the book name.
-	for (const b of this.books[this.pluck("b", bc.value).value].parsed) {
+	for (const b of this.books[this.pluck("b", bc.value)!.value].parsed) {
 		const valid = this.validate_ref(passage.start_context.translations, { b, c, v });
 		[c, v] = this.fix_start_zeroes(valid, c, v);
 		const obj: Entity = {
@@ -295,11 +295,11 @@ private bcv(passage: PassageEntityInterface, accum: PassageEntityInterface[], co
 }
 
 // Handle "Philemon verse 6." This is unusual.
-private bv(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private bv(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	const [b, v] = passage.value;
 	// Construct a virtual BCV object with a first chapter.
-	let bcv: Partial<EntityCollection> = {
+	let bcv: PassageEntityArrayValue = {
 		indices: passage.indices,
 		value: [
 			{
@@ -322,10 +322,10 @@ private bv(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 private c(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// If it's an integer, we want the value directly. If it's an actual chapter object, we want the value from the integer object inside it.
-	const chapter_integer = (passage.type === "integer") ? passage : this.pluck("integer", passage.value);
+	const chapter_integer = (passage.type === "integer") ? (passage as PassageEntityNumberValue) : this.pluck("integer", (passage as PassageEntityArrayValue).value)!;
 	let c = chapter_integer.value;
 	const partial = this.get_partial_verse(chapter_integer);
-	const valid = this.validate_ref(passage.start_context.translations, { b: context.b!, c });
+	const valid = this.validate_ref(passage.start_context.translations, { b: context.b, c });
 	// If it's a single-chapter book, then treat it as a verse even if it looks like a chapter (unless its value is `1`).
 	if (!valid.valid && valid.messages?.start_chapter_not_exist_in_single_chapter_book) {
 		return this.v(passage, accum, context);
@@ -359,13 +359,15 @@ private c(passage: PassageEntityInterface, accum: PassageEntityInterface[], cont
 private c_psalm(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	// We don't need to preserve the original `type` for reparsing later since it'll always turn into a `bc`.
 	passage.type = "bc";
+	// A `c_psalm` node's `value` is the index of the matched book.
+	const book_index = passage.value as number;
 	// This string always starts with the chapter number, followed by other letters (e.g., "23rd").
-	const c = parseInt(this.books[passage.value].value.match(/^\d+/)![0], 10);
+	const c = parseInt(this.books[book_index].value.match(/^\d+/)![0], 10);
 	// Rebuild the passage value as a `bc`.
 	passage.value = [
 		{
 			type: "b",
-			value: passage.value,
+			value: book_index,
 			indices: passage.indices
 		},
 		{
@@ -374,11 +376,11 @@ private c_psalm(passage: PassageEntityInterface, accum: PassageEntityInterface[]
 			indices: passage.indices
 		}
 	];
-	return this.bc(passage, accum, context);
+	return this.bc(passage as PassageEntityArrayValue, accum, context);
 }
 
 // Handle "Ps 3, ch 4:title"
-private c_title(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private c_title(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// If it's not a Psalm, treat it as a regular chapter. We don't convert the structure for reparsing.
 	if (context.b !== "Ps") {
@@ -386,7 +388,7 @@ private c_title(passage: PassageEntityInterface, accum: PassageEntityInterface[]
 		return this.c(passage.value[0], accum, context);
 	}
 	// For Psalms, add a `v` object and treat it as a `cv`.
-	const title = this.pluck("title", passage.value);
+	const title = this.pluck("title", passage.value)!;
 	// Insert a verse object set to verse 1.
 	passage.value[1] = {
 		type: "v",
@@ -402,7 +404,7 @@ private c_title(passage: PassageEntityInterface, accum: PassageEntityInterface[]
 }
 
 // Handle "Chapters 1-2 from Daniel".
-private cb_range(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private cb_range(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	// We don't need to preserve the original `type` for reparsing.
 	passage.type = "range";
 	const [b, start_c, end_c] = passage.value;
@@ -413,8 +415,8 @@ private cb_range(passage: PassageEntityInterface, accum: PassageEntityInterface[
 }
 
 // Use an object to establish context for later objects but don't otherwise use it.
-private context(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
-	passage.start_context = structuredClone(context );
+private context(passage: PassageEntityNumberValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+	passage.start_context = structuredClone(context);
 	passage.passages = [];
 	// Copy any contextual properties from the book to the current context.
 	context = Object.assign(context, this.books[passage.value].context);
@@ -423,14 +425,14 @@ private context(passage: PassageEntityInterface, accum: PassageEntityInterface[]
 }
 
 // Handle a chapter:verse.
-private cv(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private cv(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// Pull out the individual values.
 	let c = this.pluck_integer("c", passage.value).value;
 	const verse_integer = this.pluck_integer("v", passage.value);
 	let v = verse_integer.value;
 	const partial = this.get_partial_verse(verse_integer);
-	const valid = this.validate_ref(passage.start_context.translations, { b: context.b!, c, v });
+	const valid = this.validate_ref(passage.start_context.translations, { b: context.b, c, v });
 	[c, v] = this.fix_start_zeroes(valid, c, v);
 	// Construct the passage object.
 	passage.passages = [{
@@ -455,7 +457,7 @@ private cv(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 }
 
 // Handle "23rd Psalm verse 1" by recasting it as a `bcv`.
-private cv_psalm(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private cv_psalm(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// We don't need to preserve the original `type` for reparsing.
 	passage.type = "bcv";
@@ -468,7 +470,7 @@ private cv_psalm(passage: PassageEntityInterface, accum: PassageEntityInterface[
 }
 
 // Handle "and following" (e.g., "Matt 1:1ff") by assuming it means to continue to the end of the current context (end of chapter if a verse is given, end of book if a chapter is given).
-private ff(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private ff(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// Create a virtual end to pass to `this.range`. The `999` just means to the end, since numbers that are too high snap back to the highest valid number.
 	passage.value.push({
@@ -476,14 +478,14 @@ private ff(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 		indices: structuredClone(passage.indices),
 		value: 999
 	});
-	[[passage], context] = this.range(passage, [], passage.start_context);
+	[[passage], context] = this.range(passage, [], passage.start_context) as [PassageEntityArrayValue[], ContextInterface];
 	// Set the indices to include the end of the range (the "ff").
 	passage.value[0].indices = passage.value[1].indices;
 	passage.value[0].absolute_indices = passage.value[1].absolute_indices;
 	// Remove the virtual end so it doesn't appear in future reparsing.
 	passage.value.pop();
 	// Ignore any warnings that the end chapter or verse doesn't exist since "ff" is deliberately open-ended.
-	for (const key of ["end_verse_not_exist", "end_chapter_not_exist"]) {
+	for (const key of ["end_verse_not_exist", "end_chapter_not_exist"] as const) {
 		delete passage.passages[0].valid.messages[key];
 	}
 	// `translations` and `absolute_indices` are handled in `this.range`, so they're not handled here.
@@ -492,19 +494,19 @@ private ff(passage: PassageEntityInterface, accum: PassageEntityInterface[], con
 }
 
 // Pass the integer off to whichever handler is relevant.
-private integer(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private integer(passage: PassageEntityNumberValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	if (context.v == null) {
 		return this.c(passage, accum, context);
 	}
-	return this.v(passage, accum, context)
+	return this.v(passage, accum, context);
 }
 
 // Handle "Ps 3-4:title" or "Acts 2:22-27. Title"
-private integer_title(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private integer_title(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// If it's not Psalms, treat it as a straight integer, ignoring the title.
 	if (context.b !== "Ps") {
-		return this.integer(passage.value[0], accum, context);
+		return this.integer(passage.value[0] as PassageEntityNumberValue, accum, context);
 	}
 	// Change the integer to a `c` object for passing to `this.cv`. Preserve the indices.
 	passage.value[0] = {
@@ -518,7 +520,7 @@ private integer_title(passage: PassageEntityInterface, accum: PassageEntityInter
 	passage.value[1].value = [{
 		type: "integer",
 		value: 1,
-		indices: structuredClone(passage.value[1].value.indices)
+		indices: structuredClone(passage.value[1].indices)
 	}];
 	// We don't need to preserve the original `type` for reparsing.
 	passage.type = "cv";
@@ -526,7 +528,7 @@ private integer_title(passage: PassageEntityInterface, accum: PassageEntityInter
 }
 
 // Handle "next verse" (e.g., in Polish, "Matt 1:1n" should be treated as "Matt 1:1-2"). It crosses chapter boundaries but not book boundaries. When given a whole chapter, it assumes the next chapter (again, not crossing book boundaries). The logic here is similar to that of `this.ff`.
-private next_v(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private next_v(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	// Create a virtual end to pass to `this.range`. Start out by just incrementing the last integer in the `passage`. The grammar should always produce at least one object in `passage` with an integer, so this `??` shouldn't be necessary.
 	const prev_integer = this.pluck_last_recursively("integer", passage.value) ?? { value: 1 };
@@ -537,8 +539,8 @@ private next_v(passage: PassageEntityInterface, accum: PassageEntityInterface[],
 		value: prev_integer.value + 1
 	});
 	// We don't overwrite the `passage` object here the way we do in `this.ff` because the next `if` statement needs access to the original `passage`.
-	let psg: PassageEntityInterface;
-	[[psg], context] = this.range(passage, [], passage.start_context);
+	let psg: PassageEntityArrayValue;
+	[[psg], context] = this.range(passage, [], passage.start_context) as [PassageEntityArrayValue[], ContextInterface];
 	// If it's at the end of the chapter, try the first verse of the next chapter (unless at the end of a book). Only try if the start verse is valid.
 	if (
 		psg.passages[0].valid.messages.end_verse_not_exist &&
@@ -574,7 +576,7 @@ private next_v(passage: PassageEntityInterface, accum: PassageEntityInterface[],
 			]
 		});
 		// Try parsing again with the adjusted "next chapter" logic.
-		[[psg], context] = this.range(passage, [], passage.start_context);
+		[[psg], context] = this.range(passage, [], passage.start_context) as [PassageEntityArrayValue[], ContextInterface];
 	}
 	// Set the indices to include the end of the range (the "n" in Polish).
 	psg.value[0].indices = psg.value[1].indices;
@@ -582,7 +584,7 @@ private next_v(passage: PassageEntityInterface, accum: PassageEntityInterface[],
 	// Remove the temporary end object.
 	psg.value.pop();
 	// Remove warnings about non-existent end verses/chapters because "n" means we intended to go forward.
-	for (const key of ["end_verse_not_exist", "end_chapter_not_exist"]) {
+	for (const key of ["end_verse_not_exist", "end_chapter_not_exist"] as const) {
 		delete passage.passages[0].valid.messages[key];
 	}
 	// `translations` and `absolute_indices` are handled in `this.range`.
@@ -591,7 +593,7 @@ private next_v(passage: PassageEntityInterface, accum: PassageEntityInterface[],
 }
 
 // Handle a sequence of references. This is the only function that can return more than one object in the `passage.passages` array.
-private sequence(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private sequence(passage: PassageEntitySequenceValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	passage.passages = [];
 	for (const obj of passage.value) {
@@ -599,20 +601,20 @@ private sequence(passage: PassageEntityInterface, accum: PassageEntityInterface[
 		// If chapter context is set explicitly, then adjust the context accordingly.
 		if (typeof obj[0].explicit_context === "string" && obj[0].explicit_context === "c") {
 			delete context.v;
-		} 
+		}
 		[[psg], context] = this.handle_array(obj, [], context);
 		// There's only more than one `sub_psg` if there was a range error.
 		for (const sub_psg of psg.passages) {
 			// Inherit the `type` from the parent if it doesn't already exist.
 			sub_psg.type ??= psg.type;
-			// Add the indices so we can possibly retrieve them later, depending on our `sequence_combination_strategy`.
-			sub_psg.absolute_indices ??= psg.absolute_indices;
+			// Add the indices so we can possibly retrieve them later, depending on our `sequence_combination_strategy`. The `psg` was just processed by `handle_array`, so its `absolute_indices` are set and numeric.
+			sub_psg.absolute_indices ??= psg.absolute_indices as IndicesPair;
 			// Apply translations if present in the start_context.
 			if (psg.start_context.translations) {
 				sub_psg.translations = psg.start_context.translations;
 			}
 			// Save the index of any closing punctuation if the sequence ends with a `sequence_post_enclosed`.
-			sub_psg.enclosed_absolute_indices = (psg.type === "sequence_post_enclosed") ? [ ...psg.absolute_indices ] : [-1, -1];
+			sub_psg.enclosed_absolute_indices = (psg.type === "sequence_post_enclosed") ? [...psg.absolute_indices as IndicesPair] : [-1, -1];
 			passage.passages.push(sub_psg);
 		}
 	}
@@ -633,19 +635,19 @@ private sequence(passage: PassageEntityInterface, accum: PassageEntityInterface[
 }
 
 // Handle a sequence like "Ps 119 (118)," with parentheses. We want to include the closing parenthesis in the indices if `sequence_combination_strategy` is `combine` or if there's a consecutive.
-private sequence_post_enclosed(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private sequence_post_enclosed(passage: PassageEntitySequenceValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	return this.sequence(passage, accum, context);
 }
 
 // Handle a verse, either as part of a sequence or because someone explicitly wrote "verse".
 private v(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
-	const verse_integer = (passage.type === "integer") ? passage : this.pluck("integer", passage.value);
+	const verse_integer = (passage.type === "integer") ? (passage as PassageEntityNumberValue) : this.pluck("integer", (passage as PassageEntityArrayValue).value)!;
 	let v = verse_integer.value;
 	const partial = this.get_partial_verse(verse_integer);
 	// The chapter context might not be set if it follows a book in a sequence.
 	const c = (context.c != null) ? context.c : 1;
-	const valid = this.validate_ref(passage.start_context.translations, { b: context.b!, c, v });
+	const valid = this.validate_ref(passage.start_context.translations, { b: context.b, c, v });
 	const [, fixed_v] = this.fix_start_zeroes(valid, 0, v);
 	passage.passages = [{
 		start: { b: context.b, c, v: fixed_v },
@@ -667,7 +669,7 @@ private v(passage: PassageEntityInterface, accum: PassageEntityInterface[], cont
 
 // ## Ranges
 // Handle any type of start and end range. It doesn't directly return multiple passages, but if there's an error parsing the range, we may convert it into a sequence.
-private range(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private range(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	passage.start_context = structuredClone(context);
 	let [start, end] = passage.value;
 	// `this.handle_obj` always returns exactly one object that we're interested in.
@@ -715,10 +717,7 @@ private range(passage: PassageEntityInterface, accum: PassageEntityInterface[], 
 		end_obj.p = end.passages[0].end.p;
 	}
 	if (end.passages[0].end.p_if_verse != null) {
-		end_obj.p = end.passages[0].end.p_if_verse;
-	}
-	if (start.passages[0].start.p_if_verse != null) {
-		start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+		end_obj.p_if_verse = end.passages[0].end.p_if_verse;
 	}
 	// Make sure references like `Ps 20:1-0:4` don't change to `Ps 20:1-1:4`. In other words, don't upgrade zero end ranges.
 	if (end.passages[0].valid.messages.start_chapter_is_zero) {
@@ -762,33 +761,34 @@ private range(passage: PassageEntityInterface, accum: PassageEntityInterface[], 
 }
 
 // For Ps 122-23, treat the 23 as 123.
-private range_change_end(passage: PassageEntityInterface, accum: PassageEntityInterface[], new_end: number): PassageReturn {
-	const [start, end] = passage.value;		
+private range_change_end(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], new_end: number): PassageReturn {
+	const [start, end] = passage.value;
 	// Modify `end` in-place with values from `new_end`. The `value` and `original_value` are numbers.
 	if (end.type === "integer") {
 		end.original_value = end.value;
 		end.value = new_end;
 	} else if (end.type === "v") {
-		const new_obj = this.pluck("integer", end.value);
+		const new_obj = this.pluck("integer", (end as PassageEntityArrayValue).value)!;
 		new_obj.original_value = new_obj.value;
 		new_obj.value = new_end;
 	} else if (end.type === "cv") {
 		// Get the chapter object and assign it (in place) the new value.
-		const new_obj = this.pluck_integer("c", end.value);
+		const new_obj = this.pluck_integer("c", (end as PassageEntityArrayValue).value);
 		new_obj.original_value = new_obj.value;
 		new_obj.value = new_end;
 	}
 	// Now that there's a new `end` value, reparse it as expected.
-	return this.handle_obj(passage, accum, passage.start_context);	}
+	return this.handle_obj(passage, accum, passage.start_context);
+}
 
 // For "Jer 33-11", treat the "11" as a verse.
-private range_change_integer_end(passage: PassageEntityInterface, accum: PassageEntityInterface[]): PassageReturn {
+private range_change_integer_end(passage: PassageEntityArrayValue, accum: PassageEntityInterface[]): PassageReturn {
 	const [start, end] = passage.value;
-	// We want to retain the originals beacuse a future reparsing may lead to a different outcome.
+	// We want to retain the originals because a future reparsing may lead to a different outcome.
 	passage.original_type ??= passage.type;
 	passage.original_value ??= [start, end];
 	// The `start.type` is only `bc`, `c`, or `integer`; we're just adding a `v` for the first two.
-	passage.type = (start.type === "integer") ? "cv" : start.type + "v";
+	passage.type = (start.type === "bc") ? "bcv" : "cv";
 	// We just changed the `passage.type` to `cv`, so turn the first object into a `c` object so that it'll parse correctly.
 	if (start.type === "integer") {
 		passage.value[0] = {
@@ -838,11 +838,11 @@ private range_check_new_end(translations: TranslationSequenceInterface[], start_
 }
 
 // Handle ranges with a book as the end of the range ("Gen 2-Exod"). It's not `b_range_end` because only objects that start with an explicit book name should start with `b`.
-private range_end_b(passage: PassageEntityInterface, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
+private range_end_b(passage: PassageEntityArrayValue, accum: PassageEntityInterface[], context: ContextInterface): PassageReturn {
 	return this.range(passage, accum, context);
 }
 
-// If a sequence has an end chapter/verse that's before the the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
+// If a sequence has an end chapter/verse that's before the start, check to see whether it can be salvaged: Gen 28-9 = Gen 28-29; Ps 101-24 = Ps 101-124. The `key` parameter is either `c` (for chapter) or `v` (for verse).
 private range_get_new_end_value(start_obj: StartEndInterface, end_obj: StartEndInterface, valid: ValidInterface, key: "c" | "v"): number {
 	let new_end = 0;
 	// If it's `0`, we can't salvage it by adding digits.
@@ -851,26 +851,29 @@ private range_get_new_end_value(start_obj: StartEndInterface, end_obj: StartEndI
 		(key === "v" && valid.messages?.end_verse_is_zero)) {
 		return new_end;
 	}
+	// We only get here when the validator reported that the end is before the start, a comparison it can only make when both values exist.
+	const start_value = start_obj[key]!;
+	const end_value = end_obj[key]!;
 	// `54-5`, not `54-43`, `54-3`, or `54-4`. The logic here checks if incorporating the same tens digit makes sense.
 	if (
-		start_obj[key] >= 10 &&
-		end_obj[key] < 10 &&
-		start_obj[key] - 10 * Math.floor(start_obj[key] / 10) < end_obj[key]) {
+		start_value >= 10 &&
+		end_value < 10 &&
+		start_value - 10 * Math.floor(start_value / 10) < end_value) {
 		// Add the start tens digit to the original end value: 54-5 = 54 through 50 + 5.
-		new_end = end_obj[key] + 10 * Math.floor(start_obj[key] / 10);
+		new_end = end_value + 10 * Math.floor(start_value / 10);
 	// 123-40, not 123-22 or 123-23; 123-4 is taken care of in the `if`.
 	} else if (
-		start_obj[key] >= 100 &&
-		end_obj[key] < 100 &&
-		start_obj[key] - 100 < end_obj[key]) {
+		start_value >= 100 &&
+		end_value < 100 &&
+		start_value - 100 < end_value) {
 		// Add 100 to the original end value: 100-12 = 100 through 100 + 12.
-		new_end = end_obj[key] + 100;
+		new_end = end_value + 100;
 	}
 	return new_end;
 }
 
 // The range doesn't look valid, but maybe we can fix it. If not, convert it to a sequence.
-private range_handle_invalid(valid: ValidInterface, passage: PassageEntityInterface, start: RangeBoundary, start_obj: StartEndInterface, end: RangeBoundary, end_obj: StartEndInterface, accum: PassageEntityInterface[]): PassageReturn {
+private range_handle_invalid(valid: ValidInterface, passage: PassageEntityArrayValue, start: RangeBoundary, start_obj: StartEndInterface, end: RangeBoundary, end_obj: StartEndInterface, accum: PassageEntityInterface[]): PassageReturn {
 	// Is it not valid because the end is before the start and the `end` is an `integer` (Matt 15-6) or a `cv` (Matt 15-6:2) (since anything else resets our expectations)? Only go with a `cv` if it's the chapter that's too low (to avoid doing weird things with 31:30-31:1).
 	if (
 		(valid.valid === false &&
@@ -896,7 +899,7 @@ private range_handle_invalid(valid: ValidInterface, passage: PassageEntityInterf
 		(end.type === "integer" || end.type === "v")
 		) {
 		// I don't know that `end.type` can ever be `v` here. Such a `c-v` pattern is parsed as `cv`.
-		const temp_value = (end.type === "v") ? this.pluck("integer", end.value) : end.value;
+		const temp_value = (end.type === "v") ? this.pluck("integer", (end as PassageEntityArrayValue).value) : end.value;
 		const temp_valid = this.validate_ref(passage.start_context.translations, {
 			b: start_obj.b,
 			c: start_obj.c,
@@ -910,13 +913,15 @@ private range_handle_invalid(valid: ValidInterface, passage: PassageEntityInterf
 	passage.original_type ??= passage.type;
 	passage.type = "sequence";
 	// The additional arrays here are used for the sequence.
-	[passage.original_value, passage.value] = [[start, end], [[start], [end]]];
+	const sequence_passage: PassageEntityInterface = passage;
+	sequence_passage.original_value = [start, end];
+	sequence_passage.value = [[start], [end]];
 	// Don't use the `context` object because we changed it in `this.range`.
-	return this.sequence(passage, accum, structuredClone(passage.start_context));
+	return this.sequence(sequence_passage as PassageEntitySequenceValue, accum, structuredClone(passage.start_context));
 }
 
 // The range looks valid, but we should check for some special cases.
-private range_handle_valid(valid: ValidInterface, passage: PassageEntityInterface, start: RangeBoundary, start_obj: StartEndInterface, end: RangeBoundary, end_obj: StartEndInterface, accum: PassageEntityInterface[]): [boolean, PassageReturn | null] {
+private range_handle_valid(valid: ValidInterface, passage: PassageEntityArrayValue, start: RangeBoundary, start_obj: StartEndInterface, end: RangeBoundary, end_obj: StartEndInterface, accum: PassageEntityInterface[]): [boolean, PassageReturn | null] {
 	// If Heb 13-15, treat it as Heb 13:15. This may be too clever for its own good. We check the `passage_existence_strategy` because otherwise `Gen 49-76` becomes `Gen.49.76`.
 	if (
 		valid.messages?.end_chapter_not_exist &&
@@ -924,7 +929,7 @@ private range_handle_valid(valid: ValidInterface, passage: PassageEntityInterfac
 		!start_obj.v &&
 		(end.type === "integer" || end.type === "v") &&
 		this.options.passage_existence_strategy.indexOf("v") >= 0) {
-		const temp_value = (end.type === "v") ? this.pluck("integer", end.value) : end.value;
+		const temp_value = (end.type === "v") ? this.pluck("integer", (end as PassageEntityArrayValue).value) : end.value;
 		const temp_valid = this.validate_ref(passage.start_context.translations, {
 				b: start_obj.b,
 				c: start_obj.c,
@@ -959,7 +964,7 @@ private range_validate(valid: ValidInterface, start_obj: StartEndInterface, end_
 			delete valid.messages.end_verse_is_zero;
 		}
 	} else if (valid.messages?.end_verse_not_exist) {
-		// If the end verse doesn't exist, snap to the maximum verse. Originally, `end_obj.v` was preserved `end_obj.original_v` was preserved here, but it's not necessary. If it were prserved, it would need to be deleted in `this.next_v`.
+		// If the end verse doesn't exist, snap to the maximum verse. Originally, `end_obj.v` was preserved as `end_obj.original_v` here, but it's not necessary. If it were preserved, it would need to be deleted in `this.next_v`.
 		end_obj.v = valid.messages.end_verse_not_exist;
 		// Don't preserve partial verses if it's snapped back.
 		delete end_obj.p;
@@ -993,8 +998,9 @@ private translation_sequence(passage: PassageEntityInterface, accum: PassageEnti
 		this.reset_context(context, ["translations"]);
 		return [accum, context];
 	}
+	const value = passage.value as [PassageEntityNumberValue, PassageEntityInterface[][]];
 	// First get all the translations in the sequence; the first one is separate from the others (which may not exist).
-	const first_book_index = passage.value[0]?.value;
+	const first_book_index = value[0].value;
 	if (typeof first_book_index === "number") {
 		const first_parsed = this.books[first_book_index]?.parsed;
 		if (typeof first_parsed === "string" && first_parsed.length > 0) {
@@ -1006,7 +1012,7 @@ private translation_sequence(passage: PassageEntityInterface, accum: PassageEnti
 		}
 	}
 	// Then get the rest (if they exist).
-	for (const val of passage.value[1] as PassageEntityInterface[]) {
+	for (const val of value[1]) {
 		// `val` is an array at this point.
 		const translation_obj = this.pluck("translation", val);
 		if (translation_obj == null || typeof translation_obj.value !== "number") {
@@ -1086,10 +1092,12 @@ private word(passage: PassageEntityInterface, accum: PassageEntityInterface[], c
 	return [accum, context];
 }
 
-
 // ## Utilities
-// Pluck the object or value matching a type from an array.
-public pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | GrammarMatchInterface | null {
+// Pluck the object or value matching a type from an array. The overloads reflect the value shape the grammar guarantees for each node type (see the value-shape interfaces in `types.d.ts`). A pluck can always miss, so every overload returns `null` if the type isn't present.
+public pluck(type: "b" | "integer", passages: PassageEntityInterface[]): PassageEntityNumberValue | null;
+public pluck(type: "bc" | "c" | "v", passages: PassageEntityInterface[]): PassageEntityArrayValue | null;
+public pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | null;
+public pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | null {
 	for (const passage of passages) {
 		if (passage && passage.type && passage.type === type) {
 			return passage;
@@ -1098,16 +1106,17 @@ public pluck(type: string, passages: PassageEntityInterface[]): PassageEntityInt
 	return null;
 }
 
-private pluck_integer(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | GrammarMatchInterface | null {
+private pluck_integer(type: "c" | "v", passages: PassageEntityInterface[]): PassageEntityNumberValue {
 	const outer = this.pluck(type, passages);
+	// The grammar guarantees that every `c` and `v` node contains an `integer`, and no caller has a missing-integer case to handle, so (as in `get_absolute_indices`) the assertion is centralized here instead of at every call site. A violation would throw in the caller either way.
 	if (outer == null || !Array.isArray(outer.value)) {
-		return null;
+		return null!;
 	}
-	return this.pluck("integer", outer.value);
+	return this.pluck("integer", outer.value)!;
 }
 
 // Pluck the last object or value matching a type, descending as needed into objects.
-private pluck_last_recursively(type: string, passages: PassageEntityInterface[]): PassageEntityInterface | GrammarMatchInterface | null {
+private pluck_last_recursively(type: "integer", passages: PassageEntityInterface[]): PassageEntityNumberValue | null {
 	for (let i = passages.length - 1; i >= 0; i--) {
 		const passage = passages[i];
 		// Skip null values.
@@ -1133,7 +1142,7 @@ private set_context_from_object(context: ContextInterface, keys: ContextKey[], o
 		if (obj[key] == null) {
 			continue;
 		}
-		context[key] = obj[key]
+		Reflect.set(context, key, obj[key]);
 	}
 }
 
@@ -1144,9 +1153,9 @@ private reset_context(context: ContextInterface, keys: ContextKey[]): void {
 	}
 }
 
-private get_partial_verse(object_with_partial: GrammarMatchInterface): string | null {
+private get_partial_verse(object_with_partial: PassageEntityInterface): string | null {
 	if (object_with_partial.type !== "integer") {
-		object_with_partial = this.pluck("integer", object_with_partial.value);
+		object_with_partial = this.pluck("integer", (object_with_partial as PassageEntityArrayValue).value)!;
 	}
 	if (typeof object_with_partial.partial === "string") {
 		return object_with_partial.partial;
@@ -1230,7 +1239,9 @@ private calculate_indices(match: string, adjust: number): IndicesInterface[] {
 }
 
 // Find the absolute string indices of start and end points.
-private get_absolute_indices([start, end]: number[]): [number | null, number | null] {
+private get_absolute_indices(indices: IndicesPair | undefined): [number | null, number | null] {
+	// Every node that reaches this point has `indices`: the grammar sets them on every node it produces, and synthetic nodes copy them from grammar nodes. The property is only optional because a few virtual nodes (discarded before getting here) omit it.
+	const [start, end] = indices!;
 	let start_out: number | null = null;
 	let end_out: number | null = null;
 
@@ -1263,9 +1274,9 @@ public validate_end_ref(...args: Parameters<bcv_validators["validate_end_ref"]>)
 
 // Apply common transformations at the end of handling a passage object with a book.
 private normalize_passage_and_alternates(passage: PassageEntityInterface, alternates: Entity[], adjust_end_index_by: number=0): void {
-	// If no valid variations were found, use the first one anyway.
+	// If no valid variations were found, use the first one anyway. Every book name has at least one parsed candidate, so `alternates` is never empty when `passages` is.
 	if (passage.passages.length === 0) {
-		passage.passages.push(alternates.shift());
+		passage.passages.push(alternates.shift()!);
 	}
 	// If there are alternate interpretations, store them.
 	if (alternates.length > 0) {

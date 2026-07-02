@@ -39,17 +39,17 @@ describe("peg_plugin auto coverage", () => {
 		const ast = {
 			code: {
 				children: [
-						{
-							name: "integer_value",
-							children: [
-								"  function peg$parseinteger_value() {\n",
-								"    return peg$FAILED;\n",
-								"  }\n"
-							]
-						}
-					]
-				}
-			};
+					{
+						name: "integer_value",
+						children: [
+							"  function peg$parseinteger_value() {\n",
+							"    return peg$FAILED;\n",
+							"  }\n"
+						]
+					}
+				]
+			}
+		};
 
 		runPlugin(ast);
 		const body = ast.code.children[0].children.join("");

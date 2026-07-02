@@ -41,12 +41,12 @@ get testaments(): BCVParserOptions["testaments"] {
 	return this.#testaments;
 }
 set testaments(filter: BCVParserOptions["testaments"]) {
-	if (filter === this.#testaments || filter.length === 0) {
+	if (filter === this.#testaments) {
 		return;
 	}
 	const filters = filter.split("");
 	let out = "";
-	// We know `filter` is at least one character long, so we don't need to check the length here.
+	// If `filter` is empty, `filters[0]` is `undefined`, and these checks safely fail.
 	if (filters[0] === "o") {
 		filters.shift();
 		out += "o";
@@ -58,6 +58,10 @@ set testaments(filter: BCVParserOptions["testaments"]) {
 	if (filters.length > 0 && filters[0] === "a") {
 		// No need to `shift` here since we're not going to do anything else with the array.
 		out += "a";
+	}
+	// Warn about input we couldn't fully use (an empty string, unknown characters, or characters out of order, like "ao"), which is otherwise silently dropped.
+	if ((out !== filter || filter.length === 0) && this.warn_level === "warn") {
+		console.warn(`testaments should be some combination of "o", "n", and "a" (in that order), not: "${filter}". Using "${out.length > 0 ? out : this.#testaments}" instead.`);
 	}
 	if (out.length > 0 && out !== this.#testaments) {
 		const new_apocrypha = out.indexOf("a") >= 0;
@@ -75,15 +79,16 @@ set testaments(filter: BCVParserOptions["testaments"]) {
 // Whether to use books and abbreviations from the Apocrypha. This function makes sure books from the Apocrypha are available as options and adjusts the Psalms to include Psalm 151. It takes a boolean argument: `true` to include the Apocrypha and `false` to not. Defaults to `false`.
 	set_apocrypha(include_apocrypha: boolean): void {
 		this.parent.regexps_manager.filter_books(this.#testaments, this.case_sensitive);
-		const current_ps_chapters = this.parent.translations.systems.current.chapters?.["Ps"];
-		// The current system should define Psalms, but bail out safely if an injected custom system is incomplete.
-		if (current_ps_chapters == null) {
+		// Seed systems that don't define Psalms from `default`, not `current`: a system that omits Psalms means "use the standard Psalms", and seeding from `current` would copy whatever system happens to be active (e.g., Vulgate Psalm numbering) into unrelated systems.
+		const default_ps_chapters = this.parent.translations.systems.default.chapters?.["Ps"];
+		// The default system should define Psalms, but bail out safely if an injected custom system is incomplete.
+		if (default_ps_chapters == null) {
 			return;
 		}
 		for (const translation of Object.keys(this.parent.translations.systems)) {
 			// Ensure the `chapters` object exists for this translation before writing to it.
 			this.parent.translations.systems[translation].chapters ??= {};
-			this.parent.translations.systems[translation].chapters["Ps"] ??= [...current_ps_chapters];
+			this.parent.translations.systems[translation].chapters["Ps"] ??= [...default_ps_chapters];
 		// Add Ps 151 to the end of Psalms. The assumptions here are that Ps151 always only is one chapter long and that the initial state of `Ps` is 150 chapters.
 		if (include_apocrypha === true) {
 			this.parent.translations.systems[translation].chapters["Ps"][150] = this.parent.translations.systems[translation].chapters["Ps151"]?.[0] ?? this.parent.translations.systems.current.chapters["Ps151"][0];
@@ -100,17 +105,18 @@ public get versification_system(): string {
 // Use an alternate versification system. Takes a string argument; the built-in options are: `default` to use ESV-style versification and `vulgate` to use the Vulgate (Greek) Psalm numbering. English offers several other versification systems; see the Readme for details.
 public set versification_system(system: string) {
 	// If there's a known versification for the given translation, use that.
-	if (this.parent.translations.aliases[system]?.system) {
-		system = this.parent.translations.aliases[system].system;
+	const alias_system = this.parent.translations.aliases[system]?.system;
+	if (alias_system) {
+		system = alias_system;
 	}
 	// If there's no definition for the given system, assume the default.
 	if (!this.parent.translations.systems[system]) {
 		if (this.warn_level === "warn") {
-			console.warn(`Unknown versification system ("${system}"). Using default instead.`)
+			console.warn(`Unknown versification system ("${system}"). Using default instead.`);
 		}
 		system = "default";
 	}
-	if (!system || system === this.parent.translations.current_system) {
+	if (system === this.parent.translations.current_system) {
 		return;
 	}
 	// Reset the default system so that we get into a known good state.
@@ -130,8 +136,10 @@ public set versification_system(system: string) {
 	if (this.parent.translations.systems[system].chapters) {
 		this.parent.translations.systems.current.chapters = { ...structuredClone(this.parent.translations.systems.default.chapters), ...structuredClone(this.parent.translations.systems[system].chapters) };
 	}
-// Depending on the order of operations, the cloned list could be inconsistent with the current state. For example, if we called `versification_system`, we've cached 150 Psalms. If we then call `include_apocrypha(true)`, we now have 151 Psalms. If we then call `versification_system` again, we're back, incorrectly, to 150 Psalms because that's what was cached.
-// TODO is this actually necessary (per comment above)? It may no longer be; keeping now in case it's needed again; would need to delete short-circuit in first line of this function: this.include_apocrypha(this.#include_apocrypha);
+	// Re-assert the apocrypha state on the rebuilt `current` system. A system registered via `add_translations` after the Apocrypha was enabled doesn't have Ps151 data, so without this, switching to it would silently drop Psalm 151 while `testaments` still includes `a`.
+	if (this.#testaments.includes("a")) {
+		this.set_apocrypha(true);
+	}
 }
 
 #case_sensitive: BCVParserOptions["case_sensitive"] = "none";
@@ -203,6 +211,5 @@ public set punctuation_strategy(arg: BCVParserOptions["punctuation_strategy"]) {
 	this.#grammar.cv_sep = this.#grammar[cv_sep_key];
 	this.#grammar.sequence = this.#grammar[sequence_key];
 }
-
 
 }

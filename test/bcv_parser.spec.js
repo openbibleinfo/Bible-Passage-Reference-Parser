@@ -3,49 +3,9 @@ import { bcv_parser } from "../esm/bcv_parser.js";
 import * as lang from "../esm/lang/en.js";
 
 describe("bcv_parser auto coverage", () => {
-	it("covers the legacy no-lang constructor path when globals exist", () => {
-		const saved = {
-			grammar: globalThis.grammar,
-			grammar_options: globalThis.grammar_options,
-			bcv_regexps: globalThis.bcv_regexps,
-			bcv_translations: globalThis.bcv_translations
-		};
-		try {
-			globalThis.grammar = { parse: () => [] };
-			globalThis.grammar_options = {};
-			globalThis.bcv_regexps = class {
-				constructor() {
-					this.books = [];
-					this.all_books = [];
-					this.translations = [];
-					this.escaped_passage = /$^/g;
-					this.control = /$^/g;
-					this.match_end_split = /$^/;
-					this.first = /1/;
-					this.second = /2/;
-					this.third = /3/;
-					this.pre_number_book = /$^/;
-					this.range_and = /$^/;
-					this.range_only = /$^/;
-				}
-			};
-			globalThis.bcv_translations = class {
-				constructor() {
-					this.aliases = {};
-					this.current_system = "default";
-					this.systems = {
-						current: { chapters: { Ps: [1], Ps151: [1] }, order: {} },
-						default: { chapters: { Ps: [1], Ps151: [1] }, order: {} }
-					};
-				}
-			};
-			expect(() => new bcv_parser(null)).not.toThrow();
-		} finally {
-			globalThis.grammar = saved.grammar;
-			globalThis.grammar_options = saved.grammar_options;
-			globalThis.bcv_regexps = saved.bcv_regexps;
-			globalThis.bcv_translations = saved.bcv_translations;
-		}
+	it("throws a helpful error when no language object is provided", () => {
+		expect(() => new bcv_parser()).toThrowError(/please provide a language object/);
+		expect(() => new bcv_parser(null)).toThrowError(/please provide a language object/);
 	});
 
 	it("covers guard returns in parser helpers", () => {
@@ -64,6 +24,14 @@ describe("bcv_parser auto coverage", () => {
 			set() {}
 		});
 		expect(p.to_osis({ b: "Gen", c: 1, v: 1 }, end, "current")).toMatch(/^Gen\./);
+	});
+
+	it("uses current chapters when a custom system doesn't define chapters", () => {
+		const p = new bcv_parser(lang);
+		p.translations.systems.incomplete = {
+			order: p.translations.systems.current.order
+		};
+		expect(p.to_osis({ b: "Matt", c: 1 }, { b: "Matt", c: 1 }, "incomplete")).toEqual("Matt.1");
 	});
 
 	it("covers fix_ps151 early returns when custom systems are incomplete", () => {
