@@ -617,21 +617,8 @@ private snap_range(entity: EntityCollectionArrayValue, passage_i: number): Entit
 			type = "b_range_start";
 	}
 	const target_entity: "start" | "end" = (source_entity === "end") ? "start" : "end";
-	// Restore the original objects if they're available. We're potentially changing the main object's values in a way that would affect the outcome if we parse this same object multiple times.
-	for (const obj_type of [source_entity, target_entity]) {
-		const original_object = passages[passage_i][obj_type].original_object;
-		if (original_object != null) {
-			passages[passage_i][obj_type] = original_object;
-		}
-	}
-	// Get ready to preserve the original target object.
-	const original_target = structuredClone(passages[passage_i][target_entity]);
-	// Rewrite either the start or the end of the range to match the opposite. In effect, we're changing it from a range to a single point.
+	// Rewrite either the start or the end of the range to match the opposite. In effect, we're changing it from a range to a single point. The clone keeps `start` and `end` from referencing the same object. Because `parsed_entities()` works on a copy of the parse state, nothing here needs to be preserved for later calls.
 	passages[passage_i][target_entity] = structuredClone(passages[passage_i][source_entity]);
-	// Now preserve the original target object in the new target object.
-	passages[passage_i][target_entity].original_object = original_target;
-	// Preserve the original source object.
-	passages[passage_i][source_entity].original_object = structuredClone(passages[passage_i][source_entity]);
 	if (entity.type === "sequence") {
 		// This can be too long if a range is converted into a sequence where it ends with an open book range (`Matt 10-Rev`) that we want to ignore. At this point, the `passages` and `value` keys can get out-of-sync.
 		if (passage_i >= entity.value.length) {

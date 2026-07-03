@@ -2,7 +2,7 @@
 // Fuzz tester for the bcv parser. Generates reference-like strings (grammar
 // shapes, corpus mutations, noise, pathological regexp shapes), runs them
 // through the parser under randomized option sets, and checks invariants
-// beyond "does not throw". See TODO_FUZZ.md for the design.
+// beyond "does not throw". Run with --help for the CLI options.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -151,7 +151,17 @@ function chance(rand, p) {
 
 // ## Options
 
+// `grammar_next` is a fuzzer pseudo-option, not a parser option: "on"
+// redefines the `next` grammar token through the public `grammar` option
+// (`set_options({ grammar: { next: /^f(?![a-z0-9])/ } })`) so a single "f"
+// means Polish-style next-verse and the otherwise-unreachable-in-English
+// `next_v` handler gets fuzzed; "ff" still means "and following". "off"
+// restores the language's default (a never-matching placeholder in English).
+const NEXT_ON_REGEXP = /^f(?![a-z0-9])/;
+let default_next_regexp = null; // captured from the pristine parser in main()
+
 const DEFAULT_OPTIONS = {
+  grammar_next: "off",
   consecutive_combination_strategy: "combine",
   osis_compaction_strategy: "b",
   book_sequence_strategy: "ignore",
@@ -177,6 +187,7 @@ const DEFAULT_OPTIONS = {
 function buildOptionValues(parser) {
   const systems = Object.keys(parser.translations.systems).filter((s) => s !== "current");
   return {
+    grammar_next: ["off", "on"],
     consecutive_combination_strategy: ["combine", "separate"],
     osis_compaction_strategy: ["b", "bp", "bc", "bcp", "bcv", "bcvp"],
     book_sequence_strategy: ["ignore", "include"],
@@ -215,6 +226,12 @@ function randomOptionSet(rand, optionValues) {
     const key = pick(rand, keys);
     out[key] = pick(rand, optionValues[key]);
   }
+  // The `grammar_next` pseudo-option only affects "f"-suffixed inputs, so the
+  // 1-in-42 flip chance above would leave `next_v` nearly unfuzzed; give it an
+  // independent boost.
+  if (chance(rand, 0.25)) {
+    out.grammar_next = "on";
+  }
   return out;
 }
 
@@ -238,6 +255,13 @@ function isDefaultOptions(options) {
 function applyOptions(parser, options) {
   const diff = {};
   for (const [key, value] of Object.entries(options)) {
+    if (key === "grammar_next") {
+      const next = value === "on" ? NEXT_ON_REGEXP : default_next_regexp;
+      if (next != null && parser.options.grammar.next.source !== next.source) {
+        parser.set_options({ grammar: { next } });
+      }
+      continue;
+    }
     if (parser.options[key] !== value) {
       diff[key] = value;
     }
@@ -370,17 +394,135 @@ function rangeSep(rand) {
   return pick(rand, ["-", "-", "-", "–", "—", " - ", " to ", " through "]);
 }
 
+// English-specific explicit-word tokens, matching the hardcoded English
+// elsewhere in the generators ("chapter", " to ", "title", "ff").
+function vExplicit(rand) {
+  return pick(rand, ["verse", "verses", "ver.", "ver", "v.", "vv.", "vss."]);
+}
+
+function cExplicit(rand) {
+  return pick(rand, ["chapter", "chapters", "chap.", "ch.", "ch"]);
+}
+
+function ordinal(n) {
+  const suffix = (n % 100 >= 11 && n % 100 <= 13) ? "th" : ["th", "st", "nd", "rd"][n % 10] ?? "th";
+  return `${n}${suffix}`;
+}
+
+function renderTranslation(rand, t) {
+  const roll = rand();
+  if (roll < 0.7) {
+    return t.toUpperCase();
+  }
+  if (roll < 0.85) {
+    return t.toLowerCase();
+  }
+  return [...t].map((ch) => (chance(rand, 0.5) ? ch.toLowerCase() : ch.toUpperCase())).join("");
+}
+
 function maybeTranslation(rand, env, s) {
   if (env.translations.length > 0 && chance(rand, 0.25)) {
-    const t = pick(rand, env.translations).toUpperCase();
+    let t = renderTranslation(rand, pick(rand, env.translations));
+    // Translation sequences ("NIV, KJV") are their own grammar path.
+    if (chance(rand, 0.15)) {
+      t += `, ${renderTranslation(rand, pick(rand, env.translations))}`;
+    }
     return chance(rand, 0.3) ? `${s} (${t})` : `${s} ${t}`;
   }
   return s;
 }
 
+// Shapes built around explicit "verse"/"chapter" words, ordinals, titles, and
+// enclosed sequences -- grammar paths (v_explicit range ends, bv, c_psalm,
+// cv_psalm, cb_range, cb_ordinal, bcv_hyphen_range, c_title, integer_title,
+// sequence_post_enclosed, explicit_context) that digit-only shapes never reach.
+function genExplicitReference(rand, env) {
+  const book = renderBook(rand, pick(rand, env.books, "Gen"));
+  const rawBook = pick(rand, env.books, "Gen");
+  const cMax = maxChapter(env, rawBook);
+  const c = randInt(rand, 1, cMax);
+  const vMax = maxVerse(env, rawBook, c);
+  const v = randInt(rand, 1, vMax);
+  const shape = rand();
+
+  // Explicit-verse range ends: "Matt 5-verse 6", including end-before-start,
+  // zero, and past-the-end values.
+  if (shape < 0.14) {
+    const end = pick(rand, [v + 1, Math.max(1, v - randInt(rand, 1, 20)), 0, 999, vMax + randInt(rand, 1, 10)]);
+    return `${book} ${c}${rangeSep(rand)}${vExplicit(rand)} ${end}`;
+  }
+  if (shape < 0.26) {
+    const end = pick(rand, [v + 1, Math.max(1, v - randInt(rand, 1, 20)), 999]);
+    return `${book} ${c}${cvSep(rand)}${v}${rangeSep(rand)}${vExplicit(rand)} ${end}`;
+  }
+  // Digit-salvage shape with an explicit-verse end ("Matt 5:22, 24-verse 5").
+  if (shape < 0.34) {
+    return `${book} ${c}${cvSep(rand)}${v}, ${v + 2}${rangeSep(rand)}${vExplicit(rand)} ${randInt(rand, 1, 9)}`;
+  }
+  // "Phlm verse 6" (bv), with both single- and multi-chapter books.
+  if (shape < 0.44) {
+    const b = chance(rand, 0.5) && env.singleChapterBooks.length > 0 ? renderBook(rand, pick(rand, env.singleChapterBooks)) : book;
+    return `${b} ${vExplicit(rand)} ${v}`;
+  }
+  // Ordinal Psalms: "23rd Psalm" (c_psalm), "23rd Psalm verse 1" (cv_psalm),
+  // sometimes past Ps 150.
+  if (shape < 0.54) {
+    const n = randInt(rand, 1, chance(rand, 0.8) ? 150 : 175);
+    const base = `${ordinal(n)} ${pick(rand, ["Psalm", "psalm", "Ps."])}`;
+    return chance(rand, 0.5) ? base : `${base} ${vExplicit(rand)} ${v}`;
+  }
+  // "chapters 1-2 of Daniel" (cb_range).
+  if (shape < 0.62) {
+    return `${pick(rand, ["chapters", "chap."])} ${c}${rangeSep(rand)}${randInt(rand, c, cMax)} ${pick(rand, ["of", "from", "in"])} ${book}`;
+  }
+  // "1st chapter of Matt" (cb_ordinal).
+  if (shape < 0.7) {
+    return `${ordinal(c)} ${pick(rand, ["chapter", "ch."])} of ${book}`;
+  }
+  // Explicit chapter/verse context switches inside a sequence:
+  // "Matt 5:1, chapter 6" (explicit_context).
+  if (shape < 0.78) {
+    const word = chance(rand, 0.5) ? cExplicit(rand) : vExplicit(rand);
+    return `${book} ${c}${cvSep(rand)}${v}, ${word} ${randInt(rand, 1, 30)}`;
+  }
+  // "Matt 5-6-7" (bcv_hyphen_range).
+  if (shape < 0.82) {
+    return `${book} ${c}-${v}-${v + randInt(rand, 1, 5)}`;
+  }
+  // Book-only and book-anchored ranges: "Gen-Exod" (b_range), "Gen-Exod 2"
+  // (b_range_start), "Gen 2-Exod" (range_end_b).
+  if (shape < 0.88) {
+    const book2 = renderBook(rand, pick(rand, env.books, "Rev"));
+    return pick(rand, [
+      `${book}${rangeSep(rand)}${book2}`,
+      `${book}${rangeSep(rand)}${book2} ${randInt(rand, 1, 25)}`,
+      `${book} ${c}${rangeSep(rand)}${book2}`
+    ]);
+  }
+  // Titles: "Ps 3:title", "Ps 3-4:title" (integer_title), "Ps 3, ch 4:title"
+  // (c_title), "Acts 2:22-27. Title".
+  if (shape < 0.94) {
+    const ps = renderBook(rand, "Ps");
+    const c2 = randInt(rand, 1, 150);
+    return pick(rand, [
+      `${ps} ${c2}:title`,
+      `${ps} ${c2}-${c2 + 1}:title`,
+      `${ps} ${c2}, ch ${c2 + 1}:title`,
+      `${book} ${c}:${v}-${v + 2}. Title`
+    ]);
+  }
+  // Enclosed sequences: "Ps 119 (118)" (sequence_post_enclosed).
+  return chance(rand, 0.5)
+    ? `${renderBook(rand, "Ps")} ${randInt(rand, 1, 150)} (${randInt(rand, 1, 150)})`
+    : `${book} ${c}${cvSep(rand)}${v} (${v + randInt(rand, 1, 5)})`;
+}
+
 // A single reference in one of the parser's grammar shapes, with a mix of
 // valid and deliberately invalid chapter/verse numbers.
 function genReference(rand, env) {
+  if (chance(rand, 0.3)) {
+    return genExplicitReference(rand, env);
+  }
   const book = renderBook(rand, pick(rand, env.books, "Gen"));
   const rawBook = pick(rand, env.books, "Gen");
   const cMax = maxChapter(env, rawBook);
@@ -430,7 +572,16 @@ function genReference(rand, env) {
     return `${book} ${c}${sep}${v}${rangeSep(rand)}${book2} ${randInt(rand, 1, 20)}`;
   }
   if (shape < 0.74) {
-    return `${book} ${c}${sep}${v}${pick(rand, ["ff", "f", " ff", "ff.", "f."])}`;
+    // Chapter-level "Matt 3f" exercises next-chapter handling when the
+    // `grammar_next` pseudo-option is on. Biasing toward the last verse or
+    // chapter reaches the cross-chapter retry and end-of-book paths in
+    // `next_v` (and the boundary paths in `ff`).
+    if (chance(rand, 0.3)) {
+      const cEnd = chance(rand, 0.25) ? maxChapter(env, rawBook) : c;
+      return `${book} ${cEnd}${pick(rand, ["f", "ff"])}`;
+    }
+    const vEnd = chance(rand, 0.3) ? maxVerse(env, rawBook, c) : v;
+    return `${book} ${c}${sep}${vEnd}${pick(rand, ["ff", "f", " ff", "ff.", "f."])}`;
   }
   if (shape < 0.78) {
     const letter = pick(rand, ["a", "b", "c", "d", "e"]);
@@ -610,11 +761,14 @@ function genCorpusMutation(rand, env) {
 // ## Test-case generation
 
 const GENERATORS = [
-  { name: "structured", weight: 0.4, gen: (rand, env, opts) => genStructured(rand, env) },
-  { name: "fragments", weight: 0.2, gen: (rand, env, opts) => genFragments(rand, env, opts.minLength, opts.maxLength) },
-  { name: "corpus", weight: 0.25, gen: (rand, env) => genCorpusMutation(rand, env) },
+  { name: "structured", weight: 0.35, gen: (rand, env, opts) => genStructured(rand, env) },
+  { name: "fragments", weight: 0.18, gen: (rand, env, opts) => genFragments(rand, env, opts.minLength, opts.maxLength) },
+  { name: "corpus", weight: 0.24, gen: (rand, env) => genCorpusMutation(rand, env) },
   { name: "pathological", weight: 0.05, gen: (rand, env) => genPathological(rand, env) },
-  { name: "unicode", weight: 0.1, gen: (rand, env, opts) => applyMutations(rand, chance(rand, 0.5) ? genStructured(rand, env) : genFragments(rand, env, opts.minLength, opts.maxLength), 5) }
+  { name: "unicode", weight: 0.1, gen: (rand, env, opts) => applyMutations(rand, chance(rand, 0.5) ? genStructured(rand, env) : genFragments(rand, env, opts.minLength, opts.maxLength), 5) },
+  // Book-less inputs, mostly paired with a `parse_with_context` context (see
+  // CONTEXT_CHANCE): the context supplies (or withholds) the book.
+  { name: "contextual", weight: 0.08, gen: (rand, env) => (chance(rand, 0.4) ? genContextualRef(rand, env) : `${genReference(rand, env)}${pick(rand, [", ", "; ", " and "])}${genContextualRef(rand, env)}`) }
 ];
 
 function pickGenerator(rand) {
@@ -630,13 +784,44 @@ function pickGenerator(rand) {
 
 const CONTEXT_INPUTS = ["verse 2", "v. 2", "vv. 2-3", "verses 5 and 7", "2:4", "chapter 5", "5:2", "and 8", "8ff", "3, 6", "1-2"];
 
+// Book-less reference fragments ("5-verse 2", "chapter 3"). On their own they
+// match nothing; after a book in a sequence or as a `parse_with_context`
+// context they exercise the context-dependent paths, including the book-less
+// contexts that are the only real route into some range-repair branches.
+function genContextualRef(rand, env) {
+  const c = randInt(rand, 1, 25);
+  const v = randInt(rand, 1, 30);
+  const roll = rand();
+  if (roll < 0.35) {
+    return pick(rand, CONTEXT_INPUTS);
+  }
+  if (roll < 0.5) {
+    return `${v}${rangeSep(rand)}${vExplicit(rand)} ${pick(rand, [v + 1, Math.max(1, v - 5), 999])}`;
+  }
+  if (roll < 0.62) {
+    return `${vExplicit(rand)} ${v}`;
+  }
+  if (roll < 0.74) {
+    return `${cExplicit(rand)} ${c}`;
+  }
+  if (roll < 0.86) {
+    return `${c}${cvSep(rand)}${v}`;
+  }
+  return `${c}${rangeSep(rand)}${randInt(rand, 1, 30)}`;
+}
+
 function genContext(rand, env) {
   const roll = rand();
-  if (roll < 0.6) {
+  if (roll < 0.45) {
     return genReference(rand, env);
   }
-  if (roll < 0.8) {
+  if (roll < 0.6) {
     return maybeTranslation(rand, env, genReference(rand, env));
+  }
+  // Book-less contexts ("chapter 5") leave the context book undefined, which
+  // is its own family of paths.
+  if (roll < 0.85) {
+    return genContextualRef(rand, env);
   }
   // Invalid or garbage context.
   return pick(rand, ["", "not a reference", "999", randomNoise(rand, 12)]);
@@ -912,6 +1097,7 @@ async function main() {
   }
 
   const parser = new bcv_parser(lang);
+  default_next_regexp = parser.options.grammar.next;
   const books = buildKnownBooks(parser);
   const translations = buildKnownTranslations(parser);
   const optionValues = buildOptionValues(parser);
@@ -981,7 +1167,9 @@ async function main() {
     for (const key of Object.keys(optionsDiff(options))) {
       optionKeyCounts[key] = (optionKeyCounts[key] || 0) + 1;
     }
-    const context = chance(rand, 0.12) ? genContext(rand, env) : null;
+    // Book-less inputs are mostly meaningless without a context, so the
+    // contextual generator gets one far more often.
+    const context = chance(rand, generatorName === "contextual" ? 0.7 : 0.12) ? genContext(rand, env) : null;
     const testCase = {
       input,
       context,

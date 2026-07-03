@@ -5,6 +5,8 @@ SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 BUILD_DIR="$SCRIPT_DIR/build"
 
+# The build directory is transient and untracked, so it doesn't exist in a fresh clone.
+mkdir -p "$BUILD_DIR"
 rm -f "$BUILD_DIR"/*
 cp "$ROOT_DIR/src/bcv_matcher.ts" "$BUILD_DIR/"
 cp "$ROOT_DIR/src/bcv_options.ts" "$BUILD_DIR/"

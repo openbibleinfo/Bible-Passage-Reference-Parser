@@ -193,8 +193,8 @@ export interface Entity {
 	valid: ValidInterface;
 }
 
-// Every node type the grammar or the passage processor can produce: the passage-handler names plus the few types that never get their own handler.
-export type EntityType = PassageHandlerKey | "title" | "translation" | "c_explicit" | "v_explicit";
+// Every node type the grammar or the passage processor can produce: the passage-handler names plus the few types that never get their own handler. `b_pre` is the number the matcher prepends inside a synthetic `b_range_pre` node ("1" in "1-2 Sam"); the `b_range_pre` handler reads it directly rather than dispatching it.
+export type EntityType = PassageHandlerKey | "b_pre" | "title" | "translation" | "c_explicit" | "v_explicit";
 
 // A start or end object whose book is known to exist: past the `valid` gate on the way to OSIS output, or inside the `validate_known_*_book` validators. The base interface leaves `b` optional because invalid references (`start_book_not_defined`) genuinely lack it.
 export interface StartEndWithBookInterface extends StartEndInterface {
@@ -205,16 +205,16 @@ export interface StartEndInterface {
 	b?: string;
 	c?: number;
 	extra?: string;
-	original_object?: StartEndInterface;
 	p?: string;
 	p_if_verse?: string;
 	v?: number;
 	type?: EntityType;
 }
 
+// `validate_ref` is the only producer of these objects, and it always sets `messages` (possibly to an empty object).
 export interface ValidInterface {
 	valid: boolean;
-	messages?: MessageInterface;
+	messages: MessageInterface;
 }
 
 export interface MessageInterface {
@@ -322,7 +322,8 @@ export interface TranslationSequenceInterface {
 
 export interface TranslationAliasInterface {
 	osis?: string;
-	system?: string;
+	// Every alias defines a `system`: all built-in language bundles set it explicitly, and `add_translations` normalizes user input to include it.
+	system: string;
 }
 
 export interface TranslationInterface {
@@ -364,7 +365,6 @@ export interface GrammarMatchInterface extends PassageEntityInterface {
 
 export type PassageHandlerKey =
 	| "b"
-	| "b_pre"
 	| "b_range"
 	| "b_range_pre"
 	| "b_range_start"
@@ -423,7 +423,7 @@ export interface OsisEntityCollectionInterface extends OsisEntityBase {
 export type OsisEntityInterface = OsisPassageEntityInterface | OsisEntityCollectionInterface;
 
 export interface PassageEntityInterface {
-	absolute_indices?: [number | null, number | null];
+	absolute_indices?: IndicesPair;
 	alternates?: Entity[];
 	enclosed_absolute_indices?: IndicesPair;
 	explicit_context?: "c";
@@ -450,6 +450,21 @@ export interface PassageEntityNumberValue extends PassageEntityInterface {
 
 export interface PassageEntitySequenceValue extends PassageEntityInterface {
 	value: PassageEntityInterface[][];
+}
+
+/* Lifecycle views of the same objects, from later in their lives. Every passage handler stamps `start_context` on entry, and every handler except `stop` and `translation_sequence` also stamps `passages` before returning. `bcv_passage` casts to these views at the boundaries where it reads back a node it just passed through a handler; `stop` and `translation_sequence` nodes never appear at those boundaries (they aren't part of any node's `value`). */
+export interface ProcessedEntityInterface extends PassageEntityInterface {
+	passages: Entity[];
+	start_context: ContextInterface;
+}
+
+export interface ProcessedEntityArrayValue extends ProcessedEntityInterface {
+	value: PassageEntityInterface[];
+}
+
+// An in-flight range node: `range()` stamps `start_context` on entry, before delegating to its helpers, so they can rely on it even though `passages` may not exist yet.
+export interface RangeEntityInterface extends PassageEntityArrayValue {
+	start_context: ContextInterface;
 }
 
 // The synthetic root node that `bcv_matcher` wraps around grammar output. It has no `indices` of its own; `base()` uses `match` and `start_index` to calculate the base indices for all the nodes inside it.

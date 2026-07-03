@@ -519,6 +519,7 @@ describe("Administrative behavior", () => {
 		expect(null_response.chapters["3John"][0]).toEqual(15);
 	});
 	it("should tell what languages the regexps are using", () => {
-		expect(p.regexps.languages).toEqual(["en"]);
+		// The language modules from the Languages repo identify themselves by ISO 639-3 code, regardless of this repo's legacy filename prefix ("en").
+		expect(p.regexps.languages).toEqual(["eng"]);
 	});
 });

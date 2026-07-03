@@ -681,7 +681,7 @@ The related [Bible Passage Reference Parser Languages](https://github.com/openbi
 
 ### Compatibility
 
-For backwards compatibility (which I don't intend to change), `esm/lang` supports over 40 languages (below).
+For backwards compatibility (which I don't intend to change), `esm/lang` supports 50 languages (below).
 
 I would recommend that you use the corresponding language file in the [Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) repo.
 
@@ -797,13 +797,6 @@ Example:
 sh build_lang.sh en /path/to/Bible-Passage-Reference-Parser-Languages eng
 ```
 
-To build all configured languages:
-
-```shell
-cd bin
-sh build_all.sh /path/to/Bible-Passage-Reference-Parser-Languages
-```
-
 #### Running Tests
 
 If you have dev dependencies installed, the easiest way to run all tests is to use `npm run test`, which takes a few seconds. You can also use `npx jasmine test/*.spec.*`.
@@ -828,11 +821,14 @@ For content-extraction tasks, perhaps it could be integrated into an LLM workflo
 
 ## Changelog
 
+July 3, 2026 (4.0.0-beta2). `tsc` now reports zero Typescript errors; the human cost is that I no longer fully understand the types in my own codebase. Fixed a crashing bug uncovered by the fuzzer. As promised below, the language files now use built files from the [language repo](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages).
+
 July 2, 2026 (4.0.0-beta).
 
-* Removed language source files. They now live [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages). Existing languages will remain available in `esm/lang/` and `cjs/` for backwards compatibility.
+* Removed raw language-data files and the old Perl-based language compiler. This data now lives [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) (and is expanded to 2,000 languages from 50). Existing languages will remain available in `esm/lang/` and `cjs/` for backwards compatibility.
 * Updated TypeScript usage (via Claude Fable) to be more consistent and thorough.
-* Rewrote `bin/fuzz_lang.js` to provide much more robust fuzzing, which uncovered an obscure bug. Fable wrote this file.
+* Rewrote `bin/fuzz_lang.js` (via Fable) to provide much more robust fuzzing, which uncovered an obscure bug.
+* Added Welsh language data, which was listed in this Readme but erroneously not included in the distribution.
 * Fixed documentation to say that Node 17 is required, not Node 16. Version 3.0.0 had this requirement; the documentation was wrong.
 * Fixed two additional bugs (found by Fable).
 

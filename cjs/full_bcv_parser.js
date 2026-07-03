@@ -5540,16 +5540,7 @@ const bcv = new bcv_parser(lang);`);
       type = "b_range_start";
     }
     const target_entity = source_entity === "end" ? "start" : "end";
-    for (const obj_type of [source_entity, target_entity]) {
-      const original_object = passages[passage_i][obj_type].original_object;
-      if (original_object != null) {
-        passages[passage_i][obj_type] = original_object;
-      }
-    }
-    const original_target = structuredClone(passages[passage_i][target_entity]);
     passages[passage_i][target_entity] = structuredClone(passages[passage_i][source_entity]);
-    passages[passage_i][target_entity].original_object = original_target;
-    passages[passage_i][source_entity].original_object = structuredClone(passages[passage_i][source_entity]);
     if (entity.type === "sequence") {
       if (passage_i >= entity.value.length) {
         passage_i = entity.value.length - 1;

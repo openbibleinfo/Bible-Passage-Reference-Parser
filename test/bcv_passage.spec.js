@@ -8,13 +8,17 @@ describe("bcv_passage auto coverage", () => {
 		return parser.passage;
 	}
 
-	it("covers null handling in handle_array and the b_pre fallback", () => {
+	it("covers null handling in handle_array and non-handler node types", () => {
 		const manager = makeManager();
 		const handleObjSpy = spyOn(manager, "handle_obj").and.returnValue([[], {}]);
 		const [accum] = manager.handle_array([null, { type: "word", value: [] }], [], {});
 		expect(accum).toEqual([]);
 		expect(handleObjSpy).toHaveBeenCalledTimes(1);
-		expect(manager.b_pre({}, [], {})).toEqual([[], {}]);
+		// Node types without a handler (like the `b_pre` inside a synthetic `b_range_pre`) pass through `handle_obj` untouched.
+		const manager2 = makeManager();
+		const [accum2, context2] = manager2.handle_obj({ type: "b_pre", value: "1" }, [], { b: "Gen" });
+		expect(accum2).toEqual([]);
+		expect(context2).toEqual({ b: "Gen" });
 	});
 
 	it("covers bc_title fallback when title is absent", () => {
@@ -154,36 +158,31 @@ describe("bcv_passage auto coverage", () => {
 		expect(out).toBe(0);
 	});
 
-	it("covers v-end handling in range_handle_invalid and range_handle_valid", () => {
-		const manager = makeManager();
-		const end = { type: "v", value: [{ type: "integer", value: 4 }] };
-		const passage = { start_context: { translations: [] } };
-		spyOn(manager, "pluck").and.returnValue({ type: "integer", value: 4 });
-		spyOn(manager, "validate_ref").and.returnValue({ valid: true, messages: {} });
-		const rangeChangeSpy = spyOn(manager, "range_change_integer_end").and.returnValue([[{ type: "changed" }], {}]);
+	it("does not reinterpret ff/next_v virtual ends as verses", () => {
+		// The `next` grammar token is definable at runtime through the public `grammar` option; English has no default token. A chapter-level "next" at the last chapter of a book must snap back (Zeph.3), not become a verse (Zeph.3.4): the virtual end that `next_v` pushes is not user text, so the end-range-digits reinterpretation doesn't apply. Reinterpreting it also corrupted the node in place, which crashed the reparse in the second case (fuzzer-found; reproducible in stock Polish as "Mt 5-So 3n NIV").
+		const p = new bcv_parser(lang);
+		p.set_options({ grammar: { next: /^f(?![a-z0-9])/ } });
+		expect(p.parse("Zeph 3f").osis()).toEqual("Zeph.3");
+		expect(p.parse("Matt 5:1f").osis()).toEqual("Matt.5.1-Matt.5.2");
+		p.set_options({ punctuation_strategy: "eu" });
+		expect(p.parse("ze:3fNIV").osis()).toEqual("Zeph.3");
+	});
 
-		const invalidResult = manager.range_handle_invalid(
-			{ valid: false, messages: {} },
-			passage,
-			{ type: "bc" },
-			{ b: "Gen", c: 1 },
-			end,
-			{ b: "Gen", c: 0 },
-			[]
-		);
-		expect(invalidResult[0][0].type).toBe("changed");
+	it("salvages an explicit-verse range end that's before the start verse", () => {
+		// The digit-salvage path in `range_handle_invalid` handles `v`-type range ends, not just integers: the "verse 5" here becomes verse 25.
+		const p = new bcv_parser(lang);
+		expect(p.parse("Matt 5:22, 24-verse 5").osis()).toEqual("Matt.5.22,Matt.5.24-Matt.5.25");
+	});
 
-		const validResult = manager.range_handle_valid(
-			{ valid: true, messages: { end_chapter_not_exist: 1 } },
-			passage,
-			{ type: "bc" },
-			{ b: "Gen", c: 1 },
-			end,
-			{ b: "Gen", c: 0 },
-			[]
-		);
-		expect(validResult[0]).toBe(true);
-		expect(rangeChangeSpy).toHaveBeenCalled();
+	it("converts a book-less explicit-verse range to a sequence instead of a verse-number range end", () => {
+		// A `v`-type range end with a book-less context is the only real input that reaches the `end_range_digits_strategy` block in `range_handle_invalid` with `start_obj.v` unset (with a book, the validator fills in `start_obj.v`). It must fall through to the sequence conversion, not be recast as "chapter 5 verse 2".
+		const p = new bcv_parser(lang);
+		const result = p.parse_with_context("5-verse 2", "chapter 3");
+		expect(result.osis()).toEqual("");
+		const entity = p.entities[0].value[1][0];
+		expect(entity.original_type).toEqual("range");
+		expect(entity.type).toEqual("sequence");
+		expect(entity.passages[0].valid.messages.start_book_not_defined).toBe(true);
 	});
 
 	it("covers translation_sequence guard and continue branches", () => {

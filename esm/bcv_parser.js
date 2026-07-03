@@ -3818,10 +3818,6 @@ var bcv_passage = class {
     }
     return [accum, context];
   }
-  // This is never called. It exists to make Typescript happy.
-  b_pre(passage, accum, context) {
-    return [accum, context];
-  }
   // Handle book-only ranges ("Gen-Exod").
   b_range(passage, accum, context) {
     return this.range(passage, accum, context);
@@ -4287,34 +4283,36 @@ var bcv_passage = class {
     passage.value = [start, end];
     passage.indices = [start.indices[0], end.indices[1]];
     delete passage.absolute_indices;
+    const start_passage = start.passages[0];
+    const end_passage = end.passages[0];
     const start_obj = {
-      b: start.passages[0].start.b,
-      c: start.passages[0].start.c,
-      v: start.passages[0].start.v,
+      b: start_passage.start.b,
+      c: start_passage.start.c,
+      v: start_passage.start.v,
       type: start.type
     };
-    if (start.passages[0].start.p != null) {
-      start_obj.p = start.passages[0].start.p;
+    if (start_passage.start.p != null) {
+      start_obj.p = start_passage.start.p;
     }
-    if (start.passages[0].start.p_if_verse != null) {
-      start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+    if (start_passage.start.p_if_verse != null) {
+      start_obj.p_if_verse = start_passage.start.p_if_verse;
     }
     const end_obj = {
-      b: end.passages[0].end.b,
-      c: end.passages[0].end.c,
-      v: end.passages[0].end.v,
+      b: end_passage.end.b,
+      c: end_passage.end.c,
+      v: end_passage.end.v,
       type: end.type
     };
-    if (end.passages[0].end.p != null) {
-      end_obj.p = end.passages[0].end.p;
+    if (end_passage.end.p != null) {
+      end_obj.p = end_passage.end.p;
     }
-    if (end.passages[0].end.p_if_verse != null) {
-      end_obj.p_if_verse = end.passages[0].end.p_if_verse;
+    if (end_passage.end.p_if_verse != null) {
+      end_obj.p_if_verse = end_passage.end.p_if_verse;
     }
-    if (end.passages[0].valid.messages.start_chapter_is_zero) {
+    if (end_passage.valid.messages.start_chapter_is_zero) {
       end_obj.c = 0;
     }
-    if (end.passages[0].valid.messages.start_verse_is_zero) {
+    if (end_passage.valid.messages.start_verse_is_zero) {
       end_obj.v = 0;
     }
     const valid = this.validate_ref(passage.start_context.translations, start_obj, end_obj);
@@ -4350,15 +4348,12 @@ var bcv_passage = class {
   range_change_end(passage, accum, new_end) {
     const [start, end] = passage.value;
     if (end.type === "integer") {
-      end.original_value = end.value;
       end.value = new_end;
     } else if (end.type === "v") {
       const new_obj = this.pluck("integer", end.value);
-      new_obj.original_value = new_obj.value;
       new_obj.value = new_end;
     } else if (end.type === "cv") {
       const new_obj = this.pluck_integer("c", end.value);
-      new_obj.original_value = new_obj.value;
       new_obj.value = new_end;
     }
     return this.handle_obj(passage, accum, passage.start_context);
@@ -4437,8 +4432,8 @@ var bcv_passage = class {
         return this.range_change_end(passage, accum, new_end);
       }
     }
-    if (this.options.end_range_digits_strategy === "verse" && start_obj.v == null && (end.type === "integer" || end.type === "v")) {
-      const temp_value = end.type === "v" ? this.pluck("integer", end.value) : end.value;
+    if (this.options.end_range_digits_strategy === "verse" && start_obj.v == null && end.type === "integer" && passage.type !== "ff" && passage.type !== "next_v") {
+      const temp_value = end.value;
       const temp_valid = this.validate_ref(passage.start_context.translations, {
         b: start_obj.b,
         c: start_obj.c,
@@ -4457,8 +4452,8 @@ var bcv_passage = class {
   }
   // The range looks valid, but we should check for some special cases.
   range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum) {
-    if (valid.messages?.end_chapter_not_exist && this.options.end_range_digits_strategy === "verse" && !start_obj.v && (end.type === "integer" || end.type === "v") && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-      const temp_value = end.type === "v" ? this.pluck("integer", end.value) : end.value;
+    if (valid.messages?.end_chapter_not_exist && this.options.end_range_digits_strategy === "verse" && !start_obj.v && end.type === "integer" && passage.type !== "ff" && passage.type !== "next_v" && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+      const temp_value = end.value;
       const temp_valid = this.validate_ref(passage.start_context.translations, {
         b: start_obj.b,
         c: start_obj.c,
@@ -4639,7 +4634,6 @@ var bcv_passage = class {
     }
     return null;
   }
-  // If the start chapter or verse is 0 and the appropriate option is set to `upgrade`, convert it to a 1.
   fix_start_zeroes(valid, c, v = void 0) {
     if (valid.messages?.start_chapter_is_zero && this.options.zero_chapter_strategy === "upgrade") {
       c = valid.messages.start_chapter_is_zero;
@@ -5528,16 +5522,7 @@ const bcv = new bcv_parser(lang);`);
       type = "b_range_start";
     }
     const target_entity = source_entity === "end" ? "start" : "end";
-    for (const obj_type of [source_entity, target_entity]) {
-      const original_object = passages[passage_i][obj_type].original_object;
-      if (original_object != null) {
-        passages[passage_i][obj_type] = original_object;
-      }
-    }
-    const original_target = structuredClone(passages[passage_i][target_entity]);
     passages[passage_i][target_entity] = structuredClone(passages[passage_i][source_entity]);
-    passages[passage_i][target_entity].original_object = original_target;
-    passages[passage_i][source_entity].original_object = structuredClone(passages[passage_i][source_entity]);
     if (entity.type === "sequence") {
       if (passage_i >= entity.value.length) {
         passage_i = entity.value.length - 1;

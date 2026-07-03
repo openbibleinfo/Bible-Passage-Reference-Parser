@@ -3836,10 +3836,6 @@ var bcv_passage = class {
     }
     return [accum, context];
   }
-  // This is never called. It exists to make Typescript happy.
-  b_pre(passage, accum, context) {
-    return [accum, context];
-  }
   // Handle book-only ranges ("Gen-Exod").
   b_range(passage, accum, context) {
     return this.range(passage, accum, context);
@@ -4305,34 +4301,36 @@ var bcv_passage = class {
     passage.value = [start, end];
     passage.indices = [start.indices[0], end.indices[1]];
     delete passage.absolute_indices;
+    const start_passage = start.passages[0];
+    const end_passage = end.passages[0];
     const start_obj = {
-      b: start.passages[0].start.b,
-      c: start.passages[0].start.c,
-      v: start.passages[0].start.v,
+      b: start_passage.start.b,
+      c: start_passage.start.c,
+      v: start_passage.start.v,
       type: start.type
     };
-    if (start.passages[0].start.p != null) {
-      start_obj.p = start.passages[0].start.p;
+    if (start_passage.start.p != null) {
+      start_obj.p = start_passage.start.p;
     }
-    if (start.passages[0].start.p_if_verse != null) {
-      start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+    if (start_passage.start.p_if_verse != null) {
+      start_obj.p_if_verse = start_passage.start.p_if_verse;
     }
     const end_obj = {
-      b: end.passages[0].end.b,
-      c: end.passages[0].end.c,
-      v: end.passages[0].end.v,
+      b: end_passage.end.b,
+      c: end_passage.end.c,
+      v: end_passage.end.v,
       type: end.type
     };
-    if (end.passages[0].end.p != null) {
-      end_obj.p = end.passages[0].end.p;
+    if (end_passage.end.p != null) {
+      end_obj.p = end_passage.end.p;
     }
-    if (end.passages[0].end.p_if_verse != null) {
-      end_obj.p_if_verse = end.passages[0].end.p_if_verse;
+    if (end_passage.end.p_if_verse != null) {
+      end_obj.p_if_verse = end_passage.end.p_if_verse;
     }
-    if (end.passages[0].valid.messages.start_chapter_is_zero) {
+    if (end_passage.valid.messages.start_chapter_is_zero) {
       end_obj.c = 0;
     }
-    if (end.passages[0].valid.messages.start_verse_is_zero) {
+    if (end_passage.valid.messages.start_verse_is_zero) {
       end_obj.v = 0;
     }
     const valid = this.validate_ref(passage.start_context.translations, start_obj, end_obj);
@@ -4368,15 +4366,12 @@ var bcv_passage = class {
   range_change_end(passage, accum, new_end) {
     const [start, end] = passage.value;
     if (end.type === "integer") {
-      end.original_value = end.value;
       end.value = new_end;
     } else if (end.type === "v") {
       const new_obj = this.pluck("integer", end.value);
-      new_obj.original_value = new_obj.value;
       new_obj.value = new_end;
     } else if (end.type === "cv") {
       const new_obj = this.pluck_integer("c", end.value);
-      new_obj.original_value = new_obj.value;
       new_obj.value = new_end;
     }
     return this.handle_obj(passage, accum, passage.start_context);
@@ -4455,8 +4450,8 @@ var bcv_passage = class {
         return this.range_change_end(passage, accum, new_end);
       }
     }
-    if (this.options.end_range_digits_strategy === "verse" && start_obj.v == null && (end.type === "integer" || end.type === "v")) {
-      const temp_value = end.type === "v" ? this.pluck("integer", end.value) : end.value;
+    if (this.options.end_range_digits_strategy === "verse" && start_obj.v == null && end.type === "integer" && passage.type !== "ff" && passage.type !== "next_v") {
+      const temp_value = end.value;
       const temp_valid = this.validate_ref(passage.start_context.translations, {
         b: start_obj.b,
         c: start_obj.c,
@@ -4475,8 +4470,8 @@ var bcv_passage = class {
   }
   // The range looks valid, but we should check for some special cases.
   range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum) {
-    if (valid.messages?.end_chapter_not_exist && this.options.end_range_digits_strategy === "verse" && !start_obj.v && (end.type === "integer" || end.type === "v") && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-      const temp_value = end.type === "v" ? this.pluck("integer", end.value) : end.value;
+    if (valid.messages?.end_chapter_not_exist && this.options.end_range_digits_strategy === "verse" && !start_obj.v && end.type === "integer" && passage.type !== "ff" && passage.type !== "next_v" && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+      const temp_value = end.value;
       const temp_valid = this.validate_ref(passage.start_context.translations, {
         b: start_obj.b,
         c: start_obj.c,
@@ -4657,7 +4652,6 @@ var bcv_passage = class {
     }
     return null;
   }
-  // If the start chapter or verse is 0 and the appropriate option is set to `upgrade`, convert it to a 1.
   fix_start_zeroes(valid, c, v = void 0) {
     if (valid.messages?.start_chapter_is_zero && this.options.zero_chapter_strategy === "upgrade") {
       c = valid.messages.start_chapter_is_zero;
@@ -5540,16 +5534,7 @@ const bcv = new bcv_parser(lang);`);
       type = "b_range_start";
     }
     const target_entity = source_entity === "end" ? "start" : "end";
-    for (const obj_type of [source_entity, target_entity]) {
-      const original_object = passages[passage_i][obj_type].original_object;
-      if (original_object != null) {
-        passages[passage_i][obj_type] = original_object;
-      }
-    }
-    const original_target = structuredClone(passages[passage_i][target_entity]);
     passages[passage_i][target_entity] = structuredClone(passages[passage_i][source_entity]);
-    passages[passage_i][target_entity].original_object = original_target;
-    passages[passage_i][source_entity].original_object = structuredClone(passages[passage_i][source_entity]);
     if (entity.type === "sequence") {
       if (passage_i >= entity.value.length) {
         passage_i = entity.value.length - 1;
@@ -5658,16 +5643,16 @@ __export(fa_exports, {
 var bcv_regexps = class {
   constructor() {
     this.books = [];
-    this.languages = ["fa"];
+    this.languages = ["fas"];
     this.translations = [/ERV\b/gi];
-    this.escaped_passage = /(?:^|[^\x1e\x1f\p{L}\p{N}])((?:(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:[\u2013\u2014\-]|through|thru|to)\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:\d+(?:th|nd|st)\s*ch(?:apter|a?pt\.?|a?p?\.?)?\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*))?\x1f(\d+)(?:\/\d+)?\x1f(?:\/\d+\x1f|[\d\s.:,;\x1e\x1f&\(\)（）\[\]\\/"'\*=~\-–—]|title(?![a-z])|ابواب|فصول|آیات|آیات|باب|فصل|آیت|آیه|ff|تا|،|؛|۔|[a-e](?!\w)|$)+)/giu;
-    this.match_end_split = /\d\W*title|\d\W*ff(?:[\s*]*\.)?|\d[\s*]*[a-e](?!\w)|\x1e(?:[\s*]*[)\]\uff09])?|[\d\x1f]/gi;
+    this.first = /(?:I\.?\s*|یکم\.?\s*|یک\.?\s*|اول\.?\s*|۱\.?\s*|1\.?\s*|Yekom\.?\s*|Yek\.?\s*|Avval\.?\s*|Aval\.?\s*|Yak\.?\s*|Awal\.?\s*|١\.?\s*|یکمین\.?\s*|Yekmin\.?\s*)/;
+    this.second = /(?:II\.?\s*|دو\.?\s*|دوم\.?\s*|۲\.?\s*|2\.?\s*|Do\.?\s*|Dovvom\.?\s*|Dovom\.?\s*|Domai\.?\s*|٢\.?\s*|دومین\.?\s*|Domin\.?\s*)/;
+    this.third = /(?:III\.?\s*|سه\.?\s*|سوم\.?\s*|۳\.?\s*|3\.?\s*|Seh\.?\s*|Sevvom\.?\s*|Sevom\.?\s*|Somai\.?\s*|٣\.?\s*|سومین\.?\s*|Somin\.?\s*)/;
+    this.range_and = /(?:[&\u2013\u2014-]|(?:،\.?\s*|؛\.?\s*|۔\.?\s*)|تا\.?\s*)/;
+    this.range_only = /(?:[\u2013\u2014-]|تا\.?\s*)/;
+    this.match_end_split = /\d\W*(?:title)|\d\W*(?:ff)(?:[\s*]*\.)?|\d[\s*]*(?:(?:[a-e](?!\w)))|\x1e(?:[\s*]*[)\]\uff09])?|[\d\x1f]/gi;
     this.control = /[\x1e\x1f]/g;
-    this.first = /(?:I|یکم|یک|اول|۱|1|Yekom|Yek|Avval|Aval|Yak|Awal|١|یکمین|Yekmin)\.?\s*/;
-    this.second = /(?:II|دو|دوم|۲|2|Do|Dovvom|Dovom|Do|Domai|٢|دومین|Domin)\.?\s*/;
-    this.third = /(?:III|سه|سوم|۳|3|Seh|Sevvom|Sevom|Seh|Somai|٣|سومین|Somin)\.?\s*/;
-    this.range_and = /(?:[&\u2013\u2014-]|(?:،|؛|۔)|تا)/;
-    this.range_only = /(?:[\u2013\u2014-]|تا)/;
+    this.escaped_passage = /(?:^|[^\x1e\x1f\p{L}\p{N}])((?:(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:[\u2013\u2014\-]|through|thru|to)\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:ch(?:apters?|a?pts?\.?|a?p?s?\.?)?\s*\d+\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*)|(?:\d+(?:th|nd|st)\s*ch(?:apter|a?pt\.?|a?p?\.?)?\s*(?:from|of|in)(?:\s+the\s+book\s+of)?\s*))?\x1f(\d+)(?:\/\d+)?\x1f(?:\/\d+\x1f|[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—]|title\.?\s*(?![a-z])|(?:(?:(?:ابواب|فصو?ل|باب)\.?\s*)|(?:آی(?:ات|[ته])\.?\s*)|(?:ff\.?\s*)|(?:[،؛۔]\.?\s*)|(?:تا\.?\s*))|(?:[a-e]\.?\s*(?!\w))(?!\w)|$)+)/giu;
     this.pre_book = /(?:^|(?<=[^\p{L}]))/gu;
     this.pre_number_book = /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))/gu;
     this.post_book = /(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/gu;
@@ -5676,826 +5661,611 @@ var bcv_regexps = class {
         osis: ["Ps"],
         testament: "a",
         extra: "2",
-        // We only want to match a valid OSIS, so we can use a regular `\b` condition. It's always followed by ".1"; the regular Psalms parser can handle `Ps151` on its own.
         regexp: /\b(Ps151)(?=\.1\b)/g
-        // It's case-sensitive because we only want to match a valid OSIS. No `u` flag is necessary because we're not doing anything that requires it.
       },
       {
         osis: ["Gen"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:P(?:(?:(?:edai(?:yesh|s)|ed(?:aa)?yes)|edaiyes)h|edaiyishe|ida(?:ay(?:ishe|esh)|(?:(?:iy[ei]|ye)|i)sh))|pedāyesh|پ(?:یدا(?:يشه|(?:ی[ثسشچژ]|ىش|ش))|یدا(?:(?:یى|ىی)|يی)ش|يدا(?:يشه|ي?یش))|پ(?:ی(?:دايش|(?:د(?:ای?)?)?)|يدايش)|pedāy?|Gen))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:P(?:(?:(?:edai(?:yesh|s)|ed(?:aa)?yes)|edaiyes)h|edaiyishe|ida(?:ay(?:ishe|esh)|(?:(?:iy[ei]|ye)|i)sh))|pedāyesh|پ(?:یدا(?:يشه|(?:ی[ثسشچژ]|ىش|ش))|یدا(?:(?:یى|ىی)|يی)ش|يدا(?:يشه|ي?یش))|پ(?:ی(?:دايش|(?:د(?:ای?)?)?)|يدايش)|pedāy?|Gen))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Exod"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Kh(?:oro(?:(?:j(?:eh|y)|oj)|je?)|(?:or(?:oo)?u|r(?:aw|o[ou]))j|arooj)|khor(?:ojī|ro|j)|khor(?:oj|r)|خر(?:و(?:ج[هی]|[دچژ])|وو[جچژ]|ا(?:و[جچژ]|ج)|و?ُج|ج)|خر(?:وج?)?|Exod))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Kh(?:oro(?:(?:j(?:eh|y)|oj)|je?)|(?:or(?:oo)?u|r(?:aw|o[ou]))j|arooj)|khor(?:ojī|ro|j)|khor(?:oj|r)|خر(?:و(?:ج[هی]|[دچژ])|وو[جچژ]|ا(?:و[جچژ]|ج)|و?ُج|ج)|خر(?:وج?)?|Exod))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Bel"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Bel(?:\s*and\s*the\s*Dragon)?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Bel(?:\s*and\s*the\s*Dragon)?)(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Lev"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))(لا(?:وی-?(?:یا)?|و?-?ویا)ن|(?:ل(?:ا(?:(?:ویان‌ها‌|ءویان[-‌])|وویان‌)ها|ا(?:ئو|ؤ)یان-?ها|ا(?:(?:ویان‌ها|(?:ءویان|و(?:ی(?:ان)?)?)?)|وویان)|(?:ا(?:ءوی-?|و(?:ي-?|ئ)|ؤی-?)|و(?:ي-?|ی-?|و)|َو[َِْ])یان|و(?:يان‌|یان-?)ها|ا(?:ئو|ؤ)یان|اوی(?:ان[نهی]|ین|[تن])|(?:او(?:ی[ای]ا|يا)|َویا|وئی)ن|َو(?:یَ|يي)ان|[آُ]ویان|و(?:ي(?:ان)?|ی(?:ان)?))|L(?:a[vw]iyan-?haa|ev)|(?:La(?:v(?:vy?i|yy)|awiy|wya)a|La(?:wi(?:yā|a)|awia|v(?:ia|y[aā]))|La(?:va|w[ae])ya)n|La(?:wiyan|v[iy])|l(?:a(?:wiy?ā|viya)n|ōviyān|eviy)|law(?:iy?)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:لاو\x2dویان|لاوی\x2dیان|لا\x2dویان|لاوی\x2dن)|(?:ل(?:ا(?:(?:ویان‌ها‌|ءویان[\-‌])|وویان‌)ها|ا(?:ئو|ؤ)یان-ها|ا(?:(?:ویان‌ها|(?:ءویان|و(?:ی(?:ان)?)?)?)|وویان)|(?:ا(?:ءوی-|و(?:ي-|ئ)|ؤی-)|و(?:ي-|ی-|و)|َو[َِْ])یان|و(?:يان‌|یان-)ها|ا(?:ئو|ؤ)یان|اوی(?:ان[نهی]|ین|[تن])|(?:او(?:ی[ای]ا|يا)|َویا|وئی)ن|َو(?:یَ|يي)ان|[آُ]ویان|و(?:ي(?:ان)?|ی(?:ان)?))|L(?:a[vw]iyan-haa|ev)|(?:La(?:v(?:vy?i|yy)|awiy|wya)a|La(?:wi(?:yā|a)|awia|v(?:ia|y[aā]))|La(?:va|w[ae])ya)n|La(?:wiyan|v[iy])|l(?:a(?:wiy?ā|viya)n|ōviyān|eviy)|law(?:iy?)?)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Num"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:adad(?:iān|ī)|A['’]edaad|E(?:['’]e?daad|adad)|A(?:edad[ad]|['’]dad)|A(?:e|['’])daad|اعدا(?:د[دهی]|[تذز])|اع(?:د(?:ا[او]|دا)|ا)د|adadi?|اعد(?:اد?|د)?|اعتاد|Adad|عداد|Num))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:adad(?:iān|ī)|A['’]edaad|E(?:['’]e?daad|adad)|A(?:edad[ad]|['’]dad)|A(?:e|['’])daad|اعدا(?:د[دهی]|[تذز])|اع(?:د(?:ا[او]|دا)|ا)د|adadi?|اعد(?:اد?|د)?|اعتاد|Adad|عداد|Num))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Sir"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Sir(?:ach)?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Sir(?:ach)?)(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Wis"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Wis(?:dom)?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Wis(?:dom)?)(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Lam"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))(نوحه‌نامه-?ها-?ها|(?:Marathi(?:\s*(?:(?:Eryi?ah|Eryei)a|Erm(?:ia|ei)a|Irm(?:ia|ei)a)|(?:'y|y')a)|Marathi\s*(?:Er(?:yah|mia)|Irmia)|مراثی(?:\s*ا(?:رمیاءی|رمی?\s*یا|رمي\s*یا|ِرم\s*یا)|یئ\s*یی)|نوحه-?نامه‌ها|نوحه\s*نامه)|(?:مراثی\s*ارمي|نوحه-?ها-?ه)ا|(?:Marathi(?:\s*(?:(?:Eryaiy|Eryi?a)ah|Erm[ei]yah|Irm[ei]yah)|(?:(?:ey)?a|y(?:ya|e))h|(?:ya|e)h|'i|’i)|Marathi(?:\s*(?:Erm['’]yaa|Irm['’]yaa)|yaa)h|Marathi(?:\s*(?:Er(?:y(?:aiya|(?:iaa|aa?))|m(?:[ei]|['’])ya)|Irm(?:[ei]|['’])ya)|(?:ey)?a|y(?:ya|e)|ey|y(?:a|y)?|e)?|نوحه(?:(?:(?:‌(?:نامه(?:‌ها‌|-?)|سرایی‌)|-?گری‌)|‌ای-?)|‌ها‌)ها|مرا(?:ث(?:ی(?:\s*(?:ا(?:ِرم(?:ی(?:ا(?:ء[هى]|ئ[هی]|[اهى])|\s*ی[اه]|ی[اه]|[هى])|ي(?:اا|ه))|رمی(?:(?:ائ?ه|[هى])|ی[اه]))|ی(?:ی[ئاه]|[اهى]))|ئ(?:\s*ی[اهی]|ه)|(?:ى\s*ی|ائ)[هی]|ی\s*ی[اه]|اءه|ی(?:ئه|[اه])|اه|ه[اه]|ىه)|ئیه|ي[هى]|ى)|تی)|So(?:ug(?:-?name(?:h-?(?:haa|y)|-?y|e)|-?na(?:me(?:ha)?-?h|ameh)a|naame(?:h(?:-?(?:ha|y)|a)|-?ee)|-?name-?ee)|gh(?:-?name|nama))|سوگ(?:‌(?:(?:نامه‌)?سرایی|نامه(?:(?:‌(?:نگار|(?:ها)?ی|گو)|-?ها)|(?:‌ها)?)|(?:ن(?:امه‌ا|ویس)|گر)ی)|(?:نامه(?:-?ها-?|‌ها‌)|\s*نامه-?)ها|نامه‌نگاری|نامه‌سرایی|نامه‌نگار|نامه‌(?:خوان|نویس|های|ا[تی]|گو|ی)|\s*نامه‌ها|(?:نامه‌گر|\s*نامه‌ا)ی|نامه(?:-?ها|‌ها)?|\s*نامه)|مرا(?:ث(?:ی(?:\s*(?:ا(?:ِرم(?:یاء?|يا)|رمیا)|یی)|اء|یئ|ئ|ا|ه|ى)?|ئی|ئ|ي)?)?|Soug(?:-?na(?:me(?:h(?:-?ha|a)?)?|ame)|naameh)|(?:نوحه(?:-?(?:نامه‌ه?ا|ها-?ا)|‌نامه‌ا)|مراته)ی|نو(?:ح(?:ه(?:‌(?:نامه(?:‌ها)?|سرایی|سرای|گ[رو])|-?(?:نامه|ها))?)?)?|نوحه‌(?:نامه‌ی|گری|ات)|Sogh-?naameh|نوحه‌گو‌یان|Marath['’]iya|(?:Marathi(?:y’|’y)|Nooha-?h)a|نوحه‌(?:خوان|نویس)ی|نوحه‌گرایی|Marath['’]iy|نوحه‌(?:خوان|نویس)|marzīyeh|نوحه‌های|نوحه‌ای|نوحه‌ها|Nooha|āheng|Nouhe|Lam|āh))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Marath(?:i(?:\s*(?:Irm(?:’ya(?:ah)?|'ya(?:ah)?|e(?:yah?|ia)|i(?:yah?|aa?))|Er(?:m(?:’ya(?:ah)?|'ya(?:ah)?|e(?:yah?|ia)|i(?:yah?|aa?))|y(?:a(?:iyah?|ha?|ah?)?|ia(?:ha|ah?)|eia)))|y(?:y(?:ah?)?|a(?:ah|h)?|’a|'a|eh?)?|e(?:y(?:ah?)?|h)?|’(?:ya|i)|'(?:ya|i)|ah?)?|’iya?|'iya?)|نو(?:ح(?:ه(?:‌(?:ن(?:امه(?:‌(?:ها(?:‌ها)?|ای|ی)|-ها(?:-ها)?)?|ویسی?)|سرای(?:ی(?:‌ها)?)?|گ(?:و(?:‌یان)?|ر(?:ایی|ی)?)|خوانی?|ها(?:‌ها|ی)?|ا(?:ی(?:-ها)?|ت))|-(?:نامه(?:‌(?:های?|ای))?|گری‌ها|ها(?:-(?:ها|ای))?)|\s*نامه)?)?)?|سوگ(?:‌(?:ن(?:امه(?:‌(?:سرایی|نگار|های?|گو|ای|ی)|-ها)?|ویسی)|سرایی|گری)|نامه(?:‌(?:سرایی|ن(?:گاری?|ویس)|ها(?:‌ها|ی)?|خوان|گ(?:ری|و)|ا[تی]|ی)|-ها(?:-ها)?)?|\s*نامه(?:‌(?:ها|ای)|-ها)?)|So(?:ug(?:-na(?:me(?:h(?:-(?:haa?|y)|a(?:-ha)?)?|-(?:ha|ee|y)|e)?|ame(?:ha)?)|naame(?:h(?:-(?:ha|y)|a)?|-ee))|gh(?:-na(?:ameh|me)|nama))|مرا(?:ث(?:ی(?:\s*(?:ا(?:ِرم(?:ی(?:\s*ی[اه]|ا(?:ئ[هی]|ء(?:ى|ه)?|ى|ه|ا)?|ی[اه]|ى|ه)|\s*یا|ي(?:اا?|ه))|رم(?:ی(?:\s*یا|ا(?:ئه|ءی|ه)?|ی[اه]|ى|ه)|ي(?:\s*ی)?ا|\s*یا))|ی(?:ی(?:ه|ا|ئ)?|ى|ه|ا))|ی(?:ئ(?:\s*یی|ه)?|\s*ی[اه]|ه|ا)|ى(?:\s*ی[هی]|ه)?|ئ(?:\s*ی[اهی]|ه)?|ا(?:ئ[هی]|ءه?|ه)?|ه(?:ه|ا)?)?|ئ(?:یه?)?|ي(?:ى|ه)?|ى)?|ته?ی)?|marzīyeh|No(?:oha(?:-ha)?|uhe)|āh(?:eng)?|Lam))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["EpJer"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Ep(?:istle\s*of\s*Jeremiah|\s*?Jer))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Ep(?:istle\s*of\s*Jeremiah|\s*?Jer))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Rev"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:m(?:ak(?:(?:(?:(?:(?:ashefi(?:ah|[ei])|(?:(?:(?:(?:a(?:(?:aa|h)s|sh)h|hsa)fe|ash(?:fe[ai]|af[io]|e(?:ef|f[eo]))|shaafe)|ashaafi)|ashefah))|ashfeha)|aash(?:f(?:e(?:hi|vo|a)|a)|efa))|ashafeh)|shaf(?:ah|e))|uk(?:a(?:(?:sh(?:(?:ef(?:i(?:ah|[ei])|ah|e)|a(?:afi|fo)|fea)|feha)|ash(?:f(?:e(?:hi|vo|a)|a)|efa))|shafeh)|shaf(?:ah|e)))|m(?:aka(?:sh(?:efia?|(?:efa|fe))|ashfeh)|uka(?:sh(?:ef(?:ia?|a)|fe)|ashfeh))|Maka(?:ashfa[ah]|ashf[ei]y|shef(?:a[ah]|e[hiy]|iy|y))|Makashephi|Maka(?:ashf(?:a?|[ei])|shef(?:a|e|i)?)|M(?:ikashe|ekaash)fe|vāhyūnn|م(?:ک(?:اشف(?:ات|ةٔ|ه[اهؤی]|یه|[ىہ])|شفه)|ک(?:اشفي|شفا)ه|كاشفه)|yūhannā|vāh(?:y(?:ūn?)?)?|مک(?:ا(?:ش(?:ف(?:ا|ة|ه|ی)?)?)?|ش)?|Rev))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:m(?:ak(?:(?:(?:(?:(?:ashefi(?:ah|[ei])|(?:(?:(?:(?:a(?:(?:aa|h)s|sh)h|hsa)fe|ash(?:fe[ai]|af[io]|e(?:ef|f[eo]))|shaafe)|ashaafi)|ashefah))|ashfeha)|aash(?:f(?:e(?:hi|vo|a)|a)|efa))|ashafeh)|shaf(?:ah|e))|uk(?:a(?:(?:sh(?:(?:ef(?:i(?:ah|[ei])|ah|e)|a(?:afi|fo)|fea)|feha)|ash(?:f(?:e(?:hi|vo|a)|a)|efa))|shafeh)|shaf(?:ah|e)))|m(?:aka(?:sh(?:efia?|(?:efa|fe))|ashfeh)|uka(?:sh(?:ef(?:ia?|a)|fe)|ashfeh))|Maka(?:ashfa[ah]|ashf[ei]y|shef(?:a[ah]|e[hiy]|iy|y))|Makashephi|Maka(?:ashf(?:a?|[ei])|shef(?:a|e|i)?)|M(?:ikashe|ekaash)fe|vāhyūnn|م(?:ک(?:اشف(?:ات|ةٔ|ه[اهؤی]|یه|[ىہ])|شفه)|ک(?:اشفي|شفا)ه|كاشفه)|yūhannā|vāh(?:y(?:ūn?)?)?|مک(?:ا(?:ش(?:ف(?:ا|ة|ه|ی)?)?)?|ش)?|Rev))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["PrMan"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Pr(?:ayer\s*of\s*Manasseh|\s*?Man))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Pr(?:ayer\s*of\s*Manasseh|\s*?Man))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Thess"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Do(?:vom\s*Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|vom\s*?Tessalonikians|(?:vom\s*?Tessalonikea|vom\s*?Tessalonia|vom\s*?Tsalonicia)ns|vomThessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|(?:vom(?:\s*Tessaloni[ck]y|Tessaloni[ck]y)|vom\s*Thesaloniki|vom(?:Th?|\s*T)esaloniki|\s*Th?esaloniki|Th?esaloniki)an|(?:vom\s*?t|\s*t|t)essalonik[iy]an|vom\s*?Tessalonikee|vom\s*?Tessalonikan|\s*T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|vom\s*?Tessalonici|T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|(?:(?:vom\s*?Ts|Ts)|\s*Ts)alonikian|vom\s*?Tsalonikee)|Do(?:vom\s*?Tessalonikian|vom\s*Thessaloni(?:ci|ka)|vom\s*?Tessalonika|vomThessaloni(?:ci|ka)|\s*T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki)|vom\s*?Tsaloniki|T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki)|vomThess)|(?:dovvom\s*tsālūnīkiā|2\s*?Tsalonikia)n|2\s*Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|2\s*?Tessalonikians|(?:(?:2\s*?Tessalonike|2\s*?Tessaloni)|2\s*?Tsalonici)ans|2Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|دو(?:م(?:\s*تسالون(?:يکیانی|یکیان[هی])|تسالون(?:يکیانی|یکیان[هی]))|م\s*?تسالونيکيانه?|م(?:\s*تسالون[يی]کیان|تس(?:الون[يی]کیان)?)|م\s*?تسالونیکيان|\s*تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان))|تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان)))|2\s*?Tessalonikian|(?:2(?:\s*Tessaloni[ck]y|Tessaloni[ck]y)|2\s*Thesaloniki|(?:2Th?|2\s*T)esaloniki)an|2\s*Thessaloni(?:ci|ka)|2\s*?Tessalonikee|(?:2\s*Tessalonika|2Tessalonika|[2۲]tsl)n|2\s*تسالون(?:يکیانی|یکیان[هی])|۲\s*تسالون(?:يکیانی|یکیان[هی])|(?:(?:2\s*|[2۲])|۲\s*)تسالونيکيانه?|2\s*Tessalonika|2Thessaloni(?:ci|ka)|2\s*تسالون[يی]کیان|۲\s*تسالون[يی]کیان|2\s*Tessalonici|۲تسالون(?:يکیانی|یکیان[هی])|2تسالون(?:يکیانی|یکیان[هی])|(?:(?:2\s*|[2۲])|۲\s*)تسالونیکيان|2Tessalonika|۲تسالون[يی]کیان|2تسالون[يی]کیان|2Tessalonici|2\s*?Tsalonikee|2\s*?Tsaloniki|dovvomts|2Thess|۲(?:تس(?:ال?|ل)?|ts)|2(?:تسلن|tsā)|۲تسلن|2(?:(?:تسا?|ts)|تسل)|[2۲]tsl))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Do(?:vom\s*Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|vom\s*?Tessalonikians|(?:vom\s*?Tessalonikea|vom\s*?Tessalonia|vom\s*?Tsalonicia)ns|vomThessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|(?:vom(?:\s*Tessaloni[ck]y|Tessaloni[ck]y)|vom\s*Thesaloniki|vom(?:Th?|\s*T)esaloniki|\s*Th?esaloniki|Th?esaloniki)an|(?:vom\s*?t|\s*t|t)essalonik[iy]an|vom\s*?Tessalonikee|vom\s*?Tessalonikan|\s*T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|vom\s*?Tessalonici|T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|(?:(?:vom\s*?Ts|Ts)|\s*Ts)alonikian|vom\s*?Tsalonikee)|Do(?:vom\s*?Tessalonikian|vom\s*Thessaloni(?:ci|ka)|vom\s*?Tessalonika|vomThessaloni(?:ci|ka)|\s*T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki)|vom\s*?Tsaloniki|T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki)|vomThess)|(?:dovvom\s*tsālūnīkiā|2\s*?Tsalonikia)n|2\s*Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|2\s*?Tessalonikians|(?:(?:2\s*?Tessalonike|2\s*?Tessaloni)|2\s*?Tsalonici)ans|2Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|دو(?:م(?:\s*تسالون(?:يکیانی|یکیان[هی])|تسالون(?:يکیانی|یکیان[هی]))|م\s*?تسالونيکيانه?|م(?:\s*تسالون[يی]کیان|تس(?:الون[يی]کیان)?)|م\s*?تسالونیکيان|\s*تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان))|تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان)))|2\s*?Tessalonikian|(?:2(?:\s*Tessaloni[ck]y|Tessaloni[ck]y)|2\s*Thesaloniki|(?:2Th?|2\s*T)esaloniki)an|2\s*Thessaloni(?:ci|ka)|2\s*?Tessalonikee|(?:2\s*Tessalonika|2Tessalonika|[2۲]tsl)n|2\s*تسالون(?:يکیانی|یکیان[هی])|۲\s*تسالون(?:يکیانی|یکیان[هی])|(?:(?:2\s*|[2۲])|۲\s*)تسالونيکيانه?|2\s*Tessalonika|2Thessaloni(?:ci|ka)|2\s*تسالون[يی]کیان|۲\s*تسالون[يی]کیان|2\s*Tessalonici|۲تسالون(?:يکیانی|یکیان[هی])|2تسالون(?:يکیانی|یکیان[هی])|(?:(?:2\s*|[2۲])|۲\s*)تسالونیکيان|2Tessalonika|۲تسالون[يی]کیان|2تسالون[يی]کیان|2Tessalonici|2\s*?Tsalonikee|2\s*?Tsaloniki|dovvomts|2Thess|۲(?:تس(?:ال?|ل)?|ts)|2(?:تسلن|tsā)|۲تسلن|2(?:(?:تسا?|ts)|تسل)|[2۲]tsl))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Thess"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval|1)\s*Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|(?:Avval\s*?Tessaloniki|1\s*?Tessaloniki)ans|(?:(?:Avval\s*?Tessalonike|1\s*?Tessalonike)a|Avval\s*?Tessalonia|(?:Avval\s*?Ts|1\s*?Ts)alonicia|1\s*?Tessalonia)ns|(?:Avval|1)Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|(?:Avval\s*?Tessaloniki|1\s*?Tessaloniki)an|(?:Avval(?:\s*Tessaloni[ck]y|Tessaloni[ck]y)|(?:Avval|1)\s*Thesaloniki|(?:Avval(?:Th?|\s*T)esa|(?:1Th?|1\s*T)esa)loniki|1(?:\s*Tessaloni[ck]y|Tessaloni[ck]y))an|Avval\s*?tessalonik[iy]an|Yek(?:\s*T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|(?:\s*Th?esaloniki|Th?esaloniki)an|\s*?tessalonik[iy]an|\s*?Tsalonikian)|(?:Avval|1)\s*Thessaloni(?:ci|ka)|(?:Avval\s*?Tessalonike|1\s*?Tessalonike)e|(?:Avval\s*?Tessalonika|1\s*Tessalonika|1Tessalonika|[1۱]tsl)n|Avval\s*?Tessalonika|(?:Avval|1)Thessaloni(?:ci|ka)|Yek(?:\s*T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki)|T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki))|Avval\s*?Tessalonici|(?:(?:Avval\s*?Ts|1\s*?Ts)alonikia|avval\s*tsālūnīkā)n|اول(?:\s*تسالون(?:یکیان[هی]|يکیانی)|تسالون(?:یکیان[هی]|يکیانی))|(?:Avval\s*?Ts|1\s*?Ts)alonikee|(?:اول\s*?تسالونيکي|(?:(?:[1۱]\s*|۱)|1)تسالونيکي)انه?|اول(?:\s*تسالون[يی]کیان|تس(?:(?:الونیکیان)?|الونيکیان))|(?:Avval\s*?Ts|1\s*?Ts)aloniki|(?:اول\s*?تسالونیکي|(?:(?:[1۱]\s*|۱)|1)تسالونیکي)ان|یک(?:\s*تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان))|تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان)))|[1۱]\s*تسالونیکیان[هی]|[1۱]\s*تسالونيکیانی|(?:اول\s*|[1۱])تسالونیکان|[1۱]\s*تسالونیکیان|[1۱]\s*تسالونيکیان|1\s*Tessalonika|1\s*Tessalonici|۱تسالون(?:یکیان[هی]|يکیانی)|1تسالون(?:یکیان[هی]|يکیانی)|۱تسالون[يی]کیان|1تسالون[يی]کیان|1Tessalonika|1Tessalonici|AvvalThess|avvalts|1Thess|۱(?:تس(?:ال?|ل)?|ts)|1(?:تسلن|tsā)|۱تسلن|1(?:(?:تسا?|ts)|تسل)|[1۱]tsl))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval|1)\s*Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|(?:Avval\s*?Tessaloniki|1\s*?Tessaloniki)ans|(?:(?:Avval\s*?Tessalonike|1\s*?Tessalonike)a|Avval\s*?Tessalonia|(?:Avval\s*?Ts|1\s*?Ts)alonicia|1\s*?Tessalonia)ns|(?:Avval|1)Thessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|(?:Avval\s*?Tessaloniki|1\s*?Tessaloniki)an|(?:Avval(?:\s*Tessaloni[ck]y|Tessaloni[ck]y)|(?:Avval|1)\s*Thesaloniki|(?:Avval(?:Th?|\s*T)esa|(?:1Th?|1\s*T)esa)loniki|1(?:\s*Tessaloni[ck]y|Tessaloni[ck]y))an|Avval\s*?tessalonik[iy]an|Yek(?:\s*T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|T(?:hessaloni(?:(?:(?:ci)?a|k[ei]a)ns|kan)|essaloni(?:k(?:ians|ee)|ci)|(?:essaloni(?:ke)?a|salonicia)ns|essalonikan|salonikee)|(?:\s*Th?esaloniki|Th?esaloniki)an|\s*?tessalonik[iy]an|\s*?Tsalonikian)|(?:Avval|1)\s*Thessaloni(?:ci|ka)|(?:Avval\s*?Tessalonike|1\s*?Tessalonike)e|(?:Avval\s*?Tessalonika|1\s*Tessalonika|1Tessalonika|[1۱]tsl)n|Avval\s*?Tessalonika|(?:Avval|1)Thessaloni(?:ci|ka)|Yek(?:\s*T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki)|T(?:essalonikian|hessaloni(?:ci|ka)|essalonika|saloniki))|Avval\s*?Tessalonici|(?:(?:Avval\s*?Ts|1\s*?Ts)alonikia|avval\s*tsālūnīkā)n|اول(?:\s*تسالون(?:یکیان[هی]|يکیانی)|تسالون(?:یکیان[هی]|يکیانی))|(?:Avval\s*?Ts|1\s*?Ts)alonikee|(?:اول\s*?تسالونيکي|(?:(?:[1۱]\s*|۱)|1)تسالونيکي)انه?|اول(?:\s*تسالون[يی]کیان|تس(?:(?:الونیکیان)?|الونيکیان))|(?:Avval\s*?Ts|1\s*?Ts)aloniki|(?:اول\s*?تسالونیکي|(?:(?:[1۱]\s*|۱)|1)تسالونیکي)ان|یک(?:\s*تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان))|تسالون(?:يک(?:يانه?|یان)|یک(?:یانه?|يان)))|[1۱]\s*تسالونیکیان[هی]|[1۱]\s*تسالونيکیانی|(?:اول\s*|[1۱])تسالونیکان|[1۱]\s*تسالونیکیان|[1۱]\s*تسالونيکیان|1\s*Tessalonika|1\s*Tessalonici|۱تسالون(?:یکیان[هی]|يکیانی)|1تسالون(?:یکیان[هی]|يکیانی)|۱تسالون[يی]کیان|1تسالون[يی]کیان|1Tessalonika|1Tessalonici|AvvalThess|avvalts|1Thess|۱(?:تس(?:ال?|ل)?|ts)|1(?:تسلن|tsā)|۱تسلن|1(?:(?:تسا?|ts)|تسل)|[1۱]tsl))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Deut"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ت(?:ثني-?ها-?ها|(?:ثني(?:ه(?:ا-?|‌)|-?-?)|سنیه‌)ها|صنی(?:ه(?:-?ها)?|ـیه)|ثني-?ها|ثن(?:(?:يـ|ی‌)|ـ)ها|(?:ثن(?:(?:ي(?:ي-?|-?ی|ی)|يـی|ی‌?ی|ـی|ئ)|ـيي)|سن(?:يي|ئ))ه|(?:ثنی-?|سنیـ)یه|ث(?:ن(?:(?:يي)?ه|ی(?:ه[اهی]|[او]))|ـ)|ث(?:ن(?:یه?|ي)?)?|سنیه)|T(?:(?:es(?:sni|n)y|sn-?i)eh|es(?:n(?:iyeh|-?(?:ha|ie))|snie)|es(?:n(?:i[ae]|a)|s(?:ny|i[ey]))h|asnieh|sn-?ha)|Deut-?ieh|T(?:es(?:n(?:iye)?|sn?)|sn)|tsniyeh|Dt(?:rnmy|-?ie)|D(?:eu)?t|tsn?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ت(?:ثني-ها-ها|(?:ثني(?:ه(?:ا-|‌)|--)|سنیه‌)ها|صنی(?:ه(?:-ها)?|ـیه)|ثني-ها|ثن(?:(?:يـ|ی‌)|ـ)ها|(?:ثن(?:(?:ي(?:ي-|-ی|ی)|يـی|ی‌?ی|ـی|ئ)|ـيي)|سن(?:يي|ئ))ه|(?:ثنی-|سنیـ)یه|ث(?:ن(?:(?:يي)?ه|ی(?:ه[اهی]|[او]))|ـ)|ث(?:ن(?:یه?|ي)?)?|سنیه)|T(?:(?:es(?:sni|n)y|sn-i)eh|es(?:n(?:iyeh|-(?:ha|ie))|snie)|es(?:n(?:i[ae]|a)|s(?:ny|i[ey]))h|asnieh|sn-ha)|Deut-ieh|T(?:es(?:n(?:iye)?|sn?)|sn)|tsniyeh|Dt(?:rnmy|-ie)|D(?:eu)?t|tsn?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Josh"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Y(?:osh(?:uah|a)|o(?:shu['’]|sh['’]u|wshu)a|ushu?a)|yūsh['’](?:ai|a|ā)|Yoshua|ی(?:و(?:ش(?:ع[عهوی]|[ئهوی]ع|ا)|وش[اع])|ش)|یوشع?|Josh))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Y(?:osh(?:uah|a)|o(?:shu['’]|sh['’]u|wshu)a|ushu?a)|yūsh['’](?:ai|a|ā)|Yoshua|ی(?:و(?:ش(?:ع[عهوی]|[ئهوی]ع|ا)|وش[اع])|ش)|یوشع?|Josh))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Judg"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Da(?:v(?:(?:aran(?:an|e)|ran)|ooran)|w(?:oo|a)ran)|داو(?:[او]ر(?:انه?|ن)|ر(?:ان[نه]|اان|ران|ن)|ر(?:ان)?)?|Davaran|Judg))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Da(?:v(?:(?:aran(?:an|e)|ran)|ooran)|w(?:oo|a)ran)|داو(?:[او]ر(?:انه?|ن)|ر(?:ان[نه]|اان|ران|ن)|ر(?:ان)?)?|Davaran|Judg))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Ruth"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:R(?:oot[eh]|ut[hi])|rūth?ī|ر(?:و(?:ت(?:هـ|[ؒؓاتـہۃی])|ُتی|ٗتی|ط[تہ]|ُث|[ثٹټٿۃ])|ُو(?:ت[هی]|ُت|ٹی|ت|[طٿ])|و(?:ته?|ُت|ٗت|ط)|(?:وٖ|ۆ)ت)|R(?:oo|u)t|rūth))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:R(?:oot[eh]|ut[hi])|rūth?ī|ر(?:و(?:ت(?:هـ|[ؒؓاتـہۃی])|ُتی|ٗتی|ط[تہ]|ُث|[ثٹټٿۃ])|ُو(?:ت[هی]|ُت|ٹی|ت|[طٿ])|و(?:ته?|ُت|ٗت|ط)|(?:وٖ|ۆ)ت)|R(?:oo|u)t|rūth))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Esd"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(1(?:\s*Esd(?:ras)?|Esd))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(1(?:\s*Esd(?:ras)?|Esd))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Esd"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(2(?:\s*Esd(?:ras)?|Esd))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(2(?:\s*Esd(?:ras)?|Esd))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Isa"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:I(?:yshaiyah|s(?:haiyah|a))|E(?:ysh(?:a(?:[iy]yah|['’]yaa|yaa)|eya['’]a|(?:a(?:['’]i|a)|['’])ya|eyaa)|sh(?:a(?:[iy]yah|['’]yaa|yaa)|eya['’]a|(?:a(?:['’]i|a)|['’])ya|eyaa))|E(?:ysha(?:(?:[iy])?|['’])ya|sha(?:(?:[iy])?|['’])ya)|Iy?shayaa|(?:I(?:ysha['’]|sha['’])|Ay?shai)ya|ا(?:(?:شع(?:يا\s*[يی]|یا\s*[يی])|یشی)ا|شع(?:\s*یاه|ي(?:ا[ءئاه]|ى)|ي[هی]ا|ی(?:ا[ءئاه]|[هی]ا|[آى]))|ش(?:ع[يی]\s*|\s*3|3)یا|شع(?:\s*یا|يا|ي[هی]|ی(?:ا|[هی])?|ي)?|[\s*ِ]شعیا|یش)|Iy?shaya|esh['’](?:āyā|a)|Ay?shaya|esh['’]ā|īshiā|īsh))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:I(?:yshaiyah|s(?:haiyah|a))|E(?:ysh(?:a(?:[iy]yah|['’]yaa|yaa)|eya['’]a|(?:a(?:['’]i|a)|['’])ya|eyaa)|sh(?:a(?:[iy]yah|['’]yaa|yaa)|eya['’]a|(?:a(?:['’]i|a)|['’])ya|eyaa))|E(?:ysha(?:(?:[iy])?|['’])ya|sha(?:(?:[iy])?|['’])ya)|Iy?shayaa|(?:I(?:ysha['’]|sha['’])|Ay?shai)ya|ا(?:(?:شع(?:يا\s*[يی]|یا\s*[يی])|یشی)ا|شع(?:\s*یاه|ي(?:ا[ءئاه]|ى)|ي[هی]ا|ی(?:ا[ءئاه]|[هی]ا|[آى]))|ش(?:ع[يی]\s*|\s*3|3)یا|شع(?:\s*یا|يا|ي[هی]|ی(?:ا|[هی])?|ي)?|[\s*ِ]شعیا|یش)|Iy?shaya|esh['’](?:āyā|a)|Ay?shaya|esh['’]ā|īshiā|īsh))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Sam"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:dovvom\s*samu['’]ī|2Samo(?:w(?:ey|i)|ue)|2Samu[ei])l|Do(?:(?:vom(?:\s*[Ss]|s)|s)am(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|(?:vomSam(?:o(?:w(?:ey|i)|ue)|u[ei])|vomSam(?:u['w’]|oe)i)l|vomSamw[ei]il|\s*sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il))|دو(?:م?\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|مس(?:م(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل))?|سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل))|2\s*Sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|2\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|۲\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|DovomSam|2Sam(?:u['w’]|oe)il|2Samw[ei]il|[2۲]سموئ(?:یل[ہی]|ل)|(?:[2۲]سموئ(?:یی|ي)|۲سمویی|2سمویی|[2۲]سموای)ل|(?:[2۲]سموئئ|[2۲]سموائ|2سم(?:وء|ؤ)|۲سم(?:وء|ؤ))یل|[2۲]سموئیل|dovvoms|[2۲]سمئویل|۲(?:س(?:مویل|امو)|sā?mu)|2سمویل|۲(?:سم(?:وی?)?|sm)|2(?:sā?mu|سامو)|2(?:سمو?|sm)|2Sam))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:dovvom\s*samu['’]ī|2Samo(?:w(?:ey|i)|ue)|2Samu[ei])l|Do(?:(?:vom(?:\s*[Ss]|s)|s)am(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|(?:vomSam(?:o(?:w(?:ey|i)|ue)|u[ei])|vomSam(?:u['w’]|oe)i)l|vomSamw[ei]il|\s*sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il))|دو(?:م?\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|مس(?:م(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل))?|سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل))|2\s*Sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|2\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|۲\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|DovomSam|2Sam(?:u['w’]|oe)il|2Samw[ei]il|[2۲]سموئ(?:یل[ہی]|ل)|(?:[2۲]سموئ(?:یی|ي)|۲سمویی|2سمویی|[2۲]سموای)ل|(?:[2۲]سموئئ|[2۲]سموائ|2سم(?:وء|ؤ)|۲سم(?:وء|ؤ))یل|[2۲]سموئیل|dovvoms|[2۲]سمئویل|۲(?:س(?:مویل|امو)|sā?mu)|2سمویل|۲(?:سم(?:وی?)?|sm)|2(?:sā?mu|سامو)|2(?:سمو?|sm)|2Sam))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Sam"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval(?:\s*[Ss]|s)|1\s*S)am(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|(?:avval\s*samu['’]ī|(?:Avval|1)Samo(?:w(?:ey|i)|ue)|(?:Avval|1)Samu[ei])l|(?:(?:Avval|1)Samu['w’]|(?:Avval|1)Samoe)il|(?:Avval|1)Samw[ei]il|Yek(?:\s*sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il))|(?:اول|۱)\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|اولسم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|یک(?:\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل))|1\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|AvvalSam|[1۱]سموئ(?:یل[ہی]|ل)|(?:[1۱]سموئ(?:یی|ي)|۱سمویی|1سمویی|[1۱]سموای)ل|(?:[1۱]سموئئ|[1۱]سموائ|1سم(?:وء|ؤ)|۱سم(?:وء|ؤ))یل|[1۱]سموئیل|[1۱]سمئویل|۱(?:س(?:مویل|امو)|sā?mu)|avvals|1سمویل|۱(?:سم(?:وی?)?|sm)|1(?:sā?mu|سامو)|1(?:سمو?|sm)|1Sam|اولس))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval(?:\s*[Ss]|s)|1\s*S)am(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|(?:avval\s*samu['’]ī|(?:Avval|1)Samo(?:w(?:ey|i)|ue)|(?:Avval|1)Samu[ei])l|(?:(?:Avval|1)Samu['w’]|(?:Avval|1)Samoe)il|(?:Avval|1)Samw[ei]il|Yek(?:\s*sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il)|sam(?:(?:(?:o(?:w(?:ey|i)|ue)|u[ei])|(?:u['w’]|oe)i)l|w[ei]il))|(?:اول|۱)\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|اولسم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|یک(?:\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل))|1\s*سم(?:و(?:(?:ئ(?:یل[ہی]|ل)|یل)|ئیل)|و(?:ئ(?:یی|ي)|یی|ای)ل|(?:و(?:ئئ|ائ|ء)|ؤ)یل|ئویل)|AvvalSam|[1۱]سموئ(?:یل[ہی]|ل)|(?:[1۱]سموئ(?:یی|ي)|۱سمویی|1سمویی|[1۱]سموای)ل|(?:[1۱]سموئئ|[1۱]سموائ|1سم(?:وء|ؤ)|۱سم(?:وء|ؤ))یل|[1۱]سموئیل|[1۱]سمئویل|۱(?:س(?:مویل|امو)|sā?mu)|avvals|1سمویل|۱(?:سم(?:وی?)?|sm)|1(?:sā?mu|سامو)|1(?:سمو?|sm)|1Sam|اولس))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Kgs"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Do(?:(?:vom(?:\s*[Pp]|[Pp])|p)ad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|\s*pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|vomKgs)|2\s*?Pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|دو(?:م?\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|مپ(?:ادش(?:اه(?:اان|(?:ا?ن|ا))|هان))?|پادش(?:اه(?:اان|(?:ا?ن|ا))|هان))|2\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|۲\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|[2۲]پادشاهاان|[2۲]پادشاها?ن|[2۲]پادشاها|[2۲]پادشهان|[2۲]pādsh|2(?:پا(?:دش?)?|pād?)|۲(?:پا(?:دش?)?|pād?)|2Kgs))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Do(?:(?:vom(?:\s*[Pp]|[Pp])|p)ad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|\s*pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|vomKgs)|2\s*?Pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|دو(?:م?\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|مپ(?:ادش(?:اه(?:اان|(?:ا?ن|ا))|هان))?|پادش(?:اه(?:اان|(?:ا?ن|ا))|هان))|2\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|۲\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|[2۲]پادشاهاان|[2۲]پادشاها?ن|[2۲]پادشاها|[2۲]پادشهان|[2۲]pādsh|2(?:پا(?:دش?)?|pād?)|۲(?:پا(?:دش?)?|pād?)|2Kgs))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Kgs"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval(?:\s*[Pp]|[Pp])|1\s*?P)ad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|Yek(?:\s*pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n)|(?:اول|۱)\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|اولپادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|یک(?:\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|پادش(?:اه(?:اان|(?:ا?ن|ا))|هان))|1\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|[1۱]پادشاهاان|[1۱]پادشاها?ن|[1۱]پادشاها|AvvalKgs|[1۱]پادشهان|[1۱]pādsh|1(?:پا(?:دش?)?|pād?)|۱(?:پا(?:دش?)?|pād?)|اولپ|1Kgs))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval(?:\s*[Pp]|[Pp])|1\s*?P)ad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|Yek(?:\s*pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n|pad(?:(?:eshahna|(?:eshah[ao]|shah[ao]))|ishaha)n)|(?:اول|۱)\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|اولپادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|یک(?:\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|پادش(?:اه(?:اان|(?:ا?ن|ا))|هان))|1\s*پادش(?:اه(?:اان|(?:ا?ن|ا))|هان)|[1۱]پادشاهاان|[1۱]پادشاها?ن|[1۱]پادشاها|AvvalKgs|[1۱]پادشهان|[1۱]pādsh|1(?:پا(?:دش?)?|pād?)|۱(?:پا(?:دش?)?|pād?)|اولپ|1Kgs))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Chr"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:dovvom\s*tawārikh|Do(?:(?:vom(?:\s*[Tt]|T)|T)(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|\s*t(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|vomChr)|دو(?:م?\s*توار(?:ی(?:که?|خ)|ي?خ)|مت(?:وار(?:ی(?:که?|خ)|ي?خ))?|توار(?:ی(?:که?|خ)|ي?خ))|2\s*?T(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|2\s*توار(?:ی(?:که?|خ)|ي?خ)|۲\s*توار(?:ی(?:که?|خ)|ي?خ)|[2۲]تواریکه?|2(?:t(?:owāri|awā)|تواری?خ)|۲(?:towāri|تواری?خ)|dovvomt|[2۲]تواريخ|2(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|۲(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|2Chr))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:dovvom\s*tawārikh|Do(?:(?:vom(?:\s*[Tt]|T)|T)(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|\s*t(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|vomChr)|دو(?:م?\s*توار(?:ی(?:که?|خ)|ي?خ)|مت(?:وار(?:ی(?:که?|خ)|ي?خ))?|توار(?:ی(?:که?|خ)|ي?خ))|2\s*?T(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|2\s*توار(?:ی(?:که?|خ)|ي?خ)|۲\s*توار(?:ی(?:که?|خ)|ي?خ)|[2۲]تواریکه?|2(?:t(?:owāri|awā)|تواری?خ)|۲(?:towāri|تواری?خ)|dovvomt|[2۲]تواريخ|2(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|۲(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|2Chr))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Chr"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:avval\s*tawārikh|(?:Avval(?:\s*[Tt]|[Tt])|1\s*?T)(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|Yek(?:\s*t(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|t(?:(?:(?:owar[iy]|owri)|oari)|awari)kh)|(?:اول|۱)\s*توار(?:ی(?:که?|خ)|ي?خ)|اولتوار(?:ی(?:که?|خ)|ي?خ)|یک(?:\s*توار(?:ی(?:که?|خ)|ي?خ)|توار(?:ی(?:که?|خ)|ي?خ))|1\s*توار(?:ی(?:که?|خ)|ي?خ)|AvvalChr|[1۱]تواریکه?|1(?:t(?:owāri|awā)|تواری?خ)|۱(?:towāri|تواری?خ)|[1۱]تواريخ|1(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|۱(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|avvalt|اولت|1Chr))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:avval\s*tawārikh|(?:Avval(?:\s*[Tt]|[Tt])|1\s*?T)(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|Yek(?:\s*t(?:(?:(?:owar[iy]|owri)|oari)|awari)kh|t(?:(?:(?:owar[iy]|owri)|oari)|awari)kh)|(?:اول|۱)\s*توار(?:ی(?:که?|خ)|ي?خ)|اولتوار(?:ی(?:که?|خ)|ي?خ)|یک(?:\s*توار(?:ی(?:که?|خ)|ي?خ)|توار(?:ی(?:که?|خ)|ي?خ))|1\s*توار(?:ی(?:که?|خ)|ي?خ)|AvvalChr|[1۱]تواریکه?|1(?:t(?:owāri|awā)|تواری?خ)|۱(?:towāri|تواری?خ)|[1۱]تواريخ|1(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|۱(?:tow(?:ār)?|تو(?:ا(?:ری?)?)?)|avvalt|اولت|1Chr))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Ezra"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ع(?:ِ(?:\s*(?:زر(?:اء|ا|ه)|ذرا)|زر(?:اء|ا|ه)|ذرا)|\s*(?:زر(?:اء|ا|ه)|ذرا)|زر(?:ا[ءی]|ه)|ز(?:را?)?|ذرا)|[EI]zra(?:\s*[ah]|[ah])|ezrāy|ezrā?|[EI]zra))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ع(?:ِ(?:\s*(?:زر(?:اء|ا|ه)|ذرا)|زر(?:اء|ا|ه)|ذرا)|\s*(?:زر(?:اء|ا|ه)|ذرا)|زر(?:ا[ءی]|ه)|ز(?:را?)?|ذرا)|[EI]zra(?:\s*[ah]|[ah])|ezrāy|ezrā?|[EI]zra))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Neh"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ن(?:(?:(?:حيم(?:ي(?:ا-?(?:ها|یه)‌|ه‌)|-?يا-?)|حي?میه-?)ه|ح(?:يم(?:ي(?:ه-?[هي]|اه)|-?ياه)|یمیاه))ا|ِ(?:حِمی(?:اه?-?|ه-?)ها|حِمی(?:ا[ءً]|ّ[اه])|ح(?:ِم\s*|م)یا|\s*حِمیا)|حيم(?:يا-?ي|-?ی)[اه]|ح(?:يم(?:ياً|ی(?:ّه|ا)|-?يه)|میا)|حیم-?یا|ه)|N(?:eh(?:emiah?-?y|(?:ee|i)m[iy]|my)a|ehem-?yah|ihemia)|ن(?:ح(?:(?:يم(?:ي(?:ا(?:-?(?:ها|یه))?|ه)|-?يا)|یمیا|می?)?|ي?میه)|ِحِم(?:ی(?:اه?)?)?)|Neh(?:em[iy]a)?|nīm(?:iān?|ī)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ن(?:(?:(?:حيم(?:ي(?:ا-(?:ها|یه)‌|ه‌)|-يا-)|حي?میه-)ه|ح(?:يم(?:ي(?:ه-[هي]|اه)|-ياه)|یمیاه))ا|ِ(?:حِمی(?:اه?-|ه-)ها|حِمی(?:ا[ءً]|ّ[اه])|ح(?:ِم\s*|م)یا|\s*حِمیا)|حيم(?:يا-ي|-ی)[اه]|ح(?:يم(?:ياً|ی(?:ّه|ا)|-يه)|میا)|حیم-یا|ه)|N(?:eh(?:emiah?-y|(?:ee|i)m[iy]|my)a|ehem-?yah|ihemia)|ن(?:ح(?:(?:يم(?:ي(?:ا(?:-(?:ها|یه))?|ه)|-يا)|یمیا|می?)?|ي?میه)|ِحِم(?:ی(?:اه?)?)?)|Neh(?:em[iy]a)?|nīm(?:iān?|ī)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["GkEsth"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(G(?:reek\s*Esther|k(?:\s*?Esth|\s*Est)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(G(?:reek\s*Esther|k(?:\s*?Esth|\s*Est)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Esth"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Est(?:(?:he|h?)r|eh?r)|ا(?:ِ(?:ستره|س(?:ت[ـَ]|[طٹ])ر|\s*ستر)|ست(?:ره|ِر))|esterh?|ا(?:ِستر|س(?:تر|ت?))|Esth|ast))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Est(?:(?:he|h?)r|eh?r)|ا(?:ِ(?:ستره|س(?:ت[ـَ]|[طٹ])ر|\s*ستر)|ست(?:ره|ِر))|esterh?|ا(?:ِستر|س(?:تر|ت?))|Esth|ast))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Job"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:A(?:y(?:y(?:o[ou]|u)|[ou]u)|iu)|Aiyoo|E(?:iyoo|yu)|Jo)b|ا(?:ی(?:و(?:ُبی|ب[هَی]|پ)|ُوب)|ِیوب)|ا(?:ی(?:ُوُ|[وّ]و)|ِ(?:یوُ|و))ب|ای(?:و(?:ُب|ب)?|ّ)|Ay(?:obe|ub)|ayūbi|(?:Aio|E(?:yy|io))ub|Iyoub|ا(?:ی[\s*ـ]|ي)وب|(?:ا\s*|[آئ])یوب|ayūb?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:A(?:y(?:y(?:o[ou]|u)|[ou]u)|iu)|Aiyoo|E(?:iyoo|yu)|Jo)b|ا(?:ی(?:و(?:ُبی|ب[هَی]|پ)|ُوب)|ِیوب)|ا(?:ی(?:ُوُ|[وّ]و)|ِ(?:یوُ|و))ب|ای(?:و(?:ُب|ب)?|ّ)|Ay(?:obe|ub)|ayūbi|(?:Aio|E(?:yy|io))ub|Iyoub|ا(?:ی[\s*ـ]|ي)وب|(?:ا\s*|[آئ])یوب|ayūb?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Ps"],
         testament: "oa",
-        testament_books: { "Ps": "oa" },
-        regexp: /(?:^|(?<=[^\p{L}]))(مزمور-?ها|مز\s*مور|(?:(?:مزموُر-?ها-?|م(?:ز(?:موُرها|امیر)-?|َزمُور|ِزمُور)|م(?:َزموُ?ر|ِزمور)-?)ها|M(?:(?:[ai]zamoora|az(?:m(?:oor[ae]|ura)|am(?:ura|ir[ae]|īr[ae]))|[ei]zamire)h|āz(?:am(?:oo|ī)rah|(?:moore|āmīra)h|āmūre)|az(?:amo?ure|moure|\s*mor|mure)|ezmoorah|aza?more)|م(?:زمو(?:ُرها|[وَ]ر)ه|َزمیر|ِزمیر)ا|ز(?:(?:مير-?ها-?|َبُور[-‌]|ب(?:(?:ير(?:ها|-?)|ور‌)|يري-?))ها|(?:بُ|َب)ور‌ها|ُب(?:ور‌ها|ُور)|مير(?:-?ها)?|َبُور|ميرها|ب(?:يري|ور))|مزموُر-?ها|(?:M(?:[ai]zamoo’|az(?:\s*moo|am(?:i['h’]|u['hou’])|mu['hou’])|ez(?:m(?:oo’|u)|am[uī])|ezami[h’]|iz(?:am(?:i[h’]|u)|mu)|āzāmī’)|M(?:ez\s*mo|iz\s*?mo)o)r|م(?:ز(?:م(?:و(?:ُر(?:ها?)?|ره?|[وَ]ر)?|ُ(?:ور)?|ي)?|ا(?:م(?:ی(?:ره?)?|ير?))?)?|َزمي|ِزمي)|M(?:[ai]zamoor|az(?:m(?:oo|u)r|am(?:[iu]|ī)r)|aza?mor|āzām[īū]r)|maz(?:(?:amī|mū)|āmū)rī|م(?:ز(?:ام(?:یره?ا|ير[هيی])|م(?:و(?:ر(?:های|ر)|ُرر)|ُ(?:ور)?ر|یر[ای]))|َزمُر)|م(?:َزموُ?ر|ِزمور)|Mizāmīr|م(?:ز(?:ام(?:ي[َِ]|یَ)|م(?:وُو|يِ|ُُ))|َزمي[َِ]|َزامي|ِز(?:م(?:ي[َِ]|وُ)|امي))ر|mazm(?:ūr)?|za(?:b(?:oo|ū)|mī)r|م(?:زم[مَّ]|(?:زز|ظ)م)ور|Ps))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        testament_books: { Ps: "oa" },
+        regexp: /(?:^|(?<=[^\p{L}]))((?:مزمور\x2dها|(?:مز\s*مور|(?:(?:مزموُر-ها-|م(?:ز(?:مو(?:ُرها|ر)-|امیر-)|َزمُور|ِزمُور)|م(?:َزموُ?ر|ِزمور)-)ها|M(?:(?:[ai]zamoora|az(?:m(?:oor[ae]|ura)|am(?:ura|ir[ae]|īr[ae]))|[ei]zamire)h|āz(?:am(?:oo|ī)rah|(?:moore|āmīra)h|āmūre)|az(?:amo?ure|moure|\s*mor|mure)|ezmoorah|aza?more)|م(?:زمو(?:ُرها|[وَ]ر)ه|َزمیر|ِزمیر)ا|ز(?:(?:مير-ها-|َبُور[\-‌]|ب(?:(?:ير(?:ها|-)|ور‌)|يري-))ها|(?:بُ|َب)ور‌ها|ُب(?:ور‌ها|ُور)|مير(?:-ها)?|َبُور|ميرها|ب(?:يري|ور))|مزموُر-ها|(?:M(?:[ai]zamoo’|az(?:\s*moo|am(?:i['h’]|u['hou’])|mu['hou’])|ez(?:m(?:oo’|u)|am[uī])|ezami[h’]|iz(?:am(?:i[h’]|u)|mu)|āzāmī’)|M(?:ez\s*mo|iz\s*?mo)o)r|م(?:ز(?:م(?:و(?:ُر(?:ها?)?|ره?|[وَ]ر)?|ُ(?:ور)?|ي)?|ا(?:م(?:ی(?:ره?)?|ير?))?)?|َزمي|ِزمي)|M(?:[ai]zamoor|az(?:m(?:oo|u)r|am(?:[iu]|ī)r)|aza?mor|āzām[īū]r)|maz(?:(?:amī|mū)|āmū)rī|م(?:ز(?:ام(?:یره?ا|ير[هيی])|م(?:و(?:ر(?:های|ر)|ُرر)|ُ(?:ور)?ر|یر[ای]))|َزمُر)|م(?:َزموُ?ر|ِزمور)|Mizāmīr|م(?:ز(?:ام(?:ي[َِ]|یَ)|م(?:وُو|يِ|ُُ))|َزمي[َِ]|َزامي|ِز(?:م(?:ي[َِ]|وُ)|امي))ر|mazm(?:ūr)?|za(?:b(?:oo|ū)|mī)r|م(?:زم[مَّ]|(?:زز|ظ)م)ور|Ps))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["PrAzar"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Pr(?:ayer\s*of\s*Azariah|\s*?Azar))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Pr(?:ayer\s*of\s*Azariah|\s*?Azar))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Prov"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))(امثالا-?ها-?ها|امثالا-?ها|(?:ام(?:ث(?:(?:(?:ال(?:(?:ا-?ها‌|يات-?|-?)|ی[-‌])|لا(?:ت(?:-?ها|يه)[-‌]|يي[-‌]|-?)|ال(?:‌[تم]ان|شان)-?|ل(?:ات)?ی‌|ی(?:ات-?|ه‌))ه|ل(?:ا(?:ت‌?ه|ه)|هم)|الهاه|ـال(?:ا?|[-‌])ه|الاه|یاه)ا|ال(?:(?:‌هایی|ي(?:اتي|ت)|ا(?:ءِ|[تً])|هم|ل)|مان)|ل(?:ا(?:ت(?:‌ت|ش)ان|ء[لِ]|ل)|يت|ل)|الـيت|ـلات|َ(?:الا|لي)|يل[اي]|یت)|ث(?:اا|ل\s*|آ)ل|صا?ل|ت)|hikmā(?:-?la|(?:ha|[ty]))-?ha|Am(?:th(?:al[ae]-?haa|āl(?:e-?ha|[aiī])|al-?ha|al(?:eh|ah|[lsā]))|sale-?haa|\s*(?:thal[es]|sale)|’(?:sālah|thāl[ai])|sālah|sāl[iī])|hikmata-?ha|ام(?:ث(?:ا(?:ل(?:‌های?|ي(?:ات)?|ا)?)?|ل(?:ا(?:ت(?:-?ها|يه)|تي?|يي|ء)?|ه|ي)?|ال(?:‌[تم]ان|شان)|ل(?:ات)?ی|الها|ـالا?|الی|ی(?:ات?|ه))?)?|hikm(?:ā(?:-?la|ha|t)?)?|a(?:['’]mthāli|msāl)|Hikm(?:at(?:ah|ā)|ālā)|Am(?:\s*(?:th|s)al|thale?|’sāla|sāla|sal)|a['’]mthāl?|hikmāya|Am(?:th(?:a[ae]|e)|saa)l|Prov))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:امثالا\x2dها\x2dها|(?:امثالا\x2dها|(?:ام(?:ث(?:(?:(?:ال(?:(?:ا-ها[\-‌]|يات-|-)|ی[\-‌])|لا(?:ت(?:-ها|يه)[\-‌]|يي[\-‌]|-)|ال(?:‌[تم]ان|شان)-|ل(?:ات)?ی‌|ی(?:ات-|ه‌))ه|ل(?:ا(?:ت‌?ه|ه)|هم)|الهاه|ـال(?:ا?|[\-‌])ه|الاه|یاه)ا|ال(?:(?:‌هایی|ي(?:اتي|ت)|ا(?:ءِ|[تً])|هم|ل)|مان)|ل(?:ا(?:ت(?:‌ت|ش)ان|ء[لِ]|ل)|يت|ل)|الـيت|ـلات|َ(?:الا|لي)|يل[اي]|یت)|ث(?:اا|ل\s*|آ)ل|صا?ل|ت)|hikmā(?:-la|(?:ha|[ty]))-ha|Am(?:th(?:al[ae]-haa|āl(?:e-ha|[aiī])|al-ha|al(?:eh|ah|[lsā]))|sale-haa|\s*(?:thal[es]|sale)|’(?:sālah|thāl[ai])|sālah|sāl[iī])|hikmata-ha|ام(?:ث(?:ا(?:ل(?:‌های?|ي(?:ات)?|ا)?)?|ل(?:ا(?:ت(?:-ها|يه)|تي?|يي|ء)?|ه|ي)?|ال(?:‌[تم]ان|شان)|ل(?:ات)?ی|الها|ـالا?|الی|ی(?:ات?|ه))?)?|hikm(?:ā(?:-la|ha|t)?)?|a(?:['’]mthāli|msāl)|Hikm(?:at(?:ah|ā)|ālā)|Am(?:\s*(?:th|s)al|thale?|’sāla|sāla|sal)|a['’]mthāl?|hikmāya|Am(?:th(?:a[ae]|e)|saa)l|Prov))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Eccl"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:kolliyāt|jāme['’]eh|Jam(?:(?:\s*ae|(?:ai|[3a]a))h|(?:a['’]|['’])a[ht])|Jam(?:\s*ae|(?:a['’]|['’])a|[3a]a)|جام(?:ع(?:ه[ـهی]|[اۀہ])|ع[\s*ـی]ه|ـعه|[هہ]ع)|jām(?:e['’])?|جا(?:م(?:عه?)?)?|کلیات|Eccl))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:kolliyāt|jāme['’]eh|Jam(?:(?:\s*ae|(?:ai|[3a]a))h|(?:a['’]|['’])a[ht])|Jam(?:\s*ae|(?:a['’]|['’])a|[3a]a)|جام(?:ع(?:ه[ـهی]|[اۀہ])|ع[\s*ـی]ه|ـعه|[هہ]ع)|jām(?:e['’])?|جا(?:م(?:عه?)?)?|کلیات|Eccl))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["SgThree"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(S(?:ong\s*of\s*the\s*Three\s*Young\s*Men|gThree))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(S(?:ong\s*of\s*the\s*Three\s*Young\s*Men|gThree))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Song"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Ghaz(?:al(?:(?:\s*Ghazal-?Ha-?|Ghazal)Haa|(?:\s*Ghazalha|(?:\s*Ghazal_|Ghazal)h)aa|_Ghazal(?:_haa|haa?|-?ha)|\s*Ghazalhaa?|(?:\s*Ghazal_|Ghazal)ha|(?:(?:\s*Ghazal-?|-?Ghazal)|(?:\s*Ghazal[\s*’]|-?Ghazal[-’]|Ghazal[\s*-_]))ha)|(?:l\s*Ghazalha|l(?:\s*Ghazal_|Ghazal)h)aa|l_Ghazal(?:_haa|haa?|-?ha)|l\s*Ghazalhaa?|l(?:\s*Ghazal_|Ghazal)ha|(?:l(?:\s*Ghazal-?|-?Ghazal-?|Ghazal_)h|l(?:Ghazal-?[Hh]|-?Ghazalh))a)|غ(?:(?:زل(?:\s*غزل‌ها‌ها‌ها‌|\s*غزل(?:‌ها(?:‌ها)?-?|\s*ها[-‌]|ۀ\s*|-?)|غ(?:زل-?ها‌|\s*غزل[-‌])|غزل‌ها‌|‌(?:ها(?:‌ها‌|-?)|غزل‌)|ۀ\s*غزلۀ[\s*-‌]|-?غزل‌|ـغزل[ـ‌]|ها‌|ه‌)|-?)ها|زل(?:\s*(?:غزل(?:ــ?هاا|\s*?هاا|‌هاا)|سلیمان)|غزل(?:ــ|\s*)هاا|غزل-?هاا|یات)|زل(?:\s*غزل‌هاه|غ(?:\s*غ)?زله|ۀ\s*غزله|‌هاه|-?ه)ا)|غز(?:ل(?:\s*غزل‌ها‌ها‌ها|\s*(?:غزل(?:‌ها(?:‌ها)?|ــ?ها|\s*?ها)|س(?:لی)?)|غزل(?:ــ|\s*)ها|غ(?:زل(?:-?ها)?)?|‌ها(?:‌ها)?|ها|ه|ی)?)?|shīr(?:āy|i)|shīrā?|So(?:ng|l)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Ghaz(?:al(?:(?:\s*Ghazal-Ha-|Ghazal)Haa|(?:\s*Ghazalha|(?:\s*Ghazal_|Ghazal)h)aa|_Ghazal(?:_haa|haa?|-ha)|\s*Ghazalhaa?|(?:\s*Ghazal_|Ghazal)ha|(?:(?:\s*Ghazal-|-Ghazal)|(?:\s*Ghazal[\s*’]|-Ghazal[\-’]|Ghazal[\s*\-_]))ha)|(?:l\s*Ghazalha|l(?:\s*Ghazal_|Ghazal)h)aa|l_Ghazal(?:_haa|haa?|-ha)|l\s*Ghazalhaa?|l(?:\s*Ghazal_|Ghazal)ha|(?:l(?:\s*Ghazal-|-Ghazal-|Ghazal_)h|l(?:Ghazal-[Hh]|-Ghazalh))a)|غ(?:(?:زل(?:\s*غزل‌ها‌ها‌ها‌|\s*غزل(?:‌ها(?:‌ها)?-|\s*ها[\-‌]|ۀ\s*|-)|غ(?:زل-ها‌|\s*غزل[\-‌])|غزل‌ها‌|‌(?:ها(?:‌ها‌|-)|غزل‌)|ۀ\s*غزلۀ[\s*\-‌]|-غزل‌|ـغزل[ـ‌]|ها‌|ه‌)|-)ها|زل(?:\s*(?:غزل(?:ــ?هاا|\s*?هاا|‌هاا)|سلیمان)|غزل(?:ــ|\s*)هاا|غزل-هاا|یات)|زل(?:\s*غزل‌هاه|غ(?:\s*غ)?زله|ۀ\s*غزله|‌هاه|-ه)ا)|غز(?:ل(?:\s*غزل‌ها‌ها‌ها|\s*(?:غزل(?:‌ها(?:‌ها)?|ــ?ها|\s*?ها)|س(?:لی)?)|غزل(?:ــ|\s*)ها|غ(?:زل(?:-ها)?)?|‌ها(?:‌ها)?|ها|ه|ی)?)?|shīr(?:āy|i)|shīrā?|So(?:ng|l)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Jer"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(ارمييا-?ها-?ها|(?:(?:(?:Irmeiyaah-?ha-?|(?:Ermeyiah-?|Irm['’]yaa))|(?:Yirmei|yirmiy)aah-?ha-?)ha|ا(?:(?:رم(?:(?:(?:ييا(?:ت(?:(?:ُ-?)?ها|-?ها|َ)-?|-?ها‌|تِ-?|ه(?:ا-?|[-‌])|‌)|ی[-‌])|يياي[-‌])|ييايي[-‌])ه|ِر(?:م(?:ي(?:يا(?:(?:-?ها[-‌]|يي[-‌]|ي[-‌]|‌)ه|ت-?[هي]|-?ي)|ی)|یا\s*[يی]|ی[-‌]ه)|\s*3)|رمييات?-?ي)ا|رم(?:ييات[ُِ]ه|ی(?:ا[ءاه]|[هى]))|رمي(?:ياتـ|یا)ه|ِرم(?:ي(?:يا(?:ءِ|ه)|ا[ءا])|ی(?:ا(?:ء[هى]|ئه|[اى])|ا?ها|\s*ی[اه]|ی[اه]|ى))|رميياءِ|ِر(?:\s*م|م\s*)یا|رمیی[اه]|ر\s*میا|\s*رمیا)|A(?:rm(?:(?:(?:(?:iaah-?ha-?ha|eya[ah])|iyaa)|iaah(?:-?ha)?)|iiyah)|[ae]rmi(?:i[ay]ah|yaa))|Irmeiyaah(?:-?ha)?|(?:Yirmei|yirmiy)aah(?:-?ha)?|ا(?:ر(?:(?:(?:م(?:ييا(?:ت(?:(?:ُ-?)?ها|-?ها|َ)|-?ها|ت(?:ُ|ِ)?|ها?)?|یا?)?)?|ميياي)|مييايي)|ِرم(?:ي(?:يا(?:-?ها|يي|ت|ي)?|ا)|ی(?:اء?|ا?ه)?))|yirm(?:iiyaah|īyā)|yirm(?:i(?:iyaa?|y)|īy?)|Erm(?:eyiaha|ii?yah)|Erm['’]yaaha|Yrm(?:['’]yaaha|iiyah|iaha|eia)|(?:Yrm(?:i(?:iya|[ay])a|eya[ah])|(?:Ermiy|[EI]rmi)aa|Ermeya[ah]|Irmeya[ah])h|(?:Erm(?:iiy|eyi)aa|Irmiyaa|[EI]rmia['’]|Yrmia['’])h|Erm['’]ya(?:ah?)?|Yrm(?:['’]ya(?:ah?)?|(?:ey|i)a|iah)|Yrm(?:i(?:iya|[ay])a|eya[ah])|Irm(?:ei(?:yah|a)|iyah)|Irmiiya[ah]|(?:Ermeiy|Yrm(?:eiy|['’]i)|Irm['’]i|Erm['’]i)ah|(?:Ermiy|[EI]rmi)aa|Ermeya[ah]|Irmeya[ah]|[EI]rmiaha|Ermiya|Irm(?:i|['’])ya|Ermeya|Irmeya|[EI]rmiah|Ermeia|[EI]rmia|Jer))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ارمييا\x2dها\x2dها|(?:ارمييا\x2dها|(?:(?:(?:Irmeiyaah-ha-|(?:Ermeyiah-|Irm['’]yaa))|(?:Yirmei|yirmiy)aah-ha-)ha|ا(?:(?:رم(?:(?:(?:ييا(?:ت(?:(?:ُ-)?ها|-ها|َ)-|-ها[\-‌]|تِ-|ه(?:ا-|[\-‌])|‌)|ی[\-‌])|يياي[\-‌])|ييايي[\-‌])ه|ِر(?:م(?:ي(?:يا(?:(?:-ها[\-‌]|يي[\-‌]|ي[\-‌]|‌)ه|ت-[هي]|-ي)|ی)|یا\s*[يی]|ی[\-‌]ه)|\s*3)|رمييات?-ي)ا|رم(?:ييات[ُِ]ه|ی(?:ا[ءاه]|[هى]))|رمي(?:ياتـ|یا)ه|ِرم(?:ي(?:يا(?:ءِ|ه)|ا[ءا])|ی(?:ا(?:ء[هى]|ئه|[اى])|ا?ها|\s*ی[اه]|ی[اه]|ى))|رميياءِ|ِر(?:\s*م|م\s*)یا|رمیی[اه]|ر\s*میا|\s*رمیا)|A(?:rm(?:(?:(?:(?:iaah-ha-ha|eya[ah])|iyaa)|iaah(?:-ha)?)|iiyah)|[ae]rmi(?:i[ay]ah|yaa))|Irmeiyaah(?:-ha)?|(?:Yirmei|yirmiy)aah(?:-ha)?|ا(?:ر(?:(?:(?:م(?:ييا(?:ت(?:(?:ُ-)?ها|-ها|َ)|ت(?:ُ|ِ)?|ها?)?|یا?)?)?|ميياي)|مييايي)|ِرم(?:ي(?:يا(?:-ها|يي|ت|ي)?|ا)|ی(?:اء?|ا?ه)?))|yirm(?:iiyaah|īyā)|yirm(?:i(?:iyaa?|y)|īy?)|Erm(?:eyiaha|ii?yah)|Erm['’]yaaha|Yrm(?:['’]yaaha|iiyah|iaha|eia)|(?:Yrm(?:i(?:iya|[ay])a|eya[ah])|(?:Ermiy|[EI]rmi)aa|Ermeya[ah]|Irmeya[ah])h|(?:Erm(?:iiy|eyi)aa|Irmiyaa|[EI]rmia['’]|Yrmia['’])h|Erm['’]ya(?:ah?)?|Yrm(?:['’]ya(?:ah?)?|(?:ey|i)a|iah)|Yrm(?:i(?:iya|[ay])a|eya[ah])|Irm(?:ei(?:yah|a)|iyah)|Irmiiya[ah]|(?:Ermeiy|Yrm(?:eiy|['’]i)|Irm['’]i|Erm['’]i)ah|(?:Ermiy|[EI]rmi)aa|Ermeya[ah]|Irmeya[ah]|[EI]rmiaha|Ermiya|Irm(?:i|['’])ya|Ermeya|Irmeya|[EI]rmiah|Ermeia|[EI]rmia|Jer))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Ezek"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ح(?:ِز(?:قیی?ائله|قی(?:(?:الله|(?:(?:(?:ال[هی]|یل)|لی)|ئل))|یاله)|کی(?:ا(?:ل(?:له|ی)|ئله)|لی|ئل)|(?:ق(?:(?:یا[\s*اي]|ا)|یئا)|ک(?:ی(?:ئا|اي)|ا))ل|کییال|ِقیال)|ز(?:(?:قیا[ئي]|کی(?:ا[ئي]|ئ))|قیئا)ل|ز[قک]ییال|ز(?:(?:قیا?|کیا)ل|قیئل))|Hiz(?:(?:kiya[ei]|kiya)lh|q(?:iy(?:a(?:(?:lha|[aei]lh)|(?:lh?|[aei]l))|aha?l|['’]aa?l|a['’]l)|(?:eya[ei]|eya)l)|(?:kiya[ei]|kiya)l)|ح(?:ِز(?:قیی?ائل|قی(?:یال|(?:ال?|ل))|کی(?:ائ?ل|ل))|ز(?:قی?)?)|hazqiāl|hazqīl|hazqī?|Ezek))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ح(?:ِز(?:قیی?ائله|قی(?:(?:الله|(?:(?:(?:ال[هی]|یل)|لی)|ئل))|یاله)|کی(?:ا(?:ل(?:له|ی)|ئله)|لی|ئل)|(?:ق(?:(?:یا[\s*اي]|ا)|یئا)|ک(?:ی(?:ئا|اي)|ا))ل|کییال|ِقیال)|ز(?:(?:قیا[ئي]|کی(?:ا[ئي]|ئ))|قیئا)ل|ز[قک]ییال|ز(?:(?:قیا?|کیا)ل|قیئل))|Hiz(?:(?:kiya[ei]|kiya)lh|q(?:iy(?:a(?:(?:lha|[aei]lh)|(?:lh?|[aei]l))|aha?l|['’]aa?l|a['’]l)|(?:eya[ei]|eya)l)|(?:kiya[ei]|kiya)l)|ح(?:ِز(?:قیی?ائل|قی(?:یال|(?:ال?|ل))|کی(?:ائ?ل|ل))|ز(?:قی?)?)|hazqiāl|hazqīl|hazqī?|Ezek))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Dan"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Dani?ya(?:[ei]lh|l)|دا(?:ن(?:یائل(?:له|[هی])|ي(?:ا(?:ئل(?:له|[هی])|ل(?:له|ی))|ئل(?:له|ی)|ائ?ل|ايل|یا?ل|ئل|لی)|ی[ئا]لله|یائل|(?:ی[ئا]|ی)لی|یايل|ییا?ل|ی[ئا]ل|ی(?:ا|ل)?)?)?|Dan(?:i?ya[ei]l)?|Dan(?:i?y(?:ah|e)|ie)l|dān(?:iā|ī)l|dānī?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Dani?ya(?:[ei]lh|l)|دا(?:ن(?:یائل(?:له|[هی])|ي(?:ا(?:ئل(?:له|[هی])|ل(?:له|ی))|ئل(?:له|ی)|ائ?ل|ايل|یا?ل|ئل|لی)|ی[ئا]لله|یائل|(?:ی[ئا]|ی)لی|یايل|ییا?ل|ی[ئا]ل|ی(?:ا|ل)?)?)?|Dan(?:i?ya[ei]l)?|Dan(?:i?y(?:ah|e)|ie)l|dān(?:iā|ī)l|dānī?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Hos"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))(Hosha-?i-?ya|(?:H(?:o(?:zia(?:(?:h-?ha)?|-?y)a|sh(?:a-?i|ia|u))|o(?:shae|zai)ah|o(?:s(?:hiy|ei)|zai?y)ah|u(?:s(?:h(?:i(?:a-?y|yah)|a’y|(?:ae|ea)h)|aiyah)|zayah)|o(?:s(?:[eh]|i)a’|zia’)y|osheah|osiyah)|H(?:o(?:ziyah-?h|s(?:eya-?h|’iya))|os(?:ha-?y|ee)-?y|u(?:sha-?[iy]-?y|zi)|os(?:ia-?|a)y)a|ه(?:و(?:(?:زيا(?:يي|ئي|ت)[-‌]|زيا(?:ي[-‌]|[-‌]))ه|ش(?:يا(?:(?:يي[-‌]|ت[-‌]|-?))?ه|عي[-‌]ه))ا|و(?:(?:(?:زي(?:ايانه|(?:ایی|ه))|ش(?:يايانه|ع(?:لل|یی|ه)|ععه|[؏ا]عع|ئعع|؏ه))|زياها)|(?:(?:زيايان|ش(?:ي(?:ا(?:ي(?:ان|ي)?|ت)?)?|ع(?:ل|ی)?|عي|عع|[؏ا]ع|ئع|؏|ا)?|زيا(?:يي|ئي|ت)|ز(?:ي(?:اي?)?)?)?|زياه))|ُو(?:ْزيا|زيا?|شيا))|H(?:o(?:(?:(?:(?:zi(?:a(?:h-?ha|-?y|h)?|yah?)|s(?:(?:hae?)?|eya))|she)|shea)|siya)|ush(?:a(?:-?i)?|i(?:ya|a)?|ae|ea|e))|h(?:u(?:shaiy?a|z(?:aiy|ia[ah]))|osh['’]ai)|h(?:osh(?:['’]a)?|uz(?:ai|ia))))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:\x48\x6f\x73\x68\x61\x2d\x69\x2d\x79\x61|(?:\x48\x6f\x73\x68\x61\x2d\x69|(?:H(?:o(?:zia(?:(?:h-ha)?|-y)a|sh(?:ia|u))|o(?:shae|zai)ah|o(?:s(?:hiy|ei)|zai?y)ah|u(?:s(?:h(?:i(?:a-y|yah)|a’y|(?:ae|ea)h)|aiyah)|zayah)|o(?:s(?:[eh]|i)a’|zia’)y|osheah|osiyah)|H(?:o(?:ziyah-h|s(?:eya-h|’iya))|os(?:ha(?:-[iy]|y)|ee)-y|u(?:sha-[iy]-y|zi)|os(?:ia-|a)y)a|ه(?:و(?:(?:زيا(?:يي|ئي|ت)[\-‌]|زيا(?:ي[\-‌]|[\-‌]))ه|ش(?:يا(?:(?:يي[\-‌]|ت[\-‌]|-))?ه|عي[\-‌]ه))ا|و(?:(?:(?:زي(?:ايانه|(?:ایی|ه))|ش(?:يايانه|ع(?:لل|یی|ه)|ععه|[؏ا]عع|ئعع|؏ه))|زياها)|(?:(?:زيايان|ش(?:ي(?:ا(?:ي(?:ان|ي)?|ت)?)?|ع(?:ل|ی)?|عي|عع|[؏ا]ع|ئع|؏|ا)?|زيا(?:يي|ئي|ت)|ز(?:ي(?:اي?)?)?)?|زياه))|ُو(?:ْزيا|زيا?|شيا))|H(?:o(?:(?:(?:(?:zi(?:a(?:h-ha|-y|h)?|yah?)|s(?:(?:hae?)?|eya))|she)|shea)|siya)|ush(?:a(?:-i)?|i(?:ya|a)?|ae|ea|e))|h(?:u(?:shaiy?a|z(?:aiy|ia[ah]))|osh['’]ai)|h(?:osh(?:['’]a)?|uz(?:ai|ia))))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Joel"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:یو(?:ئ(?:ی(?:یل(?:یہ|[ـلهہ])|ل(?:ی[هہی]|[ـلهہ])|ئل[لی])|ئی(?:یلـ|ل[ـلهی])|ل)|وئی[لی]ل|یل)|یو(?:ئ(?:ی(?:یلی?|لی?|ئل)?|ئیی?ل)?|وئیل)|Y(?:oo(?:['’](?:ei|i[ei])|e[ai]|ae|i)l|oo(?:['’])?el|oeil|uoil)|yū['’]īli?|(?:(?:Joe[ai]|Jo['a’]e)|Joe)l))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:یو(?:ئ(?:ی(?:یل(?:یہ|[ـلهہ])|ل(?:ی[هہی]|[ـلهہ])|ئل[لی])|ئی(?:یلـ|ل[ـلهی])|ل)|وئی[لی]ل|یل)|یو(?:ئ(?:ی(?:یلی?|لی?|ئل)?|ئیی?ل)?|وئیل)|Y(?:oo(?:['’](?:ei|i[ei])|e[ai]|ae|i)l|oo(?:['’])?el|oeil|uoil)|yū['’]īli?|(?:(?:Joe[ai]|Jo['a’]e)|Joe)l))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Amos"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:عا(?:م(?:و(?:و(?:س(?:(?:س(?:یی|[هہ])|ی[ہی]|[ـهہ])|(?:س|ی)?)|و(?:س(?:(?:سس|یی|[هہ])|(?:س|ی)?)|وسہ))|س(?:سیی|(?:س[سه]|یہ|[ـهہ]))|سییہ|سسی|س(?:س|ی)?)?|س)?)?|A(?:amo(?:oo?se|use|s[es]|es)|mo(?:oo|u)s|moose|mose)|A(?:amo(?:oo?s|s)|mos)|āmūsī|ām(?:ūs)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:عا(?:م(?:و(?:و(?:س(?:(?:س(?:یی|[هہ])|ی[ہی]|[ـهہ])|(?:س|ی)?)|و(?:س(?:(?:سس|یی|[هہ])|(?:س|ی)?)|وسہ))|س(?:سیی|(?:س[سه]|یہ|[ـهہ]))|سییہ|سسی|س(?:س|ی)?)?|س)?)?|A(?:amo(?:oo?se|use|s[es]|es)|mo(?:oo|u)s|moose|mose)|A(?:amo(?:oo?s|s)|mos)|āmūsī|ām(?:ūs)?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Obad"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))(obad-?ya-?y|(?:ع(?:ُوب(?:(?:(?:دیا(?:ت‌نامه|يی)|يديا(?:[ئي]ي|ت))[-‌]|دیا(?:ئی(?:ان‌|[-‌])|ت-?|ه‌|ی-?|‌)|يديا-?)ها|دیا(?:ی‌نامه|يانه|-?یی|ها)|یدیا(?:(?:ي(?:ي[-‌]|-?)|ئی[-‌]|ت[-‌]|-?)ها|ئیان|ها)|(?:دیا(?:ت‌|-?)ه|يدياه)ا|َدیاء)|(?:وب(?:(?:دیات‌نامه|يديا(?:يي|ت))|دیايی)[-‌]|وب(?:دیائی(?:ان‌|[-‌])|(?:(?:(?:يديا(?:ئي[-‌]|ي[-‌]|[-‌])|دیا‌)|دیات-?)|دیای-?)))ها|وب(?:(?:(?:(?:(?:يديائيانه|َدی(?:ا[ءىيہی]|[آه])|دیا[هىہ])|دیايانه)|دیای‌نامه)|دیا-?یی)|َدِیاء)|وبیدیا(?:(?:ي(?:ي[-‌]|-?)|ئی[-‌]|ت[-‌]|-?)ها|ئیان|ها)|وب(?:(?:دیات‌ه|(?:يدياه|َدي|دِی|ادی))|دیا-?ه)ا)|ع(?:ُوب(?:دیا(?:ت‌نامه|يی)|دیا(?:ئی(?:ان)?|ت|ه|ي|ی)?|يديا(?:[ئي]ي|ت)|یدیا(?:يي?|ئی|ت)?|يديا|َدیا)|و(?:(?:ب(?:(?:دیات‌نامه|يديا(?:يي|ت))|دیايی)|(?:(?:(?:(?:(?:(?:ب(?:يديا(?:ئي(?:ان)?|ي)?|َدیا?|د(?:یا?)?)?)?|بدیات)|بدیاي)|بدیای)|بدیائی(?:ان)?)|بَدِیا))|بیدیا(?:يي?|ئی|ت)?))|ob(?:ad-?ya-?ye|d(?:ay|i)yā)|(?:obad-?(?:ya-?h|iy)|O(?:(?:bad-?i|uba-?d)y|obad[iy]))a|O(?:uba(?:-?di|d)y|bad-?y)ah?|U(?:b(?:(?:(?:ad(?:-?iy(?:a-?i|eh)|i(?:yeh|a))|edia)|ad-?iya)|adiyah?)|bad-?diyah?|ubadiyah?|bad-?yah?)|Obadi?ya’i|(?:O(?:ubadi|bade)y|Obadiy)eh|(?:O(?:ubadi|bade)y|Obadi)ah?|O(?:badi?yah|uba-?dia)|obadiyah?|ob(?:ad-?ya|d)|O(?:bad(?:iya|ya)?|uba-?di)|Ou?bedia))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:\x6f\x62\x61\x64\x2d\x79\x61\x2d\x79|(?:ع(?:ُوب(?:(?:(?:دیا(?:ت‌نامه|يی)|يديا(?:[ئي]ي|ت))[\-‌]|دیا(?:ئی(?:ان‌|[\-‌])|ت-|ه‌|ی-|‌)|يديا-)ها|دیا(?:ی‌نامه|يانه|-یی|ها)|یدیا(?:(?:ي(?:ي[\-‌]|-)|ئی[\-‌]|ت[\-‌]|-)ها|ئیان|ها)|(?:دیا(?:ت‌|-)ه|يدياه)ا|َدیاء)|(?:وب(?:(?:دیات‌نامه|يديا(?:يي|ت))|دیايی)[\-‌]|وب(?:دیائی(?:ان‌|[\-‌])|(?:(?:(?:يديا(?:ئي[\-‌]|ي[\-‌]|[\-‌])|دیا‌)|دیات-)|دیای-)))ها|وب(?:(?:(?:(?:(?:يديائيانه|َدی(?:ا[ءىيہی]|[آه])|دیا[هىہ])|دیايانه)|دیای‌نامه)|دیا-یی)|َدِیاء)|وبیدیا(?:(?:ي(?:ي[\-‌]|-)|ئی[\-‌]|ت[\-‌]|-)ها|ئیان|ها)|وب(?:(?:دیات‌ه|(?:يدياه|َدي|دِی|ادی))|دیا-ه)ا)|ع(?:ُوب(?:دیا(?:ت‌نامه|يی)|دیا(?:ئی(?:ان)?|ت|ه|ي|ی)?|يديا(?:[ئي]ي|ت)|یدیا(?:يي?|ئی|ت)?|يديا|َدیا)|و(?:(?:ب(?:(?:دیات‌نامه|يديا(?:يي|ت))|دیايی)|(?:(?:(?:(?:(?:(?:ب(?:يديا(?:ئي(?:ان)?|ي)?|َدیا?|د(?:یا?)?)?)?|بدیات)|بدیاي)|بدیای)|بدیائی(?:ان)?)|بَدِیا))|بیدیا(?:يي?|ئی|ت)?))|ob(?:ad-ya-ye|d(?:ay|i)yā)|(?:obad-(?:ya-h|iy)|O(?:(?:bad-i|uba-d)y|obad[iy]))a|O(?:uba(?:-di|d)y|bad-y)ah?|U(?:b(?:(?:(?:ad(?:-iy(?:a-i|eh)|i(?:yeh|a))|edia)|ad-iya)|adiyah?)|bad-diyah?|ubadiyah?|bad-?yah?)|Obadi?ya’i|(?:O(?:ubadi|bade)y|Obadiy)eh|(?:O(?:ubadi|bade)y|Obadi)ah?|O(?:badi?yah|uba-?dia)|obadiyah?|ob(?:ad-ya|d)|O(?:bad(?:iya|ya)?|uba-?di)|Ou?bedia)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Jonah"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))(ی(?:ونس‌نامه-?ها|ونسی?-?ها-?ها|ونس(?:ی-?نامه|ی?-?ها)|ُون[وَُ]س-?ها)|(?:حضرت\s*یونس\s*علیه\s*السلام|(?:د(?:استان\s*پیامبر|عای)|حکایت|سوره|پیام|کتاب|قصه)\s*یونس|ی(?:ونس(?:\s*(?:در\s*شکم|و)\s*ماه|‌نامه‌ها‌|ی‌نامه‌ا)ی|ُون(?:[وُ]س‌نامه‌ای|س)|و(?:ن(?:س(?:ی‌های‌شان|‌(?:نامه‌(?:هات|گان|شان|ا[شی])|های‌شان|ها‌ی|یه|ات)|ی‌نامه‌ی|\s*پیامبر|یان|[ـهہ])|سسی|اسی|یس|[شص])|ونی?س)|ن)|ماجرای\s*(?:حضرت\s*)?یونس|ی(?:ون(?:س‌(?:نامه‌گ?ی|ای)|وس)|ُونَس‌نامه)‌ها|ی(?:ُون(?:[وُ]س‌(?:نامه‌)?ه|َس‌ه)|ونس(?:(?:ی‌نامه|‌ها)‌ه|\s*در\s*نینو))ا|یونس(?:‌های‌|یه-?)نامه|ی(?:ون(?:س(?:‌(?:نامه(?:‌ها)?|های?|ی)|ی(?:‌(?:نامه|ها))?)?|سس|اس)?|ُون(?:[وُ]س(?:‌نامه)?|َس))|ی(?:ون(?:س‌(?:نامه‌گ?ی|ای)|وس)|ُونَس‌نامه)|یونسی‌(?:ها|ای)‌ها|داستان\s*یونس|(?:حکای|نج)ات\s*یونس|Joo?nasse-?[iy]|يونس(?:(?:-?ها-?|ي(?:ه-?|‌))ها|‌ها‌ها|-?نامه|ّ)|حضرت\s*یونس|Jo(?:onas|na)sah|Jo(?:nas(?:s(?:eh|i)|[ei])|onase)|Jounisse|Y(?:o(?:(?:un(?:asse|us[is])|on(?:[ae]ss|us[is]|oss)|n(?:ass|isi)|nus[is])|nasah)|o(?:(?:onu|na)|una)s-?[iy]|o(?:oni|un[ei])si|un(?:as(?:ah|s)|us(?:-?[iy]|[eis])|isi|ese)|onese)|Jo(?:nas(?:se?)?|onass?|unis)|Y(?:o(?:un(?:ass?|us)|on(?:[ae]|u)s|nus)|o(?:oni|un[ei])s|un(?:[ai]|u)s)|يونس(?:-?ها|‌ها|يه|ي)?|Jounasi|ی(?:و(?:ون(?:یی|[او])|ن(?:ی[ای]|ُ))|ُونا)س|Jounas|Jonahs|Joniss|Joonis|Jonah|Jonis))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:یونس‌نامه\x2dها|یونسی\x2dها\x2dها|یونس\x2dها\x2dها|یونسی\x2dنامه|یُونوس\x2dها|یُونَس\x2dها|یُونُس\x2dها|یونسی\x2dها|یونس\x2dها)|(?:حضرت\s*یونس\s*علیه\s*السلام|(?:د(?:استان\s*پیامبر|عای)|حکایت|سوره|پیام|کتاب|قصه)\s*یونس|ی(?:ونس(?:\s*(?:در\s*شکم|و)\s*ماه|‌نامه‌ها‌|ی‌نامه‌ا)ی|ُون(?:[وُ]س‌نامه‌ای|س)|و(?:ن(?:س(?:ی‌های‌شان|‌(?:نامه‌(?:هات|گان|شان|ا[شی])|های‌شان|ها‌ی|یه|ات)|ی‌نامه‌ی|\s*پیامبر|یان|[ـهہ])|سسی|اسی|یس|[شص])|ونی?س)|ن)|ماجرای\s*(?:حضرت\s*)?یونس|ی(?:ون(?:س‌(?:نامه‌گ?ی|ای)|وس)|ُونَس‌نامه)‌ها|ی(?:ُون(?:[وُ]س‌(?:نامه‌)?ه|َس‌ه)|ونس(?:(?:ی‌نامه|‌ها)‌ه|\s*در\s*نینو))ا|یونس(?:‌های‌|یه-)نامه|ی(?:ون(?:س(?:‌(?:نامه(?:‌ها)?|های?|ی)|ی(?:‌(?:نامه|ها))?)?|سس|اس)?|ُون(?:[وُ]س(?:‌نامه)?|َس))|ی(?:ون(?:س‌(?:نامه‌گ?ی|ای)|وس)|ُونَس‌نامه)|یونسی‌(?:ها|ای)‌ها|داستان\s*یونس|(?:حکای|نج)ات\s*یونس|Joo?nasse-[iy]|يونس(?:(?:-ها-|ي(?:ه-|‌))ها|‌ها‌ها|-نامه|ّ)|حضرت\s*یونس|Jo(?:onas|na)sah|Jo(?:nas(?:s(?:eh|i)|[ei])|onase)|Jounisse|Y(?:o(?:(?:un(?:asse|us[is])|on(?:[ae]ss|us[is]|oss)|n(?:ass|isi)|nus[is])|nasah)|o(?:(?:onu|na)|una)s-[iy]|o(?:oni|un[ei])si|un(?:as(?:ah|s)|us(?:-[iy]|[eis])|isi|ese)|onese)|Jo(?:nas(?:se?)?|onass?|unis)|Y(?:o(?:un(?:ass?|us)|on(?:[ae]|u)s|nus)|o(?:oni|un[ei])s|un(?:[ai]|u)s)|يونس(?:-ها|‌ها|يه|ي)?|Jounasi|ی(?:و(?:ون(?:یی|[او])|ن(?:ی[ای]|ُ))|ُونا)س|Jounas|Jonahs|Joniss|Joonis|Jonah|Jonis)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Mic"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:M(?:ik(?:ahah|ha)|i(?:ka|c)aha|y(?:kaha|cah))|م(?:یک(?:ا(?:ه(?:ئی|ی[هی]|[ءةـوِہ])|ئ[هہ]|ہ[ئاهوی]|[ةۂی])|ه)|یکا[ءاِ]ه|یكاه|ي[كک]اه)|mīkhā(?:yā?)?|M(?:i(?:ka|c)ah|i(?:kah?|c)|ykah)|می(?:ک(?:اه?)?)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:M(?:ik(?:ahah|ha)|i(?:ka|c)aha|y(?:kaha|cah))|م(?:یک(?:ا(?:ه(?:ئی|ی[هی]|[ءةـوِہ])|ئ[هہ]|ہ[ئاهوی]|[ةۂی])|ه)|یکا[ءاِ]ه|یكاه|ي[كک]اه)|mīkhā(?:yā?)?|M(?:i(?:ka|c)ah|i(?:kah?|c)|ykah)|می(?:ک(?:اه?)?)?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Nah"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ن(?:اح(?:وم(?:‌ها‌ها|ی(?:ی(?:یه|[ءئه])|ائ[هہ]|ئی|ہ[ئاه]|[ءةهۂ])|ا-?ها|ائ[هہ]|وو|ئی|ہ[ئاه]|[ءةـهۂ])|م)|احو[-و]م|حوم)|نا(?:ح(?:و(?:م(?:‌ها|ی(?:ئ|ہ|ی)?|ا|و|ئ|ہ)?)?)?)?|Na(?:h(?:umme|om)|h(?:(?:-?o?u|uu)|ou)m|ah(?:o?u|o)m)|nāhū(?:mi?)?|Nah(?:um)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ن(?:اح(?:وم(?:‌ها‌ها|ی(?:ی(?:یه|[ءئه])|ائ[هہ]|ئی|ہ[ئاه]|[ءةهۂ])|ا-ها|ائ[هہ]|وو|ئی|ہ[ئاه]|[ءةـهۂ])|م)|احو[\-و]م|حوم)|نا(?:ح(?:و(?:م(?:‌ها|ی(?:ئ|ہ|ی)?|ا|و|ئ|ہ)?)?)?)?|Na(?:h(?:umme|om)|h(?:(?:-o?u|uu)|ou)m|ah(?:o?u|o)m)|nāhū(?:mi?)?|Nah(?:um)?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Hab"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ح(?:َب(?:َق(?:و(?:ق(?:ی(?:ی(?:یه|[ءئه])|ائ[هہ]|ئی|ہ[ئاه]|[ءةهۂ])|ائ[هہ]|وو|ئی|ہ[ئاه]|[ءةـهۂ])|وق|ک)|ق)|قوق)|ب(?:َقوق|ق(?:وق|ا)))|ح(?:َبَقوق(?:ی(?:ئ|ہ|ی)?|ا|و|ئ|ہ)?|ب(?:قو?)?)|Hab(?:a(?:kk?o|co)ok|ba(?:c(?:ook|uc)|k(?:kuc|ook|u[ck]))|akk?u[ck]|acuc)|habaq(?:ūq?)?|Hab))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:ح(?:َب(?:َق(?:و(?:ق(?:ی(?:ی(?:یه|[ءئه])|ائ[هہ]|ئی|ہ[ئاه]|[ءةهۂ])|ائ[هہ]|وو|ئی|ہ[ئاه]|[ءةـهۂ])|وق|ک)|ق)|قوق)|ب(?:َقوق|ق(?:وق|ا)))|ح(?:َبَقوق(?:ی(?:ئ|ہ|ی)?|ا|و|ئ|ہ)?|ب(?:قو?)?)|Hab(?:a(?:kk?o|co)ok|ba(?:c(?:ook|uc)|k(?:kuc|ook|u[ck]))|akk?u[ck]|acuc)|habaq(?:ūq?)?|Hab))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Zeph"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|سخنان|حکایت|دعای)\s*ضفينيا|ضفينيا(?:‌(?:نامه‌هاتان|نامه‌شان|های‌شان|یی)|‌نامه‌(?:ها‌|ا)ی|\s*نبی|ی)|(?:ضف(?:ينيا(?:‌(?:نامه‌گ?ی‌ه|ای‌ه)|-?ه)|‌نامه‌ه|(?:‌ن)?ی)|ص(?:فینيا‌نامه‌ی‌|(?:َفینيا‌ی‌|فینیا-?))ه|ص(?:ف(?:ین(?:يا‌(?:نامه‌)?ه|یاه)|‌نامه‌ه)|َفین(?:ياه|ی))|کتاب\s*صفینی|(?:صَفا|سِفَ)نی)ا|ضف(?:ينيا(?:‌(?:نامه(?:‌(?:هات?|ی))?|ا?ی))?|‌نامه|‌ن)?|صف(?:ینيا‌نامه‌ش|‌نامه‌گ)ان|صفین(?:يا‌(?:نامه‌ا|ی)|یا‌ا)ی|صفینيا‌نامه‌ی|رساله\s*ضفينيا|ص(?:ف(?:ین(?:يا‌نامه|یا)|‌ن(?:امه)?|نی?)?|َف(?:َنی(?:اء?|ہ)|ینيا))|(?:پیام\s*صفی|صفي)نيا|(?:پیام|کتاب)\s*ضفينيا|نامه\s*ضفينيا|ص(?:َف(?:ینيا‌یی|َنی(?:ا(?:ء[ءةہۂی]|ئ[ءةهہۂی]|[ةهہۂ])|ہ[ءةہۂ]|ۂ))|ف(?:‌نامه‌ی|ن(?:‌نامه|یا)|ینیا‌ی))|صفینيا\s*نبی|Dhof(?:ani(?:yah|a)|eniyah|(?:-?ni|eny)a|in[iy]a)|Dhofeniya|Zefaniyah|Zephaniah|Zefeniyah|Ze(?:(?:(?:phanay|f(?:ana?|in)y)|f-?ni)|feny)a|Zof(?:ani(?:yah|a)|eniyah|(?:-?ni|eny)a|in[iy]a)|Zephania|Zefeniya|Zofeniya|zofanj(?:īy|ā)|Zefaniah|zof(?:anjī)?|Zefania|Zeph))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|سخنان|حکایت|دعای)\s*ضفينيا|ضفينيا(?:‌(?:نامه‌هاتان|نامه‌شان|های‌شان|یی)|‌نامه‌(?:ها‌|ا)ی|\s*نبی|ی)|(?:ضف(?:ينيا(?:‌(?:نامه‌گ?ی‌ه|ای‌ه)|-?ه)|‌نامه‌ه|(?:‌ن)?ی)|ص(?:فینيا‌نامه‌ی‌|(?:َفینيا‌ی‌|فینیا-))ه|ص(?:ف(?:ین(?:يا‌(?:نامه‌)?ه|یاه)|‌نامه‌ه)|َفین(?:ياه|ی))|کتاب\s*صفینی|(?:صَفا|سِفَ)نی)ا|ضف(?:ينيا(?:‌(?:نامه(?:‌(?:هات?|ی))?|ا?ی))?|‌نامه|‌ن)?|صف(?:ینيا‌نامه‌ش|‌نامه‌گ)ان|صفین(?:يا‌(?:نامه‌ا|ی)|یا‌ا)ی|صفینيا‌نامه‌ی|رساله\s*ضفينيا|ص(?:ف(?:ین(?:يا‌نامه|یا)|‌ن(?:امه)?|نی?)?|َف(?:َنی(?:اء?|ہ)|ینيا))|(?:پیام\s*صفی|صفي)نيا|(?:پیام|کتاب)\s*ضفينيا|نامه\s*ضفينيا|ص(?:َف(?:ینيا‌یی|َنی(?:ا(?:ء[ءةہۂی]|ئ[ءةهہۂی]|[ةهہۂ])|ہ[ءةہۂ]|ۂ))|ف(?:‌نامه‌ی|ن(?:‌نامه|یا)|ینیا‌ی))|صفینيا\s*نبی|Dhof(?:ani(?:yah|a)|eniyah|(?:-ni|eny)a|in[iy]a)|Dhofeniya|Zefaniyah|Zephaniah|Zefeniyah|Ze(?:(?:(?:phanay|f(?:ana?|in)y)|f-ni)|feny)a|Zof(?:ani(?:yah|a)|eniyah|(?:-ni|eny)a|in[iy]a)|Zephania|Zefeniya|Zofeniya|zofanj(?:īy|ā)|Zefaniah|zof(?:anjī)?|Zefania|Zeph))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Hag"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:ح(?:َج(?:ّ(?:ی(?:‌نامه(?:‌نامه‌|-?)|ی‌)|ای-?)ها|ّیان‌(?:نامه‌)?ها|ّ(?:(?:ی(?:ان‌نامه‌ی|‌(?:نامه‌(?:ها)?ی|(?:ها)?ی))|ای(?:ی(?:ان|ه)|‌ی))|ایانه)|ّ(?:ی‌(?:نامه‌)?ا|ای‌ا)ی|ّای‌نامه‌ی|ّای‌ها‌ی|َّی(?:‌(?:(?:ها‌|ا?)ی|نامه)|ہ?ئ[ةۀ-ۂ]|ا(?:نه|[ءت])|-?ها|ہ[ءةۀۂ]|[ءةهی]))|جای(?:‌نامه‌|(?:ه‌|-?))ها|جای‌ها‌ی|جایانه|ج(?:ای‌ا|ّ)ی|(?:جای‌|ج(?:یی|ـ))ی)|ح(?:َج(?:ّ(?:(?:(?:(?:ی(?:‌(?:نامه(?:‌(?:نامه|ها))?|ها)|ان(?:‌نامه)?)?|ایی?)|ایان)|ای‌نامه)|ای‌ها)|َّی(?:‌ها|ان|ہ)?)|ج(?:(?:(?:ای‌نامه|(?:ایه|(?:(?:ای?|ی)?|(?:یی|ـ))))|ایان)|ای‌ها))|Ha(?:g(?:(?:g(?:ā(?:y-?(?:ya|i)|i)|aii|y)|’ā[iy]|ya|a[iy]|i)|gi-?i)|g(?:g(?:ai-?|ā’)|-?)i|j(?:j(?:a(?:y-?)?i|āy)|iya[hy]|ai))|Ha(?:g(?:g(?:ai-?|ā’)|-?)y|jjay-?y|g(?:ga?iy|’y))a|Ha(?:gg(?:ay-?|āī[-’])|jj(?:āī?-?|ī[-’]))ya|Ha(?:g(?:(?:g(?:āy(?:-?y)?|a?i)|y)?|gay)|jj(?:ay|āī))|Ha(?:gg(?:ai’|ā-?)|jji)y|ha(?:ggā(?:(?:ī’y)?|’ya)|jj(?:ī(?:[-’]ya|yy|y)?|ā(?:īy|ī?)))))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:\x48\x61\x67\x67\x61\x69’\x79|(?:\x48\x61\x67\x67ā\x2d\x79|(?:ح(?:َج(?:ّ(?:ی(?:‌نامه(?:‌نامه‌|-)|ی‌)|ای-)ها|ّیان‌(?:نامه‌)?ها|ّ(?:(?:ی(?:ان‌نامه‌ی|‌(?:نامه‌(?:ها)?ی|(?:ها)?ی))|ای(?:ی(?:ان|ه)|‌ی))|ایانه)|ّ(?:ی‌(?:نامه‌)?ا|ای‌ا)ی|ّای‌نامه‌ی|ّای‌ها‌ی|َّی(?:‌(?:(?:ها‌|ا?)ی|نامه)|ہ?ئ[ةۀ-ۂ]|ا(?:نه|[ءت])|-ها|ہ[ءةۀۂ]|[ءةهی]))|جای(?:‌نامه‌|(?:ه‌|-))ها|جای‌ها‌ی|جایانه|ج(?:ای‌ا|ّ)ی|(?:جای‌|ج(?:یی|ـ))ی)|ح(?:َج(?:ّ(?:(?:(?:(?:ی(?:‌(?:نامه(?:‌(?:نامه|ها))?|ها)|ان(?:‌نامه)?)?|ایی?)|ایان)|ای‌نامه)|ای‌ها)|َّی(?:‌ها|ان|ہ)?)|ج(?:(?:(?:ای‌نامه|(?:ایه|(?:(?:ای?|ی)?|(?:یی|ـ))))|ایان)|ای‌ها))|Ha(?:g(?:(?:g(?:ā(?:y-(?:ya|i)|i)|aii|y)|’ā[iy]|ya|a[iy]|i)|gi-i)|g(?:g(?:ai-|ā’)|-)i|j(?:j(?:a(?:y-)?i|āy)|iya[hy]|ai))|Ha(?:g(?:g(?:ai-|ā’)|-)y|jjay-y|g(?:ga?iy|’y))a|Ha(?:gg(?:ay-|āī[\-’])|jj(?:āī?-|ī[\-’]))ya|Ha(?:g(?:(?:g(?:āy(?:-y)?|a?i)|y)?|gay)|jj(?:ay|āī))|ha(?:ggā(?:(?:ī’y)?|’ya)|jj(?:ī(?:[\-’]ya|yy|y)?|ā(?:īy|ī?)))|Hajjiy))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Zech"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|حکایت|رساله|پیام|نامه)\s*زکر[يی]ا|ز(?:ک(?:ر(?:یا(?:‌(?:نامه‌(?:(?:هات|ش)ان|گان|ای)|ا?ی)|(?:ئ[ۀ-ۃ](?:ئہ|ء)|[ۀ-ۃ](?:ئہ|ء)|ها|ء))|يا‌(?:نامه‌(?:(?:هات|ش)ان|گان|ای)|ا?ی))|‌نامه)|َکر[يی]ا‌نامه‌ی)|ز(?:(?:کر(?:یا(?:‌نامه‌گ?ی‌|-?)|يا(?:‌نامه‌گ?ی‌|-?))|کريا)ه|َکر[يی]ا(?:‌نامه‌|-?)ه|ِکَری)ا|ز(?:ک(?:ر(?:یا‌نامه(?:‌(?:هات?|ی))?|يا(?:‌نامه(?:‌(?:هات?|ی))?)?|ی(?:ا(?:ئ[ۀ-ۃ]|ه|[ۀ-ۃ])?)?)?)?|َکر[يی]ا(?:‌نامه)?)|سخنان\s*زکر[يی]ا|کتاب\s*زکر[يی]ا|Z(?:e(?:(?:(?:chariah|(?:jarīyā|kariah))|khariah)|kariya)|ak(?:ar(?:ayah|i(?:ya|ah))|ar(?:iy|ai)ya|hari(?:ah|ya)))|Z(?:e(?:charia|(?:(?:jarīy?|ch)|karia))|akar(?:ay|i)a)|zej(?:arīyā|ār)|zejarī))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|حکایت|رساله|پیام|نامه)\s*زکر[يی]ا|ز(?:ک(?:ر(?:یا(?:‌(?:نامه‌(?:(?:هات|ش)ان|گان|ای)|ا?ی)|(?:ئ[ۀ-ۃ](?:ئہ|ء)|[ۀ-ۃ](?:ئہ|ء)|ها|ء))|يا‌(?:نامه‌(?:(?:هات|ش)ان|گان|ای)|ا?ی))|‌نامه)|َکر[يی]ا‌نامه‌ی)|ز(?:(?:کر(?:یا(?:‌نامه‌گ?ی‌|-)|يا(?:‌نامه‌گ?ی‌|-))|کريا)ه|َکر[يی]ا(?:‌نامه‌|-?)ه|ِکَری)ا|ز(?:ک(?:ر(?:یا‌نامه(?:‌(?:هات?|ی))?|يا(?:‌نامه(?:‌(?:هات?|ی))?)?|ی(?:ا(?:ئ[ۀ-ۃ]|ه|[ۀ-ۃ])?)?)?)?|َکر[يی]ا(?:‌نامه)?)|سخنان\s*زکر[يی]ا|کتاب\s*زکر[يی]ا|Z(?:e(?:(?:(?:chariah|(?:jarīyā|kariah))|khariah)|kariya)|ak(?:ar(?:ayah|i(?:ya|ah))|ar(?:iy|ai)ya|hari(?:ah|ya)))|Z(?:e(?:charia|(?:(?:jarīy?|ch)|karia))|akar(?:ay|i)a)|zej(?:arīyā|ār)|zejarī))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Acts"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:کارهای\s*رسولان\s*الهی|Amal-?e-?Rusul)|(?:(?:اعمال\s*رسولان\s*در\s*کتاب|داستان\s*رسولان)\s*مقدس|(?:کار(?:های\s*ر(?:سول(?:ا(?:ن‌(?:نامه‌گ?ی‌|هات‌)|[-‌])|ی‌)|َسولا?‌)ه|های\s*رسول‌(?:نامه‌)?ه|نامه\s*رسول‌ه)|اعما?له)ا|(?:ک(?:ار(?:های\s*رسول(?:ان‌نامه‌(?:هات|گ)ا|یا)|نامه\s*رسولا|\s*رسولا)|تاب\s*(?:کارهای\s*رسول[ای]|اعمال\s*رسول[ای]))|اعمال\s*(?:(?:ال)?رسولی|رَسول[ای]))ن|رساله\s*اعمال\s*رسولان(?:\s*مقدس)?|کار(?:های\s*ر(?:سول(?:ا(?:ن(?:‌(?:نامه‌هات?|هات?))?)?|‌نامه|ی)?|َسولان?)?|نامه\s*ر(?:سول)?|\s*ر(?:سول)?)|(?:کارهای\s*رسولان‌(?:نامه|های)‌ش|اعمال\s*پیام‌آور)ان|ک(?:ارهای\s*ر(?:سول(?:ان‌نامه‌اش|‌نامه‌ا?ی|ین)|َسول(?:ان‌نامه|ی))|\s*ر)|(?:ک(?:تاب\s*(?:پیام‌های|مقدس)|ار(?:های\s*اله|نامه‌ها)ی)|اعمال\s*مقدس)\s*رسولان|Karha(?:y(?:\s*R(?:asulan(?:-?ha|h)|usulh)a|e\s*Ras(?:ulan|ool)ha)|y(?:\s*e\s*R(?:as(?:oo|u)|usu)|-?e-?R(?:as(?:oo|u)|usu))lan|ye\s*R(?:asoo|usu)lan|\s*e\s*Ras(?:ulan|ool)|-?e-?Ras(?:ulan|ool)|y\s*R[au]sool)|اعمال\s*رسولان\s*مقدس|A(?:ma(?:al(?:\s*(?:e\s*)?|-?e-?)Rusule|l-?e-?Rusule)e|['’]mal(?:\s*e\s*Rusul(?:ee|a)|-?e-?Rusul(?:ee|a))|ma(?:al(?:\s*(?:e\s*)?|-?e-?)Rusula|l-?e-?Rusula)|mal\s*e\s*Rusul(?:ee|a))n|Karhay(?:e\s*R(?:asul(?:an)?|usul)|\s*R(?:asulan|usul))|A['’]maal(?:\s*e\s*|-?e-?)Rusul|کارهای\s*رُسولان|A(?:['’]ma(?:l(?:\s*e\s*Rusul|-?e-?Rusul)?|al)|ma(?:l\s*e\s*Rusul|a?l))|اعم(?:الی|ل)\s*رسولان|حکایات\s*رسولان|اع(?:م(?:ا(?:ل(?:\s*(?:ر(?:سول(?:ان)?)?|الرسول)|ی)?)?|ل)?)?|a['’]mālī|A(?:ma(?:ale|l[ei])|['’]male|cts)|عم(?:ال(?:ها|ی)|ل(?:ها|ی))|a['’]m(?:āl)?|اعملی|عما?ل))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کارهای\s*رسولان\s*الهی|\x41\x6d\x61\x6c\x2d\x65\x2d\x52\x75\x73\x75\x6c)|(?:(?:اعمال\s*رسولان\s*در\s*کتاب|داستان\s*رسولان)\s*مقدس|(?:کار(?:های\s*ر(?:سول(?:ا(?:ن‌(?:نامه‌گ?ی‌|هات‌)|[\-‌])|ی‌)|َسولا?‌)ه|های\s*رسول‌(?:نامه‌)?ه|نامه\s*رسول‌ه)|اعما?له)ا|(?:ک(?:ار(?:های\s*رسول(?:ان‌نامه‌(?:هات|گ)ا|یا)|نامه\s*رسولا|\s*رسولا)|تاب\s*(?:کارهای\s*رسول[ای]|اعمال\s*رسول[ای]))|اعمال\s*(?:(?:ال)?رسولی|رَسول[ای]))ن|رساله\s*اعمال\s*رسولان(?:\s*مقدس)?|کار(?:های\s*ر(?:سول(?:ا(?:ن(?:‌(?:نامه‌هات?|هات?))?)?|‌نامه|ی)?|َسولان?)?|نامه\s*ر(?:سول)?|\s*ر(?:سول)?)|(?:کارهای\s*رسولان‌(?:نامه|های)‌ش|اعمال\s*پیام‌آور)ان|ک(?:ارهای\s*ر(?:سول(?:ان‌نامه‌اش|‌نامه‌ا?ی|ین)|َسول(?:ان‌نامه|ی))|\s*ر)|(?:ک(?:تاب\s*(?:پیام‌های|مقدس)|ار(?:های\s*اله|نامه‌ها)ی)|اعمال\s*مقدس)\s*رسولان|Karha(?:y(?:\s*R(?:asulan(?:-ha|h)|usulh)a|e\s*Ras(?:ulan|ool)ha)|y(?:\s*e\s*R(?:as(?:oo|u)|usu)|-e-R(?:as(?:oo|u)|usu))lan|ye\s*R(?:asoo|usu)lan|\s*e\s*Ras(?:ulan|ool)|-e-Ras(?:ulan|ool)|y\s*R[au]sool)|اعمال\s*رسولان\s*مقدس|A(?:ma(?:al(?:\s*(?:e\s*)?|-e-)Rusule|l-e-Rusule)e|['’]mal(?:\s*e\s*Rusul(?:ee|a)|-e-Rusul(?:ee|a))|ma(?:al(?:\s*(?:e\s*)?|-e-)Rusula|l-e-Rusula)|mal\s*e\s*Rusul(?:ee|a))n|Karhay(?:e\s*R(?:asul(?:an)?|usul)|\s*R(?:asulan|usul))|A['’]maal(?:\s*e\s*|-e-)Rusul|کارهای\s*رُسولان|A(?:['’]ma(?:l(?:\s*e\s*Rusul|-e-Rusul)?|al)|ma(?:l\s*e\s*Rusul|a?l))|اعم(?:الی|ل)\s*رسولان|حکایات\s*رسولان|اع(?:م(?:ا(?:ل(?:\s*(?:ر(?:سول(?:ان)?)?|الرسول)|ی)?)?|ل)?)?|a['’]mālī|A(?:ma(?:ale|l[ei])|['’]male|cts)|عم(?:ال(?:ها|ی)|ل(?:ها|ی))|a['’]m(?:āl)?|اعملی|عما?ل)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Mal"],
         testament: "o",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:M(?:a(?:(?:la(?:aki[ei]|k(?:e[ey]|i[ei]))|alaki[ei])|lachi)|al['’]aaki|[ei]laki)|mal['’](?:ākh[iī]|a)|Ma(?:l(?:aaki|(?:aki)?)|alaki)|م(?:َل(?:اک(?:یی|[ىيے])|کي|كی)|ل(?:اکیه|ک[ىیے]))|م(?:َل(?:اکی|ك)|ل(?:ا(?:کی?)?)?)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:M(?:a(?:(?:la(?:aki[ei]|k(?:e[ey]|i[ei]))|alaki[ei])|lachi)|al['’]aaki|[ei]laki)|mal['’](?:ākh[iī]|a)|Ma(?:l(?:aaki|(?:aki)?)|alaki)|م(?:َل(?:اک(?:یی|[ىيے])|کي|كی)|ل(?:اکیه|ک[ىیے]))|م(?:َل(?:اکی|ك)|ل(?:ا(?:کی?)?)?)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Matt"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:M(?:a(?:t(?:['’]t(?:hiya|[iy])|t(?:h(?:e[ai]|[iy])|i[ei]|e[ey]|y)|h[iy])|at(?:ha|t)i|t(?:['’]y|a)i)|at['’]tee|aattey|ett(?:ie|y)|itt(?:hy|i))|mattā(?:['’]ūsi?)?|Mattheei?|Mat(?:['’]thi|ti?)|م(?:َت(?:ّ(?:تی|[ىيی])|تی|ی[هی]|ي)|ت(?:(?:ایی|تی|[ىيی])|ّی))|مت(?:ای|ت)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:M(?:a(?:t(?:['’]t(?:hiya|[iy])|t(?:h(?:e[ai]|[iy])|i[ei]|e[ey]|y)|h[iy])|at(?:ha|t)i|t(?:['’]y|a)i)|at['’]tee|aattey|ett(?:ie|y)|itt(?:hy|i))|mattā(?:['’]ūsi?)?|Mattheei?|Mat(?:['’]thi|ti?)|م(?:َت(?:ّ(?:تی|[ىيی])|تی|ی[هی]|ي)|ت(?:(?:ایی|تی|[ىيی])|ّی))|مت(?:ای|ت)?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Mark"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Mar(?:c(?:oose|us)e|q(?:o(?:(?:ose|s)e|us)|u[os]s)|kuss|(?:koo|cou)s|[ck]os)|Mar(?:c(?:oose|us)|coos|q(?:oo?s|us)|kus|k)|م(?:َر(?:ق(?:(?:ُسه|و[سص]|سه|ص)|ُوس)|[كک]ُس)|ر(?:ق(?:ُو|ّ)|ك)س|ر(?:ق(?:سی|ُس|ص)|(?:قو|ک)س))|mārqū(?:si?)?|م(?:َرقُ?س|ر(?:قس?|قو|ک)?)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Mar(?:c(?:oose|us)e|q(?:o(?:(?:ose|s)e|us)|u[os]s)|kuss|(?:koo|cou)s|[ck]os)|Mar(?:c(?:oose|us)|coos|q(?:oo?s|us)|kus|k)|م(?:َر(?:ق(?:(?:ُسه|و[سص]|سه|ص)|ُوس)|[كک]ُس)|ر(?:ق(?:ُو|ّ)|ك)س|ر(?:ق(?:سی|ُس|ص)|(?:قو|ک)س))|mārqū(?:si?)?|م(?:َرقُ?س|ر(?:قس?|قو|ک)?)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Luke"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:L(?:o(?:oqa(?:at|h)|[kq]aa[ht])|u(?:k(?:aah|e)|qa(?:at|h)))|L(?:o(?:oqaa?|[kq]a)|u(?:qaa?|ka))|لو(?:ق(?:ا(?:ءه|[تهی])|[آةهىی])|ق(?:اء?)?|[كک](?:ا[ءه]|ا|ة))?|lūqān|lūqā?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:L(?:o(?:oqa(?:at|h)|[kq]aa[ht])|u(?:k(?:aah|e)|qa(?:at|h)))|L(?:o(?:oqaa?|[kq]a)|u(?:qaa?|ka))|لو(?:ق(?:ا(?:ءه|[تهی])|[آةهىی])|ق(?:اء?)?|[كک](?:ا[ءه]|ا|ة))?|lūqān|lūqā?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval|[1۱])\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|(?:(?:Avval|[1۱])Y|Yek\s*?Y)(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|(?:Avval|[1۱])\s*Y(?:o(?:ohana|hann?a)|uhann?a)|avv(?:al\s*yohannā|lyo)|اول(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|(?:(?:(?:Avval|[1۱])\s*|Avval)|اول\s*)یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|(?:(?:Avval|[1۱])Y|Yek\s*?Y)(?:o(?:ohana|hann?a)|uhann?a)|اول(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a)|یو)|(?:اولیو[حه]|[1۱]یوه)ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|یک(?:\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی]))|AvvalJohn|[1۱]یوحنا(?:ءه|[ته])|[1۱]یوحناء?|1(?:یوحن[آةهىی]|yohn)|۱(?:یوحن[آةهىی]|yohn)|1(?:یو(?:حن?)?|yoh?)|۱(?:یو(?:حن?)?|yoh?)|1John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Avval|[1۱])\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|(?:(?:Avval|[1۱])Y|Yek\s*?Y)(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|(?:Avval|[1۱])\s*Y(?:o(?:ohana|hann?a)|uhann?a)|avv(?:al\s*yohannā|lyo)|اول(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|(?:(?:(?:Avval|[1۱])\s*|Avval)|اول\s*)یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|(?:(?:Avval|[1۱])Y|Yek\s*?Y)(?:o(?:ohana|hann?a)|uhann?a)|اول(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a)|یو)|(?:اولیو[حه]|[1۱]یوه)ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|یک(?:\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی]))|AvvalJohn|[1۱]یوحنا(?:ءه|[ته])|[1۱]یوحناء?|1(?:یوحن[آةهىی]|yohn)|۱(?:یوحن[آةهىی]|yohn)|1(?:یو(?:حن?)?|yoh?)|۱(?:یو(?:حن?)?|yoh?)|1John))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Dovom|[2۲])\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|dovvom(?:\s*yohannā|yo)|(?:Do(?:vom|\s*?)Y|[2۲]Y)(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|(?:Dovom|[2۲])\s*Y(?:o(?:ohana|hann?a)|uhann?a)|(?:(?:Dovom|[2۲])\s*|Dovom)یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|دو(?:م(?:(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a)|یو))|(?:م\s*)?یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|میو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی]))|(?:Do(?:vom|\s*?)Y|[2۲]Y)(?:o(?:ohana|hann?a)|uhann?a)|DovomJohn|[2۲]یوحنا(?:ءه|[ته])|[2۲]یوهن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|[2۲]یوحناء?|2(?:یوحن[آةهىی]|yohn)|۲(?:یوحن[آةهىی]|yohn)|2(?:یو(?:حن?)?|yoh?)|۲(?:یو(?:حن?)?|yoh?)|2John))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:Dovom|[2۲])\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|dovvom(?:\s*yohannā|yo)|(?:Do(?:vom|\s*?)Y|[2۲]Y)(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|(?:Dovom|[2۲])\s*Y(?:o(?:ohana|hann?a)|uhann?a)|(?:(?:Dovom|[2۲])\s*|Dovom)یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|دو(?:م(?:(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a)|یو))|(?:م\s*)?یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|میو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی]))|(?:Do(?:vom|\s*?)Y|[2۲]Y)(?:o(?:ohana|hann?a)|uhann?a)|DovomJohn|[2۲]یوحنا(?:ءه|[ته])|[2۲]یوهن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|[2۲]یوحناء?|2(?:یوحن[آةهىی]|yohn)|۲(?:یوحن[آةهىی]|yohn)|2(?:یو(?:حن?)?|yoh?)|۲(?:یو(?:حن?)?|yoh?)|2John))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["3John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Se(?:vom(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|h(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|sevvom(?:\s*yohannā|yo)|Se(?:vom(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a))|h(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a))|\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a))|(?:3\s*?Y|۳\s*?Y)(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|س(?:وم\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|ومیو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|ه(?:\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی]))|ومیو)|(?:3\s*?Y|۳\s*?Y)(?:o(?:ohana|hann?a)|uhann?a)|[3۳]\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|[3۳]یوحنا(?:ءه|[ته])|[3۳]یوهن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|[3۳]یوحناء?|3یوحن[آةهىی]|۳(?:یوحن[آةهىی]|yohn)|3(?:یو(?:حن?)?|yoh?)|۳(?:یو(?:حن?)?|yoh?)|3[Jy]ohn))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Se(?:vom(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|h(?:\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|\s*Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|Y(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah))|sevvom(?:\s*yohannā|yo)|Se(?:vom(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a))|h(?:\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a))|\s*Y(?:o(?:ohana|hann?a)|uhann?a)|Y(?:o(?:ohana|hann?a)|uhann?a))|(?:3\s*?Y|۳\s*?Y)(?:o(?:ohan(?:aah|na)|han[an]ah)|uhan[an]ah)|س(?:وم\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|ومیو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|ه(?:\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی]))|ومیو)|(?:3\s*?Y|۳\s*?Y)(?:o(?:ohana|hann?a)|uhann?a)|[3۳]\s*یو[حه]ن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|[3۳]یوحنا(?:ءه|[ته])|[3۳]یوهن(?:ا(?:ءه|[ته])|اء?|[آةهىی])|[3۳]یوحناء?|3یوحن[آةهىی]|۳(?:یوحن[آةهىی]|yohn)|3(?:یو(?:حن?)?|yoh?)|۳(?:یو(?:حن?)?|yoh?)|3[Jy]ohn))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["John"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Y(?:o(?:ohan(?:(?:aah|na)|a)|han(?:a(?:ah)?|nah?))|uhan(?:a(?:ah)?|nah?))|(?:yohannā|Joh)n|yo(?:hannā)?|یو(?:حن(?:اءه|(?:ا[تهی]|[آةهىی]))|هن(?:ا(?:ءه|[ته])|[آةهىی]))|یو(?:حناء|هناء?|ح(?:نا?)?)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Y(?:o(?:ohan(?:(?:aah|na)|a)|han(?:a(?:ah)?|nah?))|uhan(?:a(?:ah)?|nah?))|(?:yohannā|Joh)n|yo(?:hannā)?|یو(?:حن(?:اءه|(?:ا[تهی]|[آةهىی]))|هن(?:ا(?:ءه|[ته])|[آةهىی]))|یو(?:حناء|هناء?|ح(?:نا?)?)?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Rom"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:رو(?:م(?:ی(?:ان(?:ی?ان|ها|ن)|ون(?:ی?ان|ها|ن))|ی(?:ان(?:ه|ی)?|ون(?:ه|ی)?|ا)?|ي(?:ان(?:[هی])?|ون[هی]))?)?|R(?:oomi(?:ya|[au])n|(?:o(?:ome|my)a|omi[au])n|umi(?:ya|[au])n)|rūm(?:iān)?ī|rūm(?:iān)?|Rom))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:رو(?:م(?:ی(?:ان(?:ی?ان|ها|ن)|ون(?:ی?ان|ها|ن))|ی(?:ان(?:ه|ی)?|ون(?:ه|ی)?|ا)?|ي(?:ان(?:[هی])?|ون[هی]))?)?|R(?:oomi(?:ya|[au])n|(?:o(?:ome|my)a|omi[au])n|umi(?:ya|[au])n)|rūm(?:iān)?ī|rūm(?:iān)?|Rom))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Cor"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Do(?:(?:vom)?\s*Corinth?ians|(?:(?:vom)?\s*|(?:vom)?)Qorint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|vomCorinth?ians|(?:(?:vom)?\s*|(?:vom)?)Korinth?ian|Corinth?ians)|Do(?:(?:vom)?\s*Corinth(?:ian)?|vomCor(?:inth(?:ian)?)?|Corinth(?:ian)?)|دو(?:م?\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|مق(?:رنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان))?|قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان))|2\s*Corinth?ians|2\s*?Qorint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|2\s*Corinth(?:ian)?|2Corinth?ians|2\s*?Korinth?ian|2\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|۲\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|2Corinth(?:ian)?|[2۲]قرنتی[او]ن(?:ی?ان|ها|ه|ی|ن)?|[2۲]قرنتيان|2(?:قر(?:نت?)?|qrn?)|۲(?:قر(?:نت?)?|qrn?)|[2۲]qrnt|2Cor))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Do(?:(?:vom)?\s*Corinth?ians|(?:(?:vom)?\s*|(?:vom)?)Qorint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|vomCorinth?ians|(?:(?:vom)?\s*|(?:vom)?)Korinth?ian|Corinth?ians)|Do(?:(?:vom)?\s*Corinth(?:ian)?|vomCor(?:inth(?:ian)?)?|Corinth(?:ian)?)|دو(?:م?\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|مق(?:رنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان))?|قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان))|2\s*Corinth?ians|2\s*?Qorint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|2\s*Corinth(?:ian)?|2Corinth?ians|2\s*?Korinth?ian|2\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|۲\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|2Corinth(?:ian)?|[2۲]قرنتی[او]ن(?:ی?ان|ها|ه|ی|ن)?|[2۲]قرنتيان|2(?:قر(?:نت?)?|qrn?)|۲(?:قر(?:نت?)?|qrn?)|[2۲]qrnt|2Cor))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Cor"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Avval\s*Corinth?ians|(?:Avval\s*Q|AvvalQ|1\s*?Q)orint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|Avval\s*Corinth(?:ian)?|(?:Avval|1)Corinth?ians|(?:Avval\s*K|AvvalK|1\s*?K)orinth?ian|(?:Avval|1)Corinth(?:ian)?|Yek(?:\s*Corinth?ians|\s*?Qorint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|Corinth?ians|\s*?Korinth?ian)|Yek(?:\s*Corinth(?:ian)?|Corinth(?:ian)?)|(?:اول|۱)\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|1\s*Corinth?ians|اولقرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|یک(?:\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان))|1\s*Corinth(?:ian)?|1\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|[1۱]قرنتی[او]ن(?:ی?ان|ها|ه|ی|ن)?|AvvalCor|[1۱]قرنتيان|1(?:قر(?:نت?)?|qrn?)|۱(?:قر(?:نت?)?|qrn?)|[1۱]qrnt|1Cor|اولق))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:Avval\s*Corinth?ians|(?:Avval\s*Q|AvvalQ|1\s*?Q)orint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|Avval\s*Corinth(?:ian)?|(?:Avval|1)Corinth?ians|(?:Avval\s*K|AvvalK|1\s*?K)orinth?ian|(?:Avval|1)Corinth(?:ian)?|Yek(?:\s*Corinth?ians|\s*?Qorint(?:h(?:iy?a|yu)n|(?:iy?a|yu)n)|Corinth?ians|\s*?Korinth?ian)|Yek(?:\s*Corinth(?:ian)?|Corinth(?:ian)?)|(?:اول|۱)\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|1\s*Corinth?ians|اولقرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|یک(?:\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان))|1\s*Corinth(?:ian)?|1\s*قرنت(?:ی[او]ن(?:ی?ان|ها|ه|ی|ن)?|يان)|[1۱]قرنتی[او]ن(?:ی?ان|ها|ه|ی|ن)?|AvvalCor|[1۱]قرنتيان|1(?:قر(?:نت?)?|qrn?)|۱(?:قر(?:نت?)?|qrn?)|[1۱]qrnt|1Cor|اولق))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Gal"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*غلا?طيان|غ(?:ل(?:ط(?:ي(?:ان(?:‌نامه‌گی‌|ی?-?)|ون[-‌]|ه[-‌])|یان[-‌])|اطي(?:انی|ه)[-‌]|اطيان[-‌])ها|لطيان‌نامه‌ی‌ها|لطيان(?:ی‌(?:نامه‌)?ه|‌ه)ا|َلطي(?:ون(?:‌(?:نامه‌)?ها|-?ها)|ه(?:‌نامه‌ها|(?:‌(?:ها|ی)|-?ها)))|ل(?:ط(?:يان(?:ی‌نامه‌|‌نامه‌ا)ی|ی(?:ان[نه]|ون[نه]|ها))|(?:(?:اط)?|ط)‌نامه|اطی[او]ن[نه]|اطیها|ظ))|غ(?:ل(?:ط(?:يان‌نامه‌(?:هات|گ)ا|ی[او]نا)|اطی[او]نا)|َلطيا)ن|غ(?:ل(?:(?:ط(?:ي(?:ان(?:‌نامه(?:‌هات?)?|ی(?:‌نامه)?)?|ون|ه)|ی(?:ان|ون|ه))?|اطي(?:انی|ه)|ا(?:ط(?:يان|ی)?)?|اطی[او]ن|اطیه)?|طيان‌نامه‌ی)|َلطي(?:ون(?:‌نامه)?|ه(?:‌نامه)?))|غل(?:ط(?:يان‌نامه‌ش|ی[او]نی)|اطی[او]نی)ان|G(?:alati(?:(?:y(?:an(?:ian)?|unian)s|ans)|anians)|halatians)|سخنان\s*غلا?طيان|حکایت\s*غلطيان|کتاب\s*غلا?طيان|G(?:al(?:atianian|(?:at(?:i(?:y[au]n|an))?)?)|halatian)|G(?:alat(?:i(?:an)?u|y[ao])|hal(?:at(?:i(?:y[au]|u)|y[ao])|ātīā))n|ghalāt(?:iān|ī)|ghalā(?:ti?)?))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*غلا?طيان|غ(?:ل(?:ط(?:ي(?:ان(?:‌نامه‌گی‌|ی?-)|ون[\-‌]|ه[\-‌])|یان[\-‌])|اطي(?:انی|ه)[\-‌]|اطيان[\-‌])ها|لطيان‌نامه‌ی‌ها|لطيان(?:ی‌(?:نامه‌)?ه|‌ه)ا|َلطي(?:ون(?:‌(?:نامه‌)?ها|-ها)|ه(?:‌نامه‌ها|(?:‌(?:ها|ی)|-ها)))|ل(?:ط(?:يان(?:ی‌نامه‌|‌نامه‌ا)ی|ی(?:ان[نه]|ون[نه]|ها))|(?:(?:اط)?|ط)‌نامه|اطی[او]ن[نه]|اطیها|ظ))|غ(?:ل(?:ط(?:يان‌نامه‌(?:هات|گ)ا|ی[او]نا)|اطی[او]نا)|َلطيا)ن|غ(?:ل(?:(?:ط(?:ي(?:ان(?:‌نامه(?:‌هات?)?|ی(?:‌نامه)?)?|ون|ه)|ی(?:ان|ون|ه))?|اطي(?:انی|ه)|ا(?:ط(?:يان|ی)?)?|اطی[او]ن|اطیه)?|طيان‌نامه‌ی)|َلطي(?:ون(?:‌نامه)?|ه(?:‌نامه)?))|غل(?:ط(?:يان‌نامه‌ش|ی[او]نی)|اطی[او]نی)ان|G(?:alati(?:(?:y(?:an(?:ian)?|unian)s|ans)|anians)|halatians)|سخنان\s*غلا?طيان|حکایت\s*غلطيان|کتاب\s*غلا?طيان|G(?:al(?:atianian|(?:at(?:i(?:y[au]n|an))?)?)|halatian)|G(?:alat(?:i(?:an)?u|y[ao])|hal(?:at(?:i(?:y[au]|u)|y[ao])|ātīā))n|ghalāt(?:iān|ī)|ghalā(?:ti?)?))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Eph"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*افِ?سسيان|ا(?:(?:ف(?:سسي(?:ان‌نامه‌گی‌|(?:(?:ان(?:‌نامه‌ی‌|-?)|ون(?:‌نامه‌|-?))|اني[-‌]))|ِس(?:سيان(?:‌نامه‌ی‌|ي[-‌]|-?)|يان-?))ه|ف(?:ِس(?:يان‌(?:نامه‌)?ه|سيان‌ه)|سسي(?:‌(?:نامه‌)?ه|[او]ن‌ه)))ا|ف(?:ِس(?:س(?:يان‌نامه‌هات|ی[او]ن[نه])|ي(?:ان(?:‌نامه‌ا?ی|ي)|وني)|ی[او]ن[نه])|س(?:(?:سيان‌نامه‌ای|(?:سيوني|[ـو]))|سي‌نامه‌ا?ی))|َفِسس(?:ي(?:ان‌نامه|(?:ان(?:-?ها|‌ها|ي)|وني))|ی[او]نه)|فس‌نامه)|افس(?:س(?:يان‌نامه‌(?:هات|گ)ا|ی[او])|ی[او])ن|ا(?:ف(?:ِسسيان‌نامه‌[شگ]|سسيان‌نامه‌ش)|َفِسُسی|ِفِسُسی)ان|ا(?:ف(?:س(?:سي(?:ان(?:‌نامه(?:‌هات?)?)?|ان‌نامه‌ی|ون(?:‌نامه)?)?|‌ن|ی)?|ِس(?:س(?:يان(?:‌نامه‌ها|ي)?|ی[او]ن)|يان(?:‌نامه)?|ی[او]ن)|سسي‌نامه|سسياني)?|َفِسس(?:ي(?:ان|ون)?|یان))|Af(?:is(?:i(?:(?:siyanians|yani)|yunians)|siyunians|isyani|(?:i(?:s(?:i(?:yu|a)|yu)|yyu|a)|siy?a)n|y(?:ani|oon))|(?:es(?:(?:i(?:y(?:ani|y)|siy)|y)a|si(?:sia|y[aou])|i(?:syu|yu|[aā]))|ss?iya)n|esisyani|e?siyoon|so)|سخنان\s*افِ?سسيان|حکایت\s*افسسيان|کتاب\s*افِ?سسيان|Af(?:esis?yan|is(?:siyu|iy[au])n)|Ephesians|Eph(?:esian)?|afss?iyān|afso|afs))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*افِ?سسيان|ا(?:(?:ف(?:سسي(?:ان‌نامه‌گی‌|(?:(?:ان(?:‌نامه‌ی‌|-)|ون(?:‌نامه‌|-))|اني[\-‌]))|ِس(?:سيان(?:‌نامه‌ی‌|ي[\-‌]|-)|يان-))ه|ف(?:ِس(?:يان‌(?:نامه‌)?ه|سيان‌ه)|سسي(?:‌(?:نامه‌)?ه|[او]ن‌ه)))ا|ف(?:ِس(?:س(?:يان‌نامه‌هات|ی[او]ن[نه])|ي(?:ان(?:‌نامه‌ا?ی|ي)|وني)|ی[او]ن[نه])|س(?:(?:سيان‌نامه‌ای|(?:سيوني|[ـو]))|سي‌نامه‌ا?ی))|َفِسس(?:ي(?:ان‌نامه|(?:ان(?:-ها|‌ها|ي)|وني))|ی[او]نه)|فس‌نامه)|افس(?:س(?:يان‌نامه‌(?:هات|گ)ا|ی[او])|ی[او])ن|ا(?:ف(?:ِسسيان‌نامه‌[شگ]|سسيان‌نامه‌ش)|َفِسُسی|ِفِسُسی)ان|ا(?:ف(?:س(?:سي(?:ان(?:‌نامه(?:‌هات?)?)?|ان‌نامه‌ی|ون(?:‌نامه)?)?|‌ن|ی)?|ِس(?:س(?:يان(?:‌نامه‌ها|ي)?|ی[او]ن)|يان(?:‌نامه)?|ی[او]ن)|سسي‌نامه|سسياني)?|َفِسس(?:ي(?:ان|ون)?|یان))|Af(?:is(?:i(?:(?:siyanians|yani)|yunians)|siyunians|isyani|(?:i(?:s(?:i(?:yu|a)|yu)|yyu|a)|siy?a)n|y(?:ani|oon))|(?:es(?:(?:i(?:y(?:ani|y)|siy)|y)a|si(?:sia|y[aou])|i(?:syu|yu|[aā]))|ss?iya)n|esisyani|e?siyoon|so)|سخنان\s*افِ?سسيان|حکایت\s*افسسيان|کتاب\s*افِ?سسيان|Af(?:esis?yan|is(?:siyu|iy[au])n)|Ephesians|Eph(?:esian)?|afss?iyān|afso|afs))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Phil"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*ف(?:يلي|یلی)پيان|ف(?:یلیپيان(?:‌نامه‌گی‌|(?:‌نامه‌ی‌|(?:ي[-‌]|-?)))ها|يل(?:يپي(?:ان(?:‌نامه‌گ?ی‌|-?)ها|ان‌(?:نامه‌ای|ها)|اني[-‌]ها|ون[-‌]ها)|یپي(?:ون‌نامه‌|(?:(?:ان|ه)|ون)-?)ها|یپي(?:ه‌نامه‌ای|(?:ه‌نامه‌ی|ان‌نامه|وني))|یپي(?:ه‌(?:نامه‌)?ه|ان‌ه|ون‌ه)ا|یپياني[-‌]ها)|یلیپ(?:يان(?:‌نامه‌هات|ی)|ی(?:[او]ن[نه]|ها))|یلیپيان‌نامه‌ای|یلیپيان‌ها|یلیپيون[-‌]ها|یلیپيه[-‌]ها|یلپ?‌نامه|ل‌نامه)|ف(?:يليپيان‌نامه‌(?:هات|گ)ا|یل(?:یپيان‌نامه‌گا|(?:یپی[او]نا|پیا)))ن|ف(?:يل(?:يپي(?:ان(?:(?:‌نامه(?:‌(?:هات?|ی))?)?|ي)|ون)|یپي(?:(?:ون‌نامه|(?:ه(?:‌نامه)?|ان|ون))|اني))|ی(?:ل(?:ی(?:پ(?:يان(?:‌نامه(?:‌ها)?)?|ی(?:[او]ن|ه)))?|پ)?)?|یلیپيان‌نامه‌ی|یلیپيون|یلیپيه|یلپی|ل(?:یپ|‌ن)?)|ف(?:یلیپ(?:يان‌نامه‌ش|ی[او]نی)|يليپيان‌نامه‌ش|لیپی)ان|حکایت\s*فيليپيان|سخنان\s*ف(?:يلي|یلی)پيان|F(?:ilip(?:i(?:yani)?ans|y(?:uni)?ans)|ilip(?:(?:iy[ou]|yo)|pia)n|īlīp(?:(?:p[iī]ā|ia)n|ī(?:yo|ā)n))|کتاب\s*ف(?:يلي|یلی)پيان|Philipp?ians|(?:Philip(?:pea|iu)|fīlīppiā)n|Filip(?:iy?a|yu)n|Philipes|Phil(?:ipi)?|fīlīppī|fīlīp))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*ف(?:يلي|یلی)پيان|ف(?:یلیپيان(?:‌نامه‌گی‌|(?:‌نامه‌ی‌|(?:ي[\-‌]|-)))ها|يل(?:يپي(?:ان(?:‌نامه‌گ?ی‌|-)ها|ان‌(?:نامه‌ای|ها)|اني[\-‌]ها|ون[\-‌]ها)|یپي(?:ون‌نامه‌|(?:(?:ان|ه)|ون)-)ها|یپي(?:ه‌نامه‌ای|(?:ه‌نامه‌ی|ان‌نامه|وني))|یپي(?:ه‌(?:نامه‌)?ه|ان‌ه|ون‌ه)ا|یپياني[\-‌]ها)|یلیپ(?:يان(?:‌نامه‌هات|ی)|ی(?:[او]ن[نه]|ها))|یلیپيان‌نامه‌ای|یلیپيان‌ها|یلیپيون[\-‌]ها|یلیپيه[\-‌]ها|یلپ?‌نامه|ل‌نامه)|ف(?:يليپيان‌نامه‌(?:هات|گ)ا|یل(?:یپيان‌نامه‌گا|(?:یپی[او]نا|پیا)))ن|ف(?:يل(?:يپي(?:ان(?:(?:‌نامه(?:‌(?:هات?|ی))?)?|ي)|ون)|یپي(?:(?:ون‌نامه|(?:ه(?:‌نامه)?|ان|ون))|اني))|ی(?:ل(?:ی(?:پ(?:يان(?:‌نامه(?:‌ها)?)?|ی(?:[او]ن|ه)))?|پ)?)?|یلیپيان‌نامه‌ی|یلیپيون|یلیپيه|یلپی|ل(?:یپ|‌ن)?)|ف(?:یلیپ(?:يان‌نامه‌ش|ی[او]نی)|يليپيان‌نامه‌ش|لیپی)ان|حکایت\s*فيليپيان|سخنان\s*ف(?:يلي|یلی)پيان|F(?:ilip(?:i(?:yani)?ans|y(?:uni)?ans)|ilip(?:(?:iy[ou]|yo)|pia)n|īlīp(?:(?:p[iī]ā|ia)n|ī(?:yo|ā)n))|کتاب\s*ف(?:يلي|یلی)پيان|Philipp?ians|(?:Philip(?:pea|iu)|fīlīppiā)n|Filip(?:iy?a|yu)n|Philipes|Phil(?:ipi)?|fīlīppī|fīlīp))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Col"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*کول(?:وسي|ُسی)ان|ک(?:(?:ول(?:وسيان‌نامه‌گی‌|ُسیان(?:‌نامه‌گی‌|ی[-‌]|-?)|وسيان(?:ی[-‌]|-?)|سيون-?)|لوسيان(?:ی[-‌]|-?))ها|ول(?:وسي|ُسی)ان‌نامه‌ی‌ها|ول(?:ُسی(?:ان(?:‌نامه‌(?:هات|ای)|[نه])|ون[نه]|ها)|(?:وسيان‌نامه‌ا|سي(?:ون‌نامه‌ا|ان))ی|سيون(?:‌نامه‌)?ی)|ولوسيون(?:‌(?:نامه‌)?ها|-?ها)|ُل(?:وسي(?:ان‌نامه‌ها|ون(?:‌(?:نامه‌)?ها|-?ها))|‌نامه)|لوسيان‌نامه‌ا?ی|(?:لوسيان‌(?:نامه‌)?ه|ول(?:سيون‌(?:نامه‌)?ه|وسيان‌ه|ُسیان‌ه))ا|ل‌نامه)|کول(?:(?:(?:وسيان‌نامه‌هات|سی)|وسيان‌نامه‌گ)ا|ُس(?:ی(?:ان(?:‌نامه‌گ|ی?)ا|ونا)|يو))ن|ک(?:و(?:ل(?:و(?:سيان(?:‌نامه(?:‌هات?)?|ی)?)?|ُسی(?:ان(?:‌نامه(?:‌ها)?|ی)?|ون|ه)|س(?:يون(?:‌نامه)?)?|سی)?)?|ول(?:وسي|ُسی)ان‌نامه‌ی|ولوسيون(?:‌نامه)?|ُل(?:وسي(?:ان(?:‌نامه)?|ون(?:‌نامه)?))?|ل(?:(?:وسيان‌نامه|(?:وس(?:يان)?)?)|وسيانی))|(?:کول(?:وسيان‌نامه‌ش|ُسی(?:ان‌نامه‌ش|ونی))|حکایت\s*کولوسي)ان|سخنان\s*کول(?:وسي|ُسی)ان|K(?:ol(?:us(?:(?:iy[au]ni|y)ans|iy?ans)|os(?:ian|siy))|(?:olos(?:iy|si)ani|ūlosiy)an|(?:ol(?:osiy(?:(?:an)?u|oo)|usiyanu)|ūl(?:usiyā|osia|ūsiā))n|olussiyan|alossiyan|ulusiy)|کتاب\s*کول(?:وسي|ُسی)ان|Colossiyans|Colossians|(?:Col(?:ossiyu|usia)|(?:Colūsiy|kūlsi)ā)n|Colossian|Kol(?:osi(?:y(?:an)?|a)|usi(?:y[au]n|an))|Colusiyan|کولُسسیان|کلُسیان|kūl(?:ow|sī)|(?:Co|kū)l))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*کول(?:وسي|ُسی)ان|ک(?:(?:ول(?:وسيان‌نامه‌گی‌|ُسیان(?:‌نامه‌گی‌|ی[\-‌]|-)|وسيان(?:ی[\-‌]|-)|سيون-)|لوسيان(?:ی[\-‌]|-))ها|ول(?:وسي|ُسی)ان‌نامه‌ی‌ها|ول(?:ُسی(?:ان(?:‌نامه‌(?:هات|ای)|[نه])|ون[نه]|ها)|(?:وسيان‌نامه‌ا|سي(?:ون‌نامه‌ا|ان))ی|سيون(?:‌نامه‌)?ی)|ولوسيون(?:‌(?:نامه‌)?ها|-ها)|ُل(?:وسي(?:ان‌نامه‌ها|ون(?:‌(?:نامه‌)?ها|-ها))|‌نامه)|لوسيان‌نامه‌ا?ی|(?:لوسيان‌(?:نامه‌)?ه|ول(?:سيون‌(?:نامه‌)?ه|وسيان‌ه|ُسیان‌ه))ا|ل‌نامه)|کول(?:(?:(?:وسيان‌نامه‌هات|سی)|وسيان‌نامه‌گ)ا|ُس(?:ی(?:ان(?:‌نامه‌گ|ی?)ا|ونا)|يو))ن|ک(?:و(?:ل(?:و(?:سيان(?:‌نامه(?:‌هات?)?|ی)?)?|ُسی(?:ان(?:‌نامه(?:‌ها)?|ی)?|ون|ه)|س(?:يون(?:‌نامه)?)?|سی)?)?|ول(?:وسي|ُسی)ان‌نامه‌ی|ولوسيون(?:‌نامه)?|ُل(?:وسي(?:ان(?:‌نامه)?|ون(?:‌نامه)?))?|ل(?:(?:وسيان‌نامه|(?:وس(?:يان)?)?)|وسيانی))|(?:کول(?:وسيان‌نامه‌ش|ُسی(?:ان‌نامه‌ش|ونی))|حکایت\s*کولوسي)ان|سخنان\s*کول(?:وسي|ُسی)ان|K(?:ol(?:us(?:(?:iy[au]ni|y)ans|iy?ans)|os(?:ian|siy))|(?:olos(?:iy|si)ani|ūlosiy)an|(?:ol(?:osiy(?:(?:an)?u|oo)|usiyanu)|ūl(?:usiyā|osia|ūsiā))n|olussiyan|alossiyan|ulusiy)|کتاب\s*کول(?:وسي|ُسی)ان|Colossiyans|Colossians|(?:Col(?:ossiyu|usia)|(?:Colūsiy|kūlsi)ā)n|Colossian|Kol(?:osi(?:y(?:an)?|a)|usi(?:y[au]n|an))|Colusiyan|کولُسسیان|کلُسیان|kūl(?:ow|sī)|(?:Co|kū)l))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Tim"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(دوم\s*تيموتيوس\s*مقدس|(?:کتاب\s*مقدس\s*تيموتيوس\s*دوم|دومين\s*نامه\s*به\s*تيموتيوس|(?:پ(?:ولُس\s*به|یام)|درس‌های)\s*تيموتيوس\s*دوم|دو(?:م(?:\s*ت(?:يموتيوس(?:‌(?:نامه‌(?:ا?ی|ها)|ها)|\s*رسول|(?:ی[-‌]|-?)ها)|یموتاؤس)|تیموت(?:ائ(?:وس[هی]|س)|ئوسه))|َم\s*تيموتيوسی|ّم\s*تيموتيوسی|ُم\s*تيموتيوسی|تیموت(?:ائ(?:وس[هی]|س)|ئوسه)|م?تیموتاؤسی)|فرمان\s*دوم\s*تيموتيوس|(?:رسال|نام)ه\s*دوم\s*تيموتيوس|موعظه\s*دوم\s*تيموتيوس|دو(?:م(?:\s*ت(?:يموتيو(?:س(?:‌نامه|ی)?)?|یم(?:و(?:ت(?:اؤ)?)?)?)|تی)|َم\s*تيموتيوس|ّم\s*تيموتيوس|ُم\s*تيموتيوس|متیموتا?ئوس|َم\s*تيموتيو|تیموتا?ئوس|م?تیموتاؤس|ّم)|کتاب\s*دوم\s*تيموتيوس|dovvom(?:\s*tīmutā['’]ūs|tī)|(?:Do(?:v(?:omTimoth?aio|vomTimotheo|omTimot(?:eo?u|hao|ao))|vomT(?:imothae|īmutā)u|vomTimothe[ou]|Timot(?:h(?:a?eu|ao)|e[ou]))|2Timoth?aio|2Timotha?eu|2Timot(?:(?:eo?u|hao)|ao))s|دومين\s*تيموتيوس|Do(?:v(?:omTimot(?:eos|hy)|vomTimothy)|Timothy)|(?:دو(?:م(?:\s*تیموتا[ئو]|تیموتیئ)|تیموتیئ)|(?:(?:[2۲]\s*تیموتا|۲تیموتی)|2تیموتی)ئ)وس|DovomT(?:im(?:oteo)?|īm)|(?:دو(?:متیموت(?:ئاؤ|ی[ؤو])|تیموت(?:ئاؤ|ی[ؤو]))|۲تیموت(?:ئاؤ|ی[ؤو])|2تیموت(?:ئاؤ|ی[ؤو]))س|۲تیموتائ(?:وس[هی]|س)|2تیموت(?:ائ(?:وس[هی]|س)|ئوسه)|۲تیموتائوس|2تیموتا?ئوس|2(?:(?:ndTimothy|Timothy|تیمت)|tīmt)|۲تیموتئوسه|۲تیموتاؤسی|2تیموتاؤسی|۲تیموتئوس|۲تیموتاؤس|2تیموتاؤس|۲(?:\s*تیموتاؤ|تیمت|tīmt)|2Timoteos|2Timoteo|۲تیموتاؤ|۲(?:\s*تیم(?:وت?)?|ت(?:ی(?:م(?:وت?)?)?)?|tīm?)|2(?:(?:Tim|تیم?)|tīm?)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:دوم\s*تيموتيوس\s*مقدس|(?:کتاب\s*مقدس\s*تيموتيوس\s*دوم|دومين\s*نامه\s*به\s*تيموتيوس|(?:پ(?:ولُس\s*به|یام)|درس‌های)\s*تيموتيوس\s*دوم|دو(?:م(?:\s*ت(?:يموتيوس(?:‌(?:نامه‌(?:ا?ی|ها)|ها)|\s*رسول|(?:ی[\-‌]|-)ها)|یموتاؤس)|تیموت(?:ائ(?:وس[هی]|س)|ئوسه))|َم\s*تيموتيوسی|ّم\s*تيموتيوسی|ُم\s*تيموتيوسی|تیموت(?:ائ(?:وس[هی]|س)|ئوسه)|م?تیموتاؤسی)|فرمان\s*دوم\s*تيموتيوس|(?:رسال|نام)ه\s*دوم\s*تيموتيوس|موعظه\s*دوم\s*تيموتيوس|دو(?:م(?:\s*ت(?:يموتيو(?:س(?:‌نامه|ی)?)?|یم(?:و(?:ت(?:اؤ)?)?)?)|تی)|َم\s*تيموتيوس|ّم\s*تيموتيوس|ُم\s*تيموتيوس|متیموتا?ئوس|َم\s*تيموتيو|تیموتا?ئوس|م?تیموتاؤس|ّم)|کتاب\s*دوم\s*تيموتيوس|dovvom(?:\s*tīmutā['’]ūs|tī)|(?:Do(?:v(?:omTimoth?aio|vomTimotheo|omTimot(?:eo?u|hao|ao))|vomT(?:imothae|īmutā)u|vomTimothe[ou]|Timot(?:h(?:a?eu|ao)|e[ou]))|2Timoth?aio|2Timotha?eu|2Timot(?:(?:eo?u|hao)|ao))s|دومين\s*تيموتيوس|Do(?:v(?:omTimot(?:eos|hy)|vomTimothy)|Timothy)|(?:دو(?:م(?:\s*تیموتا[ئو]|تیموتیئ)|تیموتیئ)|(?:(?:[2۲]\s*تیموتا|۲تیموتی)|2تیموتی)ئ)وس|DovomT(?:im(?:oteo)?|īm)|(?:دو(?:متیموت(?:ئاؤ|ی[ؤو])|تیموت(?:ئاؤ|ی[ؤو]))|۲تیموت(?:ئاؤ|ی[ؤو])|2تیموت(?:ئاؤ|ی[ؤو]))س|۲تیموتائ(?:وس[هی]|س)|2تیموت(?:ائ(?:وس[هی]|س)|ئوسه)|۲تیموتائوس|2تیموتا?ئوس|2(?:(?:ndTimothy|Timothy|تیمت)|tīmt)|۲تیموتئوسه|۲تیموتاؤسی|2تیموتاؤسی|۲تیموتئوس|۲تیموتاؤس|2تیموتاؤس|۲(?:\s*تیموتاؤ|تیمت|tīmt)|2Timoteos|2Timoteo|۲تیموتاؤ|۲(?:\s*تیم(?:وت?)?|ت(?:ی(?:م(?:وت?)?)?)?|tīm?)|2(?:(?:Tim|تیم?)|tīm?))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Tim"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(او(?:ل\s*ت(?:يموتيو|یموتاؤ)س\s*رسول|ّل\s*تيموتيوسی?)|(?:(?:رساله\s*اول\s*پولُس\s*به|(?:(?:(?:نامه\s*الهام‌شد|اولین\s*نام)ه\s*به|(?:(?:کتاب\s*مقدس|اوّل)|پ(?:یام\s*اول|ندهای)))|نامه\s*پولُس\s*به))\s*تیموتاؤس|او(?:ل\s*ت(?:یموتاؤس(?:(?:(?:‌(?:نامه‌(?:هات|ش)ان|های‌شان)|ی(?:‌های‌ش)?ان)|\s*نبی)|ی‌نامه‌ا?ی)|يموتيوس‌نامه‌ا?ی)|ل\s*تیموتاؤس‌نامه‌گ?ی‌ها|ل\s*ت(?:یموتاؤسی‌نامه‌ه|يموتيوس‌(?:نامه‌)?ه)ا|(?:َل\s*تیموتاؤس(?:ی‌|-?)|ل\s*ت(?:یموتاؤسی?-?|يموتيوس(?:ی[-‌]|-?)))ها|ُل\s*تیموتاؤسی‌ها)|(?:اولين\s*(?:نامه\s*به\s*)?تيموتيو|اول\s*ت(?:یموتاؤ|يموتيو)س\s*مقد|(?:اول\s*تیم(?:وتا[ئو]|ُوتا)|اولتیموتیئ|[1۱]\s*تیموتائ|یکتیموتیئ|۱تیموتیئ|1تیموتیئ)و|اولتیموتی[ؤو]|یکتیموتی[ؤو]|۱تیموتی[ؤو]|1تیموتی[ؤو])س|کتاب\s*مقدس\s*تيموتيوس\s*اول|او(?:ل(?:\s*ت(?:یم(?:(?:و(?:ت(?:ا(?:ؤ(?:س(?:‌(?:نامه‌هات?|ها)|ی‌ها|ی)?)?)?)?)?)?|وتاؤسی‌نامه)|يموتيو(?:س(?:‌نامه|ی)?)?)|تی)|َل\s*ت(?:یموتاؤسی?|يموتيو)|ُل\s*تیموتاؤس|ّل)|پولُس\s*به\s*ت(?:يموتيو|یموتاؤ)س\s*اول|(?:(?:یادداش|آیا)ت|کتاب)\s*تیموتاؤس\s*اول|درس‌های\s*ت(?:يموتيو|یموتاؤ)س\s*اول|رساله\s*اول\s*ت(?:يموتيو|یموتاؤ)س|فرمان\s*اول\s*ت(?:يموتيو|یموتاؤ)س|موعظه\s*اول\s*ت(?:يموتيو|یموتاؤ)س|نامه\s*اول\s*ت(?:يموتيو|یموتاؤ)س|کتاب\s*اول\s*ت(?:يموتيو|یموتاؤ)س|پیام\s*ت(?:يموتيو|یموتاؤ)س\s*اول|(?:AvvalTimot(?:haio|eo?u|hao|ai?o)|avval\s*tīmutā['’]ū|(?:AvvalT(?:imothae|īmutā)|(?:(?:YekTimotha|1Timoth)|1Timotha)e)u|YekTimot(?:hao|eo?u)|(?:YekTimota|1Timothai)o|1Timoteo?u|1Timothao|1Timotai?o)s|Avval(?:stTimothy|Timot(?:eos|hy))|(?:Avval|Yek)Timothe[ou]s|(?:اوَل\s*تيموتيو|۱تیموتاؤ)سی|اوُل\s*تيموتيوسی|(?:اوَل\s*تيموتيو|۱تیموتاؤ)س|اوُل\s*تيموتيوس|اولتیموت(?:ا(?:ئ(?:وس[هی]|س)|ؤسی)|ئوسه)|AvvalT(?:im(?:oteo)?|īm)|اولتیموت(?:ا(?:ئو|ؤ)س|ئوس)|یکتیموت(?:ا(?:ئ(?:وس[هی]|س)|ؤسی)|ئوسه)|(?:(?:اول|[1۱])|یک)تیموتئاؤس|اول\s*تیمُتاؤس|یکتیموت(?:ا(?:ئو|ؤ)س|ئوس)|YekTimot(?:eos|hy)|۱تیموتائ(?:وس[هی]|س)|1تیموت(?:ا(?:ئ(?:وس[هی]|س)|ؤسی)|ئوسه)|۱تیموتائوس|1تیموت(?:ا(?:ئو|ؤ)س|ئوس)|1stTimothy|۱تیموتئوسه|۱تیموتئوس|1Timoteos|Timot(?:eous|he[ou]s)|1Timoteo|۱تیموتاؤ|1(?:(?:Timothy|تیمت)|tīmt)|avvaltī|۱(?:تی(?:م(?:وت?)?)?|tīm?)|YekTim|۱(?:tīmt|تیمت)|1(?:(?:Tim|تیم?)|tīm?)))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:اول\s*تيموتيوس\s*رسول|اول\s*تیموتاؤس\s*رسول|اوّل\s*تيموتيوسی|اوّل\s*تيموتيوس)|(?:(?:رساله\s*اول\s*پولُس\s*به|(?:(?:(?:نامه\s*الهام‌شد|اولین\s*نام)ه\s*به|(?:(?:کتاب\s*مقدس|اوّل)|پ(?:یام\s*اول|ندهای)))|نامه\s*پولُس\s*به))\s*تیموتاؤس|او(?:ل\s*ت(?:یموتاؤس(?:(?:(?:‌(?:نامه‌(?:هات|ش)ان|های‌شان)|ی(?:‌های‌ش)?ان)|\s*نبی)|ی‌نامه‌ا?ی)|يموتيوس‌نامه‌ا?ی)|ل\s*تیموتاؤس‌نامه‌گ?ی‌ها|ل\s*ت(?:یموتاؤسی‌نامه‌ه|يموتيوس‌(?:نامه‌)?ه)ا|(?:َل\s*تیموتاؤس(?:ی‌|-)|ل\s*ت(?:یموتاؤسی?-|يموتيوس(?:ی[\-‌]|-)))ها|ُل\s*تیموتاؤسی‌ها)|(?:اولين\s*(?:نامه\s*به\s*)?تيموتيو|اول\s*ت(?:یموتاؤ|يموتيو)س\s*مقد|(?:اول\s*تیم(?:وتا[ئو]|ُوتا)|اولتیموتیئ|[1۱]\s*تیموتائ|یکتیموتیئ|۱تیموتیئ|1تیموتیئ)و|اولتیموتی[ؤو]|یکتیموتی[ؤو]|۱تیموتی[ؤو]|1تیموتی[ؤو])س|کتاب\s*مقدس\s*تيموتيوس\s*اول|او(?:ل(?:\s*ت(?:یم(?:(?:و(?:ت(?:ا(?:ؤ(?:س(?:‌(?:نامه‌هات?|ها)|ی‌ها|ی)?)?)?)?)?)?|وتاؤسی‌نامه)|يموتيو(?:س(?:‌نامه|ی)?)?)|تی)|َل\s*ت(?:یموتاؤسی?|يموتيو)|ُل\s*تیموتاؤس|ّل)|پولُس\s*به\s*ت(?:يموتيو|یموتاؤ)س\s*اول|(?:(?:یادداش|آیا)ت|کتاب)\s*تیموتاؤس\s*اول|درس‌های\s*ت(?:يموتيو|یموتاؤ)س\s*اول|رساله\s*اول\s*ت(?:يموتيو|یموتاؤ)س|فرمان\s*اول\s*ت(?:يموتيو|یموتاؤ)س|موعظه\s*اول\s*ت(?:يموتيو|یموتاؤ)س|نامه\s*اول\s*ت(?:يموتيو|یموتاؤ)س|کتاب\s*اول\s*ت(?:يموتيو|یموتاؤ)س|پیام\s*ت(?:يموتيو|یموتاؤ)س\s*اول|(?:AvvalTimot(?:haio|eo?u|hao|ai?o)|avval\s*tīmutā['’]ū|(?:AvvalT(?:imothae|īmutā)|(?:(?:YekTimotha|1Timoth)|1Timotha)e)u|YekTimot(?:hao|eo?u)|(?:YekTimota|1Timothai)o|1Timoteo?u|1Timothao|1Timotai?o)s|Avval(?:stTimothy|Timot(?:eos|hy))|(?:Avval|Yek)Timothe[ou]s|(?:اوَل\s*تيموتيو|۱تیموتاؤ)سی|اوُل\s*تيموتيوسی|(?:اوَل\s*تيموتيو|۱تیموتاؤ)س|اوُل\s*تيموتيوس|اولتیموت(?:ا(?:ئ(?:وس[هی]|س)|ؤسی)|ئوسه)|AvvalT(?:im(?:oteo)?|īm)|اولتیموت(?:ا(?:ئو|ؤ)س|ئوس)|یکتیموت(?:ا(?:ئ(?:وس[هی]|س)|ؤسی)|ئوسه)|(?:(?:اول|[1۱])|یک)تیموتئاؤس|اول\s*تیمُتاؤس|یکتیموت(?:ا(?:ئو|ؤ)س|ئوس)|YekTimot(?:eos|hy)|۱تیموتائ(?:وس[هی]|س)|1تیموت(?:ا(?:ئ(?:وس[هی]|س)|ؤسی)|ئوسه)|۱تیموتائوس|1تیموت(?:ا(?:ئو|ؤ)س|ئوس)|1stTimothy|۱تیموتئوسه|۱تیموتئوس|1Timoteos|Timot(?:eous|he[ou]s)|1Timoteo|۱تیموتاؤ|1(?:(?:Timothy|تیمت)|tīmt)|avvaltī|۱(?:تی(?:م(?:وت?)?)?|tīm?)|YekTim|۱(?:tīmt|تیمت)|1(?:(?:Tim|تیم?)|tīm?))))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Titus"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:(?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)|کتاب)|سخنان)\s*تايتوس|(?:(?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)|کتاب)|سخنان)\s*تيتوس|ت(?:ا(?:يتوس‌نامه‌(?:(?:هات|ش)ان|گان|ای)|(?:يتوس(?:(?:‌نامه‌گ?ی‌|-?)|ي[-‌])|يتوس‌)ها|ی(?:‌توس(?:‌(?:نامه|ها)|-?ها|ی)|توس‌(?:نامه|ها)|توسی[-‌]ها))|(?:(?:يتوس‌نامه‌گی‌|يتوس‌نامه‌ی‌|يتوسي[-‌]|يتوس-?|یتو[ثشص][-‌])|يتوس‌)ها|يتو(?:س‌نامه‌هات|[شص])|يتوس‌نامه‌شان|يتوس‌نامه‌گان|يتوس‌نامه‌ای|ی(?:تو(?:س[هی]|[ثشص][هی])|طس))|ت(?:ا(?:ي(?:(?:توس(?:‌نامه(?:‌(?:هات?|ی))?)?)?|توسي)|ی(?:توسی?|‌توس))|ي(?:ت(?:وس(?:‌نامه(?:‌ها)?)?)?)?|يتوس‌نامه‌ی|يتوسي|ی(?:ت(?:و(?:س|[ثشص])?)?)?)|حکایت\s*تايتوس|T(?:a(?:y(?:tū|ṭu)sian|itūṣ)|itusian|(?:a(?:it(?:o[ou]|u)|yt(?:o[ou]|u))|it(?:oo|ū)|ytu)s|(?:yto|āit)us|ī(?:tū|ṭu)s)|T(?:ayṭ|it)us|تیط[وُ]س))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:(?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)|کتاب)|سخنان)\s*تايتوس|(?:(?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)|کتاب)|سخنان)\s*تيتوس|ت(?:ا(?:يتوس‌نامه‌(?:(?:هات|ش)ان|گان|ای)|(?:يتوس(?:(?:‌نامه‌گ?ی‌|-)|ي[\-‌])|يتوس‌)ها|ی(?:‌توس(?:‌(?:نامه|ها)|-ها|ی)|توس‌(?:نامه|ها)|توسی[\-‌]ها))|(?:(?:يتوس‌نامه‌گی‌|يتوس‌نامه‌ی‌|يتوسي[\-‌]|يتوس-|یتو[ثشص][\-‌])|يتوس‌)ها|يتو(?:س‌نامه‌هات|[شص])|يتوس‌نامه‌شان|يتوس‌نامه‌گان|يتوس‌نامه‌ای|ی(?:تو(?:س[هی]|[ثشص][هی])|طس))|ت(?:ا(?:ي(?:(?:توس(?:‌نامه(?:‌(?:هات?|ی))?)?)?|توسي)|ی(?:توسی?|‌توس))|ي(?:ت(?:وس(?:‌نامه(?:‌ها)?)?)?)?|يتوس‌نامه‌ی|يتوسي|ی(?:ت(?:و(?:س|[ثشص])?)?)?)|حکایت\s*تايتوس|T(?:a(?:y(?:tū|ṭu)sian|itūṣ)|itusian|(?:a(?:it(?:o[ou]|u)|yt(?:o[ou]|u))|it(?:oo|ū)|ytu)s|(?:yto|āit)us|ī(?:tū|ṭu)s)|T(?:ayṭ|it)us|تیط[وُ]س))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Phlm"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*فيلم[او]ن|ف(?:يلم(?:ان(?:‌نامه‌گی‌ها|(?:‌نامه‌ی‌ها|(?:‌(?:نامه‌اش|ها)|-?ها)))|ون(?:‌(?:نامه‌(?:گی‌ها|ی‌ها|هات|ا[شی])|ها)|ی(?:‌نامه|ی)|ی‌ها|ی?-?ها|[ته]))|یل(?:م(?:(?:ان(?:‌نامه‌ا?ی|[ته])|ون(?:‌نامه‌ا?ی|ی[ةی]|[ئتهى]))|وناء)|یمون(?:اء|ی[ةی]|[ئتهى]))|یلم(?:ان‌(?:نامه‌)?|ون‌نامه‌)ها|یلم(?:ونی[-‌]|ان-?)ها|لم‌نامه|لیمون)|(?:ف(?:يلم(?:ان‌نامه‌(?:هات|گ)|ون‌نامه‌گ)ا|ِلیمُو)|فيلم[او]ن‌نامه‌شا|حکایت\s*فيلما)ن|ف(?:يلم(?:ان(?:‌نامه‌هات?)?|ون(?:‌نامه(?:‌(?:ها|ی))?|ی)?)|یل(?:م(?:(?:ان‌نامه|ون(?:‌نامه|ی)?|ان)?|ونا)|یمون(?:ا|ی)?)|ل(?:ی(?:مو?)?|م))|سخنان\s*فيلم[او]ن|کتاب\s*فيلم[او]ن|Philemon[ain]|Ph(?:(?:il(?:em(?:o[ou]|aa)|imo)|lmou)|ilmo?u)n|F(?:ilim(?:o(?:onn|unt|n[ain])|aa?ni)|īl(?:imo?un|īm[ou]n)|ilim[uū]n)|Philemon|Filimo(?:o?|u)n|fīlīmoni|fīlīm(?:on)?|Phlm))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:کتاب\s*پیام‌های|رساله|پیام|نامه)\s*فيلم[او]ن|ف(?:يلم(?:ان(?:‌نامه‌گی‌ها|(?:‌نامه‌ی‌ها|(?:‌(?:نامه‌اش|ها)|-ها)))|ون(?:‌(?:نامه‌(?:گی‌ها|ی‌ها|هات|ا[شی])|ها)|ی(?:‌نامه|ی)|ی‌ها|ی?-ها|[ته]))|یل(?:م(?:(?:ان(?:‌نامه‌ا?ی|[ته])|ون(?:‌نامه‌ا?ی|ی[ةی]|[ئتهى]))|وناء)|یمون(?:اء|ی[ةی]|[ئتهى]))|یلم(?:ان‌(?:نامه‌)?|ون‌نامه‌)ها|یلم(?:ونی[\-‌]|ان-)ها|لم‌نامه|لیمون)|(?:ف(?:يلم(?:ان‌نامه‌(?:هات|گ)|ون‌نامه‌گ)ا|ِلیمُو)|فيلم[او]ن‌نامه‌شا|حکایت\s*فيلما)ن|ف(?:يلم(?:ان(?:‌نامه‌هات?)?|ون(?:‌نامه(?:‌(?:ها|ی))?|ی)?)|یل(?:م(?:(?:ان‌نامه|ون(?:‌نامه|ی)?|ان)?|ونا)|یمون(?:ا|ی)?)|ل(?:ی(?:مو?)?|م))|سخنان\s*فيلم[او]ن|کتاب\s*فيلم[او]ن|Philemon[ain]|Ph(?:(?:il(?:em(?:o[ou]|aa)|imo)|lmou)|ilmo?u)n|F(?:ilim(?:o(?:onn|unt|n[ain])|aa?ni)|īl(?:imo?un|īm[ou]n)|ilim[uū]n)|Philemon|Filimo(?:o?|u)n|fīlīmoni|fīlīm(?:on)?|Phlm))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Heb"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:Ibraaniyaa|Ebra(?:ni(?:y(?:aa|[ou])|[ou])|ani(?:yu|[eo]))|Hebrania|Ebraniaa|ebrāniā)n|(?:Ebr(?:a(?:an(?:iya|y)|n(?:i(?:yy|e)|ee))|eeani)|Hebraniy|(?:Hebra|Ebri)ani|Ibra(?:any|ni))an|Abraan(?:(?:iya|y)a|i[ao])n|عبر(?:ان(?:ی(?:ان(?:ات|[تدزسـهڈی])|ونه)|ی(?:ائ|[آهی])ن|يان)|ی)|Ebra(?:anians|niyan)|Ibraani(?:ans|yan)|عب(?:ر(?:ا(?:ن(?:ی(?:انا?|ون)?)?)?)?)?|Ebr(?:a(?:an(?:ian)?|n(?:iya)?)|eean)|Ebranian|ebr(?:ānī|i)|Heb|ebr))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:Ibraaniyaa|Ebra(?:ni(?:y(?:aa|[ou])|[ou])|ani(?:yu|[eo]))|Hebrania|Ebraniaa|ebrāniā)n|(?:Ebr(?:a(?:an(?:iya|y)|n(?:i(?:yy|e)|ee))|eeani)|Hebraniy|(?:Hebra|Ebri)ani|Ibra(?:any|ni))an|Abraan(?:(?:iya|y)a|i[ao])n|عبر(?:ان(?:ی(?:ان(?:ات|[تدزسـهڈی])|ونه)|ی(?:ائ|[آهی])ن|يان)|ی)|Ebra(?:anians|niyan)|Ibraani(?:ans|yan)|عب(?:ر(?:ا(?:ن(?:ی(?:انا?|ون)?)?)?)?)?|Ebr(?:a(?:an(?:ian)?|n(?:iya)?)|eean)|Ebranian|ebr(?:ānī|i)|Heb|ebr))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Jas"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:Ya(?:aqoob(?:ey|i)|q(?:o(?:ob(?:e[ehy]|i)|ub)|ub(?:e[eh]|i)))|Ya(?:aqoob|q(?:oo|u)b)|یعقو(?:ب(?:ا[ءت]|ته|[ئهىی])|پ[هی])|Yaaqubi?|ya['’]qū(?:bi?)?|یع(?:ق(?:و(?:ب(?:ا|ت)?|پ)?)?)?|Jas))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:Ya(?:aqoob(?:ey|i)|q(?:o(?:ob(?:e[ehy]|i)|ub)|ub(?:e[eh]|i)))|Ya(?:aqoob|q(?:oo|u)b)|یعقو(?:ب(?:ا[ءت]|ته|[ئهىی])|پ[هی])|Yaaqubi?|ya['’]qū(?:bi?)?|یع(?:ق(?:و(?:ب(?:ا|ت)?|پ)?)?)?|Jas))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Pet"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(دوم\s*پ[تط]رس\s*مقدس|(?:دو(?:م(?:(?:(?:\s*پ(?:(?:ترس‌نامه‌هات|ترس‌نامه‌[شگ])ان|طرس(?:‌(?:نامه‌(?:گ(?:ی‌ها|ان)|ی‌ها|هات|شان|ا[شی])|ها)|(?:ی[-‌]|-?)ها|[ئاهى])|ترس(?:‌نامه‌ی‌|(?:ی[-‌]|-?))ها|ترس(?:‌نامه‌ا[شی]|\s*رسول)|ترس‌ها)|پتر)|\s*پطرسس(?:اه|[ئهىی]))|پطرس(?:س(?:اه|[ئهىی])|[ئاهىی]))|\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|م\s*?پطرص[ئاسهىی]|پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی]))|دومین\s*نامه\s*به\s*پترس|دو(?:م(?:(?:(?:(?:\s*پ(?:ترس(?:(?:(?:‌نامه(?:‌هات?)?)?|ی)|‌نامه‌ی)|طرس(?:‌نامه(?:‌(?:ها|ی))?|ی)?)|پ(?:طر?|ت))|\s*پطرسسا?)|پطرس(?:سا?)?)|\s*?پطرص)|\s*پطر(?:س(?:سا?)?|ص)|پطر(?:س(?:سا?)?|ص))|درس‌های\s*پ[تط]رس\s*دوم|پندهای\s*پترس\s*دوم|Do(?:vom(?:\s*[Pp](?:atr(?:issi|asa)|eters)|P(?:atrissi|(?:atrasa|eters))|p(?:atr(?:issi|asa)|eters))|\s*?p(?:atr(?:issi|asa)|eters)|Peters)|(?:رساله\s*دوم\s*پ[تط]|پیام\s*دوم\s*پط|کتاب\s*دوم\s*پ[تط]|نامه\s*دوم\s*پ[تط])رس|فرمان\s*دوم\s*پترس|موعظه\s*پترس\s*دوم|Do(?:vom(?:\s*[Pp](?:atr(?:iss?|as)|eter)|P(?:atriss?|(?:atras|et(?:er)?))|p(?:atr(?:iss?|as)|eter))|\s*?p(?:atr(?:iss?|as)|eter)|P(?:eter|(?:tr|et)))|(?:Do(?:vom(?:\s*[Pp]at(?:ari|ru)|P(?:atari|(?:etr[aou]|atr[ou]))|pat(?:ari|ru))|\s*?pat(?:ari|ru)|P(?:(?:atr[ao]|tru)|etr[aou]))|dovvom\s*petru|2\s*Pat(?:ari|ru)|2Pat(?:ari|ru)|[2۲]ptru)s|پیام\s*پترس\s*دوم|SecondPet(?:ros|er)|2(?:\s*P(?:atr(?:issi|asa)|eters)|(?:Patr(?:issi|asa)|(?:Peters|پت)))|دوم\s*پِطرُس|دومین\s*پترس|2\s*P(?:atr(?:iss?|as)|eter)|2\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|۲\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|2ndPet(?:ros|er)|2Patr(?:iss?|as)|2\s*پطر(?:س(?:سا?)?|ص)|۲\s*پطر(?:س(?:سا?)?|ص)|dovvompt|[2۲]پطرس(?:س(?:اه|[ئهىی])|[ئاهىی])|DovomPtr|[2۲]پطرس(?:سا?)?|2Peter|[2۲]پطرص[ئاسهىی]|[2۲]پطرص|2(?:Pe|p)t|[2۲]ptr|[2۲]پطر?|۲پتر|۲(?:pt|پ)|۲پت))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:دوم\s*پترس\s*مقدس|دوم\s*پطرس\s*مقدس)|(?:دو(?:م(?:(?:(?:\s*پ(?:(?:ترس‌نامه‌هات|ترس‌نامه‌[شگ])ان|طرس(?:‌(?:نامه‌(?:گ(?:ی‌ها|ان)|ی‌ها|هات|شان|ا[شی])|ها)|(?:ی[\-‌]|-)ها|[ئاهى])|ترس(?:‌نامه‌ی‌|(?:ی[\-‌]|-))ها|ترس(?:‌نامه‌ا[شی]|\s*رسول)|ترس‌ها)|پتر)|\s*پطرسس(?:اه|[ئهىی]))|پطرس(?:س(?:اه|[ئهىی])|[ئاهىی]))|\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|م\s*?پطرص[ئاسهىی]|پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی]))|دومین\s*نامه\s*به\s*پترس|دو(?:م(?:(?:(?:(?:\s*پ(?:ترس(?:(?:(?:‌نامه(?:‌هات?)?)?|ی)|‌نامه‌ی)|طرس(?:‌نامه(?:‌(?:ها|ی))?|ی)?)|پ(?:طر?|ت))|\s*پطرسسا?)|پطرس(?:سا?)?)|\s*?پطرص)|\s*پطر(?:س(?:سا?)?|ص)|پطر(?:س(?:سا?)?|ص))|درس‌های\s*پ[تط]رس\s*دوم|پندهای\s*پترس\s*دوم|Do(?:vom(?:\s*[Pp](?:atr(?:issi|asa)|eters)|P(?:atrissi|(?:atrasa|eters))|p(?:atr(?:issi|asa)|eters))|\s*?p(?:atr(?:issi|asa)|eters)|Peters)|(?:رساله\s*دوم\s*پ[تط]|پیام\s*دوم\s*پط|کتاب\s*دوم\s*پ[تط]|نامه\s*دوم\s*پ[تط])رس|فرمان\s*دوم\s*پترس|موعظه\s*پترس\s*دوم|Do(?:vom(?:\s*[Pp](?:atr(?:iss?|as)|eter)|P(?:atriss?|(?:atras|et(?:er)?))|p(?:atr(?:iss?|as)|eter))|\s*?p(?:atr(?:iss?|as)|eter)|P(?:eter|(?:tr|et)))|(?:Do(?:vom(?:\s*[Pp]at(?:ari|ru)|P(?:atari|(?:etr[aou]|atr[ou]))|pat(?:ari|ru))|\s*?pat(?:ari|ru)|P(?:(?:atr[ao]|tru)|etr[aou]))|dovvom\s*petru|2\s*Pat(?:ari|ru)|2Pat(?:ari|ru)|[2۲]ptru)s|پیام\s*پترس\s*دوم|SecondPet(?:ros|er)|2(?:\s*P(?:atr(?:issi|asa)|eters)|(?:Patr(?:issi|asa)|(?:Peters|پت)))|دوم\s*پِطرُس|دومین\s*پترس|2\s*P(?:atr(?:iss?|as)|eter)|2\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|۲\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|2ndPet(?:ros|er)|2Patr(?:iss?|as)|2\s*پطر(?:س(?:سا?)?|ص)|۲\s*پطر(?:س(?:سا?)?|ص)|dovvompt|[2۲]پطرس(?:س(?:اه|[ئهىی])|[ئاهىی])|DovomPtr|[2۲]پطرس(?:سا?)?|2Peter|[2۲]پطرص[ئاسهىی]|[2۲]پطرص|2(?:Pe|p)t|[2۲]ptr|[2۲]پطر?|۲پتر|۲(?:pt|پ)|۲پت)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Pet"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(اول\s*پ(?:ترس\s*(?:رسول|مقدس)|طرس\s*مقدس)|(?:اول(?:\s*پ(?:(?:ترس‌نامه‌هات|ترس‌نامه‌[شگ])ان|طرس(?:‌(?:نامه‌(?:گ(?:ی‌ها|ان)|ی‌ها|هات|شان|ا[شی])|ها)|(?:ی[-‌]|-?)ها|[ئاهى])|ترس(?:‌نامه‌ی‌|(?:ی[-‌]|-?))ها|ترس‌نامه‌ا[شی]|ترس‌ها)|پتر)|اولین\s*نامه\s*به\s*پترس|اول(?:\s*پ(?:ترس(?:(?:(?:‌نامه(?:‌هات?)?)?|ی)|‌نامه‌ی)|طرس(?:‌نامه(?:‌(?:ها|ی))?|ی)?)|پ(?:طر?|ت))|درس‌های\s*پ[تط]رس\s*اول|(?:پ(?:ندهای|یام)|موعظه)\s*پترس\s*اول|Avval(?:\s*[Pp](?:at(?:r(?:(?:issi|asa)|us)|aris)|eters)|Patrissi|p(?:at(?:r(?:(?:issi|asa)|us)|aris)|eters)|P(?:atrasa|(?:eters|tr))|Petr[ao]si|Pataris|P(?:etru|atr[ou])s)|(?:رساله\s*اول\s*پ[تط]|پیام\s*اول\s*پط|کتاب\s*اول\s*پ[تط]|نامه\s*اول\s*پ[تط])رس|فرمان\s*اول\s*پترس|Avval(?:\s*[Pp](?:atr(?:iss?|as)|eter)|P(?:atriss?|(?:(?:atras|et(?:er)?)|etr[ao]s))|p(?:atr(?:iss?|as)|eter))|(?:avval\s*petru|1(?:stPetro|ptru)|YekPetr[ou]|۱ptru)s|(?:Yek\s*?p|1\s*P)(?:at(?:r(?:(?:issi|asa)|us)|aris)|eters)|(?:Yek\s*?p|1\s*P)(?:atr(?:iss?|as)|eter)|اول\s*پطرسس(?:اه|[ئهىی])|اول\s*پطرسسا?|YekPetrasi|(?:اول|[1۱])پطرس(?:س(?:اه|[ئهىی])|[ئاهىی])|یک(?:\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی]))|اول\s*پِطرُس|اولین\s*پترس|YekPetras|(?:اول|[1۱])پطرس(?:سا?)?|یک(?:\s*پطر(?:س(?:سا?)?|ص)|پطر(?:س(?:سا?)?|ص))|(?:Yek|1)Peters|1Pat(?:r(?:(?:issi|asa)|us)|aris)|(?:اول\s*?پطرص|[1۱]پطرص)[ئاسهىی]|1\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|۱\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|(?:Yek|1)Peter|1Patr(?:iss?|as)|اول\s*?پطرص|1\s*پطر(?:س(?:سا?)?|ص)|۱\s*پطر(?:س(?:سا?)?|ص)|(?:1stPete|YekPt)r|avvalpt|YekPet|[1۱]پطرص|1(?:Pet|ptr?)|۱(?:ptr?|پ)|[1۱]پطر?|۱پتر|۱پت|1پت))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))((?:(?:اول\s*پترس\s*رسول|اول\s*پترس\s*مقدس|اول\s*پطرس\s*مقدس)|(?:اول(?:\s*پ(?:(?:ترس‌نامه‌هات|ترس‌نامه‌[شگ])ان|طرس(?:‌(?:نامه‌(?:گ(?:ی‌ها|ان)|ی‌ها|هات|شان|ا[شی])|ها)|(?:ی[\-‌]|-)ها|[ئاهى])|ترس(?:‌نامه‌ی‌|(?:ی[\-‌]|-))ها|ترس‌نامه‌ا[شی]|ترس‌ها)|پتر)|اولین\s*نامه\s*به\s*پترس|اول(?:\s*پ(?:ترس(?:(?:(?:‌نامه(?:‌هات?)?)?|ی)|‌نامه‌ی)|طرس(?:‌نامه(?:‌(?:ها|ی))?|ی)?)|پ(?:طر?|ت))|درس‌های\s*پ[تط]رس\s*اول|(?:پ(?:ندهای|یام)|موعظه)\s*پترس\s*اول|Avval(?:\s*[Pp](?:at(?:r(?:(?:issi|asa)|us)|aris)|eters)|Patrissi|p(?:at(?:r(?:(?:issi|asa)|us)|aris)|eters)|P(?:atrasa|(?:eters|tr))|Petr[ao]si|Pataris|P(?:etru|atr[ou])s)|(?:رساله\s*اول\s*پ[تط]|پیام\s*اول\s*پط|کتاب\s*اول\s*پ[تط]|نامه\s*اول\s*پ[تط])رس|فرمان\s*اول\s*پترس|Avval(?:\s*[Pp](?:atr(?:iss?|as)|eter)|P(?:atriss?|(?:(?:atras|et(?:er)?)|etr[ao]s))|p(?:atr(?:iss?|as)|eter))|(?:avval\s*petru|1(?:stPetro|ptru)|YekPetr[ou]|۱ptru)s|(?:Yek\s*?p|1\s*P)(?:at(?:r(?:(?:issi|asa)|us)|aris)|eters)|(?:Yek\s*?p|1\s*P)(?:atr(?:iss?|as)|eter)|اول\s*پطرسس(?:اه|[ئهىی])|اول\s*پطرسسا?|YekPetrasi|(?:اول|[1۱])پطرس(?:س(?:اه|[ئهىی])|[ئاهىی])|یک(?:\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی]))|اول\s*پِطرُس|اولین\s*پترس|YekPetras|(?:اول|[1۱])پطرس(?:سا?)?|یک(?:\s*پطر(?:س(?:سا?)?|ص)|پطر(?:س(?:سا?)?|ص))|(?:Yek|1)Peters|1Pat(?:r(?:(?:issi|asa)|us)|aris)|(?:اول\s*?پطرص|[1۱]پطرص)[ئاسهىی]|1\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|۱\s*پطر(?:س(?:س(?:اه|[ئهىی])|[ئاهىی])|ص[ئاسهىی])|(?:Yek|1)Peter|1Patr(?:iss?|as)|اول\s*?پطرص|1\s*پطر(?:س(?:سا?)?|ص)|۱\s*پطر(?:س(?:سا?)?|ص)|(?:1stPete|YekPt)r|avvalpt|YekPet|[1۱]پطرص|1(?:Pet|ptr?)|۱(?:ptr?|پ)|[1۱]پطر?|۱پتر|۱پت|1پت)))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Jude"],
         testament: "n",
-        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:یهو(?:دا‌نامه‌گی‌|ذا(?:‌نامه‌گی‌|ی[-‌]|-?))ه|یهوذا‌نامه‌ی‌ه|يهودا(?:‌(?:نامه‌ی‌)?ه|(?:(?:ی[-‌]|-?))?ه)|فرمان\s*یهود|یهوذا‌?ه)ا|یهوذا‌نامه‌هات|یهوذا‌نامه‌گان|یهوذا‌نامه‌شان|يهو(?:دا(?:(?:(?:‌نامه‌(?:هات|[شگ]ان|ای)|\s*رسول)|\s*مقدس)|ی\s*مقدس)|ذای\s*مقدس)|یهوذا‌نامه‌ها|يهودا(?:‌نامه(?:‌(?:ها|ی))?|ی)?|یهوذا‌نامه‌ای|درس‌های\s*یهو[دذ]ا|یهوذا‌نامه‌ی|پندهای\s*یهو[دذ]ا|Y(?:ah(?:ooda(?:a-?ye|h)|uda[hi])|a(?:huda|ahud)ah|eh(?:udaa?h|oo(?:d(?:a[ahi]|eh)|zda)))|(?:(?:رسال|نام)ه|موعظه|پیام|کتاب)\s*یهو[دذ]ا|ی(?:هو(?:(?:ذ(?:ا(?:‌نامه|ی)?)?|دا?)?|(?:د?‌نام|داء))|ہوداء?)|ی(?:هو(?:د?‌نام|داء)ه|ہود(?:ا(?:ءه|[ته])|[آةهىی])|ه(?:ود(?:ا[ته]|[آةنهىی])|ذ))|Y(?:a(?:h(?:oodaa?|uda)|(?:huda|ahud)a)|eh(?:udaa?|ooda))|y(?:ahūdān|ūdā)|y(?:ahū(?:dā)?|ūd)|Jude))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))((?:(?:یهو(?:دا‌نامه‌گی‌|ذا(?:‌نامه‌گی‌|ی[\-‌]|-))ه|یهوذا‌نامه‌ی‌ه|يهودا(?:‌(?:نامه‌ی‌)?ه|(?:(?:ی[\-‌]|-))?ه)|فرمان\s*یهود|یهوذا‌?ه)ا|یهوذا‌نامه‌هات|یهوذا‌نامه‌گان|یهوذا‌نامه‌شان|يهو(?:دا(?:(?:(?:‌نامه‌(?:هات|[شگ]ان|ای)|\s*رسول)|\s*مقدس)|ی\s*مقدس)|ذای\s*مقدس)|یهوذا‌نامه‌ها|يهودا(?:‌نامه(?:‌(?:ها|ی))?|ی)?|یهوذا‌نامه‌ای|درس‌های\s*یهو[دذ]ا|یهوذا‌نامه‌ی|پندهای\s*یهو[دذ]ا|Y(?:ah(?:ooda(?:a-ye|h)|uda[hi])|a(?:huda|ahud)ah|eh(?:udaa?h|oo(?:d(?:a[ahi]|eh)|zda)))|(?:(?:رسال|نام)ه|موعظه|پیام|کتاب)\s*یهو[دذ]ا|ی(?:هو(?:(?:ذ(?:ا(?:‌نامه|ی)?)?|دا?)?|(?:د?‌نام|داء))|ہوداء?)|ی(?:هو(?:د?‌نام|داء)ه|ہود(?:ا(?:ءه|[ته])|[آةهىی])|ه(?:ود(?:ا[ته]|[آةنهىی])|ذ))|Y(?:a(?:h(?:oodaa?|uda)|(?:huda|ahud)a)|eh(?:udaa?|ooda))|y(?:ahūdān|ūdā)|y(?:ahū(?:dā)?|ūd)|Jude))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Tob"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Tob(?:it)?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Tob(?:it)?)(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Jdt"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(J(?:udith|dt))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(J(?:udith|dt))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Bar"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Bar(?:uch)?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Bar(?:uch)?)(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["Sus"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}]))(Sus(?:annah)?)(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}]))(Sus(?:annah)?)(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["2Macc"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(2(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(2(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["3Macc"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(3(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(3(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["4Macc"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(4(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(4(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       },
       {
         osis: ["1Macc"],
         testament: "a",
-        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(1(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s.:,;\x1e\x1f&\(\)（）\[\]\/"'\*=~\-–—])|$)/giu
+        regexp: /(?:^|(?<=[^\p{L}\p{N}])(?<!\d:(?=\d)))(1(?:\s*M(?:(?:accabees|c)|acc)|Macc))(?:(?=[\d\s\.?:,;\x1e\x1f&\(\)（）\[\]\/"’'\*=~\-–—])|$)/giu
       }
     ];
   }
 };
 var bcv_translations = class {
   constructor() {
-    this.aliases = {
-      // `current` reflects whatever versification system is active. By default, it matches `default`. It's always fully specified.
-      current: { system: "current", osis: "" },
-      // `default` is the fully specified default versification system (matching ESV).
-      default: { system: "default", osis: "" }
-    };
+    this.aliases = { current: { system: "current", osis: "" }, default: { system: "default", osis: "" } };
     this.current_system = "default";
     this.systems = {
       current: {},
       default: {
         order: {
-          "Gen": 1,
-          "Exod": 2,
-          "Lev": 3,
-          "Num": 4,
-          "Deut": 5,
-          "Josh": 6,
-          "Judg": 7,
-          "Ruth": 8,
+          Gen: 1,
+          Exod: 2,
+          Lev: 3,
+          Num: 4,
+          Deut: 5,
+          Josh: 6,
+          Judg: 7,
+          Ruth: 8,
           "1Sam": 9,
           "2Sam": 10,
           "1Kgs": 11,
           "2Kgs": 12,
           "1Chr": 13,
           "2Chr": 14,
-          "Ezra": 15,
-          "Neh": 16,
-          "Esth": 17,
-          "Job": 18,
-          "Ps": 19,
-          "Prov": 20,
-          "Eccl": 21,
-          "Song": 22,
-          "Isa": 23,
-          "Jer": 24,
-          "Lam": 25,
-          "Ezek": 26,
-          "Dan": 27,
-          "Hos": 28,
-          "Joel": 29,
-          "Amos": 30,
-          "Obad": 31,
-          "Jonah": 32,
-          "Mic": 33,
-          "Nah": 34,
-          "Hab": 35,
-          "Zeph": 36,
-          "Hag": 37,
-          "Zech": 38,
-          "Mal": 39,
-          "Matt": 40,
-          "Mark": 41,
-          "Luke": 42,
-          "John": 43,
-          "Acts": 44,
-          "Rom": 45,
+          Ezra: 15,
+          Neh: 16,
+          Esth: 17,
+          Job: 18,
+          Ps: 19,
+          Prov: 20,
+          Eccl: 21,
+          Song: 22,
+          Isa: 23,
+          Jer: 24,
+          Lam: 25,
+          Ezek: 26,
+          Dan: 27,
+          Hos: 28,
+          Joel: 29,
+          Amos: 30,
+          Obad: 31,
+          Jonah: 32,
+          Mic: 33,
+          Nah: 34,
+          Hab: 35,
+          Zeph: 36,
+          Hag: 37,
+          Zech: 38,
+          Mal: 39,
+          Matt: 40,
+          Mark: 41,
+          Luke: 42,
+          John: 43,
+          Acts: 44,
+          Rom: 45,
           "1Cor": 46,
           "2Cor": 47,
-          "Gal": 48,
-          "Eph": 49,
-          "Phil": 50,
-          "Col": 51,
+          Gal: 48,
+          Eph: 49,
+          Phil: 50,
+          Col: 51,
           "1Thess": 52,
           "2Thess": 53,
           "1Tim": 54,
           "2Tim": 55,
-          "Titus": 56,
-          "Phlm": 57,
-          "Heb": 58,
-          "Jas": 59,
+          Titus: 56,
+          Phlm: 57,
+          Heb: 58,
+          Jas: 59,
           "1Pet": 60,
           "2Pet": 61,
           "1John": 62,
           "2John": 63,
           "3John": 64,
-          "Jude": 65,
-          "Rev": 66,
-          "Tob": 67,
-          "Jdt": 68,
-          "GkEsth": 69,
-          "Wis": 70,
-          "Sir": 71,
-          "Bar": 72,
-          "PrAzar": 73,
-          "Sus": 74,
-          "Bel": 75,
-          "SgThree": 76,
-          "EpJer": 77,
+          Jude: 65,
+          Rev: 66,
+          Tob: 67,
+          Jdt: 68,
+          GkEsth: 69,
+          Wis: 70,
+          Sir: 71,
+          Bar: 72,
+          PrAzar: 73,
+          Sus: 74,
+          Bel: 75,
+          SgThree: 76,
+          EpJer: 77,
           "1Macc": 78,
           "2Macc": 79,
           "3Macc": 80,
           "4Macc": 81,
           "1Esd": 82,
           "2Esd": 83,
-          "PrMan": 84
+          PrMan: 84
         },
         chapters: {
-          "Gen": [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 55, 32, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 33, 26],
-          "Exod": [22, 25, 22, 31, 23, 30, 25, 32, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 36, 31, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 38],
-          "Lev": [17, 16, 17, 35, 19, 30, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 46, 34],
-          "Num": [54, 34, 51, 49, 31, 27, 89, 26, 23, 36, 35, 16, 33, 45, 41, 50, 13, 32, 22, 29, 35, 41, 30, 25, 18, 65, 23, 31, 40, 16, 54, 42, 56, 29, 34, 13],
-          "Deut": [46, 37, 29, 49, 33, 25, 26, 20, 29, 22, 32, 32, 18, 29, 23, 22, 20, 22, 21, 20, 23, 30, 25, 22, 19, 19, 26, 68, 29, 20, 30, 52, 29, 12],
-          "Josh": [18, 24, 17, 24, 15, 27, 26, 35, 27, 43, 23, 24, 33, 15, 63, 10, 18, 28, 51, 9, 45, 34, 16, 33],
-          "Judg": [36, 23, 31, 24, 31, 40, 25, 35, 57, 18, 40, 15, 25, 20, 20, 31, 13, 31, 30, 48, 25],
-          "Ruth": [22, 23, 18, 22],
+          Gen: [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 55, 32, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 33, 26],
+          Exod: [22, 25, 22, 31, 23, 30, 25, 32, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 36, 31, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 38],
+          Lev: [17, 16, 17, 35, 19, 30, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 46, 34],
+          Num: [54, 34, 51, 49, 31, 27, 89, 26, 23, 36, 35, 16, 33, 45, 41, 50, 13, 32, 22, 29, 35, 41, 30, 25, 18, 65, 23, 31, 40, 16, 54, 42, 56, 29, 34, 13],
+          Deut: [46, 37, 29, 49, 33, 25, 26, 20, 29, 22, 32, 32, 18, 29, 23, 22, 20, 22, 21, 20, 23, 30, 25, 22, 19, 19, 26, 68, 29, 20, 30, 52, 29, 12],
+          Josh: [18, 24, 17, 24, 15, 27, 26, 35, 27, 43, 23, 24, 33, 15, 63, 10, 18, 28, 51, 9, 45, 34, 16, 33],
+          Judg: [36, 23, 31, 24, 31, 40, 25, 35, 57, 18, 40, 15, 25, 20, 20, 31, 13, 31, 30, 48, 25],
+          Ruth: [22, 23, 18, 22],
           "1Sam": [28, 36, 21, 22, 12, 21, 17, 22, 27, 27, 15, 25, 23, 52, 35, 23, 58, 30, 24, 42, 15, 23, 29, 22, 44, 25, 12, 25, 11, 31, 13],
           "2Sam": [27, 32, 39, 12, 25, 23, 29, 18, 13, 19, 27, 31, 39, 33, 37, 23, 29, 33, 43, 26, 22, 51, 39, 25],
           "1Kgs": [53, 46, 28, 34, 18, 38, 51, 66, 28, 29, 43, 33, 34, 31, 34, 34, 24, 46, 21, 43, 29, 53],
           "2Kgs": [18, 25, 27, 44, 27, 33, 20, 29, 37, 36, 21, 21, 25, 29, 38, 20, 41, 37, 37, 21, 26, 20, 37, 20, 30],
           "1Chr": [54, 55, 24, 43, 26, 81, 40, 40, 44, 14, 47, 40, 14, 17, 29, 43, 27, 17, 19, 8, 30, 19, 32, 31, 31, 32, 34, 21, 30],
           "2Chr": [17, 18, 17, 22, 14, 42, 22, 18, 31, 19, 23, 16, 22, 15, 19, 14, 19, 34, 11, 37, 20, 12, 21, 27, 28, 23, 9, 27, 36, 27, 21, 33, 25, 33, 27, 23],
-          "Ezra": [11, 70, 13, 24, 17, 22, 28, 36, 15, 44],
-          "Neh": [11, 20, 32, 23, 19, 19, 73, 18, 38, 39, 36, 47, 31],
-          "Esth": [22, 23, 15, 17, 14, 14, 10, 17, 32, 3],
-          "Job": [22, 13, 26, 21, 27, 30, 21, 22, 35, 22, 20, 25, 28, 22, 35, 22, 16, 21, 29, 29, 34, 30, 17, 25, 6, 14, 23, 28, 25, 31, 40, 22, 33, 37, 16, 33, 24, 41, 30, 24, 34, 17],
-          "Ps": [6, 12, 8, 8, 12, 10, 17, 9, 20, 18, 7, 8, 6, 7, 5, 11, 15, 50, 14, 9, 13, 31, 6, 10, 22, 12, 14, 9, 11, 12, 24, 11, 22, 22, 28, 12, 40, 22, 13, 17, 13, 11, 5, 26, 17, 11, 9, 14, 20, 23, 19, 9, 6, 7, 23, 13, 11, 11, 17, 12, 8, 12, 11, 10, 13, 20, 7, 35, 36, 5, 24, 20, 28, 23, 10, 12, 20, 72, 13, 19, 16, 8, 18, 12, 13, 17, 7, 18, 52, 17, 16, 15, 5, 23, 11, 13, 12, 9, 9, 5, 8, 28, 22, 35, 45, 48, 43, 13, 31, 7, 10, 10, 9, 8, 18, 19, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 13, 10, 7, 12, 15, 21, 10, 20, 14, 9, 6],
-          "Prov": [33, 22, 35, 27, 23, 35, 27, 36, 18, 32, 31, 28, 25, 35, 33, 33, 28, 24, 29, 30, 31, 29, 35, 34, 28, 28, 27, 28, 27, 33, 31],
-          "Eccl": [18, 26, 22, 16, 20, 12, 29, 17, 18, 20, 10, 14],
-          "Song": [17, 17, 11, 16, 16, 13, 13, 14],
-          "Isa": [31, 22, 26, 6, 30, 13, 25, 22, 21, 34, 16, 6, 22, 32, 9, 14, 14, 7, 25, 6, 17, 25, 18, 23, 12, 21, 13, 29, 24, 33, 9, 20, 24, 17, 10, 22, 38, 22, 8, 31, 29, 25, 28, 28, 25, 13, 15, 22, 26, 11, 23, 15, 12, 17, 13, 12, 21, 14, 21, 22, 11, 12, 19, 12, 25, 24],
-          "Jer": [19, 37, 25, 31, 31, 30, 34, 22, 26, 25, 23, 17, 27, 22, 21, 21, 27, 23, 15, 18, 14, 30, 40, 10, 38, 24, 22, 17, 32, 24, 40, 44, 26, 22, 19, 32, 21, 28, 18, 16, 18, 22, 13, 30, 5, 28, 7, 47, 39, 46, 64, 34],
-          "Lam": [22, 22, 66, 22, 22],
-          "Ezek": [28, 10, 27, 17, 17, 14, 27, 18, 11, 22, 25, 28, 23, 23, 8, 63, 24, 32, 14, 49, 32, 31, 49, 27, 17, 21, 36, 26, 21, 26, 18, 32, 33, 31, 15, 38, 28, 23, 29, 49, 26, 20, 27, 31, 25, 24, 23, 35],
-          "Dan": [21, 49, 30, 37, 31, 28, 28, 27, 27, 21, 45, 13],
-          "Hos": [11, 23, 5, 19, 15, 11, 16, 14, 17, 15, 12, 14, 16, 9],
-          "Joel": [20, 32, 21],
-          "Amos": [15, 16, 15, 13, 27, 14, 17, 14, 15],
-          "Obad": [21],
-          "Jonah": [17, 10, 10, 11],
-          "Mic": [16, 13, 12, 13, 15, 16, 20],
-          "Nah": [15, 13, 19],
-          "Hab": [17, 20, 19],
-          "Zeph": [18, 15, 20],
-          "Hag": [15, 23],
-          "Zech": [21, 13, 10, 14, 11, 15, 14, 23, 17, 12, 17, 14, 9, 21],
-          "Mal": [14, 17, 18, 6],
-          "Matt": [25, 23, 17, 25, 48, 34, 29, 34, 38, 42, 30, 50, 58, 36, 39, 28, 27, 35, 30, 34, 46, 46, 39, 51, 46, 75, 66, 20],
-          "Mark": [45, 28, 35, 41, 43, 56, 37, 38, 50, 52, 33, 44, 37, 72, 47, 20],
-          "Luke": [80, 52, 38, 44, 39, 49, 50, 56, 62, 42, 54, 59, 35, 35, 32, 31, 37, 43, 48, 47, 38, 71, 56, 53],
-          "John": [51, 25, 36, 54, 47, 71, 53, 59, 41, 42, 57, 50, 38, 31, 27, 33, 26, 40, 42, 31, 25],
-          "Acts": [26, 47, 26, 37, 42, 15, 60, 40, 43, 48, 30, 25, 52, 28, 41, 40, 34, 28, 41, 38, 40, 30, 35, 27, 27, 32, 44, 31],
-          "Rom": [32, 29, 31, 25, 21, 23, 25, 39, 33, 21, 36, 21, 14, 23, 33, 27],
+          Ezra: [11, 70, 13, 24, 17, 22, 28, 36, 15, 44],
+          Neh: [11, 20, 32, 23, 19, 19, 73, 18, 38, 39, 36, 47, 31],
+          Esth: [22, 23, 15, 17, 14, 14, 10, 17, 32, 3],
+          Job: [22, 13, 26, 21, 27, 30, 21, 22, 35, 22, 20, 25, 28, 22, 35, 22, 16, 21, 29, 29, 34, 30, 17, 25, 6, 14, 23, 28, 25, 31, 40, 22, 33, 37, 16, 33, 24, 41, 30, 24, 34, 17],
+          Ps: [6, 12, 8, 8, 12, 10, 17, 9, 20, 18, 7, 8, 6, 7, 5, 11, 15, 50, 14, 9, 13, 31, 6, 10, 22, 12, 14, 9, 11, 12, 24, 11, 22, 22, 28, 12, 40, 22, 13, 17, 13, 11, 5, 26, 17, 11, 9, 14, 20, 23, 19, 9, 6, 7, 23, 13, 11, 11, 17, 12, 8, 12, 11, 10, 13, 20, 7, 35, 36, 5, 24, 20, 28, 23, 10, 12, 20, 72, 13, 19, 16, 8, 18, 12, 13, 17, 7, 18, 52, 17, 16, 15, 5, 23, 11, 13, 12, 9, 9, 5, 8, 28, 22, 35, 45, 48, 43, 13, 31, 7, 10, 10, 9, 8, 18, 19, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 13, 10, 7, 12, 15, 21, 10, 20, 14, 9, 6],
+          Prov: [33, 22, 35, 27, 23, 35, 27, 36, 18, 32, 31, 28, 25, 35, 33, 33, 28, 24, 29, 30, 31, 29, 35, 34, 28, 28, 27, 28, 27, 33, 31],
+          Eccl: [18, 26, 22, 16, 20, 12, 29, 17, 18, 20, 10, 14],
+          Song: [17, 17, 11, 16, 16, 13, 13, 14],
+          Isa: [31, 22, 26, 6, 30, 13, 25, 22, 21, 34, 16, 6, 22, 32, 9, 14, 14, 7, 25, 6, 17, 25, 18, 23, 12, 21, 13, 29, 24, 33, 9, 20, 24, 17, 10, 22, 38, 22, 8, 31, 29, 25, 28, 28, 25, 13, 15, 22, 26, 11, 23, 15, 12, 17, 13, 12, 21, 14, 21, 22, 11, 12, 19, 12, 25, 24],
+          Jer: [19, 37, 25, 31, 31, 30, 34, 22, 26, 25, 23, 17, 27, 22, 21, 21, 27, 23, 15, 18, 14, 30, 40, 10, 38, 24, 22, 17, 32, 24, 40, 44, 26, 22, 19, 32, 21, 28, 18, 16, 18, 22, 13, 30, 5, 28, 7, 47, 39, 46, 64, 34],
+          Lam: [22, 22, 66, 22, 22],
+          Ezek: [28, 10, 27, 17, 17, 14, 27, 18, 11, 22, 25, 28, 23, 23, 8, 63, 24, 32, 14, 49, 32, 31, 49, 27, 17, 21, 36, 26, 21, 26, 18, 32, 33, 31, 15, 38, 28, 23, 29, 49, 26, 20, 27, 31, 25, 24, 23, 35],
+          Dan: [21, 49, 30, 37, 31, 28, 28, 27, 27, 21, 45, 13],
+          Hos: [11, 23, 5, 19, 15, 11, 16, 14, 17, 15, 12, 14, 16, 9],
+          Joel: [20, 32, 21],
+          Amos: [15, 16, 15, 13, 27, 14, 17, 14, 15],
+          Obad: [21],
+          Jonah: [17, 10, 10, 11],
+          Mic: [16, 13, 12, 13, 15, 16, 20],
+          Nah: [15, 13, 19],
+          Hab: [17, 20, 19],
+          Zeph: [18, 15, 20],
+          Hag: [15, 23],
+          Zech: [21, 13, 10, 14, 11, 15, 14, 23, 17, 12, 17, 14, 9, 21],
+          Mal: [14, 17, 18, 6],
+          Matt: [25, 23, 17, 25, 48, 34, 29, 34, 38, 42, 30, 50, 58, 36, 39, 28, 27, 35, 30, 34, 46, 46, 39, 51, 46, 75, 66, 20],
+          Mark: [45, 28, 35, 41, 43, 56, 37, 38, 50, 52, 33, 44, 37, 72, 47, 20],
+          Luke: [80, 52, 38, 44, 39, 49, 50, 56, 62, 42, 54, 59, 35, 35, 32, 31, 37, 43, 48, 47, 38, 71, 56, 53],
+          John: [51, 25, 36, 54, 47, 71, 53, 59, 41, 42, 57, 50, 38, 31, 27, 33, 26, 40, 42, 31, 25],
+          Acts: [26, 47, 26, 37, 42, 15, 60, 40, 43, 48, 30, 25, 52, 28, 41, 40, 34, 28, 41, 38, 40, 30, 35, 27, 27, 32, 44, 31],
+          Rom: [32, 29, 31, 25, 21, 23, 25, 39, 33, 21, 36, 21, 14, 23, 33, 27],
           "1Cor": [31, 16, 23, 21, 13, 20, 40, 13, 27, 33, 34, 31, 13, 40, 58, 24],
           "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 14],
-          "Gal": [24, 21, 29, 31, 26, 18],
-          "Eph": [23, 22, 21, 32, 33, 24],
-          "Phil": [30, 30, 21, 23],
-          "Col": [29, 23, 25, 18],
+          Gal: [24, 21, 29, 31, 26, 18],
+          Eph: [23, 22, 21, 32, 33, 24],
+          Phil: [30, 30, 21, 23],
+          Col: [29, 23, 25, 18],
           "1Thess": [10, 20, 13, 18, 28],
           "2Thess": [12, 17, 18],
           "1Tim": [20, 15, 16, 16, 25, 21],
           "2Tim": [18, 26, 17, 22],
-          "Titus": [16, 15, 15],
-          "Phlm": [25],
-          "Heb": [14, 18, 19, 16, 14, 20, 28, 13, 28, 39, 40, 29, 25],
-          "Jas": [27, 26, 18, 17, 20],
+          Titus: [16, 15, 15],
+          Phlm: [25],
+          Heb: [14, 18, 19, 16, 14, 20, 28, 13, 28, 39, 40, 29, 25],
+          Jas: [27, 26, 18, 17, 20],
           "1Pet": [25, 25, 22, 19, 14],
           "2Pet": [21, 22, 18],
           "1John": [10, 29, 24, 21, 21],
           "2John": [13],
           "3John": [15],
-          "Jude": [25],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 17, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
-          "Tob": [22, 14, 17, 21, 22, 18, 16, 21, 6, 13, 18, 22, 17, 15],
-          "Jdt": [16, 28, 10, 15, 24, 21, 32, 36, 14, 23, 23, 20, 20, 19, 14, 25],
-          "GkEsth": [22, 23, 15, 17, 14, 14, 10, 17, 32, 13, 12, 6, 18, 19, 16, 24],
-          "Wis": [16, 24, 19, 20, 23, 25, 30, 21, 18, 21, 26, 27, 19, 31, 19, 29, 21, 25, 22],
-          "Sir": [30, 18, 31, 31, 15, 37, 36, 19, 18, 31, 34, 18, 26, 27, 20, 30, 32, 33, 30, 31, 28, 27, 27, 34, 26, 29, 30, 26, 28, 25, 31, 24, 33, 31, 26, 31, 31, 34, 35, 30, 22, 25, 33, 23, 26, 20, 25, 25, 16, 29, 30],
-          "Bar": [22, 35, 37, 37, 9],
-          "PrAzar": [68],
-          "Sus": [64],
-          "Bel": [42],
-          "SgThree": [39],
-          "EpJer": [73],
+          Jude: [25],
+          Rev: [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 17, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
+          Tob: [22, 14, 17, 21, 22, 18, 16, 21, 6, 13, 18, 22, 17, 15],
+          Jdt: [16, 28, 10, 15, 24, 21, 32, 36, 14, 23, 23, 20, 20, 19, 14, 25],
+          GkEsth: [22, 23, 15, 17, 14, 14, 10, 17, 32, 13, 12, 6, 18, 19, 16, 24],
+          Wis: [16, 24, 19, 20, 23, 25, 30, 21, 18, 21, 26, 27, 19, 31, 19, 29, 21, 25, 22],
+          Sir: [30, 18, 31, 31, 15, 37, 36, 19, 18, 31, 34, 18, 26, 27, 20, 30, 32, 33, 30, 31, 28, 27, 27, 34, 26, 29, 30, 26, 28, 25, 31, 24, 33, 31, 26, 31, 31, 34, 35, 30, 22, 25, 33, 23, 26, 20, 25, 25, 16, 29, 30],
+          Bar: [22, 35, 37, 37, 9],
+          PrAzar: [68],
+          Sus: [64],
+          Bel: [42],
+          SgThree: [39],
+          EpJer: [73],
           "1Macc": [64, 70, 60, 61, 68, 63, 50, 32, 73, 89, 74, 53, 53, 49, 41, 24],
           "2Macc": [36, 32, 40, 50, 27, 31, 42, 36, 29, 38, 38, 45, 26, 46, 39],
           "3Macc": [29, 33, 30, 21, 51, 41, 23],
           "4Macc": [35, 24, 21, 26, 38, 35, 23, 29, 32, 21, 27, 19, 27, 20, 32, 25, 24, 24],
           "1Esd": [58, 30, 24, 63, 73, 34, 15, 96, 55],
           "2Esd": [40, 48, 36, 52, 56, 59, 70, 63, 47, 59, 46, 51, 58, 48, 63, 78],
-          "PrMan": [15],
-          "Ps151": [7]
-          // Never actually a book; we add this to Psalms if needed.
-        }
-      },
-      vulgate: {
-        chapters: {
-          "Gen": [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 55, 32, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 32, 25],
-          "Exod": [22, 25, 22, 31, 23, 30, 25, 32, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 36, 31, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 36],
-          "Lev": [17, 16, 17, 35, 19, 30, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 45, 34],
-          "Num": [54, 34, 51, 49, 31, 27, 89, 26, 23, 36, 34, 15, 34, 45, 41, 50, 13, 32, 22, 30, 35, 41, 30, 25, 18, 65, 23, 31, 39, 17, 54, 42, 56, 29, 34, 13],
-          "Josh": [18, 24, 17, 25, 16, 27, 26, 35, 27, 44, 23, 24, 33, 15, 63, 10, 18, 28, 51, 9, 43, 34, 16, 33],
-          "Judg": [36, 23, 31, 24, 32, 40, 25, 35, 57, 18, 40, 15, 25, 20, 20, 31, 13, 31, 30, 48, 24],
-          "1Sam": [28, 36, 21, 22, 12, 21, 17, 22, 27, 27, 15, 25, 23, 52, 35, 23, 58, 30, 24, 43, 15, 23, 28, 23, 44, 25, 12, 25, 11, 31, 13],
-          "1Kgs": [53, 46, 28, 34, 18, 38, 51, 66, 28, 29, 43, 33, 34, 31, 34, 34, 24, 46, 21, 43, 29, 54],
-          "1Chr": [54, 55, 24, 43, 26, 81, 40, 40, 44, 14, 46, 40, 14, 17, 29, 43, 27, 17, 19, 7, 30, 19, 32, 31, 31, 32, 34, 21, 30],
-          "Neh": [11, 20, 31, 23, 19, 19, 73, 18, 38, 39, 36, 46, 31],
-          "Job": [22, 13, 26, 21, 27, 30, 21, 22, 35, 22, 20, 25, 28, 22, 35, 23, 16, 21, 29, 29, 34, 30, 17, 25, 6, 14, 23, 28, 25, 31, 40, 22, 33, 37, 16, 33, 24, 41, 35, 28, 25, 16],
-          "Ps": [6, 13, 9, 10, 13, 11, 18, 10, 39, 8, 9, 6, 7, 5, 10, 15, 51, 15, 10, 14, 32, 6, 10, 22, 12, 14, 9, 11, 13, 25, 11, 22, 23, 28, 13, 40, 23, 14, 18, 14, 12, 5, 26, 18, 12, 10, 15, 21, 23, 21, 11, 7, 9, 24, 13, 12, 12, 18, 14, 9, 13, 12, 11, 14, 20, 8, 36, 37, 6, 24, 20, 28, 23, 11, 13, 21, 72, 13, 20, 17, 8, 19, 13, 14, 17, 7, 19, 53, 17, 16, 16, 5, 23, 11, 13, 12, 9, 9, 5, 8, 29, 22, 35, 45, 48, 43, 14, 31, 7, 10, 10, 9, 26, 9, 10, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 14, 10, 8, 12, 15, 21, 10, 11, 9, 14, 9, 6],
-          "Eccl": [18, 26, 22, 17, 19, 11, 30, 17, 18, 20, 10, 14],
-          "Song": [16, 17, 11, 16, 17, 12, 13, 14],
-          "Jer": [19, 37, 25, 31, 31, 30, 34, 22, 26, 25, 23, 17, 27, 22, 21, 21, 27, 23, 15, 18, 14, 30, 40, 10, 38, 24, 22, 17, 32, 24, 40, 44, 26, 22, 19, 32, 20, 28, 18, 16, 18, 22, 13, 30, 5, 28, 7, 47, 39, 46, 64, 34],
-          "Ezek": [28, 9, 27, 17, 17, 14, 27, 18, 11, 22, 25, 28, 23, 23, 8, 63, 24, 32, 14, 49, 32, 31, 49, 27, 17, 21, 36, 26, 21, 26, 18, 32, 33, 31, 15, 38, 28, 23, 29, 49, 26, 20, 27, 31, 25, 24, 23, 35],
-          "Dan": [21, 49, 100, 34, 31, 28, 28, 27, 27, 21, 45, 13, 65, 42],
-          "Hos": [11, 24, 5, 19, 15, 11, 16, 14, 17, 15, 12, 14, 15, 10],
-          "Amos": [15, 16, 15, 13, 27, 15, 17, 14, 14],
-          "Jonah": [16, 11, 10, 11],
-          "Mic": [16, 13, 12, 13, 14, 16, 20],
-          "Hag": [14, 24],
-          "Matt": [25, 23, 17, 25, 48, 34, 29, 34, 38, 42, 30, 50, 58, 36, 39, 28, 26, 35, 30, 34, 46, 46, 39, 51, 46, 75, 66, 20],
-          "Mark": [45, 28, 35, 40, 43, 56, 37, 39, 49, 52, 33, 44, 37, 72, 47, 20],
-          "John": [51, 25, 36, 54, 47, 72, 53, 59, 41, 42, 57, 50, 38, 31, 27, 33, 26, 40, 42, 31, 25],
-          "Acts": [26, 47, 26, 37, 42, 15, 59, 40, 43, 48, 30, 25, 52, 27, 41, 40, 34, 28, 40, 38, 40, 30, 35, 27, 27, 32, 44, 31],
-          "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
-          "Tob": [25, 23, 25, 23, 28, 22, 20, 24, 12, 13, 21, 22, 23, 17],
-          "Jdt": [12, 18, 15, 17, 29, 21, 25, 34, 19, 20, 21, 20, 31, 18, 15, 31],
-          "Wis": [16, 25, 19, 20, 24, 27, 30, 21, 19, 21, 27, 27, 19, 31, 19, 29, 20, 25, 20],
-          "Sir": [40, 23, 34, 36, 18, 37, 40, 22, 25, 34, 36, 19, 32, 27, 22, 31, 31, 33, 28, 33, 31, 33, 38, 47, 36, 28, 33, 30, 35, 27, 42, 28, 33, 31, 26, 28, 34, 39, 41, 32, 28, 26, 37, 27, 31, 23, 31, 28, 19, 31, 38, 13],
-          "Bar": [22, 35, 38, 37, 9, 72],
-          "1Macc": [67, 70, 60, 61, 68, 63, 50, 32, 73, 89, 74, 54, 54, 49, 41, 24],
-          "2Macc": [36, 33, 40, 50, 27, 31, 42, 36, 29, 38, 38, 46, 26, 46, 40]
-        }
-      },
-      ceb: {
-        chapters: {
-          "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
-          "Tob": [22, 14, 17, 21, 22, 18, 16, 21, 6, 13, 18, 22, 18, 15],
-          "PrAzar": [67],
-          "EpJer": [72],
-          "1Esd": [55, 26, 24, 63, 71, 33, 15, 92, 55],
-          "2Esd": [40, 48, 36, 52, 56, 59, 140, 63, 47, 60, 46, 51, 58, 48, 63, 78]
-        }
-      },
-      csb: {
-        chapters: {
-          "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21]
-        }
-      },
-      kjv: {
-        chapters: {
-          "3John": [14]
-        }
-      },
-      nab: {
-        order: {
-          "Gen": 1,
-          "Exod": 2,
-          "Lev": 3,
-          "Num": 4,
-          "Deut": 5,
-          "Josh": 6,
-          "Judg": 7,
-          "Ruth": 8,
-          "1Sam": 9,
-          "2Sam": 10,
-          "1Kgs": 11,
-          "2Kgs": 12,
-          "1Chr": 13,
-          "2Chr": 14,
-          "PrMan": 15,
-          "Ezra": 16,
-          "Neh": 17,
-          "1Esd": 18,
-          "2Esd": 19,
-          "Tob": 20,
-          "Jdt": 21,
-          "Esth": 22,
-          "GkEsth": 23,
-          "1Macc": 24,
-          "2Macc": 25,
-          "3Macc": 26,
-          "4Macc": 27,
-          "Job": 28,
-          "Ps": 29,
-          "Prov": 30,
-          "Eccl": 31,
-          "Song": 32,
-          "Wis": 33,
-          "Sir": 34,
-          "Isa": 35,
-          "Jer": 36,
-          "Lam": 37,
-          "Bar": 38,
-          "EpJer": 39,
-          "Ezek": 40,
-          "Dan": 41,
-          "PrAzar": 42,
-          "Sus": 43,
-          "Bel": 44,
-          "SgThree": 45,
-          "Hos": 46,
-          "Joel": 47,
-          "Amos": 48,
-          "Obad": 49,
-          "Jonah": 50,
-          "Mic": 51,
-          "Nah": 52,
-          "Hab": 53,
-          "Zeph": 54,
-          "Hag": 55,
-          "Zech": 56,
-          "Mal": 57,
-          "Matt": 58,
-          "Mark": 59,
-          "Luke": 60,
-          "John": 61,
-          "Acts": 62,
-          "Rom": 63,
-          "1Cor": 64,
-          "2Cor": 65,
-          "Gal": 66,
-          "Eph": 67,
-          "Phil": 68,
-          "Col": 69,
-          "1Thess": 70,
-          "2Thess": 71,
-          "1Tim": 72,
-          "2Tim": 73,
-          "Titus": 74,
-          "Phlm": 75,
-          "Heb": 76,
-          "Jas": 77,
-          "1Pet": 78,
-          "2Pet": 79,
-          "1John": 80,
-          "2John": 81,
-          "3John": 82,
-          "Jude": 83,
-          "Rev": 84
-        },
-        chapters: {
-          "Gen": [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 54, 33, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 33, 26],
-          "Exod": [22, 25, 22, 31, 23, 30, 29, 28, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 37, 30, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 38],
-          "Lev": [17, 16, 17, 35, 26, 23, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 46, 34],
-          "Num": [54, 34, 51, 49, 31, 27, 89, 26, 23, 36, 35, 16, 33, 45, 41, 35, 28, 32, 22, 29, 35, 41, 30, 25, 19, 65, 23, 31, 39, 17, 54, 42, 56, 29, 34, 13],
-          "Deut": [46, 37, 29, 49, 33, 25, 26, 20, 29, 22, 32, 31, 19, 29, 23, 22, 20, 22, 21, 20, 23, 29, 26, 22, 19, 19, 26, 69, 28, 20, 30, 52, 29, 12],
-          "1Sam": [28, 36, 21, 22, 12, 21, 17, 22, 27, 27, 15, 25, 23, 52, 35, 23, 58, 30, 24, 42, 16, 23, 28, 23, 44, 25, 12, 25, 11, 31, 13],
-          "2Sam": [27, 32, 39, 12, 25, 23, 29, 18, 13, 19, 27, 31, 39, 33, 37, 23, 29, 32, 44, 26, 22, 51, 39, 25],
-          "1Kgs": [53, 46, 28, 20, 32, 38, 51, 66, 28, 29, 43, 33, 34, 31, 34, 34, 24, 46, 21, 43, 29, 54],
-          "2Kgs": [18, 25, 27, 44, 27, 33, 20, 29, 37, 36, 20, 22, 25, 29, 38, 20, 41, 37, 37, 21, 26, 20, 37, 20, 30],
-          "1Chr": [54, 55, 24, 43, 41, 66, 40, 40, 44, 14, 47, 41, 14, 17, 29, 43, 27, 17, 19, 8, 30, 19, 32, 31, 31, 32, 34, 21, 30],
-          "2Chr": [18, 17, 17, 22, 14, 42, 22, 18, 31, 19, 23, 16, 23, 14, 19, 14, 19, 34, 11, 37, 20, 12, 21, 27, 28, 23, 9, 27, 36, 27, 21, 33, 25, 33, 27, 23],
-          "Neh": [11, 20, 38, 17, 19, 19, 72, 18, 37, 40, 36, 47, 31],
-          "Job": [22, 13, 26, 21, 27, 30, 21, 22, 35, 22, 20, 25, 28, 22, 35, 22, 16, 21, 29, 29, 34, 30, 17, 25, 6, 14, 23, 28, 25, 31, 40, 22, 33, 37, 16, 33, 24, 41, 30, 32, 26, 17],
-          "Ps": [6, 11, 9, 9, 13, 11, 18, 10, 21, 18, 7, 9, 6, 7, 5, 11, 15, 51, 15, 10, 14, 32, 6, 10, 22, 12, 14, 9, 11, 13, 25, 11, 22, 23, 28, 13, 40, 23, 14, 18, 14, 12, 5, 27, 18, 12, 10, 15, 21, 23, 21, 11, 7, 9, 24, 14, 12, 12, 18, 14, 9, 13, 12, 11, 14, 20, 8, 36, 37, 6, 24, 20, 28, 23, 11, 13, 21, 72, 13, 20, 17, 8, 19, 13, 14, 17, 7, 19, 53, 17, 16, 16, 5, 23, 11, 13, 12, 9, 9, 5, 8, 29, 22, 35, 45, 48, 43, 14, 31, 7, 10, 10, 9, 8, 18, 19, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 14, 10, 8, 12, 15, 21, 10, 20, 14, 9, 6],
-          "Eccl": [18, 26, 22, 17, 19, 12, 29, 17, 18, 20, 10, 14],
-          "Song": [17, 17, 11, 16, 16, 12, 14, 14],
-          "Isa": [31, 22, 26, 6, 30, 13, 25, 23, 20, 34, 16, 6, 22, 32, 9, 14, 14, 7, 25, 6, 17, 25, 18, 23, 12, 21, 13, 29, 24, 33, 9, 20, 24, 17, 10, 22, 38, 22, 8, 31, 29, 25, 28, 28, 25, 13, 15, 22, 26, 11, 23, 15, 12, 17, 13, 12, 21, 14, 21, 22, 11, 12, 19, 11, 25, 24],
-          "Jer": [19, 37, 25, 31, 31, 30, 34, 23, 25, 25, 23, 17, 27, 22, 21, 21, 27, 23, 15, 18, 14, 30, 40, 10, 38, 24, 22, 17, 32, 24, 40, 44, 26, 22, 19, 32, 21, 28, 18, 16, 18, 22, 13, 30, 5, 28, 7, 47, 39, 46, 64, 34],
-          "Ezek": [28, 10, 27, 17, 17, 14, 27, 18, 11, 22, 25, 28, 23, 23, 8, 63, 24, 32, 14, 44, 37, 31, 49, 27, 17, 21, 36, 26, 21, 26, 18, 32, 33, 31, 15, 38, 28, 23, 29, 49, 26, 20, 27, 31, 25, 24, 23, 35],
-          "Dan": [21, 49, 100, 34, 30, 29, 28, 27, 27, 21, 45, 13, 64, 42],
-          "Hos": [9, 25, 5, 19, 15, 11, 16, 14, 17, 15, 11, 15, 15, 10],
-          "Joel": [20, 27, 5, 21],
-          "Jonah": [16, 11, 10, 11],
-          "Mic": [16, 13, 12, 14, 14, 16, 20],
-          "Nah": [14, 14, 19],
-          "Zech": [17, 17, 10, 14, 11, 15, 14, 23, 17, 12, 17, 14, 9, 21],
-          "Mal": [14, 17, 24],
-          "Acts": [26, 47, 26, 37, 42, 15, 60, 40, 43, 49, 30, 25, 52, 28, 41, 40, 34, 28, 40, 38, 40, 30, 35, 27, 27, 32, 44, 31],
-          "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
-          "Tob": [22, 14, 17, 21, 22, 18, 17, 21, 6, 13, 18, 22, 18, 15],
-          "Sir": [30, 18, 31, 31, 15, 37, 36, 19, 18, 31, 34, 18, 26, 27, 20, 30, 32, 33, 30, 31, 28, 27, 27, 33, 26, 29, 30, 26, 28, 25, 31, 24, 33, 31, 26, 31, 31, 34, 35, 30, 22, 25, 33, 23, 26, 20, 25, 25, 16, 29, 30],
-          "Bar": [22, 35, 38, 37, 9, 72],
-          "2Macc": [36, 32, 40, 50, 27, 31, 42, 36, 29, 38, 38, 46, 26, 46, 39]
-        }
-      },
-      nlt: {
-        chapters: {
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21]
-        }
-      },
-      nrsv: {
-        chapters: {
-          "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21]
-        }
-      },
-      nrsvue: {
-        chapters: {
-          "2Cor": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 13],
-          "Rev": [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21],
-          "Tob": [22, 14, 17, 21, 22, 18, 16, 21, 6, 13, 18, 22, 18, 15],
-          "Bar": [22, 35, 38, 37, 9],
-          "PrAzar": [67],
-          "EpJer": [72],
-          "1Esd": [55, 25, 23, 63, 70, 33, 15, 92, 55]
+          PrMan: [15],
+          Ps151: [7]
         }
       }
     };
@@ -6503,24 +6273,24 @@ var bcv_translations = class {
   }
 };
 var bcv_grammar_options_default = {
-  ab: /^(?:[a-e])(?!\p{L})/iu,
-  and: /^(?:،|؛|۔|&)/i,
-  c_explicit: /^[\s*]*(?:باب|ابواب|فصل|فصول)[\s*]*/i,
+  ab: /^(?:(?:a|b|c|d|e))(?!\p{L})/iu,
+  and: /^(?:(?:(?:[،؛۔]\.?\s*)|&))/i,
+  c_explicit: /^[\s*]*(?:(?:(?:ابواب|فصو?ل|باب)\.?\s*))[\s*]*/i,
   c_sep_eu: /^\x1f\x1f\x1f/i,
   c_sep_us: /^\x1f\x1f\x1f/i,
   cv_sep_weak: /^(?:[\s*]*["'][\s*]*|[\s*])+/i,
   cv_sep_eu: /^[\s*]*,+[\s*]*/i,
   cv_sep_us: /^[\s*]*(?::+|\.(?!\s*\.\s*\.))[\s*]*/i,
-  ff: /^[\s*]*(?:ff)(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
+  ff: /^[\s*]*(?:(?:ff\.?\s*))(?![\p{L}\p{N}])(?:\.(?!\s*\.))?/iu,
   in_book_of: /^[\s*]*(?:from|of|in)[\s*]*(?:the[\s*]*book[\s*]*of[\s*]*)?/i,
   next: /^(?:\x1f\x1f\x1f)/i,
   ordinal: /^(?:th|st|nd|rd)/i,
-  range: /^[\s*]*(?:[\-–—]|تا)+[\s*]*/i,
-  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|،|؛|۔)+/i,
-  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|،|؛|۔)+/i,
+  range: /^[\s*]*(?:[\-–—]|(?:تا\.?\s*))+[\s*]*/i,
+  sequence_eu: /^(?:[;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:[،؛۔]\.?\s*))+/i,
+  sequence_us: /^(?:[,;/:&\-–—~\s*]|\.(?!\s*\.\s*\.)|(?:[،؛۔]\.?\s*))+/i,
   space: /^[\s*]+/,
-  title: /^[\s*]*(?:title)(?!\p{L})[\s*]*/iu,
-  v_explicit: /^[\s*]*(?:آیت|آیات|آیه|آیات)[\s*]*(?!\p{L})/iu
+  title: /^[\s*]*(?:(?:title\.?\s*))(?!\p{L})[\s*]*/iu,
+  v_explicit: /^[\s*]*(?:(?:آی(?:ات|[ته])\.?\s*))[\s*]*(?!\p{L})/iu
 };
 var regexps = bcv_regexps;
 var translations = bcv_translations;
