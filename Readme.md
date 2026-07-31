@@ -14,11 +14,11 @@ Try a [demo of the Bible passage reference parser](https://www.openbible.info/la
 
 ## Upgrade Guide from v3 to v4
 
-If you're just running the parser with existing languages, you don't need to update any of your code. However, the minimum supported environment is now Node 17 or early-2022 browsers because the parser relies on `structuredClone` (see "Compatibility" below).
+If you're just running the parser with existing languages, you don't need to update any of your code.
 
 To take advantage of all features, you may want to consider migrating to the esm version of the code.
 
-If you're building a language or want to use data from over 2,000 additional languages, check out the [Bible Passage Reference Parser Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) repo, which cleans up the language build process and adds many more languages.
+If you're building a language or want to use data from over 2,000 additional languages, check out the [Bible Passage Reference Parser Languages](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) repo.
 
 ## Setup
 
@@ -753,7 +753,7 @@ Two files in `esm/lang` provide support for identifying translations in multiple
 The files are:
 
 1. `ascii.js`. Only supports characters in the set `[\x00-\x7f\u2000-\u206F]` (ASCII characters and certain punctuation marks like em-dashes). It runs about 12% slower than `en.js`, parsing around 140KB per second in the fuzz tester.
-2. `full.js`. Parse book names across all languages. It runs about 30% slower than `en.js`, parsing around 110KB per second in the fuzz tester.
+2. `full.js`. Parse book names across all 50 languages. It runs about 30% slower than `en.js`, parsing around 110KB per second in the fuzz tester.
 
 Some features, such as psalm titles, are still English-only, even in these cross-language files.
 
@@ -807,7 +807,7 @@ This is the fourth complete Bible reference parser that I've written. It's how I
 
 I originally chose Coffeescript out of curiosity—does it make Javascript that much more pleasant to work with? From a programming perspective, the easy loops and array comprehensions alone practically justify its use. From a readability perspective, the code is easier to follow (and come back to months later) than the equivalent Javascript—the tests, in particular, are much easier to read without all the Javascript punctuation.
 
-However, the world has moved on since the original version of this parser in 2011, and Typescript is now standard in many workflows. Javascript has also adopted the easier loops, array comprehensions, and coalescing operators that made Coffeescript attractive. I used ChatGPT to take a first pass at rewriting each Coffeescript function into Typescript.
+However, the world has moved on since the original version of this parser in 2011, and Typescript is now standard in many workflows. Javascript has also adopted the easier loops, array comprehensions, and coalescing operators that made Coffeescript attractive. I used ChatGPT to take a first pass at rewriting each Coffeescript function into Typescript. Subsequent releases increasingly used AI to finish the Typescript conversion and to identify and fix bugs.
 
 ## License
 
@@ -815,17 +815,19 @@ The code in this project is licensed under the standard MIT License.
 
 ## Backlog Items
 
-This repo is feature-complete at its core job since language data now lives (mostly) separately. At this time, I don't anticipate major changes.
+This repo is feature-complete at its core job now that language data lives (mostly) separately. At this time, I don't anticipate major changes.
 
 For content-extraction tasks, perhaps it could be integrated into an LLM workflow that uses contextual intelligence to identify ambiguous references. This code could then act as a skill or tool for an LLM to provide grounding.
 
 ## Changelog
 
+July 31, 2026 (4.0.0). Full release on Github and npm. The code passes eslint.
+
 July 3, 2026 (4.0.0-beta2). `tsc` now reports zero Typescript errors; the human cost is that I no longer fully understand the types in my own codebase. Fixed a crashing bug uncovered by the fuzzer. As promised below, the language files now use built files from the [language repo](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages).
 
 July 2, 2026 (4.0.0-beta).
 
-* Removed raw language-data files and the old Perl-based language compiler. This data now lives [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) (and is expanded to 2,000 languages from 50). Existing languages will remain available in `esm/lang/` and `cjs/` for backwards compatibility.
+* Removed raw language-data files and the old Perl-based language compiler. This data now lives [here](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages) (and is expanded to 2,000 languages from the 50 in this repo). Existing languages will remain available in `esm/lang/` and `cjs/` for backwards compatibility.
 * Updated TypeScript usage (via Claude Fable) to be more consistent and thorough.
 * Rewrote `bin/fuzz_lang.js` (via Fable) to provide much more robust fuzzing, which uncovered an obscure bug.
 * Added Welsh language data, which was listed in this Readme but erroneously not included in the distribution.
