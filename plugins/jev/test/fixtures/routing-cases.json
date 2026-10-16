@@ -1,0 +1,31 @@
+[
+  {
+    "id": 47,
+    "name": "Semantic passage routes for escalation without claiming boundaries",
+    "text": "In Romans 8:28 Paul says that all things work together for good for those who love God. Earlier in the chapter, however, he has already framed Christian experience in terms of weakness, suffering, and groaning.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Earlier in the chapter",
+        "indices": [
+          88,
+          110
+        ],
+        "status": [
+          "needs_search"
+        ],
+        "needs_semantic_resolution": true,
+        "reference_kind": "semantic"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "Rom.8.28",
+        "indices": [
+          3,
+          14
+        ]
+      }
+    ]
+  }
+]

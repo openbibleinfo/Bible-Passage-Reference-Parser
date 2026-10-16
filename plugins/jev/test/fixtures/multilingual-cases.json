@@ -1,0 +1,200 @@
+[
+  {
+    "id": 79,
+    "name": "Spanish: verse range inherits the book across sentences",
+    "language": "es",
+    "text": "Romanos es mi libro favorito. Me gustan especialmente los versículos 2–10 del capítulo 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "versículos 2–10 del capítulo 3",
+        "indices": [
+          58,
+          88
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Portuguese: verse range inherits the book across sentences",
+    "language": "pt",
+    "text": "Romanos é meu livro favorito. Gosto especialmente dos versículos 2–10 do capítulo 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "versículos 2–10 do capítulo 3",
+        "indices": [
+          54,
+          83
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "French: verse range inherits the book across sentences",
+    "language": "fr",
+    "text": "L’épître aux Romains est mon livre préféré. J’aime particulièrement les versets 2 à 10 du chapitre 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "versets 2 à 10 du chapitre 3",
+        "indices": [
+          72,
+          100
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "German: verse range inherits the book across sentences",
+    "language": "de",
+    "text": "Der Römerbrief ist mein Lieblingsbuch. Besonders mag ich die Verse 2 bis 10 aus Kapitel 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Verse 2 bis 10 aus Kapitel 3",
+        "indices": [
+          61,
+          89
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "Italian: verse range inherits the book across sentences",
+    "language": "it",
+    "text": "La lettera ai Romani è il mio libro preferito. Amo soprattutto i versetti da 2 a 10 del capitolo 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "versetti da 2 a 10 del capitolo 3",
+        "indices": [
+          65,
+          98
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "Filipino: verse range inherits the book across sentences",
+    "language": "fil",
+    "text": "Ang Roma ang paborito kong aklat sa Bibliya. Gustong-gusto ko lalo ang mga talata 2 hanggang 10 ng kabanata 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "mga talata 2 hanggang 10 ng kabanata 3",
+        "indices": [
+          71,
+          109
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "Japanese: verse range inherits the book across sentences",
+    "language": "ja",
+    "text": "ローマ人への手紙は私の好きな聖書の書です。特に第3章の2〜10節が大好きです。",
+    "context": {},
+    "expected": [
+      {
+        "span": "第3章の2〜10節",
+        "indices": [
+          23,
+          32
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "Korean: verse range inherits the book across sentences",
+    "language": "ko",
+    "text": "로마서는 제가 가장 좋아하는 성경 책입니다. 특히 3장 2절부터 10절까지 좋아합니다.",
+    "context": {},
+    "expected": [
+      {
+        "span": "3장 2절부터 10절까지",
+        "indices": [
+          28,
+          41
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "Chinese (Simplified): verse range inherits the book across sentences",
+    "language": "zh-Hans",
+    "text": "罗马书是我最喜欢的圣经书卷。我特别喜欢第3章第2至10节。",
+    "context": {},
+    "expected": [
+      {
+        "span": "第3章第2至10节",
+        "indices": [
+          19,
+          28
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  }
+]

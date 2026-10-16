@@ -1,0 +1,296 @@
+[
+  {
+    "id": 59,
+    "name": "Roman chapter with Arabic verse in a named citation",
+    "text": "The citation is John iii.16.",
+    "context": {},
+    "expected": [
+      {
+        "span": "John iii.16",
+        "indices": [
+          16,
+          27
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "John.3.16"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Uppercase Roman chapter inherits a numbered book",
+    "text": "Read Chapter IV for this discussion.",
+    "context": {
+      "text": "This section is an outline of the chapters of 1 John."
+    },
+    "expected": [
+      {
+        "span": "Chapter IV",
+        "indices": [
+          5,
+          15
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "1John.4"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "name": "Uppercase Roman chapter and verse pair",
+    "text": "The citation is (VIII:XXVIII).",
+    "context": {
+      "text": "This section discusses Romans. Parenthetical pairs are chapter and verse citations."
+    },
+    "expected": [
+      {
+        "span": "VIII:XXVIII",
+        "indices": [
+          17,
+          28
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "Rom.8.28"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Lowercase Roman verse range",
+    "text": "The argument spans verses ix–xi.",
+    "context": {
+      "text": "We are examining the individual verses of Hebrews chapter 11."
+    },
+    "expected": [
+      {
+        "span": "verses ix–xi",
+        "indices": [
+          19,
+          31
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "Heb.11.9-Heb.11.11"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Roman numbered book ordinal and chapter",
+    "text": "Compare II Corinthians iv.6.",
+    "context": {},
+    "expected": [
+      {
+        "span": "II Corinthians iv.6",
+        "indices": [
+          8,
+          27
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "2Cor.4.6"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Roman parenthetical verse inherits explicit context",
+    "text": "John 3:16 introduces the theme. The earlier line is marked (vi).",
+    "context": {
+      "text": "Parenthetical numbers in this commentary identify individual verses of the current chapter."
+    },
+    "expected": [
+      {
+        "span": "vi",
+        "indices": [
+          60,
+          62
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "John.3.6"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "span": "John 3:16",
+        "indices": [
+          0,
+          9
+        ],
+        "osis": "John.3.16"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "name": "Raw HTML and supplementary Unicode with Roman verse",
+    "text": "<p>😀 This point appears in <em>(IX)</em>.</p>",
+    "context": {
+      "text": "We are examining the individual verses of 1 Peter chapter 2."
+    },
+    "expected": [
+      {
+        "span": "IX",
+        "indices": [
+          33,
+          35
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "1Pet.2.9"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Roman footnote preserves a genuine explicit citation",
+    "text": "Psalm 23:1 is quoted here (iv).",
+    "context": {
+      "text": "Parenthetical Roman numerals in this article are footnote labels, not Bible references."
+    },
+    "expected": [
+      {
+        "span": "iv",
+        "indices": [
+          27,
+          29
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ],
+    "expected_explicit": [
+      {
+        "span": "Psalm 23:1",
+        "indices": [
+          0,
+          10
+        ],
+        "osis": "Ps.23.1"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Roman dissertation chapter is not a Bible citation",
+    "text": "Chapter IV of the dissertation explains the survey method.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Chapter IV of the dissertation",
+        "indices": [
+          0,
+          30
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Roman Bible verse citation retains unknown target",
+    "text": "The Bible verse citation is (X), but its book and chapter were omitted.",
+    "context": {
+      "text": "Roman numerals in parentheses identify Bible verses; no passage context is available."
+    },
+    "expected": [
+      {
+        "span": "X",
+        "indices": [
+          29,
+          30
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "Matched Arabic control for conventional comma-separated citation",
+    "text": "The citation is Romans 8, 28.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Romans 8, 28",
+        "indices": [
+          16,
+          28
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "Rom.8.28"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Conventional Roman chapter with comma and Arabic verse",
+    "text": "The citation is Romans viii, 28.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Romans viii, 28",
+        "indices": [
+          16,
+          31
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "osis": "Rom.8.28"
+      }
+    ]
+  },
+  {
+    "id": 134,
+    "name": "Roman chapter and Arabic verse inherit Ezra from intervening prose",
+    "text": "We can easily believe that more were singing than the two hundred men and women Ezra mentions in ii:65. It would be interesting to know what they were singing.",
+    "context": {},
+    "expected": [
+      {
+        "span": "ii:65",
+        "indices": [
+          97,
+          102
+        ],
+        "osis": "Ezra.2.65",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  }
+]

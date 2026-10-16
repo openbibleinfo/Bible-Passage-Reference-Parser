@@ -1,0 +1,302 @@
+[
+  {
+    "id": 97,
+    "name": "Bare chapter label inherits book",
+    "text": "Please read chapter 6.",
+    "context": {
+      "text": "This section discusses John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "chapter 6",
+        "indices": [
+          12,
+          21
+        ],
+        "reference_kind": "numeric",
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.6"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Bare verse label inherits chapter",
+    "text": "Please read verse 6.",
+    "context": {
+      "text": "This section discusses John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "verse 6",
+        "indices": [
+          12,
+          19
+        ],
+        "reference_kind": "numeric",
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.6"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Parenthetical Roman numeral inherits verse context",
+    "text": "His words concern the new birth (vi).",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3. Parenthetical numbers cite verses."
+    },
+    "expected": [
+      {
+        "span": "vi",
+        "indices": [
+          33,
+          35
+        ],
+        "reference_kind": "numeric",
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.6"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Descriptive passage reference defers semantic resolution",
+    "text": "Please read the passage where Jesus washes the disciples’ feet.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the passage where Jesus washes the disciples’ feet",
+        "indices": [
+          12,
+          62
+        ],
+        "reference_kind": "semantic",
+        "status": [
+          "needs_search"
+        ],
+        "needs_semantic_resolution": true
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "Person name in Bible discussion is not a book citation",
+    "text": "John arrived for lunch. We discussed his journey.",
+    "context": {
+      "text": "This section discusses John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "John",
+        "indices": [
+          0,
+          4
+        ],
+        "reference_kind": "non_bible",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true
+      }
+    ],
+    "expected_no_references": true
+  },
+  {
+    "id": 102,
+    "name": "Reader activity order is not a relative passage reference",
+    "text": "We will discuss this afterward.",
+    "context": {
+      "text": "This section discusses John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "afterward",
+        "indices": [
+          21,
+          30
+        ],
+        "reference_kind": "non_bible",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true
+      }
+    ],
+    "expected_no_references": true
+  },
+  {
+    "id": 103,
+    "name": "Named Bible citation with number words",
+    "text": "Please read Romans chapter eight, verse twenty-eight.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Romans chapter eight, verse twenty-eight",
+        "indices": [
+          12,
+          52
+        ],
+        "reference_kind": "numeric",
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.8.28"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "name": "Whole book reading instruction",
+    "text": "Please read the entire book of Romans.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the entire book of Romans",
+        "indices": [
+          12,
+          37
+        ],
+        "reference_kind": "numeric",
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "name": "Bare number inherits verse context",
+    "text": "For the next reading, see 6.",
+    "context": {
+      "text": "Unlabelled numbers here cite individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          26,
+          27
+        ],
+        "osis": "John.3.6",
+        "reference_kind": "numeric",
+        "status": [
+          "resolved"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "New expression refers back to an accepted citation",
+    "text": "John 3:16 is quoted here. This verse makes the point.",
+    "context": {},
+    "expected": [
+      {
+        "span": "This verse",
+        "indices": [
+          26,
+          36
+        ],
+        "osis": "John.3.16",
+        "reference_kind": "relative",
+        "status": [
+          "resolved"
+        ]
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3.16",
+        "indices": [
+          0,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "name": "Short 50-token window test inherits John across the window boundary",
+    "text": "We are reading John 3:16. The notes explain the argument in plain language for readers who are following the discussion. Each observation stays brief and uses ordinary wording. The editor checks spelling and punctuation before publication. The printed page has room for a short introduction and a clear conclusion. Now read verse 17.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verse 17",
+        "indices": [
+          324,
+          332
+        ],
+        "osis": "John.3.17",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "span": "John 3:16",
+        "indices": [
+          15,
+          24
+        ],
+        "osis": "John.3.16"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "Single window mixes a disjoint list, a range, and a verse",
+    "text": "Read verses four and six. Then read verses four through six. Finally read verse four.",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "expected": [
+      {
+        "span": "verses four and six",
+        "indices": [
+          5,
+          24
+        ],
+        "osis": "John.3.4,John.3.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "verses four through six",
+        "indices": [
+          36,
+          59
+        ],
+        "osis": "John.3.4-John.3.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "verse four",
+        "indices": [
+          74,
+          84
+        ],
+        "osis": "John.3.4",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  }
+]

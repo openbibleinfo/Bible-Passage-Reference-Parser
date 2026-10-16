@@ -1,0 +1,342 @@
+[
+  {
+    "id": 115,
+    "name": "List then Roman chapter then inherited verse",
+    "text": "Read verses four and six of chapter five. We now turn to chapter VIII. Compare (10).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "chapter VIII",
+        "indices": [
+          57,
+          69
+        ],
+        "osis": "John.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      },
+      {
+        "span": "10",
+        "indices": [
+          80,
+          82
+        ],
+        "osis": "John.8.10",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 116,
+    "name": "Rejected Numbers context must not override John",
+    "text": "Numbers chapter five is a rejected alternative. This discussion concerns John chapter five. Read verse six. Then compare (8).",
+    "context": {
+      "current_reference": "Num.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "Numbers chapter five",
+        "indices": [
+          0,
+          20
+        ],
+        "osis": "Num.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "John chapter five",
+        "indices": [
+          73,
+          90
+        ],
+        "osis": "John.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "verse six",
+        "indices": [
+          97,
+          106
+        ],
+        "osis": "John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          122,
+          123
+        ],
+        "osis": "John.5.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 117,
+    "name": "Competing prose across small windows",
+    "text": "Numbers chapter five is a rejected alternative. This discussion concerns John chapter five. Read verse six. Then compare (8).",
+    "context": {
+      "current_reference": "Num.3.1"
+    },
+    "window_tokens": 4,
+    "expected": [
+      {
+        "span": "Numbers chapter five",
+        "indices": [
+          0,
+          20
+        ],
+        "osis": "Num.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "John chapter five",
+        "indices": [
+          73,
+          90
+        ],
+        "osis": "John.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "verse six",
+        "indices": [
+          97,
+          106
+        ],
+        "osis": "John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          122,
+          123
+        ],
+        "osis": "John.5.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 118,
+    "name": "Explicit return to John after a Romans list",
+    "text": "Read verses four and six of Romans chapter eight. That comparison is finished; return to John 3:1. Compare (9).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of Romans chapter eight",
+        "indices": [
+          5,
+          48
+        ],
+        "osis": "Rom.8.4,Rom.8.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "9",
+        "indices": [
+          108,
+          109
+        ],
+        "osis": "John.3.9",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3.1",
+        "indices": [
+          89,
+          97
+        ]
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "name": "Time and date numbers must not contaminate chapter context",
+    "text": "Read verses four and six of chapter five. The lecture starts at 8 pm on June 9, AD 31. Compare (10).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          64,
+          65
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true,
+        "downstream": true
+      },
+      {
+        "span": "9",
+        "indices": [
+          77,
+          78
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true,
+        "downstream": true
+      },
+      {
+        "span": "31",
+        "indices": [
+          83,
+          85
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true,
+        "downstream": true
+      },
+      {
+        "span": "10",
+        "indices": [
+          96,
+          98
+        ],
+        "osis": "John.5.10",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 120,
+    "name": "Roman chapter switch without a list",
+    "text": "We now turn to chapter VIII. Compare (10).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "chapter VIII",
+        "indices": [
+          15,
+          27
+        ],
+        "osis": "John.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "10",
+        "indices": [
+          38,
+          40
+        ],
+        "osis": "John.8.10",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  }
+]

@@ -1,0 +1,140 @@
+[
+  {
+    "id": 71,
+    "name": "About 1K characters with multiple books, inherited citations, a range, Roman notation, and a checklist control",
+    "text": "These notes begin with John 3:16 and its statement about God’s love for the world. The discussion continues with the purpose of sending the Son (17), followed by the contrast between belief and unbelief (18). The emphasis is on how the argument develops, rather than on isolated quotations or the wording of a heading. Paul’s opening statement in Romans 8:1 introduces freedom from condemnation. His explanation then connects that freedom with the law of the Spirit (2). The notes group verses 3–4 together because they develop the contrast between what the law could accomplish and what God has done. The contrast between condemnation and freedom remains central, while the language of life gives the argument its direction. In Ephesians 2:8–9, salvation is described as a gift rather than the result of works. The discussion then turns to good works (10), keeping the same chapter while changing its emphasis. A closing comparison cites Romans viii, 28. The editor’s separate checklist has item (3), which asks the reviewer to verify punctuation before publication.",
+    "context": {},
+    "expected": [
+      {
+        "span": "17",
+        "indices": [
+          145,
+          147
+        ],
+        "osis": "John.3.17",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "18",
+        "indices": [
+          204,
+          206
+        ],
+        "osis": "John.3.18",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "2",
+        "indices": [
+          467,
+          468
+        ],
+        "osis": "Rom.8.2",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "verses 3–4",
+        "indices": [
+          487,
+          497
+        ],
+        "osis": "Rom.8.3-Rom.8.4",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "10",
+        "indices": [
+          853,
+          855
+        ],
+        "osis": "Eph.2.10",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "Romans viii, 28",
+        "indices": [
+          939,
+          954
+        ],
+        "osis": "Rom.8.28",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "3",
+        "indices": [
+          998,
+          999
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ],
+    "expected_explicit": [
+      {
+        "span": "John 3:16",
+        "indices": [
+          23,
+          32
+        ],
+        "osis": "John.3.16"
+      },
+      {
+        "span": "Romans 8:1",
+        "indices": [
+          347,
+          357
+        ],
+        "osis": "Rom.8.1"
+      },
+      {
+        "span": "Ephesians 2:8–9",
+        "indices": [
+          729,
+          744
+        ],
+        "osis": "Eph.2.8-Eph.2.9"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "name": "Verse range inherits the book from a preceding sentence and chapter from a following modifier",
+    "text": "Romans is my favorite book. I especially love verses 2-10 of chapter 3.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verses 2-10 of chapter 3",
+        "indices": [
+          46,
+          70
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.3.2-Rom.3.10",
+        "reference_kind": "numeric"
+      }
+    ]
+  }
+]

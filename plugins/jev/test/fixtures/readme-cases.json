@@ -1,0 +1,701 @@
+[
+  {
+    "id": 1,
+    "name": "simple previous verse",
+    "text": "Jesus calls himself the bread of life in John 6:35. In the previous verse, the crowd asks him to give them this bread.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the previous verse",
+        "osis": "John.6.34",
+        "operation": "previous_verse",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          55,
+          73
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "variant wording",
+    "text": "John 6:35 contains the famous “bread of life” saying. One verse earlier, the crowd has just asked Jesus for this bread.",
+    "context": {},
+    "expected": [
+      {
+        "span": "One verse earlier",
+        "osis": "John.6.34",
+        "operation": "previous_verse",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          54,
+          71
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "next verse",
+    "text": "Paul says in Romans 8:1 that there is no condemnation for those in Christ Jesus. The next verse explains why.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The next verse",
+        "osis": "Rom.8.2",
+        "operation": "next_verse",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          81,
+          95
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "same chapter, explicit verse number",
+    "text": "John 3 introduces the conversation with Nicodemus. In verse 16, the language broadens from the conversation itself to God’s love for the world.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verse 16",
+        "osis": "John.3.16",
+        "operation": "verse_number",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          54,
+          62
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "later in the chapter",
+    "text": "Jesus first speaks privately with Nicodemus in John 3. Later in the chapter, the focus returns to John the Baptist and his testimony about Jesus.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Later in the chapter",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "semantic_target": "John.3.22-John.3.36",
+        "indices": [
+          55,
+          75
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "preceding chapter",
+    "text": "Romans 8 opens with the conclusion that there is no condemnation for those in Christ Jesus. The previous chapter has just described the conflict between wanting to do good and doing what one hates.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The previous chapter",
+        "osis": "Rom.7",
+        "operation": "previous_chapter",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          92,
+          112
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "first half of next verse",
+    "text": "In 1 Corinthians 13:1 Paul describes speech without love as empty noise. The first half of the next verse shifts from speech to prophecy, knowledge, and faith.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The first half of the next verse",
+        "osis": "1Cor.13.2",
+        "operation": "next_verse",
+        "status": [
+          "resolved"
+        ],
+        "subdivision": "first_part",
+        "indices": [
+          73,
+          105
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "multiple fuzzy references in one paragraph",
+    "text": "John 6:35 begins with Jesus’ declaration, “I am the bread of life.” In the previous verse, the crowd asks him to give them this bread always. A few verses later, Jesus begins to explain that no one can come to him unless the Father draws that person. Later in the chapter, the discussion becomes increasingly difficult for his hearers.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the previous verse",
+        "osis": "John.6.34",
+        "operation": "previous_verse",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          71,
+          89
+        ],
+        "reference_kind": "relative"
+      },
+      {
+        "span": "A few verses later",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "semantic_target": "John.6.40-John.6.44",
+        "indices": [
+          142,
+          160
+        ],
+        "reference_kind": "semantic"
+      },
+      {
+        "span": "Later in the chapter",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "semantic_target": "John.6.60-John.6.71",
+        "indices": [
+          251,
+          271
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "competing recent anchors",
+    "text": "John 3:16 is often read alongside Numbers 21:8–9 because Jesus has just compared his coming death to the bronze serpent. In the next verse, the emphasis turns from God’s love to God’s purpose in sending the Son.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the next verse",
+        "osis": "John.3.17",
+        "operation": "next_verse",
+        "status": [
+          "resolved"
+        ],
+        "anchor": "John.3.16",
+        "indices": [
+          124,
+          138
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "not a Bible reference",
+    "text": "The argument becomes clearer in the next chapter of this book, where the author returns to the same historical question.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the next chapter of this book",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "indices": [
+          32,
+          61
+        ],
+        "reference_kind": "non_bible"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "ambiguous “chapter 6”",
+    "text": "John has already introduced the signs theme and Jesus’ growing conflict with his opponents. In chapter 6, the feeding of the crowd leads into the bread-of-life discourse.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapter 6",
+        "osis": "John.6",
+        "operation": "chapter_number",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          95,
+          104
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "ambiguous “chapter 6” with weak context",
+    "text": "The discussion of bread becomes much more important in chapter 6.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapter 6",
+        "status": [
+          "unresolved",
+          "ambiguous",
+          "not_a_bible_reference"
+        ],
+        "indices": [
+          55,
+          64
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "“those verses”",
+    "text": "Romans 8:18–23 describes creation as groaning while it waits for liberation. Those verses frame suffering as part of a larger hope rather than as an isolated problem.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Those verses",
+        "osis": "Rom.8.18-Rom.8.23",
+        "operation": "same_reference",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          77,
+          89
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "“the passage above”",
+    "text": "In Ephesians 2:11–22 Paul describes Gentiles being brought near and joined into one new humanity. The passage above depends heavily on spatial imagery: far away, near, dividing wall, access, household, foundation, temple.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The passage above",
+        "osis": "Eph.2.11-Eph.2.22",
+        "operation": "same_reference",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          98,
+          115
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "“earlier in the chapter”",
+    "text": "In Romans 8:28 Paul says that all things work together for good for those who love God. Earlier in the chapter, however, he has already framed Christian experience in terms of weakness, suffering, and groaning.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Earlier in the chapter",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "semantic_target": "Rom.8.18-Rom.8.27",
+        "indices": [
+          88,
+          110
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "long paragraph with mixed explicit and fuzzy references",
+    "text": "The bread-of-life discourse develops over a long stretch of John 6. Jesus identifies himself as the bread of life in verse 35, but that statement does not appear out of nowhere. In the previous verse the crowd has asked him to give them this bread always. A little later, Jesus explains that those who come to him will not be cast out, and several verses after that he returns to the image of bread from heaven. Near the end of the chapter, many disciples complain that the teaching is difficult, and in the following verses some of them turn back and stop following him.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verse 35",
+        "osis": "John.6.35",
+        "operation": "verse_number",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          117,
+          125
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "the previous verse",
+        "osis": "John.6.34",
+        "operation": "previous_verse",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          181,
+          199
+        ],
+        "reference_kind": "relative"
+      },
+      {
+        "span": "A little later",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "indices": [
+          256,
+          270
+        ],
+        "reference_kind": "semantic"
+      },
+      {
+        "span": "several verses after that",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "indices": [
+          340,
+          365
+        ],
+        "reference_kind": "semantic"
+      },
+      {
+        "span": "Near the end of the chapter",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "semantic_target": "John.6.60-John.6.71",
+        "indices": [
+          412,
+          439
+        ],
+        "reference_kind": "semantic"
+      },
+      {
+        "span": "the following verses",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "indices": [
+          504,
+          524
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "long paragraph with a non-Bible “previous chapter”",
+    "text": "The author has spent most of this chapter discussing how nineteenth-century commentators understood Paul’s rhetoric. Romans 7:14–25 appears several times as an example. The previous chapter of this book focused instead on patristic interpretation, especially Augustine. In the next verse, Paul shifts back to the first person.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The previous chapter of this book",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "indices": [
+          169,
+          202
+        ],
+        "reference_kind": "non_bible"
+      },
+      {
+        "span": "the next verse",
+        "status": [
+          "ambiguous",
+          "unresolved"
+        ],
+        "anchor": "Rom.7.14-Rom.7.25",
+        "indices": [
+          273,
+          287
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "prose reference with book supplied later",
+    "text": "The warning appears near the end of the chapter, just before the closing exhortation. In Hebrews, that section gathers together several themes introduced earlier in the argument.",
+    "context": {},
+    "expected": [
+      {
+        "span": "near the end of the chapter",
+        "status": [
+          "unresolved"
+        ],
+        "indices": [
+          20,
+          47
+        ],
+        "reference_kind": "semantic"
+      },
+      {
+        "span": "just before the closing exhortation",
+        "status": [
+          "needs_search"
+        ],
+        "needs_semantic_resolution": true,
+        "indices": [
+          49,
+          84
+        ],
+        "reference_kind": "semantic"
+      },
+      {
+        "span": "that section",
+        "status": [
+          "needs_search"
+        ],
+        "needs_semantic_resolution": true,
+        "indices": [
+          98,
+          110
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "implicit local reference with current-passage context",
+    "text": "In the next section Jesus explains why he teaches in parables.",
+    "context": {
+      "active_passage": "Mark.4.1-Mark.4.20"
+    },
+    "expected": [
+      {
+        "span": "the next section",
+        "status": [
+          "needs_search"
+        ],
+        "operation": "next_passage",
+        "anchor": "Mark.4.1-Mark.4.20",
+        "indices": [
+          3,
+          19
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "multiple candidate references with semantic resolution",
+    "text": "Compare John 6:35 with Exodus 16:4. In the following verse, God tells Moses that the people will gather only enough bread for each day.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the following verse",
+        "osis": "Exod.16.5",
+        "operation": "next_verse",
+        "status": [
+          "resolved"
+        ],
+        "anchor": "Exod.16.4",
+        "indices": [
+          39,
+          58
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "two fuzzy references in one sentence",
+    "text": "The previous verse introduces the image, while the next verse explains what it means.",
+    "context": {
+      "current_reference": "Matt.5.14"
+    },
+    "expected": [
+      {
+        "span": "The previous verse",
+        "osis": "Matt.5.13",
+        "operation": "previous_verse",
+        "status": [
+          "resolved"
+        ],
+        "occurrence": 0,
+        "indices": [
+          0,
+          18
+        ],
+        "reference_kind": "relative"
+      },
+      {
+        "span": "the next verse",
+        "osis": "Matt.5.15",
+        "operation": "next_verse",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          47,
+          61
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "fuzzy span without Bible vocabulary",
+    "text": "Paul makes the same point just above, before turning to Abraham as his main example.",
+    "context": {
+      "active_passage": "Rom.4.1-Rom.4.12",
+      "recent_references": [
+        "Rom.3.27-Rom.3.31"
+      ]
+    },
+    "expected": [
+      {
+        "span": "just above",
+        "osis": "Rom.3.27-Rom.3.31",
+        "operation": "same_reference",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          26,
+          36
+        ],
+        "reference_kind": "relative",
+        "allowed_deferred_kinds": [
+          "relative",
+          "semantic"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "false positive with “verse” meaning poetry",
+    "text": "The poet compresses the image into a single verse, while the next stanza expands it into four lines.",
+    "context": {},
+    "expected": [
+      {
+        "span": "a single verse",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "indices": [
+          35,
+          49
+        ],
+        "reference_kind": "non_bible"
+      },
+      {
+        "span": "the next stanza",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "indices": [
+          57,
+          72
+        ],
+        "reference_kind": "non_bible"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "false positive with chapter number",
+    "text": "The experiment is described in chapter 6 of the dissertation, especially the section on alignment errors.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapter 6 of the dissertation",
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "indices": [
+          31,
+          60
+        ],
+        "reference_kind": "non_bible"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "contextual book inheritance across sentences",
+    "text": "Mark presents the feeding of the five thousand as one of a sequence of revelations about Jesus’ identity. Chapter 6 begins with rejection at Nazareth and then moves through the mission of the Twelve, the death of John the Baptist, and the feeding miracle. Near the end of the chapter, Jesus walks on the sea.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Chapter 6",
+        "osis": "Mark.6",
+        "operation": "chapter_number",
+        "status": [
+          "resolved"
+        ],
+        "indices": [
+          106,
+          115
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "Near the end of the chapter",
+        "status": [
+          "approximate",
+          "needs_search"
+        ],
+        "semantic_target": "Mark.6.45-Mark.6.52",
+        "indices": [
+          256,
+          283
+        ],
+        "reference_kind": "semantic"
+      }
+    ]
+  }
+]

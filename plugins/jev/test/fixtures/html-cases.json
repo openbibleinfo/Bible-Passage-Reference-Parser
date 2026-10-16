@@ -1,0 +1,53 @@
+[
+  {
+    "id": 48,
+    "name": "Compact verse citation in raw HTML",
+    "text": "<p>We are reading <em>John 3</em>.</p><p>Jesus describes the new birth <span class=\"citation\">(6)</span>.</p>",
+    "context": {
+      "text": "This section discusses individual verses in the chapter being read."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          95,
+          96
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.6",
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3",
+        "indices": [
+          22,
+          28
+        ]
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Bible book and chapter split by an HTML line break",
+    "text": "John<br>21",
+    "context": {},
+    "expected": [
+      {
+        "span": "John<br>21",
+        "indices": [
+          0,
+          10
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.21",
+        "reference_kind": "numeric"
+      }
+    ]
+  }
+]

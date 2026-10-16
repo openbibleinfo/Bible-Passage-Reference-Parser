@@ -1,0 +1,94 @@
+[
+  {
+    "id": 74,
+    "name": "Spelled-out citation: verse four",
+    "text": "Please read verse four.",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "verse four",
+        "indices": [
+          12,
+          22
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.4",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Spelled-out citation: verses four through six",
+    "text": "Please read verses four through six.",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "verses four through six",
+        "indices": [
+          12,
+          35
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.4-John.3.6",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "Spelled-out citation: verses four and six",
+    "text": "Please read verses four and six.",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "verses four and six",
+        "indices": [
+          12,
+          31
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.4,John.3.6",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "Spelled-out citation: verses four, six, and nine",
+    "text": "Please read verses four, six, and nine.",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "verses four, six, and nine",
+        "indices": [
+          12,
+          38
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.4,John.3.6,John.3.9",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ]
+  }
+]

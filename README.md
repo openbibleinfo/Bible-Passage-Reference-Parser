@@ -821,6 +821,8 @@ For content-extraction tasks, perhaps it could be integrated into an LLM workflo
 
 ## Changelog
 
+October 16, 2026. This code-only release (not on npm) adds experimental [plugins/jev](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/plugins/jev) code that allows the parser to understand ambiguous and disconnected references by connecting to Typesafe's Jev. An OpenRouter or Typesafe API key is required, and each fuzzy parsing costs money. This plugin makes the parser more suitable for identifying Bible references in unstructured text. Don't expect a stable API; it's an experiment. [Explore the code](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/plugins/jev) or [read a blog post about it](https://www.openbible.info/blog/2026/10/jev-ambiguous-bible-passage-references/).
+
 July 31, 2026 (4.0.0). Full release on Github and npm. The code passes eslint.
 
 July 3, 2026 (4.0.0-beta2). `tsc` now reports zero Typescript errors; the human cost is that I no longer fully understand the types in my own codebase. Fixed a crashing bug uncovered by the fuzzer. As promised below, the language files now use built files from the [language repo](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser-Languages).

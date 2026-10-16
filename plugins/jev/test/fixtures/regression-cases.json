@@ -1,0 +1,415 @@
+[
+  {
+    "id": 121,
+    "name": "Mechanical NIV translation survives beside an inherited AI verse",
+    "text": "John 3:16 NIV is quoted here. Compare verse 17.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verse 17",
+        "indices": [
+          38,
+          46
+        ],
+        "osis": "John.3.17",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3.16",
+        "indices": [
+          0,
+          13
+        ],
+        "translations": [
+          "NIV"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "name": "Demo continues reading John 3:16 through verse 17",
+    "text": "John 3:16 is a popular verse, but you should keep reading through 17.",
+    "context": {},
+    "expected": [
+      {
+        "span": "17",
+        "indices": [
+          66,
+          68
+        ],
+        "osis": "John.3.17",
+        "osis_alternatives": [
+          "John.3.16-John.3.17"
+        ],
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3.16",
+        "indices": [
+          0,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "name": "Inherited John chapter with ff abbreviation",
+    "text": "John 18:1 says one thing. But compare verses 5ff.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verses 5ff.",
+        "indices": [
+          38,
+          49
+        ],
+        "osis": "John.18.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "needs_semantic_resolution": true
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.18.1",
+        "indices": [
+          0,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "Inherited John chapter with and following wording",
+    "text": "John 18:1 says one thing. But compare verses 5 and following.",
+    "context": {},
+    "expected": [
+      {
+        "span": "verses 5 and following",
+        "indices": [
+          38,
+          60
+        ],
+        "osis": "John.18.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "needs_semantic_resolution": true
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.18.1",
+        "indices": [
+          0,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "id": 137,
+    "name": "First eleven Genesis chapters in prose without treating Bible extent as a citation",
+    "text": "This theme extends through the first eleven chapters of Genesis, which narrate the history of more than half of the whole Bible",
+    "context": {},
+    "expected": [
+      {
+        "span": "the first eleven chapters of Genesis",
+        "indices": [
+          27,
+          63
+        ],
+        "osis": "Gen.1-Gen.11",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 138,
+    "name": "Worded chapter range with book after the range",
+    "text": "Compare chapters three through five of Genesis.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapters three through five of Genesis",
+        "indices": [
+          8,
+          46
+        ],
+        "osis": "Gen.3-Gen.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 139,
+    "name": "Arabic chapter range with book before the range",
+    "text": "Compare Genesis chapters 3\u20135.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Genesis chapters 3\u20135",
+        "indices": [
+          8,
+          28
+        ],
+        "osis": "Gen.3-Gen.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 140,
+    "name": "Disjoint worded chapters inherit the named book",
+    "text": "In Genesis, compare chapters three and five.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapters three and five",
+        "indices": [
+          20,
+          43
+        ],
+        "osis": "Gen.3,Gen.5",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 141,
+    "name": "Chapter range and separate verse share a book without sharing chapter",
+    "text": "Compare chapters two through four of Genesis and verse six of chapter seven.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapters two through four of Genesis and verse six of chapter seven",
+        "indices": [
+          8,
+          75
+        ],
+        "osis": "Gen.2-Gen.4,Gen.7.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 142,
+    "name": "First eleven verses remain a verse range rather than a chapter range",
+    "text": "The discussion covers the first eleven verses of Genesis chapter one.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the first eleven verses of Genesis chapter one",
+        "indices": [
+          22,
+          68
+        ],
+        "osis": "Gen.1.1-Gen.1.11",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 143,
+    "name": "Book preference and total chapter count are not passage citations",
+    "text": "Genesis is my favorite book. It contains fifty chapters.",
+    "context": {},
+    "expected": [],
+    "expected_explicit": [],
+    "expected_no_references": true
+  },
+  {
+    "id": 144,
+    "name": "Biography chapter does not override an explicit Bible chapter range",
+    "text": "Chapter three of this biography compares the first eleven chapters of Genesis.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the first eleven chapters of Genesis",
+        "indices": [
+          41,
+          77
+        ],
+        "osis": "Gen.1-Gen.11",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 145,
+    "name": "Two whole-chapter ranges preserve their separate Bible books",
+    "text": "Compare the first eleven chapters of Genesis and the first two chapters of Exodus.",
+    "context": {},
+    "expected": [
+      {
+        "span": "the first eleven chapters of Genesis and the first two chapters of Exodus",
+        "indices": [
+          8,
+          81
+        ],
+        "osis": "Gen.1-Gen.11,Exod.1-Exod.2",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 146,
+    "name": "Genesis as a favorite band is not a Bible citation",
+    "text": "Genesis is my favorite band.",
+    "context": {},
+    "expected": [],
+    "expected_explicit": [],
+    "expected_no_references": true
+  },
+  {
+    "id": 147,
+    "name": "Genesis as a favorite book supplies a topic but is not a citation",
+    "text": "Genesis is my favorite book.",
+    "context": {},
+    "expected": [],
+    "expected_explicit": [],
+    "expected_no_references": true
+  },
+  {
+    "id": 148,
+    "name": "Request to read Genesis cites the entire Bible book",
+    "text": "Please read Genesis.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Genesis",
+        "indices": [
+          12,
+          19
+        ],
+        "osis": "Gen",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 149,
+    "name": "Favorite Bible book supplies context for an explicit chapter request",
+    "text": "Genesis is my favorite book. Compare chapter three.",
+    "context": {},
+    "expected": [
+      {
+        "span": "chapter three",
+        "indices": [
+          37,
+          50
+        ],
+        "osis": "Gen.3",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 150,
+    "name": "Favorite band does not establish Bible context for a chapter request",
+    "text": "Genesis is my favorite band. Compare chapter three.",
+    "context": {},
+    "expected": [],
+    "expected_explicit": [],
+    "expected_no_references": true
+  },
+  {
+    "id": 221,
+    "name": "Bare chapter and verse followed by an abbreviated verse across sentences",
+    "text": "John 3:16 connects to 1:1. But you really need to understand v17 to understand it.",
+    "context": {},
+    "expected": [
+      {
+        "span": "1:1",
+        "indices": [
+          22,
+          25
+        ],
+        "osis": "John.1.1",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "v17",
+        "indices": [
+          61,
+          64
+        ],
+        "osis": "John.3.17",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "span": "John 3:16",
+        "indices": [
+          0,
+          9
+        ],
+        "osis": "John.3.16"
+      }
+    ],
+    "note": "The bare 1:1 inherits John. The later v17 returns to the original John 3:16 citation rather than inheriting chapter 1 from the intervening comparison."
+  }
+]

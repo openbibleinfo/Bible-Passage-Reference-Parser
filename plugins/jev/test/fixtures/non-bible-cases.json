@@ -1,0 +1,139 @@
+[
+  {
+    "id": 78,
+    "name": "PS4 means PlayStation, not Psalm 4",
+    "text": "I love my PS4.",
+    "context": {},
+    "expected": [
+      {
+        "span": "PS4",
+        "indices": [
+          10,
+          13
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "reference_kind": "non_bible"
+      }
+    ],
+    "expected_no_references": true
+  },
+  {
+    "id": 93,
+    "name": "Numbered list items in Bible discussion",
+    "text": "(1) Read the introduction. (2) Write down your questions.",
+    "context": {
+      "text": "This section discusses Romans chapter 3."
+    },
+    "expected": [
+      {
+        "span": "1",
+        "indices": [
+          1,
+          2
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      },
+      {
+        "span": "2",
+        "indices": [
+          28,
+          29
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ],
+    "expected_no_references": true
+  },
+  {
+    "id": 94,
+    "name": "AM and PM times in Bible discussion",
+    "text": "The study starts at 9:15 am and ends at 10:30 PM.",
+    "context": {
+      "text": "This section discusses Romans chapter 3."
+    },
+    "expected": [
+      {
+        "span": "9:15 am",
+        "indices": [
+          20,
+          27
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      },
+      {
+        "span": "10:30 PM",
+        "indices": [
+          40,
+          48
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ],
+    "expected_no_references": true
+  },
+  {
+    "id": 95,
+    "name": "AD year in Bible discussion",
+    "text": "The timeline places these events in AD 31.",
+    "context": {
+      "text": "This section discusses Romans chapter 3."
+    },
+    "expected": [
+      {
+        "span": "AD 31",
+        "indices": [
+          36,
+          41
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ],
+    "expected_no_references": true
+  },
+  {
+    "id": 96,
+    "name": "Calendar date in Bible discussion",
+    "text": "The next meeting is on March 3, 2026.",
+    "context": {
+      "text": "This section discusses Romans chapter 3."
+    },
+    "expected": [
+      {
+        "span": "March 3, 2026",
+        "indices": [
+          23,
+          36
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true
+      }
+    ],
+    "expected_no_references": true
+  }
+]

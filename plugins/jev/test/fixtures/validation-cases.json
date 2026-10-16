@@ -1,0 +1,238 @@
+[
+  {
+    "id": 49,
+    "name": "Fresh parenthetical verse in Mark",
+    "text": "Some seed fell among thorns (7).",
+    "context": {
+      "text": "We are examining individual verses in Mark chapter 4."
+    },
+    "expected": [
+      {
+        "span": "7",
+        "indices": [
+          29,
+          30
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Mark.4.7",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Fresh parenthetical chapter in Acts",
+    "text": "The outline then turns to Peter’s imprisonment (12).",
+    "context": {
+      "text": "This is an outline of the chapters of Acts. Parenthetical numbers identify chapters."
+    },
+    "expected": [
+      {
+        "span": "12",
+        "indices": [
+          48,
+          50
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Acts.12",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Chapter and verse pair inherits a book",
+    "text": "The citation is (2:5).",
+    "context": {
+      "text": "This section discusses the letter to the Ephesians. Numbers in parentheses are chapter and verse citations."
+    },
+    "expected": [
+      {
+        "span": "2:5",
+        "indices": [
+          17,
+          20
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Eph.2.5",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Numbered verse range inherits a chapter",
+    "text": "The selected text is verses 7–9.",
+    "context": {
+      "text": "We are working through Matthew chapter 5."
+    },
+    "expected": [
+      {
+        "span": "verses 7–9",
+        "indices": [
+          21,
+          31
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Matt.5.7-Matt.5.9",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Fresh Unicode citation source offsets",
+    "text": "🕊️ Consider the identity of the community (9).",
+    "context": {
+      "text": "The discussion concerns individual verses in 1 Peter chapter 2."
+    },
+    "expected": [
+      {
+        "span": "9",
+        "indices": [
+          44,
+          45
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "1Pet.2.9",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Fresh compact citation in raw HTML",
+    "text": "<p>We are studying <strong>Galatians 5</strong>.</p><p>The fruit of the Spirit appears here <span class=\"ref\">(22)</span>.</p>",
+    "context": {
+      "text": "Parenthetical numbers identify individual verses in the chapter under discussion."
+    },
+    "expected": [
+      {
+        "span": "22",
+        "indices": [
+          111,
+          113
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Gal.5.22",
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "Gal.5",
+        "indices": [
+          27,
+          38
+        ]
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Preserve explicit citation while ignoring an endnote",
+    "text": "Psalm 23:1 is the opening quotation (12).",
+    "context": {
+      "text": "Parenthetical numbers identify endnotes in this article."
+    },
+    "expected": [
+      {
+        "span": "12",
+        "indices": [
+          37,
+          39
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "reference_kind": "non_bible"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "Ps.23.1",
+        "indices": [
+          0,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Detect numbered Bible citation despite missing target context",
+    "text": "The Bible verse citation is (8), but its book and chapter were omitted.",
+    "context": {},
+    "expected": [
+      {
+        "span": "8",
+        "indices": [
+          29,
+          30
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Ambiguous parenthetical chapter under competing book context",
+    "text": "We will examine (4) next.",
+    "context": {
+      "text": "This outline compares chapters in Luke and Acts. Parenthetical numbers identify chapters, but this section does not establish which of those books is intended."
+    },
+    "expected": [
+      {
+        "span": "4",
+        "indices": [
+          17,
+          18
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Ordinal checklist item amid Bible context",
+    "text": "(3) Record the differences between the translations.",
+    "context": {
+      "text": "This checklist concerns James chapter 1. Numbers label tasks rather than Bible locations."
+    },
+    "expected": [
+      {
+        "span": "3",
+        "indices": [
+          1,
+          2
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "reference_kind": "non_bible"
+      }
+    ]
+  }
+]

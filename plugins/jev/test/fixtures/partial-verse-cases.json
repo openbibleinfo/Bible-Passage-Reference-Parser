@@ -1,0 +1,25 @@
+[
+  {
+    "id": 92,
+    "name": "Inherited verse with a letter subdivision",
+    "text": "Please read verse 6a.",
+    "context": {
+      "text": "This section is about John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "verse 6a",
+        "indices": [
+          12,
+          20
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.6!a",
+        "reference_kind": "numeric"
+      }
+    ],
+    "note": "Exploratory capability test: preserve the literal verse-part letter, as BCV does with a p compaction strategy. Use --partial-verses to preserve letters locally after Jev selects the target. The default bc configuration deliberately returns whole verses; returning John.3.6 alone must not count as a pass for this opt-in test."
+  }
+]

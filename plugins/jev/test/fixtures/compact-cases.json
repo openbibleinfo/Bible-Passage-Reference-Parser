@@ -1,0 +1,194 @@
+[
+  {
+    "id": 39,
+    "name": "Parenthetical verse with prose context",
+    "text": "His words address the new birth (6).",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          33,
+          34
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.6",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Same parenthetical number denotes a chapter",
+    "text": "The next section examines the bread discourse (6).",
+    "context": {
+      "text": "This outline covers chapters of the Gospel of John. Parenthetical numbers identify chapters."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          47,
+          48
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.6",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Parenthetical number inherits a different book",
+    "text": "The mind set on the Spirit brings life and peace (6).",
+    "context": {
+      "text": "We are discussing individual verses in Romans chapter 8."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          50,
+          51
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Rom.8.6",
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Footnote marker amid Bible discussion",
+    "text": "John 3:16 is the central quotation (6).",
+    "context": {
+      "text": "Parenthetical numbers in this article are endnote markers, not verse citations."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          36,
+          37
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "reference_kind": "non_bible"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3.16",
+        "indices": [
+          0,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "List number amid Bible discussion",
+    "text": "(6) Compare the two translations of the passage.",
+    "context": {
+      "text": "This numbered checklist concerns John 3:16. Numbers label tasks, not Bible references."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          1,
+          2
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "reference_kind": "non_bible"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Parenthetical Bible citation without enough context",
+    "text": "The citation is (6), but its book and chapter are missing.",
+    "context": {
+      "text": "The parenthetical number denotes a Bible verse, but no book or chapter is known."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          17,
+          18
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Compact citation inherits an explicit chapter",
+    "text": "John 3:16 describes love. The next statement describes the purpose of the mission (17).",
+    "context": {},
+    "expected": [
+      {
+        "span": "17",
+        "indices": [
+          83,
+          85
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.17",
+        "reference_kind": "numeric"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.3.16",
+        "indices": [
+          0,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Parenthetical citation preserves UTF-16 offsets",
+    "text": "😀 His words address the new birth (6).",
+    "context": {
+      "text": "This section discusses individual verses in John chapter 3."
+    },
+    "expected": [
+      {
+        "span": "6",
+        "indices": [
+          36,
+          37
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.6",
+        "reference_kind": "numeric"
+      }
+    ]
+  }
+]

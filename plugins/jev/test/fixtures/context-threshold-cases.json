@@ -1,0 +1,264 @@
+[
+  {
+    "id": 109,
+    "name": "Chapter switch before inherited verse",
+    "text": "Read verses four and six of chapter five. Then compare (8).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          56,
+          57
+        ],
+        "osis": "John.5.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 110,
+    "name": "Book switch before inherited verse",
+    "text": "Read verses four and six of Romans chapter eight. Then compare (9).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of Romans chapter eight",
+        "indices": [
+          5,
+          48
+        ],
+        "osis": "Rom.8.4,Rom.8.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "9",
+        "indices": [
+          64,
+          65
+        ],
+        "osis": "Rom.8.9",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 111,
+    "name": "Chapter switch before two inherited citations",
+    "text": "Read verses four and six of chapter five. Then compare (8); cf. v. 10.",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          56,
+          57
+        ],
+        "osis": "John.5.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      },
+      {
+        "span": "v. 10",
+        "indices": [
+          64,
+          69
+        ],
+        "osis": "John.5.10",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 112,
+    "name": "Chapter switch across a short window boundary",
+    "text": "Read verses four and six of chapter five. Then compare (8).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 12,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          56,
+          57
+        ],
+        "osis": "John.5.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  },
+  {
+    "id": 113,
+    "name": "New explicit citation overrides earlier AI context",
+    "text": "Read verses four and six of chapter five. Now turn to John 7:1. Then compare (8).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "8",
+        "indices": [
+          78,
+          79
+        ],
+        "osis": "John.7.8",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": true
+      }
+    ],
+    "expected_explicit": [
+      {
+        "osis": "John.7.1",
+        "indices": [
+          54,
+          62
+        ]
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "name": "Endnotes remain nonreferences after chapter switch",
+    "text": "Read verses four and six of chapter five. The editor's endnotes are (1) and (2).",
+    "context": {
+      "current_reference": "John.3.1"
+    },
+    "window_tokens": 1000,
+    "expected": [
+      {
+        "span": "verses four and six of chapter five",
+        "indices": [
+          5,
+          40
+        ],
+        "osis": "John.5.4,John.5.6",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric",
+        "downstream": false
+      },
+      {
+        "span": "1",
+        "indices": [
+          69,
+          70
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true,
+        "downstream": true
+      },
+      {
+        "span": "2",
+        "indices": [
+          77,
+          78
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "non_bible",
+        "optional": true,
+        "downstream": true
+      }
+    ],
+    "expected_explicit": []
+  }
+]

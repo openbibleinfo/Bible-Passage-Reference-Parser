@@ -1,0 +1,157 @@
+[
+  {
+    "id": 88,
+    "name": "Multiple named references inside one pair of parentheses",
+    "text": "Compare (John 3:16; Romans 8:1; Ephesians 2:8–9).",
+    "context": {},
+    "expected": [],
+    "expected_explicit": [
+      {
+        "span": "John 3:16",
+        "indices": [
+          9,
+          18
+        ],
+        "osis": "John.3.16"
+      },
+      {
+        "span": "Romans 8:1",
+        "indices": [
+          20,
+          30
+        ],
+        "osis": "Rom.8.1"
+      },
+      {
+        "span": "Ephesians 2:8–9",
+        "indices": [
+          32,
+          47
+        ],
+        "osis": "Eph.2.8-Eph.2.9"
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Chapter and verse with a Hebrew-numbering counterpart in parentheses",
+    "text": "9:1 (8:23 in Hebrew)",
+    "context": {
+      "text": "This section is about Isaiah."
+    },
+    "expected": [
+      {
+        "span": "9:1",
+        "indices": [
+          0,
+          3
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "Isa.9.1",
+        "reference_kind": "numeric"
+      },
+      {
+        "span": "8:23 in Hebrew",
+        "indices": [
+          5,
+          19
+        ],
+        "status": [
+          "unresolved",
+          "needs_search"
+        ],
+        "reference_kind": "numeric"
+      }
+    ],
+    "note": "The runner validates against default BCV versification. The alternate address should remain unresolved/deferred unless cross-versification mapping is implemented; no silent validation of Isaiah 8:23 in the default system."
+  },
+  {
+    "id": 90,
+    "name": "Bare chapter and verse with no book or caller context",
+    "text": "1:1",
+    "context": {},
+    "expected": [
+      {
+        "span": "1:1",
+        "indices": [
+          0,
+          3
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous",
+          "not_a_bible_reference"
+        ],
+        "reference_kind": "numeric",
+        "optional": true
+      }
+    ],
+    "note": "No match is acceptable. An unresolved/ambiguous expression may include speculative interpretations such as Genesis 1:1; no exact book is established by the input."
+  },
+  {
+    "id": 91,
+    "name": "Inherited verse list and cf. verse inside shared parentheses",
+    "text": "John 3:16 introduces God’s love for the world. The next few verses develop the point (17, 18, 19; cf. v. 21).",
+    "context": {},
+    "expected": [
+      {
+        "span": "The next few verses",
+        "indices": [
+          47,
+          66
+        ],
+        "status": [
+          "needs_search"
+        ],
+        "reference_kind": "semantic",
+        "allowed_deferred_kinds": [
+          "relative",
+          "semantic"
+        ],
+        "optional": true
+      },
+      {
+        "span": "17, 18, 19",
+        "indices": [
+          86,
+          96
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.17,John.3.18,John.3.19",
+        "reference_kind": "numeric",
+        "subdivision": "whole",
+        "osis_alternatives": [
+          "John.3.17-John.3.19"
+        ]
+      },
+      {
+        "span": "v. 21",
+        "indices": [
+          102,
+          107
+        ],
+        "status": [
+          "resolved"
+        ],
+        "osis": "John.3.21",
+        "reference_kind": "numeric",
+        "subdivision": "whole"
+      }
+    ],
+    "expected_explicit": [
+      {
+        "span": "John 3:16",
+        "indices": [
+          0,
+          9
+        ],
+        "osis": "John.3.16"
+      }
+    ],
+    "note": "The comma-separated verse list and the semicolon-separated comparison inherit John chapter 3 from the opening citation. Parentheses/separator excluded from offsets. The surrounding vague next-few-verses expression may be omitted or deferred; it is not the focus of this numeric test."
+  }
+]

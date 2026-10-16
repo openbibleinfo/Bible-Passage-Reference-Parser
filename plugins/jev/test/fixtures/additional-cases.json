@@ -1,0 +1,286 @@
+[
+  {
+    "id": 26,
+    "name": "Following two verses",
+    "text": "John 6:35 begins the saying. The following two verses develop it.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The following two verses",
+        "indices": [
+          29,
+          53
+        ],
+        "osis": "John.6.36-John.6.37",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Two verses later",
+    "text": "John 6:35 begins the saying. Two verses later, Jesus speaks about those who come to him.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Two verses later",
+        "indices": [
+          29,
+          45
+        ],
+        "osis": "John.6.37",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Previous two verses",
+    "text": "John 6:35 begins the saying. The preceding two verses prepare for it.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The preceding two verses",
+        "indices": [
+          29,
+          53
+        ],
+        "osis": "John.6.33-John.6.34",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Crossing a chapter boundary",
+    "text": "John 6:71 ends the chapter. The next verse begins a new scene.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The next verse",
+        "indices": [
+          28,
+          42
+        ],
+        "osis": "John.7.1",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Range crossing a chapter boundary",
+    "text": "John 6:70 is our starting point. The following two verses span the chapter break.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The following two verses",
+        "indices": [
+          33,
+          57
+        ],
+        "osis": "John.6.71-John.7.1",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Free-text book context",
+    "text": "Chapter 3 describes love.",
+    "context": {
+      "text": "This section is about 1 John."
+    },
+    "expected": [
+      {
+        "span": "Chapter 3",
+        "indices": [
+          0,
+          9
+        ],
+        "osis": "1John.3",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Free-text verse context",
+    "text": "The next verse explains the promise.",
+    "context": {
+      "text": "This section concerns John 6:35."
+    },
+    "expected": [
+      {
+        "span": "The next verse",
+        "indices": [
+          0,
+          14
+        ],
+        "osis": "John.6.36",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Competing chapter interpretations",
+    "text": "We have been comparing John and Numbers. Chapter 3 is the next topic, but the author has not said which book.",
+    "context": {},
+    "expected": [
+      {
+        "span": "Chapter 3",
+        "indices": [
+          41,
+          50
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "acceptable_interpretations": [
+          "John.3",
+          "Num.3"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Book with fewer than six chapters",
+    "text": "This section discusses Jude. Chapter 6 develops the argument.",
+    "context": {
+      "text": "This section is about Jude."
+    },
+    "expected": [
+      {
+        "span": "Chapter 6",
+        "indices": [
+          29,
+          38
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "reference_kind": "numeric"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Book-end overflow",
+    "text": "John 21:25 closes the Gospel. The next verse continues the Gospel of John.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The next verse",
+        "indices": [
+          30,
+          44
+        ],
+        "status": [
+          "unresolved",
+          "ambiguous"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Repeated parallel references",
+    "text": "The previous verse supplies the image, and the next verse explains it.",
+    "context": {
+      "current_reference": "Matt.5.14"
+    },
+    "expected": [
+      {
+        "span": "The previous verse",
+        "indices": [
+          0,
+          18
+        ],
+        "osis": "Matt.5.13",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      },
+      {
+        "span": "the next verse",
+        "indices": [
+          43,
+          57
+        ],
+        "osis": "Matt.5.15",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Poetry with strong Bible context",
+    "text": "John 6:35 is quoted in the essay. The poet then adds two verses to her poem.",
+    "context": {},
+    "expected": [
+      {
+        "span": "two verses",
+        "indices": [
+          53,
+          63
+        ],
+        "status": [
+          "not_a_bible_reference"
+        ],
+        "optional": true,
+        "reference_kind": "non_bible"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Unicode source offsets",
+    "text": "😀 Jesus speaks in John 6:35. The next verse continues his speech.",
+    "context": {},
+    "expected": [
+      {
+        "span": "The next verse",
+        "indices": [
+          30,
+          44
+        ],
+        "osis": "John.6.36",
+        "status": [
+          "resolved"
+        ],
+        "reference_kind": "relative"
+      }
+    ]
+  }
+]
