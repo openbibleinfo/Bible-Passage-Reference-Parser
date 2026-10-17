@@ -113,6 +113,11 @@ export interface BCVParserOptions {
 	*/
 	zero_verse_strategy: "error" | "upgrade" | "allow";
 	/*
+	* `1`: treat Psalm titles as verse 1: "Psalm 3:title" -> "Ps.3.1".
+	* `0`: treat Psalm titles as verse 0: "Psalm 3:title" -> "Ps.3.0". Psalm verse 0 is then the title, so "Psalm 3:0" also becomes "Ps.3.0", regardless of `zero_verse_strategy`.
+	*/
+	psalm_title_strategy: 0 | 1;
+	/*
 	* `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
 	* `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
 	*/

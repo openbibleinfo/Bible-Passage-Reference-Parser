@@ -3759,6 +3759,58 @@ describe("Parsing", () => {
 		expect(p.parse("Psalms - chapter 128 title MSG").osis()).toEqual("Ps.128.1");
 		expect(p.parse("John 137 chapts. 153 title NKJV").osis_and_indices()).toEqual([]);
 	});
+	it("should handle Psalm titles with `psalm_title_strategy: 0`", () => {
+		p.set_options({ psalm_title_strategy: 0 });
+		// Psalm verse 0 is the title, so `zero_verse_strategy` doesn't apply to it.
+		for (const zero_verse_strategy of ["error", "upgrade", "allow"]) {
+			p.set_options({ zero_verse_strategy });
+			expect(p.parse("Psalm 3:title").osis()).toEqual("Ps.3.0");
+			expect(p.parse("Psalm 3:0").osis()).toEqual("Ps.3.0");
+			expect(p.parse("Ps 3 title").osis()).toEqual("Ps.3.0");
+			expect(p.parse("Ps 3:title NIV").osis()).toEqual("Ps.3.0");
+			expect(p.parse("Ps 3:title-4").osis()).toEqual("Ps.3.0-Ps.3.4");
+			expect(p.parse("Ps 2:5-3:title").osis()).toEqual("Ps.2.5-Ps.3.0");
+			expect(p.parse("Ps 3:title-4:title").osis()).toEqual("Ps.3.0-Ps.4.0");
+			expect(p.parse("Ps 3:title, 5").osis()).toEqual("Ps.3.0,Ps.3.5");
+			expect(p.parse("Ps 3-4:title").osis()).toEqual("Ps.3.1-Ps.4.0");
+			expect(p.parse("Ps 3, 4 title").osis()).toEqual("Ps.3.1-Ps.4.0");
+			expect(p.parse("Ps 3, ch 4:title").osis()).toEqual("Ps.3.1-Ps.4.0");
+			expect(p.parse("Ps 3:2, ch 119 title, ch23").osis()).toEqual("Ps.3.2,Ps.119.0,Ps.23");
+			expect(p.parse("Ps 3:8, 4:title").osis()).toEqual("Ps.3.8-Ps.4.0");
+			expect(p.parse("Ps 3:title, 1").osis()).toEqual("Ps.3.0-Ps.3.1");
+			expect(p.parse("Job 42:17, Ps 1:title").osis()).toEqual("Job.42.17-Ps.1.0");
+			expect(p.parse("Song 3 title").osis()).toEqual("Song.3");
+			expect(p.parse("Acts 2:22-27. Title").osis()).toEqual("Acts.2.22-Acts.2.27");
+		}
+		p.set_options({ zero_verse_strategy: "error" });
+		expect(p.parse("Ps 3, 4 title").osis_and_indices()).toEqual([{ osis: "Ps.3.1-Ps.4.0", translations: [""], indices: [0, 13] }]);
+		const [entity] = p.parse("Psalm 3:title").parsed_entities();
+		expect(entity.entities[0].start).toEqual({ b: "Ps", c: 3, v: 0 });
+		expect(entity.entities[0].entities[0].valid).toEqual({ valid: true, messages: {} });
+		p.set_options({ consecutive_combination_strategy: "separate" });
+		expect(p.parse("Ps 3, 4 title").osis()).toEqual("Ps.3,Ps.4.0");
+		p.set_options({ consecutive_combination_strategy: "combine" });
+		// Zero verses outside Psalms still follow `zero_verse_strategy`, and verse 0 only starts a chapter in Psalms.
+		expect(p.parse("Gen 2:0").osis()).toEqual("");
+		p.set_options({ zero_verse_strategy: "upgrade" });
+		expect(p.parse("Gen 2:0").osis()).toEqual("Gen.2.1");
+		p.set_options({ zero_verse_strategy: "allow" });
+		expect(p.parse("Gen 1:31, 2:0").osis()).toEqual("Gen.1.31,Gen.2.0");
+		// With `psalm_title_strategy: 1`, Psalm verse 0 is an ordinary zero verse again.
+		p.set_options({ psalm_title_strategy: 1, zero_verse_strategy: "error" });
+		expect(p.parse("Psalm 3:title").osis()).toEqual("Ps.3.1");
+		expect(p.parse("Psalm 3:0").osis()).toEqual("");
+		// Only 0 and 1 are accepted, though their string forms are coerced.
+		p.set_options({ psalm_title_strategy: "0" });
+		expect(p.options.psalm_title_strategy).toEqual(0);
+		expect(p.parse("Ps 3, 4 title").osis()).toEqual("Ps.3.1-Ps.4.0");
+		p.set_options({ psalm_title_strategy: "verse_1" });
+		expect(p.options.psalm_title_strategy).toEqual(0);
+		p.set_options({ psalm_title_strategy: 2 });
+		expect(p.options.psalm_title_strategy).toEqual(0);
+		p.set_options({ psalm_title_strategy: "1" });
+		expect(p.options.psalm_title_strategy).toEqual(1);
+	});
 	it("should handle parentheses with a `combine` `sequence_combination_strategy`", () => {
 		expect(p.parse("Ps 117 (118,119, and 120)").osis_and_indices()).toEqual([
 			{

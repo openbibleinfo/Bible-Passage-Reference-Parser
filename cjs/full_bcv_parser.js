@@ -3480,6 +3480,7 @@ var bcv_options = class {
       sequence: /^\x1f\x1f\x1f/
     };
     this.#punctuation_strategy = "us";
+    this.#psalm_title_strategy = 1;
     this.parent = parent;
     this.#grammar.cv_sep = this.#grammar.cv_sep_us;
     this.#grammar.sequence = this.#grammar.sequence_us;
@@ -3612,6 +3613,21 @@ var bcv_options = class {
     this.#grammar.cv_sep = this.#grammar[cv_sep_key];
     this.#grammar.sequence = this.#grammar[sequence_key];
   }
+  #psalm_title_strategy;
+  get psalm_title_strategy() {
+    return this.#psalm_title_strategy;
+  }
+  // The value becomes a verse number, so it has to be an actual integer. Accept the string forms too, since options often come from JSON or query strings.
+  set psalm_title_strategy(arg) {
+    const value = String(arg);
+    if (value !== "0" && value !== "1") {
+      if (this.warn_level === "warn") {
+        console.warn(`psalm_title_strategy should be set to 0 or 1, not: ${arg}`);
+      }
+      return;
+    }
+    this.#psalm_title_strategy = value === "0" ? 0 : 1;
+  }
 };
 var bcv_validators = class {
   constructor(options, translations2) {
@@ -3661,7 +3677,7 @@ var bcv_validators = class {
         end.c = 1;
       }
     }
-    if (end.v === 0) {
+    if (end.v === 0 && !this.is_psalm_title(end)) {
       messages.end_verse_is_zero = 1;
       if (this.options.zero_verse_strategy === "error") {
         valid = false;
@@ -3717,6 +3733,10 @@ var bcv_validators = class {
     }
     return valid;
   }
+  // When Psalm titles are verse 0, Psalm verse 0 is the title--a real verse, so `zero_verse_strategy` doesn't apply to it.
+  is_psalm_title(ref) {
+    return ref.b === "Ps" && ref.v === 0 && this.options.psalm_title_strategy === 0;
+  }
   // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
   validate_known_start_book(system, start, messages) {
     let valid = true;
@@ -3730,7 +3750,7 @@ var bcv_validators = class {
         start.c = 1;
       }
     }
-    if (start.v === 0) {
+    if (start.v === 0 && !this.is_psalm_title(start)) {
       messages.start_verse_is_zero = 1;
       if (this.options.zero_verse_strategy === "error") {
         valid = false;
@@ -3834,10 +3854,6 @@ var bcv_passage = class {
     if (passage.start_context.translations) {
       context.translations = structuredClone(passage.start_context.translations);
     }
-    return [accum, context];
-  }
-  // This is never called. It exists to make Typescript happy.
-  b_pre(passage, accum, context) {
     return [accum, context];
   }
   // Handle book-only ranges ("Gen-Exod").
@@ -3955,7 +3971,7 @@ var bcv_passage = class {
       type: "v",
       // Let us discover later that this was originally a `title`.
       original_type: "title",
-      value: [{ type: "integer", value: 1, indices: title.indices }],
+      value: [{ type: "integer", value: this.options.psalm_title_strategy, indices: title.indices }],
       indices: title.indices
     };
     passage.type = "bcv";
@@ -4076,7 +4092,7 @@ var bcv_passage = class {
       type: "v",
       // Preserve the title type in case we want it later.
       original_type: "title",
-      value: [{ type: "integer", value: 1, indices: title.indices }],
+      value: [{ type: "integer", value: this.options.psalm_title_strategy, indices: title.indices }],
       indices: title.indices
     };
     passage.type = "cv";
@@ -4174,7 +4190,7 @@ var bcv_passage = class {
     passage.value[1].original_type = "title";
     passage.value[1].value = [{
       type: "integer",
-      value: 1,
+      value: this.options.psalm_title_strategy,
       indices: structuredClone(passage.value[1].indices)
     }];
     passage.type = "cv";
@@ -4305,34 +4321,36 @@ var bcv_passage = class {
     passage.value = [start, end];
     passage.indices = [start.indices[0], end.indices[1]];
     delete passage.absolute_indices;
+    const start_passage = start.passages[0];
+    const end_passage = end.passages[0];
     const start_obj = {
-      b: start.passages[0].start.b,
-      c: start.passages[0].start.c,
-      v: start.passages[0].start.v,
+      b: start_passage.start.b,
+      c: start_passage.start.c,
+      v: start_passage.start.v,
       type: start.type
     };
-    if (start.passages[0].start.p != null) {
-      start_obj.p = start.passages[0].start.p;
+    if (start_passage.start.p != null) {
+      start_obj.p = start_passage.start.p;
     }
-    if (start.passages[0].start.p_if_verse != null) {
-      start_obj.p_if_verse = start.passages[0].start.p_if_verse;
+    if (start_passage.start.p_if_verse != null) {
+      start_obj.p_if_verse = start_passage.start.p_if_verse;
     }
     const end_obj = {
-      b: end.passages[0].end.b,
-      c: end.passages[0].end.c,
-      v: end.passages[0].end.v,
+      b: end_passage.end.b,
+      c: end_passage.end.c,
+      v: end_passage.end.v,
       type: end.type
     };
-    if (end.passages[0].end.p != null) {
-      end_obj.p = end.passages[0].end.p;
+    if (end_passage.end.p != null) {
+      end_obj.p = end_passage.end.p;
     }
-    if (end.passages[0].end.p_if_verse != null) {
-      end_obj.p_if_verse = end.passages[0].end.p_if_verse;
+    if (end_passage.end.p_if_verse != null) {
+      end_obj.p_if_verse = end_passage.end.p_if_verse;
     }
-    if (end.passages[0].valid.messages.start_chapter_is_zero) {
+    if (end_passage.valid.messages.start_chapter_is_zero) {
       end_obj.c = 0;
     }
-    if (end.passages[0].valid.messages.start_verse_is_zero) {
+    if (end_passage.valid.messages.start_verse_is_zero) {
       end_obj.v = 0;
     }
     const valid = this.validate_ref(passage.start_context.translations, start_obj, end_obj);
@@ -4368,15 +4386,12 @@ var bcv_passage = class {
   range_change_end(passage, accum, new_end) {
     const [start, end] = passage.value;
     if (end.type === "integer") {
-      end.original_value = end.value;
       end.value = new_end;
     } else if (end.type === "v") {
       const new_obj = this.pluck("integer", end.value);
-      new_obj.original_value = new_obj.value;
       new_obj.value = new_end;
     } else if (end.type === "cv") {
       const new_obj = this.pluck_integer("c", end.value);
-      new_obj.original_value = new_obj.value;
       new_obj.value = new_end;
     }
     return this.handle_obj(passage, accum, passage.start_context);
@@ -4455,8 +4470,8 @@ var bcv_passage = class {
         return this.range_change_end(passage, accum, new_end);
       }
     }
-    if (this.options.end_range_digits_strategy === "verse" && start_obj.v == null && (end.type === "integer" || end.type === "v")) {
-      const temp_value = end.type === "v" ? this.pluck("integer", end.value) : end.value;
+    if (this.options.end_range_digits_strategy === "verse" && start_obj.v == null && end.type === "integer" && passage.type !== "ff" && passage.type !== "next_v") {
+      const temp_value = end.value;
       const temp_valid = this.validate_ref(passage.start_context.translations, {
         b: start_obj.b,
         c: start_obj.c,
@@ -4475,8 +4490,8 @@ var bcv_passage = class {
   }
   // The range looks valid, but we should check for some special cases.
   range_handle_valid(valid, passage, start, start_obj, end, end_obj, accum) {
-    if (valid.messages?.end_chapter_not_exist && this.options.end_range_digits_strategy === "verse" && !start_obj.v && (end.type === "integer" || end.type === "v") && this.options.passage_existence_strategy.indexOf("v") >= 0) {
-      const temp_value = end.type === "v" ? this.pluck("integer", end.value) : end.value;
+    if (valid.messages?.end_chapter_not_exist && this.options.end_range_digits_strategy === "verse" && !start_obj.v && end.type === "integer" && passage.type !== "ff" && passage.type !== "next_v" && this.options.passage_existence_strategy.indexOf("v") >= 0) {
+      const temp_value = end.value;
       const temp_valid = this.validate_ref(passage.start_context.translations, {
         b: start_obj.b,
         c: start_obj.c,
@@ -4657,7 +4672,6 @@ var bcv_passage = class {
     }
     return null;
   }
-  // If the start chapter or verse is 0 and the appropriate option is set to `upgrade`, convert it to a 1.
   fix_start_zeroes(valid, c, v = void 0) {
     if (valid.messages?.start_chapter_is_zero && this.options.zero_chapter_strategy === "upgrade") {
       c = valid.messages.start_chapter_is_zero;
@@ -5515,15 +5529,19 @@ const bcv = new bcv_parser(lang);`);
     if (prev.b === check.b) {
       if (prev.c === check.c) {
         return prev.v === check.v - 1;
-      } else if (check.v === 1 && prev.c === check.c - 1) {
+      } else if (this.is_first_verse(check) && prev.c === check.c - 1) {
         const prev_chapter_verse_count = chapter_array[prev.c - 1];
         return prev.v === prev_chapter_verse_count;
       }
-    } else if (check.c === 1 && check.v === 1 && // `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
+    } else if (check.c === 1 && this.is_first_verse(check) && // `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
     translation_order[prev.b] === translation_order[check.b] - 1) {
       return prev.c === chapter_array.length && prev.v === chapter_array[prev.c - 1];
     }
     return false;
+  }
+  // Whether a verse starts its chapter. When Psalm titles are verse 0, verse 0 starts a Psalm: "Ps 3, 4 title" -> "Ps.3.1-Ps.4.0".
+  is_first_verse(check) {
+    return check.v === 1 || check.v === 0 && check.b === "Ps" && this.options.psalm_title_strategy === 0;
   }
   // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.
   snap_range(entity, passage_i) {

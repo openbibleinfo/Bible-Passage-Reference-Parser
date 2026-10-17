@@ -180,6 +180,7 @@ const DEFAULT_OPTIONS = {
   case_sensitive: "none",
   zero_chapter_strategy: "error",
   zero_verse_strategy: "error",
+  psalm_title_strategy: 1,
   single_chapter_1_strategy: "chapter",
   end_range_digits_strategy: "verse"
 };
@@ -206,6 +207,7 @@ function buildOptionValues(parser) {
     case_sensitive: ["none", "books", "translations", "books,translations"],
     zero_chapter_strategy: ["error", "upgrade"],
     zero_verse_strategy: ["error", "upgrade", "allow"],
+    psalm_title_strategy: [1, 0],
     single_chapter_1_strategy: ["chapter", "verse"],
     end_range_digits_strategy: ["verse", "sequence"]
   };

@@ -234,12 +234,12 @@ private bc_title(passage: PassageEntityArrayValue, accum: PassageEntityInterface
 	if (!title) {
 		title = this.pluck_integer("v", passage.value);
 	}
-	// Replace the second element with a `v` object representing verse 1, using the title's indices.
+	// Replace the second element with a `v` object representing the title verse, using the title's indices.
 	passage.value[1] = {
 		type: "v",
 		// Let us discover later that this was originally a `title`.
 		original_type: "title",
-		value: [{ type: "integer", value: 1, indices: title.indices }],
+		value: [{ type: "integer", value: this.options.psalm_title_strategy, indices: title.indices }],
 		indices: title.indices
 	};
 	// We don't need to preserve the original `type` for reparsing; if it gets here, it'll always be a `bcv`.
@@ -384,12 +384,12 @@ private c_title(passage: PassageEntityArrayValue, accum: PassageEntityInterface[
 	}
 	// For Psalms, add a `v` object and treat it as a `cv`.
 	const title = this.pluck("title", passage.value)!;
-	// Insert a verse object set to verse 1.
+	// Insert a verse object set to the title verse.
 	passage.value[1] = {
 		type: "v",
 		// Preserve the title type in case we want it later.
 		original_type: "title",
-		value: [{ type: "integer", value: 1, indices: title.indices }],
+		value: [{ type: "integer", value: this.options.psalm_title_strategy, indices: title.indices }],
 		indices: title.indices
 	};
 	// Change the type to match the new parsing strategy.
@@ -509,12 +509,12 @@ private integer_title(passage: PassageEntityArrayValue, accum: PassageEntityInte
 		value: [passage.value[0]],
 		indices: structuredClone(passage.value[0].indices)
 	};
-	// Change the `title` object to a `v` object representing verse 1. Preserve the indices.
+	// Change the `title` object to a `v` object representing the title verse. Preserve the indices.
 	passage.value[1].type = "v";
 	passage.value[1].original_type = "title";
 	passage.value[1].value = [{
 		type: "integer",
-		value: 1,
+		value: this.options.psalm_title_strategy,
 		indices: structuredClone(passage.value[1].indices)
 	}];
 	// We don't need to preserve the original `type` for reparsing.

@@ -3480,6 +3480,7 @@ var bcv_options = class {
       sequence: /^\x1f\x1f\x1f/
     };
     this.#punctuation_strategy = "us";
+    this.#psalm_title_strategy = 1;
     this.parent = parent;
     this.#grammar.cv_sep = this.#grammar.cv_sep_us;
     this.#grammar.sequence = this.#grammar.sequence_us;
@@ -3612,6 +3613,21 @@ var bcv_options = class {
     this.#grammar.cv_sep = this.#grammar[cv_sep_key];
     this.#grammar.sequence = this.#grammar[sequence_key];
   }
+  #psalm_title_strategy;
+  get psalm_title_strategy() {
+    return this.#psalm_title_strategy;
+  }
+  // The value becomes a verse number, so it has to be an actual integer. Accept the string forms too, since options often come from JSON or query strings.
+  set psalm_title_strategy(arg) {
+    const value = String(arg);
+    if (value !== "0" && value !== "1") {
+      if (this.warn_level === "warn") {
+        console.warn(`psalm_title_strategy should be set to 0 or 1, not: ${arg}`);
+      }
+      return;
+    }
+    this.#psalm_title_strategy = value === "0" ? 0 : 1;
+  }
 };
 var bcv_validators = class {
   constructor(options, translations2) {
@@ -3661,7 +3677,7 @@ var bcv_validators = class {
         end.c = 1;
       }
     }
-    if (end.v === 0) {
+    if (end.v === 0 && !this.is_psalm_title(end)) {
       messages.end_verse_is_zero = 1;
       if (this.options.zero_verse_strategy === "error") {
         valid = false;
@@ -3717,6 +3733,10 @@ var bcv_validators = class {
     }
     return valid;
   }
+  // When Psalm titles are verse 0, Psalm verse 0 is the title--a real verse, so `zero_verse_strategy` doesn't apply to it.
+  is_psalm_title(ref) {
+    return ref.b === "Ps" && ref.v === 0 && this.options.psalm_title_strategy === 0;
+  }
   // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
   validate_known_start_book(system, start, messages) {
     let valid = true;
@@ -3730,7 +3750,7 @@ var bcv_validators = class {
         start.c = 1;
       }
     }
-    if (start.v === 0) {
+    if (start.v === 0 && !this.is_psalm_title(start)) {
       messages.start_verse_is_zero = 1;
       if (this.options.zero_verse_strategy === "error") {
         valid = false;
@@ -3951,7 +3971,7 @@ var bcv_passage = class {
       type: "v",
       // Let us discover later that this was originally a `title`.
       original_type: "title",
-      value: [{ type: "integer", value: 1, indices: title.indices }],
+      value: [{ type: "integer", value: this.options.psalm_title_strategy, indices: title.indices }],
       indices: title.indices
     };
     passage.type = "bcv";
@@ -4072,7 +4092,7 @@ var bcv_passage = class {
       type: "v",
       // Preserve the title type in case we want it later.
       original_type: "title",
-      value: [{ type: "integer", value: 1, indices: title.indices }],
+      value: [{ type: "integer", value: this.options.psalm_title_strategy, indices: title.indices }],
       indices: title.indices
     };
     passage.type = "cv";
@@ -4170,7 +4190,7 @@ var bcv_passage = class {
     passage.value[1].original_type = "title";
     passage.value[1].value = [{
       type: "integer",
-      value: 1,
+      value: this.options.psalm_title_strategy,
       indices: structuredClone(passage.value[1].indices)
     }];
     passage.type = "cv";
@@ -5509,15 +5529,19 @@ const bcv = new bcv_parser(lang);`);
     if (prev.b === check.b) {
       if (prev.c === check.c) {
         return prev.v === check.v - 1;
-      } else if (check.v === 1 && prev.c === check.c - 1) {
+      } else if (this.is_first_verse(check) && prev.c === check.c - 1) {
         const prev_chapter_verse_count = chapter_array[prev.c - 1];
         return prev.v === prev_chapter_verse_count;
       }
-    } else if (check.c === 1 && check.v === 1 && // `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
+    } else if (check.c === 1 && this.is_first_verse(check) && // `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
     translation_order[prev.b] === translation_order[check.b] - 1) {
       return prev.c === chapter_array.length && prev.v === chapter_array[prev.c - 1];
     }
     return false;
+  }
+  // Whether a verse starts its chapter. When Psalm titles are verse 0, verse 0 starts a Psalm: "Ps 3, 4 title" -> "Ps.3.1-Ps.4.0".
+  is_first_verse(check) {
+    return check.v === 1 || check.v === 0 && check.b === "Ps" && this.options.psalm_title_strategy === 0;
   }
   // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.
   snap_range(entity, passage_i) {

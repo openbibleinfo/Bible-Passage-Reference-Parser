@@ -575,7 +575,7 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 		// Same chapter, consecutive verse.
 		if (prev.c === check.c) {
 			return (prev.v === check.v - 1);
-		} else if (check.v === 1 && prev.c === check.c - 1) {
+		} else if (this.is_first_verse(check) && prev.c === check.c - 1) {
 			// Same book, next chapter, and we're at the first verse of that chapter. Check if prev ended at the last verse of the previous chapter.
 			const prev_chapter_verse_count = chapter_array[prev.c - 1];
 			return (prev.v === prev_chapter_verse_count);
@@ -583,7 +583,7 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 	// Next book in order, first chapter, first verse.
 	} else if (
 		check.c === 1 &&
-		check.v === 1 &&
+		this.is_first_verse(check) &&
 		// `check.b` may be undefined for an invalid passage; the resulting `NaN` comparison is correctly false.
 		translation_order[prev.b] === translation_order[check.b as string] - 1
 	) {
@@ -594,6 +594,11 @@ private is_verse_consecutive(prev: Partial<StartEndInterface>, check: StartEndIn
 		);
 	}
 	return false;
+}
+
+// Whether a verse starts its chapter. When Psalm titles are verse 0, verse 0 starts a Psalm: "Ps 3, 4 title" -> "Ps.3.1-Ps.4.0".
+private is_first_verse(check: StartEndInterface): boolean {
+	return check.v === 1 || (check.v === 0 && check.b === "Ps" && this.options.psalm_title_strategy === 0);
 }
 
 // Snap the start/end index of the range when it includes a book on its own and `this.options.book_range_strategy` is `ignore`.

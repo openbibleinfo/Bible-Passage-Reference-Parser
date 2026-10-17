@@ -336,6 +336,9 @@ The `chapters` key lists the number of verses in each chapter: `chapters["Gen"][
   * `error`: zero verses ("Matthew 5:0") are invalid.
   * `upgrade`: zero verses are upgraded to 1: "Matthew 5:0" → "Matt.5.1".
   * `allow`: zero verses are kept as-is: "Matthew 5:0" → "Matt.5.0". Some traditions use 0 for Psalm titles.
+* `psalm_title_strategy: 1`
+  * `1`: treat Psalm titles as verse 1: "Psalm 3:title" → "Ps.3.1".
+  * `0`: treat Psalm titles as verse 0: "Psalm 3:title" → "Ps.3.0". Psalm verse 0 is then the title, so "Psalm 3:0" also becomes "Ps.3.0", regardless of `zero_verse_strategy`.
 * `single_chapter_1_strategy: "chapter"`
   * `chapter`: treat "Jude 1" as referring to the complete book of Jude: `Jude.1`. People almost always want this output when they enter this text in a search box.
   * `verse`: treat "Jude 1" as referring to the first verse in Jude: `Jude.1.1`. If you're parsing specialized text that follows a style guide, you may want to set this option.
@@ -817,11 +820,11 @@ The code in this project is licensed under the standard MIT License.
 
 This repo is feature-complete at its core job now that language data lives (mostly) separately. At this time, I don't anticipate major changes.
 
-For content-extraction tasks, perhaps it could be integrated into an LLM workflow that uses contextual intelligence to identify ambiguous references. This code could then act as a skill or tool for an LLM to provide grounding.
-
 ## Changelog
 
-October 16, 2026. This code-only release (not on npm) adds experimental [plugins/jev](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/plugins/jev) code that allows the parser to understand ambiguous and disconnected references by connecting to Typesafe's Jev. An OpenRouter or Typesafe API key is required, and each fuzzy parsing costs money. This plugin makes the parser more suitable for identifying Bible references in unstructured text. Don't expect a stable API; it's an experiment. [Explore the code](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/plugins/jev) or [read a blog post about it](https://www.openbible.info/blog/2026/10/jev-ambiguous-bible-passage-references/).
+October 17, 2026 (4.1.0-alpha). Added `psalm_title_strategy` to let you distinguish between explicit Psalm title references compared to verse 1. 4.1.0 should release in January 2027.
+
+October 16, 2026. This code-only release (not on npm) adds experimental [plugins/jev](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/plugins/jev) code that allows the parser to understand ambiguous and disconnected references by connecting to TypeSafe's Jev. An OpenRouter or TypeSafe API key is required, and each fuzzy parsing costs you money. This plugin makes the parser more suitable for identifying Bible references in unstructured text. Don't expect a stable API; it's an experiment. [Explore the code](https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/tree/master/plugins/jev) or [read a blog post about it](https://www.openbible.info/blog/2026/10/jev-ambiguous-bible-passage-references/).
 
 July 31, 2026 (4.0.0). Full release on Github and npm. The code passes eslint.
 

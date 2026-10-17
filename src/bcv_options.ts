@@ -212,4 +212,20 @@ public set punctuation_strategy(arg: BCVParserOptions["punctuation_strategy"]) {
 	this.#grammar.sequence = this.#grammar[sequence_key];
 }
 
+
+#psalm_title_strategy: BCVParserOptions["psalm_title_strategy"] = 1;
+public get psalm_title_strategy(): BCVParserOptions["psalm_title_strategy"] {
+	return this.#psalm_title_strategy;
+}
+// The value becomes a verse number, so it has to be an actual integer. Accept the string forms too, since options often come from JSON or query strings.
+public set psalm_title_strategy(arg: BCVParserOptions["psalm_title_strategy"]) {
+	const value = String(arg);
+	if (value !== "0" && value !== "1") {
+		if (this.warn_level === "warn") {
+			console.warn(`psalm_title_strategy should be set to 0 or 1, not: ${arg}`);
+		}
+		return;
+	}
+	this.#psalm_title_strategy = value === "0" ? 0 : 1;
+}
 }

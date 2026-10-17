@@ -62,7 +62,7 @@ public validate_end_ref(system: string, start: StartEndInterface, end: StartEndI
 		}
 	}
 	// Matt 5:0
-	if (end.v === 0) {
+	if (end.v === 0 && !this.is_psalm_title(end)) {
 		messages.end_verse_is_zero = 1;
 		if (this.options.zero_verse_strategy === "error") {
 			valid = false;
@@ -142,6 +142,11 @@ private validate_known_end_book(system: string, order: Record<string, number>, s
 	return valid;
 }
 
+// When Psalm titles are verse 0, Psalm verse 0 is the title--a real verse, so `zero_verse_strategy` doesn't apply to it.
+private is_psalm_title(ref: StartEndInterface): boolean {
+	return ref.b === "Ps" && ref.v === 0 && this.options.psalm_title_strategy === 0;
+}
+
 // Validate and apply options when we know the start book is valid. This function makes `validate_start_ref` easier to follow.
 private validate_known_start_book(system: string, start: StartEndWithBookInterface, messages: MessageInterface): boolean {
 	// Start by assuming `valid` is `true`.
@@ -160,7 +165,7 @@ private validate_known_start_book(system: string, start: StartEndWithBookInterfa
 		}
 	}
 	// Matt 5:0
-	if (start.v === 0) {
+	if (start.v === 0 && !this.is_psalm_title(start)) {
 		messages.start_verse_is_zero = 1;
 		if (this.options.zero_verse_strategy === "error") {
 			valid = false;
